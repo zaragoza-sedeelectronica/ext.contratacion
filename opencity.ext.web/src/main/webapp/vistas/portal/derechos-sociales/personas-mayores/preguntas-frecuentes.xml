@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Personas Mayores. Preguntas Frecuentes" description="Página con las preguntas frecuentes relativas al portal dirigido a Personas Mayores" author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Thu Dic 21 00:00:00 CEST 2017" keywords="ayuntamiento, ciudad, Zaragoza, Espana, presupuestos, presupuestos participativos, administracion electronica, participacion, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment, budget participatifs, Parcitipatory budgeting" />
+        <style type="text/css">
+        .fnd-turismo {
+            background: #d68100;
+        }
+
+        .faq-title{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-md-12">
+                <sede:pregunta-frecuente materia="3280"></sede:pregunta-frecuente>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+		// Collapsamos manualmente las FAQ (dentro de pestaña Preguntas Frecuentes)
+        $('div[id^="answer"].collapse').collapse();
+        $(".faq-title").click(function() {
+            $(this).children('.rotate').toggleClass("down");
+        });
+
+        var categorias = [];
+        $('ul.listado-preguntas li').each(function(){
+            var actual = $(this).find('.label').text();
+            if(categorias.indexOf(actual) == -1){
+                $(this).prepend('<p class="destacado lead margin-b05em">' + actual + '</p>');
+                categorias.push(actual);
+            };
+            $(this).find('.label').hide();
+        });
+
+        var hash = window.location.hash;
+        if(hash){
+            hash = hash.replace('#','');
+            setTimeout(function () {
+                $('div[id="' + hash + '"]').collapse('show');
+                $('div[id="' + hash + '"]').prev().children('.rotate').toggleClass("down");
+            }, 500); 
+        };
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

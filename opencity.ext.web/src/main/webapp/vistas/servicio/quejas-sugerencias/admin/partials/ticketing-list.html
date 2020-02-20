@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <nav class="navbar navbar-default" ng-show="permisos.DET">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand hidden-desktop">Buscadores</span>
+                </div>
+                <div class="collapse navbar-collapse" id="buscadoresTarget">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" ng-model="queryForm.id" class="form-control" placeholder="Buscar por ID...">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" ng-model="queryForm.title" class="form-control" placeholder="Buscar por Asunto...">
+                        </div>
+                        <div class="form-group">
+                            <select id="q_e_l" ng-model="queryForm.estado" class="form-control" multiple="multiple" ng-options="obj.id as obj.text for obj in estados"></select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" ng-show="permisos.PUB" ng-model="queryForm.validated" ng-options="obj.id as obj.text for obj in validated"></select>
+                        </div>
+                        <button class="btn btn-danger" type="button" ng-click="buscar(queryForm.id)">Buscar</button>
+                        <button class="btn btn-default" type="button" ng-click="queryForm={}">Limpiar</button>
+                    </form>
+                </div>
+            </div>
+        </nav> 
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <div infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="2" ng-show="permisos.DET">
+			N&uacute;mero resultados: {{totalCount}} {{textoQuery}} <span ng-show="totalCount>300">Se visualizan solo los 300 primeros registros del ultimo trimestre</span> <label for="mostrar010" class="pull-right" ng-show="usuario.usr_ticketing==2"><input type="checkbox" ng-model="mostrar010" name="mostrar010" /> Mostrar qys de 010</label>
+			<div ng-show="permisos.MODMULTIPLE && selectedIds.length > 0">
+				<modal-accion accion="1" title="Resolver" icon="glyphicon-ok" ayuda="Marca la queja como resuelta, no contesta al ciudadano" ng-show="permisos.MOD"></modal-accion>
+	        	<modal-accion accion="2" title="Contestar" icon="glyphicon-envelope" ayuda="Contesta al ciudadano y cierra la queja" ng-show="permisos.CONTESTAR" desactivar="{{{true:'true', false:'false'}[registro.email === 'anonymous@anonymous.es' || registro.email.length <= 0]}}"></modal-accion>
+	        	<modal-accion accion="7" title="Derivar a web" icon="glyphicon-arrow-left" ng-show="permisos.MOD && usuario.usr_ticketing!='2'"></modal-accion>
+	        	<modal-accion accion="8" title="Derivar a Externo" icon="glyphicon-arrow-right" ng-show="permisos.SENDEXTERNO"></modal-accion>
+	        	<modal-accion accion="11" title="Derivar a Inspector" icon="glyphicon-screenshot" ng-show="permisos.SENDINSPECTOR"></modal-accion>
+	    	    <modal-accion accion="3" title="Archivar" icon="glyphicon-folder-close" ayuda="Cierra la queja, marcandola como Archivada" ng-show="permisos.MOD"></modal-accion>
+	        	<modal-accion accion="4" title="Borrar" icon="glyphicon-trash" ayuda="Cierra la queja, marcandola como Borrada" ng-show="permisos.DEL"></modal-accion>
+			</div>
+			
+            <table class="table table-bordered table-hover table-btn">
+                <thead>
+                    <tr>
+                    	<th ng-show="permisos.MODMULTIPLE"></th>
+                        <th th-orden order="'service_request_id'" by="order" reverse="reverse">ID</th>
+                        <th th-orden order="'requested_datetime'" by="order" reverse="reverse">ENTRADA</th>
+                        <th th-orden order="'title'" by="order" reverse="reverse">ASUNTO</th>
+                        <th th-orden order="'status'" by="order" reverse="reverse">ESTADO</th>
+                        <th th-orden order="'service_name'" by="order" reverse="reverse">CATEGORIA</th>
+                        <th th-orden order="'address'" by="order" reverse="reverse">DIRECCION</th>
+                        <th th-orden order="'operator'" by="order" reverse="reverse" ng-show="permisos.ADMINOPERADOR"></th>
+                        <th th-orden order="'visible'" by="order" reverse="reverse">VISIBLE</th> <!--  ng-show="permisos.PUB" -->
+                        <th th-orden order="'validated'" by="order" reverse="reverse">VALIDADO</th><!--  ng-show="permisos.PUB" -->
+                        <th ng-show="permisos.PUB">Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros | orderBy:order:reverse" ng:class="{true:registro.status_admin.toLowerCase().replace(' ',''), false:''}[usuario.nocolor_ticketing===undefined]" ng-hide="mostrar010==false && registro.group_operator == 235798528">
+                    	<td ng-show="permisos.MODMULTIPLE">
+                    		<input type="checkbox" checklist-model="selectedIds" checklist-value="registro">
+                    	</td>
+                        <td data-title="ID" >
+                        	<span class="fa fa-info-circle" aria-hidden="true" ng-show="registro.type == 250544128"></span>
+                            <span class="fa fa-user" aria-hidden="true" ng-show="registro.account_id != 3506176 || registro.user_id"></span>
+                            <span class="fa fa-phone-square" aria-hidden="true" ng-show="registro.group_operator == 235798528"></span>
+                            <span class="fa fa- exclamation-circle" aria-hidden="true" ng-show="registro.priority == 3"></span>
+                            <span class="fa fa-star" aria-hidden="true" ng-show="registro.operator == usuario.login"></span>
+                            <a href="#/edit/{{ registro.service_request_id }}">{{registro.service_request_id}}</a> 
+                        </td>
+                        <td data-title="Entrada"><a href="#/edit/{{ registro.service_request_id }}">{{registro.requested_datetime | date:'dd-MM-yyyy HH:mm'}}</a></td>
+                        <td data-title="Asunto"><a href="#/edit/{{ registro.service_request_id }}">{{registro.type == 250544128 ? ('solicitud de: ' + registro.first_name) : registro.title}}</a> <a class="btn" href="#/edit/{{ registro.service_request_id }}" target="_blank" title="Abrir en pestaña nueva"><span class="glyphicon glyphicon-export"></span></a></td>
+                        <td data-title="Estado">
+                        	<a href="#/edit/{{ registro.service_request_id }}">
+                        		<span ng-show="registro.status_admin.indexOf('nterno') >= 0">
+                        			{{registro.status_admin}} {{registro.inspector}}
+                        			
+                        		</span>
+                        		<span ng-show="registro.status_admin.indexOf('nterno') < 0">{{registro.status_admin}}</span> 
+                        		
+                        	</a></td>
+                        <td data-title="Categoria"><a href="#/edit/{{ registro.service_request_id }}">{{registro.service_name}}</a></td>
+                        <td data-title="Direccion"><a href="#/edit/{{ registro.service_request_id }}">{{registro.address_string}}</a></td>
+                        <td data-title="Operador" ng-show="permisos.ADMINOPERADOR"><a href="#/edit/{{ registro.service_request_id }}" ng-show="registro.group_operator == usuario.usr_ticketing">{{registro.operator}}</a></td>
+                        <td data-title="Visible"><a href="#/edit/{{ registro.service_request_id }}" >{{registro.visible}}</a></td><!--  ng-show="permisos.PUB" -->
+                        <td data-title="Validado"><a href="#/edit/{{ registro.service_request_id }}" >{{registro.validated}}</a></td><!--  ng-show="permisos.PUB" -->
+                        <td data-title="Operaciones" ng-show="permisos.PUB">
+                            <!-- <modal-borrar></modal-borrar> -->
+                            <boton-validacion></boton-validacion>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="alert alert-warning spinner-tabla" ng-show="busy"><span class="spinner"></span>Espera por favor, se estan cargando los datos.</div>
+        </div>
+
+    </div>
+</div>

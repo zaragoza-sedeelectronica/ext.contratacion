@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Infraestructura de Datos Especiales de Zaragoza"
+                   description=""
+                   author="" last-modified="Thu Dec 23 00:00:00 CET 2019"
+                   keywords=""/>
+        <!--<link rel="manifest" href="//www.zaragoza.es/cont/vistas/portal/organizacion/manifest.json"/>-->
+        <style>
+            titulo-seccion {
+            line-height: 66px;
+            font-size: 42px;
+            }
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .panel-heading a:after {
+            float: left;
+            color: white;
+            background-color: #000;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 20px;
+            margin-right: 10px;
+            }
+
+            .panel-heading a.collapsed:after {
+            content: "\f105";
+            }
+
+            .panel-default>.panel-heading {
+            background-color: #fff;
+            border: 0;
+            }
+
+            .panel {
+            border: 0;
+            webkit-box-shadow: 0 0 0;
+            box-shadow: 0 0 0;
+            }
+
+            .panel-group .panel-heading+.panel-collapse>.panel-body {
+            border: 0;
+            }
+
+            .panel-body {
+            padding-left: 50px;
+            }
+
+            .panel-title>a {
+            color: #E81B16;
+            }
+
+            .panel-title>a:hover,
+            .panel-title>a:focus,
+            .panel-title>a:active {
+            text-decoration: none;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right titulo-seccion">Conoce IDEZar</h2>
+            </div>
+            <div class="fnd-gris-claro">
+                 <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h3>Presentación
+                    </h3>
+                    <hr class="sm"/>
+<p> IDEZar es la Infraestructura de Datos Espaciales de Zaragoza, que tiene entre sus objetivos principales facilitar a la ciudadan&#237;a el acceso a la informaci&#243;n de la ciudad localiz&#225;ndola sobre el mapa permitiendo ofrecer servicios y aplicaciones que proporcionan un valor a&#241;adido a la gran cantidad de contenidos que el Ayuntamiento ofrece a la ciudadan&#237;a.</p>
+<h4>Servicios</h4><p>La iniciativa IDEZar nace en el a&#241;o 2004 con la finalidad de llevar a cabo la implantaci&#243;n de una Infraestructura de Datos Espaciales a nivel local. El trabajo realizado durante estos a&#241;os ha permitido que hoy en d&#237;a sean m&#250;ltiples y muy variadas las funcionalidades y los datos que el Ayuntamiento ofrece a la ciudadan&#237;a mediante esta infraestructura. &#201;stas van desde el nuevo servicio &#34;Zaragoza al instante&#34; de la p&#225;gina principal de la Web de la ciudad, donde se ofrece una visi&#243;n din&#225;mica y en tiempo real de la ciudad sobre el mapa, pasando por el servicio de callejero (uno de los primeros ofrecidos por IDEZar), o servicios vinculados a la movilidad que permiten la planificaci&#243;n de rutas multimodales en transporte p&#250;blico. </p>
+<h4>Reconocimientos</h4><p>Gracias a la cercan&#237;a de la infraestructura a la ciudadan&#237;a, IDEZar fue premiada en la categor&#237;a de usabilidad en el concurso &#34;EUROGI/eSDI-Net Awards 2011&#34;  promovido por la organizaci&#243;n EUROGI (Umbrella Organization for Geographic Information), cuyo objetivo es reconocer y poner en valor las buenas pr&#225;cticas en Infraestructuras de Datos Espaciales.</p>
+
+<div class="text-center"><img width="600" src="/cont/paginas/idezar/img/logo_plan_avanza2.gif" alt="Participando con el Plan Avanza 2"/></div>
+                 
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="fnd-gris-claro">
+                 <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h3>Noticias
+                    </h3>
+                    <hr class="sm"/>
+	<div class="txt"><p><em>15/07/2014</em><strong> Finalistas en los Premios Aragón en la Red</strong>
+	Las apps Zaragoza Rutas, Zaragoza EstaZiona y Zaragoza Taxi finalistas en los Premios Aragón en la Red en la categoría de mejor App Móvil</p></div>
+
+	<div class="linea">&#160;</div>
+	<div class="txt"><p><em>02/07/2014</em><strong> Curso Internacional de Ciudades Inteligentes de Extremadura</strong>
+	IDEZar en la estrategia de gobierno abierto del Ayuntamiento de Zaragoza en la ponencia <a class="external-link" href="https://www.youtube.com/watch?v=5WvUQc0fWks">Los datos abiertos y las oportunidades para la ciudad y los ciudadanos" (1:21)</a> </p></div>
+
+	<div class="linea">&#160;</div>
+	<div class="txt"> <p><em>24/04/2014</em> <strong>IDEZar destacada como iniciativa de referencia de IDE local a nivel internacional</strong>
+	<a class="external-link" href="http://www.idera.gob.ar/">IDERA</a>, Infraestructura de Datos Espaciales de la República Argentina destaca la iniciativa IDEZar como experiencia de referencia de IDE local a nivel internacional en su último <a class="pdf" href="http://www.idera.gob.ar/portal/sites/default/files/Boletin_IDERA_13.pdf">boletín (#13)<span class="oculto">(Documento en formato pdf)</span></a>: "IDEZar, la IDE local de la ciudadanía: 10 años de historia"</p></div>
+
+	<div class="linea">&#160;</div>
+
+
+	<div class="txt"> <p><em>01/10/2013</em> <a href="detalle_Noticia?id=160756"><strong>Las apps de movilidad de Zaragoza, complemento perfecto para las Fiestas del Pilar 2013</strong></a>. </p></div>
+
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em>01/07/2013</em> <a class="external-link" href="http://www.gsdi.org/"><strong> Infraestructura Global de Datos Espaciales. Bolet&iacute;n Informativo para Latinoam&eacute;rica y el Caribe (julio 2013)</strong></a><br />
+	<a class="pdf" href="http://portal.gsdi.org/files/?artifact_id=1298">El Ayuntamiento de Zaragoza (Espa&ntilde;a) publica tres aplicaciones para m&oacute;viles que trabajan sobre su Infraestructura de Datos Espaciales (p&aacute;g 16)</a></p></div>
+
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em>06/06/2013</em> <a href="detalle_Noticia?id=160756"><strong>Tres nuevas apps para web y m&oacute;viles ofrecen a los ciudadanos informaci&oacute;n en tiempo real sobre la movilidad en Zaragoza</strong></a></p></div>
+
+	<div class="linea">&#160;</div>
+
+
+	<div class="txt"> <p><em>01/05/2013</em><a class="external-link" href="http://www.gsdi.org/"> <strong>Infraestructura Global de Datos Espaciales. Bolet&iacute;n Informativo para Latinoam&eacute;rica y el Caribe (mayo 2013)</strong></a><br />
+	<a class="pdf" href="http://portal.gsdi.org/files/?artifact_id=1264">IDEZar en dispositivos m&oacute;viles (p&aacute;g 5)
+<span class="oculto">(Documento en formato pdf)</span></a></p></div>
+
+
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em>20/03/2013</em> <strong>Mobile World Congress de Barcelona</strong><br />
+	<a class="pdf" href="http://www.w3c.es/Eventos/2013/MWC/MWC_2013_AytoZaragoza.pdf">Nueva zaragoza.es independiente de dispositivo basada en HTML5<span class="oculto">(Documento en formato pdf)</span></a>.</p></div>
+
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em>25/07/2012 </em><a href="detalle_Noticia?id=149101"><strong>C&oacute;mo moverse en transporte p&uacute;blico por Zaragoza</strong></a></p></div>
+
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em>01/06/2012</em><a class="external-link" href="http://www.gsdi.org/"><strong> Infraestructura Global de Datos Espaciales. Bolet&iacute;n Informativo para Latinoam&eacute;rica y el Caribe (junio 2012)</strong></a><br />
+	<a class="pdf" href="http://portal.gsdi.org/files/?artifact_id=1091">Nueva p&aacute;gina web del Ayuntamiento de Zaragoza basado en su IDE (p&aacute;g 5)<span class="oculto">(Documento en formato pdf)</span></a></p></div>
+
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em>15/05/2012</em> <a href="detalle_Noticia?id=220048"><strong>Zaragoza al instante, el nuevo mapa din&aacute;mico de zaragoza.es, ofrece 6.000 recursos a un s&oacute;lo click</strong></a></p></div>
+
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em> 4/06/2013</em> - <strong><a class="external-link" href="http://www.slideshare.net/fullscreen/zaragoza_es/geo-s-labsmartcities/1">I Jornadas Zaragoza Smart City</a>. Proyectos de colaboración inteligente entre la ciudad y las empresas</strong></p></div> 
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em> 11/11/2011</em> - <strong>JIIDE 2011. II Jornadas Ibéricas de Infraestructuras de Datos Espaciales.</strong><br/> <a href="http://www.jiide2011.org/jiide2011/pdf/presentacion/M. Uson_Rutometro.ppsx" title="Enlace Exterior" class="ppt">"Rutómetro Multimodal sobre servicios de una IDE"<span class="oculto">Documento en formato ppsx</span></a></p></div> 
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em> 12/10/2011</em> - <strong><a class="external-link" href="http://www.eurogi.org/" title="Enlace Exterior">EUROGI/eSDI-Net Awards 2011</a>. Premios buenas prácticas en IDEs</strong><br/>IDEZar fue premiada en la categoría de Usabilidad en la entrega de premios que tuvo lugar en Bruselas.</p></div> 
+	<div class="linea">&#160;</div>
+
+	<div class="txt"> <p><em> 22/11/2010</em> - <strong>CONAMA 2010. Congreso Nacional del Medio Ambiente</strong><br/> <a class="external-link" shape="rect" href="http://www.conama10.es/web/generico.php?idpaginas=&amp;lang=es&amp;menu=90&amp;id=359&amp;op=view">Servicios Medioambientales en la plataforma EasyWeb Zaragoza<span class="oculto">(Documento en formato pdf)</span></a></p> 
+
+
+	<div class="linea">&#160;</div> <p><em> 08/04/2010</em> - <strong>Tecnimap 2010. Presentaci&#243;n EasyWeb Zaragoza</strong><br/>La Web municipal se suma a la plataforma EzWeb y ofrecer&#225; servicios digitales de nueva generaci&#243;n a sus usuarios</p> 
+
+	<div class="linea">&#160;</div> <p><em> 08/04/2010</em> - <strong>D&#237;a W3C en la Administraci&#243;n P&#250;blica</strong><br/> <a shape="rect" href="http://www.w3c.es/Eventos/2010/DiaW3CAdmin/Presentaciones/risp_05.pdf" class="pdf">	Presentaci&#243;n de varios proyectos interesantes desarrollados en la Web Municipal de Zaragoza comprometidos con el w3C y sus est&#225;ndares		<span class="oculto">(Documento en formato pdf)</span>			</a>		</p> 
+
+	<div class="linea">&#160;</div> <p><em> 06/04/2010</em> - <strong>Tecnimap 2010. XI Jornadas sobre Tecnolog&#237;as de la Informaci&#243;n para la Modernizaci&#243;n de las Administraciones P&#250;blicas</strong><br/> </p> 
+
+	<div class="linea">&#160;</div> <p><em> Noviembre 2009</em> - <strong>JIDEE 2009: VI Jornadas de la Infraestructura de Datos Espaciales de Espa&#241;a IDEZar 2.0 para la Administraci&#243;n y Gesti&#243;n de Incidencias de Polic&#237;a Local.</strong><br/> </p> 
+
+	<div class="linea">&#160;</div> <p>			<em>21/06/2009</em> - 			<strong>Encarte Fondo Estatal de Inversi&#243;n Local.</strong><br/> <a shape="rect" href="http://iaaa.cps.unizar.es/resources/idezar/encarte_FEIL_2009.pdf" class="pdf">				Plano General de Obras				<span class="oculto">(Documento en formato pdf tama&#241;o 0,43 Mb)</span>			</a>		</p> <div class="linea">&#160;</div> <p>			<em>09/06/2009</em> - 			<strong>Tercer Encuentro APORTA: &#34;La reutilizaci&#243;n de la informaci&#243;n del sector p&#250;blico en Europa&#34;, Madrid</strong><br/> <a class="external-link" shape="rect" href="http://www.aporta.es/c/document_library/get_file?uuid=329b4412-4211-4c09-944e-2662889a7f7c&amp;groupId=10128">				&#34;Un Visitante, una Ruta. Servicio basado en Tecnolog&#237;as Sem&#225;nticas&#34;			</a>		</p> <div class="linea">&#160;</div> <p> 			<em>21/05/2009</em> - 			<strong>Reuni&#243;n Grupo de Trabajo de Infraestructuras de Datos Espaciales de Espa&#241;a.</strong><br/> <a shape="rect" href="http://iaaa.cps.unizar.es/resources/idezar/GTIDEE_2009.pdf" class="pdf">				Aprovechamiento de las IDE en la administraci&#243;n local y la gesti&#243;n medioambiental, casos reales para una apuesta de futuro				<span class="oculto">(Documento en formato pdf tama&#241;o 10,8 Mb)</span>			</a>		</p> <div class="linea">&#160;</div> <p>			<em>05/05/2009</em> - 			<strong>Heraldo. Tercer Milenio</strong><br/> <a shape="rect" href="http://iaaa.cps.unizar.es/resources/idezar/Heraldo-TercerMilenio_2009.pdf" class="pdf">				Desarrollo de Infraestructuras de Datos Espaciales: IDEZar				<span class="oculto">(Documento en formato pdf tama&#241;o 1,0 Mb)</span>			</a>		</p> <div class="linea">&#160;</div> <p>			<em>16/04/2009</em> - 			<strong>D&#237;a W3C en Espa&#241;a: La nueva generaci&#243;n de est&#225;ndares Web, Barcelona</strong><br/> <a shape="rect" href="http://www.w3c.es/Eventos/2009/DiaW3C/Presentaciones/zaragoza.pdf" class="pdf">				Infraestructura Sem&#225;ntica para Servicios: www.zaragoza.es				<span class="oculto">(Documento en formato pdf tama&#241;o 3,7 Mb)</span>			</a>					</p> <div class="linea">&#160;</div> <p>			<em>Febrero de 2009</em> - 			<strong>Nov&#225;tica Web Universal, ubicua e inteligente, n&#176; 197</strong><br/> <a shape="rect" href="http://iaaa.cps.unizar.es/resources/idezar/NovATIca_n197_2009.pdf" class="pdf">				&#34;La Web del Ayuntamiento de Zaragoza como servicio de Atenci&#243;n al Ciudadano&#34;				<span class="oculto">(Documento en formato pdf tama&#241;o 1,7 Mb)</span>			</a>		</p> <div class="linea">&#160;</div> <p>			<em>05/02/2009</em> - 			<strong>Premio de buenas pr&#225;ctias IDE, <a class="external-link" shape="rect" href="http://www.esdinetplus.eu/">eSDInet </a></strong><br/> <a class="pdf" shape="rect" href="http://www.idee.es/resources/presentaciones/GTIDEE_Lisboa/WIesdinet_5Fev09/Sessao14h/Presentacion_IDEZar_eSDINet.pdf?attredirects=0">				eSDI-Net  Iberian (Portuguese and Spanish) SDI Best Practice Workshop			</a>		</p> <div class="linea">&#160;</div> <p>			<em>5-7/11/2009</em> - 			<strong>JIDEE 2008: V Jornadas de la Infraestructura de Datos Espaciales de Espa&#241;a</strong><br/> <a shape="rect" href="http://iaaa.cps.unizar.es/curriculum/09-Otras-Publicaciones-Congresos/cong_2008_JIDEE_Geocoder.pdf" class="pdf">				Geocoder compuesto - soluci&#243;n h&#237;brida en el mundo de ruido informativo.				<span class="oculto">(Documento en formato pdf tama&#241;o 0,43 Mb)</span>			</a>		</p> <div class="linea">&#160;</div> <p>			<em>18/10/2006</em> - 			<strong>JIDEE 2006: III Jornadas T&#233;cnicas de la Infraestructura de Datos Espaciales de Espa&#241;a</strong><br/> </p> <div class="linea">&#160;</div> <p>			<em>21/06/2006</em> - 			<strong>12th EC-GI&amp;GIS Workshop: ESDI:From Inspiration to Implementation</strong><br/> <a shape="rect" href="http://iaaa.cps.unizar.es/curriculum/09-Otras-Publicaciones-Congresos/cong_2006_ECGIS_Ontology.pdf" class="pdf">				An Ontology Based Approach for the Construction of an Address Gazetteer: the IDEZAR Gazetteer Use-case.				<span class="oculto">(Documento en formato pdf tama&#241;o 1,1 Mb)</span>			</a>		</p> <div class="linea">&#160;</div> <p>			<em>01/06/2006</em> - 			<strong>TECNIMAP 2006: Jornadas sobre tecnolog&#237;as de la informaci&#243;n para la modernizaci&#243;n de las administraciones p&#250;blicas</strong><br/> <a shape="rect" href="http://iaaa.cps.unizar.es/curriculum/09-Otras-Publicaciones-Congresos/cong_2006_TECNIMAP_IDEZar.pdf" class="pdf">				IDEZar: un ejemplo de implantaci&#243;n de una IDE en la administraci&#243;n local				<span class="oculto">(Documento en formato pdf tama&#241;o 8,4 Mb)</span>			</a> 		</p>
+	</div>                
+                    
+                    
+                </div>
+            </div>            
+        </sede:content>
+    </body>
+
+</html>
+

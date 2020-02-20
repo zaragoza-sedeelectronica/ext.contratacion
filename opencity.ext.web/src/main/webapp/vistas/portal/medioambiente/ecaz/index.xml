@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Estrategia de Cambio Climático, Calidad del Aire y Salud de Zaragoza" description="Información relacionada con Estrategia de Cambio Climático, Calidad del Aire y Salud de Zaragoza" author="Ayuntamiento de Zaragoza" keywords="medio ambiente, estrategia, cambio climático, calidad del aire, salud" />
+    <style>
+    bg-color {
+        background-color: #DAEAF0;
+    }
+
+    h1 {
+        font-size: 2.15em;
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #008A00;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+         
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+				<div class="col-md-6 margin-b2em">
+                    <div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" width="280" height="315" src="https://www.youtube.com/embed/pVFCQwdn4ZE" frameborder="0" allow="autoplay; encrypted-media" title="Estrategia Zaragoza para la lucha contra el cambio climático" allowfullscreen="allowfullscreen">
+                            <!-- Reproductor de vídeo no soportado. <a href="https://www.youtube.com/watch?v=GSTP_gLhC-g">Enlace al vídeo en youtube.com</a> -->
+                        </iframe>
+				</div>
+				</div>
+				<div class="col-md-6 margin-b2em">	
+<div class="embed-responsive embed-responsive-16by9">                      
+					  <iframe class="embed-responsive-item" width="280" height="315" src="https://www.youtube.com/embed/GSTP_gLhC-g" frameborder="0" allow="autoplay; encrypted-media" title="Estrategia de Calidad del Aire y Cambio Climático de Zaragoza" allowfullscreen="allowfullscreen">
+                            <!-- Reproductor de vídeo no soportado. <a href="https://www.youtube.com/watch?v=GSTP_gLhC-g">Enlace al vídeo en youtube.com</a> -->
+                        </iframe>
+				</div>		
+                    </div>
+                </div>
+				
+                <div class="col-md-4">
+
+					
+					<a href="http://www.zaragoza.es/sede/portal/medioambiente/ecaz/proceso-participativo"> <img alt="Proceso Participativo" src="/cont/paginas/img/avisos/proceso-participativoecaz.jpg"/>  </a>
+					</div>
+            </div>
+            <ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+                <li role="tab">
+                    <a aria-controls="inicio" data-toggle="tab" href="#inicio" role="tab"><span class="fa fa-question-circle" aria-hidden="true"></span> Resumen ejecutivo del documento inicial</a>
+                </li>
+             <!--   <li role="tab">
+                    <a aria-controls="proceso" data-toggle="tab" href="#proceso" role="tab"><span class="fa fa-cogs" aria-hidden="true"></span> Proceso</a>
+                </li>-->
+                <li role="tab">
+                    <a aria-controls="conclus" data-toggle="tab" href="#conclus" role="tab"><span class="fas fa-file-alt" aria-hidden="true"></span> Conclusiones</a>
+                </li>
+            </ul>
+            <div sede:class="tab-content">
+                <h2 class="tab-title" aria-expanded="false" data-target="#inicio" data-toggle="collapse"> Inicio</h2>
+                <div id="inicio" role="tabpanel" sede:class="tab-pane active">
+                    <div class="well well-sm text-justify">
+                        <p>En el año 2009 se publicó la <strong>Estrategia de Calidad del Aire y Cambio Climático de Zaragoza (ECAZ)</strong>. En ella se definieon los objetivos en materia de sostenibilidad medioambiental hasta el horizonte 2015.
+                        </p>
+                        <p>Llegados a esa fecha se realizó la evaluación de <strong>ECAZ</strong> y como principal conclusión se destacó el gran avance realizado en materia de reducción de las emisiones de CO2 en los sectores de acción directa municipal (movilidad, edificació, <strong>servicios públicos y gestión de residuos)</strong>. Entre todos ellos las emisiones per cápita de CO2 descendieron desde 2005 hasta 2015 un <strong>18 %</strong>. Sin embargo, también hay que señalar que en el sector industrial las emisiones per cápita aumentaron en ese mismo periodo un <strong>10 %</strong>.</p>
+                        <p>Con el objetivo de renovar acuerdos hacia un horizonte más lejano y prepararse para nuevos desafíos globales, desde la <strong>Agencia de Medio Ambiente y Sostenibilidad</strong> del Ayuntamiento de Zaragoza se decidió realizar una nueva estrategia. Este nuevo plan es la <strong>Estrategia de Cambio Climático, Calidad del Aire y Salud de Zaragoza (ECAZ 3.0)</strong>. </p>
+                        <p>El gran <strong>elemento diferenciador</strong> respecto del anterior plan es que integra la <strong>eficiencia y reducción</strong> en el <strong>uso de los recursos</strong> como un objetivo más de la Estrategia. Por otro lado es también destacable la importancia que se presta al impacto que sobre la salud tienen las medidas de <strong>ECAZ 3.0</strong>.
+                        </p>
+                        <p>El marco temporal de <strong>ECAZ 3.0</strong> es hasta el año 2030, yendo así en línea con la temporalidad marcada por otros planes o acuerdos de carácter internacional como el <strong>Pacto de Alcaldes</strong>.</p>
+                        <p>De manera <strong>cuantitativa</strong>, los objetivos fijados por <strong>ECAZ 3.0</strong> para <strong>2030</strong> son:</p>
+                        <ul>
+                            <li>reducir las emisiones de <strong>CO2</strong> en un <strong>40 %</strong>. </li>
+                            <li>reducir los <strong>residuos domésticos</strong> que llegan a vertedero en un <strong>50 %</strong>.</li>
+                            <li>reducir la inmisión (concentración) de <strong>NO2</strong> en un <strong>60 %</strong> respecto a los niveles de 2005.</li>
+                        </ul>
+                        <p>Para conseguir dichos objetivos <strong>ECAZ 3.0</strong> se despliega en torno a <strong>4 ejes de actuación:</strong> </p>
+                        <ul>
+                            <li>diseño urbano</li>
+                            <li>movilidad urbana</li>
+                            <li>industria</li>
+                            <li>servicios públicos</li>
+                        </ul>
+                        <p>Además de los propios ejes de actuación de la ciudad, <strong>ECAZ 3.0</strong> incorpora el papel que los <strong>recursos</strong> pueden tener para garantizar la sostenibilidad urbana. Por este motivo se consideran como <strong>recursos</strong> fundamentales: </p>
+                        <ul>
+                            <li>las energías renovables
+                            </li>
+                            <li>la alimentación sostenible
+                            </li>
+                            <li>la gestión sostenible del agua
+                            </li>
+                            <li>el aprovechamiento de los residuos como recursos</li>
+                        </ul>
+                        <p>ECAZ 3.0 incorpora un <strong>Plan de Acción</strong> formado por <strong>40 acciones, actuaciones o medidas</strong>. </p>
+                        <p>Los <strong>impactos directos</strong> de ECAZ 3.0 suponen una reducción de <strong>411.476 t CO2/año.</strong> Además, algunas de estas medidas tienen un impacto indirecto de <strong>339.976 t CO2/año</strong>. De forma total, los impactos de ECAZ 3.0 evitarán la emisión de <strong>751.452 t CO2/año</strong>.</p>
+                    </div>
+                </div>
+              <!--  <h2 class="tab-title" aria-expanded="false" data-target="#proceso" data-toggle="collapse">Proceso</h2>
+                <div id="proceso" role="tabpanel" sede:class="tab-pane active">
+                    <img class="img-responsive margin-auto" src="/cont/vistas/portal/medioambiente/ecaz/img/procesoecaz.jpg" alt="Ir al documento completo" />
+                </div> -->
+                <h2 class="tab-title" data-toggle="collapse" data-target="#conclus" aria-expanded="false"> Conclusiones</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="conclus">
+                    <div class="fnd-gris-claro padding-a2em margin-b1em">
+                        <p>Desde el año 2005 se ha hecho un gran esfuerzo enmejorar la calidad del aire de Zaragoza y reducir las emisiones de GEI causantes del cambio climático. Tal y como recogen los resultados del inventario de emisiones 2015, en el periodo 2005 – 2015 las emisiones de CO2 percápita han descendido un 17,9 % y de forma total un 11 %en los sectores de intervención directa municipal (residencial, servicios públicos y movilidad). Además hay que tener en consideración que en ese periodo lapoblación de la ciudad aumentó un 8,5 %, de tal forma quees un gran logro. </p>
+                        <p>Por otro lado, y desde el punto de vista de la calidad del aire en Zaragoza, también se puede afirmar que se tienen unos muy buenos niveles de calidad, ya que no se superan los valores límite marcados por la legislación nacional (RD102/2011) ni por la Organización Mundial de la Salud (OMS), que para el caso de las partículas contaminantes(PM) son aún más restrictivos. </p>
+                        <p>A pesar de tener una buena tendencia en las emisiones de CO2 y en los niveles de inmisión de los gases contaminantes, <strong>Zaragoza tiene una serie de desafíos internos a los que enfrentarse en los próximos años</strong>. El primero de ellos es el <strong>sector industrial</strong>, ya que su actividad es la mayor de las aportaciones a las emisionesde CO2 de la ciudad (superior al 50 % del total) y la tendencia además es creciente. </p>
+                        <p>Por otro lado también hay que considerar la futura <strong>evolución demográfica de la ciudad</strong>. A pesar de que en los últimos años la población ha descendido ligeramente,se puede afirmar que en los últimos 15 años la población creció un 10 %. No está clara cuál será la población dentro de otros 15 años, pero si sigue creciendo también aumentará el tamaño de la ciudad, provocando aumentos en las distancias de los desplazamientos diarios y unaumento de la ineficiencia de los servicios públicos paralos nuevos barrios (alumbrado, transporte público,limpieza, recogida de residuos, etc.). En definitiva, un posible aumento del tamaño de la ciudad provocará un aumento en la demanda de recursos fundamentales tales como agua o energía. </p>
+                        <p><strong>No menos importante que los propios desafíos internos son los que vienen del exterior</strong>. A modo de ejemplo están las <strong>políticas supramunicipales</strong>. En el caso de los acuerdos europeos ya se ha afirmado que las ciudades han de reducir sus emisiones de CO2 en, al menos, un 40 % para el 2030. El acuerdo firmado por Zaragoza en el año 2011 fue de reducir un 21 % las emisiones de CO2 para el 2020, tomando como referencia los niveles de 2005. Es decir bajar un 21 % las emisiones de CO2 en 15 años. Sin embargo, y aunque parece que ese objetivo es alcanzable, ahora habrá que disminuir un 20 % más para el 2030, pero teniendo solamente en torno a 10 años para realizarlo. Seguir con la actual tendencia de reducción de emisiones de CO2 permitiría alcanzar un descenso de un 33 % para el 2030, pero esto no es suficiente, se necesita un esfuerzo mayor. </p>
+                        <p><strong>Con la motivación de afrontar estos desafíos se ha desarrollado ECAZ 3.0.</strong> De manera cuantitativa, los objetivos fijados por ECAZ 3.0 son: <strong>reducir las emisiones de CO2 en un 40 %, reducir los residuos domésticos que llegan a vertedero en un 50 %</strong> y <strong>reducir las inmisiones de NO2 en un 60 %</strong> respecto a los niveles de 2005. </p>
+                        <p>Para conseguir dichos objetivos ECAZ 3.0 se despliega en torno a <strong>4 ejes de actuación</strong>: diseño urbano, movilidad urbana, industria y servicios públicos. </p>
+                        <p>Además de los propios ejes de actuación de la ciudad, ECAZ 3.0 incorpora el papel que los <strong>recursos</strong> pueden tener para garantizar la sostenibilidad urbana. Por este motivo se consideran como <strong>recursos fundamentales</strong>: las energías renovables; la alimentación sostenible; la gestión sostenible del agua y el aprovechamiento de los residuos como recursos. </p>
+                        <p>ECAZ 3.0 incorpora un <strong>Plan de Acción formado por 40 acciones</strong>. Los <strong>impactos directos</strong> de ECAZ 3.0 suponen la <strong>reducción de 411.476 t CO2/año</strong>. Además, algunas de estas medidas tienen un <strong>impacto indirecto de 339.976 t CO2/año</strong>. De forma <strong>total los impactos</strong> de ECAZ 3.0 evitaran la emisión de <strong>751.452 t CO2/año.</strong> </p>
+                        <p>Es importante señalar que en los próximos años puede haber una serie de <strong>factores externos</strong> que jueguen un papel muy importante para el cumplimiento de ECAZ 3.0. El primero de ellos es la reducción de las emisiones de GEI asociadas a la <strong>generación eléctrica</strong>. Tal y como se ha indicado, el sector industrial genera el 51 % de las emisiones de GEI, de las cuales el 25 % corresponden al uso de la energía eléctrica. Una mayor penetración de las energías renovables en el mix eléctrico hará más fácilmente alcanzables los objetivos del 2030 en materia de CO2. En segundo lugar está el papel que acabe teniendo el <strong>autoconsumo de energía eléctrica</strong>. Las energías renovables ya no son caras y el autoconsumo con algunas tecnologías renovables es más rentable que consumir energía fósil o electricidad de la red. Sin embargo, en la actualidad hay ciertas trabas de carácter legal que no promueven su desarrollo. Si estas trabas desaparecen habrá un gran despegue de las energías renovables en modalidad de autoconsumo. Finalmente está el papel que jueguen los <strong>vehículos menos contaminantes</strong>. En la actualidad las emisiones de CO2 del sector movilidad en Zaragoza son un 17 % del total, siendo la movilidad privada un 91 % de ese valor. La reducción de las emisiones contaminantes en la flota de vehículos como consecuencia de su modernización puede marcar un antes y un después en la calidad del aire de la ciudad. </p>
+                        <p>Zaragoza ha mejorado mucho en materia de reducción de las emisiones de gases de efecto invernadero y mejora de la calidad del aire, pero es el momento de <strong>renovar los acuerdos hacia horizontes temporales más lejanos del 2020</strong> y las señales indican que <strong>no hay tiempo que perder.</strong> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

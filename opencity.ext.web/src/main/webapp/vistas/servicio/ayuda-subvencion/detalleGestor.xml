@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Ayudas y Subvenciones'" author="Ayuntamiento de Zaragoza" keywords="sede,web,ayudas,subvenciones,convocatorias,resoluciones" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <h2 sede:rdf="*{get('title')}"></h2>
+            <th:block th:if="*{convocatoriasVigentes} and *{convocatoriasVigentes.size() > 0}">
+                <h3>Convocatorias Vigentes</h3>
+                <ul>
+                    <li th:each="conv : *{convocatoriasVigentes}">
+                        <a th:href="'../convocatoria/' + ${conv.id}"><strong th:text="${conv.title}"/></a>
+                        <p>Ejercicio: <span th:text="${conv.ejercicioClave}"/> Presupuesto: <span th:text="${#numbers.formatInteger(conv.presupuesto,3,'POINT')}"/>
+                        <th:block th:if="${conv.fechaInicioVigencia} or ${conv.fechaFinVigencia}">
+                            Vigencia: <span th:text="${#utils.tratarFechas(conv.fechaInicioVigencia, conv.fechaFinVigencia)}"/>
+                        </th:block>
+                        </p>
+                    </li>
+                </ul>
+            </th:block>
+            <h3>Convocatorias</h3>
+            <ul>
+                <li th:each="conv : *{convocatorias}">
+    		        <a th:href="'../convocatoria/' + ${conv.id}"><strong th:text="${conv.title}"/></a>
+                    <p>Ejercicio: <span th:text="${conv.ejercicioClave}"/> Presupuesto: <span th:text="${#numbers.formatInteger(conv.presupuesto,3,'POINT')}"/>
+                    <th:block th:if="${conv.fechaInicioVigencia} or ${conv.fechaFinVigencia}">
+                        Vigencia: <span th:text="${#utils.tratarFechas(conv.fechaInicioVigencia, conv.fechaFinVigencia)}"/>
+                    </th:block>
+                    </p>
+    		    </li>
+            </ul>
+            <h3>10 Beneficiarios con mayor importe de concesión</h3>
+            <ul>
+                <li th:each="ben : *{topBeneficiarios}">
+                    <strong th:text="${ben.nombre}"/><strong th:text="${ben.beneficiario}"/>
+                    Importe: <span th:text="${#numbers.formatInteger(ben.importe,3,'POINT')}"/>
+                </li>
+            </ul>
+        </div>
+    </sede:content>
+</body>
+
+</html>

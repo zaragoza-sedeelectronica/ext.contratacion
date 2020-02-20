@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Cita previa" keywords="sede,web,cita,previa" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <ul class="card list-unstyled">
+            <li th:each="centro : ${resultado.body.result}">
+                <strong th:text="${centro.title}"/>
+                <ul>
+                <li th:each="agenda : ${centro.agendas}">
+                        <a th:href="@{./{id}(id=${agenda.id})}" th:text="${agenda.title}"></a>
+                        <div th:text="${agenda.description_basic}" />
+                </li>
+                </ul>
+            </li>
+        </ul>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida >> La Expo y el Ebro" description="En el décimo aniversario de la Expo 2008 Agua y Desarrollo Sostenible presentamos un recorrido virtual por aquellas arquitecturas e instalaciones de carácter efímero, creadas  para el marco de los 93 días de la muestra y que ya 
+no se conservan" author="Ayuntamiento de Zaragoza. Archivo Municipal" keywords="expo, 2008, cultura, ocio, medio ambiente, Agua y Desarrollo Sostenible, environment, Water and Sustainable Development"/>      <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.css"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+        .cluster {
+            background: #2d84c8;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #2d84c8;
+            font-family: monospace;
+        }
+
+        .cluster:before {
+            content: ' ';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            border: 1px solid white;
+        }
+
+        .digits-1 {
+            font-size: 1.4em;
+            height: 28px;
+            width: 28px;
+            line-height: 28px;
+            margin-top: -14px;
+            margin-left: -14px;
+        }
+
+        .digits-2 {
+            font-size: 1.6em;
+            height: 34px;
+            width: 34px;
+            line-height: 35px;
+            margin-top: -17px;
+            margin-left: -17px;
+        }
+
+        .digits-2:before {
+            border-width: 2px;
+        }
+
+        .digits-3 {
+            font-size: 1.8em;
+            height: 48px;
+            width: 47px;
+            line-height: 47px;
+            border-width: 3px;
+            margin-top: -24px;
+            margin-left: -24px;
+        }
+
+        .digits-3:before {
+            border-width: 3px;
+        }
+
+        .digits-4 {
+            font-size: 1.8em;
+            height: 58px;
+            width: 58px;
+            line-height: 57px;
+            border-width: 4px;
+            margin-top: -29px;
+            margin-left: -29px;
+        }
+
+        .digits-4:before {
+            border-width: 4px;
+        }
+
+        .list-noticia a {
+            color: #202020;
+        }
+
+        .list-noticia li {
+            border-bottom: 1px solid #E6E6E6;
+            /*fnd-gris-claro*/
+            margin-bottom: .5em;
+            padding-bottom: .5em;
+        }
+
+        @media (min-width: 768px) {
+            .list-aviso li {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content>
+        <p>
+          <img alt=" " class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/expo-ebro/cabecera-expo-ebro.gif" />
+        </p>
+        <div class="row">
+            <div class="col-md-12 card">
+ 
+                    <h2>
+   La Expo y el Ebro
+            </h2>
+                    <hr class="sm" /><div class="text-justify">
+                    <p>
+          
+
+Con el tema principal de Agua como hilo conductor de la muestra, se destaca la <strong>relación de la Exposición con el eje principal de la ciudad anfitriona, el río Ebro</strong>. La Expo se organiza en un meandro natural, se relaciona con el río y fomenta la creación de múltiples obras que lo tienen como marco: el Pabellón Puente, el puente del Tercer Milenio, la Pasarela del Voluntariado, la recuperación de las riberas así como los diversos proyectos de intervenciones artísticas que fueron surgiendo desde 2006 con la pretensión de ornamentar y de dotar de valor paisajístico y cohesión al conjunto ciudad-arte-naturaleza. 
+</p><p>
+De estas intervenciones artísticas destacamos el <strong>banco ecogeográfico</strong> con setecientos metros de recorrido serpenteante en el perímetro sur de la muestra, diseñado por Battle &amp; Roig e Isidro Ferrer para que el visitante pudiera contemplar en una suerte de binomio complementado, el río y la exposición. En sí, constituye un elemento de fuerte valor escultórico y plástico.
+</p><p>
+Uno de los grandes espectáculos que se repetía cada noche a las diez y media durante la Expo desde su estreno el 21 de junio fue <strong>Iceberg, sinfonía poético visual</strong>, que se llevaba a cabo en una estructura creada ad hoc dentro del propio río. El espectáculo duraba 21 minutos y tuvo una gran acogida del público, se calcula que lo vieron más de <strong>1.180.000 personas</strong>. La obra fue diseñada por la empresa Focus bajo la dirección artística de Calixto Bieito, para la banda sonora se optó por la 'Cantata para un iceberg' del zaragozano Jose Luis Romeo. Iceberg sobrecogía al espectador alertándole sobre su responsabilidad con el medio ambiente y con las consecuencias del cambio climático, la Humanidad era a la vez causante y víctima de las agresiones al planeta aunque también cabía la esperanza de que fuera capaz de restituir el equilibrio entre los seres vivos y su entorno.
+</p><p>
+Para que 25000 personas pudieran contemplar el Iceberg cada noche, se urbanizó el <strong>Frente Fluvial</strong> acondicionando en varias terrazas la orilla septeptrional del río entre la plaza temática Sed y el acceso llamado Puerta del Ebro. Justo en esa zona final, también se encontraba el <strong>embarcadero</strong> con dos pantalanes para recibir el transporte fluvial: los ebrobuses, que permitían la llegada a la expo de pasajeros desde los embarcaderos de Vadorrey y Club Náutico; el trayecto desde el azud duraba media hora y costaba 14 euros, ida y vuelta. Tan sólo se ha cifrado en un 0,1 el porcentaje de visitas y accesos que se realizaron por este tipo de transporte.
+
+</p></div> <div class="linea"></div><h3 class="color-destacados">Más Información</h3>         
+  <ul class="list-unstyled">     
+  
+    <li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="http://www.zaragoza.es/nuba/app/results/ahis?pa=1&amp;sr=1&amp;q=iceberg&amp;st=.1.6.100.30891.1171249">Fotografías Iceberg</a></li>
+
+   <li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="http://www.zaragoza.es/nuba/app/results/ahis?vm=nv&amp;ob=os:1&amp;pa=1&amp;p=306&amp;st=.1.6.100.30891.1171249&amp;i=1174823">Fotografías Expo 2008</a></li>
+
+   <li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="https://bit.ly/2s62QaR ">Bibliografía</a></li>
+ 
+           </ul>
+           
+         
+            </div>
+        </div>
+			  
+			  
+			  
+			   <div class="row">
+            <div class="col-md-12 card">
+			
+			
+ 
+ <div id="banco"></div>
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+             Banco Ecogeográfico
+            </h3>
+			
+			  <h4 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h4>
+                    <hr class="sm color-destacados" />   <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0641000-07-decoracion.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0641000-07-decoracion.gif"/></a></div>
+
+   <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0641000&amp;p=0&amp;i=1034520
+
+
+"> Exp: 0641000-2007. Decoración 1</a></p>	
+ 
+ 
+												  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0641000-07-decoracion2.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0641000-07-decoracion2.gif"/></a></div>
+ 
+              <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0641000&amp;p=0&amp;i=1034520
+
+
+">Exp: 0641000-2007. Decoración 2</a></p>	
+			  
+												  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0641000-07-planta.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0641000-07-planta.gif"/></a></div>
+			 
+			 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0641000&amp;p=0&amp;i=1034520
+
+
+">Exp: 0641000-2007. Planta</a></p>	
+                 <div class="img-box"><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145073.jpg">
+               <img alt="Expo 2008"  class="img-responsive"  src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145073.gif"/> </a></div>
+              
+	 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145073&amp;p=0&amp;i=1172700
+">Sign: 0145073</a></p>		
+		
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145077.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145077.gif"/> </a></div>
+             <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145077&amp;p=0&amp;i=1172704
+
+">Sign: 0145077</a></p>		
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145103.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145103.gif"/></a></div>
+              
+	  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145103&amp;p=0&amp;i=1172730
+
+"> Sign: 0145103</a></p>					
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0147160.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0147160.gif"/></a></div>
+                
+			  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0147160&amp;p=0&amp;i=1174788
+
+
+"> Sign: 0147160</a></p>						
+				 
+								  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0147161.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0147161.gif"/></a></div>
+   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0147161&amp;p=0&amp;i=1174789
+
+
+"> Sign: 0147161</a></p>	
+ 												 
+												 
+												 
+												
+			 
+			    </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+ <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0147155.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0147155.gif"/></a></div>
+                 
+      
+	   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0147155&amp;p=0&amp;i=1174783
+
+
+
+"> Sign: 0147155</a></p>
+	  
+	   <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0147157.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0147157.gif"/> </a></div>
+                 
+    <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0147157&amp;p=0&amp;i=1174785
+
+
+
+"> Sign: 0147157</a></p>
+				
+				
+				
+					   <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0147158.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0147158.gif"/> </a></div>
+      <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0147158&amp;p=0&amp;i=1174786
+
+
+
+
+"> Sign: 0147158</a></p>          
+			  
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0147159.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0147159.gif"/>  </a></div>
+               
+ 
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0147159&amp;p=0&amp;i=1174787
+
+
+
+
+"> Sign: 0147159</a></p> 
+				
+				
+		    </div>  </div>
+			
+			
+			
+			    </div>  </div>
+			
+			
+			
+						   <div class="row">
+            <div class="col-md-12 card">
+			
+			 <div id="embarcadero"></div>
+ 
+ 
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+             Frente Fluvial y Embarcadero
+            </h3>
+			 
+			  <h4 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h4>
+                    <hr class="sm color-destacados" />   <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0292583-07-frente-planta.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0292583-07-frente-planta.gif"/> </a></div>
+                
+				
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0292583&amp;p=0&amp;i=1034476">Exp:  292583-2007. Frente Fluvial Planta</a></p>  
+				
+				
+				
+				
+				
+				 				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0292583-07-frente-secciones.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0292583-07-frente-secciones.gif"/> </a></div>
+				 
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0292583&amp;p=0&amp;i=1034476">Exp:  292583-2007. Frente Fluvial Secciones</a></p>  
+				
+								 				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0066212-07-embarcadero-planta-general.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0066212-07-embarcadero-planta-general.gif"/> </a></div>
+				
+				
+				
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0066212&amp;p=0&amp;i=1034458
+
+
+
+
+
+">Exp: 0066212-2007. Embarcadero Planta General</a></p>  
+
+
+
+
+
+												 				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0066212-07-embarcadero-seccion.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0066212-07-embarcadero-seccion.gif"/> </a></div>
+				
+		 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0066212&amp;p=0&amp;i=1034458
+
+
+
+
+
+">Exp: 0066212-2007. Embarcadero Sección</a></p>  		
+				
+																 				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0066212-07-embarcadero-planta.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0066212-07-embarcadero-planta.gif"/> </a></div>
+				
+				
+				 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0066212&amp;p=0&amp;i=1034458
+
+
+
+
+
+">Exp: 0066212-2007. Embarcadero Planta</a></p>  		
+ 
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0144916.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0144916.gif"/></a></div>
+   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0144916&amp;p=0&amp;i=1172543
+
+
+
+
+">  Sign: 0144916</a></p>              
+				
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145016.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145016.gif"/> </a></div>
+             <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145016&amp;p=0&amp;i=1172643
+
+
+
+
+"> Sign: 0145016</a></p>              
+				
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145075.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145075.gif"/> </a></div>
+				 
+				 
+     <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145075&amp;p=0&amp;i=1172702
+
+
+
+
+
+">Sign: 0145075</a></p>     
+              
+				
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145104.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145104.gif"/></a></div>
+				 
+				 
+				 
+	  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145104&amp;p=0&amp;i=1172731
+
+
+
+
+
+">Sign: 0145104</a></p>  
+                
+				
+				 				
+                </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+  
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145024.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145024.gif"/> </a></div>
+				
+<p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145024&amp;p=0&amp;i=1172651
+
+
+
+
+
+">Sign: 0145024</a></p>  	
+
+
+
+
+
+
+
+
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145074.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145074.gif"/> </a></div>
+				
+				
+				
+				<p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145074&amp;p=0&amp;i=1172701
+
+
+
+
+
+">Sign: 0145074</a></p>  	
+				
+				
+											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145236.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145236.gif"/> </a></div>
+				
+          
+<p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145236&amp;p=0&amp;i=1172863
+
+
+
+
+
+">Sign: 0145236</a></p>  			  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145967.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145967.gif"/></a></div>
+		  
+		  
+		 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145967&amp;p=0&amp;i=1173594
+
+
+
+
+
+"> Sign: 0145967</a></p>  
+		  
+		  
+		    </div>  </div>
+			
+			
+			
+			
+			
+			
+    
+                </div>  </div>
+ 
+ 
+ 			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+						   <div class="row">
+            <div class="col-md-12 card">
+			
+			<div id="iceberg"></div>
+ 
+ 
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+            Iceberg
+            </h3>
+			
+			  <h4 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h4>
+                    <hr class="sm color-destacados" /> 
+					
+					
+				 				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/1015006-07-emplazamiento.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/1015006-07-emplazamiento.gif"/></a></div>
+                
+				
+				     <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;al=7&amp;ob=os:1&amp;q=1015006+2007&amp;p=0&amp;i=1034567
+
+
+
+
+
+">Exp: 1015006-2007. Emplazamiento</a></p>    
+				
+				
+				 				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/1015006-07-infografias.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/1015006-07-infografias.gif"/> </a></div>
+				 
+				    <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;al=7&amp;ob=os:1&amp;q=1015006+2007&amp;p=0&amp;i=1034567
+
+
+
+
+
+">Exp:  1015006-2007. Infografias </a></p>    
+				
+								 				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/1015006-07-planta.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/1015006-07-planta.gif"/> </a></div>
+				
+												 
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;al=7&amp;ob=os:1&amp;q=1015006+2007&amp;p=0&amp;i=1034567
+
+
+
+
+
+">Exp:  1015006-2007. Planta </a></p>  
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145016.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145016.gif"/> </a></div>
+    <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145016&amp;p=0&amp;i=1172643
+
+
+
+
+
+"> Sign: 0145016</a></p>             
+				
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145092.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145092.gif"/> </a></div>
+      <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145092&amp;p=0&amp;i=1172719
+
+
+
+
+
+"> Sign: 0145092</a></p>                
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0145103.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0145103.gif"/> </a></div>
+              
+				 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145103&amp;p=0&amp;i=1172730
+
+
+
+
+
+">Sign: 0145103</a></p>      
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/proyecto/0147195.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/proyecto/0147195.gif"/></a></div>
+                 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0147195&amp;p=0&amp;i=1174823
+
+
+
+
+
+">Sign: 0147195</a></p>      
+				
+				
+				
+ 
+                </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+  
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145237.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145237.gif"/></a></div>
+				
+								  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145237&amp;p=0&amp;i=1172864
+
+
+
+
+
+
+"> Sign: 0145237 </a></p>  
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145240.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145240.gif"/> </a></div>
+				
+				
+				
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145240&amp;p=0&amp;i=1172867
+
+
+
+
+
+
+
+">Sign: 0145240 </a></p>  
+				
+				
+											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145242.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145242.gif"/></a></div>
+				
+   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145242&amp;p=0&amp;i=1172869
+
+
+
+
+
+
+
+"> Sign: 0145242 </a></p>           
+		  
+		  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145244.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145244.gif"/> </a></div>
+		  
+		  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145244&amp;p=0&amp;i=1172871
+
+
+
+
+
+
+
+">Sign: 0145244 </a></p> 
+		  		  
+		  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145245.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145245.gif"/> </a></div>
+  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145245&amp;p=0&amp;i=1172872
+
+
+
+
+
+
+
+
+">Sign: 0145245</a></p> 
+				  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145248.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145248.gif"/> </a></div>  
+		  
+		    <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145248&amp;p=0&amp;i=1172875
+
+
+
+
+
+
+
+
+">Sign: 0145248</a></p> 
+		  
+		  				  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145250.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145250.gif"/> </a></div>  
+		  
+				    <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145250&amp;p=0&amp;i=1172877
+
+
+
+
+
+
+
+
+">Sign: 0145250</a></p>   				  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/gran/durante/0145252.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro/peq/durante/0145252.gif"/></a></div>  			   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145252&amp;p=0&amp;i=1172879"> Sign: 0145252</a></p>   	
+  
+		    </div>  </div>
+			
+			
+			
+			
+			
+    
+                </div>  </div>
+ 
+ 
+    </sede:content>
+ 
+</body>
+
+</html>

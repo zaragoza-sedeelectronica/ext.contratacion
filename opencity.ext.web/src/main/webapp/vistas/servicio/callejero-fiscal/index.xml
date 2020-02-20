@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Callejero Fiscal" description="Indice alfabético de calles con su categoría fiscal" keywords="sede,web,información,callejero,fiscal" />
+    <meta name="robots" content="index, nofollow"/>
+    <link rel="canonical" href="https://www.zaragoza.es/sede/portal/organizacion/servicio/callejero-fiscal/"/>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Callejero fiscal</h2>
+        <form method="get" action="/sede/servicio/callejero-fiscal/" class="well">
+            <div class="input-group">
+                <label for="title_extContains" class="oculto">Buscar trámite</label>
+                <input type="text" name="title_extContains" id="title_extContains" th:value="${param.title_extContains} ? ${param.title_extContains[0]} : ''" class="form-control" placeholder="Realice su consulta" />
+                <span class="input-group-btn">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                </span>
+            </div>
+        </form>
+         <div class="col-md-4 pull-right">
+			<p class="nomargin destacado text-right">
+				 Descargar:
+				<a href="https://www.zaragoza.es/sede/servicio/catalogo/2120">Datos Abiertos</a>
+			</p>
+			<ul class="list-inline pull-right">
+				<li class="nopadding">
+					<a th:href="'/sede/servicio/callejero-fiscal.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+						JSON
+					</a>                                |
+				</li>
+				<li class="nopadding">
+					<a th:href="'/sede/servicio/callejero-fiscal.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+						XML
+					</a>
+					|
+				</li>
+				<li class="nopadding">
+					<a th:href="'/sede/servicio/callejero-fiscal.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+						CSV
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-12">
+        <div class="table-responsive">
+	        <table role="presentation" class="table table-condensed">
+	            <caption>Indice alfabético de calles con su categoría fiscal</caption>
+	                <tr>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=a">A</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=b">B</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=c">C</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=d">D</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=e">E</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=f">F</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=g">G</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=h">H</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=i">I</a></td>
+	                </tr>
+	                <tr>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=j">J</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=k">K</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=l">L</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=m">M</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=n">N</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=o">O</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=p">P</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=q">Q</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=r">R</a></td>
+	                </tr>
+	                <tr>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=s">S</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=t">T</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=u">U</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=v">V</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=w">W</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=x">X</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=y">Y</a></td>
+	                    <td><a href="/sede/servicio/callejero-fiscal/?letra=z">Z</a></td>
+	                </tr>
+	        </table>
+	    </div>
+	    </div>
+        <h2>Callejero Fiscal</h2>
+<p>La relación que se da en las páginas siguientes contiene la información sobre las calles de Zaragoza, núcleo urbano y barrios rurales, con indicación de las correspondientes entradas y salidas, categoría que para el año figura bajo la:</p>
+<ul>
+    <li><strong>letra B</strong> respecto al Impuesto sobre Actividades Económicas, Impuesto sobre Construcciones, Instalaciones y Obras, y Tasas de Actividades y bajo la </li>
+    <li><strong>letra A </strong>respecto al resto de los tributos, área de referencia, cuadrícula del plano de Zaragoza en la que se encuentra y código postal.</li>
+</ul>
+<p>El criterio que se ha seguido para la ordenación de la referida relación, y que, por tanto, deberá ser tenido en cuenta para la localización de los nombres, ha sido el siguiente:</p>
+<ol>
+<li> Aquéllas cuya denominaciónes el nombre de una persona, a la que está dedicada,se encuentran por orden alfabético del primer apellido de la misma seguido, en su caso, del segundo apellido y nombre, así como los de su profesión,título o actividad, en el caso de que tal dato sea habitualmente conocido o utilizado al referirsea la calle en cuestión.
+<p>Así por ejemplo, la calle dedicada al Teniente General Manuel Gutiérrez Mellado se ha recogido como GUTIÉRREZ MELLADO,MANUEL, (TENIENTE GENERAL); la de Arzobispo Casimiro Morcillo, como MORCILLO, CASIMIRO (ARZOBISPO); la de Duquesa Villahermosa como VILLAHERMOSA (DUQUESA); la de Maestro Estremiana como ESTREMIANA (MAESTRO), etc.</p>
+Constituyen una excepción las calles dedicadas a Santos y Santas, que figuran por la "S" de San o Santa.</li>
+<li> Aquellas calles cuya denominación corresponde a un accidente geográfico (picos,ríos, valles, etc.), a un hecho excepcional (batalla,posición, etc.), a un Monasterio, Santuario o similar, se han ordenado por el nombre propio del mismo.
+<br/>Así por ejemplo, la calle Batalla de Lepanto se ha incluido como LEPANTO,BATALLA DE; la calle Monasterio de Piedra como PIEDRA,MONASTERIO DE, la calle Valle de Broto como BROTO, VALLE DE, etc.</li>
+<li> Aquellas calles cuya denominación corresponde al nombre de persona o colectivo, que sustituye su apellido por un gentilicio, se han incluido en la relación según el orden alfabético del gentilicio.
+<p>Así, por ejemplo,la calle dedicada a Agustina de Aragón se ha recogido como ARAGÓN, AGUSTINA DE; la calle Blanca de Navarra se ha recogido como NAVARRA, DOÑA BLANCA DE.</p>
+<p>No obstante, en algunos casos, para una mayor facilidad en la localización,se ha incluido más de una versión del nombre, efectuando el reenvío a la denominación correspondiente al criterio general.</p>
+<p>Así por ejemplo, la calle dedicada a la Corona de Aragón se ha recogido como ARAGÓN, CORONA DE y también como CORONA DE ARAGÓN, remitiendo en el segundo caso al primero.</p></li></ol>
+
+<p>En cuanto al área de referencia que se indica para cada calle, se correspondecon las definidas a efectos del Plan General.</p>
+<p>La localización en plano, que también es para todas las calles, se refiere a las cuadrículas en que se ha dividido el plano de la ciudad, realizado por el Servicio de Información Geográfica del Excelentísimo Ayuntamiento de Zaragoza. De forma independiente y tras la relación de calles, se incluyen otras correspondientes a diferentes elementos, divisiones o núcleos, que en su conjunto tienen una entidad por sí mismo, como son: Parques de la Ciudad, Polígonos Industriales, Puentes sobre los ríos y Canal Imperial de Aragón, Urbanizaciones y Grupos de viviendas que popularmente se conocen condenominación propia y mercados.</p>
+<p>En todos los casos, se ha indicado su situación con respecto a calles y áreas de referencia.</p>
+<p>Por último, hay que resaltar que en las <strong>calles de los barrios rurales</strong> de Zaragoza, consta una identificación abreviada del barrio, formada por tres letras:</p>
+<ul>
+    <li>ALFOCEA (ALF)</li>
+    <li>CARTUJA (CRT)</li>
+    <li>CASETAS (CST)</li>
+    <li>GARRRAPINILLOS (GRP)</li>
+    <li>JUSLIBOL ( JSL)</li>
+    <li>MIRALBUENO( MRL)</li>
+    <li>MONTAÑANA (MNT)</li>
+    <li>MONZALBARBA (MNZ)</li>
+    <li>MOVERA (MVR)</li>
+    <li>PEÑAFLOR (PÑF)</li>
+    <li>SAN JUAN DE MOZARRIFAR (SJN)</li>
+    <li>SANTA ISABEL (SIS)</li>
+    <li>TORRECILLA VALMADRID (TRC)</li>
+    <li>VENTA DEL OLIVAR (VNO)</li>
+    <li>VILLARRAPA (VLR)</li>
+</ul>
+
+    </sede:content>
+</body>
+
+</html>

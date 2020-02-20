@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Obras" author="Ayuntamiento de Zaragoza" keywords="sede,web"></sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <div th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}" class="pull-right">
+            <a href="../new" class="btn btn-primary">Nuevo registro</a>
+        </div>
+        <th:block th:include="fragmentos/error" />
+            <div class="fieldset">
+                <form th:action="@{/servicio/obras/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+                <fieldset>
+                        <legend>Obra</legend>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="title">Título</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" th:field="*{title}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="codigoGestor">Promotor</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" th:field="*{codigoGestor}" size="100" />
+                            </div>
+                            
+                            <label class="col-sm-2 control-label" for="description">Descripción</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" th:field="*{description}" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="status">Estado</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" th:field="*{status}">
+                                    <option value="">Seleccione</option>
+                                    <option value="1">En proceso</option>
+                                    <option value="2">Finalizado en garantía</option>
+                                    <option value="3">Finalizado</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label" for="alcance">Alcance</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" th:field="*{alcance}">
+                                    <option value="">Seleccione</option>
+                                    <option value="1">Mayor</option>
+                                    <option value="2">Menor</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label" for="directorObra">Director Obra</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" th:field="*{directorObra}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="directorEjecucion">Director Ejecución</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" th:field="*{directorEjecucion}" size="100" />
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="tipoVia">Tipo Via</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{tipoVia}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="address">Dirección</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" th:field="*{address}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="reference">Referencia</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:field="*{reference}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="matricula">Matrícula</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:field="*{matricula}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="nivelActuacion">Nivel de actuación</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" th:field="*{nivelActuacion}">
+                                    <option value="">Seleccione</option>
+                                    <option value="N">Normal</option>
+                                    <option value="P">Pequeño</option>
+                                    <option value="G">Grande</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label" for="equipamiento">Equipamiento</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:field="*{equipamiento}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="barrio">Barrio</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:field="*{barrio}" size="100" />
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="startDate">Fecha Inicio</label>
+                            <div class="col-sm-2">
+                                <input type="text" th:field="*{startDate}" size="10" maxlength="30" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="endDate">Fecha Fin</label>
+                            <div class="col-sm-2">
+                                <input type="text" th:field="*{endDate}" size="10" maxlength="30" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Proyecto</legend>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="tituloProyecto">Título</label>
+                            <div class="col-sm-7">
+                                <input class="form-control" type="text" th:field="*{tituloProyecto}" size="100" />
+                            </div>
+                            <label class="col-sm-1 control-label" for="expediente">Expediente</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{expediente}" size="100" />
+                            </div>
+                        
+                            <label class="col-sm-2 control-label" for="descripcionProyecto">Descripción</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" th:field="*{descripcionProyecto}" />
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="autorProyecto">Autor</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:field="*{autorProyecto}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="tecnicoSuperior">Técnico Superior</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:field="*{tecnicoSuperior}" size="100" />
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="presupuestoGlobalOriginal">Presupuesto Goblal</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{presupuestoGlobalOriginal}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="pemInicial">PEM Inicial</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{pemInicial}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="presupuestoTeoricoActualizado">Presupuesto Teorico</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{presupuestoTeoricoActualizado}" size="100" />
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="fechaProyecto">Fecha Proyecto</label>
+                            <div class="col-sm-2">
+                                <input type="text" th:field="*{fechaProyecto}" size="10" maxlength="30" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="fechaInformeSupervision">Fecha Informe supervision</label>
+                            <div class="col-sm-2">
+                                <input type="text" th:field="*{fechaInformeSupervision}" size="10" maxlength="30" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="fechaAprobacionProyecto">Fecha Aprobacion proyecto</label>
+                            <div class="col-sm-2">
+                                <input type="text" th:field="*{fechaAprobacionProyecto}" size="10" maxlength="30" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="text" name="debug" value="s"/>
+                                <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                            </div>
+                    </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+            <table class="table table-condensed table-striped" th:if="${dato.id}">
+                <caption>Contrato</caption>
+                <tr>
+                    <th width="100">Expediente</th>
+                    <th width="100">Presupuesto sin IVA</th>
+                    <th width="100">Plazo Ejecución</th>
+                    <th width="100">Fecha inicio</th>
+                    <th width="100">Fecha acta recepción</th>
+                    <th width="300">Adjudicatario</th>
+                    <th width="100">Importe adjudicación (sin IVA)</th>
+                    <th width="100"></th>
+                </tr>
+                <tr th:each="contrato : ${dato.contrato}" class="list-unstyled">
+                    <td><span sede:rdf="${contrato.get('expediente')}" /></td>
+                    <td><span sede:rdf="${contrato.get('presupuestoLicitacionSinIVA')}" /></td>
+                    <td><span sede:rdf="${contrato.get('plazoEjecucion')}" /></td>
+                    <td><span sede:rdf="${contrato.get('startDate')}" /></td>
+                    <td><span sede:rdf="${contrato.get('actaRecepcionDate')}" /></td>
+                    <td><span sede:rdf="${contrato.get('adjudicatario')}" /></td>
+                    <td><span sede:rdf="${contrato.get('adjudicacionSinIVA')}" /></td>
+                    <td>
+                        <a th:href="@{/servicio/obras/{id_obra}/contrato/{id_contrato}/remove(id_obra=*{id},id_contrato=${contrato.id})}" class="btn btn-danger" onclick="return confirm('Desea eliminar el contrato?')"><span class="fas fa-trash-alt" /></a>
+                        
+                        <button title="editar" type="button" class="btn btn-warning" data-toggle="modal" th:attr="data-target='#editarContrato' + ${contrato.id}">
+                            <span class="fa fa-edit" />
+                        </button>
+                        
+
+                        <div class="modal fade" th:attr="id='editarContrato' + ${contrato.id},aria-labelledby='editarOfertaLabel' + ${contrato.id}" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <form method="post" th:action="@{/servicio/obras/{id_obra}/contrato/{id_contrato}(id_obra=*{id},id_contrato=${contrato.id})}" class="form-horizontal">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" th:attr="aria-labelledby='editarOfertaLabel' + ${contrato.id}">Editar</h4>
+                                        </div>
+                                        
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="expediente">Expediente</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" type="text" name="expediente" th:value="${contrato.expediente}" size="100" />
+                                                </div>
+                                                <label class="col-sm-4 control-label" for="presupuestoLicitacionSinIVA">Presupuesto sin IVA</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" type="text" name="presupuestoLicitacionSinIVA" th:value="${contrato.presupuestoLicitacionSinIVA}" size="100" />
+                                                </div>
+                                                <label class="col-sm-4 control-label" for="plazoEjecucion">Plazo Ejecución</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" type="text" name="plazoEjecucion" th:value="${contrato.plazoEjecucion}" size="100" placeholder="dd-mm-aaaa" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                                                </div>
+                                                <label class="col-sm-4 control-label" for="startDate">Fecha inicio</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="startDate" th:value="${contrato.startDate}" size="100" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker"  />
+                                                </div>
+                                                <label class="col-sm-4 control-label" for="actaRecepcionDate">Fecha acta recepción</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="actaRecepcionDate" th:value="${contrato.actaRecepcionDate}" size="100" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker"/>
+                                                </div>
+                                                <label class="col-sm-4 control-label" for="adjudicatario">Adjudicatario</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" type="text" name="adjudicatario" th:value="${contrato.adjudicatario}" size="100" />
+                                                </div>
+                                                <label class="col-sm-4 control-label" for="adjudicacionSinIVA">Importe adjudicación (sin IVA)</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" type="text" name="adjudicacionSinIVA" th:value="${contrato.adjudicacionSinIVA}" size="100" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <h4>Certificaciones</h4>
+                                            
+                                            <table id="datatable" class="table table-striped table-condensed">
+                                                <tr><th>Número</th><th>Concepto</th><th>Importe</th><th>Factura</th></tr>
+                                                <tr th:each="prop, stat: ${contrato.certificacion}">
+                                                    <td>
+                                                        <!--/*<input class="form-control" type="text" th:field="${contrato.certificacion[__${stat.index}__].codigoGrupoOperaciones}"/>
+                                                        <input class="form-control" type="hidden" th:field="${contrato.certificacion[__${stat.index}__].idGrupoOperaciones}"/>
+                                                        <input class="form-control" type="hidden" th:field="${contrato.certificacion[__${stat.index}__].gczSeccion.id.codigoSeccion}"/>
+                                                        <input class="form-control" type="hidden" th:field="${contrato.certificacion[__${stat.index}__].gczSeccion.id.codigoServicio}"/>
+                                                        <input class="form-control" type="hidden" th:field="${contrato.certificacion[__${stat.index}__].gczSeccion.gczServicio.id}"/>*/-->
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" th:field="${contrato.certificacion[__${stat.index}__].id.numeroCertificacion}"/>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" th:field="${contrato.certificacion[__${stat.index}__].title}"/>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" th:field="${contrato.certificacion[__${stat.index}__].importe}"/>
+                                                    </td>
+                                                    <td>
+                                                        TODO<!--/*<input class="form-control" type="text" th:field="${contrato.certificacion[__${stat.index}__].factura}"/>*/-->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <button id="add" class="fa fa-plus-circle">Añadir certificación</button>
+                                            <button id="del" class="fas fa-trash-alt">Borrar última certificación</button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Modificar</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <form method="post" th:action="@{/servicio/obras/{id_obra}/contrato(id_obra=*{id})}">
+                        <td>
+                            <input class="form-control" type="text" name="expediente" id="expediente"/>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="presupuestoLicitacionSinIVA" id="presupuestoLicitacionSinIVA" />
+                        </td>
+                        <td>
+                            <input type="text" name="plazoEjecucion" id="plazoEjecucion" size="100" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker"/>
+                        </td>
+                        <td>
+                            <input type="text" name="startDate" id="startDate" size="100" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                        </td>
+                        <td>
+                            <input type="text" name="actaRecepcionDate" id="actaRecepcionDate" size="100" placeholder="dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker"/>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="adjudicatario" id="adjudicatario" />
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="adjudicacionSinIVA" id="adjudicacionSinIVA" />
+                        </td>
+                        <td>
+                            <input type="submit" class="btn btn-success" value="Crear" />
+                        </td>
+                    </form>
+                </tr>
+            </table>
+                
+            <div role="alert" class="alert alert-error"><pre>Pendiente
+Permitir cargar ficheros asociados a la obra con un campo para describir el fichero
+Permitir cargar imágenes asociadas con una descripcion
+            </pre></div>
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+        var num = 1;//[[${dato.contrato.certificacion.size()}]];
+        
+        $( "#add" ).click(function(event) {
+            event.preventDefault();
+            addRow();
+        });
+
+        
+        $( "#del" ).click(function(event) {
+            event.preventDefault();
+            $('#datatable tr:last').remove();
+            num = num - 1;
+        });
+
+
+        function addRow() {
+            $('#datatable tr:last').after('<tr>\
+                        <td>\
+                        <input class="form-control" type="hidden" id="certificacion' + num +'.gczSeccion.id.codigoSeccion" name="certificacion[' + num +'].gczSeccion.id.codigoSeccion" value="">\
+                        <input class="form-control" type="hidden" id="certificacion' + num +'.gczSeccion.id.codigoServicio" name="certificacion[' + num +'].gczSeccion.id.codigoServicio" value="">\
+                        <input class="form-control" type="hidden" id="certificacion' + num +'.gczSeccion.gczServicio.id" name="certificacion[' + num +'].gczSeccion.gczServicio.id" value="">\
+                        <input class="form-control" type="text" id="certificacion' + num +'.numeroCertificacion" name="certificacion[' + num +'].numeroCertificacion" value=""></td>\
+                        <td><input class="form-control" type="text" id="certificacion' + num +'.concepto" name="certificacion[' + num +'].concepto" value=""></td>\
+                        <td><input class="form-control" type="text" id="certificacion' + num +'.importe" name="certificacion[' + num +'].importe" value=""></td>\
+                        <td><input class="form-control" type="text" id="certificacion' + num +'.factura" name="certificacion[' + num +'].factura" value=""></td>\
+                    </tr>');
+            num = num + 1;
+        }
+
+
+    /*]]>*/
+    </script>
+
+</body>
+
+</html>

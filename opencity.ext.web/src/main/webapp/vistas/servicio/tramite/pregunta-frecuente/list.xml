@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Preguntas frecuentes" keywords="sede,web,pregunta frecuente,faq" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2>Preguntas frecuentes</h2>
+        <form method="get" action="./list">
+            <div class="input-group">
+                <label for="query" class="oculto">Buscar pregunta</label>
+                <input type="text" name="query" id="query" th:value="${param.query} ? ${param.query[0]} : ''" class="form-control" placeholder="Realice su consulta" />
+                <span class="input-group-btn">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                </span>
+            </div>
+        </form>
+        <div class="card" th:each="pregunta : ${resultado.body.result}" sede:rdf="${pregunta.voc()}" th:attr="about=${pregunta.uri}">
+            <th:block th:include="servicio/tramite/pregunta-frecuente/detalle-pregunta(pregunta=${pregunta})" />
+        </div>
+    </sede:content>
+    
+</body>
+
+</html>

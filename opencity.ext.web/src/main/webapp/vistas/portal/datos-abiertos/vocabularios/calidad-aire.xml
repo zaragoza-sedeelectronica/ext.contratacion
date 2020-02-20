@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Vocabularios. Calidad del aire" 
+               
+             description="Recursos de información en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza: ontología y vocabularios para la representación de datos abiertos sobre contaminación atmosférica"
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, datos abiertos, derecho a reutilizar información, sector público, catálogo de datos, conjunto de datos, ontología, contaminación atmosférica, city, council, Saragossa, electronic site, local government,open government, citizen-authority relation, open data, right to reuse information, public sector, dataset, RISP, ontolgy, air pollution"
+ />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Calidad del aire</h2>
+        <dl>
+            <dt>Objeto:</dt>
+            <dd>
+                El objetivo de esta iniciativa es publicar la información de la contaminación atmosférica en tiempo real y en formatos abiertos.
+            </dd>
+            <dt>Vocabularios y ontologías utilizadas:</dt>
+            <dd>
+                <ul>
+                    <li>
+                        <a
+                            href="http://www.w3.org/2005/Incubator/ssn/wiki/Main_Page">
+                            Semantic Sensor Network Ontology del W3C.
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="http://dublincore.org/documents/dcmi-terms/">
+                            Dcterms
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="http://www.w3.org/ns/locn#">
+                            ISA Programme Location Core Vocabulary
+                        </a>
+                    </li>
+                </ul>
+            </dd>
+            <dt>Vocabularios y ontologías extendidas:</dt>
+            <dd>
+                <ul>
+                    <li>
+                        <a
+                            href="http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/meteorologia#">
+                            [Próximamente] http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/meteorologia#
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire#">
+                            http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire#
+                        </a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </sede:content>
+</body>
+
+</html>

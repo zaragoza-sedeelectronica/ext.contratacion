@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Agenda Institucional'" keywords="sede,web,agenda,institucional" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <h2 sede:rdf="*{get('title')}"></h2>
+               
+               <th:block th:if="*{startDate}">
+                    <span th:text="*{#dates.format(startDate,'dd-MM-yyyy HH:mm')}"></span>
+               </th:block>
+           
+            <th:block th:if="*{linkTransmission}">
+                 <ul><li><a th:href="*{linkTransmission}"><span th:text="*{title}"></span></a></li></ul>
+            </th:block>
+            <th:block th:if="not *{linkTransmission}">
+                    <th:block th:if="*{link}">
+                    <ul><li><a class="pdf" th:href="*{link}"><span th:text="*{title}"></span> en PDF</a></li></ul>
+                     </th:block>
+                   <th:block th:if="*{linkVideo}">
+                        <ul><li><a th:href="*{linkVideo}"><span th:text="*{title}"></span></a></li></ul>
+                     </th:block>
+                    <div sede:rdf="*{get('description')}" />
+            </th:block>
+          
+        </div>
+    </sede:content>
+    
+</body>
+
+</html>

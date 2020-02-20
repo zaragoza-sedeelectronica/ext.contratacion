@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Urbanismo Participativo.Gobierno Abierto" description="Portal sobre el proceso participativo organizado para debatir sobre las necesidades que debería cubrir el nuevo Centro Cívico de Parque Goya." author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Mon May 28 00:00:00 CEST 2018" keywords="ayuntamiento, ciudad, Zaragoza, Espana, procesos participativos, participación, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment" />
+    
+    <style type="text/css">
+        .cuadro {
+    position: relative;
+    background-color: #cccccc;
+    border-radius: 10px;
+    }
+    .cuadro img {
+    padding-bottom: 0;
+    margin: 0px;
+    }
+    .img-rounded {
+    border-radius: 10px 10px 0 0 !important;
+    }
+    .cuadro h3 {
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 0;
+    border-radius: 0px 0px 10px 10px;
+    }    
+    .cuadro h3 a {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+    .embed-responsive-item {
+    border: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 297px;
+}
+    .ribbon-wrapper {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div class="margin-b2em fnd-gris-claro">
+            <div class="text-center padding-a2em lead margin-auto margin-b1em">	
+             <!-- <div>  <img src="http://www.zaragoza.es//cont/vistas/portal/participacion/img/panoramica.png" alt="panoramica"/> </div>-->
+             <span aria-hidden="true" class="fa fa-4x fa-building text-color"></span>
+                    <h2>Urbanismo Participativo</h2>            
+            </div>
+
+        </div>        
+        
+        <div class="container-fluid margin-2em">
+        <div class="row">
+        <div class="container-fluid fnd-blanco radius consultas">
+
+            <ul class="row list-unstyled list-ogob">
+             <li class="col-sm-6">
+                <div class="cuadro">
+                    <iframe  with="100%" title="Presupuestos Participativos. Propuestas primera edición" class="embed-responsive-item" src="https://www.youtube.com/embed/BMnTk2AG73g" allowfullscreen="allowfullscreen">
+                            Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/eeEfhk8WkSo">Enlace al vídeo en youtube.com</a>
+                    </iframe>                                     
+                </div>
+            </li>  
+             <li class="col-sm-6">
+                <div class="cuadro">
+                 <img class="img-responsive img-rounded" src="/cont/paginas/urbanismo/participativo/img/solares2018/2018-2portada.jpg" alt=""/>
+                    <h3 class="text-center">  
+                        <!--<a href="https://www.zaragoza.es/ciudad/urbanismo/participativo/solares17.htm">Obras de adecuación de espacios públicos en los barrios</a>-->
+                        <a href="/sede/portal/participacion/urb-participativo/solares">Obras de adecuación de espacios públicos en los barrios</a>
+                    </h3>
+                </div>
+            </li>
+             <li class="col-sm-6 ">
+                <div class="cuadro">
+                 <img class="img-responsive img-rounded" src="/cont/paginas/urbanismo/participativo/img/pignatelli/pignatelli_b.jpg" alt=""/>
+                    <h3 class="text-center">  
+                        <a href="https://www.zaragoza.es/ciudadania/urbanismo/participativo/pignatelli.htm">Ampliación del Parque Pignatelli</a>
+                    </h3>                    
+                </div>              
+            </li>
+             <li class="col-sm-6 ">
+                <div class="cuadro">
+                  <img class="img-responsive img-rounded" src="/cont/paginas/urbanismo/participativo/img/parque_venecia_a.jpg" alt=""/>
+                    <h3 class="text-center">  
+                        <a href="https://www.zaragoza.es/ciudadania/urbanismo/participativo/parque-venecia.htm">Parque Venecia</a>
+                    </h3>
+                    
+                </div>
+            </li>
+			</ul>
+		</div>      					
+		</div>
+		</div>
+   </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Grupos" keywords="risp,opendata,grupo" />
+    <style type="text/css">
+        .height5{min-height:5em}
+    </style>
+</head>
+
+<body>
+    <sede:content>
+	    <h2>Mis Grupos <!--<a href="./new" class="btn btn-primary">Crear Mapa</a>--></h2>
+        <th:block th:include="fragmentos/error" />
+
+		<hr/>
+		
+		<div th:if="not ${gruposGCZ.empty}">
+	        <ul class="row list-unstyled">
+			    <li th:each="doc:${gruposGCZ}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+	                <div class="card height5">
+	                    <img th:if="${doc.image}" th:src="${doc.image}" height="70" alt=""/>
+	                    <a th:href="${doc.id}"><th:block th:text="${doc.title}" /></a>
+	                	
+	                    <div th:if="${doc.type == 'collaborative'}" class="ribbon-wrapper">
+	                         <div class="ribbon-info">Colabora</div>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+	        
+	        <hr/>
+        </div>
+			
+		<div th:if="not ${gruposPrg.empty}">
+	        <ul class="row list-unstyled">
+			    <li th:each="doc:${gruposPrg}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+	                <div class="card height5">
+	                    <img th:if="${doc.image}" th:src="${doc.image}" height="70" alt=""/>
+	                    <a th:href="${doc.id}"><th:block th:text="${doc.title}" /></a>
+	                	
+	                    <div th:if="${doc.type == 'collaborative'}" class="ribbon-wrapper">
+	                         <div class="ribbon-info">Colabora</div>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+        	<hr/>
+        </div>
+		
+		<div th:if="not ${gruposLoc.empty}">
+	        <ul class="row list-unstyled">
+			    <li th:each="doc:${gruposLoc}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+	                <div class="card height5">
+	                    <img th:if="${doc.image}" th:src="${doc.image}" height="70" alt=""/>
+	                    <a th:href="${doc.id}"><th:block th:text="${doc.title}" /></a>
+	                	
+	                    <div th:if="${doc.type == 'collaborative'}" class="ribbon-wrapper">
+	                         <div class="ribbon-info">Colabora</div>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+        </div>
+        
+        <h4 th:if="${gruposGCZ.empty} and ${gruposPrg.empty} and ${gruposLoc.empty}">
+        	<span>Actualmente no perteneces a ningún grupo.</span>
+        </h4>
+		
+		<!--
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+		-->
+    </sede:content>
+</body>
+
+</html>

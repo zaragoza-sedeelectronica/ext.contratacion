@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+   <head>
+      <meta charset="utf-8" />
+      <sede:meta title="PICH: Plan Integral de Turismo" description="El portal de la Oficina del Plan Integral del Casco Histórico ofrece recursos sobre los proyectos que desarrollan en áreas como deportes, cultura, derechos sociales, solares urbanos, medio ambiente, limpieza, comercio, turismo y participación además de ofrecer información sobre sus actividades." category="" subject="" author="" last-modified="2018-09-13" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España, Oficina Plan Integral Casco histórico, participación, solares urbanos, formalidades administrativas, administración electrónica, relación administración-administrado, participación social, actividades, concursos, servicio de quejas y sugerencias, council, city, Saragossa, Spain, administrative formalities, electronic government, citizen-authority relations, participation, urbanism, culture, social rights, environment, social participation, green area, activities, contest, complaints and suggestions service" priority="" robots=""></sede:meta>
+   </head>
+   <style>
+      titulo-seccion {
+      line-height: 66px;
+      font-size: 42px;
+      }
+      .fnd-blanco {
+      background-color: #ffffff;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      .fnd-gris-claro {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: -40px;
+      }
+      .titulo-org h2,
+      .procesos h2{
+      color: #e83437;
+      font-size: 42px;
+      padding-bottom: 20px;
+      }
+      .titulo-org h2 small,
+      .titulo-org h2 span{
+      color: #000000;
+      }
+      .panel-heading a:after {
+      float: left;
+      color: white;
+      background-color: #000;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      margin-right: 10px;
+      }
+      .panel-heading a.collapsed:after {
+      content: "\f105";
+      }
+      .panel-default>.panel-heading {
+      background-color: #fff;
+      border: 0;
+      }
+      .panel {
+      border: 0;
+      webkit-box-shadow: 0 0 0;
+      box-shadow: 0 0 0;
+      }
+      .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border: 0;
+      }
+      .panel-body {
+      padding-left: 50px;
+      }
+      .panel-title>a {
+      color: #E81B16;
+      }
+      .panel-title>a:hover,
+      .panel-title>a:focus,
+      .panel-title>a:active {
+      text-decoration: none;
+      }
+      .tabla-bn {
+      border-collapse: separate;
+      border-spacing: 0px 10px;
+      }
+      .tabla-bn td {
+      padding: 0 5px 5px 5px !important;
+      margin-bottom: 5px;
+      border-right: dotted 1px #000000;
+      border-top: 0px !important;
+      border-bottom: dotted 1px #000000;
+      }
+   </style>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Plan Integral de Turismo</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <p>El Casco Histórico ha sido tradicionalmente la zona comercial más importante de Zaragoza, en la que se ubican no sólo los comercios, mercados de abastos y establecimientos hosteleros y hoteleros más conocidos de la ciudad, sino también la principal oferta cultural y turística de la ciudad (el Pilar, la Seo, la Lonja y el Palacio de Sástago, los teatros Principal, del Mercado y de la Estación, numerosos museos, así como diferentes plazas del Pilar, de San Bruno, de San Pedro Nolasco, etc.- que desempeñan el papel de lugares de encuentro  y relación para las personas).</p>
+               <p>Sin embargo, a lo largo del siglo XX el Casco Histórico ha ido sufriendo un declive permanente en su configuración económica, provocado por la pérdida progresiva de su actividad industrial artesana. La principal actividad económica actual está ligada al sector servicios (comercio, hostelería y oficinas, principalmente). Aunque importantes fueron en el Casco Histórico los mercados y las tiendas de comercio tradicional, estos han ido desapareciendo o perdiendo importancia progresivamente, dejando paso a una concepción similar a la de la sociedad en general, cuyas compras se realizan mayoritariamente en grandes superficies o centros comerciales.</p>
+               <p>Existe un marco de planificación en el ámbito comercial a nivel autonómico y local que pretende establecer los ejes para adecuar el equipamiento comercial a las necesidades de sus vecinos, así como regular el programa de fomento del desarrollo de la actividad comercial, la reforma de las estructuras comerciales y al urbanismo comercial. A nivel autonómico está vigente el Plan General de Equipamiento Comercial de Aragón, aprobado en 2005. A escala local, la ciudad de Zaragoza cuenta con el Plan Local de Equipamiento Comercial de Zaragoza 2010-2014 (PLECZ), desarrollado por el Departamento de Industria, Comercio y Turismo del Gobierno de Aragón, el Ayuntamiento de Zaragoza, a través del Área de Fomento y Deportes, y la Cámara de Comercio de Zaragoza.</p>
+               <p>El PLECZ surge con objeto de adaptar el Equipamiento Comercial a las necesidades presentes y futuras de la ciudad, estableciendo acciones en pro del comercio urbano en el horizonte 2010-2014. En el mismo se afirma que <em>"Las circunstancias económicas actuales ponen de manifiesto una acusada tendencia de disminución del consumo, de forma generalizada. El tejido de PYMES comerciales convive con una fuerte competencia de otros formatos comerciales. La densidad de centros comerciales en la ciudad de Zaragoza rebasa ligeramente la media española y con la ejecución de los nuevos proyectos se posicionará como una de las principales  ciudades en este ranking"</em>. Ante esta situación <em>"es conveniente plantear qué actuaciones se deben abordar para potenciar el consumo en el comercio de proximidad de la ciudad, con objeto de favorecer el desarrollo de este tejido empresarial, manteniendo y generando nuevo empleo, de forma equilibrada con el resto de formatos comerciales"</em>.</p>
+               <div>
+                  <img class="imgder nodeco" alt="" src="/cont/paginas/sectores/pich/img/plan-pich-3.jpg"/>
+               </div>
+               <p>El pequeño comercio constituye uno de los principales motores económicos del Casco Histórico, que además de cumplir un papel esencial en la generación y mantenimiento del empleo dentro del sector minorista, constituye un reducto de interacción social frente al impersonalismo que caracteriza otros formatos comerciales1. "El comercio es el mejor reflejo de la vitalidad del barrio", recoge la propuesta Centro Histórico, Distrito Comercial Abierto2.</p>
+               <p>Hay que tener presente que el territorio del Casco Histórico no refleja un desarrollo homogéneo, sino que persisten calles y áreas degradadas junto a otras que han experimentado un mayor desarrollo. La distribución geográfica de la actividad económica en el mismo tampoco es uniforme, ya que presenta pautas de concentración. Además de apreciarse importantes diferencias según zonas, la mayor parte de las empresas se localizan en determinadas calles (según el documento de evaluación del PICH 2005-2012, el 72,7% de las empresas se sitúan en un conjunto de 28 calles). La mayor concentración de empresas se sitúa alrededor del eje central que constituye el Paseo de la Independencia.</p>
+               <p>Del documento de Diagnóstico de la situación del PICH 2005-2012 se extrae que en el Casco Histórico existen dos grandes áreas claramente diferenciadas en cuanto actividades económicas: un "Área degradada y de necesaria revitalización" que corresponde a los barrios de San Pablo, La Madalena y el Viejo Rabal y un "Área que constituye el Centro Comercial y de Negocios de la ciudad", que abarca al resto del Casco Histórico. </p>
+               <p>En el documento de evaluación del PICH 2005-2012 sobre el Casco Histórico se recogen propuestas de futuro, surgidas de los procesos de participación, encaminadas a fortalecer el pequeño comercio en el barrio. Se demanda tanto la puesta en marcha de estrategias de dinamización comercial como la articulación de políticas integrales de apoyo al emprendimiento que supongan un contrapeso al riesgo que supone actualmente la apertura de un negocio, en el actual escenario económico.</p>
+               <p>Al margen de la actual coyuntura de crisis económica, el diagnóstico del barrio realizado  en la evaluación del PICH 2005-2012 apunta otros elementos específicos que agravan la situación del pequeño comercio en el Casco Histórico. Por un lado, se aprecia que la zona ha perdido posiciones en los últimos años en relación con otras áreas comerciales de la ciudad, concentradas en torno a grandes superficies. Asimismo, se constata un progresivo cierre de comercios tradicionales instalados en la zona, en parte por el envejecimiento y jubilación de sus propietarios. Sin embargo, se han valorado positivamente algunos intentos que se han llevado a cabo para favorecer la instalación en la zona de pequeños comercios, de artesanos, etc. </p>
+               <div>
+                  <img class="imgder nodeco" alt="" src="/cont/paginas/sectores/pich/img/plan-pich-4.jpg"/>
+               </div>
+               <p>La apuesta por la revitalización comercial como eje de desarrollo estratégico del Barrio no es nueva, está contemplada en los anteriores planes integrales del Casco Histórico (y previsiblemente lo estará en los que se elaboren en el futuro). A raíz del PICH 2005-2012 se han puesto en marcha actuaciones para la creación de locales comerciales en zonas degradadas de San Pablo (C/ Las Armas) y La Madalena (C/ San Agustín), sobre la base del impulso a la "economía creativa", con diversos proyectos de reactivación económica y cultural. Además del éxito de la puesta en marcha de algunos de ellos y su buena acogida por los vecinos, supone una experiencia a consolidar de coordinación en la gestión conjunta entre Oficina técnica del PICH, Zaragoza Vivienda, Zaragoza Cultural y el Servicio de Fomento empresarial.</p>
+               <p>Las actuaciones previstas por el PICH 2005-2012 en materia de fomento de la actividad económica han ido encaminadas a la totalidad del Casco Histórico, pero haciendo especial hincapié a las áreas identificadas como más degradadas. Sin embargo, la puesta en marcha de estas actuaciones ha topado con diversas dificultades, entre las que destacan la fuerte recesión económica, así como el hecho de que, debido a limitaciones económicas no se pudieron iniciar las actuaciones en el Rabal, al considerarse prioritario actuar sobre San Pablo y La Madalena, por su mayor degradación sociourbanística. Ello ha provocado que los gestores de las actuaciones hayan valorado con bajos niveles de satisfacción a la ejecución de las acciones del subprograma de Reactivación y Fomento de las actividades económicas. Resulta, por ello, necesario continuar avanzando y dedicando esfuerzos y recursos a la reactivación de la economía local, en la que el comercio constituye un elemento principal. </p>
+               <p>La importancia de la dinamización comercial también se plasma en la Monografía Comunitaria, que recoge que "la dinamización comercial es una importante línea de trabajo en el Barrio y uno de los principales elementos en los que se basa la estrategia de revitalización del Centro Histórico debido a la existencia de una oferta comercial amplia, especializada, con iniciativa e imaginación. Tanto el Plan Integral del Casco Histórico, como el Plan Local de Equipamiento Comercial y la estrategia de dinamización del Centro Histórico coinciden en este apartado, considerando el impulso del comercio como una de las líneas estratégicas en el desarrollo del barrio."</p>
+               <p>Zaragoza dispone de una extensa red de mercados de abastos, pasajes y galerías comerciales, de los cuales varios se localizan en el Casco Histórico. Dichos espacios, así como algunas calles y plazas, tienen una gran importancia no solo comercial, sino también desde el punto de vista social y cultural, constituyendo importantes centros de relación entre personas. Además, el Casco Histórico concentra numerosas festividades e iniciativas culturales, unas de carácter tradicional y otras de origen más reciente (como la Carrera del Gancho), así como servicios culturales y un rico y variado patrimonio que constituyen un importante atractivo cultural y de ocio cuyo potencial económico no siempre es aprovechado.</p>
+               <p>En el documento de evaluación del Plan Integral del Casco Histórico PICH 2005-2012 se plantea la conveniencia de promover una dinamización social y cultural asociada al sector comercial. De este modo, se generarían sinergias que permitirían tanto fomentar las relaciones entre la población del Barrio como poner en valor los espacios y equipamientos comerciales, incrementando, además, su atractivo hacia unos perfiles de población que actualmente no son usuarios habituales de los mismos. Y de modo indirecto, pero no por ello menos importante, se conseguiría incrementar el sentimiento de identidad con el Casco Histórico de sus pobladores mediante connotaciones positivas.</p>
+               <p>Algunas de las propuestas recogidas en los procesos participativos realizados en el marco del presente Plan Integral del Casco Histórico PICH 2013-2020 en materia de promoción del sector comercial versan sobre la puesta en valor de la oferta comercial y cultural del Barrio, así como las fiestas y actividades que en él se desarrollan, y la dinamización de los mercados municipales, ampliando sus usos de forma que se combine la oferta comercial, cultural y de restauración.</p>
+               <p>Otro elemento de vital importancia en la economía local es el turismo. El potencial turístico que posee la ciudad de Zaragoza es indudable, con un rico patrimonio histórico, arquitectónico y cultural fruto de sus más de dos mil años de historia y situada en un enclave estratégico, cruce de caminos y bañada por las aguas de los ríos Ebro, Gállego y Huerva. Ciudad de las Cuatro Culturas, ha albergado a íberos, romanos, musulmanes, judíos y cristianos, cuyos vestigios son apreciables aún hoy en día. Cuenta además con una amplia oferta cultural y artística que complementa perfectamente al patrimonio histórico, configurando una completa oferta turística. </p>
+               <div>
+                  <img class="imgder nodeco" alt="" src="/cont/paginas/sectores/pich/img/plan-pich-5.jpg"/>
+               </div>
+               <p>El Casco Histórico, centro histórico de la ciudad, aglutina gran parte de la oferta turística, tanto en cuanto a concentración de monumentos e inmuebles de interés como a teatros, museos, actividades culturales y artísticas, celebraciones religiosas, etc. "El Casco Histórico es el espacio territorial más turístico de la ciudad, concentra el Patrimonio Cultural Inmobiliario más visitado, muchos monumentos y manifestaciones culturales, a las que añadimos las manifestaciones humanas de origen religioso o festivo que tienen lugar en sus alrededores". </p>
+               <p>Son numerosas las actuaciones previstas en materia de turismo en el primer Plan Integral del Casco Histórico (PICH 1997-2004) y su posterior renovación PICH 2005-2012, y destaca su elevado grado de cumplimiento y nivel de satisfacción de sus gestores. Si en la evaluación del primer PICH se indica que el programa de Turismo (nº 17) se ha cumplido en su casi totalidad, a excepción de tres actuaciones, en la evaluación del PICH 2005-2012 se indica que las actuaciones del subprograma 2.2 Turismo han sido ejecutadas al 100% y han sido valoradas por sus gestores con el máximo nivel de satisfacción en cuanto a la ejecución de las acciones. Sin embargo, no todo el camino está hecho. Se debe continuar trabajando en la promoción turística del Casco Histórico. </p>
+               <p>No obstante, resulta evidente que la promoción turística de una zona está íntimamente ligada a otros aspectos. Es necesario realizar actuaciones de mejora en materia de escena urbana (iluminación, limpieza viaria, mobiliario urbano, zonas verdes), seguridad ciudadana, movilidad, etc. para lograr fomentar el turismo en el entorno.</p>
+               <h3>Objetivos</h3>
+               <ul>
+                  <li>Fomentar la identidad del Casco Histórico como zona comercial próxima, accesible, de amplia y variada oferta, mejorando la imagen comercial del mismo.</li>
+                  <li>Articular políticas integrales de apoyo al emprendimiento, así como promover la coordinación entre diferentes entidades, organismos y servicios públicos.</li>
+                  <li>Impulsar la identificación del Casco Histórico como territorio socialmente responsable.</li>
+                  <li>Impulsar y dinamizar equipamientos y espacios comerciales existentes en el Casco Histórico, mediante el desarrollo de actividades de contenido cultural y/o socioeducativas.</li>
+                  <li>Continuar avanzando en la promoción del potencial turístico del Casco Histórico, desarrollando actividades de dinamización cultural y turística que pongan en valor inmuebles y espacios emblemáticos de los barrios de San Pablo, La Madalena y el Rabal Viejo.</li>
+               </ul>
+               <h3>Acciones</h3>
+               <h4>5.1.Desarrollo de un Plan de revitalización comercial en los ejes de San Pablo y Las Armas, poniendo en valor los locales de Zaragoza Vivienda facilitando, mediante concurso público, la implantación de actividades económicas en colaboración con Zaragoza Activa.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.1">
+                  <caption>Acción 5.1</caption>
+                  <tr>
+                     <th id="a1"></th>
+                     <th id="a2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="a1">Presupuesto</td>
+                     <td headers="a2">
+                        200.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="a1">Temporalización</td>
+                     <td headers="a2">
+                        2014-2016
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="a1">Gestión</td>
+                     <td headers="a2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="a1">Colaboración</td>
+                     <td headers="a2">
+                        Zaragoza Activa y Cámara de Comercio
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.2.Elaboración de un Plan de Intermediación de alquiler con locales privados cerrados en los ámbitos de San Pablo, las Armas, el Rabal Viejo y Barrio Jesús facilitando las gestiones administrativas y técnicas necesarias para su apertura comercial. </h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.2">
+                  <caption>Acción 5.2</caption>
+                  <tr>
+                     <th id="b1"></th>
+                     <th id="b2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="b1">Presupuesto</td>
+                     <td headers="b2">
+                        20.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="b1">Temporalización</td>
+                     <td headers="b2">
+                        2014-2016
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="b1">Gestión</td>
+                     <td headers="b2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="b1">Colaboración</td>
+                     <td headers="b2">
+                        Zaragoza Activa
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.3.Creación de normativa urbanística que rebaje la exigencia de altura mínima de los locales comerciales privados, especialmente en el área del Arrabal, exclusivamente cuando los locales beneficiados por esta medida sean susceptibles de ser usados como locales de artesanos, exigiendo a los propietarios moratorias y rebajas en los alquileres de los locales a cambio del beneficio urbanístico.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.3">
+                  <caption>Acción 5.3</caption>
+                  <tr>
+                     <th id="c1"></th>
+                     <th id="c2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="c1">Presupuesto</td>
+                     <td headers="c2">
+                        0 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="c1">Temporalización</td>
+                     <td headers="c2">
+                        2014-2016
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="c1">Gestión</td>
+                     <td headers="c2">
+                        Zaragoza Vivienda y  Servicio de Urbanismo
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.4.Plan de reconversión comercial en las zonas saturadas del casco histórico. Sub-plan de habitabilidad y confort acústico en las zonas saturadas del Casco Histórico.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.4">
+                  <caption>Acción 5.4</caption>
+                  <tr>
+                     <th id="d1"></th>
+                     <th id="d2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="d1">Presupuesto</td>
+                     <td headers="d2">
+                        0 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="d1">Temporalización</td>
+                     <td headers="d2">
+                        2014-2016
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="d1">Gestión</td>
+                     <td headers="d2">
+                        Servicio de Urbanismo
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="d1">Colaboración</td>
+                     <td headers="d2">
+                        Zaragoza Activa
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.5.Programa de dinamización  y fomento del comercio en el Casco Histórico mediante la realización de campañas. </h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.5">
+                  <caption>Acción 5.5</caption>
+                  <tr>
+                     <th id="e1"></th>
+                     <th id="e2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="e1">Presupuesto</td>
+                     <td headers="e2">
+                        70.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="e1">Temporalización</td>
+                     <td headers="e2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="e1">Gestión</td>
+                     <td headers="e2">
+                        Zaragoza Activa
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="e1">Colaboración</td>
+                     <td headers="e2">
+                        Oficina PICH , Zaragoza  Vivienda  y Cámara de Comercio
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.6.Renovación del censo de locales que pueden ser susceptibles de generar actividad.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.6">
+                  <caption>Acción 5.6</caption>
+                  <tr>
+                     <th id="f1"></th>
+                     <th id="f2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Presupuesto</td>
+                     <td headers="f2">
+                        0 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Temporalización</td>
+                     <td headers="f2">
+                        2014-2016
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Gestión</td>
+                     <td headers="f2">
+                        Zaragoza Activa
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Colaboración</td>
+                     <td headers="f2">
+                        Zaragoza Vivienda y Cámara de Comercio
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.7.Promoción de alternativas comerciales: implantación de coworking, bolsa de locales de alquiler, cesiones a bajo coste. Desarrollo a través de Zaragoza Vivienda, Oficina del PICH, Cámara de Comercio, Zaragoza Activa y Zaragoza Cultural.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.7">
+                  <caption>Acción 5.7</caption>
+                  <tr>
+                     <th id="g1"></th>
+                     <th id="g2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="g1">Presupuesto</td>
+                     <td headers="g2">
+                        200.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="g1">Temporalización</td>
+                     <td headers="g2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="g1">Gestión</td>
+                     <td headers="g2">
+                        Zaragoza Activa
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="g1">Colaboración</td>
+                     <td headers="g2">
+                        Oficina PICH, Zaragoza Vivienda, y Cámara de Comercio
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.8.Activación cultural del barrio del Arrabal proporcionando espacios para la instalación de pequeños talleres y comercios artesanales. Apoyo al Proyecto "Barrio de artesanos" en el Rabal Viejo. Prever los locales resultantes de la obra y rehabilitación previstas en esta zona (calle Manuel Lacruz 13-23 y 19-21). </h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.8">
+                  <caption>Acción 5.8</caption>
+                  <tr>
+                     <th id="h1"></th>
+                     <th id="h2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="h1">Presupuesto</td>
+                     <td headers="h2">
+                        1.200.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="h1">Temporalización</td>
+                     <td headers="h2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="h1">Gestión</td>
+                     <td headers="h2">
+                        Oficina PICH y Zaragoza Vivienda
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="h1">Colaboración</td>
+                     <td headers="h2">
+                        Zaragoza Cultural
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.9.Apoyo a la iniciativa "Centro Comercial Abierto en el Casco Histórico", a través de:</h4>
+               <ol>
+                  <li>Plan de consolidación del principal eje comercial del centro de la ciudad.</li>
+                  <li>Apertura de itinerarios comerciales desde el eje principal hacia los nuevos centros comerciales alternativos de los barrios de San Pablo, La Madalena y El Rabal. </li>
+                  <li>Puesta en valor de las plazas y vías de comunicación entre ellas, y con los ejes transversales, y con el eje principal del Centro comercial Abierto.</li>
+                  <li>Plan para convertir al Mercado Central en icono de interés comercial, monumental y artístico de carácter especial.</li>
+                  <li>Plan de descongestión de la Zona Saturada C.</li>
+                  <li>Plan de ajuste y movilidad en el área de influencia del tranvía y del centro peatonal.</li>
+                  <li>Plan de compensación por la pérdida de actividad de servicios públicos de gran capacidad en el casco histórico.
+                  </li>
+               </ol>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.9">
+                  <caption>Acción 5.9</caption>
+                  <tr>
+                     <th id="i1"></th>
+                     <th id="i2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Presupuesto</td>
+                     <td headers="i2">
+                        10.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Temporalización</td>
+                     <td headers="i2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Gestión</td>
+                     <td headers="i2">
+                        Zaragoza Activa
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Colaboración</td>
+                     <td headers="i2">
+                        Oficina PICH y Cámara de Comercio
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.10.Desarrollo de un Plan de colaboración con la Escuela Taller del Casco Histórico de Diseño Digital para la mejora de la imagen comercial y puesta a disposición de los comerciantes.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.10">
+                  <caption>Acción 5.10</caption>
+                  <tr>
+                     <th id="j1"></th>
+                     <th id="j2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="j1">Presupuesto</td>
+                     <td headers="j2">
+                        0 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="j1">Temporalización</td>
+                     <td headers="j2">
+                        2014-2016
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="j1">Gestión</td>
+                     <td headers="j2">
+                        Zaragoza Activa
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="j1">Colaboración</td>
+                     <td headers="j2">
+                        Oficina PICH y Junta de Distrito
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.11.Impulso del Proyecto "Casco Histórico Territorio Socialmente Responsable".</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.11">
+                  <caption>Acción 5.11</caption>
+                  <tr>
+                     <th id="k1"></th>
+                     <th id="k2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="k1">Presupuesto</td>
+                     <td headers="k2">
+                        0 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="k1">Temporalización</td>
+                     <td headers="k2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="k1">Gestión</td>
+                     <td headers="k2">
+                        Oficina PICH y Junta de Distrito
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="k1">Colaboración</td>
+                     <td headers="k2">
+                        Zaragoza Vivenda, Zaragoza Activa y Zaragoza Cultural
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.12.Elaborar un plan de rehabilitación de los mercados tradicionales instalados en el Casco Histórico, adaptándolos a la tipología del siglo XXI y basado en el comercio especializado y de proximidad. Elaboración de un plan que impulse el mercado de San Vicente de Paúl y la dinamización de la planta superior. Organización de un Concurso de ideas para la remodelación de los puestos del Mercado Central y su entorno, como elemento fundamental y básico de la dinamización de la zona aprovechando la llegada del tranvía. Uso que combine oferta cultural, restauración y mercado. Limpieza exterior del mercado y cumplimiento de horarios de carga y descarga.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.12">
+                  <caption>Acción 5.12</caption>
+                  <tr>
+                     <th id="l1"></th>
+                     <th id="l2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Presupuesto</td>
+                     <td headers="l2">
+                        Impulso Mercado San Vicente de Paúl 60.000 euros<br/>
+                        Remodelación Mercado Central y su entorno 3.000.000 euros 
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Temporalización</td>
+                     <td headers="l2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Gestión </td>
+                     <td headers="l2">
+                        Mercados y Servicio de Patrimonio
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Colaboración</td>
+                     <td headers="l2">
+                        Oficina PICH y Junta de Distrito
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.13.Dinamización turística y cultural orientada a la puesta en valor de la oferta comercial del Barrio.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.13">
+                  <caption>Acción 5.13</caption>
+                  <tr>
+                     <th id="m1"></th>
+                     <th id="m2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="m1">Presupuesto</td>
+                     <td headers="m2">
+                        150.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="m1">Temporalización</td>
+                     <td headers="m2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="m1">Gestión</td>
+                     <td headers="m2">
+                        Oficina PICH, Junta de Distrito y Patronato de Turismo
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="m1">Colaboración</td>
+                     <td headers="m2">
+                        Zaragoza Cultural
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.14.Promoción de actividades culturales que pongan en valor el Patrimonio Artístico de El Gancho, La Madalena y El Rabal Viejo. Mantenimiento de las visitas guiadas e inclusión de las mismas dentro de la Oferta Turística de  Zaragoza Turismo del Ayuntamiento de Zaragoza. </h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.14">
+                  <caption>Acción 5.14</caption>
+                  <tr>
+                     <th id="n1"></th>
+                     <th id="n2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="n1">Presupuesto</td>
+                     <td headers="n2">
+                        100.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="n1">Temporalización</td>
+                     <td headers="n2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="n1">Gestión</td>
+                     <td headers="n2">
+                        Oficina PICH, Junta de distrito y Patronato de Turismo
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.15.Impulso a la rehabilitación de locales municipales y su puesta a disposición de personas emprendedoras.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.15">
+                  <caption>Acción 5.15</caption>
+                  <tr>
+                     <th id="o1"></th>
+                     <th id="o2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="o1">Presupuesto</td>
+                     <td headers="o2">
+                        500.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="o1">Temporalización</td>
+                     <td headers="o2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="o1">Gestión</td>
+                     <td headers="o2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="o1">Colaboración</td>
+                     <td headers="o2">
+                        Fomento Empresarial y Zaragoza Activa
+                     </td>
+                  </tr>
+               </table>
+               <h4>5.16.Ayudas a la rehabilitación de locales, sujetas a criterios que aseguren la revitalización del Casco Histórico. Estos criterios estarán referidos a la permanencia, mejora del servicio o especialización.	</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 5.16">
+                  <caption>Acción 5.16</caption>
+                  <tr>
+                     <th id="p1"></th>
+                     <th id="p2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="p1">Presupuesto</td>
+                     <td headers="p2">
+                        800.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="p1">Temporalización</td>
+                     <td headers="p2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="p1">Gestión</td>
+                     <td headers="p2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="p1">Colaboración</td>
+                     <td headers="p2">
+                        Fomento Empresarial y Zaragoza Activa
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

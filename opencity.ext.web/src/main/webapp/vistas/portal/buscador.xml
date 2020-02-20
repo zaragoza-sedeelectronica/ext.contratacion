@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Buscador Facetado para la Sede Electrónica" description="" author="Ayuntamiento de Zaragoza" keywords="buscador, facetado, solr, ayuntamiento, Zaragoza">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+    
+    <h2>Buscador Facetado para la Sede Electrónica <a class="btn btn-primary pull-right" href="//www.zaragoza.es/sede/servicio/buscador/">Acceso</a></h2>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <h3>¿Qué es la búsqueda facetada?</h3>
+                <hr class="sm"/>
+                <p>Un buscador facetado es una herramienta de búsqueda que ofrece resultados basados en propiedades y atributos mediante una clasificación por categorías.</p>
+                <br/>
+                <h3>Características Principales</h3>
+                <hr class="sm"/>
+                <ul>
+                    <li><strong>Acotar y restringir progresivamente</strong> aún más los datos en función de las categorias seleccionadas.</li>
+                    <li><strong>Exportar resultados en otros formatos</strong>: Se pueden exportar en <a href="http://www.w3.org/standards/xml/core" title="Enlace Exterior">XML</a> <a href="http://es.wikipedia.org/wiki/JSON" title="Enlace Exterior">JSON</a>. Esta funcionalidad facilita la reutilización de los contenidos de la Sede Electrónica Municipal.</li>
+                </ul>
+            </div>    
+        </div>
+        <div class="col-sm-6">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/f7My0gkG7Qw" frameborder="0" allowfullscreen="allowfullscreen" title="Buscador Facetado">
+                    Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/f7My0gkG7Qw">Enlace al vídeo en youtube.com</a>
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <h3>¿Cómo utilizarlo?</h3>
+                <hr class="sm"/>
+                <ol>
+                    <li>
+                        <div class="dere pull-right"><img src="/cont/paginas/aprovecha/img/bus.png" alt="" /></div>
+                        <h4>Inicio de la búsqueda: </h4>Por defecto si accedemos al buscador sin establecer ninguna búsqueda éste muestra los resultados ordenados por fecha de actualización. Una vez realizada una búsqueda se muestran los resultados obtenidos para esa búsqueda, ordenados de mayor a menor relevancia. En caso de tener la misma relevancia se estable la fecha de actualización como criterio para ordenar los resultados.
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <div class="dere pull-right"><img src="/cont/paginas/aprovecha/img/faceta.png" alt="" /></div>
+                        <h4>Acotar la búsqueda:</h4> Dados los resultados se muestran en la zona derecha las facetas en las cuales se clasifican los resultados, entre paréntesis se muestran el número de registros que pertenecen a dicha clasificación.
+                        <br/> Se han definido <strong>cuatro categorías</strong>:
+                        <ul>
+                            <li>Portal: Indica a qué portal pertenece el contenido </li>
+                            <li>Temas: Categorias existen en la Sede Electrónica</li>
+                            <li>Dirigido a : Sector poblacional al que se relaciona el contenido</li>
+                            <li>Formato: Los diferentes tipos de formatos en los que se encuentran los contenidos seleccionados</li>
+                        </ul>
+                        Conforme vayamos seleccionando facetas el resultado se irá acotando reduciéndose el número de registros mostrados.
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <div class="dere pull-right"><img src="/cont/paginas/aprovecha/img/reu.png" alt="" /></div>
+                        <h4>Exportar resultados:</h4> Se pueden exportar en <a href="http://www.w3.org/standards/xml/core">XML</a> y <a href="http://es.wikipedia.org/wiki/JSON">JSON</a>. Pinchando en ellos accedes al resultado de la consulta visible en pantalla en el formato deseado. Además de en XML y JSON se pueden obtener los resultados en <a href="http://wiki.apache.org/solr/QueryResponseWriter#Response_Writer_Resolution" class="enlace">otros formatos</a>.
+                    </li>
+                </ol>
+            </div>
+            <div class="card">
+                <h3>Más información</h3>
+                <hr class="sm"/>
+                <ul>
+                    <li><a href="/ciudad/risp/">Datos Abiertos de Zaragoza:</a> Información sobre reutilización de datos en la Sede Electrónica</li>
+                    <li><a href="http://wiki.apache.org/solr/">Apache Solr</a>: Wiki sobre la tecnología empleada para elaborar el buscador</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </sede:content>
+</body>
+
+</html>

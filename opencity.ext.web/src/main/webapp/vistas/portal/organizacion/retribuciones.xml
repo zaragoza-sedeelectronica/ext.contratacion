@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Retribuciones "
+                   description="Retribuciones anuales de los años 2015, 2016 y 2017 de la corporación, directivos, personal de alta cualificación, gerentes y personal eventual del Ayuntamiento de Zaragoza."
+                   author=""
+                   last-modified="Wed Apr 25 00:00:00 CEST 2018"
+                   keywords="ayuntamiento, ciudad, administración local, salario, cargos públicos, organización administrativa, relación administración-administrado"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+            .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">Retribuciones</h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+
+                    <div class="row col-md-12">
+                        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist"
+                            style="display:none;">
+                            <li role="presentation" class="active">
+                                <a href="#corporacion" aria-controls="que" role="tab" data-toggle="tab">Corporación</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#directivos" aria-controls="que" role="tab" data-toggle="tab">Directivos</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#cuali" aria-controls="que" role="tab" data-toggle="tab">Alta Cualificación</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#gerentes" aria-controls="que" role="tab" data-toggle="tab">Gerentes</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#eventual" aria-controls="que" role="tab" data-toggle="tab">Eventual</a>
+                            </li>
+                        </ul>
+                        <div sede:class="tab-content">
+                            <h2 class="tab-title" data-toggle="collapse" data-target="#corporacion"
+                                aria-expanded="false">
+                                Corporación
+                            </h2>
+                            <div role="tabpanel" sede:class="tab-pane active" id="corporacion">
+                                <h3>Acuerdos Plenarios</h3>
+                                <ul>
+                                    <li>
+                                        <a href="servicio/normativa/6843">Acuerdo de 10.07.2015 sobre régimen
+                                            retributivo de
+                                            los miembros de la Corporación.
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">Acuerdo de 02.12.2016 sobre el incremento de retribuciones de los
+                                            Miembros de la Corporación en el año 2016
+                                        </a>
+                                    </li>
+                                </ul>
+                                <table class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th>CONCEPTO</th>
+                                        <th>RETRIBUCION ANUAL 2017</th>
+                                        <th>RETRIBUCION ANUAL 2016</th>
+                                        <th>RETRIBUCION ANUAL 2015</th>
+                                    </tr>
+                                    <tr>
+                                        <td>ALCALDE</td>
+                                        <td>75.750</td>
+                                        <td>75.750
+                                        </td>
+                                        <td>75.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CONSEJERO DE GOBIERNO</td>
+                                        <td>72.720</td>
+                                        <td>72.720</td>
+                                        <td>72.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PORTAVOZ DE GRUPO MUNICIPAL</td>
+                                        <td>71.204,30</td>
+                                        <td>71.204,30</td>
+                                        <td>70.499,31</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PORTAVOZ COMISION PLENARIA PEMANENTE</td>
+                                        <td>67.620,72</td>
+                                        <td>66.951,21</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PORTAVOZ ADJUNTO DE GRUPO MUNICIPAL</td>
+                                        <td>67.620,72</td>
+                                        <td>67.620,72</td>
+                                        <td>66.951,21</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CONCEJAL DELEGADO</td>
+                                        <td>60.600</td>
+                                        <td>60.600</td>
+                                        <td>60.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CONCEJAL</td>
+                                        <td>59.236,79</td>
+                                        <td>59.236,79</td>
+                                        <td>58.650,29</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ASISTENCIAS</td>
+                                        <td>24.240</td>
+                                        <td>24.240</td>
+                                        <td>24.000,00</td>
+                                    </tr>
+                                </table>
+                                <h3>ALCADES DE BARRIO</h3>
+                                <p>ASISTENCIAS 2017 10.489,2</p>
+                                <p>ASISTENCIAS 2016 10.489,2</p>
+                                <p>ASISTENCIAS 2015 865,45</p>
+                            </div>
+
+                            <h2 class="tab-title" data-toggle="collapse" data-target="#directivos"
+                                aria-expanded="false">
+                                Directivos
+                            </h2>
+                            <div role="tabpanel" sede:class="tab-pane active" id="directivos">
+                                <p> </p>
+
+                                <table class="table table-responsive tabla-bn"
+                                       summary="Salario Personal Directivo">
+                                    <tr>
+                                        <th>PUESTOS</th>
+                                        <th>Total Bruto 2017</th>
+                                        <th>Total Bruto 2016</th>
+                                        <th>Total Bruto 2015</th>
+                                    </tr>
+                                    <tr>
+                                        <td>INTERVENTOR/A GENERAL MUNICIPAL</td>
+                                        <td>90.900,08</td>
+                                        <td>90.900,08</td>
+                                        <td>90.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECRETARIO/A GENERAL DEL PLENO</td>
+                                        <td>86.355,12</td>
+                                        <td>86.355,12</td>
+                                        <td>85.500,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>JEFE/A DE LA ASESORIA JURIDICA</td>
+                                        <td>77.929,22</td>
+                                        <td>77.929,22</td>
+                                        <td>77.157,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>COORDINADOR/A GENERAL ÁREA ALCALDÍA</td>
+                                        <td>77.929,22</td>
+                                        <td>77.929,22</td>
+                                        <td>77.157,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>COORDINADOR/A GENERAL DEL ÁREA DE ECONOMÍA Y CULTURA</td>
+                                        <td>77.929,22</td>
+                                        <td>77.929,22</td>
+                                        <td>77.157,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>COORDINADOR/A GENERAL DEL ÁREA DE DERECHOS SOCIALES</td>
+                                        <td>77.929,22</td>
+                                        <td>77.929,22</td>
+                                        <td>77.157,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>COORDINADOR/A GENERAL DEL ÁREA DE URBANISMO Y SOSTENIBILIDAD</td>
+                                        <td>77.929,22</td>
+                                        <td>77.929,22</td>
+                                        <td>77.157,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>COORDINADOR/A GENERAL DEL ÁREA DE SERVICIOS PÚBLICOS Y PERSONAL</td>
+                                        <td>77.929,22</td>
+                                        <td>77.929,22</td>
+                                        <td>77.157,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TITULAR DEL ÓRGANO DE APOYO A LA JUNTA DE GOBIERNO LOCAL</td>
+                                        <td>77.929,22</td>
+                                        <td>77.929,22</td>
+                                        <td>77.157,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIRECTOR/A GENERAL DE ECONOMÍA</td>
+                                        <td>74.952,12</td>
+                                        <td>74.952,12</td>
+                                        <td>74.209,80</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIRECTOR/A GENERAL DE CULTURA</td>
+                                        <td>74.952,12</td>
+                                        <td>74.952,12</td>
+                                        <td>74.209,80</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIRECTOR/A GENERAL DE PERSONAL</td>
+                                        <td>74.952,12</td>
+                                        <td>74.952,12</td>
+                                        <td>74.209,80</td>
+                                    </tr>
+                                </table>
+                                <div class="linea"> </div>
+                            </div>
+                            <h2 class="tab-title" data-toggle="collapse" data-target="#cuali" aria-expanded="false">Alta
+                                Cualificación
+                            </h2>
+                            <div role="tabpanel" sede:class="tab-pane active" id="cuali">
+                                <table class="table table-responsive tabla-bn"
+                                       summary="Salarios Empleados Alta Cualificación">
+                                    <caption>PUESTOS DE TRABAJO CON NIVEL 28 O SUPERIOR (DE LA RELACIÓN DE PUESTOS DE
+                                        TRABAJO VIGENTE A 31/12/2017)
+                                    </caption>
+                                    <tr>
+                                        <th>ÁREA</th>
+                                        <th>SERVICIO</th>
+                                        <th>GRUPO</th>
+                                        <th>NIVEL</th>
+                                        <th>ESTRATO</th>
+                                        <th>PUESTO DE TRABAJO</th>
+                                        <th>TOTAL BRUTO ANUAL 2017</th>
+                                        <th>TOTAL BRUTO ANUAL 2016</th>
+                                        <th>TOTAL BRUTO ANUAL 2015</th>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="15">ÁREA DE ALCALDÍA</td>
+                                        <td>GABINETE TÉCNICO ALCALDÍA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14016</td>
+                                        <td>DIRECTOR/A DEL GABINETE TÉCNICO DE ALCALDÍA</td>
+                                        <td>73.750,74</td>
+                                        <td>73.020,4</td>
+                                        <td>72.297,26</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OFICINA TÉCNICA DE ALCALDÍA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>TÉCNICA/O DE LA OFICINA TÉCNICA DE ALCALDÍA</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">OFICINA DE INFORMACIÓN Y ANÁLISIS ECONÓMICO Y DE LOS SERVICIOS
+                                        </td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>TÉCNICA/O DE LA OFICINA DE INFORMACIÓN Y ANÁLISIS ECONÓMICO Y DE LOS
+                                            SERVICIOS
+                                        </td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA DE INFORMACIÓN Y ANÁLISIS ECONÓMICO Y DE LOS
+                                            SERVICIOS
+                                        </td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>OFICINA DE RELACIONES INTERNACIONALES</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFATURA DE LA OFICINA DE RELACIONES INTERNACIONALES</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PROTOCOLO DE LA CORPORACIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE PROTOCOLO DE LA CORPORACIÓN</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE ASUNTOS GENERALES</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE ASUNTOS GENERALES</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OFICINA DE INTERVENCIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA DE INTERVENCIÓN</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE INTERVENCIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE INTERVENCIÓN</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">OFICINA DE CONTROL FINANCIERO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA DE CONTROL FINANCIERO</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>TÉCNICA/O AUDITORA/OR DE LA OFICINA DE CONTROL FINANCIERO</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OFICINA DE EVALUACIÓN Y COORDINACIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA EVALUACIÓN Y COORDINACIÓN</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ASESORÍA JURÍDICA MUNICIPAL</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14032</td>
+                                        <td>LETRADO/A CONSISTORIAL</td>
+                                        <td>77.669,34</td>
+                                        <td>76.900,22</td>
+                                        <td>76.138,58</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14022</td>
+                                        <td>ASESOR JURÍDICO</td>
+                                        <td>73.821,16</td>
+                                        <td>73.090,12</td>
+                                        <td>72.366,28</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE TRAMITACIÓN DE ASUNTOS JUDICIALES</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE TRAMITACIÓN DE ASUNTOS JUDICIALES</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="8">ÁREA DE PRESIDENCIA Y DERECHOS SOCIALES</td>
+                                        <td>OFICINA TÉCNICA DE PLANIFICACIÓN Y PROGRAMACIÓN DEL ÁREA PRESIDENCIA Y
+                                            DERECHOS
+                                            SOCIALES
+                                        </td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA TÉCNICA DE PLANIFICACIÓN Y PROGRAMACIÓN DEL ÁREA DE
+                                            PRESIDENCIA Y DERECHOS SOCIALES
+                                        </td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO ADMINISTRATIVO DE DERECHOS SOCIALES</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO ADMINISTRATIVO DE DERECHOS SOCIALES</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE SERVICIOS SOCIALES COMUNITARIOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE SERVICIOS SOCIALES COMUNITARIOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE SERVICIOS SOCIALES ESPECIALIZADOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE SERVICIOS SOCIALES ESPECIALIZADOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE JUVENTUD</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE JUVENTUD</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE EDUCACION</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE EDUCACIÓN</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE IGUALDAD</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE IGUALDAD</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE INSTALACIONES DEPORTIVAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO DE INSTALACIONES DEPORTIVAS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="10">ÁREA DE PARTICIPACIÓN, TRANSPARENCIAY GOBIERNO ABIERTO</td>
+                                        <td>DEPARTAMENTO DE PARTICIPACIÓN, TRANSPARENCIA Y GOBIERNO ABIERTO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DEL DEPARTAMENTO DE PARTICIPACIÓN, TRANSPARENCIA Y GOBIERNO ABIERTO
+                                        </td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE DISTRITOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE DISTRITOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CENTROS CÍVICOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE CENTROS CÍVICOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OFICINA TÉCNICA DE PARTICIPACIÓN, TRANSPARENCIA Y GOBIERNO ABIERTO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE LA OFICINA TÉCNICA DE PARTICIPACIÓN, TRANSPARENCIA Y GOBIERNO
+                                            ABIERTO
+                                        </td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE REDES Y SISTEMAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14042</td>
+                                        <td>JEFE/A DE SERVICIO DE REDES Y SISTEMAS</td>
+                                        <td>62.461,00</td>
+                                        <td>61.842,38</td>
+                                        <td>61.229,84</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CIUDAD INTELIGENTE</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE CIUDAD INTELIGENTE</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE MODERNIZACION Y DESARROLLO ORGANIZATIVO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE MODERNIZACIÓN Y DESARROLLO ORGANIZATIVO</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">POLICIA LOCAL</td>
+                                        <td>A-A1</td>
+                                        <td>30</td>
+                                        <td>14004</td>
+                                        <td>SUPERINTENDENTE JEFE/A DEL CUERPO</td>
+                                        <td>89.683,58</td>
+                                        <td>88.795,46</td>
+                                        <td>87.916,08</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14024</td>
+                                        <td>INTENDENTE PRINCIPAL JEFE/A DE AREA</td>
+                                        <td>64.304,10</td>
+                                        <td>63.667,28</td>
+                                        <td>63.030,61
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>OTROS PUESTOS POLICIA LOCAL</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A OFICINA DEL ÁREA DE SECRETARIA TÉCNICA DE POLICIA LOCAL</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="18">ÁREA DE ECONOMÍA Y CULTURA</td>
+                                        <td>DEPARTAMENTO DE FINANCIACIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DEL DEPARTAMENTO DE FINANCIACIÓN</td>
+                                        <td>68.297,18</td>
+                                        <td>67620,88</td>
+                                        <td>66951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DEPARTAMENTO DE CONTRATACIÓN Y PATRIMONIO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE DEPARTAMENTO DE CONTRATACIÓN Y PATRIMONIO</td>
+                                        <td>68.297,18</td>
+                                        <td>67620,88</td>
+                                        <td>66951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CONTRATACIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO DE CONTRATACIÓN</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE PATRIMONIO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE PATRIMONIO</td>
+                                        <td>59.829,56</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DEPARTAMENTO JURÍDICO DE ECONOMIA Y HACIENDA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DEL DEPARTAMENTO JURÍDICO DE ECONOMÍA</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO ADMINISTRATIVO DE ECONOMÍA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO ADMINISTRATIVO DE ECONOMÍA Y CULTURA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CULTURA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO DE CULTURA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO ADMINISTRATIVO DE CULTURA Y TURISMO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO FOMENTO Y TURISMO</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE PRESUPUESTOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO DE PRESUPUESTOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DEPARTAMENTO DE HACIENDA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE DEPARTAMENTO DE HACIENDA</td>
+                                        <td>68.297,18</td>
+                                        <td>67620,88</td>
+                                        <td>66951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE GESTIÓN TRIBUTARIA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE GESTIÓN TRIBUTARIA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">SERVICIO DE INSPECCION TRIBUTARIA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO INSPECCIÓN TRIBUTARIA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A ÁREA INSPECTORA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE RECAUDACIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO DE RECAUDACIÓN</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE ATENCIÓN AL CONTRIBUYENTE</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO DE ATENCIÓN AL CONTRIBUYENTE</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UNIDAD CENTRAL DE CONTABILIDAD Y TESORERIA</td>
+                                        <td>A-A1</td>
+                                        <td>30</td>
+                                        <td>14022</td>
+                                        <td>JEFE/A DE LA UNIDAD CENTRAL DE CONTABILIDAD Y TESORERÍA</td>
+                                        <td>75.768,42</td>
+                                        <td>75.010,73
+                                        </td>
+                                        <td>74.260,63
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CONTABILIDAD</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO DE CONTABILIDAD</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE TESORERÍA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE TESORERÍA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="29">ÁREA DE URBANISMO Y SOSTENIBILIDAD</td>
+                                        <td>DIRECCIÓN DE SERVICIOS DE INFORMACIÓN Y ORGANIZACIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>DIRECTOR/A DE SERVICIOS DE INFORMACIÓN Y ORGANIZACIÓN</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE INFORMACIÓN Y ATENCIÓN AL CIUDADANO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE INFORMACIÓN Y ATENCIÓN AL CIUDADANO</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE INFORMACIÓN GEOGRÁFICA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE INFORMACIÓN GEOGRÁFICA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO JURÍDICO DE MERCADOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE MERCADOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIRECCIÓN DE SERVICIOS DE PLANIFICACIÓN Y DISEÑO URBANO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>DIRECTOR/A DE SERVICIOS DE PLANIFICACIÓN Y DISEÑO URBANO</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO TÉCNICO DE PLANEAMIENTO Y REHABILITACIÓN</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO TÉCNICO DE PLANEAMIENTO y REHABILITACIÓN</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE ORDENACIÓN Y GESTIÓN URBANÍSTICA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE ORDENACIÓN Y GESTIÓN URBANÍSTICA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE INGENIERIA DE DESARROLLO URBANO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE INGENIERÍA DE DESARROLLO URBANO</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIRECCIÓN DE ESTUDIOS Y PROGRAMAS DE SUELO Y VIVIENDA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>DIRECTOR/A DE ESTUDIOS Y PROGRAMAS DE SUELO Y VIVIENDA</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE ADMINISTRACIÓN DEL SUELO Y VIVIENDA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE ADMINISTRACIÓN DEL SUELO Y VIVIENDA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE LICENCIAS URBANÍSTICAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE LICENCIAS URBANÍSTICAS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO ADMINISTRATIVO DE URBANISMO</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO ADMINISTRATIVO DE URBANISMO</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIRECCIÓN DE SERVICIOS DE INTERVENCIÓN URBANÍSTICA Y DISCIPLINA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>DIRECTOR/A DE SERVICIOS DE INTERVENCIÓN URBANÍSTICA Y DISCIPLINA</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE LICENCIAS DE ACTIVIDAD</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE LICENCIAS DE ACTIVIDAD</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE DISCIPLINA URBANÍSTICA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE DISCIPLINA URBANÍSTICA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE INSPECCIÓN URBANÍSTICA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE INSPECCIÓN URBANÍSTICA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">DIRECCIÓN DE SERVICIOS DE ARQUITECTURA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>DIRECTOR/A DE SERVICIOS DE ARQUITECTURA</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>TÉCNICO DE LA OFICINA DE PROYECTOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CONSERVACIÓN DE ARQUITECTURA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE CONSERVACIÓN DE ARQUITECTURA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE TALLERES Y BRIGADAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A SERVICIO TALLERES Y BRIGADAS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DEPARTAMENTO DE PLANIFICACIÓN Y DESARROLLO DE INFRAESTRUCTURAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE DEPARTAMENTO DE PLANIFICACIÓN Y DESARROLLO DE INFRAESTRUCTURAS
+                                        </td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO TÉCNICO DE INFRAESTRUCTURAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO TÉCNICO DE INFRAESTRUCTURAS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DEPARTAMENTO DE CONSERVACIÓN Y EXPLOTACIÓN DE INFRAESTRUCTURAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE DEPARTAMENTO DE CONSERVACIÓN Y EXPLOTACIÓN DE INFRAESTRUCTURAS
+                                        </td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CONSERVACIÓN DE INFRAESTRUCTURAS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE CONSERVACIÓN DE INFRAESTRUCTURAS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE EXPLOTACIÓN DE REDES</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE EXPLOTACIÓN DE REDES</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE CICLO INTEGRAL DEL AGUA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE CICLO INTEGRAL DEL AGUA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DEPARTAMENTO DE PLANIFICACIÓN Y DISEÑO DE LA MOVILIDAD URBANA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE DEPARTAMENTO DE PLANIFICACIÓN Y DISEÑO DE LA MOVILIDAD URBANA</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE MOVILIDAD URBANA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO MOVILIDAD URBANA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12
+                                        </td>
+                                        <td>58.650,34
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>AGENCIA DE MEDIO AMBIENTE Y SOSTENIBILIDAD</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>DIRECTOR/A DE LA AGENCIA DE MEDIOAMBIENTE Y SOSTENIBILIDAD</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88</td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="12">ÁREA DE SERVICIOS PÚBLICOS Y PERSONAL</td>
+                                        <td rowspan="2">SERVICIO CONTRA INCENDIOS, DE SALVAMENTO Y PROTECCIÓN CIVIL</td>
+                                        <td>A-A1</td>
+                                        <td>30</td>
+                                        <td>14005</td>
+                                        <td>INSPECTOR/A JEFE/A DE SERVICIO</td>
+                                        <td>70.386,68</td>
+                                        <td>69.689,52</td>
+                                        <td>68.999,36</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>30</td>
+                                        <td>14005</td>
+                                        <td>INSPECTOR/A ASESOR/A TECNICO</td>
+                                        <td>70.386,68</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">OFICINA ECONÓMICO JURÍDICA DE SERVICIOS PÚBLICOS Y PERSONAL</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA ECONÓMICO JURÍDICA DE SERVICIOS PÚBLICOS Y PERSONAL
+                                        </td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>TÉCNICA/O JURÍDICA/O DE LA OFICINA ECONÓMICO JURÍDICA DE SERVICIOS PÚBLICOS
+                                            Y
+                                            PERSONAL
+                                        </td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>INSTITUTO MUNICIPAL DE SALUD PÚBLICA</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>DIRECTOR/A DEL INSTITUTO MUNICIPAL DE SALUD PÚBLICA</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OFICINA DEL ESPACIO URBANO Y GESTIÓN DE RESIDUOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA DEL ESPACIO URBANO Y GESTIÓN DE RESIDUOS</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">OFICINA DE RECURSOS HUMANOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14012</td>
+                                        <td>JEFE/A DE LA OFICINA DE RECURSOS HUMANOS</td>
+                                        <td>68.297,18</td>
+                                        <td>67.620,88
+                                        </td>
+                                        <td>66.951,22
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>TECNICA/O DE LA OFICINA DE RECURSOS HUMANOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE GESTIÓN DE RECURSOS HUMANOS</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE GESTIÓN DE RECURSOS HUMANOS</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE RELACIONES LABORALES</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DE SERVICIO DE RELACIONES LABORALES</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE PREVENCION Y SALUD LABORAL</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE PREVENCIÓN Y SALUD</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERVICIO DE ASUNTOS GENERALES</td>
+                                        <td>A-A1</td>
+                                        <td>28</td>
+                                        <td>14002</td>
+                                        <td>JEFE/A DEL SERVICIO DE ASUNTOS GENERALES</td>
+                                        <td>59.829,56</td>
+                                        <td>59.237,12</td>
+                                        <td>58.650,34</td>
+                                    </tr>
+
+
+                                </table>
+
+                            </div>
+                            <h2 class="tab-title" data-toggle="collapse" data-target="#gerentes" aria-expanded="false">
+                                Gerentes
+                            </h2>
+                            <div role="tabpanel" sede:class="tab-pane active" id="gerentes">
+                                <h3>2017</h3>
+                                <table class="table table-responsive tabla-bn"
+                                       summary="Salarios de los miembros de directivos de sociedades y patronatos 2017">
+                                    <tr>
+                                        <th>ENTIDAD</th>
+                                        <th>GERENTE</th>
+                                        <th>SALARIO</th>
+                                        <th>ANTIGÜEDAD</th>
+                                        <th>OTROS (1)</th>
+                                        <th>SUBTOTAL</th>
+                                        <th>DIETAS</th>
+                                        <th>TOTAL</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Vivienda</td>
+                                        <td>Nardo Torguet Escribano</td>
+                                        <td>75.165,26</td>
+                                        <td>5.611,80</td>
+                                        <td>76</td>
+                                        <td>80.853,06</td>
+                                        <td>0,00</td>
+                                        <td>80.853,06</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ecociudad</td>
+                                        <td>Joaquín García Lucea</td>
+                                        <td>74.952,12</td>
+                                        <td>4.979,38</td>
+                                        <td>0,00</td>
+                                        <td>79.931,50</td>
+                                        <td>0,00</td>
+                                        <td>79.931,50</td>
+                                    </tr>
+                                </table>
+
+                                <h3>2015</h3>
+                                <table class="table table-responsive tabla-bn"
+                                       summary="Salarios de los miembros de directivos de sociedades y patronatos 2016">
+                                    <tr>
+                                        <th>ENTIDAD</th>
+                                        <th>GERENTE</th>
+                                        <th>SALARIO</th>
+                                        <th>ANTIGÜEDAD</th>
+                                        <th>OTROS (1)</th>
+                                        <th>SUBTOTAL</th>
+                                        <th>DIETAS</th>
+                                        <th>TOTAL</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Patronato Municipal de Educación y Bibliotecas</td>
+                                        <td>Javier Peiro</td>
+                                        <td>59.616,76</td>
+                                        <td>6.658,05</td>
+                                        <td>0,00</td>
+                                        <td>66.274,81</td>
+                                        <td>0,00</td>
+                                        <td>66.274,81</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patronato Municipal de Turismo</td>
+                                        <td>Inmaculada Armisen</td>
+                                        <td>61.891,76</td>
+                                        <td>5.057,64</td>
+                                        <td>13,55</td>
+                                        <td>66.962,95</td>
+                                        <td>0,00</td>
+                                        <td>66.962,95</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patronato Municipal de Artes Escénicas e Imagen</td>
+                                        <td></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Dinámica (IMEFEZ)</td>
+                                        <td>Mª José Marco Bes</td>
+                                        <td>60.000</td>
+                                        <td>0</td>
+                                        <td>0,00</td>
+                                        <td>60.000</td>
+                                        <td>0,00</td>
+                                        <td>60.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Cultural</td>
+                                        <td>Elena Laseca Ferrández</td>
+                                        <td>59.999,94</td>
+                                        <td>4.512,48</td>
+                                        <td>0</td>
+                                        <td>64.512,42</td>
+                                        <td>0</td>
+                                        <td>64.512,42</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Deporte</td>
+                                        <td>José Antonio Martín Espildora</td>
+                                        <td>65.604,28</td>
+                                        <td>5.848,22</td>
+                                        <td>13,55</td>
+                                        <td>71.466,05</td>
+                                        <td>0</td>
+                                        <td>71.466,05</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Vivienda</td>
+                                        <td>Nardo Torguet Escribano</td>
+                                        <td>79.773,23</td>
+                                        <td>5.971,00</td>
+                                        <td>0,00</td>
+                                        <td>85.744,23</td>
+                                        <td>0</td>
+                                        <td>85.744,23</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ecociudad</td>
+                                        <td>Miguel Portero Urdaneta</td>
+                                        <td>74.209,8</td>
+                                        <td>6.773,06</td>
+                                        <td>0</td>
+                                        <td>80.982,86</td>
+                                        <td>0</td>
+                                        <td>80.982,86</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ZGZ@desarrolloExpo</td>
+                                        <td>Alberto Ipas Garros</td>
+                                        <td>64.236,06</td>
+                                        <td>0,00</td>
+                                        <td>0,00</td>
+                                        <td>64.236,06</td>
+                                        <td>0</td>
+                                        <td>64.236,06</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MercaZaragoza</td>
+                                        <td>Constancio Ibañez</td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                    </tr>
+                                </table>
+                                <h3>2013</h3>
+                                <table class="table table-responsive tabla-bn"
+                                       summary="Salarios de los miembros de directivos de sociedades y patronatos 2013">
+                                    <tr>
+                                        <th>ENTIDAD</th>
+                                        <th>GERENTE</th>
+                                        <th>SALARIO</th>
+                                        <th>ANTIGÜEDAD</th>
+                                        <th>OTROS (1)</th>
+                                        <th>SUBTOTAL</th>
+                                        <th>DIETAS</th>
+                                        <th>TOTAL</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Patronato Municipal de Educación y Bibliotecas</td>
+                                        <td>Peiró Esteban, Javier</td>
+                                        <td>59.616,76</td>
+                                        <td>6.658,05</td>
+                                        <td>0,00</td>
+                                        <td>66.274,81</td>
+                                        <td>0,00</td>
+                                        <td>66.274,81</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patronato Municipal de Turismo</td>
+                                        <td>Armisen, Inmaculada</td>
+                                        <td>61.891,76</td>
+                                        <td>5.057,64</td>
+                                        <td>13,55</td>
+                                        <td>66.962,95</td>
+                                        <td>0,00</td>
+                                        <td>66.962,95</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patronato Municipal de Artes Escénicas e Imagen</td>
+                                        <td>Campos Lozano, Rafael</td>
+                                        <td>59.616,48</td>
+                                        <td>3.921,96</td>
+                                        <td>0,00</td>
+                                        <td>63.538,44</td>
+                                        <td>0,00</td>
+                                        <td>63.538,44</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IMEFEZ</td>
+                                        <td>Gómez Gámez, Alfonso</td>
+                                        <td>64.349,46</td>
+                                        <td>1.724,00</td>
+                                        <td>0,00</td>
+                                        <td>66.073,46</td>
+                                        <td>0,00</td>
+                                        <td>66.073,46</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Cultural</td>
+                                        <td>Vazquez Casabona, Juan José</td>
+                                        <td>59.999,94</td>
+                                        <td>3.737,84</td>
+                                        <td>4.185,60</td>
+                                        <td>67.923,38</td>
+                                        <td>4.095,41</td>
+                                        <td>72.018,79</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Deporte</td>
+                                        <td>Martín Espíldora, José Antonio</td>
+                                        <td>65.604,28</td>
+                                        <td>5.848,22</td>
+                                        <td>13,55</td>
+                                        <td>71.466,05</td>
+                                        <td>4.839,90</td>
+                                        <td>76.305,95</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zaragoza Vivienda</td>
+                                        <td>Torguet Escribano, Nardo</td>
+                                        <td>79.773,23</td>
+                                        <td>5.971,00</td>
+                                        <td>0,00</td>
+                                        <td>85.744,23</td>
+                                        <td>2.233,86</td>
+                                        <td>87.978,09</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Audiorama</td>
+                                        <td>Tapia Azagra, Miguel Ángel</td>
+                                        <td>64.908,48</td>
+                                        <td>6.887,30</td>
+                                        <td>665,40</td>
+                                        <td>72.461,18</td>
+                                        <td>2.978,48</td>
+                                        <td>75.439,66</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ecociudad</td>
+                                        <td>Portero Urdaneta, Miguel</td>
+                                        <td>81.691,44</td>
+                                        <td>6.208,58</td>
+                                        <td>0,00</td>
+                                        <td>87.900,02</td>
+                                        <td>3.350,79</td>
+                                        <td>91.250,81</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ZGZ@desarrolloExpo</td>
+                                        <td>Ipas Garros, Alberto</td>
+                                        <td>64.236,06</td>
+                                        <td>0,00</td>
+                                        <td>0,00</td>
+                                        <td>64.236,06</td>
+                                        <td>1.489,20</td>
+                                        <td>65.725,26</td>
+                                    </tr>
+                                </table>
+                                <h3>Leyenda</h3>
+                                <ul>
+                                    <li>Patronato Municipal de Turismo: (1) Gratificación por Permanencia</li>
+                                    <li>Zaragoza Cultural: (1) Atrasos de Antigüedad, Ayuda Médica y Gratificación por
+                                        Permanencia.
+                                    </li>
+                                    <li>Zaragoza Deporte: (1) Gratificación por Permanencia</li>
+                                    <li>AUDIORAMA: (1) Plus por Jornada Partida</li>
+                                </ul>
+                            </div>
+                            <h2 class="tab-title" data-toggle="collapse" data-target="#eventual" aria-expanded="false">
+                                Eventual
+                            </h2>
+                            <div role="tabpanel" sede:class="tab-pane active" id="eventual">
+                                <table class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th>PUESTO DE TRABAJO</th>
+                                        <th>RETRIBUCION 2017 (14 PAGAS)</th>
+                                        <th>RETRIBUCION 2016 (14 PAGAS)</th>
+                                        <th>RETRIBUCION 2015 (14 PAGAS)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Directora de Comunicación</td>
+                                        <td>46.050,9</td>
+                                        <td>45.594,84</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asesor de Alcaldía y Gobierno Municipal</td>
+                                        <td>45.286,36</td>
+                                        <td>44.837,93</td>
+                                        <td>44.393,86</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Técnico de Comunicación</td>
+                                        <td>45.286,36</td>
+                                        <td>44.837,93</td>
+                                        <td>44.393,86</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asesor Técnico de Grupo Municipal</td>
+                                        <td>45286,36</td>
+                                        <td>44.837,93</td>
+                                        <td>44.393,86</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asesor de Grupo Municipal</td>
+                                        <td>37.689,26</td>
+                                        <td>37.316,18</td>
+                                        <td>36.946,70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Técnico Medio de Grupo Municipal</td>
+                                        <td>34.078,1</td>
+                                        <td>33.406,30</td>
+                                        <td>33.740,46</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Administrativo de Grupo Municipal</td>
+                                        <td>28.762,3</td>
+                                        <td>28.477,60</td>
+                                        <td>28.195,49</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+
+    </body>
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- <param name="ConversionPattern" value="%d %-5p %-17c{2}:%L %3x - %m%n" />-->
+			<param name="ConversionPattern" value="[%p] %m %-17c{2}:%L %3x %d%n" />
+		</layout>
+	</appender>
+	
+	<!-- Application Loggers -->
+	<logger name="org.sede">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="error" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+	<logger name="com.geoslab">
+		<level value="fatal" />
+	</logger>
+	<logger name="org.geotools">
+		<level value="fatal" />
+	</logger>
+	<logger name="iaaa.csct">
+		<level value="fatal" />
+	</logger>
+	<logger name="org.springframework.web">
+		<level value="warn" />
+	</logger>
+	<logger name="org.hibernate.SQL">
+		<level value="debug" />
+	</logger>
+	<logger name="org.hibernate.type">
+		<level value="error" /><!--error Si lo ponemos como trace podemos ver los parámetros pasados a la bbdd -->
+	</logger>
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>

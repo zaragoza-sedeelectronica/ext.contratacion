@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Formulario'" keywords="sede,web,formulario" />
+    <link rel="stylesheet" th:if="${registro.statusCode.value() == 200 } and ${registro.body.css}" th:href="${registro.body.css}" />
+    <style type="text/css">
+        .form-signin {
+            max-width: 380px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+                  box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div class="form-signin"  th:if="${registro.statusCode.value() == 200 }">
+        	<form method="post" th:action="@{/servicio/formulario/{id}/edit(id=${registro.body.id})}" class="form-horizontal">
+                <th:block th:if="${showForm}">
+                    <label for="phone" class="sr-only">Teléfono móvil</label>
+                    <input type="phone" id="movil" name="movil" class="form-control" placeholder="Teléfono móvil" required="required" autofocus="autofocus" />
+                    <label for="inputPassword" class="sr-only">Código</label>
+                    <input type="password" name="code" class="form-control" placeholder="Código" required="required" />
+                    <button class="btn btn-primary btn-block" type="submit">Continuar</button>
+                </th:block>
+                <th:block th:if="${showFormToken}">
+                    <label for="accesscode" class="sr-only">Código</label>
+                    <input type="hidden" id="movil" name="movil" th:value="${mobile}"/>
+                    <input type="password" id="accesscode" name="accesscode" class="form-control" placeholder="Código" required="required" autofocus="autofocus" />
+                    <button class="btn btn-primary btn-block" type="submit">Continuar</button>
+                </th:block>
+            </form>
+        </div>
+    </sede:content>
+    
+</body>
+
+</html>

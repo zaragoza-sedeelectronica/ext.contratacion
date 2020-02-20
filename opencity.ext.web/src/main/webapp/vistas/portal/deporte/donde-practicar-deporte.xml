@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Dónde practicar deporte"/>
+</head>
+
+<body>
+    <sede:content>
+
+	<form method="get" action="/sede/portal/derechos-sociales/deporte/servicio/equipamiento/search">
+        <fieldset>
+            <legend>Consulta</legend>
+                <div class="form-group">
+                	<input type="hidden" name="tema" value="10"/>
+                    <label class="col-xs-4 control-label" for="descriptionContains">Deporte</label>
+                    <div class="col-xs-8">
+                        <select class="form-control" id="descriptionContains" name="descriptionContains"><option value="" selected="selected">Seleccione un Deporte</option><option value="piscina">Acuaerobic</option><option value="atletismo">Atletismo</option><option value="badminton">Badminton</option><option value="bailes de sal?n">Bailes de Salón</option><option value="baloncesto">Baloncesto</option><option value="balonmano">Balonmano</option><option value="velodromo">Ciclismo</option><option value="danza-jazz">Danza-Jazz</option><option value="rocodromo">Escalada</option><option value="esgrima">Esgrima</option><option value="fitness">Fitness</option><option value="fronton">Frontenis</option><option value="futbol sala">Fútbol Sala</option><option value="gimnasia-deportiva">Gimnasia Deportiva</option><option value="gimnasia-r?tmica">Gimnasia Rítmica</option><option value="gimnasia-adultos">Gimnasia Adultos</option><option value="gimnasia-tercera">Gimnasia Tercera Edad</option><option value="hockey">Hockey</option><option value="hockey patines">Hockey Patines</option><option value="gimnasio">Judo</option><option value="gimnasio">Kárate</option><option value="piscina">Natación</option><option value="padel">Padel</option><option value="patinaje">Patinaje</option><option value="fronton">Pelota</option><option value="spining">Spining</option><option value="gimnasio">Tai-Chi</option><option value="tenis">Tenis</option><option value="tenis de mesa">Tenis de Mesa</option><option value="voleibol">Voleibol</option><option value="yoga">Yoga</option><option value="playa">Voley Playa</option><option value="rugby">Rugby</option><option value="football americano">Football Americano</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="portal.junta.id">Junta:</label>
+                    <div class="col-xs-8">
+                        <select id="portal.junta.id" name="portal.junta.id" class="form-control">
+                        	<option value="">Seleccione una junta</option>
+                        	<option value="1">Junta Municipal Actur-Rey Fernando</option>
+							<option value="12">Junta Municipal Casablanca</option>
+							<option value="3">Junta Municipal Casco Histórico</option>
+							<option value="4">Junta Municipal Centro</option>
+							<option value="5">Junta Municipal Delicias</option>
+							<option value="6">Junta Municipal El Rabal</option>
+							<option value="2">Junta Municipal La Almozara</option>
+							<option value="7">Junta Municipal Las Fuentes</option>
+							<option value="19">Junta Municipal Miralbueno</option>
+							<option value="8">Junta Municipal Oliver-Valdefierro</option>
+							<option value="9">Junta Municipal San José</option>
+							<option value="13">Junta Municipal Santa Isabel</option>
+							<option value="30">Junta Municipal Sur</option>
+							<option value="10">Junta Municipal Torrero</option>
+							<option value="11">Junta Municipal Universidad</option>
+							<option value="14">Junta Vecinal Alfocea</option>
+							<option value="16">Junta Vecinal Casetas</option>
+							<option value="17">Junta Vecinal Garrapinillos</option>
+							<option value="18">Junta Vecinal Juslibol-El Zorongo</option>
+							<option value="15">Junta Vecinal La Cartuja Baja</option>
+							<option value="20">Junta Vecinal Montañana</option>
+							<option value="21">Junta Vecinal Monzalbarba</option>
+							<option value="22">Junta Vecinal Movera</option>
+							<option value="23">Junta Vecinal Peñaflor</option>
+							<option value="24">Junta Vecinal San Gregorio</option>
+							<option value="25">Junta Vecinal San Juan Mozarrifar</option>
+							<option value="26">Junta Vecinal Torrecilla de Valmadrid</option>
+							<option value="27">Junta Vecinal Venta del Olivar</option>
+							<option value="29">Junta Vecinal Villarrapa</option>
+						</select>
+
+                    </div>
+                </div>
+            <!-- <div class="form-group"> -->
+                <div class="text-right">
+                    <input type="submit" value="Consultar" class="boton btn btn-primary" />
+                </div>
+            <!-- </div> -->
+        </fieldset>
+    </form>
+	</sede:content>
+</body>
+</html>

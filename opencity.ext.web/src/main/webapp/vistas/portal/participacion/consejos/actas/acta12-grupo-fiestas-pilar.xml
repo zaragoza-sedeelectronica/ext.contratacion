@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Grupo de Trabajo de Venta Ambulante" description=""
+                   author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Tue Oct 02 00:00:00 CET 2018"
+                   keywords="Gobierno Abierto, participación, consejos sectoriales, consejo de la ciudad, Zaragoza, open goverment, city council">
+        </sede:meta>
+        <style>
+            body {
+            padding-top: 57px;
+            }
+
+            <!--CSS Index-->
+
+            .titulo-procesos {}
+
+            .titulo-procesos h2,
+            .procesos h2{
+            color: #e83437 !important;
+            font-size: 42px !important;
+            }
+
+            .titulo-procesos h2 small,
+            .titulo-procesos h2 span,
+            .procesos h2 small,
+            .procesos h2 span {
+            color: #000000;
+            }
+
+            .ancho {
+            padding: 30px 0;
+            width: 100%;
+            }
+
+            .radius {
+            border-radius: 10px;
+            }
+
+            .ancho .fnd-blanco {
+            margin-bottom: 20px;
+            }
+
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: 0px;
+            font-size: 28px;
+            }
+
+            .menu-consejos li.active a,
+            .nav-tabs>li.active>a:focus{
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            .margin-t3em {
+            margin-top: 0 !important;
+            padding-top: 3em !important;
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+            .fondo-dibujo {
+            background-image:
+            url('/cont/vistas/portal/participacion/img/ConsejoCiudad/imagCabecera_ConsejoCiudad.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 200px;
+            }
+
+            .container-fluid {
+            padding: 0;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+
+            <div class="">
+                <div class="container text-left margin-auto nomargin titulo-procesos fondo-dibujo">
+                    <h2 class="text-right">
+                        Grupos de Trabajo
+                    </h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6">
+                            <!--/*<p class="text-right">Texto breve de bienvenida o<br/>presentación del Portal Procesos
+                                <br/>
+                                Participativos
+                            </p>*/-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container fnd-gris-claro ancho">
+                <div class="container-fluid">
+                    <ul class="nav menu fnd-blanco radius menu-consejos" role="tablist">
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/"
+                               style="border-radius: 10px 0 0 10px; border-right: solid 2px #000000;">Consejo de la
+                                Ciudad
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/consejos-sectoriales"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Consejos
+                                Sectoriales
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 active text-center">
+                            <a href="/sede/portal/participacion/consejos/grupos-trabajo"
+                               style="border-radius: 0 10px 10px 0;">Grupos de Trabajo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="container fnd-blanco radius">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--/*<a class="btn btn-primary pull-right margin-t1em margin-b0em" href="index">Consejo de
+                                Ciudad
+                            </a>
+                            <a class="btn btn-primary pull-right margin-t1em margin-b0em margin-r1em"
+                               href="grupos-trabajo">Grupos de Trabajo
+                            </a>*/-->
+                            <h2>Grupo de Trabajo
+                                <strong>Fiestas del Pilar</strong>
+                            </h2>
+                            <hr class="sm color-ayto"/>
+                            <ul class="list-inline navbar-left submenu">
+                                <li>
+                                    <a class="btn btn-default" href="#Agenda">Agenda</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-default" href="#composicion">Composición</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-default" href="#reuniones">Reuniones</a>
+                                </li>
+                                <!--/*<li><a class="btn btn-default" href="#Documentación">Documentación</a></li>*/-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Acta de la 12ª reunión del grupo de trabajo</h3>
+                            <hr class="sm"/>
+
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-9">
+                                <h4>Fecha y lugar 
+                                </h4>
+                                <p>17 de Septiembre de 2018, a las 19,00 horas, en la Salón de
+Recepciones del Excmo. Ayuntamiento de Zaragoza (Plaza del Pilar, 18, 2ª
+Planta)</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="sm"/>
+
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-9">
+                                <h4>Asistentes
+                                </h4>
+<ul>
+<li>D. Fernando Rivarés Esco.- Consejero del Área de Economía y Cultura</li>
+
+<li>Dª Sara Fernández Escuer.- Grupo Municipal Ciudadanos C's</li><li>
+D. Enrique Collados Mateo.- Grupo Municipal Popular</li><li>
+Dª María Dolores Ranera Gómez.- Grupo Municipal PSOE</li><li>
+Dª Maribel Martínez Alpuente.- Grupo Municipal Chunta Aragonesista</li><li>
+Dª Julia Langa Andrés y D. Daniel Portero.- Unión Vecinal Cesaraugusta</li><li>
+Dª Patricia Gascón y Da Pilar Moreno.- Confederación Coordinadora de Entidades
+para la Defensa de Personas con discapacidad física y orgánica de Aragón
+COCEMFE Zaragoza y CERMI ARAGÓN</li><li>
+D. Francisco Castillo González.- Asociación Cultural Royo del Rabal y AA.VV. Tío
+Jorge del Arrabal</li><li>
+D. Raúl Gascón Calavia.- Federación de Asociaciones de Barrios de Zaragoza
+FABZ</li><li>
+D. Pedro Martínez Calvo.- Escuela y Despensa</li><li>
+D. Alfredo Marquina (Secretario), Da Eva Casado, D. Alex Marquina y D. Alberto
+Otero (Vocales) y D. David Martínez y Da Inma Serrano (Peña El Brabán).-
+Federación Interpeñas de Zaragoza</li><li>
+D. Pascual Callejero Franco.- Federación de Empresarios de Comercio ECOS</li><li>
+Dª Azucena Gimeno Nasarre.- Asociación de Empresas de Teatro Aragonés
+ASEMPTAR</li><li>
+D. José María Arilla Beguería.- Federación de Casas Regionales de Aragón</li><li>
+Dª Isabel Palacín Algas.- Secretaria Mesa de la Música (Consejo de Cultura de
+Zaragoza)</li><li>
+Dª Carmen Tricas Moro.- Asociación Celiaca Aragonesa ACA</li><li>
+D. Sergio Muñoz López.- Instituto de Ciencia e Investigación Juvenil de Aragón
+ICIJA</li><li>
+D. Francisco Blasco.- Federación de Folklore FFAMA (Grupo Jota Royo del Rabal)</li><li>
+D. Saúl Esclarín Serrano.- Director General de Cultura y Director-Gerente de la
+Sociedad Municipal Zaragoza Cultural, S.A.U.</li><li>
+Dª Sonia Sin Villanova, D. Víctor Domeque Baguena y Da María
+Jesús Gregorio Zarroca, Técnicos y Técnicas de la Sociedad Municipal Zaragoza
+Cultural, S.A.U.</li><li>
+Dª Carmen Giménez.- Técnica Patronato de Turismo de Zaragoza</li><li>
+Dª Rosa Ma Bleda Hernández.- Jefa Sección Consejo de Ciudad (Oficina Técnica
+del Área de Participación, Transparencia y Gobierno Abierto)</li>
+</ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="sm"/>
+
+                            <div class="col-md-3">
+<h4>
+Punto 1º.- Avance Programa Fiestas del Pilar 2018.</h4>
+
+                            </div>
+                            <div class="col-md-9">
+<p>El Sr. Consejero de Economía y Cultura da la bienvenida y comienza la reunión
+atendiendo al punto único del orden del día:</p>
+
+<p>Relativo a ello informa de lo siguiente: se trata de un Pilar cultural, basado en la
+cultura esencialmente, dado que contempla el programa denominado “Festival de
+Festivales”, unos festivales que se encadenan unos con otros, de los recientes o los más
+antiguos y donde se recoge lo más destacado de la “ciudad cultural”. - La campaña “No es
+No”, no solo estará presente en todos los espacios, sino que además crece con el lema.
+Se instalarán seis puntos neurálgicos de color violeta con el objeto de informar acerca de
+las agresiones sexistas y la violencia machista. - Se pierde el denominado “Parking Norte”
+pero crecen nuevos espacios y así los relaciona. - Novedad en “Río y Juego”, el espacio
+infantil por excelencia, se convierte por la noche en un lugar para acoger adultos con
+niños. - Pilares estratégicos: con la descentralización en Barrios como Oliver, que cumple
+100 años; Vadorrey; Jardín de Tosos con los vermús matinales y varios escenarios. -
+Valdespartera se convierte en espacio ZITY, con seis plazas musicales. - En Plaza del
+Pilar se celebrarán los grandes conciertos contratados por los medios de comunicación. –
+El Pregón presenta una temática con siete pregoneras de honor y la cabalgata mostrará
+una puesta en femenino articulada a través de cuatro ejes temáticos: la mitología, las
+ciencias y las humanidades, el legado femenino, las artes, retos y futuro una carrera de
+fondo. Novedades: ampliación Zona Joven con zonas diferenciadas y temáticas diferentes.
+- Un espacio nuevo en calle Delicias, se trata de un vehículo que presenta distintas
+actividades, en colaboración con la AA. VV. Manuel Viola.</p>
+<p>Informa que se está trabajando con un espacio infantil que no puede revelar en
+este momento.</p><p>
+Explica que si la Federación Interpeñas desea participar, se trabajará con
+actividades en dos distritos, donde cada peña tenga un espacio de convivencia en su
+barrio, espacio, que por otro lado no precisa de grandes estructuras.</p><p>
+Indica que desaparece el recinto de Parking Norte, que tenía diversas virtudes
+pero no ocurrirá nada porque se prescinda de él. Informa de que en noviembre pasado se
+solicitó al Gobierno de Aragón una ampliación para este año y que en diciembre se recibe
+respuesta pero la concesión demanial llega el 11 de junio del siguiente año, con unas
+fechas muy ajustadas para la convocatoria del concurso, que posteriormente se adjudica a
+Ferias Lanzuela y al día siguiente, esta empresa renuncia a la concesión. Aporta a la
+reunión los informes jurídicos en donde se indica que el concursante número dos no
+puede pasar a ser adjudicatario e informa de que no puede haber lucro, dado que todo lo
+ingresado tiene que ser reinvertido. Señala que el apartado de la seguridad es de suma
+importancia, según lo que establece el Gobierno de Aragón y que requiere de un montaje
+previo a los 10 días de antelación a la inauguración de la actividad.</p><p>
+Por último informa que el programa denitivo lo presentará el Alcalde el
+miércoles 19 de septiembre.</p><p>
+Seguidamente, comienza el turno de intervenciones:</p><p>
+<strong>2. FEDERACIÓN INTERPEÑAS</strong>: el Sr. Marquina explica la situación acaecida
+recientemente, indicando que su entidad decidió presentarse al concurso del espacio de
+Valdespartera, pero que no obtuvieron la concesión. - Respecto a la nueva propuesta del
+Consejero, relativa a los espacios de convivencia en los barrios, manifiesta que de
+momento desconocen las condiciones, indicando que se precisaría una mayor explicación
+y mantener nuevas conversaciones. – En lo que afecta a la situación de las Peñas,
+informa de que algunas de éstas han negociado directamente, fruto de lo cuál unas cinco,
+se van al denominado espacio ZITY de Valdespartera. – Manifiesta que no tiene problema
+en dimitir, pero que no obstante, le da pena la situación acaecida con las Peñas,
+esperando ser capaz de tirar para adelante con la situación actual. Indica que de todos
+modos, la concesionaria del espacio ZITY no manifiesta interés de acoger a todas las
+Peñas. Refiere al mismo y a los costes con la empresa del Sr. Gorrachategui, e indica que
+se debe de tener en cuenta la capacidad de aforo, unas 18.000 personas como máximo, si
+se da la coyuntura de que sean 25.000, existirán problemas de seguridad. – Informa de
+que con el objeto de solucionar la situación, la Federación Interpeñas tiene capacidad de
+instalar una carpa de manera gratuita. Lamenta la situación a la que se ha llegado,
+considerando que supone un despropósito tras otro, situación que conllevaría a la
+desaparición de más de una Peña. Por último, indica que se está a tiempo de solucionarlo
+pero necesitan ayudad municipal.</p><p>
+El Sr. Consejero responde diciendo que los asuntos internos no forman parte de
+este foro, que éstos deberán tratarse en el núcleo de la Federación Interpeñas. – Alega
+que desde el Ayuntamiento no se va a firmar ningún tipo de documento que no tenga el
+respaldo de los Servicios Jurídicos.- Argumenta que se ha mantenido reuniones periódicas
+con la entidad, informándoles de que si aportan la documentación pertinente, se podrá
+valorar la concesión oportuna, pero que se procederá según lo aconsejado y recogido en
+los pertinentes informes jurídicos. - Cuando se autoriza a una entidad sin ánimo de lucro
+se debe de cumplir con los plazos, permisos de ingeniería, planes de autoprotección,
+riesgos laborales, etc... Además, todo lo ingresado durante el periodo festivo debe de
+reinvertirse en las propias Fiestas del Pilar. – Indica que si lo solicitado a la entidad es
+aportado, adecuadamente, a lo largo de estos días, lo planteará. – Informa de que el
+recinto del Parking Norte, es un espacio vallado y que por tanto se debe cumplir con los
+permisos que requiere la ley y la propia normativa del Gobierno de Aragón. Por último,
+insta a la Federación a que si ésta dispone de un proyecto, que lo presente y si
+jurídicamente se puede admitir, adelante, pero indica que sin ese aval jurídico no se
+formalizará nada.</p><p>
+En colación a los espacios y recintos que congregan a multitud de personas,
+indica que la situación del denominado “Botellón”, se viene produciendo de manera
+continua durante todos los fines de semana, siendo el de las Fiestas del Pilar el más
+grande e informa de que la ciudad lleva años trabajando y buscando soluciones para
+resolver este problema social, incluso antes de 2015.</p><p>
+Aludiendo al espacio de la Federación Interpeñas, interviene el Sr. Marquina
+diciendo que tienen previsto presentar un proyecto mañana mismo e informa de que el
+Presidente de la entidad, el Sr. Cantera está manteniendo una reunión con las entidades
+peñistas, paralelamente a la celebración de ésta. Indica de que se trataría de un espacio,
+sin ánimo de lucro, pues así será si este año hay que plantearlo de este modo. Se
+presentará un proyecto con una carpa para 10.000 personas y para la programación, que
+ya se cuenta con tiempos muy ajustados, se tirará de los “amigos”. - Manifiesta que no
+.</p><p>
+3existe interés en prevalicar e informa de que han mantenido conversaciones con el
+Gobierno de Aragón, considerando que el carácter de excepcionalidad solamente lo puede
+decretar el Gobierno de Aragón. Concluye diciendo que aunque éste no sea el foro
+adecuado, considera debía exponerlo en él.</p><p>
+<strong>FEDERACIÓN DE CASAS REGIONALES DE ARAGÓN</strong>: interviene el Sr.
+Arilla informando acerca de las actividades que la entidad que representa organiza
+directamente para las Fiestas del Pilar: Feria de Gastronomía y Cultura y la Ofrenda de
+Frutos del día 13 de octubre, instando a que se recoja en el programa la Feria de
+Gastronomía, lo que confirma el Sr. Consejero que ya se encuentran contempladas ambas
+actividades en el mismo.- Igualmente, informa que la propuesta realizada por la Asociación
+Celiaca de Aragón, instando a que se incluyera productos para celiacos en las casetas
+instaladas en los aledaños de Po de la Independencia y Plaza Aragón ha sido
+contemplada, fruto de los acuerdos adoptados en la reunión celebrada entre ambas
+entidades.- Informa que está previsto que en el escenario instalado en Plaza Aragón este
+Pilar actúen hasta quince grupos folklóricos de distintas Comunidades Autónomas. – Respecto a
+la Ofrenda de Frutos, informa que tras lo observado el año anterior, en lo que afecta a la gestión
+del tiempo de los grupos que desfilan, y dado que éste se gestionó adecuadamente por la buena
+incorporación de los diferentes grupos, la Federación ha tomado la decisión de que para esta
+Ofrenda de Frutos participen diez más, haciendo así un total de setenta y tres, lo que supone un
+incremento de productos benéficos de hasta una tonelada más.</p><p>
+<strong>FEDERACIÓN DE ASOCIACIONES DE BARRIOS DE ZARAGOZA:</strong>
+el Sr. Gascón lamenta que no puedan participar en las actividades de los Barrios, que
+muchas de las entidades vecinales celebran pequeños actos y pregunta si todavía se
+puede incluir éstas en el programa de las Fiestas. Le responde la Sra. Sin diciendo que
+éste se encuentra ya cerrado pero que existe la posibilidad de su inclusión en la web
+municipal como soporte, al cual tienen acceso todos los medios de comunicación e
+informa de que para futuras ocasiones se solicitará previamente.</p><p>
+<strong>ESCUELA Y DESPENSA</strong>: el Sr. Martínez plantea las siguientes cuestiones: -
+Pregunta sobre el horario de comienzo de la Ofrenda de Flores. Le responde el Sr.
+Consejero que este año comenzará a las 6:45. - Refiere a los planteamientos y la temática
+de la Ofrenda, a que las flores se mantengan durante unos días más. El Sr. Consejero
+responde que ello dependerá siempre de las condiciones climatológicas.- Sugiere que la
+Ofrenda también pueda celebrarse por la tarde, es decir, que se realicen actuaciones en el
+escenario instalado en Plaza del Pilar mientras se está todavía desfilando, dado que éstas
+finalizan a las 17:00 h., generando con ello una paralización de la misma. Explica la Sra.
+Sin que el desfile de oferentes se detiene mientras se celebran las actuaciones de Jota. –
+Manifiesta su enhorabuena por la exposición que se muestra en el Centro de Historias y
+en el Torreón Fortea dedicada a las Fiestas del Pilar, aunque precisa, no existe demasiada
+representación en lo que respecta a la Ofrenda de Flores. El Sr. Consejero responde que
+existe una sala entera donde se narra toda su historia. – Su Asociación piensa que es
+necesario cambiar el tipo de ocio. Manifiesta que les agrada el tema de las Fiestas en los
+barrios pero se debe de respetar el descanso nocturno de los vecinos. - Les preocupa el
+tema de las zonas saturadas, dado que se concentra mucho público y el ocio se dirige
+hacia ellas. – Responde el Sr. Consejero que se está trabajando con los centros escolares
+este aspecto y que es importante que forme parte de los planes generales de educación.
+Asimismo, informa de que en el espacio ZITY se destinará una zona para el disfrute de padres e hijos de manera conjunta, sin zonas segregadas y con identificación para poder
+servir alcohol.</p><p>
+<strong>ASOCIACIÓN CELIACA ARAGONESA</strong>: la Sra. Tricas expresa su
+agradecimiento y felicitación acerca de la iniciativa contemplada por la Federación de
+Casas Regionales y manifiesta que su Asociación se siente especialmente ilusionada por
+esta iniciativa, con esperanzas de que el celiaco se pueda mover por la Plaza Aragón y
+disfrutar de las casetas que allí se encuentran instaladas, sin riesgo alguno.</p><p>
+<strong>UNIÓN VECINAL CAESARAUGUSTA</strong>: interviene la Sra. Langa preguntando
+si se puede echar para atrás la decisión tomada por la empresa Ferias Lanzuela al haber
+comunicado que no acepta la propuesta de concesión de la licitación del Parking Norte, es
+decir, si resulta posible contemplar la oferta de concertar una propuesta con los otros tres
+licitadores. A lo que responde el Sr. Consejero que ello dependerá de lo que emitan los
+Servicios Jurídicos en sus informes, que no lo permiten, indica.
+El Sr. Portero explica que su entidad se encuentra en el distrito centro de la
+ciudad, donde se desarrollan los eventos más importantes de las fiestas, a pesar de eso,
+su entidad no tiene presupuesto para las mismas. Responde el Sr. Consejero que se trata
+de llevar a cabo las actividades de descentralización al tratarse como un barrio más.</p><p>
+<strong>GRUPO MUNICIPAL CHUNTA ARAGONESISTA</strong>: la Sra. Martínez indica que
+estaría bien buscar un espacio para el futuro, que permita la celebración de las actividades
+que organiza la Federación Interpeñas durante las Fiestas del Pilar, ya que se trata de un
+colectivo muy importante para la Ciudad, que se encuentra dentro del tejido social y que
+además es activo. El Sr. Consejero informa de que ello ya se ha hablado y que considera
+que efectivamente éste podría existir, pero que si tiene que ser una adjudicación directa
+sin ánimo de lucro, ello creará discrepancias. Explica que cada cuatro años se produce
+ese mismo dilema e indica que no dejaría de ser una competencia directa con los
+concursantes que participan. Las peñas siempre llevan aparejada una empresa hostelera.
+De ahí el problema planteado anteriormente, el proyecto sin ánimo de lucro. Lo ideal sería
+crear ese espacio para las peñas pero está el tema de la hostelería.</p><p>
+<strong>CERMI ARAGÓN</strong>: la Sra. Moreno, representante de las entidades que
+conforman la discapacidad, manifiesta su agradecimiento de que se haya establecido el
+protocolo de estabilidad que permite que los espacios sean accesibles a cualquier tipo de
+discapacidad, e indica que por su parte adquieren el compromiso de permanecer atentos a
+las posibles carencias que se produzcan de manera puntual, con el objeto de que éstas
+puedan solventarse lo más rápidamente posible. El Sr. Consejero informa de que existe un
+teléfono para informar de esas cuestiones.</p><p>
+Sin más asuntos que tratar ni más intervenciones, el Sr. Consejero da por
+finalizada la sesión, siendo las veinte horas y veinte dos minutos el día indicado supra.</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

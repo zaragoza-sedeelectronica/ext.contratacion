@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Calidad"
+                description="Información relativa a los compromisos de calidad que asume el Ayuntamiento de Zaragoza. Acceso a las cartas de servicios de las diferentes unidades del Ayuntamiento y otros documentos relacionados con la calidad. Descubra el marco estratégico de calidad, las certificaciones municipales obtenidas y los indicadores del servicio de suministro de agua. A través de Tu opinión Importa, la ciudadanía puede enviar sus sugerencias y observaciones."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, servicios públicos, cartas de servicios, certificación de calidad, documentación, suministro de agua, relación administración-administrado, servicio de quejas y sugerencias, council, city, Saragossa, Spain, local government, public services, customer charter, quality certifications, documentation, water supply, citizen-authority relations, complaints and suggestions service">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Calidad
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <sede:equipamiento id="7425" ocultos="tabs"></sede:equipamiento>
+
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

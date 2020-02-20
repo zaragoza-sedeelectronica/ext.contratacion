@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Titulando" description="descripcion" author="autor" keywords="sede,web" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Elementos en caché</h2>
+
+		<div th:each="registro : ${cache}">
+
+			<strong th:text="${registro.key}"/>
+			<div th:each="clave : ${registro.value}">
+				<th:block th:text="${clave}"/>
+			</div>
+		</div>
+
+    </sede:content>
+</body>
+
+</html>

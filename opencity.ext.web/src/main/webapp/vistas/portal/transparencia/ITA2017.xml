@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Indicadores Transparencia Internacional 2017" description="Transparencia " author="" last-modified="Tue Mar 25 00:00:00 CET 2017" keywords="ayuntamiento, ciudad, Zaragoza, España, transparencia, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Indicadores Transparencia Internacional 2017</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed table-bordered">
+                <caption>Criterios del Auditor</caption>
+                <tr>
+                    <th>Puntuación</th>
+                    <th>Criterios</th>
+                </tr>
+                <tr>
+                    <td>0 Puntos</td>
+                    <td> Se han dado como negativo porque no estaban publicados en la web, o estaban desactualizados, o bien su nivel de visibilidad o accesibilidad era difícil para un ciudadano medio</td>
+                </tr>
+                <tr>
+                    <td>0.5 Puntos</td>
+                    <td> Se han valorado parcialmente porque no recogían exactamente toda la información que se pedía en el indicador y/o su nivel de visibilidad o accesibilidad era difícil para un ciudadano medio y/o porque en su caso no estaban en formato reutilizable, si se pedía este requisito</td>
+                </tr>
+                <tr>
+                    <td>1 Punto</td>
+                    <td>Información correcta</td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed table-bordered">
+                <tr>
+                    <th scope="row" colspan="3">A) TRANSPARENCIA ACTIVA E INFORMACIÓN SOBRE LA CORPORACIÓN MUNICIPAL (21)</th>
+                </tr>
+                <tr>
+                    <th scope="row" colspan="3"> 1) Publicidad activa sobre cargos, personal y retribuciones del Ayuntamiento (8) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 1. Los datos biográficos del Alcalde/sa y de los concejales/as del Ayuntamiento, especificando como mínimo su(s) nombre(s) y apellidos, cargo, actual, foto, reseña biográfica -mínimo de cuatro líneas cada uno- o su CV, así como sus direcciones electrónicas. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudad/organizacion/alcalde/pedro-santisteve.htm">Biografía del Alcalde</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudad/organizacion/plenos/concejales.htm">Biografías de la Corporación Electa 2015-2019</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 2. La agenda institucional del Alcalde/sa, con indicación y el detalle de las actividades ya celebradas tanto como aquellas programadas para su próxima realización (fecha, hora, lugar, descripción de la actividad y principales participantes). </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/808">Agenda del Alcalde</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 3. Se publican de forma detallada e individualizada los gastos de viaje del Alcalde/sa, y de los demás cargos electos del Ayuntamiento. </td>
+                    <td>
+                        <p>Existe publicado el registro de Facturas donde se pueden encontrar las facturas relacionadas con los viajes de altos cargos.</p>
+                        <p> <a href="https://www.zaragoza.es/sede/servicio/transparencia/771">Registro de facturas</a></p>
+                        <p>Se puede buscar por servicio gestor "Alcaldía" y por proveedor.
+                            <br/> Ejemplo: <a href="https://www.zaragoza.es/ciudad/encasa/hacienda/detalleFactura_Facturas?id=125147">https://www.zaragoza.es/ciudad/encasa/hacienda/detalleFactura_Facturas?id=125147</a></p>
+                        <hr/>
+                        <p><strong>Nota:</strong>En estos momentos estamos trabajando en poder diferenciar las facturas que corresponden a los gastos realizados por cargos electos con respecto a los gastos del resto de personal y poder realizar una búsqueda exacta.</p>
+                    </td>
+                    <td>0.5 Puntos </td>
+                </tr>
+                <tr>
+                    <td> 4. La Relación de Puestos de Trabajo (RPT) del Ayuntamiento, así como la relación individualizada de cargos (puestos) de confianza o Personal eventual, y el importe individual o colectivo de sus retribuciones. </td>
+                    <td>
+                        <ul>
+                            <li>RPT: <a href="https://www.zaragoza.es/sede/servicio/transparencia/805">https://www.zaragoza.es/sede/servicio/transparencia/805</a></li>
+                            <li>Personal Eventual: <a href="https://www.zaragoza.es/sede/servicio/transparencia/791">https://www.zaragoza.es/sede/servicio/transparencia/791</a></li>
+                            <li>Retribuciones personal eventual: <a href="https://www.zaragoza.es/sede/servicio/transparencia/753">https://www.zaragoza.es/sede/servicio/transparencia/753</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 5. Los datos básicos de todos y cada uno de órganos descentralizados, entes instrumentales y/o sociedades municipales, con indicación detallada de su objeto social, así como los enlaces a las webs de los mismos (si el Ayuntamiento no tuviera estos organismos se indicará expresamente en la web y no puntuará como parte del índice). </td>
+                    <td>
+                        <ul>
+                            <li>Sociedades Municipales: <a href="https://www.zaragoza.es/sede/servicio/transparencia/799">https://www.zaragoza.es/sede/servicio/transparencia/799</a></li>
+                            <li>Organismos autónomos: <a href="https://www.zaragoza.es/sede/servicio/transparencia/800">https://www.zaragoza.es/sede/servicio/transparencia/800</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 6. La Relación de Puestos de Trabajo (RPT) o Plantillas de Personal de los órganos descentralizados, entes instrumentales y sociedades municipales al completo, indicándose la denominación de los puestos y las plazas de cada cargo de confianza en ellos existentes (si el Ayuntamiento no tuviera estos organismos se indicará expresamente en la web y no puntuará como parte del índice). </td>
+                    <td>
+                        <ul>
+                            <li>Sociedades Municipales: <a href="https://www.zaragoza.es/sede/servicio/transparencia/799">https://www.zaragoza.es/sede/servicio/transparencia/799</a></li>
+                            <li>Organismos autónomos: <a href="https://www.zaragoza.es/sede/servicio/transparencia/800">https://www.zaragoza.es/sede/servicio/transparencia/800</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 7. Las retribuciones percibidas por los altos cargos (al menos de todos los cargos electos y de los Directores Generales si los hay) del Ayuntamiento y de los máximos responsables de las Entidades participadas por el mismo.</td>
+                    <td>
+                        <ul>
+                            <li>Retribuciones: <a href="https://www.zaragoza.es/ciudad/organizacion/admonmunicipal/enlace/organizacion/retribuciones.htm">https://www.zaragoza.es/ciudad/organizacion/admonmunicipal/enlace/organizacion/retribuciones.htm</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 8. El Registro de Intereses de Actividades y de Bienes de los Altos cargos del Ayuntamiento. </td>
+                    <td>
+                        <ul>
+                            <li>Declaraciones anuales de bienes y actividades corporación: <a href="https://www.zaragoza.es/sede/servicio/transparencia/813">https://www.zaragoza.es/sede/servicio/transparencia/813</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 2) Publicidad activa sobre la planificación, organización y patrimonio del Ayuntamiento (6) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 9. Los planes y programas anuales y plurianuales (vg. la Agenda Local 21, y/o el Plan o mapa Estratégico) municipales en los que se fijan objetivos concretos, así como las actividades, medios y tiempo previsto para su consecución, y resultados o grado de consecución de objetivos obtenido. </td>
+                    <td>
+                        <ul>
+                            <li>Planes y mapas estratégicos: <a href="https://www.zaragoza.es/sede/servicio/transparencia/784">https://www.zaragoza.es/sede/servicio/transparencia/784</a></li>
+                            <li>Indicadores agenda 21: <a href="https://www.zaragoza.es/sede/servicio/transparencia/843">https://www.zaragoza.es/sede/servicio/transparencia/843</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 10. Un organigrama actualizado que permite comprender la estructura organizativa del ayuntamiento e identificar a las personas responsables de los diferentes órganos de gobierno y sus respectivas funciones, incluyendo en su caso las Juntas de Distrito o barrios, así como conocer sus relaciones de dependencia. </td>
+                    <td>
+                        <ol>
+                            <li><strong>Organigrama Administrativo</strong>
+                                <ul>
+                                    <li>Estructura pormenorizada del organigrama administrativo del Ayuntamiento de Zaragoza: <a href="https://www.zaragoza.es/sede/servicio/transparencia/801">https://www.zaragoza.es/sede/servicio/transparencia/801</a></li>
+                                    <li>Organigrama Administrativo del Servicio de Distritos :<a href="https://www.zaragoza.es/sede/servicio/organigrama/20298">https://www.zaragoza.es/sede/servicio/organigrama/20298</a></li>
+                                </ul>
+                            </li>
+                            <li><strong>Organigrama político:</strong>
+                                <ul>
+                                    <li><a href="https://www.zaragoza.es/ciudad/organizacion/gobiernozaragoza/gobierno_zaragoza.htm">Gobierno de Zaragoza</a></li>
+                                    <li><a href="https://www.zaragoza.es/ciudad/organizacion/plenos/concejales.htm">Pleno</a></li>
+                                    <li><a href="https://www.zaragoza.es/ciudad/organizacion/juntas-municipales.htm">Juntas Municipales</a></li>
+                                    <li><a href="https://www.zaragoza.es/ciudad/organizacion/juntas-vecinales.htm">Juntas Vecinales</a></li>
+                                    <li><a href="https://www.zaragoza.es/ciudad/organizacion/organismos-sociedades.htm?tab=sociedades">Sociedades Municipales</a></li>
+                                    <li><a href="https://www.zaragoza.es/ciudad/organizacion/organismos-sociedades.htm">Organismos autónomos</a></li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </td>
+                    <td>0 Puntos</td>
+                </tr>
+                <tr>
+                    <td> 11. Se publica la política o la forma de llevar a cabo la gestión, la conservación y la eliminación de los documentos y archivos del Ayuntamiento. </td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="https://www.zaragoza.es/sede/servicio/transparencia/1280">Gestión, conservación y eliminación de los documentos y archivos</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 12. Se publica la relación revisada y/o actualizada de Inmuebles (oficinas, locales, etc.), tanto propios como en régimen de arrendamiento, ocupados y/o adscritos al Ayuntamiento, indicando el correspondiente régimen en cada uno de ellos. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/762">Bienes inmuebles</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 13. La relación detallada de todos los vehículos oficiales (propios, alquilados, o cedidos) adscritos al Ayuntamiento (incluyendo en su caso los dedicados a servicios públicos) </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/764">Vehículos oficiales</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 14. El inventario actualizado de bienes y derechos del Ayuntamiento de cada uno de los tres últimos ejercicios cerrados. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/763/">Bienes muebles</a></li>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/762/">Bienes inmueble</a></li>
+                        </ul>
+                    </td>
+                    <td>0.5 Puntos</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 3) Publicidad activa sobre los órganos de gobierno municipales, informes y resoluciones judiciales (7) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 15. Existe y se publica el Código ético o de buen gobierno del Ayuntamiento (preferentemente adaptado al nuevo Código de buen gobierno local aprobado por unanimidad de los grupos políticos en la FEMP). </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/1180">Código de Buen Gobierno</a> </li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 16. Las órdenes del día previas de los Plenos Municipales. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudad/organizacion/plenos/activ_plenarias.htm">https://www.zaragoza.es/ciudad/organizacion/plenos/activ_plenarias.htm</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 17. Las actas íntegras de los Plenos Municipales. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudad/organizacion/plenos/activ_plenarias.htm">https://www.zaragoza.es/ciudad/organizacion/plenos/activ_plenarias.htm</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 18. Los acuerdos completos de las Juntas de Gobierno, y las Actas íntegras cuando actúen por delegación del Pleno. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudad/organizacion/gobiernozaragoza/enlace/organizacion/plenos/juntagobierno.htm">https://www.zaragoza.es/ciudad/organizacion/gobiernozaragoza/enlace/organizacion/plenos/juntagobierno.htm</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 19. Los archivos de audio (podcast) o de los vídeos de las sesiones de los plenos municipales. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/841">https://www.zaragoza.es/sede/servicio/transparencia/841</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 20. Las resoluciones judiciales (con un enlace a su contenido íntegro) que afecten al Ayuntamiento (en el orden contencioso, laboral, etc.) (Si no las ha habido, se indicará expresamente en la web y no puntuará como parte del índice) </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/782">Resoluciones Judiciales, Ayuntamiento de Zaragoza</a></li>
+                        </ul>
+                        <p>Existen dos productos relacionados:</p>
+                        <ol>
+                            <li><strong>Ayuntamiento de Zaragoza</strong>
+                                <p>Colección que recoge las sentencias y autos judiciales relacionadas con el Ayuntamiento de Zaragoza que existen en el repositorio de Jurisprudencia del poder judicial desde el año 2016
+                                    <br/> <a href="https://www.zaragoza.es/sede/portal/transparencia/sentencias">https://www.zaragoza.es/sede/portal/transparencia/sentencias</a></p>
+                            </li>
+                            <li><strong>Urbanismo:</strong>
+                                <p>Servicio que facilita el acceso Colección que recoge, de forma sistemática y secuencial desde 1986, las sentencias recaídas sobre temas urbanísticos de competencia municipal, dictadas por los Juzgados de lo Contencioso, Tribunal Superior de Justicia de Aragón (y Audiencia Territorial de Zaragoza) y Tribunal Supremo.
+                                    <br/>
+                                    <a href="https://www.zaragoza.es/ciudad/urbanismo/oficina/consulta_Jurisprudencia">https://www.zaragoza.es/ciudad/urbanismo/oficina/consulta_Jurisprudencia</a></p>
+                            </li>
+                        </ol>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 21. Las resoluciones de autorización o reconocimiento de la compatibilidad y las autorizaciones de ejercicio de la actividad privada a altos cargos (si no las hubiese habido, ello se publicará expresamente en la web). </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/813">Acceso a las declaraciones anuales de actividad y causas de posible incompatibilidad de los concejales</a></li>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/798">Acceso a las resoluciones de autorización y reconocimiento de compatibilidad</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> B) PÁGINA WEB, RELACIONES CON LOS CIUDADANOS Y LA SOCIEDAD, Y PARTICIPACIÓN CIUDADANA (15) </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> 1) Página web del Ayuntamiento y servicios municipales (8) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 22. Se ha implantado en la web del Ayuntamiento una sección específica en materia de transparencia, o bien el Ayuntamiento cuenta con un portal de transparencia enlazado a la propia web municipal. </td>
+                    <td><a href="/sede/servicio/transparencia/">Portal de Transparencia</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 23. La web (y en su caso el portal de transparencia del Ayuntamiento) cuenta con un buscador operativo y claramente visible. </td>
+                    <td>Sí </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 24. La web (y en su caso el portal de transparencia del Ayuntamiento) cuenta en su portada con un Mapa web que permite ver en un solo lugar la estructura de los contenidos incluidos en los mismos y sus accesos en hipervínculo. </td>
+                    <td>Sí </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 25. Se publica el catálogo general de servicios municipales, así como las sedes de los servicios y equipamientos de la correspondiente entidad, con dirección, horarios de atención al público y enlaces a sus páginas web y/o direcciones de correo electrónico. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/737">Equipamientos de la ciudad</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 26. Se publica el catálogo actualizado de los procedimientos administrativos a disposición del ciudadano, con indicación de su objeto, trámites, plazos, sentido del silencio administrativo, y en su caso formularios asociados, especificando los susceptibles de tramitación electrónica. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/745">Trámites y Servicios</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 27. Existe y se informa sobre una/s Carta/s de Servicios municipales, y del grado de cumplimiento de los compromisos establecidos en la/s mismas. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/746">Cartas de Servicio</a>
+                        <p>"La Política de calidad del ayuntamiento ha evolucionado de las cartas de Servicio a las certificaciones ISO donde el conseguir la certificación implica el cumplimiento de los compromisos establecidos Certificaciones</p>
+                    </td>
+                    <td>0.5 Puntos</td>
+                </tr>
+                <tr>
+                    <td> 28. Existe y se anuncia un Canal específico de denuncias para los ciudadanos.</td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/1340/">Acceso a la ficha donde se describe los diferentes servicios que facilitan a la ciudadanía comunicar al ayuntamientos sus quejas, sugerencias y denuncias.
+</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 29. Se informa en la web (y mediante redes sociales, en su caso) sobre incidencias actuales en la prestación de los servicios municipales. </td>
+                    <td>
+                        <ol>
+                            <li>Canales municipales donde se informa a la ciudadanía de las diferentes incidencias en la prestación de los servicios municipales: Tanto en Perfiles en las redes sociales del ayuntamiento en <a href="http://twitter.com/zaragoza_es">Twitter</a> y <a href="https://www.facebook.com/ayuntamientodezaragoza/">Facebook</a> como en la Sede Electrónica se ofrecen los siguientes servicios relacionados a incidencias:
+                                <ul>
+                                    <li><a href="/ciudad/noticias/">Noticias</a>.</li>
+                                    <li><a href="https://www.zaragoza.es/ciudad/listado_Incidencia?id=0">Cortes de agua</a>, <a href="https://www.zaragoza.es/ciudad/listado_Incidencia?id=1">Afecciones de tráfico</a>, difusión y cambios en eventos (cambios de fecha y ubicación).</li>
+                                    <li>Incidencias en la ciudad: <a href="https://www.zaragoza.es/ciudad/medioambiente/atmosfera/redconta/alertas_CalidadAire">Alertas meteorológicas</a>, <a href="https://www.zaragoza.es/ciudad/listado_Incidencia?id=2">afecciones en la vía pública</a>, cierres temporales de equipamientos municipales.</li>
+                                </ul>
+                            </li>
+                            <li>Canales municipales, donde la ciudadanía informa al ayuntamiento y a los demás ciudadanos de las diferentes incidencias en la prestación de los servicios municipales: Fichas detalle de eventos y equipamientos. Ejemplo: <a href="https://www.zaragoza.es/sede/servicio/equipamiento/936#new-comment">https://www.zaragoza.es/sede/servicio/equipamiento/936#new-comment</a></li>
+                        </ol>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 2) Participación ciudadana e información de interés para el ciudadano (7) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 30. Se publican en la web datos o información estadística sobre las consultas y sugerencias recibidas de ciudadanos u organizaciones. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/datos_Ticketing">Datos de uso</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 31. Se contempla en la web un espacio para que expresen sus opiniones y propuestas los Grupos políticos municipales. </td>
+                    <td>Cada grupo político tiene su espacio en la Sede Electrónica del ayuntamiento, se consensuaron los siguientes servicios:
+                        <ul>
+                            <li> Enlaces a las páginas de sus partidos</li>
+                            <li> Enlaces a sus perfiles en las redes sociales</li>
+                            <li>Servicio de noticias propias</li>
+                            <li>Agenda Institucional</li>
+                        </ul>
+                        <a href="https://www.zaragoza.es/sede/servicio/transparencia/1302">https://www.zaragoza.es/sede/servicio/transparencia/1302</a></td>
+                    <td>0.5 Puntos</td>
+                </tr>
+                <tr>
+                    <td> 32. Existe en la web el directorio de entidades y asociaciones de vecinos del municipio, y se contempla en la misma un espacio reservado para dichas Asociaciones. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/736">Censo de asociaciones</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 33. Existen en la web foros de discusión, o bien existen perfiles activos del ayuntamiento en las redes sociales. </td>
+                    <td>
+                        <ul>
+                            <li><a href="http://twitter.com/zaragoza_es">Twitter</a></li>
+                            <li><a href="https://www.facebook.com/ayuntamientodezaragoza/">Facebook</a></li>
+                            <li><a href="http://www.flickr.com/photos/zaragoza_es/sets/">Flickr</a></li>
+                            <li><a href="http://www.youtube.com/webzgz">Youtube</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 34. Existe y se publica en la web el conjunto de normas que establecen y regulan los procedimientos y órganos para que los vecinos puedan participar efectivamente en los asuntos de la vida pública local (Reglamento de Participación ciudadana y/o otros). </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudad/normativa/detalle_Normativa?id=109">Reglamento de Participación Ciudadana</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudad/normativa/detalle_Normativa?id=4443">Reglamento de Centros Cívicos</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudad/normativa/buscar_Normativa?&amp;temas_smultiple=Participaci%F3n%20Ciudadana">19 decretos y reglamentos relacionados con la Participación Ciudadana</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/encuestas.htm?tab=instrucciones">Encuesta ciudadana</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/encuestas.htm?tab=instrucciones">Decretos, Presupuestos participativos</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/">Plataforma de Gobierno Abierto</a> (Espacio donde la ciudadanía puede encontrar los procesos participativos tanto ya realizados como abiertos)</li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/enlace/gobierno-abierto/transparencia/listado_Normativa?titulo=&amp;codmateria=6">Ver toda normativa relacionada con Participación</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 35. Existen y se informa en la web sobre los Consejos municipales y/u otros canales de participación ciudadana. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/803">Órganos de Participación Ciudadana</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/">Portal Participar y Colaborar</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/">Portal Gobierno Abierto</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 36. La web informa sobre las vías para la participación ciudadana en la elaboración de los planes económicos, sobre políticas específicas y/o sobre presupuestos municipales. </td>
+                    <td>Desde Gobierno Abierto se puede acceder a:
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/">Presupuestos participativos</a></li>
+                            <li>Acceso a los planes estratégicos que se están elaborando con la ciudadanía (<a href="https://www.zaragoza.es/sede/portal/sectores/juventud/planjoven/">Plan Joven</a>, <a href="https://www.zaragoza.es/ciudad/igualdad/">Plan de Igualdad</a>, <a href="https://www.zaragoza.es/sede/portal/movilidad/plan-movilidad/">Plan Movilidad</a>)</li>
+                            <li><a href="https://www.zaragoza.es/ciudad/urbanismo/participativo/">Urbanismo participativo</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/">Procesos abiertos</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/buenas-practicas.htm">Procesos realizados</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> C) TRANSPARENCIA ECONÓMICO-FINANCIERA (11) </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> 1) Información contable y presupuestaria (6) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 37. Los Presupuestos del Ayuntamiento, con descripción de las principales partidas presupuestarias e información actualizada (al menos trimestralmente) sobre su estado de ejecución. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/756">Ejecución Presupuestaria</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 38. Las Modificaciones presupuestarias aprobadas por el Pleno municipal, o por la Junta de Gobierno, Alcalde o Concejal Delegado. </td>
+                    <td>
+                        <ul>
+                            <li> <a href="https://www.zaragoza.es/ciudad/encasa/hacienda/presupuestos/modificacion-creditos.htm">Modificación de Créditos</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 39. Los presupuestos de los órganos descentralizados, entes instrumentales y sociedades municipales (en un apartado específico de la web); (si el Ayuntamiento no tuviese estos organismos, se indicará expresamente en la web), y no puntuará como parte del índice. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/799">Sociedades Municipales</a></li>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/800">Organismos Autónomos</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 40. El indicador financiero de Autonomía fiscal: Derechos reconocidos netos de ingresos tributarios / Derechos reconocidos netos totales. </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/1100">Indicadores Presupuestarios</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 41. El indicador financiero de Capacidad o necesidad de financiación en términos de estabilidad presupuestaria (superávit o déficit) </td>
+                    <td> <a href="https://www.zaragoza.es/sede/servicio/transparencia/778">https://www.zaragoza.es/sede/servicio/transparencia/778</a>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 42. La entidad informa explícitamente en la web que publica sus cuentas en la Plataforma del Tribunal de Cuentas sobre Rendición de Cuentas (rendiciondecuentas.es) </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/757">https://www.zaragoza.es/sede/servicio/transparencia/757</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 2) Transparencia en los ingresos, gastos y deudas municipales (5) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 43. Se publican las Cuentas Anuales/Cuenta General del Ayuntamiento (Balance, Cuenta de Resultado económico-patrimonial, Memoria, y liquidación del Presupuesto). </td>
+                    <td> <a href="https://www.zaragoza.es/sede/servicio/transparencia/757">https://www.zaragoza.es/sede/servicio/transparencia/757</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 44. Se publican los indicadores: a) Ingresos fiscales por habitante (Ingresos tributarios/Nº habitantes); y b) Inversión por habitante (Obligaciones reconocidas netas (Capítulo VI y VII)/Nº habitantes). </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/1100">https://www.zaragoza.es/sede/servicio/transparencia/1100</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 45. Se publica la información sobre el Período medio de pago a proveedores de acuerdo con la normativa de estabilidad presupuestaria. </td>
+                    <td> <a href="https://www.zaragoza.es/ciudad/encasa/hacienda/periodopago_proveedores.htm">https://www.zaragoza.es/ciudad/encasa/hacienda/periodopago_proveedores.htm</a>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 46. Se publica el importe de la deuda pública municipal consolidada y su evolución en comparación con ejercicios anteriores. </td>
+                    <td><a href="
+https://www.zaragoza.es/sede/servicio/transparencia/761">https://www.zaragoza.es/sede/servicio/transparencia/761</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 47. Se publican los Informes de Auditoría de cuentas y los de Fiscalización por parte de los Órganos de control externo (Cámara o Tribunal de Cuentas), tanto los del Ayuntamiento como los de las entidades del sector público municipal. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/1200">https://www.zaragoza.es/sede/servicio/transparencia/1200</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> D) TRANSPARENCIA EN LAS CONTRATACIONES, CONVENIOS, SUBVENCIONES Y COSTES DE LOS SERVICIOS (12) </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> 1) Contrataciones (7) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 48. Se publican de forma inmediata cada uno de los Contratos (todos los contratos no menores) realizados por el Ayuntamiento, con indicación del objeto, el importe de licitación y de adjudicación, el procedimiento utilizado, los instrumentos a través de los que en su caso se haya publicitado, el número de licitadores participantes en cada uno y la identidad de los adjudicatarios. </td>
+                    <td><a href="https://www.zaragoza.es/contratos">Perfil del Contratante</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 49. Se publican periódicamente (como mínimo trimestralmente) los Contratos menores realizados por el Ayuntamiento con información detallada de sus importes y adjudicatarios (mediante un enlace directo y específico en la web) </td>
+                    <td><a href="https://www.zaragoza.es/contratos">Perfil del Contrante</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 50. Las modificaciones de los Contratos realizados por el Ayuntamiento (mediante un enlace directo y específico en la web). </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/767/">https://www.zaragoza.es/sede/servicio/transparencia/767/</a></td>
+                    <td>0.5 Puntos</td>
+                </tr>
+                <tr>
+                    <td> 51. Se informa sobre la composición, forma de designación y convocatorias de las Mesas de contratación. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/767/">https://www.zaragoza.es/sede/servicio/transparencia/767/</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 52. Se publican las Actas de las Mesas de Contratación (mediante un enlace directo y específico en la web para esta información). </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/767/">https://www.zaragoza.es/sede/servicio/transparencia/767/</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 53. Los datos estadísticos sobre el porcentaje en volumen presupuestario de los Contratos adjudicados a través de cada uno de los procedimientos previstos en la legislación de contratos del sector público. </td>
+                    <td><a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/indicadores.htm">https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/indicadores.htm</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 54. El Ayuntamiento informa explícitamente en la web de que publica sus contratos en la Plataforma de Contratación del Sector Público (PCSP) (directamente o por agregación en la Plataforma de contratación autonómica) </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/767/">https://www.zaragoza.es/sede/servicio/transparencia/767/</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 2) Convenios, encomiendas de gestión y subvenciones (3) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 55. La relación de convenios y encomiendas de gestión suscritos, con indicación de las partes firmantes, su objeto y en su caso las obligaciones económicas convenidas. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/749">https://www.zaragoza.es/sede/servicio/transparencia/749</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 56. La relación detallada de subvenciones y ayudas públicas concedidas por el Ayuntamiento, con indicación de su importe, objetivo o finalidad y beneficiarios. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/774">https://www.zaragoza.es/sede/servicio/transparencia/774</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 57. Se publican las asignaciones económicas que se conceden a cada uno de los Grupos políticos municipales. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/1223">https://www.zaragoza.es/sede/servicio/transparencia/1223</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 3) Suministradores y costes de los servicios (2) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 58. Se publica la lista y/o la cuantía de las operaciones con los proveedores, adjudicatarios y contratistas más importantes del Ayuntamiento. </td>
+                    <td>
+                        <p>Existen varios servicios relacionados con este indicador:</p>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/adjudicatarios_PerfilContratante?enti=AYUNTAMIENTO+DE+ZARAGOZA&amp;anyo=2016&amp;id=1">Adjudicatarios</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/licitadores_PerfilContratante?enti=AYUNTAMIENTO+DE+ZARAGOZA&amp;id=1">Licitadores</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudad/encasa/hacienda/detalleProveedor_Facturas?proveedor=78">Proveedores a través del Registro de Facturas</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 59. Se publica información sobre el Coste efectivo de los servicios prestados por el Ayuntamiento (en base a la normativa de la Orden HAP/2075/2014). </td>
+                    <td> <a href="https://www.zaragoza.es/sede/servicio/transparencia/1240">https://www.zaragoza.es/sede/servicio/transparencia/1240</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> E) TRANSPARENCIA EN MATERIAS DE URBANISMO, OBRAS PÚBLICAS Y MEDIOAMBIENTE (12) </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> 1) Planes de ordenación urbana y convenios urbanísticos (5) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 60. El Plan General de Ordenación Urbana (PGOU) y los mapas y planos que lo detallan. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/817">https://www.zaragoza.es/sede/servicio/transparencia/817</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 61. En relación con el ámbito medioambiental se publican: a) Las políticas y programas del Ayuntamiento relativos al medioambiente, así como los informes de seguimiento de los mismos; b) Los estudios de impacto ambiental, paisajísticos y evaluaciones del riesgo relativos a elementos medioambientales (si no han realizado estos estudios, se indicará expresamente en la web). </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/ciudad/medioambiente/proyectos.htm">Proyectos</a></li>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/834">Estudios de Impacto ambiental</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 62. Las modificaciones aprobadas del PGOU y los Planes parciales aprobados. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/821">https://www.zaragoza.es/sede/servicio/transparencia/821</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 63. Información detallada de los Convenios urbanísticos del Ayuntamiento y de las actuaciones urbanísticas en ejecución. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/819">https://www.zaragoza.es/sede/servicio/transparencia/819</a></td>
+                </tr>
+                <tr>
+                    <td> 64. Información detallada y precisa sobre los usos y destinos del Suelo del municipio. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/1341">https://www.zaragoza.es/sede/servicio/transparencia/1341</a> </td>
+                    <td>0.5 Puntos</td>
+                </tr>
+                <tr>
+                    <td colspan="3"> 2) Información sobre licitaciones de obras públicas (4) </td>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 65. Los proyectos, los pliegos y los criterios de licitación de las obras públicas. </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/769/">Contratos de obras</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 66. Las modificaciones, reformados y complementarios de los proyectos de las obras más importantes (mediante un enlace directo y específico en la web) (si no los ha habido, se indicará expresamente en la web). </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/769/">Contratos de obras</a></td>
+                    <td>0.5 Puntos</td>
+                </tr>
+                <tr>
+                    <td> 67. El listado de empresas que han concurrido a cada una de las licitaciones de obras públicas convocadas por el Ayuntamiento. </td>
+                    <td><a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/licitadores_PerfilContratante?enti=AYUNTAMIENTO+DE+ZARAGOZA&amp;id=1">Licitadores</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 68. La relación de las empresas que han realizado las obras públicas más importantes en el Ayuntamiento, con indicación de las obras y su importe. </td>
+                    <td> <a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/adjudicatarios_PerfilContratante?anyo=2016&amp;type=pproc%3AWorksContract&amp;enti=AYUNTAMIENTO+DE+ZARAGOZA">Adjudicatarios</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 3) Urbanismo y obras de infraestructura (3) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 69. Información precisa sobre cada una de las obras más importantes de infraestructura que están en curso (Objetivos de la obra y responsable municipal; contratista/s responsable/s; importe presupuestado; período de ejecución). </td>
+                    <td> <a href="https://www.zaragoza.es/ciudad/urbanismo/obras/">https://www.zaragoza.es/ciudad/urbanismo/obras/</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 70. Se trata, al menos semestralmente, información sobre las obras de infraestructura realizadas y en su caso las aprobadas pendientes de ejecución (informes, comunicados, notas de prensa, etc.). </td>
+                    <td><a href="https://www.zaragoza.es/ciudad/urbanismo/obras/">https://www.zaragoza.es/ciudad/urbanismo/obras/</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 71. Se publican los indicadores: a) Inversión en infraestructuras por habitante y b) Proporción de ingresos del Urbanismo sobre los ingresos totales (se indicarán en la web los conceptos incluidos como Ingresos urbanísticos: Licencias urbanísticas, IBI, ICIO, aprovechamiento urbanístico, enajenación de terrenos, etc.). </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/1261">Inversión en infraestructuras por habitante</a></li>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/transparencia/1260">Proporción de ingresos de urbanismo sobre los ingresos totales</a></li>
+                        </ul>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> F) DERECHO DE ACCESO A LA INFORMACIÓN (9) </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> 1) Visibilidad, canales y características del acceso a la información pública (6) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 72. La web y/o el portal de transparencia del Ayuntamiento destina un espacio destacado o sección, fácilmente visible y claramente identificable, para difundir el derecho de acceso a la información y para facilitar el acceso este procedimiento administrativo</td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/744">https://www.zaragoza.es/sede/servicio/transparencia/744</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 73. Existe y está habilitado un procedimiento administrativo presencial (no electrónico) para el ejercicio de derecho de acceso a la información, y se ofrece en todo caso al interesado/a información sobre los pasos a seguir, horarios y requisitos. </td>
+                    <td><a href="https://www.zaragoza.es/ciudad/encasa/detalle_Tramite?id=28500">trámite que describe  el procedimiento Acceso a la información pública</a>
+                    </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 74. Se pone a disposición en la sección o portal de transparencia del Ayuntamiento, un formulario web -o un canal electrónico- para formular solicitudes de acceso a la información pública </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/informacion-publica">https://www.zaragoza.es/sede/servicio/informacion-publica</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 75. El canal electrónico de solicitudes de acceso permite diversos tipos de identificación del interesado, tales como una dirección de email, autenticación electrónica ordinaria (v.g. usuario y password), que no precisen de la obtención/instalación de certificados digitales y/o la aportación de datos fiscales </td>
+                    <td> Sí </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 76. El canal electrónico de solicitudes de acceso a la información permite, de una forma igualmente accesible, dar seguimiento a la tramitación de la petición por parte del interesado/a, o existe un seguimiento centralizado de la gestión de estos expedientes que permite conocer su situación. </td>
+                    <td> Una vez realizada la solicitud la ciudadanía recibe un enlace de seguimiento de la solicitud en su correo electrónico para poder conocer el estado de su petición. </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 77. Se facilita desde la web (o en su caso el portal de transparencia) del Ayuntamiento un canal fácil y accesible para la formulación de quejas o sugerencias en relación con el Acceso a la información</td>
+                    <td><a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/verNuevaQuejaAnonima_Ticketing">Servicio de Quejas y Sugerencias</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <th colspan="3"> 2) Reclamaciones y evaluación del derecho de acceso a la información pública (3) </th>
+                </tr>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación </th>
+                </tr>
+                <tr>
+                    <td> 78. Se difunde de una forma sencilla y clara en la web o en el portal de transparencia del Ayuntamiento, las condiciones y el procedimiento para presentar reclamaciones por denegación total o parcial en el ejercicio del derecho de acceso a la información </td>
+                    <td><a href="https://www.zaragoza.es/ciudad/encasa/detalle_Tramite?id=29800">Procedimiento que describe cómo realizar las reclamaciones</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 79. Está operativa y claramente visible en la web el área o entidad municipal responsable ante la cual presentar reclamaciones por denegación total o parcial en el ejercicio del derecho de acceso a la información. </td>
+                    <td><a href="https://www.zaragoza.es/ciudad/encasa/detalle_Tramite?id=29800">Procedimiento que describe cómo realizar las reclamaciones</a></td>
+                    <td>1 Punto</td>
+                </tr>
+                <tr>
+                    <td> 80. Se publicita en la web o en el portal de transparencia del Ayuntamiento, información estadística con periodicidad bimestral al menos, de datos relativos a: Número de solicitudes de acceso a la información recibidas; resueltas dentro de plazo; desestimadas, en todo o en parte; y resumen temático general de las solicitudes de acceso a la información recibidas </td>
+                    <td><a href="https://www.zaragoza.es/sede/servicio/transparencia/1320/">https://www.zaragoza.es/sede/servicio/transparencia/1320/</a> </td>
+                    <td>1 Punto</td>
+                </tr>
+            </table>
+        </div>
+    </sede:content>
+</body>
+
+</html>

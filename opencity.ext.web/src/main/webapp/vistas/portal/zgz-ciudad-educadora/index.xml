@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Bibliotecas Municipales" description="El portal de Bibliotecas Municipales pretende dar a conocer las diversas actividades, noticias y servicios que ofrece la red de bibliotecas Municipales del Ayuntamiento de Zaragoza." author="" last-modified="" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España,  desarrollo sostenible, acción humanitaria, proyectos, cooperación, formalidades administrativas, administración electrónica, relación administración-administrado, Organización Mundial de la Salud, Red de Ciudades Amigables, participación social, comedores, zonas verdes, actividades, cursos, bodas de oro, voluntariado social, informática,  blog, servicio de quejas y sugerencias, council, city, Saragossa, Spain,  community facilities, activities,  voluntary work, computer systems, complaints and suggestions service, sustainable development,humanitarian action,humanitarian  emergency" />
+    <style type="text/css">
+    @media (min-width: 768px) {
+        .listado-equipamiento-solr li {
+            min-height: 25em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <p>
+            <img alt="" class="img-responsive full-width margin-b1em" src="/cont/vistas/portal/ciudad-educadora/img/banner-ciudad-educadora" />
+        </p>
+		
+		
+		 
+		           
+		
+		
+		
+		
+        <div class="row">
+            <div class="col-md-12">
+           
+                    <div class="col-md-8">
+          
+                            <h2 class="titulo-dest color-ciudad">Destacados</h2>
+                            <hr class="sm" />
+                            <sede:aviso clase="col-xs-12 col-sm-6" nresultados="2" portal="Ciudad Educadora"> </sede:aviso> 
+							
+							                  
+          
+						
+						
+						 
+                     
+                      </div>
+                        
+                            <div class="col-md-4">
+						  <img class="img-responsive img-rounded" src="http://www.zaragoza.es/cont/vistas/portal/ciudad-educadora/img/redes-aice.gif" alt="" />
+
+						
+						
+                    </div>   
+                </div>
+        </div>
+		
+						
+						
+						      
+       
+						
+						
+						
+						
+						 <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h2 class="titulo-dest color-ciudad">Servicios</h2>
+                
+				
+				
+				
+				
+				 
+ 
+                <ul class="list-unstyled row no-gutter text-center" role="menu">
+                    <li class="col-xs-12 col-sm-2 col-sm-offset-1">
+                        <span class="fa fa-2x fa-life-ring" aria-hidden="true"></span>
+                        <a href="/sede/portal/cultura/servicio/tramite/30583">
+                            <h3 class="margin-v05em" style="font-size: 1em;">
+                                Ayudas
+                            </h3>
+                        </a>
+                    </li>
+                    <li class="col-xs-12 col-sm-2">
+                        <span class="fa fa-2x fa-bullhorn" aria-hidden="true"></span>
+                        <a href="/sede/portal/cultura/servicio/premios-concursos/list?materia.id=1&amp;historico=true">
+                            <h3 class="margin-v05em" style="font-size: 1em;">
+                                Convocatorias
+                            </h3>
+                        </a>
+                    </li>
+                    <li class="col-xs-12 col-sm-2">
+                        <span class="fa fa-2x fa-briefcase" aria-hidden="true"></span>
+                        <a href="/ciudad/gestionmunicipal/contratos/zaragozacultural/">
+                            <h3 class="margin-v05em" style="font-size: 1em;">
+                                Perfil del Contratante
+                            </h3>
+                        </a>
+                    </li>
+                    <li class="col-xs-12 col-sm-2">
+                        <span class="fa fa-2x fa-cubes" aria-hidden="true"></span>
+                        <a href="/sede/portal/cultura/servicio/tramite/tipo/41">
+                            <h3 class="margin-v05em" style="font-size: 1em;">
+                                Trámites y Servicios
+                            </h3>
+                        </a>
+                    </li>
+                    <li class="col-xs-12 col-sm-2">
+                        <span class="fa fa-2x fa-book" aria-hidden="true"></span>
+                        <a href="/sede/servicio/publicacion-municipal/list?tipo.id=84">
+                            <h3 class="margin-v05em" style="font-size: 1em;">
+                                Publicaciones
+                            </h3>
+                        </a>
+                    </li>
+                </ul>
+       
+				
+				
+				
+				
+				
+				
+				
+                </div>
+            </div>
+        </div>
+		
+		
+		 <div class="row">
+            <div class="col-md-12"> 
+			
+			  <div class="col-sm-3">
+                            <h2 class="titulo-test">Equipamientos</h2>
+                        </div>
+                        <div class="col-sm-5">
+                           <!-- <form class="form-inline" action="/sede/servicio/equipamiento/list" method="get" enctype="application/x-www-form-urlencoded">
+                                <label for="nombreQuery">Buscar un <span class="text-primary">EQUIPAMIENTO</span></label>
+                                <div class="input-group input-group-sm">
+                                    <input id="nombreQuery" name="query" class="form-control" placeholder="Introduce un nombre..." type="text">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default" title="Buscar Equipamiento">
+                                            <span class="fa fa-search" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>-->
+                        </div>  <div class="col-sm-4">
+                            <h3 class="margin-v05em text-sm-right"><span style=" vertical-align: middle;" class="far fa-map" aria-hidden="true"></span> Buscar desde el <a href="//idezar.zaragoza.es/callejero/">CALLEJERO</a></h3>
+                        </div>
+                    </div>
+						</div>  
+						
+						
+       
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Actividades. Personas Mayores" 
+               description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece recursos de información sobre cursos y talleres adaptados a las necesidades de la tercera edad" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service"
+               >
+    </sede:meta>
+
+       <style type="text/css">
+    
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+
+<body>
+    <sede:content>
+                 <nav>
+           
+			   <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/servicio/cultura/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Personas Mayores</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Grupos de Actividad</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+				      <li><a href="grupos-actividad"> Grupos de Actividad</a></li>   
+                    <li><a href="objetivos">Cursos y Talleres</a></li>
+                    <li><a href="comunicacion">Áreas</a></li>
+              
+                </ul>
+            </div>
+        </nav>
+
+        <h2 class="section-title offset-target" id="cursos">Cursos y Talleres</h2>
+        <!-- <hr class="sm color-ayto"/> -->
+        <div class="section-content">
+           <div class="well well-sm">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="col-md-8"><h3>Objetivos</h3>
+          <p>La Red de Centros de Convivencia
+para mayores del Ayuntamiento de Zaragoza ofrece su <strong>programa de actividades</strong> como espacio para fomentar la participaci&#243;n, el encuentro y la integraci&#243;n, de un colectivo social como son los mayores.</p>
+    <p>Una de las &#225;reas de trabajo en este programa de actividades es el <strong>&#193;rea de Talleres</strong> que se orienta hacia los siguientes <strong class="rojo">objetivos</strong>:</p>
+    <ul>
+        <li>Favorecer la independencia y la autonom&#237;a personal posibilitando que el mayor permanezca en su entorno habitual.</li>
+        <li>Favorecer el disfrute de la vida por medio del desarrollo de habilidades sociales y personales.</li>
+        <li>Reforzar el mantenimiento de las capacidades funcionales de las personas mayores, actuando en un &#225;mbito preventivo aumentando su bienestar.</li>
+        <li>Apoyar la creaci&#243;n de grupos aut&#243;nomos de actividad.</li>
+        <li>Desarrollar acciones socioe-ducativas de car&#225;cter individual y grupal.</li>
+    </ul>
+    <p>Estos objetivos se desarrollan en la programaci&#243;n de talleres atendiendo a dos realidades:</p>
+    <ul>
+        <li><strong>El Individuo:</strong> apoyando las acciones positivas y dise&#241;ando estrategias individualizadas de actuaci&#243;n, en funci&#243;n de la situaci&#243;n personal que se presenta (soledad, infravaloraci&#243;n&#8230;)</li>
+        <li><strong>El Grupo:</strong> favoreciendo procesos de desarrollo orientados a la autonom&#237;a del mismo y potenciando nuevos proyectos.</li>
+      </ul></div>
+    <div class="col-md-4">
+        <img width="300" height="190" src="/cont/paginas/sectores/mayores/img/excursion1.jpg" alt="" class="img-rounded img-responsive"/></div></div>
+      </div>
+      </div>
+    <div class="well well-sm">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="col-md-8"><h3>Modelos</h3>
+Dada la heterogeneidad del colectivo debida a la cada vez m&#225;s amplia franja de edad del usuario, a la procedencia y situaci&#243;n social del mismo y a los recursos de los Centros, la opci&#243;n metodol&#243;gica responde a los <strong class="rojo">modelos</strong> siguientes:
+    <ul>
+        <li><strong>Modelos Personales</strong>, en cuanto a integrar una personalidad estable y equilibrada. Se trata de fomentar la comunicaci&#243;n interpersonal y potenciar la autoestima y el autoconocimiento personal para establecer relaciones m&#225;s productivas con su entorno y asimilar mayor cantidad de informaci&#243;n.</li>
+        <li><strong>Modelos de interacci&#243;n social</strong>, que utilizan la relaci&#243;n social como fuente de aprendizaje y de intervenci&#243;n sobre la calidad de vida del usuario.</li>
+        <li><strong>Modelos conductuales</strong>, en cuanto a la consecuci&#243;n de los objetivos relacionados con las habilidades psicomotrices.</li>
+    </ul>
+    <p>Todo esto cobra sentido en la actividad desarrollada en los talleres al generar procesos, no solo para los mayores sino con los mayores.</p>
+    <p>A trav&#233;s del aprendizaje de la materia o t&#233;cnica se busca el desarrollo de la autonom&#237;a y la participaci&#243;n individual y grupal, en un proceso estructurado en diferentes fases dise&#241;adas en funci&#243;n de la evoluci&#243;n en el conocimiento de la t&#233;cnica.</p>
+    <ol>
+        <li><strong>Taller de Iniciaci&#243;n</strong>: Conocimiento inicial de la t&#233;cnica</li>
+        <li><strong>Taller Avanzado</strong> y/o de perfeccionamiento de la t&#233;cnica</li>
+        <li><strong>Taller Abierto</strong>: Trabajo grupal aut&#243;nomo sobre la t&#233;cnica</li>
+    </ol>
+    <p>Se desarrollan adem&#225;s otros formatos de talleres, de duraci&#243;n limitada a unas pocas sesiones, a lo largo de un periodo de tiempo. En ellos se trabaja en torno a objetivos m&#225;s concretos y limitados.</p></div>
+    <div class="col-md-4">
+    <img width="300" height="200" src="/cont/paginas/sectores/mayores/img/clase1.jpg" class="img-rounded img-responsive" alt="" /></div>
+      </div></div></div>
+
+ 
+ 
+		
+        </div>
+
+    
+
+         
+  
+    
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>
+
+ 

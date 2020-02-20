@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Catálogo de publicaciones municipales" keywords="sede,web,cultura,catalogo,publicaciones" />
+    <style>
+        .list-aviso>li {
+            min-height: 21em;
+        }
+        .list-aviso>li img {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <!-- <h2>Catálogo de publicaciones. Colecciones</h2> -->
+        <a title="Editar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="@{/servicio/publicacion-municipal/tipo/}" class="btn btn-primary btn-xs pull-right">Gestión de Materias</a>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- <h2>Destacados</h2> -->
+                <!-- <ul>
+                    <li th:each="doc: ${resultado.body.result}"><a th:href="@{'coleccion/{id}'(id=${doc.id})}" th:text="${doc.title}" /></li>
+                </ul> -->
+                <div role="alert" class="alert alert-info"><strong>Digitalización de Publicaciones:</strong> Varios centenares de publicaciones relacionadas con:
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=21&amp;publicacionElectronica=true">Historia</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=4&amp;publicacionElectronica=true">Arte</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=3&amp;publicacionElectronica=true"> Arquitectura</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=38&amp;publicacionElectronica=true">Urbanismo</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=9&amp;publicacionElectronica=true">Cine</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=18&amp;publicacionElectronica=true">Folklore</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=27&amp;publicacionElectronica=true">Medioambiente</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=15&amp;publicacionElectronica=true">Educación</a>,
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=2&amp;publicacionElectronica=true">Arqueología</a>
+                </div>
+                <sede:aviso clase="col-xs-6 col-sm-4" portal="Catalogo de Publicaciones" imagen="si" resumen="si" nresultados="8" tipo="1"></sede:aviso>
+            </div>
+            <div class="col-md-6">
+                <form method="get" action="./list" class="form-horizontal">
+                    <fieldset>
+                        <legend>Consulta</legend>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label" for="titleContains">Título</label>
+                            <div class="col-xs-5">
+                                <input class="form-control" type="text" name="titleContains" id="titleContains" />
+                            </div>
+                            <label class="col-xs-2 control-label" for="year">Año</label>
+                            <div class="col-xs-3">
+                                <input class="form-control" type="text" name="year" id="year" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label" for="author">Autor</label>
+                            <div class="col-xs-4">
+                                <input class="form-control" type="text" name="author" id="author" />
+                            </div>
+                            <label class="col-xs-2 control-label" for="isbn">ISBN</label>
+                            <div class="col-xs-4">
+                                <input class="form-control" type="text" name="isbn" id="isbn" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 col-md-2 control-label" for="coleccion.id">Colección</label>
+                            <div class="col-sm-9 col-md-10">
+                                <select class="form-control" name="coleccion.id" id="coleccion.id">
+                                    <option value=""></option>
+                                    <option th:each="doc: ${resultado.body.result}" th:value="${doc.id}" th:text="${doc.title}" th:selected="${doc.id}==${idCategoria}" />
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 col-md-2 control-label" for="tipo.id">Materia</label>
+                            <div class="col-sm-9 col-md-10">
+                                <select class="form-control" name="tipo.id" id="tipo.id">
+                                    <option value=""></option>
+                                    <option th:each="doc: ${tipo.body.result}" th:value="${doc.id}" th:text="${doc.title}" th:selected="${doc.id}==${idCategoria}" />
+                                </select>
+                            </div>
+                        </div>
+                        <!--/* <div class="form-group" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}"> */-->
+                        <div class="form-group">
+                            <div class="col-sm-3 col-md-2 control-label" for="tipo.id"><strong>Publicación electrónica</strong></div>
+                            <div class="col-sm-9 col-md-10">
+                                <input type="radio" name="publicacionElectronica" value="true" aria-label="si" /> Sí
+                                <input type="radio" name="publicacionElectronica" value="false" aria-label="no"/> No
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+                                <input type="submit" value="Consultar" class="boton btn btn-primary" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="fnd-gris-claro padding-a1em radius">
+                    <h2 class="nomargin">Catálogos de Exposiciones</h2>
+                    <hr class="sm"/>
+                    <ul class="list-inline">
+                        <li><strong><a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2018&amp;coleccion.id=12">2018</a></strong></li>
+                        <li><strong><a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2017&amp;coleccion.id=12">2017</a></strong></li>
+                        <li><strong><a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2016&amp;coleccion.id=12">2016</a></strong></li>
+                        <li><strong><a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2015&amp;coleccion.id=12">2015</a></strong></li>
+                        <li><strong><a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2014&amp;coleccion.id=12">2014</a></strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <sede:equipamiento id="12145" ocultos="tabs,mapa"></sede:equipamiento>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Presentación</h2>
+                <p>
+                    Hasta la década de los años setenta del pasado siglo XX, el Ayuntamiento de Zaragoza había venido editando, de manera más o menos esporádica, diversas publicaciones relacionadas con la actividad municipal y con distintos aspectos, especialmente históricos, de la ciudad.
+                </p>
+                <p>
+                    A lo largo de esa década (en torno a la celebración en 1976 del Bimilenario de Zaragoza) se incrementa la actividad editorial del Ayuntamiento, que se consolidaría progresivamente a partir de los primeros años ochenta, como parte del importante impulso promovido por los nuevos ayuntamientos democráticos en los ámbitos de la cultura, la acción social, la juventud, el deporte, los distintos servicios de gestión municipal.
+                </p>
+                <p>
+                    Aunque la temática de las publicaciones municipales, siempre relacionadas con cuestiones y asuntos directamente vinculados con la ciudad, es considerablemente variada (hacienda, urbanismo, medio ambiente, educación, juventud, cultura, acción social), predominan los temas de carácter histórico y las ediciones de contenido artístico, directamente relacionadas con las exposiciones que programa y organiza el propio Ayuntamiento, siendo los catálogos de dichas exposiciones la parte más extensa e importante del actual catálogo de publicaciones del Ayuntamiento de Zaragoza.
+                </p>
+                <p>
+                    Las publicaciones municipales están a disposición del público en las bibliotecas municipales y en otras bibliotecas públicas. Están a la venta en librerías.
+                </p>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

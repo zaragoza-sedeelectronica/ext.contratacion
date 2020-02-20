@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Información polínica'" keywords="sede,web,información,polen,polínica" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <h2 sede:rdf="*{get('title')}"></h2>
+            <div class="row">
+                <div class="col-md-3 col-md-push-9 text-center">
+
+                    <p class="nomargin destacado text-right">
+                        <!-- <img title="Datos Abiertos" alt="" class="pull-right" src="/cont/paginas/risp/img/datosabiertos" width="50" height="50"/> -->
+                        Disponible en <a href="https://www.zaragoza.es/sede/servicio/catalogo/20">Datos Abiertos</a>
+                    </p> 
+                    <ul class="list-inline pull-right">
+                        <li class="nopadding"><a th:href="@{https://www.zaragoza.es/sede/servicio/informacion-polen/{id}.json(id=${titulo})}">JSON</a> | </li>
+                        <li class="nopadding"><a th:href="@{https://www.zaragoza.es/sede/servicio/informacion-polen/{id}.xml(id=${titulo})}">XML</a>  </li> 
+                        </ul>
+
+                    <img sede:rdf="*{prop('image')}" th:src=" *{image}" class="img-responsive pull-right" alt="" />
+
+                </div>
+                <div class="col-md-9 col-md-pull-3">
+                    <th:block th:if="*{reino}">
+                        <a th:each="reino: *{reino}" class="fa fa-leaf label label label-success margin-b05em" th:href="*{reino}" th:text="' Reino: '+${#strings.replace(reino, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <th:block th:if="*{filo}">
+                        <a th:each="filo: *{filo}" class="fa fa-leaf label label label-info margin-b05em" th:href="*{filo}" th:text="' Filo: '+${#strings.replace(filo, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <th:block th:if="*{clase}">
+                        <a th:each="clase: *{clase}" class="fa fa-leaf label label label-danger margin-b05em" th:href="*{clase}" th:text="' Clase: '+${#strings.replace(clase, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <th:block th:if="*{orden}">
+                        <a th:each="orden: *{orden}" class="fa fa-leaf label label label-warning margin-b05em" th:href="*{orden}" th:text="' Orden: '+${#strings.replace(orden, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <th:block th:if="*{familia}">
+                        <a th:each="familia: *{familia}" class="fa fa-leaf label label label-info margin-b05em" th:href="*{familia}" th:text="' Familia: '+${#strings.replace(familia, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <th:block th:if="*{tribu}">
+                        <a th:each="tribu: *{tribu}" class="fa fa-leaf label label label-success margin-b05em" th:href="*{tribu}" th:text="' Tribu: '+${#strings.replace(tribu, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <th:block th:if="*{genero}">
+                        <a th:each="genero: *{genero}" class="fa fa-leaf label label label-danger margin-b05em" th:href="*{genero}" th:text="' Género: '+${#strings.replace(genero, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <th:block th:if="*{especie}">
+                        <a th:each="especie: *{especie}" class="fa fa-leaf label label label-warning margin-b05em" th:href="*{especie}" th:text="' Especie: '+${#strings.replace(especie, 'http://es.dbpedia.org/resource/','')}" /></th:block>
+                    <p class="card" sede:rdf="*{get('description')}"></p>
+
+
+
+
+                    <table class="table table-condensed">
+                        <caption>Mediciones</caption>
+                        <tr><th>Fecha</th><th>Valor</th></tr>
+                        <tr th:each="medicion : *{observation}" th:class="${medicion.value} == 'alto' ? 'danger' : (${medicion.value} == 'moderado' ? 'warning' : (${medicion.value} == 'bajo' ?'success':''))">
+                            <td sede:rdf="${medicion.get('publicationDate', 'EEEE dd MMMM yyyy')}"></td><td th:text="${medicion.value}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

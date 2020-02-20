@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <h1><a href="/sede/portal/cultura/navidad/">Navidad</a></h1>
+                    <sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/cultura/', 'text':'Cultura'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* <div class="overlay" style="display: none;"></div> */-->
+        <!--/* <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li><a href="https://www.zaragoza.es/ciudad/fiestaspilar/intro.htm">Presentación</a></li>
+                <li><a href="https://www.zaragoza.es/ciudad/fiestaspilar/normas-ofrenda.htm">Ofrenda de Flores</a></li>
+                <li><a href="https://www.zaragoza.es/ciudad/fiestaspilar/medalla-oro-16.htm">Medallas de la Ciudad</a></li>
+                <li><a href="https://www.zaragoza.es/ciudad/fiestaspilar/cabezudos.htm">Gigantes y Cabezudos</a></li>
+                <li><a href="https://www.zaragoza.es/ciudad/fiestaspilar/mapaaccesible.htm">Accesibilidad</a></li>
+                <li><a href="https://www.zaragoza.es/ciudad/fiestaspilar/patrocinadores.htm">Patrocinadores</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/premios-concursos/?materia.id=12">Concursos</a></li>
+            </ul>
+        </nav> */-->
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

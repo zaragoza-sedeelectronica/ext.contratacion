@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Encuestas ciudadanas" 
+               description="Procesos de Participación y Colaboración en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, es un sitio donde la ciudadanía puede participar y colaborar en planes estratégicos y diseño urbanístico de la ciudad a través de distintos instrumentos de participación y colaboración: encuestas ciudadanas. En este espacio puede consultar las encuestas abiertas y finalizadas." 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, colaboración, encuesta ciudadana, urbanismo, plan estratégico, city, council, Saragossa, electronic site, local government, open government, citizen-authority relations, social participation, collaboration, public survey,  town planning, strategic plan" >
+    </sede:meta>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    .card h3.btn {
+        font-size: 1em;
+    }
+    @media (min-width: 768px) {
+        .card {
+            min-height: 15em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div class="fnd-gris-claro margin-b1em">
+            <div class="container-fluid text-center padding-t05em lead margin-auto nomargin">
+				<p style="font-size: 1.5em;">Promoción y Celebración de Encuestas Ciudadanas</p>
+                <div class="row">
+                    <!--/*<div class="col-sm-offset-4 col-sm-2 text-center">
+                        <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/8943">
+                            <span aria-hidden="true" class="far fa-handshake fa-3x text-color"></span>
+                            <p class="lead">Acuerdo Gobierno de Zaragoza</p>
+                        </a>
+                    </div>*/-->
+                    <div class="col-sm-12 text-center">
+                        <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/5823">
+                            <span aria-hidden="true" class="far fa-file-alt fa-3x text-color"></span>
+                            <p class="lead">Decreto: Instrucción <br/>sobre el procedimiento</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid margin-b2em fnd-gris-claro radius consultas">
+            <h2>Encuestas abiertas</h2>
+            <hr class="sm" />
+            <div role="alert" class="alert alert-info">
+                En este momento no existen encuestas abiertas.
+            </div>
+        </div>
+        
+        <div class="container-fluid margin-b2em fnd-gris-claro radius consultas">
+            <h2>Encuestas finalizadas</h2>
+            <hr class="sm" />
+            <ul class="row list-unstyled list-ogob">
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/sede/portal/cultura/fiestas-pilar/encuesta">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/cultura/fiestas-pilar/img/Valdespartera.jpg" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Encuesta Recinto Ferial</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-info">Oct. 2018</div>
+                    </div>
+                </li>
+
+				<!--/* No está muy claro, pero parece que este proceso se queda en "Procesos participativos cerrados",
+				aunque se hizo con la normativa de encuestas ciudadanas*/-->		
+                <!--/*<li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/eleccion-alcalde-juslibol.htm">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/procesos/finalizados/2017-consulta-juslibol3.jpg" alt=""/>
+                            <hr class="sm"/>
+                            <h3 class="btn btn-primary btn-block">Elección del Alcalde de Juslibol</h3>
+                        </a>
+                        <p class="text-left"><small>Octubre de 2017. Celebración de la Encuesta Ciudadana para la elección de alcalde o alcaldesa del barrio de Juslibol según el decreto aprobado a tal efecto.</small></p>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-info">Oct. 2017</div>
+                    </div>                    
+                </li>*/-->
+                
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/resultadosEmpresaComprometida14.htm">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/2015-empresacomprometida.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Empresa Comprometida con Zaragoza</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-info">Mar. 2015</div>
+                    </div>
+                </li>                   
+                
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/encuesta_Participacion?oid=391">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/2015-cartel-pilar-b.jpg" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Cartel Fiestas del Pilar 2015</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-info">May-Jun 2015</div>
+                    </div>
+                </li>
+                
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="http://www.zaragoza.es/ciudad/fiestaspilar/detalle_Noticia?id=220597">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/2014-cartel-pilar.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Cartel Fiestas del Pilar 2014</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-info">May 2014</div>
+                    </div>
+                </li>                    
+                
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/propuesta_Participacion?oid=372">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/2014-zaragoza_ucod.jpg" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">United Colors of Dissent</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-info">Sept 2014</div>
+                    </div>
+                </li>                             
+
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/ciudad/servicios/Votacion_Infraestructura" target="_blank">
+                            <img src="/cont/vistas/portal/participacion/img/Consulta_Puente_Hierro.jpg" alt="" class="img-responsive img-rounded" />
+                            <hr class="sm"/>
+                            <h3 class="btn btn-primary btn-block">Restauración del Puente de Hierro (2009)</h3>
+                        </a>
+                    </div>
+                </li>
+
+
+
+
+            </ul>
+        </div>
+
+        <div class="container-fluid margin-b2em fnd-gris-claro radius consultas">
+            <h2>Encuestas para el nombramiento de alcaldes y vocales en los Barrios Rurales</h2>
+            <hr class="sm" />
+            <p>Convocadas en virtud de lo establecido en los <strong>artículos 32 y 33</strong> del <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/109">Reglamento de Órganos Territoriales y de Participación Ciudadana</a>, sobre el nombramiento de los Representantes Personales del Alcalde en los Barrios Rurales y de vocales en Juntas Vecinales.</p>
+			<h3>Normativa</h3>
+			<ul>
+			<li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/109">Reglamento de Órganos Territoriales y de Participación Ciudadana</a></li>
+			<li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/7063">Decreto y normas reguladoras de la <strong>encuesta ciudadana</strong> para el nombramiento de representantes personales del Alcalde en los Barrios Rurales y de vocales de las Juntas Vecinales, a celebrar el 24 de Enero de 2016</a>.</li>
+			<li><a href="http://www.zaragoza.es/contenidos/normativa/alcaldes-barrio-2016.pdf" class="pdf">Decretos de Alcaldía de nombreamientos de Alcaldes de Barrio del 2 de febrero de 2016</a></li>
+			</ul>
+			<h3>Noticias</h3>
+			<ul>
+			<li><strong>9 diciembre 2015</strong>: <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/noticia/222802">Consulta para que los ciudadanos de los barrios rurales elijan a sus alcaldes y vocales</a>.</li>
+	
+			<li><strong>22 enero 2016</strong>: <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/noticia/222955">Más de 26.000 personas podrán participar en la encuesta ciudadana sobre la elección de Alcaldes de Barrio y vocales de las Juntas Vecinales este próximo domingo</a>.</li>
+			<li><strong>12 febrero 2016</strong>: <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/noticia/223091">El Alcalde de Zaragoza ha presidido esta tarde el acto de nombramiento de los Alcaldes de Barrio</a>.</li>
+
+			</ul>
+
+			
+            <ul class="row list-unstyled list-ogob">
+                <li class="col-sm-6">
+				
+					<h4>Juslibol 2016</h4>
+					<hr class="sm" />
+					<ul><li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/7723">Decreto y normas reguladoras de la encuesta, a celebrar el 10 de julio de 2016</a>.</li>
+					<li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/7803">Decreto de alcaldía para dejar sin efecto la convocatoria de la encuesta ciudadana</a>.</li>
+					<li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/7804">Decreto de alcaldía para nombrar representante personal del Alcalde</a>.</li>
+					</ul>
+
+				</li>
+				
+                <li class="col-sm-6">
+				
+					<h4>Juslibol 2017</h4>
+					<hr class="sm" />
+					<ul><li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/8863">Decreto y normas reguladoras de la encuesta, a celebrar el 1 de octubre de 2017</a>.</li>
+
+					</ul>
+
+				</li>
+				
+				
+				
+			</ul>
+		</div>
+
+
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Campaña POR UNAS FIESTAS SIN AGRESIONES SEXISTAS" description="Campaña POR UNAS FIESTAS SIN AGRESIONES SEXISTAS" author="Ayuntamiento de Zaragoza" keywords="Ayuntamiento, Zaragoza, España, Fiestas del Pilar, Ciudad, cultura, turismo, actividades, espacios, octubre" />
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    .section-content-alt {
+        border-radius: .5em;
+    }
+    .embed-responsive .embed-responsive-item, .embed-responsive iframe, .embed-responsive embed, .embed-responsive object, .embed-responsive video {
+        width:560px ;
+        height:315px;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav role="navigation">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/presentacion">Presentación</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/ofrenda-flores">Ofrenda de Flores</a></li>
+                <!--/* <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/medallas-ciudad">Medallas de la Ciudad</a></li> */-->
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/servicio/noticia/225900">Medallas de la Ciudad</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/gigantes-cabezudos">Gigantes y Cabezudos</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/accesibilidad">Accesibilidad</a></li>
+                <li class="col-xs-6 col-sm-2">
+                    <ul class="list-inline nomargin navbar-right text-center padding-t05em">
+                        <li>
+                            <a itemprop="sameAs" href="https://twitter.com/FiestasPilarOfi">
+                                <span class="fab fa-2x fa-twitter-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.facebook.com/FiestasdelPilar.Oficial">
+                                <span class="fab fa-2x fa-facebook-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.instagram.com/fiestaspilaroficial">
+                                <span class="fab fa-2x fa-instagram text-color" aria-hidden="true"></span>
+                                <span class="oculto">Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.youtube.com/playlist?list=PLfj57q5hJUJSMcymtKeGfcAIVaZESfgLf">
+                                <span class="fab fa-youtube fa-2x text-color" aria-hidden="true"></span>
+                                <span class="oculto">Youtube</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav><h2>Campaña No es No: Por unas Fiestas sin Agresiones Sexistas</h2>
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+            <li role="presentation" class="active"><a href="#presentacion" aria-controls="presentacion" role="tab" data-toggle="tab"> Presentación</a></li>
+            <li role="presentation"><a href="#quien" aria-controls="quien" role="tab" data-toggle="tab">¿A quién se dirige?</a></li>
+			
+			
+			
+			            <li role="hablando"><a href="#hablando" aria-controls="hablando" role="tab" data-toggle="tab">¿De qué estamos hablando?</a></li>
+
+            <li role="presentation"><a href="#que" aria-controls="que" role="tab" data-toggle="tab">¿Qué hacer, cómo ayudar?</a></li>
+        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#presentacion" aria-expanded="false">Presentación</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="presentacion">
+                <div class="row">
+                    <div class="col-xs-12 margin-b2em">
+                        <div class="col-xs-6 margin-b2em">
+                            <div role="alert" class="alert alert-info">
+                                <h3><strong>TELÉFONOS</strong></h3>
+                                <ul>
+                                    <li>Emergencias 112</li>
+                                    <li>Policía Nacional 091</li>
+                                    <li>Policía Local 092</li>
+                                </ul>
+                                <h3>Y durante todo el año:</h3>
+                                <ul>
+                                    <li>Contra la Violencia de Género: 016</li>
+                                    <li>Atención a la mujer en Aragón: 900 504 405</li>
+                                </ul>
+                                <p><a shape="rect" href="/ciudad/centros/detalle_Centro?id=2133"><strong>Más Información</strong></a></p>
+                            </div>
+                            <p> Las Fiestas del Pilar, además de tiempo de diversión y convivencia para la ciudadanía, también son en ocasiones escenario de agresiones sexistas de diversa índole: se dan conductas y actitudes que desde la desigualdad de género pueden llegar a la ofensa, la intimidación, el abuso o la agresión.
+                            </p>
+                            <p>
+                                La campaña <strong>NO ES NO. Por unas fiestas sin agresiones sexistas</strong> se inició en las Fiestas del Pilar de 2015, continuó en las fiestas de los barrios de la ciudad durante el verano de 2016 y se volvió a impulsar en las Fiestas del Pilar de 2016 con nuevas iniciativas (inclusión de textos alusivos a la campaña en el programa de fiestas, logo de la campaña en numerosos escenarios y espacios, vídeo que se proyectó en las pantallas antes de los actos festivos...).
+                            </p>
+                            <p>
+                                Desde el Ayuntamiento de Zaragoza queremos seguir trabajando para llevar a cabo una campaña de llamamiento a disfrutar de unas fiestas sin agresiones sexistas, continuando y reconociendo el trabajo de años anteriores.
+                            </p>
+                            <p>
+                                El machismo tiene muchas formas de mostrarse, y una de ellas es el uso de la violencia en diferentes intensidades, algunas de las cuales son tan habituales que las hemos normalizado. Esta campaña pretende sensibilizar y concienciar en la modificación de actitudes y comportamientos que están en la base de la violencia machista.
+                            </p>
+                            <p>
+                                En nuestra sociedad, el rechazo público a la violencia de género es algo políticamente correcto, pero se identifica con un problema individual y privado. Por desgracia, la violencia física y el asesinato como su máxima expresión es sólo la punta visible de un conjunto de violencias machistas que sostienen y perpetúan esta situación.
+                            </p>
+                            <p>
+                                Con esta campaña pretendemos incidir en otros aspectos de la violencia machista visibles y explícitos pero que se hayan normalizados en nuestra sociedad, como hace 50 años lo estaban los golpes, las agresiones sexistas. La sociedad identifica la violación como un abuso físico de un hombre desconocido, pero esta no es la forma más habitual de agresión. Hay otras muchas de diferentes intensidades, desde el piropo que invade y te sitúa como objeto, el que quiere ligar y se pone pesado haciéndote sentir incomoda, los tocamientos indeseados aprovechando la multitud, hasta la más grave que seria la violación.
+                            </p>
+                            <p>
+                                Este año queremos, además de los mensajes de otros años, enmarcarla dentro de la tolerancia 0 al machismo y lanzar tres mensajes:</p>
+                            <ul>
+                                <li>
+                                    mensaje al agresor para que sea consciente de qué conductas normalizadas son agresiones y que está en su mano no agredir</li>
+                                <li>
+                                    mensaje a la persona agredida para empoderarla en el enfrentamiento a esa situación y generando dinámicas que la puedan respaldar si lo solicita</li>
+                                <li>
+                                    mensaje a la ciudadanía en general para no tolerar esos comportamientos, concienciando en la tolerancia 0 al machismo</li>
+                            </ul>
+                        </div> 
+                        <div class="col-xs-6 margin-b2em">
+                            <h4>Vídeo de la Campaña</h4>
+                            <div class="embed-responsive embed-responsive-16by9">
+                              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mz82LDu0r8c?rel=0" frameborder="0" allowfullscreen="allowfullscreen" title="Campaña de sensibilización. No es No. Campaña POR UNAS FIESTAS SIN AGRESIONES SEXISTAS">
+                                <p>Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/mz82LDu0r8c">Enlace al vídeo en youtube.com</a></p>
+                              </iframe>
+                            </div> <img src="/cont/paginas/sectores/social/noesno/img/noesno_bus.jpg" alt="" /></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#quien" aria-expanded="false">A QUIEN SE DIRIGE</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="quien">
+                   <div class="row"><div class="col-xs-12 margin-b2em">
+                        <div class="col-xs-6 margin-b2em">
+            
+            
+                <h3>SE DIRIGE A TI, PARA QUE</h3>
+                <ul>
+                    <li>Te impliques en la construcción de la igualdad entre mujeres y hombres</li>
+                    <li>Seas consciente de los comportamientos que pueden hacer daño a otras personas aunque a ti te parezca que no tienen importancia</li>
+                    <li>Sepas actuar, si en un bar o en algún espacio festivo contemplas actitudes y comportamiento sexistas</li>
+                    <li>Sepas reaccionar cuando sientas vergüenza ante comportamientos machistas y ante bromas y comentarios ofensivos que no tienen ninguna gracia...</li>
+                    <li>Sepas qué hacer, si alguna vez tuviste que marcharte de un espacio festivo porque te estabas sintiendo agredida</li>
+                    <li>Seas consciente de tu derecho a que <strong>NO ES NO</strong> y de los recursos de los que dispones para responder a tus necesidades y empoderarte. Todas las personas tenemos derecho a disfrutar en libertad y con seguridad.</li>
+                </ul>
+                <p>Como ves, esta guía se dirige a toda la ciudadanía para erradicar cualquier actitud, conducta o agresión sexista cada día... y también en fiestas. En ocasiones los espacios festivos donde puede darse un consumo abusivo de alcohol u otras drogas se muestran mas permisivos con estas situaciones y es tarea de todos y todas acabar con las actitudes machistas y las agresiones sexistas. <strong>NO es NO también en fiestas.</strong></p>
+				
+				
+				</div>
+              <div class="col-xs-6 margin-b2em">
+                            <h4>Vídeo Kase O</h4>
+                            <div class="embed-responsive embed-responsive-16by9">
+                              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/kogK51z9DI8?rel=0" frameborder="0" allowfullscreen="allowfullscreen" title="Vídeo Kase O. No es No.">
+                                <p>Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/kogK51z9DI8">Enlace al vídeo en youtube.com</a></p>
+                              </iframe>
+                            </div> <img src="/cont/paginas/sectores/social/noesno/img/noesno_tarjeta.jpg" alt="" /></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+ 
+            <h2><span class="block"><span class="arrow"></span></span>DE QUÉ ESTAMOS HABLANDO?</h2>
+             <div role="tabpanel" sede:class="tab-pane active" id="hablando">
+			 <div class="pull-right"><img src="/cont/paginas/sectores/social/noesno/img/noesno-fiesta.jpg" alt="" /></div>
+                <p>En el día a día de las relaciones entre hombres y mujeres son frecuentes conductas sexistas que por su naturalidad y reiteración perpetúan la desigualdad y la discriminación.</p>
+                <p>Las conductas más leves se normalizan y no les prestamos atención, al mismo tiempo que se buscan excusas para disculparlas o justificarlas: había bebido, ella provocó, parece que lo iba pidiendo, no es para tanto... Por eso muchas veces, pasan desapercibidas, nadie se fija en ellas o no se les da importancia, pero hay que tener claro que no se puede tolerar ningún tipo de conducta sexista, ninguna situación justifica una agresión.</p>
+                <p>Se trata de:</p>
+                <p>Comportamientos verbales, no verbales y físicos, en función de la condición sexual de una persona, que ofenden, humillan, intimidan o invaden el cuerpo de esa persona.</p>
+                <p>Lo más frecuente es que sean mujeres las víctimas de agresiones sexistas, pero también pueden serlo hombres y mujeres por su aspecto o comportamiento en función de su identidad o condición sexual: <em>LGTBIfobia</em></p>
+                <p>Estamos hablando de piropos, comentarios, burlas y bromas, hacer fotografías, acercamiento físico excesivo, contacto físico deliberado y no aceptado, tocamientos... hasta agresión sexual y violación.</p>
+                <p><strong> Las actitudes machistas son el primer paso para que puedan darse situaciones de violencia sexista</strong></p>
+                <p>De hecho, nuestra Ley de Igualdad efectiva entre hombres y mujeres, (L.O. 3/2007, art. 7) define:</p>
+                <p><em>Acoso sexual: Cualquier comportamiento, verbal o físico, de naturaleza sexual, que tenga el propósito o produzca el efecto de atentar contra la dignidad de una persona, en particular cuando se crea un entorno intimidatorio, degradante u ofensivo.</em></p>
+                <p>En el acoso sexual hay una intencionalidad de índole sexual, por parte de la persona acosadora. <em> Acoso por razón de sexo: Cualquier comportamiento realizado en función del sexo de una persona, con el propósito o el efecto de atentar contra su dignidad y de crear un entorno intimidatorio, degradante u ofensivo. </em></p>
+                <p>En el acoso por razón de sexo hay una intencionalidad de burla y degradación sexista por ser mujer o por no responder a los estereotipos tradicionales.</p>
+                <p>Violencia sexual: <em>Cualquier tipo de comportamiento de naturaleza sexual forzado por el agresor o no consentido por la víctima.</em></p>
+                <p>El Código Penal define la agresión sexual como: <em> el que atentare contra la libertad sexual de otra persona, utilizando violencia o intimidación, será castigado como responsable de agresión sexual ... (art. 178)</em></p>
+                <p>La violencia sexual puede producir graves consecuencias psicológicas en las víctimas y también daños físicos.</p>
+</div>
+ 
+                
+            <h2 class="tab-title" data-toggle="collapse" data-target="#que" aria-expanded="false">QUÉ HACER, CÓMO AYUDAR?</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="que">
+                <div class="pull-right"><img src="/cont/paginas/sectores/social/noesno/img/logo_noesno.jpg" alt="" /></div>
+                <p>Lo importante es tener claro que ninguna agresión sexista, de la gravedad que sea, puede tolerarse. Es necesaria la participación de toda la sociedad para terminar con estas actitudes y comportamientos.</p>
+                <p>En espacios de ocio, y especialmente en momentos festivos en los que el consumo de alcohol u otras drogas está presente, estas conductas pueden pasar inadvertidas o al menos pueden parecer poco importantes desde fuera, pero <strong>siempre son hirientes para la víctima.</strong></p>
+                <p><strong>Mirar para otro lado o no hacer nada</strong>, de alguna manera, <strong>nos hace cómplices.</strong></p>
+                <p>Ante cualquier comportamiento sexista, se puede intervenir manifestando el rechazo hacía esa conducta y dejando claro que no se va a tolerar, cuantas más personas intervengan rechazando estos comportamientos, más fácil sera que cesen. Por ello:</p>
+                <ul>
+                    <li>No te calles, no lo permitas, no pases</li>
+                    <li>Presta ayuda, habla con la persona afectada</li>
+                    <li>Solicita ayuda, si la necesitas</li>
+                </ul>
+                <p><strong>Si crees</strong> que una persona ha sufrido una agresión sexista o pide ayuda</p>
+                <ul>
+                    <li>Acércate a ella. Pregúntale como se encuentra y si necesita ayuda</li>
+                    <li>Cree lo que diga, no importa su estado ni si parece creíble o no su relato</li>
+                    <li>No la dejes sola, trata de crear un espacio de seguridad para ella</li>
+                    <li>Pregúntale qué quiere hacer y respeta su decisión. Ten cuidado con no adoptar actitudes paternalistas</li>
+                    <li>Ayúdale a contactar con alguien que le pueda acompañar</li>
+                    <li>Según la gravedad de lo sucedido llama a la policía y trata de identificar y/o retener al agresor y a otras personas que hayan sido testigos de lo sucedido</li>
+                </ul>
+                <p><strong>Si sufres</strong> una situación de acoso</p>
+                <ul>
+                    <li>Haz oír tu voz, muestra tu disconformidad con la acción del agresor</li>
+                    <li>Si no es de gravedad y ocurre por primera vez, deja claro al agresor el rechazo a sus pretensiones, acciones, actitudes y exígele que cese en ellas</li>
+                    <li>Házselo saber a tu grupo de amigos y amigas, seguro que <strong>NO ESTÁS SOLA.</strong></li>
+                    <li>El personal de protección civil, voluntarios de las fiestas y policía local están ahí para ayudarte, puedes acercarte y pedir su apoyo.</li>
+                    <li>Si te sientes agredida y necesitas hablar con alguien, a través del 092 te pasaran con el teléfono de atención a mujeres victimas de violencia donde te escucharán y orientarán.</li>
+                    <li><strong>Si eres tú</strong>, quien tiene un comportamiento sexista:</li>
+                    <li>Piensa que esas conductas solo producen rechazo</li>
+                    <li>Aprende a darte cuenta de las conductas que hacen daño a otras personas para poder modificarlas.</li>
+                    <li>Respeta los derechos de las otras personas: no interrumpas, respeta los espacios y recuerda que los cuerpos de las demás no son objetos para tu disfrute.</li>
+                    <li>La diversidad enriquece las relaciones interpersonales. Date cuenta de los prejuicios con el físico y ahórrate los chistes misóginos, lesbófobos, transfobos y homófobos.</li>
+                    <li>El respeto, la libertad y la tolerancia son esenciales para la convivencia.</li>
+                    <li>Acosar no es ligar, si no te siguen el rollo, es mejor que no insistas.</li>
+                </ul>
+                <p>Y ante una <strong>agresión sexual</strong>:</p>
+                <ul>
+                    <li>Es conveniente acudir a un centro sanitario o servicio de urgencia</li>
+                    <li>Informar de lo sucedido a alguien de confianza</li>
+                    <li>Llamar a la Policía y/o servicios de urgencia</li>
+                    <li>Siempre hay tiempo para interponer una denuncia</li>
+                </ul>
+                <p><strong>Y RECUERDA</strong>:</p>
+                <ul>
+                    <li>Sólo el agresor es responsable del ejercicio de su violencia</li>
+                    <li>Estar bajo los efectos del alcohol u otra sustancia ni justifica ni excusa el abuso. No es No</li>
+                    <li>Entre ligar y acosar hay notables diferencias: si no te hacen caso, si no responden a tus intentos de comunicación, si no te siguen el rollo, si cada vez tienes que mostrarte mas agresivo para llamar su atención... seguramente te estás pasando.</li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

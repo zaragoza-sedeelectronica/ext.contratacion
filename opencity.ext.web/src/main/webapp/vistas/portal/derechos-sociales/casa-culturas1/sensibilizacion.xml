@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+
+    <meta charset="utf-8" />
+    <sede:meta title="Casa de las Culturas. Quiénes Somos"/>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+	  body {
+        padding-top: 57px;
+     }
+	        .fase {
+            background-color: #202020;
+            color: #fff;
+            font-weight: bold;
+        }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+   .fnd-culturas {
+        background: #f4f5f5;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #55a7b3;
+    } 
+    .fa {
+        vertical-align: middle;
+    }
+
+    @media (min-width: 768px) {
+        .list-aviso>li {
+            min-height: 16em;
+        }
+		    
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+	 <nav>
+            
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/derechos-sociales/casa-culturas/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Casa de las Culturas</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Interculturalidad y Sensibilización</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+				  <li><a href="junta">
+ Junta Gestora.</a></li> <li><a href="semana">
+Semana contra el Racismo.</a></li> <li><a href="minorias">
+Minorías étnicas </a></li> <li><a href="tolerancia">
+Día de la Tolerancia </a></li> <li><a href="diversa">
+Zaragoza Diversa  </a></li> <li><a href="orillas">
+  Acercando Orillas</a></li> <li><a href="otros">
+Otras programaciones  </a></li>
+              
+                   
+                 
+                </ul>
+            </div>
+        </nav>
+		
+		
+		<h3>Aula Intercultural</h3>
+		<p>
+		<strong>El proyecto <em>Aula Intercultural</em></strong>&nbsp; es una guía recursos didácticos de carácter multicultural, destinada a promover objetivos de tolerancia y respeto hacia la diversidad, mediante la difusión y puesta en conocimiento de otras culturas presentes en nuestra ciudad para una mayor y mejor convivencia.</p><h3>Qué ofrece</h3><p>Un amplio abanico de actividades variadas y adaptadas a todas las edades e instancias solicitantes: gastronomía, música, cine-forum, talleres manuales, juegos, cuenta-cuentos, folclore, teatro, conciertos, exposiciones, charlas debate, visitas guiadas, canciones, danzas...</p><p>Impartidas por entidades ciudadanas, asociaciones gitanas y asociaciones de inmigrantes procedentes de los cinco continentes</p><h3>Objetivos</h3><ul>    <li>Dar a conocer a toda la población y de manera especial a la infancia, adolescencia y juventud de la ciudad otras culturas diferentes a la suya.</li>    <li>Sensibilizar e interiorizar valores de solidaridad, tolerancia, respeto, convivencia y conocimiento mutuo</li>    <li>Reflexionar sobre el racismo en la sociedad actual</li>    <li>Concienciar a la población más joven sobre la posibilidad que tienen de actuar para mejorar la convivencia entre culturas de su entorno.</li></ul><h3>Dirigido a:</h3><ul>    <li>Infancia, adolescencia y juventud</li>    <li>Población en general</li></ul><h3>Quién puede solicitar:</h3><ul>    <li>Centros Educativos y Universitarios.</li>    <li>Centros pertenecientes a las Administraciones Públicas.</li>    <li>Asociaciones y Entidades no lucrativas.</li></ul>
+ 
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Normativa Municipal" author="Ayuntamiento de Zaragoza" keywords="sede,web,ayuntamiento,normativa, ordenanzas" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Normativa Municipal &raquo; <th:block th:text="${registro.body.title}"/></h2>
+        <ul>
+            <li th:each="normativa : ${registro.body.normativa}">
+                <h4><a th:href="@{../{id}(id=${normativa.id})}" th:text="${normativa.title}"></a></h4>
+            </li>
+        </ul>
+    </sede:content>
+</body>
+
+</html>

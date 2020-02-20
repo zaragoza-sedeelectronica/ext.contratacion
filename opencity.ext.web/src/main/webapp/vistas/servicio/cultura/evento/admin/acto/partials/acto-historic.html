@@ -1,0 +1,73 @@
+<h2>Histórico</h2>
+
+<div class="row">
+    <div class="col-md-12" class="clearfix">
+<!--         <div class="repeat-item alert alert-{{alert.type}} alert-dismissible" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <div infinite-scroll='loadMore()' infinite-scroll-disabled='busy' infinite-scroll-distance='0' ng-show="permisos.DET"> -->
+            <div>
+                <span ng-show="registros.length > 0" class="margin-r2em">
+                    N&uacute;mero de resultados: {{registros.length}} <span ng-show="totalCount > 0">de {{totalCount}}</span>
+                </span>
+                <span ng-show="filtrosParaListado !== undefined && registros.length > 0">
+                    Filtros aplicados: <span ng-bind-html="filtrosParaListado | pintarFiltros"></span>
+                    <!-- <button class="btn btn-xs btn-default" ng-click="limpiarFiltrosDaoListar();">Limpiar Filtros</button> -->
+                </span>
+                <span ng-show="permisos.MOD && checkList.length > 0" class="pull-right checklist-tools">
+                    <span ng-repeat="c in checkList"> <span class="label label-warning">{{c.id}}</span> </span>
+                    <modal-borrar></modal-borrar>
+                    <boton-visibilidad></boton-visibilidad>
+                </span>
+            </div>
+            <table class="table table-bordered table-hover table-striped table-btn">
+                <thead>
+                    <tr>
+                        <th th-orden order="'id'" by="order" reverse="reverse">ID</th>
+                        <th th-orden order="'title'" by="order" reverse="reverse">TITLE</th>
+                        <th th-orden order="'programa'" by="order" reverse="reverse">PROGRAMA</th>
+                        <th th-orden order="'codTema'" by="order" reverse="reverse">COD. TEMA</th>
+                        <!-- <th th-orden order="'codSector'" by="order" reverse="reverse">COD. SECTOR POBLACIÓN</th> -->
+                        <th th-orden order="'codEquipamiento'" by="order" reverse="reverse">COD. EQUIPAMIENTO</th>
+                        <th th-orden order="'entidad'" by="order" reverse="reverse">COD. ENTIDAD</th>
+                        <th ng-show="permisos.MOD">ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros | orderBy:order:reverse">
+                        <td data-title="ID">{{registro.id}}</td>
+              			<td data-title="Nombre">
+                            {{registro.title}}
+                        </td>
+                        <td data-title="programa">
+                            {{registro.programa}}
+                        </td>
+                        <td data-title="tema">
+                            {{registro.codTema}}
+                        </td>
+                        <!-- <td data-title="poblacion">
+                            {{registro.codSector}}
+                        </td> -->
+                        <td data-title="lugar">
+                            {{registro.codEquipamiento}}
+                            <br/>
+                            <span class="small">{{registro.startDate | date:'dd-MM-yyyy'}} - {{registro.endDate | date:'dd-MM-yyyy'}}</span>
+                        </td>
+                        <td data-title="entidad">
+                            {{registro.codEntidad}}
+                        </td>
+                        <td data-title="Operaciones" ng-show="permisos.MOD">
+                            <button type="button" class="btn btn-default" ng-click="copiarDeHistorico(registro);">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs">Copiar</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div role="alert" class="alert alert-warning spinner-tabla" ng-show="busy">
+                <span class="spinner"></span> Espera por favor, se estan cargando los datos.
+            </div>
+        <!-- </div> -->
+
+    </div> <!-- /span12 -->
+</div> <!-- /row-fluid -->

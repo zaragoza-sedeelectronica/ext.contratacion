@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Oferta de Empleo Público del Ayuntamiento de Zaragoza" description="Oferta de Empleo Público del Ayuntamiento de Zaragoza" author="Ayuntamiento de Zaragoza" last-modified="Fri Jun 02 00:00:00 CET 2017" keywords="oferta, empleo, listas de espera, plazas, oposiciones, concursos, Ayuntamiento de Zaragoza"/>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <sede:oferta-empleo></sede:oferta-empleo>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

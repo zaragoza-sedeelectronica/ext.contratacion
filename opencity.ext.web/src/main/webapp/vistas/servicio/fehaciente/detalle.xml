@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="${title} + '. Garantía fehaciente de publicación'" keywords="sede,web,publicacíón,fehaciente" />
+</head>
+
+<body>
+    <sede:content>
+    <th:block th:utext="${content}"/>
+    </sede:content>
+    
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Página de login" description="Acceso como usuario registrado" author="Ayuntamiento de Zaragoza. Unidad de Gestión de la Web Municipal. webmunicipal@zaragoza.es" keywords="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City" />
+    <style type="text/css">
+        .form-container{max-width:330px;margin:0 auto}
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
+</head>
+
+<body>
+    <sede:content>
+    	<h2 class="margin-v1em text-center">Plataforma de Gobierno Abierto</h2>
+        <hr/>
+        <div class="alert alert-success">Contraseña modificada correctamente</div>
+    </sede:content>
+</body>
+
+</html>

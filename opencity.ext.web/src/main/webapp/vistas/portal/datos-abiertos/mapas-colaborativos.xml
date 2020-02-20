@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="API Mapas colaborativos. Datos Abiertos de Zaragoza" description="API Mapas colaborativos" author="Ayuntamiento de Zaragoza" keywords="risp,reutilización,api,rest,mapas colaborativos" />
+    <style type="text/css">
+    li.L0, li.L1, li.L2, li.L3,
+    li.L5, li.L6, li.L7, li.L8 {
+      list-style-type: decimal !important;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>API Mapas colaborativos</h2>
+        <p>El objetivo de este documento es describir las diferentes operaciones que se pueden hacer sobre el API para realizar la gestión de los mapas colaborativos así como los puntos asociados a ellos.</p>
+        <div id="toc" class="fnd-gris-claro padding-a1em"></div>
+        <div class="apicontent">
+            <h3>Operaciones para la gestión de usuarios/usuarias</h3>
+            <h4>Login de usuario/usuaria</h4>
+            <pre class="prettyprint linenums language-js">
+<strong>POST:</strong> https://www.zaragoza.es/api/recurso/users/addentra/
+<strong>HEADERS:</strong>
+clientID = &lt;Identificador_de_la_aplicación&gt;
+HmacSHA1 = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>BODY:</strong>
+email=correo@prueba.es&amp;password=contraseña
+<strong>Respuesta:</strong>
+{
+  "name" : "Usuario/usuaria",
+  "email" : "correo@prueba.es",
+  "account_id" : "identificador_de_cuenta"
+}
+</pre>
+            <h4>Creación de usuario/usuaria</h4>
+            <pre class="prettyprint linenums language-js">
+<strong>POST:</strong> https://www.zaragoza.es/api/recurso/users/addentra/new
+<strong>HEADERS:</strong>
+clientID = &lt;Identificador_de_la_aplicación&gt;
+HmacSHA1 = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>BODY: </strong>
+{
+  "name":"Nombre",
+  "email":"correo@prueba.es",
+  "password":"prueba",
+  "nif":"124763248E" (Campo opcional)
+}
+<strong>Respuesta:</strong>
+{
+  "name" : "Nombre",
+  "email" : "correo@prueba.es",
+  "account_id" : "identificador_de_cuenta",
+  "nif" : "124763248E"
+}
+</pre>
+            <h4>Modificación de datos usuario/usuaria</h4>
+            <pre class="prettyprint linenums language-js">
+<strong>PUT:</strong> https://www.zaragoza.es/api/recurso/users/addentra/<strong>account_id</strong>
+<strong>HEADERS:</strong>
+clientID = &lt;Identificador_de_la_aplicación&gt;
+HmacSHA1 = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>BODY: </strong>
+{
+  "name":"Nombre",
+  "email":"correo@prueba.es",
+  "password":"prueba",
+  "nif":"124763248E"
+}
+<strong>Respuesta:</strong>
+{
+  "name" : "Nombre",
+  "email" : "correo@prueba.es",
+  "account_id" : "identificador_de_cuenta",
+  "nif" : "124763248E"
+}
+</pre>
+            <h3 id="mapa">Mapas colaborativos</h3>
+            <h4 id="mapaget">Buscar Mapas públicos</h4>
+            <p>El servicio permite utilizar los siguientes parámetros.</p>
+            <dl class="dl-horizontal">
+                <dt>ids</dt>
+                <dd>Para obtener varios mapas en una sola petición, se pueden incluir los identificadores separados por comas.</dd>
+                <dt>title</dt>
+                <dd>Busca en el título del mapa</dd>
+                <dt>start_date</dt>
+                <dd>Mapas creados despúes de la fecha. Formato, ej 2010-01-01T00:00:00Z.</dd>
+                <dt>end_date</dt>
+                <dd>Mapas creados antes de la fecha. Formato, ej 2010-01-01T00:00:00Z.</dd>
+                <dt>type</dt>
+                <dd>Valores admitidos: public, collaborative</dd>
+            </dl>
+
+            <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                <li role="presentation">
+                    <a href="#buscar-json" aria-controls="buscar-json" role="tab" data-toggle="tab"><acronym title="Lenguaje de Intercambio de Datos" class="risp-json">JSON</acronym></a>
+                </li>
+                <li role="presentation">
+                    <a href="#buscar-xml" aria-controls="buscar-xml" role="tab" data-toggle="tab"><acronym title="Lenguaje de Marcado Extensible" class="buscar-xml">XML</acronym></a>
+                </li>
+            </ul>
+            <div sede:class="tab-content">
+                <p class="tab-title" data-toggle="collapse" data-target="#buscar-json" aria-expanded="false"><acronym title="Lenguaje de Intercambio de Datos" class="risp-json">JSON</acronym></p>
+                <div role="tabpanel" sede:class="tab-pane active" id="buscar-json">
+                    <pre class="prettyprint linenums language-js"><strong>GET:</strong> http://www.zaragoza.es/api/recurso/mapas-colaborativos.json
+[ {
+  "id" : 28,
+  "title" : "Mapa publico",
+  "type" : "public",
+  "lastUpdated" : "2013-10-16T12:39:12Z"
+}, {
+  "id" : 11,
+  "title" : "Zaragoza Sin Barreras",
+  "type" : "collaborative",
+  "lastUpdated" : "2013-10-11T12:37:34Z"
+}
+...
+]</pre>
+                </div>
+                <p class="tab-title" data-toggle="collapse" data-target="#buscar-xml" aria-expanded="false"><acronym title="Lenguaje de Marcado Extensible" class="risp-xml">XML</acronym></p>
+                <div role="tabpanel" sede:class="tab-pane active" id="buscar-xml">
+                    <pre class="prettyprint linenums language-xml"><strong>GET:</strong> http://www.zaragoza.es/api/recurso/mapas-colaborativos.xml
+&lt;mapas&gt;
+   &lt;mapa&gt;
+      &lt;id&gt;11&lt;/id&gt;
+      &lt;title&gt;Zaragoza Sin Barreras&lt;/title&gt;
+      &lt;type&gt;collaborative&lt;/type&gt;
+      &lt;lastUpdated&gt;2013-10-11T12:37:34Z&lt;/lastUpdated&gt;
+   &lt;/mapa&gt;
+   &lt;mapa&gt;
+      &lt;id&gt;28&lt;/id&gt;
+      &lt;title&gt;Mapa publico&lt;/title&gt;
+      &lt;type&gt;public&lt;/type&gt;
+      &lt;lastUpdated&gt;2013-10-16T12:39:12Z&lt;/lastUpdated&gt;
+   &lt;/mapa&gt;
+   ...
+&lt;/mapas&gt;</pre>
+                </div>
+            </div>
+            <h4 id="mapagetUsu">Buscar Mapas de usuario/usuaria</h4>
+            <pre class="prettyprint linenums language-js"><strong>GET:</strong> http://www.zaragoza.es/api/recurso/mapas-colaborativos/user/<strong>account_id</strong>.json
+[
+    {
+        "id": 11,
+        "title": "Zaragoza Sin Barreras",
+        "type": "collaborative",
+        "owned": true, (indica si el usuario/usuaria es el propietario, si es true el usuario/usuaria puede modificar la información del mapa)
+        "lastUpdated": "2013-10-11T12:37:34Z"
+    },
+    {
+        "id": 41,
+        "title": "Columpios",
+        "type": "collaborative",
+        "owned": false, (indica si el usuario/usuaria es el propietario del mapa)
+        "lastUpdated": "2014-01-03T12:25:04Z"
+    },
+...
+]</pre>
+            <h4 id="mapadet">Detalle de Mapa</h4>
+            <p>En el detalle de un mapa obtenemos los recursos que pertenecen al mismo y estos pueden ser de tres tipos: Puntos (Point), Líneas (LineString) o Polígonos(Polygon)</p>
+            <table class="table table-condensed table-striped">
+                <caption>Point</caption>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Título asociado al recurso</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>Descripción del recurso</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>Icono asociado al recurso</td>
+                </tr>
+            </table>
+            <table class="table table-condensed table-striped">
+                <caption>LineString</caption>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Título asociado al recurso</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>Descripción del recurso</td>
+                </tr>
+                <tr>
+                    <td>strokeColor</td>
+                    <td>Color de la línea en formato hexadecimal, por ejemplo: #cc3333</td>
+                </tr>
+                <tr>
+                    <td>strokeOpacity</td>
+                    <td>Opacidad de la línea, valores permitidos de '0' a '1', por ejemplo: 0.5</td>
+                </tr>
+                <tr>
+                    <td>strokeWidth</td>
+                    <td>Ancho de la línea</td>
+                </tr>
+            </table>
+            <table class="table table-condensed table-striped">
+                <caption>Polygon</caption>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Título asociado al recurso</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>Descripción del recurso</td>
+                </tr>
+                <tr>
+                    <td>strokeColor</td>
+                    <td>Color del borde en formato hexadecimal, por ejemplo: #cc3333</td>
+                </tr>
+                <tr>
+                    <td>strokeOpacity</td>
+                    <td>Opacidad del borde, valores permitidos de '0' a '1', por ejemplo: 0.5</td>
+                </tr>
+                <tr>
+                    <td>strokeWidth</td>
+                    <td>Ancho del borde</td>
+                </tr>
+                <tr>
+                    <td>fillColor</td>
+                    <td>Color de relleno formato hexadecimal, por ejemplo: #cc3333</td>
+                </tr>
+                <tr>
+                    <td>fillOpacity</td>
+                    <td>Opacidad del relleno, valores permitidos de '0' a '1', por ejemplo: 0.5</td>
+                </tr>
+            </table>
+            <pre class="prettyprint linenums language-js"><strong>GET:</strong> http://www.zaragoza.es/api/recurso/mapas-colaborativos/<strong>id</strong>.json
+{
+    "totalCount": 2, /*Número de puntos asociados al mapa*/
+    "start": 0,
+    "rows": 2,
+    "type": "collaborative",
+    "title": "Columpios",
+    "icon": "generico",
+    "lastUpdated": "2014-01-03T12:25:04Z",
+    "id": 41,
+    "result": [
+        {
+            "id": "monumento-79",
+            "title": "Ayuntamiento de Zaragoza",
+            "description": "mi descripcion entera",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.8774209303093823,
+                    41.65599708994304
+                ]
+            }
+        },
+        {
+            "id": "671",
+            "title": "dsfgsdfg",
+            "description": "sdfgsdfg",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.9298908946924398,
+                    41.65262469545268
+                ]
+            }
+        }
+    ]
+}</pre>
+            <h4 id="mapadetUsu">Detalle de Mapa por usuario/usuaria</h4>
+            <pre class="prettyprint linenums language-js"><strong>GET:</strong> http://www.zaragoza.es/api/recurso/mapas-colaborativos/user/<strong>account_id</strong>/<strong>id</strong>.json
+<strong>HEADERS:</strong>
+<code>clientID</code> = &lt;Identificador de la aplicación&gt;
+<code>HmacSHA1</code> = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>Respuesta:</strong>
+{
+    "totalCount": 2, /*Número de puntos asociados al mapa*/
+    "start": 0,
+    "rows": 2,
+    "type": "collaborative",
+    "title": "Columpios",
+    "icon": "generico",
+    "lastUpdated": "2014-01-03T12:25:04Z",
+    "owned": false, /*es true si el usuario/usuaria es el propietario*/
+    "id": 41,
+    "result": [
+        {
+            "id": "monumento-79",
+            "title": "Ayuntamiento de Zaragoza",
+            "description": "mi descripcion entera",
+            "updateable": true, /*es true si este usuario/usuaria lo ha creado*/
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.8774209303093823,
+                    41.65599708994304
+                ]
+            }
+        },
+        {
+            "id": "671",
+            "title": "Otro punto",
+            "description": "Descripción",
+            "updateable": false,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.9298908946924398,
+                    41.65262469545268
+                ]
+            }
+        }
+    ]
+}</pre>
+            <h4 id="mapapost">Crear</h4>
+            <pre class="prettyprint linenums language-js">
+<strong>POST</strong> https://www.zaragoza.es/api/recurso/mapas-colaborativos/user/<strong>account_id</strong>.json(?srsname=wgs84|utm30n) por defecto wgs84
+<strong>HEADERS:</strong>
+<code>clientID</code> = &lt;Identificador de la aplicación&gt;
+<code>HmacSHA1</code> = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>BODY: </strong>
+{
+    "title": "Columpios",
+    "type": "private|public|collaborative", /*sino se especifica: private*/
+    "pois": [
+        {
+/*punto reutilizado de las bases de datos municipales, 
+no incluir ni title ni geometria al prevalecer la información municipal*/
+            "id": "monumento-79", 
+            "description": "mi descripcion entera"
+        },
+        {
+          "id": "675",
+          "title": "Recurso tipo linea",
+          "description": "Descripcion de recurso tipo linea",
+          "strokeColor": "#e34242", /* Color de borde */
+          "strokeOpacity": "0.5", /* Opacidad de color de borde */
+          "strokeWidth": "4", /* Ancho del color de borde */
+          "geometry": {
+              "type": "LineString", /* Tipo linea */
+              "coordinates": [[-0.8856868743896484,41.651879827111344],[-0.8856868743896484,41.65608036234462]]
+          }
+      },
+      {
+          "id": "670",
+          "title": "Recurso tipo poligono",
+          "description": "Descripcion de recurso tipo poligono",
+          "fillColor": "#0ca550", /* Color de relleno */
+          "fillOpacity": "0.3", /* Opacidad de color de relleno */
+          "strokeColor": "#e34242", /* Color de borde */
+          "strokeOpacity": "0.5", /* Opacidad de color de borde */
+          "strokeWidth": "4", /* Ancho del color de borde */
+          "geometry": {
+              "type": "Polygon", /* Tipo poligono */
+              "coordinates": [[[-0.8856868743896484,41.651879827111344],[-0.8856868743896484,41.65608036234462],[-0.8751726150512694,41.65608036234462],[-0.8751726150512694,41.651879827111344],[-0.8856868743896484,41.651879827111344]]]
+          }
+      },
+      {
+          "id": "671",
+          "title": "Recurso tipo punto",
+          "description": "Descripcion de recurso tipo punto",
+          "icon": "http://www.zaragoza.es/contenidos/iconos/innovacion.png", /* Icono para representar el punto */
+          "geometry": {
+              "type": "Point", /* Tipo punto */
+              "coordinates": [
+                  -0.9298811327357448,
+                  41.65260966067856
+              ]
+          }
+      }
+
+    ]
+}
+<strong>Respuesta:</strong>
+{
+  "id" : 41,
+  "title" : "Columpios",
+  "type" : "private",
+  "lastUpdated" : "2014-01-03T12:25:04Z",
+  "pois" : [ 
+    "id" : "monumento-79",
+    "title" : "Ayuntamiento de Zaragoza",
+    "description" : "mi descripcion entera",
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ -0.8774209303093823, 41.65599708994304 ]
+    }
+  }, {
+    "id": "675",
+    "title": "Recurso tipo linea",
+    "description": "Descripcion de recurso tipo linea",
+    "strokeColor": "#e34242", /* Color de borde */
+    "strokeOpacity": "0.5", /* Opacidad de color de borde */
+    "strokeWidth": "4", /* Ancho del color de borde */
+    "geometry": {
+        "type": "LineString", /* Tipo linea */
+        "coordinates": [[-0.8856868743896484,41.651879827111344],[-0.8856868743896484,41.65608036234462]]
+    }
+  }, {
+    "id": "670",
+    "title": "Recurso tipo poligono",
+    "description": "Descripcion de recurso tipo poligono",
+    "fillColor": "#0ca550", /* Color de relleno */
+    "fillOpacity": "0.3", /* Opacidad de color de relleno */
+    "strokeColor": "#e34242", /* Color de borde */
+    "strokeOpacity": "0.5", /* Opacidad de color de borde */
+    "strokeWidth": "4", /* Ancho del color de borde */
+    "geometry": {
+        "type": "Polygon", /* Tipo poligono */
+        "coordinates": [[[-0.8856868743896484,41.651879827111344],[-0.8856868743896484,41.65608036234462],[-0.8751726150512694,41.65608036234462],[-0.8751726150512694,41.651879827111344],[-0.8856868743896484,41.651879827111344]]]
+    }
+  }, {
+    "id": "671",
+    "title": "Recurso tipo punto",
+    "description": "Descripcion de recurso tipo punto",
+    "icon": "http://www.zaragoza.es/contenidos/iconos/innovacion.png", /* Icono para representar el punto */
+    "geometry": {
+        "type": "Point", /* Tipo punto */
+        "coordinates": [
+            -0.9298811327357448,
+            41.65260966067856
+        ]
+    }
+  } ]
+}
+</pre>
+            <h4 id="mapaput">Modificar</h4>
+            <pre class="prettyprint linenums language-js">
+<strong>PUT</strong> https://www.zaragoza.es/api/recurso/mapas-colaborativos/user/<strong>account_id</strong>/<strong>id</strong>.json(?srsname=wgs84|utm30n) por defecto wgs84
+<strong>HEADERS:</strong>
+<code>clientID</code> = &lt;Identificador de la aplicación&gt;
+<code>HmacSHA1</code> = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>BODY: </strong>
+{
+    "title": "Columpios", /*Sólo se modificará si la operación se hace desde el account_id propietario del mapa*/
+    "type": "private|public|collaborative", /*Sólo se modificará si la operación se hace desde el account_id propietario del mapa*/
+    "pois": [
+        {
+/*punto reutilizado de las bases de datos municipales, 
+no incluir ni title ni geometria al prevalecer la información municipal*/
+            "id": "monumento-79", 
+            "description": "mi descripcion entera"
+        },
+        {
+            "id": "671",
+            "title": "dsfgsdfg",
+            "description": "sdfgsdfg",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.9298811327357448,
+                    41.65260966067856
+                ]
+            }
+        }
+    ]
+}
+<strong>Respuesta:</strong>
+{
+  "id" : 41,
+  "title" : "Columpios",
+  "type" : "private",
+  "lastUpdated" : "2014-01-03T12:25:04Z",
+  "pois" : 
+  /*Sólo se modificarán los puntos que se hayan creado con el account_id indicado*/
+  [ {
+    "id" : "671",
+    "title" : "dsfgsdfg",
+    "description" : "sdfgsdfg",
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ -0.9298908946924398, 41.65262469545268 ]
+    }
+  }, {
+    "id" : "monumento-79",
+    "title" : "Ayuntamiento de Zaragoza",
+    "description" : "mi descripcion entera",
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ -0.8774209303093823, 41.65599708994304 ]
+    }
+  } ]
+}
+</pre>
+            <h4 id="poiget">Utilizar Puntos existentes en las Bases de datos municipales</h4>
+            <p>Para reutilizar puntos existentes debe incluir en el atributo <code>id</code> el valor obtenido de la consulta al <a href="https://www.zaragoza.es/docs-api/#!/poi">servicio de consulta de puntos de Interés</a></p>
+            <p role="alert" class="alert alert-info">No incluir el atributo <code>title</code> ni el atributo <code>coordinates</code> al crear o guardar este tipo de punto, ya que prevalece el título y la coordenada existente en los datos municipales.</p>
+            <div class="tab-content">
+                <h5>JSON</h5>
+                <div class="tab-pane">
+                    <pre class="prettyprint linenums language-js"><strong>GET:</strong> http://www.zaragoza.es/api/recurso/poi.json?start=0&amp;rows=50&amp;point=676840.375%2C4613966.0&amp;distance=50
+{
+    "totalCount": 9,
+    "start": 0,
+    "rows": 50,
+    "result": [
+        {
+            "id": "<strong>monumento-79</strong>",
+            "title": "Ayuntamiento de Zaragoza",
+            "link": "http://www.zaragoza.es/ciudad/turismo/es/que-visitar/detalle_Monumento?id=79",
+            "description": "<p>Plaza del Pilar, 18  Horario:De 8,00 a 15,00 h Tel?fono:976 72 11 00 - Informaci?n Municipal: 010  y 976 72 12 34</p>",
+            "category": "Monumentos, Turismo",
+            "lastUpdated": "2009-12-16T00:00:00Z",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    676840.38,
+                    4613965.9
+                ]
+            }
+        },
+        {
+            "id": "<strong>recurso-325</strong>",
+            "title": "Oficina de Relaciones con los Ciudadanos (Plaza del Pilar)",
+            "link": "http://www.zaragoza.es/ciudad/centros/detalle_Centro?id=325",
+            "description": "<p>Dirección: Pza. del Pilar , 18 Teléfono: 976 721232, 1233, 1069</p>",
+            "category": "Recursos",
+            "lastUpdated": "2013-01-08T10:59:05Z",
+            "icon": "http://www.zaragoza.es/contenidos/iconos/recursos.png",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    676840.375,
+                    4613966
+                ]
+            }
+        }
+...
+    ]
+}</pre>
+                </div>
+                <h5>XML</h5>
+                <div class="tab-pane">
+                    <pre class="prettyprint linenums language-js"><strong>GET:</strong> http://www.zaragoza.es/api/recurso/poi.xml?start=0&amp;rows=50&amp;point=676840.375%2C4613966.0&amp;distance=50
+&lt;resultado&gt;
+   &lt;totalCount&gt;15&lt;/totalCount&gt;
+   &lt;start&gt;0&lt;/start&gt;
+   &lt;rows&gt;50&lt;/rows&gt;
+   &lt;result&gt;
+      &lt;poi&gt;
+         &lt;id&gt;<strong>monumento-79</strong>&lt;/id&gt;
+         &lt;title&gt;Ayuntamiento de Zaragoza&lt;/title&gt;
+         &lt;link&gt;http://www.zaragoza.es/ciudad/turismo/es/que-visitar/detalle_Monumento?id=79&lt;/link&gt;
+         &lt;description&gt;&lt;![CDATA[&lt;p&gt;Plaza del Pilar, 18  Horario:De 8.00 a 15.00 h Teléfono:976 72 11 00 - Información Municipal: 010  y 976 72 12 34&lt;/p&gt;]]&gt;&lt;/description&gt;
+         &lt;category&gt;Monumentos, Turismo&lt;/category&gt;
+         &lt;lastUpdated&gt;2012-07-24T00:00:00Z&lt;/lastUpdated&gt;
+         &lt;geometry&gt;
+            &lt;type&gt;Point&lt;/type&gt;
+            &lt;coordinates&gt;676840.38,4613965.9&lt;/coordinates&gt;
+         &lt;/geometry&gt;
+      &lt;/poi&gt;
+      &lt;poi&gt;
+         &lt;id&gt;<strong>monumento-1</strong>&lt;/id&gt;
+         &lt;title&gt;Monumento a Goya&lt;/title&gt;
+         &lt;link&gt;http://www.zaragoza.es/ciudad/artepublico/detalle_ArtePublico?id=1&lt;/link&gt;
+         &lt;description&gt;&lt;![CDATA[Plaza del Pilar (Casco Histórico)&lt;br/&gt;Periodo franquista [1937-1975]&lt;br/&gt;MARÉS, Federico,BELTRÁN NAVARRO, José]]&gt;&lt;/description&gt;
+         &lt;category&gt;Arte Público&lt;/category&gt;
+         &lt;icon&gt;http://www.zaragoza.es/contenidos/iconos/arte.png&lt;/icon&gt;
+         &lt;geometry&gt;
+            &lt;type&gt;Point&lt;/type&gt;
+            &lt;coordinates&gt;676872.46,4613920.09&lt;/coordinates&gt;
+         &lt;/geometry&gt;
+      &lt;/poi&gt;
+...
+   &lt;/result&gt;
+&lt;/resultado&gt;</pre>
+                </div>
+            </div>
+            <h4 id="mapadel">Borrar un mapa</h4>
+            <p role="alert" class="alert alert-info">Sólo se pueden eliminar aquellos mapas de los que <code>account_id</code> es el propietario.</p>
+            <pre class="prettyprint linenums language-js">
+<strong>DELETE</strong> https://www.zaragoza.es/api/recurso/mapas-colaborativos/user/<strong>account_id</strong>/<strong>id</strong>.json
+<strong>HEADERS:</strong>
+<code>clientID</code> = &lt;Identificador de la aplicación&gt;
+<code>HmacSHA1</code> = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>Respuesta:</strong>
+{
+  "status" : 200,
+  "mensaje" : "Borrado realizado correctamente"
+}
+</pre>
+            <h4 id="mapadelPtos">Borrar puntos asociados a un mapa</h4>
+            <p role="alert" class="alert alert-info">Sólo se pueden eliminar aquellos puntos que <code>account_id</code> ha creado.</p>
+            <pre class="prettyprint linenums language-js">
+<strong>DELETE</strong> https://www.zaragoza.es/api/recurso/mapas-colaborativos/user/<strong>account_id</strong>/<strong>id</strong>.json?ids=<strong>identificadores_de_puntos_separados_por_comas</strong>
+<strong>HEADERS:</strong>
+<code>clientID</code> = &lt;Identificador de la aplicación&gt;
+<code>HmacSHA1</code> = Clave HMAC generado de la siguiente forma Hmac(clientId + "GET|POST|PUT|DELETE" + uri + body, clavePrivada)
+<strong>Respuesta:</strong>
+{
+  "status" : 200,
+  "mensaje" : "Borrado realizado correctamente"
+}
+</pre>
+        </div>
+    </sede:content>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#toc').TableOfContentsBehavior('div.apicontent', 'ul');
+    });
+    </script>
+</body>
+
+</html>

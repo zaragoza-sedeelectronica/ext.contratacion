@@ -1,0 +1,168 @@
+//
+// Azar (Estilos propios)
+// --------------------------------------------------
+
+//main {
+//	margin-top: 20px;
+//}
+
+body { 
+	//padding-top: 57px;
+	padding-top: 67px; // 57px .navbar-portal + 10px margin adicional
+}
+
+// Ckeditor de la gestión. No necesita el padding inicial (barra de navegación)
+body#ckeditor-body-id {
+	padding-top: 0;
+}
+
+.container-fluid {
+	max-width: 1170px;
+}
+
+//.row-offcanvas.active .sidebar-offcanvas {
+//	
+//}
+
+// h2{
+// 	border-top: .15em solid;
+// 	border-bottom: .15em solid;
+//     padding: .5em 0 .5em;
+// }
+// h3{
+// 	border-bottom: .10em solid;
+//     padding-bottom: .5em;
+// }
+// #ogob h2, h3 {border-color: #E2115C;} //@colorOgob;}
+// #ayto h2, h3 {border-color:@colorAyto;}
+// #ciudad h2, h3 {border-color:@colorCiudad;}
+// #cultura h2, h3 {border-color:@colorCultura;}
+// #sectores h2, h3 {border-color:@colorGente;}
+// #turismo h2, h3 {border-color:@colorTurismo;}
+
+// Limpieza de input
+.form-control-clear {
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+[class*='label-'] a{
+	color: @white;
+}
+
+.panel-heading a:after{
+//.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f107";
+    float: right;
+    color: grey;
+    font-weight: 900;
+}
+.panel-heading a.collapsed:after {
+//.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f105";    /* adjust as needed, taken from Font Awesome */
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+#ogob i.fa.active {color: #E2115C;} //@colorOgob;}
+#ayto i.fa.active {color:@colorAyto;}
+#ciudad i.fa.active {color:@colorCiudad;}
+#cultura i.fa.active {color:@colorCultura;}
+#sectores i.fa.active {color:@colorGente;}
+#turismo i.fa.active {color:@colorTurismo;}
+
+.rotate {
+    -moz-transition: all 0.25s linear;
+    -webkit-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+
+.rotate.down {
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+// Base styles
+// --------------------------
+
+.thumbnail.overlay{
+	background-color: @white;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	img{max-height: 23em; width: 100%;}
+	.caption{
+		background: rgba(255,255,255,0.95);
+		position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    width: 100%;
+	    color: @text-color;
+	    font-weight: bold !important;
+	    padding: 1em !important;
+	    h5{font-weight: bold;}
+	    a {color: @text-color;}
+	}
+}
+.thumbnail.overlay:hover .caption{
+	background-color: rgba(238,238,238,0.95);
+}
+
+@media (max-width: @screen-xs-max) {
+	.thumbnail.overlay{
+		background-color: rgba(0, 0, 0, .8);
+//		min-height: 150px;
+//		max-height: 150px;
+		.caption{ // .col-xs-9
+			position: relative;
+			width: 75%;
+		}
+	}
+
+	.list-unstyled-xs{
+	    padding-left: 0;
+    	list-style: none;
+	}
+}
+
+// Dropdown de varios niveles
+.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:-100%;width:100%;margin-top:-6px;margin-right:-1px;-webkit-border-radius:6px 6px 6px 6px;-moz-border-radius:6px 6px 6px 6px;border-radius:6px 6px 6px 6px;}
+.dropdown-submenu:hover>.dropdown-menu{display:block;}
+.dropdown-submenu>a:after{display:block;content:" ";float:left;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 5px 5px 0;border-right-color:#999;margin-top:5px;margin-right:10px;}
+.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 6px 6px 6px;-moz-border-radius:6px 6px 6px 6px;border-radius:6px 6px 6px 6px;}
+.dropdown-menu-right {margin-left:0;}
+
+// Etiquetas de los criterios de búsqueda del buscador facetado
+.solr-search-criteria {
+	strong, ul{
+        display: inline-block;
+    }
+}
+
+// Fragmento equipamiento
+@media (min-width: 768px) { 
+	.listado-equipamiento-solr {
+		li {
+			min-height: 18em;
+		}
+	}
+}
+
+.text-gray-small {
+	color: #696969;
+	font-size: 65%;
+}
+
+.embed-responsive-item{
+	border: 0;
+	overflow: hidden;
+}

@@ -1,0 +1,23 @@
+<th:block th:each="registro : ${resultado.result}">
+	<dt class="well well-sm nomargin fnd-gris-claro">
+    <h4>
+        <img class="nodeco margin-r1em" alt="Pregunta Ciudadana" title="Pregunta Ciudadana" src="/cont/paginas/gobierno-abierto/img/pregciud-p.png"/>
+        <a th:href="@{servicio/ayuntamiento-responde/{id}(id=${registro.id})}" th:text="${registro.title}"></a>
+    </h4>
+</dt>
+<dd class="card clearfix">
+    <p class="pull-left">
+        Realizada por
+        <em><th:block th:utext="${registro.usuarioAlta}"></th:block></em> el <span sede:rdf="${registro.get('creationDate')}"></span>
+    </p>
+    <p class="pull-right">
+        Votos Recibidos: 
+    	<span class="fa fa-arrow-up" style="color:green" aria-hidden="true"></span> <span class="txtColor" th:text="${registro.votosAFavor} == null ? '0' : ${registro.votosAFavor}"></span>
+        <span class="sr-only">Votos a favor</span>
+        <span class="fa fa-arrow-down" style="color:red" aria-hidden="true"></span> <span class="txtColor" th:text="${registro.votosEnContra} == null ? '0' : ${registro.votosEnContra}"></span>
+        <span class="sr-only">Votos en contra</span> &nbsp;&nbsp;
+        Comentarios:
+        <th:block th:text="${registro.numComentarios} == null ? '0' : ${registro.numComentarios}"></th:block>
+    </p>
+</dd>
+</th:block>

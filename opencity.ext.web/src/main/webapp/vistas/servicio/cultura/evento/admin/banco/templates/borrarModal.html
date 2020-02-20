@@ -1,0 +1,28 @@
+<div id="modalBorrar">
+    <div class="modal-header">
+        <!-- <button type="button" class="close formReset" data-dismiss="modal">×</button> -->
+        <h3>Eliminación de registro</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <fieldset class="form-horizontal">
+                 <div class="form-group" ng-repeat="registro in registros">
+                    <label class="col-sm-2 control-label" for="delTitle">Nombre:</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="delTitle" name="delTitle" ng-model="registro.title" value="{{ registro.title }}" disabled/>
+                    </div>
+                    <label class="oculto" for="delId">Id:</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" id="delId" name="delId" type="text" ng-model="registro.id" value="{{ registro.id }}" disabled/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <h4>Esta a punto de borrar los registros seleccionados.</h4>
+        <p>¿Desea continuar?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="borrar()">Borrar</button>
+        <button type="button" class="btn btn-warning" ng-click="cancelar()">Cancelar</button> 
+    </div>
+</div>

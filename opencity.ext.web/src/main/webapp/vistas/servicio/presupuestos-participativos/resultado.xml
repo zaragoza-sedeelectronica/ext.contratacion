@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos participativos" keywords="sede,web,turismo,monumentos" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type="text/css"></link>
+    <style>
+    ul.tags li {
+        font-size: 14px;
+        margin-bottom: .5em;
+    }
+
+    .label-primary.active {
+        background-color: #b91612;
+        color: #fff;
+    }
+
+    .offset-target:before {
+        content: "";
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Resultado Fase de Votación</h2>
+        <th:block th:include="fragmentos/error" />
+        <p>Papeletas emitidas presencialmente: <strong th:text="${votosPresencial}"></strong></p>
+        <p>Votaciones en línea: <strong th:text="${votosOnline}"></strong></p>
+        <div class="padding-a1em fnd-gris-claro radius">
+            <h3 class="nomargin margin-b05em">Distritos</h3>
+            <ul class="list-unstyled row no-gutter">
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntaactur-reyfernando" class="label label-primary">ACTUR-Rey Fernando</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntacasablanca" class="label label-primary">Casablanca</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntacascohistorico" class="label label-primary">Casco Histórico</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntacentro" class="label label-primary">Centro</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntaelrabal" class="label label-primary">El Rabal</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntadelicias" class="label label-primary">Delicias</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntalaalmozara" class="label label-primary">La Almozara</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntalasfuentes" class="label label-primary">Las Fuentes</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntamiralbueno" class="label label-primary">Miralbueno</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntaoliver-valdefierro" class="label label-primary">Oliver-Valdefierro</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntasanjose" class="label label-primary">San José</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntasantaisabel" class="label label-primary">Santa Isabel</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntatorrero-lapaz" class="label label-primary">Torrero-La Paz</a> </li>
+                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em"><a href="#juntauniversidad" class="label label-primary">Universidad</a></li>
+            </ul>
+        </div>
+        <hr/>
+        <div class="margin-b2em table-junta" th:each="junta : ${resultado}">
+            <h3 class="nomargin offset-target" th:id="${#strings.toLowerCase(#strings.replace(junta.key,' ',''))}">
+                <th:block th:text="${junta.key}"></th:block> 
+                <small>
+                    Presupuesto: <span class="presupuesto-junta" th:text="${cantidadesJunta.get(junta.key)}"></span> €.
+                    <strong><span class="propuestas-seleccionadas"></span> seleccionadas.</strong> 
+                    Coste: <span class="gasto-junta"></span> €.
+                    Remanente: <span class="remanente-junta"></span> €.
+                </small>
+            </h3>
+            <hr class="nomargin margin-b1em" />
+            <div class="table-responsive">
+                <table class="table table-striped table-consended table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td class="col-xs-1">ID</td>
+                            <td class="col-xs-5">PROPUESTA</td>
+                            <td class="col-xs-2">COSTE</td>
+                            <td class="col-xs-4">VOTOS</td>
+                            <td class="col-xs-4">RESULTADO</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="registro : ${junta.value}" th:class="${registro.status=='S'} ? 'success' : ''">
+                            <td th:text="${registro.id}"></td>
+                            <td>
+                                <a th:href="'/sede/servicio/presupuestos-participativos/' + @{{id}(id=${registro.id})}" sede:rdf="${registro.get('title')}"></a>
+                            </td>
+                            <td>
+                                <span class="coste" th:if="${registro.coste}" th:text="${#numbers.formatInteger(registro.coste,3,'POINT')}"></span> €
+                            </td>
+                            <td th:utext="${registro.votosAFavor}"></td>
+                            <td>
+                                <span aria-hidden="true" th:title="${registro.status} == 'S' ? 'Seleccionada' : 'No seleccionada'" class="fa fa-2x" th:classappend="${registro.status} == 'S' ? 'color-ciudad fa-check-circle' : 'color-ayto fa-times-circle'"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <!-- <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"></script> -->
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('.table').DataTable({
+            'paging': false,
+            'bInfo': false,
+            'order': [
+                //[3, 'desc']
+                [3, 'desc']
+            ],
+            'language': {
+                'sSearch': 'Buscar:'
+            }
+        });
+        $('.table-junta').each(function(){
+            var presupuesto = 0;
+            var gasto = 0;
+            var remantente = 0;
+            var propuestasSeleccionadas = $(this).find('tr.success').size();
+            $(this).find('.propuestas-seleccionadas').text(propuestasSeleccionadas);
+            presupuesto = parseInt($(this).find('.presupuesto-junta').text());
+            $(this).find('tr.success').each(function(){
+                var costePropuesta = parseInt($(this).find('.coste').text().replace('.',''));
+                gasto += costePropuesta;
+            });
+            $(this).find('.gasto-junta').text(gasto);
+            remantente = presupuesto - gasto;
+            $(this).find('.remanente-junta').text(remantente);
+        });
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

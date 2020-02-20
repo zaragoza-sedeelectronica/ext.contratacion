@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Buscador de Mociones" keywords="sede,web,edicto,tablón, mociones" />
+    <style type="text/css">
+    .form-mocion {
+        border: 1px solid #BBB;
+        background: #E6E6E6;
+        border-radius: 0 0 .5em .5em;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+    .lead {
+        border: 1px solid #BBB;
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        margin: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2 class="oculto">Mociones</h2>
+        <!--/* <h2>Mociones
+            <div class="pull-right">
+                <a class="boton btn btn-primary" href="./"> VOLVER</a>
+            </div>
+        </h2> */-->
+        <br/>
+        <p class="lead">Consulta las Mociones de las Sesiones Plenarias (desde 2017)</p>
+        <!--  <div class="row">
+            <div class="col-md-12"> -->
+        <form method="get" action="/sede/servicio/agenda-institucional/mocion/" th:object="${dato}" class="form-horizontal form-mocion">
+            <fieldset>
+                <legend class="oculto">Consulta</legend>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="titleContains">Título</label>
+                            <div class="col-xs-8">
+                                <input class="form-control" type="text" name="titleContains" id="titleContains" th:value="${param.titleContains} ? ${param.titleContains[0]} : ''"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="grupo">Grupo Político <br/> que la propone</label>
+
+                            <div class="col-xs-8">
+                                <select class="form-control" name="grupo" id="grupo">
+                                    <option value="">--</option>
+                                    <option th:selected="${param.grupo} ? (${#strings.equals(param.grupo[0], 'GM PP')} ? true : false) : false" value="*GM PP*">Grupo Municipal Partido Popular</option>
+                                    <option th:selected="${param.grupo} ? (${#strings.equals(param.grupo[0], 'GM ZeC')} ? true : false) : false" value="*GM ZeC*">Grupo Municipal Zaragoza en Común</option>
+                                    <option th:selected="${param.grupo} ? (${#strings.equals(param.grupo[0], 'GM PSOE')} ? true : false) : false" value="*GM PSOE*">Grupo Municipal Socialista PSOE</option>
+                                    <option th:selected="${param.grupo} ? (${#strings.equals(param.grupo[0], 'GM Ciudadanos')} ? true : false) : false" value="*GM Ciudadanos*">Grupo Municipal Ciudadanos</option>
+                                    <option th:selected="${param.grupo} ? (${#strings.equals(param.grupo[0], 'GM CHA')} ? true : false) : false" value="*GM CHA*">Grupo Municipal Chunta Aragonesista</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="startDateFrom">Fecha de la Sesión:</label>
+                            <div class="col-xs-8">
+                                <input type="text" id="startDateFrom" name="startDateFrom" th:value="${param.startDateFrom} ? ${param.startDateFrom[0]} : ''" size="10" maxlength="30" placeholder="Formato: dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="numExpedienteContains">Nº Expediente Moción:</label>
+                            <div class="col-xs-8">
+                                <input class="form-control" type="text" name="numExpedienteContains" id="numExpedienteContains" th:value="${param.numExpedienteContains} ? ${param.numExpedienteContains[0]} : ''" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group"> -->
+                    <div class="text-right">
+                        <input type="submit" value="Consultar" class="boton btn btn-primary" />
+                    </div>
+                <!-- </div> -->
+            </fieldset>
+        </form>
+        <!--         </div>
+        </div> -->
+        <ul class="row list-unstyled">
+            <li class="col-md-12" th:each="doc: ${resultado.body.result}" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}">
+                <div class="card">
+                    <h3><a th:href="'/sede/servicio/agenda-institucional/mocion/' + @{{id}(id=${doc.id})}">Moción <abbr title="número">nº</abbr> <span sede:rdf="${doc.get('numExpediente')}"/></a></h3>
+                    <hr class="sm" />
+                    <!-- <h3 sede:rdf="'Moción nº: '+${doc.get('numExpediente')}" />-->
+                    <p><span class="label label-info" sede:rdf="${doc.get('startDate', 'dd MMMM yyyy')}" /> Presentada por 
+                        <th:block th:each="item : ${#strings.arraySplit(doc.grupo, ',')}">
+                            <span class="label label-success" th:text="${#strings.replace(item,'GM','Grupo Municipal')}" />
+                        </th:block>
+                    </p>
+                    <div th:if="${doc.get('title')}" sede:rdf="${doc.get('title')}"></div>
+                    <th:block th:text="${doc.tipo}"></th:block>
+                </div>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+        <!-- </div> -->
+        <!-- </div> -->
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('#mociones').collapse();
+
+        $("#actividades li").click(function(e) {
+            /*e.preventDefault();*/
+            $(this).children('.rotate').toggleClass("down");
+        });
+
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

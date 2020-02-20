@@ -1,0 +1,51 @@
+@media print {
+    body {
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    a.logo[href]:after, h1 a[href]:after, a.badge[href]:after, a.label[href]:after {
+        content: "";
+    }
+    .portal-header:before {
+        content: url('//www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto_old.png');
+        width: 56px;
+        height: 50px;
+        float: left;
+        margin: 0 .5em .5em;
+    }
+    .portal-header{
+        float: none !important;
+        width: 100% !important;
+    }
+    .navbar {
+        background-image: none!important;
+        display: block;
+        position: static;
+    }
+    .navbar a {
+        color: #fff !important;
+    }
+    .no-print, .logo, #menu, .search-form, footer {
+        display: none;
+    }
+
+    .tabs {
+        display: none !important;
+    }
+    .tab-content {
+        border: none;
+    }
+    .tab-content > .tab-pane {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    .tab-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        position: static;
+        width: auto;
+        left: auto;
+    }
+}

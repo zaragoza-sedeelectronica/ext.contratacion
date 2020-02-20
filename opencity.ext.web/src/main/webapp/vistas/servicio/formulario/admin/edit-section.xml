@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="localhost" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Editar sección - Gestión de Formularios, Votaciones y Encuestas Ciudadanas" keywords="sede,web" />
+    <link rel="stylesheet" type="text/css" href="/cont/assets/bower_components/angular-ui-select/dist/select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/cont/assets/bower_components/leaflet/dist/leaflet.css"/>
+    <style type="text/css">
+        tr.noasignada{background-color:#D69999}/*rojo*/
+        tr.cerrada{background-color:#B8D699}/*verde*/
+        tr.pendiente,tr.pendientepor{background-color:#D6D699}/*amarillo*/
+        tr.resuelta,tr.realizadapor{background-color:#B8D699}/*verde*/
+        tr.borrada{background-color:#FFF}
+        tr.derivadaa{background-color:#99B8D6}/*azul*/
+        tr.rechazada,tr.rechazadapor{background-color:#FFF}
+        tr.archivada{background-color:#FFF}
+
+        .btn-street-view{
+            position: relative;
+            top: 45px;
+            right: 8%;
+            float: right;
+            z-index: 20;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .panorama-street-view{
+            position: absolute;
+            right: 0;
+            width:300px;
+            height:300px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+	<sede:content>
+	      <div class="container-fluid">
+	      
+		      <div class="row">
+	
+	                    <div class="col-md-12">
+	                        <a class="btn btn-primary btn-sm pull-right" href="#ayuda" target="_blank">
+	                        <span class="glyphicon glyphicon-question-sign"></span>
+	                        <span class="hidden-xs"> Ayuda</span>
+	                        </a>
+	                        <modal-localizacion title="Mapa"></modal-localizacion>
+	                        <sham-spinner text="Ejecutando petición..." class="pull-right"></sham-spinner>
+	                    </div>
+	          </div>
+
+	        <div class="row">
+	        	<h3>Editar datos sección</h3>
+	        	<hr></hr>
+	        	<div class="form-group">
+                    <label class="col-sm-2 control-label">Título (*): </label>
+                    <div class="col-sm-3">
+                        <input type="text" ng-model="queryForm.id" class="form-control" placeholder="Introduzca título"/>
+                    </div>
+                    <label class="col-sm-1 control-label">Columnas: </label>
+                    <div class="col-sm-3">
+                        <input type="text" ng-model="queryForm.id" class="form-control" placeholder="Número columnas sección"/>
+                    </div>
+                </div>                
+	        </div>
+	        <br></br>
+	        <div class="row">	        	
+	        	<div class="form-group">
+                    <label class="col-sm-2 control-label">Descripción (*):</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="4" name="" ng-model="" placeholder="Añadir descripción de la sección"></textarea>
+                    </div>                    
+                </div>                
+	        </div>
+	        <br></br>
+	        <div class="row">
+	        	<div class="col-md-12" align="right">
+                	<button class="btn btn-default" type="button" ng-click="buscar(queryForm.id)" onclick="location.href='edit-form';">Volver</button>
+                	<button class="btn btn-primary" type="button" ng-click="queryForm={}">Guardar Cambios</button>
+                </div>
+	        </div>
+	        <br></br>
+	        
+	        <div class="row">	        	
+	        	<div class="col-md-12">
+	        	<h3>Preguntas</h3> 
+			        <table class="table table-bordered table-hover table-btn">
+		                <thead>
+		                    <tr>
+		                    	<th >ORDEN</th>		                      
+		                        <th >TITULO</th>
+		                        <th >DESCRIPCION</th>
+		                        <th >OBLIGATORIA</th>                                                
+		                        <th >Operaciones</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                    <tr>
+		                    	<td ><a href="edit-section">1</a> 
+			                    	<button type="button" class="btn btn-default btn-sm">
+	          							<span class="glyphicon glyphicon-arrow-down"></span>
+	        						</button></td>
+		                        <td ><a href="edit-section">Pregunta</a></td>
+		                        <td ><a href="edit-section">Descripcion pregunta</a></td>
+		                        <td >SI</td>                     
+		                        <td ><button class="btn btn-primary" type="button" ng-click="buscar(queryForm.id)" onclick="location.href='edit-question';">Editar</button>
+		                        	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">Eliminar</button>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                    	<td ><a href="edit-section">2</a>
+		                    		<button type="button" class="btn btn-default btn-sm">
+	          							<span class="glyphicon glyphicon-arrow-up"></span>
+	        						</button>
+		                    	</td>
+		                        <td ><a href="edit-section">Pregunta</a></td>
+		                        <td ><a href="edit-section">Descripcion pregunta</a></td>
+		                        <td >NO</td>                          
+		                        <td ><button class="btn btn-primary" type="submit" onclick="location.href='edit-question';">Editar</button>                        	
+		                        	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">Eliminar</button>
+		                        </td>
+		                    </tr>
+		                </tbody>
+		            </table>
+		          </div>
+	          </div>
+	      </div>
+	      <div class="row">
+	        	<div class="col-md-12" align="right">
+                	<button class="btn btn-primary" type="button" ng-click="queryForm={}" onclick="location.href='edit-question';">Añadir pregunta</button>
+                </div>
+	      </div>
+	      <!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h3 class="modal-title" id="exampleModalLabel">Eliminar pregunta</h3>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          
+			        </button>
+			      </div>
+			      <div class="modal-body">
+					<p>¿Está seguro de eliminar esta pregunta?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Eliminar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	</sede:content>
+<!--/* Libs AngularJS & Javascript */-->
+    <script src="/cont/assets/bower_components/cryptojslib/rollups/hmac-sha1.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular/angular.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/lodash/dist/lodash.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/restangular/dist/restangular.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-sham-spinner/angular-sham-spinner.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-ui-select/dist/select.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/leaflet/dist/leaflet.js" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCaSVfol2p4F2GNWiiWQj2t4wGAEolsd6c"></script>
+    <script src="/cont/assets/bower_components/leaflet-plugins/layer/tile/Google.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/proj4leaflet/lib/proj4-compressed.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/proj4leaflet/src/proj4leaflet.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/checklist-model/checklist-model.js" type="text/javascript"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+
+    <!--/* Ficheros AngularJS propios de la sección */-->
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/app.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/services.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/controllers.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/filters.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/directives.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/directives.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/utilsTicketing.js" charset="UTF-8"></script>
+
+</body>
+
+</html>

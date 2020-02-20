@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Mapa de la Web de la Sede Electrónica del Ayuntamiento de Zaragoza" description="Mapa del Sitio Web" author="Ayuntamiento de Zaragoza" last-modified="Wed Jan 03 00:00:00 CET 2018" audience="" keywords="sede electrónica, ayuntamiento de zaragoza, mapa del sitio web, zaragoza" />
+    <style style="text/css">
+        .navegacion-portales {
+            position:inherit;       
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2 class="mapa-web-title">Mapa Web</h2>
+        <nav class="navegacion-portales" style="display: none;" th:fragment="mapa-web">
+            <div class="row no-gutter" role="tablist" aria-multiselectable="true">
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="ayto panel-heading">
+                        <a class="accordion-toggle btn-block" role="button" aria-expanded="false" aria-controls="accordion-ogob" data-toggle="collapse" href="#accordion-ogob" th:classappend="${currentDevice.isMobile()} ? collapsed">
+                            Gobierno Abierto
+                        </a>
+                        <!--/* <a href="/ciudadania/gobierno-abierto/">
+                            <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_gabierto.png" alt="Gobierno Abierto" class="hidden-xs"/>
+                            <div class="visible-xs padding-l1em">Gobierno Abierto</div>
+                        </a> */-->
+                    </div>
+                    <div id="accordion-ogob" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in">
+                        <ul class="nav">
+                            <!--/* <li class="indice"><a href="/ciudadania/gobierno-abierto/">Servicios destacados<span class="oculto"> de Gobierno Abierto</span></a></li> */-->
+                            <li class="destacado border-solid-bottom"><a href="/ciudadania/gobierno-abierto/">Servicios Destacados<span class="oculto"> de Gobierno Abierto</span></a></li>
+							<li><a href="https://www.zaragoza.es/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">Quejas y Sugerencias</a></li>
+							<li><a href="/sede/portal/datos-abiertos/">Datos Abiertos</a></li>
+							<li><a href="/ciudadania/gobierno-abierto/participar/">Participar y Colaborar</a></li>
+							<li><a href="/sede/portal/participacion/en-tu-barrio">En tu Barrio</a></li>
+							<li><a href="/sede/portal/participacion/procesos-participativos/">Procesos Participativos</a></li>
+							<li><a href="/sede/portal/consulta-publica/">Consulta Pública</a></li>
+							<li><a href="/sede/servicio/mapa-colaborativo/">Mapas Colaborativos</a></li>
+							<li><a href="/ciudadania/gobierno-abierto/participar/aytoresponde/default.htm?tab=respuestas">Ayuntamiento Responde</a></li>
+                            
+                            <li><a href="/sede/servicio/transparencia/">Transparencia</a></li>
+							<li><a href="/ciudadania/gobierno-abierto/transparencia/agendaabierta.htm">Agenda Abierta</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="ayto panel-heading">
+                        <a class="accordion-toggle btn-block" role="button" aria-expanded="false" aria-controls="accordion-ayto" data-toggle="collapse" href="#accordion-ayto" th:classappend="${currentDevice.isMobile()} ? collapsed">
+                        El Ayuntamiento
+                    </a>
+                    <!--/* <a href="/ciudad/ayto/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_ayto.png" alt="El Ayuntamiento" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">El Ayuntamiento</div>
+                    </a> */-->
+                    </div>
+                    <div id="accordion-ayto" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in">
+                        <ul class="nav">
+                            <!--/* <li class="indice"><a href="/ciudad/ayto/">Servicios destacados<span class="oculto"> del Ayuntamiento</span></a></li> */-->
+                            <li class="destacado border-solid-bottom"><a href="/ciudad/ayto/">Servicios destacados<span class="oculto"> del Ayuntamiento</span></a></li>
+                            <li><a href="/ciudad/encasa/agua/">Agua</a></li>
+                            <li><a href="/ciudad/organizacion/alcalde/">Alcalde</a></li>
+                            <li><a href="/ciudad/usic/">Archivo, Biblioteca, Hemeroteca</a></li>
+                            <li><a href="/ciudad/gestionmunicipal/ayudasysubvenciones/">Ayudas y Subvenciones</a></li>
+                            <li><a href="/ciudad/bomberos/">Bomberos</a></li>
+                            <li><a href="/ciudad/gestionmunicipal/calidad/">Calidad</a></li>
+                            <li><a href="/ciudad/encasa/hacienda/">Hacienda y Economía</a></li>
+                            <li><a href="/ciudad/igualdad/">Igualdad</a></li>
+                            <li><a href="/ciudad/normativa/">Normativa</a></li>
+                            <li><a href="/ciudad/noticias/index_Noticia">Noticias</a></li>
+                            <li><a href="/oferta/">Oferta de Empleo</a></li>
+                            <li><a href="/ciudad/organizacion/">Organización</a></li>
+                            <li><a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/">Perfil del Contratante</a></li>
+                            <li><a href="/ciudad/policia/">Policia</a></li>
+                            <li><a href="/sede/servicio/premios-concursos/">Premios y Concursos</a></li>
+                            <li><a href="/ciudad/saneamiento/">Saneamiento</a></li>
+                            <li><a href="/ciudad/tablon/index_Tablon">Tablón</a></li>
+                            <li><a href="/ciudad/encasa/tramites.htm">Trámites y Servicios</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="ciudad panel-heading">
+                        <a class="accordion-toggle btn-block" role="button" aria-expanded="false" aria-controls="accordion-ciudad" data-toggle="collapse" href="#accordion-ciudad" th:classappend="${currentDevice.isMobile()} ? collapsed">
+                        La Ciudad
+                    </a>
+                    <!--/* <a href="/ciudad/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_ciudad.png" alt="La Ciudad" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">La Ciudad</div>
+                    </a> */-->
+                    </div>
+                    <div id="accordion-ciudad" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in">
+                        <ul class="nav">
+                            <!--/* <li class="indice"><a href="/ciudad/">Servicios destacados<span class="oculto"> de La Ciudad</span></a></li> */-->
+                            <li class="destacado border-solid-bottom"><a href="/ciudad/">Servicios destacados<span class="oculto"> de La Ciudad</span></a></li>
+                            <li><a href="/sede/portal/bibliotecas-municipales/">Bibliotecas</a></li>
+                            <li><a href="http://idezar.zaragoza.es/callejero/">Callejero</a></li>
+                            <li><a href="/ciudad/cementerios/">Cementerios</a></li>
+                            <li><a href="/ciudad/consumo/">Consumo</a></li>
+                            <li><a href="/ciudad/deporte/">Deporte</a></li>
+                            <li><a href="/ciudad/educacion/">Educación</a></li>
+                            <li><a href="/ciudad/educacionybibliotecas/">Educación y Bibliotecas (Patronato)</a></li>
+                            <li><a href="/sede/servicio/equipamiento/">Equipamientos</a></li>
+                            <li>
+                                <a href="/ciudad/idezar/">
+                                    <abbr title="Infraestructuras de datos espaciales del Ayuntamiento de Zaragoza">IDEZAR</abbr>
+                                </a>
+                            </li>
+                            <li><a href="/ciudad/zaragozainternacional/">Internacional</a></li>
+                            <li><a href="/ciudad/limpia/">Limpieza</a></li>
+                            <li><a href="/ciudad/medioambiente/">Medio Ambiente</a></li>
+                            <li><a href="/sede/portal/mercados/">Mercados</a></li>
+                            <li><a href="/ciudad/viapublica/movilidad/">Movilidad</a></li>
+                            <li><a href="/ciudad/estadistica/">Observatorio Estadística</a></li>
+                            <li><a href="/ciudad/IMSP/">Salud</a></li>
+                            <li><a href="/ciudad/sinbarreras/">Sin Barreras</a></li>
+                            <li><a href="/ciudad/urbanismo/">Urbanismo</a></li>
+                            <li><a href="/ciudad/vistasciudad/enlace/turismo/es/webcam_Virtual">Visual</a></li>
+                            <li><a href="/sede/portal/voluntariado/">Voluntariado</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="cultura panel-heading">
+                        <a class="accordion-toggle btn-block" role="button" aria-expanded="false" aria-controls="accordion-cultura" data-toggle="collapse" href="#accordion-cultura" th:classappend="${currentDevice.isMobile()} ? collapsed">
+                        Cultura
+                    </a>
+                    <!--/* <a href="/ciudad/cultura/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_cultura.png" alt="Cultura" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">Cultura</div>
+                    </a> */-->
+                    </div>
+                    <div id="accordion-cultura" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in">
+                        <ul class="nav">
+                            <!--/* <li class="indice"><a href="/sede/servicio/cultura/">Servicios destacados<span class="oculto"> de Cultura</span></a></li> */-->
+                            <li class="destacado border-solid-bottom"><a href="/sede/servicio/cultura/">Servicios destacados<span class="oculto"> de Cultura</span></a></li>
+                            <li><a href="/ciudad/artepublico/buscar_ArtePublico">Arte Público</a></li>
+                            <li><a href="/ciudad/museos/es/chistoria">Centro de Historias</a></li>
+                            <li><a href="https://www.zaragoza.es/sede/servicio/equipamiento/list?fq=temas_smultiple:(%22Cultura+y+Ocio%22)">Equipamientos de Cultura</a></li>
+                            <li><a href="/ciudad/cultura/ayudas.htm">Convocatorias de cultura</a></li>
+                            <li><a href="/ciudad/museos/es/activ/activ-didacticas.htm">Museos: Actividades Didácticas</a></li>
+                            <li><a href="/ciudad/bomberos/detalle_Centro?id=4465">Museo de los Bomberos</a></li>
+                            <li><a href="/ciudad/museos/es/foro">Museo Foro <em>Caesaraugusta</em></a></li>
+                            <li><a href="/ciudad/museos/es/puerto">Museo Puerto Fluvial <em>Caesaraugusta</em></a></li>
+                            <li><a href="/ciudad/museos/es/teatro">Museo Teatro <em>Caesaraugusta</em></a></li>
+                            <li><a href="/ciudad/museos/es/termas">Museo Termas <em>Caesaraugusta</em></a></li>
+                            <li><a href="/ciudad/museos/es/gargallo">Museo Pablo Gargallo</a></li>
+                            <li><a href="/ciudad/cultura/observatorio/">Observatorio de cultura</a></li>
+                            <li><a href="/ciudad/cultura/patrimonio/enlace/cultura/observatorio/directorios/patrimonio.htm">Patrimonio</a></li>
+                            <li><a href="/sede/servicio/publicacion-municipal/">Publicaciones</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="sectores panel-heading">
+                        <a class="accordion-toggle btn-block" role="button" aria-expanded="false" aria-controls="accordion-sectores" data-toggle="collapse" href="#accordion-sectores" th:classappend="${currentDevice.isMobile()} ? collapsed">
+                        Para la Gente
+                    </a>
+                    <!--/* <a href="/ciudad/sectores/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_gente.png" alt="Para la Gente" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">Para la Gente</div>
+                    </a> */-->
+                    </div>
+                    <div id="accordion-sectores" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in">
+                        <ul class="nav">
+                            <!--/* <li class="indice"><a href="/ciudad/sectores/">Servicios destacados<span class="oculto"> de Para la Gente</span></a></li> */-->
+                            <li class="destacado border-solid-bottom"><a href="/ciudad/sectores/">Servicios destacados<span class="oculto"> de Para la Gente</span></a></li>
+                            <li><a href="/ciudad/sectores/adicciones/">Atención / Prevención Adicciones</a></li>
+                            <li><a href="/ciudad/sectores/casaculturas/">Casa de las Culturas</a></li>
+                            <li><a href="/sede/portal/derechos-sociales/cooperacion-desarrollo/">Cooperación al Desarrollo</a></li>
+                            <li><a href="/sede/portal/comercio/">Comercio Local</a></li>
+                            <li><a href="/ciudad/sectores/social/">Derechos Sociales</a></li>
+                            <li><a href="/sede/servicio/equipamiento/">Equipamientos</a></li>
+                            <li><a href="/ciudad/sectores/jovenes/">Juventud</a></li>
+                            <li><a href="/ciudad/sectores/infancia/">Infancia</a></li>
+                            <li><a href="/ciudad/sectores/mayores/">Mayores</a></li>
+                            <li><a href="/ciudad/sectores/mujer/">Mujeres</a></li>
+                            <li><a href="/ciudad/sectores/pich/">Oficina PICH</a></li>
+                            <li><a href="/ciudad/sectores/tarjetaciudadana/">Tarjeta Ciudadana</a></li>
+                            <li><a href="/ciudad/sectores/tecnologia/">Tecnología y Ciudadanía</a></li>
+                            <li><a href="/ciudad/sectores/activa/">Zaragoza Activa</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="turismo panel-heading">
+                        <a class="accordion-toggle btn-block text-color" role="button" aria-expanded="false" aria-controls="accordion-turismo" data-toggle="collapse" href="#accordion-turismo" th:classappend="${currentDevice.isMobile()} ? collapsed">
+                        Turismo
+                        </a>
+                    <!--/* <a href="/turismo/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_turismo.png" alt="Turismo" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">Turismo</div>
+                    </a> */-->
+                    </div>
+                    <div id="accordion-turismo" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in">
+                        <ul class="nav">
+                            <!--/* <li class="indice"><a href="/ciudad/turismo/">Servicios destacados<span class="oculto"> de Turismo</span></a></li> */-->
+                            <li class="destacado border-solid-bottom"><a href="/ciudad/turismo/">Servicios destacados<span class="oculto"> de Turismo</span></a></li>
+                            <li><a href="/ciudad/turismo/es/agenda/agenda.htm">Agenda</a></li>
+                            <li><a href="/ciudad/turismo/es/organiza-viaje/como-llegar/como-llegar.htm">Organiza tu Viaje</a></li>
+                            <li><a href="/ciudad/turismo/es/profesionales/quienes-somos.htm">Profesionales</a></li>
+                            <li><a href="/ciudad/turismo/es/que-visitar/sitios-interes/sitios-interes.htm">Qué Visitar</a></li>
+                            <li><a href="/ciudad/turismo/es/servicios/oficinas-de-turismo.htm">Servicios</a></li>
+                            <li><a href="/ciudad/turismo/es/para-todos/zaragoza-accesible.htm">Zaragoza para Todos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <th:block th:include="/fragmentos/redes-sociales"></th:block>
+        </nav>
+    </sede:content>
+    <script type="text/javascript">
+        $(function() {
+            // Solo en este caso mostramos por defecto al cargar js el mapaweb
+            $('.mapa-web-title + .navegacion-portales').show();
+            // Eliminamos el evento click() de .btn-sitemap de main.js en esta página
+            $('.btn-sitemap').unbind();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <sede:meta title="Inscripción actividad" description="Inscripción de actividades" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+    </head>
+
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error" />
+            <form th:action="@{/servicio/cultura/evento/admin/inscripcion/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+                <input type="hidden" name="debug" value="s"/>
+                <div class="fieldset margin-b2em">
+                    <fieldset>
+                        <legend><span>Datos del Inscrito</span></legend>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 form-group margin-b2em">
+                                    <label for="usuario">
+                                        <span class="control-label obligatorio">Selecciona el usuario/a:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <th:block th:if="${usuario}">
+                                        <input type="text" th:field="${usuario.name}" class="form-control" disabled="true" />
+                                    </th:block>
+                                    <th:block th:if="!${usuario}">
+                                        <input type="text" name="usuario_name" id="usuario_name" value="" autocomplete="off" placeholder="Buscar usuario" class="form-control" required="required"/>
+                                    </th:block>
+                                    <input class="form-control" type="hidden" th:field="*{inscripcionUsuario.id}" size="6" name="usuario_id" id="usuario_id"/>
+                                </div>
+                                <div th:if="${usuario}" class="col-md-6">
+                                    <div class="fnd-gris-claro padding-a1em">
+                                        <strong>Información del usuario/a</strong>
+                                        <ul>
+                                            <li><strong>Nombre: </strong><span th:text="${usuario.name}"/> </li>
+                                            <li><strong>Email: </strong><span th:text="${usuario.email}"/></li>
+                                            <li th:if="*{inscripcionUsuario.perfil.fechaNacimiento}"><strong>Fecha de nacimiento: </strong><span th:text="*{inscripcionUsuario.perfil.fechaNacimiento}" /></li>
+                                            <li th:if="*{inscripcionUsuario.perfil.genero}"><strong>Género: </strong><span th:text="*{inscripcionUsuario.perfil.genero}" /></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="info-usuario"></div>
+                            </div>
+
+   
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="fieldset">
+                    <fieldset>
+                        <legend><span>Datos de la Inscripción</span></legend>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="programa">
+                                        <span class="control-label obligatorio">Selecciona la actividad:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <th:block th:if="${acto}">
+                                        <input type="text" th:field="${acto.title}" size="80" class="form-control" disabled="true" />
+                                        <input class="form-control" type="hidden" th:value="*{acto.id}" size="6" name="codActo" id="codActo"/>
+                                    </th:block>
+                                    <th:block th:if="!${acto}">
+                                        <input type="text" name="programa_title" id="programa_title" value="" size="80" autocomplete="off" placeholder="Buscar actividad" class="form-control" />
+                                        <input class="form-control" type="hidden" th:field="*{codActo}" size="6" name="programa_id" id="programa_id" />
+                                    </th:block>
+                                </div>
+                                <div th:if="${acto}" class="col-md-6">
+                                    <div class="fnd-gris-claro padding-a1em">
+                                        <strong>Información de la actividad</strong>
+                                        <ul>
+                                            <li th:if="*{acto.registration.title}"><strong>Lugar: </strong><span th:text="${acto.registration.title}"/></li>
+                                            
+                                            <th:block th:each="lug : *{acto.subEvent}">
+                                                <li th:if="${lug.startDate}"><strong>Duración: </strong><span th:text="${lug.startDate} + ' - ' + ${lug.endDate}"/></li>
+
+                                                <th:block th:each="horario : ${lug.openingHours}">
+                                                    <li><strong>Horario: </strong><span th:text="${horario.dayOfWeek} + ' ' + ${horario.startTime} + ' - ' + ${horario.endTime}"/></li>
+                                                </th:block>
+                                            </th:block>
+                                            <li th:if="*{acto.description}"><strong>Requisitos: </strong><span th:utext="${acto.description}"/></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="info-actividad"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label sr-only" for="numInscrito">Nº de Inscrito:</label>
+                                    <div>
+                                        <input class="form-control hidden" type="text" th:field="*{numInscrito}" size="6" />
+                                    </div>
+
+                                    <label class="control-label" for="fechaInscripcion">Fecha de la Inscripción:</label>
+                                    <input type="text" id="fechaInscripcion" name="fechaInscripcion" value="" size="10" maxlength="30" placeholder="Formato: dd/mm/aaaa" class="form-control" th:field="*{fechaInscripcion}" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" />
+                                </div>
+                                <!--/*<th:block th:if="${usuario}">*/-->
+                                    <div class="col-md-6 form-group">
+                                        <label class="control-label" for="estadoInscripcion">Estado de la Inscripción:</label>
+                                        <select class="form-control" th:field="*{estadoInscripcion}">
+                                        	<option value=""></option>
+                                            <option value="Inscrito">Inscrito</option>
+                                            <option value="Preinscrito">Preinscrito</option>
+                                            <option value="Cancelada">Cancelada</option>
+                                            <option value="Anulada">Anulada</option>
+                                            <option value="En Reserva">En Reserva</option>
+                                            <option value="Asiste">Asiste</option>
+                                            <option value="Especial">Especial</option>
+                                            <option value="Finalizado">Finalizado</option>
+                                        </select>
+                                    </div>
+                                <!--/*</th:block>*/-->
+                            </div>
+
+                            <div class="row">
+                                <!--/*<th:block th:if="${usuario}">*/-->
+                                    <div class="col-md-6 form-group margin-t3em">
+                                        <label class="control-label" for="medioConocido">Medio por el que conoce la actividad: </label>
+                                        <select th:field="*{medioConocido}" class="form-control">
+                                            <option value=""></option>
+                                            <option value="Difusión 12 LUNAS (folletos, carteles, bus)">Difusión 12 LUNAS (folletos, carteles, bus)</option>
+                                            <option value="Boletín CIPAJ">Boletín CIPAJ</option>
+                                            <option value="Amigos">Amigos</option>
+                                            <option value="Familia">Familia</option>
+                                            <option value="Redes Sociales">Redes Sociales</option>
+                                            <option value="Web Municipal">Web Municipal</option>
+                                            <option value="Mediadores Juveniles">Mediadores Juveniles</option>
+                                            <option value="Otros">Otros</option>
+                                        </select>
+                                    </div>
+                                <!--/*</th:block>*/-->
+
+                                <!--/*<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="penalizado">Usuario/a está penalizado:</label>
+                                        <div>
+                                            <select th:field="*{inscripcionUsuario.penalizado}" class="form-control">
+                                                <option value="N">No</option>
+                                                <option value="S">Si</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>*/-->
+                            </div>
+                            <p><input class="form-check-input" type="checkbox" th:field="*{lopd}" required="required"/>
+                            <label class="form-check-label" for="lopd"> Protección de datos. </label> Autorizo al Ayuntamiento de Zaragoza al tratamiento informático de sus datos, así como la inclusión y exposición pública de mi nombre en el listado de admitidos a cursos.</p>
+
+                            <p><input class="form-check-input" type="checkbox"  th:field="*{cesionImagenes}" name="cesionImagenes"/>
+                            <label class="form-check-label" for="cesionImagenes">Fotos y vídeos</label>. Autorizo a que el Ayuntamiento de Zaragoza utilice y publique las fotos y vídeos realizados en esta actividad, así como la publicación en sus redes sociales, folletos informativos relacionados con las actividades del Ayuntamiento de Zaragoza y para el archivo fotográfico del mismo.</p>
+							<input type="hidden" name="debug" value="S"/>
+                            <div class="form-group">
+                                <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary margin-t3em" />
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </sede:content>
+        <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+        <script type="text/javascript" src="/cont/vistas/servicio/cultura/evento/admin/inscripcion/js/inscripciones.js"></script>
+    </body>
+
+</html>

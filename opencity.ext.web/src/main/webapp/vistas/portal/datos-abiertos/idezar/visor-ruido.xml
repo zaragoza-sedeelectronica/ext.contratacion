@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Mapa del ruido. Infraestructura de Datos Espaciales de Zaragoza." description="Funcionalidades que ofrece el visor" author="Ayuntamiento de Zaragoza" subject="" keywords="ayuntamiento, ciudad, Zaragoza, España, vocabularios, conjuntos de datos, datos abiertos, administración local, gobierno abierto" last-modified="28-05-2018" audience="Ciudadanía" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Visualización Zaragoza Histórica</h2>
+        <a class="btn btn-primary pull-right" href="http://idezar.zaragoza.es/visorHistorico">Acceso al Servicio</a>
+        <p>
+            Esta herramienta proporciona un visor interactivo con la cartografía actual de la ciudad sobre la que la ciudadanía puede superponer y comparar una selección del catálogo de mapas históricos de la ciudad del Archivo municipal de Zaragoza. Estos mapas se muestran sobre la cartografía actual de la ciudad permitiendo escoger la transparencia deseada para facilitar la interpretación de los mapas y ayudar al ciudadano a descubrir la evolución de la ciudad a lo largo de los años.
+        </p>
+        <p>
+            Hasta el momento se ha publicado una colección compuesta por un total de 20 mapas de los siglos XVIII, XIX, XX y XXI que se pretende enriquecer en el futuro. Ha sido necesario un trabajo de digitalización de mapas con alta calidad realizado por el Archivo Municipal acompañado de un proceso posterior de tratamiento y georreferenciación de los mismos para garantizar su adecuada visualización, con la dificultad añadida de trabajar con material muy antiguo desarrollado con los procedimientos y herramientas de la época.
+        </p>
+        <h3>FUNCIONALIDADES</h3>
+        <ul>
+            <li>
+                <strong>Zona de previsualización de mapas</strong> con la colección de planos históricos en orden cronológico para facilitar la elección del usuario del plano a visualizar sobre la cartografía actual.
+            </li>
+            <li>
+                <strong>Comparación del plano histórico con la cartografía actual</strong> permitiendo escoger la transparencia deseada.
+            </li>
+            <li>
+                <strong>Información descriptiva del plano</strong> (año, autor, dimensiones, etc.) y enlace a la ficha de catalogación del Archivo Municipal.
+            </li>
+            <li>
+                <strong>Impresión del mapa</strong> con toda la información visible en el momento de la impresión.
+            </li>
+            <li>
+                Otras funcionalidades como: acceso a los equipamientos de la ciudad, búsqueda de vías, etc.
+            </li>
+            <li>
+                Además ofrece grandes avances en usabilidad como el diseño responsivo, que lo hace accesible desde cualquier dispositivo móvil o el zoom progresivo que mejora la interacción con la información cartográfica.
+            </li>
+        </ul>
+        <p>
+            Este trabajo ha sido posible gracias a la colaboración del Ayuntamiento de Zaragoza (Oficina de Participación, Transparencia y Gobierno Abierto, Archivo Municipal) con la Universidad de Zaragoza (
+            <a href="http://iaaa.cps.unizar.es" class="external-link">Grupo de Sistemas de Información Avanzados, IAAA</a> ) en el proyecto europeo ENERGIC-OD (
+            <a href="http://www.energic-od.eu/" class="external-link">European NEtwork for Redistributing Geospatial Information to user Communities - Open Data</a> ) financiado por el Programa ICT PSP como parte del Programa Marco para la Competitividad y la Innovación de la Comunidad Europea. Dicho proyecto tiene por objeto la generación de un entorno para la distribución de información geográfica de manera homogénea. El Ayuntamiento de Zaragoza representa uno de los casos demostrativos del proyecto.
+        </p>
+        <div class="row">
+            <div class="col-xs-6">
+                <img src="/cont/paginas/idezar/img/historia2.jpg" alt="" />
+            </div>
+            <div class="col-xs-6">
+                <img src="/cont/paginas/idezar/img/historica.jpg" alt="" />
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<div class="row">
+
+    <div class="col-md-12">
+
+        <button class="btn btn-default" ng-click="guardar()" ng-show="permisos.MOD">
+            <span class="fa fa-check" aria-hidden="true"></span>
+            <span class="hidden-xs"> Guardar</span>
+        </button>
+        <boton-copiar></boton-copiar>
+        <boton-visibilidad></boton-visibilidad>
+        <modal-borrar></modal-borrar>
+
+    </div>
+
+</div>
+
+<hr/>
+
+<div class="row">
+
+    <div class="col-md-12">
+		<div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <uib-tabset>
+            <uib-tab heading="Datos del registro">
+                <div class="row">
+                    <div class="col-md-7 form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <div class="btn-group" uib-dropdown>
+                                    <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle>
+                                        Control
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" style="padding: 5px; min-width: 260px;">
+                                        <li><strong>ID: </strong>{{ registro.id }}</li>
+                                        <li><strong>Fecha de alta: </strong>{{registro.creationDate | date:'dd-MM-yyyy'}}</li>
+                                        <li><strong>Fecha de modificación: </strong>{{registro.lastUpdated | date:'dd-MM-yyyy'}}</li>
+                                        <li><strong>Fecha de publicación: </strong>{{registro.pubDate | date:'dd-MM-yyyy'}}</li>
+                                        <li><strong>Usuario de alta:</strong>{{registro.usuarioAlta}}</li>
+                                        <li><strong>Usuario de modificación: </strong>{{registro.usuarioMod}}</li>
+                                        <li><strong>Usuario de publicación: </strong>{{registro.usuarioPub}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-8 form-horizontal">
+                		<div class="form-group">
+                            <label class="col-sm-2 control-label" for="tipo">Titular:</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" name="title" ng-model="registro.title" value="{{ registro.title }}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="link">Enlace:</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" name="link" ng-model="registro.link" value="{{ registro.link }}" />
+                            </div>
+                        </div>
+                	</div>
+                	<div class="col-md-4 form-horizontal">
+                		<div class="form-group">
+			                <label class="col-sm-2 control-label" for="anexoImagen">Imagen:</label>
+			                <div class="col-sm-10">
+			                	<img ng-show="registro.image && !imageShown" ng-src="{{registro.image}}" width="100" />
+					            <img ng-if="imageShown" ng-src="{{imageShown}}" width="160" />
+					            
+					            <button ng-if="registro.image || imageShown" type="button" class="btn btn-default btn-xs" ng-click="clearThumbs();"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+					            <span ng-show="debug">
+					                <div><span class="badge">image</span>{{registro.image}}</div>
+					            </span>
+			                    <input class="form-control" type="file" name="anexoImagen" id="anexoImagen" accept="image/*" 
+			                    	img-cut img-cut-result-image="imageShown" img-cut-result-files="registro.fileArray" img-cut-size="480x320" 
+			                    	ng-model="registro.image"/>
+							
+			                </div>
+			            </div>
+                	</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="estado">Destacar:</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="order" ng-model="registro.order" value="{{ registro.order }}" />
+                            </div>
+                            <label class="col-sm-2  control-label" for="cobertura">Prioritario:</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="preferential" ng-model="registro.preferential" value="{{ registro.preferential }}" />
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label" for="estado">Publicar el:</label>
+                            <div class="col-sm-4">
+                                <div class="input-group" moment-picker="registro.pubDate" format="DD-MM-YYYY HH:mm">
+    								<input class="form-control" placeholder="Select a date" ng-model="registro.pubDate | date:'dd-MM-yyyy hh:mm'" ng-model-options="{ updateOn: 'blur' }">
+								</div>
+                            </div>
+                            <label class="col-sm-2  control-label" for="cobertura">Caducidad:</label>
+                            <div class="col-sm-4">
+                                <div class="input-group" moment-picker="registro.expirationDate" format="DD-MM-YYYY HH:mm">
+    								<input class="form-control" placeholder="Select a date" ng-model="registro.expirationDate | date:'dd-MM-yyyy hh:mm'" ng-model-options="{ updateOn: 'blur' }">
+								</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label" for="portales">Portales:</label>
+                           <div class="col-sm-10">
+                               <ui-select id="portales" multiple ng-model="portalSelected" on-select="onSelectPortal($item, $model)" on-remove="onRemovePortal($item, $model)">
+                                   <ui-select-match class="ui-select-match" placeholder="Portales asociados">
+                                       {{$item.title}}
+                                   </ui-select-match>
+                                   <ui-select-choices class="ui-select-choices" repeat="port in portalesAviso | filter: $select.search">
+                                       <div ng-bind-html="port.title | highlight: $select.search"></div>
+                                   </ui-select-choices>
+                               </ui-select>
+                           </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 form-horizontal">
+                        <div class="form-group">
+                            <textarea class="col-sm-10" ck-editor name="description" ng-model="registro.description">{{ registro.description }}</textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </uib-tab>
+            <uib-tab heading="Localización" select="$broadcast('invalida');">
+                <div class="row">
+                    <div class="col-md-8 form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="geometry.coordinates.x">Punto X:</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="geometry.coordinates.x" ng-model="registro.geometry.coordinates[0]" value="{{ registro.geometry.coordinates[0] }}" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="geometry.coordinates.y">Punto Y:</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="geometry.coordinates.y" ng-model="registro.geometry.coordinates[1]" value="{{ registro.geometry.coordinates[1] }}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <portal registro="registro" buscador="S" mapa="S"></portal>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+
+    </div> 
+</div> 

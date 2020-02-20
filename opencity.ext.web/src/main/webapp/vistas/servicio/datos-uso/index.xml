@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Datos uso">
+    </sede:meta>
+    <style type="text/css">
+        .size-graph {
+            width: 120%;
+            height: 500px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Datos de la carpeta <th:block th:if="${param.folder}" th:text="${param.folder[0]}"/></h2>
+        <p role="alert" class="alert alert-info">Datos a partir del 3 de febrero de 2017</p>
+        <div class="row" th:if="${not #lists.isEmpty(resultado.body.folder)}">
+
+            <div class="col-md-6">
+                <table class="table table-condensed table-striped">
+                    <caption>Accesos a carpetas</caption>
+                    <tr>
+                        <th>Carpeta</th>
+                        <th>Accesos</th>  
+                        <th>Porcentaje</th>
+                    </tr>
+                    <tr th:each="fila : ${resultado.body.folder}" th:with="cifraTotal=${#aggregates.sum(resultado.body.folder.![value])}">
+                        <td><a th:href="@{/servicio/datos-uso/(folder=${fila.label})}" th:text="${fila.label}" /></td>
+                        <td>
+                            <th:block th:text="${fila.value}" />
+                        </td>
+                        <td th:with="porcent=(${fila.value} * 100 / ${cifraTotal}), porcentSimpl=${#numbers.formatDecimal(porcent, 1, 1,'COMMA')}">
+                            <th:block th:if="${porcent &lt; 0.1}" > &lt;0,1%</th:block>
+                            <th:block th:if="${porcent &gt;= 0.1}"> 
+                                <th:block th:if="${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${#numbers.formatDecimal(porcent, 1, 0,'COMMA')} + '%'"/>
+                                <th:block th:if="!${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${porcentSimpl} + '%'"/>
+                            </th:block>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div id="chartfolder" class="size-graph"></div>
+            </div>
+        </div>
+
+        <div class="row" th:if="${not #lists.isEmpty(resultado.body.format)}">
+            <div class="col-md-6">
+                <table class="table table-condensed table-striped">
+                    <caption>Accesos por formato</caption>
+                    <tr>
+                        <th>Formato</th>
+                        <th>Accesos</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                    <tr th:each="fila : ${resultado.body.format}" th:with="cifraTotal=${#aggregates.sum(resultado.body.format.![value])}">
+                        <td>
+                            <th:block th:text="${fila.label}" />
+                        </td>
+                        <td>
+                            <th:block th:text="${fila.value}" />
+                        </td>
+                        <td th:with="porcent=(${fila.value} * 100 / ${cifraTotal}), porcentSimpl=${#numbers.formatDecimal(porcent, 1, 1,'COMMA')}">
+                            <th:block th:if="${porcent &lt; 0.1}" > &lt;0,1%</th:block>
+                            <th:block th:if="${porcent &gt;= 0.1}"> 
+                                <th:block th:if="${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${#numbers.formatDecimal(porcent, 1, 0,'COMMA')} + '%'"/>
+                                <th:block th:if="!${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${porcentSimpl} + '%'"/>
+                            </th:block>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div id="chartformat" class="size-graph"></div>
+            </div>
+        </div>
+        <div class="row" th:if="${not #lists.isEmpty(resultado.body.method)}">
+            <div class="col-md-6">
+                <table class="table table-condensed table-striped">
+                    <caption>Accesos por método</caption>
+                    <tr>
+                        <th>Método</th>
+                        <th>Accesos</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                    <tr th:each="fila : ${resultado.body.method}" th:with="cifraTotal=${#aggregates.sum(resultado.body.method.![value])}">
+                        <td>
+                            <th:block th:text="${fila.label}" />
+                        </td>
+                        <td>
+                            <th:block th:text="${fila.value}" />
+                        </td>
+                        <td th:with="porcent=(${fila.value} * 100 / ${cifraTotal}), porcentSimpl=${#numbers.formatDecimal(porcent, 1, 1,'COMMA')}">
+                            <th:block th:if="${porcent &lt; 0.1}" > &lt;0,1%</th:block>
+                            <th:block th:if="${porcent &gt;= 0.1}"> 
+                                <th:block th:if="${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${#numbers.formatDecimal(porcent, 1, 0,'COMMA')} + '%'"/>
+                                <th:block th:if="!${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${porcentSimpl} + '%'"/>
+                            </th:block>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div id="chartmethod" class="size-graph"></div>
+            </div>
+        </div>
+        <div class="row" th:if="${not #lists.isEmpty(resultado.body.days)}">
+            <div class="col-md-6">
+                <table class="table table-condensed table-striped">
+                    <caption>Accesos por días</caption>
+                    <tr>
+                        <th>Día</th>
+                        <th>Accesos</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                    <tr th:each="fila : ${resultado.body.days}" th:with="cifraTotal=${#aggregates.sum(resultado.body.days.![value])}">
+                        <td>
+                            <th:block th:text="${fila.label}" />
+                        </td>
+                        <td>
+                            <th:block th:text="${fila.value}" />
+                        </td>
+                        <td th:with="porcent=(${fila.value} * 100 / ${cifraTotal}), porcentSimpl=${#numbers.formatDecimal(porcent, 1, 1,'COMMA')}">
+                            <th:block th:if="${porcent &lt; 0.1}" > &lt;0,1%</th:block>
+                            <th:block th:if="${porcent &gt;= 0.1}"> 
+                                <th:block th:if="${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${#numbers.formatDecimal(porcent, 1, 0,'COMMA')} + '%'"/>
+                                <th:block th:if="!${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${porcentSimpl} + '%'"/>
+                            </th:block>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div id="chartdays" class="size-graph"></div>
+            </div>
+        </div>
+        <div class="row" th:if="${not #lists.isEmpty(resultado.body.operatingSystem)}">
+            <div class="col-md-6">
+                <table class="table table-condensed table-striped">
+                    <caption>Accesos por Sistema Operativo</caption>
+                    <tr>
+                        <th>Sistema operativo</th>
+                        <th>Accesos</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                    <tr th:each="fila : ${resultado.body.operatingSystem}" th:with="cifraTotal=${#aggregates.sum(resultado.body.operatingSystem.![value])}">
+                        <td>
+                            <th:block th:text="${fila.label}" />
+                        </td>
+                        <td>
+                            <th:block th:text="${fila.value}" />
+                        </td>
+                        <td th:with="porcent=(${fila.value} * 100 / ${cifraTotal}), porcentSimpl=${#numbers.formatDecimal(porcent, 1, 1,'COMMA')}">
+                            <th:block th:if="${porcent &lt; 0.1}" > &lt;0,1%</th:block>
+                            <th:block th:if="${porcent &gt;= 0.1}"> 
+                                <th:block th:if="${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${#numbers.formatDecimal(porcent, 1, 0,'COMMA')} + '%'"/>
+                                <th:block th:if="!${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${porcentSimpl} + '%'"/>
+                            </th:block>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div id="chartOS" class="size-graph"></div>
+            </div>
+        </div>
+        <div class="row" th:if="${not #lists.isEmpty(resultado.body.deviceCategory)}">
+            <div class="col-md-6">
+                <table class="table table-condensed table-striped">
+                    <caption>Accesos por Tipo de dispositivo</caption>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Accesos</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                    <tr th:each="fila : ${resultado.body.deviceCategory}" th:with="cifraTotal=${#aggregates.sum(resultado.body.deviceCategory.![value])}">
+                        <td>
+                            <th:block th:text="${fila.label}" />
+                        </td>
+                        <td>
+                            <th:block th:text="${fila.value}" />
+                        </td>
+                        <td th:with="porcent=(${fila.value} * 100 / ${cifraTotal}), porcentSimpl=${#numbers.formatDecimal(porcent, 1, 1,'COMMA')}">
+                            <th:block th:if="${porcent &lt; 0.1}" > &lt;0,1%</th:block>
+                            <th:block th:if="${porcent &gt;= 0.1}"> 
+                                <th:block th:if="${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${#numbers.formatDecimal(porcent, 1, 0,'COMMA')} + '%'"/>
+                                <th:block th:if="!${#strings.contains(porcentSimpl.toString(),',0')}" th:text="${porcentSimpl} + '%'"/>
+                            </th:block>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div id="chartDeviceCategory" class="size-graph"></div>
+            </div>
+        </div>
+        
+    </sede:content>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:utext="'var datosFolder = ' + ${datosFolder} + ';'">
+    </script>
+    <script type="text/javascript" th:utext="'var datosDays = ' + ${datosDays} + ';'">
+    </script>
+    <script type="text/javascript" th:utext="'var datosFormat = ' + ${datosFormat} + ';'">
+    </script>
+    <script type="text/javascript" th:utext="'var datosMethod = ' + ${datosMethod} + ';'">
+    </script>
+    <script type="text/javascript" th:utext="'var datosOS = ' + ${datosOperatingSystem} + ';'">
+    </script>
+    <script type="text/javascript" th:utext="'var datosDeviceCategory = ' + ${datosDeviceCategory} + ';'">
+    </script>
+    
+    <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawFolderChart);
+    google.charts.setOnLoadCallback(drawDaysChart);
+    google.charts.setOnLoadCallback(drawFormatChart);
+    google.charts.setOnLoadCallback(drawMethodChart);
+    google.charts.setOnLoadCallback(drawOSChart);
+    google.charts.setOnLoadCallback(drawDeviceCategoryChart);
+
+
+    function drawFolderChart() {
+    	try {
+	        var data = google.visualization.arrayToDataTable(datosFolder);
+
+	        var options = {
+	            title: 'Accesos por carpeta'
+	        };
+
+	        var chart = new google.visualization.PieChart(document.getElementById('chartfolder'));
+
+	        chart.draw(data, options);
+	    } catch (e) {
+
+	    } 
+    }
+
+    function drawDaysChart() {
+        var data = google.visualization.arrayToDataTable(datosDays);
+
+        var options = {
+            title: 'Accesos por días'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chartdays'));
+
+        chart.draw(data, options);
+    }
+
+    function drawFormatChart() {
+        var data = google.visualization.arrayToDataTable(datosFormat);
+
+        var options = {
+            title: 'Accesos por Formato'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chartformat'));
+
+        chart.draw(data, options);
+    }
+
+    function drawMethodChart() {
+        var data = google.visualization.arrayToDataTable(datosMethod);
+
+        var options = {
+            title: 'Accesos por Método http'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chartmethod'));
+
+        chart.draw(data, options);
+    }
+
+    function drawOSChart() {
+    	try {
+	        var data = google.visualization.arrayToDataTable(datosOS);
+
+	        var options = {
+	            title: 'Accesos por Sistema operativo'
+	        };
+
+	        var chart = new google.visualization.PieChart(document.getElementById('chartOS'));
+
+	        chart.draw(data, options);
+	    } catch (e) {
+	    
+	    } 
+    }
+    function drawDeviceCategoryChart() {
+        var data = google.visualization.arrayToDataTable(datosDeviceCategory);
+
+        var options = {
+            title: 'Accesos por Tipo de dispositivo'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chartDeviceCategory'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</body>
+
+</html>

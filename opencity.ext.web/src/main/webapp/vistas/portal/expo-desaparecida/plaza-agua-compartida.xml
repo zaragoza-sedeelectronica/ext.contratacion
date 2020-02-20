@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida >> Plaza Agua Compartida" description="En el décimo aniversario de la Expo 2008 Agua y Desarrollo Sostenible presentamos un recorrido virtual por aquellas arquitecturas e instalaciones de carácter efímero, creadas  para el marco de los 93 días de la muestra y que ya 
+no se conservan" author="Ayuntamiento de Zaragoza. Archivo Municipal" keywords="expo, 2008, cultura, ocio, medio ambiente, Agua y Desarrollo Sostenible, environment, Water and Sustainable Development"/>       <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.css"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+        .cluster {
+            background: #2d84c8;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #2d84c8;
+            font-family: monospace;
+        }
+
+        .cluster:before {
+            content: ' ';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            border: 1px solid white;
+        }
+
+        .digits-1 {
+            font-size: 1.4em;
+            height: 28px;
+            width: 28px;
+            line-height: 28px;
+            margin-top: -14px;
+            margin-left: -14px;
+        }
+
+        .digits-2 {
+            font-size: 1.6em;
+            height: 34px;
+            width: 34px;
+            line-height: 35px;
+            margin-top: -17px;
+            margin-left: -17px;
+        }
+
+        .digits-2:before {
+            border-width: 2px;
+        }
+
+        .digits-3 {
+            font-size: 1.8em;
+            height: 48px;
+            width: 47px;
+            line-height: 47px;
+            border-width: 3px;
+            margin-top: -24px;
+            margin-left: -24px;
+        }
+
+        .digits-3:before {
+            border-width: 3px;
+        }
+
+        .digits-4 {
+            font-size: 1.8em;
+            height: 58px;
+            width: 58px;
+            line-height: 57px;
+            border-width: 4px;
+            margin-top: -29px;
+            margin-left: -29px;
+        }
+
+        .digits-4:before {
+            border-width: 4px;
+        }
+
+        .list-noticia a {
+            color: #202020;
+        }
+
+        .list-noticia li {
+            border-bottom: 1px solid #E6E6E6;
+            /*fnd-gris-claro*/
+            margin-bottom: .5em;
+            padding-bottom: .5em;
+        }
+
+        @media (min-width: 768px) {
+            .list-aviso li {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content>
+        <p>
+          <img alt=" " class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/agua-compartida/cabecera-agua-compartida.gif" />
+        </p>
+        <div class="row">
+            <div class="col-md-12 card">
+ 
+                    <h2>
+         La Expo desaparecida > Plaza Agua Compartida
+            </h2>
+                    <hr class="sm" /><div class="text-justify">
+                    <p>
+                    
+
+
+Esta plaza fue diseñada por los arquitectos Manuel Bailo, Rosa Rull, Amadeu Santacana y Umberto Viotto. El diseño expositivo corrió a cargo de los expertos en gestión hídrica Víctor Pochat y Carlos Fernández Jauregui.
+</p><p>
+Contaba con 1240 m<sup>2</sup> en varias salas distribuidas en <strong> dos niveles, el inferior recoge el 'laberinto' o caos </strong> que puede suponer el establecimiento de fronteras políticas en los territorios <strong>y el superior, en forma de 'cuenco', un jardín</strong> que recuerda al visitante que la división territorial más equilibrada y coherente tiene su origen en los propios accidentes geográficos, entre ellos las 'cuencas' fluviales.
+</p><p>
+Durante el recorrido el visitante podía tomar conciencia de la importancia de una <strong>correcta gestión, responsable y solidaria, de las cuencas hídricas</strong>, que va más allá de las distintas divisiones políticas que las comparten. Un ejemplo de gestión coherente e integrada está en la Confederación Hidrográfica del Ebro, creada en 1926, que armoniza los intereses de las nuevas Comunidades Autónomas por las que transcurre con la necesidad de su correcta gestión y mantenimiento.
+ </p><p>
+De igual forma, en 'Agua Compartida' se insistía en que las acciones que se realizan en un punto geográfico de la cuenca repercuten siempre en el territorio aguas abajo. Entre estos factores se incluían: los cultivos (uso de abonos y pesticidas), las zonas de pastoreo, la deforestación, los vertidos y contaminación producidas por el desarrollo industrial, las redes de transporte, el desarrollo urbano y las infraestructuras hidráulicas tanto por su exceso como por su defecto...
+
+</p></div>
+
+
+ <div class="linea"></div><h3 class="color-destacados">Más Información</h3>         
+  <ul class="list-unstyled">     
+  
+  
+   <li><span class="fa fa-info-circle" aria-hidden="true"></span>
+
+ <a href="http://www.zaragoza.es/nuba/app/results/ahis?pa=1&amp;sr=1&amp;q=AGUA+COMPARTIDA&amp;st=.1.6.100.30891.1171249">Fotografías Agua Compartida: </a></li>
+
+   <li><span class="fa fa-info-circle" aria-hidden="true"></span><a href="http://www.zaragoza.es/nuba/app/results/ahis?vm=nv&amp;ob=os:1&amp;pa=1&amp;p=306&amp;st=.1.6.100.30891.1171249&amp;i=1174823">
+ Fotografías Expo 2008  </a></li>   <li><span class="fa fa-info-circle" aria-hidden="true"></span><a href="https://bit.ly/2s62QaR">
+Bibliografía</a></li></ul>
+
+
+
+                 
+           
+         
+            </div>
+        </div>
+			  
+			  
+			  
+			   <div class="row">
+            <div class="col-md-12 card">
+			
+			
+			
+			 
+ 
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h3>
+                    <hr class="sm color-destacados" />   
+					
+					<div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/proyecto/1232540-07-alzados.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/proyecto/1232540-07-alzados.gif"/></a></div>
+                
+   <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=1232540-2007&amp;p=0&amp;i=1034495"> Exp: 1232540-2007. Alzados</a></p>					
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/proyecto/1232540-07-secciones.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/proyecto/1232540-07-secciones.gif"/></a></div>
+               
+				
+				
+    <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=1232540-2007&amp;p=0&amp;i=1034495"> Exp: 1232540-2007. Secciones</a></p>			
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/proyecto/0145073.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/proyecto/0145073.gif"/> </a></div>
+				 
+				 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145073&amp;p=0&amp;i=1172700
+">Sign: 0145073</a></p>
+              
+				
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/proyecto/0145077.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/proyecto/0145077.gif"/> </a></div>
+            
+			 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145077&amp;p=0&amp;i=1172704
+
+">Sign: 0145077</a></p>	
+
+
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/proyecto/0145321.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/proyecto/0145321.gif"/></a></div>
+   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145321&amp;p=0&amp;i=1172948
+
+"> Sign: 0145321</a></p>	
+            
+				
+				
+				
+ 
+				
+				
+				 
+                </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+ <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/durante/0143898.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/durante/0143898.gif"/> </a></div>
+                 
+          <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143898&amp;p=0&amp;i=1171525
+">Sign: 0143898</a></p>			
+	  
+	  
+	   <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/durante/0143899.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/durante/0143899.gif"/> </a></div>
+                 
+   
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143899&amp;p=0&amp;i=1171526
+">Sign: 0143899</a></p>			
+				
+				
+					   <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/durante/0143900.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/durante/0143900.gif"/> </a></div>
+               <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143900&amp;p=0&amp;i=1171527
+">Sign: 0143900</a></p>		
+			  
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/durante/0143901.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/durante/0143901.gif"/> </a></div>
+                <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143901&amp;p=0&amp;i=1171528
+
+">Sign: 0143901</a></p>		
+   			  
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/durante/0145074.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/durante/0145074.gif"/> </a></div>
+				
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145074&amp;p=0&amp;i=1172701
+
+
+">Sign: 0145074</a></p>		
+				
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/gran/durante/0145079.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida/peq/durante/0145079.gif"/> </a></div>
+				
+								
+							 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145079&amp;p=0&amp;i=1172706
+
+
+">Sign: 0145079</a></p>		
+		  
+		    </div>  </div>
+    
+                </div>  </div>
+ 
+ 
+ 			 
+ 
+ 
+    </sede:content>
+ 
+</body>
+
+</html>

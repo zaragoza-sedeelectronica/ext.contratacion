@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Comunidad" author="Ayuntamiento de Zaragoza" category="Participación Ciudadana" keywords="risp,opendata,mapas,colaborativos" />
+    <style type="text/css">
+        .height5{min-height:5em}
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <style>
+        .card {
+            position: relative;
+            padding-bottom: 60px;
+        }
+        @media (min-width: 768px) {
+            .card {min-height: 310px;}
+        }
+        .num {
+            font-size: 150%;
+            font-weight: bold;
+        }
+        .disabled {
+            opacity: .65;
+            background: #eee;
+        }
+        .user-propuestas {
+            position: absolute;
+            background: rgba(255, 255, 255, .85);
+            width: 100%;
+            padding-left: .5em;
+        }
+        </style>
+        <th:block th:include="fragmentos/error" />
+<!--         <h2>Comunidad <small>de <span th:text="${dato.name}"></span> <th:block th:if="${dato.screen_name}" th:text="'(' + ${dato.screen_name} + ')'"></th:block></small></h2> -->
+        <h2>Comunidad</h2>
+        <hr class="sm"/>
+
+        <div id="procesos" class="row">
+
+			 <div class="col-lg-3">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/perfil.jpg" alt=""/>
+                         <h3>Mi Perfil</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/comunidad/perfil/user/edit" class="btn btn-primary btn-block">Editar mi perfil</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+			 <div class="col-lg-3">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/grupos.png" alt=""/>
+                         <h3>Grupos</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/comunidad/grupo/user" class="btn btn-primary btn-block">Ver mis grupos</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+			 <div class="col-lg-3">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/inscripciones.png" alt=""/>
+                         <h3>Inscripciones en Actividades</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/cultura/evento/inscripcion/user" class="btn btn-primary btn-block">Ver mis inscripciones</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+			 
+			 <div class="col-lg-3">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/recomendaciones.jpg" alt=""/>
+                         <h3>Actividades recomendadas</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/cultura/evento/recomendaciones" class="btn btn-primary btn-block">Ver recomendaciones</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+			 <div class="col-lg-3">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/cuestionarios.png" alt=""/>
+                         <h3>Cuestionarios pendientes (<span th:text="${cuestionarios}">0</span>)</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/cultura/evento/cuestionario/user" class="btn btn-primary btn-block">Ver mis cuestionarios pendientes</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+
+			 <div class="col-lg-3">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/ultima_actividad.jpg" alt=""/>
+                         <h3>Lo &#250;ltimo en mi Comunidad</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/comunidad/perfil/user" class="btn btn-primary btn-block">Ver lo &#250;ltimo en mi Comunidad</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+
+			 <div class="col-lg-3" th:if="${gestionaAsistencia}">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/checks.jpg" alt=""/>
+                         <h3>Gesti&#243;n de Asistencia</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/cultura/evento/asistencia" class="btn btn-primary btn-block">Gestionar asistencia</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+			 
+			 <div class="col-lg-3" th:if="${gestionaPago}">
+                 <div class="card">
+                     <div class="text-center">
+                         <img class="img-responsive" src="/cont/vistas/servicio/zona-personal/images/pago.jpg" alt=""/>
+                         <h3>Gesti&#243;n de Pago</h3>
+                     </div>
+                     <div class="card-footer">
+                     	<a href="/sede/servicio/cultura/evento/pago" class="btn btn-primary btn-block">Gestionar pago</a>
+                     </div>
+                     <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Nuevo</div>
+                     </div>
+                 </div>
+             </div>
+			 
+		</div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <form method="get" action="list" class="form-horizontal">
+            <fieldset>
+                <legend>Buscador</legend>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" id="q" th:value="${param.q} ? ${param.q[0]} :''" placeholder="Realice su consulta (por ejemplo, 'Alcaldía')" required="required" />
+                    <span class="input-group-btn">
+            			<input type="submit" value="Consultar" class="btn btn-primary" />
+            		</span>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

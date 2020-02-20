@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <th:block th:include="fragmentos/cabecera" />
+    </th:block>
+    <th:block th:fragment="breadcrumb">
+        <sede:breadcrumb value="[{'link':'/sede/servicio/coste-servicio/', 'text':'Coste Servicio'}]" />
+    </th:block>
+    <th:block th:fragment="menu">
+        <div class="sidebar-offcanvas">
+            <div class="menu-banner"><img class="menu-img img-responsive" src="http://www.zaragoza.es/cont/paginas/bs/img/cabecera/contenido/ayto.jpg" alt="" />
+                <p class="menu-title">
+                    <h1>Monumentos</h1></p>
+            </div>
+        </div>
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Goya en Zaragoza" description="" author="" keywords="" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+    .list-noticia a {
+        color: #202020;
+    }
+
+    .list-noticia li {
+        border-bottom: 1px solid #E6E6E6;
+        /*fnd-gris-claro*/
+        margin-bottom: .5em;
+        padding-bottom: .5em;
+    }
+
+    @media (min-width: 768px) {
+        .list-aviso li {
+            min-height: 18em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <p>
+            <img alt="Alma Mater Museum " class="img-responsive full-width" src="/cont/vistas/portal/prensa/img/goya-zaragoza.jpg" />
+        </p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h2>
+Alma Mater Museum 
+            </h2>
+                    <div class="pull-right"><img width="300" height="200" src="/cont/paginas/turismo/img/sep2010/que_visitar/intro_goya_mudiz.jpg" /></div>
+                    <hr class="sm" />
+                    <p>
+                        El Alma Mater Museum se encuentra dentro del <strong>Palacio Arzobispal de la ciudad</strong>, el cual se construyó sobre las bases de la que fuera basílica romana ubicada dentro del foro.</p>
+                    <p>El museo se encuentra ubicado en la parte más antigua del Palacio Arzobispal, concretamente en el espacio que se conoció como "las casas del obispo". La visita transcurre en las estancias en las que habitaron los <strong>Reyes de Aragón desde el siglo XII</strong>, y que comprenden diferentes estilos: <strong>románico, gótico, mudéjar y renacentista</strong>, así como espacios redecorados con estilos propios de los siglos XIX y X. Además, el museo cuenta con una sala de exposiciones temporales que completa su programación.</p>
+                    <p>En sus salas es posible contemplar la obra <strong>Retrato del arzobispo Joaquín Company de Francisco de Goya.</strong></p>
+                    <h3>Retrato del arzobispo Joaquín Company</h3>
+                    <p>El franciscano Joaquín Company y Soler (1732-1813) gobernó la diócesis de Zaragoza entre <strong>1797 y 1800</strong>, año en que fue nombrado obispo de Valencia. Además de ocupar los cargos más importantes de su orden, fue grande de España de primera clase y teólogo consultor de la Real Junta de la Orden de Carlos III, socio (1797) y director (1797-1800) de la real Sociedad Económica Aragonesa de Amigos del País, y presidente (1798-1800) de la Real Academia de Nobles y Bellas Artes de San Luis de Zaragoza.</p>
+                    <p>En opinión de Pablo J. Rico (1991), el retrato se ejecutaría, a instancias del prelado, tras su nombramiento para ocupar la sede de Valencia (agosto de 1800). Las sesiones del natural, de las que saldría el boceto preparatorio (Museo Nacional del Prado, Madrid) tendrían lugar en Madrid, de donde la pintura definitiva viajaría a Zaragoza para ocupar su lugar en la galería de retratos del Palacio Arzobispal.</p>
+                    <p>La realización de esta obra se corresponde, por tanto, con el <strong>periodo más fecundo del Goya retratista</strong>, que desde octubre de 1799 era <strong>primer pintor de cámara. </strong> J.C.L.</p>
+                    <p>El retratado aparece<strong> de pie y de cuerpo entero</strong>, en ligera posición de tres cuartos pero con la cabeza girada hacia al espectador, y levanta la mano derecha, con la que sostiene un billete con la firma "Goya". Viste sotana, sobre el pecho cuelga una cruz sencilla: En el ángulo superior derecho se sitúa el escudo familiar con las borlas episcopales. En la base del cuadro se dispone una inscripción, y otra en el ángulo inferior izquierdo. La figura aparece en un espacio neutro, de fondo penumbroso, únicamente definido por las propias sombras que proyecta sobre el suelo.</p>
+                    <p>Modelo de retrato episcopal <strong>sobrio y austero </strong>en su puesta en escena, <strong>magníficamente resuelto, con gran economía de medios, mediante el color y la luz, en la línea velazqueña, de notable penetración psicológica y gran poder de atracción.</strong> Los tonos fríos, azules y verdosos, empleados en los hábitos hacen que las carnaciones de rostro y manos, trabajados en gamas más cálidas, logren el protagonismo buscado. Las manchas rojizas del forro y del solideo animan el conjunto, del que destacan las calidades, transparencias y plisados del roquete</p>
+                    <p>De las inscripciones, la primera y original se desarrollan en dos líneas en la base del cuadro y se encuentra parcialmente tapada por el marco, y la otra, en doce líneas y perfectamente visible, se ubica en el ángulo inferior izquierdo y repite con leves diferencias los datos biográficos de la primera, exceptuando la omisión de la referencia al monarca Carlos IV y al papa Pío VII. Esta información tampoco aparecía en el retrato de Company de la iglesia de San Martín, de Valencia (perdida o destruida en 1936), en el que el efigiado ostentaba la cruz de la orden de Carlos III, razones que han hecho pensar que este segundo retrato, en opinión de Martín Soria, sería Agustín Esteve, discípulo y colaborador de Goya</p>
+                    <p> <span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad//turismo/es/que-visitar/sitios-interes/detalle_Monumento?id=909"><strong>Más Información</strong></a></p>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('#jornadas .collapse').collapse();
+
+        var query = '/sede/servicio/cultura/evento.geojson?q=program.id==273&srsname=wgs84&rows=100';
+        var popup;
+        var markers;
+        $.getJSON(query, function(data) {
+            $('#mensaje').addClass('hide')
+            if (data.features.length > 0) {
+                var geojson = L.geoJson(data, {
+                    pointToLayer: function(feature, latlng) {
+                        var icono = data.properties.icon;
+                        var texto = '<a href="' + feature.properties.alt + '"><strong>' + feature.properties.title + '</strong></a><br/>' + feature.properties.subEvent[0].location.title;
+                        return L.marker(latlng, {
+                            icon: L.icon({
+                                iconUrl: icono,
+                                iconSize: [22, 20],
+                                iconAnchor: [22, 20],
+                                popupAnchor: [-10, -20]
+                            })
+                        }).bindPopup(texto);
+                    }
+                });
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+                map.fitBounds(geojson.getBounds());
+                map.addLayer(geojson);
+            } else {
+                $('#mensaje').html('La consulta no ha devuelto resultados');
+                $('#mensaje').removeClass('hide').addClass('alert-danger');
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+            };
+        });
+
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

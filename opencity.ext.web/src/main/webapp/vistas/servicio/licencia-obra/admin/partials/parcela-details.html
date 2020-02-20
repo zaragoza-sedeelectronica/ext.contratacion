@@ -1,0 +1,98 @@
+<div class="row">
+
+    <div class="col-md-12">
+
+        <button class="btn btn-default" ng-click="guardar()" ng-show="permisos.MOD">
+            <i class="glyphicon glyphicon-ok"></i>
+            <span class="hidden-phone">Guardar</span>
+        </button>
+        <!-- <button class="btn btn-default" ng-click="copiar()" ng-show="permisos.NEW">
+            <i class="glyphicon glyphicon-pencil"></i>
+            <span class="hidden-phone">Copiar</span>
+        </button>-->
+
+    </div>
+</div>
+
+<div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+
+<br/>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <fieldset>
+            <legend>Datos del registro</legend>
+				<div class="form-horizontal">
+					<div class="row">
+						<div class="col-sm-6">
+			                <div class="form-group">
+			                    <label class="col-sm-2 control-label" for="registro.emplazamiento">ID:</label>
+			                    <div class="col-sm-6">
+			                        {{registro.id}}
+			                    </div>
+			                </div>
+			                <div class="form-group">
+			                    <label class="col-sm-2 control-label" for="registro.emplazamiento">&Aacute;rea de referencia:</label>
+			                    <div class="col-sm-6">
+			                        {{registro.areaReferencia}}
+			                    </div>
+			                </div>
+			                <div class="form-group">
+				                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Referencia Catastral:</label>
+				                    <div class="col-sm-6">
+				                        {{registro.claveCatastro}}
+				                    </div>
+				            </div>
+			            </div>
+			        	<div class="col-sm-6">
+			        		<table class="table table-striped table-condensed">
+				                <caption>Emplazamiento</caption>
+				                <tr><th>Calle</th><th>N&uacute;mero</th></tr>
+				                <tr ng-repeat="port in registro.portal">
+				                <td>{{port.title}}</td>
+				                <td>{{port.numero}}</td>
+				                </tr>
+				                </table>
+			        	</div>   
+                	</div>
+                
+                <table class="table table-striped table-condensed">
+                <caption>Licencias</caption>
+                <tr><th>Parcela</th><th>Expediente - Tipo</th><th>Titular</th><th>NIF</th><th>Datos Obra</th><th>Resolucion</th></tr>
+                <tr ng-repeat="expte in registro.expedientePrivate">
+                <td>{{expte.id.parcela}}</td>
+                <td>{{expte.id.expediente}} - {{expte.procedimiento}} {{expte.tipo}} {{expte.datosObra.tipoObra}}</td>
+                <td>{{expte.titular}}</td>
+                <td>{{expte.nif}}</td>
+                <td><ul ng-show="expte.datosObra">
+					<li>Fecha licencia: {{expte.datosObra.creationDate | date:'dd-MM-yyyy HH:mm'}}</li>
+					<li>Viviendas: {{expte.datosObra.viviendas}}</li>
+					<li>Oficinas: {{expte.datosObra.oficinas}}</li>
+					<li>Trasteros: {{expte.datosObra.trasteros}}</li>
+					<li>Bodegas: {{expte.datosObra.bodegas}}</li>
+					<li>Naves: {{expte.datosObra.naves}}</li>
+					<li>Aparcamientos: {{expte.datosObra.aparcamientos}}</li>
+					<li>Superficie: {{expte.datosObra.superficie}}</li>
+					<li>Uso dominante: {{expte.datosObra.usoDominante}}</li>
+					<li>Tipo proyecto: {{expte.datosObra.tipoProyecto}}</li>
+					<li>R&eacute;gimen: {{expte.datosObra.regimen}}</li>
+					<li>Zonas comunes: {{expte.datosObra.zonasComunes}}</li>
+					<li>Otras: {{expte.datosObra.otras}}</li>
+					<li>Clasificaci&oacute;n: {{expte.datosObra.clasificacion}}</li>
+					<li>&Aacute;reas Intervenci&oacute;n: {{expte.datosObra.areasIntervencion}}</li>
+					<li>Locales: {{expte.datosObra.locales}}</li>
+					<li>Tipo obra: {{expte.datosObra.tipoObra}}</li>
+					<li>Presupuesto autoliquidaci&oacute;n{{expte.datosObra.presupuestoAutoliquidacion}}</li>
+					</ul>
+				</td>
+                <td>{{licencia.creationDate | date:'dd-MM-yyyy HH:mm'}}</td>
+                </tr>
+                </table>
+			</div>
+        </fieldset>
+
+    </div>
+
+</div>

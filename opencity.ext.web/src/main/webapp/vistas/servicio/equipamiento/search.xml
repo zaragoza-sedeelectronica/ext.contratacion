@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Equipamiento de la ciudad'" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+        .card {
+            position: relative;
+            padding-top: 1.5em;
+            padding-bottom: 60px;
+        }
+        @media (min-width: 768px) {
+            .card {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Consulta de equipamientos</h2>
+        <div id="mapa-leaflet" style="height: 30em"></div>  
+        <div class="row">
+        <div class="col-md-push-4 col-md-8 clearfix">
+			<p class="nomargin destacado text-right">
+				<!-- <img title="Datos Abiertos" alt="" class="pull-right" src="/cont/paginas/risp/img/datosabiertos" width="50" height="50"/> -->
+				Descargar:
+				<a href="https://www.zaragoza.es/sede/servicio/catalogo/300">Datos Abiertos</a>
+			</p> 
+			<ul class="list-inline pull-right">
+				<li class="nopadding"><a th:href="'https://www.zaragoza.es/sede/servicio/equipamiento/search.geojson?'+${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">GeoJSON</a> | </li>
+				<li class="nopadding"><a th:href="'https://www.zaragoza.es/sede/servicio/equipamiento/search.json'+${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">JSON</a> | </li>
+				<li class="nopadding"><a th:href="'https://www.zaragoza.es/sede/servicio/equipamiento/search.xml'+${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">XML</a> | </li> 
+				<li class="nopadding"><a th:href="'https://www.zaragoza.es/sede/servicio/equipamiento/search.csv'+${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">CSV</a></li>
+				
+			</ul>
+        </div>  
+        </div>    
+        <div class="row">
+			 
+            <ul class="row list-unstyled margin-t05em listado-equipamiento">
+                <li th:each="equipamiento : ${resultado.body.result}" class="juntas col-xs-12 col-sm-6 col-md-4" th:classappend="${equipamiento.geometry} ? geo : nogeo" sede:rdf="${equipamiento.voc()}" th:attr="about=${equipamiento.uri}, typeOf=*{type} ? *{type} : 'http://vocab.linkeddata.es/kos/urbanismo-infraestructuras/equipamiento'">
+                    <th:block th:include="/fragmentos/equipamiento/card(equip=${equipamiento})"></th:block>
+                </li>
+            </ul>
+        </div>
+    
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/es.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $('#buscador').removeClass('hidden');
+    $("#junta").select2({
+        ajax: {
+            url: 'https://www.zaragoza.es/sede/servicio/distrito',
+            dataType: 'json',
+            type: "GET",
+            quietMillis: 50,
+            data: function (term) {
+                return {
+                    fl : 'id,title',
+                    q: 'title==' + term.term + '*'
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.result, function (item) {
+                        return {
+                            text: item.title,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        },
+        minimumInputLength: 2,
+        placeholder: 'Encuentra los equipamientos de tu Junta Municipal',
+        allowClear: true,
+    });
+
+    $('#junta').on("select2:select", function(e) { 
+        var item = e.params.data;
+        console.log('select');
+        $('.btn-filtro').removeClass('hidden').find('.texto').html(item.title);
+
+        $(document).ready(function() {
+            $('.juntas').attr("hidden", true);
+            $('.juntas').each(function( index ) {
+                if ($( this ).text().indexOf(item.text) >= 0) {
+                    $( this ).attr("hidden",false);
+                }
+            });
+
+            var num = 0;
+            var numOcultos = 0;
+            $('.juntas').each(function( index ) {
+                num = num + 1;
+                if ($( this ).is(':hidden')) {
+                    numOcultos = numOcultos + 1;
+                }
+            });
+            if (num == numOcultos) {
+                $('.alertJuntas').removeClass('hidden');
+            }
+        });
+    });
+    $('#junta').on("select2:unselect", function(e) { 
+        var data = e.params.data;
+        console.log('unselect');
+        $('#junta').typeahead('val', '');
+        $('.juntas').attr("hidden", false);
+        $('.alertJuntas').addClass("hidden");
+        $('.btn-filtro').addClass('hidden').find('.texto').empty();
+    });
+
+    /*
+    var juntaDataset = new Bloodhound({
+        datumTokenizer: function(countries) {
+            return Bloodhound.tokenizers.whitespace(result.value);
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: 'http://www.zaragoza.es/sede/servicio/junta-administrativa?rows=10&q=title==%QUERY*&fl=id,title',
+            
+            filter: function(response) {
+                return response.result;
+            },
+            wildcard: '%QUERY',
+        }
+    });
+    $('#junta').typeahead(null, {
+        name: 'juntas',
+        displayKey: function(results) {
+            return results.title;
+        },
+        source: juntaDataset
+    });
+    $('#junta').bind('typeahead:select', function(ev, suggestion) {
+        var item = suggestion;
+        var junta = $('#junta_id').val(item.title);
+
+        $(document).ready(function() {
+            $('.juntas').attr("hidden", true);
+            $('.juntas').each(function( index ) {
+                if ($( this ).text().indexOf(item.title) >= 0) {
+                    $( this ).attr("hidden",false);
+                }
+            });
+
+            var numMercados = 0;
+            var numMercadosOcultos = 0;
+            $('.juntas').each(function( index ) {
+                numMercados = numMercados + 1;
+                if ($( this ).is(':hidden')) {
+                    numMercadosOcultos = numMercadosOcultos + 1;
+                }
+            });
+            if (numMercados == numMercadosOcultos) {
+                $('.alertJuntas').removeClass('hidden');
+            }
+        });
+    });*/
+    /*]]>*/
+    </script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    $("li[typeOf]").each(function() {
+
+        var icon = '//www.zaragoza.es/contenidos/iconos/participacionCiudadana.png';
+        var latitude = $(this).find("[property='latitude']").attr("content");
+        var longitude = $(this).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            var marker = L.marker([latitude, longitude], {
+                icon: L.icon({
+                    iconUrl: icon,
+                    iconSize: [22, 20],
+                    iconAnchor: [22, 20],
+                    popupAnchor: [-10, -20]
+                })
+            }).bindPopup($(this).children().html());
+            pois.push(marker);
+        };
+    });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, errorPosition);
+    } else {
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    };
+
+    function showPosition(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        //var latitude = 41.652020560953645;
+        //var longitude = -0.9845429715135259;
+        if (latitude < 41.998914010914405 && latitude > 41.429966005785936 && longitude < -0.5080683157393229 && longitude > -1.443420883267586) {
+            var user = L.marker([latitude, longitude]);
+            pois.push(user);
+            var group = L.featureGroup(pois).addTo(map);
+            map.setView(new L.LatLng(latitude, longitude), 3);
+            //map.fitBounds(group.getBounds());
+
+            var locationArray = $("li.geo");
+            locationArray.sort(function(a, b) {
+                var latA = $(a).find("[property='latitude']").attr("content");
+                var latB = $(b).find("[property='latitude']").attr("content");
+                var longA = $(a).find("[property='longitude']").attr("content");
+                var longB = $(b).find("[property='longitude']").attr("content");
+                var dist = distance(latA, longA, latitude, longitude) - distance(latB, longB, latitude, longitude);
+                return dist;
+            });
+            var parent = $("li.geo").first().parent();
+            $("li.geo").remove();
+            for (var i = locationArray.length; i >= 0; i--) {
+                parent.prepend(locationArray[i]);
+            }
+
+        } else {
+            //alert('Coordenadas no ubicadas en Zaragoza')
+            var group = L.featureGroup(pois).addTo(map);
+            map.fitBounds(group.getBounds());
+        }
+    }
+
+    function errorPosition(error) {
+        console.log("ERRORRRRRRR");
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    }
+
+
+    function distance(lat1, lon1, lat2, lon2) {
+        var p = 0.017453292519943295; // Math.PI / 180
+        var c = Math.cos;
+        var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+            c(lat1 * p) * c(lat2 * p) *
+            (1 - c((lon2 - lon1) * p)) / 2;
+
+        return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+    }
+    /*]]>*/
+    </script>
+</body>
+
+</html>

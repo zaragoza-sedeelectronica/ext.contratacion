@@ -1,0 +1,109 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es"><head>
+    <meta charset="utf-8" />
+    <sede:meta title="Cátedra de Territorio, Sociedad y Visualización Geográfica" 
+               description="Recursos de información en la plataforma Gobierno Abierto, espacio de la sede en la sede electrónica del Ayuntamiento de Zaragoza: actas, informes, planos y otros documentos de La Cátedra de Territorio, Sociedad y Visualización Geográfica" 
+                keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, colaboración, investigación y desarrollo, educación y formación, investigación universitaria, visualización de datos, datos geográficos, datos abiertos, cátedra , Universidad de Zaragoza, city, council, Saragossa, electronic site, local government, open government, citizen-authority relation, social participation, collaboration, research and development, education and training,  university research, data visualization, geographic data, open data, chair, University of Zaragoza"/>
+<style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    .textoTitulo1 {
+        font: 240% sans-serif;
+        margin-top: 20em;
+        margin-left: 2em;
+        background-color:#ccc;
+    }
+     .textoTitulo2 {
+        font: 240% sans-serif;
+        margin-top: 20em;
+        margin-left: 2em;
+        
+    }
+
+     .textoTituloRojo {
+        font: 330% sans-serif;
+      color: #e81b16;
+      background-color:#e6e6e6;
+
+    }
+
+    .textoTituloNormal {
+        font: 160% sans-serif;
+        margin-top: 20em;
+        margin-left: 3em;
+    }
+
+
+    .cabecera {
+        margin-top:2em;
+        border: 1px solid #CCC;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+        background-color: #f2f2f2;
+    }
+
+
+
+    h2 {
+    
+        margin: 0 0 .5em;
+        padding: .5em;
+    }
+     .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    .section-content-alt {
+        border-radius: .5em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>             <h2>Catedra de Territorio, Sociedad y Visualización Geográfica</h2> 
+ 	<h3>Documentación</h3>
+          
+   <h3 class="section-title offset-target">Informes/Estudios</h3>
+   <div class="section-content">
+
+   <h4> <span class="far fa-file-alt" aria-hidden="true"></span> Delimitación de distritos municipales en la Ciudad de Zaragoza 1968-2018</h4>
+   <ul>
+   <li><a href="/sede/portal/participacion/catedra/territorio/servicio/publicacion-municipal/11470" >Informe </a></li>
+   <li><a href="/contenidos/gobierno-abierto/participar/catedra/20180514_Catedra_Limites_Municipales.pdf" class="pdf">Presentación <span class="oculto">(Documento en formato pdf Tamaño 60 Mb)</span></a></li>
+   </ul>
+<h4> <span class="far fa-file-alt" aria-hidden="true"></span> Estudios de medio ambiente </h4>
+<ul><li><a href="/contenidos/medioambiente/agenda21/Georreferenciacionsociodemograficamedioambiente.pdf" class="pdf">Georreferenciación de información y cartografía socioeconómica</a></li></ul>
+<h4><span class="far fa-file-alt" aria-hidden="true"></span> Reconfiguración del Distrito de Casablanca en dos nuevas delimitaciones</h4>
+
+<ul><li><a href="/contenidos/gobierno-abierto/memoria_distrito_Casablanca_BAJO.pdf" class="pdf">Memoria de Valoración Sociodemográfica y de Servicios</a></li></ul>
+</div>
+
+    <h3 class="section-title offset-target">Actas</h3>
+   <div class="section-content">
+<ul>
+	<li>
+		<a target="_blank" class="pdf" href="/contenidos/gobierno-abierto/participar/catedra/20161222_Acta_Constitucion_Cat_Terr.pdf">Acta de Constitución de la Comisión Mixta de la Cátedra</a>
+	</li>
+</ul>
+   </div>
+<h3 class="section-title offset-target">Planos Infancia</h3>
+   <div class="section-content">
+<div th:replace="portal/derechos-sociales/ciudad-infancia/mapas :: indicadores"/>
+   </div>
+   
+</sede:content>
+</body>
+
+</html>

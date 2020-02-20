@@ -1,0 +1,217 @@
+<div class="inform repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)" ng-bind-html="alert.msg"></div>
+<h2>Revisión de últimas actividades insertadas por servicio (último mes)</h2>
+
+<div class="row">
+    <div class="col-xs-2">
+        <div class="form-group">
+        	<label  class="control-label">¿Ver revisadas?
+            <input type="checkbox" ng-model="showReviewed"/></label>
+         </div>
+    </div>
+    <div class="col-xs-6">
+         <div class="form-group">
+        	<select class="form-control" id="portalSeleccion" ng-model="portal" ng-options="portal as portal.title for portal in portales track by portal.id">
+                <option value="">- Selecciona servicio -</option>
+            </select>
+         </div>
+     </div>
+     <div class="col-xs-2">
+         <div class="form-group">
+                <button ng-disabled="portal === undefined" class="btn btn-default" type="button" ng-click="listarPorServicio(portal);">Listar</button>
+         </div>
+    </div>
+</div>
+<hr/>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="registro in registros">
+        {{registro.id}} | {{registro.title}} - <span ng-repeat="l in registro.subEvent">{{l.location.title}} <span class="label label-info">{{l.startDate | date:'dd-MM-yyyy'}} - {{l.endDate | date:'dd-MM-yyyy'}}</span></span>
+        <span ng-show="registro.validacion==='S'" class="label label-warning">No visible</span>
+        <span class="pull-right">
+            <a class="btn btn-default btn-xs" ng-href="/sede/servicio/cultura/evento/{{registro.id}}?refresh=y" target="_blank">Ver Ficha</a>
+            <a class="btn btn-default btn-xs" ng-href="/sede/servicio/cultura/evento/admin/acto/#/edit/{{registro.id}}" ng-show="asociadoAPortal(registro.portales);" target="_blank">Editar</a>
+            <button class="btn btn-default btn-xs" type="button" ng-click="descartarPortal(registro)" ng-show="!descartadoDePortal(registro.portales) && !asociadoAPortal(registro.portales);">Descartar</button>
+            <button class="btn btn-default btn-xs" type="button" ng-click="asociarPortal(registro)" ng-disabled="asociadoAPortal(registro.portales);">Asociar</button>
+            <button class="btn btn-default btn-xs" type="button" ng-click="desasociarPortal(registro)" ng-disabled="!asociadoAPortal(registro.portales);">Desasociar</button>
+        </span>
+    </li>
+</ul>
+<ul style="margin-top:-15px;" class="margin-b05em navbar-right" uib-pagination boundary-links="true" total-items="totalCount" max-size="maxSizePage" ng-model="currentPage" ng-change="pageChanged()" items-per-page="itemsPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+<hr/>
+<div ng-if="permisos.ADMIN">
+    <h2>
+        Revisión de actividades vigentes con errores 
+        <!-- <small>Total: {{totalErrores}}</small> -->
+        <button class="btn btn-default" type="button" ng-click="comenzarRevision();">Comenzar revisión</button>
+    </h2>
+    <hr/>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8">
+            <div class="panel panel-default" ng-if="registrosSinLR.length">
+                <div class="panel-heading" ng-click="isCollapsedSinLR = !isCollapsedSinLR">
+                    Actividades sin lugar de realización
+                    <span class="badge">{{registrosSinLR.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedSinLR, 'glyphicon-chevron-up' : !isCollapsedSinLR}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedSinLR">
+                    <li class="list-group-item" ng-repeat="act in registrosSinLR">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosLRAnt.length">
+                <div class="panel-heading" ng-click="isCollapsedLRAnt = !isCollapsedLRAnt">
+                    Actividades con lugares de realización antiguos
+                    <span class="badge">{{registrosLRAnt.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedLRAnt, 'glyphicon-chevron-up' : !isCollapsedLRAnt}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedLRAnt">
+                    <li class="list-group-item" ng-repeat="act in registrosLRAnt">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosSinTema.length">
+                <div class="panel-heading" ng-click="isCollapsedSinTema = !isCollapsedSinTema">
+                    Actividades sin temática asociada
+                    <span class="badge">{{registrosSinTema.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedSinTema, 'glyphicon-chevron-up' : !isCollapsedSinTema}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedSinTema">
+                    <li class="list-group-item" ng-repeat="act in registrosSinTema">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosSinTipo.length">
+                <div class="panel-heading" ng-click="isCollapsedSinTipo = !isCollapsedSinTipo">
+                    Actividades sin tipo de acto asociado
+                    <span class="badge">{{registrosSinTipo.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedSinTipo, 'glyphicon-chevron-up' : !isCollapsedSinTipo}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedSinTipo">
+                    <li class="list-group-item" ng-repeat="act in registrosSinTipo">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosDPTNegativo.length">
+                <div class="panel-heading" ng-click="isCollapsedDPTNegativo = !isCollapsedDPTNegativo">
+                    Actividades con fechas de realización erroneas (dias para terminar negativo)
+                    <span class="badge">{{registrosDPTNegativo.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedDPTNegativo, 'glyphicon-chevron-up' : !isCollapsedDPTNegativo}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedDPTNegativo">
+                    <li class="list-group-item" ng-repeat="act in registrosDPTNegativo">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosNoVisible.length">
+                <div class="panel-heading" ng-click="isCollapsedNoVisible = !isCollapsedNoVisible">
+                    Actividades ocultas (No publicadas)
+                    <span class="badge">{{registrosNoVisible.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedNoVisible, 'glyphicon-chevron-up' : !isCollapsedNoVisible}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedNoVisible">
+                    <li class="list-group-item" ng-repeat="act in registrosNoVisible">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosSinPoblacion.length">
+                <div class="panel-heading" ng-click="isCollapsedSinPoblacion = !isCollapsedSinPoblacion">
+                    Actividades sin ningún sector de población asociado
+                    <span class="badge">{{registrosSinPoblacion.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedSinPoblacion, 'glyphicon-chevron-up' : !isCollapsedSinPoblacion}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedSinPoblacion">
+                    <li class="list-group-item" ng-repeat="act in registrosSinPoblacion">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosSinEntidad.length">
+                <div class="panel-heading" ng-click="isCollapsedSinEntidad = !isCollapsedSinEntidad">
+                    Actividades sin entidad organizadora asociada
+                    <span class="badge">{{registrosSinEntidad.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedSinEntidad, 'glyphicon-chevron-up' : !isCollapsedSinEntidad}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedSinEntidad">
+                    <li class="list-group-item" ng-repeat="act in registrosSinEntidad">
+                        <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                            <span class="label label-default">{{act.id}}</span>
+                            <span class="label label-info">
+                                <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                            </span>
+                            <span class="margin-l05em">{{act.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-if="registrosNombreDuplicado.length">
+                <div class="panel-heading" ng-click="isCollapsedNombreDuplicado = !isCollapsedNombreDuplicado">
+                    Actividades con nombre duplicado (una actividad por cada lugar de realización)
+                    <span class="badge">{{registrosNombreDuplicado.length}}</span>
+                    <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down' : isCollapsedNombreDuplicado, 'glyphicon-chevron-up' : !isCollapsedNombreDuplicado}"></span>
+                </div>
+                <ul class="list-group" uib-collapse="isCollapsedNombreDuplicado">
+                    <li class="list-group-item" ng-repeat="dup in registrosNombreDuplicado">
+                        <ul>
+                            <li ng-repeat="act in dup">
+                                <a class="btn" href="#/edit/{{ act.id }}" target="_blank" title="Abrir en pestaña nueva">
+                                    <span class="label label-default">{{act.id}}</span>
+                                    <span class="label label-info">
+                                        <span class="fa fa-user" aria-hidden="true"></span> {{act.codUsuario}}
+                                    </span>
+                                    <span class="margin-l05em">{{act.title}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

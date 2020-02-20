@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Alojamientos de la ciudad" keywords="sede,web" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Alojamientos de la ciudad</h2>
+        <th:block th:include="fragmentos/buscador/resultado" />
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("div[id^='collapse-']").collapse("hide");
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

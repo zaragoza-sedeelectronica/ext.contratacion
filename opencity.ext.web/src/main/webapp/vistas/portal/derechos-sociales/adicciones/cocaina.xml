@@ -1,0 +1,174 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Programas de atención >> Cocaína"
+         description="Prevención de Adicciones"
+         keywords="Droga, drogadicto, drogado, estupefaciente, toxicómanos, adicto, intoxicación, abuso, dependencia, desintoxicación, drogodependencia, droga legal, droga ilegal, alcohol, tabaco, cánnabis, marihuana, hachís, porro, canuto, coca, cocaína, crack, heroína, éxtasis, anfetaminas, alucinógenos, setas alucinógenas, inhalables, speed, setas mágicas, ketamina, salvia, metanfetaminas, spice, nexus, esteroides anabolizantes, mefedrona, peperazina, legal highs, research chemicals, ghb, éxtasis líquido, hipnóticos, opiáceos, morfina, ansiolíticos, tranquilizantes, pastis, nicotina, xantinas, cafeína, teofilina, teobromina, LSD, ácido, tripi, pegamentos, colas, disolventes volátiles, Eva, Adán, drogas de síntesis, MDMA, MDA, metadona , Remediar, curar, reparar, atender, sanar, asistir, paliar, tratar, rehabilitar, intervenir, deshabituar, terapéutico, tratamiento, mejorar, remediar, reparar, desintoxicación, psicoterapia, Ayuntamiento de Zaragoza, Programas de atención, Prevención de Adicciones, Cocaína"/>
+      <style>
+         titulo-seccion {
+         line-height: 66px;
+         font-size: 42px;
+         }
+         .fnd-blanco {
+         background-color: #ffffff;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .fnd-gris-claro {
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin-bottom: -40px;
+         }
+         .titulo-org h2,
+         .procesos h2{
+         color: #e83437;
+         font-size: 42px;
+         padding-bottom: 20px;
+         }
+         .titulo-org h2 small,
+         .titulo-org h2 span{
+         color: #000000;
+         }
+         .panel-heading a:after {
+         float: left;
+         color: white;
+         background-color: #000;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 20px;
+         margin-right: 10px;
+         }
+         .panel-heading a.collapsed:after {
+         content: "\f105";
+         }
+         .panel-default>.panel-heading {
+         background-color: #fff;
+         border: 0;
+         }
+         .panel {
+         border: 0;
+         webkit-box-shadow: 0 0 0;
+         box-shadow: 0 0 0;
+         }
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         border: 0;
+         }
+         .panel-body {
+         padding-left: 50px;
+         }
+         .panel-title>a {
+         color: #E81B16;
+         }
+         .panel-title>a:hover,
+         .panel-title>a:focus,
+         .panel-title>a:active {
+         text-decoration: none;
+         }
+         ul.submenu {
+         margin: 0;
+         }
+         .btn-back.pull-left {
+         padding: .25em .5em;
+         background: #E81B16;
+         border-radius: .5em;
+         }
+         .second-bar {
+         background: #E6E6E6;
+         border-radius: .5em;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin-bottom: 2em;
+         }
+         ul.submenu li {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: .5em;
+         }
+         .offset-target:before {
+         content: '';
+         display: block;
+         height: 67px;
+         /* fixed header height*/
+         margin: -67px 0 0;
+         /* negative fixed header height */
+         }
+         .section-title {
+         background: #E6E6E6;
+         border-radius: .5em .5em 0 0;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin: 0;
+         }
+         .section-content {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: 0 0 .5em .5em;
+         margin-bottom: 1em;
+         }
+         .card{
+         margin-left:5em;
+         }
+         .imagen{
+         display:block;
+         margin-left:10em;;
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Cocaina</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <div class="row">
+               	<div class="col-md-6 card">
+               		<h3 class="section-title offset-target">Cocaina</h3>
+               		<p>El abuso y/o dependencia de cocaína, habitualmente consumida junto con <strong>alcohol</strong>, es uno de los motivos de demanda de tratamiento que más se ha incrementado en el CMAPA en los últimos años. </p>
+               <p>Las propias características de las personas que presentan dependencia a la cocaína, hacen especialmente indicada la <strong>terapia grupal</strong>, dado su poder de modelado y de capacidad de cambio que conlleva. </p>
+               <p>El programa va a tratar de <strong>disminuir o eliminar el consumo de cocaína</strong>, favoreciendo alternativas de conciencia personal y actividades placenteras o de ocio saludables, responsabilizando a su vez al paciente en relación a sí mismo y a los demás.</p>
+               <p>Las sesiones son semanales, de noventa minutos de duración </p>
+               	</div>
+               	<div class="col-md-4">
+               		<img alt="" class="imagen" src="/cont/vistas/portal/derechos-sociales/adicciones/img/coca.png"/>
+               	</div>
+               	<div class="col-md-6 card">
+               		<h3 class="section-title offset-target">Contenido</h3>
+               		<ul>
+                  <li>Formas de abuso y patrones de uso. MITOS</li>
+                  <li>Concienciación del problema</li>
+                  <li>Creencias y actitudes que subyacen al problema </li>
+                  <li>Solución de problemas</li>
+                  <li>Prevención de recaídas</li>
+                  <li>Autocontrol, impulsividad y agresividad</li>
+                  <li>Planteamiento de objetivos sobre reorganización de actividades laborales y lúdicas.</li>
+               		</ul>
+				</div>
+				<div class="col-md-4 card">
+               		<h3 class="section-title offset-target">Evaluación</h3>
+               		<p><strong>Evaluación del programa:</strong> se establecen una serie de indicadores de evaluación pre/post tratamiento</p>
+               	</div>
+               </div>
+               
+               
+               
+           
+               
+               
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

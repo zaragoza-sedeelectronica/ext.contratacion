@@ -1,0 +1,501 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es"><head>
+    <meta charset="utf-8" />
+    <sede:meta title="Derechos Sociales" description="Área de Derechos Sociales" category="derechos sociales" author="Ayuntamiento de Zaragoza" last-modified="2018-03-08" audience="" keywords="Ayuntamiento, Zaragoza, España, Ciudad, derechos sociales, ayudas, cooperación al desarrollo, igualdad, infancia,empleo, pobreza, centro de promoción de la salud, preveción de adicciones, actividades, convocatorias, ayudas" priority="" robots=""/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+     }
+	        .fase {
+            background-color: #202020;
+            color: #fff;
+            font-weight: bold;
+        }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+   .fnd-turismo {
+        background: #d68100;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #55a7b3;
+    } 
+    </style>
+</head>
+
+
+
+
+<body>
+
+
+    <sede:content> 
+<hr class="sm"/>
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-3"> <a href="https://www.zaragoza.es/sede/portal/derechos-sociales/infancia/">  
+				<img src="/cont/vistas/portal/derechos-sociales/img/infancia2.PNG"/></a>
+				 </div> 
+
+			<div class="col-md-3">
+				 <a href="https://www.zaragoza.es/sede/portal/derechos-sociales/personas-mayores/">  
+								<img src="/cont/vistas/portal/derechos-sociales/img/mayores2.PNG"/></a>
+				  </div>
+
+
+
+
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/albergue2.PNG"/>
+				 
+				  <div class="full-screen-box text-justify">
+				<ul class="list-unstyled">
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/derechos-sociales/servicio/equipamiento/2115"> Casa de Amparo</a></li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/derechos-sociales/servicio/equipamiento/490">Albergue</a></li>
+ 
+				</ul>
+			</div></div> 
+
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/prevencion2.PNG"/>
+				  <div class="full-screen-box text-justify">
+				<ul class="list-unstyled"><li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/sectores/adicciones/"> Adicciones</a></li>
+				 <li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/sectores/social/salud/salud.htm">Promoción de la Salud</a></li>
+				 
+				</ul>
+			</div>
+		</div>
+</div>
+		<div class="row">
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/multicultural2.PNG"/>
+				  <div class="full-screen-box text-justify">
+				  <ul class="list-unstyled"><li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/sectores/casaculturas/"> Casa de las Culturas</a></li>
+				 
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/derechos-sociales/cooperacion-desarrollo/">Cooperación al Desarrollo</a></li>
+				</ul>
+			</div></div>
+
+			<div class="col-md-3"><a href="https://www.zaragoza.es/ciudad/sectores/jovenes/">
+				<img src="/cont/vistas/portal/derechos-sociales/img/juventud2.PNG"/></a>
+				  </div>
+
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/emprendimiento2.PNG"/>
+				
+				  <div class="full-screen-box text-justify">
+				  <ul class="list-unstyled">
+				  <li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+				   <a href="https://www.zaragoza.es/ciudad/sectores/activa/"> Zaragoza Activa</a></li>
+				   
+				   
+				   <li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/etopia/">Etopia</a></li>
+				 
+				 
+				</ul>
+			</div>
+				
+				 </div>
+
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/vivienda2.PNG"/>
+				  <div class="full-screen-box text-justify">
+				
+				
+				<ul class="list-unstyled"><li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/sectores/jovenes/alquiler.htm">Alquiler/ Compra</a></li>
+				 
+				 
+				
+				</ul>
+			</div>
+			 
+			</div></div>
+ 
+
+		<div class="row">
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/educa-biblioteca2.PNG"/>
+				 
+				  <div class="full-screen-box text-justify">
+				
+				
+				<ul class="list-unstyled"><li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/educacion/">Educación</a></li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/educacionybibliotecas/bibliotecasmunicipales/"> Bibliotecas</a></li>
+				 
+				
+				</ul>
+			</div></div>
+
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/igualdad2.PNG"/>  <div class="full-screen-box text-justify">
+				<ul class="list-unstyled"><li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/sectores/mujer/">Casa de la Mujer</a></li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/igualdad/">Plan de Igualdad</a></li></ul>
+			</div></div>
+
+			<div class="col-md-3"><a href="https://www.zaragoza.es/ciudad/deporte/">
+				<img src="/cont/vistas/portal/derechos-sociales/img/deportes2.PNG"/></a>
+				 
+			</div>
+
+			<div class="col-md-3">
+				<img src="/cont/vistas/portal/derechos-sociales/img/discapacidad2.PNG"/>
+				<div class="full-screen-box text-justify">
+				<ul class="list-unstyled"> <li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/sectores/social/jardineria/pinar.htm">
+				Escuela de Jardineria</a></li><li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/sinbarreras/">Sin Barreras</a></li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="http://www.aragon.es/DepartamentosOrganismosPublicos/Departamentos/CiudadaniaDerechosSociales/AreasTematicas/BSF_Dependencia">Ayudas a la Dependencia</a> (Gobierno de Aragón)</li></ul>
+			</div></div>
+		</div>
+	</div>
+</div>
+
+<div class="linea">
+	&nbsp;
+</div>
+
+<div class="row">
+	<div class="col-md-12 card clearfix">
+	
+	
+	
+	
+	
+	
+ 
+ <h2>Destacados</h2>
+
+			<hr class="sm"/>
+ 
+				 <div class="row">				 
+				<div class="col-md-4">
+					  <sede:aviso temas="" nresultados="2" portal="Igualdad" titulo="Igualdad" fragment="fragmentos/aviso/list"></sede:aviso>
+					  </div>
+					  <div class="col-md-4">
+					    <sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Mayores Nuevos" temas="" titulo="Personas Mayores"></sede:aviso>
+				</div>
+
+				
+
+				<div class="col-md-4">
+					<sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Infancia" temas="" titulo="Infancia"></sede:aviso>
+				</div>
+			</div>
+
+			<div class="row"><div class="col-md-4">
+					<sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Mujer" temas="" titulo="Mujer"></sede:aviso>
+				</div> 
+				<div class="col-md-4">
+					<sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Casa Culturas" temas="" titulo="Casa de las Culturas"></sede:aviso>
+				</div>
+
+				<div class="col-md-4">
+					<sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Cooperacion al Desarrollo" temas="" titulo="Cooperacion al Desarrollo"></sede:aviso>
+				</div>
+</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Bibliotecas Municipales" temas="" titulo="Bibliotecas"></sede:aviso>
+				</div>
+
+				<div class="col-md-4">
+					<sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Juventud" temas="" titulo="Juventud"></sede:aviso>
+				</div>
+				
+				<div class="col-md-4">
+					<sede:aviso fragment="fragmentos/aviso/list" nresultados="2" portal="Deporte" temas="" titulo="Deporte"></sede:aviso>
+				</div>
+			</div>
+		 
+	
+	
+	
+	
+	
+	
+		 
+			
+			
+			
+		</div>
+		
+		
+		
+		
+		</div>  
+
+
+ 
+
+	<div class="linea">
+		&nbsp;
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card clearfix">
+				 
+				<div class="col-md-8">
+				
+					<h2>
+						Actualidad
+					</h2>
+
+					<hr class="sm"/>
+					<sede:noticia carpeta="/sede/portal/derechos-sociales/" espacio="1" fecha="" fragment="/fragmentos/cultura/custom-list-noticia" imagen="s" listado="s" numero="2" tema="Acción Social" usuario=""></sede:noticia> <a class="btn btn-xs btn-primary pull-right" href="/sede/portal/derechos-sociales/list?fq=temas_smultiple%3A(&quot;Acción Social&quot;)">Ver más noticias</a>
+				</div>
+				
+				
+				
+				 <div class="col-md-4">
+					<h2>
+						Servicios
+					</h2>
+
+					<hr class="sm"/>
+					 
+					<ul class="list-unstyled row no-gutter text-center" role="menu">
+						<li class="col-xs-12 col-sm-12"> <span class="fa fa-2x fa-life-ring" aria-hidden="true"></span>
+							<h3 class="margin-v05em" style="font-size: 1em;">	 
+								<a href="https://www.zaragoza.es/sede/servicio/premios-concursos/?materia.id=18">Convocatorias </a>
+							</h3>
+						</li>
+					 
+
+						<li class="col-xs-12 col-sm-12"> <span class="fa fa-2x fa-life-ring" aria-hidden="true"></span>
+							<h3 class="margin-v05em" style="font-size: 1em;">	 
+								<a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/">Perfil del Contratante </a>
+							</h3>
+						</li>
+						<li class="col-xs-12 col-sm-12"> <span class="fa fa-2x fa-life-ring" aria-hidden="true"></span>
+							<h3 class="margin-v05em" style="font-size: 1em;">	 
+								<a href="https://www.zaragoza.es/sede/portal/derechos-sociales/servicio/tramite/tipo/121">Trámites y Servicios </a>
+							</h3>
+						</li>
+					</ul>
+				</div> 
+
+				
+			</div>
+		</div>
+	</div>
+ 
+
+<div class="linea">
+	&nbsp;
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>
+			Red de Centros
+		</h2>
+
+		<hr class="sm"/>
+		<div class="card clearfix">
+			<ul class="list-unstyled nomargin clearfix" role="menu">
+				<li class="col-xs-6 col-sm-2 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/762"><!--/* <a href="/ciudad/museos/es/teatro/"> */--> </a>
+
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/762"><img alt="" class="img-responsive img-rounded" src="/cont/paginas/centros/img/centro-civico-almozara.jpg"/> </a>
+
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/762">La Almozara</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/762"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/762"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-2 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/763"><!--/* <a href="/ciudad/museos/es/termas/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/763"><img alt="" class="img-responsive img-rounded" src="/cont/paginas/centros/img/centro-civico-tio-jorge.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/763">Arrabal</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/763"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/763"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-2 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/2171"><!--/* <a href="/ciudad/museos/es/puerto/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/2171"><img alt="" class="img-responsive img-rounded" src="/cont/paginas/centros/img/centrocivico-garrapinillos.gif"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/2171">Casablanca</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/2171"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/2171"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-2 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/767"><!--/* <a href="/ciudad/museos/es/puerto/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/767"><img alt="" class="img-responsive img-rounded" src="/cont/paginas/centros/img/mayores_lajota.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/767">La Jota</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/767"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/767"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-2 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/773"><!--/* <a href="/ciudad/museos/es/puerto/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/773"><img alt="" class="img-responsive img-rounded" src="/cont/paginas/centros/img/juntam-torrero.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/773">Torrero</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/773"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/773"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-2 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/774"><!--/* <a href="/ciudad/museos/es/foro/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/774"><img alt="" class="img-responsive img-rounded" src="/cont/paginas/centros/img/universidad.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/774">Universidad</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/774"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/774"> </a>
+				</li>
+			</ul>
+			<a class="btn btn-xs btn-primary pull-right" href="/sede/portal/derechos-sociales/servicio/equipamiento/category/105">Ver más </a>
+		</div>
+	</div>
+</div>
+
+<div class="linea">
+	&nbsp;
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="card">
+			<h2 class="nomargin">
+				Hoy en el Mapa...<span aria-hidden="true" class="far fa-map pull-right"> <a href="http://idezar.zaragoza.es/visorDemografico/?id=juntas_Uso_servicios_sociales">Visor Demográfico</a></span>
+			</h2>
+
+			<hr class="sm"/>
+			<div role="alert" class="alert hide" id="mensaje">
+				&nbsp;
+			</div>
+
+			<div id="mapa-leaflet">
+				&nbsp;
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="col-sm-6">
+			<div classs="fnd-gris-claro img-rounded">
+				<a href="https://www.zaragoza.es/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">Ayúdanos a Mejorar</a>
+			</div>
+		</div>
+	</div>
+</div>
+</sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('#jornadas .collapse').collapse();
+
+        var query = '/sede/servicio/cultura/evento/hoy.geojson?srsname=wgs84';
+        var popup;
+        var markers;
+        $.getJSON(query, function(data) {
+            $('#mensaje').addClass('hide')
+            if (data.features.length > 0) {
+                var geojson = L.geoJson(data, {
+                    pointToLayer: function(feature, latlng) {
+                        var icono = data.properties.icon;
+                        var texto = '<a href="' + feature.properties.alt + '"><strong>' + feature.properties.title + '</strong></a><br/>' + feature.properties.subEvent[0].location.title;
+                        return L.marker(latlng, {
+                            icon: L.icon({
+                                iconUrl: icono,
+                                iconSize: [22, 20],
+                                iconAnchor: [22, 20],
+                                popupAnchor: [-10, -20]
+                            })
+                        }).bindPopup(texto);
+                    }
+                });
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+                map.fitBounds(geojson.getBounds());
+                map.addLayer(geojson);
+            } else {
+                $('#mensaje').html('La consulta no ha devuelto resultados');
+                $('#mensaje').removeClass('hide').addClass('alert-danger');
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+            };
+        });
+
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

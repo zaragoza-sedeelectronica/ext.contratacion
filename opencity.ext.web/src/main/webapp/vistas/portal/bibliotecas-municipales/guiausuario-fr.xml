@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Guía de Usuario" 
+               description="Acceso a la guía de usuario de las Bibliotecas Municipales en la sede electrónica del Ayuntamiento de Zaragoza: colección, servicios bibliotecarios y funcionamiento. Versión en francés" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, derecho a la cultura, derecho a la educación, noticias, agenda, biblioteca pública, carnet bibliotecario, biblioteca infantil, bibliobús, catálogo, servicio en línea, carta de servicios, guía de usuario, city, council, Saragossa, electronic site, local government, social rights, right to culture, right to education, news, public library, library card, children library, mobile library, catalogue, online service, citizen's charter, user guide"/>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/bibliotecas-municipales/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Bobliotecas Municipales</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Guía de Usuario</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="guiausuario">Guía de Usuario</a></li>
+                    <li><a href="guiausuario-fr">    Guide de l´usager</a></li>
+                    <li><a href="guiausuario-en">  User´s guide</a></li>
+                    <li><a href="https://www.zaragoza.es/contenidos/educacionybibliotecas/bibliotecas-municipales/guia_pl.pdf">     
+    Przewodnik uzytkownika</a></li>
+                    <li><a href="guiausuario-ru">     
+       Ghidul utilizatorului</a></li>
+                    <li><a href="https://www.zaragoza.es/contenidos/educacionybibliotecas/bibliotecas-municipales/guia_rus.pdf">     
+    Guía en Ruso</a></li>
+                    <li><a href="https://www.zaragoza.es/contenidos/educacionybibliotecas/bibliotecas-municipales/guia_ar.pdf">     
+       Guía en Árabe</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h2 class="section-title offset-target" id="guiausuario-en"> Guide de l´usager</h2>
+        <!-- <hr class="sm color-ayto"/> -->
+        <div class="section-content">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+Présentation</h3>
+                        <p>L´Office Municipal de l´ Éducation et des Bibliothèques de la Mairie de Saragosse est l´organisme qui gère la politique des bibliothèques municipales. Le Département de la Bibliothèque Publique, dont il fait partie, se compose d´un Centre Coordinateur, de 9 Bibliothèques de District et de 15 Bibliothèques de Quartier qui ont pour mission de proposer au public le matériel et les services qui facilitent l´accès à l´information, la formation, les loisirs et la culture.</p>
+                        <h3>Services</h3>
+                        <p>Les fonds des bibliothèques sont de libre accès. L´usager y accède donc directement, sans avoir besoin d´en faire la demande.</p>
+                        <p>Le personnel des centres se tient à la disposition des usagers pour leur faciliter l´utilisation de la collection.</p>
+                        <p>Tous les services de la bibliothèque sont gratuits.</p>
+                        <h4>Lecture et consultation en salle</h4>
+                        <p>Tous les livres, revues, journaux et publications oficielles peuvent être lus et consultés librement sur place.</p>
+                        <h4>Prêt</h4>
+                        <p>Ce service permet aux usagers d´emprunter plusieurs documents (livres, revues, disques, vidéos et documents électroniques) et de les utiliser en dehors de la bibliothèque pendant une période déterminée. La plupart des documents composant le fond des bibliothèques des centres peuvent être empruntés.</p>
+                        <p>Pour disposer de ce service il faut être adhérent. Il suffit pour cela de s´inscrire en présentant un document officiel d´identification et 2 photos d´identité. La carte d´adhérent est valable pour toutes les bibliothèques du réseau. La remise de la carte est gratuite.</p>
+                        <p>L´usager de ce service est responsable de l´utilisation qu´il fait du matériel emprunté et doit donc à tout moment respecter les normes en vigueur concernant les droits d´auteur.</p>
+                        <p>Pour le bon fonctionnement de ce service et pour le bénéfice de tous les usagers, le matériel emprunté doit être traité avec soin et rendu dans les délais fixés. Le prêt d´un document pourra être renouvelé pour une période similaire à condition que le document en question n´ait pas été sollicité ou réservé par un autre usager. Si les délais ne sont pas respectés, l´usager pourra se voir exclu temporairement de ce service. En cas de perte ou de détérioration du matériel emprunté, l´usager devra le remplacer.</p>
+                        <p>Il est possible de réserver des documents. </p>
+                        <p>Les prêts collectifs à des groupes sont également possibles. Les conditions du prêt concernant la catégorie et le nombre de documents ainsi que la durée du prêt seront établies dans chaque cas. Une personne du groupe devra se responsabiliser de l´utilisation et de la remise des documents empruntés. Services pour enfants</p>
+                        <p>Les bibliothèques offrent aux enfants pratiquement les mêmes services que pour les adultes (Lecture et Consultation sur place, Prêt, Information, etc.) Les bibliothèques de district disposent d´une salle spécialement conçue pour les enfants.</p>
+                        <p>Les enfants âgés de moins de 8 ans devront être accompagnés par un adulte. Service d´Information Bibliographique Depuis le Centre Coordinateur et les Bibliothèques de District un service d´information et de référence professionnelle est mis à la disposition des usagers, afin de répondre à toute demande de ceux-ci dans chaque centre.</p>
+                        <p>Il sera répondu aux demandes de renseignements selon les possibilités du service (de façon immédiate selon la demande) et par les moyens pertinents (courrier, fax, remise en main propre, etc.).</p>
+                        <h4>Accès à l´Internet</h4>
+                        <p>(Dans plusieurs Bibliothèques)
+                            <br/> Les usagers peuvent se connecter gratuitement à l´Internet à partir de certains points prévus à cet effet (navigation et courrier électronique web, à l´exception de toute autre communication électronique). De même, il est possible de consulter des ouvrages édités sur Cédéroms.</p>
+                        <p>Dans cette même salle il est possible d´utiliser le software installé (traitement de textes, feuille de calcul, banque de données, etc)</p>
+                        <h4>Activités d´ incitation à la lecture et à l´utilisation de la bibliothèque</h4>
+                        <p>Périodiquement sont organisées des activités d´incitation à la lecture et à l´utilisation de la bibliothèque telles que:</p>
+                        <ul>
+                            <li>Expositions bibliographiques.</li>
+                            <li>Clubs de lecture.</li>
+                            <li>Rencontres avec des auteurs.</li>
+                            <li>Activités pour enfants:
+                                <ul>
+                                    <li>Conteurs.</li>
+                                    <li>L´heure du Conte (spécialement adressée aux enfants de 6 à 8 ans)</li>
+                                    <li>L´heure du Conte pour les Petits (spécialement adressée aux enfants de 3 à 5 ans)</li>
+                                    <li>Ateliers de travaux manuels variant selon l´époque de l´année (Carnaval, Noël,etc.)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p>Les bibliothèques collaborent également avec divers organismes et associations pour le déroulement des activités.</p>
+                        <h4>Formation des usagers et Visites guidées</h4>
+                        <p>Des visites guidées et des cours de formation de groupes sont organisés afin de permettre aux usagers d´apprendre les techniques de recherche d´information et de profiter au maximum des fonds et des services que la bibliothèque met à leur disposition.</p>
+                        <h4>Fonds et sections</h4>
+                        <p><strong>Livres</strong></p>
+                        <p>Les collections des bibliothèques sont réparties à travers différentes sections: </p>
+                        <p>Adultes</p>
+                        <ul>
+                            <li>Section Référence (ouvrages de consultation)</li>
+                            <li>Section Prêt</li>
+                            <li>Section Aragon</li>
+                        </ul>
+                        <p>Dans chaque section, les documents sont classés selon la Classification Décimale Universelle qui regroupe les livres selon la matière traitée, et leur attribue un code numérique; par exemple:</p>
+                        <ul>
+                            <li>0. Généralités</li>
+                            <li>1. Philosophie</li>
+                            <li>2. Religion</li>
+                            <li>3. Sciences Sociales</li>
+                            <li>5. Sciences Exactes et Naturelles</li>
+                            <li>6. Sciences Appliquées</li>
+                            <li>7. Art. Sports</li>
+                            <li>8. Linguistique. Littérature</li>
+                            <li>9. Histoire. Géographie.</li>
+                        </ul>
+                        <h4>Et aussi:</h4>
+                        <ul>
+                            <li>B: Biographie</li>
+                            <li>C: Bandes Dessinées</li>
+                            <li>N: Romans. Certains portent une marque de couleur sur la partie supérieure de leur tranche selon la catégorie thématique:
+                                <ul>
+                                    <li>Marron. Roman d´aventures et d´action.</li>
+                                    <li>.Rouge. Roman de science fiction.</li>
+                                    <li>.Rose. Roman érotique.</li>
+                                    <li>Noir. Roman fantastique.</li>
+                                    <li>Blanc. Roman historique.</li>
+                                    <li> Vert. Roman humoristique.</li>
+                                    <li> Bleu. Roman policier et de mystère.</li>
+                                    <li>Violet. Roman d´amour.</li>
+                                    <li>Jaune. Roman d´horreur.</li>
+                                    <li>Étoile argentée. Roman junior.</li>
+                                </ul>
+                            </li>
+                            <li>P: Poésie</li>
+                            <li>T: Théâtre</li>
+                        </ul>
+                        <h4>Enfant et Junior</h4>
+                        <p>Dans cette salle ou section se trouve les fonds pour les filles et les garçons jusqu´à 14 ans.</p>
+                        <ul>
+                            <li>Ouvrages de consultation</li>
+                            <li>Livres de connaissances</li>
+                            <li>BD</li>
+                            <li>Récits (répartis en quatre groupes selon l´âge du lecteur, ils portent une gommette de couleur distinctive )
+                                <ul>
+                                    <li>Prélecteurs, jusqu´à 5 ans (les livres ont une gommette bleue).</li>
+                                    <li>De 6 à 8 ans (les livres ont une gommette rouge).</li>
+                                    <li>De 9 à 11 ans (les livres ont une gommette verte).</li>
+                                    <li>De 12 à 14 ans (les livres ont une gommette jaune).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h4>Publications périodiques et oficielles</h4>
+                        <p>Les usagers ont à leur disposition la presse quotidienne ainsi que des revues. Ces dernières peuvent être empruntées passé un mois à compter de leur sortie. Documents sonores (Cédés) Les différents centres possèdent une collection en augmentation de ces documents classés selon le type de musique:</p>
+                        <ul>
+                            <li>0 Musique traditionnelle et folklorique (gommette marron)
+                                <ul>
+                                    <li>0.4 Folk</li>
+                                    <li>0.7 Musique de variétés. Auteurs à textes</li>
+                                    <li>0.8 Flamenco</li>
+                                    <li>097 Aragon</li>
+                                </ul>
+                            </li>
+                            <li>1 Jazz. Blues (gommette jaune)</li>
+                            <li>2 Pop. Rock (gommette bleue)</li>
+                            <li>3 Musique classique (gommette rouge)</li>
+                            <li>4 Musiques nouvelles (gommette rose)</li>
+                            <li>5 Comédies musicales. Musiques de films (gommette verte)</li>
+                            <li>7 Enregistrements pour enfants (gommette orange)</li>
+                        </ul>
+                        <h3>Audiovisuels<br/> CÉDÉROMS</h3>
+                        <h4>Catalogues</h4>
+                        <p>Des catalogues de consultation sont mis à la disposition des usagers désireux de connaître le fond bibliographique de chaque bibliothèque et d´accéder aux documents. Dans les bibliothèques disposant de services informatisés, il existe un catalogue automatisé (OPAC) qui fournit des renseignements sur les fonds de la bibliothèque et sur ceux qui ont été incorporés aux autres centres du réseau depuis 1991.</p>
+                        <p>Les bibliothèques non informatisées disposent de catalogues manuels et offrent également la possibilité de consulter sur place le catalogue collectif automatisé.</p>
+                        <h4>Règles de fonctionnement de la bibliothèque</h4>
+                        <p>Pour que le service qu´offre la bibliothèque s´effectue avec la plus grande efficacité, il est nécessaire de suivre les normes de fonctionnement suivantes:</p>
+                        <ul>
+                            <li>1. La bibliothèque offre fondamentalement aux usagers quatre types de service:
+                                <ul>
+                                    <li>Lecture et consultation de documents en salle.</li>
+                                    <li>Prêt de documents.</li>
+                                    <li>Information.</li>
+                                    <li>Accès à l´Internet</li>
+                                </ul>
+                            </li>
+                            <li>2. L´accès à la bibliothèque est libre pour tous et les services ci-dessus mentionnés sont gratuits.</li>
+                            <li>3. En ce qui concerne le prêt des documents:
+                                <ul>
+                                    <li>La plupart des documents qui composent le fond de la bibliothèque peuvent être empruntés, exception faite des ouvrages de référence et de ceux qui, en raison de leurs caractéristiques particulières, sont limités à la consultation sur place.</li>
+                                    <li>Pour pouvoir bénéficier du prêt à domicile, l´usager devra remettre à la bibliothèque 2 photos d´identité et présenter un document officiel d´identification. Les mineurs qui n´en possèdent pas pourront présenter celui d´un parent accompagné d´une autorisation de ce dernier.</li>
+                                    <li>Il sera remis à l´usager une carte valable dans tous les centres du Département de la Bibliothèque Publique de l´Office Municipal de l´Éducation et des Bibliothèques de la Mairie de Zaragoza.</li>
+                                    <li>Sur présentation de la carte de bibliothèque, chaque usager pourra emprunter plusieurs documents pendant une période déterminée selon le type de matériel. Le prêt peut être renouvelé pour une période similaire à condition qu´il n´ait pas été sollicité ou réservé par un autre usager.</li>
+                                    <li>Pour le fonctionnement correct du service du prêt et pour le bénéfice de tous les usagers, les documents empruntés doivent être rendus dans les délais fixés. En cas de non respect de ces délais, le responsable du service de la bibliothèque pourra se voir obligé d´exclure temporairement du prêt l´usager fautif. En cas de détérioration ou de perte du matériel emprunté, l´usager devra le remplacer.</li>
+                                </ul>
+                            </li>
+                            <li>4. En ce qui concerne l´Accès à l´Internet:
+                                <ul>
+                                    <li>La navigation et l´utilisation du courrier électronique web sont autorisées. En revanche, les autres communications électroniques sont exclues.</li>
+                                    <li>Les usagers de ce service doivent être titulaires de la carte des Bibliothèques Publiques Municipales de la Mairie de Zaragoza et être âgés de plus de 18 ans. Les mineurs devront être accompagnés de parents ou tuteurs ou, à défaut présenter une autorisation signée.</li>
+                                    <li>L´usager s´engage à faire un usage adéquat du service d´accès à l´Internet. L´accès aux contenus qui supposeraient une non-conformité à la nature publique, civique et sociale de la bibliothèque est interdit, l´usager sera tenu pour responsable de la visualisation sur l´écran des documents sélectionnés. Le personnel se réserve le droit d´interrompre toute connection destinée à visionner des contenus inappropriés dans un lieu public. L´utilisation indue de ces recours entraîneront la suspension temporaire du service pour l´usager en question. Par ailleurs, ce dernier devra assumer toute responsabilité dérivant de ses actes.</li>
+                                </ul>
+                            </li>
+                            <li>5. La Bibliothèque étant un lieu public, les usagers sont priés d´avoir un comportement respectueux. Le personnel de la bibliothèque se verra obligé d´expulser des locaux les personnes qui n´observeraient pas ce comportement.</li>
+                            <li>6. Les enfants âgés de moins de 8 ans devront être accompagnés par un adulte.</li>
+                            <li>7. Il est interdit de fumer, de manger, de boire ainsi que d´avoir un téléphone portable connecté en option non silencieuse.</li>
+                        </ul>
+                        <h3>Centres: Adresses. Téléphones. Horaires</h3>
+                        <p><strong>Centre coordinateur des Bibliothèques<br/> Centre Culturel Salvador Allende.</strong>
+                            <br/> Adresse: Avenida Miguel Servet 57 50013 Zaragoza
+                            <br/> Téléphone: 976 72 40 35. Fax 976 59 78 50.
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas@zaragoza.es">bibliotecas@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 8h00 à 21h00</p>
+                        <p><strong>Bibliothèque Benjamín Jarnés</strong>
+                            <br/> Edificio Francisco Fernández Ordóñez. Centre Culturel Río Ebro.
+                            <br/> Adresse: Avenida María Zambrano 56. 50018 Zaragoza.
+                            <br/> Téléphone: 976 73 37 84
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-bjarnes@zaragoza.es">bibliotecas-bjarnes@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10,45 h à 13,30 et de 17 à 21h
+                            <br/> . Du mardi au vendredi de 9h à 21h
+                            <br/> . Le samedi de 9h à 14h.</p>
+                        <p><strong>Bibliothèque Fernando Lázaro Carreter</strong>
+                            <br/> Centre Culturel Torrero.
+                            <br/> Adresse: Calle Monzón 3. 50007 Zaragoza.
+                            <br/> Téléphone: 976 25 91 55
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-flcarreter@zaragoza.es">bibliotecas-flcarreter@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h00
+                            <br/> . Le samedi de 9h à 14h00.</p>
+                        <p><strong>Bibliothèque Javier Tomeo</strong>
+                            <br/> Centre Culturel Tío Jorge.
+                            <br/> Adresse: Plaza San Gregorio s/n. 50015 Zaragoza.
+                            <br/> Téléphone: 976 51 64 53
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-jtomeo@zaragoza.es">bibliotecas-jtomeo@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h00
+                            <br/> . Le samedi de 9h à 14h00</p>
+                        <p><strong>Bibliothèque José Antonio Rey del Corral</strong>
+                            <br/> Centre Culturel Teodoro Sánchez Punter.
+                            <br/> Adresse: Plaza Mayor 2. 50008 Zaragoza.
+                            <br/> Téléphone: 976 49 68 68
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-reydelcorral@zaragoza.es">bibliotecas-reydelcorral@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h00
+                            <br/> . Le samedi de 9h à 14h00</p>
+                        <p><strong>Bibliothèque Manuel Álvar</strong>
+                            <br/> Adresse: Pabellón El Pilar. Parque Delicias. 50017 Zaragoza.
+                            <br/> Téléphone: 976 48 84 33
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-malvar@zaragoza.es">bibliotecas-malvar@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h00
+                            <br/> . Le samedi de 9h à 14h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque María Moliner</strong>
+                            <br/> Adresse: Plaza de San Agustín s/n. 50001 Zaragoza.
+                            <br/> Téléphone: 976 20 21 56
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-mmoliner@zaragoza.es">bibliotecas-mmoliner@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h00
+                            <br/> . Le samedi de 9h à 14h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque Rafael Andolz</strong>
+                            <br/> Centre Culturel La Almozara.
+                            <br/> Adresse: Avenida Puerta Sancho, 30. 50003 Zaragoza.
+                            <br/> Téléphone: 976 40 46 96
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-randolz@zaragoza.es">bibliotecas-randolz@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h00
+                            <br/> . Le samedi de 9h à 14h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque Ricardo Magdalena</strong>
+                            <br/> Centre Culturel Salvador Allende.
+                            <br/> Adresse: Avenida Miguel Servet 57. 50013 Zaragoza.
+                            <br/> Téléphone: 976 72 40 37.
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-rmagdalena@zaragoza.es">bibliotecas-rmagdalena@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h.00
+                            <br/> . Le samedi de 9h à 14h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque Santa Orosia</strong>
+                            <br/> Adresse: Calle Santa Orosia 2. 50010 Zaragoza.
+                            <br/> Téléphone: 976 32 21 02
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-staorosia@zaragoza.es">bibliotecas-staorosia@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Le lundi de 10h45 à 13h30 et de 17h00 à 21h00
+                            <br/> . Du mardi au vendredi de 9h00 à 21h00
+                            <br/> . Le samedi de 9h00 à 14h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque Miguel de Cervantes</strong>
+                            <br/> Adresse: Calle Santa Teresa de Jesús, 58. 50006 Zaragoza.
+                            <br/> Téléphone: 976 55 32 34
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-cervantes@zaragoza.es">bibliotecas-cervantes@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 10h30 à 13h30 et de 16h30 à 20h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque Jesús María Alemany</strong>
+                            <br/> Centre Culturel de Casablanca.
+                            <br/> Adresse: Calle La Ermita s/n. 50009 Zaragoza
+                            <br/> Téléphone: 976 55 28 05
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-casablanca@zaragoza.es">bibliotecas-casablanca@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Du lundi au vendredi de 16h30 à 20h30
+                            <br/> . Le mercredi de 11h00 à 13h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque Inocencio Ruiz Lasala</strong>
+                            <br/> Mairie de Santa Isabel.
+                            <br/> Adresse: Avenida Santa Isabel, 100. 50058 Zaragoza.
+                            <br/> Téléphone: 976 57 74 96
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-santaisabel@zaragoza.es">bibliotecas-santaisabel@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Du lundi au vendredi de 16h30 à 20h30
+                            <br/> . Le mercredi de 11h00 à 13h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Casetas</strong>
+                            <br/> Adresse: Calle Coronel Reig 15. 50620 Zaragoza.
+                            <br/> Téléphone: 976 77 03 08
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-casetas@zaragoza.es">bibliotecas-casetas@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 10h30 à 13h30 et de 16h30 à 20h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Garrapinillos</strong>
+                            <br/> Adresse: Calle Martín Ortega s/n. 50190 Zaragoza
+                            <br/> Téléphone: 976 78 02 20
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-garrapinillos@zaragoza.es">bibliotecas-garrapinillos@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Du lundi au vendredi de 16h30 à 20h30
+                            <br/> . Le mercredi de 11h00 à 13h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque de La Cartuja</strong>
+                            <br/> Centre Culturel de La Cartuja.
+                            <br/> Adresse: Calle Autonomía de Aragón 21. 50720 Zaragoza.
+                            <br/> Téléphone: 976 50 13 04
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-cartujabaja@zaragoza.es">bibliotecas-cartujabaja@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Du lundi au vendredi de 16h30 à 20h30
+                            <br/> . Mercredi de 11h00 à 13h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Miralbueno.</strong>
+                            <br/> Mairie de Miralbueno.
+                            <br/> Adresse: Camino del Pilón 146. 50011 Zaragoza.
+                            <br/> Téléphone: 976 32 82 41
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-miralbueno@zaragoza.es">bibliotecas-miralbueno@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Du lundi au vendredi de 16h30 à 20h30
+                            <br/> . Le mercredi de 11h00 à 13h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Montañana</strong>
+                            <br/> Adresse: Calle Nuestra Señora del Rosario. 50059 Zaragoza
+                            <br/> Téléphone: 976 57 65 00
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-montanana@zaragoza.es">bibliotecas-montanana@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 16h30 à 20h30
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Monzalbarba</strong>
+                            <br/> Mairie de Monzalbarba.
+                            <br/> Adresse: Calle Mosén Miguel Marín 1. 50120 Zaragoza.
+                            <br/> Téléphone: 976 77 28 93
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-monzalbarba@zaragoza.es">bibliotecas-monzalbarba@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 16h30 à 20h30
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Movera</strong>
+                            <br/> Mairie de Movera.
+                            <br/> Adresse: Plaza Mayor 1. 50194 Zaragoza.
+                            <br/> Téléphone: 976 58 64 54
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas.movera@educazar.org">bibliotecas-movera@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 16h30 à 20h30
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Oliver</strong>
+                            <br/> Centre Municipal.
+                            <br/> Adresse: Calle Teodora Lamadrid s/n. 50011 Zaragoza.
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas.oliver@educazar.org">bibliotecas-oliver@zaragoza.es</a>
+                            <br/> Téléphone: 976 53 43 72
+                            <br/> Horaire:
+                            <br/> . Du lundi au vendredi de 16h30 à 20h30
+                            <br/> . Le mercredi de 11h00 à 13h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Peñaflor</strong>
+                            <br/> Mairie de Peñaflor.
+                            <br/> Adresse: Plaza de las Escuelas s/n. 50193 Zaragoza.
+                            <br/> Téléphone: 976 15 43 31
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-penaflor@zaragoza.es">bibliotecas-penaflor@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 16h30 à 20h30
+                            <br/> </p>
+                        <p><strong>Bibliothèque de San Juan de Mozarrifar</strong>
+                            <br/> Mairie de San Juan de Mozarrifar .
+                            <br/> Adresse: Plaza España s/n. 50820 Zaragoza.
+                            <br/> Téléphone: 976 15 01 51
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-sanjuan@zaragoza.es">bibliotecas-sanjuan@zaragoza.es</a>
+                            <br/> Horaire:
+                            <br/> . Du lundi au vendredi de 16h30 à 20h30
+                            <br/> . Le mercredi de 11h00 à 13h00
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Valdefierro</strong>
+                            <br/> Centre Culturel de Valdefierro.
+                            <br/> Adresse: Plaza de la Inmaculada s/n. 50012 Zaragoza.
+                            <br/> Téléphone: 976 75 38 08
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas.valdefierro@educazar.org">bibliotecas-valdefierro@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 16h30 à 20h30
+                            <br/> </p>
+                        <p><strong>Bibliothèque de Villamayor</strong>
+                            <br/> Centre Socio-culturel
+                            <br/> Adresse: Calle Buen Aire 58. 50162 Zaragoza
+                            <br/> Téléphone: 976 57 07 91
+                            <br/> Courrier électronique: <a href="mailto:bibliotecas-villamayor@zaragoza.es">bibliotecas-villamayor@zaragoza.es</a>
+                            <br/> Horaire: Du lundi au vendredi de 16h30 à 20h30
+                            <br/> Horaire d´été: Du lundi au vendredi de 9h00 à 14h00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

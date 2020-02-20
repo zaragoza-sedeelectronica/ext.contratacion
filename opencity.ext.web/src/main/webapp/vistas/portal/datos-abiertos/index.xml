@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+<sede:meta title="Datos Abiertos. Gobierno Abierto" 
+               description="En la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, Datos Abiertos de Zaragoza publica desde 2008 información pública del Ayuntamiento de Zaragoza en formatos abiertos para favorecer su reutilización. Servicios: Catálogo de conjunto de datos basado en DCAT y normas técnicas de interoperabilidad (NTI), SPARQL y API Zaragoza. Reconocimientos: Nivel 5 estrellas por el Open Data - Linked Data (2010), Premio Buenas Prácticas y Premio Categoría Usabilidad a IDEZar en EUROGI/eSDI-Net (2011), Mejor iniciativa pública Open Data por OKFN (2014) y Premio ASEDIE (2014)." 
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, datos abiertos, derecho a reutilizar información, sector público, catálogo de datos, conjunto de datos, DCAT, Norma Técnica de Interoperabilidad, NTI, SPARQL, API Zaragoza, IDEZar, urbanismo, infraestructuras, transportes, medio ambiente, sociedad y bienestar, economía, hacienda local, cultura, ocio, ciencia y tecnología, demografía, turismo, deporte, seguridad pública, comercio, educación, empleo, salud, legislación local,  justicia, city, council, Saragossa, electronic site, local government,open government, citizen-authority relation, open data, right to reuse information, public sector, dataset, RISP, technical interoperability standards, town planning, infraestructure, transport, environment, society and welfare, economics,  local authority finances, culture,  leisure, science and technology, demography, tourism, sports, public safety, trade, education, employment, health, local legislation, justice"/>   <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    
+    .color-white {
+        color: white;
+    }
+    
+    .fnd-ayto {
+        background: #E81B16;
+    }
+
+    ul#tecnologias li, #vocabularios {
+        font-size: 1.5em;
+        margin-right: 1em;
+        padding: 1em 0;
+    }
+
+    ul#tecnologias li a {
+        padding: 1em;
+        border: 2px solid #E81B16;
+    }
+
+    ul#tecnologias li:hover a {
+        background: #E81B16;
+        color: white;
+    }
+
+    .num {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        font-size: 3.6em;
+        color: #fff;
+        line-height: 150px;
+        text-align: center;
+        background: #444;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .nuevos-datasets .card {
+            min-height: 10em;
+        }
+    }
+    
+            .redes-sociales {
+            font-size: 50px;
+            margin-right: 0px;
+            margin-top: -10px;
+            padding: 0px;
+            margin-bottom: 0px;
+            }
+
+            @media (max-width: 768px) {
+            .redes-sociales {
+			margin-right: 20px;	
+            <!--/*border-left: solid 2px #D01715;*/-->
+            margin-top: 0px;
+            margin-bottom: 0px;
+            }
+            }
+                
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div class="fnd-gris-claro">
+            <div class="container-fluid text-center padding-a2em lead margin-auto nomargin">
+                Datos Abiertos Zaragoza es una iniciativa del Ayuntamiento de Zaragoza para el fomento de la <strong>reutilización de la información publicada en su web</strong> por parte de la ciudadanía, las empresas y otros organismos, lo que ofrece un aumento de la transparencia de la administración, el incremento de la participación ciudadana y la posibilidad de crecimiento económico en distintos sectores.
+                <hr class="sm"/>
+                <a class="btn btn-primary" href="/sede/portal/datos-abiertos/servicio/catalogo/" th:classappend="${currentDevice.isMobile()} ? '' : btn-lg">Acceso al Catálogo de Datos Abiertos</a>
+                    <div class="redes-sociales pull-right">
+                        <a href="https://www.facebook.com/ZGZopencity/"><span class="fab fa-facebook-square"></span></a>
+                        <a href="https://twitter.com/ZGZopencity"><span class="fab fa-twitter-square"></span></a>
+                    </div>
+            </div>
+           
+        </div>
+        <div class="container-fluid">
+            <h2>API Zaragoza</h2>
+            <!-- <div class="row">
+                <div class="col-md-8"> -->
+                    <nav>
+                        <ul class="list-inline" id="tecnologias">
+                            <li role="presentation"><a href="/sede/portal/datos-abiertos/api">API REST v2</a></li>
+                            <li role="presentation"><a href="/sede/portal/datos-abiertos/sparql">SPARQL</a></li>
+                            <li role="presentation"><a href="/sede/portal/datos-abiertos/solr">SOLR</a></li>
+                            <li role="presentation"><a href="/sede/portal/datos-abiertos/vocabularios">Vocabularios</a></li>
+                        </ul>
+                    </nav>  
+                <!-- </div>
+                <div class="col-md-4">
+                    <h3 id="vocabularios" class="nomargin pull-right"><a href="/sede/portal/datos-abiertos/vocabularios">Vocabularios</a></h3>
+                </div>
+            </div> -->
+            <h2>Últimos Conjuntos de Datos</h2>
+            <!-- <sede:aviso imagen="si" nresultados="4" portal="Conjuntos de Datos" resumen="si" clase="col-md-3"> </sede:aviso> -->
+            <div class="row nuevos-datasets">
+                <div class="col-sm-6 col-md-3">
+                    <div class="card nomargin">
+                        <h3 class="text-center">Urbanismo</h3>
+                        <hr class="sm" />
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="/sede/servicio/catalogo/247">Clavos Topográficos</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/1880">Mapa del Ruido viales urbanos</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/1500">Accidentes de Tráfico</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/1420">Licencias de Locales</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="card nomargin">
+                        <h3 class="text-center">Ayuntamiento</h3>
+                        <hr class="sm" />
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="/sede/servicio/catalogo/1440">Registro de Facturas</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/289">Procedimientos, Trámites y Servicios</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/1160">Plantilla Municipal</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/1161">Relación de Puestos de Trabajo</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="card nomargin">
+                        <h3 class="text-center">Para la Gente</h3>
+                        <hr class="sm" />
+                        <ul class="list-unstyled">
+                              <li>
+                                <a href="/sede/servicio/catalogo/16">Carril Bici </a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/2160">Uso Tarjeta Interbus</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/70">Bizi: Estaciones y usos</a>
+                            </li>
+
+                            <li>
+                                <a href="/sede/servicio/catalogo/2140">Indicadores Demográficos </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="card nomargin">
+                        <h3 class="text-center">Gobierno Abierto</h3>
+                        <hr class="sm" />
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="/sede/servicio/catalogo/2180">Facturación IBI</a>
+                            </li>
+                             <li>
+                                <a href="/sede/servicio/catalogo/336">Ejecución Presupuestaria</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/1680">Agenda Institucional</a>
+                            </li>
+                            <li>
+                                <a href="/sede/servicio/catalogo/2123">Cuentas bancarias abiertas</a>
+                            </li>
+
+                            <!-- <li>
+                                <a href="#">Presupuestos Participativos</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <h2>Para reutilizadores</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <img class="img-responsive" src="//www.zaragoza.es/cont/paginas/img/sede/datos-abiertos/registrate.jpg" alt="" />
+                    <th:block th:unless="${session.sess_risp}">
+                        <h3>Regístrate como reutilizador</h3>
+                        <p>Podrás dar de alta las urls que estás utilizando para que nos podamos poner en contacto contigo antes de realizar modificaciones y conozcamos sus implicaciones.</p>
+                        <p>Dar de alta las aplicaciones que desarrollas utilizando nuestros datos.</p>
+                        <p>Novedades y nuevos conjuntos de datos públicados.</p>
+                        <p class="lead">Comienza <a href="/sede/servicio/aplicacion/usuario">accediendo a la Plataforma</a> o si todavía no lo has hecho, <a href="/sede/servicio/reutilizador/new">¡Regístrate!</a></p>
+                    </th:block>
+                    <th:block th:if="${session.sess_risp}">
+                        <h3>¡Hola <span class="text-primary" th:text="${session.sess_risp.usuario.nombre} + ' ' + ${session.sess_risp.usuario.apellido1} + ' ' + ${session.sess_risp.usuario.apellido2}"></span>!</h3>
+                        <p>Accede a tus </p>
+                        <ul>
+                            <li><a href="/sede/servicio/reutilizador">Modificar datos</a></li>
+                            <li><a href="/sede/servicio/aplicacion/usuario">Mis aplicaciones</a></li>
+                            <li><a href="/sede/servicio/uri-reutilizador/">Conjuntos de datos utilizados</a></li>
+                            <li><a href="/sede/acceso/salir?r=%2Fsede%2Fportal%2Fdatos-abiertos%2F">Cerrar sesión</a></li>
+                        </ul>
+                    </th:block>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="//www.zaragoza.es/cont/paginas/img/sede/datos-abiertos/formacion.jpg" alt="" />
+                            <h3>Documentación</h3>
+                            <ul>
+                                <!-- <li><a href="http://www.slideshare.net/zaragoza_es/datos-abiertos-de-zaragoza">Presentaci&oacute;n de tecnolog&iacute;as</a></li> -->
+                                <li><a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io">Ejemplos en GitHub</a></li>
+                                <li><a href="/sede/portal/datos-abiertos/formatos">Formatos</a></li>
+                                <li><a href="/sede/portal/aviso-legal#condiciones">T&eacute;rminos de reutilizaci&oacute;n</a></li>
+                                <li><a href="/ciudad/idezar/visualizacion.htm">Visores IDEZar</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="//www.zaragoza.es/cont/paginas/img/sede/datos-abiertos/preguntanos.jpg" alt="" />
+                            <h3>Preguntanos</h3>
+                            <p>Envíanos tus problemas o comentarios <a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/issues">a través de GitHub</a> o por <a href="mailto:datosabiertos@zaragoza.es">correo electrónico</a>.</p>
+                            <p><a href="http://consultadatos.zaragoza.es/">¿Qu&eacute; datos o aplicaciones quieres?</a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="//www.zaragoza.es/cont/paginas/img/sede/datos-abiertos/aplicacion.jpg" alt="" />
+                            <h3>Aplicaciones</h3>
+                            <p>Consulta el <a href="/sede/servicio/aplicacion/">Directorio de aplicaciones</a> que utilizan nuestros datos.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="//www.zaragoza.es/cont/paginas/idezar/img/historica.jpg" alt="" />
+                            <h3><acronym title="Infraestructura de Datos Espaciales Zaragoza">IDEZAR</acronym></h3>
+                            <p>Consulta los <a href="/ciudad/idezar/">Servicios</a> generados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fnd-gris-claro">
+            <div class="container-fluid">
+                <h2>Indicadores de uso del Portal de Datos Abiertos del Ayuntamiento de Zaragoza</h2>
+                <div class="row text-center">
+                    <div class="col-xs-6 col-md-3">
+                        <div class="num">149</div>
+                        <h3>Conjuntos de datos</h3>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="num" style="font-size: 35px;">+100.000</div>
+                        <h3>Consultas diarias a nuestros datos</h3>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="num">+250</div>
+                        <h3>Reutilizadores registrados</h3>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="num">+40</div>
+                        <h3>Aplicaciones publicadas por reutilizadores</h3>
+                    </div>
+                </div>
+                <p>Puedes conocer más estadísticas de uso a través de nuestros <a href="/sede/servicio/datos-uso/">Datos de uso</a>.</p>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

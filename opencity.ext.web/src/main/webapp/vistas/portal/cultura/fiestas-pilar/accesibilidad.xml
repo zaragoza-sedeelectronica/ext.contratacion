@@ -1,0 +1,3034 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Accesibilidad. Fiestas del Pilar 2017" description="Equipamientos accesibles en las Fiestas del Pilar 2017" author="Ayuntamiento de Zaragoza" keywords="Ayuntamiento, Zaragoza, España, Fiestas del Pilar, Ciudad, cultura, turismo, actividades, espacios, octubre, accesibilidad" />
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    ocultarArbolCapas = false;
+    var i = 0;
+    var dataActualidad = "{title: 'Parking Reservado',claseIcono:'parqdis',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoparking.json'},{title: 'Espacio Reservado',claseIcono:'espacioreservado',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoespaciosreservados.json'},{title: 'Baño Adaptado',claseIcono:'badap',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoaseoadap.json'},{title: 'Bucle Magnético',claseIcono:'buclemagne',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geobucle.json'},{title: 'Subtitulado',claseIcono:'subtitulado',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geosubtitulado.json'},{title: 'Lengua de Signos',claseIcono:'lenguasignos',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geolenguasig.json'},{title: 'Signoguias',claseIcono:'signoguia',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geosignoguias.json'},{title: 'Audioguias',claseIcono:'audioguia',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoaudioguias.json'},{title: 'Braille',claseIcono:'braille',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geobraille.json'},{title: 'Magnificadores',claseIcono:'magnificadores2',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geomaginificadores.json'},{title: 'Maquetas Táctiles',claseIcono:'maquetastactiles',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geomaquetas.json'},{title: 'Celiacos',claseIcono:'singluten',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geogluten.json'},{title: 'Perros Guía',claseIcono:'perroguia',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoperrosguia.json'},{title: 'Código QR',claseIcono:'qrcode',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoqrcode.json'}";
+    treeOrderDataList = ["actualidad"];
+    /*]]>*/
+    </script>
+    <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143; /* h2 line-height == a line-height*/
+    }
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    .section-content-alt {
+        border-radius: .5em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-xs-12 margin-b2em">
+                <div id="mapa">
+                    <div class="separador" id="facadeStatus">&nbsp;</div>
+                    <script type="text/javascript">
+                    /*<![CDATA[*/
+                    var ifrm = document.createElement("iframe");
+                    ifrm.setAttribute("name", "mapahome");
+                    ifrm.setAttribute("id", "mapahome");
+                    ifrm.setAttribute("title", "La Ciudad al Instante");
+                    ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                    ifrm.style.width.value = "100%";
+                    document.getElementById("mapa").appendChild(ifrm);
+                    /*]]>*/
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th id="a1">ESPACIOS - ACTOS</th>
+                <th id="a2">
+                    <img src="/contenidos/iconos/parqdis.png" alt="Parking accesible reservado" title="Parking accesible reservado" />
+                </th>
+                <th id="a3">
+                    <img src="/contenidos/iconos/espacioreservado.png" alt="Espacio accesible reservado" title="Espacio accesible reservado" />
+                </th>
+                <th id="a4">
+                    <img src="/contenidos/iconos/badap.png" alt="Baño adaptado" title="Baño adaptado" />
+                </th>
+                <th id="a5">
+                    <img src="/contenidos/iconos/buclemagne.png" alt="Bucle magnético" title="Bucle magnético" />
+                    <br/>
+                </th>
+                <th id="a6">
+                    <img src="/contenidos/iconos/subtitulado.png" alt="Subtitulado" title="Subtitulado" />
+                </th>
+                <th id="a7">
+                    <img src="/contenidos/iconos/lenguasignos.png" alt="Lengua de Signos" title="Lengua de Signos" />
+                </th>
+                <th id="a8">
+                    <img src="/contenidos/iconos/signoguia.png" alt="Signoguías" title="Signoguías" />
+                </th>
+                <th id="a9">
+                    <img src="/contenidos/iconos/audioguia.png" alt="Audioguías" title="Audioguías" />
+                </th>
+                <th id="a10">
+                    <img src="/contenidos/iconos/braille.png" alt="Braille" title="Braille" />
+                </th>
+                <th id="a11">
+                    <img src="/contenidos/iconos/magnificadores2.png" alt="Magnificadores" title="Magnificadores" />
+                </th>
+                <th id="a12">
+                    <img src="/contenidos/iconos/maquetastactiles.png" alt="Maquetas táctiles" title="Maquetas táctiles" />
+                </th>
+                <th id="a13">
+                    <img src="/contenidos/iconos/singluten.png" alt="Personas celiacas" title="Personas celiacas" />
+                </th>
+                <th id="a14">
+                    <img src="/contenidos/iconos/perroguia.png" alt="Perros guía" title="Perros guía" />
+                </th>
+                <th id="a15">
+                    <img src="/contenidos/iconos/qrcode.png" alt="Código QR" title="Código QR" />
+                </th>
+            </tr>
+            <tr>
+                <th colspan="15" id="a16">Puntos de Información</th>
+            </tr>
+            <tr>
+                <td headers="a1 a16">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2465#accesibilidad">Plaza del Pilar - Punto de Información Fiestas del Pilar  </a>
+                </td>
+                <td headers="a2"></td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a11">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a12">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+            </tr>
+            <tr>
+                <td headers="a1 a16">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2465#accesibilidad">Oficina Turismo Plaza Pilar</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4"></td>
+                <td headers="a5">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a11">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a12">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+            </tr>
+            <tr>
+                <td headers="a1 a16">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2435#accesibilidad">Oficina Turismo Estación Delicias</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a16">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2741#accesibilidad">Oficina Turismo Aeropuerto</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a16">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/903#accesibilidad">Oficina Turismo Feria Muestras</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a16">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/904#accesibilidad">Oficina Turismo Torreón La Zuda</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4"></td>
+                <td headers="a5">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a11">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <th colspan="15" id="a17">Grandes recintos y conciertos</th>
+            </tr>
+            <tr>
+                <td headers="a1 a17">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/10646#accesibilidad">Plaza del Pilar- Fuente de Goya: Jotas y Conciertos</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a17">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/7025#accesibilidad">Parking Norte Expo - River Sound Festival  </a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+			  <tr>
+                <td headers="a1 a17">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/942#accesibilidad">Pabellón Príncipe Felipe</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a17">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/939#accesibilidad">Auditorio- Sala Mozart: Jotas y Conciertos</a>
+                </td>
+                <td headers="a2"></td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a17">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/939#accesibilidad">Auditorio - Sala Luis Galve. Conciertos Música Clásica</a>
+                </td>
+                <td headers="a2"></td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a17">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/939#accesibilidad">Auditorio - Sala Multiusos: Zona Joven</a>
+                </td>
+                <td headers="a2"></td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14"></td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+            <tr>
+                <th headers="a17" id="a18" colspan="15">Valdespartera</th>
+            </tr>
+            <tr>
+                <td headers="a1 a18">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/27689#accesibilidad">Pabellón Interpeñas</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a18">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/10845#accesibilidad">Ferias</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3"></td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+           
+            <tr>
+                <td headers="a1 a18">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/10845#accesibilidad">Circo Mundial</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+          
+            <tr>
+                <th colspan="15" id="a19">Actos tradicionales</th>
+            </tr>
+            <tr>
+                <td headers="a1 a19">Pregón de Fiestas</td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a7">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+			
+			 <tr>
+                <td headers="a1 a19">Pregón de las Peñas</td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a7">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+			
+			
+			
+			
+			
+			
+            <tr>
+                <td headers="a1 a19">Ofrenda de Flores</td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a19">Ofrenda de Frutos</td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a19">Rosario de Cristal</td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a19">Rosario de la Aurora</td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4"></td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a19">Fuegos artificiales en el Ebro</td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3"></td>
+                <td headers="a4"></td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <th colspan="15" id="a20">Espacios especializados, plazas y calles</th>
+            </tr>
+            <tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/10645#accesibilidad">Plaza del Pilar-Hispanidad</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6805#accesibilidad">Plaza San Felipe. Música y Teatro</a>
+                </td>
+                <td headers="a2"></td>
+                <td headers="a3"></td>
+                <td headers="a4"></td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6785#accesibilidad">Plaza del Justicia. Conciertos</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+			 <tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/7125#accesibilidad">Plaza San Pedro Nolasco. Magia y Música Cómica </a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+			
+			
+			<tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9172#accesibilidad">Delegación del Gobierno. Tragachicos Aragoneses </a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			<tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/27690#accesibilidad">Plaza San Roque. Danza Trayectos </a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+			<tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/7166#accesibilidad">Plaza del Portillo: Homenaje a las Heroínas de los Sitios  </a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+			
+			
+			
+			
+            <tr>
+                <td headers="a1 a20">
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9725#accesibilidad">Anfiteatro Naútico</a>
+                </td>
+                <td headers="a2">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a3">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a4"></td>
+                <td headers="a5"></td>
+                <td headers="a6"></td>
+                <td headers="a7"></td>
+                <td headers="a8"></td>
+                <td headers="a9"></td>
+                <td headers="a10"></td>
+                <td headers="a11"></td>
+                <td headers="a12"></td>
+                <td headers="a13"></td>
+                <td headers="a14">
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td headers="a15"></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/7125#accesibilidad">Plaza José María Forqué - A Bailar</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+			<td>	<a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/28093#accesibilidad">	    Glorieta Esperanto - Plaza La Risa </a></td>
+ 		 <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>  <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                  
+                </td>
+                <td></td>
+            </tr> 
+            
+						<tr>
+						<td>	<a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/27936#accesibilidad">	Plaza de la Albada (Barrio La Jota)	</a></td>
+						
+						
+ <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                      <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+			<tr>
+			<td>	<a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9257#accesibilidad">	    Jardín de Tosos	</a></td>
+			
+			
+			
+			
+			 <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                      <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+			
+			<tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6825#accesibilidad">Pza. S. Bruno.</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/28092#accesibilidad">Parque Bruil - El Árbol de los Cuentos</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6665#accesibilidad">
+Plaza de los Sitios - Muestra de Artesanía y Muestra Alimentaria Aragonesa
+</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/27691#accesibilidad">Paseo Echegaray - Muestra Aragonesa  </a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6925#accesibilidad">Parking del Parque Macanaz - Carpa de Aragón </a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/7765#accesibilidad">Plaza Aragón - Casas Regionales  </a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6885#accesibilidad">Agua, luz y sonido en Parque Labordeta</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6885#accesibilidad">Parque G. Labordeta - Parque Marionetas</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/20739#accesibilidad">Plaza Mariano de Cavia (Las Armas)</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6665#accesibilidad">Teatro ambulante de Arbolé</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2718#accesibilidad">Comparsa de gigantes y cabezudos</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6085#accesibilidad">Expo - Río y juego</a>
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9847#accesibilidad">Naútico - Off de Calle Teatro</a>
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/28095#accesibilidad">Balcón de San Lázaro - Off de calle Teatro</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9258#accesibilidad">Espacio de las Plazas Solidarias</a>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th colspan="15">Actividades diversas en Barrios</th>
+            </tr>
+			
+			
+			
+			 <tr>
+                <td>
+                 <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2743#accesibilidad"> Centro Cívico Estación del Norte: Percusión</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+			
+			
+			
+			
+            <tr>
+                <td>
+                   Oliver 
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                   Valdespartera - Montecanal 
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                   La Jota 
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                   Miralbueno 
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+           
+			
+			
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2479#accesibilidad">Patio Centro de Historias: Camino al Circo y Danza Trayectos  </a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9308#accesibilidad">Parque San Pablo - Zona Food Trucks  </a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th colspan="15">Teatro y Variedades</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/936#accesibilidad">Teatro Principal</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/935#accesibilidad">Teatro del Mercado</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9205#accesibilidad">Espacio las Armas</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/10765#accesibilidad">Teatro de las Esquinas</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/13023#accesibilidad">Teatro Arbolé</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/7005#accesibilidad">Teatro El Salvador</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/11990#accesibilidad">Teatro Corazonistas</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th colspan="15">Museos y Exposiciones</th>
+            </tr>
+            <tr>
+                <th>Museos Ruta Caesaraugusta</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/701#accesibilidad">Museo del Foro</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2176#accesibilidad">Museo del Puerto Fluvial</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2175#accesibilidad">Museo de las Termas Públicas</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2430#accesibilidad">Museo del Teatro</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2174#accesibilidad">Museo Pablo Gargallo</a>
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/4465#accesibilidad">Museo del Fuego y de los Bomberos</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/11475#accesibilidad">Museo de Zaragoza</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/20383#accesibilidad">Alma Mater Museum</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/20369#accesibilidad">Museo de Tapices. La Seo</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/20370#accesibilidad">Museo Pilarista. Basílica del Pilar</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/12240#accesibilidad">Museo Pablo Serrano</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/11474#accesibilidad">Museo Goya-Ibercaja</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/5209#accesibilidad">CaixaForum</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/12201#accesibilidad">Centro Joaquín Roncal</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/13020#accesibilidad">Palacio de la Aljafería</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/9990#accesibilidad">La Lonja</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2573#accesibilidad">Palacio de Montemuzo</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2177#accesibilidad">Torreon Fortea</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6345#accesibilidad">Casa de Los Morlanes</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2174#accesibilidad">Sala Pablo Gargallo</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/2479#accesibilidad">Centro de Historias</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/20441#accesibilidad">Museo Origami</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/11452#accesibilidad">Palacio de Sástago</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/12238#accesibilidad">Paraninfo</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/13000#accesibilidad"> Capitanía General</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6225#accesibilidad">San Cayetano 3. Espacio Creativo</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th colspan="15">Otras actividades, Otros espacios</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/16511#accesibilidad">Parque de Atracciones</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/27694#accesibilidad">Feria de Muestras</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6607#accesibilidad">Puerto Venecia</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Aragón en Vivo (salas conciertos de música)</td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/489#accesibilidad">Casa de las Culturas</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/753#accesibilidad">Centros Cívicos</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/934#accesibilidad">Filmoteca Municipal</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/4907#accesibilidad">La Azucarera, Zaragoza Activa</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/20768#accesibilidad">La Harinera</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/5105#accesibilidad">Etopía. Centro de Arte y Tecnologia</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/6011#accesibilidad">Acuario de Zaragoza</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/13241#accesibilidad">Palacio de Congresos. Recinto Expo</a>
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <img src="/cont/paginas/img/ok.gif" alt="Si" />
+                </td>
+                <td></td>
+            </tr>
+			
+			
+			
+			
+
+
+
+ 
+			
+			
+			
+			
+            </table>
+        </div>
+    </sede:content>
+</body>
+
+</html>

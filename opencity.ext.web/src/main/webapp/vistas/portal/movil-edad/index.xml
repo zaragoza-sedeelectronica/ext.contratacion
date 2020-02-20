@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+	
+	    <sede:meta title="Proyecto Móvil y Edad. Gobierno Abierto" 
+                   description="El Ayuntamiento de Zaragoza participa en el proyecto europeo Mobile Age. El objeto de este proyecto es el diseño colaborativo de Rutas Amigables por la ciudad y Portal de Mayores. Puede obtener información en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza." 
+                   keywords="ciudad, ayuntamiento Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, colaboración, investigación y desarrollo, educación y formación,dispositivo móvil, datos abiertos, tercera edad, envejecimiento activo, Proyecto Móvil y Edad, Rutas Amigables, Portal de Mayores, city, council, Saragossa,  electronic site, open government, local government, citizen-authority relations, social participation, collaboration, research and development, education and training, mobile device, open data, elderly people, active ageing, Mobile Age project, Age-friendly Routes"
+                  >
+    </sede:meta>
+
+	
+	
+	
+     <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css"></link>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/mapa/js/homeMapa.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    .fase {
+        background-color: #202020;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .fnd-ciudad {
+        background: #b5d4b5;
+    }
+
+    .mas-info {
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content container="false">
+        <div class="text-center">
+            <img class="img-responsive margin-auto" src="/cont/vistas/portal/movil-edad/img/cabecera-movil-edad.png" alt="" />
+        </div>
+        <hr class="sm" />
+        <div class="container-fluid">
+            <ul class="nav nav-tabs tabs" role="tablist" th:if="${!currentDevice.isMobile()}">
+                <li role="presentation">
+                    <a aria-controls="que" data-toggle="tab" href="#que" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Qué es</a>
+                </li>
+                <li role="presentation">
+                    <a aria-controls="obj" data-toggle="tab" href="#obj" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Objetivos</a>
+                </li>
+                <li role="presentation">
+                    <a aria-controls="estado" data-toggle="tab" href="#estado" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Áreas de Trabajo</a>
+                </li>
+               <!-- <li role="presentation">
+                    <a aria-controls="agenda" data-toggle="tab" href="#agenda" role="tab"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Agenda</a>
+                </li>-->
+                <li role="presentation">
+                    <a aria-controls="rutas" data-toggle="tab" href="#rutas" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Rutas Amigables</a>
+                </li>
+				<li role="presentation">
+                    <a aria-controls="mayores" data-toggle="tab" href="#mayores" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Portal de Mayores</a>
+                </li>
+                <li role="presentation">
+                    <a aria-controls="docu" data-toggle="tab" href="#docu" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Información</a>
+                </li>
+            </ul>
+            <div sede:class="tab-content">
+                <h2 class="tab-title" aria-expanded="false" data-target="#que" data-toggle="collapse">Qué es</h2>
+                <div id="que" role="tabpanel" sede:class="tab-pane active">
+                    <div class="row">
+                        <!-- <div class="col-md-12"> -->
+                        <div class="col-md-8">
+                            <div class="card">
+                                <p class="lead margin-b05em hidden-xs">Qué es</p>
+                                <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" title=" Mobile Age Project" src="https://www.youtube.com/embed/6l8iuq7H-14?rel=0">Video no supported. <a href="https://www.youtube.com/embed/6l8iuq7H-14">link to video</a></iframe>
+        </div>
+                                <hr class="sm hidden-xs" />
+                                <p>El Proyecto <strong>Mobile Age</strong> asegura la inclusión de las personas mayores en el uso de los servicios públicos digitales mediante el desarrollo de servicios accesibles a través de móviles basados en los datos abiertos de la Administración Pública. Por lo tanto, se fomenta su acceso a la <strong>participación ciudadana, el envejecimiento activo y su implicación en su comunidad</strong>.</p>
+                                <p>
+                                    Este proyecto también incrementará la transparencia y la confianza en la Administración Pública a través del intercambio y la reutilización de la información pública involucrando activamente a las personas mayores con el fin de entender los beneficios que les reportan los <strong>datos abiertos y las tecnologías móviles</strong>. Tales servicios móviles se probarán en los talleres de co-creación que se realizarán en cuatro ciudades piloto de Europa: <strong>Reino Unido, Alemania, España y Grecia.</strong></p>
+                                <div class="panel panel-default">
+                                    <div class="fnd-gris-claro text-center padding-a05em mas-info" data-target="#moviledad" data-toggle="collapse" tabindex="0">
+                                        <span class="fa fa-info-circle"></span> Más Información <span class="fa fa-chevron-down"></span>
+                                    </div>
+                                    <div class="collapse in" id="moviledad">
+                                        <p><strong>Mobile Age, Móvil y Edad</strong> en la adaptación española, es un proyecto europeo cuyo objetivo es fomentar el uso de las nuevas tecnologías móviles asegurando un mayor aprovechamiento y accesibilidad de los servicios públicos por parte de las personas mayores. Para ello, se lleva a cabo el desarrollo de servicios accesibles a través de móvilesbasados en los datos abiertos de la administración pública. De esta forma, el proyecto pretende mejorar el uso que realizan los más mayores de administración electrónica y los servicios digitales que prestan las instituciones.
+                                        </p>
+                                        <p>Zaragoza es una de las ciudades elegidas para desarrollar, junto a la Región de los Lagos del Sur (Reino Unido), Bremen (Alemania) y Región de Central Macedonia (Grecia), grupos de trabajo que hagan frente a esta realidad y desarrollen las técnicas, metodología y serviciospara llevarlo a cabo.
+                                        </p>
+                                        <p>
+                                            En nuestro caso se ha decidido trabajar el concepto de Zaragoza como"una ciudad amigable, accesible y abierta". , cuyo objetivo es desarrollar servicios accesibles a través de losdispositivos móviles de los usuarios. Por su parte, los otros grupos de trabajo incidirán en temas como 'la inclusión social en Bremen', 'extender la vida independiente en el sur de Lakeland', y 'el acceso a la información personal relativa a la salud en Macedonia Central'.
+                                        </p>
+                                        <p>
+                                            <strong>Mobile Age</strong> se basa en el concepto de creación de servicios entre el conjunto de las administraciones gestoras y grupos de personas mayores de las diferentes regiones europeas que forman parte del proyecto, y que serán usuarios finales de los servicios desarrollados. El proyecto, cofinanciado durante tres años por la UE, está dirigido a las personas mayores, un sector de la ciudadanía que presenta un uso menor de las innovaciones técnicas, pero que sin embargo está creciendo rápidamente en Europa. Esta tendencia pone de manifiesto la importancia de tener en cuenta las necesidades y deseos de este sector de la población a la hora de desarrollar servicios públicos digitales.
+                                        </p>
+                                        <p>
+                                            En trabajo realizado en Zaragoza tiene, entre otros objetivos, definir espacios en la Sede Electrónica que sean útiles y que respondan a las necesidades de los mayores; colaborar en la creación de rutas más accesibles y amigables por la ciudad; detectar las necesidades para la definición de una "una ciudad amigable, accesible y abierta".
+                                        </p>
+                                        <p>
+                                            Zaragoza está aportando, al resto de ciudades participantes, su tecnología, metodología de trabajo y gestión de la Plataforma de Datos Abiertos, materia en la que el Ayuntamiento esuno de los municipios pioneros a nivel europeo.
+                                        </p>
+                                        <p>
+                                            El proyecto lo está coordinando la Oficina técnica de Participación, Transparencia y Gobierno abierto en colaboración con la Oficina del Mayor del Ayuntamiento. Para desarrollarlo, y mediante un proceso de co-creación, se cuenta con usuarios y usuarias de las aulas de informática y los clubes de senderistas de los Centros de mayores de Centro, Almozara yTerminillo (Delicias).
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pull-right">
+                                <h2 class="fase nomargin padding-a05em"> <span class="fas fa-calendar-alt"></span>   <strong>Agenda</strong></h2>
+                                <p><span class="text-info destacado">21 Noviembre 2017</span> > Recorrido a pie de la ruta corta para analizar su accesibilidad. </p>
+                            </div>
+                            <div class="img-rounded pull-center"><img alt="" src="/cont/vistas/portal/movil-edad/img/icono-mobil-age.png" /> </div>
+                            <!--
+ <div class="fnd-gris-claro"><h4>Aporta tus ideas</h4>
+               <ul><li><span class="far fa-hand-point-right"></span><a href="http://www.plandeamabilizacion.com">
+                         www.plandeamabilizacion.com</a></li><li><span class="far fa-hand-point-right"></span><a href="https://www.loviejosemueve.net/es/que-es">
+www.loviejosemueve.net</a></li></ul>
+ </div>-->
+                            <div class="pull-right">
+                                <ul class="list-inline margin-v05em text-center">
+                                    <li>
+                                        <a itemprop="sameAs" href="https://twitter.com/mobileageeu">
+                                            <span class="fa fa-2x fa-twitter" aria-hidden="true"></span>
+                                            <span class="oculto">Twitter</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a itemprop="sameAs" href="https://www.facebook.com/mobileageeu">
+                                            <span class="fa fa-2x fa-facebook" aria-hidden="true"></span>
+                                            <span class="oculto">Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a itemprop="sameAs" href="https://www.linkedin.com/groups/8475752/profile">
+                                            <span class="fab fa-2x fa-linkedin-in" aria-hidden="true"></span>
+                                            <span class="oculto">Linkedin</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.mobile-age.eu">
+                                            <span class="fa fa-2x fa-globe" aria-hidden="true"></span>
+                                            <span class="oculto">Web</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+                <h2 class="tab-title" aria-expanded="false" data-target="#obj" data-toggle="collapse">Objetivos</h2>
+                <div id="obj" role="tabpanel" sede:class="tab-pane active">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Móvil Edad: Una ciudad amigable, accesible y abierta</h3>
+                            <h3>Objetivos</h3>
+                           
+  <ol><li>Detectar los servicios y la información que demandan las personas
+   mayores para poder ofrecer servicios personalizados que respondan a sus
+    necesidades.</li>
+   <li>Fomentar el <strong>uso de las tecnologías móviles</strong> por parte de
+   las <strong>personas mayores</strong> y que a través de ellas dispongan de un mejor
+     acceso a los servicios digitales que ofrecen las administraciones públicas.</li>
+    <li>Diseño colaborativo de Rutas amigables</li>
+    <li>Diseño colaborativo del Portal de mayores</li></ol>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="tab-title" aria-expanded="false" data-target="#estado" data-toggle="collapse">Áreas de Trabajo</h2>
+                <div id="estado" role="tabpanel" sede:class="tab-pane active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail noppading">
+                                <div class="text-center">
+                                    <img alt="" src="/cont/paginas/sectores/mayores/img/icono-datos-abiertos.jpg" />
+                                </div>
+                                <div class="caption fnd-gris-claro">
+                                    <h3 class="margin-v05em color-ayto">Publicación de información en formatos abiertos</h3>
+                                    <hr class="sm border-color-ayto" />
+                                    <ul class="list-unstyled">
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <strong>Objetivo</strong> publicación de los conjuntos de datos que son más prioritarios para las personas mayores.
+                                        </li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <strong>Cómo</strong> Análisis de sus barrios realizado por las personas mayores. Localización de los conjuntos de datos más prioritarios. Conocer para mejorar sus barrios.</li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span><strong> Resultado</strong> Tras el análisis de necesidades, se publicaron los conjuntos de datos más utilizados por las personas mayores: equipamientos, movilidad y barreras arquitectónicas.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="thumbnail noppading">
+                                <div class="text-center">
+                                    <img alt="" src="/cont/paginas/sectores/mayores/img/icono-colaboracion.jpg" />
+                                </div>
+                                <div class="caption fnd-gris-claro">
+                                    <h3 class="margin-v05em color-ayto">Diseño Colaborativo de Rutas amigables </h3>
+                                    <hr class="sm border-color-ayto" />
+                                    <ul class="list-unstyled">
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <strong>Objetivo</strong> Trabajar con los Centros de Mayores en el diseño colaborativo de Rutas amigables por sus barrios.
+                                        </li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <strong> Cómo</strong> Realización de talleres de trabajo colaborativo dentro de la Plataforma de Gobierno Abierto de Zaragoza. Para ello se utiliza el instrumento de Mapas Colaborativos. Información, definición de rutas, diseño (en aula y en la calle). </li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span><strong> Resultado</strong> Publicación, en los Mapas Colaborativos de la Plataforma de Gobierno Abierto, de las rutas amigables para ir a los puntos de interés de la ciudad
+                                        </li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span><strong> Agenda</strong> Se han realizado dos rutas en el Centro de mayores del distrito centro. <a href="https://www.zaragoza.es/sede/servicio/mapa-colaborativo/558">Ver Ruta</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="thumbnail noppading">
+                                <div class="text-center">
+                                    <img alt="" src="/cont/paginas/sectores/mayores/img/icono-portal-mayores.jpg" />
+                                </div>
+                                <div class="caption fnd-gris-claro">
+                                    <h3 class="margin-v05em color-ayto">Portal de Mayores</h3>
+                                    <hr class="sm border-color-ayto" />
+                                    <ul class="list-unstyled">
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <strong>Objetivo</strong> Atender las necesidades de las personas mayores en la Sede Electrónica del Ayuntamiento de Zaragoza. </li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <strong>Cómo</strong> Talleres de trabajo colaborativo en los distintos Centros de Mayores para analizar el portal actual y definir sus necesidades. </li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <strong> Resultado</strong> Publicación del Portal de Mayores que responda a sus necesidades reales. </li>
+                                        <li><span class="far fa-dot-circle" aria-hidden="true"></span><strong> Agenda</strong> Comienzo de las sesiones de trabajo con personas mayores el 14 de noviembre. </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="tab-title" aria-expanded="false" data-target="#agenda" data-toggle="collapse">Agenda</h2>
+                <div id="agenda" role="tabpanel" sede:class="tab-pane active">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <h3>
+                         Ruta amigable <em>La Almozara</em></h3>
+                                <ul>
+                                    <li>
+                                        <strong>15 Noviembre</strong> > Presentación del proyecto <em>MobileAge</em>.
+                                    </li>
+                                    <li> <strong> 17 Noviembre</strong> > Presentación de los participantes.
+                                    </li>
+                                    <li> <strong>  20 Noviembre</strong> > Elaboración de forma colaborativa del trazado de las dos rutas amigables dentro del distrito.
+                                    </li>
+                                    <li> <strong>  21 Noviembre </strong>> Recorrido a pie de la ruta corta para analizar su accesibilidad.
+                                    </li>
+                                    <li> <strong> 24 y 29 Noviembre</strong> > Recorrido a pie de la ruta larga para analizar su accesibilidad.
+                                    </li>
+                                    <li> <strong>  1 Diciembre</strong> > Sesión de validación de las rutas.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>
+                        
+Análisis de la Usabilidad y Accesibilidad del Portal de Mayores</h3>
+                                <ul>
+                                    <li>
+                                        <strong> 14 Noviembre (mañana)  </strong> > Sesión en
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Oliver (nivel iniciación)
+                                    </li>
+                                    <li> <strong>  14 Noviembre (tarde) </strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casco Histórico (nivel iniciación)
+                                    </li>
+                                    <li> <strong> 16 Noviembre (mañana) </strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> La Jota (nivel iniciación)
+                                    </li>
+                                    <li> <strong> 16 Noviembre (tarde)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> San José (nivel iniciación)
+                                    </li>
+                                    <li> <strong> 22 Noviembre (mañana) </strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Terminillo (nivel medio)
+                                    </li>
+                                    <li> <strong> 22 Noviembre (tarde)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casablanca (nivel medio)
+                                    </li>
+                                    <li> <strong> 23 Noviembre (mañana)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casco Histórico (nivel alto)
+                                    </li>
+                                    <li> <strong> 23 Noviembre (tarde)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casco Histórico (nivel alto)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="tab-title" aria-expanded="false" data-target="#rutas" data-toggle="collapse">Rutas Amigables</h2>
+                <div id="rutas" role="tabpanel" sede:class="tab-pane active">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"><img alt=" " class="img-responsive" src="/cont/vistas/portal/movil-edad/img/rutas-amigables.png" /></div>
+                            <p>
+                                Una <strong>RUTA AMIGABLE</strong> es aquella que:</p>
+                            <ul class="list-unstyled">
+                                <li><span class="far fa-dot-circle" aria-hidden="true"></span> es una ruta <strong> útil y frecuente</strong>: se trata de un recorrido habitual que las personas mayores utilizan en su vida cotidiana en el barrio. Se tomará como punto de referencia el Centro de Convivencia del distrito.
+                                </li>
+                                <li><span class="far fa-dot-circle" aria-hidden="true"></span> Puede recorrerse andando de manera <strong>segura y accesible</strong>. Ello implica que las personas mayores habrán estudiado previamente la existencia o no de una serie de necesidades importantes para este colectivo.
+                                </li>
+                                <li><span class="far fa-dot-circle" aria-hidden="true"></span> Está elaborada mediante la <strong>participación y consenso</strong> de un equipo de personas mayores.
+                                </li>
+                            </ul>
+                            <p>
+                                Para llevar a cabo el diseño de una ruta y establecer las mejoras para cumplir con los requisitos que la definan como ruta amigable, se desarrollará un proceso basado en la participación y el acuerdo, mediante una metodología que impulsa la inteligencia colectiva a través del consenso intelectual de un grupo, buscando la suma de criterios a la hora de establecer las mejoras para poder definir las rutas amigables.
+                            </p>
+                            <div class="clearfix"> </div>
+                            <h3><span class="far fa-hand-point-right" aria-hidden="true"></span> Ver Rutas</h3>
+                            
+							
+							
+							<ul>
+	<li><a href="/sede/servicio/mapa-colaborativo/579">Almozara</a></li>
+	<li><a href="/sede/servicio/mapa-colaborativo/558">Centro </a> </li>
+	<li><a href="/sede/servicio/mapa-colaborativo/577">Delicias (Terminillo) </a> </li>
+</ul>
+
+							
+							
+							
+							 
+                        </div>
+                    </div>
+					
+					<div class="row">
+                        <div class="col-md-12">
+                         <h3><span class="far fa-hand-point-right" aria-hidden="true"></span>Agenda</h3>  
+						   <div class="col-md-6">
+                                <p>Marzo-diciembre 2017</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+					
+					<div class="row">
+                        <div class="col-md-12">
+                         <h3><span class="far fa-hand-point-right" aria-hidden="true"></span>Modalidad</h3>  
+						   <div class="col-md-6">
+                           
+<p>Espacio híbrido: presencial (calle + talleres) y digital (Plataforma de Gobierno Abierto: Mapas Colaborativos + Presupuestos Participativos)</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+					
+					
+					 <div class="row">
+                        <div class="col-md-12">
+                            <div class="padding-a1em fnd-gris-claro">
+							
+							
+							<h3><span class="far fa-hand-point-right" aria-hidden="true"></span>Documentación</h3>
+                                
+								<p><strong>Folletos Informativos</strong></p>
+								<ul><li><a class="pdf" href="/contenidos/sectores/mayores/folleto-ruta-amigable-almozara.pdf"> Almozara </a></li>
+								<li><a class="pdf" href="/contenidos/sectores/mayores/folleto-ruta-amigable-centro.pdf"> Centro </a></li>
+								<li><a class="pdf" href="/contenidos/sectores/mayores/folleto-ruta-amigable-delicias.pdf">Delicias (Terminillo) </a>
+								</li></ul>
+								
+								<p><strong>Informes</strong></p>
+								<h4>Almozara</h4>
+                                <ul>                               <li><a href="/contenidos/sectores/mayores/informe-rutasalmozara-es.pdf" class="pdf">Español</a></li>
+                                    <li><a href="/contenidos/sectores/mayores/informe-rutasalmozara-en.pdf" class="pdf">Inglés</a></li>
+                                </ul>
+								
+								<h4>Centro</h4>
+								<ul>                                   
+								 <li><a href="/contenidos/sectores/mayores/informe-rutas-amigables.pdf" class="pdf">Español</a></li>
+                                      <li><a href="/contenidos/sectores/mayores/informe-rutascentro-en.pdf" class="pdf">Inglés</a></li>
+                                </ul>
+								<h4>Delicias (Terminillo)</h4>
+                                <ul>                                    <li><a href="/contenidos/sectores/mayores/informe-rutasterminillo-es.pdf" class="pdf">Español</a></li>
+                                    <li><a href="/contenidos/sectores/mayores/informe-rutasterminillo-en.pdf" class="pdf">Inglés</a></li>
+ 
+                                </ul>
+								
+                            </div>
+                        </div>
+						</div>
+						
+						<div class="row">
+                        <div class="col-md-12">
+                            <div class="padding-a1em">
+							
+							
+							<h3><span class="far fa-hand-point-right" aria-hidden="true"></span>Seguimiento</h3>
+                                <p>Todas las acciones realizadas pueden encontrarse en el <a href="https://www.mobile-age.eu/">sitio oficial del proyecto</a></p>
+								
+                            </div>
+                        </div>
+						
+						
+						
+						
+                    </div>
+						
+					
+					
+					
+					
+                </div>
+                <h2 class="tab-title" aria-expanded="false" data-target="#docu" data-toggle="collapse">Información</h2>
+                <div id="docu" role="tabpanel" sede:class="tab-pane active">
+                   
+				   <h3>
+ Información del proyecto europeo 
+</h3>
+                                        <p>
+                                            Región de los Lagos del Sur (Reino Unido), Bremen (Alemania), Región de Central Macedonia (Grecia) y Zaragoza.
+                                        </p>
+                                        <p>
+                                            Proyecto: Mobile Age.</p>
+                                        <p></p>
+                                        <p>
+                                            Referencia de la convocatoria: H2020-INSO-2015: CNECT.</p>
+                                        <p>
+                                            Tema: INSO-1-2015: gobierno abierto basado en las TIC.</p>
+                                        <p>
+                                            Presupuesto total: euros 2,923,993.75.</p>
+                                        <p>
+                                            Duración del proyecto: 36 meses.</p>
+                                        <p>
+                                            Fecha de Inicio: 1º de febrero de 2016.</p>
+                                        <p>
+                                            Coordinador del proyecto: Universidad de Lancaster (ULANC)</p>
+                                        <p>
+                                            Consorcio: TINGTUN AS (TT), AGE PLATFORM EUROPE AISBL (AGE), EVANGELISCHE STIFTUNG VOLMARSTEIN (FTB), GOVERNMENT TO YOU (GOV2U), INSTITUT FUR INFORMATIONSMANAGEMENT BREMEN GMBH (ifib), ARISTOTELIO PANEPISTIMIO THESSALONIKIS (AUTH), UNIVERSIDAD POLITECNICA DE MADRID (UPM), AYUNTAMIENTO DE ZARAGOZA (ZGZ), REGION OF CENTRAL MACEDONIA (RCM).
+                                        </p>
+                                        <p>Página web del proyecto:www.mobile-age.eu</p>
+                                        <p>
+                                            Contactos Editoriales:</p>
+                                        <p>
+                                            Difusión y Comunicación Líder: Government To You (Gov2u), e-mail: <a href="mailto:info@mobile-age.eu">info@mobile-age.eu</a></p>
+				   
+				   
+				   
+				   
+				   
+				   
+                </div>
+				
+				<h2 class="tab-title" aria-expanded="false" data-target="#docu" data-toggle="collapse">Mayores</h2>
+                <div id="mayores" role="tabpanel" sede:class="tab-pane active">
+                   
+				   
+				   
+				   
+				   <h3><span class="far fa-hand-point-right" aria-hidden="true"></span><a href="http://www.zaragoza.es/sede/portal/derechos-sociales/personas-mayores/">Portal de Mayores</a></h3>
+				   
+				   <h3><span class="far fa-hand-point-right" aria-hidden="true"></span>Agenda</h3>
+				   <p>Noviembre-diciembre 2017</p>
+				   
+                                <h3><span class="far fa-hand-point-right" aria-hidden="true"></span>
+                        
+Análisis de la Usabilidad y Accesibilidad del Portal de Mayores</h3>
+                                <ul>
+                                    <li>
+                                        <strong> 14 Noviembre (mañana)  </strong> > Sesión en
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Oliver (nivel iniciación)
+                                    </li>
+                                    <li> <strong>  14 Noviembre (tarde) </strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casco Histórico (nivel iniciación)
+                                    </li>
+                                    <li> <strong> 16 Noviembre (mañana) </strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> La Jota (nivel iniciación)
+                                    </li>
+                                    <li> <strong> 16 Noviembre (tarde)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> San José (nivel iniciación)
+                                    </li>
+                                    <li> <strong> 22 Noviembre (mañana) </strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Terminillo (nivel medio)
+                                    </li>
+                                    <li> <strong> 22 Noviembre (tarde)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casablanca (nivel medio)
+                                    </li>
+                                    <li> <strong> 23 Noviembre (mañana)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casco Histórico (nivel alto)
+                                    </li>
+                                    <li> <strong> 23 Noviembre (tarde)</strong> >
+                                        <abbr title="Centro de Convivencia de Mayores">C.C.M </abbr> Casco Histórico (nivel alto)</li>
+                                </ul>
+                            <h3><span class="far fa-hand-point-right" aria-hidden="true"></span>Documentación</h3>
+							<ul><li><a class="pdf" href="/contenidos/sectores/mayores/INFORME-FINAL-USABILIDAD.pdf">Informe de Usabilidad </a></li></ul>
+				   
+				   <div class="row">
+                        <div class="col-md-12">
+                            <div class="padding-a1em">
+							
+							
+							<h3><span class="far fa-hand-point-right" aria-hidden="true"></span>Seguimiento</h3>
+                                <p>Todas las acciones realizadas pueden encontrarse en el <a href="https://www.mobile-age.eu/">sitio oficial del proyecto</a></p>
+								
+                            </div>
+                        </div>
+						
+						
+						
+						
+                    </div>
+				   
+				   
+				   
+				   
+                </div>
+				
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".mas-info").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

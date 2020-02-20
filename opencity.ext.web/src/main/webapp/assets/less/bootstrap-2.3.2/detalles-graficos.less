@@ -1,0 +1,138 @@
+@import "mixins.less";
+@import "variables.less";
+
+//
+// Detalles Graficos
+// --------------------------------------------------
+
+.remarcada{color: @white !important;}
+
+// Títulos y comentarios remarcados en color correspondiente al portal
+.home-p .remarcada {background: @colorOgob;}
+.ayto-p .remarcada, .intranet-p .remarcada {background: @colorAyto;}
+.ogob-p .remarcada {background: @colorOgob;}
+.ciudad-p .remarcada {background: @colorCiudad;}
+.cultura-p .remarcada {background: @colorCultura;}
+.gente-p .remarcada {background: @colorGente;}
+.medioambiente-p .remarcada {background: @colorMedioAmbiente;}
+.turismo-p .remarcada {background: @colorTurismo;}
+
+// Títulos y comentarios remarcados en el color específico de cada portal
+.remarcada-ayto {background: @colorAyto;color: @white;}
+.remarcada-ogob {background: @colorOgob;color: @white;}
+.remarcada-ciudad {background: @colorCiudad;color: @white;}
+.remarcada-cultura {background: @colorCultura;color: @white;}
+.remarcada-gente {background: @colorGente;color: @white;}
+.remarcada-medioambiente {background: @colorMedioAmbiente;color: @white;}
+.remarcada-turismo {background: @colorTurismo;color: @white;}
+
+// Color de fuente para el portal
+.ogob-p .color-portal {color: @colorOgob;}
+.ayto-p .color-portal, .intranet-p .color-portal {color: @colorAyto;}
+.ciudad-p .color-portal {color: @colorCiudad;}
+.cultura-p .color-portal {color: @colorCultura;}
+.gente-p .color-portal {color: @colorGente;}
+.medioambiente-p .color-portal {color: @colorMedioAmbiente;}
+.turismo-p .color-portal {color: @colorTurismo;}
+.color-ayto {color: @colorAyto;}
+
+.linea {
+	height: 1px;
+	margin: @hrAltura 1px;
+	overflow: hidden;
+	border-bottom: 1px solid @grayLight;
+	clear: both;
+}
+
+.linea-dotted {
+	height: 1px;
+	margin: 10px 1px;
+	overflow: hidden;
+	border-bottom: 1px dotted #7F7F7F;
+	clear: both;
+}
+
+.bneg2{
+    background-image: url(/cont/paginas/bs/img/b_neg2.gif);
+    background-repeat: no-repeat;
+    background-position: top center;
+    padding:0 .8em;
+}
+
+.dflecha{
+    background-image: url(/cont/paginas/bs/img/dflecha.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding:0 .8em;
+}
+
+.external-link{
+	background-image: url(/cont/paginas/bs/img/external-link.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+	background-position: right center;
+	padding-right: 1.5em;
+}
+
+// Gráfico cuadrado con una X dibujada (ejemplo: encabezados h3 en páginas índice) 
+.iconoX{
+	background-image: url(/cont/paginas/bs/img/iconoX.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin-left: 0.15em;
+	padding: 0 0 0 1.25em;
+}
+
+// Efectos contenedores: Tarjeta y fondos
+.fnd {background-color: @white;}
+.fnd-gris-claro, .form-indice{background: @colorGrisClaro;}
+.fnd-gris-medio{background: @colorGrisMedio;}
+.fnd-gris-oscuro{background: @colorGrisOscuro;}
+
+.fnd-amarillo {background-color: @colorAmarillo !important;}
+.fnd-amarillo-fuerte {background-color: @colorAmarilloFuerte !important;}
+.fnd-rojo {background-color: @colorRojo !important;}
+.fnd-verde {background-color: @colorVerde !important;}
+.fnd-oliva {background-color: @colorOliva !important;}
+.fnd-azul {background-color: @colorAzul !important;}
+.fnd-azul-claro {background-color: @colorAzulClaro !important;}
+.fnd-naranja {background-color: @colorNaranja !important;}
+.fnd-anil {background-color: @colorAnil !important;}
+
+.tarjeta {
+	background-color: @white;
+	padding: .5em;
+	margin-bottom: 1em;
+	.box-shadow(2px 4px 6px #999);
+}
+
+.tarjeta-nobg {
+	padding: .5em;
+	margin-bottom: 1em;
+}
+
+.tarjeta-indice {
+	background-color: @white;
+	padding: 1em;
+	margin-bottom: 2em;
+	.box-shadow(2px 4px 6px #999);
+}
+
+.tarjeta-indice-nobg {
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+.sombra-imagen, .img-shadow, .shadow {
+	.box-shadow(0px 5px 5px -5px @black); 
+}
+.curva-imagen, .img-border, .radius {
+ 	.border-radius(@borderRadiusLarge); 
+}
+
+.recorte-imagen{ height:106px !important}
+
+.sombra-tarjeta{
+	.box-shadow(2px 4px 6px #999);
+}
+

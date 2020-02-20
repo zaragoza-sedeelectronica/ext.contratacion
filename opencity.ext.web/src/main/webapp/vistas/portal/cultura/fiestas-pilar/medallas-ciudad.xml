@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Fiestas del Pilar. Medallas" description="Programación de las Fiestas del Pilar 2017" author="Ayuntamiento de Zaragoza" keywords="Ayuntamiento, Zaragoza, España, Ciudad, cultura, turismo, verano, piscinas, actividades, museos y exposiciones" />
+    <style type="text/css">
+    ul#menu {
+        border-bottom: 2px solid #E81B16;
+        font-weight: bold;
+    }
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.42857143; /* h2 line-height == a line-height*/
+    }
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav role="navigation">
+            <ul class="list-unstyled row no-gutter text-center nomargin" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/presentacion">Presentación</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/ofrenda-flores">Ofrenda de Flores</a></li>
+                <li class="col-xs-6 col-sm-2"><h2 class="elemento">Medallas de la Ciudad</h2></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/gigantes-cabezudos">Gigantes y Cabezudos</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/accesibilidad">Accesibilidad</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/servicio/premios-concursos/?materia.id=12">Concursos</a></li>
+            </ul>
+            <div class="clearfix">
+                <ul class="list-inline nomargin navbar-right text-center">
+                    <li>
+                        <a itemprop="sameAs" href="https://twitter.com/FiestasPilarOfi">
+                            <span class="fab fa-twitter-square" aria-hidden="true"></span>
+                            <span class="oculto">Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a itemprop="sameAs" href="https://www.facebook.com/FiestasdelPilar.Oficial">
+                            <span class="fab fa-facebook-square" aria-hidden="true"></span>
+                            <span class="oculto">Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a itemprop="sameAs" href="https://www.instagram.com/fiestaspilaroficial">
+                            <span class="fab fa-instagram" aria-hidden="true"></span>
+                            <span class="oculto">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a itemprop="sameAs" href="https://www.youtube.com/playlist?list=PLfj57q5hJUJSMcymtKeGfcAIVaZESfgLf">
+                            <span class="fab fa-youtube fa-2x text-color" aria-hidden="true"></span>
+                            <span class="oculto">Youtube</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://flowplayer.com/e/?t=Ayuntamiento%20Zaragoza%20-%20Canal%201%20(DIRECTO)&amp;c=eyJkZWJ1ZyI6ZmFsc2UsImRpc2FibGVkIjpmYWxzZSwiZnVsbHNjcmVlbiI6dHJ1ZSwia2V5Ym9hcmQiOnRydWUsInJhdGlvIjowLjU3NSwiYWRhcHRpdmVSYXRpbyI6ZmFsc2UsInJ0bXAiOjAsInByb3h5IjoiYmVzdCIsImhsc1F1YWxpdGllcyI6dHJ1ZSwic3BsYXNoIjpmYWxzZSwibGl2ZSI6dHJ1ZSwibGl2ZVBvc2l0aW9uT2Zmc2V0IjoxMjAsInN3ZiI6Ii8vcmVsZWFzZXMuZmxvd3BsYXllci5vcmcvNy4xLjIvZmxvd3BsYXllci5zd2YiLCJzd2ZIbHMiOiIvL3JlbGVhc2VzLmZsb3dwbGF5ZXIub3JnLzcuMS4yL2Zsb3dwbGF5ZXJobHMuc3dmIiwic3BlZWRzIjpbMC4yNSwwLjUsMSwxLjUsMl0sInRvb2x0aXAiOnRydWUsIm1vdXNlb3V0VGltZW91dCI6NTAwMCwidm9sdW1lIjoxLCJlcnJvcnMiOlsiIiwiVmlkZW8gbG9hZGluZyBhYm9ydGVkIiwiTmV0d29yayBlcnJvciIsIlZpZGVvIG5vdCBwcm9wZXJseSBlbmNvZGVkIiwiVmlkZW8gZmlsZSBub3QgZm91bmQiLCJVbnN1cHBvcnRlZCB2aWRlbyIsIlNraW4gbm90IGZvdW5kIiwiU1dGIGZpbGUgbm90IGZvdW5kIiwiU3VidGl0bGVzIG5vdCBmb3VuZCIsIkludmFsaWQgUlRNUCBVUkwiLCJVbnN1cHBvcnRlZCB2aWRlbyBmb3JtYXQuIFRyeSBpbnN0YWxsaW5nIEFkb2JlIEZsYXNoLiJdLCJlcnJvclVybHMiOlsiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiaHR0cDovL2dldC5hZG9iZS5jb20vZmxhc2hwbGF5ZXIvIl0sInBsYXlsaXN0IjpbXSwiaGxzRml4IjpmYWxzZSwiZGlzYWJsZUlubGluZSI6ZmFsc2UsImF1dG9wbGF5Ijp0cnVlLCJjbGlwIjp7InRpdGxlIjoiQXl1bnRhbWllbnRvIFphcmFnb3phIC0gQ2FuYWwgMSAoRElSRUNUTykiLCJzdWJ0aXRsZXMiOltdLCJzb3VyY2VzIjpbeyJzcmMiOiJodHRwczovL3N0cmVhbWluZy5hcmFub3ZhLmVzL2hscy9saXZlL2F5dG96Z3pfY2FuYWwxLm0zdTgiLCJzdWZmaXgiOiJtM3U4IiwidHlwZSI6ImFwcGxpY2F0aW9uL3gtbXBlZ3VybCJ9XX0sInR3aXR0ZXIiOmZhbHNlLCJmYWNlYm9vayI6ZmFsc2UsImVtYmVkIjp7fSwiYXNwZWN0UmF0aW8iOiI0MDoyMyIsImR2ciI6ZmFsc2UsImhvc3RuYW1lIjoic3RyZWFtaW5nLmFyYW5vdmEuZXMiLCJvcmlnaW4iOiJodHRwczovL3N0cmVhbWluZy5hcmFub3ZhLmVzL3BsYXllci9heXRvemd6X2NhbmFsMS5odG1sIiwianMiOltdLCJjc3MiOltdfQ%3D%3D&amp;r=https%3A%2F%2Fstreaming.aranova.es%2Fplayer%2Faytozgz_canal1.html" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+    </sede:content>
+</body>
+
+</html>

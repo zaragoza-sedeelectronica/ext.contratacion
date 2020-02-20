@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Arte Publico. Itinerarios" description="Propuesta de Itinerarios para recorrer el arte público en la ciudad" author="" last-modified="Fri Feb 28 00:00:00 GMT+01:00 2014" keywords="ayuntamiento, ciudad, Zaragoza, rutas, río Ebro, cementerio, Torrero, curso de agua, agua, zonas verdes, arte, monumentos, bienes culturales"/>
+    <style type="text/css">
+        /*.tab-pane {
+            border-left: 3px solid #D01715;
+        }*/
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:fragment="menu">
+            <nav class="nav-main" role="navigation">
+                <ul class="list-unstyled row no-gutter text-center" id="menu">
+                    <li class="col-xs-4 col-sm-2 col-sm-offset-3"><span class="fa fa-info-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/arte-publico/">Presentación</a></li>
+                    <li class="col-xs-4 col-sm-2 active"><span class="fa fa-cog" aria-hidden="true"></span> <a class="elemento" href="/sede/servicio/arte-publico">Catálogo</a></li>
+                    <li class="col-xs-4 col-sm-2 active"><span class="fa fa-cog" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/arte-publico/itinerarios/">Itinerarios</a></li>
+                </ul>
+            </nav>
+        </th:block>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card clearfix">
+                    <h2>Itinerarios</h2>
+                    <p>Recorra el arte público de la ciudad guiado por especialistas que le proponen estos sugerentes itinerarios: </p>
+                    <nav class="margin-t1em">
+                        <div class="col-md-6">
+                            <ul th:if="${!currentDevice.isMobile()}" class="list-unstyled">
+                                <li>
+                                    <span role="ebro"> 
+                                        <a href="#ebro" aria-controls="ebro" role="tab" data-toggle="tab">A orillas del Ebro</a> 
+                                    </span>
+                                    <span role="ebroen">
+                                        ( <a lang="en" href="#ebroen" aria-controls="ebroen" role="tab" data-toggle="tab">English</a> ) 
+                                    </span>
+                                </li>
+                                <li>
+                                    <span role="cementerio"> 
+                                        <a href="#cementerio" aria-controls="cementerio" role="tab" data-toggle="tab">Cementerio de Torrero</a>
+                                    </span>
+                                    <span role="cementerioen">
+                                        ( <a lang="en" href="#cementerioen" aria-controls="cementerioen" role="tab" data-toggle="tab">English</a> ) 
+                                    </span>
+                                </li>
+                                <li>
+                                    <span role="fuentes">
+                                        <a href="#fuentes" aria-controls="fuentes" role="tab" data-toggle="tab">Fuentes y Láminas de Agua</a>
+                                    </span>
+                                    <span role="fuentesen">
+                                        ( <a lang="en" href="#fuentesen" aria-controls="fuentesen" role="tab" data-toggle="tab">English</a> ) 
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <span role="monumentos">
+                                        <a href="#monumentos" aria-controls="monumentos" role="tab" data-toggle="tab">Monumentos Conmemorativos</a>
+                                    </span>
+                                    <span role="monumentosen">
+                                        ( <a lang="en" href="#monumentosen" aria-controls="monumentosen" role="tab" data-toggle="tab">English</a> ) 
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul th:if="${!currentDevice.isMobile()}" class="list-unstyled">
+                                <li>
+                                    <span role="plazas">
+                                        <a href="#plazas" aria-controls="plazas" role="tab" data-toggle="tab">Plazas del Casco Viejo</a>
+                                    </span>
+                                    <span role="plazasen">
+                                        ( <a lang="en" href="#plazasen" aria-controls="plazasen" role="tab" data-toggle="tab">English</a> ) 
+                                    </span>
+                                </li>
+                                <li role="mujeres"> 
+                                    <a href="#mujeres" aria-controls="mujeres" role="tab" data-toggle="tab">Mujeres Artistas</a>
+                                </li>
+                                <li role="grande"> <a href="#grande" aria-controls="grande" role="tab" data-toggle="tab">Parque Grande</a><!--/*( <a lang="en" href="ebro/ebroen">English</a> ) */--></li>
+                                <li role="sitios"> <a href="#sitios" aria-controls="sitios" role="tab" data-toggle="tab">Monumentos a los Sitios</a> <!--/*( <a lang="en" href="ebro/ebroen">English</a> ) */--> </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container-fluid">
+                <div sede:class="tab-content" class="clearfix">
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#ebro" aria-expanded="false">A orillas del Ebro</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="ebro" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">A orillas del Ebro</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/ebro/ebro" />
+                    </div>
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#ebroen" aria-expanded="false">The river Ebro</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="ebroen" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">The river Ebro</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/ebro/en/ebro" />
+                    </div>
+
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#cementerio" aria-expanded="false">Cementerio de Torrero</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="cementerio" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Cementerio de Torrero</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/cementerio/index" />
+                    </div>
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#cementerioen" aria-expanded="false">Torrero Cemetery</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="cementerioen" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Torrero Cemetery</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/cementerio/en/index" />
+                    </div>
+
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#fuentes" aria-expanded="false">Fuentes y Láminas de Agua</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="fuentes" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Fuentes y Láminas de Agua</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/fuentes/index" />
+                    </div>
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#fuentesen" aria-expanded="false">Fountains and water sheets</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="fuentesen" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Fountains and water sheets</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/fuentes/en/index" />
+                    </div>
+
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#monumentos" aria-expanded="false">Monumentos Conmemorativos</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="monumentos" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Monumentos Conmemorativos</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/monumentos/index" />
+                    </div>
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#monumentosen" aria-expanded="false">Commemorative Monuments</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="monumentosen" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Commemorative Monuments</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/monumentos/en/index" />
+                    </div>
+
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#plazas" aria-expanded="false">Plazas del Casco Viejo</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="plazas" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Plazas del Casco Viejo</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/casco/plazas" />
+                    </div>
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#plazasen" aria-expanded="false">Old Town Squares</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="plazasen" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Old Town Squares</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/casco/en/index" />
+                    </div>
+
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#mujeres" aria-expanded="false">Mujeres Artistas</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="mujeres" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Mujeres Artistas</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/mujeres/index" />
+                    </div>
+
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#grande" aria-expanded="false">Parque Grande</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="grande" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Parque Grande</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/grande/index" />
+                    </div>
+
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#sitios" aria-expanded="false">Monumentos a los Sitios</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="sitios" class="col-md-12">
+                        <h2 th:if="${!currentDevice.isMobile()}">Monumentos a los Sitios</h2>
+                        <th:block th:include="portal/arte-publico/itinerarios/sitios/index" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

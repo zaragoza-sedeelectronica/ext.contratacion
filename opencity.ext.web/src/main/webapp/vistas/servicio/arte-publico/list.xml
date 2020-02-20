@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Arte Público" keywords="sede,web" />
+    <meta name="robots" content="noindex, follow"/>
+    <style type="text/css">
+        .card {
+            position: relative;
+            padding-top: 1.5em;
+            padding-bottom: 60px;
+        }
+        @media (min-width: 768px) {
+            .card {
+                min-height: 20em;
+            }
+            .altura {
+                min-height: 21em;
+            }
+        }
+        @media (max-width: 480px) {
+            .altura {
+                min-height: 28em;
+            }
+        }
+    </style>
+</head>
+
+<body> 
+    <sede:content>
+        <h2>Listado de Arte Público</h2>
+        <div class="row">
+            <form method="get" action="list">
+                <div class="card clearfix">
+                    <div class="form-group col-md-6">
+                        <label for="title" class="control-label col-md-3">Título: </label>
+                        <div class="col-md-9">
+                            <input id="title" name="titleContains" type="text" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="autores" class="control-label col-md-3">Autor: </label>
+                        <div class="col-md-9">
+                            <input type="text" id="autores" value="" autocomplete="off" placeholder="Buscar autor" class="form-control" title="Buscar autor" />
+                            <input type="hidden" id="autor" name="author.id" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="emplazamiento" class="control-label col-md-3">Emplazamiento: </label>
+                        <div class="col-md-9">
+                            <input id="emplazamiento" name="emplazamientoContains" type="text" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="barrios" class="control-label col-md-3">Barrio: </label>
+                        <div class="col-md-9">
+                            <input type="text" id="barrios" value="" autocomplete="off" placeholder="Buscar barrio" class="form-control" title="Buscar barrio" />
+                            <input type="hidden" id="barrio" name="barrio.id" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="epocas" class="control-label col-md-3">Época: </label>
+                        <div class="col-md-9">
+                            <input type="text" id="epocas" value="" autocomplete="off" placeholder="Buscar época" class="form-control" title="Buscar época" />
+                            <input type="hidden" id="epoca" name="epoca.id" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="icon" class="control-label col-md-3">Iconografía: </label>
+                        <div class="col-md-9">
+                            <input type="text" id="icon" value="" autocomplete="off" placeholder="Buscar iconografía" class="form-control" title="Buscar iconografía" />
+                            <input type="hidden" id="iconografia" name="iconografia.id" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="materiales" class="control-label col-md-3">Material: </label>
+                        <div class="col-md-9">
+                            <input type="text" id="materiales" value="" autocomplete="off" placeholder="Buscar material" class="form-control" title="Buscar material" />
+                            <input type="hidden" id="material" name="material.id" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="temas" class="control-label col-md-3">Categoría: </label>
+                        <div class="col-md-9">
+                            <input type="text" id="temas" value="" autocomplete="off" placeholder="Buscar tema" class="form-control" title="Buscar tema" />
+                            <input type="hidden" id="category" name="category.id" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-1">
+                        <input type="submit" value="Consultar" class="btn btn-primary"></input>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <ul class="row list-unstyled">
+            <th:block th:each="registro : ${resultado.body.result}">
+                <li class="col-xs-12 col-sm-6 col-md-4" th:classappend="${registro.geometry} ? geo : nogeo" sede:rdf="${registro.voc()}" th:attr="about=${registro.uri}">
+                    <div class="card">
+                        <div class="row">
+                            <div th:if="!*{#lists.isEmpty(registro.image)}" class="col-md-3 col-md-push-9">
+                                <img property="image" th:src="${registro.image[0].image}"
+                                     alt="" class="margin-auto img-responsive margin-b1em" />
+                            </div>
+
+                            <!--
+                            <div th:unless="*{#lists.isEmpty(registro.image)}" class="col-md-3 col-md-push-9">
+                                <img th:src="${registro.image[0].image}" class="img-responsive" alt="" />
+                            </div>
+                            <div th:class="${#lists.isEmpty(registro.image)} ? 'col-xs-12' : 'col-xs-9'">
+                                <p th:if="${registro.description}" th:utext="${#strings.abbreviate(registro.description, 100)}"></p>
+                            </div>
+                        -->
+
+                            <div th:class="!*{#lists.isEmpty(registro.image)} ? 'col-md-9 col-md-pull-3' : 'col-md-12'">
+                                <h3 class="margin-v05em">
+                                    <a th:href="${registro.uri}" sede:rdf="${registro.get('title')}"/>
+                                </h3>
+                                <hr class="sm"/>
+                                <ul class="list-unstyled">
+                                    <li th:if="${registro.author}">
+                                        <strong>Autor/es:</strong>
+                                        <ul class="list-unstyled" th:each="autor, i : ${registro.author}">
+                                            <li>
+                                                <th:block data-toggle="collapse" th:href="'#autor-' + ${i.index}" th:text="${autor.title}" aria-expanded="false" th:attrappend="aria-controls='autor-' + ${i.index}"></th:block>
+                                                <th:block th:text="'(' + ${autor.rol} + ')'"></th:block>
+                                            </li>
+                                        </ul>
+                                        <!--<th:block th:each="autor, i : ${registro.author}">
+                                            <th:block data-toggle="collapse" th:href="'#autor-' + ${i.index}" th:text="${autor.title}" aria-expanded="false" th:attrappend="aria-controls='autor-' + ${i.index}"></th:block>
+                                            <th:block th:text="'(' + ${autor.rol} + ')'"></th:block>
+                                        </th:block>-->
+                                    </li>
+                                    <li th:if="${registro.emplazamiento}">
+                                        <strong>Emplazamiento:</strong><br/>
+                                        <th:block th:text="${registro.emplazamiento}"></th:block>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="card-footer">
+                            <th:block th:include="/fragmentos/share-button(uri=${registro.uri}, text=${registro.title})"></th:block>
+                        </div>
+                        <th:block th:if="${registro.geometry}" th:utext="${registro.geometry.getRdf()}"></th:block>
+                    </div>
+                </li>
+            </th:block>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/sede/js/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        //Autor
+        var autorDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/arte-publico/autor?rows=10&q=title==%QUERY*&fl=id,title',
+                
+                filter: function(response) {
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#autores').typeahead(null, {
+            name: 'materiales',
+            displayKey: function(results) {
+                return results.title;
+            },
+            source: autorDataset
+        });
+        $('#autores').bind('typeahead:select', function(ev, suggestion) {
+            var item = suggestion;
+            $('#autor').val(item.id);
+        });
+
+        //Barrio
+        var barrioDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/arte-publico/barrio?rows=10&q=title==%QUERY*&fl=id,title',
+                
+                filter: function(response) {
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#barrios').typeahead(null, {
+            name: 'iconografia',
+            displayKey: function(results) {
+                return results.title;
+            },
+            source: barrioDataset
+        });
+        $('#barrios').bind('typeahead:select', function(ev, suggestion) {
+            var item = suggestion;
+            $('#barrio').val(item.id);
+        });
+
+        //Época
+        var epocaDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/arte-publico/epoca?rows=10&q=title==%QUERY*&fl=id,title',
+                
+                filter: function(response) {
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#epocas').typeahead(null, {
+            name: 'iconografia',
+            displayKey: function(results) {
+                return results.title;
+            },
+            source: epocaDataset
+        });
+        $('#epocas').bind('typeahead:select', function(ev, suggestion) {
+            var item = suggestion;
+            $('#epoca').val(item.id);
+        });
+
+        
+        //Iconografía
+        var iconografiaDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/arte-publico/iconografia?rows=10&q=title==%QUERY*&fl=id,title',
+                
+                filter: function(response) {
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#icon').typeahead(null, {
+            name: 'iconografia',
+            displayKey: function(results) {
+                return results.title;
+            },
+            source: iconografiaDataset
+        });
+        $('#icon').bind('typeahead:select', function(ev, suggestion) {
+            var item = suggestion;
+            $('#iconografia').val(item.id);
+        });
+
+        //Material
+        var materialDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/arte-publico/material?rows=10&q=title==%QUERY*&fl=id,title',
+                
+                filter: function(response) {
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#materiales').typeahead(null, {
+            name: 'materiales',
+            displayKey: function(results) {
+                return results.title;
+            },
+            source: materialDataset
+        });
+        $('#materiales').bind('typeahead:select', function(ev, suggestion) {
+            var item = suggestion;
+            $('#material').val(item.id);
+        });
+
+        //Categoría
+        var temaDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/arte-publico/category?rows=10&q=title==%QUERY*&fl=id,title',
+                
+                filter: function(response) {
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#temas').typeahead(null, {
+            name: 'temas',
+            displayKey: function(results) {
+                return results.title;
+            },
+            source: temaDataset
+        });
+        $('#temas').bind('typeahead:select', function(ev, suggestion) {
+            var item = suggestion;
+            $('#category').val(item.id);
+        });
+        /*]]>*/
+    </script>
+</body>
+
+</html>

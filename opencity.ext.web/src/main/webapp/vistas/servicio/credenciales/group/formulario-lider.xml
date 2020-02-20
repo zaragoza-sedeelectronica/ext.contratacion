@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Credenciales" description="Edición de usuarios" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2><a href="/opencityext/servicio/credenciales/group/">Grupos de usuarios</a></h2>
+        <form th:if="${registro.statusCode.value()} == 200" th:action="@{/servicio/credenciales/group/admin/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+
+
+            <div class="row">
+                <label class="col-sm-2 control-label" for="login">Añadir</label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="text" name="login" id="login" size="100" placeholder="login"/>
+                </div>
+                <div class="col-sm-2">
+                    <input class="btn btn-primary" type="submit" value="Asociar"/>
+                </div>
+            </div>
+
+
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span th:text="*{title}"/></legend>
+                    <p th:text="*{descripcion}"/>
+                    <p th:if="*{visible =='N'}" role="alert" class="alert alert-danger">Grupo bloqueado</p>
+
+                    <table class="table table-condensed table-striped">
+                        <tr>
+                            <th>login</th>
+                            <th>nombre</th>
+                            <th>correo</th>
+                            <th>estado</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr th:each="doc, row: *{gczUsuarios}">
+                            <td th:text="${doc.login}"/>
+                            <td><th:block th:text="${doc.nombre}"/> <th:block th:text="${doc.apellido1}"/> <th:block th:text="${doc.apellido2}"/></td>
+                            <td th:text="${doc.correoElectronico}"/>
+                            <td>
+                                <i th:if="${doc.bloqueado == 'S'}" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                <i th:if="${doc.bloqueado == 'N'}" class="fa fa-check-circle" aria-hidden="true"></i>
+                            </td>
+                            <td>
+                                <a th:href="@{/servicio/credenciales/group/admin/{identificador}/user/{id_user}/remove(identificador=*{id},id_user=${doc.id})}" class="btn btn-danger btn-xs" onclick="return confirm('Desea eliminar a la persona del grupo?')"><span class="fas fa-trash-alt" /></a>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+
+    $(".select-registros").select2({
+        tags: true,
+        ajax: {
+            url: '/opencityext/servicio/credenciales/user',
+            dataType: 'json',
+            type: "GET",
+            quietMillis: 50,
+            data: function(term) {
+                return {
+                    fl: 'id,login,nombre,apellido1',
+                    q: 'login==' + term.term + '*'
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: $.map(data.result, function(item) {
+                        return {
+                            text: item.login + ' ' + item.nombre + ' ' + item.apellido1,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        },
+        minimumInputLength: 3
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

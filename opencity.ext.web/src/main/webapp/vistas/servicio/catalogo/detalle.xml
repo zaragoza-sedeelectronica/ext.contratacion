@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Datos abiertos'" keywords="sede,web" />
+    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
+    <link th:if="${registro.statusCode.value() == 200}" rel="canonical" th:href="'https://www.zaragoza.es/sede/portal/datos-abiertos/servicio/catalogo/' + ${registro.body.id}" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css"/>
+    <style>
+    	.tabla {
+    	margin-left:1px !important;
+
+    	}
+
+    	.enlacedd{
+    	margin-left: 18px !important;
+    	margin-button: 2px;
+
+    	}
+   	</style>
+<!--     <style type="text/css">
+        #querys pre {
+            position: relative;
+        }
+        #querys .btn-copy {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            z-index: 10;
+            display: block;
+            padding: 5px 8px;
+            cursor: pointer;
+            background-color: #FFF;
+            border: 1px solid #E1E1E8;
+            border-radius: 0px 4px;
+        }
+        #querys .btn-copy:hover {
+            color: white;
+            background: red;
+            border: 0;
+        }
+    </style> -->
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:v="http://www.w3.org/2006/vcard/ns#" typeof="dcat:Dataset" th:attr="about=@{http://www.zaragoza.es/sede/servicio/catalogo/{id}(id=${registro.body.id})}" th:object="${registro.body}">
+            <h2 th:text="${titulo}" property="dct:title"></h2>
+            <a th:href="@{{id}/edit(id=${id})}" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" class="btn btn-warning pull-right">Modificar</a>
+            <th:block>
+                <!--/* <a th:href="*{materiaPrimaria.getLink()}" class="label label-primary" th:attr="resource=@{http://www.zaragoza.es/sede/servicio/catalogo/{id}(id=${registro.body.id})}, property='dcat:theme', content=*{materiaPrimaria.uri}" th:text="*{materiaPrimaria.title}"></a> */-->
+                <th:block th:each="materia : *{materia}">
+                    <a th:href="${materia.getLink()}" class="label label-success" th:attr="resource=@{http://www.zaragoza.es/sede/servicio/catalogo/{id}(id=${registro.body.id})}, property='dcat:theme', content=${materia.uri}" th:text="${materia.title}"></a>
+                </th:block>
+                <th:block th:if="*{geo}=='S'">
+                    <a href="./?fq=geo_b%3A%28%22true%22%29" class="label label-warning">Georreferenciado</a>
+                </th:block>
+            </th:block>
+            <a th:if="*{landingPage}" th:href="*{landingPage}" sede:rdf="*{prop('landingPage')}" class="btn btn-primary pull-right"><span class="fa fa-link"></span> Servicio de visualización</a>
+            <hr></hr>
+            <th:block th:include="fragmentos/error" />
+            <div th:unless="${param.comment == null}" role="alert" class="alert alert-info">
+                Su comentario ha sido enviado correctamente y está pendiente de validación. Muchas gracias.
+            </div>
+            <th:block th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="dl-horizontal card">
+                            <div th:if="*{description}" property="dcat:description" th:utext="*{description}"></div>
+                        </div>
+                        
+                        <!-- Nav tabs -->
+                        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                            <li th:each="formato,i :${formatos}" role="presentation" th:class="${i.index == 0} ? 'active' : ''">
+                                <a th:href="'#' + ${formato.key}"  th:text="${formato.key}" th:attr="aria-controls=${formato.key}" role="tab" data-toggle="tab"></a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div sede:class="tab-content">
+                            <th:block th:each="formato : ${formatos}">
+                                <h2 class="tab-title" th:text="${formato.key}" th:attr="property='dcat:mediaType', content=${formato.key}, data-target='#' + ${formato.key}" data-toggle="collapse" aria-expanded="false"></h2>
+
+                                    <div role="tabpanel" sede:class="tab-pane active" th:id="${formato.key}">
+
+                                        <th:block th:each="elem : ${formato.value}" th:attr="property='dcat:distribution', typeOf='dcat:Distribution'">
+
+                                            <th:block th:if="${elem.description}">
+                                                <h3>Descripción</h3>
+                                                <div th:utext="${elem.description}" th:attr="property='dct:description'"></div>
+                                            </th:block>
+
+                                            <dl class="dl-horizontal">
+                                                <dt th:if="${elem.accessURL}">Enlace de acceso</dt>
+                                                <dd th:if="${elem.accessURL}">
+                                                    <a th:href="${elem.accessURL}">
+                                                        <th:block th:text="${elem.accessURL}" th:attr="property='dcat:accessURL'" />
+                                                    </a>
+                                                </dd>
+                                                <dt th:if="${elem.downloadURL}">Enlace de descarga</dt>
+                                                <dd th:if="${elem.downloadURL}">
+                                                    <a th:href="${elem.downloadURL}">
+                                                        <th:block th:text="${elem.downloadURL}" th:attr="property='dcat:downloadURL'" />
+                                                    </a>
+                                                    <th:block th:if="${elem.apiDescription}" th:utext="${elem.apiDescription}" />
+                                                </dd>
+                                                <dt th:if="${elem.license}">Licencia</dt>
+                                                <dd th:if="${elem.license}">
+                                                    <a th:href="${elem.license}">
+                                                        <th:block th:text="${elem.license}" th:attr="property='dcat:license'" />
+                                                    </a>
+                                                </dd>
+                                                <dt th:if="${elem.rights}">Derechos</dt>
+                                                <dd th:if="${elem.rights}" th:text="${elem.rights}" th:attr="property='dcat:rights'"></dd>
+                                                <dt th:if="${elem.issued}">Fecha creación</dt>
+                                                <dd th:if="${elem.issued}" th:text="${#calendars.format(elem.issued,'dd MMMM yyyy')}" th:attr="property='dct:issued', content=${elem.issued}"></dd>
+                                                <dt th:if="${elem.modified}">Útima actualización</dt>
+                                                <dd th:if="${elem.modified}" th:text="${#calendars.format(elem.modified,'dd MMMM yyyy')}" th:attr="property='dct:modified', content=${elem.modified}"></dd>
+                                                <!--*<th:block th:each="rel : ${elem.rel}">
+                                                <dt th:if="${rel.title}" th:text="${rel.title}"></dt>*-->
+                                            </dl>
+                                            
+                                            <th:block th:if="${elem.rel} and ${elem.rel.size()} > 0">
+                                                <h3>Información Adicional</h3>
+                                                <ul>
+                                                    <li th:each="rel : ${elem.rel}">
+                                                        <a th:href="${rel.uri}" th:text="${rel.title}"></a>
+                                                    </li>
+                                                </ul>
+                                            </th:block>
+                                            
+                                            <hr/>
+
+                                        </th:block>
+
+                                    </div>
+
+                                
+                            </th:block>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <dl class="card">
+                            <!--* <dt>Materias</dt>*-->
+                            <dt th:if="*{language} and *{language.size()} > 0">Idiomas</dt>
+                            <dd th:if="*{language} and *{language.size()} > 0">
+                                <th:block th:each="idioma : *{language}">
+                                    <span th:attr="property='dct:language', resource=${idioma.uri}" th:text="${idioma.title}" />
+                                </th:block>
+                            </dd>
+                            <dt th:if="*{issued}">Fecha creación</dt>
+                            <dd th:if="*{issued}" th:text="*{#calendars.format(issued,'dd MMMM yyyy')}" th:attr="property='dct:issued', content=*{issued}"></dd>
+                            <dt th:if="*{modified}">Fecha modificación</dt>
+                            <dd th:if="*{modified}" th:text="*{#calendars.format(modified,'dd MMMM yyyy')}" th:attr="property='dct:modified', content=*{modified}"></dd>
+                            <dt th:if="*{accrualPeriodicity}">Periodicidad</dt>
+                            <dd th:if="*{accrualPeriodicity}" th:text="*{getAccrualPeriodicityText()}" th:attr="property='dct:accrualPeriodicity', content=*{accrualPeriodicity}"></dd>
+                            <dt th:if="*{editor}">Editor</dt>
+                            <dd th:if="*{editor}" th:attr="property='dct:publisher', typeof='foaf:Agent'"><span th:text="*{editor}" property="foaf:name" /></dd>
+                            <dt th:if="*{licencia}">Licencia</dt>
+                            <dd class="ellipsis" th:if="*{licencia}">
+                                <a th:href="*{licencia}">
+                                    <th:block th:text="*{licencia}" th:attr="property='dct:license', content=*{licencia}"></th:block>
+                                </a>
+                            </dd>
+                            <dt th:if="*{lugar}">Lugar:</dt>
+                            <dd th:if="*{lugar}" th:text="*{lugar}" th:attr="property='dct:spatial', content=*{lugar}"></dd>
+                            <dt th:if="*{coberturaIni}">Cobertura inicial:</dt>
+                            <dd th:if="*{coberturaIni}" th:text="*{#calendars.format(coberturaIni,'dd MMMM yyyy')}"></dd>
+                            <dt th:if="*{coberturaFin}">Cobertura fin:</dt>
+                            <dd th:if="*{coberturaFin}" th:text="*{#calendars.format(coberturaFin,'dd MMMM yyyy')}"></dd>
+                            <dt th:if="*{vigencia}">Vigencia:</dt>
+                            <dd th:if="*{vigencia}" th:text="*{vigencia}" th:attr="property='dct:valid', content=*{vigencia}"></dd>
+                            <dt th:if="*{contactPoint}">Punto de contacto:</dt>
+                            <dd th:if="*{contactPoint}" th:text="*{contactPoint}" th:attr="property='dcat:contactPoint', content=*{contactPoint}"></dd>
+                            <!--* <dt th:if="*{landingPage}">Página destino:</dt>
+                            <dd th:if="*{landingPage}"><a th:href="*{landingPage}"><th:block th:utext="*{landingPage}" th:attr="property='dcat:landingPage', content=*{landingPage}"/></a></dd>*-->
+                            <dt th:if="*{tag} and *{tag.size()} > 0">Etiquetas</dt>
+                            <dd th:if="*{tag} and *{tag.size()} > 0">
+                                <th:block th:each="etiqueta : *{tag}">
+                                    <span property="dcat:keyword" th:text="${etiqueta.title}+', '" />
+                                </th:block>
+                            </dd>
+                        </dl>
+                        <div class="card" th:if="*{recurso} and *{recurso.size()} > 0">
+                            <h3>Recursos Relacionados</h3>
+                            <hr></hr>
+                            <ul>
+                                <li th:each="recurso : *{recurso}">
+                                    <a th:href="${recurso.uri}" th:text="${recurso.title}"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+        <th:block th:include="fragmentos/comentario/list(action='/servicio/catalogo/')" />
+        <!--/* <div class="row">
+            <div class="col-md-12">
+                <h3>Comentarios <button id="new-comment" class="btn btn-success">Nuevo Comentario</button></h3>
+                <form id="form-comment" th:action="@{/servicio/catalogo/{id}/addcomentario(id=${registro.body.id})}" th:object="${dato}" method="post" class="form-horizontal card">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" size="100" placeholder="Nombre" required="required" name="nombre" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Correo electrónico</label>
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" placeholder="Email" required="required" name="email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Comentario</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" placeholder="Comentario" required="required" name="comentario"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-10 nopadding margin-b1em">
+                            <th:block th:include="fragmentos/recaptcha" />
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Enviar comentario</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div th:if="${#lists.isEmpty(comentario.result)}" role="alert" class="alert alert-info">
+                    No existen comentarios asociados al conjunto de datos
+                </div>
+                <div th:if="${not #lists.isEmpty(comentario.result)}">
+                    <ul class="list-unstyled">
+                        <li class="card margin-b1em" th:each="comment : ${comentario.result}">
+                            <span th:text="${#calendars.format(comment.creationDate,'dd MMMM yyyy HH:mm')}" class="label label-info pull-right" />
+                            <span><strong th:text="${comment.name}"/> <em>dijo:</em></span>
+                            <div th:utext="${comment.description}" />
+                            <th:block th:if="${comment.answer}">
+                                <div><strong>Respuesta Municipal:</strong>
+                                    <th:block th:utext="${comment.answer}" />
+                                </div>
+                            </th:block>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> */-->
+    </sede:content>
+<!--     <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+
+        $('#querys').find('pre').each(function(index, element){
+            $(this).append('<span type="button" class="btn-copy">Copiar</span>');
+        });
+        $('.btn-copy').click(function(){
+            console.log($(this).parent().clone().children().remove().end().text());
+        });
+
+    });
+    /*]]>*/
+    </script> -->
+</body>
+
+</html>

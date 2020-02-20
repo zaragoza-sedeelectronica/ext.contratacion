@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Participación. Zaragoza es Cultura" 
+               description="Zaragoza es Cultura, espacio de la sede electrónica del Ayuntamiento de Zaragoza, ofrece información sobre los distintos órganos de participación y colaboración ciudadana: Consejo Sectorial de Cultura, Mesa de Coordinación y Mesas Sectoriales de Artes Plásticas y Gráficas, Audiovisuales y Comunicación, Circo, Cómic, Danza, Divulgación de la Cultura Tradicional Aragonesa, Gestión cultural y Cultura Comunitaria, Jota, Música, Patrimonio, Libro y literatura y Teatro. Conozca la tarea que realizan los Grupos de Trabajo y los distintos instrumentos de participación y colaboración: encuestas, foro, buzón del alcalde y servicio de quejas y sugerencias" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, cultura,  gobierno abierto, participación social, política cultural, promoción de la cultura, Consejo de Cultura,  Mesa de Coordinación, Mesa Sectorial, Artes Plásticas y Gráficas, Audiovisuales y Comunicación, Circo, Cómic, Danza, Divulgación de la Cultura Tradicional Aragonesa, Gestión cultural y Cultura Comunitaria,Jota, Música, Patrimonio, Libro y literatura y Teatro, servicio de quejas y sugerencias, encuesta, buzón del alcalde, city, council, Saragossa, electronic site, local government, culture, open government, social participation, cultural policy, cultural promotion, advisory board, Culture Council, organization committee, sectoral committee, plastic arts, graphic design, audiovisual and media, circus, dance, traditional aragonese culture, cultural planning, music, cultural heritage, literature, theatre, complaints and suggestions service, survey, suggestion box
+"></sede:meta>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }
+
+    .offset-target:before {
+        content: "";
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+
+    /* Elementos de listado con icono fa */
+    .section-content ul { list-style-type: none; }
+    .section-content li:before {    
+        font-family: 'Font Awesome\ 5 Free';
+        content: '\f0a9';
+        margin: 0 0.2em 0 -1.2em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/quienes-somos">Quiénes Somos</a></li>
+                <li class="col-xs-6 col-sm-2">
+                    <h2 class="elemento">Participación</h2></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/profesional">Profesional</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/social">Social</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="http://eepurl.com/dv0mCb">Suscríbete</a></li>
+                <li class="col-xs-6 col-sm-2">
+                    <ul class="list-inline nomargin navbar-right text-center padding-t05em">
+                        <li>
+                            <a itemprop="sameAs" href="https://twitter.com/ZCultura">
+                                <span class="fab fa-2x fa-twitter-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.facebook.com/ZgzCultura">
+                                <span class="fab fa-2x fa-facebook-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.youtube.com/channel/UCEqVjSU87_mASvoCHzCc2Vg">
+                                <span class="fab fa-youtube fa-2x text-color" aria-hidden="true"></span>
+                                <span class="oculto">Youtube</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.instagram.com/zcultura">
+                                <span class="fab fa-2x fa-instagram text-color" aria-hidden="true"></span>
+                                <span class="oculto">Instagram</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/servicio/cultura/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Cultura</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Participación</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="#consejo">Consejo de Cultura</a></li>
+                    <li><a href="#mesas">Mesas</a></li>
+                    <li><a href="#participar">Cómo Participar</a></li>
+                    <li><a href="#grupos">Grupos de Trabajo</a></li>
+                    <li><a href="#quejas-sugerencias">Quejas y Sugerencias</a></li>
+                    <!--/* <li><a href="#actualidad">Actualidad</a></li> */-->
+                </ul>
+            </div>
+        </nav>
+
+        <h3 class="section-title offset-target" id="consejo">Consejo de Cultura</h3>
+        <!-- <hr class="sm color-ayto"/> -->
+        <div class="section-content">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fa fa-3x fa-sticky-note text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Reglamento
+                    </h3>
+                    <p>El Consejo de Cultura de Zaragoza (CCZ) se configura como el principal órgano de <strong>participación ciudadana</strong>, debate, seguimiento, evaluación y rendición de cuentas sobre las <strong>políticas culturales</strong> que se diseñen para la Ciudad.</p>
+                    <a href="/sede/portal/participacion/consejos/consejo-cultura#reglamento">Ver el reglamento</a>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fa fa-3x fa-users text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Composición
+                    </h3>
+                    <p>El Consejo de Cultura de Zaragoza está compuesto por:</p>
+                    <ul>
+                        <li>Presidente</li>
+                        <li>Secretaría Técnica</li>
+                        <li>Representantes de los Grupos Políticos del Pleno del Ayuntamiento</li>
+                        <li>Representantes de la Mesa de Coordinación</li>
+                        <li>Representante de la plantilla municipal</li>
+                        <li>Especialistas en Participación</li>
+                    </ul>
+                    <a href="/sede/portal/participacion/consejos/consejo-cultura#composicion">Ver la composición</a>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fas fa-3x fa-calendar-alt text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Plenos y calendario
+                    </h3>
+                    <p>Los <strong>plenos</strong> del Consejo de Cultura de Zaragoza están disponibles en este enlace, donde puede consultarse el <strong>orden del día</strong> y los <strong>acuerdos</strong> adoptados.</p>
+                    <a href="/sede/portal/participacion/consejos/consejo-cultura">Ver los Plenos</a>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title offset-target" id="mesas">Mesas</h3>
+        <div class="section-content">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fa fa-3x fa-cog text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Mesas Sectoriales
+                    </h3>
+                    <p>Las Mesas sectoriales son los <strong>órganos</strong> a través de los cuales participan en el Consejo de Cultura de Zaragoza artistas, usuarios, usuarias y agentes culturales de la ciudad. Actualmente hay <a href="/sede/portal/participacion/consejos/consejo-cultura#sectoriales">12 mesas sectoriales</a>. La <strong>participación</strong> está <strong>abierta a la ciudadanía</strong>.</p>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fa fa-3x fa-cogs text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Mesa de Coordinación
+                    </h3>
+                    <p>La Mesa de Coordinación está compuesta por <a href="/sede/portal/participacion/consejos/consejo-cultura#coordinacion">representantes de las mesas sectoriales</a> que coordinarán las <strong>propuestas</strong> que se desean elevar al <strong>Consejo de Cultura</strong>.</p>
+                    <ul>
+                        <li>Presidente</li>
+                        <li>Secretaría Técnica</li>
+                        <li>Representantes de los Grupos Políticos del Pleno del Ayuntamiento</li>
+                        <li>Representantes de la Mesa de Coordinación</li>
+                        <li>Representante de la plantilla municipal</li>
+                        <li>Especialistas en Participación</li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fa fa-3x fa-list text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Agenda
+                    </h3>
+                    <p>Consulta aquí las <strong>reuniones</strong> e <strong>hitos</strong> principales de las Mesas Sectoriales y Mesa de Coordinación.</p>
+					<a href="/sede/portal/participacion/consejos/consejo-cultura">Ver las sesiones</a>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title offset-target" id="participar">Cómo Participar</h3>
+        <div class="section-content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>
+                        <span class="lead fa fa-3x fa-comments text-color" aria-hidden="true" style="vertical-align:middle;"></span> Artículo 19. <strong>Participación de la ciudadanía</strong>. La ciudadanía participará en el Consejo de Cultura de las siguientes maneras:
+                    </h4>
+                    <ul class="padding-l3em">
+                        <li>Dando su opinión en <strong>encuestas</strong> en eventos culturales</li>
+                        <li>A través de una plataforma de foro <strong>online</strong> de participación</li>
+                        <li>Incorporándose a una <a href="/sede/portal/participacion/consejos/consejo-cultura#sectoriales">mesa sectorial</a></li>
+                        <li>Elevando sus <strong>consultas y propuestas</strong> a través de las vías preexistentes: <a href="/ciudad/enlinea/buzon_alcalde.xhtm">Buzón del Alcalde</a> y <a href="/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">Quejas y Sugerencias</a></li>
+                        <li><strong>Buzón de sugerencias</strong> al Consejo de Cultura de Zaragoza: <a href="mailto:zcparticipa@zaragoza.es">zcparticipa@zaragoza.es</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title offset-target" id="grupos">Grupos de Trabajo</h3>
+        <div class="section-content">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fa fa-3x fa-plus-circle text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Pilar Jóven
+                    </h3>
+                    <p>Una de las conclusiones del <strong>grupo de trabajo</strong> “Modelo de las Fiestas del Pilar del Consejo de Ciudad” era que las Fiestas del Pilar no ofrecía una <strong>programación específica</strong> para <strong>jóvenes de 12 a 18 años</strong>. Es por lo que desde Zaragoza Cultural, conjuntamente con el Servicio de Juventud, se planteó una programación ideada, dirigida y realizada por el público joven, que se desarrollará en la <strong>Sala Multiusos</strong> del Auditorio durante los días festivos del Pilar.</p>
+                    <p>
+                        Contacto: Angelina Chambon 
+                        <br/>
+                        976721422 
+                        <br/>
+                        <a href="mailto:achambon@zaragozacultural.com">achambon@zaragozacultural.com</a>
+                    </p>
+                    <a href="/sede/portal/cultura/fiestas-pilar/pilar-joven">Leer más</a>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="fa fa-3x fa-share-alt text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Nuevo modelo Fiestas del Pilar
+                    </h3>
+                    <p>Este grupo de trabajo, que depende del Consejo de Ciudad, se crea en 2016 con el fin <strong>mejorar el modelo de fiestas desde el consenso y la participación</strong>, y persigue los siguientes objetivos:</p>
+                    <ul>
+                        <li>Impulsar unas fiestas donde las entidades contribuyan al diseño del programa y que este sea más descentralizado.</li>
+                        <li>Conseguir unos actos más saludables fomentando la cultura y la creatividad local.</li>
+                        <li>Promover a Zaragoza como una ciudad que celebra durante sus fiestas patronales el Festival del Sur de Europa de las Artes de Calle.</li>
+                        <li>Analizar las fórmulas para hacer el Pilar entre todos, incluidos patrocinadores y medios de comunicación.</li>
+                    </ul>
+                    <p>
+                        Contacto: Rosa Bleda 
+                        <br/>
+                        976723614 
+                        <br/>
+                        <a href="mailto:consejociudad@zaragoza.es">consejociudad@zaragoza.es</a>
+                    </p>
+                    <a href="/ciudadania/gobierno-abierto/participar/consejo/grupo-fiestas-pilar.htm">Leer más</a>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="text-sm-center text-primary">
+                        <span class="far fa-3x fa-check-square text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Acciones Participativas
+                    </h3>
+                    <p>Una política cultural <strong>participada</strong> y <strong>participativa</strong>.</p>
+                    <p>Los programas, proyectos e iniciativas que se gestionan desde el área, mejoran y son más efectivos si están pensados de manera colectiva. Es una prioridad el implicar al tejido vecinal y cultural en todos los aspectos de nuestra gestión, como canal para el fomento de una ciudadanía activa y crítica: en la determinación de estas políticas culturales, en la gestión compartida entre institución, agentes culturales y sociales de programas y proyectos, y en el fomento de una verdadera participación activa de la ciudadanía en el hecho cultural. La cultura de la ciudad es compartida y todos los ciudadanos y ciudadanas tienen su voz.</p>
+                    <p>
+                        <a href="mailto:zcparticipa@zaragoza.es">zcparticipa@zaragoza.es</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--/* <h3 class="section-title offset-target" id="consejo">Consejo de Cultura</h3>
+        <div class="section-content">
+            <th:block th:include="/portal/cultura/fragmentos/consejo"></th:block>
+        </div> */-->
+
+        <h3 class="section-title offset-target" id="quejas-sugerencias">Quejas y Sugerencias</h3>
+        <!-- <hr class="sm color-ayto"/> -->
+        <div class="section-content">
+            <p>A través del <strong>Servicio de Quejas y Sugerencias</strong> se pueden enviar las consultas relacionadas con los distintos servicios municipales y categorizarlas por áreas. Además, es posible realizar el seguimiento a la aportación enviada, visualizar en el mapa las consultas por áreas, utilizar los conjuntos de datos o tener información acerca de las áreas de interés que tienen más Quejas y Sugerencias por parte de la ciudadanía. Para utilizar el servicio, sólo es necesario <a class="destacado" href="/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">acceder al servicio de Quejas y Sugerencias.</a></p>
+            <!--/* <p>También puedes consultar directamente los <a class="destacado" href="/ciudad/ticketing/datos_Ticketing?anyo=2017&amp;categoria=9043968">datos de uso de Cultura</a>.</p> */-->
+        </div>
+      <!--/*
+        <h3 class="section-title offset-target" id="actualidad">Actualidad</h3>
+        <div class="section-content">
+            <sede:aviso fragment="fragmentos/aviso/list" portal="Cultura: Participación" imagen="si" resumen="si" nresultados="10"> </sede:aviso>
+        </div>*/-->
+    </sede:content>
+</body>
+
+</html>

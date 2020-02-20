@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Luis Ochoa Mendiz (PSOE). Alcalde de Villarrapa"
+                description=" Nació en el año 1944. Profesional vinculado siempre a la hostelería y el transporte. Ha colaborado con la Comisión de Festejos de Villarrapa, como única asociación en el barrio. Ha sido alcalde del barrio desde el año 1979, hasta estos momentos, en que ha vuelto a ser elegido alcalde del barrio rural de Villarrapa. "
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Wed Oct 19 00:00:00 CET 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Luis Ochoa Mendiz  (PSOE), Villarrapa, Barrios rurales"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>Alcalde de Villarrapa</small>
+                    <span>|</span>
+                    Luis Ochoa Méndiz
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <div class="pull-right">
+                        <img alt="Luis Ochoa Mendiz "
+                             src="/cont/paginas/organizacion/img/alcaldes-barrio/ochoa-mendiz.jpg"/>
+                    </div>
+                    <p>
+
+                        Nació en el año 1944.
+                    </p>
+                    <p>Profesional vinculado siempre a la hostelería y el transporte. Ha colaborado con la Comisión de
+                        Festejos de Villarrapa, como única asociación en el barrio. Ha sido alcalde del barrio desde el
+                        año 1979, hasta estos momentos, en que ha vuelto a ser elegido
+                        <strong>alcalde del barrio rural de Villarrapa.</strong>
+                    </p>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Gestión de Entidades" description="" author="" last-modified="" keywords=""></sede:meta>
+
+    <style>
+        .cuadro-v {
+            position: relative;
+            padding-top: 15px;                
+        }
+        .cuadro-v img {
+            padding-bottom: 0;
+            border-radius: 5px 5px 0 0;
+            width: 100%;
+        }
+        .cuadro-v div {
+            margin-top: 0;
+            background-color: #e9e9e9;
+            padding: 10px;
+            border-radius: 0px 0px 5px 5px;
+        }
+        .cuadro-v h3 {
+            font-size: 1.25em;
+            line-height: 1em;
+            margin-top: 5px;
+        }
+        .cuadro-v h3 a {
+            color: #E83437 !important;
+        }
+        @media (max-width: 767px) {
+            .cuadro-v {
+                margin-top: 30px;
+            }
+        }
+        .mx-0 {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .p-1 {
+            padding: 0.25rem !important;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="col-md-12">
+            <h2>Categorías: gestión de entidades</h2>
+            <hr class="sm"/>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="btn btn-primary btn-sm"><span class="fas fa-eye" aria-hidden="true"></span></div> Entrada de datos automática
+                </div>
+                <div class="col-md-3">
+                    <div class="btn btn-primary btn-sm"><span class="fas fa-pencil-alt" aria-hidden="true"></span></div> Entrada de datos manual
+                </div>
+            </div>
+            <div class="row" th:if="${#utils.tienePermiso(attr_peticion.getCredenciales(), 'MOVILIDAD', 'MOVILIDAD', 'DET')}">
+                <div class="col-md-3 col-sm-6 col-xs-12 cuadro-v">
+                    <img src="/cont/assets/img/siu/2-tpr.jpg" class="img-rounded img-responsive" alt="Transporte privado"/>
+                    <div>
+                        <h3 class="text-center">Transporte privado</h3>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Parque de automóviles</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=vehiculos-por-tipo">Vehículos matriculados</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./vehiculos-por-tipo/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Uso del vehículo</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=aforo-zona">Aforo medio máximo</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=aforo-zona" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=velocidad-automovil-por-tipo-dia">Velocidad media según el día día</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=velocidad-automovil-por-tipo-dia" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=velocidad-automovil-por-tipo-hora">Velocidad media según la hora</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=velocidad-automovil-por-tipo-hora" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=viajes-diarios-medio">Viajes diarios por medio de transporte</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./viajes-diarios-medio/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=viajes-diarios-sexo">Viajes diarios por medio de transporte según sexo</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./viajes-diarios-sexo/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=datos-uso-automovil">Promedio de ocupación</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./datos-uso-automovil/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>                               
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 cuadro-v">
+                    <img src="/cont/assets/img/siu/1-tpu.jpg" class="img-rounded img-responsive" alt="Transporte público"/>
+                    <div>
+                        <h3 class="text-center">Transporte público</h3>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Uso del Autobús Urbano</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-linea-transporte">Validaciones diarias por línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-linea-transporte" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-parada-sentido">Validaciones por parada según línea de transporte y sentido</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-parada-sentido" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=viajeros-titulo-medio">Reparto de títulos diario</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=viajeros-titulo-medio" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=longitud-linea-transporte">Kilómetros y distribución de líneas</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=longitud-linea-transporte" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=kilometros-linea-transporte">Kilómetros realizados por línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=kilometros-linea-transporte" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=velocidad-linea-transporte">Velocidad comercial por línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=velocidad-linea-transporte" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Uso del Autobús de Barrios Rurales</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-linea-transporte-ctaz">Validaciones diarias por línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-linea-transporte-ctaz" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-promedio-linea">Validaciones mensuales promedio por tipo de día, hora y línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-promedio-linea" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-promedio-parada">Validaciones mensuales promedio por tipo de día, parada y línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-promedio-parada" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-promedio-tipo">Validaciones promedio por tipo de día, tipo de título y línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-promedio-tipo" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Uso del Tranvía</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-linea-transporte-tranvia">Validaciones diarias por línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-linea-transporte-tranvia" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=validaciones-parada-sentido-tranvia">Validaciones por parada según línea de transporte y sentido</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=validaciones-parada-sentido-tranvia" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=viajeros-titulo-medio-tranvia">Reparto de títulos diario</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=viajeros-titulo-medio-tranvia" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=longitud-linea-transporte-tranvia">Kilómetros y distribución de la línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=longitud-linea-transporte-tranvia" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=kilometros-linea-transporte-tranvia">Kilómetros realizados por la línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=kilometros-linea-transporte-tranvia" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=velocidad-linea-transporte-tranvia">Velocidad comercial por línea</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=velocidad-linea-transporte-tranvia" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Servicio público de Taxi</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=datos-taxi">Datos de taxi</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./datos-taxi/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Servicios movilidad Sharing</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=datos-bici">Datos BiZi</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=datos-bici" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=viajes-diarios-medio-dia-bici">Viajes diarios BiZi</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=viajes-diarios-medio-dia-bici" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=vehiculos-por-tipo-sharing">Otros servicios de gestoras privadas</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./vehiculos-por-tipo/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 cuadro-v">
+                    <img src="/cont/assets/img/siu/3-inf.jpg" class="img-rounded img-responsive" alt="Infraestructura de la movilidad"/>
+                    <div>
+                        <h3 class="text-center">Infraestructura de la movilidad</h3>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Infraestructura viaria</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=longitud-via-bus">Kilómetros autobús</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./longitud-via/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=longitud-via-privado">Kilómetros vehículo privado</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./longitud-via/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=superficie-zona">Superficie vehículo privado</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./superficie-zona/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=longitud-via-bici">Kilómetros bicicleta</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./longitud-via/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Gestión semafórica</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=datos-gestion-semaforica">Nº de elementos semafóricos</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./datos-gestion-semaforica/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Estacionamiento</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=datos-carga-descarga">Reservas de carga / descarga</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=datos-carga-descarga" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=plazas-estacionamiento-tipo-en-via">Vía pública</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=plazas-estacionamiento-tipo-en-via" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=plazas-estacionamiento-tipo-fuera-via">Fuera de la vía pública</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=plazas-estacionamiento-tipo-fuera-via" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=plazas-estacionamiento-tipo-taxi">Reservas taxi</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="../?indicador=plazas-estacionamiento-tipo-taxi" title="Visualizar indicador"><span class="fas fa-eye" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 cuadro-v">
+                    <img src="/cont/assets/img/siu/4-seg.jpg" class="img-rounded img-responsive" alt="Seguridad vial"/>
+                    <div>
+                        <h3 class="text-center">Seguridad vial</h3>
+                        <div class="row mx-0 p-1 text-center">
+                            <b>Accidentes</b>
+                        </div>
+                        <div class="row mx-0 p-1">
+                            <div class="col-md-10">
+                                <a href="../?indicador=datos-accidentes">Datos de accidentes</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary btn-sm" href="./datos-accidentes/" title="Editar indicador"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

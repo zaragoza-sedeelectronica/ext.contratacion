@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Servicio de quejas y sugerencias del ayuntamiento de Zaragoza" keywords="sede,quejas,sugerencias,información" />
+    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2>Nueva Queja/Sugerencia</h2>
+        <div role="alert" class="alert alert-info info">
+            <p>Introduzca sus datos personales, se recomienda cumplimentar el campo de Correo Electrónico para poder enviarle la confirmación de recepción de su solicitud. Los campos obligatoriamente requeridos se señalan mediante el <span class="obligatorio">icono</span>.</p>
+            <p>Este formulario esta adaptado a dispositivos móviles. Si lo desea puede añadirlo a los marcadores de su dispositivo para una mayor comodidad.</p>
+        </div>
+        <form th:action="@{/servicio/quejas-sugerencias/save}" th:object="${dato}" method="post" id="newForm" enctype="multipart/form-data" class="form-horizontal">
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Datos del ciudadano/ciudadana</span></legend>
+                    <div class="row-fluid" th:if="${session.sess_ciudadano}">
+                      <dl class="dl-horizontal">
+                        <dt>Nombre</dt>
+                        <dd th:text="${session.sess_ciudadano.name}"></dd>
+                        <dt>Correo electrónico</dt>
+                        <dd th:text="${session.sess_ciudadano.email}"></dd>
+                        <dt th:if="${session.sess_ciudadano.mobile}">Teléfono móvil</dt>
+                        <dd th:text="${session.sess_ciudadano.mobile}"></dd>
+                      </dl>
+                    </div>
+                    <div class="row-fluid" th:unless="${session.sess_ciudadano}">
+                        <div class="span6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="first_name">Nombre</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="first_name" id="first_name" value="" size="80" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="last_name">Apellidos</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="last_name" id="last_name" value="" size="80" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="user_address">Dirección</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="user_address" id="user_address" value="" size="80" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="phone">Teléfono</label>
+                                <div class="col-sm-9">
+                                    <input type="tel" name="phone" id="phone" value="" size="80" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="email">Correo electrónico</label>
+                                <div class="col-sm-9">
+                                    <input type="email" name="email" id="email" value="" size="80" class="form-control"/><span class="help-inline">Para enviarle la confirmación de recepción de sus datos así como la respuesta a su sugerencia.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Descripción de la queja / sugerencia</span></legend>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="service_code">Categoria</label>
+                        <div class="col-sm-9">
+                            <select name="service_code" id="service_code" class="dependent-select form-control">
+                                <option value=""></option>
+                                <option th:each="s : ${service.body.result}" th:value="${s.service_code}" th:text="${s.service_name}" th:selected="${param.service_code} and ${param.service_code[0]} == ${s.service_code}"/>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="title"><span class="obligatorio">Asunto</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" th:field="*{title}" id="title" value="" size="80" required="required" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="description"><span class="obligatorio">Descripción</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <div class="col-sm-9">
+                            <textarea name="description" id="description" rows="10" cols="40" required="required" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div id="campos-plus"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="file">Enviar Adjunto</label>
+                        <div class="col-sm-9">
+                            <input type="file" name="file" id="file"/><span class="help-inline">Si desea enviar varios archivos, comprímalos en un sólo fichero (límite 1Mb) en formato ZIP.</span></div>
+                    </div>
+                    <div class="tarjeta clearfix"><a class="destacado" href="javascript:mostrar('el0');javascript:colocarMarker(4613777.71,676631.86);">Añadir localización</a>
+                        <div class="imp" id="el0" style="display: none;">
+                            <h2 class="titular">Añadir localización</h2>
+                            <div class="row">
+                                <div class="col-md-12 mapas">
+                                  <input type="hidden" name="address_string" id="address_string" th:value="*{address_string}"/>
+                                  <input type="hidden" name="srsname" id="srsname" value="utm30n"/>
+                                  <input type="hidden" name="address_id" id="address_id" th:value="*{address_id}"/>
+                                  <input type="hidden" name="x" id="x" th:value="*{x}"/>
+                                  <input type="hidden" name="y" id="y" th:value="*{y}"/>
+                                  <div id="mapa" style="height: 30em">
+                                      <script type="text/javascript">
+                                          var ifrm = document.createElement("iframe");
+                                          ifrm.setAttribute("name", "mapahome");
+                                          ifrm.setAttribute("id", "mapahome");
+                                          ifrm.setAttribute("title", "La Ciudad al Instante");
+                                          ifrm.setAttribute("scrolling", "no");
+                                          ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                                          ifrm.setAttribute("frameBorder", "0");
+                                          ifrm.style.width.value = "100%";
+                                          document.getElementById("mapa").appendChild(ifrm);
+                                      </script>
+                                  </div>  
+                                </div>
+                            </div>
+                            <div id="resultadoPortales">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="attribute[public]" class="checkbox inline">
+                            <input type="checkbox" id="attribute[public]" value="S" name="attribute[public]"/><strong> Autorizo que la Web Municipal haga público el asunto, la descripción y la fotografía adjunta a mi queja/sugerencia, y haga visible su ubicación en el <a class="enlace" href="https://www.zaragoza.es/ciudadania/gobierno-abierto/transparencia/ver_Mapa?id=35">mapa de quejas y sugerencias.</a>.<br/> * No se publicarán datos personales.</strong></label>
+                    </div>
+                    <div class="col-sm-12 nopadding margin-b1em">
+                    	<th:block th:include="fragmentos/recaptcha" />
+                    </div>
+                    <div class="texto_centrado form-actions">
+                        <input type="submit" name="submit" value="Enviar" class="btn btn-primary btn-lg"/>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+        <div role="alert" class="alert alert-info"><!--/*<h2>PROTECCIÓN DE DATOS</h2><p>En cumplimiento del artículo 5 de la L.O. 15/1999 de Protección de Datos se le informa:</p><ul><li> Que sus datos personales serán incorporados a un fichero cuyo responsable es el Ayuntamiento de Zaragoza con la finalidad de gestionar el Servicio de Quejas y Sugerencias proporcionado en esta sede electrónica.</li><li>Sus datos se tratarán con las medidas de seguridad necesarias para garantizar la seguridad de los mismos y no se comunicarán a terceros fuera de los casos previstos en la normativa vigente.</li><li>Podrá ejercer los derechos de acceso, rectificación, cancelación y oposición sobre sus datos ante el Ayuntamiento de Zaragoza - (Dirección General de Ciencia y Tecnología). Edificio Seminario: Vía Hispanidad nº 20, 50071 Zaragoza.</li><li>El envío de este formulario, implica que está informad@ y consiente que sus datos sean tratados para la finalidad indicada</li></ul><strong>Gracias</strong> por seguir utilizando este servicio activo en la Web Municipal desde 1997.<br/>Con sus sugerencias y observaciones nos ayuda a lograr que los servicios municipales mejoren cada día*/-->
+          <p>Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (<a href="http://www.boe.es/buscar/doc.php?id=DOUE-L-2016-80807">Reglamento</a>).<br/><a href="http://www.zaragoza.es/sede/servicio/tramite/23680">Ver Derechos</a></p>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js" xml:space="preserve"></script>
+    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+
+(function($) {
+  return $.fn.dependentSelects = function(options) {
+    var clearAllSelectsByParent, createNewSelect, createSelectId, findSelectParent, hideSelect, insertLabel, insertPlaceholderSelect, labelAtDepth, placeholderOptionAtDepth, placeholderSelectAtDepth, prepareSelect, selectChange, selectPreSelected, selectedOption, showSelect, splitOptionName;
+    if (options == null) {
+      options = {};
+    }
+    options = $.extend({
+      'separator': ' > ',
+      'placeholderOption': 'Selecciona una opci&oacute;n',
+      'placeholderSelect': false,
+      'class': "form-control",
+      'labels': false
+    }, options);
+    createSelectId = function() {
+      var int;
+      int = parseInt(Math.random() * 1000);
+      if ($("[data-dependent-id='" + int + "']").length > 0) {
+        return createSelectId();
+      } else {
+        return int;
+      }
+    };
+    splitOptionName = function($option) {
+      var array, i, item, _i, _len;
+      array = $.map($option.text().split(options.separator), function(valuePart) {
+        return $.trim(valuePart);
+      });
+      i = 0;
+      for (_i = 0, _len = array.length; _i < _len; _i++) {
+        item = array[_i];
+        if (item === '') {
+          array.splice(i, 1);
+          i--;
+        }
+        i++;
+      }
+      return array;
+    };
+    placeholderSelectAtDepth = function(depth, $select) {
+      var placeholder, text;
+      depth--;
+      placeholder = options.placeholderSelect;
+      if (placeholder) {
+        if (placeholder === true) {
+          placeholder = $select.data('dependent-select-placeholders');
+        }
+        if (typeof placeholder === 'object') {
+          if (placeholder[depth]) {
+            text = placeholder[depth];
+          } else {
+            text = placeholder[placeholder.length - 1];
+          }
+        } else {
+          text = placeholder;
+        }
+        return $("<select disabled><option>" + text + "</option></select>").attr({
+          'data-dependent-depth': depth + 1,
+          'data-dependent-placeholder': true,
+          'data-dependent-id': $select.attr('data-dependent-id')
+        });
+      }
+    };
+    placeholderOptionAtDepth = function(depth) {
+/*      var placeholder, text;
+      depth--;
+      placeholder = options.placeholderOption;
+      if (typeof placeholder === 'object') {
+        if (placeholder[depth]) {
+          text = placeholder[depth];
+        } else {
+          text = placeholder[placeholder.length - 1];
+        }
+      } else {
+        text = placeholder;
+      }
+      return $("<option>" + text + "</option>");
+      */
+      return '';
+    };
+    labelAtDepth = function(depth, $select) {
+      var labels;
+      depth--;
+      labels = options.labels;
+      if (labels) {
+        if (labels === true) {
+          labels = $select.data('dependent-labels');
+        }
+        if (labels[depth]) {
+          return labels[depth];
+        } else {
+          return labels[labels.length - 1];
+        }
+      } else {
+        return false;
+      }
+    };
+    hideSelect = function($select) {
+      var label, placeholder_select, select_depth, select_id;
+      select_id = $select.attr('data-dependent-id');
+      select_depth = $select.attr('data-dependent-depth');
+      placeholder_select = $("select[data-dependent-placeholder][data-dependent-id='" + select_id + "'][data-dependent-depth='" + select_depth + "']");
+      label = $("label[data-dependent-id='" + select_id + "'][data-dependent-depth='" + select_depth + "']").hide();
+      if (placeholder_select.length > 0) {
+        placeholder_select.show();
+        label.show();
+      }
+      return $select.hide();
+    };
+    showSelect = function($select) {
+      var label, placeholder_select, select_depth, select_id;
+      select_id = $select.attr('data-dependent-id');
+      select_depth = $select.attr('data-dependent-depth');
+      placeholder_select = $("select[data-dependent-placeholder][data-dependent-id='" + select_id + "'][data-dependent-depth='" + select_depth + "']");
+      label = $("label[data-dependent-id='" + select_id + "'][data-dependent-depth='" + select_depth + "']").show();
+      if (placeholder_select.length > 0) {
+        placeholder_select.hide();
+      }
+      return $select.show();
+    };
+    insertLabel = function($select, $parent) {
+      var $label, label, select_depth, select_id;
+      if (label = labelAtDepth($select.attr('data-dependent-depth'), $select)) {
+        select_id = $select.attr('data-dependent-id');
+        select_depth = $select.attr('data-dependent-depth');
+        $label = $("<label>" + label + "</label>").attr({
+          'data-dependent-id': select_id,
+          'data-dependent-depth': select_depth
+        });
+        if (!($("label[data-dependent-id='" + select_id + "'][data-dependent-depth='" + select_depth + "']").length > 0)) {
+          if ($parent) {
+            return $parent.after($label);
+          } else {
+            return $select.before($label);
+          }
+        }
+      }
+    };
+    insertPlaceholderSelect = function($select, $parent) {
+      var $placeholderSelect, depth, select_id;
+      if ($placeholderSelect = placeholderSelectAtDepth($select.attr('data-dependent-depth'), $select)) {
+        select_id = $select.attr('data-dependent-id');
+        depth = $select.attr('data-dependent-depth');
+        if (!($("select[data-dependent-placeholder][data-dependent-id='" + select_id + "'][data-dependent-depth='" + depth + "']").length > 0)) {
+          return $select.before($placeholderSelect);
+        }
+      }
+    };
+    clearAllSelectsByParent = function($parent) {
+      return $(".dependent-sub[data-dependent-id='" + ($parent.attr('data-dependent-id')) + "']").each(function() {
+        if (parseInt($(this).attr('data-dependent-depth')) > parseInt($parent.attr('data-dependent-depth'))) {
+          $(this).find('option:first').attr('selected', 'selected');
+          return hideSelect($(this));
+        }
+      });
+    };
+    createNewSelect = function(name, $select, depth) {
+      var $currentSelect, $labels, $newSelect, select_id;
+      select_id = $select.attr('data-dependent-id');
+      if (($currentSelect = $("select[data-dependent-parent='" + name + "'][data-dependent-id='" + select_id + "']")).length > 0) {
+        return $currentSelect;
+      }
+      $newSelect = $('<select class="dependent-sub"/>').attr('data-dependent-parent', name).attr('title', 'Categorias de ' + name).attr('data-dependent-depth', depth).attr('data-dependent-input-name', $select.attr('data-dependent-input-name')).attr('data-dependent-id', select_id).addClass(options["class"]).append(placeholderOptionAtDepth(depth));
+      if (options.labels === true) {
+        $newSelect.attr('data-dependent-labels', $select.attr('data-dependent-labels'));
+      }
+      if (options.placeholderSelect === true) {
+        $newSelect.attr('data-dependent-select-placeholders', $select.attr('data-dependent-select-placeholders'));
+      }
+      if (($labels = $("label[data-dependent-id='" + select_id + "'][data-dependent-depth='" + depth + "']")).length > 0) {
+        $newSelect.insertAfter($labels);
+      } else {
+        $newSelect.insertAfter($select);
+      }
+      insertLabel($newSelect, $select);
+      insertPlaceholderSelect($newSelect, $select);
+      return hideSelect($newSelect);
+    };
+    selectChange = function($select) {
+      var $sub, select_id, val, valName;
+      $("select[data-dependent-id='" + ($select.attr('data-dependent-id')) + "'][name]").removeAttr('name');
+      valName = $select.find(':selected').html();
+      val = $select.val();
+      select_id = $select.attr('data-dependent-id');
+      clearAllSelectsByParent($select);
+      borrarCampoDeCategoria();
+      if (($sub = $(".dependent-sub[data-dependent-parent='" + valName + "'][data-dependent-id='" + select_id + "']")).length > 0) {
+        showSelect($sub);
+        addCampoDeCategoria(valName);
+        return $sub.attr('name', $select.attr('data-dependent-input-name'));
+      } else {
+        addCampoDeCategoria(valName);
+        return $select.attr('name', $select.attr('data-dependent-input-name'));
+      }
+    };
+    selectedOption = function($select) {
+      var $selectedOption, val;
+      $selectedOption = $select.find('option:selected');
+      val = $selectedOption.val();
+      try {
+          if (!(val === '' || val === placeholderOptionAtDepth($select.attr('data-dependent-depth')).val())) {
+            return $select.attr('data-dependent-selected-id', val);
+          }
+      } catch (e){}
+    };
+    findSelectParent = function($select) {
+      var $all_options, $selects;
+      $selects = $("select[data-dependent-id='" + ($select.attr('data-dependent-id')) + "']");
+      $all_options = $selects.find('option');
+      return $selects.filter(function() {
+        var vals;
+        vals = [];
+        $(this).find('option').each(function() {
+          return vals.push($(this).html() === $select.attr('data-dependent-parent'));
+        });
+        return $.inArray(true, vals) > -1;
+      });
+    };
+    selectPreSelected = function($select) {
+      var $all_options, $current_select, $selected_option, $selected_select, $selects, current_option_text, i, selected_id, _i, _ref;
+      if ((selected_id = $select.attr('data-dependent-selected-id'))) {
+        $selects = $("select[data-dependent-id='" + ($select.attr('data-dependent-id')) + "']");
+        $all_options = $selects.find('option');
+        $selected_option = $all_options.filter("[value='" + selected_id + "']");
+        $selected_select = $selected_option.closest('select');
+        $current_select = $selected_select;
+        
+        current_option_text = $selected_option.html();
+        for (i = _i = _ref = parseInt($selected_select.attr('data-dependent-depth')); _ref <= 0 ? _i <= 0 : _i >= 0; i = _ref <= 0 ? ++_i : --_i) {
+          $current_select.find('option').each(function() {
+            if ($(this).html() === current_option_text) {
+              return $(this).attr('selected', 'selected');
+            } else {
+              return $(this).removeAttr('selected');
+            }
+          });
+          showSelect($current_select);
+          current_option_text = $current_select.attr('data-dependent-parent');
+          $current_select = findSelectParent($current_select);
+        }
+        return $selected_select.trigger('change');
+      }
+    };
+    prepareSelect = function($select, depth, select_id) {
+      var $options, name;
+      $select.attr('data-dependent-depth', depth).attr('data-dependent-id', select_id);
+      $options = $select.children('option');
+      $options.each(function() {
+        var $newOption, $option, $subSelect, name, val;
+        $option = $(this);
+        name = splitOptionName($option);
+        val = $option.val();
+        if (name.length > 1) {
+          $subSelect = createNewSelect(name[0], $select, depth + 1);
+          $newOption = $option.clone();
+          $newOption.html($.trim(splitOptionName($newOption).slice(1).join(options.separator)));
+          $subSelect.append($newOption);
+          $option.val('').html(name[0]).attr('data-dependent-name', name[0]);
+          if ($options.parent().find("[data-dependent-name='" + name[0] + "']").length > 1) {
+            $option.remove();
+          }
+          return prepareSelect($subSelect, depth + 1, select_id);
+        }
+      });
+      name = $select.attr('name');
+      selectChange($select);
+      return $select.off('change').on('change', function() {
+        return selectChange($select);
+      });
+    };
+    return this.each(function() {
+      var $select;
+      $select = $(this);
+      $select.attr('data-dependent-input-name', $select.attr('name'));
+      selectedOption($select);
+      prepareSelect($select, 0, createSelectId());
+      return selectPreSelected($select);
+    });
+  };
+})(jQuery);
+$(function(){$('.dependent-select').dependentSelects();collapse();})
+
+
+function borrarCampoDeCategoria(nombre) {
+    document.getElementById("campos-plus").innerHTML='';
+}
+function addCampoDeCategoria(nombre) {
+    
+    nombre = nombre.toLowerCase();
+    nombre = nombre.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                .replace(/\s+/g, '-') // collapse whitespace and replace by -
+                .replace(/-+/g, '-');   
+  if (nombre == 'alumbrado-publico' || nombre == 'cables-colgando' || nombre == 'columna-inclinada' || nombre == 'columna-oxidada-y-agujereada' || nombre == 'defecto-en-arqueta' || nombre == 'falta-tape-de-arqueta' || nombre == 'lmpara-apagada' || nombre == 'lmpara-intermitente' || nombre == 'luminaria-o-farol-roto' || nombre == 'pegatina-identificativa-daada-o-rota' || nombre == 'tramo-apagado') {
+        document.getElementById("campos-plus").innerHTML = "<div class=\"control-group campo\"><label class=\"control-label\" for=\"matricula\">Matr&iacute;cula del punto de luz</label> <div class=\"controls\"><input type=\"text\" name=\"matricula\" id=\"matricula\" value=\"\" size=\"10\"/><span class=\"help-inline\">Pegatina blanca.</span><br/><br/><img src=\"/cont/paginas/ticketing/images/pegatina-alumbrado-pared.jpg\" alt=\"Pegatina identificativa pared\"/> <img src=\"/cont/paginas/ticketing/images/pegatina-alumbrado-farola.jpg\" alt=\"Pegatina identificativa farola\"/></div></div>";
+    }
+}
+
+function collapse() {
+
+ var anchors = getElementsByClass("colapsado");
+ var titulos=getElementsByClass("titular");
+ for (var i=0; i<anchors.length; i++) {
+   var element = anchors[i];
+   var titulo= titulos[i];
+   var parent = element.parentNode;
+   var wrapper = document.createElement('div');
+   wrapper.className='tarjeta clearfix'
+    parent.replaceChild(wrapper, element);
+    var enlace = document.createElement('a');
+    var enlaceText = document.createTextNode(titulo.innerHTML);
+    enlace.appendChild(enlaceText);
+    element.id='el' + i;
+    element.style.display='none';
+    element.className='imp';
+    enlace.className='destacado';
+    enlace.href='javascript:mostrar("el' + i + '")';
+    wrapper.appendChild(enlace);
+    wrapper.appendChild(element);
+
+ }
+}
+
+function getElementsByClass(searchClass,node,tag) {
+    var classElements = new Array();
+    if ( node == null )
+        node = document;
+    if ( tag == null )
+        tag = '*';
+    var els = node.getElementsByTagName(tag);
+    var elsLen = els.length;
+    var pattern = new RegExp("(^|\\s)"+searchClass+"(\\s|$)");
+    for (i = 0, j = 0; i < elsLen; i++) {
+        if ( pattern.test(els[i].className) ) {
+            classElements[j] = els[i];
+            j++;
+        }
+    }
+    return classElements;
+}
+
+function mostrar(idCapa){
+  if (document.layers) capa = eval("document." + idCapa);
+  if (document.all) capa = eval(idCapa + ".style");
+  if (document.getElementById) capa = eval('document.getElementById("' + idCapa + '").style');
+
+  if ((capa.display == "none")){
+    capa.display = (document.layers) ? "block" : "block" ;
+  }else{
+    capa.display = (document.layers) ? "none" : "none" ;
+  }
+  var titulos=getElementsByClass("titular");
+  for (var i=0; i<titulos.length; i++) {
+    var titulo=titulos[i];
+    titulo.style.display = 'none';
+  }
+}
+
+
+    var marker;
+    var pois = [];
+    
+function colocarMarker(latitude,longitude) {
+  
+    var IDEZarOLAPI = frames["mapahome"].IDEZarOLAPI;
+    IDEZarOLAPI.defaultProjection = "EPSG:23030";
+    
+    if (latitude && longitude) {
+        IDEZarOLAPI.deletePOIs("editable")
+        var poi = IDEZarOLAPI.POI(longitude, latitude);
+        IDEZarOLAPI.addPOIs([poi], "editable");
+    }
+
+    if (latitude && longitude) {
+        var zoomLevel = 10;
+        IDEZarOLAPI.centreMap(longitude, latitude, zoomLevel);
+    } else {
+        IDEZarOLAPI.centreMapInPOIs();
+    }
+
+    $('#x').val(longitude);
+    $('#y').val(latitude);
+
+}
+mapa();
+function mapa() {
+    latitude = $(document).find("[property='latitude']").attr("content");
+    longitude = $(document).find("[property='longitude']").attr("content");
+    if (latitude && longitude) {
+        colocarMarker(latitude,longitude);
+    }
+}     
+
+var xActual = 0, yActual = 0;
+
+setInterval(function(){ 
+  try {
+
+    var IDEZarOLAPI = frames["mapahome"].IDEZarOLAPI;
+    IDEZarOLAPI.defaultProjection = "EPSG:23030";    
+    var pois = IDEZarOLAPI.getPOIs();
+    $('#x').val(pois[0].longitude);
+    $('#y').val(pois[0].latitude);
+    if (xActual != pois[0].longitude && yActual != pois[0].latitude) {
+      
+      xActual = pois[0].longitude;
+      yActual = pois[0].latitude;
+      $('#resultadoPortales').html('');
+      $.get("/opencityext/servicio/portalero/list.json?fl=id,calle,numero,geometry&results_only=true&point=" + xActual + "," + yActual + "&rows=5&distance=500&srsname=utm30n", function(data) {
+        var portales = "<ul class=\"list-unstyled\">";
+        for (var i = 0; i < data.length; i++) {          
+          portales = portales + "<li><label><input " + (i==0 ? "checked=\"checked\"" : "") + " type=\"radio\" id=\"localizacion\" name=\"localizacion\" value=\"" + data[i].id + "#" + data[i].calle.title + ", " + data[i].numero + "\"/> " + data[i].calle.title + ", " + data[i].numero + "</label></li>";
+        }
+        portales = portales + "</ul>"
+        $('#resultadoPortales').html(portales);
+        
+
+      });
+    } 
+  } catch (e) {
+      ;
+  }
+}, 5000);
+
+
+
+$("#newForm").submit(function(event) {
+  try {
+    var datLoc = $('#localizacion:checked').val().split('#');
+    $('#address_id').val(datLoc[0]);
+    $('#address_string').val(datLoc[1]);
+  } catch (e) {
+      ;
+  }
+});
+
+
+
+
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

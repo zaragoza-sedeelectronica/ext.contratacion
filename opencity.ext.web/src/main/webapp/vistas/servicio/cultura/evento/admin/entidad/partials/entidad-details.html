@@ -1,0 +1,228 @@
+<div class="inform repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-default" ng-click="guardar()" ng-show="permisos.MOD">
+            <span class="glyphicon glyphicon-ok"></span>
+            <span class="hidden-xs">Guardar</span>
+        </button>
+        <boton-copiar ng-show="permisos.NEW"></boton-copiar>
+        <modal-borrar></modal-borrar>
+    </div>
+</div>
+<hr/>
+<fieldset>
+    <legend>Datos de la entidad organizadora</legend>
+    <div class="row">
+        <div class="col-md-12 form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-2">
+                    <div class="btn-group" ng-hide="location === '/new'" uib-dropdown>
+                        <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle>
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Control
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" style="padding: 5px; min-width: 300px;">
+                            <li><strong>ID: </strong>{{ registro.id }}</li>
+                            <li class="divider"></li>
+                            <li><strong>Fecha de modificación: </strong>{{registro.lastUpdated | date:'dd-MM-yyyy'}}</li>
+                            <li><strong>Usuario de modificación: </strong>{{registro.usuarioMod}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <input type="checkbox" ng-model="registro.updated" ng-disabled="!permisos.MOD"> Entidad actualizada
+                </div>
+                <div class="col-sm-4">
+                    <input type="checkbox" ng-model="registro.validation" ng-disabled="!permisos.MOD"> Entidad validada
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<div class="row">
+    <div class="col-md-6 form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="nombreEntidad">Nombre:</label>
+            <div class="col-sm-7">
+                <input class="form-control" name="nombreEntidad" id="nombreEntidad" type="text" ng-model="registro.title" value="entidad.title}}" ng-disabled="!permisos.MOD" />
+            </div>
+            <div class="col-sm-2">
+                <input style="border-color:#CCC;" class="form-control" name="id" type="text" ng-model="registro.id" value="{{ registro.id }}" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="streetAddress">Dirección:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="streetAddress" id="streetAddress" type="text" ng-model="registro.streetAddress" value="{{registro.streetAddress}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="postalCode">Código Postal:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="postalCode" id="postalCode" type="text" ng-model="registro.postalCode" value="{{registro.postalCode}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="addressLocality">Localidad:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="addressLocality" id="addressLocality" type="text" ng-model="registro.addressLocality" value="{{registro.addressLocality}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="addressRegion">Provincia:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="addressRegion" id="addressRegion" type="text" ng-model="registro.addressRegion" value="{{registro.addressRegion}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="addressCountry">País:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="addressCountry" id="addressCountry" type="text" ng-model="registro.addressCountry" value="{{registro.addressCountry}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="openingHours">Horario:</label>
+            <div class="col-sm-9">
+                <textarea ck-editor-new id="openingHours" name="openingHours" ng-model="registro.openingHours" ng-disabled="!permisos.MOD">{{ registro.openingHours }}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 form-horizontal">
+        <!-- <div class="form-group">
+            <label class="col-sm-3 control-label" for="barrioEntidad">Barrio:</label>
+            <div class="col-sm-9">
+                barrio
+            </div>
+        </div> -->
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="code">Código para Z16:</label>
+            <div class="col-sm-6">
+                <input class="form-control" name="code" id="code" type="text" ng-model="registro.code" value="{{registro.code}}" ng-disabled="!permisos.MOD" />
+            </div>
+		    <div class="col-md-3">
+		        <button class="btn btn-default" ng-click="registro.code = generarCodigoZ16()" ng-show="permisos.MOD">
+		            <span class="glyphicon glyphicon-refresh"></span>
+		            <span class="hidden-xs">Generar</span>
+		        </button>
+	        </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="telephone">Teléfono Fijo:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="telephone" id="telephone" type="text" ng-model="registro.telephone" value="{{registro.telephone}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="telephone2">Teléfono Móvil:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="telephone2" id="telephone2" type="text" ng-model="registro.telephone2" value="{{registro.telephone2}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="faxNumber">Fax:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="faxNumber" id="faxNumber" type="text" ng-model="registro.faxNumber" value="{{registro.faxNumber}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="email">E-mail:</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="email" id="email" type="text" ng-model="registro.email" value="{{registro.email}}" ng-disabled="!permisos.MOD" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="url">Página Web:</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control" name="url" id="url" type="text" ng-model="registro.url" value="{{registro.url}}" ng-disabled="!permisos.MOD" />
+                    <div class="input-group-btn">
+                        <a ng-href="{{registro.url}}" target="_blank" class="btn btn-default" ng-disabled="registro.url === undefined">
+                            <span class="glyphicon glyphicon-share"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="equipamiento">Equipamiento asociado:</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <autocompletado name="autoprograma" autocomplete="off" typeahead-editable="false" modelo="registro.equipamiento" uri="/sede/servicio/cultura/evento/lugar-realizacion" filtro="'title'" ng-disabled="!permisos.MOD"></autocompletado>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="isCollapsedEquip = !isCollapsedEquip" ng-disabled="registro.equipamiento === undefined">
+                            <span class="fa fa-eye" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" uib-collapse="isCollapsedEquip">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    ({{ registro.equipamiento.id }}) {{ registro.equipamiento.title }}
+                    <button type="button" class="btn btn-default btn-xs pull-right" ng-click="isCollapsedEquip = !isCollapsedEquip"><span class="fa fa-times" aria-hidden="true"></span></button>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li><strong>Dirección: </strong>{{ registro.equipamiento.streetAddress }} {{ registro.equipamiento.postalCode }}</li>
+                    <li><strong>Junta: </strong>{{ registro.equipamiento.junta }}</li>
+                </ul>
+                <a ng-href="/sede/servicio/equipamiento/{{registro.equipamiento.id}}" target="_blank"><span class="far fa-building" aria-hidden="true"></span> Ver ficha del equipamiento</a>
+            </div>
+        </div>
+        <div ng-show="permisos.LIDER">
+            <h3>Líderes</h3>
+            <label>
+                Login:
+                <input type="text" name="login" ng-model="user.login" required>
+            </label>
+            <a style="cursor:pointer" ng-click="asociarLider(user.login)" title="Asociar"><i class="fa fa-plus"></i></a>
+            <table class="table table-bordered table-hover table-striped table-btn">
+                <thead>
+                    <tr>
+                        <th th-orden order="'login'" by="order" reverse="reverse">LOGIN</th>
+                        <th th-orden order="'nombre'" by="order" reverse="reverse">TITLE</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in lideres.result | orderBy:order:reverse">
+                        <td data-title="login">{{registro.login}}</td>
+                        <td data-title="nombre">{{registro.nombre}} {{registro.apellido1}} {{registro.apellido2}}</td>
+                        <td><a style="cursor:pointer" ng-click="eliminarLider(registro.id)" onclick="return confirm('Confirma que desa que eliminar al lider?')" title="Eliminar"><i class="fas fa-trash-alt"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default" ng-hide="location === '/new'">
+            <div class="panel-heading">
+                <h3 class="panel-title">Actividades vigentes con esta entidad <span class="badge">{{actosAsociados.totalCount}}</span></h3>
+            </div>
+            <ul class="list-group overflow-y" style="height:164px;">
+                <li class="list-group-item" ng-repeat="acto in actosAsociados">
+                    <a target="_blank" title="Abrir en pestaña nueva" ng-href="/sede/servicio/cultura/evento/admin/acto/#/edit/{{acto.id}}">[{{acto.id}}] {{acto.title}}</a>
+                </li>
+            </ul>
+            <div class="form-group" ng-show="permisos.DEL">
+                <label class="col-sm-3 control-label" for="sustituirPorEntidad">Sustituir por entidad:</label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <autocompletado autocomplete="off" id="sustituirPorEntidad" modelo="sustituirPorEntidad" uri="/sede/servicio/cultura/evento/entidad" filtro="title" fiql="updated==true" check="selectEntidadOrganiza(sustituirPorEntidad);" placeholder="Buscar entidad organizadora para sustituir..."></autocompletado>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="sustituirEntidad(registro.id, sustituirPorEntidad.id)" ng-disabled="sustituirPorEntidad.id === undefined">
+                                Sustituir
+                            </button>
+                        </div>
+                    </div>
+                    {{sustituirPorEntidad.id}}
+                    {{sustituirPorEntidad.streetAddress}}
+                    {{sustituirPorEntidad.email}}
+                    {{sustituirPorEntidad.telephone}}
+                    {{sustituirPorEntidad.telephone2}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

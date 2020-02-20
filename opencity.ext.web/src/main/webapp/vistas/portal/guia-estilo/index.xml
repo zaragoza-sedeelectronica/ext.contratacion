@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Guía de estilo"
+                   description=""
+                   author="" last-modified="Thu Dec 23 00:00:00 CET 2010"
+                   keywords=""/>
+        <!--<link rel="manifest" href="//www.zaragoza.es/cont/vistas/portal/organizacion/manifest.json"/>-->
+        <style>
+            titulo-seccion {
+            line-height: 66px;
+            font-size: 42px;
+            }
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .panel-heading a:after {
+            float: left;
+            color: white;
+            background-color: #000;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 20px;
+            margin-right: 10px;
+            }
+
+            .panel-heading a.collapsed:after {
+            content: "\f105";
+            }
+
+            .panel-default>.panel-heading {
+            background-color: #fff;
+            border: 0;
+            }
+
+            .panel {
+            border: 0;
+            webkit-box-shadow: 0 0 0;
+            box-shadow: 0 0 0;
+            }
+
+            .panel-group .panel-heading+.panel-collapse>.panel-body {
+            border: 0;
+            }
+
+            .panel-body {
+            padding-left: 50px;
+            }
+
+            .panel-title>a {
+            color: #E81B16;
+            }
+
+            .panel-title>a:hover,
+            .panel-title>a:focus,
+            .panel-title>a:active {
+            text-decoration: none;
+            }
+
+            .panel-title h4 {
+            color: #E81B16;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right titulo-seccion">Guía de estilo</h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+
+                    <ul>
+                        <li>
+                            <a href="#cabeceras">Cabeceras</a>
+                            <ul>
+                                <li>Cabecera principal</li>
+                                <li>Cabecera de página</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#navegacion">Sistemas de Navegación</a>
+                            <ul>
+                                <li>Migas de pan</li>
+                                <li>Menú principal</li>
+                                <li>Menú de navegación interna</li>
+                                <li>Enlaces</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#contenido">Contenido</a>
+                        </li>
+                        <li>
+                            <a href="#formularios">Formularios</a>
+                            <ul>
+                                <li>Formulario de búsqueda</li>
+                                <li>Formulario de datos</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#pie">Pie de Página</a>
+                        </li>
+                        <li>
+                            <a href="#especiales">Elementos especiales</a>
+                            <ul>
+                                <li>Cabeceras</li>
+                                <li>Menús específicos</li>
+                                <li>Enlaces</li>
+                                <li>Contenido</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#fuentes">Fuentes</a>
+                        </li>
+                    </ul>
+
+                    <h2 id="cabeceras">Cabeceras</h2>
+                    <h3>Cabecera principal</h3>
+                    <p>Cabecera con fondo rojo e ilustración. Se configura en el archivo<code>_template.xml</code>.
+                    </p>
+                    <h5>Versión escritorio</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cabecera-principal-pc.png" class="img-responsive"/>
+                    <h5>Versión móvil</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cabecera-principal-movil.png" class="img-responsive"/>
+
+                    <h3>Cabeceras de página</h3>
+                    <h4>Cabecera básica</h4>
+                    <p>Fondo blanco y título H2 a la derecha en color #e83437 y small y barra separadora en negro.</p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cabecera-basica.png" class="img-responsive"/>
+
+                    <h2 id="navegacion">Sistemas de navegación</h2>
+                    <h3>Migas de pan</h3>
+                    <p>Menú migas de pan en cabecera principal. Desaparecen en móvil. Se configuran en el archivo<code>
+                        _template.xml</code>.
+                    </p>
+                    <p>Color: fondo #E81B16.</p>
+                    <p>Fuente: open-sans de 18px, minúsculas, color #ffffff.</p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/migas-de-pan.jpg" alt="Migas de pan"
+                         class="img-responsive"/>
+                    <h3>Menú principal</h3>
+                    <h4>
+                        Menú de navegación principal
+                    </h4>
+                    <p>Este es el menú por defecto. Se configura en el archivo<code>_template.xml</code>.
+                    </p>
+                    <h5>Versión escritorio</h5>
+
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-principal-pc.png" alt="menú principal1"
+                         class="img-responsive"/>
+                    <h5>Versión móvil</h5>
+
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-principal-movil.png" alt="menú principal1"
+                         class="img-responsive"/>
+                    <div class="panel-group" id="ac01">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac01"
+                                       href="#collapse1">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+ul#menu {
+border: 1px solid #CCC;
+font-weight: bold;
+margin-bottom: 1em;
+border-radius: 0 0 .5em .5em;
+}
+
+ul#menu .elemento {
+display: block;
+padding: 10px 15px;
+margin: 0;
+font-size: 1em;
+font-weight: bold;
+line-height: 1.42857143;
+}
+
+ul#menu h2 {
+background: #E81B16;
+color: white;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+&lt;nav role="navigation" class="container-fluid"&gt;
+&lt;ul class="list-unstyled row no-gutter text-center" id="menu"&gt;
+&lt;li class="col-xs-6 col-sm-2"&gt;&lt;a class="elemento"
+href="/sede/portal/normativa/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+&lt;li class="col-xs-6 col-sm-2"&gt;&lt;a class="elemento"
+href="/ciudad/gestionmunicipal/ayudasysubvenciones/plan-estrategico.htm"&gt;Presentación&lt;/a&gt;&lt;/li&gt;
+&lt;li class="col-xs-6 col-sm-2"&gt;&lt;a class="elemento"
+href="/ciudad/gestionmunicipal/ayudasysubvenciones/listadoSub_AyudasSubvenciones"&gt;Búsqueda
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>
+                        Menú de segundo nivel
+                    </h4>
+                    <p>Este menú se encuentra en algunas páginas de Participación.</p>
+                    <h5>
+                        Versión escritorio
+                    </h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-principal-2-pc.jpg" alt="menú principal2"
+                         class="img-responsive"/>
+                    <h5>
+                        Versión móvil
+                    </h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-principal-2-movil.jpg" alt="menú principal1"
+                         class="img-responsive"/>
+                    <div class="panel-group" id="ac03">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac03"
+                                       href="#collapse3">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+.menu-consejos li {
+padding: 0px;
+}
+
+.menu-consejos li a {
+margin-right: 0px;
+font-size: 28px;
+}
+
+.menu-consejos li.active a {
+border: 0px;
+color: #ffffff;
+background: #000000;
+}
+
+.menu-consejos li.active a:hover{
+border: 0px;
+}
+
+@media (max-width: 768px) {
+.menu-consejos li a {
+border-radius: 0 !important;
+border: 0 !important;
+}
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+&lt;div class="container-fluid"&gt;
+&lt;ul class="nav menu fnd-blanco radius menu-consejos" role="tablist"&gt;
+&lt;li role="presentation" class="col-sm-4 text-center"&gt;
+&lt;a href="/sede/portal/participacion-index/consejos/"
+style="border-radius: 10px 0 0 10px; border-right: solid 2px #000000;"&gt;Consejo
+de la
+Ciudad
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li role="presentation" class="col-sm-4 active text-center"&gt;
+&lt;a href="/sede/portal/participacion-index/consejos/consejos-sectoriales"
+style="border-radius: 0; border-right: solid 2px #000000;"&gt;Consejos
+Sectoriales
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li role="presentation" class="col-sm-4 text-center"&gt;
+&lt;a href="/sede/portal/participacion-index/consejos/grupos-trabajo"
+style="border-radius: 0 10px 10px 0;"&gt;Grupos de Trabajo
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Menú de navegación interna</h3>
+                    <h4>
+                        Menú en scroll
+                    </h4>
+                    <p>Este menú enlaza con puntos de ancla dentro de la misma página.</p>
+                    <h5>Versión escritorio</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-scroll-2-se-queda.jpg" alt="Menú en scroll 2"
+                         class="img-responsive"/>
+                    <h5>Versión móvil</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-scroll-movil.jpg"
+                         alt="Menú en scroll 2"
+                         class="img-responsive"/>
+                    <div class="panel-group" id="ac04">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac04"
+                                       href="#collapse4">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+.icono-zona {
+background-color: #E83437;
+height: 58px !important;
+width: 65px !important;
+border-radius: 10px 0 0 10px;
+padding: 0;
+margin-right: 0;
+}
+
+.menu-procesos {
+height: 58px;
+position: relative;
+color: #ffffff;
+background: #ffffff;
+border-radius: 0 10px 10px 0;
+margin-right: -60px;
+}
+
+.menu-procesos div {
+position: relative;
+width: 20%;
+padding: 0 20px;
+border-right: solid 1px #333333;
+height: 58px;
+}
+
+.menu-procesos div:last-child {
+border-right: 0px;
+}
+
+.menu-procesos div a {
+position: absolute;
+font-size: 16px;
+top: 50%;
+transform: translateY(-50%);
+}
+
+@media (min-width: 768px) {
+.menu-procesos {
+width: 452px;
+}
+}
+
+@media (min-width: 1200px) {
+.menu-procesos {
+width: 885px;
+}
+}
+
+.menu-procesos-movil li {
+background-color: #ffffff;
+text-align: center;
+padding: 20px;
+border-bottom: solid 2px #333333;
+font-size: 20px;
+}
+
+.menu-procesos-movil li:first-child {
+background-color: #000000;
+color: #ffffff;
+font-size: 24px;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+&lt;div class="visible-xs menu-procesos-movil"&gt;
+&lt;ul class="list-unstyled"&gt;
+&lt;li&gt;&lt;span class="fa fa-cogs" aria-hidden="true"&gt;&lt;/span&gt;
+Procesos
+Participativos&lt;/li&gt;
+&lt;li&gt;&lt;a href="#abiertos"&gt;Abiertos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2018"&gt;Cerrados año 2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2017"&gt;Cerrados año 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2016"&gt;Cerrados año 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#anteriores"&gt;Cerrados años anteriores&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="fnd-blanco radius lead nomargin hidden-xs"&gt;
+&lt;div class="pull-left icono-zona"&gt;
+&lt;img
+src="/cont/vistas/portal/participacion-index/img/ProcesosParticipativos/icono_accesoProcesosParticipativos.png"/&gt;
+&lt;/div&gt;
+&lt;div class="pull-left cuadro-negro"&gt;
+Procesos&lt;br /&gt;&lt;span&gt;Participativos&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="row pull-left menu-procesos"&gt;
+&lt;div class="pull-left"&gt;&lt;a href="#abiertos"&gt;Abiertos&lt;/a&gt;&lt;/div&gt;
+&lt;div class="pull-left"&gt;&lt;a href="#2018"&gt;Cerrados&lt;br/&gt;año 2018&lt;/a&gt;&lt;/div&gt;
+&lt;div class="pull-left"&gt;&lt;a href="#2017"&gt;Cerrados&lt;br/&gt;año 2017&lt;/a&gt;&lt;/div&gt;
+&lt;div class="pull-left"&gt;&lt;a href="#2016"&gt;Cerrados&lt;br/&gt;año 2016&lt;/a&gt;&lt;/div&gt;
+&lt;div class="pull-left"&gt;&lt;a href="#anteriores"&gt;Cerrados&lt;br/&gt;años
+anteriores&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>
+                        Menú de pestañas
+                    </h4>
+                    <p>Menú para la navegación en pestañas cargando contenido dentro de la misma página.</p>
+                    <h5>
+                        Versión escritorio
+                    </h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-pestanas-2-pc.jpg" class="img-responsive"/>
+                    <h5>
+                        Versión móvil
+                    </h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-pestana-2-movil.jpg" class="img-responsive"/>
+                    <div class="panel-group" id="ac05">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#5"
+                                       href="#collapse5">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+@media (min-width: 768px) {
+.nav-tabs>li {
+border-right: solid 2px #000000;
+margin-bottom: 10px;
+width: 16.6%;
+}
+}
+
+@media (max-width: 768px) {
+.nav-tabs>li {
+width: 100%;
+border-bottom: solid 2px #000000;
+padding: 5px;
+}
+}
+
+.nav-tabs>li:last-child {
+border-right: 0;
+}
+
+.nav-tabs>li>a {
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 5px;
+}
+
+.nav-tabs {
+border-bottom: solid 2px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+.tab-content {
+color: #000000;
+border: 0 !important;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+&lt;ul class="nav nav-tabs" role="tablist"&gt;
+&lt;li role="presentation" class="active"&gt;
+&lt;a href="#quees" aria-controls="quees" role="tab" data-toggle="tab"&gt;
+&lt;span class="fa fa-info-circle fa-lg"&gt;&lt;/span&gt;
+¿Qué es?
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;a href="#quien" aria-controls="quien" role="tab" data-toggle="tab"&gt;
+&lt;span class="fa fa-users fa-lg"&gt;&lt;/span&gt;
+Quién
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;a href="#documentacion" aria-controls="documentacion" role="tab"
+data-toggle="tab"&gt;
+&lt;span class="fa fa-file-alt fa-lg"&gt;&lt;/span&gt;
+Documentación
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;a href="#normativa" aria-controls="normativa" role="tab" data-toggle="tab"&gt;
+&lt;span class="fa fa-gavel fa-lg"&gt;&lt;/span&gt;
+Normativa
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;a href="#asamblea" aria-controls="asamblea" role="tab" data-toggle="tab"&gt;
+&lt;span class="fa fa-star fa-lg"&gt;&lt;/span&gt;
+Asamblea
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;a href="#agenda" aria-controls="agenda" role="tab" data-toggle="tab"&gt;
+&lt;span class="fa fa-calendar fa-lg"&gt;&lt;/span&gt;
+Agenda
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Enlaces</h3>
+                    <h4>Cuadro de foto con enlace</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cuadro-foto-enlace.jpg" class="img-responsive"/>
+                    <div class="panel-group" id="ac10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac10"
+                                       href="#collapse10">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse10" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+                                        .cuadro {
+                                        position: relative;
+                                        background-color: #cccccc;
+                                        border-radius: 10px;
+}
+
+                                        .img-rounded {
+                                        border-radius: 10px 10px 0 0 !important;
+}
+
+                                        .cuadro img {
+                                        padding-bottom: 0;
+                                        margin: 0px;
+}
+
+                                        .cuadro h3 {
+                                        background-color: rgba(0,0,0,0.7);
+                                        width: 100%;
+                                        text-align: center;
+                                        font-size: 16px;
+                                        padding: 10px;
+                                        margin-top: 0;
+                                        border-radius: 0px 0px 10px 10px;
+}
+
+                                        .cuadro h3 a {
+                                        color: #ffffff !important;
+                                        font-weight: bold;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+                                        &lt;div class="cuadro"&gt;
+                                        &lt;img
+                                        src="/cont/vistas/portal/participacion-index/img/procesos/imag_CiudadaniaDiversa.jpg"
+                                        class="img-rounded img-responsive"/&gt;
+                                        &lt;h3 class="text-center"&gt;&lt;a
+                                        href="/sede/portal/medioambiente/planinfraverde/"&gt;Una
+                                        Ciudadanía Diversa e Intercultural&lt;/a&gt;&lt;/h3&gt;
+                                        &lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Cuadro de icono con enlace</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cuadro-icono-enlace.jpg" class="img-responsive"/>
+                    <div class="panel-group" id="ac012">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac12"
+                                       href="#collapse12">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse12" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+                                        .radius {
+                                        border-radius: 10px;
+}
+                                        .otros-espacios div {
+                                        padding: 5px;
+                                        height: 175px;
+}
+                                        .otros-espacios p {
+                                        color: #000000;
+                                        font-weight: bold;
+                                        font-size: 16px;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+                                        &lt;ul class="row list-unstyled list-ogob otros-espacios"&gt;
+                                        &lt;li class="col-sm-2"&gt;
+                                        &lt;div class="text-center margin-t2em fnd-gris-claro radius"&gt;
+                                        &lt;a href="https://www.zaragoza.es/zac"&gt;
+                                        &lt;img
+                                        src="/cont/vistas/portal/participacion-index/img/Participacion/iconoredZAC.png"
+                                        style="margin-bottom: 10px;"/&gt;
+                                        &lt;p class=""&gt;Red Zac&lt;/p&gt;
+                                        &lt;/a&gt;
+                                        &lt;/div&gt;
+                                        &lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 id="contenido">Contenido</h2>
+                    <h3>Elementos para mostrar información</h3>
+                    <h4>Bloque de contenido</h4>
+                    <p>Es el bloque general donde se enmarcan los contenidos, es un cuadro de fondo blanco sobre gris
+                        claro con esquinas redondeadas.
+                    </p>
+                    <div class="panel-group" id="ac17">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac17"
+                                       href="#collapse17">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse17" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+                                        .fnd-blanco {
+                                        background-color: #ffffff;
+}
+
+                                        .radius {
+                                        border-radius: 10px;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+                                        &lt;div class="fnd-blanco radius col-xs-12"&gt;
+                                        &lt;div class="container-fluid"&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Tablas</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/tablas.jpg" class="img-responsive"/>
+                    <div class="panel-group" id="ac18">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac18"
+                                       href="#collapse18">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse18" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+                                        .tabla-bn {
+                                        border-collapse: separate;
+                                        border-spacing: 0px 10px;
+}
+
+                                        .tabla-bn td {
+                                        padding: 0 5px 5px 5px !important;
+                                        margin-bottom: 5px;
+                                        border-right: dotted 1px #000000;
+                                        border-top: 0px !important;
+                                        border-bottom: dotted 1px #000000;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+                                        &lt;table summary="Actividades plenarias" class="table table-responsive
+                                        tabla-bn"&gt;
+                                        &lt;tr&gt;
+                                        &lt;th class="col-md-4"&gt;Fechas&lt;/th&gt;
+                                        &lt;th class="col-md-4"&gt;Orden del día&lt;/th&gt;
+                                        &lt;th class="col-md-4"&gt;Acuerdos&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                        &lt;td headers="fecha" rowspan="1" colspan="1"&gt;&lt;span class="fa
+                                        fa-play-circle"&gt;&lt;/span&gt;
+                                        15/02/2017&lt;/td&gt;
+                                        &lt;td headers="dia" rowspan="1" colspan="1"&gt;&lt;span class="far fa-file-alt
+                                        fa-lg"&gt;&lt;/span&gt;
+                                        &lt;a href="/ciudad/tablon/detalle_Tablon?id=29703" shape="rect"&gt; Orden del
+                                        día&lt;/a&gt;
+                                        &lt;/td&gt;
+                                        &lt;td rowspan="1" colspan="1"&gt;&lt;span class="far fa-file-pdf fa-lg"&gt;&lt;/span&gt;
+                                        &lt;a
+                                        href="/cont/paginas/gestionmunicipal/tablon/actaconsejosectorialpich2017.pdf"
+                                        shape="rect"&gt;
+                                        Acta&lt;/a&gt;
+                                        &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;/table&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 id="formularios">Formularios</h2>
+                    <h3>Formulario de búsqueda</h3>
+                    <h4>Buscador en cabecera</h4>
+                    <p>Buscador integrado en la cabecera de la página, en la versión móvil se muestra solo el icono, apareciendo el formulario al pulsar en él.</p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/buscador-cabecera.png" class="img-responsive"/>
+                    <h4>Buscador pequeño</h4>
+
+                    <img src="/cont/vistas/portal/guia-estilo/img/buscador.png" class="img-responsive"/>
+                    <div class="panel-group" id="ac09">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac09"
+                                       href="#collapse9">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse9" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+.input-group .form-control,
+.input-group-addon {
+color: #fff;
+background-color: #000;
+border-radius: 20px;
+border: 0;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+&lt;div class="form-group col-md-3 pull-right"&gt;
+&lt;div class="input-group"&gt;
+&lt;input type="text" class="form-control" placeholder="Buscar"/&gt;
+&lt;div class="input-group-addon"&gt;&lt;i class="fas fa-search"&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Buscador de Agenda Institucional</h4>
+                    <p></p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/buscador-agenda.png" class="img-responsive"/>
+                    <h4>Buscador de Perfil del Contratante</h4>
+                    <p></p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/buscador-contratante.png" class="img-responsive"/>
+                    <h3>Formulario de datos</h3>
+                    <h2 id="pie">Pie de página</h2>
+                    <p>El pie de página tiene fondo gris claro #E9E9E9 con enlaces en color #D01715.</p>
+                    <h5>Versión escritorio</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/pie-pc.png" class="img-responsive"/>
+                    <h5>Versión móvil</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/pie-movil.png" class="img-responsive"/>
+
+                    <h2 id="especiales">Elementos especiales</h2>
+
+                    <h3>Cabeceras</h3>
+
+                    <h4>Cabecera de Participación</h4>
+                    <p>Contiene un menú de navegación integrado, la imagen de la derecha desaparece en versión móvil.
+                    </p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cabecera-participacion.png" class="img-responsive"/>
+                    <h4>Cabecera de páginas dentro de Participación</h4>
+                    <p>Cabecera con ilustración y título a la derecha.</p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cabecera-procesos.png" class="img-responsive"/>
+
+                    <h4>Cabecera de páginas dentro de Organización</h4>
+                    <p>Contiene un menú de selección de contenido.</p>
+                    <h5>Versión escritorio</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cabecera-organizacion.png" class="img-responsive"/>
+                    <h5>Versión móvil</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cabecera-organizacion-movil.png"
+                         class="img-responsive"/>
+
+                    <h4>Sistemas de navegación específicos</h4>
+
+                    <h4>Menú en cabecera de Participación</h4>
+                    <p>Este menú se encuentra en la cabecera de Participación.</p>
+                    <h5>Versión escritorio</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-cabecera-pc.jpg" class="img-responsive"/>
+                    <h5>Versión móvil</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-cabecera-movil.jpg" class="img-responsive"/>
+                    <div class="panel-group" id="ac02">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac02"
+                                       href="#collapse2">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+                                        @media (min-width: 768px) {
+                                        .border-left-2 {
+                                        border-left: 1px solid #eaeaea;
+                                        text-transform: uppercase;
+                                        padding-left: 0px;
+                                        padding-right: 0px;
+                                        min-height: 150px;
+}
+                                        }
+                                        .participacion {
+                                        background-image:
+                                        url('/cont/vistas/portal/participacion-index/img/Participacion/imagCabecera_participacion.jpg');
+                                        min-height: 150px;
+                                        background-size: contain;
+                                        background-position: center center;
+                                        background-repeat: no-repeat;
+                                        }
+
+                                        .participacion h2 {
+                                        margin: 0;
+                                        padding-left: 50px;
+                                        color: #D01715;
+                                        text-align: center;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+                                        &lt;div class=""&gt;
+                                        &lt;div class="container-fluid text-left margin-auto nomargin"&gt;
+                                        &lt;div class="row"&gt;
+                                        &lt;div class="col-sm-6"&gt;
+                                        &lt;div class="col-xs-6 col-sm-3 text-center border-left-2"&gt;
+                                        &lt;a href="/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing"&gt;
+                                        &lt;img
+                                        src="/cont/vistas/portal/participacion-index/img/Participacion/icono_quejasYsugerencias.png"/&gt;
+                                        &lt;p class="titulo-negro"&gt;Quejas y Sugerencias&lt;/p&gt;
+                                        &lt;/a&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class="col-xs-6 col-sm-3 text-center border-left-2"&gt;
+                                        &lt;a href="/sede/portal/participacion-index/consejos/"&gt;
+                                        &lt;img
+                                        src="/cont/vistas/portal/participacion-index/img/Participacion/icono_consejodelaCiudad.png"/&gt;
+                                        &lt;p class="titulo-negro"&gt;Consejo de la Ciudad&lt;/p&gt;
+                                        &lt;/a&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class="col-xs-6 col-sm-3 text-center border-left-2"&gt;
+                                        &lt;a href="/sede/servicio/presupuestos-participativos/" class=""&gt;
+                                        &lt;img
+                                        src="/cont/vistas/portal/participacion-index/img/Participacion/icono_presupuestosParticipativos.png"/&gt;
+                                        &lt;p class="titulo-negro"&gt;Presupuestos Participativos&lt;/p&gt;
+                                        &lt;/a&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class="col-xs-6 col-sm-3 text-center border-left-2 border-right-2"&gt;
+                                        &lt;a href="/sede/portal/consulta-publica/"&gt;
+                                        &lt;img
+                                        src="/cont/vistas/portal/participacion-index/img/Participacion/icono_encuestas.png"/&gt;
+                                        &lt;p class="titulo-negro"&gt;Consulta Pública&lt;/p&gt;
+                                        &lt;/a&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class="col-sm-6 hidden-xs"&gt;
+                                        &lt;div class="participacion"&gt;
+                                        &lt;h2&gt;Participación&lt;/h2&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Menú de navegación principal en Organización</h4>
+                    <p>Este menú se encuentra en la página de organización, tiene aspecto de navegación de pestañas pero
+                        es de navegación entre diferentes páginas.
+                    </p>
+                    <h5>Versión escritorio</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-pestanas-organizacion.png" alt="menú principal2"
+                         class="img-responsive"/>
+                    <h5>Versión móvil</h5>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-pestanas-organizacion-movil.png"
+                         alt="menú principal2"
+                         class="img-responsive"/>
+
+                    <h4>Menú de navegación por pestañas (pleno)</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/menu-pestanas-pleno.png" class="img-responsive"/>
+                    <div class="panel-group" id="ac07">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac07"
+                                       href="#collapse7">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+                                        .botones {
+                                        height: 150px;
+}
+
+                                        .botones>li {
+width: 100%;
+                                        padding: 5px;
+                                        margin: 5px;
+                                        background-color: #E81B16;
+                                        border: 0px;
+                                        border-radius: 20px;
+                                        float: left;
+text-align: center;
+}
+
+                                        .botones>li>a {
+                                        display: block;
+                                        width: 100%;
+                                        color: #ffffff;
+                                        text-decoration: none;
+}
+
+                                        .botones>li:hover {
+                                        background-color: #e83437;
+                                        }
+
+                                        .botones>li.active,
+                                        .botones>li.active:hover {
+                                        background-color: #000;
+                                        }
+
+                                        @media (min-width: 768px) and (max-width: 991px) {
+                                        .botones {
+                                        font-size: 10px;;
+                                        }
+                                        .botones .pull-right {
+                                        margin-right: 8px;
+                                        }
+                                        }
+
+                                        @media (max-width: 767px) {
+                                        .botones .pull-right {
+                                        margin-right: -5px !important;
+                                        }
+                                        }
+
+                                        @media (min-width: 768px) {
+                                        .botones {
+                                        height: auto;
+                                        }
+                                        .botones>li {
+                                        width: calc( 50% - 12px);
+                                        }
+
+                                        .botones .pull-right {
+                                        margin-right: 8px;
+                                        }
+                                        }
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+                                        &lt;ul class="botones list-unstyled" role="tablist"&gt;
+                                        &lt;li class="active"&gt;
+                                        &lt;a href="#corporacion" aria-controls="corporacion" role="tab"
+                                        data-toggle="tab"&gt;LA CORPORACIÓN
+                                        &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;li&gt;
+                                        &lt;a class="" href="#sesiones" aria-controls="sesiones" role="tab"
+                                        data-toggle="tab"&gt;SESIONES PLENARIAS
+                                        &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;li&gt;
+                                        &lt;a class="" href="http://www.zaragoza.es/sede/servicio/agenda-institucional/"&gt;AGENDA
+                                        ABIERTA
+                                        &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;li&gt;
+                                        &lt;a class="" href="#comisiones" aria-controls="comisiones" role="tab"
+                                        data-toggle="tab"&gt;COMISIONES PLENARIAS
+                                        &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class="pull-right"&gt;
+                                        &lt;a class="" href="#directo" aria-controls="directo" role="tab"
+                                        data-toggle="tab"&gt;RETRANSMISIÓN EN DIRECTO
+                                        &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Enlaces</h3>
+
+                    <h4>Cuadro de foto con enlace (Pleno)</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/enlace-foto-pleno.png" class="img-responsive"/>
+                    <div class="panel-group" id="ac11">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac11"
+                                       href="#collapse11">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse11" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+.composicion .col-xs-6.col-md-4.col-lg-3{
+padding: 0;
+}
+
+.composicion .col-sm-6 {
+padding: 5px;
+}
+
+.composicion .col-sm-6 img {
+border-radius: 6px 0 6px 0;
+}
+
+.composicion .col-sm-6 a {
+position: absolute;
+width: calc(100% - 10px);
+background-color: rgba(0,0,0,0.5);
+color: #ffffff;
+bottom: 5px;
+padding: 10px;
+border-radius: 0 0 6px 0;
+line-height: 16px;
+height: 100px;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+&lt;div class="composicion"&gt;
+&lt;div class="col-xs-6 col-md-4 col-lg-3"&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;img class="img-responsive"
+src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/Zec_Pedro_Santiesteve.jpg"
+width="680" alt="Pedro Santisteve Roche"/&gt;
+&lt;a href="/sede/portal/organizacion-index/alcalde/"&gt;
+&lt;strong&gt;D. Pedro Santiesteve Roche&lt;/strong&gt;
+(ZEC)
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Acceso a portales</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/acceso-portales.jpg" class="img-responsive"/>
+                    <div class="panel-group" id="ac13">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac13"
+                                       href="#collapse13">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse13" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+.acceso-portal {
+background-color: #E9E9E9;
+background-position: center center;
+background-size: cover;
+background-repeat: no-repeat;
+border-radius: 10px;
+padding: 5px;
+margin-bottom: 20px;
+}
+
+.procesos-part {
+background-image:
+url('/cont/vistas/portal/participacion-index/img/Participacion/accesoPortal_PresupuestosParticipativos.jpg');
+}
+
+.acceso-portal div {
+background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(204,204,204,1));
+padding: 5px;
+border-radius: 10px;
+}
+
+.acceso-portal {
+padding: 0;
+}
+
+.acceso-portal a {
+color: #333333;
+font-size: 20px;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+&lt;div class="col-xs-12 col-sm-4 pull-left margin-t1em acceso-portal
+procesos-part text-right"&gt;
+&lt;div&gt;
+&lt;a class=""
+href="/sede/portal/participacion-index/procesos-participativos/"&gt;acceso al
+portal
+&lt;br/&gt;
+&lt;strong&gt;Procesos Participativos&lt;/strong&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Enlace con icono en rojo y texto negro</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/enlace-icono-rojo.png" class="img-responsive"/>
+                    <div class="panel-group" id="ac14">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="14"
+                                       href="#collapse14">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse14" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+.btn-rn {
+position: relative;
+margin: 30px 0 0 0;
+padding: 0;
+}
+
+.btn-rn a {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+color: #ffffff;
+font-size: 24px;
+line-height: 24px;
+}
+
+.btn-rn .cuadro-negro {
+width: 180px;
+}
+
+.btn-rn .icono-zona {
+padding: 10px;
+}
+
+@media (max-width: 767px) {
+.btn-rn .cuadro-negro {
+width: 215px;
+margin-right: 40px;
+}
+
+.btn-rn {
+position: relative;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+&lt;div class="pull-right col-sm-3 btn-rn"&gt;
+&lt;div class="pull-right cuadro-negro borde-d"&gt;
+&lt;a href="/sede/servicio/mapa-colaborativo/" class=""&gt;Mapas&lt;br/&gt;colaborativos&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pull-right icono-zona"&gt;
+&lt;img
+src="/cont/vistas/portal/participacion-index/img/Participacion/icono_mapasColaborativos.png"
+class="img-responsive"/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Link con icono redondo en color</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/enlace-icono-redondo.jpg" class="img-responsive"/>
+                    <div class="panel-group" id="ac15">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac15"
+                                       href="#collapse15">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse15" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+.link-pildora {
+margin-bottom: 20px;
+position: relative;
+background-color: #e9e9e9;
+min-height: 100px;
+border-radius: 50px;
+}
+
+.link-pildora h3 {
+margin-top: 36px;
+margin-left: 100px;
+margin-right: 25px;
+font-size: 24px;
+}
+
+.link-pildora img {
+position: absolute;
+left: 0;
+}
+
+@media (min-width: 768px) {
+.link-pildora {
+width: 24%;
+margin: 20px .5%;
+}
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+&lt;div class="col-sm-3 link-pildora"&gt;
+&lt;img src="/cont/vistas/portal/slidewiki/img/circulo.png"/&gt;
+&lt;h3 class="text-center"&gt;Formación&lt;/h3&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Enlace a sección de participación</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/enlace-seccion-participacion.jpg"
+                         class="img-responsive"/>
+                    <div class="panel-group" id="ac16">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac16"
+                                       href="#collapse16">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse16" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre>
+.enlace p {
+color: #333333;
+font-size: 30px;
+line-height: 28px;
+width: 100%;
+}
+
+@media (min-width: 768px) {
+.enlace div.col-sm-8 {
+position: relative;
+}
+
+.enlace p{
+position: absolute;
+color: #333333;
+font-size: 30px;
+line-height: 28px;
+width: 100%;
+padding-right: 30px;
+top: 8px;
+}
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre>
+&lt;div class="fnd-blanco clearfix padding-h1em radius"&gt;
+&lt;a class="full enlace" href="/sede/portal/participacion-index/en-tu-barrio"&gt;
+&lt;div class="row"&gt;
+&lt;div class="col-xs-12 col-sm-4"&gt;
+&lt;img class="pull-left"
+src="/cont/vistas/portal/participacion-index/img/en-tu-barrio.png"
+alt=""/&gt;
+&lt;/div&gt;
+&lt;div class="col-xs-12 col-sm-8"&gt;
+&lt;p class="lead padding-t1em text-right"&gt;en tu barrio&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Contenido</h3>
+
+                    <h4>Cuadro de foto y texto vertical sin marco</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cuadro-foto-texto-vertical.jpg"
+                         class="img-responsive"/>
+                    <div class="panel-group" id="ac19">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac19"
+                                       href="#collapse19">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse19" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+.cuadro-v {
+position: relative;
+}
+
+.cuadro-v img {
+padding-bottom: 0;
+border-radius: 5px 5px 0 0;
+}
+
+.cuadro-v div {
+height: 145px;
+margin-top: 0;
+background-color: #e9e9e9;
+padding: 10px;
+border-radius: 0px 0px 5px 5px;
+}
+
+.cuadro-v h3 {
+font-size: 22px;
+}
+
+.cuadro-v h3 a {
+color: #E83437 !important;
+font-weight: bold;
+}
+
+@media (max-width: 767px) {
+.cuadro-v {
+margin-top: 30px;
+}
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+&lt;div class="col-sm-3 cuadro-v"&gt;
+&lt;img src="https://dummyimage.com/1140x600/ffe9e9/000000"
+class="img-responsive"/&gt;
+&lt;div&gt;
+&lt;h3&gt;Sin ti no hay plan&lt;/h3&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida,
+est ac
+convallis
+laoreet.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Cuadro de foto con texto horizontal (En móvil sustituir por vertical)</h4>
+                    <img src="/cont/vistas/portal/guia-estilo/img/cuadro-foto-texto-horizontal.jpg"
+                         class="img-responsive"/>
+                    <div class="panel-group" id="ac20">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac20"
+                                       href="#collapse20">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse20" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+.cuadro-h {
+height: 248px;
+background: #e9e9e9;
+border-radius: 5px;
+width: 100%;
+padding-left: 0;
+padding-right: 0;
+margin-bottom: 30px;
+}
+
+.cuadro-h img {
+padding-bottom: 0;
+border-radius: 5px 0 0 5px;
+padding-left: 0 !important;
+
+.cuadro-h div {
+padding-left: 15px !important;
+}
+
+.cuadro-h h3 {
+font-size: 22px;
+padding: 20px;
+}
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+&lt;div class="cuadro-h"&gt;
+&lt;img src="https://dummyimage.com/500x500/ffe9e9/000000" class="img-responsive
+col-sm-6"/&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;h3&gt;Plataforma de Gobierno Abierto Zaragoza.es&lt;/h3&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida,
+est ac
+convallis
+laoreet.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Acordeón</h4>
+                    <p>Este elemento deplega el contenido al pulsar sobre el título de la sección, recogiendo el
+                        contenido que esté abierto en ese momento.
+                    </p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/acordeon.png" class="img-responsive"/>
+                    <div class="panel-group" id="ac08">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#ac08"
+                                       href="#collapse8">
+                                        Código
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse8" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h5>CSS</h5>
+                                    <pre data-lang="css">
+                                        .panel-heading a:after {
+                                        float: left;
+                                        color: white;
+                                        background-color: #000;
+                                        width: 20px;
+                                        height: 20px;
+                                        text-align: center;
+                                        line-height: 20px;
+                                        border-radius: 20px;
+                                        margin-right: 10px;
+                                        }
+
+                                        .panel-heading a.collapsed:after {
+                                        content: "\f105";
+                                        }
+
+                                        .panel-default>.panel-heading {
+                                        background-color: #fff;
+                                        border: 0;
+                                        }
+
+                                        .panel {
+                                        border: 0;
+                                        webkit-box-shadow: 0 0 0;
+                                        box-shadow: 0 0 0;
+                                        }
+
+                                        .panel-group .panel-heading+.panel-collapse>.panel-body {
+                                        border: 0;
+                                        }
+
+                                        .panel-body {
+                                        padding-left: 50px;
+                                        }
+
+                                        .panel-title>a {
+                                        color: #E81B16;
+                                        }
+
+                                        .panel-title>a:hover,
+                                        .panel-title>a:focus,
+                                        .panel-title>a:active {
+                                        text-decoration: none;
+                                        }
+
+                                        .panel-title h4 {
+                                        color: #E81B16;
+                                        }
+                                    </pre>
+                                    <h5>HTML</h5>
+                                    <pre data-lang="html">
+                                        &lt;div class="panel-group" id="accordion"&gt;
+                                        &lt;div class="panel panel-default"&gt;
+                                        &lt;div class="panel-heading"&gt;
+                                        &lt;h4 class="panel-title"&gt;
+                                        &lt;a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                        href="#collapse1"&gt;
+                                        &lt;small&gt;COMPOSICIÓN COMISIONES PLENARIAS |&lt;/small&gt;
+                                        PRESIDENCIA Y PARTICIPACIÓN
+                                        &lt;/a&gt;
+                                        &lt;/h4&gt;
+                                        &lt;/div&gt;
+                                        &lt;div id="collapse1" class="panel-collapse collapse"&gt;
+                                        &lt;div class="panel-body"&gt;
+                                        &lt;ul&gt;
+                                        &lt;li&gt;&lt;strong&gt;Presidenta&lt;/strong&gt;: Dª. Elena Giner Monge.
+                                        &lt;/li&gt;
+                                        &lt;li&gt;&lt;strong&gt;Vicepresidenta&lt;/strong&gt;: Dª. Luisa Broto Bernués.
+                                        &lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class="panel panel-default"&gt;
+                                        &lt;div class="panel-heading"&gt;
+                                        &lt;h4 class="panel-title"&gt;
+                                        &lt;a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                        href="#collapse2"&gt;
+                                        &lt;small&gt;COMPOSICIÓN COMISIONES PLENARIAS |&lt;/small&gt;
+                                        URBANISMO Y SOSTENIBILIDAD
+                                        &lt;/a&gt;
+                                        &lt;/h4&gt;
+                                        &lt;/div&gt;
+                                        &lt;div id="collapse2" class="panel-collapse collapse"&gt;
+                                        &lt;div class="panel-body"&gt;
+                                        &lt;ul&gt;
+                                        &lt;li&gt;&lt;strong&gt;Presidente&lt;/strong&gt;: D. Pablo Muñoz San Pío.
+                                        &lt;/li&gt;
+                                        &lt;li&gt;&lt;strong&gt;Vicepresidenta&lt;/strong&gt;: Dª. Teresa Ana Artigas
+                                        Sanz.
+                                        &lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Fuentes</h2>
+
+                    <p>Fuente: Open Sans</p>
+                    <h3 id="titulos">Títulos</h3>
+                    <h4>Título de bloque</h4>
+                    <p>Título al comienzo de cada bloque de contenido.</p>
+                    <img src="/cont/vistas/portal/guia-estilo/img/titulo-bloque.png" class="img-responsive"/>
+                    <h5>CSS</h5>
+                    <pre data-lang="css">
+.titulo-seccion {
+line-height: 66px;
+font-size: 42px;
+}
+                    </pre>
+                    <h5>HTML</h5>
+                    <pre data-lang="html">
+&lt;h2 class="text-right titulo-seccion"&gt;
+&lt;strong&gt;últimos&lt;/strong&gt;
+procesos participativos
+&lt;/h2&gt;
+                    </pre>
+
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Proceso participativo para la elaboración del Plan de Diversidad Cultural de Zaragoza" 
+               description="Procesos de Participación y Colaboración en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, es un sitio donde la ciudadanía puede participar y colaborar en el futuro Plan Municipal para una Ciudadanía Diversa e Intercultural." 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, colaboración,  proceso participativo, protección de las minorías, identidad cultural, interculturalidad, city, council, Saragossa, electronic site, local government, open government, citizen-authority relations, social participation, collaboration, participatory process, protection of minorities, cultural identity, interculturality">
+    </sede:meta>
+    <style type="text/css">
+.border-color-noticias {
+    border-color: #007500;
+}
+.color-noticias {
+  color: #007500;
+}
+h1 {
+   font-size: 30px;
+}
+
+
+<!--/*h4 {
+  margin-top: 25px;
+  font-size: 1.75em;   /* 2em = 2 x 10px = 20px */
+}*/-->
+
+h5 {
+  margin-top: 25px;
+  font-size: 1.4em;   /* 2em = 2 x 10px = 20px */
+}
+
+.importante {
+  padding-top: 3.5em;
+  font-size: 1.25em;   /* 2em = 2 x 10px = 20px */
+  color: #045FB4 !important;
+}
+
+.cabecera {
+	background-color: #4B088A;
+	color: #FFFFFF !important;
+
+}
+
+.azul {	  
+	background-color: #0489B1;
+	color: #FFFFFF !important;
+}
+
+.color-uno {
+	color: #c4242e !important;
+}
+
+.color-dos {
+	color: #e7b136 !important;
+}
+
+.color-tres {
+	color: #8a2662 !important;
+}
+
+.color-cuatro {
+	color: #3e6840 !important;
+}
+
+.color-cinco {
+	color: #4673b2 !important;
+}
+
+.color-seis {
+	color: #5a3e22 !important;
+}
+
+</style>
+</head>
+
+<body>
+    <sede:content container="false">
+	 	<div class="text-center" style="margin-top:-10px;">
+            <img class="img-responsive margin-auto" style="width:100%; " src="/cont/vistas/portal/derechos-sociales/diversidad-cultural/img/cabecera-1300x230-v2.png" alt="" />
+        </div>
+        <div><p></p></div>
+		<div class="container-fluid">
+			<h2>Proceso participativo</h2>
+			<ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+            <li role="tab">
+                <a aria-controls="inicio" data-toggle="tab" href="#inicio" role="tab"><span class="fa fa-info-circle" aria-hidden="true"></span> Inicio</a>
+            </li>
+           
+           <li role="tab">
+                <a aria-controls="fases" data-toggle="tab" href="#fases" role="tab"><span class="fa fa-cogs" aria-hidden="true"></span> Fases</a>
+            </li>
+
+              <li role="tab">
+                <a aria-controls="calendar" data-toggle="tab" href="#calendar" role="tab"><span class="fa fa-calendar" aria-hidden="true"></span> Calendario</a>
+            </li>
+            <!--/*<li role="tab">
+                <a aria-controls="proceso" data-toggle="tab" href="#proceso" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Participación</a>
+            </li>*/-->            
+            <li role="tab">
+                <a aria-controls="doc" data-toggle="tab" href="#doc" role="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Documentación</a>
+            </li>
+   	        </ul>
+
+
+
+        <div sede:class="tab-content">
+            <h2 class="tab-title" aria-expanded="false" data-target="#inicio" data-toggle="collapse"> Inicio</h2>
+            <div id="inicio" role="tabpanel" sede:class="tab-pane active">
+
+            <div class="row text-left">
+			
+				<div class="col-md-3 text-center margin-b1em margin-t1em color-uno">
+					<span class="fas fa-10x fa-info-circle"></span>
+					</div>
+<div class="col-md-9">
+<p>En 2017, a solicitud de la Plataforma Ciudadana Contra el Racismo, nos comprometimos a dibujar un nuevo plan para la interculturalidad, que se ratificó en Pleno en el último diciembre por medio de una Moción aprobada por unanimidad.</p>
+<p>Un grupo motor formado por representantes de la Plataforma Ciudadana Contra el Racismo, la Junta Gestora de la Casa de las Culturas y otros técnicos municipales ha venido trabajando el último año para avanzar los documentos sobre los que vamos a trabajar.</p>
+<p>Un vea concluída la Fase de Consulta y Deliberación, el grupo motor y el equipo técnico municipal proceden a realizar una <strong>revisión, sistematización y valoración de las aportaciones generadas</strong>.</p>
+<ul class="list-unstyled list-inline margin-v05em">
+			<li><a href="#calendar" class="btn btn-primary btn-sm">CONSULTA LAS ACTAS DE LOS TALLERES PARTICIPATIVOS</a></li>
+</ul>
+
+<!--/*<p>Una vez concluido el diagnóstico, que nos da una visión de la situación actual y los retos a venir, os invitamos a participar en la definición de nuestro futuro <strong>Plan Municipal para una Ciudadanía Diversa e Intercultural</strong>. 
+</p>
+<div class="alert alert-info">
+<p>Puedes participar de forma presencial a través de los <strong>4 talleres participativos</strong>, dos de ellos dirigidos a agentes sociales y ciudadanía y los otros dos a técnicos/as municipales. Consulta la <a href="#calendar">calendario de sesiones</a> para conocer las fechas y lugares de celebración de estas sesiones. Utiliza este formulario para inscribirte en los talleres. </p>
+<ul class="list-unstyled list-inline margin-v05em">
+			<li><a href="http://www.zaragoza.es/sede/servicio/formulario/321" class="btn btn-primary btn-sm">FORMULARIO DE INSCRIPCIÓN</a></li>
+</ul>
+<hr class="sm" />
+<p>De forma paralela, se podrán realizar aportaciones vía web a través del siguiente formulario. Para poder participar es necesario estar dado de alta en la <strong>Plataforma de Gobierno Abierto</strong>. En la parte inferor del <strong>Formulario de participación online</strong> encontrarás el enlace para identificarte (si estás dado de alta) o crear una nueva cuenta. La fecha de finalización del proceso online es el 22 de noviembre.</p>
+<ul class="list-unstyled list-inline text-left margin-v05em">
+			<li><a href="https://www.zaragoza.es/sede/servicio/propuesta/609" class="btn btn-primary btn-sm">PARTICIPA EN EL DEBATE CON TUS APORTACIONES</a></li>
+</ul>
+
+</div>*/-->
+</div>
+
+<div class="col-md-4">
+
+</div>	
+</div>
+
+	    </div>   
+
+            <h2 class="tab-title" aria-expanded="false" data-target="#inicio" data-toggle="collapse"> Fases</h2>
+            <div id="fases" role="tabpanel" sede:class="tab-pane active">
+
+               <div class="row">
+               <div class="col-sm-3 text-center margin-t2em">
+							<img class="img-responsive margin-auto" style="width:50%; " src="/cont/vistas/portal/derechos-sociales/diversidad-cultural/img/iconillo-02.png" alt="" />				   				   
+                            <!--/*<span class="fa fa-4x fa-search-plus color-dos" aria-hidden="true"></span>*/-->
+                </div>
+                <div class="col-sm-9 margin-t05em">
+					<h3 class="color-dos">Fase 1. Información <!--/*Investigación y diagnóstico<br/><small>julio y agosto 2018</small>*/--></h3>
+                				<hr class="sm" /> 
+<p>Los objetivos de esta fase consisten en dar a conocer el proceso al mayor número de
+personas interesadas posible, así como el marco de referencia establecido para el debate y y
+el borrador del Plan de Diversidad Cultural.</p>
+<p>Para ello se realizarán las acciones de difusión oportunas, así como la organización de una
+sesión informativa dirigida a la población en general, en donde se presentará el diagnóstico
+y el borrador del Plan así como el proceso de información y consulta previsto.</p>
+							
+				</div>
+				</div>
+
+               <div class="row">
+               <div class="col-sm-3 text-center margin-t2em">
+                             <!--/*<span class="fa fa-4x fa-comments color-tres" aria-hidden="true"></span>*/-->
+							<img class="img-responsive margin-auto" style="width:50%; " src="/cont/vistas/portal/derechos-sociales/diversidad-cultural/img/iconillo-03.png" alt="" />				   				   
+
+                </div>
+                <div class="col-sm-9 margin-t05em">
+					<h3 class="color-tres">Fase 2. Consulta y deliberación</h3>
+                	<hr class="sm" />
+                	 
+					<h4 class="color-tres">Presencial <!--/*<br/><small>sepetiembre y octubre 2018</small>*/--></h4>
+
+<p>El objetivo de esta fase consiste en abrir un espacio para contrastar, con los diferentes
+actores implicados, el documento borrador del Plan de Diversidad Cultural. Para ello, se
+desarrollarán, 4 talleres participativos, dos de ellos dirigidos a agentes sociales y ciudadanía
+y los otros dos a técnicos/as municipales</p>
+<ul><li>Taller 1 sobre Retos y objetivos. Agentes sociales</li><li>
+Taller 2. Sobre medidas de acción Agentes sociales</li><li>
+Taller 1 sobre Retos y objetivos Técnicos/as municipales</li><li>
+Taller 2 Sobre medidas de acción Técnicos/as municipales.
+</li></ul>
+<p>Las fechas y horarios se pueden consultar en el <a href="#calendar">calendario de sesiones</a>.</p>
+<ul class="list-unstyled list-inline text-left margin-t1em">
+			<li><a href="http://www.zaragoza.es/sede/servicio/formulario/321" class="btn btn-primary btn-sm">FORMULARIO DE INSCRIPCIÓN</a></li>
+</ul>
+                	<hr class="sm" />
+					<h4 class="color-tres">Digital<!--/*<br/><small>sepetiembre y octubre 2018</small>*/--></h4>
+<p>De forma paralela, se podrán realizar aportaciones vía web a través del siguiente formulario entre el <strong>23 de octubre y el 22 de noviembre</strong>.</p>
+<ul class="list-unstyled list-inline text-left">
+			<li><a href="https://www.zaragoza.es/sede/servicio/propuesta/609" class="btn btn-primary btn-sm">PARTICIPA EN EL DEBATE CON TUS APORTACIONES</a></li>
+</ul>
+				</div>
+				</div>
+				
+
+               <div class="row">
+               <div class="col-sm-3 text-center margin-t2em">
+                             <!--/*<span class="fa fa-4x fa-glasses color-cuatro" aria-hidden="true"></span>*/-->
+							<img class="img-responsive margin-auto" style="width:50%; " src="/cont/vistas/portal/derechos-sociales/diversidad-cultural/img/iconillo-04.png" alt="" />				   				   
+
+                </div>				
+                <div class="col-sm-9 margin-t05em">
+					<h3 class="color-cuatro">Fase 3. Contraste, revisión técnica y valoración de las aportaciones</h3>
+                	<hr class="sm" /> 										
+					
+<p>Durante esta fase se sistematizarán y valorarán por el grupo motor y el equipo técnico
+municipal las aportaciones generadas en el proceso, tanto en los talleres participativos
+como las recibidas a través del formulario de aportaciones o del correo electrónico.</p>
+
+				</div>
+				</div>
+
+               <div class="row">
+               <div class="col-sm-3 text-center margin-t2em">
+							<img class="img-responsive margin-auto" style="width:50%; " src="/cont/vistas/portal/derechos-sociales/diversidad-cultural/img/iconillo-01.png" alt="" />				   
+                             <!--/*<span class="fa fa-4x fa-undo-alt color-cinco" aria-hidden="true"></span>*/-->
+                </div>	
+			
+                <div class="col-sm-9 margin-t05em">
+					<h3 class="color-cinco">Fase 4. Retorno</h3>
+					                	<hr class="sm" /> 	
+								<p>En esta fase se dará cuenta a las personas participantes sobre el grado de impacto,
+aceptación e incorporación al Plan de Diversidad cultural que han tenido las propuestas
+generadas a lo largo del proceso. También se hará una difusión a la ciudadanía sobre los
+resultados del proceso.</p>
+				</div>
+				</div>
+
+                </div>
+
+
+
+
+
+
+
+          <h2 class="tab-title" aria-expanded="false" data-target="#proceso" data-toggle="collapse"> Proceso Participativo</h2>
+          <div role="tabpanel" sede:class="tab-pane active" id="proceso">
+			 <div class="row">
+				 <div class="col-md-6">
+				<h3>Proceso participativo</h3>                    <hr class="sm" />
+            <p>A través de este apartado queremos conocer tus observaciones y propuestas al <strong>Plan Municipal de Ciudadanía Diversa e Intercultural</strong>.</p>
+            <p>Con el objetivo de que dichas aportaciones tengan una mayor incidencia, es recomendable que sigan la <a href="/contenidos/derechosociales/diversidad-cultural/Plan-Ejes-retos-a.pdf" class="pdf">estructura del Borrador del Plan</a> y que hagas referencia al <a href="/contenidos/derechosociales/diversidad-cultural/Plan-Ejes-Retos-Objetivos.odt">eje, número de reto, número de objetivo y/o número de medida</a> al que hagan referencia.</p>
+</div>
+
+ <div class="col-md-6">
+<h3>Participa</h3>
+<hr class="sm" />
+	
+<div class="col-md-12">
+	
+	<div class="alert alert-info">
+	Para poder participar es necesario estar dado de alta en la <strong>Plataforma de Gobierno Abierto</strong>. En la parte inferor del <strong>Formulario de participación</strong> 
+	encontrarás el enlace para identificarte (si estás dado de alta) o crear una nueva cuenta. La fecha de finalización del proceso online es el <strong>22 de noviembre</strong>. 
+	</div>
+	<!--/*<ul class="list-unstyled text-left">
+			<li>Borrador del Plan Municipal de Ciudadanía Diversa e Intercultural</li>
+			<li>Áreas, retos, objetivos y medidas</li>
+	</ul>
+	<hr class="sm" />*/-->
+	<ul class="list-unstyled list-inline text-left">
+			<li><a href="https://www.zaragoza.es/sede/servicio/propuesta/609" class="btn btn-primary btn-sm">PARTICIPA EN EL DEBATE CON TUS APORTACIONES</a></li>
+</ul>
+</div>
+<div class="col-md-6">
+
+</div>
+
+</div>
+
+</div>
+
+
+								
+          </div>
+
+
+
+             <h2 class="tab-title" aria-expanded="false" data-target="#calendar" data-toggle="collapse"> Calendario</h2>
+                     <div id="calendar" role="tabpanel" sede:class="tab-pane active">
+			<h3>Calendario de eventos y mesas de trabajo</h3>
+			<hr class="sm" />
+			<h4>Fase 1. Información</h4>
+			<div class="table-responsive">
+<table class="table table-condensed table-bordered margin-t0em">
+<thead>
+<tr>
+<th class="col-md-3">Actuación</th>
+<th class="col-md-3">Fecha y hora</th>
+<th class="col-md-3">Lugar</th>
+<th class="col-md-3">Participantes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Sesión informativa</strong></td>
+<td>23 de octubre<br/>18:00 - 19:30</td>
+
+<td><a href="https://www.zaragoza.es/ciudad/sectores/casaculturas/" target="_blank">Casa de las Culturas</a><br/><em>
+C/ José de Palafox, 29. 50001 Zaragoza</em></td>
+<td>Parte política y técnica y mapa de actores</td></tr>
+</tbody>			
+</table>
+</div>
+
+			<h4>Fase 2. Debate</h4>
+			<div class="table-responsive">
+<table class="table table-condensed table-bordered margin-t0em">
+<thead>
+<tr>
+<th class="col-md-3">Actuación</th>
+<th class="col-md-2">Fecha y hora</th>
+<th class="col-md-3">Lugar</th>
+<th class="col-md-2">Participantes</th>
+<th class="col-md-2">Documentación</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Taller de participación 1<br/>Agentes sociales</strong></td>
+<td>30 de octubre<br/>16:30 - 20:30</td>
+<td rowspan="4"><a href="https://www.zaragoza.es/sede/servicio/equipamiento/18323" target="_blank">Casa de Amparo</a> (Sala Luisa de Marillac)<br/><em>C/ Predicadores , 96. 50003 Zaragoza</em>
+<ul class="list-unstyled list-inline text-center margin-t1em">
+			<li><a href="http://www.zaragoza.es/sede/servicio/formulario/321" class="btn btn-primary btn-sm">FORMULARIO DE INSCRIPCIÓN</a></li>
+</ul>
+</td>
+
+<td>Agentes sociales y ciudadanía</td>
+<td><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181030Acta_Taller1AgentesSociales.pdf" class="pdf">Acta de la sesión</a></td>
+</tr>
+
+<tr>
+<td><strong>Taller de participación 1<br/>Técnicos municipales</strong></td>
+<td>6 de noviembre<br/>9:30 - 13:30</td>
+<td>Técnicos municipales</td>
+<td><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181106Acta_Taller1Tecnicos.pdf" class="pdf">Acta de la sesión</a></td>
+</tr>
+
+<tr>
+<td><strong>Taller de participación 2<br/>Agentes sociales</strong></td>
+<td>20 de noviembre<br/>16:30 - 20:30</td>
+<td>Agentes sociales y ciudadanía</td>
+<td><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181120Acta_Taller2AgentesSociales.pdf" class="pdf">Acta de la sesión</a></td>
+</tr>
+
+<tr>
+<td><strong>Taller de participación 2<br/>Técnicos municipales</strong></td>
+<td>22 de noviembre<br/>9:30 - 13:30</td>
+<td>Técnicos municipales</td>
+<td><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181122Acta_Taller2Tecnicos.pdf" class="pdf">Acta de la sesión</a></td>
+</tr>
+</tbody>			
+</table>
+</div>
+
+   	             </div>
+
+
+             <h2 class="tab-title" aria-expanded="false" data-target="#doc" data-toggle="collapse"> Documentación</h2>
+                     <div id="doc" role="tabpanel" sede:class="tab-pane active">
+			<!--/*Enlaces al documento de Bases, Presentación y la Carta*/-->
+<div class="card">
+	<p><strong>Documentación inicial</strong></p>
+<hr class="sm" />
+<ul class="list-unstyled">
+<li><span class="far fa-hand-point-right"></span> <a href="/contenidos/derechosociales/diversidad-cultural/Diagnostico-ciudadania-diversa-a.pdf" class="pdf">Diagnóstico: Plan Municipal para una Ciudadanía Diversa e Intercultural</a></li>
+<li><span class="far fa-hand-point-right"></span> <a href="/contenidos/derechosociales/diversidad-cultural/Presentación-plan-ciudadania-diversa-na.pdf" class="pdf">Presentación: Plan Municipal para una Ciudadanía Diversa e Intercultural</a>.</li>
+</ul>
+</div>	
+<div class="card">
+<p><strong>Proceso Participativo</strong></p>
+<hr class="sm" />
+<ol>
+<li><a href="/contenidos/derechosociales/diversidad-cultural/Plan-Ejes-retos-a.pdf" class="pdf">Plan Municipal de Ciudadanía Diversa e Intercultural: Ejes y retos</a></li>
+<li><a href="/contenidos/derechosociales/diversidad-cultural/Plan-Ejes-Retos-Objetivos.odt">Plan Municipal de Ciudadanía Diversa e Intercultural: Ejes, retos y objetivos</a>. <em>Documento de texto (.odt)</em></li>
+<li><a href="/contenidos/derechosociales/diversidad-cultural/Plan-objetivos-medidas.odt"> Plan Municipal de Ciudadanía Diversa e Intercultural: Objetivos y medidas</a>. <em>Documento de texto (.odt)</em></li>
+<!--/*<li><a href="/contenidos/derechosociales/diversidad-cultural/Plan-objetivos-medidas-a.pdf" class="pdf"> Plan Municipal de Ciudadanía Diversa e Intercultural: Objetivos y medidas</a></li>
+<li><a href="/contenidos/derechosociales/diversidad-cultural/Propuesta-proceso-participativo-a.pdf" class="pdf"> Propuesta de proceso participativo</a></li>*/-->
+</ol>
+</div>
+<div class="card">
+	<p><strong>Proceso Participativo :: Talleres</strong></p>
+<hr class="sm" />
+	<ul class="list-unstyled">
+<li><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181030Acta_Taller1AgentesSociales.pdf" class="pdf">Taller 1. Ciudadanía y Agentes Sociales</a>.</li>
+<li><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181106Acta_Taller1Tecnicos.pdf" class="pdf">Taller 1. Técnicos Municipales</a>.</li>
+<li><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181120Acta_Taller2AgentesSociales.pdf" class="pdf">Taller 2. Ciudadanía y Agentes Sociales</a>.</li>
+<li><span class="fas fa-file-pdf"></span> <a href="/contenidos/derechosociales/diversidad-cultural/20181122Acta_Taller2Tecnicos.pdf" class="pdf">Taller 2. Técnicos Municipales</a>.</li>
+</ul>
+</div>
+					
+          	     </div>
+
+
+
+
+
+				</div>
+				</div>
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

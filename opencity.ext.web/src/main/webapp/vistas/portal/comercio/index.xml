@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Comercio" description="" author="Ayuntamiento de Zaragoza" last-modified="Thu May 26 10:00:00 CET 2016" keywords="">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+          
+             <div class="col-md-8">
+                <h2>Comercios</h2>
+                <form method="get" action="/sede/servicio/equipamiento/list">
+                    <div class="input-group">
+                        <input type="text" name="query" id="query" th:value="${param.query} ? ${param.query[0]} : ''" class="form-control" placeholder="Realice su consulta" />
+                        <span class="input-group-btn">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                    <input type="hidden" name="fq" id="fq" value="temas_smultiple%3A(&quot;Comercio+Menor&quot;)" />
+                </span>
+                    </div>
+                </form>
+                <h3 property="rdfs:label" class="masinfo margin-t05em">Temáticas</h3>
+                <!--* <div id="com" class="ampliar collapse in">*-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>
+                                <a href="servicio/equipamiento/category/1547"><span>Segunda Mano</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1583"><span>Bazares</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1574"><span>Ópticas, centros auditivos, ortopedías, fotografía</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1552"><span> Supermercados grandes</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1557"><span>Moda novia, uniformes colegios, ropa trabajo...</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1571"><span>Maquinaria</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1573"><span>Ofimática</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1549"><span>Tiendas Alimentación</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1581"><span>Grandes almacenes</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1567"><span> Cristalerías, carpinterías, puertas, persianas...</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1565"><span>Ferreterías, iluminación, decoración</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1563"><span>Muebles</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1546"><span>Concesionarios de automóviles y motocicletas</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1568"><span>Pintura bricolage</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1560"><span>Droguerías</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1544"><span>Vinos y bebidas</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1558"><span> Calzados, complementos, maletas</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1541"><span>Carnicerías, charcuterías</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1578"><span>Floristerías, viveros, semillas, clínicas veterinaria</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1566"><span>Material construcción, saneamiento...</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/farmacia/?tipo=todas"><span>Farmacias</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1600"><span>Centro Comercial</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1555"><span>Lencerías</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <ul>
+                            <li>
+                                <a href="servicio/equipamiento/category/1553"><span>Textil Hogar</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1556"><span>Mercerías</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1542"><span>Pescaderías</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1543"><span>Panaderías, pastelerías</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1569"><span>Cuadros, artesanía, otros articulos del hogar</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1579"><span>Tienda erótica</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1562"><span>Herboristerías, dietéticas</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1554"><span>Moda mujer, hombre, infantil</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1545"><span>Estancos </span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1577"><span>Juguetes, artículos deporte</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1570"><span>Recambios automóvil y accesorios</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1582"><span>Hipermercados</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1540"><span>Fruterías, verdulerías</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1561"><span>Perfumería,cosmética</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1550"><span>Supermercados pequeños</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1572"><span>Filatelia y numismática</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1564"><span>Electrodomésticos, electrónica, moviles, mobiliario cocina...</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1575"><span>Librerías, papelerías, quioscos y prensa</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1551"><span>Supermercados medianos</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1576"><span>Joyerías, relojerías, bisutería</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1580"><span>Otros productos</span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1548"><span>Instrumentos de música </span></a>
+                            </li>
+                            <li>
+                                <a href="servicio/equipamiento/category/1559"><span>Peleterías</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                           <h2>Noticias</h2>
+                <sede:noticia espacio="1" usuario="1" fecha="" numero="3" tema="Mercados y Consumo" />
+                </div>
+           
+            </div>
+            <div class="col-md-4">
+               <h2>Destacados</h2>
+                <!-- <sede:agenda carpeta="/sede/portal/comercio/servicio/actividades/" numero="3" usuario="8" destacadas="s" /> -->
+                <a href="https://zaragozacomercio.es/"><img src="/cont/vistas/portal/comercio/portalcomercio.jpg" alt="" />
+                <h3>Nuevo Portal de Comercios de Zaragoza Dinámica</h3></a>
+                <h2>Calendario</h2>
+                <sede:calendario-agenda listado="s" carpeta="/sede/portal/comercio/servicio/cultura/evento/calendar/" portal="8" />
+
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $(".ampliar.collapse").collapse();
+        $(".masinfo").on('click', function() {
+            if ($(this).find('.fa-chevron-down').length > 0) {
+                $(this).find('.fa-chevron-down').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            } else {
+                $(this).find('.fa-chevron-up').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+            };
+        });
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

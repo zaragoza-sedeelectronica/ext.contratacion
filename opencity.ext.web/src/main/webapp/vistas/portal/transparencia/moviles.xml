@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Transparencia Municipal. Líneas de Móvil" description="Transparencia " author="" last-modified="Tue Mar 25 00:00:00 CET 2014" keywords="ayuntamiento, ciudad, Zaragoza, España, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado"/>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Líneas de móvil</h2>
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="card">
+                    <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                        <li role="presentation" class="active"><a href="#2016" role="tab" data-toggle="tab">2016</a></li>
+                        <li role="presentation"><a href="#2015" role="tab" data-toggle="tab"> 2015</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div sede:class="tab-content">
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#2016" aria-expanded="false">2016</h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="2016">
+                            <div role="alert" class="alert alert-info">
+                                Total de lineas asignadas directamente a personas:<strong> 789</strong> de éstas tienen datos 314</div>
+                            <h3>Líneas asignadas a servicios</h3>
+                            <p>Ademas, existen lineas en diferentes servicios éstas suelen ser para vehículos, mantenimiento, personal que rota, dataloggers, etc...</p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-condensed table-bordered">
+                                    <tr>
+                                        <th>Terminales</th>
+                                        <th>Servicios</th>
+                                    </tr>
+                                    <tr>
+                                        <td>33</td>
+                                        <td>AGENCIA DE MEDIO AMBIENTE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>ASESORIA JURIDICA MUNICIPAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>CONSEJERÍA DE ECONOMÍA Y CULTURA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>COORDINACIÓN GENERAL DEL ÁREA DE ALCALDÍA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>COORDINACIÓN GENERAL DEL ÁREA DE ECONOMÍA Y CULTURA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>COORDINACIÓN GENERAL DEL ÁREA DE PARTICIPACIÓN, TRANSPARENCIA Y GOB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>COORDINACIÓN GENERAL DEL ÁREA DE PRESIDENCIA Y DERECHOS SOCIALES</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>COORDINACIÓN GENERAL DEL ÁREA DE SERVICIOS PÚBLICOS Y PERSONAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>COORDINACIÓN GENERAL DEL ÁREA DE URBANISMO Y SOSTENIBILIDAD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>31</td>
+                                        <td>CORPORACION</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DEPARTAMENTO DE CONSERVACIÓN Y EXPLOTACIÓN DE INFRAESTRUCTURAS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>DEPARTAMENTO DE CONTRATACION Y PATRIMONIO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DEPARTAMENTO DE HACIENDA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DEPARTAMENTO DE PLANIFICACIÓN Y DESARROLLO DE INFRAESTRUCTURAS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DEPARTAMENTO DE PLANIFICACION Y DISEÑO DE LA MOVILIDAD URBANA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DEPARTAMENTO JURÍDICO DE ECONOMÍA Y HACIENDA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16</td>
+                                        <td>DIRECCION DE COMUNICACIÓN</td>
+                                    </tr>
+                                    <tr>
+                                        <td>80</td>
+                                        <td>DIRECCIÓN DE ORGANIZACIÓN MUNICIPAL, EFICIENCIA ADMINISTRATIVA Y RELAC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECCION DE SERVICIOS DE ARQUITECTURA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECCIÓN DE SERVICIOS DE ESTUDIOS Y PROGRAMAS DE SUELO Y VIVIENDA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECCIÓN DE SERVICIOS DE INTERVENCIÓN URBANÍSTICA Y DISCIPLINA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECCION DE SERVICIOS DE PLANIFICACION Y DISEÑO URBANO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>DIRECCION DE SERVICIOS INFORMACION Y ORGANIZACIÓN</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>DIRECCIÓN GENERAL DE CULTURA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECCIÓN GENERAL DE PERSONAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>DIRECCION SERVICIOS DE ARQUITECTURA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECTOR GENERAL DE ECONOMIA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>GRUPO MUNICIPAL CIUDADANOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>GRUPO MUNICIPAL DE CHUNTA ARAGONESISTA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>GRUPO MUNICIPAL ZEC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>INTERVENCION GENERAL MUNICIPAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>OFICINA DE CONTROL FINANCIERO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>OFICINA DE INFORMACIÓN Y ANALISIS ECONÓMICO Y DE LOS SERVICIOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>OFICINA DE RECURSOS HUMANOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>57</td>
+                                        <td>OFICINA DEL ESPACIO URBANO Y GESTIÓN DE RESIDUOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>OFICINA ECONÓMICO-JURÍDICA DE SERVICIOS PÚBLICOS Y PERSONAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>OFICINA TÉCNICA DE EMPLEO, EMPRENDIMIENTO E INCLUSIÓN SOCIAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>OFICINA TECNICA DE PARTICIPACION, TRANSPARENCIA Y GOBIERNO ABIERTO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>OFICINA TÉCNICA DE PLANIFICACIÓN Y PROGRAMACIÓN DEL ÁREA DE DERECHO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>162</td>
+                                        <td>POLICIA LOCAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>PROTOCOLO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO ADMINISTRACION DE DERECHOS SOCIALES</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO ADMINISTRACION DE SUELO Y VIVIENDA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO ADMINISTRATIVO DE CULTURA Y TURISMO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO ADMINISTRATIVO DE DERECHOS SOCIALES</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>SERVICIO ADMINISTRATIVO DE FOMENTO Y TURISMO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>SERVICIO ADMINISTRATIVO DE SERVICIOS PÚBLICOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>SERVICIO DE CENTROS CIVICOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>SERVICIO DE CIUDAD INTELIGENTE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>SERVICIO DE CONSERVACION DE ARQUITECTURA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>47</td>
+                                        <td>SERVICIO DE CONSERVACION DE INFRAESTRUCTURAS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO DE CONTABILIDAD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>SERVICIO DE CULTURA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24</td>
+                                        <td>SERVICIO DE DISTRITOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>SERVICIO DE EDUCACION</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>SERVICIO DE EXPLOTACION DE REDES</td>
+                                    </tr>
+                                    <tr>
+                                        <td>104</td>
+                                        <td>SERVICIO DE EXTINCION DE INCENDIOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO DE GESTION DE RECURSOS HUMANOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO DE IGUALDAD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO DE INFORMACION GEOGRAFICA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>SERVICIO DE INFORMACION Y ATENCIÓN AL CIUDADANO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO DE INSPECCION TRIBUTARIA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>SERVICIO DE INSPECCION URBANISTICA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>SERVICIO DE INSTALACIONES DEPORTIVAS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>SERVICIO DE INTERVENCIÓN</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>SERVICIO DE JUVENTUD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>SERVICIO DE MODERNIZACION Y DESARROLLO ORGANIZATIVO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>SERVICIO DE MOVILIDAD URBANA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>SERVICIO DE PREVENCION Y SALUD LABORAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>SERVICIO DE RECAUDACION</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24</td>
+                                        <td>SERVICIO DE REDES Y SISTEMAS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>SERVICIO DE RELACIONES LABORALES</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>SERVICIO DE SALUD PÚBLICA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>35</td>
+                                        <td>SERVICIO DE SERVICIOS SOCIALES COMUNITARIOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16</td>
+                                        <td>SERVICIO DE SERVICIOS SOCIALES ESPECIALIZADOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>36</td>
+                                        <td>SERVICIO DE TALLERES Y BRIGADAS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO DE TESORERIA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>44</td>
+                                        <td>SERVICIO DEL CICLO INTEGRAL DEL AGUA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO JURÍDICO DE MERCADOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SERVICIO INGENIERIA DE DESARROLLO URBANO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>SERVICIO TÉCNICO DE INFRAESTRUCTURAS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>UNIDAD DE PLANES INTEGRALES</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>VARIOS</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div role="alert" class="alert alert-info">165 de éstas son sólo para llamadas internas</div>
+                        </div>
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#2015" aria-expanded="false">2015</h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="2015">
+                            <div role="alert" class="alert alert-info">
+                                Total de lineas asignadas directamente a personas:<strong> 644</strong> de éstas tienen datos 273</div>
+                            <h3>Líneas asignadas a servicios</h3>
+                            <p>Ademas, existen lineas en diferentes servicios éstas suelen ser para vehículos, mantenimiento, personal que rota, dataloggers, etc...</p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-condensed table-bordered">
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Líneas</th>
+                                        <th>Datos</th>
+                                        <th>dispositivos de datos</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio Contra Incendios, de Salvamento y Protección Civil</td>
+                                        <td>73</td>
+                                        <td>2</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Agencia de Medio Ambiente</td>
+                                        <td>10</td>
+                                        <td>1</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio Dirección de Organización Municipal, Eficiencia Administrativa y Relaciones con los Ciudadanos</td>
+                                        <td>5</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Gerencia de Urbanismo</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Centros Cívicos</td>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Ciudad Inteligente</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Conservación de Arquitectura</td>
+                                        <td>4</td>
+                                        <td>1</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Conservación de Infraestructuras</td>
+                                        <td>32</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Cultura</td>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Educación</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Instalaciones Deportivas</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Movilidad Urbana</td>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Parques y Jardines</td>
+                                        <td>27</td>
+                                        <td>27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Policía Local</td>
+                                        <td>122</td>
+                                        <td>22</td>
+                                        <td>50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Prevención y Salud Laboral</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Redes y Sistemas</td>
+                                        <td>6</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Salud Pública</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Talleres y Brigadas</td>
+                                        <td>8</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio del Ciclo Integral del Agua</td>
+                                        <td>30</td>
+                                        <td>21</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Servicios Públicos</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicio de Servicios Sociales</td>
+                                        <td>5</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div role="alert" class="alert alert-info">165 de éstas son sólo para llamadas internas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

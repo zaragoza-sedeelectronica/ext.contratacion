@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Carlos Pérez Anadón  (PSOE)"
+                description="Organización Municipal, Pleno Municipal, Curriculum Vitae de Carlos Pérez Anadón  (PSOE)"
+                author="" last-modified="Wed Jun 17 00:00:00 CEST 2015"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Carlos Pérez Anadón  , PSOE">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        <abbr title="Partido Socialista Obrero Español">PSOE</abbr>
+                    </small>
+                    <span>|</span>
+                    Carlos Pérez Anadón
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <article class="row col-md-12">
+
+                        <!-- Versión móvil -->
+                        <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                            <div class="col-md-4 col-xs-12 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PSOE_Carlos_Perez.jpg"
+                                     alt="Carlos Pérez Anadón"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-CARLOS-P%C3%89REZ-ANAD%C3%93N.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_GRUPO_SOCIALISTA/CARLOS_PEREZ_ANADON.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-CARLOS-PEREZ-ANADON.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_GRUPO_SOCIALISTA/CARLOS_PEREZ_ANADON.pdf'} 
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePersonal" aria-expanded="false"
+                                               aria-controls="collapsePersonal">
+                                                INFORMACIÓN PERSONAL
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPersonal">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <strong>Nacimiento:</strong>
+                                                Fuentes de Ebro (Zaragoza), el 17 de
+                                                octubre de 1957.
+                                            </li>
+                                            <br/>
+                                            <li>Casado con dos hijos.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseProfesional"
+                                               aria-expanded="false" aria-controls="collapseProfesional">
+                                                EXPERIENCIA PROFESIONAL
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingProfesional">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Funcionario de carrera del Ayuntamiento de Zaragoza desde que ingresó
+                                                por oposición libre en 1981 como Técnico Medio, Grupo B.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPolitica">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePolitica" aria-expanded="false"
+                                               aria-controls="collapsePolitica">
+                                                EXPERIENCIA POLÍTICA
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsePolitica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPolitica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Desde 2003 es Teniente de Alcalde del Ayuntamiento de Zaragoza, Portavoz
+                                                del Grupo Municipal Socialista, Delegado de la Policía Local, Presidente
+                                                de la Terminal Marítima de Zaragoza (TMZ) y Vicepresidente de
+                                                Mercazaragoza.
+                                            </li>
+                                            <br/>
+                                            <li>En abril de 2012, fue nombrado Consejero de Urbanismo, Infraestructuras,
+                                                Equipamientos y Vivienda y Segundo Teniente de Alcalde y Concejal
+                                                Delegado de la Policía Local.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseContacto" aria-expanded="false"
+                                               aria-controls="collapseContacto">
+                                                CONTACTO
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingContacto">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <span class="far fa-envelope margin-t1em"></span>
+                                                <a href="mailto:carlosperez@zaragoza.es" shape="rect">
+                                                    carlosperez@zaragoza.es
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Versión desktop -->
+                        <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                            <div class="col-md-4 col-xs-12 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PSOE_Carlos_Perez.jpg"
+                                     alt="Carlos Pérez Anadón"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-CARLOS-P%C3%89REZ-ANAD%C3%93N.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_GRUPO_SOCIALISTA/CARLOS_PEREZ_ANADON.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-CARLOS-PEREZ-ANADON.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_GRUPO_SOCIALISTA/CARLOS_PEREZ_ANADON.pdf'} 
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>INFORMACIÓN PERSONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>
+                                        <strong>Nacimiento:</strong>
+                                        Fuentes de Ebro (Zaragoza), el 17 de octubre de
+                                        1957.
+                                    </li>
+                                    <br/>
+                                    <li>Casado con dos hijos.</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA PROFESIONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Funcionario de carrera del Ayuntamiento de Zaragoza desde que ingresó por
+                                        oposición libre en 1981 como Técnico Medio, Grupo B.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA POLÍTICA</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Desde 2003 es Teniente de Alcalde del Ayuntamiento de Zaragoza, Portavoz del
+                                        Grupo Municipal Socialista, Delegado de la Policía Local, Presidente de la
+                                        Terminal Marítima de Zaragoza (TMZ) y Vicepresidente de Mercazaragoza.
+                                    </li>
+                                    <br/>
+                                    <li>En abril de 2012, fue nombrado Consejero de Urbanismo, Infraestructuras,
+                                        Equipamientos y Vivienda y Segundo Teniente de Alcalde y Concejal Delegado de la
+                                        Policía Local.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>CONTACTO</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l05em">
+                                    <li class="col-md-12 margin-b1em">
+                                        <span class="far fa-envelope"></span>
+                                        <a href="mailto:carlosperez@zaragoza.es" shape="rect">carlosperez@zaragoza.es
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </article>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

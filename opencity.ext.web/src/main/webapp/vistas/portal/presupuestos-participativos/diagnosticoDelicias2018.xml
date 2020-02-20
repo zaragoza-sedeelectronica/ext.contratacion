@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Autodiagnóstico para el Foro del Distrito Delicias" description="Autodiagnóstico para el Foro del Distrito del Delicias" author="Ayuntamiento de Zaragoza" last-modified=" Wed Feb 07 10:00:00 CET 2018 " audience="" keywords="gobierno abierto, presupuestos participativos, autodiagnostico">
+
+    </sede:meta>
+    <style type="text/css">
+    .fnd-turismo {
+        background: #d68100;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #31708f;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+   
+	<br/>
+        <div class="full-screen-box text-justify">
+            <h2 class="nomargin"><strong>Delicias</strong>: Diagnóstico y catálogo de reclamaciones históricas</h2>
+            <hr class="sm" />
+            <div class="row">
+                <div class="col-md-1">
+                    <h3><strong>Nº</strong></h3><hr class="sm" />
+                </div>
+                <div class="col-md-5">
+                    <h3><strong>Categoría</strong></h3><hr class="sm" />
+                </div>
+                <div class="col-md-6">
+                    <h3><strong>Título</strong></h3><hr class="sm" />
+                </div>
+                <!--/*<div class="col-md-2">
+                    <h3><strong>Ubicación</strong></h3><hr class="sm" />
+                </div>
+                <div class="col-md-2">
+                    <h3><strong>Beneficiarios</strong></h3><hr class="sm" />
+                </div>*/-->
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p><strong>A</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>En equipamientos públicos</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <ol>
+			<li>Adquisicion de material inventariable para ludotecas, bibliotecas, centro cívico, centro de mayores y centro municipal de tiempo libre.</li>
+<li>Habilitación de espacio para mayores tras el cierre del centro del que
+disponian en la calle Unceta gestionado por lbercaja.</li>
+<li>Adecuación de espacios comunes de escolares en colegios públicos. (en el
+2017 se inicio la adecuación del recreo del colegio público J.Ma Mir Vicente
+pero no se completo).</li>
+		    </ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p><strong>B</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>En el espacio urbano</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <ol>
+<li>Rehabilitar fachadas.</li>
+<li>Ampliación y rebaje de aceras.</li>
+<li>Adecuación de la iluminación en altura.</li>
+<li>Vegatación en la calles.</li>
+<li>Rehabilitación del parque de viviendas habitadas por mayores.</li>
+<li>Acondicionamiento de solares.</li>
+		</ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p><strong>C</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>En los parques y jardines</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <ol>
+<li>Rehabilitación de los espacios peatonales en parques.</li>
+<li>Areas especificas para animales.</li>
+<li>Rehabilitación espacios (capilla, zonas deportivas).</li>
+		</ol>
+                </div>
+            </div>
+
+ 
+</div>
+
+        <div role="alert" class="alert alert-info">Acceso al <a href="/contenidos/presupuestos-participativos/diagnosticoDelicias2018.pdf" class="pdf">Documento de autodiagnóstico</a> en formato .pdf</div>
+            
+       
+        
+        
+    </sede:content>
+</body>
+
+</html>

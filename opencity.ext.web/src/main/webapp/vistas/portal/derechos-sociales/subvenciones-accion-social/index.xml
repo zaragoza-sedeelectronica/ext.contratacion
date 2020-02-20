@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Proceso Participativo. Bases de Subvenciones de Acción Social" description="Proceso de participación para la elaboración de las bases de las subvenciones de Acción Social" author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Wed Apr 20 00:00:00 CEST 2018" keywords="ayuntamiento, ciudad, Zaragoza, Espana, procesos participativos, participación, subvenciones, acción social, servicios sociales, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment" />
+    
+    <style type="text/css">
+    .color-noticias {
+      color: #00669E;
+    }
+    .fnd-ciudad {
+    	background: #FFFFFF;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div style="position:relative;" class="text-center">
+            <img class="img-responsive" src="/cont/vistas/portal/derechos-sociales/subvenciones-accion-social/img/img_suv_accsoc_b.jpg" alt="" />
+        </div>
+        <div><p></p></div>
+		<div class="container-fluid">
+			<!--/*<h2>Proceso de participación para la
+elaboración de las bases de las
+subvenciones de Acción Social</h2>*/-->
+			<ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+            <li role="tab">
+                <a aria-controls="inicio" data-toggle="tab" href="#inicio" role="tab"><span class="fa fa-question-circle" aria-hidden="true"></span> Inicio</a>
+            </li>
+           
+           <li role="tab">
+                <a aria-controls="fases" data-toggle="tab" href="#fases" role="tab"><span class="fa fa-cog" aria-hidden="true"></span> Hitos</a>
+            </li>
+            
+              <li role="tab">
+                <a aria-controls="reglas" data-toggle="tab" href="#reglas" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Reglas</a>
+            </li>
+              <li role="tab">
+                <a aria-controls="anteriores" data-toggle="tab" href="#anteriores" role="tab"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Ediciones Anteriores</a>
+            </li>
+            <li role="tab">
+                <a aria-controls="doc" data-toggle="tab" href="#doc" role="tab"><span class="fas fa-file-alt" aria-hidden="true"></span> Documentación</a>
+            </li>
+   	        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" aria-expanded="false" data-target="#inicio" data-toggle="collapse"> Inicio</h2>
+            <div id="inicio" role="tabpanel" sede:class="tab-pane active">
+            <div class="container-fluid">
+<div class="row">
+                <div class="col-md-6">
+			<h3>Definición</h3>
+            <hr class="sm color-noticias" />			
+			<p><em>Descripción breve del proceso participativo + un poco de historia.</em></p>
+			<p>En 2016 el Área de Derechos Sociales inicia un proceso de participación con los componentes del Consejo Sectorial de Acción Social para "mejorar la Convocatoria Pública de Subvenciones en materia de de Acción Social, en régimen de concurrencia competitiva".</p>
+<p>Hasta la fecha se han realizado 3 procesos de participación:
+<ul><li>1º proceso, en el año 2016:  se llevaron a cabo dos sesiones de trabajo, los días 13 y 20 de enero
+</li><li>2º proceso, en 2017:  1 sesión de trabajo, el 25 de enero
+</li><li>3º proceso, en 2018: 1 sesión de trabajo, el día 23 de enero.</li></ul></p>
+<p>Los acuerdos alcanzados en cada uno de los procesos se incorporaron a las respectivas convocatorias públicas  de subvenciones.</p>
+</div>
+<div class="col-md-6">
+			<h3>Objetivos fundamentales del proceso</h3>
+            <hr class="sm color-noticias" />
+<ol><li>El primer objetivo que pretendemos es estrictamente de pedagogía política. Después del conflicto generado con las últimas subvenciones y como se comprometió la Consejera, con este proceso vamos a poder <strong>conocer, opinar, debatir y empoderarnos</strong> sobre un asunto
+-verdaderamente complejo- que conecta con la esencia de la complementariedad entre el Ayuntamiento y el tejido social en materia de Acción Social. No nos importa tanto encontrar las respuestas a todas las cuestiones, sino hacernos las preguntas adecuadas.</li>
+<li>No hace falta que este año lo dejemos todo atado. Vamos a <strong>debatir a fondo en el proceso</strong>, lo llevaremos al consejo sectorial de febrero
+y luego a la comisión del mismo mes, para intentar que se informe positivamente por todas las fuerzas políticas y que el gobierno lo
+pueda aprobar antes de finalizar el mes de febrero.</li>
+<li><strong>Abriremos caminos,</strong> acordaremos lo que seamos capaces, decidiremos lo que sea imprescindible y dejaremos enfocados temas que podremos experimentar el primer año y luego ir mejorando. ¡La oferta de participar ya es para siempre!</li>
+<li>Recordar la exigencia de generosidad que nos comprometió a todos/as. No se trata de venir a resolver mi problema concreto, sino de
+<strong>avanzar en una manera de trabajar generadora de inteligencia colectiva</strong> en aras a mejorar la calidad y el impacto de nuestras</li></ol>
+</div>
+</div>
+            </div>
+            </div>
+             <h2 class="tab-title" data-toggle="collapse" data-target="#fases" aria-expanded="false"> Hitos</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="fases">
+            <div class="container-fluid">
+			<div class="row">
+            <div class="col-md-6">
+			<h3>Hito 1. Convocatoria</h3>
+            <hr class="sm color-noticias" />
+            <ul><li>
+            Se convoca por escrito a entidades y grupos políticos invitándoles a participar en el proceso.
+            </li><li>Las entidades y grupos interesados deben manifestar su deseo de participar en el proceso dentro del plazo de inscripción.
+            </li><li>Se invita a los asistentes a enviar aportaciones y reflexiones con el objetivo de redactar un documento de debate previo a las sesiones de participación.</li></ul>
+            </div>
+            <div class="col-md-6">
+			<h3>Hito 2. Envío de aportaciones</h3>
+            <hr class="sm color-noticias" />
+            <ul><li>Se establece una fecha tope para enviar aportaciones a cada una de las disposiciones.
+</li><li>Pueden ser propuestas, modificaciones, planteamiento de continuar con el mismo texto o preguntas en referencia a ese apartado, que queréis que se clarifique, en cada disposición. Lo que se plantee ese día no tiene porque ser la posición final de la entidad... es sólo una primera aproximación.</li></ul>					
+				</div>
+            <div class="col-md-6">
+			<h3>Hito 3. Documento de debate</h3>
+            <hr class="sm color-noticias" />
+            Se establece un plazo para elaborar un documento de debate previo a la primera sesión.					
+				</div>
+            <div class="col-md-6">
+			<h3>Hito 4. Sesiones de participación</h3>
+            <hr class="sm color-noticias" />					
+			
+       <ul><li>Sesiones de 4 horas. De 4,30 a 8,30 </li><li>Se  empezará  punto por punto  organizando  las  propuestas  entre acuerdos,   
+desacuerdos y transacciones</li></ul>								
+				</div>	
+            <div class="col-md-6">
+			<h3>Hito 5. Convocatoria Consejo</h3>
+            <hr class="sm color-noticias" />
+            				Se enviará el acta y se pedirán puntos para el orden del día.					
+				</div>
+
+            <div class="col-md-6">
+			<h3>Hito 6. Consejo Sectorial</h3>
+            <hr class="sm color-noticias" />
+       <ul><li>Última  opción  de  debate  de  las  entidades sociales... sobre la Propuesta de bases.</li>
+<li>Elección de dos comisiones + discapacidad.</li>
+<li>Aceptación  formal  de  La  Caridad,  FAS  y  El  Carmen  (pendientes  para el próximo de debatir criterios de entrada y salida de los mismos).</li>
+<li>Propuesta de próximo Consejo, primeros de mayo</li></ul>
+            					
+				</div>
+				
+            <div class="col-md-6">
+			<h3>Hito 7. Negociación con los partidos</h3>
+            <hr class="sm color-noticias" />
+            					
+				</div>	
+            <div class="col-md-6">
+			<h3>Hito 8. Comisión de Derechos Sociales</h3>
+            <hr class="sm color-noticias" />
+            					
+				</div>								
+								
+				</div>
+				</div>
+            
+            
+
+            </div>
+                                 
+          
+             <h2 class="tab-title" aria-expanded="false" data-target="#reglas" data-toggle="collapse"> Reglas</h2>
+             <div id="reglas" role="tabpanel" sede:class="tab-pane active">
+				 <h3>Reglas básicas del proceso participativo</h3>
+<ol>
+<li>En el <strong>Documento de debate</strong> figuran todas las aportaciones y propuestas sin detallar el grupo o entidad autor de las mismas para que haya más libertad en el debate.</li>
+<li>En la reunión se contará con los textos que se hicieron llegar, por si alguien quiere
+defender o referirse a una propuesta de forma literal.</li>
+<li>El debate se hará en directo, con la ayuda de un facilitador externo, como se nos sugirió desde una entidad.</li>
+<li>Se indicarán los temas o propuestas que no pueden debatirse por criterio político.</li></ol>
+
+				 <h3>Marco del proceso participativo</h3>
+<p>El objetivo del proceso es debatir y aprobar las Bases de las Subvenciones
+de Acción Social, por tanto:</p>
+<ol>
+	<li>En el debate y toma de decisiones ha de tenerse en cuenta el marco que configuran 
+	la Ley de Subvenciones de ámbito autonómico y la Ordenanza General Municipal de Subvenciones.</li>
+	<li>En todo momento contaremos con un apoyo jurídico, para que resuelva dudas sobre temas que se
+pueden o no debatir, para asegurar siempre que nos movemos en el marco de la ley.</li>
+<li>La Ordenanza General Municipal de Subvenciones contempla que
+se empiece el proceso de aprobación de las convocatorias antes de contar con presupuestos iniciales
+aprobados (Art. 19 tramitación anticipada) y también permite establecer convocatorias plurianuales
+(Art. 17).</li>
+<li>Salvo cuestiones importantes, es preferible no contemplar aquellos temas que ya se recogen con claridad en la Ley de Subvenciones, la Ordenanza General Municipald de Subvenciones
+ o en las bases de años anteriores: Seguimiento, Notificaciones y recursos, reformulación, exclusión, subcontratación, pago, difusión,
+plazos y lugar de justificación, recogidos en las disposiciones de la 12 a la 20.</li></ol>
+
+				 
+				       </div>
+
+            <h2 class="tab-title" aria-expanded="false" data-target="#anteriores" data-toggle="collapse"> Ediciones anteriores</h2>
+                     <div id="anteriores" role="tabpanel" sede:class="tab-pane active">		
+				<em>Breve resumen de ediciones anteriores con enlaces a la documentación generada</em>
+          </div>
+
+				             <h2 class="tab-title" aria-expanded="false" data-target="#doc" data-toggle="collapse"> Documentación</h2>
+                     <div id="doc" role="tabpanel" sede:class="tab-pane active">
+<ul class="list-unstyled"><li><span class="fas fa-file-alt"></span> <a href="/contenidos/derechosociales/subvenciones/1_2_CartaCrono_ProcesoParticipativoSubvenciones2016.pdf" class="pdf">Carta y Cronología del proceso <span class="oculto">(Documento en formato pdf)</span></a></li>
+<li><span class="fas fa-file-alt"></span> <a href="/contenidos/derechosociales/subvenciones/3_DocAzul__MapaProcesoParticipativoSubvsACS2016.pdf" class="pdf">Mapa Proceso Participativo <span class="oculto">(Documento en formato pdf)</span></a></li>
+<li><span class="fas fa-file-alt"></span> <a href="/contenidos/derechosociales/subvenciones/Conclusiones130116v2.pdf" class="pdf">Conclusiones Taller del 13_01_16 <span class="oculto">(Documento en formato pdf)</span></a></li>
+<li><span class="fas fa-file-alt"></span> <a href="/contenidos/derechosociales/subvenciones/3_ConclusionesGrupoTrabajoSubves2016_Completo.pdf" class="pdf">Conclusiones Grupo de Trabajo <span class="oculto">(Documento en formato pdf)</span></a></li>
+</ul>          
+          </div>
+		            
+				</div>
+				</div>
+
+				
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

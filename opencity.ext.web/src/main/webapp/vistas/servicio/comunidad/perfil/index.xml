@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Comunidad" author="Ayuntamiento de Zaragoza" category="Participación Ciudadana" keywords="risp,opendata,mapas,colaborativos" />
+    <style type="text/css">
+        .height5{min-height:5em}
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <!--
+        <h2>Categorías</h2>
+        <ul class="row list-unstyled">
+            <li th:each="doc:${category.body.result}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4" th:if="${doc.count}">
+                <div class="card">
+                    <a th:href="@{.(category=${doc.id})}" th:if="not ${param.category} or not ${param.category[0] == '' + doc.id}">
+                        <th:block th:text="${doc.title}" /> <span class="badge" th:text="${doc.count}"></span>
+                    </a>
+                    <span th:if="${param.category} and ${param.category[0] == '' + doc.id}">
+                        <th:block th:text="${doc.title}" /> <span class="badge" th:text="${doc.count}"></span>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <h2>Mapas colaborativos <a href="./new" class="btn btn-primary">Crear Mapa</a> <a href="./user" th:if="${session.sess_ciudadano}" class="btn btn-success">Mis mapas</a></h2>
+        <ul class="row list-unstyled">
+            <li th:each="doc:${resultado.body.result}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="card height5">
+                    <img th:if="${doc.icon}" th:src="${doc.icon}" width="30" height="30" alt=""/>
+                    <a th:href="${doc.id}"><th:block th:text="${doc.title}" /></a>
+                    <div th:if="${doc.type == 'collaborative'}" class="ribbon-wrapper">
+                         <div class="ribbon-info">Colabora</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+		-->
+    </sede:content>
+</body>
+
+</html>

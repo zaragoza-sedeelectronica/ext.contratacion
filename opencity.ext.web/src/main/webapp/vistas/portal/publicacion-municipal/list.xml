@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="(${pageTitle} ? ${pageTitle} + '. ': '') + 'Catálogo de publicaciones municipales'" author="Ayuntamiento de Zaragoza" keywords="sede,web,cultura,catalogo,publicaciones" />
+  <meta name="robots" content="noindex, follow"/>
+    <style type="text/css">
+        h2 {
+            font-size: 1.25em;
+        }
+        .card {
+            position: relative;
+            padding-bottom: 60px;
+        }
+        @media (min-width: 768px) {
+            li .card {
+                min-height: 20em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2 th:text="${pageTitle}"></h2>
+        <ul class="row list-unstyled">
+            <li th:each="doc: ${resultado.body.result}" class="col-md-4">
+                <th:block th:include="servicio/publicacion-municipal/card" />
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

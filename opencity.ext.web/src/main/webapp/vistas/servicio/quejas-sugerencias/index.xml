@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Quejas y sugerencias" keywords="sede,quejas,sugerencias,información" />
+    <meta name="robots" content="noindex, follow"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css"/>
+    <script type="text/javascript" xml:space="preserve">
+         ocultarArbolCapas = false;
+         var i = 0;
+         treeOrderDataList = [];
+    </script>
+    
+</head>
+
+<body>
+    <sede:content container="false">
+    	<th:block th:unless="${resultado}">
+			<ul class="row list-unstyled margin-t1em">
+		       <li class="col-xs-6 col-md-3 clearfix text-center card"><p>Envíe una nueva Queja o sugerencia</p><a href="./new" class="btn btn-primary"><span class="fa fa-plus fa-2x" aria-hidden="true"></span> Nueva</a></li>
+		       <li class="col-xs-6 col-md-3 clearfix text-center card"><p>Conozca el estado de la gestión de las Quejas y Sugerencias enviadas.</p><a href="./user" class="btn btn-primary"><span class="fa fa-user fa-2x" aria-hidden="true"></span> Mis quejas</a></li>
+		       <li class="col-xs-6 col-md-3 clearfix text-center card"><p>Información relacionada con el conjunto de datos para poder ser reutilizado.</p><a href="/sede/portal/datos-abiertos/servicio/catalogo/1062" class="btn btn-primary"><span class="fa fa-cube fa-2x" aria-hidden="true"></span> Datos abiertos</a></li>
+		       <li class="col-xs-6 col-md-3 clearfix text-center card"><p>Datos de Quejas y Sugerencias pendientes y cerradas por año y categoría.</p><a href="./statistics" class="btn btn-primary"><span class="fa fa-file fa-2x" aria-hidden="true"></span> Datos de uso</a></li>
+			</ul>
+		</th:block>
+		
+		
+		<div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Buscador</a></h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse" th:classappend="${resultado} ? collapse : in">
+                        <div class="panel-body">
+		
+		
+				        <form method="get" action=".">
+				        	<div class="row">
+					        	<div class="col-md-4">
+							        <div class="form-group">
+							      		<label class="radio-inline control-label"><input type="radio" name="status" value="open" th:checked="(${param.status} and ${#strings.equals(param.status[0],'open')})"/> Pendientes</label>
+							       		<label class="radio-inline control-label"><input type="radio" name="status" value="closed" th:checked="(${param.status} and ${#strings.equals(param.status[0],'closed')})"/> Cerradas</label>
+							       		<label class="radio-inline control-label"><input type="radio" name="status" value="" th:checked="not ${param.status} or (${param.status} and ${#strings.equals(param.status[0],'')})"/> Todas</label>
+							        </div>
+							        
+							        <div class="form-group">
+							            <label for="service_code" class="col-sm-2 control-label">Categoría</label>
+							            <div class="col-sm-10">
+								            <select name="service_code" class="form-control">
+									            <option value="">Seleccione categoría</option>
+									            <option th:each="cat : ${categorias.body.result}" th:selected="${param['service_code']} and ${param['service_code'][0]} == ${cat.service_code} ? true : false" th:value="${cat.service_code}" th:text="${cat.service_name}"></option>
+									        </select>
+									    </div>
+								    </div>
+							            
+							        <div class="form-group">
+							            <label for="barrio_code" class="col-sm-2 control-label">Distrito</label>
+							            <div class="col-sm-10">
+								            <select name="barrio_code" class="form-control">
+								            <option value="">Seleccione distrito</option>
+								            <option value="1" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 1 ? true : false">Actur-Rey Fernando</option>
+								            <option value="12" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 12? true : false">Casablanca</option>
+								            <option value="3" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 3 ? true : false">Casco Histórico</option>
+								            <option value="4" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 4 ? true : false">Centro</option>
+								            <option value="5" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 5 ? true : false">Delicias</option>
+								            <option value="6" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 6 ? true : false">El Rabal</option>
+								            <option value="2" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 2 ? true : false">La Almozara</option>
+								            <option value="7" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 7 ? true : false">Las Fuentes</option>
+								            <option value="19" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 19 ? true : false">Miralbueno</option>
+								            <option value="8" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 8 ? true : false">Oliver-Valdefierro</option>
+								            <option value="9" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 9 ? true : false">San José</option>
+								            <option value="13" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 13 ? true : false">Santa Isabel</option>
+								            <option value="30" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 30 ? true : false">Sur</option>
+								            <option value="10" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 10 ? true : false">Torrero</option>
+								            <option value="11" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 11 ? true : false">Universidad</option>
+								            <option value="14" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 14 ? true : false">Alfocea</option>
+								            <option value="16" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 16 ? true : false">Casetas</option>
+								            <option value="17" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 17 ? true : false">Garrapinillos</option>
+								            <option value="18" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 18 ? true : false">Juslibol-El Zorongo</option>
+								            <option value="15" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 15 ? true : false">La Cartuja Baja</option>
+								            <option value="20" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 20 ? true : false">Montañana</option>
+								            <option value="21" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 21 ? true : false">Monzalbarba</option>
+								            <option value="22" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 22 ? true : false">Movera </option>
+								            <option value="23" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 23 ? true : false">Peñaflor</option>
+								            <option value="24" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 24 ? true : false">San Gregorio</option>
+								            <option value="25" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 25 ? true : false">San Juan Mozarrifar</option>
+								            <option value="26" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 26 ? true : false">Torrecilla de Valmadrid</option>
+								            <option value="27" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 27 ? true : false">Venta del Olivar</option>
+								            <option value="29" th:selected="${param['barrio_code']} and ${param['barrio_code'][0]} == 29 ? true : false">Villarrapa</option>
+								            </select>
+								    	</div>
+							        </div>
+						        </div>
+						        <div class="col-md-4">
+							        <div class="form-group">
+							            <label for="start_date" class="col-sm-2 control-label">Desde</label>
+							            <div class="col-sm-10">
+							                <input type="text" name="start_date" id="start_date" class="form-control" th:value="${param.start_date} ? ${param.start_date[0]} : ''" placeholder="dd-mm-yyyy" />
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label for="end_date" class="col-sm-2 control-label">Hasta</label>
+							            <div class="col-sm-10">
+							                <input type="text" name="end_date" id="end_date" class="form-control" th:value="${param.end_date} ? ${param.end_date[0]} : ''" placeholder="dd-mm-yyyy" />
+							            </div>
+							        </div>
+							        <input type="submit" value="Consultar" class="btn btn-primary"/>
+						        </div>
+				        	</div>
+				    	</form>
+			    	</div>
+		   		</div>
+	    	</div>
+	    </div>
+	    
+	<th:block th:include="servicio/quejas-sugerencias/list" />
+    </sede:content>
+    <script type="text/javascript" src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".shorten").shorten({
+            "showChars": 200,
+            "moreText": "Más",
+            "lessText": "Menos",
+        });
+    });
+    </script>
+    <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js" xml:space="preserve"></script>
+    
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+        var dataLayer = [];
+        function loadData() {
+            var IDEZarOLAPI = frames["mapahome"].IDEZarOLAPI;
+            IDEZarOLAPI.defaultProjection = "EPSG:23030";
+
+            var poi_cen_style = {
+                externalGraphic:"//www.zaragoza.es/contenidos/iconos/generico.png",
+                graphicWidth: 22,
+                graphicHeight: 22
+            };
+            var pois_cen = [];
+
+
+            $("#qys li").each(function() {
+                var icon = '//www.zaragoza.es/contenidos/iconos/participacionCiudadana.png';
+                var xcoordinate = $(this).find("[property='xcoordinate']").attr("content");
+                var ycoordinate = $(this).find("[property='ycoordinate']").attr("content");
+                if (xcoordinate && ycoordinate) {
+                    var poi = pois_cen.push(IDEZarOLAPI.POI(xcoordinate,ycoordinate, poi_cen_style, $(this).html()));
+                }
+            });
+            IDEZarOLAPI.addPOIs(pois_cen, "Quejas y sugerencias");
+            IDEZarOLAPI.centreMapInPOIs();            
+        }        
+    /*]]>*/
+    </script>
+
+</body>
+
+</html>

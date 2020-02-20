@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Plano comparativo Distrito de Casablanca y Nuevo Distrito Sur" description="Consulta Pública sobre la creación del nuevo Distrito Sur y los nuevos limites del distrito de Casablanca" author="Ayuntamiento de Zaragoza" last-modified="Wed Jan 03 00:00:00 CET 2018" keywords="consulta pública, distrito sur, arcosur, montecanal, valdespartera, rosales del canal, casablanca, public consultation, southern district">
+    </sede:meta>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    .textoTitulo1 {
+        font: 240% sans-serif;
+        margin-top: 20em;
+        margin-left: 2em;
+        background-color: #ccc;
+    }
+
+    .textoTitulo2 {
+        font: 240% sans-serif;
+        margin-top: 20em;
+        margin-left: 2em;
+    }
+
+    .textoTituloRojo {
+        font: 330% sans-serif;
+        color: #e81b16;
+        background-color: #e6e6e6;
+    }
+
+    .textoTituloNormal {
+        font: 160% sans-serif;
+        margin-top: 20em;
+        margin-left: 3em;
+    }
+
+    .cabecera {
+        margin-top: 2em;
+        border: 1px solid #CCC;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+        background-color: #f2f2f2;
+    }
+
+    h2 {
+
+        margin: 0 0 .5em;
+        padding: .5em;
+    }
+    </style>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css" />
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+    <script type="text/javascript">
+    ocultarArbolCapas = false;
+    var i = 0;
+    treeOrderDataList = ["actualidad"];
+    var dataActualidad = "{title: 'Delimitacion actual',claseIcono:'alternativa_casablanca',clase:'oculto',id: '" + i + "',url: '//www.zaragoza.es/contenidos/Casablanca.json'}\
+,{title: 'Nueva Delimitacion',claseIcono:'alternativa_sur',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/Nueva_Delimitacion.json'}";
+    </script>
+    <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/mapa/js/homeMapa.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <!--<div class="col-sm-3 fnd-gris-claro">
+                    <img class="img-responsive" src="/cont/vistas/portal/consulta-publica/distrito-sur/img/DistritoSurA.jpg" alt="" />
+                </div>-->
+            <div class="fnd-gris-claro col-sm-12 cabecera">
+                <p class="text-right"><span class="textoTitulo1">Consulta Pública</span>
+                    <br/><span class="textoTituloNormal">Reglamento de Órganos Territoriales y Participación Ciudadana
+                        <br/>28.07.2005</span>
+                    <br/><span class="textoTitulo2"> Creación del </span><span class="textoTituloRojo">Distrito Sur</span>
+                </p>
+            </div>
+        </div>
+        <h2 class="clearfix"> Mapa: Casablanca (actual) vs Distrito Sur + Casablanca (modificado) </h2>
+        <div class="pull-right clearfix">
+            <p class="col-md-12 pull-right clearfix">
+                <a href="/contenidos/gobierno-abierto/Plano_Distrito_sur.pdf" role="button" class="btn btn-primary pdf"><strong>Imprimir PDF</strong></a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 margin-t05em">
+                <div id="mapa">
+                    <div class="separador" id="facadeStatus"></div>
+                    <script type="text/javascript">
+                    var ifrm = document.createElement("iframe");
+                    ifrm.setAttribute("name", "mapahome");
+                    ifrm.setAttribute("id", "mapahome");
+                    ifrm.setAttribute("title", "Casablanca");
+                    ifrm.setAttribute("src", "//www.zaragoza.es/IDEZar_visorPortada/index.html?treeheader=http://www.zaragoza.es/cont/paginas/bs/img/logozaragoza.jpg");
+                    ifrm.style.width.value = "100%";
+                    document.getElementById("mapa").appendChild(ifrm);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

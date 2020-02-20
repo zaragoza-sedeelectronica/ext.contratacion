@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="(${pageTitle} ? ${pageTitle} + '. ': '') + 'Actividades'" keywords="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, actividades, buscador, actos, eventos, agenda" />
+    <meta name="robots" content="noindex, follow"/>
+    <style type="text/css">
+        .card {
+            position: relative;
+            padding-top: 1.5em;
+            padding-bottom: 60px;
+        }
+        @media (min-width: 768px) {
+            .card {
+                min-height: 19em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2 th:text="(${pageTitle} ? ${pageTitle} + '. ': '') + 'Actividades'"></h2>
+        <div th:if="${resultado.body.result.size() == 0}" role="alert" class="alert alert-info">No existen actividades</div>
+        <ul class="row list-unstyled">
+            <li th:each="doc : ${resultado.body.result}" class="col-xs-12 col-sm-6 col-md-4" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}" typeOf="Event">
+                <th:block th:include="fragmentos/cultura/evento/card(act=${doc})"></th:block>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

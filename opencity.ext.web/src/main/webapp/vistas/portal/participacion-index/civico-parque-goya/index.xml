@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Nuevo Centro Cívico Parque Goya ¿Cómo lo quieres?" description="Portal sobre el proceso participativo organizado para debatir sobre las necesidades que debería cubrir el nuevo Centro Cívico de Parque Goya." author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Mon May 28 00:00:00 CEST 2018" keywords="ayuntamiento, ciudad, Zaragoza, Espana, procesos participativos, participación, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment" />
+    
+    <style type="text/css">
+    .color-noticias {
+      color: #00669E;
+    }
+    .fnd-ciudad {
+    	background: #FFFFFF;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div style="position:relative;" class="text-center">
+            <img class="img-responsive" src="/cont/vistas/portal/participacion/civico-parque-goya/img/img_ccparque_goya-b.png" alt="" />
+        </div>
+        <div><p></p></div>
+		<div class="container-fluid">
+			<h2>Proceso de participación para el Nuevo Centro Cívico Parque Goya</h2>
+			<ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+            <li role="tab">
+                <a aria-controls="inicio" data-toggle="tab" href="#inicio" role="tab"><span class="fa fa-question-circle" aria-hidden="true"></span> Inicio</a>
+            </li>
+           
+           <li role="tab">
+                <a aria-controls="debate" data-toggle="tab" href="#debate" role="tab"><span class="fa fa-cog" aria-hidden="true"></span> Participa</a>
+            </li>
+            
+              <!--/*<li role="tab">
+                <a aria-controls="retorno" data-toggle="tab" href="#retorno" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Retorno</a>
+            </li>*/-->
+            <li role="tab">
+                <a aria-controls="doc" data-toggle="tab" href="#doc" role="tab"><span class="fa fa-file-text" aria-hidden="true"></span> Documentación</a>
+            </li>
+   	        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" aria-expanded="false" data-target="#inicio" data-toggle="collapse"> Inicio</h2>
+            <div id="inicio" role="tabpanel" sede:class="tab-pane active">
+            <div class="container-fluid">
+<div class="row margin-b1em">
+<div class="col-md-6">
+	<div class="fnd-gris-claro img-rounded padding-a1em">
+	<h3>Jornada Participativa</h3>
+	            <hr class="sm color-noticias" />
+<p><strong>Ven a la Jornada Participativa el jueves 7
+de junio</strong> a las 19 h en la Casa del Barrio (C/El Globo, 25) y
+colabora en el diseño del Centro Cívico.</p>
+<p>Presentación Jornada:
+<ul>
+<li>Elena Giner, Consejera de Participación Ciudadana</li>
+<li>Pablo Híjar, Presidente Junta Municipal Actur-Rey Fernando</li></ul></p>
+<p>Presentación del Proceso:  Antolin Teres Valle
+<ul>
+    <li>¿Por qué? y Antecedentes</li>
+    <li>Fases del Proceso y Presentación de los diferentes técnicos de los distintos servicios</li>
+</ul>    
+    </p>
+<p>Presentaciones Servicios Municipales:
+<ul>
+<li>Centros Cívicos</li>
+<li>Infancia (Derechos Sociales)</li>
+<li>Juventud</li>
+<li>Bibliotecas</li>
+<li>Arquitectura</li></ul></p>
+<p>19:30h. Grupos de trabajo</p>
+<p>20:30 h. Plenario y conclusiones</p>
+<p>21:00 h. Photo finish</p>
+<!--/*<h4 class="text-center text-color-info"><strong>¿Cómo lo quieres?</strong></h4>*/-->
+</div>
+
+	<div class="fnd-azul-claro img-rounded padding-a1em margin-t1em">
+<p><span class="fa fa-hand-point-right"></span> Si no puedes venir a la <strong>Jornada Participativa del día 7 de junio</strong>, puedes realizar tus aportaciones en este momento y desde casa.</p>
+<p><span class="fa fa-hand-point-right"></span> Lee los informes que encontrarás en la Pestaña de <strong>Documentación</strong> y realiza tus aportaciones antes del día 7 de junio.</p>
+<p><span class="fa fa-hand-point-right"></span> Serán incorporadas al debate presencial en la Jornada.
+Si quieres, también puedes apoyar alguna de las aportaciones que se hayan realizado.</p>		
+<div class="text-center">
+			<a class="btn btn-primary" href="https://www.zaragoza.es/sede/servicio/propuesta/608">HAZ TU PROPUESTA</a>
+</div>	
+		</div>
+</div>
+		
+                <div class="col-md-6 padding-a1em">
+									<h3>Centro Cívico Parque Goya</h3>
+            <hr class="sm color-noticias" />
+<p>En el presupuesto municipal de 2018, aprobado el pasado 26 de febrero, se incluyó una partida económica de <strong>100.000 €</strong>
+ para la construcción de un <strong>Centro Cívico en
+Parque Goya</strong>.</p>
+<p>De esta manera comenzaba a tomar forma la reivindicación vecinal de un espacio para la realización de actividades,
+ un lugar que fomente las relaciones en el barrio y que sirva como elemento de cohesión en Parque Goya.</p>
+<p>Después de muchas reuniones de trabajo
+entre el Ayuntamiento y la Asociación de
+Vecinos Parque Goya en las que se ha ido
+avanzando en las necesidades que debía
+cubrir el Centro Cívico Parque Goya, <strong>ha
+llegado el momento</strong> de abrir el proceso a
+toda la ciudadanía: <strong>infórmate, opina, haz
+propuestas, participa</strong>, ...</p>
+
+
+
+		<p>Se propone la parcela S2 para la construcción
+del Centro Cívico Parque Goya, una ubicación
+central en el barrio con un tamaño suficiente
+para cubrir las para cubrir las necesidades socioculturales de
+Parque Goya.</p>
+	<img class="img-responsive" src="/cont/vistas/portal/participacion/civico-parque-goya/img/img_ccparque_goya_mapa.png" alt="" />
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="row margin-b1em">
+<div class="col-md-6">
+			<h3>Por encima...</h3>
+            <hr class="sm color-noticias" />
+<ol><li>El Centro Cívico Parque Goya aglutinará los distintos servicios Municipales del Ayuntamiento de Zaragoza en el barrio.
+</li><li>Será el principal recurso para la realización de actividades, proporcionando unas instalaciones adecuadas con recursos apropiados.
+</li><li>Poseerá un alto nivel de eficiencia energética.
+</li><li>Será transparente y abierto a la participación.
+</li><li>Compartirá los espacios para un mejor aprovechamiento del Centro.</li></ol> 
+</div>
+
+
+<div class="col-md-6">
+<h3>Por dentro...</h3>
+<hr class="sm color-noticias" />
+<p>El Centro Cívico podría contar con...</p>	<img class="img-responsive" src="/cont/vistas/portal/participacion/civico-parque-goya/img/img_ccparque_goya_equpamientos.png" alt="Centro de tiempo libre, salón de actos polivalente,
+Biblioteca, Ludoteca, Salas dinámicas y de expresión corporal, Cafetería restaurante..." />           
+</div>
+</div>
+            </div>
+            </div>
+
+
+            <h2 class="tab-title" data-toggle="collapse" data-target="#debate" aria-expanded="false"> Participa</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="debate">
+            <div class="container-fluid">
+			<div class="row col-md-12">
+				<h3>¿Cómo lo quieres?</h3>
+				<hr class="sm color-noticias" />
+                <div class="col-md-4">	
+				<p><span class="fa fa-hand-point-right"></span> Si no puedes venir a la <strong>Jornada Participativa del día 7 de junio</strong>, puedes realizar tus aportaciones en este momento y desde casa.</p>
+				</div>
+                <div class="col-md-4">	
+				<p><span class="fa fa-hand-point-right"></span> Lee los informes que encontrarás en la Pestaña de <strong>Documentación</strong> y realiza tus aportaciones antes del día 7 de junio.</p>
+				</div>
+				<div class="col-md-4">
+<span class="fa fa-hand-point-right"></span> Serán incorporadas al debate presencial en la Jornada.
+Si quieres, también puedes apoyar alguna de las aportaciones que se hayan realizado.
+				</div>
+			</div>
+			<div class="row col-md-12 text-center">
+			<a class="btn btn-primary" href="https://www.zaragoza.es/sede/servicio/propuesta/608">HAZ TU PROPUESTA</a>
+			</div>			
+								
+				</div>
+				</div>
+           
+            
+
+
+                                 
+          
+             <!--/*<h2 class="tab-title" aria-expanded="false" data-target="#retorno" data-toggle="collapse"> Retorno</h2>
+             <div id="retorno" role="tabpanel" sede:class="tab-pane active">
+				 				<p><em>Contenidos a determinar</em></p>
+
+
+				 
+				       </div>*/-->
+
+
+
+				             <h2 class="tab-title" aria-expanded="false" data-target="#doc" data-toggle="collapse"> Documentación</h2>
+                     <div id="doc" role="tabpanel" sede:class="tab-pane active">
+<ul class="list-unstyled">
+	<li><span class="far fa-file-alt"></span> SERVICIO DE CENTROS CÍVICOS: <a href="/contenidos/participacion/civico-parque-goya/Centros-Civicos-Propuestas-CCParqueGoya.odt">Propuestas para el diseño de los espacios del <strong>Centro Cívico Parque Goya</strong></a>. <em>Documento de texto (odt)</em></li>
+	<li><span class="far fa-file-alt"></span> SERVICIO DE JUVENTUD: <a href="/contenidos/participacion/civico-parque-goya/Juventud-Propuestas-CasaJuventud-CCParqueGoya.odt">Propuestas para la <strong>Casa de Juventud</strong> a ubicar en el <strong>Centro Cívico Parque Goya</strong></a>. <em>Documento de texto (odt)</em></li>
+
+	<!--/* Estos dos ficheros se retiran de forma temporal por razones de accesibilidad*/-->
+	
+	<!--/*<li><span class="far fa-file-alt"></span> SERVICIOS SOCIALES COMUNITARIOS: <a href="/contenidos/participacion/civico-parque-goya/SSComunitarios-Informe-necesidades-infancia-CCParqueGoya-na.pdf" class="pdf">Informe sobre necesidades de equipamiento de infancia en <strong>Centro Cívico Parque Goya</strong></a>.</li>
+	<li><span class="far fa-file-alt"></span> ASOCIACIÓN DE VECINOS PARQUE GOYA: <a href="/contenidos/participacion/civico-parque-goya/AAVV-CCPGoyaya-na.pdf" class="pdf">Centro Cívico Parque Goya, ya!</a>. </li>*/-->
+
+</ul>         
+          </div>
+		            
+				</div>
+				</div>
+
+				
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

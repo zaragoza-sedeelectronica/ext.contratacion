@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Recetas" keywords="sede,servicio" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Recetas</h2>
+        <ul class="list-unstyled row">
+            <li th:each="registro : ${resultado.body.result}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 card">
+                <a th:href="@{{id}(id=${registro.id})}">
+                    <h3 sede:rdf="${registro.get('title')}"></h3>
+                    <img class="img-responsive" th:src="${registro.images[0].url}" th:alt="${registro.images[0].title}"/>
+                </a>
+            </li>
+        </ul>
+    </sede:content>
+</body>
+
+</html>

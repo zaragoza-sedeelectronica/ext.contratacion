@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Edición de datos del buscador" />
+</head>
+
+<body>
+    <sede:content>
+        <div role="alert" class="alert alert-info">Es preferible modificar en origen e indizar desde la herramienta de gestión de contenidos, <strong>SÓLO</strong> emplear si hay algún problema con ellas.</div>
+        <th:block th:include="fragmentos/error" />
+        <form class="form-horizontal" th:action="@{/servicio/buscador/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+            <div class="form-group" th:each="entry: ${dato.propiedades.keySet()}">
+                <label class="col-sm-3 col-md-2 control-label" th:text="${entry}"/>
+                <div class="col-sm-9 col-md-10">
+                    <textarea th:field="*{propiedades[__${entry}__]}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </sede:content>
+</body>
+
+</html>

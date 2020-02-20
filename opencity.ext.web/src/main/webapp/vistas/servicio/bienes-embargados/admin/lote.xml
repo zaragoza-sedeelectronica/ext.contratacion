@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Lotes. Bienes embargados" keywords="sede,web,monumento" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:if="${registro.body.visible} == 'N'">
+            <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./unlock}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+        </th:block>
+        <th:block th:if="${registro.body.visible} == 'S'">
+            <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./lock}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+        </th:block>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/bienes-embargados/admin/lote/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post" class="form-horizontal">
+            <th:block th:include="fragmentos/control-fields" />
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Lote</span></legend>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" for="description">Descripci&oacute;n</label>
+                        <div class="col-sm-11">
+                            <input class="form-control" type="text" th:field="*{description}" size="100" />
+                        </div>
+                    </div>
+                    <!--/* campos comunes */-->
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="valoracion">Valoraci&oacute;n</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{valoracion}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="cargas">Cargas</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{cargas}" size="100" />
+                            </div>
+                            <label class="col-sm-3 control-label" for="tramo">Tramo</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{tramo}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="nifDeudor">Nif Deudor</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{nifDeudor}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="nombreDeudor">Nombre Deudor <span class="fa fa-asterisk"/></label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" th:field="*{nombreDeudor}" size="100" required="true"/>
+                            </div>
+                            <label class="col-sm-2 control-label" for="importeDeuda">Importe Deuda</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{importeDeuda}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="expediente">Expediente</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{expediente}" size="100" />
+                            </div>
+                            <!--/*<label class="col-sm-2 control-label" for="notificacion">Notificaci&oacute;n</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{notificacion}" size="100" />
+                            </div>*/-->
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="acuerdoEnajenacion">Acuerdo Enajenaci&oacute;n</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{acuerdoEnajenacion}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="notificacionAcuerdoEnajenacion">Notificaci&oacute;n Acuerdo Enajenaci&oacute;n</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{notificacionAcuerdoEnajenacion}" size="100" />
+                            </div>
+                        </div>
+                        <!--/* fin campos comunes */-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="type">Tipo</label>
+                        <div class="col-sm-10">
+                            <label>
+                                <input type="radio" th:field="*{type}" value="Vehículos" th:id="vehiculo"/> Vehículo
+                            </label>
+                            <label>
+                                <input type="radio" th:field="*{type}" value="Inmuebles" th:id="inmueble"/> Inmueble
+                            </label>
+                            <label>
+                                <input type="radio" th:field="*{type}" value="Otros" th:id="otros"/> Otros
+                            </label>
+                        </div>
+                    </div>
+                    <div id="datos-vehiculo" th:fragment="formulariovehiculo (vehiculo)">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="matricula">matricula</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:name="matricula" th:value="${vehiculo.matricula}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="marca">marca</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:name="marca" th:value="${vehiculo.marca}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="modelo">modelo</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:name="modelo" th:value="${vehiculo.modelo}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="propulsion">propulsion</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:name="propulsion" th:value="${vehiculo.propulsion}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Llaves</label>
+                            <div class="col-sm-1">
+                                <input type="checkbox" th:name="llaves" th:value="true" th:checked="${vehiculo.llaves}"/>
+                            </div>
+                            <label class="col-sm-2 control-label">Documentación</label>
+                            <div class="col-sm-1">
+                                <input type="checkbox" th:name="documentacion" th:value="true" th:checked="${vehiculo.documentacion}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="matriculacion">Matriculación</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:name="matriculacion" th:value="${vehiculo.matriculacion} ? ${#calendars.format(vehiculo.matriculacion,'dd-MM-yyyy')} : ''" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="vigenciaITV">Vigencia ITV</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" th:name="vigenciaITV" th:value="${vehiculo.vigenciaITV} ? ${#calendars.format(vehiculo.vigenciaITV,'dd-MM-yyyy')} : ''" size="100" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="datos-inmueble" th:fragment="formularioinmueble (inmueble)">
+                        
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="municipio">Municipio</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="municipio" th:value="${inmueble.municipio}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="numeroFinca">Número finca</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="numeroFinca" th:value="${inmueble.numeroFinca}" size="100" />
+                            </div>
+                            <label class="col-sm-3 control-label" for="seccion">Sección</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="seccion" th:value="${inmueble.seccion}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="registroPropiedad">Registro Propiedad</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="registroPropiedad" th:value="${inmueble.registroPropiedad}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="referenciaCatastral">Referencia Catastral</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="referenciaCatastral" th:value="${inmueble.referenciaCatastral}" size="100" />
+                            </div>
+                            <label class="col-sm-3 control-label" for="naturalezaFinca">Naturaleza Finca</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="naturalezaFinca" th:value="${inmueble.naturalezaFinca}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="emplazamiento">Emplazamiento</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="emplazamiento" th:value="${inmueble.emplazamiento}" size="100" />
+                            </div>
+                            <label class="col-sm-3 control-label" for="superficie">Superficie</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="superficie" th:value="${inmueble.superficie}" size="100" />
+                            </div>
+                            <label class="col-sm-1 control-label" for="enteros">Enteros</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="enteros" th:value="${inmueble.enteros}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="naturalezaDerecho">Naturaleza Derecho</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="naturalezaDerecho" th:value="${inmueble.naturalezaDerecho}" size="100" />
+                            </div>
+                            <label class="col-sm-3 control-label" for="moreInfo">Descripción</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="moreInfo" th:value="${inmueble.moreInfo}" size="100" />
+                            </div>
+                            <label class="col-sm-1 control-label" for="objetoSubasta">Objeto Subasta</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:name="objetoSubasta" th:value="${inmueble.objetoSubasta}" size="100" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="datos-otros" th:fragment="formulariootros (otros)">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="valoracion">Nombre</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" th:name="title" th:value="${otros.title}" size="100" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="comment">Descripción</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" th:name="comment" th:value="${otros.comment}" size="100" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+$('#vehiculo').click(function() {
+    if ($(this).is(':checked')) {
+        $('#datos-vehiculo').show();
+        $('#datos-inmueble').hide();
+        $('#datos-otros').hide();
+   }
+});
+$('#inmueble').click(function() {
+    if ($(this).is(':checked')) {
+        $('#datos-vehiculo').hide();
+        $('#datos-inmueble').show();
+        $('#datos-otros').hide();
+   }
+});
+$('#otros').click(function() {
+    if ($(this).is(':checked')) {
+        $('#datos-vehiculo').hide();
+        $('#datos-inmueble').hide();
+        $('#datos-otros').show();
+   }
+});
+
+$('#datos-vehiculo').hide();
+$('#datos-inmueble').hide();
+$('#datos-otros').hide();
+    /*]]>*/
+    </script>
+
+</body>
+
+</html>

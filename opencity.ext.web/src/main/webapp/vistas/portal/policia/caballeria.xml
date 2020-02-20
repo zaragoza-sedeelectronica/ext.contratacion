@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Ayuntamiento de Zaragoza. Policía Local de Zaragoza."
+                description="El portal Policía Zaragoza proporciona información sobre el servicio: su historia, servicios de atención a los ciudadanos, programa de Educación Vial, museo, el parque móvil, trámites y normativa relacionados. En Tu opinión importa, la ciudadanía puede enviar sus sugerencias y observaciones."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="ayuntamiento, ciudad, Zaragoza, España, policia local, servicio público, historia, Unidad de Caballería, educación cívica, juegos, museo, parque móvil, administración electrónica, formalidades administrativas, legislación  local, relación administración-administrado, servicio de quejas y sugerencias, council, city, Saragossa, Spain, municipal police, public service, history, civics, gaming, museum, vehicle fleet, electronic government, administrative formalities, local legislation, citizen-authority relations, complaints and suggestions service">
+        </sede:meta>
+        <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css"/>
+        <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css"/>
+        <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+        <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+        <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .cuadro {
+            position: relative;
+            background-color: #cccccc;
+            border-radius: 10px;
+            width: 18%;
+            margin: 1%;
+            float: left;
+            }
+
+            .img-rounded {
+            border-radius: 10px 10px 0 0 !important;
+            }
+
+            .cuadro img {
+            padding-bottom: 0;
+            margin: 0px;
+            }
+
+            .cuadro h3 {
+            background-color: rgba(0,0,0,0.7);
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
+            border-radius: 0px 0px 10px 10px;
+            }
+
+            .cuadro h3 a {
+            color: #ffffff !important;
+            font-weight: bold;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Unidad de Caballería
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+
+                    <h3>Funciones</h3>
+
+                    <p>Las funciones que corresponden a la Unidad de Caballería son las que a continuación se
+                        detallan:
+                    </p>
+                    <ul>
+                        <li>Correcta representación y acompañamiento a las autoridades de la Corporación Municipal en
+                            actos públicos oficiales y especiales a los que asistan. Participación en desfiles,
+                            procesiones y cabalgatas.
+                        </li>
+                        <li>El correcto cuidado y acicalado de los caballos, así como su entrenamiento y doma diaria
+                            para el desempeño de las tareas que tienen asignadas.
+                        </li>
+                        <li>Patrulla por las vías verdes perimetrales de la ciudad.</li>
+                    </ul>
+
+                    <div class="">
+                        <img width="200" height="168" src="https://www.zaragoza.es/cont/paginas/policia/img/caballeria.jpg" class="img-responsive center-block"
+                             alt="Caballer?a de la Polic?a Local"/>
+                    </div>
+
+                    <h3>Composición</h3>
+                    <div class="row-fluid">
+                        <div class="">
+                            <div class="">
+                                <p>En la actualidad la Unidad de Caballería consta<strong> de un Oficial y siete
+                                    Policías</strong>, y
+                                    están asignados a la Unidad<strong> nueve caballos</strong>, cuyos nombres son:
+                                </p>
+                                <ul>
+                                    <li><strong>Talibán</strong>: nacido en 1997 y comprado en 2001
+                                    </li>
+                                    <li><strong>Capitán</strong>: nacido en 1995 y comprado en 1999
+                                    </li>
+                                    <li><strong>Juncal</strong>: nacido en 2002 y comprado en 2006
+                                    </li>
+                                    <li><strong>Pilgrim</strong>: nacido en 2003 y comprado en 2006
+                                    </li>
+                                    <li><strong>Trueno</strong>: nacido en 1997 y comprado en 2001
+                                    </li>
+                                    <li><strong>Príncipe</strong>: nacido en 1995 y comprado en 2000
+                                    </li>
+                                    <li><strong>Ben-Hur</strong>: nacido en 1997 y comprado en 2000
+                                    </li>
+                                    <li><strong>Parzival</strong>: nacido en 2007 y comprado en 2010
+                                    </li>
+                                    <li><strong>Cierzo</strong>: nacido en 2005 y comprado en 2010
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="/sede/portal/policia/galeria">Ver imágenes de los caballos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="">
+                                <img width="148" height="183" class="img-responsive center-block"
+                                     src="https://www.zaragoza.es/cont/paginas/policia/img/pilgrim.jpg"
+                                     alt="Caballo Pilgrim"/>
+                            </div>
+
+                            <h3>Actividades</h3>
+                            <p>En cuanto a las actividades realizadas el año pasado, la Unidad de Caballería ha
+                                realizado
+                                <strong>32
+                                    galas a
+                                    caballo</strong>, con una participación de un total de 101 policías con sus
+                                monturas.
+                                Destacar la
+                                intensa
+                                participación en 17 Procesiones de Semana Santa, así como en Cabalgata de Reyes, San
+                                Antonio
+                                Abad,
+                                San
+                                Valero, entrega de Diplomas a la XVII promoción, Patrona del Cuerpo. Corpus Christi,
+                                desplazamiento
+                                a
+                                Tamarite de Litera y Binéfar para participar en el desfile de carrozas de sus fiestas
+                                patronales,
+                                realización de paseos a caballo con la participación de más de 800 niños con motivo de
+                                la
+                                Semama
+                                Europea de
+                                la Movilidad, Pregón de las Fiestas del Pilar. Ofrenda de Flores, Ofrenda de Frutos,
+                                Rosario
+                                de
+                                Cristal y
+                                Festival Infantil de la Policía
+                            </p>
+                            <p>También se han realizado
+                                <strong>30 galas a pie</strong>
+                                con la participación de 60 Policías, en inauguraciones de certámenes en la Feria de
+                                Muestras,
+                                entrega de
+                                Medallas en las Cortes de Aragón y Ayuntamiento, así como acompañamiento a pie a la
+                                Corporación
+                                Municipal en
+                                diversos actos.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

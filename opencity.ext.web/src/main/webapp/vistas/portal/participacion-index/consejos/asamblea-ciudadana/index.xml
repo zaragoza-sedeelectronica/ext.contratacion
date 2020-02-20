@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Consejo de Ciudad. IV Asamblea Ciudadana" description="Proceso participativo para elegir las entidades que representarán a la sociedad civil en el Pleno del Consejo de la Ciudad" author="Ayuntamiento de Zaragoza" keywords="Gobierno Abierto, Participación Ciudadana, Consejo de la Ciudad, participacion" />
+    
+    <style type="text/css">
+    .color-noticias {
+      color: #00669E;
+    }
+    .fnd-ciudad {
+    	background: #FFFFFF;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+	 	<div class="text-center">
+            <img class="img-responsive margin-auto" src="/cont/vistas/portal/participacion/consejos/asamblea-ciudadana/img/img_vi_asamblea.jpg" alt="" />
+        </div>
+        <div><p></p></div>
+		<div class="container-fluid">
+			<h2>VI Asamblea Ciudadana 2017</h2>
+			<ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+            <li role="tab">
+                <a aria-controls="inicio" data-toggle="tab" href="#inicio" role="tab"><span class="fa fa-question-circle" aria-hidden="true"></span> Inicio</a>
+            </li>
+           
+           <li role="tab">
+                <a aria-controls="fases" data-toggle="tab" href="#fases" role="tab"><span class="fa fa-cogs" aria-hidden="true"></span> Fases</a>
+            </li>
+            <li role="tab">
+                <a aria-controls="activ" data-toggle="tab" href="#activ" role="tab"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Calendario</a>
+            </li>
+              <li role="tab">
+                <a aria-controls="candidatas" data-toggle="tab" href="#candidatas" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Candidaturas</a>
+            </li>
+              <li role="tab">
+                <a aria-controls="salientes" data-toggle="tab" href="#salientes" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Entidades Salientes</a>
+            </li>
+            <li role="tab">
+                <a aria-controls="doc" data-toggle="tab" href="#doc" role="tab"><span class="fas fa-file-alt" aria-hidden="true"></span> Documentación</a>
+            </li>
+   	        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" aria-expanded="false" data-target="#inicio" data-toggle="collapse"> Inicio</h2>
+            <div id="inicio" role="tabpanel" sede:class="tab-pane active">
+            <div class="well well-sm text-justify">
+<p>El día 23 de octubre de 2017 se celebró en el edificio Seminario del Ayuntamiento de Zaragoza la <strong>VI Asamblea Ciudadana</strong>, en la cual se renuevan, cada dos años, los representantes de asociaciones y entidades vecinales en el <strong>Consejo de Ciudad.</strong></p>
+<p>El <strong>Consejo de la Ciudad</strong> es el máximo órgano participativo de carácter consultivo del Ayuntamiento de Zaragoza, en el que están representadas, además de los grupos políticos, <strong>asociaciones de jóvenes, de mayores, asociaciones vecinales, AMPAS y asociaciones culturales y sociales, así como las entidades reconocidas como de Interés Público Municipal.</strong></p> 
+<p><strong>En la votación pudieron participar los y las representantes de las asociaciones inscritas en el Censo Municipal de Entidades Ciudadanas.</strong> Cada entidad debió haber acreditado previamente a la persona encargada de depositar el voto que la representa. En cada voto se pudo apoyar, como máximo, a <strong>tres candidatos/as: uno de entre los propuestos en su categoría </strong>(jóvenes, mayores, vecinos, ampas o asociaciones culturales); <strong>dos de entre los propuestos entre las entidades con reconocimiento de Interés Público Municipal.</strong></p>
+<p>Los ganadores y ganadoras, que formarán parte desde ahora y durante dos años del <strong>Consejo de Ciudad, son:</strong></p>
+              <ul>
+                <li>COAPEMA (Consejo Aragonés de las Personas Mayores) y LARES <strong>*</strong>.</li>
+<li>ICIJA (Instituto de Ciencia e Investigación Juvenil de Aragón).</li>
+<li>Asociación de Vecinos Tío Jorge-Arrabal.</li>
+<li>FAPAR (Federación de Asociaciones de Padres y Madres de Alumnos de centros públicos en Aragón).</li>
+<li>COCEMFE (Confederación Española de Personas con Discapacidad Física y Orgánica).</li>
+              </ul>
+              <p><strong>*</strong> <em>Al haberse producido un empate entre estas dos asociaciones de mayores, éstas se turnarán (previo acuerdo) en su participación en el Consejo de la Ciudad.</em></p>
+              <p>En el apartado de entidades con reconocimiento de <strong>Interés Público Municipal</strong> han sido elegidas:</p>
+<ul><li>AFEDAZ (Asociación de Familiares de Enfermos de Alzheimer)</li>
+  <li>UCA (Unión de Consumidores de Aragón)</li></ul>
+            <div role="alert" class="alert alert-info">           
+            <p>En la pestaña <strong>Fases</strong> figura el detalle de los <strong>resultados de la votación</strong>.</p>
+              <p>Puedes descargar el acta de la VI Asamblea del Consejo de Ciudad pinchando <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Acta_VI_Asamblea_ciudadana_23Oct2017" class="pdf" target="_blank">aquí</a></p>
+              </div>
+             <div role="alert" class="alert alert-info">
+              <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Decreto_VIAsambleaCiudadana_25oct2017.pdf" class="pdf" target="_blank">Decreto de Alcaldía-Presidencia</a> de fecha 25 de octubre de 2017, de nombramiento y cese de miembros del Pleno del Consejo de la Ciudad, tras el proceso participativo.
+              </div>
+			<!--/*<p>Forman parte todas las entidades inscritas en tiempo y forma en el <strong>Censo Municipal de Entidades Ciudanas del Ayuntamiento de Zaragoza</strong>.</p>
+            <p>Su función es elegir mediante votación directa a <strong>7 entidades en representación de la sociedad civil</strong> para ser miembros del Pleno del Consejo de la Ciudad, máximo órgano de participación de carácter consultivo del Ayuntamiento de Zaragoza.</p>
+            <p><strong>Duración del mandato: 2 años</strong>.</p>
+            <p><i>Regulada en los artículos 59 y 92 del Reglamento de Órganos Territoriales y de Participación Ciudadana de 5 Enero de 2006.</i></p>          
+            </div>
+            <div role="alert" class="alert alert-info">
+           
+            <p>En la pestaña <a href="https://www.zaragoza.es/sede/portal/consejos/asamblea-ciudadana/#candidatas">Candidaturas</a> puedes ver las entidades que se presentan.</p> 
+            <p>Pincha <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Papeleta_votacion_candidaturas_2017_2.pdf" class="pdf" target="_blank">aquí</a> para descargar la Papeleta de Votación.</p>
+            <p class="normas">Recuerda que cada asociación podrá ejercer el derecho a votar marcando en la papeleta un máximo de <strong>3 candidatos/as</strong>: 1 entre los propuestos de su categoría y 2 entre las entidades propuestas para ser reconocidas de interés público municipal.</p>*/-->
+            </div>
+            </div>
+             <h2 class="tab-title" data-toggle="collapse" data-target="#fases" aria-expanded="false"> Fases</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="fases">
+                <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" title="correo electronico" aria-hidden="true"></span> Fase 1</span> Información y presentación de candidaturas</h3>
+                            <!-- <h3 class="titulo nomargin"> <small><span class="far fa-dot-circle" aria-hidden="true"></span> Fase</small> Previa</h3> -->
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info">15 Septiembre-2 de Octubre de 2017</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase1" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span> </div>
+                    <div id="fase1" class="ampliar collapse in">
+                              <p>Las asociaciones que lo deseen podrán ser candidatas, siempre que presenten la candidatura, que se adjuntará a la convocatoria, debidamente cumplimentada haciendo constar el nombre de la entidad, representante que proponen y categoría sectorial por la que se presentan (jóvenes, mayores, vecinos, ampas, culturales-sociales y otras, o interés público municipal).</p>
+                                  <p>A partir del <strong>5 de Octubre</strong>: publicación de las candidaturas en la web municipal para que las asociaciones participantes en la Asamblea Ciudadana puedan descargarse la papeleta de votación.</p>
+<p>Según acuerdo adoptado en el último Consejo de Ciudad de 26 de Junio de 2017, los candidatos/as deberán adjuntar a la candidatura un Escrito de Presentación de su entidad, explicando cuál es su proyecto, objetivos y motivación para ser elegido miembro del Consejo de la Ciudad a la Oficina Técnica de Participación, Transparencia y Gobierno Abierto.</p>
+                      <p><strong>Dirigido a</strong> Asociaciones.</p>
+                      <p><strong>Formas de tramitación</strong></p>
+                      <ul>
+                        <li>Por Correo <span class="fa fa-envelope" aria-hidden="true"></span><a href="mailto:consejociudad@zaragoza.es"> consejociudad@zaragoza.es</a>
+                        </li>
+                      </ul>
+                      			<div role="alert" class="alert alert-info">
+                      <p><strong>Impresos relacionados</strong></p>
+                      <ul>
+                        <li><a href="https://www.zaragoza.es/contenidos/tramites/impresos/acreditacion-asamblea.pdf" class="pdf" target="_blank">Acreditación para la VI Asamblea Ciudadana</a></li>
+                        <li><a href="https://www.zaragoza.es/contenidos/tramites/impresos/solicitud-candidatura-asamblea.pdf" class="pdf" target="_blank">Presentación de Candidatura a la VI Asamblea Ciudadana</a></li>               
+                                  </ul> </div>                     
+                    </div>
+                </div>
+                <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase 2</span> Celebración de la Asamblea. Votaciones</h3>
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info">23 de octubre de 2017</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase2" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span></div>
+                    <div id="fase2" class="ampliar collapse in">
+                      <h3>VI Asamblea ciudadana</h3>
+                      <p><span class="far fa-dot-circle" aria-hidden="true"></span><strong> Lugar</strong>: Edificio Seminario del Ayuntamiento de Zaragoza, sito en Vía Hispanidad nº 20.</p>
+
+                      <h4>Propuesta Orden del Día</h4>
+                      <p>La Asamblea se desarrollará en 2 actos:</p>
+                      <p><strong>1º ACTO.- PRESENTACIÓN DE LA ASAMBLEA</strong></p>
+                  <p><span class="far fa-dot-circle" aria-hidden="true"></span><strong> Lugar</strong>:  Salón de Actos, planta baja, 18 horas.</p>
+<p>Está dirigido a todas las entidades ciudadanas, independientemente de su ámbito de actuación. La sesión será presidida por la Consejera de Participación, Transparencia y Gobierno Abierto y coordinada por el Coordinador General del Área de Participación, Transparencia y Gobierno Abierto y por la Jefa de la Oficina Técnica de Participación, Transparencia y Gobierno Abierto del Ayuntamiento de Zaragoza.</p>
+
+<p>Las entidades salientes del Consejo de la Ciudad, citadas a continuación, expondrán brevemente su experiencia como miembros del citado Consejo:</p>
+<ul>
+<li>Movimiento por el Derecho del Alumnado MOVIDA (en representación de las asociaciones de jóvenes)</li>
+<li>Consejo Aragonés de las Personas Mayores COAPEMA (en representación de las asociaciones de mayores). <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Informe_Gestion_COAPEMA.pdf" class="pdf" target="_blank">Informe de Gestión</a></li>
+<li>Asociación de Vecinos Tío Jorge del Barrio del Arrabal (en representación de las asociaciones vecinales)</li>
+<li>Federación de Asociaciones de Padres y Madres de Alumnos de Aragón "Juan de Lanuza". FAPAR (en representación de las AMPAS). <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Memoria_FAPAR.pdf" class="pdf" target="_blank">Memoria 2015-2017</a></li>
+<li>Federación Coordinadora de Entidades para la Defensa de Personas con Discapacidad en Zaragoza. COCEMFE Zaragoza (en representación de las asociaciones sociales, culturales, deportivas y otras). <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Informe_Cocemfe_Zgz.pdf" class="pdf" target="_blank">Informe Mandato 2015-2017</a></li>
+<li>Disminuidos Físicos de Aragón DFA (en representación de las entidades con reconocimiento de interés público municipal). <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Informe_Fundacion_DFA.pdf" class="pdf" target="_blank">Informe Mandato 2015-2017</a></li>
+<li>Asociación Cultural "Royo del Rabal" (en representación de las entidades con reconocimiento de interés público municipal). <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/InformeGestión_royodelrabal.pdf" class="pdf" target="_blank">Informe de Gestión 2015-2017</a></li>
+                      </ul>
+<p>Según acuerdo adoptado en el último Consejo de Ciudad de 26 de Junio de 2017, los miembros de las entidades salientes del Pleno del Consejo de Ciudad deberán remitir previamente por escrito el Resumen de su gestión o exposición de su experiencia como miembros del Consejo de Ciudad durante estos dos años a la Oficina Técnica de Participación, Transparencia y Gobierno Abierto, a la siguiente dirección de correo electrónico: <a href="mailto:consejociudad@zaragoza.es"> consejociudad@zaragoza.es</a> para publicarla en la Web municipal y que puedan acceder a esta información todas las entidades con antelación a la celebración de la Asamblea.</p>
+
+<p>Posteriormente se presentarán todas las personas que representan a las entidades que han formalizado candidatura de forma muy breve, dado el alto grado de participación y al objeto de no alargar excesivamente la Asamblea.</p>
+
+                      <p><strong>2º ACTO.- VOTACIONES</strong></p>
+<p>Terminadas las presentaciones, se procederá a la votación de los/las representantes de cada categoría, que se desarrollará de forma paralela en diferentes espacios habilitados a tal efecto, situados en la 1ª planta del Edificio Seminario:</p>
+                      <ul>
+                        <li>Asociaciones de Jóvenes: Salón de Plenos</li>
+<li>Asociaciones de Mayores: Aula 2</li>
+<li>Asociaciones Vecinales: Sala de Prensa</li>
+<li>Asociaciones de Madres y Padres de Alumnos AMPAS: Salón del Consejo de Gerencia</li>
+<li>Asociaciones Culturales-Sociales y otras: Salón de Arcos</li>
+                      </ul>
+<div class="well well-sm fnd-ciudad">
+	<h4><span class="far fa-hand-point-right" aria-hidden="true"></span> Normas para la votación</h4>
+<p>Votarán los/las representantes de las asociaciones inscritas en el Censo Municipal de Entidades Ciudadanas, debiendo aportar la acreditación, que se remitirá a cada entidad junto con la convocatoria y que a su vez, se publicará en la web municipal.</p>
+<p>Cada entidad deberá acreditarse en su respectiva mesa electoral, ubicada en la correspondiente sala según categoría, entregando debidamente cumplimentada la acreditación y a continuación podrá ejercer su derecho al voto.</p>
+<p>El modelo de papeleta de votación se publicará en la web municipal.</p>
+<p>Cada asociación podrá ejercer el derecho a votar, marcando en la papeleta de votación, a un máximo de 3 candidatos/as:</p>
+<ul>
+<li>1 candidato/a entre los propuestos de su categoría: jóvenes, mayores, vecinos, ampas, culturales-sociales y otras...</li>
+<li>2 candidatos/as entre los propuestos de las entidades con reconocimiento de interés público municipal.</li>
+                      </ul>
+<p>Conforme finalice la votación, en cada una de las mesas electorales, se procederá al recuento de los votos emitidos en sus respectivas categorías y se elevará el resultado al Plenario de la Asamblea Ciudadana para su ratificación.</p>
+</div>
+                      <p>Fecha de Publicación del Tablón Municipal: 23/10/20117</p>
+                      <p><a href="https://www.zaragoza.es/sede/portal/consejos/asamblea-ciudadana/#candidatas">Pincha aquí para ver las candidaturas presentadas por categorías</a></p>                      
+                    </div>
+                </div>
+              
+                <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase 3</span> Resultados de la votación</h3>
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info"> 23 de Octubre de 2017</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase3" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span></div>
+                    <div id="fase3" class="ampliar collapse in">
+<p style="padding: 10px 0 0 0;">Finalizado el plazo de votación establecido a las 20:00 horas del 23 de octubre de 2017, en cada una de las mesas electorales se procede al escrutinio de los votos emitidos en sus respectivas categorías y se eleva el resultado al Plenario de la Asamblea Ciudadana, con el siguiente desglose del resultado:</p>
+            <div class="table-responsive">
+                <table class="table table-consended table-bordered">
+                        <tr class="fnd-gris-medio">
+                          <th colspan="2"><strong>ASOCIACIONES JÓVENES</strong></th>
+                  		</tr>
+                        <tr>
+						<td class="col-xs-9"><strong>Nº total Votos emitidos/acreditaciones</strong></td>
+                        <td class="col-xs-3"><strong>1 votos</strong>.</td>                     
+                        </tr>
+                  <tr>
+                    <td class="col-xs-9">Instituto de Ciencia e Investigación Juvenil de Aragón ICIJA</td>
+                    <td class="col-xs-3"><strong>1</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">Votos en blanco</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                  <tr>
+                    <td class="col-xs-9">Votos nulos</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                    </table>
+                      </div>
+                      
+<div class="table-responsive">
+                <table class="table table-consended table-bordered table-hover">
+                        <tr class="fnd-gris-medio">
+                          <th colspan="2"><strong>ASOCIACIONES MAYORES *</strong></th>
+                  		</tr>
+                        <tr>
+						<td class="col-xs-9"><strong>Nº total Votos emitidos/acreditaciones</strong></td>
+                        <td class="col-xs-3"><strong>2 votos</strong>.</td>                     
+                        </tr>
+                  <tr>
+                    <td class="col-xs-9">Consejo Aragonés de Personas Mayores COAPEMA</td>
+                    <td class="col-xs-3"><strong>1</strong> votos.</td>
+                 	</tr>
+                                    <tr>
+                    <td class="col-xs-9">Asociación Aragonesa de Residencias y Servicios de
+Atención a los Mayores-Sector Solidario LARES-ARAGÓN</td>
+                    <td class="col-xs-3"><strong>1</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">Votos en blanco</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                  <tr>
+                    <td class="col-xs-9">Votos nulos</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><strong>*</strong><em> Al haberse producido un empate entre estas dos asociaciones de mayores, éstas se turnarán (previo acuerdo) en su participación en el Consejo de la Ciudad.</em></td>
+                  </tr>
+                    </table>
+
+                      </div>
+                      
+            <div class="table-responsive">
+                <table class="table table-consended table-bordered table-hover">
+                        <tr class="fnd-gris-medio">
+                          <th colspan="2"><strong>AMPAS</strong></th>
+                  		</tr>
+                        <tr>
+						<td class="col-xs-9"><strong>Nº total Votos emitidos/acreditaciones</strong></td>
+                        <td class="col-xs-3"><strong>19 votos</strong>.</td>                     
+                        </tr>
+                  <tr>
+                    <td class="col-xs-9">Federación Asociaciones Padres y Madres Alumnos FAPAR</td>
+                    <td class="col-xs-3"><strong>19</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">Votos en blanco</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                  <tr>
+                    <td class="col-xs-9">Votos nulos</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                    </table>
+                      </div>
+                      <div class="table-responsive">
+                <table class="table table-consended table-bordered table-hover">
+                        <tr class="fnd-gris-medio">
+                          <th colspan="2"><strong>ASOCIACIONES VECINALES</strong></th>
+                  		</tr>
+                        <tr>
+						<td class="col-xs-9"><strong>Nº total Votos emitidos/acreditaciones</strong></td>
+                        <td class="col-xs-3"><strong>9 votos</strong>.</td>                     
+                        </tr>
+                  <tr>
+                    <td class="col-xs-9">A.VV. Picarral Salvador Allende</td>
+                    <td class="col-xs-3"><strong>2</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">A.VV. Tío Jorge-Arrabal</td>
+                    <td class="col-xs-3"><strong>6</strong> votos.</td>
+                 	</tr>                  
+                  <tr>
+                    <td class="col-xs-9">Votos en blanco</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                  <tr>
+                    <td class="col-xs-9">Votos nulos</td>							
+                    <td class="col-xs-9"><strong>1</strong> votos.</td>
+                  </tr>
+                    </table>
+                      </div> 
+                      <div class="table-responsive">
+                <table class="table table-consended table-bordered table-hover">
+                        <tr class="fnd-gris-medio">
+                          <th colspan="2"><strong>ASOCIACIONES SOCIO-CULTURALES Y OTRAS</strong></th>
+                  		</tr>
+                        <tr>
+						<td class="col-xs-9"><strong>Nº total Votos emitidos/acreditaciones</strong></td>
+                        <td class="col-xs-3"><strong>53 votos</strong>.</td>                     
+                        </tr>
+                  <tr>
+                    <td class="col-xs-9">Comisión de Fiestas Ríos de Aragón y Avda. Cataluña</td>
+                    <td class="col-xs-3"><strong>0</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">COCEMFE Zaragoza</td>
+                    <td class="col-xs-3"><strong>35</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">Asociación Escuela y Despensa</td>
+                    <td class="col-xs-3"><strong>2</strong> votos.</td>
+                 	</tr>   
+                  <tr>
+                    <td class="col-xs-9">Asociación Cultural Royo del Rabal</td>
+                    <td class="col-xs-3"><strong>2</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">Asociación SAWA O PAGNYA (Camerún)</td>
+                    <td class="col-xs-3"><strong>9</strong> votos.</td>
+                 	</tr>
+                                    <tr>
+                    <td class="col-xs-9">KAIRÓS Sociedad Cooperativa Iniciativa Social</td>
+                    <td class="col-xs-3"><strong>5</strong> votos.</td>
+                 	</tr>                  
+
+                  <tr>
+                    <td class="col-xs-9">Votos en blanco</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                  <tr>
+                    <td class="col-xs-9">Votos nulos</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                    </table>
+                      </div>
+                      <div class="table-responsive">
+                <table class="table table-consended table-bordered table-hover">
+                        <tr class="fnd-gris-medio">
+                          <th colspan="2"><strong>ENTIDADES INTERÉS PÚBLICO MUNICIPAL</strong></th>
+                  		</tr>
+                        <tr>
+						<td class="col-xs-9"><strong>Nº total Votos emitidos/acreditaciones</strong></td>
+                        <td class="col-xs-3"><strong>158 votos.</strong></td>                     
+                        </tr>
+                  <tr>
+                    <td class="col-xs-9">Unión de Consumidores de Aragón UCA</td>
+                    <td class="col-xs-3"><strong>57</strong> votos.</td>
+                 	</tr>
+                  <tr>
+                    <td class="col-xs-9">Asociación de Familiares de Enfermos Alzheimer AFEDAZ</td>
+                    <td class="col-xs-3"><strong>67</strong> votos.</td>
+                 	</tr>                  
+                  <tr>
+                    <td class="col-xs-9">Asociación Consumo Torre Ramona ACTORA-CONSUMO</td>							
+                    <td class="col-xs-9"><strong>31</strong> votos.</td>
+                  </tr>
+                                    <tr>
+                    <td class="col-xs-9">Votos en blanco</td>							
+                    <td class="col-xs-9"><strong>3</strong> votos.</td>
+                  </tr>
+                  <tr>
+                    <td class="col-xs-9">Votos nulos</td>							
+                    <td class="col-xs-9"><strong>0</strong> votos.</td>
+                  </tr>
+                    </table>
+                      </div>
+                      <div class="table-responsive">
+                <table class="table table-consended table-bordered table-hover">
+                        <tr>
+                          <th class="col-xs-9"><strong>Nº TOTAL VOTOS EMITIDOS/ACREDITACIONES:</strong></th>
+                          <th class="col-xs-9"><strong>84</strong> votos.</th>
+                  </tr>
+                    </table>
+                      </div>
+                      <div role="alert" class="alert alert-info">
+                        <p>Puedes descargar el acta de la VI Asamblea del Consejo de Ciudad pinchando <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Acta_VI_Asamblea_ciudadana_23Oct2017" class="pdf" target="_blank">aquí</a></p></div>
+                    </div>
+                </div>
+            </div>
+                                 
+          <h2 class="tab-title" aria-expanded="false" data-target="#activ" data-toggle="collapse"> Calendario</h2>
+          <div id="activ" role="tabpanel" sede:class="tab-pane active">
+                    <div class="well well-sm text-justify">
+                      <p class="color-noticias">15 septiembre 2017</p>
+Presentación de Candidaturas                      
+          </div>
+                              <div class="well well-sm text-justify">
+                      <p class="color-noticias">2 octubre 2017</p>
+Fin del plazo de Presentación de Candidaturas                      
+          </div>                    <div class="well well-sm text-justify">
+                      <p class="color-noticias">5 octubre 2017</p>
+Publicación de las Candidaturas                      
+          </div>
+          <div class="well well-sm text-justify">
+                      <p class="color-noticias">23 octubre 2017</p>
+Celebración de la asamblea                      
+          </div>
+          </div>
+          
+             <h2 class="tab-title" aria-expanded="false" data-target="#candidatas" data-toggle="collapse"> Candidaturas</h2>
+             <div id="candidatas" role="tabpanel" sede:class="tab-pane active">
+			 <h3>Asociaciones Juveniles</h3>
+             <ul class="list-group">
+             <li class="list-group-item list-group-item-info">			 
+			 <p><strong>Instituto de Ciencia e Investigación Juvenil de Aragón – ICIJA</strong></p>
+			 <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/ICIJA_Memoria_2017.pdf" class="pdf" target="_blank">Memoria ICIJA Consejo de Ciudad</a>
+			 </li>
+			 </ul>
+			 			
+			 <h3>Asociaciones de Mayores</h3>
+             <ul class="list-group">
+             <li class="list-group-item list-group-item-info">
+		     <p><strong>Consejo Aragonés de Personas Mayores, COAPEMA</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/COAPEMA_Lineas_actuacion_2017.pdf" class="pdf" target="_blank">Líneas Generales de Actuación</a></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/COAPEMA_Presentacion_2017.pdf" class="pdf" target="_blank">Presentación de Candidatura</a></p>
+		     </li>
+		     <li class="list-group-item list-group-item-info">
+		     <p><strong>Asociación de residencias y servicios de atención a los mayores, LARES Aragón</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/LARES_Presentación_candidatura.pdf" class="pdf" target="_blank">Presentación de Candidatura</a></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/LARES_Zaragoza_capital.pdf" class="pdf" target="_blank">Directorio de Centros Lares en Zaragoza</a></p>
+		     </li>
+		     </ul>
+
+		     <h3>Asociaciones de Vecinos</h3>
+             <ul class="list-group">
+             <li class="list-group-item list-group-item-info">		     
+		     <p><strong>Asociación de Vecinos El Picarral</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/AVV_Picarral_Presentacion_2017.pdf" class="pdf" target="_blank">Presentación candidatura AVV Picarral</a></p>
+		     </li>
+		     <li class="list-group-item list-group-item-info">
+		     <p><strong>Asociación de Vecinos Tío Jorge-Arrabal</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/TioJorgeArrabal_Presentacion_2017.pdf" class="pdf" target="_blank">Presentación candidatura AVV Tío Jorge-Arrabal</a></p>
+		     </li>
+		     </ul>
+
+		     <h3>Asociaciones de Madres y Padres de Alumnos AMPAS</h3>
+             <ul class="list-group">
+             <li class="list-group-item list-group-item-info">
+		     <p><strong>Federación de Asociaciones de Padres y Madres de Alumnos de Aragón "Juan de Lanuza", FAPAR</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/FAPAR_Proyecto_objetivos_2017.pdf" class="pdf" target="_blank">Presentación candidatura FAPAR</a></p>
+		     </li></ul>
+		     
+		     <h3>Asociaciones Culturales, Sociales y otras</h3>
+             <ul class="list-group">
+             <li class="list-group-item list-group-item-info">
+		     <p><strong>Asociación Comisión Ríos de Aragón y Avenida Cataluña, COBASA</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/COBASA_proyecto_cc.pdf" class="pdf" target="_blank">Proyecto Centro Cívico</a></p>
+		     </li>
+		     <li class="list-group-item list-group-item-info">
+		     <p><strong>Asociación Coordinadora de Entidades para la Defensa de Personas con Discapacidad Física u Orgánica de Zaragoza, COCEMFE Zaragoza</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/COCEMFE_Presentacion_2017.pdf" class="pdf" target="_blank">Presentación de la entidad</a></p></li>
+		     <li class="list-group-item list-group-item-info"><p><strong>Escuela y Despensa</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/EscuelayDespensa_Plan_de_intervencion_2017.pdf" class="pdf" target="_blank">Plan de Intervención Social, Cultural y Empresarial</a></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/EscuelayDespensa_Propuestas_ConsejoCiudad_2017.pdf" class="pdf" target="_blank">Propuestas para el Consejo de la Ciudad 2017-2019</a></p></li>
+		     <li class="list-group-item list-group-item-info"><p><strong>Asociación Cultural "Royo del Rabal"</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Royo_del_Rabal_presentacion.pdf" class="pdf" target="_blank">Presentación y memoria de la entidad</a></p></li>
+		     <li class="list-group-item list-group-item-info"><p><strong>Asociación Sawa Ò Pagnya (ASOP)</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/SAWA_O_PAGNYA_Presentación_2017.pdf" class="pdf" target="_blank">Presentación / Carta de motivación</a></p></li>
+		     <li class="list-group-item list-group-item-info"><p><strong>Kairós</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Kairos_Presentaciónymotivación.pdf" class="pdf" target="_blank">Presentación y carta de motivación</a></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Kairos_Otros_datos_interes.pdf" class="pdf" target="_blank">Memoria explicativa</a></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Kairos_memoria_anual_2016.pdf" class="pdf" target="_blank">Memoria anual 2016</a></p>
+		     </li>
+		     <!--/*<li class="list-group-item list-group-item-info"><p><strong>Unión de Consumidores de Aragón (UCA)</strong></p>
+		     <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/UCA_memoria.pdf" class="pdf" target="_blank">Memoria General de la entidad</a></p></li>*/-->
+		     </ul>
+		     <h3>Entidades de Interés Público Municipal</h3>
+             <ul class="list-group">
+             <li class="list-group-item list-group-item-info">
+				 <p><strong>Unión de Consumidores de Aragón (UCA)</strong></p>
+		         <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/UCA_memoria.pdf" class="pdf" target="_blank">Memoria General de la entidad</a></p></li>
+		     <li class="list-group-item list-group-item-info"><p><strong>Asociación de Familiares de Enfermos de Alzheimer, ADEFAZ</strong></p>
+				 <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/AFEDAZ_presentacion.pdf" class="pdf" target="_blank">Presentación de la candidatura</a></p></li>
+		     <li class="list-group-item list-group-item-info"><p><strong>Asociación de Consumo Torre Ramona Aragón, ACTORA CONSUMO</strong></p>
+				 <p><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/ACTORA_Presentacion_2017.pdf" class="pdf" target="_blank">Presentación de la candidatura</a></p></li>
+		     </ul>
+          </div>
+
+            <h2 class="tab-title" aria-expanded="false" data-target="#salientes" data-toggle="collapse"> Entidades Salientes</h2>
+                     <div id="salientes" role="tabpanel" sede:class="tab-pane active">		
+		<h3>Entidades Salientes</h3>				 
+            <div class="table-responsive">
+                <table class="table table-consended table-bordered table-hover" id="ter">
+                    <thead class="destacado">
+                        <tr class="finalizada">
+                            <th class="col-md-3 col-sm-6 col-xs-12">Categoría</th>
+                            <th class="col-md-9 col-sm-6 col-xs-12">Entidad</th>                                               
+                        </tr>
+                    </thead>
+                    <tbody>
+                     <tr>
+                        <td>Jóvenes</td>
+                        <td>Movimiento por el Derecho del Alumnado MOVIDA</td>
+                     </tr>
+                     <tr>
+                        <td>Mayores</td>
+                        <td>Consejo Aragonés de las Personas Mayores COAPEMA. <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Informe_Gestion_COAPEMA.pdf" class="pdf" target="_blank">Informe de Gestión COAPEMA</a></td>
+                     </tr>
+                     <tr>
+                        <td>Vecinales</td>
+                        <td>Asociación de Vecinos Tío Jorge del Barrio del Arrabal. <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/informe_gestion_avv_arrabal.pdf" class="pdf" target="_blank">Informe de gestión</a></td>
+                     </tr>
+                     <tr>
+                        <td>Madres y Padres de Alumnos AMPAS</td>
+                        <td>Federación de Asociaciones de Padres y Madres de Alumnos de Aragón "Juan de Lanuza", FAPAR. <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Memoria_FAPAR.pdf" class="pdf" target="_blank">Memoria de FAPAR como representante de las AMPAS</a></td>
+                     </tr>
+                     <tr>
+                        <td>Culturales, Sociales y otras</td>
+                        <td>Federación Coordinadora de Entidades para la Defensa de Personas con Discapacidad en Zaragoza. COCEMFE Zaragoza. <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Informe_Cocemfe_Zgz.pdf" class="pdf" target="_blank">Informe COCEMFE Zaragoza. Mandato 2015-2017</a></td>
+                     </tr>
+                     <tr>
+                        <td>Interés Público Municipal</td>
+                        <td>Disminuidos Físicos de Aragón DFA. <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Informe_Fundacion_DFA.pdf" class="pdf" target="_blank">Informe Fundación DFA. Mandato 2015-2017</a></td>
+                     </tr>
+                     <tr>
+                        <td>Interés Público Municipal</td>
+                        <td>Asociación Cultural "Royo del Rabal". <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/InformeGestión_royodelrabal.pdf" class="pdf" target="_blank">Informe de Gestión 2015-2017</a></td>
+                     </tr>
+                     </tbody>
+                     </table>
+                     </div>	
+		
+		
+		<!--/*<ul>			
+			<li><a href="https://www.zaragoza.es/sede/portal/consejos/asamblea-ciudadana/" class="pdf">Proyecto LIFE Zaragoza Natural<span class="oculto">(Documento en formato pdf Tamaño 36 Mb)</span></a></li>
+<li><strong>Propuesta de Plan Director de la Infraestructura Verde de Zaragoza.</strong>
+<ul><li><a href="/contenidos/medioambiente/pivz/PDIVZ_A_Memoria.pdf" class="pdf">Memoria (Borrador) <span class="oculto">(Documento en formato pdf Tamaño 15,8 Mb)</span></a></li>
+<li><a href="/contenidos/medioambiente/pivz/PDIVZ_B1_Plano_acciones_termino_municipal.pdf" class="pdf">Plano Acciones Termino Municipal <span class="oculto">(Documento en formato pdf Tamaño 295 Mb)</span></a></li>
+<li><a href="/contenidos/medioambiente/pivz/PDIVZ_B2_Plano_acciones_area_urbana.pdf" class="pdf">Plano Acciones Area Urbana <span class="oculto">(Documento en formato pdf Tamaño 258 Mb)</span></a></li>
+<li><a href="/contenidos/medioambiente/pivz/PDIVZ_C_Catalogo_Acciones.pdf" class="pdf">Catálogo de Acciones <span class="oculto">(Documento en formato pdf Tamaño 135 kb)</span></a></li>
+<li><a href="/contenidos//medioambiente/pivz/PDIVZ_D_Anexos.pdf" class="pdf">Anexos <span class="oculto">(Documento en formato pdf Tamaño 130 kb)</span></a></li>
+</ul></li>
+<li><a href="/contenidos/medioambiente/life/plan-director-infraestructuraverde.pdf" class="pdf">Folleto divulgativo sobre el proceso.</a></li></ul>*/-->
+			
+					
+          </div>
+
+				             <h2 class="tab-title" aria-expanded="false" data-target="#doc" data-toggle="collapse"> Documentación</h2>
+                     <div id="doc" role="tabpanel" sede:class="tab-pane active">
+		<h3>Impresos relacionados</h3>
+            
+		<div class="well well-sm">
+		<ul>
+			<li><a href="https://www.zaragoza.es/contenidos/tramites/impresos/acreditacion-asamblea.pdf" class="pdf" target="_blank">Acreditación para la VI Asamblea Ciudadana</a></li>
+			<li><a href="https://www.zaragoza.es/contenidos/tramites/impresos/solicitud-candidatura-asamblea.pdf" class="pdf" target="_blank">Presentación de Candidatura a la VI Asamblea Ciudadana</a></li>
+			<li><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Papeleta_votacion_candidaturas_2017_2.pdf" class="pdf" target="_blank">Papeleta de Votación</a></li>
+          <li><a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Acta_VI_Asamblea_ciudadana_23Oct2017" class="pdf" target="_blank">Acta de la VI Asamblea del Consejo de Ciudad</a></li></ul>
+		</div>
+                       <div role="alert" class="alert alert-info">
+              <a href="/contenidos/gobierno-abierto/consejo-ciudad/asamblea-ciudadana/Decreto_VIAsambleaCiudadana_25oct2017.pdf" class="pdf" target="_blank">Decreto de Alcaldía-Presidencia</a> de fecha 25 de octubre de 2017, de nombramiento y cese de miembros del Pleno del Consejo de la Ciudad, tras el proceso participativo.
+              </div>           
+          </div>
+		            
+				</div>
+				</div>
+
+				
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

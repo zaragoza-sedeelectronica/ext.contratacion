@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Participación. Ciudad Educadora" description="Consejo de Cultura y formas de participar con el Área de Cultura del Ayuntamiento de Zaragoza" author="" keywords="participación, consejo de cultura, quejas y sugerencias, actualidad, Zaragoza, participation, culture council, complaints and suggestions, news, Saragossa"></sede:meta>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }
+
+    .offset-target:before {
+        content: ";
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+
+    /* Elementos de listado con icono fa */
+    .section-content ul { list-style-type: none; }
+    .section-content li:before {    
+        font-family: 'Font Awesome\ 5 Free';
+        content: '\f0a9';
+        margin: 0 0.2em 0 -1.2em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content><p>
+       Desde el año <strong>2004</strong> el Ayuntamiento de Zaragoza forma parte de la Asociación Internacional de Ciudades Educadoras y de su red territorial, la RECE (Red Estatal de Ciudades Educadoras de España).</p><p>La Asociación Internacional de Ciudades Educadoras trabaja para:</p><ul><li><strong>Promover </strong>el cumplimiento de los principios de la<strong> </strong><em><strong>Carta de Ciudades Educadoras</strong></em></li><li><strong>Impulsar </strong>colaboraciones y acciones concretas entre las ciudades</li><li><strong>Participar </strong>y <strong>cooperar </strong>activamente en proyectos e intercambios de experiencias con grupos e instituciones con intereses comunes</li><li><strong>Profundizar </strong>en el discurso de Ciudades Educadoras y promover sus concreciones directas</li><li><strong>Influir </strong>en el proceso de toma de decisiones de los gobiernos y de las instituciones internacionales en cuestiones de interés para las Ciudades Educadoras.</li><li><strong>Dialogar y colaborar</strong> con diferentes organismos nacionales e internacionales.</li></ul><p><strong>La RECE </strong>es una red territorial integrada en la <strong>AICE</strong>. Las redes territoriales son agrupaciones de ciudades de una misma área geográfica que desarrollan temas de interés común. Dentro de la red territorial existen Redes Temáticas. </p><p><strong>En el bienio 2016-2018</strong>, Zaragoza participa en las siguientes<strong> Redes Temáticas:</strong></p><ul><li><em>"Ciudad Educadora, patrimonio inmaterial e identidades culturales (Ciudad educadora y turismo responsable)" </em>-<strong> Zaragoza Turismo.</strong></li><li><em>"La formación artística para la cohesión social" </em>- <strong>Servicio de Educación.</strong></li><li><em>"¿Qué hacemos los ayuntamientos para compensar las desigualdades?"</em> -<strong> Servicio de Educación</strong>.</li></ul>
+      
+    </sede:content>
+</body>
+
+</html>

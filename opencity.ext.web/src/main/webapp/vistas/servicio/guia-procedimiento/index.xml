@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Guía de procedimientos" keywords="sede,web,información,urbanismo,cuadernos,procedimiento" />
+</head>
+
+<body>
+    <sede:content>
+        <div class="info alert alert-info"><strong>AVISOS:</strong>
+            <ol>
+                <li>
+                    <p>Tras la aprobación de diversa normativa como el Decreto Legislativo 1/2014, de 8 de julio, del Gobierno de Aragón, por el que se aprueba el texto refundido de la Ley de Urbanismo de Aragón, la Ley 11/2014, de 4 de diciembre, de Prevención y Protección Ambiental de Aragón y normativa sectorial, <strong>a partir de julio de 2015</strong>, se lleva a cabo <strong>la revisión y actualización de la presente Guía de Procedimientos de Urbanismo</strong>, ajustando su contenido, indicando en cada uno de ellos la fecha de su última actualización</p>
+                </li>
+                <li>
+                    <p><strong>Con la entrada en vigor</strong> de la <a href="/sede/servicio/normativa/1622">Ordenanza Medios de Intervención en la Actividad Urbanística (MIAU)</a> el <strong>07.09.2011</strong>, determinados requisitos técnicos de los procedimientos fueron modificados.</p>
+                    <p> Por ello resulta importante verificar:</p>
+                    <ul>
+                        <li>Los requisitos documentales, modelos de solicitudes, comunicaciones o declaraciones responsables</li>
+                        <li>así como los técnicos (Ver <a href="/sede/servicio/guia-documentacion/">Guía de Documentación Técnica</a>).</li>
+                    </ul>
+                    <p><a href="/sede/servicio/tramite/materia/3020">Relación de Trámites afectados.</a></p>
+                </li>
+            </ol>
+        </div>
+        <form class="well" method="get" action="./list">
+            <div class="input-group">
+                <label for="titleContains" class="sr-only">Nombre</label>
+                <input type="text" name="titleContains" id="titleContains" class="form-control" placeholder="Texto a buscar..." value="" />
+                <span class="input-group-btn">
+                    <input type="submit" value="Consultar" class="btn btn-primary"/>
+                    <a href="./list" class="btn btn-warning">Ver todos</a>
+                </span>
+            </div>
+        </form>
+        <div class="col-xs-4 card" th:each="doc: ${materia.body.result}">
+            <a th:href="@{./list(materia.id=${doc.id})}" th:text="${doc.title}"></a>
+        </div>
+    </sede:content>
+</body>
+
+</html>

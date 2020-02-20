@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Agencias de viaje" keywords="sede,web,ciudad,agencia,viaje,sucursal,central,mayorista,minorista" />
+</head>
+
+<body>
+    <sede:content>
+        <nav role="navigation">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="?type.id=1">Mayorista</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="?type.id=2">Minorista</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="?type.id=3">Central</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="?type.id=4">Sucursal</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href=".">Todos</a></li>
+                <li class="col-xs-6 col-sm-2">
+                	<form mrthod="get" action=".">
+                	<div class="input-group">
+      						<input type="text" name="titleContains" class="form-control" placeholder="Nombre"/>
+      						<span class="input-group-btn">
+        						<input class="btn btn-default" type="submit" value="Consultar"/>
+      						</span>
+    				</div>
+    				</form>
+                </li>
+            </ul>
+        </nav>
+        <ul class="row list-unstyled">
+            <li th:each="doc: ${resultado.body.result}" class="col-md-4">
+                <div class="card" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}" style="min-height:12em;">
+                    <th:block th:include="servicio/agencia-viaje/detail-fragment(item=${doc})"></th:block>
+                </div>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+    
+</body>
+
+</html>

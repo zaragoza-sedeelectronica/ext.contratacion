@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Web de la Ciudad de Zaragoza" description="" author="" last-modified="" keywords=""/>
+  <style type="text/css">
+    .label-default {
+		border: 1px solid #000;
+		color: #000;
+	}
+    @media (min-width: 768px) {
+        .bloque-tramites.agrupacion li{
+            min-height: 16em;
+        }
+    }
+   </style>
+   <script type="text/javascript">
+        /*<![CDATA[*/
+        ocultarArbolCapas = false;
+        var i = 0;
+        
+        var dataActualidad = "{title: 'Agenda Hoy',claseIcono:'agenda',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/sede/servicio/cultura/evento/hoy.geojson'}\
+        ,{title: 'Afecciones (Tráfico, Agua)',claseIcono:'afecciones',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/via-publica/incidencia.geojson'}\
+        ,{title: 'Farmacias',id: '" + (++i) + "',children: [{title: 'Farmacias de Guardia',claseIcono:'farmaciaguardia',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/farmacia.geojson?tipo=guardia&rows=500&srsname=utm30n_etrs89'}\
+        ,{title: 'Farmacias Horario Ampliado',claseIcono:'farmaciahorarioespecial',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/farmacia.geojson?tipo=horarioampliado&rows=500&srsname=utm30n_etrs89'}]}";
+        
+        var dataMovilidad = "{title: 'Cortes de Tráfico',claseIcono:'cortesdetrafico',clase:'oculto',id: '" + (++i) + "',url:'//www.zaragoza.es/sede/servicio/via-publica/incidencia.geojson?tipo.id=1&srsname=utm30n_etrs89'}\
+        ,{title: 'Afecciones Imp.',claseIcono:'afecciones',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/via-publica/incidencia.geojson?tipo.id=2&srsname=utm30n_etrs89'}\
+        ,{title: 'Paradas y tiempos Bus',claseIcono:'bus',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/transporte-urbano/poste-autobus.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estaciones Bizi',claseIcono:'estacionesBizi2',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/estacion-bicicleta.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'AparcaBicis en Vía Pública',claseIcono:'aparcabici',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-bicicleta.geojson?srsname=utm30n_etrs89&tipo=Abierto&rows=1000'}\
+        ,{title: 'AparcaBicis en recinto',claseIcono:'aparcabici_recinto',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-bicicleta.geojson?srsname=utm30n_etrs89&tipo=Cerrado&rows=1000'}\
+        ,{title: 'AparcaBicis vigilado',claseIcono:'aparcabici_vigilado',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-bicicleta.geojson?srsname=utm30n_etrs89&tipo=Vigilado&rows=1000'}\
+        ,{title: 'Carriles Bici',claseIcono:'carrilesBici',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/bici/carriles_UTM30N_ETRS89.json'}\
+        ,{title: 'Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-publico.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Accesos Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-accesos.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estacionamiento...discapidad',claseIcono:'estmin',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-personas-discapacidad.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'Estacionamientos moto',claseIcono:'estacionamiento_motos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-moto.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'Estaciones de Servicio',claseIcono:'estacionServicio',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/estacion-servicio.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Paradas de Taxi',claseIcono:'paradasdeTaxi',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parada-taxi.geojson?srsname=utm30n_etrs89&rows=300'}\
+        ,{title: 'Parquímetros',claseIcono:'parquimetro_ESRO',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parquimetro.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'Cercanías',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/paradas_cercanias_UTM30N_ETRS89.json'}\
+        ,{title: 'Tiempos de espera del tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/transporte-urbano/parada-tranvia.geojson?srsname=utm30n_etrs89&rows=100'}\
+        ,{title: 'Recorrido del tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/estado/transporte/tranvia_UTM30N_ETRS89.json'}\
+        ,{title: 'Propuesta Linea 2 Tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/linea2_tranvia.json'}\
+        ,{title: 'Tiempos de Recorrido',claseIcono:'panelesInformativos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/tiempos-recorrido.geojson?srsname=utm30n_etrs89'}";
+
+        var dataTrafico = ",{title: 'Estado de Tráfico',claseIcono:'estadodetrafico',clase:'oculto',id: '500',url: '//www.zaragoza.es/trafico/estado/tramos_UTM30N_ETRS89.json'}";
+
+        var dataEquipamientos = "{title: 'Administración Pública',id: '" + (++i) + "',children: [\
+        {title: 'Ayuntamiento',claseIcono:'ayuntamiento',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=129'}\
+        ,{title: 'Atención Ciudadana',claseIcono:'atencionCiudadana',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=2'}\
+        ,{title: 'Otros Organismos',claseIcono:'administracionPublica',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=720'}\
+        ]}\
+        ,{title: 'Arte',id: '" + (++i) + "',children: [\
+        {title: 'Arte Público',claseIcono:'arte',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/arte-publico.geojson?rows=1000&srsname=utm30n_etrs89'}\
+        ,{title: 'Edificios Hist-Artistico (+1000)',claseIcono:'arte',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/edificio-historico.geojson?rows=2000'}\
+        ,{title: 'Monumentos',claseIcono:'arte',clase:'oculto',id: '" + i + "_2',url: 'https://www.zaragoza.es/sede/servicio/monumento.geojson?rows=1000'}\
+        ]}\
+        ,{title: 'Ciencia y Tecnología',id: '" + (++i) + "',children: [\
+        {title: 'Puntos Wifi',claseIcono:'wizi',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/punto-wifi.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'Centros de Innovación',claseIcono:'innovacion',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=480'}\
+        ]}\
+        ,{title: 'Cultura y Ocio',id: '" + (++i) + "',children: [\
+        {title: 'Archivos',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=34'}\
+        ,{title: 'Bibliotecas y Centros de Documentación',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=35'}\
+        ,{title: 'Centros de Documentación',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=36'}\
+        ,{title: 'Cine',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=50'}\
+        ,{title: 'Galerías de Arte',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_4',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=580'}\
+        ,{title: 'Librerías',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_5',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=500'}\
+        ,{title: 'Ludotecas',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_6',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=51'}\
+        ,{title: 'Museos',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_7',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=53'}\
+        ,{title: 'Teatros',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_8',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=58'}\
+        ,{title: 'Salas de Exposiciones',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_9',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=54'}\
+        ,{title: 'Salas de Música',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_10',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=880'}\
+        ]}\
+        ,{title: 'Deporte',id: '" + (++i) + "',children: [\
+        {title: 'Campos de Fútbol',claseIcono:'deporte',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=55'}\
+        ,{title: 'Centros',claseIcono:'deporte',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=56'}\
+        ,{title: 'Pabellones',claseIcono:'deporte',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=57'}\
+        ,{title: 'Instalaciones Elementales',claseIcono:'deporte',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=76'}\
+        ,{title: 'Piscinas Municipales',claseIcono:'deporte',clase:'oculto',id: '" + i + "_4',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=140'}\
+        ]}\
+        ,{title: 'Educación',id: '" + (++i) + "',children: [\
+        {title: 'Adultos',claseIcono:'educacion',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=65'}\
+        ,{title: 'Antenas del CIPAJ',claseIcono:'educacion',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?category.idInList=136,137&srsname=utm30n_etrs89&rows=200'}\
+        ,{title: 'Infantil',claseIcono:'educacion',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=61'}\
+        ,{title: 'Formación Artes Escénicas',claseIcono:'educacion',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=75'}\
+        ,{title: 'Formación Expresión Artística',claseIcono:'educacion',clase:'oculto',id: '" + i + "_4',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=37'}\
+        ,{title: 'Formación Profesional',claseIcono:'educacion',clase:'oculto',id: '" + i + "_5',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=680'}\
+        ,{title: 'Formación Musical',claseIcono:'educacion',clase:'oculto',id: '" + i + "_6',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=66'}\
+        ,{title: 'Idiomas',claseIcono:'educacion',clase:'oculto',id: '" + i + "_7',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=681'}\
+        ,{title: 'PIEE: Espacios Escolares',claseIcono:'educacion',clase:'oculto',id: '" + i + "_8',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?category.idInList=960,981,982&srsname=utm30n_etrs89&rows=200'}\
+        ,{title: 'Primaria',claseIcono:'educacion',clase:'oculto',id: '" + i + "_9',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=62'}\
+        ,{title: 'Secundaria',claseIcono:'educacion',clase:'oculto',id: '" + i + "_10',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=63'}\
+        ,{title: 'Técnicas Deportivas',claseIcono:'educacion',clase:'oculto',id: '" + i + "_11',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=682'}\
+        ,{title: 'Universitaria',claseIcono:'educacion',clase:'oculto',id: '" + i + "_12',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=280'}\
+        ]}\
+        ,{title: 'Empleo',id: '" + (++i) + "',children: [\
+        {title: 'Centros Ocupacionales',claseIcono:'empleo',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=68'}\
+        ,{title: 'Centros Sociolaborales',claseIcono:'empleo',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=74'}\
+        ,{title: 'Escuelas Taller',claseIcono:'empleo',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=67'}\
+        ,{title: 'Oficinas de Empleo INAEM',claseIcono:'empleo',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=741'}\
+        ]}\
+        ,{title: 'Empresa',id: '" + (++i) + "',children: [\
+        {title: 'Apoyo y Fomento',claseIcono:'empresas',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=683'}\
+        ,{title: 'Arquitectura y Diseño',claseIcono:'empresas',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=620'}\
+        ,{title: 'Distribuidoras',claseIcono:'empresas',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=520'}\
+        ,{title: 'Editoriales',claseIcono:'empresas',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=222'}\
+        ,{title: 'Gestión Cultural',claseIcono:'empresas',clase:'oculto',id: '" + i + "_4',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=600'}\
+        ,{title: 'Parques Empresariales',claseIcono:'empresas',clase:'oculto',id: '" + i + "_5',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=900'}\
+        ,{title: 'Prod. y prom. Musical',claseIcono:'empresas',clase:'oculto',id: '" + i + "_6',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=561'}\
+        ,{title: 'Prod y prom. Artes escenicas',claseIcono:'empresas',clase:'oculto',id: '" + i + "_7',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=560'}\
+        ]}\
+        ,{title: 'Medio Ambiente',id: '" + (++i) + "',children: [\
+        {title: 'Gestión de Residuos',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=153'}\
+        ,{title: 'Gestión del Agua',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=84'}\
+        ,{title: 'Puntos Limpios',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=87'}\
+        ,{title: 'Zonas Verdes',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=820'}\
+        ]}\
+        ,{title: 'Participación Ciudadana',id: '" + (++i) + "',children: [\
+        {title: 'Casas de Juventud',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=43'}\
+        ,{title: 'Centros Cívicos',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=93'}\
+        ,{title: 'Centros de Convivencia',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=47'}\
+        ,{title: 'Juntas Municipales',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=90'}\
+        ,{title: 'Juntas Vecinales',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_4',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=91'}\
+        ]}\
+        ,{title: 'Protección Ciudanana',id: '" + (++i) + "',children: [\
+        {title: 'Bomberos y Protección Civil',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=95'}\
+        ,{title: 'Justicia',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=700'}\
+        ,{title: 'Policia Local',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=96'}\
+        ,{title: 'Policia Nacional',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=760'}\
+        ]}\
+        ,{title: 'Sanidad y Consumo',id: '" + (++i) + "',children: [\
+        {title: 'Centros de Salud',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=781'}\
+        ,{title: 'Farmacias',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/farmacia.geojson?tipo=todas&rows=500&srsname=utm30n_etrs89'}\
+        ,{title: 'Hospitales',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=780'}\
+        ,{title: 'Protección del Consumidor',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=100'}\
+        ]}\
+        ,{title: 'Servicios Sociales',id: '" + (++i) + "',children: [\
+        {title: 'Centros de Base',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=921'}\
+        ,{title: 'Centros de Día',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=923'}\
+        ,{title: 'Centros Municipales',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=105'}\
+        ,{title: 'Centros de Tiempo Libre',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=49'}\
+        ,{title: 'Hogares',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_4',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=922'}\
+        ,{title: 'Residencias',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_5',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=920'}\
+        ,{title: 'Servicios Sociales Especializados',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_6',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=45'}\
+        ]}\
+        ,{title: 'Servicios Urbanos',id: '" + (++i) + "',children: [\
+        {title: 'Aseos Públicos',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=1060'}\
+        ,{title: 'Cementerios',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=110'}\
+        ,{title: 'Mercados',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=118'}\
+        ,{title: 'Oficinas de Correos',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_3',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=800'}\
+        ]}\
+        ,{title: 'Tráfico y Transporte',id: '" + (++i) + "',children: [\
+        {title: 'Estaciones y Aeropuerto',claseIcono:'transporte',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=840'}\
+        ,{title: 'Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-publico.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estaciones de Servicio',claseIcono:'estacionServicio',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/estacion-servicio.geojson?srsname=utm30n_etrs89'}\
+        ]}\
+        ,{title: 'Turismo y Hostelería',id: '" + (++i) + "',children: [\
+        {title: 'Alojamientos',claseIcono:'alojamiento2',clase:'oculto',id: '" + i + "_0',url: '//www.zaragoza.es/sede/servicio/alojamiento.geojson?rows=1000'}\
+        ,{title: 'Restaurantes',claseIcono:'hosteleria',clase:'oculto',id: '" + i + "_1',url: '//www.zaragoza.es/sede/servicio/restaurante.geojson?rows=2000'}\
+        ,{title: 'Oficinas de Turismo',claseIcono:'turismo',clase:'oculto',id: '" + i + "_2',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=123'}\
+        ]}";
+        
+        /*]]>*/
+    </script>
+    <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <ul class="row no-gutter list-unstyled fnd bloque-gabierto margin-b2em">
+            <li class="col-xs-3 icon-ca">
+                <a href="//idezar.zaragoza.es/callejero/">
+                    <div>
+                        Callejero
+                    </div>
+                </a>
+            </li>
+            <li class="col-xs-3 icon-da">
+                <a href="/ciudadania/gobierno-abierto/">
+                    <div>
+                        Gobierno <span class="visible-md-block visible-lg-block"></span>Abierto
+                    </div>
+                </a>
+            </li>
+            <li class="col-xs-3 icon-qs">
+                <a href="/ciudadania/gobierno-abierto/participar/verNuevaQuejaAnonima_Ticketing">
+                    <div>
+                        Quejas y <span class="visible-md-block visible-lg-block"></span>Sugerencias
+                    </div>
+                </a>
+            </li>
+            <li class="col-xs-3 icon-tr">
+                <a href="/sede/servicio/transparencia/">
+                    <div>
+                        Transparencia
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <!-- /* INICIO: Bloque Avisos */ -->
+        <div class="row no-gutter row-eq-height fnd bloque-destacados">
+            <div class="col-md-3">
+                <div class="titulo padding-a1em">
+                    <h2 class="nomargin">Destacados</h2>
+                                <nav>
+                    <ul class="list-inline margin-v05em text-center">
+                        <li>
+                            <a href="http://twitter.com/zaragoza_es">
+                                <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.facebook.com/www.zaragoza.es">
+                                <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.flickr.com/photos/zaragoza_es/sets/">
+                                <span class="fab fa-flickr fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Flickr</span>
+                            </a>
+                        </li>
+                        <li >
+                            <a href="https://www.youtube.com/user/webzgz">
+                                <span class="fab fa-youtube fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Youtube</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/Zaragoza_es">
+                                <span class="fab fa-instagram fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Intagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.zaragozaciudad.net/">
+                                <span class="fa fa-comment fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Blog</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                </div>
+            </div>
+            <div class="col-md-9 principal" th:if="${avisoDestacadoPrincipal}">
+                <div class="row no-gutter">
+                    <div class="col-sm-6 col-md-8 col-md-push-4">
+                        <a th:href="${avisoDestacadoPrincipal.link}">
+                             <img class="img-responsive" th:src="${'//www.zaragoza.es' + avisoDestacadoPrincipal.image}" th:alt="'Acceso al destacado de ' + ${avisoDestacadoPrincipal.title}" />
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-md-pull-8 caption">
+                        <p th:text="${avisoDestacadoPrincipal.title}"></p>
+                        <div th:utext="${avisoDestacadoPrincipal.description}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${avisosDestacados.totalCount == 0}" role="alert" class="alert alert-info">No existen avisos destacados</div>
+        <ul class="row no-gutter list-unstyled fnd bloque-destacados margin-b2em">
+            <li th:if="${avisosDestacados.totalCount != 0}" th:each="a, i : ${avisosDestacados.result}" class="col-xs-12 col-sm-6 col-md-3">
+                <div class="thumbnail overlay row no-gutter">
+                    <div class="col-xs-3 col-sm-12 col-md-12">
+                        <a th:href="${a.link}">
+                            <img class="img-responsive" th:src="${'//www.zaragoza.es' + a.image}" th:alt="'Acceso al destacado de ' + ${a.title}" />
+                        </a>
+                    </div>
+                    <div class="caption col-xs-9 col-sm-12 col-md-12">
+                        <p th:text="${a.title}"></p>
+                        <div th:utext="${a.description}"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!-- /* FINAL: Bloque Avisos */ -->
+
+        <!-- /* INICIO: Bloque Agenda */ -->
+        <div class="row no-gutter row-eq-height fnd bloque-agenda">
+            <div class="col-sm-6 col-md-3 titulo" style="height:20em !important">
+                <div class="row no-gutter">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <h2 class="margin-l05em"><a href="/sede/servicio/cultura/">Agenda</a></h2>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 caja-dia text-center">
+                        <span class="dia-mes" th:text="${temperatura.getDia()}"></span>
+                        <span class="letra-mes" th:text="${temperatura.getPrimeraLetraMes()}"></span>
+                    </div>
+                </div>
+                <div class="row no-gutter">
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-center padding-t1em">
+                        <a href="/calidadaire/">
+                            <img src="/cont/paginas/bs/img/tiempoBs/calidadAire.png" alt="" />
+                            <p>Calidad del aire</p>
+                        </a>
+                        <a href="/ciudad/viapublica/movilidad/trafico/listado_Incidencia">
+                            <img src="/cont/paginas/bs/img/obras.png" alt="Incidencias"/>
+                            <p>Vía Pública</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-center padding-t1em">
+                        <a href="/ciudad/meteorologia/">
+                            <img th:src="'/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" th:alt="${temperatura.icon}"/>
+                            <p>
+                                <abbr title="Maxima">Max</abbr>. 
+                                <span id="tempmax" th:text="${temperatura.max}"></span>&deg;
+                                / 
+                                <abbr title="Minima"> Min</abbr>. 
+                                <span id="tempmin" th:text="${temperatura.min}"></span>&deg;
+                                <!-- /* <img src="/cont/paginas/bs/img/tiempoBs/masinfo2.png" alt="Más información meteorológica" class="mas" /> */ -->
+                            </p>
+                        </a>
+                        <a href="/sede/servicio/informacion-polen/">
+                        <img src="/cont/paginas/bs/img/tiempoBs/polen.png" alt=""/>
+                        <p>Información Polínica</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <th:block th:utext="${#utils.getCalendar(false,'/ciudad/actividades/calendario_Agenda', null, 'dia', days.body.result, month, year, #httpServletRequest)}" />
+            </div>
+           <div class="col-sm-12 col-md-6" style="height:20em !important">
+                <th:block th:include="fragmentos/cultura/evento/calendar-list(calendarEvents=${actosDelDia.result})"></th:block>
+            </div>
+        </div>
+        <div th:if="${actosDestacados.totalCount == 0}" role="alert" class="alert alert-info">No existen actos destacados</div>
+        <ul class="row no-gutter list-unstyled fnd bloque-agenda margin-b2em">
+            <li th:if="${actosDestacados.totalCount &gt; 0}" th:each="a, i : ${actosDestacados.result}" class="col-xs-12 col-sm-6 col-md-3">
+                <a th:href="'/ciudad/actividades/ficha_Agenda?codigo=' + ${a.id}">
+                    <div class="thumbnail overlay row no-gutter">
+                        <div class="col-xs-3 col-sm-12 col-md-12">
+                            <img class="img-responsive" th:src="${a.image}" th:alt="'Acceso al detalle de la actividad destacada ' + ${a.title}" />
+                        </div>
+                        <div class="caption col-xs-9 col-sm-12 col-md-12">
+                            <p th:text="${a.title}"></p>
+                            <div th:text="${a.citaDestacada}"></div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <!-- /* FINAL: Bloque Agenda */ -->
+        <!-- /* INICIO: Bloque Trámites y Servicios */ -->
+        <ul class="row no-gutter list-unstyled bloque-tramites agrupacion text-center">
+            <th:block th:include="portal/tramites-servicios/bloque(title='S')" />
+        </ul>
+        
+        <div class="row no-gutter bloque-tramites listado margin-b2em">
+            <div class="col-xs-12 col-md-4">
+                <h3 class="titulo margin-a0em">Trámites en Plazo</h3>
+                <sede:tramite plazo="s"></sede:tramite>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <h3 class="titulo margin-a0em">Trámites Destacados</h3>
+                <sede:tramite destacados="s"></sede:tramite>
+            </div>
+            <div class="col-xs-12 col-md-4 titulo">
+                <h3 class="titulo margin-a0em">Servicios en L&iacute;nea</h3>
+                <ul>
+                    <li><a href="/ciudad/encasa/buscar_Tramite?&amp;certificado_b=true">Tr&aacute;mites Con Certificado</a></li>
+                    <li><a href="/ciudad/encasa/buscar_Tramite?&amp;enlinea_b=true">Tr&aacute;mites Sin Certificado</a></li>
+                    <li><a href="/ciudad/encasa/citaprevia.htm">Cita Previa</a></li>
+                    <li><a href="/sede/servicio/informacion-publica">Solicitud de información: Expedientes archivados Urbanismo</a></li>
+                    <li><a href="https://www.zaragoza.es/nuba/app/simple/urba">Buscador de expedientes archivados de Urbanismo </a></li>
+                    <li><a href="/ciudad/encasa/carpetaciudadana.htm">Carpeta Ciudadana</a></li>
+                    <li><a href="/ciudad/encasa/facturacion-electronica-nueva.htm">Facturación electrónica</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /* FINAL: Bloque Trámites y Servicios */ -->
+
+        <!-- /* INICIO: Bloque Noticias */ -->
+        <div class="row no-gutter fnd bloque-noticias margin-b2em">
+            <div class="col-xs-12 col-sm-12 col-md-9 noticia-destacada">
+                <div class="titulo padding-a1em">
+                    <h2 class="nomargin"><a href="/ciudad/noticias/">Noticias</a></h2>
+                </div>
+                <div class="row no-gutter" th:if="${noticiaDestacada.id}">
+                    <div class="col-xs-12 col-sm-6 col-md-3 padding-a1em">
+                        <a th:href="'/ciudad/noticias/detalle_Noticia?id=' + ${noticiaDestacada.id}">
+                            <p class="lead" th:utext="${noticiaDestacada.title}"></p>
+                        </a>
+                        <!--/* <hr/>
+                        <p th:utext="${noticiaDestacada.summary}"></p> */-->
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-9">
+                        <img th:src="${'//www.zaragoza.es' + noticiaDestacada.image[0].src}" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <h3 class="padding-l1em">Últimas noticias</h3>
+                <div th:if="${ultimasNoticias.totalCount == 0}" role="alert" class="alert alert-info">
+                    No existen últimas noticias
+                </div>
+                <ul class="list-unstyled margin-b2em padding-h1em">
+                    <li th:if="${ultimasNoticias.totalCount != 0}" th:each="un, i : ${ultimasNoticias.result}">
+                        <span class="date" sede:rdf="${un.get('dateCreated')}"/> &raquo; <a th:href="'/ciudad/noticias/detalle_Noticia?id=' + ${un.id}" th:text="${un.title}"></a>
+                    </li>
+                </ul>
+                <div class="margin-b1em padding-h1em">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" title="Vídeo destacado de noticias" src="https://www.youtube.com/embed/BMnTk2AG73g" allowfullscreen="allowfullscreen">
+                            <!--/* Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/BMnTk2AG73g">Enlace al vídeo en youtube.com</a> */-->
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /* FINAL: Bloque Noticias */ -->        
+
+        <!-- /* INICIO: Bloque Servicios */ -->
+        <div class="row no-gutter fnd bloque-servicios margin-b2em">
+            <div class="col-md-3">
+                <div class="titulo margin-b05em">
+                    <h2 class="nomargin padding-l05em"><a href="/ciudad/buscar_Centro">Equipamientos</a></h2>
+                </div>
+                <ul>
+                    <li><a href="/ciudad/turismo/es/organiza-viaje/alojamientos.htm">Alojamientos</a></li>
+                    <!--/* <li><a href="#">Administración Pública</a></li> */-->
+                    <!--/* <li><a href="#">Ciencia y Tecnología</a></li> */-->
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Cultura+y+Ocio%22%29">Cultura y Ocio</a></li>
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Deporte%22%29">Deporte</a></li>
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Educaci\u00f3n%22%29">Educación</a></li>
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Empleo%22%29">Empleo</a></li>
+                    <!--/* <li><a href="#">Empresas</a></li>-->
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Informaci\u00f3n+y+Comunicaci\u00f3n%22%29">Información y Comunicación</a></li>
+                    <!--/* <li><a href="#">Medio Ambiente</a></li> */-->
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Participaci\u00f3n+Ciudadana%22%29">Participación Ciudadana</a></li>
+                    <!--/* <li><a href="#">Protección Ciudadana</a></li> */-->
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Salud+P\u00fablica+y+Consumo%22%29">Salud Pública</a></li>
+                    <li><a href="/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Servicios+Sociales%22%29">Servicios Sociales</a></li>
+                    <!--/* <li><a href="#">Servicios Urbanos</a></li> */-->
+                    <!--/* <li><a href="#">Tráfico y Transporte</a></li> */-->
+                    <li><a href="/ciudad/turismo/es/organiza-viaje/gastronomia2.htm">Restaurantes</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <div class="titulo-blanco margin-b05em">
+                    <h2 class="nomargin padding-l05em"><a href="/ciudad/oferta/">Oferta de <span class="visible-md-block visible-lg-block"></span>Empleo</a></h2>
+                </div>
+                <div th:if="${ultimasOfertasEmpleo.totalCount == 0}" role="alert" class="alert alert-info">
+                    No existen anuncios
+                </div>
+                <ul>
+                    <li th:if="${ultimasOfertasEmpleo.totalCount != 0}" th:each="oe, i : ${ultimasOfertasEmpleo.result}">
+                        <span class="label label-default" sede:rdf="${oe.anuncios[0].get('issued')}" />
+                        <a th:href="'/oferta/ofertaDetalle.jsp?id=' + ${oe.id}"><th:block th:text="${oe.title}" /></a>
+                        
+                            <!-- <th:block th:each="an : ${oe.anuncios}">
+                                <th:block th:text="${an.title}"/>
+                                <th:block th:text="${an.issued}"/>
+                            </th:block> -->
+                        <th:block th:text="${oe.anuncios[0].title}" />
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <div class="titulo margin-b05em">
+                    <h2 class="nomargin padding-l05em"><a href="/ciudad/gestionmunicipal/contratos/">Contratos en <br/>Licitación</a></h2>
+                </div>
+                <div th:if="${ultimosContratos.totalCount == 0}" role="alert" class="alert alert-info">
+                    No existen contratos en licitación
+                </div>
+                <ul>
+                    <li th:if="${ultimosContratos.totalCount != 0}" th:each="c, i : ${ultimosContratos.result}">
+                        <a th:href="'/ciudad/gestionmunicipal/contratos/ayto/contrato_Avisos?id=' + ${c.id}">
+                            <th:block th:text="${c.title}" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <div class="titulo-blanco margin-b05em">
+                    <h2 class="nomargin padding-l05em"><a href="/sede/servicio/tablon-edicto/">Tablón de <span class="visible-md-block visible-lg-block"></span>Edictos</a></h2>
+                </div>
+                <div class="titulo-blanco margin-b05em">
+                    <h2 class="nomargin padding-l05em"><a href="/ciudad/sectores/jovenes/">J&oacute;venes</a></h2>
+                </div>
+                <ul>
+                    <li><a href="/ciudad/sectores/jovenes/cipaj/cont/anuncios.html">Anuncios</a></li>
+                    <li><a href="/ciudad/sectores/jovenes/cipaj/cont/buscarconvoc.htm">Convocatorias</a></li>
+                    <li><a href="/ciudad/sectores/jovenes/cipaj/form_Cipaj">Boletín del CIPAJ</a></li>
+                    <li><a href="/ciudad/sectores/jovenes/cipaj/">CIPAJ</a></li>
+                </ul>
+                <div class="titulo-blanco margin-b05em">
+                    <h2 class="nomargin padding-l05em"><a href="/ciudad/turismo/">Turismo</a></h2>
+                </div>
+                <ul>
+                    <li><a href="/ciudad/turismo/es/que-visitar/sitios-interes/sitios-interes.htm">Qué visitar</a></li>
+                    <li><a href="/ciudad/turismo/es/organiza-viaje/planifica-visita/planifica-visita.htm">Planifica tu visita</a></li>
+                    <li><a href="/ciudad//turismo/es/que-visitar/sitios-interes/monumentos.htm">Monumentos</a></li>
+                    <li><a href="/ciudad/turismo/es/organiza-viaje/gastronomia.htm">Gastronomía</a></li>
+                    <li><a href="/ciudad/turismo/es/servicios/oficinas-de-turismo.htm">Oficinas de Turismo</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /* FINAL: Bloque Servicios */ -->
+
+        <!-- /* INICIO: Bloque Mapa */ -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div id="mapa">
+                    <div class="separador" id="facadeStatus">&nbsp;</div>
+                    <script type="text/javascript">
+                        /*<![CDATA[*/
+                        var ifrm = document.createElement("iframe");
+                        ifrm.setAttribute("name", "mapahome");
+                        ifrm.setAttribute("id", "mapahome");
+                        ifrm.setAttribute("title", "La Ciudad al Instante");
+                        ifrm.setAttribute("scrolling", "no");
+                        ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                        ifrm.setAttribute("frameBorder", "0");
+                        ifrm.style.width.value = "100%";
+                        document.getElementById("mapa").appendChild(ifrm);
+                        /*]]>*/
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- /* FINAL: Bloque Mapa */ -->
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <sede:meta title="Urbanismo Participativo.Gobierno Abierto" description="Portal sobre el proceso participativo organizado para debatir sobre las necesidades que debería cubrir el parque Pignatelli." author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Mon May 28 00:00:00 CEST 2018" keywords="ayuntamiento, ciudad, Zaragoza, Espana, procesos participativos, participación, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment" />
+        <meta name="dcterms.title" content="Vota tu Propuesta para tu Barrio"/>
+        <meta name="dcterms.modified" content="2016-05-23"/>
+        <meta name="dcterms.publisher" content="Ayuntamiento de Zaragoza"/>
+        <meta name="dcterms.contributor" content="Unidad de Gestión de la Web Municipal. sedeelectronica@zaragoza.es"/>
+    </head>
+    <style type="text/css">
+        .licitadores span {
+        height: 8em;
+        width: 8em;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 50%;
+        color: #fff;
+        padding: 0.5em;
+        background: #E81B16;
+        }
+        .cuadro {
+        position: relative;
+        background-color: #cccccc;
+        border-radius: 10px;
+        margin:5px
+        }
+        .cuadro img {
+        padding-bottom: 0;
+        margin: 0px;
+        }
+        .img-rounded {
+        border-radius: 10px 10px 0 0 !important;
+        }
+        .cuadro h3 {
+        background-color: rgba(0,0,0,0.7);
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        padding: 10px;
+        margin-top: 0;
+        border-radius: 0px 0px 10px 10px;
+        }
+        .cuadro h3  {
+        color: #ffffff !important;
+        font-weight: bold;
+        }
+    </style>
+    <body>
+        <sede:content container="false">
+            <div class="fnd-gris-claro">
+                <div class="container-fluid text-center padding-a2em lead margin-auto margin-b1em">
+                    <span aria-hidden="true" class="fas fa-tree fa-5x"></span>
+                    <h2>Resultados Proceso Participativo Parque Venecia</h2>
+                </div>
+            </div>
+
+
+    <div class="container-fluid">
+        <div class="col-md-12 col-xs-12">
+            <h3>Participación</h3>
+            <h4>Del 9 al 22 de mayo (proceso online) y 21 de mayo (proceso presencial)</h4>
+            <h4>1. Censo Potencial</h4>
+            <p>Ciudananía empadronada en Parque Venecia mayor de 14 años</p>
+            <h4>2. Forma de participación</h4>
+            <ul><li>Presencial: 49</li><li>Electrónica: 730</li></ul>
+        </div>
+        <div class="col-md-12 col-xs-12">
+        <div class="pull-right">
+            <div class="licitadores"><span class="">Censo Potencial<!--<a href="#" id="popover" data-toggle="popover" data-placement="top" title="" data-title="Censo Potencial" data-content="Ciudananía empadronada en Parque Venecia mayor de 14 años"> [?]</a>--><br/><strong>2725</strong></span>
+                <span class="">Participantes<br/><strong>779</strong><br/>[28,58% ]</span>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-12 col-xs-12">
+            <h4>3. % de Participación</h4>
+            <div class="text-center"><div id="grafico2" style="width:75%"></div></div>
+        </div>
+    <h3>Puntuaciones</h3>
+    <div class="alert alert-info">Cada propuesta ha sido valorada por cada participante con un rango de 1 a 5 puntos</div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div id="grafico" style="width: 100%"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-xs-12 ">
+            <div class="cuadro">
+            <h2 class="text-center">B. Rampas y Escaleras de Conexión con el Canal Imperial</h2>
+            <p class="text-justify">Urbanización de conexiones peatonales adecuadas entre el sector SUZ 88/1 y el anillo verde que discurre paralelo al Canal Imperial, en concreto 3 rampas y 2 escaleras.</p>
+            <div class="text-center">
+            <a href="/cont/paginas/urbanismo/participativo/adjuntos/propuestaB_G.jpg">
+                <img  class="img-responsive img-rounded" src="/cont/paginas/urbanismo/participativo/adjuntos/propuestaB.png" title="Pulse para ampliar la imagen B. Rampas y Escaleras de Conexión con el Canal Imperial" alt="Imagen Plano sobre la propuesta B. Rampas y Escaleras de Conexión con el Canal Imperial"/>
+            </a>
+            <h3 class="text-center">
+             Puntuación 2824 puntos
+            </h3>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12 ">
+            <div class="cuadro">
+            <h2 class="text-center">D. Supresión de Línea aérea de alta tensión</h2>
+            <p class="text-justify">Soterramiento de la línea aérea de 45kV existente en el sector SUZ 88/1 y el Canal Imperial de Aragón, desde la actual estructura aéreo-subterranea hasta la margen norte del Canal Imperial de Aragón.</p>
+            <div class="text-center">
+                <a href="/cont/paginas/urbanismo/participativo/adjuntos/propuestaD_G.jpg">
+                    <img class="img-responsive img-rounded" src="/cont/paginas/urbanismo/participativo/adjuntos/propuestaD_mini.png" title="Pulse para ampliar la imagen D. Supresión de Línea aérea de alta tensión" alt="Imagen Plano sobre la propuesta D. Supresión de Línea aérea de alta tensión"/>
+                </a>
+                <h3 class="text-center">
+                    Puntuación 2524 puntos
+                </h3>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="cuadro">
+            <h2 class="text-center">E. Adecuación de Zona Verde</h2>
+            <p class="text-justify">Tratamiento paisajístico del talud existente entre el sector y el Canal con criterios de vegetación autóctonos y bajo coste de mantenimiento (3,2 hectáreas)</p>
+            <div class="text-center">
+                <a href="/cont/paginas/urbanismo/participativo/adjuntos/propuestaD_G.jpg">
+                    <img class="img-responsive img-rounded" src="/cont/paginas/urbanismo/participativo/adjuntos/propuestaD_mini.png" title="Pulse para ampliar la imagen D. Supresión de Línea aérea de alta tensión" alt="Imagen Plano sobre la propuesta D. Supresión de Línea aérea de alta tensión"/>
+                </a>
+                <h3 class="text-center">
+                    Puntuación 2367 puntos
+                </h3>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="cuadro">
+                <h2 class="text-center">A. Mejora del Drenaje de Agua de Escorrentía</h2>
+                <p class="text-justify">El objeto de esta actuación es la resolución de los problemas existentes en la parcela de equipamiento EE 05 generados por la escorrentía superficial de las aguas de lluvia.</p>
+                <div class="text-center">
+                    <a href="/cont/paginas/urbanismo/participativo/adjuntos/propuestaA_G.jpg">
+                        <img class="img-responsive img-rounded" src="/cont/paginas/urbanismo/participativo/adjuntos/propuestaA_mini.png" title="Pulse para ampliar la imagen A. Mejora del Drenaje de Agua de Escorrentía" alt="Imagen Plano sobre la propuesta A. Mejora del Drenaje de Agua de Escorrentía"/></a>
+                    <h3 class="text-center">
+                Puntuación 2191 puntos</h3>
+                </div></div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="cuadro">
+                <h2 class="text-center">C. Tercer Carril en la Avenida Tiziano</h2>
+                <p class="text-justify">Adecuación de la Avenida Tiziano entre la calle Pablo Veronesa y Ronda Hispanidad, con ampliación de 3 carriles y mejora del carril bici.</p>
+                <div class="text-center">
+                    <a href="/cont/paginas/urbanismo/participativo/adjuntos/propuestaC_G.jpg">
+                    <img class="img-responsive img-rounded"  src="/cont/paginas/urbanismo/participativo/adjuntos/propuestaC_mini.png" title="Pulse para ampliar la imagen C. Tercer Carril en la Avenida Tiziano" alt="Imagen Plano sobre la propuesta C. Tercer Carril en la Avenida Tiziano"/></a>
+                    <h3 class="text-center">
+                Puntuación 1779 puntos</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="/cont/plantillas/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){$("#popover").popover({ trigger: "hover" })});
+    </script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});google.setOnLoadCallback(drawChart);function drawChart() {var data = google.visualization.arrayToDataTable([
+        ['Opciones', ''],
+        ['Participantes. ', 779],
+        ['No participantes. ', 1946],
+        ]);var options = {
+        title: '',
+        pieHole: 0.3,
+        slices: {
+        0: { color: 'green' },
+        1: { color: 'red' }
+        }
+
+
+        };var chart = new google.visualization.PieChart(document.getElementById('grafico2'));chart.draw(data, options);}
+    </script>
+    <script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});google.setOnLoadCallback(drawChart);function drawChart() {var data = google.visualization.arrayToDataTable([
+        ['Opciones', '',{ role: "style" }],
+        ['Propuesta B. ', 2824,"green"],
+        ['Propuesta D. ', 2524,"blue"],
+        ['Propuesta E. ', 2367,"gold"],
+        ['Propuesta A. ', 2191,"#b87333"],
+        ['Propuesta C. ', 1779,"red"]
+        ]);var options = {
+        chart: {
+        title: 'Puntuaciones Obtenidas'
+        },
+        hAxis: {
+        title: 'Puntuaciones Totales',
+        minValue: 0,
+        },
+        vAxis: {
+        title: ''
+        },
+        legend: { position: "none" },
+        bars: 'vertical'
+        };var chart = new google.visualization.BarChart(document.getElementById('grafico'));chart.draw(data, options);}
+    </script>
+
+    </sede:content>
+</body>
+</html>

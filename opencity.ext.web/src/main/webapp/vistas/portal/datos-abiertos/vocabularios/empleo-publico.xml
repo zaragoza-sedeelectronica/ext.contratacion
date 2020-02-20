@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Vocabularios. Empleo Público" 
+              description="En la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, Datos Abiertos de Zaragoza publica desde 2008 información pública del Ayuntamiento de Zaragoza en formatos abiertos para favorecer su reutilización. Servicios: Catálogo de conjunto de datos basado en DCAT y normas técnicas de interoperabilidad (NTI), SPARQL y API Zaragoza. Reconocimientos: Nivel 5 estrellas por el Open Data - Linked Data (2010), Premio Buenas Prácticas y Premio Categoría Usabilidad a IDEZar en EUROGI/eSDI-Net (2011), Mejor iniciativa pública Open Data por OKFN (2014) y Premio ASEDIE (2014)."
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, datos abiertos, derecho a reutilizar información, sector público, catálogo de datos, conjunto de datos, DCAT, Norma Técnica de Interoperabilidad, NTI, SPARQL, API Zaragoza, IDEZar, urbanismo, infraestructuras, transportes, medio ambiente, sociedad y bienestar, economía, hacienda local, cultura, ocio, ciencia y tecnología, demografía, turismo, deporte, seguridad pública, comercio, educación, empleo, salud, legislación local, justicia, city, council, Saragossa, electronic site, local government,open government, citizen-authority relation, open data, right to reuse information, public sector, dataset, RISP, technical interoperability standards, town planning, infrastructure, transport, environment, society and welfare, economics, local authority finances, culture, leisure, science and technology, demography, tourism, sports, public safety, trade, education, employment, health, local legislation, justice" 
+               />
+</head>
+
+<body>
+    <sede:content>
+        <h2 class="P79"><span>Vocabulario de la Oferta de empleo p&#250;blico</span></h2>
+        <p class="P25_borderStart">El objetivo de este vocabulario es la creaci&#243;n de un esquema que permita definir los contenidos de la informaci&#243;n relacionada con la oferta de empleo p&#250;blico. </p>
+        <p class="P25">Se identifica con el URI: <a href="http://data.fundacionctic.org/vocab/empleo/oferta">http://data.fundacionctic.org/vocab/empleo/oferta</a>, ya que pertenece al sector &#34;empleo&#34;.</p>
+        <p class="P25_borderEnd">Se identifican ciertas variables en el dominio de la oferta de empleo p&#250;blico, que se modelan a trav&#233;s de ciertos tipos de datos y de propiedades relacionadas entre los recursos.</p>
+        <div class="fnd-gris-claro padding margin-b2em">
+            <p><strong>Tabla de Contenido</strong></p>
+            <div id="toc" />
+        </div>
+        <h3 class="Heading_20_2">1. Vocabularios est&#225;ndar utilizados</h3>
+        <p class="Standard">Siempre que existan t&#233;rminos y propiedades de vocabularios internacionalmente reconocidos adecuados para la representaci&#243;n de la informaci&#243;n, se tendr&#225;n en cuenta y se utilizar&#225;n. Esto permitir&#225; la interoperabilidad con otros datos existentes que utilicen los mismos vocabularios.</p>
+        <p class="Standard">Los principales vocabularios utilizados son los siguientes:</p>
+        <ol>
+            <li>
+                <a href="http://xmlns.com/foaf/spec/" title="Footnote: FOAF Specification">Fiend of a Friend</a>: Permite describir recursos de personas, organizaciones y sus relaciones entre s&#237;.
+            </li>
+            <li>
+                <a href="http://dublincore.org/documents/dcmi-terms/" title="Footnote: Dublin Core Metadata Initiative Terms">Dublin Core</a>: Los t&#233;rminos definidos por Dublin Core definen propiedades de recursos bibliogr&#225;ficos en general.
+            </li>
+            <li>
+                <a href="http://www.w3.org/TR/skos-primer/" title="Footnote: SKOS Primer">SKOS</a>: Es un est&#225;ndar para la definici&#243;n de la estructura b&#225;sica y el contenido de esquemas de conceptos como tesauros, esquemas de clasificaci&#243;n, taxonom&#237;as, etc.
+            </li>
+            <li>
+                <a href="http://code.google.com/p/argot-hub/wiki/ArgotVacancy" title="Footnote: ArgotVacancy">ArgotVacancy</a>: Es un vocabulario consensuado para definici&#243;n de ofertas de trabajo.
+            </li>
+        </ol>
+        <h4 class="Heading_20_3">1.1. Prefijos</h4>
+        <p class="Standard">Para la simplificaci&#243;n en la representaci&#243;n de las distintas clases y propiedades de los vocabularios, se har&#225; uso de los prefijos de los espacios de nombres de los vocabularios.</p>
+        <ul>
+            <li>
+                <p class="P67"><span class="T14">foaf=&#34;</span><a shape="rect" href="http://xmlns.com/foaf/0.1/"><span class="T14">http://xmlns.com/foaf/0.1/</span></a><span class="T14">&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P67"><span class="T14">dct=&#34;</span><a shape="rect" href="http://purl.org/dc/terms/"><span class="T14">http://purl.org/dc/terms/</span></a><span class="T14">&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P67"><span class="T14">geo=&#34;</span><a shape="rect" href="http://www.w3.org/2003/01/geo/wgs84_pos"><span class="T14">http://www.w3.org/2003/01/geo/wgs84_pos</span></a><span class="T14">#&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P67"><span class="T14">skos=&#34;</span><a shape="rect" href="http://www.w3.org/2004/02/skos/core"><span class="T14">http://www.w3.org/2004/02/skos/core</span></a><span class="T14">#&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P67"><span class="T14">rdf=&#34;</span><a shape="rect" href="http://www.w3.org/1999/02/22-rdf-syntax-ns"><span class="T14">http://www.w3.org/1999/02/22-rdf-syntax-ns</span></a><span class="T14">#&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P67"><span class="T14">rdfs=&#34;</span><a shape="rect" href="http://www.w3.org/2000/01/rdf-schema"><span class="T14">http://www.w3.org/2000/01/rdf-schema</span></a><span class="T14">#&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P69"><span class="T18">geonames= &#34;</span><a shape="rect" href="http://www.geonames.org/ontology"><span class="T14">http://www.geonames.org/ontology</span></a><a shape="rect" href="http://www.geonames.org/ontology#"><span class="T14">#</span></a><span class="T19">&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P71"><span class="T14">serv=&#34;</span><a shape="rect" href="http://datos.zaragoza.es/voc/comun/servicios"><span class="T14">http://purl.org/ctic/infraestructuras/servicios</span></a><span class="T14">#&#34; </span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P72"><span class="T14">org=&#34;</span><a shape="rect" href="http://purl.org/ctic/infraestructuras/organizacion"><span class="T17">http://purl.org/ctic/infraestructuras/organizacion</span></a><span class="T14">#&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P73"><span class="T15">wn20=&#34;</span><a shape="rect" href="http://www.w3.org/2006/03/wn/wn20/instances/"><span class="T15">http://www.w3.org/2006/03/wn/wn20/instances/</span></a><span class="T15">&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P70"><span class="T25">argot=&#34;</span><a shape="rect" href="http://purl.org/argot/"><span class="T25">http://purl.org/argot/</span></a><span class="T25">&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+            <li>
+                <p class="P68"><span class="T14">emp=&#34;</span><a shape="rect" href="http://purl.org/ctic/empleo/oferta"><span class="T14">http://purl.org/ctic/empleo/oferta</span></a><span class="T14">#&#34;</span><span class="odfLiEnd">&#160;</span></p>
+            </li>
+        </ul>
+        <h4>1.2 Grafo RDF</h4>
+        <p>
+            <a href="/cont/paginas/risp/img/rdf-grafico-oferta.png" shape="rect"><img width="800" height="566" src="/cont/paginas/risp/img/rdf-grafico-oferta.png" alt="Grafo RDF del conjunto de Datos" class="img-responsive" /></a>
+        </p>
+        <h3 class="P79">2. Clase Oferta de empleo</h3>
+        <p class="Standard"><span class="T13">Descripci&#243;n: </span><span class="T14">Una oferta de empleo es un documento que describe los detalles de uno o m&#225;s trabajos que deben ser cubiertos. N&#243;tese que no es lo mismo un trabajo, que una oferta de trabajo. </span></p>
+        <p class="Standard"><span class="T13">Identificador:</span><span class="T11"> </span><span class="codigo_20_RDF">emp:OfertaEmpleo</span></p>
+        <p class="Standard"><span class="T13">Subclase de:</span><span class="T11"> </span><span class="codigo_20_RDF">foaf:Document</span></p>
+        <h4 class="Heading_20_2">2.1. Propiedades de Objeto </h4>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Tabla1_A1">
+                    <h5 class="P81">2.1.1. Tipo del documento</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Tabla1_A1">
+                    <p class="P18">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Tabla1_A1">
+                    <p class="P40"><span class="codigo_20_RDF"><span class="T26">dct:type</span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Tabla1_A1">
+                    <p class="P18">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Tabla1_A1">
+                    <p class="P40">El tipo <span class="T26">del documento, que indica siempre que es de tipo oferta de empleo.</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Tabla1_A1">
+                    <p class="P18">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Tabla1_A1">
+                    <p class="P40">Recurso de tipo <span class="codigo_20_RDF"><span class="T26">argot:Vacancy</span></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table6_A1">
+                    <h5 class="Heading_20_3">2.1.2. Plantilla de personal</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table6_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table6_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:plantillaPersonal</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table6_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table6_A1">
+                    <p class="Standard">El tipo de plantilla de personal del puesto de trabajo</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table6_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table6_A1">
+                    <p class="P48">Recurso de <span class="T44">la </span>taxonom&#237;a de l<span class="T44">as plantillas profesionales </span>(Ver <span class="T21">Plantillas de personal</span>)</p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table58_A1">
+                    <h5 class="Heading_20_3">2.1.3. Grupo profesional</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table58_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table58_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:grupoProfesional</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table58_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table58_A1">
+                    <p class="Standard">Grupo de clasificaci&#243;n profesional</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table58_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table58_A1">
+                    <p class="Standard">Recurso de la taxonom&#237;a de los grupos profesionales (Ver Clasificaci&#243;n <span class="T21">de </span><span class="T21">Grupos profesionales</span>)</p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table63_A1">
+                    <h5 class="Heading_20_3">2.1.4. Bases</h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:bases</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="Standard">Bases de la convocatoria</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="P17">Prop. Padre</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:references</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table63_A1">
+                    <p class="P35">Documento a las bases de la convocatoria (<a shape="rect" href="https://www.zaragoza.es/oferta/verHTMLOferta.jsp?id=647&amp;tipo=bases"><span class="codigo_20_RDF">https://www.zaragoza.es/oferta/verHTMLOferta.jsp?id=647&#38;amp;tipo=bases</span></a>)</p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table64_A1">
+                    <h5 class="Heading_20_3">2.1.5. Tribunal</h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:tribunal</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="Standard">Tribunal que evaluar&#225; la convocatoria</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="P17">Prop. Padre</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:references</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table64_A1">
+                    <p class="P35">Documento con informaci&#243;n sobre el tribunal de la convocatoria (<a shape="rect" href="https://www.zaragoza.es/oferta/verHTMLOferta.jsp?id=647&amp;tipo=bases"><span class="codigo_20_RDF">https://www.zaragoza.es/oferta/verHTMLOferta.jsp?id=647&#38;amp;tipo=bases</span></a>)</p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table70_A1">
+                    <h5 class="Heading_20_3">2.1.6. Categor&#237;a profesional</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:categoriaProfesional</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="Standard">Tipo de la categor&#237;a profesional destinataria de la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="P17">Prop. Padre</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:</span><span class="codigo_20_RDF"><span class="T23">audience</span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table70_A1">
+                    <p class="Standard">Concepto de la <span class="T14">Taxonom&#237;a de Categor&#237;as profesionales </span>(Ver <span class="T14">Taxonom&#237;a de </span><span class="T14">Categor&#237;as profesionales</span>)</p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table71_A1">
+                    <h5 class="Heading_20_3">2.1.7. Anuncio de la oferta</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:anuncio</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="Standard">Anuncio de la convocatoria de la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="P17">Prop. Padre</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:isReferencedBy</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table71_A1">
+                    <p class="Standard">Recurso del tipo Anuncio Oferta (Ver Clase Anuncio de oferta)</p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table7_A1">
+                    <h5 class="P82">2.1.8. Tipo de examen</h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table7_A1">
+                    <p class="P20">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table7_A1">
+                    <p class="P45"><span class="codigo_20_RDF">emp:examen</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table7_A1">
+                    <p class="P20">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table7_A1">
+                    <p class="P34">Tipo del examen de la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table7_A1">
+                    <p class="P20">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table7_A1">
+                    <p class="P42">Recurso <span class="T30">perteneciente a la clasificaci&#243;n de tipos de ex&#225;menes </span>(Ver<span class="T43"> </span><span class="T43">Tipos de examen</span><span class="T43">)</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table10_A1">
+                    <h5 class="P82">2.1.9. Tipo de Turno de ingreso a la oferta</h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table10_A1">
+                    <p class="P20">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table10_A1">
+                    <p class="P45"><span class="codigo_20_RDF">emp:turno</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table10_A1">
+                    <p class="P20">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table10_A1">
+                    <p class="P34">Turno</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table10_A1">
+                    <p class="P20">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table10_A1">
+                    <p class="P42"><span class="T30">Recurso perteneciente a la clasificaci&#243;n de turnos de ingresos a la oferta (Ver </span><span class="T30">Turnos de ingreso</span><span class="T43">)</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table11_A1">
+                    <h5 class="P82">2.1.10. <span class="T28">Estado </span><span class="T44">del proceso</span></h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table11_A1">
+                    <p class="P20">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table11_A1">
+                    <p class="P45"><span class="codigo_20_RDF"><span class="T28">emp</span></span><span class="codigo_20_RDF">:</span><span class="codigo_20_RDF"><span class="T28">estado</span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table11_A1">
+                    <p class="P20">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table11_A1">
+                    <p class="P52">Estado del proceso</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table11_A1">
+                    <p class="P20">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table11_A1">
+                    <p class="P43">Recurso <span class="T30">perteneciente a la clasificaci&#243;n de </span><span class="T31">estados del proceso </span>(Ver Estado del proceso de la oferta<span class="T43">)</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table17_A1">
+                    <h5 class="P83">2.1.11. Escala profesional </h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table17_A1">
+                    <p class="P23">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table17_A1">
+                    <p class="P48"><span class="codigo_20_RDF">emp:escalaProfesional</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table17_A1">
+                    <p class="P23">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table17_A1">
+                    <p class="P48">Escala profesional de la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table17_A1">
+                    <p class="P23">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table17_A1">
+                    <p class="P43">Recurso <span class="T30">perteneciente a la clasificaci&#243;n de </span><span class="T31">estados del proceso </span>(Ver Escala profesional<span class="T43">)</span></p>
+                </td>
+            </tr>
+        </table>
+        <h4 class="Heading_20_2">2.2. Propiedades de Dato</h4>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table49_A1">
+                    <h5 class="Heading_20_3">2.2.1. Identificador</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table49_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table49_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:identifier</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table49_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table49_A1">
+                    <p class="Standard">Identificador un&#237;voco de la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table49_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table49_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">&#34;166&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table50_A1">
+                    <h5 class="Heading_20_3">2.2.2.Nombre </h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table50_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table50_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:title</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table50_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table50_A1">
+                    <p class="Standard">Nombre de la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table50_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table50_A1">
+                    <p class="P58"><span class="codigo_20_RDF"><span class="T18">&#34;Auxiliar Administrativo.(Consultar Oferta 2002, Convocatoria conjunta 2000/2001/2002)&#34;</span></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table52_A1">
+                    <h5 class="Heading_20_3">2.2.3. Titulaci&#243;n requerida</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table52_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table52_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:titulacion</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table52_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table52_A1">
+                    <p class="Standard">La titulaci&#243;n que se requiere para la oferta de trabajo</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table52_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table52_A1">
+                    <p class="P60"><span class="codigo_20_RDF">&#34;Bachiller Elemental, Graduado Escolar, FP I o equivalente&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table53_A1">
+                    <h5 class="Heading_20_3">2.2.4. Bolet&#237;n Oficial Auton&#243;mico</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table53_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table53_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:boa</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table53_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table53_A1">
+                    <p class="Standard">Ejemplar del Bolet&#237;n Oficial Auton&#243;mico donde aparece informaci&#243;n sobre la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table53_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table53_A1">
+                    <p class="P60"><span class="codigo_20_RDF">&#34;9 julio 2001, n&#186;. 81&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table60_A1">
+                    <h5 class="Heading_20_3">2.2.5. Bolet&#237;n Oficial Provincial</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table60_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table60_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:bop</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table60_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table60_A1">
+                    <p class="Standard">Ejemplar del Bolet&#237;n Oficial Provincial donde aparece informaci&#243;n sobre la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table60_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table60_A1">
+                    <p class="P58"><span class="codigo_20_RDF">&#34;</span><span class="codigo_20_RDF"><span class="T18">10 agosto 2001, n&#186;. 183</span></span><span class="codigo_20_RDF">&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table61_A1">
+                    <h5 class="Heading_20_3">2.2.6. Bolet&#237;n Oficial del Estado</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table61_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table61_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:boe</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table61_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table61_A1">
+                    <p class="Standard">Ejemplar del Bolet&#237;n Oficial del Estado donde aparece informaci&#243;n sobre la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table61_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table61_A1">
+                    <p class="P58"><span class="codigo_20_RDF">&#34;</span><span class="codigo_20_RDF"><span class="T18">BOE n&#186;12 14/01/2004</span></span><span class="codigo_20_RDF">&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table54_A1">
+                    <h5 class="Heading_20_3">2.2.7. N&#250;mero de plazas totales</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table54_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table54_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:plazasTotal</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table54_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table54_A1">
+                    <p class="Standard">N&#250;mero de plazas para el puesto de trabajo</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table54_A1">
+                    <p class="P17">Prop. padre</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table54_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:extent</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table54_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table54_B5">
+                    <p class="Standard"><span class="codigo_20_RDF">23</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table62_A1">
+                    <h5 class="Heading_20_3">2.2.8. N&#250;mero de plazas minusv&#225;lidos</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table62_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table62_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:plazasMinusvalidos</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table62_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table62_A1">
+                    <p class="Standard">N&#250;mero de plazas reservadas a personas discapacitadas para el puesto de trabajo</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table62_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table62_B4">
+                    <p class="Standard"><span class="codigo_20_RDF">2</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table55_A1">
+                    <h5 class="Heading_20_3">2.2.9. N&#250;mero de plazas promoci&#243;n interna</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table55_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table55_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:plazasInternas</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table55_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table55_A1">
+                    <p class="Standard">N&#250;mero de plazas reservadas a promoci&#243;n interna en la oferta de trabajo</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table55_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table55_B4">
+                    <p class="Standard"><span class="codigo_20_RDF">3</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table65_A1">
+                    <h5 class="Heading_20_3">2.2.10. A&#241;o(s) de la oferta</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table65_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table65_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:anoOferta</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table65_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table65_A1">
+                    <p class="P32">A&#241;o o a&#241;os de la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table65_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table65_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">&#34;2000&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P26">&#160;</p>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table8_A1">
+                    <h5 class="P84">2.2.11. Fecha de presentaci&#243;n de la instancia</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <p class="P19">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <p class="P44"><span class="codigo_20_RDF">emp:fechaPresentacion</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <p class="P19">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <div class="P33">Fecha l&#237;mite de presentaci&#243;n de la instancia para la oferta en formato &#34;ISO 8601<span class="Footnote_20_anchor" title="Footnote: http://www.w3.org/TR/NOTE-datetime"><a shape="rect" href="#ftn5" id="body_ftn5">5</a></span>&#34;</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <p class="P19">Prop. Padre</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <p class="P33"><span class="codigo_20_RDF">dct:valid</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <p class="P19">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table8_A1">
+                    <p class="P44"><span class="codigo_20_RDF">&#34;2008-05-20&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P26">&#160;</p>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table9_A1">
+                    <h5 class="P84">2.2.12. Fecha de <span class="T29">inicio del puesto de trabajo</span></h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P19">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P44"><span class="codigo_20_RDF">emp:fecha</span><span class="codigo_20_RDF"><span class="T29">Inicio</span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P19">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P33">Fecha l&#237;mite de <span class="T29">inicio propuesta para el puesto de trabajo </span>en formato &#34;ISO 8601&#34;</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P19">Prop. Padre</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P33"><span class="codigo_20_RDF">dct:</span><span class="codigo_20_RDF"><span class="T29">date</span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P19">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table9_A1">
+                    <p class="P44"><span class="codigo_20_RDF">&#34;2008-05-20&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table68_A1">
+                    <h5 class="Heading_20_3">2.2.13. Observaciones</h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table68_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table68_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">rdfs:comment</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table68_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table68_A1">
+                    <p class="P32">Observaciones adicionales</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table68_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table68_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">&#34;Cualquier nota adicional&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table69_A1">
+                    <h5 class="Heading_20_3">2.2.14. Expediente</h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table69_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table69_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">emp:expediente</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table69_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table69_A1">
+                    <p class="P32">Expediente relacionado con la oferta</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table69_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table69_A1">
+                    <p class="Standard"><span class="codigo_20_RDF"></span></p>
+                </td>
+            </tr>
+        </table>
+        <h3 class="Heading_20_1">3. <span class="T22">Clase</span> Anuncio de oferta</h3>
+        <p class="Standard"><span class="T13">Descripci&#243;n: </span><span class="T14">Un anuncio de una oferta de empleo</span></p>
+        <p class="Standard"><span class="T13">Identificador:</span><span class="T11"> </span><span class="codigo_20_RDF">emp:Anuncio</span></p>
+        <p class="Standard"><span class="T13">Subclase de:</span><span class="T11"> </span><span class="codigo_20_RDF">foaf:Document</span></p>
+        <h4 class="Heading_20_2">3.1. Propiedades de Dato </h4>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table72_A1">
+                    <h5 class="Heading_20_3">3.1.1. Identificador</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table72_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table72_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:identifier</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table72_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table72_A1">
+                    <p class="Standard">Identificador un&#237;voco del anuncio</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table72_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table72_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">&#34;4&#34;</span></p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table73_A1">
+                    <h5 class="Heading_20_3">3.1.2. T&#237;tulo</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table73_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table73_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:title</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table73_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table73_A1">
+                    <p class="Standard">T&#237;tulo del anuncio</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table73_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table73_A1">
+                    <p class="P58"><span class="codigo_20_RDF"><span class="T18">&#34;Fecha 1er. Ejercicio&#34;</span></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table75_A1">
+                    <h5 class="Heading_20_3">3.1.3. Descripci&#243;n</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table75_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table75_A1">
+                    <p class="Standard"><span class="codigo_20_RDF">dct:description</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table75_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table75_A1">
+                    <p class="Standard">Cuerpo del anuncio</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table75_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table75_A1">
+                    <p class="P58"><span class="codigo_20_RDF"><span class="T18">&#34;B.O.P. 31/10/2002. El tribunal encargado de juzgar los ejercicios del concurso-oposici&#243;n convocado para la provisi&#243;n de 6 plazas [...]&#34;</span></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="P31">&#160;</p>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table18_A1">
+                    <h5 class="P85">3.1.4. Fecha de publicaci&#243;n</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table18_A1">
+                    <p class="P24">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table18_A1">
+                    <p class="P51"><span class="codigo_20_RDF">dct:issued</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table18_A1">
+                    <p class="P24">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table18_A1">
+                    <p class="P51">Fecha de publicaci&#243;n del anuncio en formato &#34;ISO 8601&#34;</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table18_A1">
+                    <p class="P24">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table18_A1">
+                    <p class="P59"><span class="codigo_20_RDF"><span class="T18">&#34;2008-10-25&#34;</span></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="P31">&#160;</p>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table19_A1">
+                    <h5 class="P86">3.1.5. Validez del anuncio</h5> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table19_A1">
+                    <p class="P24">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table19_A1">
+                    <p class="P51"><span class="codigo_20_RDF">dct:</span><span class="codigo_20_RDF"><span class="T45">valid</span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table19_A1">
+                    <p class="P24">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table19_A1">
+                    <p class="P51">Fecha de <span class="T45">finalizaci&#243;n </span>del anuncio en formato &#34;ISO 8601&#34;</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table19_A1">
+                    <p class="P24">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table19_A1">
+                    <p class="P59"><span class="codigo_20_RDF"><span class="T18">&#34;2008-10-25&#34;</span></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="P31">&#160;</p>
+        <h3 class="P80">4. Taxonom&#237;as relacionadas</h3>
+        <h4 class="Heading_20_2">4.1. Grupos profesionales</h4>
+        <p class="Standard">Para modelar la taxonom&#237;a se tiene en cuenta SKOS, un est&#225;ndar para definir la estructura de los conceptos a representar y los valores que pueden tomar los tipos de grupos profesionales de referencia.</p>
+        <p class="Standard"><span class="T12">Tipo: </span><span class="codigo_20_RDF">skos:ConceptScheme</span></p>
+        <p class="Standard"><span class="T12">Identificador:</span> <a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/grupo</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional"><span class="codigo_20_RDF"><span class="T37">Profesional</span></span></a></p>
+        <h5 class="Heading_20_3">4.1.1. Conceptos</h5>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table3_A1">
+                    <h4 class="Heading_20_4">4.1.1.1. Grupo Profesional</h4> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table3_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table3_A1">
+                    <p class="P49"><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">http://datos.zaragoza.es/kos/empleo/</span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional"><span class="codigo_20_RDF"><span class="T32">grupo</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional"><span class="codigo_20_RDF"><span class="T37">Profesional</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">/</span></a><span class="codigo_20_RDF">{grupo}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table3_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table3_A1">
+                    <p class="Standard">El tipo de grupo profesional</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table3_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table3_A1">
+                    <p class="P38">Concepto de grupo <span class="codigo_20_RDF">&#34;C1&#34; </span><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional#C1"><span class="codigo_20_RDF">http://datos.zaragoza.es/kos/empleo/</span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional"><span class="codigo_20_RDF"><span class="T32">grupo</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional"><span class="codigo_20_RDF"><span class="T37">Profesional</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupoProfesional#C1"><span class="codigo_20_RDF">/C1</span></a></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P46">&#160;</p>
+        <h4 class="P89">4.2. Plantillas de personal</h4>
+        <p class="P46">Para modelar la taxonom&#237;a se tiene en cuenta SKOS, un est&#225;ndar para definir la estructura de los conceptos a representar y los valores que pueden tomar los tipos de <span class="T42">plantillas de personal </span>de referencia.</p>
+        <p class="P46"><span class="T12">Tipo: </span><span class="codigo_20_RDF">skos:ConceptScheme</span></p>
+        <p class="P46"><span class="T12">Identificador:</span> <a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla"><span class="codigo_20_RDF"><span class="T35">plantilla</span></span></a><span class="T42"> </span></p>
+        <h5 class="P87">4.2.1. Conceptos</h5>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table12_A1">
+                    <h4 class="P91">4.2.1.1. Plantilla de personal</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table12_A1">
+                    <p class="P21">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table12_A1">
+                    <p class="P46"><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">http://datos.zaragoza.es/kos/empleo/</span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla"><span class="codigo_20_RDF"><span class="T35">plantilla</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">/</span></a><span class="codigo_20_RDF">{</span><span class="codigo_20_RDF"><span class="T42">plantilla</span></span><span class="codigo_20_RDF">}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table12_A1">
+                    <p class="P21">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table12_A1">
+                    <p class="P46">El tipo de <span class="T42">plantilla de personal</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table12_A1">
+                    <p class="P21">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table12_A1">
+                    <p class="P36">Concepto de <span class="T42">tipo de plantilla de personal</span> <span class="codigo_20_RDF">&#34;</span><span class="codigo_20_RDF"><span class="T42">Funcionarios</span></span><span class="codigo_20_RDF">&#34; </span><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T35">plantilla</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T32">/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T35">Funcionarios</span></span></a></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P46">&#160;</p>
+        <h4 class="P89">4.3. Escala profesional</h4>
+        <p class="P46">Para modelar la taxonom&#237;a se tiene en cuenta SKOS, un est&#225;ndar para definir la estructura de los conceptos a representar y los valores que pueden tomar los tipos de <span class="T42">escalas profesionales </span>de referencia.</p>
+        <p class="P46"><span class="T12">Tipo: </span><span class="codigo_20_RDF">skos:ConceptScheme</span></p>
+        <p class="P46"><span class="T12">Identificador:</span> <a shape="rect" href="http://datos.zaragoza.es/kos/empleo/escalProfesional"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/escalProfesional"><span class="codigo_20_RDF"><span class="T35">escal</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/escalProfesional"><span class="codigo_20_RDF"><span class="T38">aProfesional</span></span></a></p>
+        <h5 class="P87">4.3.1. Conceptos</h5>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table13_A1">
+                    <h4 class="P91">4.3.1.1. Escala profesional</h4> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table13_A1">
+                    <p class="P21">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table13_A1">
+                    <p class="P50"><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">http://datos.zaragoza.es/kos/empleo/</span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/escalProfesional"><span class="codigo_20_RDF"><span class="T35">escal</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/escalProfesional"><span class="codigo_20_RDF"><span class="T38">aProfesional</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">/</span></a><span class="codigo_20_RDF">{</span><span class="codigo_20_RDF"><span class="T42">escala</span></span><span class="codigo_20_RDF">}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table13_A1">
+                    <p class="P21">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table13_A1">
+                    <p class="P46">El tipo de <span class="T42">escala profesional</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table13_A1">
+                    <p class="P21">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table13_A1">
+                    <p class="P39">Concepto de <span class="T42">tipo de plantilla de personal</span> <span class="codigo_20_RDF">&#34;</span><span class="codigo_20_RDF"><span class="T42">Administraci&#243;n General</span></span><span class="codigo_20_RDF">&#34; </span><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T39">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/escalProfesional"><span class="codigo_20_RDF"><span class="T40">escal</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/escalProfesional"><span class="codigo_20_RDF"><span class="T41">aProfesional</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T39">/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T40">Administracion</span></span></a></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P46">&#160;</p>
+        <h4 class="P89">4.4. Tipos de examen</h4>
+        <p class="P46">Para modelar la taxonom&#237;a se tiene en cuenta SKOS, un est&#225;ndar para definir la estructura de los conceptos a representar y los valores que pueden tomar los tipos de <span class="T42">ex&#225;menes </span>de referencia.</p>
+        <p class="P46"><span class="T12">Tipo: </span><span class="codigo_20_RDF">skos:ConceptScheme</span></p>
+        <p class="P46"><span class="T12">Identificador:</span> <a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla"><span class="codigo_20_RDF"><span class="T35">examen</span></span></a><span class="T42"> </span></p>
+        <h5 class="P87">4.4.1. Conceptos</h5>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table14_A1">
+                    <h4 class="P91">4.4.1.1.Examen</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table14_A1">
+                    <p class="P21">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table14_A1">
+                    <p class="P46"><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">http://datos.zaragoza.es/kos/empleo/</span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla"><span class="codigo_20_RDF"><span class="T35">examen</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/grupo/"><span class="codigo_20_RDF">/</span></a><span class="codigo_20_RDF">{</span><span class="codigo_20_RDF"><span class="T42">examen</span></span><span class="codigo_20_RDF">}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table14_A1">
+                    <p class="P21">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table14_A1">
+                    <p class="P46">El tipo de <span class="T42">ex&#225;men</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table14_A1">
+                    <p class="P21">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table14_A1">
+                    <p class="P36">Concepto de <span class="T42">tipo de examen</span> <span class="codigo_20_RDF">&#34;</span><span class="codigo_20_RDF"><span class="T42">Oposici&#243;n</span></span><span class="codigo_20_RDF">&#34; </span><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla"><span class="codigo_20_RDF"><span class="T35">examen</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T32">/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/plantilla/Funcionarios"><span class="codigo_20_RDF"><span class="T35">Oposicion</span></span></a></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P28"><span class="codigo_20_RDF"><span class="T14"></span></span>
+        </p>
+        <h4 class="Heading_20_2">4.5. Categor&#237;as profesionales</h4>
+        <p class="Standard">Para modelar la taxonom&#237;a se tiene en cuenta SKOS, un est&#225;ndar para definir la estructura de los conceptos a representar y los valores que pueden tomar las categor&#237;as profesionales de referencia.</p>
+        <p class="Standard"><span class="T12">Tipo: </span><span class="codigo_20_RDF">skos:ConceptScheme</span></p>
+        <p class="Standard"><span class="T12">Identificador:</span> <a shape="rect" href="http://datos.zaragoza.es/kos/empleo/categoriaProfesional"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/categoria</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/categoriaProfesional"><span class="codigo_20_RDF"><span class="T34">Profesional</span></span></a></p>
+        <h5 class="Heading_20_3">4.5.1. Conceptos</h5>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table4_A1">
+                    <h4 class="Heading_20_4">4.5.1.1. Categor&#237;a Profesional</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table4_A1">
+                    <p class="P17">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table4_A1">
+                    <p class="Standard"><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/categoria/"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/categori</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/categoria/"><span class="codigo_20_RDF"><span class="T33">a</span></span></a><span class="codigo_20_RDF"><span class="T34">Profesional</span></span><span class="codigo_20_RDF"><span class="T33">/</span></span><span class="codigo_20_RDF">{cat}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table4_A1">
+                    <p class="P17">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table4_A1">
+                    <p class="Standard">La categor&#237;as profesionales</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table4_A1">
+                    <p class="P17">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table4_A1">
+                    <p class="P35">Concepto de categor&#237;a <span class="codigo_20_RDF">&#34;OFICIAL MECANICO&#34; </span><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/categoriaProfesional/OFICIAL_MECANICO"><span class="codigo_20_RDF"><span class="T20">http://datos.zaragoza.es/kos/empleo/categoriaProfesional/OFICIAL_MECANICO</span></span></a></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P29"><span class="codigo_20_RDF"><span class="T14"></span></span>
+        </p>
+        <h4 class="P90">4.6. Turnos de ingreso</h4>
+        <p class="P47">Para modelar la taxonom&#237;a se tiene en cuenta SKOS, un est&#225;ndar para definir la estructura de los conceptos a representar y los valores que pueden tomar l<span class="T43">o</span>s <span class="T43">turnos de ingreso </span>de referencia.</p>
+        <p class="P47"><span class="T12">Tipo: </span><span class="codigo_20_RDF">skos:ConceptScheme</span></p>
+        <p class="P47"><span class="T12">Identificador:</span> <a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno"><span class="codigo_20_RDF"><span class="T36">turno</span></span></a></p>
+        <h5 class="P88">4.6.1. Conceptos</h5>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table15_A1">
+                    <h4 class="P92">4.6.1.1. Turno de ingreso</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table15_A1">
+                    <p class="P22">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table15_A1">
+                    <p class="P47"><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/"><span class="codigo_20_RDF"><span class="T36">turno</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/"><span class="codigo_20_RDF"><span class="T33">/</span></span></a><span class="codigo_20_RDF">{</span><span class="codigo_20_RDF"><span class="T43">turno</span></span><span class="codigo_20_RDF">}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table15_A1">
+                    <p class="P22">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table15_A1">
+                    <p class="P53">Turno de ingreso a la convocatoria</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table15_A1">
+                    <p class="P22">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table15_A1">
+                    <p class="P37">Concepto de <span class="T43">turno de ingreso</span> <span class="codigo_20_RDF">&#34;</span><span class="codigo_20_RDF"><span class="T43">Libre Ordinario</span></span><span class="codigo_20_RDF">&#34; </span><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/Libre_Ordinario"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/Libre_Ordinario"><span class="codigo_20_RDF"><span class="T36">turno</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/Libre_Ordinario"><span class="codigo_20_RDF"><span class="T32">/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/Libre_Ordinario"><span class="codigo_20_RDF"><span class="T36">Libre_Ordinario</span></span></a></p>
+                </td>
+            </tr>
+        </table>
+        <p class="P29"><span class="codigo_20_RDF"><span class="T14"></span></span>
+        </p>
+        <h4 class="P90">4.7. Estado del proceso de la oferta</h4>
+        <p class="P47">Para modelar la taxonom&#237;a se tiene en cuenta SKOS, un est&#225;ndar para definir la estructura de los conceptos a representar y los valores que pueden tomar <span class="T43">los distintos estados del proceso.</span></p>
+        <p class="P47"><span class="T12">Tipo: </span><span class="codigo_20_RDF">skos:ConceptScheme</span></p>
+        <p class="P47"><span class="T12">Identificador:</span> <a shape="rect" href="http://datos.zaragoza.es/kos/empleo/estadoOferta"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/estadoOferta"><span class="codigo_20_RDF"><span class="T36">estadoOferta</span></span></a></p>
+        <h5 class="P88">4.7.1. Conceptos</h5>
+        <table class="table table-striped table-condensed table-bordered">
+            <colgroup span="1">
+                <col span="1"></col>
+                <col span="1"></col>
+            </colgroup>
+            <tr>
+                <td rowspan="1" colspan="2" class="Table16_A1">
+                    <h4 class="P92">4.7.1.1. Turno de ingreso</h4> </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table16_A1">
+                    <p class="P22">Identificador</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table16_A1">
+                    <p class="P47"><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/estado/Finalizado"><span class="codigo_20_RDF"><span class="T36">estadoOferta</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/turno/"><span class="codigo_20_RDF"><span class="T33">/</span></span></a><span class="codigo_20_RDF">{</span><span class="codigo_20_RDF"><span class="T43">estado</span></span><span class="codigo_20_RDF">}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table16_A1">
+                    <p class="P22">Descripci&#243;n</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table16_A1">
+                    <p class="P53">Turno de ingreso a la convocatoria</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="1" class="Table16_A1">
+                    <p class="P22">Ejemplo</p>
+                </td>
+                <td colspan="1" rowspan="1" class="Table16_A1">
+                    <p class="P37">Concepto de <span class="T43">estado de la oferta </span><span class="codigo_20_RDF">&#34;</span><span class="codigo_20_RDF"><span class="T43">Finalizado</span></span><span class="codigo_20_RDF">&#34; </span><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/estado/Finalizado"><span class="codigo_20_RDF"><span class="T32">http://datos.zaragoza.es/kos/empleo/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/estado/Finalizado"><span class="codigo_20_RDF"><span class="T36">estadoOferta</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/estado/Finalizado"><span class="codigo_20_RDF"><span class="T32">/</span></span></a><a shape="rect" href="http://datos.zaragoza.es/kos/empleo/estado/Finalizado"><span class="codigo_20_RDF"><span class="T36">Finalizado</span></span></a></p>
+                </td>
+            </tr>
+        </table>
+        <hr class="sm" />
+        <ol>
+            <li>FOAF Specification: <a shape="rect" href="http://xmlns.com/foaf/spec/">http://xmlns.com/foaf/spec/</a></li>
+            <li>Dublin Core Metadata Initiative Terms: <a shape="rect" href="http://dublincore.org/documents/dcmi-terms/">http://dublincore.org/documents/dcmi-terms/</a></li>
+            <li>SKOS Primer: <a shape="rect" href="http://www.w3.org/TR/skos-primer/">http://www.w3.org/TR/skos-primer/</a></li>
+            <li>ArgotVacancy: <a shape="rect" href="http://code.google.com/p/argot-hub/wiki/ArgotVacancy">http://code.google.com/p/argot-hub/wiki/ArgotVacancy</a></li>
+            <li>NOTE-datetime: <a shape="rect" href="http://www.w3.org/TR/NOTE-datetime">http://www.w3.org/TR/NOTE-datetime</a></li>
+        </ol>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/js/toc.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+        $(document).ready(function() {
+            $('#toc').TableOfContentsBehavior('#main', 'ul');
+        });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

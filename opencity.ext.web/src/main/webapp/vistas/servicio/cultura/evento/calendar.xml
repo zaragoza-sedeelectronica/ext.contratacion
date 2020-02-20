@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Agenda de actividades. Calendario" keywords="sede,web,actos,concierto,actividades" />
+    <meta name="robots" content="noindex, follow"/>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Calendario de actividades</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <th:block th:utext="${#utils.getCalendar('startDate', days.body.result, month, year, #httpServletRequest)}" />
+                <ul class="list-inline table-calendar">
+                    <li><span class="day today">--</span> Día actual</li>
+                    <li><span class="day select">--</span> Día seleccionado</li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <th:block th:if="${param.startDate}">
+                    <h3 class="lead nomargin">
+                        Actividades del día 
+                        <span class="color-portal" th:text="${#utils.getFecha(param.startDate[0],'dd-MM-yyyy','dd ''de'' MMMM ''de'' yyyy')}"></span>
+                    </h3>
+                    <hr class="sm" />
+                </th:block>
+                <th:block th:include="fragmentos/cultura/evento/calendar-list(calendarEvents=${calendarEvents.result})" />
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

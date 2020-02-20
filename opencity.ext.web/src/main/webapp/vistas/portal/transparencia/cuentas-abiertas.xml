@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Cuentas abiertas" description="Transparencia " author="" last-modified="Tue Mar 25 00:00:00 CET 2014" keywords="ayuntamiento, ciudad, Zaragoza, España, servicio de cita previa, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado" />
+    <style>
+    .trans {
+        transform: rotateX(180deg);
+        overflow-x: auto;
+    }
+
+    .transfor {
+        transform: rotateX(180deg);
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Cuentas Abiertas</h2>
+        <div class="container-fluid">
+           
+            <!-- Tab panes -->
+ 
+              <ul>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=Ayuntamiento">Ayuntamiento de Zaragoza (29/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=artes">Patronato Municipal de Artes Escénicas (30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=biblio">Patronato Municipal de Educación y Bibliotecas (30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=deporte"> Zaragoza Deporte(30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=Vivienda">Zaragoza Vivienda(30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=turismo">Zaragoza Turismo(30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=fomento"> Instituto Municipal de Empleo y Fomento Empresarial de Zaragoza(30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=expo"> Zaragoza arroba Desarrollo Expo(30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=cultural"> Zaragoza Cultural(30/06/2018)</a></li>
+                <li><a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=ecociudad"> Ecociudad(30/06/2018)</a></li>
+                <li><a href="http://www.zaragoza.es/sede/portal/transparencia/cuentas-abiertas#pmerca"> Mercazaragoza(31/12/2017)</a></li>
+            </ul>
+                <h2>Mercazaragoza</h2>
+                <div id="pmerca">
+                   <h3>Descargas</h3>
+                        <ul>
+                            <li><a href="/contenidos/gobierno-abierto/transparencia/Mercazaragoza_Cuentas_Abiertas.csv">CSV</a></li>
+                            <li><a href="/contenidos/gobierno-abierto/transparencia/Mercazaragoza_Cuentas_Abiertas.xls">Excel</a></li>
+                        </ul>
+                    <div class="table-responsive trans">
+                        
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption> Listado de Cuentas Abiertas a 31/12/2017</caption>
+                            <thead>
+                                <tr>
+                                    <th> CIF</th>
+                                    <th> TITULARIDAD</th>
+                                    <th> CLASE DE CUENTA</th>
+                                    <th>DENOMINACION</th>
+                                    <th> ENTIDAD </th>
+                                    <th>CODIGO ENTIDAD</th>
+                                    <th> SUCURSAL</th>
+                                    <th> CODIGO SUCURSAL</th>
+                                    <th> NUMERO CTA.</th>
+                                    <th> MES</th>
+                                    <th> AÑO</th>
+                                    <th> SALDO CORRIENTE</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> IBERCAJA C/C 88824</td>
+                                <td> IBERCAJA</td>
+                                <td> 2085</td>
+                                <td> Oficina</td>
+                                <td> 5300</td>
+                                <td> ES**2085************8824</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 979.618,92</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente </td>
+                                <td> IBERCAJA C/C 13-37 </td>
+                                <td> IBERCAJA </td>
+                                <td>2085</td>
+                                <td> Oficina</td>
+                                <td> 0153</td>
+                                <td> ES**2085************1337</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 92.324,31</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> B.SANTANDER C/C 1014-5 </td>
+                                <td> SANTANDER</td>
+                                <td> 0049</td>
+                                <td> Oficina</td>
+                                <td> 1275</td>
+                                <td> ES**0049************0145</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 208.772,13</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente </td>
+                                <td> BANTIERRA C/C 53428</td>
+                                <td> BANTIERRA</td>
+                                <td> 3191</td>
+                                <td> Oficina</td>
+                                <td> 0071</td>
+                                <td> ES**3191************3428</td>
+                                <td> Diciembre</td>
+                                <td> 2017 </td>
+                                <td>260.024,20</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> BANKIA C/CTE.5887</td>
+                                <td> BANKIA</td>
+                                <td> 2038</td>
+                                <td> Oficina</td>
+                                <td> 9704</td>
+                                <td> ES**2038************9365</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 0,00</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> IBERCAJA ,PRGOGRAMA REACTV.MCD</td>
+                                <td> IBERCAJA</td>
+                                <td> 2085</td>
+                                <td> Oficina</td>
+                                <td> 5300</td>
+                                <td> ES**2085************5947</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 17.045,34</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente </td>
+                                <td> BARCLAYS, C/C 1.326</td>
+                                <td> BARCLAYS</td>
+                                <td> 2100</td>
+                                <td> Oficina</td>
+                                <td> 2910</td>
+                                <td> ES**2100************9251</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 461,40</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> LA CAIXA, C/C 3080-40</td>
+                                <td> CAIXA</td>
+                                <td> 2100</td>
+                                <td> Oficina</td>
+                                <td> 0666</td>
+                                <td> ES**2100************8340</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 0,00</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> B. SABADELL C/C 10672-13</td>
+                                <td> SABADELL</td>
+                                <td> 0081</td>
+                                <td> Oficina</td>
+                                <td> 0170</td>
+                                <td> ES**0081************8376</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 10.475,18</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> IBERCAJA, MDC.LANUZA C/C 21663</td>
+                                <td>IBERCAJA</td>
+                                <td> 2085</td>
+                                <td> Oficina</td>
+                                <td> 5300</td>
+                                <td> ES**2085************1663 </td>
+                                <td>Diciembre</td>
+                                <td> 2017 </td>
+                                <td>12.009,46</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250 </td>
+                                <td>Mercazaragoza, S.A. </td>
+                                <td>Corriente</td>
+                                <td> IBERCAJA, MC.S.V.PAUL C/C 58532</td>
+                                <td> IBERCAJA</td>
+                                <td> 2085</td>
+                                <td> Oficina</td>
+                                <td> 5300 </td>
+                                <td>ES**2085************8532 </td>
+                                <td>Diciembre</td>
+                                <td> 2017</td>
+                                <td> 813.361,87</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> IBERCAJA REDISTRIBUYE C/C97519 </td>
+                                <td>IBERCAJA</td>
+                                <td> 2085</td>
+                                <td> Oficina</td>
+                                <td> 5300</td>
+                                <td> ES**2085************7519</td>
+                                <td> Diciembre</td>
+                                <td> 2017 </td>
+                                <td>108,68</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td>Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> BANKINTER, C/C 3685 </td>
+                                <td> BANKINTER</td>
+                                <td> 0128</td>
+                                <td> Oficina</td>
+                                <td> 9441</td>
+                                <td> ES**0128************3685</td>
+                                <td>Diciembre</td>
+                                <td> 2017</td>
+                                <td>3.067,77</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td>IBERCAJA HUERTA CERCANÍA 2016</td>
+                                <td> IBERCAJA</td>
+                                <td> 2085</td>
+                                <td>Oficina</td>
+                                <td> 5300</td>
+                                <td> ES**2085************6843</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td>15.813,44</td>
+                            </tr>
+                            <tr>
+                                <td>A50017250</td>
+                                <td> Mercazaragoza, S.A.</td>
+                                <td> Corriente</td>
+                                <td> IBERCAJA, 2ª REFORMA PL. 1 SVP</td>
+                                <td> IBERCAJA</td>
+                                <td> 2085</td>
+                                <td> Oficina</td>
+                                <td> 5300</td>
+                                <td> ES**2085************9246</td>
+                                <td> Diciembre</td>
+                                <td> 2017</td>
+                                <td> 150.000,00</td>
+                            </tr>
+                        </table>
+                 
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

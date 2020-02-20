@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Normativa Municipal"
+                description="Ordenanzas y Reglamentos Municipales"
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, legislación local, derecho fiscal, relación administración-administrado">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Jurisprudencia (Urbanismo)
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <main id="main">
+                        <div id="rscont">
+                            <div id="consulta-juris">
+                                <h2>Cuadernos de Jurisprudencia: Urbanismo (1986-2018)</h2>
+                                <div class="margin-b2em">
+                                    <h3>Presentación</h3>
+                                    <p>La colección <span class="destacado">Cuadernos de Jurisprudencia: Urbanismo
+                                    </span> recoge, de forma sistemática y secuencial desde 1986, las sentencias
+                                        recaídas sobre temas urbanísticos de competencia municipal, dictadas por los
+                                        Juzgados de lo Contencioso, Tribunal Superior de Justicia de Aragón (y Audiencia
+                                        Territorial de Zaragoza) y Tribunal Supremo. (<a href="index_Jurisprudencia">Más
+                                            información</a>)
+                                    </p>
+                                    <div class="columnas2-izda">
+                                        <strong>Actualización:</strong>
+                                        <ul>
+                                            <li>Fecha: 01 de octubre 2018</li>
+                                            <li>Cuaderno de Jurisprudencia: Nº 63</li>
+                                            <li>Última Sentencia: 18/04/2018</li>
+                                        </ul>
+                                        <p>
+                                            <a href="http://www.zaragoza.es/contenidos/urbanismo/JURISPRUDENCIAPresentacionGestion2017.pdf">
+                                                <strong>Estadísticas y gráficos (1986-2018)</strong>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="columnas2-dcha">
+                                        <strong>Intervienen:</strong>
+                                        <ul>
+                                            <li>Dirección de Servicios de Información y Organización de Gerencia de
+                                                Urbanismo
+                                            </li>
+                                            <li>Servicio Administrativo de Urbanismo</li>
+                                            <li>Colaboración de letrados de la Gerencia</li>
+                                            <li>Web Municipal</li>
+                                        </ul>
+                                    </div>
+                                    <div class="sep"></div>
+                                    <h3>Formulario de Búsqueda</h3>
+                                    <form method="get" action="consulta_Jurisprudencia" name="f"
+                                          class="form-horizontal">
+                                        <div class="fieldset">
+                                            <fieldset id="b">
+                                                <legend>
+                                                    <span>Tema</span>
+                                                </legend>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="tema">General</label>
+                                                    <div class="controls">
+                                                        <select name="tema" id="tema" onchange="seltema()"
+                                                                class="input-large">
+                                                            <option value="">------ Seleccione Tema
+                                                                -----------------------
+                                                            </option>
+                                                            <option value="9">MOVILIDAD URBANA</option>
+                                                            <option value="1">PLANEAMIENTO</option>
+                                                            <option value="2">DISCIPLINA URBANÍSTICA</option>
+                                                            <option value="3">GESTIÓN URBANÍSTICA</option>
+                                                            <option value="4">INFRAESTRUCTURAS</option>
+                                                            <option value="5">INTERVENCIÓN URBANÍSTICA</option>
+                                                            <option value="6">RESPONSABILIDAD PATRIMONIAL</option>
+                                                            <option value="7">ORDENANZAS MUNICIPALES</option>
+                                                            <option value="8">ACCESO ARCHIVOS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="controls dere">
+                                                        <input type="submit" name="Submit"
+                                                               value="Buscar Subtema Específico"
+                                                               class="boton btn btn-primary"/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="fieldset">
+                                            <fieldset>
+                                                <legend>
+                                                    <span>Sentencia</span>
+                                                </legend>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="Num_sent">Número:</label>
+                                                    <div class="controls">
+                                                        <input name="sentencia" type="text" id="Num_sent" size="15"
+                                                               value=""/>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="fecha_ini">Fecha desde</label>
+                                                    <div class="controls">
+                                                        <input name="fecha_ini" type="text" id="fecha_ini" size="12"
+                                                               value=""/>
+                                                        dd/mm/aaaa
+                                                    </div>
+                                                </div>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="fecha_fin">Fecha hasta</label>
+                                                    <div class="controls">
+                                                        <input name="fecha_fin" type="text" id="fecha_fin" size="12"
+                                                               value=""/>
+                                                        dd/mm/aaaa
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="fieldset">
+                                            <fieldset>
+                                                <legend>
+                                                    <span>Recurso</span>
+                                                </legend>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="organo">Órgano Jurisdiccional
+                                                    </label>
+                                                    <div class="controls">
+                                                        <select name="organo" id="organo" class="input-xxlarge">
+                                                            <option value="">------ Seleccione Opción
+                                                                -----------------------
+                                                            </option>
+                                                            <option value="5">Juzgado de Primera Instancia num. 15
+                                                                Zaragoza
+                                                            </option>
+                                                            <option value="1">Tribunal Superior de Justicia de Aragón
+                                                            </option>
+                                                            <option value="2">Tribunal Supremo</option>
+                                                            <option value="3">Audiencia Territorial de Zaragoza</option>
+                                                            <option value="4">Juzgados de lo
+                                                                Contencioso-Administrativo
+                                                            </option>
+                                                            <option value="6">Juzgado de lo Penal</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="num_recurso">Número</label>
+                                                    <div class="controls">
+                                                        <input name="num_recurso" type="text" id="num_recurso" size="15"
+                                                               value=""/>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="a_recur">Año</label>
+                                                    <div class="controls">
+                                                        <input name="a_recur" type="text" id="a_recur" size="8"
+                                                               value=""/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="fieldset">
+                                            <fieldset>
+                                                <legend>
+                                                    <span>Expediente</span>
+                                                </legend>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="num_expe">Número</label>
+                                                    <div class="controls">
+                                                        <input name="num_expe" type="text" id="num_expe" size="15"
+                                                               value=""/>
+                                                        (Ej: 94.212)
+                                                    </div>
+                                                </div>
+                                                <div class="control-group campo">
+                                                    <label class="control-label" for="a_expe">Año</label>
+                                                    <div class="controls">
+                                                        <input name="a_expe" type="text" id="a_expe" size="8" value=""/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="form-actions dere">
+                                            <input type="submit" name="cons" value="Buscar"
+                                                   class="boton btn btn-primary"/>
+                                            <input type="reset" name="cons" value="Borrar"
+                                                   class="boton btn btn-warning margin-l05em"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

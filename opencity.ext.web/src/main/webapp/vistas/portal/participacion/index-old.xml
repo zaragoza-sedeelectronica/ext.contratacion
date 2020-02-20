@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Participación" description="El portal de Participación es un espacio que facilita la participación activa de la ciudadanía en la toma de decisiones de gobierno sobre los servicios públicos. Consulte las propuestas, aportaciones ciudadanas, encuestas o mapas colaborativos y participe en ellos registrándose en la plataforma de Gobierno Abierto. Acceda al servicio de quejas y sugerencias, localice y comparta su ubicación en el mapa de la ciudad. Conozca el Consejo de la Ciudad y otros órganos de participación ciudadana. A través de las actividades de la Escuela de Participación Ciudadana, podrá avanzar y profundizar en el desarrollo de técnicas de participación ciudadana. Acceso al Censo de Asociaciones y a la normativa relacionada con la participación ciudadana. Descubre el Blog Ciudadanía y síguenos en las redes sociales." author="Ayuntamiento de Zaragoza" category="El Ayuntamiento" subject="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, Sector Público, Sociedad y Bienestar, Ciencia y Tecnología" keywords="ayuntamiento, ciudad, Zaragoza, España, gobierno abierto, participación social, transparencia administrativa, colaboración, administración local, relación administración-administrado, propuestas, consultas públicas, mapas colaborativos, servicio de quejas y sugerencias, comunidades virtuales, ZAC, blog, Consejo de la Ciudad, Escuela de Participación Ciudadana, instituciones públicas, asociaciones, censo, legislación local, council, city, Saragossa, Spain, open government, social participation, administrative transparency, collaboration, local government, citizen-authority relation, proposals, public consultation, collaboration maps, complaints and suggestions service, virtual community,blog, City Council, Citizen Participation School, public institutions, associations, census, local legislation" last-modified="14-05-2018" audience="Ciudadanía" />
+    <style type="text/css">
+    
+    .full-screen-box {
+        margin-bottom: 14px;
+    }
+
+    a.full {
+        /*display: inline-block;*/
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .listado-datos .card {
+            min-height: 10em;
+        }
+    }
+
+    .card h3.btn {
+        font-size: 1em;
+    }
+
+    .procesos .img-container {
+        background: url('/cont/vistas/portal/participacion/img/p-manos-unidas.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+    .card h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    .listado-datos li:nth-child(1) .radius {
+        border: 4px solid #F42F26;
+    }
+
+    .listado-datos li:nth-child(2) .radius {
+        border: 4px solid #01D1C4;
+    }
+
+    .listado-datos li:nth-child(3) .radius {
+        border: 4px solid #A962DC;
+    }
+
+    .listado-datos li:nth-child(4) .radius {
+        border: 4px solid #FF9C27;
+    }
+    
+    .listado-datos h3 {
+        min-height: 3.5em;
+    }
+
+    .listado-datos .lead {
+        font-size: 36px;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div class="margin-b2em fnd-gris-claro">
+            <div class="container-fluid text-left padding-a2em margin-auto nomargin">
+                <div class="row">
+                    <!-- <div class="col-sm-2 text-center">
+                        <a href="/sede/portal/consulta-publica/">
+                            <span aria-hidden="true" class="far fa-question-circle fa-4x"></span>
+                            <p class="lead">Consulta Pública</p>
+                        </a>
+                    </div> -->
+                    
+                    <div class="col-sm-3 text-center">
+                        <a href="/sede/servicio/mapa-colaborativo/">
+                            <span aria-hidden="true" class="far fa-4x fa-map text-color"></span>
+                            <p class="lead">Mapas Colaborativos</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <a href="/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">
+                            <span aria-hidden="true" class="far fa-4x fa-comments text-color"></span>
+                            <p class="lead">Quejas y Sugerencias</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <a href="/sede/portal/participacion/consejos/">
+                            <span  aria-hidden="true" class="fa fa-4x fa-cogs text-color"></span>
+                            <p class="lead">Consejo de la Ciudad</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <a href="https://www.zaragoza.es/zac">
+                            <span aria-hidden="true" class="fa fa-4x fa-users text-color"></span>
+                            <p class="lead">Red Zac</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid margin-b2em">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="fnd-gris-claro clearfix padding-h1em radius">
+                        <a class="full" href="/sede/portal/participacion/en-tu-barrio">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <img class="pull-left" src="/cont/vistas/portal/participacion/img/en-tu-barrio.png" alt="" />
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="lead padding-t1em text-right">En tu barrio</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="fnd-gris-claro clearfix padding-h1em radius">
+                        <a class="full" href="/sede/portal/participacion/formacion-investigacion">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <p class="lead padding-t1em">Formación <span class="visible-md-block visible-lg-block"></span>e investigación</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <img class="pull-right" src="/cont/vistas/portal/participacion/img/formacion-investigacion.png" alt="" />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid margin-b2em">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="fnd-gris-claro padding-h1em radius lead nomargin">
+                        <div class="pull-left margin-t05em margin-r05em"><span class="fa fa-user fa-2x" aria-hidden="true"></span></div> Accede a <a href="/sede/servicio/zona-personal">tu zona personal</a> de la <strong>Plataforma de Gobierno Abierto</strong> para ver tu participación en la Sede Electrónica o modificar tus datos personales. 
+                        <!--/* <br/> Recuerda que también puedes acceder a través del icono <span class="fa fa-user" aria-hidden="true"></span> en la barra de navegación superior de la pantalla. */-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid margin-b2em fnd-gris-claro radius consultas">
+            <a class="btn btn-primary pull-right margin-t1em" href="/sede/portal/consulta-publica/">Acceso al portal</a>
+            <h2>Consultas Públicas</h2>
+            <hr class="sm" />
+            <ul class="row list-unstyled list-ogob">
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/sede/portal/consulta-publica/distrito-sur/">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/consulta/distrito-sur.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Consulta Pública Distrito Sur</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-warning">en retorno</div>
+                    </div>
+                </li>
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/sede/portal/consulta-publica/oficina-fraude/">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/consulta/fraude.png" alt=""/>
+                            <hr class="sm"/>
+                            <h3 class="btn btn-primary btn-block">Oficina contra el Fraude y la Corrupción</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-warning">en retorno</div>
+                    </div>
+                </li>
+                <li class="col-sm-4 hidden-xs">
+                    <img src="/cont/vistas/portal/participacion/img/mano.png" alt=""/>
+                </li>
+            </ul>
+        </div>
+        <div class="container-fluid margin-b2em fnd-gris-claro radius procesos">
+            <div class="img-container clearfix">
+                <a class="btn btn-primary pull-right margin-t1em" href="/sede/portal/participacion/procesos-finalizados">Procesos Participativos Finalizados</a>
+                <h2>Procesos Participativos Abiertos</h2>
+            </div>
+            <hr class="sm" />
+            <ul class="row list-unstyled list-ogob">
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="/sede/servicio/presupuestos-participativos/">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/procesos/prepart2018.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Presupuestos Participativos 2018</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper hidden-xs hidden-sm">
+                        <div class="ribbon-primary">¡Participa!</div>
+                    </div>
+                </li>
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/sede/portal/medioambiente/planinfraverde/">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/procesos/infraestructura-verde.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Plan Director de infraestructura verde</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-warning">en retorno</div>
+                    </div>
+                </li>
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="https://www.zaragoza.es/sede/portal/movilidad/plan-movilidad/">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/procesos/pmus.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Plan de Movilidad Sostenible</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-warning">en retorno</div>
+                    </div>
+                </li>
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="/ciudadania/gobierno-abierto/participar/aytoresponde/default.htm?tab=respuestas">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/procesos/ayto-responde.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Ayuntamiento Responde</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-primary">¡Participa!</div>
+                    </div>
+                </li>
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="/sede/portal/participacion/civico-parque-goya/">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/procesos/cc-parque-goya.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block">Centro Cívico Parque Goya</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-primary">¡Participa</div>
+                    </div>
+                </li>
+                <li class="col-sm-4">
+                    <div class="card text-center">
+                        <a href="/sede/portal/presupuestos-barrios-rurales/">
+                            <img class="img-responsive img-rounded" src="/cont/vistas/portal/participacion/img/procesos/prepart-br-2018.png" alt=""/>
+                            <hr class="sm" />
+                            <h3 class="btn btn-primary btn-block"><abbr title="Presupuestos">Pptos.</abbr> Participativos Barrios Rurales 2018</h3>
+                        </a>
+                    </div>
+                    <div class="ribbon-wrapper">
+                        <div class="ribbon-primary">¡Participa!</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-2 text-center">
+                        <a href="/sede/portal/participacion/urbanismo-participativo/">
+                            <span aria-hidden="true" class="fa fa-4x fa-building text-color"></span>
+                            <p class="lead">Urbanismo Participativo</p>
+                        </a>
+                    </div>
+
+        </div>
+        <div class="margin-b2em fnd-gris-claro">
+            <div class="container-fluid text-left padding-a2em margin-auto nomargin">
+                <h2 class="text-right">Datos Procesos Participativos <span class="small">(Junio 2018)</span></h2>
+                <ul class="list-unstyled row listado-datos">
+                    <li class="col-sm-3 text-center">
+                        <div class="card radius">
+                            <h3 class="nomargin">Participantes Plataforma Gobierno Abierto</h3>
+                            <span class="lead">36.258</span>
+                        </div>
+                    </li>
+                    <li class="col-sm-3 text-center">
+                        <div class="card radius">
+                            <h3 class="nomargin">Procesos Participativos Abiertos</h3>
+                            <span class="lead">6</span>
+                        </div>
+                    </li>
+                    <li class="col-sm-3 text-center">
+                        <div class="card radius">
+                            <h3 class="nomargin">Propuestas ciudadanas</h3>
+                            <span class="lead">3.581</span>
+                        </div>
+                    </li>
+                    <!--/*<li class="col-sm-3 card text-center">
+                            <h3>Comentarios</h3>
+                            <span class="lead">6.676</span>
+                        </li>*/-->
+                    <!--/*<li class="col-sm-3 card text-center">
+                            <h3>Votaciones</h3>
+                            <span class="lead">+ 25.000</span>
+                        </li>*/-->
+                    <li class="col-sm-3 text-center">
+                        <div class="card radius">
+                            <h3 class="nomargin">Número de quejas y sugerencias</h3>
+                            <span class="lead">+ 25.000</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

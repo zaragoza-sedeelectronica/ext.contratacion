@@ -1,0 +1,16 @@
+<div th:if="${listado.totalCount == 0}" role="alert" class="alert alert-info">
+    No existen anuncios
+</div>
+<ul>
+    <li th:if="${listado.totalCount != 0}" th:each="oe, i : ${listado.result}">
+        <span class="label label-default" sede:rdf="${oe.anuncios[0].get('issued')}" />
+        <a th:href="'/oferta/ofertaDetalle.jsp?id=' + ${oe.id}">
+            <th:block th:text="${oe.title}" />
+        </a>
+        <!--/* <th:block th:each="an : ${oe.anuncios}">
+            <th:block th:text="${an.title}" />
+            <th:block th:text="${an.issued}" />
+        </th:block> */-->
+        <th:block th:text="${oe.anuncios[0].title}" />
+    </li>
+</ul>

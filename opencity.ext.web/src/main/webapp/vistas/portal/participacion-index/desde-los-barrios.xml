@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Desde los barrios. Participar y Colaborar. Gobierno Abierto" description="Información sobre el programa Desde los barrios" author="Ayuntamiento de Zaragoza" category="El Ayuntamiento" subject="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, Sector Público, Sociedad y Bienestar, Ciencia y Tecnología" keywords="participación, junta, distrito, barrio" last-modified="01-10-2018" audience="Ciudadanía" />
+    <style type="text/css">
+    #rscont a {
+        color: #202020 !important;
+    }
+
+    .list-barrios li {
+        border: 1px solid #fff;
+    }
+
+    .list-barrios li:hover {
+        background: #eee;
+    }
+
+    h2>span {
+        padding: 0 .5em 0;
+        border-left: 2px solid #e81b16;
+        border-right: 2px solid #e81b16;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div class="container-fluid">
+            <h2>Desde los Barrios</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>PRÓXIMA COMPARECENCIA</h3>
+                    <div class="tarjeta clearfix">
+                        <div class="pull-right"><img width="200" height="300" src="https://www.zaragoza.es/cont/paginas/actividades/imagen/luisa_broto.png" alt="" /></div>
+                        <h3>Luisa Broto Bernués</h3>
+                        <h4>¿Tienes alguna pregunta para Luisa Broto.  Concejala de Presidencia y Derechos Sociales?</h4>
+                        <p>
+                            Desde los Barrios es un espacio de encuentro donde los concejales y concejalas del <strong>equipo de Gobierno del Ayuntamiento</strong> de Zaragoza se reunen con vecinos y vecinas para <strong>conversar y dar respuesta a cuestiones relativas a la gestión de sus diferentes Áreas</strong>.</p>
+                        <p>
+                            Estos encuentros son presenciales y tienen lugar en espacios municipales con periodicidad mensual. Las sesiones se realizan -salvo por motivos excepcionales- la segunda o tercera semana de cada mes, alternando las comparecencias de los y las responsables públicos, de modo que, a lo largo del año, se rindan cuentas por todas las áreas de Gobierno y se llegue al mayor número de distritos y barrios rurales de la ciudad.</p>
+                        <p>
+                            Cada concejal o concejala expondrá <strong>durante 30 minutos</strong> las <strong>principales líneas de actuación, proyectos y gestión de su Área</strong>. Tras esta exposición se atenderá las preguntas de los vecinos y vecinas.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div> <img src="http://www.zaragoza.es/cont/paginas/actividades/img/luisa-broto.gif" alt="Luisa Broto" /></div>
+                    <h3>AGENDA</h3>
+                    <h3>Luisa Broto</h3>
+                    <ul>
+                        <li><a href="http://www.zaragoza.es/sede/servicio/cultura/evento/185846">26 de Septiembre.</a> Centro Cívico Universidad. A las 18 h.</li>
+                    </ul>
+                    <div class="linea"></div>
+                    <h3>Anteriores</h3>
+                    <ul>
+                        <li><a href="http://www.zaragoza.es/sede/servicio/cultura/evento/185843">Alberto Cubero</a></li>
+                        <li><a href="/sede/servicio/cultura/evento/185842">Elena Giner</a></li>
+                        <li><a href="/sede/servicio/cultura/evento/186422">Teresa Artigas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

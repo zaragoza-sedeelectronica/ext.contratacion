@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Sebastián Contín Trillo-Figueroa (PP)"
+                description="Curriculum Vitae de Sebastián Contín Trillo-Figueroa (PP). Especializado en Derecho Europeo, Derecho de la Competencia y Derecho Concursal, campos en los que ha desarrollado su actividad profesional en: CUATRECASAS(Madrid). Abogado asociado del área Contenciosa, en defensa de clientes ante los Tribunales de Justicia. IBERCAJA(Zaragoza). Asesor jurídico del Secretario General (realizando el primer Informe Anual de Gobierno Corporativo de la entidad, y un Código de Buen Gobierno), y miembro de los servicios jurídicos. CONSEJO DE EUROPA (Estrasburgo). Departamento de Derecho Privado, impulsando normas dirigidas a armonizar los ordenamientos jurídicos europeos."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Sebastián Contín Trillo-Figueroa, PP">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        <abbr title="Partido Popular">PP</abbr>
+                    </small>
+                    <span>|</span>
+                    Sebastián Contín Trillo-Figueroa
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <article class="row col-md-12">
+
+                        <!-- Versión móvil -->
+                        <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                            <div class="col-md-4 col-xs-12 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PP_Sebastian_Contin.jpg"
+                                     alt="Sebastián Contín Trillo-Figueroa"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-SEBATIAN-CONTIN-TRILLO-FIGUEROA.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO_FIGUEROA.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2017_Bienes_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO-FIGUEROA.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Bienes_Contin.pdf'}
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-SEBASTIAN-CONT%C3%8DN-TILLO-FIGUEROA.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO_FIGUEROA.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2017_Actividades_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO-FIGUEROA.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Actividades_Contin.pdf'}
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePersonal" aria-expanded="false"
+                                               aria-controls="collapsePersonal">
+                                                INFORMACIÓN PERSONAL
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPersonal">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <strong>Nacimiento:</strong>
+                                                Zaragoza, 18 de mayo de 1976.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseAcademica" aria-expanded="false"
+                                               aria-controls="collapseAcademica">
+                                                FORMACIÓN ACADÉMICA
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingAcademica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Licenciado en Derecho (Universidad de Zaragoza).</li>
+                                            <br/>
+                                            <li>Diploma de Estudios Avanzados en Derecho Mercantil (Universidad de
+                                                Zaragoza).
+                                            </li>
+                                            <br/>
+                                            <li>Master en Instituciones y Derecho Europeos (Colegio de Europa de
+                                                Brujas).
+                                            </li>
+                                            <br/>
+                                            <li>Programa de Liderazgo para la Gestión Pública (IESE Business School).
+                                            </li>
+                                            <br/>
+                                            <li>Titulado en inglés, francés e italiano.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseProfesional"
+                                               aria-expanded="false" aria-controls="collapseProfesional">
+                                                EXPERIENCIA PROFESIONAL
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingProfesional">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Especializado en Derecho Europeo, Derecho de la Competencia y Derecho
+                                                Concursal, campos en los que ha desarrollado su actividad profesional
+                                                en:
+                                            </li>
+                                            <br/>
+                                            <li><strong>CUATRECASAS</strong>(Madrid). Abogado asociado del área
+                                                Contenciosa, en defensa de clientes ante los Tribunales de Justicia.
+                                            </li>
+                                            <br/>
+                                            <li><strong>IBERCAJA</strong>(Zaragoza). Asesor jurídico del Secretario
+                                                General (realizando el primer Informe Anual de Gobierno Corporativo de
+                                                la entidad, y un Código de Buen Gobierno), y miembro de los servicios
+                                                jurídicos.
+                                            </li>
+                                            <br/>
+                                            <li>
+                                                <strong>CONSEJO DE EUROPA</strong>
+                                                (Estrasburgo). Departamento de
+                                                Derecho Privado, impulsando normas dirigidas a armonizar los
+                                                ordenamientos jurídicos europeos.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPolitica">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePolitica" aria-expanded="false"
+                                               aria-controls="collapsePolitica">
+                                                EXPERIENCIA POLÍTICA
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsePolitica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPolitica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <strong>Concejal 2007-2011.</strong>
+                                                Portavoz de Cultura y Grandes Proyectos del Partido Popular. Vocal de
+                                                las áreas de Economía y Hacienda y de Urbanismo.
+                                            </li>
+                                            <br/>
+                                            <li>
+                                                <strong>Concejal 2011-2015.</strong>
+                                                Portavoz de Servicios Públicos y Movilidad del PP. Vocal del área de
+                                                Urbanismo.
+                                            </li>
+                                            <br/>
+                                            <li><strong>Desde 2008</strong>forma parte del Comité Ejecutivo del Partido
+                                                Popular de Aragón como Secretario Ejecutivo de Justicia y Libertades
+                                                Públicas (en la actualidad, segundo mandato) y es vocal de la Comisión
+                                                Nacional de Justicia del PP.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseContacto" aria-expanded="false"
+                                               aria-controls="collapseContacto">
+                                                CONTACTO
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingContacto">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <span class="far fa-envelope margin-t1em"></span>
+                                                <a href="mailto:scontin@zaragoza.es" shape="rect">scontin@zaragoza.es
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Versión desktop -->
+                        <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                            <div class="col-md-4 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PP_Sebastian_Contin.jpg"
+                                     alt="Sebastián Contín Trillo-Figueroa"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-SEBATIAN-CONTIN-TRILLO-FIGUEROA.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO_FIGUEROA.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2017_Bienes_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO-FIGUEROA.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Bienes_Contin.pdf'}
+                        }
+                    },
+                    actividades=${
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-SEBASTIAN-CONT%C3%8DN-TILLO-FIGUEROA.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO_FIGUEROA.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2017_Actividades_PARTIDO_POPULAR/SEBASTIAN_CONTIN_TRILLO-FIGUEROA.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Actividades_Contin.pdf'}
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>INFORMACIÓN PERSONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>
+                                        <strong>Nacimiento:</strong>
+                                        Zaragoza, 18 de mayo de 1976.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>FORMACIÓN ACADÉMICA</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Licenciado en Derecho (Universidad de Zaragoza).</li>
+                                    <br/>
+                                    <li>Diploma de Estudios Avanzados en Derecho Mercantil (Universidad de Zaragoza).
+                                    </li>
+                                    <br/>
+                                    <li>Master en Instituciones y Derecho Europeos (Colegio de Europa de Brujas).</li>
+                                    <br/>
+                                    <li>Programa de Liderazgo para la Gestión Pública (IESE Business School).</li>
+                                    <br/>
+                                    <li>Titulado en inglés, francés e italiano.</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA PROFESIONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Especializado en Derecho Europeo, Derecho de la Competencia y Derecho Concursal,
+                                        campos en los que ha desarrollado su actividad profesional en:
+                                    </li>
+                                    <br/>
+                                    <li><strong>CUATRECASAS</strong>(Madrid). Abogado asociado del área Contenciosa, en
+                                        defensa de clientes ante los Tribunales de Justicia.
+                                    </li>
+                                    <br/>
+                                    <li><strong>IBERCAJA</strong>(Zaragoza). Asesor jurídico del Secretario General
+                                        (realizando el primer Informe Anual de Gobierno Corporativo de la entidad, y un
+                                        Código de Buen Gobierno), y miembro de los servicios jurídicos.
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <strong>CONSEJO DE EUROPA</strong>
+                                        (Estrasburgo). Departamento de Derecho
+                                        Privado, impulsando normas dirigidas a armonizar los ordenamientos jurídicos
+                                        europeos.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA POLÍTICA</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>
+                                        <strong>Concejal 2007-2011.</strong>
+                                        Portavoz de Cultura y Grandes Proyectos del Partido Popular. Vocal de las áreas
+                                        de Economía y Hacienda y de Urbanismo.
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <strong>Concejal 2011-2015.</strong>
+                                        Portavoz de Servicios Públicos y Movilidad del PP. Vocal del área de Urbanismo.
+                                    </li>
+                                    <br/>
+                                    <li><strong>Desde 2008</strong>forma parte del Comité Ejecutivo del Partido Popular
+                                        de Aragón como Secretario Ejecutivo de Justicia y Libertades Públicas (en la
+                                        actualidad, segundo mandato) y es vocal de la Comisión Nacional de Justicia del
+                                        PP.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>CONTACTO</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l05em">
+                                    <li class="col-md-12 margin-b1em">
+                                        <span class="far fa-envelope"></span>
+                                        <a href="mailto:scontin@zaragoza.es" shape="rect">scontin@zaragoza.es</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <aside class="row col-md-12 margin-a1em">
+                        <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;src=5ce0i3bvpqnkqffs6n7b5o6cng%40group.calendar.google.com&amp;ctz=Europe/Madrid"
+                                style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no">
+                            <a href="https://calendar.google.com/calendar/embed?src=5ce0i3bvpqnkqffs6n7b5o6cng%40group.calendar.google.com&amp;ctz=Europe/Madrid">
+                                Acceso al calendario
+                            </a>
+                        </iframe>
+                    </aside>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

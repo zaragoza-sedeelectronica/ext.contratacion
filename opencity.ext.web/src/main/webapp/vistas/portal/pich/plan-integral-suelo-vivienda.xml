@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+   <head>
+      <meta charset="utf-8" />
+      <sede:meta title="PICH: Plan Integral de Suelo y Vivienda" description="El portal de la Oficina del Plan Integral del Casco Histórico ofrece recursos sobre los proyectos que desarrollan en áreas como deportes, cultura, derechos sociales, solares urbanos, medio ambiente, limpieza, comercio, turismo y participación además de ofrecer información sobre sus actividades." category="" subject="" author="" last-modified="2018-09-13" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España, Oficina Plan Integral Casco histórico, participación, solares urbanos, formalidades administrativas, administración electrónica, relación administración-administrado, participación social, actividades, concursos, servicio de quejas y sugerencias, council, city, Saragossa, Spain, administrative formalities, electronic government, citizen-authority relations, participation, urbanism, culture, social rights, environment, social participation, green area, activities, contest, complaints and suggestions service" priority="" robots=""></sede:meta>
+   </head>
+   <style>
+      titulo-seccion {
+      line-height: 66px;
+      font-size: 42px;
+      }
+      .fnd-blanco {
+      background-color: #ffffff;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      .fnd-gris-claro {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: -40px;
+      }
+      .titulo-org h2,
+      .procesos h2{
+      color: #e83437;
+      font-size: 42px;
+      padding-bottom: 20px;
+      }
+      .titulo-org h2 small,
+      .titulo-org h2 span{
+      color: #000000;
+      }
+      .panel-heading a:after {
+      float: left;
+      color: white;
+      background-color: #000;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      margin-right: 10px;
+      }
+      .panel-heading a.collapsed:after {
+      content: "\f105";
+      }
+      .panel-default>.panel-heading {
+      background-color: #fff;
+      border: 0;
+      }
+      .panel {
+      border: 0;
+      webkit-box-shadow: 0 0 0;
+      box-shadow: 0 0 0;
+      }
+      .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border: 0;
+      }
+      .panel-body {
+      padding-left: 50px;
+      }
+      .panel-title>a {
+      color: #E81B16;
+      }
+      .panel-title>a:hover,
+      .panel-title>a:focus,
+      .panel-title>a:active {
+      text-decoration: none;
+      }
+      .tabla-bn {
+      border-collapse: separate;
+      border-spacing: 0px 10px;
+      }
+      .tabla-bn td {
+      padding: 0 5px 5px 5px !important;
+      margin-bottom: 5px;
+      border-right: dotted 1px #000000;
+      border-top: 0px !important;
+      border-bottom: dotted 1px #000000;
+      }
+   </style>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Plan Integral de Suelo y Vivienda</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <p>La existencia de múltiples zonas de residencia en el conjunto del Casco Histórico impide hablar de características generales del estado de la vivienda. Su conservación es y ha sido muy preocupante a lo largo del último cuarto de siglo pasado. El barrio había perdido ya una cantidad ingente de viviendas y edificios emblemáticos. La calle Las Armas contaba con un número importante de edificios palaciegos de origen renacentista ya desaparecidos y otras no habían mejorado sustancialmente desde su construcción, sin apenas agua corriente ni caliente, sin calefacción y equipamientos (ventanas, puertas, cableado eléctrico y cocinas) en un estado deplorable. La mayoría de ellas estaban habitadas por familias de escasos recursos, por lo general en régimen de alquiler con pocas posibilidades de actuar sobre ellas y así lograr viviendas en mejores condiciones. </p>
+               <p>En Zaragoza, como en el resto de las grandes ciudades españolas, además de la normativa estatal, existe una amplia normativa urbanística municipal. En relación al ámbito de la rehabilitación de vivienda hay que considerar la Ordenanza Municipal de Fomento a la Rehabilitación, aprobada por el Ayuntamiento de Zaragoza el 25 de junio de 2010 y la Ordenanza Municipal Reguladora del deber de Conservación de Edificación e Inspección Técnica de Edificios (ITE), aprobada el 27 de septiembre de 2002, todo ello en el marco de la Ley 5/1999, de 25 de marzo, Urbanística de la Comunidad Autónoma de Aragón. </p>
+               <p>La Ordenanza Municipal de Fomento a la Rehabilitación tiene por objeto la regulación de las actuaciones municipales tendentes a fomentar las obras de rehabilitación de iniciativa privada en el término municipal de Zaragoza con el objetivo de paliar al mismo tiempo los problemas de vivienda, ofreciendo alternativas a la acuciante necesidad de alojamientos ante una demanda creciente, especialmente desde algunos colectivos (jóvenes, inmigrantes, mayores), con criterios de sostenibilidad medioambiental y social. Así mismo, también tiene por objeto evitar o minimizar los problemas de vaciamiento, degradación social y urbanística de determinadas zonas de la ciudad, en las que es más necesario rehabilitar y poner al día el parque de viviendas existente y abordar los problemas sociales vinculados al alojamiento en el término municipal de Zaragoza. También se pretende ensayar figuras de gestión convenidas en las que las administraciones públicas, de manera coordinada, tengan funciones más activas de supervisión técnica y administrativa en determinadas situaciones de mayor fragilidad social y con colectivos menos estructurados o con menores habilidades de gestión. De las 16.151 viviendas que, según el censo de 2011, había en el área PICH se estimó que 1.947 estaban en estado ruinoso, deficiente o malo1.</p>
+               <p>La Ordenanza Municipal Reguladora del deber de Conservación de Edificación e Inspección Técnica de Edificios (ITE), obliga, a partir del 1 de enero de 2004, a todos los edificios de más de 50 años de la ciudad, comenzando con los ubicados en los barrios de San Pablo y La Madalena construidos con anterioridad a 1940, a realizar una inspección acompañada de un informe técnico o acta de inspección que justifique el cumplimiento del deber de conservación de las edificaciones en los términos previstos en la ordenanza. </p>
+               <p>La implementación de un Plan Integral en el Casco Histórico ha supuesto una transformación urbanística y social en el territorio y una mejora considerable en la habitabilidad y acceso a la vivienda. Sin embargo, dadas las características de cada uno de los barrios que conforman el territorio delimitado como Casco Histórico, estas mejoras no han sido uniformes en todos ellos, aunque en los últimos años, durante la vigencia del PICH 2005-2012, se han realizado importantes intervenciones en las zonas más afectadas como pueden ser La Madalena o el entorno de las calles San Pablo y Ramón Pignatelli.</p>
+               <div>
+                  <img class="imgder nodeco" src="/cont/paginas/sectores/pich/img/pichborr5.gif" alt="" />
+               </div>
+               <p>La labor que viene desarrollando Zaragoza Vivienda en el Casco Histórico ha sido clave en la rehabilitación urbana, en la urbanización del suelo, la vivienda y otras edificaciones. Dentro de sus programas de actuaciones, las zonas declaradas como Áreas de Rehabilitación Integral (ARI), entre las que se encuentra el Casco Histórico del Rabal, y Áreas de Rehabilitación en el Centro Histórico (ARCH), toman una importancia especial gracias al acuerdo bilateral firmado en 2008 por el Ministerio de la Vivienda, el Gobierno de Aragón y el Ayuntamiento de Zaragoza. Este acuerdo ha permitido avanzar en la realización de estudios sobre el parque inmobiliario, identificar edificios que se encuentran en precariedad física y social y gestionar de una manera más eficaz las ayudas económicas para la rehabilitación de viviendas. </p>
+               <p>Fuera de este acuerdo bilateral se han desarrollado actuaciones de facilitación al acceso a una vivienda digna y adecuada a través de la rehabilitación y construcción de nueva vivienda para venta y alquiler, algunas de ellas con posterior opción a compra, y la creación de una bolsa de vivienda protegida de alquiler. Actuaciones complementadas con proyectos de intervención socioeducativa, de apoyo y seguimiento que ayuden a potenciar las capacidades personales, familiares y comunitarias y a prevenir situaciones conflictivas en aquellos grupos con riesgo de exclusión social y mayor necesidad (familias monoparentales/monomarentales, personas mayores, personas solas con algún tipo de discapacidad, familias numerosas y familias inmigrantes en proceso de adaptación o pertenecientes a minorías étnicas).</p>
+               <p>En colaboración con la Universidad de Zaragoza, desde julio de 2011 y en el marco del programa "Universitarios/as en el Casco, distrito Erasmus", la comunidad universitaria tiene acceso a un alojamiento digno y económico, al tiempo que se fomenta la cultura de la participación, la solidaridad y la integración de los/las universitarios/as en la vida del Barrio. Se han puesto a su disposición un total de 17 plazas en viviendas individuales o compartidas en la zona de San Pablo y de La Madalena que serán ampliadas con la próxima construcción de una residencia universitaria en el antiguo cuartel de Pontoneros situado en la calle Madre Rafols.</p>
+               <p>Como se ha indicado, son numerosas las actuaciones en materia de rehabilitación que se han llevado a cabo en el Casco Histórico desde la aprobación del primer Plan Integral en 1997, sin embargo, en las evaluaciones y nuevos diagnósticos elaborados tras la finalización de la vigencia de cada uno de los planes desarrollados se constata que no se han llegado a ejecutar todas las actuaciones previstas, y que algunas de las áreas tradicionalmente deprimidas siguen en la misma situación, quedando aún trabajo por hacer en esta materia.</p>
+               <div>
+                  <img class="imgder nodeco" src="/cont/paginas/sectores/pich/img/pichborr6.gif" alt="" />
+               </div>
+               <p>Centrándonos en el diagnóstico del Barrio realizado para la elaboración de este Plan Integral1, la rehabilitación y vivienda junto a la presencia de problemas sociales son los aspectos que más preocupan a los actores que han participado en el mismo. </p>
+               <p>Desde la perspectiva del grupo de arquitectos y urbanistas se valoran algunos cambios significativos como consecuencia del PICH como las actuaciones realizadas en la calle Las Armas, los esponjamientos o la mejora de los edificios. Sin embargo, se plantea que estas actuaciones no han tenido como consecuencia un desarrollo homogéneo del Barrio, se percibe un Barrio segmentado en el que algunas áreas mantienen problemas endémicos relacionados con la marginación y la pobreza.</p>
+               <p>Otras valoraciones por parte de la sociedad no organizada consultada enfatizan en que muchas de las viviendas disponibles siguen en mal estado, siguen existiendo áreas "guetos" dentro del Casco Histórico muy deprimidas, que se priorizan "las calles y avenidas principales" frente a otras o que la gente mayor que vive en las casas más viejas del Casco Histórico no se ha visto favorecida por los cambios en el Barrio y quizá no se ha realizado un esfuerzo suficiente en este sentido.</p>
+               <p>Desde la perspectiva de la juventud, se valora muy positivamente, con un 83,44% de las respuestas, los avances realizados en la arquitectura del barrio, sus monumentos, los puentes y los edificios históricos. No obstante, entre los aspectos peor valorados se encuentra la rehabilitación de las viviendas, con un 26,28% de las valoraciones negativas. Los/las jóvenes creen que deberían rehabilitarse más edificios y fachadas, así como también opinan que deberían darse otros mejores usos a los solares del barrio.</p>
+               <p>A pesar de todos los esfuerzos invertidos en la mejora de la calidad de vida desde la vivienda, y sintetizando las valoraciones y propuestas realizadas, el área de rehabilitación y vivienda es un área muy importante sobre el que se tiene que seguir trabajando para normalizar y dignificar las condiciones de vida de los habitantes del Barrio. Aunque hay un cierto consenso en que las actuaciones realizadas en esta materia durante los últimos años han mejorado la situación, se sigue constatando la presencia de viviendas en mal estado, de infraviviendas y de pisos y solares vacíos. Además, se insiste en subrayar que algunas de las áreas tradicionalmente deprimidas siguen en la misma situación. </p>
+               <p>Hay que tener en cuenta que en estas infraviviendas, como consecuencia de la ausencia de habitabilidad, se producen a menudo otros problemas como el hacinamiento y la proliferación de plagas, en muchos casos éstas no se pueden evitar por el vacío administrativo existente ante la imposibilidad de contactar con la propiedad de la vivienda o su dejadez en materia de mantenimiento. En el Casco Histórico hay un mayor porcentaje de viviendas alquiladas que en el resto de la ciudad y, además, muchas de las viviendas o edificios están en manos de entidades financieras que las han adquirido por el procedimiento de embargo con la consiguiente despreocupación por su parte. </p>
+               <p>Del mismo modo, también como consecuencia de la crisis y el paro, y ante la presión del pago de una mensualidad de alquiler o una hipoteca, muchas familias se han visto abocadas a compartir su vivienda, a subalquilar habitaciones o a permitir el empadronamiento en ese domicilio de familiares o amigos que se han quedado sin hogar. Estas nuevas situaciones ha aumentado el número de personas en el Barrio que no tiene casa o que está ocupando casas que se encuentran vacías.</p>
+               <p>Por otra parte, se incide en la dificultad para acceder a una vivienda en el barrio, bien porque no reúnen las condiciones de habitabilidad necesarias, por su alto precio o por la escasez de viviendas de alquiler a precios razonables. Entre otras razones este hecho parece impedir la llegada decidida de nuevos habitantes al Casco Histórico.</p>
+               <p>Si se quiere apostar por un plan que contemple políticas sociales comunitarias e integradoras y la rehabilitación urbana de este territorio, se hace necesario continuar y mejorar las acciones ya emprendidas con los anteriores planes integrales fomentando la realización de las Inspecciones Técnicas de los Edificios en el ámbito del PICH incluyendo una certificación energética, identificando todas las viviendas que no reúnen las condiciones de habitabilidad apropiadas y ofreciendo herramientas para su erradicación. </p>
+               <p>Ante la falta de salubridad en algunos edificios se hace evidente que su solución no sólo pasa por actuaciones de limpieza y adecuación de estas viviendas sino que también hay que articular los mecanismos necesarios que den solución a los vacíos administrativos existentes en esta materia. </p>
+               <div>
+                  <img class="imgder nodeco" src="/cont/paginas/sectores/pich/img/pichborr7.gif" alt=""/>
+               </div>
+               <p>También se considera necesario una apuesta decidida por parte de las administraciones competentes en, por un lado, continuar dando prioridad a la rehabilitación de viviendas y edificios en estado de degradación, priorizando aquellas que están en peor estado y las que estén ubicadas y tengan elementos catalogados en las zonas ARI, creando sinergias con los programas de generación de empleo en el Barrio (proyecto de inserción sociolaboral "Fachadas") e incorporando un plan de seguimiento de todas las actuaciones realizadas. Por otro lado, implementar un programa de erradicación de la exclusión residencial y energética, facilitar el acceso a una vivienda digna y asequible con la ampliación del parque inmobiliario y continuar con la apuesta del Ayuntamiento de impulsar el Casco Histórico como territorio Erasmus. Muestra de ello es la próxima apertura de una residencia universitaria en el antiguo cuartel de Pontoneros o el debate generado en torno a la ubicación de centros de formación universitaria en edificios públicos, como el edificio de los Juzgados, en la plaza del Pilar, el antiguo IES Luis Buñuel, en la plaza de Santo Domingo, o el Palacio de Villahermosa, en la calle Predicadores. Sin olvidar fomentar la actividad comercial mediante la rehabilitación de locales y su puesta a disposición a personas emprendedoras que aseguren un impacto positivo.</p>
+               <h3>Objetivos</h3>
+               <ul>
+                  <li>Identificar y actuar sobre aquellas viviendas que no reúnen las condiciones de habitabilidad apropiadas mediante el fomento y apoyo a los propietarios a que cumplan la Ordenanza Municipal reguladora del deber de Conservación de Edificación e Inspección Técnica de Edificios (ITE).
+                     Mejorar la información municipal sobre el estado de las edificaciones privadas para su inclusión en Áreas de Rehabilitación Integrada al amparo de las normativas local, autonómica o estatal (Nuevo Plan de Vivienda).
+                  </li>
+                  <li>Mantener la identidad urbana del Casco Histórico implementando un programa de lucha contra la exclusión residencial y energética que identifique, valore y apoye la rehabilitación de edificaciones, tanto públicas como privadas, consolidando un parque inmobiliario certificado constructiva y energéticamente.</li>
+                  <li>Establecer procedimientos de actuación para evitar problemas de salud pública cuando se detecten problemas de habitabilidad y salubridad en los casos de existencia de vacío administrativo o dejación por parte de la propiedad. </li>
+                  <li>Avanzar en la rehabilitación de las zonas ARIS, priorizando aquellos edificios que tengan elementos catalogados.</li>
+                  <li>Asegurar el acceso a la población a viviendas y locales a precios asequibles mediante la promoción de vivienda nueva en solares de propiedad municipal, la rehabilitación de edificios o la puesta en marcha de un servicio de intermediación entre inquilinos  y propietarios.</li>
+                  <li>Seguir trabajando en la consolidación del Casco Histórico como territorio Erasmus.</li>
+                  <li>Establecer un plan de seguimiento a todas las actuaciones en materia de rehabilitación urbana desarrolladas.</li>
+               </ul>
+               <h3>Acciones</h3>
+               <h4>4.1.Programa de apoyo a la realización de Inspecciones Técnicas de Edificios en el ámbito PICH.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.1">
+                  <caption>Acción 4.1</caption>
+                  <tr>
+                     <th id="a1"></th>
+                     <th id="a2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="a1">Presupuesto</td>
+                     <td headers="a2">
+                        420.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="a1">Temporalización</td>
+                     <td headers="a2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="a1">Gestión</td>
+                     <td headers="a2">
+                        Zaragoza Vivienda y Servicio de inspección Urbanística
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.2.Realización de un censo actualizado de viviendas que no cuentan con condiciones de habitabilidad apropiadas.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.2">
+                  <caption>Acción 4.2</caption>
+                  
+                  <tr>
+                     <th id="c1"></th>
+                     <th id="c2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="b1">Presupuesto</td>
+                     <td headers="b2">
+                        18.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="b1">Temporalización</td>
+                     <td headers="b2">
+                        2014-2015
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="b1">Gestión</td>
+                     <td headers="b2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.3.Actualización de la calificación de edificios pendientes de rehabilitación.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.3">
+                  <caption>Acción 4.3</caption>
+                  <tr>
+                     <th id="c1"></th>
+                     <th id="c2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="c1">Presupuesto</td>
+                     <td headers="c2">
+                        0 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="c1">Temporalización</td>
+                     <td headers="c2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="c1">Gestión</td>
+                     <td headers="c2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="c1">Colaboración</td>
+                     <td headers="c2">
+                        Oficina PICH
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.4.Programa para la rehabilitación del patrimonio público de viviendas de alquiler con criterios de eficiencia energética mediante la mejora del aislamiento térmico y la sustitución de sistemas de calefacción por otros más eficientes en el 50% de las viviendas públicas en alquiler (Actualmente hay 723 viviendas).</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.4">
+                  <caption>Acción 4.4</caption>
+                  <tr>
+                     <th id="d1"></th>
+                     <th id="d2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="d1">Presupuesto</td>
+                     <td headers="d2">
+                        3.017.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="d1">Temporalización</td>
+                     <td headers="d2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="d1">Gestión</td>
+                     <td headers="d2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.5.Programa para el fomento de rehabilitación aislada de viviendas y/o edificios de titularidad privada con criterios de eficiencia energética, con antigüedad superior a 40 años.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.5">
+                  <caption>Acción 4.5</caption>
+                  <tr>
+                     <th id="e1"></th>
+                     <th id="e2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="e1">Presupuesto</td>
+                     <td headers="e2">
+                        2.450.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="e1">Temporalización</td>
+                     <td headers="e2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="e1">Gestión</td>
+                     <td headers="e2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.6.Programa de exclusión residencial y energética que contemple:</h4>
+               <ul>
+                  <li>Fomento de bolsas públicas de alquiler social mediante la difusión y contacto directo con propietarios y el uso de redes sociales.</li>
+                  <li>Creación de una bolsa de al menos 10 viviendas en alquiler en el Casco Histórico para residentes que se hayan quedado sin vivienda como consecuencia de procesos de ejecución hipotecaria u otras circunstancias excepcionales. El alquiler no será superior al 30% de los ingresos de la unidad de convivencia.</li>
+                  <li>Fondo de ayuda de acceso a la vivienda (fianzas, avales, altas en suministro) que minore el esfuerzo inicial.</li>
+                  <li>Fondo de prevención de pobreza energética para disminuir situaciones de riesgo social, ambiental y sanitario relacionado con el confort térmico.</li>
+                  <li>Acceso rápido a una vivienda a través de ayudas al amueblamiento con la intervención de empresas de inserción y redes sociales.</li>
+                  <li>Continuación del programa de vivienda compartida entre personas solas, familias monoparentales/monomarentales y jóvenes que puedan compartir gastos.</li>
+                  <li>Aplicación de los recursos existentes como el Proyecto de Fachadas en el arreglo y adecuación de las viviendas.</li>
+               </ul>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.6">
+                  <caption>Acción 4.6</caption>
+                  <tr>
+                     <th id="f1"></th>
+                     <th id="f2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Presupuesto</td>
+                     <td headers="f2">
+                        1.498.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Temporalización</td>
+                     <td headers="f2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Gestión</td>
+                     <td headers="f2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="f1">Colaboración</td>
+                     <td headers="f2">
+                        Centro Municipal de Servicios Sociales
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.7.Finalización de las obras de rehabilitación en 23 edificios ubicados en zonas ARI. Estos edificios se ubican en San Pablo (13), La Madalena (9) y El Arrabal (1).       </h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.7">
+                  <caption>Acción 4.7</caption>
+                  <tr>
+                     <th id="g1"></th>
+                     <th id="g2"></th>
+                  </tr>
+                  
+                  <tr>
+                     <td headers="g1">Presupuesto</td>
+                     <td headers="g2">
+                        2.196.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="g1">Temporalización</td>
+                     <td headers="g2">
+                        2014-2018
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="g1">Gestión</td>
+                     <td headers="g2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.8.Incorporación de 40 edificios al Programa de Rehabilitación en las cuatro zonas ARI del CH (San Pablo, Arrabal, San Agustín y Pignatelli).</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.8">
+                  <caption>Acción 4.8</caption>
+                  <tr>
+                     <th id="h1"></th>
+                     <th id="h2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="h1">Presupuesto</td>
+                     <td headers="h2">
+                        3.000.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="h1">Temporalización</td>
+                     <td headers="h2">
+                        2014-2018
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="h1">Gestión</td>
+                     <td headers="h2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.9.Plan de seguimiento a las actuaciones de rehabilitación desarrolladas.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.9">
+                  <caption>Acción 4.9</caption>
+                  <tr>
+                     <th id="i1"></th>
+                     <th id="i2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Presupuesto</td>
+                     <td headers="i2">
+                        0 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Temporalización</td>
+                     <td headers="i2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Gestión</td>
+                     <td headers="i2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.10.Promoción de viviendas de alquiler a bajo coste mediante el fomento de la construcción de viviendas o su rehabilitación y subvenciones a las mismas (Programa 115 viviendas Sector San Pablo y Arrabal).</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.10">
+                  <caption>Acción 4.10</caption>
+                  <tr>
+                     <th id="i1"></th>
+                     <th id="i2"></th>
+                  </tr>
+                  
+                  <tr>
+                     <td headers="i1">Presupuesto</td>
+                     <td headers="i2">
+                        10.551.867 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Temporalización</td>
+                     <td headers="i2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="i1">Gestión</td>
+                     <td headers="i2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.11.Rehabilitación y alquiler o venta de 16 viviendas en el edificio de la antigua Imprenta Blasco que complementaría a la iniciativa privada de construcción de un edificio residencial en su entorno y a la finalización de las obras de la nueva Audiencia Provincial.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.11">
+                  <caption>Acción 4.11</caption>
+                  <tr>
+                     <th id="j1"></th>
+                     <th id="j2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="j1">Presupuesto</td>
+                     <td headers="j2">
+                        2.200.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="j1">Temporalización</td>
+                     <td headers="j2">
+                        2014-2018
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="j1">Gestión</td>
+                     <td headers="j2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.12.Construcción de apartamentos de alquiler dirigidos para jóvenes con servicios comunes en el Solar de San Agustín, 12. Cesión para usos comunitarios y vecinales de espacios.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.12">
+                  <caption>Acción 4.12</caption>
+                  <tr>
+                     <th id="k1"></th>
+                     <th id="k2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="k1">Presupuesto</td>
+                     <td headers="k2">
+                        3.000.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="k1">Temporalización</td>
+                     <td headers="k2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="k1">Gestión</td>
+                     <td headers="k2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.13.Articulación de protocolos de actuación y mediación entre las partes implicadas (propietarios e inquilinos) cuando se detecten problemas de habitabilidad y salubridad en viviendas y locales y que den respuesta a los vacíos administrativos existentes o a la dejación por parte de la propiedad. </h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.13">
+                  <caption>Acción 4.13</caption>
+                  <tr>
+                     <th id="l1"></th>
+                     <th id="l2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Presupuesto</td>
+                     <td headers="l2">
+                        21.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Temporalización</td>
+                     <td headers="l2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Gestión</td>
+                     <td headers="l2">
+                        Oficina PICH
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="l1">Colaboración</td>
+                     <td headers="l2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.14.Intermediación en el acceso a la vivienda.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.14">
+                  <caption>Acción 4.14</caption>
+                  <tr>
+                     <th id="m1"></th>
+                     <th id="m2"></th>
+                  </tr>
+                  
+                  <tr>
+                     <td headers="m1">Presupuesto</td>
+                     <td headers="m2">
+                        70.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="m1">Temporalización</td>
+                     <td headers="m2">
+                        2014-2020
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="m1">Gestión</td>
+                     <td headers="m2">
+                        Zaragoza Vivienda
+                     </td>
+                  </tr>
+               </table>
+               <h4>4.15.Estudio urbanístico para el restablecimiento del confort acústico en las vías públicas de la Zona Saturada C de acuerdo a las recomendaciones de la OMS y bajo los criterios de sostenibilidad de la Agenda Local 21. Esta actuación podría enmarcarse dentro del Plan de Acción contra el Ruido 2010-2015.</h4>
+               <table class="table table-responsive tabla-bn" summary="Acción 4.15">
+                  <caption>Acción 4.15</caption>
+                  <tr>
+                     <th id="n1"></th>
+                     <th id="n2"></th>
+                  </tr>
+                  <tr>
+                     <td headers="n1">Presupuesto</td>
+                     <td headers="n2">
+                        20.000 euros
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="n1">Temporalización</td>
+                     <td headers="n2">
+                        2014-2015
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="n1">Gestión</td>
+                     <td headers="n2">
+                        Servicio de Medio Ambiente
+                     </td>
+                  </tr>
+                  <tr>
+                     <td headers="n1">Colaboración</td>
+                     <td headers="n2">
+                        Oficina PICH 
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

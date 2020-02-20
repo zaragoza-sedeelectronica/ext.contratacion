@@ -1,0 +1,51 @@
+<ul class="row list-unstyled margin-t05em listado-equipamiento">
+    <th:block th:each="equipamiento : ${listado}">
+        <li class="juntas col-xs-12 col-sm-6 col-md-4" th:classappend="${equipamiento.geometry} ? geo : nogeo" sede:rdf="${equipamiento.voc()}" th:attr="about=${equipamiento.uri}, typeOf=*{type} ? *{type} : 'http://vocab.linkeddata.es/kos/urbanismo-infraestructuras/equipamiento'">
+            <div class="card">
+                <div class="row">
+                    <div class="hidden">
+                        <th:block th:if="${equipamiento.portal} and ${equipamiento.portal.junta}" th:text="${equipamiento.portal.junta.title}" ></th:block>
+                    </div>
+                    <div th:if="${equipamiento.imagen}" class="col-md-3 col-md-push-9">
+                        <img th:src="${equipamiento.imagen}" class="img-responsive" alt="" />
+                    </div>
+                    <div th:class="${equipamiento.imagen} ? 'col-md-9 col-md-pull-3' : 'col-md-12'">
+                        <h3 class="nomargin">
+                            <a th:unless="${pathId != null}" th:href="${equipamiento.uri}" sede:rdf="${equipamiento.get('title')}"></a>
+                            <a th:if="${pathId != null}" th:href="@{{id}(id=${equipamiento.id})}" sede:rdf="${equipamiento.get('title')}"></a>
+                        </h3>
+                        <hr class="sm"/>
+                        <ul class="list-unstyled">
+                            <li th:if="${equipamiento.calle}" class="direccion">
+                                <span class="fa fa-home" title="Dirección"></span> 
+                                <!-- <strong>Dirección:</strong> -->
+                                <span th:text="${equipamiento.calle}" />
+                            </li>
+                            <li th:if="${equipamiento.tel} and ${equipamiento.tel.tel}" class="tel">
+                                <span class="fa fa-phone" title="Teléfono"></span>
+                                <!-- <strong>Teléfono:</strong> -->
+                                <th:block th:if="${currentDevice.isMobile()} == true">
+                                    <a th:href="'tel:' + ${equipamiento.tel.tel}"><span sede:rdf="${equipamiento.tel.get('tel')}" /></a>
+                                </th:block>
+                                <th:block th:if="${currentDevice.isMobile()} != true">
+                                    <span sede:rdf="${equipamiento.tel.get('tel')}" />
+                                </th:block>
+                            </li>
+                            <li th:if="${equipamiento.email}" class="email">
+                                <span class="fa fa-at" title="Correo electrónico"></span>
+                                <!-- <strong>Correo electr&oacute;nico:</strong>  -->
+                                <a class="small" sede:rdf="${equipamiento.prop('email')}" th:href="'mailto:' + ${equipamiento.email}" th:text="${equipamiento.email}" />
+                            </li>
+                            <!--/* <li th:if="${equipamiento.horario}" class="horario">
+                                <span class="far fa-clock" title="Horario" alt="Horario"></span>
+                                 <strong>Horario: </strong>
+                                <div sede:rdf="${equipamiento.get('horario')}" />
+                            </li> */-->
+                        </ul>
+                        <th:block th:if="${equipamiento.geometry}" th:utext="${equipamiento.geometry.getRdf()}"></th:block>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </th:block>
+</ul>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Cómo moverse" last-modified="Mon May 13 00:00:00 CET 2019" remove_viewport="s"/>
+        <style>
+            #viewer {
+                width: 100%;
+                height: 75vh;
+                border: 0;
+            }
+            .margin-t3em {
+                margin-top: 0 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <sede:content container="false">
+            <iframe id="viewer" alt="Callejero"></iframe>
+        </sede:content>
+        <script type="text/javascript">
+		/*<![CDATA[*/
+            function resizeViewer() {
+                let header = parseInt($('header').css("height"));
+                let footer = parseInt($('footer').css("height"));
+                $('#viewer').css("height", "100vh").css("height", "-=" + header).css("height", "-=" + footer);
+                $('#wrapper').css("height", $('#viewer').css("height"));
+            }
+        /*]]>*/
+        </script>
+        <script type="text/javascript">
+		/*<![CDATA[*/
+            var viewer_url = 'https://idezar.zaragoza.es/visorComoMoverse/';
+            $(document).ready(function() {
+                resizeViewer();
+                var loc = window.location.toString();
+                var params = loc.split('?')[1];
+                if (params != undefined) {
+                    viewer_url += '?' + params;
+                }
+                $('iframe#viewer').attr('src', viewer_url);
+            });
+        /*]]>*/
+        </script>
+    </body>
+
+</html>

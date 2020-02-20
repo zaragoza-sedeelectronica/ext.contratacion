@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Perfil del ciudadano" description="Edición del perfil del ciudadano" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+</head>
+
+<body>
+    <sede:content >
+    	<h2>Perfil de usuario</h2>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/comunidad/perfil/save}" method="post">
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Actualizar datos</span></legend>
+                    
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label class="control-label" for="genero">Género: </label>
+                            <select class="form-control" id="genero" name="genero">
+                                <option value=""></option>
+                                <option value="F" th:selected="${perfil} and ${perfil.genero == 'F'}">Mujer</option>
+                                <option value="M" th:selected="${perfil} and ${perfil.genero == 'M'}">Hombre</option>
+                                <option value="O" th:selected="${perfil} and ${perfil.genero == 'O'}">Otro</option>
+                            </select>
+						</div>
+                        <div class="col-md-4 form-group">
+                            <label for="fechaNacimiento">
+                                <span class="control-label">Fecha de Nacimiento:</span>
+                            </label>
+                            <input th:if="${perfil}" type="text" id="fechaNacimiento" name="fechaNacimiento" value="" size="10" maxlength="30" placeholder="Formato: dd/mm/aaaa" class="form-control" th:field="${perfil.fechaNacimiento}" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" />
+                            <input th:if="not ${perfil}" type="text" id="fechaNacimiento" name="fechaNacimiento" value="" size="10" maxlength="30" placeholder="Formato: dd/mm/aaaa" class="form-control" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label" for="paisProcedencia">País de procedencia: </label>
+                            <select class="form-control" id="paisProcedencia" name="pais">
+                                <option value=""></option>
+                                <option value="E" th:selected="${perfil} and ${perfil.pais == 'E'}">España</option>
+                                <option value="UE" th:selected="${perfil} and ${perfil.pais == 'UE'}">Unión Europea</option>
+                                <option value="O" th:selected="${perfil} and ${perfil.pais == 'O'}">Otros</option>
+                            </select>
+						</div>
+					</div>
+								
+                    <div class="row">
+                        <div th:if="${ciudadanoZ16}" class="col-md-4 form-group">
+                            <label class="control-label" for="nivelEstudiosActuales">Estudios que se están cursando: </label>
+                            <select class="form-control" id="nivelEstudiosActuales" name="estudiosActuales">
+                                <option value=""></option>
+                                <option value="ESO" th:selected="${perfil} and ${perfil.estudiosActuales == 'ESO'}">Educación Secundaria Obligatoria (ESO)</option>
+<!--                                 <option value="BACH" th:selected="${perfil} and ${perfil.estudiosActuales == 'BACH'}">Bachiller</option> -->
+                                <option value="FPGM" th:selected="${perfil} and ${perfil.estudiosActuales == 'FPGM'}">FP Básica</option>
+<!--                                 <option value="FPGS" th:selected="${perfil} and ${perfil.estudiosActuales == 'FPGS'}">FP. Grado superior</option> -->
+<!--                                 <option value="UNIV" th:selected="${perfil} and ${perfil.estudiosActuales == 'UNIV'}">Grado universitario o equivalente</option> -->
+                                <option value="SOCL" th:selected="${perfil} and ${perfil.estudiosActuales == 'SOCL'}">Centros Sociolaborales</option>
+                                <option value="OTR" th:selected="${perfil} and ${perfil.estudiosActuales == 'OTR'}">Otros</option>
+                            </select>
+						</div>
+                        <div th:class="${ciudadanoZ16} ? 'col-md-4 form-group' : 'col-md-6 form-group'">
+                            <label class="control-label" for="nivelEstudios">Nivel de estudios terminados: </label>
+                            <select class="form-control" id="nivelEstudios" name="estudios">
+                                <option value=""></option>
+                                <option value="ST" th:selected="${perfil} and ${perfil.estudios == 'ST'}">Sin titulación</option>
+                                <option value="ESO" th:selected="${perfil} and ${perfil.estudios == 'ESO'}">ESO</option>
+                                <option value="BACH" th:selected="${perfil} and ${perfil.estudios == 'BACH'}">Bachiller</option>
+                                <option value="FPGM" th:selected="${perfil} and ${perfil.estudios == 'FPGM'}">FP. Grado medio</option>
+                                <option value="FPGS" th:selected="${perfil} and ${perfil.estudios == 'FPGS'}">FP. Grado superior</option>
+                                <option value="UNIV" th:selected="${perfil} and ${perfil.estudios == 'UNIV'}">Grado universitario o equivalente</option>
+                                <option value="OTR" th:selected="${perfil} and ${perfil.estudios == 'OTR'}">Otro</option>
+                            </select>
+						</div>
+                        <div th:class="${ciudadanoZ16} ? 'col-md-4 form-group' : 'col-md-6 form-group'">
+                            <label class="control-label" for="independiente">¿Vives independiente? </label>
+                            <select class="form-control" id="independiente" name="independiente">
+                                <option value=""></option>
+                                <option value="S" th:selected="${perfil} and ${perfil.independiente == 'S'}">Sí</option>
+                                <option value="N" th:selected="${perfil} and ${perfil.independiente == 'N'}">No</option>
+                            </select>
+						</div>
+					</div>
+								
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label class="control-label" for="ocupacion">Ocupación: </label>
+                    		<div class="checkbox-group form-control" style="border: 1px solid #bdbdbd;width: 100%;height: 135px;padding: 10px;overflow-y: auto;">
+                    			<div>
+                    				<input id="cb_estudiante" name="ocupacion" type="checkbox" value="EST"
+                    						th:checked="${perfil} and ${(perfil.ocupacion != null) and perfil.ocupacion.contains('EST')}"/>
+                    				<label for="cb_estudiante">Estudiante</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_empleado" name="ocupacion" type="checkbox" value="EMP"
+                    						th:checked="${perfil} and ${(perfil.ocupacion != null) and perfil.ocupacion.contains('EMP')}"/>
+                    				<label for="cb_empleado">Trabajador/a por cuenta ajena</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_autonomo" name="ocupacion" type="checkbox" value="AUT"
+                    						th:checked="${perfil} and ${(perfil.ocupacion != null) and perfil.ocupacion.contains('AUT')}"/>
+                    				<label for="cb_autonomo">Autónomo/a</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_desempleado" name="ocupacion" type="checkbox" value="DES"
+                    						th:checked="${perfil} and ${(perfil.ocupacion != null) and perfil.ocupacion.contains('DES')}"/>
+                    				<label for="cb_desempleado">Desempleado/a</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_otro" name="ocupacion" type="checkbox" value="OTR"
+                    						th:checked="${perfil} and ${(perfil.ocupacion != null) and perfil.ocupacion.contains('OTR')}"/>
+                    				<label for="cb_otro">Otra</label>
+                    			</div>
+                    		</div>
+						</div>
+
+                        <div class="col-md-6 form-group">
+                        	<label class="control-label" for="necesidadesEspeciales">Necesidades especiales:</label>
+                        	<br />
+                        	<textarea id="necesidadesEspeciales" name="necesidadesEspeciales" class="form-control"
+                        		style="width:100%; height:135px;" th:utext="${perfil} ? ${perfil.necesidadesEspeciales} : ''" />
+                        </div>
+					</div>
+								
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                           <label class="control-label" for="distrito">Barrio en el que vives:</label>
+                           <select name="distrito" id="distrito" class="form-control">
+                               <option value=""></option>
+                               <option value="ACTUR-Rey Fernando"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('ACTUR-Rey Fernando')}">ACTUR-Rey Fernando</option>
+                               <option value="Casablanca"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Casablanca')}">Casablanca</option>
+                               <option value="Casco Histórico"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Casco Histórico')}"> Casco Histórico</option>
+                               <option value="Centro"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Centro')}">Centro</option>
+                               <option value="El Rabal"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('El Rabal')}">El Rabal</option>
+                               <option value="Delicias"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Delicias')}">Delicias</option>
+                               <option value="La Almozara"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('La Almozara')}">La Almozara</option>
+                               <option value="Las Fuentes"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Las Fuentes')}">Las Fuentes</option>
+                               <option value="Miralbueno"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Miralbueno')}">Miralbueno</option>
+                               <option value="Oliver-Valdefierro"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Oliver-Valdefierro')}">Oliver-Valdefierro</option>
+                               <option value="San José"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('San José')}">San José</option>
+                               <option value="Santa Isabel"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Santa Isabel')}">Santa Isabel</option>
+                               <option value="Torrero-La Paz"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Torrero-La Paz')}">Torrero-La Paz</option>
+                               <option value="Universidad"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Universidad')}">Universidad</option>
+                               <option value="Alfocea"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Alfocea')}">Alfocea</option>
+                               <option value="Casetas"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Casetas')}">Casetas</option>
+                               <option value="Garrapinillos"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Garrapinillos')}">Garrapinillos</option>
+                               <option value="Juslibol-El Zorongo"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Juslibol-El Zorongo')}">Juslibol-El Zorongo</option>
+                               <option value="Cartuja Baja"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Cartuja Baja')}">Cartuja Baja</option>
+                               <option value="La Venta del Olivar"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Venta del Olivar')}"> La Venta del Olivar</option>
+                               <option value="Montañana"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Montañana')}">Montañana</option>
+                               <option value="Monzalbarba"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Monzalbarba')}">Monzalbarba</option>
+                               <option value="Movera"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Movera')}">Movera</option>
+                               <option value="Peñaflor"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Peñaflor')}">Peñaflor</option>
+                               <option value="San Gregorio"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('San Gregorio')}">San Gregorio</option>
+                               <option value="San Juan de Mozarrifar"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('San Juan de Mozarrifar')}">San Juan de Mozarrifar</option>
+                               <option value="Torrecilla de Valmadrid"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Torrecilla de Valmadrid')}">Torrecilla de Valmadrid</option>
+                               <option value="Villarrapa"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Villarrapa')}">Villarrapa</option>
+                               <option value="Fuera"
+                               		th:selected="${perfil} and ${(perfil.distrito != null) and perfil.distrito.contains('Fuera')}">Fuera de Zaragoza</option>
+                           </select>
+                       </div>
+                       
+                       <div class="col-md-6 form-group">
+               				<label for="cb_visibilidad">Visible:</label>
+               				<div><input id="cb_visibilidad" type="checkbox" name="visible" value='S'
+               						th:checked="not ${perfil} or not ${perfil.visible} or ${perfil.visible == 'S'}"/>
+                    		<span class="help-inline"> Visible para el resto de la Comunidad.</span></div>
+                    	</div>
+                       
+                    </div>
+                    
+                    <div class="row">
+                    	<div class="col-md-6 form-group">
+                    		<label class="control-label">Temas de interés:</label>
+                    		<div class="checkbox-group form-control" style="border: 1px solid #bdbdbd;width: 100%;height: 135px;padding: 10px;overflow-y: scroll;">
+                    			<div th:each="tema : ${temas}">
+                    				<input th:id="'cb_tema_' + ${tema.id}" type="checkbox" th:value="${tema.id}"
+                    					name="temaIds" th:checked="${perfil} and ${perfil.temaIds.contains(tema.id)}"/>
+                    				<label th:for="'cb_tema_' + ${tema.id}" th:text="${tema.title}">tema</label>
+                    			</div>
+                    		</div>
+                    	</div>
+                    	<div class="col-md-6 form-group">
+                    		<label class="control-label">Formato:</label>
+                    		<div class="checkbox-group form-control" style="border: 1px solid #bdbdbd;width: 100%;height: 135px;padding: 10px;overflow-y: scroll;">
+                    			<div>
+                    				<input id="cb_formato_conferencia" name="formato" type="checkbox" value="Conferencias"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Conferencias')}"/>
+                    				<label for="cb_formato_conferencia">Conferencias</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_congresos" name="formato" type="checkbox" value="Congresos"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Congresos')}"/>
+                    				<label for="cb_formato_congresos">Congresos y Jornadas</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_exposiciones" name="formato" type="checkbox" value="Exposiciones"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Exposiciones')}"/>
+                    				<label for="cb_formato_exposiciones">Exposiciones</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_visitas" name="formato" type="checkbox" value="Visitas"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Visitas')}"/>
+                    				<label for="cb_formato_visitas">Visitas Guiadas</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_campamentos" name="formato" type="checkbox" value="Campamentos"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Campamentos')}"/>
+                    				<label for="cb_formato_campamentos">Campamentos y colonias</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_campos" name="formato" type="checkbox" value="Campos"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Campos')}"/>
+                    				<label for="cb_formato_campos">Campos de voluntariado</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_cursos" name="formato" type="checkbox" value="Cursos"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Cursos')}"/>
+                    				<label for="cb_formato_cursos">Cursos y talleres</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_excursiones" name="formato" type="checkbox" value="Excursiones"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Excursiones')}"/>
+                    				<label for="cb_formato_excursiones">Excursiones y viajes</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_exprocomp" name="formato" type="checkbox" value="Exhibicion"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Exhibicion')}"/>
+                    				<label for="cb_formato_exprocomp">Exhibición, proyección, competición</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_ferias" name="formato" type="checkbox" value="Ferias"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Ferias')}"/>
+                    				<label for="cb_formato_ferias">Ferias</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_fiestas" name="formato" type="checkbox" value="Fiestas"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Fiestas')}"/>
+                    				<label for="cb_formato_fiestas">Fiestas</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_festivales" name="formato" type="checkbox" value="Festivales"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Festivales')}"/>
+                    				<label for="cb_formato_festivales">Festivales</label>
+                    			</div>
+                    			<div>
+                    				<input id="cb_formato_otras" name="formato" type="checkbox" value="Otras"
+                    						th:checked="${perfil} and ${(perfil.formato != null) and perfil.formato.contains('Otras')}"/>
+                    				<label for="cb_formato_otras">Otras</label>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </div>
+							
+                    <div class="row">
+                    	<div class="col-md-12 form-group">
+                    		<label class="control-label">Valores de las actividades:</label> <span class="help-inline"> Señala los 4 que más te interesan.</span>
+                    		<div id="valores_group_id" class="checkbox-group form-control" style="border: 1px solid #bdbdbd;width: 100%;height: 135px;padding: 10px;overflow-y: scroll;">
+                    			<div th:each="valor : ${valores}">
+                    				<input th:id="'cb_valor_' + ${valor.id}" type="checkbox" th:value="${valor.id}"
+                    					name="valorIds" th:checked="${perfil} and ${perfil.valorIds.contains(valor.id)}" onchange="onValueChange(this)"/>
+                    				<label th:for="'cb_valor_' + ${valor.id}" th:text="${valor.title}">valor</label>
+                    				<span class="help-inline" th:text="${valor.description}"> </span>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </div>
+                    
+                    <script type="text/javascript">
+                    	function onValueChange(checkbox) {
+                    		var checked = document.getElementById("valores_group_id").querySelectorAll('input[type="checkbox"]:checked').length;
+                    		if (checked > 4) {
+                    			checkbox.checked = false;
+                    		}
+                    	}
+                    </script>
+							
+                    <div class="row">
+	                    <div class="form-group col-sm-12">
+	                        <div style="text-align:center; margin-top:20px;">
+	                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />                            
+	                            <span id="mensaje"></span>
+	                        </div>
+	                    </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+</body>
+
+</html>

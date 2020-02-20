@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Grupo de Trabajo de Venta Ambulante" description=""
+                   author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Tue Oct 02 00:00:00 CET 2018"
+                   keywords="Gobierno Abierto, participación, consejos sectoriales, consejo de la ciudad, Zaragoza, open goverment, city council">
+        </sede:meta>
+        <style>
+            body {
+            padding-top: 57px;
+            }
+
+            <!--CSS Index-->
+
+            .titulo-procesos {}
+
+            .titulo-procesos h2,
+            .procesos h2{
+            color: #e83437 !important;
+            font-size: 42px !important;
+            }
+
+            .titulo-procesos h2 small,
+            .titulo-procesos h2 span,
+            .procesos h2 small,
+            .procesos h2 span {
+            color: #000000;
+            }
+
+            .ancho {
+            padding: 30px 0;
+            width: 100%;
+            }
+
+            .radius {
+            border-radius: 10px;
+            }
+
+            .ancho .fnd-blanco {
+            margin-bottom: 20px;
+            }
+
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: 0px;
+            font-size: 28px;
+            }
+
+            .menu-consejos li.active a,
+            .nav-tabs>li.active>a:focus{
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            .margin-t3em {
+            margin-top: 0 !important;
+            padding-top: 3em !important;
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+            .fondo-dibujo {
+            background-image:
+            url('/cont/vistas/portal/participacion/img/ConsejoCiudad/imagCabecera_ConsejoCiudad.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 200px;
+            }
+
+            .container-fluid {
+            padding: 0;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+
+            <div class="">
+                <div class="container text-left margin-auto nomargin titulo-procesos fondo-dibujo">
+                    <h2 class="text-right">
+                        Grupos de Trabajo
+                    </h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6">
+                            <!--/*<p class="text-right">Texto breve de bienvenida o<br/>presentación del Portal Procesos
+                                <br/>
+                                Participativos
+                            </p>*/-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container fnd-gris-claro ancho">
+                <div class="container-fluid">
+                    <ul class="nav menu fnd-blanco radius menu-consejos" role="tablist">
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/"
+                               style="border-radius: 10px 0 0 10px; border-right: solid 2px #000000;">Consejo de la
+                                Ciudad
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/consejos-sectoriales"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Consejos
+                                Sectoriales
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 active text-center">
+                            <a href="/sede/portal/participacion/consejos/grupos-trabajo"
+                               style="border-radius: 0 10px 10px 0;">Grupos de Trabajo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="container fnd-blanco radius">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--/*<a class="btn btn-primary pull-right margin-t1em margin-b0em" href="index">Consejo de
+                                Ciudad
+                            </a>
+                            <a class="btn btn-primary pull-right margin-t1em margin-b0em margin-r1em"
+                               href="grupos-trabajo">Grupos de Trabajo
+                            </a>*/-->
+                            <h2>Grupo de Trabajo
+                                <strong>Venta Ambulante</strong>
+                            </h2>
+                            <hr class="sm color-ayto"/>
+                            <ul class="list-inline navbar-left submenu">
+                                <li>
+                                    <a class="btn btn-default" href="/sede/portal/participacion/consejos/grupo-venta-ambulante#Agenda">Agenda</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-default" href="/sede/portal/participacion/consejos/grupo-venta-ambulante#quees">¿Qué es?</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-default" href="/sede/portal/participacion/consejos/grupo-venta-ambulante#composicion">Composición</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-default" href="/sede/portal/participacion/consejos/grupo-venta-ambulante#reuniones">Reuniones</a>
+                                </li>
+                                <!--/*<li><a class="btn btn-default" href="#Documentación">Documentación</a></li>*/-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Acta de la 3ª reunión del grupo de trabajo</h3>
+                            <hr class="sm"/>
+
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-9">
+                                <h4>Fecha y lugar 
+                                </h4>
+                                <p>21 de Noviembre de 2018, a las 18,00 horas, en la Salón de Recepciones del Excmo. Ayuntamiento de Zaragoza (Plaza del Pilar, 18, 2ª Planta).</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="sm"/>
+
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-9">
+                                <h4>Asistentes
+                                </h4>
+<ul>
+<li>Dª Elena Giner Monge.- Consejera de Participación, Transparencia y Gobierno Abierto
+</li><li>Dª Teresa Artigas Sanz.- Concejala Delegada de Medio Ambiente y Movilidad
+</li><li>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales
+</li><li>D. José Ignacio Senao Gómez.- Grupo Municipal Popular PP
+</li><li>Dª Lola Campos Palacio.- Grupo Municipal Socialista PSOE
+</li><li>D. Juan Manuel Arnal Lizarraga.- FABZ
+</li><li>D. Sergio Muñoz López.- ICIJA
+</li><li>D. Dioscórides Casquero.- A.VV. Tío Jorge del Arrabal
+</li><li>Dª Natalia García Ortiz.- Cámara de Comercio de Zaragoza
+</li><li>D. Agustín Vicente .- Junta Mercado Venta Ambulante
+</li><li>D. Jesús Giménez.- Presidente Junta del Rastro
+</li><li>D. Adolfo Allué Blasco.- Plataforma Social del Rastro
+</li><li>D. Miguel Zarzuela Gil, Dª Mar Rodríguez y Dª Laura Fuertes.- Ebrópolis
+</li><li>D. Ramiro Pardo Berges.- Jefe Servicio Jurídico de Mercados
+</li><li>D. Jesús Domínguez Sanz.- Asesor Área Presidencia y Derechos Sociales
+</li><li>Dª Rosa Mª Bleda Hernández.- Jefa Sección Consejo de la Ciudad
+</li></ul>
+<p><strong>Excusan asistencia:
+</strong></p>
+<ul>
+<li>
+D. Alberto Casañal Pina.- Grupo Municipal Ciudadanos C's
+</li><li>Dª Leticia Crespo Mir.- Grupo Municipal Chunta Aragonesista CHA
+</li><li>Dª Marta Torner Aguilar.- FAPAR
+</li><li>D. José Ángel Oliván.- UCA Aragón
+</li><li>D. Vicente Gracia.- Federación de Empresarios de Comercio y Servicios ECOS
+</li><li>D. Carlos Gómez Bahillo.- Director de Cáritas Zaragoza
+
+
+</li></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="sm"/>
+
+                            <div class="col-md-3">
+
+
+                            </div>
+                            <div class="col-md-9">
+
+                                <h4>Orden del día</h4>
+
+<ol>
+<li>
+Punto único.-
+1.- Dignificar la Venta Ambulante: seguridad y convivencia.</li></ol>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="sm"/>
+
+                            <div class="col-md-3">
+
+
+                            </div>
+                            <div class="col-md-9">
+
+                                <h4>Intervenciones</h4>
+<p><strong>Dª Elena Giner Monge.- Consejera de Participación, Transparencia y Gobierno Abierto:
+</strong></p>
+<p>Vamos a comenzar la sesión, sabéis que hoy  era la sesión dedicada mas a los aspectos relacionados con la convivencia y la seguridad, dentro de este trabajo que estamos haciendo de multienfoques de la situación de la Venta Ambulante y del Rastro, y esta sesión planteamos que la dinamizara y que llevara un poco la exposición inicial que solemos hacer en estas sesiones, el Área de Derechos Sociales. Está aquí Luísa Broto, la Consejera, y el Asesor, Jesús Dominguez, y van a iniciar ellos un poco la exposición, aunque luego también daremos paso a Ramiro, que alguna parte de la sesión de hoy también expondrá, y luego como siempre el debate.
+</p>
+<p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:
+</strong></p>
+<p>
+Buenas tardes a todos y a todas, es un placer estar aquí, y sobre todo en una sesión que tiene por título algo tan complicado y tan complejo como es dignificar la situación de las personas que actualmente están realizando la venta ambulante o rastro en el Párking Norte de la Expo de la ciudad de Zaragoza, y también todo lo que está relacionado con la convivencia.
+</p>
+<p>
+Yo me voy a permitir una licencia, voy a ser muy breve, pero les voy a leer un texto muy rápido, porque es parte del enfoque y del contexto de la ciudad de Zaragoza con relación a esta situación:
+</p>
+<p>
+"A finales del siglo XIX Zaragoza vivía convulsionada por un crecimiento rápido fruto de la inmigración de campesinos atraídos por la incipiente industrialización zaragozana, campesinos  que venían del entorno de las provincias de Huesca, Teruel y alrededores.
+</p>
+<p>
+En 1989 la ciudad estaba repleta de mendigos que ocupaban puertas de iglesias y esquinas de la ciudad, profesionales de la mendicidad y descolocados del sistema que no podían optar a los servicios benéficos de la provincia." En aquél entonces la provincia era la que distribuía de alguna manera un apoyo social o una acción social.
+</p>
+<p>
+En este contexto es cuando el Alcalde, en este caso D. Francisco Cantín y Gamboa, después de darle muchas vueltas y mucha reflexión decidió fundar una Asociación Benéfica con el objetivo de dar salida a todas estas situaciones de emergencia que se producían en la ciudad de Zaragoza.
+</p>
+<p>
+He dicho bien, año 1898, hace 120 años, este año se celebran los 120 años de esta Fundación cuyo Patronazgo sigue siendo del Ayuntamiento de Zaragoza, y donde os leo simplemente el acta fundacional, había representantes por un lado el Alcalde con 11 Concejales, el Gobernador Militar, un magistrado de la Audiencia, un representante del Cabildo, el Rector de la Universidad, representantes de la Asociación San Vicente de Paúl, representante del Colegio de Abogados, Interventor y Administradores de Hacienda, representantes del Banco de España, el Presidente de la Cámara de Comercio, el Presidente de la Cámara Agrícola y el Presidente de la Cruz Roja, así como una serie de personas benefactoras que en ese momento decidieron aportar una cantidad de dinero para apoyar esta obra.
+</p>
+<p>
+Esta Asociación es un reflejo de lo que hace 120 pasó en esta ciudad, es un reflejo también de lo que el Consistorio en ese momento llevó a cabo como una opción para intentar que esas personas migrantes que venían de otros entornos, de la provincia de Huesca, de Teruel, de los entornos cercanos y aledaños a la ciudad de Zaragoza, atraídos por esa zona industrializada, y viéndose que se quedaban "descolocados", que es la palabra que se utiliza, y éste es un texto que he sacado, que no es mío, se quedaban descolocados porque la ciudad no los podía asumir, y esta fue una de las alternativas.
+</p>
+<p>
+Haciendo un salto en el tiempo, pero no muy lejano, porque la realidad de nuestra ciudad es de hace pues poquito tiempo, nos encontramos que en los años 80 y 90 este Ayuntamiento también fue pionero porque firmó un Convenio con la Asociación de Promoción Gitana, con la entidad Caritas y con técnicos municipales, con el objetivo fundamental de: por un lado dar salida a las situaciones de chavolismo y de infravivienda  que estaban produciendo determinadas personas de etnia gitana en algunos asentamientos chavolistas de la ciudad, y por otro lado dotar económicamente mediante la financiación de la posibilidad y el acceso a puestos en mercados ambulantes, pero también acceso a la posibilidad de sacarse un carnet de conducir que permitiera esa venta ambulante a determinados colectivos.
+</p>
+<p>
+Con esto lo que quiero decir es que esto es hace cuatro días, los 80 y 90, muchos de nosotros estamos aquí, y también quiero decir que en los años 70, he pegado un salto en el tiempo, ya perdonarán que no haga el periplo concreto, como se ha reflejado en alguna de estas sesiones, alrededor de la zona del Mercado de Lanuza, el actual mercado reformado, el Mercado Central, se establecieron muchísimas personas de una manera espontánea alrededor de lo que se llamaban tinglados, lo que eran pequeños cubiertos, donde las personas que por unas circunstancias determinadas querían ofrecer mercancías que se vendían, y de ahí posteriormente el Ayuntamiento entró a regularizar esa situación estableciéndose mercados que todos ustedes conocéis como el de detrás de la Plaza de Toros, etc.
+</p>
+<p>
+Mi exposición es así de breve y de precisa, los Ayuntamientos son la primera puerta de acceso de las personas a derechos tan importantes como son la educación, la sanidad, la escolarización, el acceso a determinadas prestaciones. Los Ayuntamientos ahora mismo están soportando una situación, 
+y cuando digo soportando no lo digo en mal sentido, están teniendo que dar respuesta a sus habitantes, que es la palabra que a nosotros nos gusta plantear, porque el concepto de vecindad y no vecindad es un concepto que supone en este momento generación de derechos.
+</p>
+<p>
+Los Ayuntamientos están actualmente teniendo que dar respuesta a sus habitantes sin tener en cuenta, o sin deber tener en cuenta, si son vecinos, si están empadronados, si vienen puntualmente y están de paso, si son residentes con su situación regularizada, si son de otros país, si son de una situación económica determinada, etc.
+</p>
+<p>
+Los Ayuntamientos tienen la obligación y en este caso por eso, desde el Ayuntamiento de Zaragoza, en acuerdo con el resto de Áreas que aquí están representadas, hicimos una propuesta, que fue algo que normativamente está reglamentado y está basado, que fue plantear un Convenio de colaboración administrativo, un Convenio sin ningún tipo de prerrogativa económica, un Convenio de colaboración que está fundamentado en 2 bases fundamentales que son: 
+</p><ul><li>la Ley de Bases de Régimen Local, que plantea que los Ayuntamientos han de dar apoyo a aquellas situaciones de emergencia, 
+</li><li>y segunda esta apoyado en un derecho que nosotros hemos intentado también de alguna manera desde el ámbito de los derechos sociales plantear, y es que se pueda conceder empadronamiento a personas sin necesidad de que acrediten residencia fija, como una forma de dar salida a situaciones de emergencia.
+</li></ul>
+<p>
+Todo esto es lo que nos ha llevado a llevar a cabo este Convenio, que vosotros tenéis delante, puesto que es uno de los documentos que se os ha remitido, un Convenio que tuvo un expediente administrativo que fue remitido al Servicio de Mercados, y que el propio Servicio de Mercados dadas las especiales situaciones de emergencia y por el hecho de ser un prisma fundamentalmente social, planteó que fuera este ámbito, el Área de Derechos sociales y en este caso la Unidad Administrativa correspondiente la que lo defendiese. Un Convenio que lo que plantea es poner posibilidades y regularizar la situación de personas que actualmente puedan estar accediendo a una venta de carácter irregular y que pudieran regularizarla. 
+</p>
+<p>
+En dicho Convenio lo que se plantea es dar salida a una situación que es natural, que está ocurriendo en muchas ciudades, y que desde el ámbito que nosotros estamos llevando a cabo creíamos que daba salida y que pudiera permitir: 
+primero, una convivencia en paz, que creo que es una de las cuestiones que se están planteando aquí, 
+segundo, no competencia con los vendedores ambulantes y vendedores de Rastro, puesto que los productos se iban a establecer y no había competencia en ese sentido  
+tercero, dar una situación de regularización a esta venta que actualmente se produce y que está produciendo problemas puesto que hay mayor presencia policial, se pueden producir disturbios
+y cuarto, y nos parece muy básico, canalizar a través de los derechos sociales y a través de nuestra Área, una forma de poder trabajar en la plena inclusión de estas personas en itinerarios de inserción con un seguimiento. 
+</p>
+<p>
+Porque evidentemente este Convenio no era simplemente que se lanza sino que había una responsabilidad municipal en este caso del Ayuntamiento, que informaría de determinadas prestaciones, de acceso a servicios y a recursos.
+</p>
+<p>
+No me voy a extender mas porque creo que el informe que va a presentar Ramiro hace hincapié con relación a valoración  en este sentido, y por último mi compañero Asesor, Suso Dominguez, os hará una valoración de alguna experiencia que va en esta línea y que se ha llevado a cabo en ciudades muy parecidas o similares a las actuales.
+</p>
+<p>
+Termino diciendo que por un lado nuestra apuesta incluye a todos los sectores de venta, lo hemos dicho en las diferentes reuniones que hemos mantenido, pero creíamos que era muy importante desde el ámbito de los Derechos Sociales que se pusiese voz a aquellas personas que por múltiples circunstancias, pueden ser españoles residentes pero no llegan a final de mes y por lo tanto esta es una fórmula para poder obtener una serie de ingresos complementarios, pero también todas aquellas situaciones que se están produciendo producto de una legislación estatal que los Ayuntamientos no pueden solventar, como es la Ley de Extranjería, que impide en muchos casos a personas que aun teniendo el permiso de residencia no pueden obtener la nacionalidad y que se quedan en un limbo que hace que durante x años o bastante tiempo puedan estar en una situación irregular completa que les impide acceder a prestaciones, les impide acceder a un trabajo, etc. Lo digo porque nuestra obligación como Ayuntamiento, siguiendo un poco ese mandato de finales del XIX, es intentar que la ciudad en la que vivimos sea habitable para todos y todas, y sea mas equitativa y mas justa. Sin mas le damos la palabra a Ramiro.
+</p>
+<p><strong>
+D. Ramiro Pardo Berges.- Jefe Servicio Jurídico de Mercados:</strong>
+</p>
+<p>
+Gracias, buenas tardes a todos. Creo que el documento que voy a tratar de dar unos perfiles generales, resumiendo, os ha sido entregado con anterioridad, y como lo tenéis voy a tratar de enmarcar un poco el contexto de su petición, y en segundo lugar un poco las líneas generales en el entendimiento que aquellos que por tiempo o por otras circunstancias no os lo hayáis leído, os daré unos apuntes muy genéricos.
+</p>
+<p>
+En un principio y desde el ámbito administrativo necesitábamos conocer, a pesar de que teníamos un poco clara la posición de los diversos colectivos que se integraban en el espacio Mercado Ambulante-Rastro, conocer cuáles eran los diversos colectivos que provocaban algún tipo de problemática específica. Para ello fue encargado éste que es denominado el "Análisis de la situación social  del Mercado Almozara",  con varios objetivos:
+</p><ul><li>uno, conocer los perfiles socioeconómicos de vendedores y compradores, algo os avanzábamos en el anterior sondeo de opinión, se han superpuesto, aunque cada uno tiene su parcela concreta de estudio
+</li><li>analizar el grado de convivencia de los diversos grupos allí existentes, y en su caso detectar eses denominados focos de conflicto que se analizan aquí bajo una óptica teórica, y que al fin y al cabo siempre están los resortes prácticos de cada uno para buscar soluciones a los conflictos
+</li><li>para finalmente realizar un tipo de propuestas, si era el caso, que pudieran contribuir a resolver esos gérmenes de conflicto.
+</li></ul>
+<p>
+Los días de trabajo fueron 2 días, 2 domingos de mercado, sobre 40 puestos del mercado ambulante y 20 de los puestos del Rastro, había una equivalencia por el número de puestos, y 3 domingos del Mercado sobre 125 visitantes. Nos pareció una ficha adecuada, que aunque no está elaborada de acuerdo con los criterios científicos propios de una elaboración estadística, entendimos que si que nos podía dar datos para reflejar cuál era la situación en aquél momento.
+</p>
+<p>
+Creo que os avancé ya el perfil de procedencia de los diversos componentes de los titulares de licencias de Mercado Ambulante y Rastro:
+</p><ol><li>en su mayoría gitanos, el 63%
+</li><li>árabes el 25
+</li><li>payos el 10%
+</li><li>subsaharianos el 2%
+</li><li>y 1 chino/a
+</li></ol>
+<p>
+El 77% porque lo tengáis en cuenta a efectos de identidad de género, en el caso de la Venta Ambulante es masculino, el 23% femenino.  En el caso del Rastro lleva consigo que haya mas hombre que mujeres, 85% hombres y 15% mujeres.
+</p>
+<p>
+Edad media 47 años, voy un poco deprisa porque entiendo que después puede dar lugar a mas intervenciones que creo que serán mas fructíferas de algo que habéis tenido antes.
+</p>
+<p>
+Lo curioso del caso es que en materia de edad, 8 de cada 10 llevan allá mas de 10 años. Y aquí si que es donde debo apuntar que de acuerdo con la normativa actual este tipo de licencias no pueden ser perpetuas, y lo lanzo hacía los colectivos que conocen mi opinión ya que se la he trasladado, se propuso para el Mercado Ambulante unos 15 años de vigencia desde el traslado, de los cuales han transcurrido unos pocos, y habrá que enfocar con el Rastro la adecuación a la legalidad, al afecto de que no se traten de licencias perpetuas, porque algunos de ellos consideran que deben de ser de su descendencia, y tengo que reconocer que si que estoy a favor, a pesar de que lo impida el Reglamento, y esto es una aportación personal que me vais a permitir, porque hay unas diferencias de Reglamento un poco trasnochadas, mientras que son transmisibles las licencias de Mercado Ambulante, no se consideran transmisibles por el Reglamento las de Rastro.
+</p>
+<p>
+Actualmente y de manera personal estoy elaborando un Informe para colocar  por encima los Directivas Europeas para tratar a todos por igual para que pudieran ser transmisibles, y lo lanzo un  poco con permiso de la Presidencia hacía el Presidente de Junta del Rastro, porque era una reivindicación que habían propuesto, sin modificación de Reglamento, que eso creo que se puede aplicar directamente las Directivas Europeas acerca de la Directiva de Servicios.
+</p>
+<p>
+Como ya os indiqué, la media de los visitantes se sitúa, aunque también dependiendo cuando efectúas las mediciones puede variar, en 2.000 a píe, mas de los de  transporte a coche, y estamos haciendo los aforos en estos momentos, para que se conozca cuál es la incidencia de público, pero esto es los miércoles, porque por supuesto los domingos es mucho mas, prácticamente se triplica, que se colocan en 7.900 a píe, mas los de coche.
+</p>
+<p>
+A partir de ahí el Estudio social incide un poco en el nivel de ingresos, lo tenéis en la página 13, por resumir si os parece, se trata de clases no muy favorecidas en el sentido económico y por lo tanto en gran parte de casos haciendo una distinción entre los niveles de ingresos de titulares de Venta Ambulante y titulares de Rastro haciendo una diferenciación, no desearía incidir demasiado ya que lo tenéis en la página 12 y 13 del Estudio, ya que fue una pregunta que se incluyó en el cuestionario de forma directa, y el que las respuestas fueran sinceras o no depende un poco de la voluntad del contestador.
+</p>
+<p>
+Los perfiles de los visitantes igualmente creo que los conocéis, no voy a incidir tampoco porque lo tenéis en la página 18, pero si que al final y un poco analizando lo que pueden ser los problemas que subyacían en la convivencia en ese espacio, si que a partir de la página 19 y 20 de este Estudio, si que comienza a distinguir varios aspectos:
+</p><ol><li>Ambulantes
+</li><li>Rastro
+</li><li>El denominado "tercer sector", venta de producto de segunda mano por titulares sin licencia
+</li><li>y el que a veces ha sido denominado "cuarto sector" por hacer una diferenciación entre colectivos, que son los manteros, lo digo por una denominación que nos intente colocar por no denominarlos de otra manera.
+</li></ol>
+<p>Y en las cuestiones que se lanzaban para consultas aparecían, creo que lo tenéis en la página 20, lo que podemos denominar las reclamaciones de cada colectivo.
+</p>
+
+<p><strong>Las de Venta Ambulante:</strong></p>
+<ol><li>La vuelta al antiguo emplazamiento de La Romareda en primer lugar.
+</li><li>Un mejor servicio de autobuses que conecte el mercado con el resto de la ciudad: anuncio que ya está enmarcado un determinado propósito con modificación de líneas de autobús en el acuerdo marco con la Cámara de Comercio.
+</li><li>Un emplazamiento más adecuado para los miércoles: se trata de una reivindicación que también consta en un expediente.
+</li><li>Mejoras en el espacio (como por ejemplo colocación de bancos y fuentes): debo anunciar que ya estamos en ello, incluso con un cronograma, para finales de este año.
+</li><li>Un nuevo día de mercado además del domingo: fue una inicial reivindicación del colectivo que se trasladó posteriormente a miércoles y traslado a otro lugar de forma alterna.
+</li><li>La posibilidad de la presencia de puestos de fruta y verdura: estamos en ello con ciertas dificultades, lo anuncio, quizás lanzo el que las dificultades conectado con las asociaciones que son las que lideran los intereses de los colectivos de asociados de tiendas de frutas y verduras, pues no estamos llegando a unos acuerdos inmediatos porque hay una cierta oposición a que se pongan a vender frutas y verduras fuera de lo que son la representación de sus intereses, ni incluso con los hortelanos cercanos a Zaragoza. Me vais a permitir que en esto de las sugerencias os vaya aludiendo a los avances que vamos realizando, pero que en algún caso se encuentran algo torpedeados por factores externos.
+</li><li>Promoción municipal del mercado: estamos en ello incluso ahora ya con un avance de programación de Navidad.
+</li><li>Que los manteros dejen de colocarse en las calles del mercado o que, al menos lo hagan de manera más espaciada para no impedir el paso de las personas visitantes o compradoras. 
+</li></ol>
+<p>
+Este suele ser el principal problema que ha originado una cierta alarma en comunicación escrita de los Administradores, frente a encuentros, hasta ahora salvo uno que yo conozca no violentos, los demás al fin y al cabo han sido enfrentamientos puedo llamar verbales. Pero si es verdad, me he hecho acompañar de algunos de los comentarios de los Administradores, viniendo a decir que ha habido quejas reiteradas de encuentros, y me vais a perdonar por la expresión, apasionados aunque no violentos, de rechazo a que alguien ocupase el lugar del vecino que estaba libre, segundo de que estaba ocupando otro espacio,...
+</p>
+<p>
+La localización se realiza, tal y como dice el Estudio, por parte de los manteros en las calles cercanas al Mercado Ambulante, y por parte de ese denominado tercer espacio en las zonas de Rastro, vendedores de segunda mano, normalmente, hay en ocasiones en que hemos detectado que uno se pone donde puede, de ahí posiblemente vengan ese tipo de dificultades a las que aluden los Administradores que provocan esos conatos de desencuentros que hasta ahora han sido solo así.
+</p>
+<p>
+En el caso del <strong>Rastro Viejo</strong> por supuesto sus demandas eran: 
+</p>
+<ol><li>La promoción municipal para que vaya mas gente y vendamos mas.
+</li><li>Mayor comunicación con el Ayuntamiento: creo que en ese sentido y por lo que a mí respecta no hay demasiada queja, y si no que se me comente como titular del Servicio, en este caso la buena relación con los Presidentes de las Asociaciones o con los miembros, creo que es fluida.
+</li><li>La disminución de la burocracia municipal: creo que se ha resuelto. Trato de colocar estos incisos que aunque sean aportaciones personales por lo menos tratan de resumir los avances que ya llevamos.
+</li><li>Las Mejoras en el espacio (por ejemplo mayor presencia de contenedores): estamos en ello.
+</li><li>Mayor intervención de la policía para expulsar a las personas vendedoras sin licencia y que no vengan personas vendedoras sin licencia. El contexto histórico es el que es, es el mes del 12 de marzo al 26 de abril, y que por lo tanto en ese contexto hay que situar estas reivindicaciones.
+</li></ol>
+<p>
+A partir de ahí, cita lo que he dado en denominar el Tercer Sector que cifra entre 100 y 200 personas, si efectivamente nos cuadra con los datos de los Administradores/as, que son los que aparecen con productos recogidos de la calle y contenedores de residuos, aunque también con ropa y calzado de segunda mano. Este también es un factor de discordia en razón a que ni a los de Venta Ambulante que venden ropa ni a los del Rastro tampoco se les permite vender este tipo de producto ni a los del Rastro tampoco. Este factor discordante está planteando muchos problemas en la actualidad. Cita que el nivel socioeconómico aludiendo a los términos de las clases no muy favorecidas es muy bajo. Y sus demandas vienen cifradas y centradas sobre todo en la regularización de su presencia, y se entiende aunque no se cita, que allá.
+</p>
+<p>
+	Respecto de los <strong>Manteros</strong> que estima su número en unos 40, y que consideramos que se elevan a mas de 60 según los puntos de vista de los Administradores en razón del computo que establecen cuando se colocan en calles cercanas o ocupando calles enteras del de Venta Ambulante.
+</p>
+<p>
+Cita el Estudio objetos de imitación y es verdad que el problema puede ser la falsificación de ciertos productos, que también nos constan sencillamente por el análisis de los boletines de denuncia o los decomisos de mercancías.
+</p>
+<p>
+El origen parecen ser sobre todo hombres y sobre todo senegaleses. Y sus demandas vienen reducidas, por no equivocarme y trato de resumir para ser muy breve:
+</p><ul><li>La reducción de la presencia y presión ejercida sobre ellos por la policía, de manera que no se ven desposeídos de su mercancía: si porque en función de cuál sea la mercancía se efectúan decomisos regulares cada cierto tiempo
+</li><li>Reconocimiento de su dignidad y de la necesidad que empuja su actividad
+</li><li>Establecimiento regulado de un sitio de venta en el centro de la ciudad para vender en un horario determinado (como, por ejemplo cita, la parte superior del paseo de Sagasta).
+</li></ul>
+<p>
+Repito hay que circunscribir estas afirmaciones al momento en que el Estudio temporalmente fue realizado.
+</p>
+<p>
+Para finalmente y llegando a tratar de construir a través de la teoría de la solución de conflictos a través del estudio de los elementos que confluyen en éstos para llegar a tratar de efectuar una serie de recomendaciones que, y cierro ya un poco con la parte última del Estudio, que por lo que se refiere a los conflictos que aquí denomina de baja intensidad, cita como tales en función de los elementos de oposición, aquellos que plantean problemas unos con otros, porque al fin y al cabo ya conocéis cuales eran los 4 elementos que convergían:
+</p>
+<p>
+En el Rastro con respecto al Mercado Ambulante, pues que se vende ropa y zapatos de segunda mano, por lo tanto dicen que ahí hay un conflicto. Este conflicto por lo que respecta a nuestra experiencia y entre ellos, no está planteando problemas de convivencia o de alarma de altercados, sencillamente es un problema de regularización reglamentaria.
+</p>
+<p>
+Con respecto a Mercado Ambulante y Ayuntamiento, por el sector se alude al incumplimiento de promesas realizadas con anterioridad y que por lo tanto exige que sean cumplidas. Una parte de ellas se contienen ya en el acuerdo marco de la Cámara.
+</p><p>
+Y entre los vendedores del Mercado Ambulante, y aquí si que no me querría equivocar, personas vendedoras sin licencia y Policía Local, es generalizada entre las personas vendedoras sin licencia, su queja ante la retirada y destrucción de su mercancía, cuestión obvia, varios son los famosos decomisos que se efectúan, repito a veces demasiado regularmente. 
+</p><p>
+Y entre los manteros y la Policía Local dice, desde este colectivo se denuncia que últimamente ha aumentado la presión que la Policía Local ejerce sobre él, incluyendo determinadas detenciones, aunque se percibe algo menos de presión policial en este emplazamiento concreto del Mercado Almozara respecto a otras zonas de la ciudad.
+</p><p>
+Estos son los que denomina el Estudio como de menor relevancia. Citando como de mayor importancia 2 de ellos que actúan entre vendedores ambulantes y manteros: 
+</p><p>
+Ciertos conatos que ya han existido de enfrentamiento entre ellos. Los últimos partes de los Administradores ya son algo preocupantes, en el sentido de que alguien que formando parte de una denominada y parece que constituida Plataforma por los Derechos del Rastro o del Mercado, un Sr. Carbonel, que se constituyó hace tiempo según me han dicho, vino a decir que o se solucionaba ese problema o como, y si me equivoco me corregis, patriarca de determinado colectivo, venía a decir que su colectivo se enfrentaría con ellos de manera violenta. Lo anuncio y lo digo porque conste como antecedente, es decir trato incluso de eludir mi propia responsabilidad en el sentido de que se conozca que puede haber altercados en cualquier momento, según estos antecedentes, los partes son de hace dos semanas.
+</p><p>
+Y finalmente entre los vendedores del Rastro e irregulares es obvio, hay competencia entre sus productos y no se está contento porque se ocupan esos espacios. Y con una particularidad, que esta es de pronunciamiento personal, curiosamente los Reglamentos establecen para cuando un titular de una licencia comete una infracción, su sanción normalmente suele ascender a 100, para cuando una persona se coloca a vender sin licencia su sanción son 30 euros. Es una particularidad de los Reglamentos que habría que corregir, porque es mayor el castigo para quien vende con una titularidad de licencia, por ejemplo extendiéndose medio metro mas o vendiendo un producto no autorizado a venta ambulante, calzado o ropa de segunda mano, que con respecto al que no tiene licencia. 
+</p><p>
+En principio nosotros considerábamos que a través de un código sancionador único, que me parece que solo existe en borrador, la tratábamos de corregir, pero actualmente creo que por lo menos se trata de una injusticia, que la avanzo aquí por razones incluso consideración, porque ha sido una queja manifestada por los titulares de licencia de que son mas castigados por un mero incumplimiento que aquellos que no tienen licencia.
+</p><p>
+Y únicamente es verdad, que aunque no se tramitaran con anterioridad, el número de expedientes infractores, sin citar aquellos que lleva el Servicio referidos a Mercazaragoza, que sacamos estadísticas ahora cada mes, están en los 1.167 expedientes abiertos para venta sin licencia, con los 30 euros que he apuntado de sanción, frente a los 179 expedientes abiertos a los titulares de licencia que pueden incumplir Reglamento.
+</p><p>
+Creo que a grandes rasgos y por no ser muy aburrido, con esto os he resumido en algo qué es lo que viene a decir esto por quien no se lo haya leído, aunque con estas anotaciones personales.
+</p><p>
+Hay una <strong>propuesta de intervención</strong>, no he aludido a ella porque en parte ya se ha comentado, comento la del Estudio, serie de acciones concretas en el corto y medio plazo: 
+</p>
+<ul>
+<li>Analizar la normativa existente que afecta al Mercado Almozara y detectar puntos factibles de poner a reflexión o debate: algunos de ellos y los contrasentidos de los Reglamento ya os los he anunciado.
+</li><li>Analizar el estado actual de las licencias de venta en venta ambulante y rastro viejo y realizar una estimación prospectiva de su posible y deseable evolución: el número de vacantes existente actualmente en licencias Rastro alcanza aproximadamente las 50 y el número de vacantes en Venta Ambulante se aproxima a las 75, dentro de los espacios acotados. 
+</li><li>Determinar con claridad las tareas que competen a las personas administradoras y a la Policía Local en relación al Mercado Almozara: por lo que a nosotros afecta parece que las tenemos claras, y hay buena  relación entre los colectivos sobre todo de colaboración funcionarial.
+</li><li>Analizar la ordenación y distribución del espacio del mercado y sus posibilidades de modificación y mejora.
+</li><li>Llevar a cabo una reflexión, tanto en el nivel político como en el técnico, sobre aquellas demandas o máximos que se podrían asumir y aquellas líneas rojas que no resultarían posible traspasar en un proceso dialogado de transformación y mejora del mercado.
+</li><li>Proporcionar formación en diferentes ámbitos (por ejemplo, en gestión de conflictos y mejora de la convivencia) a los diferentes agentes para reforzar su papel y lograr una potenciación de los valores sociales, económicos y culturales del Mercado Almozara.
+</li><li>Promover la puesta en marcha de un tercer espacio de venta para posibilitar una solución comunitaria a las necesidades de subsistencia de las personas vendedoras sin licencia.
+</li></ul>
+<p>Como recomendaciones del Estudio.
+</p><p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:</strong>
+</p><p>
+Gracias. Dentro de lo que serían las propuestas y experiencias de esas posibles recomendaciones, Suso Domínguez os va a plantear una experiencia muy cercana en una ciudad que es muy similar o podría ser muy similar o pareja a la ciudad de Zaragoza, cuando quieras.
+</p><p>
+<strong>D. Jesús Domínguez Sanz.- Asesor Área Presidencia y Derechos Sociales:
+</strong></p><p>
+Si, precisamente viene un poco a desarrollar este último punto de las propuestas, de ese tercer espacio, con algunas experiencias que hay.
+</p><p>
+En realidad parte un poco de la base de que el proceso del fenómeno de la venta sin licencia pues es un fenómeno que está en expansión en Europa, muy vinculado a los procesos de desigualdad, a la crisis económica y financiera, y a la cronificación de situaciones de pobreza y de vulnerabilidad y de precariedad en el mercado de trabajo, que evidentemente está obligando a mucha gente a "buscarse la vida" de maneras informales.
+</p><p>
+Esta situación que va "in crescendo" lleva cada vez a diferentes ciudades tanto de Europa como de EE.UU, a plantear propuestas de gestión de esta situación desde una perspectiva inclusiva y desde una perspectiva integral, partiendo de la base además de que los mercados tienen muchas potencialidades tanto para dinamizar vidas de los barrios, como para generar vínculos sociales, reformar la identidad de los territorios, ser motor de desarrollo económico de una zona, e incluso para proyectos de renovación de barrios vulnerables, y proyectos de inserción o de inclusión social, que será un poco a los que nos referiremos.
+</p><p>
+Por poner algunos ejemplos, aunque luego me centraré uno en concreto que es  el que comentaba Luisa, hay experiencias de utilización de mercados dentro del proyectos de desarrollo de barrios vulnerables en Francia. En Vancouver en Canadá, se hizo una experiencia por la cual después de intentos de políticas sancionadoras para controlar la venta irregular, y ante la ineficacia de esas medidas, se decidió generar un mercado callejero que se llama el "Dan stand inside", que lo que hacía era otorgar una licencia a 200 vendedores de estas tipologías ofreciendo un lugar permanente, dando mas seguridad, evitando la venta de productos robados, y bueno parece ser que iba funcionando bien.  En Mallorca también a raíz de que el problema de la venta ilegal, sobre todo en las ciudades mas turísticas es mucho mas problemática, también se está trabajando en este línea de acciones de inserción vinculadas a situaciones de venta ilegal, aunque están todavía en una fase inicial.
+</p><p>
+Y en concreto yo lo que voy a contar un poco mas detenidamente, pero también muy por encima, el Marché de Chineurs, el Mercado de las Gangas. Touluse es una ciudad con la que estamos hermanados y que además por sus características es bastante similar a la ciudad de Zaragoza.
+</p><p>
+¿Cómo funciona este Mercado de las Gangas?.</p><p>
+El Ayuntamiento lo creó en el año 2011, se plantea la creación de un espacio de objetos de recuperación de segunda mano para permitir que personas que estaban en una situación de importante vulnerabilidad, que no tenían permiso de trabajo, o que tenían trabajo pero eran trabajos precarios, o vivían de prestaciones sociales, encontraran un complemento financiero y además la posibilidad de un proceso de inserción en paralelo.
+</p><p>
+¿A qué tipos de perfiles se dirige este proyecto?.</p><p>
+Pues para que os hagáis un poco idea, se está hablando de un 25% de las personas que participan en ese mercado no tienen ningún tipo de recurso. Otro 25 % están cobrando rentas de inserción, lo que sería aquí el Ingreso Aragonés de Inserción IAI por ejemplo. Incluso hay pensiones, un 20% de las personas que hay son jubilados que tienen pensiones muy bajas o pensiones no contributivas. De todo este colectivo un 60% percibe unos ingresos mensuales de menos de 500 euros. Y además un 15% de las personas que estaban participando en este proyecto vienen de situaciones de personas sin techo, o infraviviendas, okupaciones, etc., no tienen una vivienda normalizada, con lo cual es un proyecto dirigido a las personas que mas dificultades de inserción y de inclusión social tenían en ese momento.
+</p><p>
+Este proyecto de Mercado de Gangas se gestiona a través de un Convenio con una entidad que se llama la Asociación CREPI que es una entidad que tiene muchas actividades centradas en el tema de inserción de colectivos en vulnerabilidad, y en 2018 tenían una financiación para todo el proyecto de 120.000 euros.
+</p><p>
+¿Qué es lo que hace la Asociación?.</p><p>
+Gestionar el espacio del mercado y en este sentido recoge las demandas de la gente que quiere tener puesto en el mercado, los entrevista individualmente para explicarles el objetivo, para ver si tienen el perfil adecuado, para explicarles el funcionamiento, para explicarles todo el tema, gestiona el mercado, lleva el acompañamiento socioprofesional de las personas que lo desean, es decir no es obligatorio el entrar en un proceso de inserción sociolaboral, pero si que a las personas que les interesa o que de este contacto diario quien quiere entrar en ese proceso, pues se encargan ellos y también se encargan del seguimiento social o parte del seguimiento social de estas personas, haciendo acompañamientos a servicios comunitarios, servicios sociales, servicios de salud, etc.
+</p><p>
+¿Cómo funciona?.</p><p>
+Es un mercado que funciona todos los sábados por la mañana. El responsable de este mercado se encarga de identificar a las personas que acuden a él, de todos los inscritos ve cuáles están presentes y ausentes, e incluso así como un mecanismo de cuidar un poco a la gente, tienen la posibilidad de tomar un café con un vale que se les da para uno de los puestos específicamente destinado para eso. Durante toda la duración del mercado estas personas responsables se encargan de que no se instale nadie que no esté autorizado, y en el caso de que se instale alguien le invitan a desalojar y le explican la manera formal de entrar a ese mercado, es decir no solo le echan sino que se abre la posibilidad de que se puedan quedar o la manera de que puedan entrar por procedimiento mas normalizado.
+</p><p>
+Estas plazas del mercado rotan semestralmente, se otorgan semestralmente estas licencias en función de unos criterios objetivos que tienen que ver con la situación social, etc, y para la renovación es necesario primero que se cumpla el Reglamento de Funcionamiento de ese mercado, y segundo que ha habido una presencia habitual en el mismo, que se establece en un 50% de los meses y sobre todo por lo menos 1 vez al mes, se incluyen las dos variables.
+</p><p>
+¿Qué es lo que hacen?.</p><p>
+En este proceso no solamente gestionan, sino que en este proceso de gestión del espacio lo que están haciendo es relaciones con todas las personas que están en situación de dificultad, que tienen problemas de inserción laboral, etc., para a través de ahí ir a través de ahí ir dándoles información sobre recursos, información sobre procesos y enganchándoles, y en el caso de que esta persona esté dispuesta a entrar en un proceso, semanalmente ya establecen un protocolo de seguimiento y de intervención con estas personas para formarlas, tienen contactos con empresas de inserción, con otras empresas que favorecen el empleo, todo este tipo de cosas. 
+</p><p>
+Claro hay un porcentaje de gente que se queda fuera, que es toda la gente que no tiene un permiso de trabajo en Francia, y entonces con toda esta gente se hace un acompañamiento social pero no un acompañamiento laboral.
+</p><p>
+Otra tarea fundamental de estas personas es ejercer de mediadores entre los conflictos y sus litigios que se dan en el día a día del mercado, ofreciendo alternativas y mediando en los conflictos para generar una buena convivencia.
+</p><p>
+Para daros unos pequeños datos, y ya voy acabando, en 2017 estaban censadas en este Mercado de Gangas 174 personas, aunque realmente a final de año estaban activas solamente unas 117, habían algunas que jamás acudían, y unas 20 y tantas no se les renovó porque no habían cubierto esos mínimos de presencia habitual en el mercado.
+</p><p>
+De los 117 vendedores, 78 eran únicamente las susceptibles de participar en procesos de inserción, porque el resto o eran jubilados que estaban cobrando  una pensión muy bajo, o no tenían permiso de residencia, o estaban ya trabajando pero muy en precario y entonces no procedía, pues un 36% participaron en procesos de inserción laboral y otro 20% participaron en procesos de acompañamiento social a lo largo del tiempo que estuvieron en el mercado, y se entiende que luego podrían continuar una vez ya enganchados a recursos comunitarios normalizados.
+</p><p>
+Y este es un poco el modelo, hay un poco mas de información que si alguien la quiere se la podemos facilitar, está en francés, pero este es un poco el modelo que iría en la línea de la última posibilidad que se planteó.
+</p><p>
+<strong>Dª Elena Giner Monge.- Consejera de Participación, Transparencia y Gobierno Abierto:</strong>
+</p><p>
+Muchas gracias a Luisa, a Suso y a Ramiro por todas las intervenciones que han dado, yo creo que han dado mucha información, datos objetivos y fondo de análisis para que podamos iniciar un debate en el que abordemos todas estas cuestiones que son distintas, hay muchos matices y vertientes dentro de la información que se ha lanzado, pero creo que tiene como 3 específicamente que podemos focalizar, que serian:
+</p><p>
+Por un lado el vértice mas social de esta cuestión, y enlazando ya con esta última intervención que tiene mas que ver con un enfoque de inserción social de personas con una situación de vulnerabilidad alta, en la que se trata de buscar en qué manera acompañar, en qué manera promover el que se pueda desde el Ayuntamiento dar cobertura a esas situaciones en el marco en el que se están produciendo, que es en el marco de la venta ambulante, y ahí tenemos las experiencias que ha señalado Suso, y también la intervención inicial de Luisa con la propuesta de Convenio y todas las cuestiones que se puedan poner sobre la mesa.
+</p><p>
+Hay un vértice que se ha señalado también en varías de las intervenciones, el mas normativo, el que tiene que ver con el marco, se ha nombrado el Reglamento y cosas que a lo mejor quizás estarían pendientes de reformar del Reglamento, en el Estudio que exponía Ramiro también había un elemento dentro de la propuesta de intervención de renovar la normativa y el marco, incluso el hecho de hacer un Convenio es una parte de esa parte mas normativa, de marco y de reglamentación que hay que abordar en esta cuestión.
+</p><p>
+Y otro vértice que puede tener mas que ver mas con la convivencia y con la otra vertiente de la convivencia que puede ser la seguridad, y ahí sería el aspecto mas relacional, que ya no es de las actuaciones individuales ni del marco institucional o normativo, sino  de las relaciones de los colectivos que coexisten en ese espacio. Y ahí se han planteado algunas alertas, se han identificado claramente cuáles son los conflictos latentes existentes, se aborda la cuestión de la seguridad y de la cuestión de la policía, y se abre como linea posible de intervención una intervención mediadora, que planteaba Suso que en la experiencia de Toulouse también se incorpora ahí.
+</p><p>
+
+Entonces en esas 3 vertientes creo que podemos engloblar el debate, lo que podamos hablar ahora, y se trata de que como en otras sesiones ap0ortemos nuestra opinión, nuestra valoración de esas cuestiones. Al hilo de lo que se ha planteado además hay propuestas concretas sobre la mesa, que también estaría bien manifestarse a favor, en contra o añadir otras propuestas. También Adolfo ha aportado algo de documentación, se ha enviado una parte, la experiencia de Coslada, que aunque tengamos toda la información puedes explicarla un poco mas, y algo mas de acciones de la Plataforma que en tu turno puedes  explicar también y poner en común. Y se trata de eso, de ir recopilando ideas, propuestas, debates, en lo que haya consenso podremos extraer como consenso, y en lo que no hay recoger ese debate abierto para incorporarlo en el documento mas completo de Conclusiones, en el que vamos uniendo todo lo que vamos avanzando ya en cada una de las sesiones. Yo sin mas os doy la palabra para que pidiendo turno podamos todos hablar y escucharnos.
+</p><p>
+<strong>D. José Ignacio Senao Gómez.- Grupo Municipal Popular PP:</strong>
+</p><p>
+Buenas tardes y muchas gracias, primero excusar la presencia de mi compañera porque tiene reunión del Pleno de Junta de su Distrito esta tarde a la misma hora y por tanto no ha podido asistir. 
+</p><p>
+Agradecer la exposición de los comparecientes hoy aquí en cuanto a esa información que nos han entregado, incluso que nos han glosado y nos han explicado. 
+</p><p>
+Decir que nosotros consideramos que todos los foros de reunión son importantes, con independencia de lo que quizás opine el Gobierno en una Comisión que yo tengo obligación de explicar aquí siempre que venga que existe. Hay una Comisión Especial para tratar estos temas que emana de un mandato del propio Pleno del Ayuntamiento. Es decir que en los Plenos, las mociones se aprueban o no se aprueban, en este caso esta Moción fue aprobada por mayoría de los Grupos que lo componen, y en consecuencia en esa Comisión estamos tratando paralelamente estos datos con un calendario, unos comparecientes, que no son uno a uno, como se viene diciendo, que en principio si lo son uno a uno pero que después también va a haber, y además una enmienda que presentó el PSOE, habrá también intercambio de opiniones entre unos comparecientes y otros, entre unas instituciones y otras, entre unos representantes y otros de otros sectores. 
+</p><p>
+Simplemente decir esto, dejar sentado esto, que agradecemos mucho la información que nosotros aquí recogemos porque a veces no tenemos la oportunidad de tener toda esta información en esa Comisión Especial, que todas las personas que están aquí asistiendo van a ser convocadas para que si pueden asistir, y de hecho ya han asistido varios colectivos y varios Grupos, están asistiendo también funcionarios del propio Ayuntamiento, que lo que nosotros pretendemos es resolver problemas y no crearlos, y que el mandato del Ayuntamiento de Zaragoza en esa Comisión Especial trata de 2 cuestiones:
+</p><ul><li>
+Primero, tratar de resolver los problemas actuales del Párking Sur en cuanto a la venta del Mercado Ambulante y la venta del Rastro, 
+</li><li>y en una segunda parte, pues tratar también de solventar los problemas de la venta ilegal que existen, y esos conflictos que aquí se han manifestado que puede haber o que incluso se pueden agravar en el futuro.
+</li></ul>
+<p>
+De la realización de estos trabajos, el compromiso y el mandato del Ayuntamiento es realizar un Dictamen, que se elevará al Gobierno de Zaragoza, se elevará también al Pleno del Ayuntamiento, y en una reunión del Pleno del Consejo de Ciudad, que es de donde emana este Grupo de Trabajo, también lo traeremos previamente para poderlo analizar, poder consensuar y tal. 
+</p><p>
+Todo lo que aquí se está haciendo es un trabajo muy positivo, nosotros lo recogemos, tratamos de asistir siempre que podemos y nos lo permiten las demás obligaciones, pero que se sepa que prácticamente todos los que están aquí van a tener oportunidad de poder estar en la Comisión Especial. Yo este trabajo ya lo recojo, me lo llevo para poderlo analizar, para ir incardinándolo en todo lo que estamos realizando en la Comisión Especial, y a ver si entre todos, como esto no debe ser una pugna política entre unos y otros, podemos resolver de verdad un problema que está ahí enquistado, y que creo que es bueno para los que representáis en este caso a la venta directamente, los que estáis cumpliendo con todas las obligaciones que hay que cumplir, y por supuesto para todos los zaragozanos, que al fin y al cabo lo que estamos haciendo aquí es en beneficio de todos los habitantes de Zaragoza. 
+</p><p>
+Así que muchas gracias, me recojo ya toda la documentación, tengo ahora otra reunión, excuso mi presencia, y anuncio ya que tal y como se va organizando, hacemos el seguimiento, y la Sra. Vicealcaldesa y Presidenta de la Comisión, que aunque no cree mucho en ella, pero es la Presidenta de la Comisión porque siempre tiene que estar presidida una Comisión por un miembro del Gobierno, esto es así y reglamentariamente así debe ser, ella está colaborando para que vayan compareciendo el mayor número posible de personas en cada una de las reuniones de la Comisión que vamos teniendo. La próxima me parece que es el día 11 de diciembre, que la vamos a tener incluso en horario de mañana y tarde, vamos a estar prácticamente una sesión completa de  4 o 5 horas por la mañana y otras 4 o 5 horas por la tarde, osea que espero que pronto nos veamos en relación al planteamiento que se está haciendo de las citaciones que se están haciendo de las comparecencias que allí tiene que haber. Nada mas y muchas gracias, y ya excuso mi asistencia, porque ya digo que nos tenemos que multiplicar en mil cosas. Gracias.
+</p><p>
+<strong>D. Juan Manuel Arnal Lizarraga.- FABZ:</strong>
+</p><p>
+Buenas tardes, primero agradecer el excelente Informe que por primera vez pone negro sobre blanco la realidad de la venta ambulante en el espacio  de la Almozara. Yo creo que saca datos sustanciosos para ver cómo trabajar de cara al futuro.
+</p><p>
+Por otro lado hemos leído el borrador de Convenio, que en principio nos parece bien, teniendo en cuenta que la FABZ en su día apoyó este modelo, de hecho lo sugirió, en imitación del modelo francés de Toulouse. Yo he estado en ese mercado que se celebra en los alrededores de la Iglesia de Saint-Aubin, es un mercadillo tradicional, el espacio es muy tortuoso, no es precisamente una explanada, pero podríamos decir que es un mercado digno y que satisface una necesidad, la necesidad es de intentar regularizar y de dar una salida honrosa a determinados colectivos, no vamos a decir marginales, sino marginados. 
+</p><p>
+Curiosamente cuando salió la noticia, básicamente ponían 3 condiciones: estar empadronado en Toulouse, otra tener unos ingresos inferiores a 800 euros, y otra de las condiciones era respetar el acuerdo a que se llegaba para la instalación. Nosotros hemos leído el Convenio, y en principio parece que ese espíritu está recogido en el Convenio, pero nos asaltan algunas dudas, unas legales, como es qué asociación, tiene que ser una asociación evidentemente constituida, legalmente constituida y a ser posible acreditado su trabajo en el sector. Veríamos un poco imprudente que se creara "ad hoc", podría dar una sensación entre comillas de dirigismo.
+</p><p>
+Segunda cuestión necesitara alguna modificación del Reglamento, que taxativamente creo recordar que en su artículo 4.3. dice que se prohíbe la venta de productos de segunda mano, que ya lo ha comentado antes el representante de Mercados, Ramiro.
+</p><p>
+Tercero, este Convenio se tenía que hacer, evidentemente está bastante desarrollado, pero no lleva adenda económica, no se sabe si este Convenio conllevaría... En el modelo francés, el Ayuntamiento de Toulouse dota a la asociación por su gestión de una cuantía, este Convenio tendría que venir reflejado en Presupuestos o en las convocatorias habituales que hace el Ayuntamiento para estos temas, con lo cual yo creo que el periodo que tenemos actual agota un poco esas posibilidades, esto no es inmediato, tiene que trabajarse mas, pero de entrada decimos que es un documento que se puede trabajar.
+</p><p>
+Dicho esto, es evidente que esto no es fácil, de hecho les recomendaría la lectura de un trabajo de un profesora francesa que ha hecho un Estudio precisamente ante los conflictos que se dan, se llama "Mercados Informales", en París en un distrito hubo un problema muy serio, ya sabéis que París tiene Alcaldes electos de Distrito, precisamente por el tema de un rastro ilegal que generó una conflictividad tremenda. Entonces lo tengo aquí, si queréis os lo paso, está en francés, pero bueno llega a la conclusión que el problema de fondo es cómo se gestiona el espacio público, y aquí estamos hablando de esto, de gestionar el espacio público.
+</p><p>
+Entonces bienvenido, nosotros aplaudiríamos esa propuesta, pero evidentemente una vez que esté mas trabajada, esto es un borrador, que cuando se pone la asociación XXX, pues no sé, igual hubiera sido mejor que no hubiera puesto nada, simplemente que hubiera sido un borrador mas claro, pero bueno se puede trabajar.
+</p><p>
+Y para finalizar expresar nuestro malestar como Federación ante determinadas manifestaciones que han surgido a raíz de nuestra postura en la última Mesa de Trabajo, aireadas por un medio en una red social, que no nos parecen de recibo porque primero nos remitimos a lo que dijimos aquí, se hacen apreciaciones que no corresponden a la experiencia vital de la FABZ, he incluso se emplean epítetos que podían tener consecuencias serias, desde el punto de vista legal incluso. Entones esto es una Mesa de Trabajo, yo me remito a las Actas, las posturas que tenemos quedan reflejadas en Actas, esto no es un sanedrín secreto, esto es público, entonces puede dar la sensación de que aquí se viene con ideas personales, no, son ideas trabajadas y algunos muy trabajadas desde hace tiempo. 
+</p><p>
+Los miembros de esta Comisión y del Consejo saben que la FABZ desde el primer día dijo que estaba por la venta ambulante, segundo que estaba por ordenar la problemática que había en La Almozara, tercero que estábamos por regularizar la venta, no la venta ilegal, sino la venta irregular o informal, como dicen los franceses que son muy políticamente correctos, de hecho le han cambiado incluso hasta el nombre, porque el Mercado de Pulgas ahora es muy fino, antes eran "de chiffonniers" que son los traperos, y ahora le han puesto un acrónimo extraño que son los "biffin" para que nadie se sienta ofendido en su condición de vendedor de productos recuperados. Entonces nosotros siempre hemos trasladado esa forma de trabajar y creemos que esta Mesa de Trabajo ha entrado en esta dinámica.
+</p><p>
+Y luego otras consideraciones que lo dijimos, traslado si, traslado no, una vez que se haya trabajado todo esto, veremos el resultado de futuro.  Pero si alguno hace una mala interpretación de lo que aquí estamos algunos trabajando, mal, porque se supone que hay una especie de vinculación en que esto se solucione, salvo que lo que se pretenda es generar conflicto social. Nada mas, gracias.
+</p><p>
+<strong>Dª Elena Giner Monge.- Consejera de Participación, Transparencia y Gobierno Abierto:</strong>
+</p><p>
+Gracias Manolo, quizás como has hecho alguna pregunta concreto respecto al Convenio, la respondéis, y luego damos la palabra. 
+</p><p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:</strong>
+</p><p>
+Lo primero es que como bien se ha dicho, este es un expediente que está armado y que tiene una base jurídica importante, y yo entiendo que igual que esto es una Mesa de Trabajo, esto es un expediente municipal, por lo tanto hay determinada documentación, pero yo la tengo aquí, ha sido revisada por el Servicio de Mercados y por la Unidad Jurídico-Administrativa de Derechos Sociales. Para quitar dudas y hacerlo de una manera masticable, porque yo tampoco soy experta en Derecho, lo que puedo deciros es que hay diferentes elementos en cuanto a lo que sería el Reglamento de Mercados, o la Ordenanza que regula los puestos de venta ambulante, la Ordenanza Municipal, etc. que de alguna manera se podrían solventar con una máxima jurídica que sería que por encima del interés comercial, y entiéndase bien en este contexto, estaría la dinámica social. 
+</p><p>
+Esto es algo tan sencillo como que en la ciudad de Zaragoza en algún momento en determinados espacios públicos o privados, se han llevado a cabo rastros, rastrillos de carácter de iniciativa social, avalados por una asociación, por una entidad, y se han podido hacer sin tener competencia desleal, y respetando cuestiones tan concretas como es el tema de determinados productos que en el propio borrador, que independientemente de las xxx es un borrador, se planteaba en el Convenio.
+</p><p>
+Ese Convenio se ha parado porque todos sois conocedores de que en un momento determinado saltó a los medios, y como es una Mesa de Trabajo perfectamente transparente y yo entiendo que estamos con plena confidencialidad, y aparte son datos que se pueden saber, salió a los medios con la intención de plantear que este Gobierno estaba intentado conveniar directamente con una entidad. Es algo que se ha desmentido y se ha planteado 
+que tenemos una lista de entidades de carácter benéfico-social de manera altruista, algunas de ellas especializadas en el reciclaje, en trabajos de inserción, o simplemente asociaciones vecinales que estaban por la labor, tenemos un listado en torno a 15 o 16 entidades, y esto fue lo que hizo que en ese momento digamos que cautelármente parásemos toda la gestión.
+</p><p>
+Los mimbres legales están, por lo tanto no hay dudas, evidentemente hay cosas que si se siguiera adelante se tendrían que engarzar, siguiendo proyectos como el de Toulouse tendríamos que aquilatar porque tendríamos que ver cómo y de qué manera, número de plazas, etc. cómo sería el retorno económico, que no retorno en el sentido económico monetario, sino retorno tanto para el Ayuntamiento, para el propio Mercado, que es una de las vías que se plantea, o el retorno a la propia asociación, porque nuestro objetivo seria la inserción social, vía empleo o bien facilitar a las personas usuarias cualquier tipo de acceso a lo que son los Servicios Sociales municipales o no municipales, por lo tanto no habría en ese sentido un coste económico mas allá de lo que se valorase evidentemente de todo lo que se está planteando desde las reformas que se están haciendo en el propio espacio, etc.
+</p><p>
+Creemos que hay cauces suficientes, el Ayuntamiento de Zaragoza y lo sabéis a través de Convenios que tiene de inserción social, está trabajando con la Red de Entidades que trabajan con la Inclusión, hay muchísimas posibilidades de facilitar esos circuitos, siempre hay un coste económico, pero no nos planteamos la situación de que en un primer momento hubiera un convenio económico, precisamente para evitar cualquier tipo... y para facilitar y allanar ese posible Convenio.
+</p><p>
+<strong>D. Jesús Giménez.- Presidente Junta del Rastro:</strong>
+</p><p>
+Sobre todo buenas tardes. Yo quisiera dirigirme a Ramiro, a través de las reuniones que hemos tenido, y hemos tenido muchas, y una de las discusiones que teníamos, bueno no discusiones sino uno de los problemas que teníamos era la de renovar los puestos, y yo te dije que había que buscar otra manera, porque esa manera es imposible.
+</p><p>
+Otra cosa es que habrá que ir a visitar Toulouse, yo por mi parte no he estado en Toulose, pero habrá que ir, porque aquí no se viene mas que a hablar de Toulouse, Toulouse es bueno, es esto, es lo otro... pero nunca se he visto yo en las 3 reuniones que hemos tenido propuestas de alguna solución para el Rastro, no habéis dado ninguna, solo le he oído a este señor que lo de este señor es recoge la ropa y nos vayamos debajo del puente, que si Toulouse, que si indigentes, nosotros no somos indigentes ninguno, somos nacidos aquí en Zaragoza, es que éste se refiere a Toulouse que son indigentes, nosotros no somos indigentes ninguno, vale, eso lo primero. 
+</p><p>
+Otra cosa es que no hacemos nada aquí, aquí no se habla de nada, solo se viene a hacer un control al Gobierno, y para control al Gobierno ya lo he visto esta mañana, yo ya he visto mucho jaleo, pero aquí tenemos un problema, los 2 Rastros que tenemos solo pedimos un día mas y un sitio, a mí igual me da el día mas que sea en la Plaza de Toros o que sea donde estamos ahora, si hay arreglo pues hay arreglo un día mas.
+</p><p>
+El problema que tenemos es que tenéis que arreglar los sin papeles o lo que sea, le doy la razón a Ramiro porque un día aquello va a ser una bomba, y de momento lo estamos controlando como sea, pero bueno si no se controla eso el día que salte la chispa eso va a ser un fuego incontrolable, y por lo tanto yo digo que reguléis lo antes posible lo que podáis a los inmigrantes o sin papeles, como queréis llamarle, que busquéis solución lo antes posible, porque si no cada día hay menos vendedores ambulantes, del Rastro Nuevo cada día se va uno, porque no le da de si el Rastro,  la ropa no les da de si, no se si pedirle a este hombre consejo, porque me creo que es experto en textil o algo así por el estilo.
+</p><p>
+Yo por mi parte si no se hacen propuestas ni se encuentran soluciones, yo para mí esto es una perdida de tiempo, y perdonar que os lo diga, porque no dais ninguna solución, solo habláis de Toulouse, pues habrá que ir a visitarlo a Toulouse, no nos queda otro remedio, y no tengo que decir nada mas.
+</p><p>
+<strong>D. Adolfo Allué Blasco.- Plataforma Social del Rastro:</strong>
+</p><p>
+Yo creo que lo que mas fomenta la convivencia en este sector es que todos los sectores vendan mas, me parece de pura lógica el que los conflictos cuando la economía va un poquito mejor, se suavizan.
+</p><p>
+Yo vuelvo a repetirlo, es lo que dice Jesús, lo de Toulouse es enfocado un poco para los que no tienen licencia para que dejen de estar a vuestro lado y que se pongan en la puerta del Vivero o donde haga falta.
+</p><p>
+Pero efectivamente, para los vendedores de Segunda Mano del Rastro Viejo lo que os vale es la propuesta de ponerse el sábado en la Plaza de Toros, eso es una solución tangible que ya se ha planteado aquí, y para los de Primera Mano el traslado del miércoles a la ciudad consolidada.
+</p><p>
+Bueno paso ya a lo que es el tema de la convivencia, como no se si me invitaran a la reunión esta del día 11, yo lo que creo es que de este problema de peligrosidad y de enfrentamiento, la Policía Local y la Policía Nacional tendrán censado dónde están los incidentes violentos que se dan en esta ciudad, y a mí me parece que la zona del Mercado Ambulante es de los sitios mas tranquilos de Zaragoza, tendrán una estadística de los bares, del fútbol, del tráfico, de la gente cuando se pega por el coche,... quiero decir que yo creo que aquí ha habido una campaña de los medios de comunicación para criminalizar al Rastro, pero bueno también están las estadísticas de la Policía Nacional y de la Policía Local para que nos cuenten dónde se pega la gente en Zaragoza, porque en el Rastro que lo tengamos controlado solo se han pegado 4 veces en 5 años. 
+</p><p>
+Yo no como no soy del Ayuntamiento, voy allí y la gente es que igual me habla mas claro. Hay un grupo de personas gitanas mayores con autoridad moral que hacen de mediación y de control en la zona del Mercado Ambulante. Con esas personas a través de Esther estuvimos hablando, de hecho se les puso en contacto con la gente mantera para que en caso de que hubiera cualquier tipo de problema en el tema la ocupación de los pasillos que se lo comunicaran a estas personas para que se solucionara inmediatamente y que dejaran de molestar y entorpecer el negocio de los demás. Es decir que a veces las soluciones también son muy de entre la gente. 
+</p><p>
+También quiero decir que estas personas mayores a mí me decían, si a mí los manteros no me molestan, si nosotros hemos sido manteros, si nosotros en los 70 eramos los manteros de Zaragoza, me decía este señor mayor. Quiero decir que la perspectiva de esta gente a veces es tan realista... otra cosa es que cuando ven alguien del Ayuntamiento se les acerca a preguntar pues evidentemente plantean quejas porque ellos creen que el Ayuntamiento está para reclamar, pero yo creo que la convivencia a mi me parece que no es ningún cristo y en todo caso se solucionaría con medidas de que todo el mundo venda mas. 
+</p><p>
+Y luego también no es por nada pero también hay realidades in situ que no se si la gente lo quiere ver, el hecho de que los manteros estén en medio de los de primera mano trae público a veces porque hay gente que va a comprarse unas nike falsas y luego se compra unos calzoncillos, así de claro, pero claro en los informes no se si cabe esta cotidianidad. Y los que venden sin licencia cosas de segunda mano, que venden efectivamente ropa y zapatos de segunda mano, quién se compra zapatos de segunda mano, se los compran entre ellos, no se si a alguien de aquí se le ha pasado por la cabeza comprarse alguna vez unos zapatos de segunda mano, creo que a nadie a mí no, pero hay gente en esta ciudad que van ahí y se compran zapatos de segunda mano a 1 euros, pero son prácticamente la misma gente la que vende la que compra. La gente que tiene licencia de segunda mano compra a la gente que no tiene licencia antes o durante para luego revender esas cosas, y a mi me parece estupendo, quiero decir que a veces también la economía la formal y la informal se retroalimenta. Y el supuesto Rastro nocturno tan negativo para la ciudad pues suministraba cosas para vender a la gente que tiene licencia de segunda mano, que a mí me parece estupendo, que es que es la realidad, porque a veces también parece que sin licencia dañino...
+</p><p>
+El tema de lo de Coslada lo mandamos por correo electrónico, el PP lastima que se haya marchado, el PP fue el que instaló en Coslada este mercadillo de vecinos para que pudieran vender cosas de segunda mano, pusieron 100 plazas y lleva un montón de años. Me pasa como lo de Valencia del otro día, y digo pues no se, ojalá estuviera aquí el PP de Valencia y el PP de Coslada. Hay otras experiencias, me contaron de Torres de la Alameda, Carabaña,... son pueblos de la Sierra de Madrid que los Ayuntamientos han hecho lo mismo, han puesto a la gente a vender, en Cuenca también han hecho lo mismo. No sé, no tengo mucho mas.
+</p><p>
+Luego además, lo que hablábamos de la gente que no tiene licencia, aquí francamente hay 2 alternativas, o se llena de Policía aquello, o se les da una salida con un Convenio y se les pone en la puerta del Vivero a vender de una forma controlada y se les vigila si venden cosas robadas, y se les vigila lo que haga falta. Porque la alternativa es la que se ha practicado en el Ayuntamiento desde 1985, de mandar a la Policía de vez en cuando, de hecho en los Gobiernos del PP y del PSOE pocas veces iba la Policía a echar a los sin licencia, con el Gobierno de ZeC si porque se ha visto obligada por el Heraldo, el Periódico de Aragón y todos los demás.
+</p><p>
+Pero la realidad es que creéis que mandando mas Policía se va a sacar a los sin licencia, yo creo que no, pero es que además es perjudicial. Hace unos pocos años había un puesto de primera mano con licencia que estaba vendiendo presuntamente botes de colonia robados, etc. mandaron cerca de 50 antidisturbios para quitarles la mercancía allí, y aquello supuso de que aquella mañana se suspendiera la venta a todo el mundo, como ejemplo de intervención policial efectiva, que para 4 botes de colonia le suspendes la venta a 400 familias, porque efectivamente si la gente llega al Rastro y ve allí a 50 antidisturbios pues se va a su casa. 
+</p><p>
+Yo creo que es mas razonable lo que se plantea, el coger una entidad con prestigio, con una trayectoria en el tema de asistencia social y que lleve el tema ese y que se les ponga a vender allí a esta gente, pagando por supuesto, a los sin licencia intentamos mitigar igual que se mitiga todos los demás ámbitos de la ciudad. Gracias.
+</p><p>
+
+<strong>D. Ramiro Pardo Berges.- Jefe Servicio Jurídico de Mercados:</strong>
+</p><p>
+Querría enmarcar un poco lo que ha sido mi alusión a ciertos problemas de orden social o conatos de enfrentamiento entre colectivos en razón a los Informes que venimos recibiendo de los/las Administradores/as del Rastro que actúan normalmente como receptores, y no con apreciaciones subjetivas, de las inquietudes de los colectivos. Había anunciado que había traído algunas ante mi inquietud de que la no manifestación pública de que cualquier hecho que pudiera ocurrir no fuera advertido, y no ha sido otra mi intención, me voy a permitir leer algunos de este año, son los informes que cada día de Rastro realizan los Administradores con las incidencias producidas: 
+</p><ul>
+<li>1 de abril de 2018: En el Rastro está aumentando la venta ilegal tanto en los pasillos interiores como en la separación del Rastro con la Venta Ambulante. Pensamos que ha vuelto la venta ilegal del Rastro en horario distinto al autorizado, sirve de indicio, nada más.
+</li><li>
+6 de mayo: Cada día hay mas vendedores sin licencia en la zona del Rastro Viejo, tanto por la zona de los pasillos como por la de los alrededores, llegando hasta la rotonda del parque infantil, los artículos que se venden son de este tipo...
+</li></ul><p>
+Nuestra inquietud llego a mayores cuando recibimos el informe de 17 de octubre, fecha muy cercana: Se ha recibido una queja de D. Jesús Carbonel, Presidente de la Asociación Plataforma por los Derechos del Mercado, sobre los manteros, está muy preocupado por la reacción que pueden tener algunos vendedores del Mercado ya que están muy hartos de aguantar la invasión de los pasillos por parte de los top manta que impiden la normal circulación del público y no dejan acceder a los puestos. Y también la actitud de los manteros provocativa y de poco respeto hacía los vendedores, creando un malestar general que puede llegar al enfrentamiento entre las dos partes.
+</p><p>
+El último que es de 11 de noviembre, fecha muy cercana: Sigue habiendo quejas de los manteros, el problema se va acrecentando, cada día hay enfrentamientos, muchos verbales y algún encontronazo mas que verbal, según nos comentan.
+</p><p>
+Es verdad que entre los propios colectivos y a través de prácticas de buena fé y buena voluntad se suelen soliviantar sin mas, no he querido mas que con esta alusión que has hecho, mas que el comentar que es posible que si no hay una solución, y nada más, esto llegue a mayores. Éste Jesús Carbonel, al que conoces, y que actúa a veces de mediador entre el colectivo gitano, cuando el interviene es que anuncia un problema o viene a resolverlo, o te viene a anunciar, perdonarme la expresión, que hay algo más, solo he querido decir eso, nada mas.
+</p><p>
+<strong>Dª Natalia García Ortiz.- Cámara de Comercio de Zaragoza:</strong>
+</p><p>
+Buenas tardes y gracias a los tres intervinientes de hoy, voy a ser muy breve y aunque al principio tampoco tenía mucha intención de participar, no por nada en concreto, simplemente porque estaba escuchando, si que es cierto que he apuntado dos detalles que me gustaría manifestar mi opinión.
+</p><p>
+En relación a la intervención anterior tuya, Adolfo, lo único no compartir el tema de la retroalimentación que comentabas de lo ilegal a lo legal, eso no lo podemos permitir, eso no tiene justificación, a lo mejor quizás estoy sacando un poco de quicio el comentario, pero es cierto que me ha sorprendido que dijeras es que se retroalimenta lo ilegal con lo legal, no, a ver, a ver, o es legal o no es legal, no podemos defender la venta ilegal. Con lo cual eso me gustaría que por la entidad a la que represento quedara clara nuestra postura, hay que ver qué se hace con lo que no es legal, pero no se puede entender que hay una economía que es sumergida y que da igual, no, hay que solucionarlo, entiendo yo, eso por un lado, simplemente como opinión ya como Corporación e incluso personal mía.
+</p><p>
+Y lo segundo en relación al borrador de Convenio, de acuerdo con una asociación y tal, yo creo que aunque siempre desde la Cámara estaremos a favor de solucionar todo esto y acabar con los problemas que se generan tanto para las personas que ejercen venta ilegal, para ellos mismos como para el resto de la sociedad, que se intentará dignificar siempre la venta del Mercado Ambulante y ver que medidas se pueden implementar para mejorar su situación actual.
+</p><p>
+Dicho eso también es cierto que nosotros ya simplemente por nuestra naturaleza jurídica entramos menos en el tema de Servicios Sociales, es decir nuestra función es eminentemente empresarial, y es amparar y defender los derechos de las empresas de la provincia de Zaragoza. Que hay un sector en el cual Servicios Sociales debe volcarse y buscar una solución, vamos totalmente de acuerdo en que me parece muy digno el intentar solventar una problemática que existe y que es evidente, pero que es cierto que como Cámara poco mas aquí podemos o debemos aportar, porque nosotros repito tenemos una naturaleza empresarial y estamos aquí representando a los vendedores y a las empresas que ejercen la actividad empresarial de manera legal en esta provincia, y poco mas, gracias.
+</p><p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:</strong>
+</p><p>
+Solamente responder un apunte, medio en broma, que en 1998 si que estaba la Cámara, que me parece un documento... realmente lo he traído aquí de lo que dice la página web de la Fundación Akarida, y me pareció un documento que nos pone en valor porque al fin y al cabo en esa época la población migrante era la de los entornos y querían pues lo que la mayoría de nosotros queremos, un beneficio para nuestras familias y una proyección de futuro.
+</p><p>
+Lo que pasa es que nosotros desde el ámbito de..., creo que en el Convenio no se si queda reflejado, en el expediente si, lo que se plantea es que dentro del orden jurídico y dentro del marco que tenemos en una ciudad como la de Zaragoza, con todo lo que se está trabajando, una de las premisas es que la Ley de Bases de Régimen Local dice que el Ayuntamiento tiene competencia en temas de emergencia social, pero también la tiene en mercados, y nosotros hemos hecho como un cruce de vectores, entonces yo entiendo lo que tu planteas, y desde luego aquí lo hemos dicho y lo diremos siempre, nosotros estamos por la Venta Ambulante, creo que este Gobierno ha defendido el comercio de proximidad, creo que estamos haciendo acciones, estamos intentando poner en valor eso, pero también creemos y tengamos la sensación de que esto ni se va a solucionar por la vía represiva ni va a desaparecer.
+</p><p>
+La realidad, y estos son datos con los que contamos, es que las personas migran cada vez hacía la Europa desarrollada, quieren mejorar su vida y recalan en las ciudades, y las ciudades son las que dan servicios. Y nosotros no regulamos la Ley de Extranjería, ni la Ley que regula las relaciones entre empresas, los convenios colectivos, las normativas,... pero si que tenemos que dar una salida. Con todos estos vectores nosotros no hablamos de irregulares, sino que hablamos de situaciones irregulares, y ahí está el prisma desde el ámbito de lo social. 
+</p><p>
+Creemos que un Convenio como éste con una vestimenta, un paraguas, que permita que estas situaciones den salida pero sin entorpecer la venta y el derecho de los vendedores, que muchos de ellos también tienen su situación personal y económica determinada, pero si que es verdad que desde el ámbito de los Derechos Sociales tenemos que intentar proteger a los mas vulnerables,  y si que es real que hay personas que aun accediendo a determinadas prestaciones, como el IAI, no llegan a final de mes, o tienen situaciones concretas muy determinadas, o tienen una situación de enfermedad, o no acceden a una pensión mas allá de 345 euros al mes, o no acceden a un posible trabajo porque su situación se lo impide, les impide la Ley poder ser personas regulares y durante ese tiempo viven en las ciudades. Con todo ese mapa y teniendo en cuenta, que esto es lo que yo quiero plantear encima de la mesa, que esto va a seguir, este fue el embate que nosotros como ciudad tuvimos que abordar, y lo tienen que abordar otras ciudades y como decía mi compañero nada que ver por ejemplo con ciudades turísticas donde evidentemente esta población va fluctuando porque efectivamente supone mayor posibilidad de venta.
+</p><p>
+<strong>Dª Lola Campos Palacio.- Grupo Municipal Socialista PSOE:</strong>
+</p><p>
+Yo he preferido también escuchar un poco a la gente antes de intervenir y poco voy a decir y a aclarar porque comenté el otro día mi estado de ánimo, que estaba un poco descolocada, recordando que hay 2 Comisiones, 2 Foros de Trabajo, hablo desde un partido político, con posicionamientos políticos distintos en un foro y en otro, yo comenté que iba a seguir asistiendo a las reuniones de trabajo de los 2 Foros, ahora en estos momentos  soy la única del resto de Grupos, yo sigo, a esto no se que lectura darle, ni que importancia darle, pero como yo soy muy responsable, una chica de Farasdués que siempre he sido muy responsable, pues yo sigo, no se a qué efectos pero sigo y seguiré en la otra reunión, y como normalmente creo que dicta el sentido común que cualquier decisión que acordemos respecto a todas las piezas que hay sueltas vendrán dadas del resultado de los 2 Grupos de Trabajo, que para eso se crean, porque si no para que venimos a las 6 de la tarde en unos días tan apretados supongo que para todos, no lo sé.
+</p><p>
+Yo leyendo ya la convocatoria que decía seguridad y convivencia, digo hablaremos mucho de altercados y de cosas que se trataban en el Informe, y de convivencia de cómo compaginar todo. Pero igual lo he entendido mas, os lo digo de verdad, igual he entendido mal cuál era la intención que expresaba la Sra. Giner, de que vamos a debatir hoy, no en exclusiva porque está el documento éste, pero casi en exclusiva el Convenio, y he querido entender que se iba a aprobar, si nos parecía bien o mal. Yo desde luego no me atrevo a votar en contra de una cosa ni a favor de una cosa sin consultar a mis compañeros, pero sobre todo quiero esperar a lo que sean los resultados de esos Grupos de Trabajo y quiero esperar también a varías cosas, y enuncio 2 elementos que me parecen dignos de análisis:
+</p><p>
+El documento que yo creo que hace un resumen, no voy a entrar en valoraciones, creo que a veces es demasiado preciso cuantitativamente cuando se basa en cifras muy aleatorias, pero en fin, pero el documento que tiene la ventaja de hacer un avance de propuestas, una de ellas en la línea de lo que nosotros expresamos el otro día, que se puede debatir y a la vez ir trabajando en lo que sería la modificación de todo el marco normativo. Nosotros estamos por eso, creemos que nada se puede hacer al margen de la Ley y por lo tanto si hay soluciones busquemos ahormar lo jurídico a las soluciones que le queramos dar, y a la vez tomemos decisiones sin salirnos del marco jurídico, creo que decir eso no es ninguna aberración.
+</p><p>
+El documento también plantea que "de manera complementaria", o sea no tenemos porque pararnos, "tiene que haber un proceso mediado de mejora de relaciones entre los agentes implicados", lo estamos viendo aquí, esa es una labor que debemos ir haciendo y tomar determinadas posiciones ya puede todavía enrarecer mas, porque significa acortar, coger el alcorce para lo que sería la mediación, creemos por lo tanto que hay que acabar. Pero es que además el documento dice: "todo ello condicionado a una profundización del conocimiento de la realidad del Mercado de la Almozara". El documento expresa su poquedad en el sentido de que no llega a todos los elementos, y dice "se necesitarían mayores plazos y recursos de los disponibles para la realización del presente análisis", es decir tenemos un documento que está bien, a mí me parece bien en general, pero dice que todavía no hemos llegado. 
+</p><p>
+Y luego esto lo sumo con lo que ha dicho la Sra. Broto, que dice que tenemos ya un expediente armado y con base jurídica importante. El otro día en la otra Comisión que estuve, algunos de ustedes como no están en la Comisión, otros parece que no van a aparecer, yo es que estuve en la otra Comisión y allí el Jefe de los Servicios Jurídicos del Ayuntamiento además de otro jurídico, vino a decir, y eso lo ha dicho la Sra. Broto, puede cogerse por lo social lo que sería un nuevo emplazamiento, puede pesar la parte social para tomar una iniciativa, y dijo que no era incompatible, pero también expreso, y voy a ahorrar a la mesa algunos detalles que hubo luego por parte del responsable jurídico, donde en resumen le dio una patada al expediente y lo mandó a la nada, porque lo mandó a un órgano que no existe, o sea, en fin lo mandó a un órgano que no existe, no estará tan bien armado cuando de momento no se mojó en la precisión y dijo que había que resolver determinadas dudas. 
+</p><p>
+Creo que en esto casi coincido con el representante de la FABZ, en que nosotros creemos que hay que resolver las dudas, y ya remato con lo que sería nuestra posición general como Grupo, vamos a seguir escuchando como he dicho, recapitulo, vamos a tomar nota de todo lo que se diga, no queremos movernos, como no puede ser de otra manera, no queremos movernos de un marco legal, lo movamos o no lo movamos, pero todo con el imperio de la ley, dicho con solemnidad, o sea cualquier postura nuestra será basada en la legalidad, en la transparencia, en la claridad, y en algo que también nos parece necesario y que liga también con todo lo que es el procedimiento administrativo, sin salirnos de la igualdad de oportunidades y de la libre concurrencia, queremos que cualquier decisión que tomemos sujeta a la ley y a los procedimientos normales. Tomando la parte social, desde luego, tiene la parte social tanto por los ilegales como por la parte del Rastro y de la Venta Ambulante. Y si tenemos 2 Foros, ya se que algunos no estáis en uno o en otro, pero al menos los que estamos y estamos aquí invirtiendo tiempo, dejarnos que escuchemos todo. Esa es nuestra postura, no he dicho nada, pero creo que he sido clara en algunos aspectos.
+</p><p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:</strong>
+</p><p>
+Yo perdóname como me toca estar como Presidenta de la Comisión quiero clarificar porque claro puede que se genere cierta confusión. El expediente es un borrador, no, el expediente está armado, el expediente tiene nombre, tiene justificación, fue al Servicio de Mercados y fue complementado por la Unidad Administrativa, y recuerdo que la Comisión en la que estamos tiene cierta confidencialidad, pero en todo caso si que es diferente la valoración del Convenio y sus matizaciones. Porque el Convenio si que es un borrador, el Convenio es un instrumento de trabajo, pero la base jurídica está, lo digo porque parece que ahora de repente no tuviera base, si, la base está y el hecho es que se ha podido producir en otras ciudad que el ordenamiento jurídico es parecido al nuestro, e incluso en ciudades cercanas en la que ha habido experiencias de este tipo, como la ciudad de Huesca. Con esto quiero decir que existente esa posibilidad, que entiendo que una cosa es el expediente administrativo y otra cosa el Convenio que es un borrador.
+</p><p>
+<strong>D. Dioscórides Casquero.- A.VV. Tío Jorge del Arrabal:</strong>
+</p><p>
+Buenas tardes, yo tengo que reconocer que cuando me llegó toda la documentación de esta reunión, me sorprendió un poco el estudio de los documentos, puesto que hasta ahora estábamos centrados sobre todo en el trabajo del tema del Mercadillo con sus dos elementos componentes.
+</p><p>
+Entonces a la vista del Informe que nos ha resumido Ramiro, leyéndolo en detalle se ve como junto a ese Mercado con esos 2 componentes, han surgido en este mercado 2 nuevos elementos mas, pero ha sido a consecuencia del calor de ese Mercado, porque el Mercado tendrá sus problemas, que los tiene efectivamente, problemas de rentabilidad, pero el mercado es lo suficientemente dinámico como para haber atraído, haber generado 2 nuevos tipos de oferentes mas: 
+</p>
+<ul><li>que es el grupo de los que venden segunda mano y 
+</li><li>el grupo de los que llamamos coloquialmente manteros.
+</li></ul><p>
+Yo querría dar un orden de magnitudes estadísticas para situarnos un poco: en Zaragoza a fecha de hoy a pesar de la cantidad de grandes superficies, etc. que es tremendo, es la ciudad con mas ratio de grandes superficies por habitante de toda España, Zaragoza, tenemos ese honor. Tenemos el honor de ser los receptores del mayor Centro Comercial de España, que por cierto lo acaba de comprar capital árabe, que sepáis que cada vez que subís a Puerto Venecia estáis alimentando a los jefes árabes, y bueno en esa tesitura es sorprendente que aun queden las actividades que quedan, quedan 7.000 y pico actividades, la mitad son alimentación y la otra mitad es todo el resto del comercio.  Y como aquí nos estamos centrando en textil y calzado, daros un dato orientativo, y es que las tiendas que quedan en Zaragoza, que aguantan de textil y calzado, son aproximadamente unos 800 establecimientos, y en el Rastro estamos hablando de 400, o sea es una cifra significativa, y desconozco exactamente el número de operadores de la otra parte, imagino que será un número importante, estamos hablando por tanto de cifras importantes. 
+</p><p>
+Y me ha sorprendido las cifras que habéis dado del Estudio que habéis hecho, un estudio interesante y bastante serio, yo por lo menos es la sensación que he tenido, de unos 100 y pico operadores de segunda mano y unos 60 manteros. Entonces yo me planteo varias cosas, lo primero es si todo esto se puede abarcar dentro de la misma regulación de venta ambulante, porque la venta ambulante en España está regulada mediante una serie de normas a nivel nacional, autonómico e incluso municipal. La nacional, la última, es un texto refundido, es un Real Decreto del año 2010, que especifica lo qué es la venta no sedentaria, y cómo se regula, y que dice textualmente "que corresponde a los Ayuntamientos determinar zonas, emplazamientos, para el ejercicio, duración, etc.", lo cual da plena potestad al Ayuntamiento para hacer cuantos mercados quiera, lo único que le marca unas pautas legales que tiene que cumplir.
+</p><p>
+Entonces mi primera duda es decir bueno si, se pueden hacer esos nuevos Mercados, pero, es una duda repito, hay que tramitarlo como un nuevo mercado o se puede considerar todo un mismo mercado, porque el Mercado actual ya tiene un Reglamento y estos serían añadidos, yo identifico aquí 4 operadores en vez de los 2 tradicionales, y me hago esta duda, desde el punto de vista legal, de si no sería obligatorio el hacer eso.
+</p><p>
+Y con respecto al tema del Convenio también me ha sorprendido la formula elegida. Yo entiendo, y por eso insisto, en que han salido al calor del mercado, que por ejemplo el tema de los manteros, tu no los puedes separar del Mercado, porque, y aquí hablando de experiencias, os cuento una experiencia en Valencia que acaba de inaugurar un nuevo mercadillo, repito con la Ley en la mano, Real Decreto del año 2010 que acabo de anunciar, el Ayuntamiento es libre de regular por Ordenanza cuantos mercados quiera, ha creado uno extrayendo a los manteros que había por ahí y digamos que para que dejaran de causar problemas en otros lados, y ha creado un Rastro específico de Mercados. 
+</p><p>
+Aquí se apuntaba por el Estudio el Paseo Sagasta que había salido como propuesta de ellos, pero ellos no crea flujo, necesitan flujo creado por terceros, dónde se sitúan ahora, se sitúan donde ese comercio tradicional que aún aguanta crea un flujo en el casco de la ciudad, dónde nos tropezamos con ellos, pues en las calles mas céntricas, en los porches del Paseo Independencia, en la calle Alfonso, etc., e imagino que próximamente en la calle Don Jaime, y bueno por eso crean esos problemas y por eso son esos conflictos que señalan esos partes que acaban de leer, donde hay esa conflictividad. Por tanto la solución podría ser extraerlos, entonces no van a tener rentabilidad, sería buscar alguna formula de convivencia pero sin quitarles ese flujo, sin ese flujo están muertos, por tanto no es la solución.
+</p><p>
+Y el otro aspecto, el que se nos ha ilustrado con la experiencia de Toulouse, yo te puedo decir que hay experiencias en otras ciudades canadienses que yo conozco, en Toronto por ejemplo y en otros sitios hay también experiencias parecidas. Pero a mí hay una cosa que me da miedo, y es el enfoque exclusivamente social de este tema, cuando es un tema que tiene que ser autosostenido, el problema de estas cosas desde el punto de vista del Ayuntamiento, y es una decisión política, es que aunque pueda contar con el calor y el apoyo municipal, y una cierta subvención, tiene que ser autosostenible económicamente, si estamos hablando de 100 y pico personas que se puedan ganar la vida con eso, eso necesita una facturación, y por tanto necesita no solamente la buena voluntad, no solamente la colaboración de los Servicios Sociales municipales, necesita que funcione en el mercado, y en ese sentido es el aspecto de la gestión, y todas estas cosas funcionan, las experiencias que yo conozco por lo menos, porque hay una buena gestión detrás.
+</p><p>
+Esa gestión quién la puede hacer, bueno ahí se ha creado la figura esa de la Asociación, pero yo me planteo una cosa por lo que conozco del Ayuntamiento, para mí me daría mas garantía de esa autosuficiencia alguna institución municipal, que las tenéis, potentes, que tienen recursos, que tienen buenos técnicos y que tienen posibilidades de dar ese paso mas, de no quedarse solamente en la buena voluntad, sino de tener experiencia y de tener medios relacionados con el emprendizaje, y yo ahí estaba pensando por ejemplo en Azucarera, estaba pensando en Imefez, estaba pensando en una serie de instituciones que posiblemente deberían participar en esto si queremos que esto tenga una viabilidad, no solamente social, que es el enfoque que hasta ahora se le ha estado dando, el enfoque digamos de impulso, sino también económico, esto tiene que cuajar en el mercado para que la gente responda, de poco sirve que hagamos este Mercado, que se haga este Convenio, si luego la gente no compra, y esto dependerá de la gestión, por tanto esa es la duda.
+</p><p>
+Y para terminar ya, y termino con esto, y la duda que me surge, es que hoy hemos dedicado la sesión a mirar temas digamos colaterales que han surgido al calor de vuestro Mercado, gracias a que vosotros existís, pero no le hemos dedicado ni un minuto al tema principal, que es hacer cómo hacer que el Mercado con sus 2 facetas fundamentales garantice su supervivencia, que es con los que hemos estado en las dos sesiones anteriores y habrá que volver en su momento. De hecho el representante un poco en su intervención anterior se quejaba de qué soluciones hay. Estos son dos temas adicionales al Mercado principal.
+</p><p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:</strong>
+</p><p>
+Yo brevemente respondo a parte de lo que planteas, vamos a ver el enfoque social no es solo social, sino que nosotros estamos hablando de que precisamente hay una parte que tiene que ser social y asistencial, puesto que estamos hablando de personas que no tienen recursos en algún caso, pero  estamos hablando también de inserción hacía un futuro, que esa es la mejor manera de crear un itinerario y por supuesto hemos estado hablando de todos los recursos municipales, no los voy a nombrar, los conocemos, desde Zaragoza Incluye, desde toda la Red que he comentado antes de empresas de inserción,... o sea toda esa maquinaría estaría ahí.
+</p><p>
+La fórmula, vuelvo a decir, nosotros planteamos un borrador de Convenio con una entidad sin ánimo de lucro precisamente para evitar problemas, para que no hubiera ningún tipo de planteamiento de duda, pero evidentemente el desarrollo que habría posterior sería una inserción, esto no es para tener en el limbo a unas personas durante un tiempo.
+</p><p>
+En cuanto a los flujos yo no soy experta, pero la ubicación está precisamente planteada porque el flujo lo hace el propio Mercado, es decir  habría otra zona dentro de lo que es el ámbito del Párking Expo, donde se sabría que habría esos 4, 3 sectores, depende de cómo se organizase.
+</p><p>
+Y en el tema del Reglamento pues volvemos a decir, el expediente lo que plantea es que existe esa posibilidad de compatibilizar, si quieres yo como no soy experta el próximo día o cuando lo planteemos podemos detallar y bajar mas, pero es verdad que hoy la sesión estaba vinculada solamente al tema de convivencia, no precisamente al tema de las opciones de posible traslado, a la mejora de la venta ambulante, etc. hoy era tema convivencia. 
+</p><p>
+<strong>D. Dioscórides Casquero.- A.VV. Tío Jorge del Arrabal:</strong>
+</p><p>
+Realmente consideras incompatible el hecho de la Asociación, tal y como la tenéis enfocado aquí, con dárselo al final a una institución municipal.
+</p><p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:</strong>
+</p><p>
+No, yo no he hecho esa valoración, lo que he dicho es que nosotros planteamos un borrador de Convenio, era la fórmula que nos pareció, este es un Grupo de Trabajo en el que lo hacemos es tener la opción de hablar todos y poder aportar, pero no he dicho en ningún momento que fuera incompatible, digo que fue la opción que nos pareció mas cercana, pero que el objetivo es no solamente hacer una atención social en el sentido asistencial, que también habrá que hacerla, porque en algunos casos como te digo son así, pero nuestro objetivo es la inserción real, y la inserción real en nuestra ciudad y en este entorno en el que vivimos pasa por la inserción laboral, en el caso de que se pueda, o en la inserción social por tener recursos o acceso a determinados recursos.
+</p><p>
+<strong>D. Dioscórides Casquero.- A.VV. Tío Jorge del Arrabal:</strong>
+</p><p>
+E incluso emprendedora
+</p><p>
+<strong>Dª Luísa Broto Bernués.- Consejera de Presidencia y Derechos Sociales:</strong>
+</p><p>
+O incluso emprendedora por supuesto, pero ya bajamos a un terreno muy concreto, un pasito detrás de otro.
+</p><p>
+<strong>D. Jesús Giménez.- Presidente Junta del Rastro:</strong>
+</p><p>
+Yo voy respecto a lo de antes, yo soy una persona que si que quiero que esté la Policía en el Rastro, incluso he propuesto muchas veces que el Rastro se cerrara, que no nos dejaran entrar hasta las 7 de la mañana y no salir hasta las 2 de la tarde, eso Ramiro lo sabe que se lo he propuesto muchas veces, pero no para un día solo, porque la Policía viene 3 días y luego se va, y el Rastro vuelve otra vez a ser lo que era, nosotros no queremos eso. Nosotros tampoco queremos que vendan fruta, ni que vendan embutidos, ni que vendan jamón, ni que vendan queso, eso tampoco lo queremos en el Rastro.
+</p><p>
+Por eso digo que la Policía es necesaria, pero solo para el Rastro Viejo, no para el Rastro Nuevo, porque antes si se hizo esa orden, y se conoce que la Policía lo entendió mal o nos explicamos mal alguno, y cortaron los 2 Rastros, porque no dejaban entrar hasta las 7 ni al Nuevo ni al Viejo, sólo queremos para el Rastro Viejo, no para el Nuevo, que se cierre hasta las 7 de la mañana y no se deje entrar a nadie hasta las 2 de la tarde, pero tampoco queremos que a nosotros nos acoten y dejen entrar a los del carrico y a los del atado, porque la Policía nos para a nosotros los coches para que pasen ellos, y eso tampoco queremos, porque la otra vez que se hizo casi se levanta no se qué... pero hasta que al final la Policía vino 3 días y luego se calmó, pero no queremos la Policía para 3 días, queremos a la Policía ahí constantemente porque si no eso va a ser un desmadre.
+</p><p>
+Yo me dirijo a la Comisión para que me dejen un sábado de prueba, si hay mucho jaleo y muchas protestas pues no, pero si quisiera que me dejaran probar un sábado en la Plaza de Toros, la venta.
+</p><p>
+<strong>D. Juan Manuel Arnal Lizarraga.- FABZ:</strong>
+</p><p>
+Soy Manuel Arnal, Presidente de la FAZ, represento a 15.000 asociados y vivo en el barrio La Paz desde hace muchos años, esto para que se sepa, de hecho el tabardo que llevo es del Mercado, pero bueno soy de Zaragoza, no conozco el textil, pero estábamos hablando de la situación del Tercer Sector precisamente.
+</p><p>
+Como vecinos de Zaragoza los vecinos de la Almozara no quieren broncas, no quieren suciedad, no quieren problemas, quieren tener el transporte público como todo el mundo, con sus frecuencias, etc. y es que a veces nos olvidamos que está dentro de la ciudad, estamos hablando de un problema ciudadano, y esto vale para todos, un problema ciudadano, de toda la ciudad, o no solo de unos vecinos, sino de todos los vecinos.
+</p><p>
+Hemos dicho y vuelvo a decir, que nosotros creemos que puede coexistir la venta ambulante sin problemas en la ciudad con el comercio de proximidad, que por cierto queremos trabajar junto con la Cámara porque estamos asustados de lo que está pasando en los Distritos, estamos asustados, porque entre unas cosas y otras,... no solo la mayor superficie de ratio de España, sino de Europa, somos campeones Zaragoza en eso. Entonces hay que buscar soluciones, no decimos que vayan ustedes debajo del puente, decimos que vayan donde están de entrada con las mejoras y el esfuerzo económico que hace toda la ciudad, porque cuando se dice líneas de autobuses, cuando se dice equipamiento, cuando se habla de dignificar el entorno, es dinero de los Presupuestos de todos los zaragozanos, por eso hay que ser un poco prudentes. 
+</p><p>
+Creemos que hay un problema que es la venta de las personas que reciclan o recuperan y ver eso cómo se legaliza para evitar conflictos, para evitar conflictos. Nosotros vuelvo a recalcar que creemos que una figura de Convenio, no tiene por que ser éste, a saber, esto es un borrador de trabajo, lo hemos visto y no nos parece mal, la música, luego hay que leer la letra. Porque el Convenio se nota que lo ha redactado un funcionario en condiciones, me imagino que con formación de Derecho porque ha puesto muchas cosas muy acotadas, de hecho este Convenio es duro si se ejecuta tal como viene, muy duro porque conlleva un control, y si hay control y reglamentación se supone que los conflictos disminuyen. Primero asumir todos, porque a mí me enseñaron que cuando uno se desmadra hay que aplicar la legislación, mientras tanto consenso y buen rollito, pero claro cuando ya no hay buen rollito y se detecta que hay problemas lo mejor es buscar una solución, y también todas las soluciones son a prueba, no es una solución definitiva, tiene que ser a prueba. Y yo creo que la buena voluntad que tiene esta mesa de trabajo, con los poquitos que venimos, es con la intención de buscar un acuerdo, un acuerdo ciudadano que beneficie a toda la ciudad, porque yo les puedo decir que vecinos de la Almozara nos han trasladado su preocupación, y no queremos generar mas conflicto sino al revés tranquilizar y que se vea que esto tiene una solución.
+</p><p>
+En cuanto a lo de Toulouse, se metió Toulouse no por nada sino porque era una ciudad de 700.000 habitantes que había regulado la venta de estas características, y que históricamente mantiene rastro de libreros, rastro de antigüedades, otro rastro de vendedores de los países del mundo, de artesanía, mercadillo de fruta, pero un mercadillo de fruta al aire libre espectacular el sábado, tiene de todo, pero no se puede decir lo de Toulouse para Zaragoza, claro que no, hay que copiar lo que se puede copiar y lo que no no. En este caso es bueno que haya un invento que funciona desde 2011 y que se ve que funciona, y que da una vía de salida para personas en situación de desprotección, vamos a decir de desprotección, que no llegan con el IAI, o no tienen rentas, recuerdo que en Zaragoza a todo el mundo empadronado, se puede empadronar todo el mundo en Zaragoza y lo amparan los Servicios Sociales, no vamos a entrar en nada mas, para nosotros vecinos, para la FABZ vecinos. 
+</p><p>
+Entonces no se el resultado de la Comisión de los Grupos Municipales, lo que si que se es que ha habido un salto cualitativo desde cuando empezó esto a ahora, ahora estamos aterrizando, lo único que pedimos desde la FABZ es un poco de sosiego para ver si al final después de todas estas medidas, igual dentro de un año, de dos, con este Grupo, con otro, con quien esté, tendremos que juntarnos otra vez con la Cámara de Comercio, con la Junta de Vendedores, para ver qué es lo que ha pasado y si todas esas medidas han dado fruto o hay que buscar otras, o a lo mejor tenemos un gravísimo problema y es que se nos cae el comercio de proximidad totalmente, en la crisis ha habido una escabechina, solo hay que ver como está Miguel Servet, San José, la Avda. Madrid,... para darse cuenta, si son calles principales, no hablemos de las secundarias, esto ya lo hemos hablado también como FABZ en otros foros, que el comercio tradicional se va, se nos va de las manos, entonces vamos a ver también todo eso.
+</p><p>
+También hemos dicho que en el entorno del Casco consolidado está el Mercado Central, que también tiene que vivir, se ha hecho una gran reforma y se supone que es para que vivan los que están dentro del Mercado, nos anunciaban esta semana que va a haber también otro mercado, estamos hablando de producto alimentario en Parque Venecia, eso hay que analizarlo todo en su conjunto, todo el comercio de la ciudad y luego ver los diversos apartados. Démonos tiempo, hay un compromiso de que estas medidas se van a implementar en lo que va de Consistorio hasta que lleguen las elecciones municipales, hay ese compromiso, hay que hacer modificaciones legales en el Reglamento porque de hecho prohíbe la venta de segunda mano y alguna cosa mas, y una vez todo eso volvámonos a juntar y a ver qué es lo que ha pasado.
+</p><p>
+<strong>Dª Elena Giner Monge.- Consejera de Participación, Transparencia y Gobierno Abierto:</strong>
+</p><p>
+Gracias, tenéis alguien alguna intervención mas, por cerrar, que son las 8, yo creo que se han aportado cosas muy interesantes, muchas líneas de seguir profundizando en vías, unas que se están explorando y otras que pueden ser nuevas vías.
+</p><p>
+Y viendo un poco las intervenciones, si que hay cuestiones que parece que han salido varias veces y que no ha habido ninguna intervención en contra, una de las cosas que apuntabas tu ahora Manolo, de la normativa que hay que revisar y adecuarla a lo que queramos plantear, y a esas modificaciones que queramos hacer, y algunas de ajustar porque no concuerdan con una práctica justa o equitativa entre unos colectivos y otros. 
+</p><p>
+También habéis hablado mucho en términos de que hay que regular lo que no está regularizado ahora, que si que la intención de buscar una solución que regule eso es una línea en la que estábamos trabajando, el Convenio es el ejemplo que hemos puesto y el trabajo que se trae aquí de cómo se ha avanzado, pero no ha habido ninguna voz en contra de que no haya que buscar una solución y regular esa situación, con lo cual seguimos avanzando en esa línea de regular y no dejarlo tal y como está, sino poder encontrar soluciones.
+</p><p>
+El Convenio, la experiencia de Toulouse, que oye pues si acordamos y concluimos que nos tenemos que ir todos a Toulouse pues nos vamos todos a Toulouse en un autobús y vemos "in situ" los mercados, oye pues si hay que ir se va. 
+</p><p>
+También abriendo esa nueva línea de que fuera alguna institución mas municipal, Imefez, Azucarera, que bueno ahí abre otras líneas y otras experiencias que hemos traído aquí, pero que sabemos que se están trabajando en otras ciudades para desarrollar experiencias de emprendimiento y otras cuestiones, que es otra línea que en paralelo a esta mas de vertiente social que se puede ir explorando.
+</p><p>
+También hay un reconocimiento de que existen situaciones de vulnerabilidad alta que se dan en el entorno del Rastro y en torno a la venta ambulante, y que esas situaciones si requieren una respuesta social y un apoyo social a las mismas, y que a eso tenemos que buscar la respuesta también.
+</p><p>
+De las cuestiones mas de los conflictos, de la parte mas relacional, se ha hablado de la intervención de la Policía con algunas opiniones diversas al respecto, pero es una línea que hay que seguir trabajando. 
+</p><p>
+Y también esa labor mediadora, que se hace de manera natural en algunos casos, pero que a lo mejor pues tenemos que explorar alguna vía de manera piloto o no tan piloto, probar o ver de qué manera podemos intervenir desde una acción mas mediadora en los conflictos que están surgiendo o que surgen en este entorno de convivencia entre unos espacios y otros. 
+</p><p>
+Y así como cosas de una primera revisión o escucha de las cosas que han surgido, que parece que son las que mas se han oído y que se constaten, aunque Rosa va a hacer un acta detalladísima y transcrita prácticamente de todo lo que salga, porque de allí es de donde vamos a poder extraer todo un desarrollo de las ideas de conclusiones de lo que surja aquí para luego poder seguir trabajándolo en el Grupo.
+</p><p>
+Sabéis que la siguiente sesión es el 12 de diciembre, que es la sesión que dinamizará la Cámara de Comercio, en la que se expondrá todo el trabajo que vienen desarrollando. 
+</p><p>
+Y que esta puede ser una perspectiva un poco adyacente por lo que planteabas de la situación, pero que también todas las medidas son necesarias, pararnos, dedicarles el tiempo y además con toda la información que hemos podido tener que nos arrojaba luz, para que le demos toda la profundidad que merece esta cuestión y que luego se unirán las piezas con el resto de cuestiones,
+</p><p>
+La sesión será en la Sala de Prensa, que no teníamos esta sala disponible, será en la Sala de Prensa que está aquí al lado, y después ya en enero será la sesión mas de trabajar las conclusiones mirándolo todo en global. Que no quiere decir esto que no sigamos trabajando en las cosas que ya se anunciaron en la anterior y que son mejoras concretas, pues que hoy no tocaba hablar de ellas y tocaba hablar de estas otras cuestiones, pero que en todas esas cuestiones se sigue avanzando y se sigue concretando cuestiones ya del día a día que iréis viendo. Pues muchas gracias por la asistencia y nos vemos el 12 de diciembre.
+
+</p><p>
+<strong>La Consejera levanta la reunión del Grupo de Trabajo a las 20,10 horas</strong> del día señalado en el encabezamiento.
+</p>
+<div>
+	<div class="col-md-6">
+<p>Consejera de Participación, Transparencia y Gobierno Abierto	  </p>  
+<br/> 		
+<p>Fdo. Elena Giner Monge</p>
+</div>
+	<div class="col-md-6">
+	<p>Jefa de Sección del Consejo de la Ciudad</p>
+	<br/><br/>
+	<p>Fdo. Rosa Mª Bleda Hernández</p> 
+	</div>
+</div>
+
+
+
+                            </div>
+                          
+                        </div>
+                      
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

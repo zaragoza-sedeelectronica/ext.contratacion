@@ -1,0 +1,233 @@
+<div class="inform repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+<form novalidate name="mainForm" ng-submit="mainForm.$valid && guardar()">
+<div class="row">
+
+    <div class="col-md-12">
+		<button type="submit" class="btn btn-default" ng-show="permisos.MOD">
+			<span class="fa fa-check" aria-hidden="true"></span> 
+			<span class="hidden-xs"> Guardar</span>
+		</button>
+        <modal-registro-borrar></modal-registro-borrar>
+		<boton-debug ng-model="registro" ng-show="debug"></boton-debug>
+    </div>
+
+</div>
+
+<hr/>
+
+<div role="alert" class="alert alert-danger" ng-show="mainForm.$submitted && mainForm.$invalid">
+	<ul>
+		<li ng-repeat="(key, errors) in mainForm.$error track by $index"> 
+			<!-- Errores: <strong>{{ key }}</strong> -->
+			<div ng-if="key === 'required'">
+				<strong>Faltan campos por completar:</strong>
+				<ul>
+					<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> es obligatorio.</li>
+				</ul>	
+			</div>
+			<div ng-if="key !== 'required'">
+				<ul>
+					<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> tiene un error: <strong>{{ key }}</strong>.</li>
+				</ul>	
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <fieldset>
+			<legend>Datos del registro</legend>
+			
+            <div class="row margin-b2em">
+                <div class="col-md-7 form-horizontal">
+
+                    <!-- Identificador -->
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.registerType.$touched) && mainForm.registerType.$invalid}">
+                        <div class="col-sm-8"></div>
+                        <label class="col-sm-1 control-label">
+                        	<span>ID:</span>
+                        </label>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input style="border-color:#CCC;" class="form-control" name="id" type="text" ng-model="registro.id" value="{{ registro.id }}" disabled/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Año y Mes -->
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.registerYear.$touched) && (mainForm.registerYear.$invalid || mainForm.registerMonth.$invalid)}">
+                        <label class="col-sm-2 control-label" for="registerYear">
+                        	<span class="obligatorio">Año:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" name="registerYear" id="registerYear" ng-model="registro.anyo" value="{{ registro.anyo }}" required/>
+                            <span ng-show="mainForm.$submitted || mainForm.registerYear.$touched">
+                                <span class="help-block" ng-show="mainForm.registerYear.$error.required">Introduce el año del registro.</span>
+                            </span>
+                        </div>
+                        <label class="col-sm-2 control-label" for="registerMonth">
+                        	<span class="obligatorio">Mes:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" name="registerMonth" id="registerMonth" ng-model="registro.mes" placeholder="1-12" value="{{ registro.mes }}" required/>
+                            <span ng-show="mainForm.$submitted || mainForm.registerMonth.$touched">
+                                <span class="help-block" ng-show="mainForm.registerMonth.$error.required">Introduce el mes del registro.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de intersecciones semaforizadas -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register1">
+                        	<span>Nº de intersecciones semaforizadas:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register1" id="register1" ng-model="registro.interseccionesSemaforizadas" value="{{ registro.interseccionesSemaforizadas }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de semáforos vehículos -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register2">
+                        	<span>Nº de semáforos vehículos:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register2" id="register2" ng-model="registro.semaforosVehiculos" value="{{ registro.semaforosVehiculos }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de semáforos peatones -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register3">
+                        	<span>Nº de semáforos peatones:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register3" id="register3" ng-model="registro.semaforosPeatones" value="{{ registro.semaforosPeatones }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de semáforos bicicletas -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register4">
+                        	<span>Nº de semáforos bicicletas:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register4" id="register4" ng-model="registro.semaforosBicicletas" value="{{ registro.semaforosBicicletas }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº semáforos de peatones sonoros -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register5">
+                        	<span>Nº semáforos de peatones sonoros:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register5" id="register5" ng-model="registro.semaforosPeatonesSonoros" value="{{ registro.semaforosPeatonesSonoros }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº total de semáforos -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register6">
+                        	<span>Nº total de semáforos:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register6" id="register6" ng-model="registro.semaforosTotal" value="{{ registro.semaforosTotal }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de cámaras de TV -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register7">
+                        	<span>Nº de cámaras de TV:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register7" id="register7" ng-model="registro.camarasTV" value="{{ registro.camarasTV }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de SAI -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register8">
+                        	<span>Nº de SAI:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register8" id="register8" ng-model="registro.sai" value="{{ registro.sai }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº detectores geomagnéticos -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register9">
+                        	<span>Nº detectores geomagnéticos:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register9" id="register9" ng-model="registro.detectoresGeomagneticos" value="{{ registro.detectoresGeomagneticos }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de detectores espira -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register10">
+                        	<span>Nº de detectores espira:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register10" id="register10" ng-model="registro.detectoresEspira" value="{{ registro.detectoresEspira }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de detectores visión artificial -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register11">
+                        	<span>Nº de detectores visión artificial:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register11" id="register11" ng-model="registro.detectoresVisionArtificial" value="{{ registro.detectoresVisionArtificial }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de detectores bluetooth -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register12">
+                        	<span>Nº de detectores bluetooth:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register12" id="register12" ng-model="registro.detectoresBluetooth" value="{{ registro.detectoresBluetooth }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de detectores bicicletas -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register13">
+                        	<span>Nº de detectores bicicletas:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register13" id="register13" ng-model="registro.detectoresBicicletas" value="{{ registro.detectoresBicicletas }}"/>
+                        </div>
+                    </div>
+
+                    <!-- Valor: Nº de semáforos LED alta potencia -->
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="register14">
+                        	<span>Nº de semáforos LED alta potencia:</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="number" name="register14" id="register14" ng-model="registro.detectoresLED" value="{{ registro.detectoresLED }}"/>
+                        </div>
+                    </div>
+                    
+				</div>
+
+            </div>
+
+        </fieldset>
+
+    </div>
+
+</div>
+</form>

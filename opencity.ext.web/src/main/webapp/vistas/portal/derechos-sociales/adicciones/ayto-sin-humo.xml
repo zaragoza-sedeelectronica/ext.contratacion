@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Prevención laboral >> Ayuntamiento sin humo"
+         description="Programa Ayuntamiento sin humo para la Prevención de Adicciones"
+         keywords="ayuntamiento, ciudad, Zaragoza, España, servicios sociales, prevención de adicciones, Centro Municipal de Atención y Prevención de las Adicciones, difusión de información, tabaquismo, programas de actuación, campaña de sensibilización"/>
+      <style>
+         titulo-seccion {
+         line-height: 66px;
+         font-size: 42px;
+         }
+         .fnd-blanco {
+         background-color: #ffffff;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .fnd-gris-claro {
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin-bottom: -40px;
+         }
+         .titulo-org h2,
+         .procesos h2{
+         color: #e83437;
+         font-size: 42px;
+         padding-bottom: 20px;
+         }
+         .titulo-org h2 small,
+         .titulo-org h2 span{
+         color: #000000;
+         }
+         .panel-heading a:after {
+         float: left;
+         color: white;
+         background-color: #000;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 20px;
+         margin-right: 10px;
+         }
+         .panel-heading a.collapsed:after {
+         content: "\f105";
+         }
+         .panel-default>.panel-heading {
+         background-color: #fff;
+         border: 0;
+         }
+         .panel {
+         border: 0;
+         webkit-box-shadow: 0 0 0;
+         box-shadow: 0 0 0;
+         }
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         border: 0;
+         }
+         .panel-body {
+         padding-left: 50px;
+         }
+         .panel-title>a {
+         color: #E81B16;
+         }
+         .panel-title>a:hover,
+         .panel-title>a:focus,
+         .panel-title>a:active {
+         text-decoration: none;
+         }
+         ul.submenu {
+         margin: 0;
+         }
+         .btn-back.pull-left {
+         padding: .25em .5em;
+         background: #E81B16;
+         border-radius: .5em;
+         }
+         .second-bar {
+         background: #E6E6E6;
+         border-radius: .5em;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin-bottom: 2em;
+         }
+         ul.submenu li {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: .5em;
+         }
+         .offset-target:before {
+         content: '';
+         display: block;
+         height: 67px;
+         /* fixed header height*/
+         margin: -67px 0 0;
+         /* negative fixed header height */
+         }
+         .section-title {
+         background: #E6E6E6;
+         border-radius: .5em .5em 0 0;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin: 0;
+         }
+         .section-content {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: 0 0 .5em .5em;
+         margin-bottom: 1em;
+         }
+         .card{
+         margin-left:5em;
+         }
+         .imagen{
+         margin-left:5em;
+         margin-top:2em;
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Ayuntamiento sin humo</h2>
+         </div>
+         <div class="">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               
+               <div class="row">
+                  <div class="col-md-6 card">
+                     <h3 class="section-title offset-target">Ayuntamiento sin humo</h3>
+                     <p>El programa &quot;Ayuntamiento sin humo&quot; se lleva a cabo en colaboración con el Servicio de Prevención y Salud.</p>
+                     <p>Desde sus orígenes, &quot;Ayuntamiento sin humo&quot; ha tratado que todas las dependencias municipales sean <strong>espacios libres de humo</strong> de tabaco. Para ello se han llevado a cabo labores de sensibilización, que han incluido cartas personales, folletos, carteles, ...  para sensibilizar y concienciar sobre la conveniencia no fumar en el lugar de trabajo. </p>
+                     <p>La <strong>ley aprobada en enero de 2006</strong> constituye un hito importante en el programa. A partir de ese momento el programa se centra especialmente en facilitar el acceso a programas de deshabituación tabáquica a todo el personal municipal que desee dejar de fumar, propuesta que si bien también se contemplaba con anterioridad, ahora adquiere mayor auge.</p>
+                     <p>El tratamiento base es un <strong>programa multicomponente de carácter </strong>generalmente <strong>grupal</strong>, (ello no excluye que, en determinados casos, se priorice un tratamiento individual), estructurado en <strong>7 sesiones</strong> con una periodicidad semanal, que se llevan a cabo a lo largo de <strong>7 semanas</strong> y con una duración de <strong>90 minutos</strong>, siendo el número máximo de participantes por <strong>grupo de 15 personas</strong>.</p>
+                     <p>Una vez finalizada esta fase, el programa contempla un seguimiento realizado mediante cuestionarios que se pueden cumplimentar por escrito o por teléfono a los 3,6,12 y 24 meses una vez finalizado el mismo.</p>
+                  </div>
+                  
+                  <div class="col-md-4 card">
+                     <h3 class="section-title offset-target">Destinatarios:</h3>
+                     <ul>
+                        <li>Personal municipal que quiere abandonar el hábito tabáquico</li>
+                     </ul>
+                  </div>
+                  <div class="col-md-4 imagen">
+                  <img alt="" src="/cont/vistas/portal/derechos-sociales/adicciones/img/aytosinhumo.jpg"/>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>

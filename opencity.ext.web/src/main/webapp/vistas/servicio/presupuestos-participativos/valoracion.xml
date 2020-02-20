@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos participativos" keywords="sede,web,turismo,presupuestos participativos" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div>
+            <a href="?visible=N" class="btn btn-primary">Pendientes</a> <a href="?visible=S" class="btn btn-success">Realizadas</a>
+            <a th:if="${#maps.containsKey(attr_peticion.getCredenciales().usuario.propiedades, 'usr_superview')}" href="./supervisar-valoracion" class="btn btn-warning">Supervisar</a>
+        </div>
+        <table class="table table-striped table-consended table-bordered table-hover">
+        <caption>Valoraciones</caption>
+        <thead>
+            <tr>
+                <td class="col-xs-1">ID</td>
+                <td class="col-xs-5">PROPUESTA</td>
+                <td class="col-xs-2">JUNTA</td>
+                <td class="col-xs-2">COSTE</td>
+                <td class="col-xs-1">VIABLE</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="registro : ${resultado.body.result}">
+                <td>
+                <a th:href="'/sede/servicio/presupuestos-participativos/valoracion/' + ${registro.id}" class="btn" th:classappend="${registro.visible} =='S' ? 'btn-success' : 'btn-primary'">
+                    <span class="fa fa-edit"></span>
+                    <th:block th:if="${registro.visible} == 'S'">Realizada</th:block>
+                    <th:block th:if="${registro.visible} == 'N'">Pendiente</th:block>
+                    </a>
+                </td>
+                <td><a th:href="'/sede/servicio/presupuestos-participativos/' + ${registro.propuesta.id}" th:text="${registro.propuesta.id} + ': ' + ${registro.propuesta.title}"/></td>
+                <td>
+                    <th:block th:utext="${registro.propuesta.junta}"></th:block>
+                </td>
+                <td>
+                    <span th:if="${registro.coste}" th:text="${#numbers.formatDecimal(registro.coste,0,'POINT',2,'COMMA')} + ' €'"></span>
+                </td>
+                <td>
+                    <strong th:if="${registro.viable} == true">Viable</strong>
+                    <strong th:if="${registro.viable} == false">No Viable</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<div class="card">
+    <!--/* Título */-->
+    <h3 class="nomargin">
+        <a th:href="'/sede/servicio/actividades/medioambiente/' + ${act.id}" th:text="${act.title}" property="name" />
+        <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="'/sede/servicio/cultura/evento/admin/acto/#/edit/' + ${act.id}" class="btn btn-warning btn-xs" target="_blank"><span class="fa fa-edit"></span></a>                
+        <!--/* <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DEL')}" th:href="@{{id}/delete(id=${act.id})}" onclick="return confirm('Desea eliminar el elemento?')" class="btn btn-danger btn-xs pull-right"><span class="fas fa-trash-alt"></span></a> */-->
+    </h3>
+    <hr class="sm" />
+    <div class="row">
+        <div class="col-xs-3">
+            <!--/* Imagen asociada a la actividad (Prioridad ++) */-->
+            <img th:if="${act.image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${act.image}" alt="" />
+            <!--/* Imagen asociada al programa (Prioridad +) */-->
+            <img th:if="${act.program} and ${act.program.image}" th:unless="${act.image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${act.program.image}" alt="" />
+            <!--/* Imagen asociada a la temática */-->
+            <img th:if="${not #lists.isEmpty(act.category)}" th:unless="${act.image} or (${act.program} and ${act.program.image})" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${act.category[0].image}" alt="" />
+        </div>
+        <div class="col-xs-9">
+            <!--/* Fechas */-->
+            <span th:if="${act.permanent} == true" class="text-info">Actividad Permanente</span>
+            <span th:unless="${act.permanent == true}" class="text-info">
+                <meta property="startDate" th:if="${act.startDate}" th:attr="content=${act.startDate}"/>
+                <meta property="endDate" th:if="${act.endDate}" th:attr="content=${act.endDate}"/>
+                <th:block th:text="${#utils.tratarFechas(act.startDate, act.endDate)}"/>
+            </span>
+            <!--/* Lugares Agenda Zaragoza */-->
+            <div th:unless="${#strings.contains(act.portales,'juvenil')}" property="location" typeof="Place">
+                <!--/* Varios lugares de realización en la actividad */-->
+                <th:block th:if="${act.subEvent.size() > 1}">
+                    <span property="name">Varios lugares</span>
+                    <span property="address" class="oculto">Varios lugares</span>
+                </th:block>
+                <!--/* Único lugar de realización en la actividad */-->
+                <th:block th:if="${act.subEvent.size() == 1} and ${act.subEvent[0].location} != null">
+                    <span property="name" th:text="${#strings.equals(act.subEvent[0].location.title, 'Fuera de Zaragoza')} ? ${act.location} : ${act.subEvent[0].location.title}"></span>
+                    <span property="address" class="oculto" th:text="${#strings.equals(act.subEvent[0].location.title, 'Fuera de Zaragoza')} ? ${act.location} : ${act.subEvent[0].location.streetAddress}"></span>
+                </th:block>
+            </div>
+            <!--/* Lugares Agenda Juvenil */-->
+            <th:block th:if="${#strings.contains(act.portales,'juvenil')}" th:utext="${act.textSearch}"/>
+            <!--/* Inscripción */-->
+            <div class="text-warning" th:if="${act.registration} and (${act.registration.startDate} or ${act.registration.startDate})">Inscripción: <th:block th:text="${#utils.tratarFechas(act.registration.startDate, act.registration.endDate)}"/></div>
+
+            <!--/* Precios */-->
+            <th:block th:if="not ${act.price.isEmpty()}">
+                <div th:each="p: ${act.price}" property="offers" typeof="Offer">
+                    <th:block th:text="${p.fareGroup}"></th:block>
+                    <!--/* Si la actividad es gratuita no mostramos precio */-->
+                    <span th:unless="${p.fareGroup} == 'Gratuita'" th:text="' - ' + ${p.hasCurrencyValue} + ' €'"></span>
+                    <meta property="price" th:if="${p.hasCurrencyValue}" th:attr="content=${p.hasCurrencyValue}"/>
+                    <meta property="priceCurrency" th:if="${p.hasCurrency}" th:attr="content=${p.hasCurrency}"/>
+                </div>
+            </th:block>
+        </div>
+    </div>
+    <div class="card-footer">
+        <!--/* Temática */-->
+        <!--/*<a th:if="${not #lists.isEmpty(act.category)}" th:each="cat, i : ${act.category}" th:unless="${i.index >= 2}" class="label label-success" th:text="${cat.title}" sede:rdf="${cat.prop()}" th:href="'/sede/servicio/' + (${portal} ? 'actividades/' + ${portal} +'/query' : 'cultura/evento') +'?fq=temas_smultiple%3A(&quot;'+${#utils.toUnicode(cat.title)}+'&quot;)'"></a>*/-->
+        <!--/* Formato */-->
+        <a th:if="${act.type}" class="label label-success" th:text="${act.type}" th:href="'/sede/servicio/' + (${portal} ? 'actividades/' + ${portal} +'/query' : 'cultura/evento') +'?fq=formatoActividad_smultiple%3A(&quot;'+${#utils.toUnicode(act.type)}+'&quot;)'"></a>
+        <!--/* Sector de población (oculto) */-->
+        <span th:if="${not #lists.isEmpty(act.population)}" th:each="pop, i : ${act.population}" class="label label-info oculto" th:text="${pop.title}" sede:rdf="${pop.prop()}" ></span>
+        <!-- Actividad accesible (sin barreras) -->
+        <span th:if="${act.accessible} == true" class="fa fa-lg fa-wheelchair" aria-hidden="true" title="Actividad sin barreras"></span>
+        <th:block th:include="/fragmentos/share-button(uri=${act.uri}, text=${act.title})"></th:block>
+    </div>
+    <th:block th:if="${act.geometry}" th:utext="${act.geometry.getRdf()}"></th:block>
+</div>
+<!--/* Ribbon "Actividad creada hoy" (eliminado en agenda juvenil) */-->
+<div class="ribbon-wrapper" th:if="${#strings.contains(act.portales,'juvenil')} and ${#utils.esHoy(execInfo.now, act.creationDate)}">
+    <div class="ribbon-info">Nueva</div>
+</div>
+<!--/* Ribbon "Actividad modificada hoy" */-->
+<!--/* <div class="ribbon-wrapper" th:if="${#utils.esHoy(execInfo.now, act.lastUpdated)}" th:unless="${#utils.esHoy(execInfo.now, act.creationDate)}">
+    <div class="ribbon-warning">Modificada</div>
+</div> */-->
+<!--/* Ribbon "Actividad inscripción en plazo" */-->
+<div class="ribbon-wrapper" th:if="${act.registration} and ${act.registration.url} and ${#strings.indexOf(act.registration.url, '/evento/' + act.id + '/inscripcion')} > 0 and ${#utils.enPlazo(act.registration.startDate, act.registration.endDate)}">
+    <div class="ribbon-warning">Inscripción</div>
+</div>

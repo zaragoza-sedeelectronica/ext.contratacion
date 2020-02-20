@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Órganos Consultivos y de Participación" description="" author="" last-modified="Thu Nov 13 00:00:00 CET 2014" keywords="participación, consejos sectoriales">
+    </sede:meta>
+    <style>
+    body {
+        padding-top: 57px;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div style="position:relative;" class="text-center">
+           
+        </div>
+        <hr class="sm" />
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+            <li role="presentation" class="active"><a href="#inicio" aria-controls="que" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> INICIO</a></li>
+            <li role="presentation"><a href="#que" aria-controls="que" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> ¿QUÉ ES?</a></li>
+            <li role="presentation"><a href="#quien" aria-controls="quien" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> QUIÉN</a></li>
+             <li role="presentation"><a href="#funciona" aria-controls="funciona" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> CÓMO FUNCIONA</a></li> 
+            <li role="presentation"><a href="#plenos" aria-controls="plenos" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> PLENOS</a></li>
+            <li role="presentation"><a href="#acciones" aria-controls="acciones" role="tab" data-toggle="tab"><span class="fa fa-play" aria-hidden="true"></span> ACCIONES</a></li>
+            <li role="presentation"><a href="#comision" aria-controls="comision" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> COMISIÓN PERMANENTE  </a></li>
+			            <li role="documentacion"><a href="#documentacion" aria-controls="documentacion" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> DOCUMENTACIÓN</a></li>
+						
+						
+						       			            <li role="asamblea"><a href="#asamblea" aria-controls="asamblea" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> ASAMBLEA CIUDADANA</a></li>  
+       			            <li role="presentation"><a href="#asamblea" aria-controls="asamblea" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> NORMATIVA</a></li> </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#inicio" aria-expanded="false"> Inicio </h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="inicio">
+                <div class="row">
+                    <div class="col-md-12">  
+					
+					
+					 
+					
+					 <div class="col-md-8">
+                            <img alt="Consejo de la Ciudad" src="/cont/paginas/gobierno-abierto/img/consejo-ciudad.png" /> 
+                        </div>
+						 <div class="col-md-4">  
+						  
+					<img alt="Consejo Consultivo" src="/cont/paginas/gobierno-abierto/img/consejo-consultivo.jpg" />  
+						  <img alt="Participación Sectorial" src="/cont/paginas/gobierno-abierto/img/participacion-sectorial.jpg" /> </div>
+                       </div>
+						
+						
+						 
+                    </div>
+                   
+                   
+                   
+               
+                    
+              
+   
+              
+                 
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#que" aria-expanded="false"> ¿Qué es?</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="que">
+                <p>El Consejo de Ciudad se configura como <strong>mecanismo participativo de 					carácter consultivo</strong> de las principales organizaciones 					económicas y sociales del municipio que incidirá 					especialmente en el campo del desarrollo local y de la 					planificación estratégica urbana.</p>
+<p>El <em>Reglamento de los Órganos Territoriales y de 					Participación Ciudadana</em> define el Consejo de Ciudad de 					Zaragoza como la organización de participación sectorial 					de ámbito municipal por excelencia que integrará los 					anteriores Consejos Sectoriales garantizando su continuidad y 					eficacia.</p>
+<p>En su regulación se ha procurado el consenso de grupos 					municipales y la implicación de todo el tejido asociativo, 					buena prueba de lo cual la encontramos en la composición de 					los nueve representantes de la sociedad civil, cinco de los cuales 					son elegidos directamente por la Asamblea Ciudadana, que incluye a 					todas las entidades ciudadanas inscritas en el censo municipal con 					antigüedad superior a un año, mediante votación 					directa, dos por turno rotatorio para las entidades que tengan 					reconocido el interés público municipal y otras dos para 					la Unión y Federación Vecinal más representativas 					señaladas en la disposición adicional tercera 					reglamentaria.</p>
+<p>De esta forma se otorgaría un importante avance a la 					participación sectorial, cuestión que quedaba 					todavía pendiente a la vista del importante proceso de 					desconcentración y descentralización administrativo 					desarrollado en los últimos años en nuestro municipio, 					garantizando la mejora en la toma de decisiones y asegurando la 					participación de las organizaciones implicadas en los grandes 					proyectos urbanos del municipio.</p>
+<h3>Presentación </h3>
+
+<p>La modificación de la normativa relativa a la 					regulación de la Participación Ciudadana en nuestra 					ciudad, exigida por la <em>Ley 57/2003 de Medidas de Modernización 					del Gobierno Local</em>, ha supuesto una especial satisfacción 					tanto en su tramitación como en su reciente aprobación.</p>
+<p>De una parte, una normativa de carácter estatal, por fin, ha 					reconocido las <strong> peculiaridades de los grandes municipios,</strong> cuyo 					funcionamiento, idiosincracia y complejidad trascienden del 					tradicional régimen local y la obsoleta consideración de 					entidades de inferior rango en cuanto a autonomía y capacidad.</p>
+<p>Tal y como reconoce el propio <em>Preámbulo de la citada ley,</em> el 					régimen jurídico local no ha respondido hasta ahora en un 					grado suficiente a las necesidades específicas de los 					municipios altamente poblados, por lo que era el momento de abordar 					las necesarias reformas normativas que den respuesta a las 					necesidades experimentadas por el municipalismo español.</p>
+<p>De otra, la unanimidad en la aprobación de la redacción 					y la transparencia en el proceso de presentación y estudio de 					todas las propuestas presentadas, son puntales que aseguran su 					pervivencia en el tiempo y garantizan su adecuación a nuestro 					tejido social, facilitando tanto a la sociedad civil como a los 					órganos de gobierno numerosos instrumentos participativos que 					agilicen tanto el proceso de toma de decisiones como el éxito 					compartido de las decisiones adoptadas.</p>
+<p><strong>Incrementar y reforzar la participación ciudadana en todos 					los ámbitos de la vida pública local</strong> no es un mero 					principio enunciativo constitucional sino que constituye la carta 					de naturaleza de todo gobierno democrático que no hace sino 					completar el proceso de confianza que los ciudadanos y ciudadanas 					han depositado en los gestores municipales pero que en definitiva 					deben a aquéllos toda la legimitidad de sus actuaciones.</p>
+<p>No me queda sino desear que se profundice en todos los mecanismos 					participativos recogidos en la presente norma ofreciendo desde esta 					Alcaldía toda la disposición y colaboración posible 					para continuar avanzado en el ambicioso proyecto de construir 					nuestra ciudad.</p>
+<p>Más allá de partidos políticos, intereses 					particulares, de reivindicaciones puntuales, Zaragoza es de todos 					los zaragozanos y zaragozanas; espero que con instrumentos como 					este nuevo Reglamento de Participacion Ciudadana y Órganos 					Territoriales, sentemos las bases de la consolidación del que 					debe ser nuestro único proyecto: ¡ZARAGOZA!.</p> 
+               
+                
+          
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#quien" aria-expanded="false"> Quién</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="quien">
+                <div class="fnd-gris-claro padding-a2em margin-b1em">
+                   
+                   
+                    
+
+				 
+				   <div class="tarjeta">
+                    <div class="row">
+                        <div class="col-md-12">
+                              <div class="col-md-6">
+					 
+       <h3>Miembros Mayo 2016</h3>
+
+
+<h4>EXCMO. SR.ALCALDE DE LA CIUDAD DE ZARAGOZA</h4>
+<p>Presidente: D. Pedro Santisteve Roche</p>
+
+<h4>ILMO. SRA. CONCEJALA  DELEGADA DE  PARTICIPACIÓN, TRANSPARENCIA Y GOBIERNO ABIERTO</h4>
+<p>Vicepresidente: Dª Mª Elena Giner Monge</p>
+
+
+<h4>REPRESENTANTES GRUPO MUNICIPAL PP :(Decreto Alcaldía 24-9-2015)</h4><ul><li>
+Dª Patricia Cavero Moreno</li><li>
+Dª Reyes Campillo Castells</li><li>
+D. Enrique Collados Mateo</li></ul><h4>
+
+REPRESENTANTES GRUPO MUNICIPAL ZeC :(Decreto Alcaldía 24-9-2015)</h4><ul><li>
+D. Pablo Muñoz San Pío</li><li>
+Dª Teresa Ana Artigas Sanz</li></ul><h4>
+
+REPRESENTANTES GRUPO MUNICIPAL PSOE: (Decreto Alcaldía 24-9-2015)</h4><ul><li>
+D. Roberto Fernández García</li><li>
+Dª Mª Dolores Campos Palacio</li></ul><h4>
+
+REPRESENTANTE GRUPO MUNICIPAL CHA: (Decreto Alcaldía 24-9-2015)</h4><ul><li>
+Dª Leticia Crespo Mir</li></ul><h4>
+
+REPRESENTANTE GRUPO MUNICIPAL C's: (Decreto Alcaldía 24-9-2015)</h4><p>
+D. Alberto Casañal Pina</p><h4>
+
+MOVIMIENTO POR EL DERECHO DEL ALUMNADO <em>MOVIDA</em> (Decreto Alcadía 27-10-2015)</h4><p>
+Representado por: D. José Antonio Gadea López</p><h4>
+
+CONSEJO ARAGONÉS DE LAS PERSONAS MAYORES COAPEMA (Decreto Alcaldía 27-10-2015)</h4><p>
+Representado por: D. Luís Rodrigo Arroyo</p><h4>
+
+ASOCIACIÓN DE VECINOS TÍO JORGE DEL BARRIO DEL ARRABAL  (Decreto Alcaldía 27-10-2015)</h4><p>
+Representada por: D. Rafael Tejedor Bachiller</p><h4>
+
+FEDERACIÓN DE ASOCIACIONES DE PADRES Y MADRES DE ALUMNOS DE ARAGÓN <em>JUAN DE LANUZA</em> - FAPAR (Decreto Alcaldía 27-10-2015)</h4><p>
+Representada por: Dª Esther Andrés Ayuso</p><h4>
+
+FEDERACIÓN COORDINADORA DE ENTIDADES PARA LA DEFENSA DE PERSONAS CON DISCAPACIDAD. COCEMFE Zaragoza (Decreto Alcaldía 27-10-2015)</h4><p>
+Representada por: Dª Marta Valencia Betrán</p><h4>
+
+DISMINUIDOS FÍSICOS DE ARAGÓN DFA (Decreto Alcaldía 27-10-2015)</h4>
+
+
+
+
+
+
+
+
+
+<p>
+Representada por: D. Juan Carlos Castro Fernández</p>
+
+					 
+					 
+				</div>
+				
+          <div class="col-md-6">
+				
+				
+
+ 
+    
+
+
+
+
+<h4>
+
+ASOCIACIÓN CULTURAL <em>ROYO DEL RABAL</em>(Decreto Alcaldía 27-10-2015)</h4><p>
+Representada por: D. Francisco Castillo González
+</p><h4>
+FEDERACIÓN DE ASOCIACIONES DE BARRIOS DE ZARAGOZA</h4><p>
+Representado por: Dª Nieves Boj Martínez (5-4-2014)
+</p><h4>
+UNIÓN VECINAL CESARAUGUSTA
+Representada por: D. José Luís Rivas Elcoro (11-5-2015)</h4><p>
+</p><h4>
+UNIÓN GENERAL DE TRABAJADORES-ARAGÓN</h4><p>
+Representada por: D. Daniel Alastuey Lizáldez
+</p><h4>
+UNIÓN SINDICAL DE COMISIONES OBRERAS ARAGÓN</h4><p>
+Representada por: D. Julián Buey Suñén</p><h4>
+
+CONFEDERACIÓN DE EMPRESARIOS DE LA PEQUEÑA Y MEDIANA EMPRESA (CEPYME)</h4><p>
+Representada por: D. Aurelio López de Hita</p><h4>
+
+CONFEDERACIÓN DE EMPRESARIOS DE ZARAGOZA (C.E.Z.)</h4><p>
+Representada por: D. Ricardo Mur Monserrat (28-4-2014)</p><h4>
+
+AGRUPACIÓN DE COLEGIOS PROFESIONALES DE ARAGÓN </h4><p>
+Representada por: D. Antonio Morán Durán
+</p><h4>
+COLEGIO OFICIAL DE INGENIEROS DE CAMINOS CANALES Y PUERTOS</h4><p>
+Representado por: D. José Javier Mozota Bernad.</p><h4>
+
+COLEGIO PROFESIONAL DE TRABAJADORES SOCIALES DE ARAGÓN</h4><p>
+Representado por: D. Javier Escartín Sesé (2-6-2014)</p><h4>
+
+FUNDACIÓN CAJA INMACULADA </h4><p>
+Representada por: D. José Mª Sas Llauradó (4-3-2016)</p><h4>
+
+FUNDACIÓN IBERCAJA</h4><p>
+Representada por el Jefe de la Obra Social: D. Juan Carlos Sánchez Bielsa (1-12-2015)</p><h4>
+
+UNIVERSIDAD DE ZARAGOZA</h4><p>
+Representada por su Rector: D. José Antonio Mayoral Murillo (17-3-2016)</p><h4>
+AGENDA 21 LOCAL</h4><p>
+Representada por Agencia Medio Ambiente y Sostenibilidad</p><h4>
+
+SECRETARIA PLENO CONSEJO CIUDAD: </h4>
+<p>Dª Rosa Mª Bleda Hernández, Jefa de Sección de la Oficina Técnica del Consejo de Ciudad (11-4-2016)</p> 
+
+
+					  
+					 
+				</div>
+				</div> </div>
+            </div> 
+			</div> </div>
+			 
+			
+			
+			
+			 
+			
+			
+			
+			
+			
+			
+			
+			
+			     <h2 class="tab-title" data-toggle="collapse" data-target="#funciona" aria-expanded="false"> Cómo Funciona</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="funciona">ASDFAFAF</div>
+			
+			
+			
+			
+              <h2 class="tab-title" data-toggle="collapse" data-target="#jornadas" aria-expanded="false"> Plenos</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="plenos">
+                <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row"> 
+					
+					
+					
+			
+ <h3>Ordenes del D&#237;a y Acuerdos</h3>
+ 
+ 
+ <p><strong> <a href="buscar_Tablon?texto=Consejo+Ciudad&amp;fecha_inicio=&amp;fecha_fin=&amp;autor=&amp;buscar=Buscar">Últimas Convocatorias</a></strong></p>
+ 
+ 
+ <table class="table table-striped table-condensed table-bordered" summary="Actividades plenarias">
+ <caption>Plenos</caption><tr><th id="nombre" rowspan="1" colspan="1">Nombre</th>
+ 
+ <th id="dia" rowspan="1" colspan="1">Orden del d&#237;a</th>
+ <th id="acuerdo" rowspan="1" colspan="1">Acuerdos</th></tr>
+ 
+   <tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td>
+  <td headers="dia" rowspan="1" colspan="1">
+ <a href="/ciudadania/gobierno-abierto/participar/consejo/detalleAnexo_Tablon?id=1072" >26/06/2017</a></td>
+ <td colspan="1" rowspan="1"></td></tr>
+ 
+ 
+  <tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td>
+  <td headers="dia" rowspan="1" colspan="1">
+ <a href="/ciudadania/gobierno-abierto/participar/consejo/detalleAnexo_Tablon?id=298" >21/09/2016</a></td>
+ <td colspan="1" rowspan="1"><a  href="/contenidos/gobierno-abierto/participar/consejo/acta-consejo-ciudad-210916.pdf" class="pdf">21/09/2016</a></td></tr>
+ 
+ 
+ 
+ 
+
+   <tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1">
+ <a href="/ciudadania/gobierno-abierto/participar/consejo/detalleAnexo_Tablon?id=196" >23/06/2016</a></td>
+  <td colspan="1" rowspan="1">
+ <a  href="/contenidos/gobierno-abierto/participar/consejo/acta-consejo-ciudad-230616.pdf" class="pdf">23/06/2016</a> 
+ </td></tr>
+ 
+ 
+ 
+  <tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td>
+ <td headers="dia" rowspan="1" colspan="1">
+ <a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-110416.htm" >11/04/2016</a></td>
+ 
+ 
+ 
+ 
+  <td colspan="1" rowspan="1">
+ <a  href="/contenidos/gobierno-abierto/participar/consejo/acta-consejo-ciudad-110416.pdf" class="pdf">11/04/2016</a> 
+ </td></tr>
+
+ 
+ <tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td>
+ <td headers="dia" rowspan="1" colspan="1">
+ <a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-141215.htm" >14/12/2015</a></td>
+ <td colspan="1" rowspan="1">
+ <a  href="/contenidos/gobierno-abierto/participar/consejo/acta-consejo-ciudad-15.pdf" class="pdf">14/12/2015</a> 
+ </td></tr>
+ 
+ 
+
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ <tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1">
+ <a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-300915.htm" >30/09/2015</a></td>
+ <td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_300915.htm" >30/09/2015</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-230315.htm" >23/03/2015</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_230315.htm" >23/03/2015</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Extraordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-230315ex.htm" >23/03/2015</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_230315ex.htm" >23/03/2015</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-171214.htm" >17/12/2014</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_171214.htm" >17/12/2014</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Extraordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-290914e.htm" >29/09/2014</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdoex_290914.htm" >29/09/2014</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-290914.htm" >29/09/2014</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_290914.htm" >29/09/2014</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno-250614.htm" >25/06/2014</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_250614.htm" >25/06/2014</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_250214.htm" >25/02/2014</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_250214.htm" >25/02/2014</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_271113.htm" >						27/11/2013					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_271113.htm" >27/11/2013</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_290513.htm" >						29/05/2013					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_290513.htm" >						29/05/2013					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Extraordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_120213.htm" >						12/02/2013					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_120213.htm" >						12/02/2013					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_101212.htm" >						10/12/2012					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_101212.htm" >						10/12/2012					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_161012.htm" >						16/10/2012					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_161012.htm" >						16/10/2012					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_040712.htm" >						04/07/2012					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_040712.htm" >						04/07/2012					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Extraordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_230512.htm" >						23/05/2012					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_230512.htm" >						23/05/2012					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_280312.htm" >						28/03/2012					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_280312.htm" >						28/03/2012					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_241111.htm" >						24/11/2011					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_241111.htm" >						24/11/2011					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_050411.htm" >						05/04/2011					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_050411.htm" >						05/04/2011					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_110111.htm" >						11/01/2011					</a></td><td colspan="1" rowspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_110111.htm" >						11/01/2011					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_051010.htm" >						05/10/2010					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_051010.htm" >						05/10/2010					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_300610.htm" >						30/06/2010					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_300610.htm" >						30/06/2010					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_050410.htm" >						05/04/2010						<br/>             </a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_050410.htm" >						05/04/2010					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_151209_1.htm" >						15/12/2009						<br/>             </a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_151209.htm" >						15/12/2009					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_280909.htm" >						28/09/2009					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_280909.htm" >						28/09/2009					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_240609.htm" >						24/06/2009					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_240609.htm" >						24/06/2009					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_260309.htm" >						26/03/2009					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_260309.htm" >						26/03/2009					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Extraordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_181208.htm" >						18/12/2008					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_181208.htm" >						18/12/2008					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_250908.htm" >						25/09/2008					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_250908.htm" >						25/09/2008					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Extraordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_150208.htm" >						15/02/2007					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a  href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_150208.htm">						15/02/2007					</a></td></tr><tr><td headers="nombre" rowspan="1" colspan="1">Pleno Ordinario</td><td headers="dia" rowspan="1" colspan="1"><a href="/ciudadania/gobierno-abierto/participar/consejo/pleno_131207.htm" >						13/12/2007					</a></td><td headers="acuerdo" rowspan="1" colspan="1"><a  href="/ciudadania/gobierno-abierto/participar/consejo/acuerdo_131207.htm">						13/12/2007					</a></td></tr></table> 
+			
+  
+			
+			
+			
+			
+ 
+	</div> </div></div>
+                       
+                   <h2 class="tab-title" data-toggle="collapse" data-target="#acciones" aria-expanded="false"> ACCIONES</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="acciones">
+                 
+                 
+            </div>
+          
+		  
+		  
+		  
+            <h2 class="tab-title" data-toggle="collapse" data-target="#comision" aria-expanded="false"> Comisión Permanente</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="comision"> <h3>Naturaleza</h3><p>La Comisi&#243;n Permanente del Consejo de la Ciudad es el &#243;rgano encargado de la preparaci&#243;n y estudio de los asuntos del Consejo de la Ciudad. Act&#250;a en pleno o delega en la oficina t&#233;cnica del Consejo de la Ciudad.</p><h3>Funciones </h3><ul><li>Aplicaci&#243;n y puesta en marcha de los mandatos y las actuaciones aprobadas por el Pleno del Consejo de la Ciudad.</li><li>Dise&#241;o y  elaboraci&#243;n de informes y estudios.</li><li>Asesorar a los &#243;rganos del Consejo.</li></ul><h3>Convocatoria</h3><p>La convocatoria de las sesiones se  realizar&#225;n por  iniciativa de su presidente o de un tercio de los miembros del  pleno del Consejo de la Ciudad.</p><h3>Composici&#243;n   </h3><p><strong>Presidente:</strong>	Consejero de Participaci&#243;n Ciudadana</p><p><strong>Grupos Municipales:</strong>Un representante de cada uno de los grupos pol&#237;ticos Municipales </p><p><strong>Sociedad Civil:</strong> 4  Miembros</p><p><strong>Entidades Sociales:</strong> 4 Miembros</p><p><strong>Universidad de Zaragoza</strong> 1 Miembro</p><h3>Renovaci&#243;n Miembros   </h3><p>Rotaci&#243;n  entre  miembros del  Pleno del Consejo de la Ciudad.</p><h3>Entidades Miembros Comisi&#243;n Permanente	 </h3><p><strong>Presidente:</strong> 	Consejero de Participaci&#243;n Ciudadana<br/> </p><p><strong>Grupos Municipales: 	</strong>  </p><p>Un representante de cada uno de los grupos pol&#237;ticos Municipales: PSOE, PP, CHA, PAR, IU. </p><p><strong>Sociedad Civil:</strong></p><ul><li>Federaci&#243;n Aragonesa de Coros</li><li>Centros de Convivencia para Mayores Salvador Allende</li><li>FABZ </li><li>Uni&#243;n Cesaraugusta</li></ul><p><strong>Entidades Sociales		</strong></p><ul><li>Uni&#243;n General de Trabajadores Arago&#243;n UGT.</li><li>Cepyme</li><li>Colegio Oficial de Ingenieros de Caminos, Canales y Puertos.</li><li>Ibercaja </li></ul><p><strong>Universidad de Zaragoza<br/> </strong></p><ul><li>Un/a  Miembro </li></ul><p><strong>Total Miembros:</strong> 15</p>
+ 
+                 
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#documentacion" aria-expanded="false"> Documentación</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="documentacion"><ul> 
+<li><a  href="/ciudadania/gobierno-abierto/participar/consejo/detalle_CatCultura?id=11382">Memoria 2016</a></li>
+<li><a  href="/ciudadania/gobierno-abierto/participar/consejo/detalle_CatCultura?id=11298">Memoria 2015</a></li>
+<li><a  href="/ciudadania/gobierno-abierto/participar/consejo/detalle_CatCultura?id=11181">Memoria 2014</a></li>
+<li><a  href="/contenidos/participacion/consejociudad/memoria-participacion-2013.pdf" class="pdf">Memoria 2013</a></li>
+<li><a  href="/contenidos/participacion/consejociudad/memoria_participacion_2012.pdf" class="pdf">Memoria 2012 </a></li>
+<li><a  href="/contenidos/participacion/consejociudad/memoria_participacion_2011.pdf" class="pdf">Memoria 2011
+</a></li>
+<li><a  href="/contenidos/participacion/consejociudad/memoria_participacion10.pdf" class="pdf">Memoria 2010   </a></li>
+<li><a  href="/contenidos/participacion/consejociudad/memoria_participacion_09.pdf" class="pdf">Memoria 2009
+</a></li>
+<li><a  href="/contenidos/participacion/consejociudad/memo_part_0708.pdf" class="pdf">Memoria 2007-2008
+</a></li></ul>
+                
+            </div>
+            
+			      
+		          <h2 class="tab-title" data-toggle="collapse" data-target="#asamblea" aria-expanded="false"> ASAMBLEA CIUDADANA</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="asamblea">
+                 
+                 
+       
+ <p>El Reglamento de &#211;rganos Territoriales y de Participaci&#243;n Ciudadana se&#241;ala que todas las entidades inscritas en el Censo Municipal de Entidades Ciudadanas constituyen la Asamblea Ciudadana.<br/> La Asamblea Ciudadana podr&#225; proponer y/o elegir, una vez cada dos a&#241;os, a los nueve representantes de la sociedad civil que les represente en el Pleno del Consejo de la Ciudad.</p><h3>V ASAMBLEA CIUDADANA -&#160; (Septiembre 2015)</h3><ul><li><a class="pdf" href="/contenidos/participacion/Acta-V-AsambleaCiudadana-211015.pdf" >Acta de la V Asamblea Ciudadana del Consejo de la Ciudad</a> (21.10.2015)</li><li><a class="pdf" href="/contenidos/participacion/consejociudad/Decreto271015-Miembros-Consejo-Ciudad.pdf" >Decreto de Alcald&#237;a de 27.10.2015 de cese y nombramiento de los miembros del Consejo de la Ciudad en representaci&#243;n de la sociedad civil</a></li><li><a class="pdf" href="/contenidos/participacion/Informe-Renovacion-miembros-Consejo-Ciudad.pdf" >Informe de la Concejala de Participaci&#243;n, Transparencia y Gobierno Abierto sobre renovaci&#243;n de miembros del Pleno del Consejo de la Ciudad.</a></li><li><a class="pdf" href="/contenidos/participacion/Pleno-VAsamblea-Consejo-Ciudad-resumen.pdf" >Pleno de 21.10.2015: Res&#250;men de datos</a></li><li><a class="pdf"  href="/contenidos/participacion/Carta-Concejala.pdf">Carta de la Concejala Delegada de Participaci&#243;n, Transparencia y Gobierno Abierto</a></li><li><a class="pdf"  href="/contenidos/participacion/Procedimiento-EleccionVAsambleaCiudadana.pdf">Procedimiento de Elecci&#243;n de la V Asamblea Ciudadana</a></li><li><a class="pdf"  href="/contenidos/participacion/papeleta-votacion-V-asamblea.pdf">Papeleta Votaci&#243;n Candidaturas</a></li><li><a class="pdf"  href="/contenidos/participacion/candidaturas-V-asamblea-ciudadana.pdf">Informe Candidaturas V Asamblea Ciudadana</a></li><li><a class="pdf"  href="/contenidos/participacion/V-Asamblea-Ciudadana.pdf">Convocatoria 21.09.2015</a></li><li><a class="pdf"  href="/contenidos/participacion/Acreditacion-V-Asamblea.pdf">Acreditaci&#243;n</a> que deber&#225; entregarse, debidamente cumplimentada, por la persona que asista en representaci&#243;n de la entidad para acceder a la Asamblea</li><li><a class="pdf"  href="/contenidos/participacion/Candidaturas-V-Asamblea.pdf">Propuesta de Candidatura</a>, que deber&#225; ser cumplimentada y remitida a este correo electr&#243;nico por las entidades que deseen presentar su candidatura a miembros del Pleno del Consejo de Ciudad. Fin plazopresentaci&#243;n candidaturas: 2 de Octubre de 2015</li></ul><div class="linea">&#160;</div><h3>IV ASAMBLEA CIUDADANA - (Septiembre 2013)</h3><ul><li><a class="pdf"  href="/contenidos/participacion/IV-Asamblea-Ciudadana.pdf">Convocatoria 12.09.2013 y Calendario de Grupos de Trabajo</a></li><li><a class="pdf"  href="detalle_Normativa?id=4543">Decreto de alcald&#237;a de 19-09-2013 de cese y nombramiento de miembros del Consejo de la Ciudad</a></li></ul><h4>Actas</h4><ul><li><a href="/contenidos/participacion/consejociudad/actapleno_2013.pdf" class="pdf" >Acta del Pleno de la Asamblea Ciudadana<span class="oculto">(Documento pdf) Tama&#241;o 703 Kb</span></a></li><li><a href="https://www.zaragoza.es/contenidos/participacion/consejociudad/actajovenes_2013.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de J&#243;venes<span class="oculto">(Documento pdf) Tama&#241;o 131 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actamayores_2013.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de Mayores<span class="oculto">(Documento pdf) Tama&#241;o 237 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actavecinos_2013.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de Vecinas y Vecinos <span class="oculto">(Documento pdf) Tama&#241;o 251 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actaampas_2013.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de Madres y Padres de Alumnas y Alumnos<span class="oculto">(Documento pdf) Tama&#241;o 539 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actacultura_2013.pdf" class="pdf" >Grupo de Trabajo de Entidades Culturales, Deportivas, Sociales y Otras Asociaciones <span class="oculto">(Documento pdf) Tama&#241;o 705 Kb</span></a></li></ul><div class="linea">&#160;</div><h3>III ASAMBLEA CIUDADANA -&#160; (Septiembre 2011)</h3><h4>Actas</h4><ul><li><a href="/contenidos/participacion/consejociudad/actapleno_2011.pdf" class="pdf" >Acta del Pleno de la Asamblea Ciudadana<span class="oculto">(Documento pdf) Tama&#241;o 190,3 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actajovenes_2011.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de J&#243;venes<span class="oculto">(Documento pdf) Tama&#241;o 102,5 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actamayores_2011.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de Mayores<span class="oculto">(Documento pdf) Tama&#241;o 124,2 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actavecinos_2011.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de Vecinas y Vecinos<span class="oculto">(Documento pdf) Tama&#241;o 142,4 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actaampas_2011.pdf" class="pdf" >Grupo de Trabajo de Asociaciones de Madres y Padres de Alumnas y Alumnos<span class="oculto">(Documento pdf) Tama&#241;o 131,1 Kb</span></a></li><li><a href="/contenidos/participacion/consejociudad/actacultura_2011.pdf" class="pdf" >Grupo de Trabajo de Entidades Culturales, Deportivas, Sociales y Otras Asociaciones<span class="oculto">(Documento pdf) Tama&#241;o 161,6 Kb</span></a></li></ul> 
+		       </div>
+			
+			
+			     <h2 class="tab-title" data-toggle="collapse" data-target="#normativa" aria-expanded="false"> Normativa</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="normativa">
+           
+           
+          
+               
+                
+            </div>
+			
+			
+        </div>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

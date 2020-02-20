@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <sede:breadcrumb title="Normativa" link="/sede/servicio/normativa/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'}, {'link':'/ciudad/ayto/', 'text':'Ayuntamiento'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera(query='category:(&quot;Normativa&quot;)', titlePortal='Normativa',path='/sede/servicio/normativa/list')" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

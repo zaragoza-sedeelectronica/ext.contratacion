@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Información polínica" keywords="sede,web,información, polen" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Información Polínica <small sede:rdf="${resultado.body.result.get(0).observation.get(0).get('publicationDate', 'EEEE dd MMMM yyyy')}"/></h2>
+<div class="row">
+<div class="col-md-push-4 col-md-8 clearfix">
+                    <p class="nomargin destacado text-right">
+                        <!-- <img title="Datos Abiertos" alt="" class="pull-right" src="/cont/paginas/risp/img/datosabiertos" width="50" height="50"/> -->
+                        Disponible en <a href="https://www.zaragoza.es/sede/servicio/catalogo/20">Datos Abiertos</a>
+                    </p> 
+                    <ul class="list-inline pull-right">
+                        <li class="nopadding"><a href="https://www.zaragoza.es/sede/servicio/informacion-polen.json">JSON</a> | </li>
+                        <li class="nopadding"><a href="https://www.zaragoza.es/sede/servicio/informacion-polen.xml">XML</a>  </li> 
+                        </ul>
+                </div>
+                </div>
+        <ul class="row list-unstyled">
+            <li th:each="doc: ${resultado.body.result}" class="col-md-4">
+                <div class="card" style="min-height:10em;">
+                    <div class="row">
+                        <div th:if="${doc.image}" class="col-xs-3 col-sm-3 col-md-3 text-center">
+                            <img class="img-responsive center-block" width="67" height="100" th:src="${doc.image}" alt="" />
+                        </div>
+                        <div th:class="${doc.image} ? 'col-xs-9 col-sm-9 col-md-9' : ''">
+                            <strong><span class="fa fa-leaf" style="color:red"></span> <a th:href="${doc.id}" th:text="${doc.title}"/></strong>
+                            <div>
+                                Valor: 
+                                <th:block th:if="${doc.observation.get(0).value} == 'nulo'">
+                                    <span class="fa fa-flag label label-info" th:text="' ' + ${doc.observation.get(0).value}"></span> 
+                                </th:block>
+                                <th:block th:if="${doc.observation.get(0).value} == 'bajo'">
+                                    <span class="fa fa-flag label label-success" th:text="' ' + ${doc.observation.get(0).value}"></span> 
+                                </th:block>
+                                <th:block th:if="${doc.observation.get(0).value} == 'moderado'">
+                                    <span class="fa fa-flag label label-warning" th:text="' ' + ${doc.observation.get(0).value}"></span> 
+                                </th:block>
+                                <th:block th:if="${doc.observation.get(0).value} == 'alto'">
+                                    <span class="fa fa-flag label label-danger" th:text="' ' + ${doc.observation.get(0).value}"></span> 
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+<div role="alert" class="alert alert-info">Datos Recogidos en la  Estación Aerobiológica del Colegio Oficial de Farmacéuticos de Zaragoza</div>
+<p>Se informa sobre los siguientes tipos polínicos: Moreras, robles y encinas (Quercus), olivo, plátanos de paseo, llantenes, urticáceas (ortigas  y parietaria), cupresáceas(cipreses, tuyas y enebros),árbol del cielo, chopos, pinos, gramíneas,cenizos y maleza.</p>
+<strong>Intérvalos de granos de polen por m<sup>3</sup> de aire:</strong>
+<p>(Estos intervalos hacen referencia a los umbrales de concentración de polen necesarios para que un porcentaje bajo, medio o alto de la población sensible, desarrolle los síntomas asociados a la presencia de un determinado tipo de polen)</p>
+<p><strong>Plátanos de paseo <em>(Platanus)</em>, Moreras <em>(Moraceae)</em>, Chopos <em>(Populus)</em>, Cipreses, tuyas y enebros <em>(Cupresaceae)</em>, Pinos <em>(Pinus)</em>, Olivos <em>(Olea)</em>, Robles y Encinas <em>(Quercus)</em>, Árbol del Cielo</strong></p><ul><li>Bajos de 1 a 50 granos por m3 de aire</li><li>Moderados entre 50 y 200</li><li>Altos más de 200</li></ul><p><strong>Para Gramíneas <em>(Poaceae)</em>, Llantenes <em>(Plantago)</em>,Cenizos <em>(Chenopodiaceae)</em> y Maleza <em>(Amarantaceae)</em></strong></p><ul><li>Bajos de 1 a 25 granos por m3 de aire</li><li>Moderados entre 26 y 50</li><li>Altos más de 50</li></ul><p><strong>Para Ortigas y Parietaria <em>(Urticaceae)</em></strong></p><ul><li>Bajos de 1 a 15 granos por m3 de aire</li><li>Moderados entre 16 y 30</li><li>Altos más de 30</li></ul><ul><li><a href="http://www.uco.es/rea/">Más información: Red Española de Aerobiología</a></li></ul>
+
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <form id="editForm" method="post">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Edición <th:block th:if="${param.path}" th:text="${param.path[0]}"/></h4>
+            <div id="respuesta"></div>
+            <input placeholder="ej:servicio|fragmento|portal/carpeta/nombre" th:if="not ${param.path}" type="text" name="path" class="form-control"/>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button id="rich" type="button" class="pull-right btn btn-warning btn-xs">Rich</button>
+            <input th:if="${param.path}" type="hidden" name="path" th:value="${path}" />
+            
+        </div>
+        <div class="modal-body">
+            <textarea class="form-control" rows="20" style="height:100%" id="contentRaw" name="content" th:text="${content}" />
+        </div>
+    </form>
+    <form id="editRichForm" method="post" class="form-horizontal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Edición <th:block th:if="${param.path}" th:text="${param.path[0]}"/></h4>
+            <input placeholder="ej:servicio|fragmento|portal/carpeta/nombre" th:if="not ${param.path}" type="text" name="path" class="form-control"/>
+            <div id="respuestaRich"></div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button id="raw" type="button" class="pull-right btn btn-warning btn-xs">Raw</button>
+            <input th:if="${param.path}" type="hidden" name="path" th:value="${path}" />
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="titleForm" class="col-sm-2 control-label small">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" name="title" id="titleForm" class="form-control input-sm" />
+                </div>
+            </div>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Meta</a></h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="descriptionForm" class="col-sm-2 control-label small">Description</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="description" id="descriptionForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="keywordsForm" class="col-sm-2 control-label small">Portal(category)</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="category" id="categoryForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="keywordsForm" class="col-sm-2 control-label small">Subject</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="subject" id="subjectForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="keywordsForm" class="col-sm-2 control-label small">Keywords</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="keywords" id="keywordsForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="languageForm" class="col-sm-2 control-label small">Idioma</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="language" id="languageForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="audienceForm" class="col-sm-2 control-label small">Población</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="audience" id="audienceForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-modifiedForm" class="col-sm-2 control-label small">Modificado</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="last-modified" id="last-modifiedForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-modifiedForm" class="col-sm-2 control-label small">Prioritario</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="priority" id="priorityForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-modifiedForm" class="col-sm-2 control-label small">Robots</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="robots" id="robotsForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="authorForm" class="col-sm-2 control-label small">Autor</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="author" id="authorForm" class="form-control input-sm" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <textarea class="form-control" rows="20" style="height:100%" id="body" name="body" />
+            <input type="hidden" id="contentSend" name="content" />
+        </div>
+    </form>
+    <script src="//www.zaragoza.es/cont/plantillas/js/jquery-ui-1.11.3.min.js"></script>
+    
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $('body').on('hidden.bs.modal', '.modal', function() {
+        $(this).removeData('bs.modal');
+    });
+
+    $("#editRichForm").hide();
+    $("#rich").hide();
+
+    var htmlData = $("#contentRaw").val();
+
+    var body = htmlData.substring(htmlData.indexOf("<sede:content>") + "<sede:content>".length, htmlData.indexOf("</sede:content>"));
+
+    if (body.indexOf("<script") < 0
+        && htmlData.indexOf("th:with") < 0
+        && htmlData.indexOf("th:block") < 0
+        //&& htmlData.indexOf("<i ") < 0
+        && htmlData.indexOf("</sede:meta") > 0
+        ) {
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(htmlData, "text/xml");
+        var meta = xmlDoc.getElementsByTagNameNS("http://www.zaragoza.es", "meta")[0];
+        $('#titleForm').val(meta.getAttribute("title"));
+        $('#descriptionForm').val(meta.getAttribute("description"));
+        $('#keywordsForm').val(meta.getAttribute("keywords"));
+        $('#authorForm').val(meta.getAttribute("author"));
+        $('#priorityForm').val(meta.getAttribute("priority"));
+        $('#robotsForm').val(meta.getAttribute("robots"));
+        $('#categoryForm').val(meta.getAttribute("category"));
+        $('#subjectForm').val(meta.getAttribute("subject"));
+        $('#last-modifiedForm').val(meta.getAttribute("last-modified"));
+        $('#audienceForm').val(meta.getAttribute("audience"));
+        $('#languageForm').val(meta.getAttribute("language") || 'es');
+
+        /* CodeMirror CKEDITOR Plugin - https://github.com/w8tcha/CKEditor-CodeMirror-Plugin */
+        CKEDITOR.plugins.addExternal('codemirror', '//www.zaragoza.es/cont/plantillas/sede/js/ckeditor/codemirror/codemirror/', 'plugin.js');
+        var editorHtml = CKEDITOR.replace('body', {
+            customConfig: '//www.zaragoza.es/cont/plantillas/sede/js/config.js',
+            extraPlugins: 'codemirror'
+        });
+        editorHtml.on('instanceReady', function() {
+            this.dataProcessor.writer.selfClosingEnd = '/>';
+
+            var dtd = CKEDITOR.dtd;
+            for ( var e in CKEDITOR.tools.extend( {}, dtd.$nonBodyContent, dtd.$block, dtd.$listItem, dtd.$tableContent ) ) {
+                this.dataProcessor.writer.setRules( e, {
+                    indent: true,
+                    breakBeforeOpen: true,
+                    breakAfterOpen: true,
+                    breakBeforeClose: true,
+                    breakAfterClose: true
+                });
+            };
+        });
+
+        /* CodeMirror - http://codemirror.net/doc/manual.html */
+        var editorHtmlAlt = CodeMirror.fromTextArea(document.getElementById('contentRaw'), {
+            mode: 'text/html',
+            lineNumbers: true,
+            lineWrapping: true
+        });
+
+        $("#rich").show();
+        $('#body').val(body)
+        $("#editForm").hide();
+        $("#editRichForm").show();
+        $("#raw").click(function() {
+            $("#editForm").show();
+            $("#editRichForm").hide();
+        });
+        $("#rich").click(function() {
+            $("#editForm").hide();
+            $("#editRichForm").show();
+        });
+    } else {
+        $("#respuesta").html('<div role="alert" class="alert alert-danger">Contenido no editable en editor por contener script, th:block, th:with, &lt;i&gt; o no tener cerrada la etiqueta &lt;sede:meta&gt;</div>');
+        /* CodeMirror - http://codemirror.net/doc/manual.html */
+        var editorHtmlAlt = CodeMirror.fromTextArea(document.getElementById('contentRaw'), {
+            mode: 'text/html',
+            lineNumbers: true,
+            lineWrapping: true
+        });
+    };
+
+    $("#editForm").submit(function(e) {
+        var url = "/sede/servicio/contenido/save";
+        $("#contentRaw").val($("#contentRaw").val().replace(/\r\n|\r|\n/g,"\n"));
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#editForm").serialize(), // serializes the form's elements.
+            success: function(data) {
+                $("#respuesta").html(data);
+                window.setTimeout(function() {
+                    $(".alert").alert('close');
+                }, 2000);
+            }
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+
+    $("#editRichForm").submit(function(e) {
+
+        var sedeMeta = '<sede:meta title="' + $('#titleForm').val() + '" description="' + $('#descriptionForm').val() + '" category="' + $('#categoryForm').val() + '" subject="' + $('#subjectForm').val() + '" author="' + $('#authorForm').val() + '" last-modified="' + new Date().toISOString().slice(0,10) + '" audience="' + $('#audienceForm').val() + '" keywords="' + $('#keywordsForm').val() + '" priority="' + $('#priorityForm').val() + '" robots="' + $('#robotsForm').val() + '">';
+        
+        var startPage = '<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="' + $('#languageForm').val() + '">';
+        
+        startPage = startPage + htmlData.substring(htmlData.indexOf("<head"), htmlData.indexOf("<sede:meta"));
+        startPage = startPage + sedeMeta;
+        startPage = startPage + htmlData.substring(htmlData.indexOf("</sede:meta>"), htmlData.indexOf("<sede:content>") + 14);
+        var endPage = htmlData.substring(htmlData.indexOf("</sede:content>"), htmlData.length);
+
+        $("#contentSend").val(startPage + editorHtml.getData() + endPage);
+        
+        var url = "/sede/servicio/contenido/save";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#editRichForm").serialize(), // serializes the form's elements.
+            success: function(data) {
+                $("#respuestaRich").html(data);
+                window.setTimeout(function() {
+                    $(".alert").alert('close');
+                }, 2000);
+            }
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+   <head>
+      <meta charset="utf-8" />
+      <sede:meta title="PICH: Proyectos culturales" description="El portal de la Oficina del Plan Integral del Casco Histórico ofrece recursos sobre los proyectos que desarrollan en áreas como deportes, cultura, derechos sociales, solares urbanos, medio ambiente, limpieza, comercio, turismo y participación además de ofrecer información sobre sus actividades." category="" subject="" author="" last-modified="2018-09-13" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España, Oficina Plan Integral Casco histórico, participación, solares urbanos, formalidades administrativas, administración electrónica, relación administración-administrado, participación social, actividades, concursos, servicio de quejas y sugerencias, council, city, Saragossa, Spain, administrative formalities, electronic government, citizen-authority relations, participation, urbanism, culture, social rights, environment, social participation, green area, activities, contest, complaints and suggestions service" priority="" robots=""></sede:meta>
+   </head>
+   <style>
+      titulo-seccion {
+      line-height: 66px;
+      font-size: 42px;
+      }
+      .fnd-blanco {
+      background-color: #ffffff;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      .fnd-gris-claro {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: -40px;
+      }
+      .titulo-org h2,
+      .procesos h2{
+      color: #e83437;
+      font-size: 42px;
+      padding-bottom: 20px;
+      }
+      .titulo-org h2 small,
+      .titulo-org h2 span{
+      color: #000000;
+      }
+      .panel-heading a:after {
+      float: left;
+      color: white;
+      background-color: #000;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      margin-right: 10px;
+      }
+      .panel-heading a.collapsed:after {
+      content: "\f105";
+      }
+      .panel-default>.panel-heading {
+      background-color: #fff;
+      border: 0;
+      }
+      .panel {
+      border: 0;
+      webkit-box-shadow: 0 0 0;
+      box-shadow: 0 0 0;
+      }
+      .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border: 0;
+      }
+      .panel-body {
+      padding-left: 50px;
+      }
+      .panel-title>a {
+      color: #E81B16;
+      }
+      .panel-title>a:hover,
+      .panel-title>a:focus,
+      .panel-title>a:active {
+      text-decoration: none;
+      }
+   </style>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Proyectos culturales</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">   Proyectos culturales</h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <div class="pull-right">
+                              <p>La Cultura junto a la Educación son alimentos para que las sociedades puedan desarrollarse y avanzar. Fomentar y potenciar estos derechos universales es, y debe seguir siendo, responsabilidad pública.</p>
+                              <p>El Plan Integral del Casco Histórico siguiendo este principio recoge como una de las líneas de actuación la Dinamización Sociocultural del Casco Histórico (El Gancho, La Madalena y El Rabal Viejo)</p>
+                              <p>Una cultura que se adapte a los momentos de crisis económica actual, con un marcado carácter social, cercana y asequible a todos y todas, que muestre la riqueza intercultural del Casco Histórico, que ponga en valor el potencial artístico y cultural del Barrio y que se aleje de grandes eventos, son los objetivos que marcan los diferentes Programas, Proyectos y Actuaciones Culturales del Plan Integral del Casco Histórico</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="linea"></div>
+                  </div>
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12">
+                        <div class="row no-gutter step-box fnd-sectores">
+                           <div class="col-md-3 padding-a1em">
+                              <h3 class="nomargin">   Magia en el Casco Histórico</h3>
+                           </div>
+                           <div class="col-md-9 padding-a1em">
+                              <div class="pull-right"><img alt="" src="/cont/vistas/portal/pich/img/magia-casco.gif"/></div>
+                              <p> El mes de Septiembre comienza con el <strong>Encuentro de Magia en el Barrio</strong> (IX Encuentro del Casco Histórico 2018).
+                                 Calles, Plazas y Espacios emblemáticos como la Plaza Santo Domingo, Torreón de la Zuda, Plaza de San Agustín, Plaza del Rosario, Antiguo Casino Mercantil.., acogen a magos/as, no sólo de nuestra ciudad sino de otros lugares de España y Europa.
+                              </p>
+                              <p>En colaboración con la Asociación Taller Zaragoza Mágica, los vecinos y vecinas de la ciudad tuvieron la oportunidad de acercarse a un Casco Histórico Mágico</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="linea"></div>
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12">
+                        <div class="row no-gutter step-box fnd-sectores">
+                           <div class="col-md-3 padding-a1em">
+                              <h3 class="nomargin">  Encuentro de payasos/as</h3>
+                           </div>
+                           <div class="col-md-9 padding-a1em">
+                              <div class="pull-right"><img alt="" src="/cont/vistas/portal/pich/img/entrepayasos.gif"/></div>
+                              <p>  El último fin de semana del mes de Abril diferentes plazas, solares y calles del Casco Histórico, y lugares como Albergue Juvenil de Predicadores, Teatro del Mercado y C. P. Santo Domingo, entre otros acogen el VI Encuentro de Payasos/as de Zaragoza,  El encuentro contiene diferentes actuaciones:</p>
+                              <ul>
+                                 <li> 
+                                    Encuentro entre payasos y payasas 
+                                 </li>
+                                 <li>
+                                    Talleres de clown, mimo y circo 
+                                 </li>
+                                 <li>
+                                    Y el más visible para el ciudadano/a como son las actuaciones en plazas, calles, y teatros
+                                 </li>
+                              </ul>
+                              <p>
+                                 Este año 2018 ( 12º Encuentro ) como novedad el Encuentro se inició con las actividades del MES DEL CIRCO, (mes de Mayo), acogiendo el Festival de Circo Social del Casco Histórico.
+                              </p>
+                              <p>Distintos talleres y actividades relacionadas con el mundo del circo: talleres de animación de calle, acrobacias, zancos, magia, equilibrio, aéreos, parkour, pasacalles?.conformaron la programación.</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="linea"></div>
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12">
+                        <div class="row no-gutter step-box fnd-sectores">
+                           <div class="col-md-3 padding-a1em">
+                              <h3 class="nomargin">Barrio de cuento</h3>
+                           </div>
+                           <div class="col-md-9 padding-a1em">
+                              <div class="pull-right"><img alt="" src="/cont/vistas/portal/pich/img/barrio-cuento.gif"/></div>
+                              <p> Este proyecto nació en el año 2013, teniendo como finalidad <strong>acercar el mundo de los cuentos a las calles del Casco Histórico</strong>, de tal forma que el barrio se llenara de espectáculos relacionados con el mundo del cuento un fin de semana al año. Los objetivos de la actividad son:</p>
+                              <p><strong>Movilizar al barrio</strong> en actividades culturales, <strong>acercar la cultura a las personas desfavorecidas</strong>, disfrutar de un <strong>ocio saludable y en familia</strong>, o llenar las calles del Casco Histórico de espectáculos, entre otros.</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="linea"></div>
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12">
+                        <div class="row no-gutter step-box fnd-sectores">
+                           <div class="col-md-3 padding-a1em">
+                              <h3 class="nomargin">Ciclo de literatura y teatro</h3>
+                           </div>
+                           <div class="col-md-9 padding-a1em">
+                              <p>
+                                 El Ciclo de Literatura tiene un fin educativo, su objetivo es la colaboración de los colegios e institutos del Casco Histórico de Zaragoza, para <strong>fomentar las actividades literarias y teatrales, y sus valores educativos</strong> (humanos, sociales, creativos y culturales) en los alumnos de infantil, primaria y secundaria, tomando como instrumento la participación activa, como actores y espectadores.
+                              </p>
+                              <p>Estas actividades se integran dentro de la acción 1.17 del Plan Integral del Casco Histórico 2013-2020 <em> Impulso de nuevos programas, proyectos y actuaciones culturales. Mantenimiento de los programas ya existentes. Creación de espacios de trabajo que favorezcan la coordinación entre los distintos Colectivos, Entidades y Servicios Municipales</em>.</p>
+                              <h4>Jornadas Literarias</h4>
+                              <p>Durante el año se trabaja con los centros educativos un autor para luego realizar actividades teatrales relacionadas con ese autor en el Teatro del Mercado,</p>
+                              <h4>Clásicos Luna</h4>
+                              <p>Proyecto Clásicos Luna: el teatro como instrumento educativo 2017-2018. Con el IES Pedro de Luna se trabaja también con un autor a lo largo del año para después producir un espectáculo teatral.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

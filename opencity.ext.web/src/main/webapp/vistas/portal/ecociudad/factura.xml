@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Depuradoras"
+                   description=""
+                   keywords=""
+        >
+        </sede:meta>
+        <style type="text/css">
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .fa {
+            vertical-align: middle;
+            }
+
+            @media (min-width: 768px) {
+            .list-aviso>li {
+            min-height: 16em;
+            }
+            .listado-equipamiento-solr li {
+            min-height: 25em;
+            }
+            }
+
+            .left-ribbon {
+            /*position: relative;*/
+            position: absolute;
+            bottom: 5px;
+            background: #EEE;
+            border: 1px solid #CCC;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+            padding: 10px 15px;
+            clear: both;
+            /*margin-left: -24px;*/
+            margin-left: -10px;
+            float: left;
+            }
+
+            .left-ribbon::before {
+            display: block;
+            width: 10px;
+            height: 0px;
+            position: absolute;
+            bottom: -10px;
+            left: -1px;
+            content: '';
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #757575;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: 0px;
+            font-size: 28px;
+            }
+
+            .menu-consejos li.active a {
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            @media (max-width: 768px) {
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+
+            h3 {
+            color: #D01715;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Ecociudad
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+
+                <div class="container-fluid fnd-blanco radius">
+                    <h2 class="text-right">Factura: Reverso, importe saneamiento
+                        <br/>
+                    </h2>
+                    <div class="row-fluid">
+                        <div class="col-xs-12">
+                            <div class="col-sm-6">
+                                <img width="350" alt=""
+                                     src="https://www.zaragoza.es/cont/paginas/encasa/facturaagua/img/anverso/detalle_saneamiento.jpg"
+                                     class="img-responsive margin-b2em"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <h3>Importe Saneamiento</h3>
+                                <p>Información desglosada del importe total (cuota fija cuota variable) de
+                                    saneamiento.
+                                </p>
+                                <p>Este bloque corresponde a los servicios vinculados al<strong>saneamiento de aguas
+                                    residuales</strong>, gestionados por<strong>Ecociudad Zaragoza</strong>. Constituye
+                                    una factura diferenciada de la del ayuntamiento.
+                                </p>
+                                <p>A la derecha encontrará el detalle de la cuota fija y la cuota variable con los
+                                    mismos criterios descritos para el abastecimiento, y en la izquierda el resumen de
+                                    todos los servicios facturados y demás impuestos aplicables.
+                                </p>
+                                <p>
+                                    <img width="350" alt=""
+                                         src="https://www.zaragoza.es/cont/paginas/encasa/facturaagua/img/reverso/saneamiento_2013_expli.jpg"
+                                         class="img-responsive"/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text-right">Periodos de facturación de las claves recaudatorias del servicio de
+                        saneamiento y plazos de pago
+                        del periodo voluntario
+                    </h2>
+                    <a href="https://www.zaragoza.es/cont/paginas/saneamiento/pdf/Zonas_Lecturas.pdf" class="pdf">Plano
+                        de lecturas
+                    </a>
+                    <table class="table table-responsive tabla-bn">
+                        <tr>
+                            <th colspan="2">Zonas</th>
+                            <th>Periodo que se factura</th>
+                            <th>Clave Recaudatoria</th>
+                            <th>Fin de Periodo Voluntario de pago</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">1</td>
+                            <td rowspan="4">
+                                <ul>
+                                    <li>MARGEN IZQUIERDA: (ACTUR, ARRABAL-PICARRAL, PARQUE GOYA, Bº JESÚS-LA JOTA)</li>
+                                    <li>POLÍGONOS: COGULLADA Y MALPICA</li>
+                                    <li>BARRIOS RURALES (EXCEPTO MIRALBUENO)</li>
+                                    <li>ALMOZARA-PTA. SANCHO</li>
+                                    <li>CASCO VIEJO</li>
+                                    <li>CENTRO</li>
+                                </ul>
+                            </td>
+                            <td>Enero - Marzo</td>
+                            <td>SC-03</td>
+                            <td>15 Junio</td>
+                        </tr>
+                        <tr>
+                            <td>Abril - Junio</td>
+                            <td>SC-06</td>
+                            <td>15 de Septiembre</td>
+                        </tr>
+                        <tr>
+                            <td>Julio - Septiembre</td>
+                            <td>SC-09</td>
+                            <td>15 de Diciembre</td>
+                        </tr>
+                        <tr>
+                            <td>Octubre - Diciembre</td>
+                            <td>SC-12</td>
+                            <td>15 de Marzo</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">2</td>
+                            <td rowspan="4">
+                                <ul>
+                                    <li>CON LAS TORRES: (FCO. VITORIA-Pº DAMAS)</li>
+                                    <li>LAS FUENTES</li>
+                                    <li>Pº SAGASTA</li>
+                                    <li>SAN JOSÉ-MIGUEL SERVET</li>
+                                    <li>TORRERO-LA PAZ</li>
+                                </ul>
+                            </td>
+                            <td>Noviembre - Enero</td>
+                            <td>SC-01</td>
+                            <td>15 Abril</td>
+                        </tr>
+                        <tr>
+                            <td>Febrero - Abril</td>
+                            <td>SC-04</td>
+                            <td>15 de Julio</td>
+                        </tr>
+                        <tr>
+                            <td>Mayo - Julio</td>
+                            <td>SC-07</td>
+                            <td>15 de Octubre</td>
+                        </tr>
+                        <tr>
+                            <td>Agosto - Octubre</td>
+                            <td>SC-10</td>
+                            <td>15 de Enero</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">3</td>
+                            <td rowspan="4">
+                                <ul>
+                                    <li>CASABLANCA-NTRA. SRA. DE LAS NIEVES</li>
+                                    <li>VALDESPARTERA</li>
+                                    <li>CTRA. LOGROÑO</li>
+                                    <li>DELICIAS</li>
+                                    <li>GRAN VÍA-FNDO. EL CATÓLICO</li>
+                                    <li>LA BOMBARDA-MONSALUD-LA BOZADA</li>
+                                    <li>MIRALBUENO</li>
+                                    <li>OLIVER-VALDEFIERRO</li>
+                                    <li>ROMAREDA-UNIVERSIDAD</li>
+                                </ul>
+                            </td>
+                            <td>Diciembre - Febrero</td>
+                            <td>SC-02</td>
+                            <td>15 Mayo</td>
+                        </tr>
+                        <tr>
+                            <td>Marzo - Mayo</td>
+                            <td>SC-05</td>
+                            <td>15 de Agosto</td>
+                        </tr>
+                        <tr>
+                            <td>Junio - Agosto</td>
+                            <td>SC-08</td>
+                            <td>15 de Noviembre</td>
+                        </tr>
+                        <tr>
+                            <td>Septiembre - Noviembre</td>
+                            <td>SC-11</td>
+                            <td>15 de Febrero</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

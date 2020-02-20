@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Mapa del Ruido. Servicios IDEZar. Infraestructura de Datos Especiales de Zaragoza"
+                   description=""
+                   author="" last-modified="Thu Dec 23 00:00:00 CET 2019"
+                   keywords=""/>
+        <!--<link rel="manifest" href="//www.zaragoza.es/cont/vistas/portal/organizacion/manifest.json"/>-->
+        <style>
+            titulo-seccion {
+            line-height: 66px;
+            font-size: 42px;
+            }
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .panel-heading a:after {
+            float: left;
+            color: white;
+            background-color: #000;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 20px;
+            margin-right: 10px;
+            }
+
+            .panel-heading a.collapsed:after {
+            content: "\f105";
+            }
+
+            .panel-default>.panel-heading {
+            background-color: #fff;
+            border: 0;
+            }
+
+            .panel {
+            border: 0;
+            webkit-box-shadow: 0 0 0;
+            box-shadow: 0 0 0;
+            }
+
+            .panel-group .panel-heading+.panel-collapse>.panel-body {
+            border: 0;
+            }
+
+            .panel-body {
+            padding-left: 50px;
+            }
+
+            .panel-title>a {
+            color: #E81B16;
+            }
+
+            .panel-title>a:hover,
+            .panel-title>a:focus,
+            .panel-title>a:active {
+            text-decoration: none;
+            }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+    
+    .second-bar h2 {
+		margin: 0 0 0 0.5em !important;
+	}
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+    
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: inherit;
+        }
+    }
+     @media(max-width: 425px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }          
+
+/* Las pestañas */
+
+                @media (min-width: 768px) {
+                .nav-tabs>li {
+                border-right: solid 2px #000000;
+                margin-bottom: 10px;
+                width: 16.6%;
+                text-align: center;
+                }
+                }
+
+                @media (max-width: 768px) {
+                .nav-tabs>li {
+                width: 100%;
+                border-bottom: solid 2px #000000;
+                padding: 5px;
+                }
+                }
+
+                .nav-tabs>li:last-child {
+                border-right: 0;
+                }
+
+                .nav-tabs>li>a {
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: 5px;
+                }
+
+                .nav-tabs {
+                border-bottom: solid 2px;
+                }
+
+                .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+                .tab-content {
+                color: #000000;
+                border: 0 !important;
+                }
+                
+                
+
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right titulo-seccion">Mapa del Ruido</h2>
+            </div>
+            <div class="container-fluid second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/idezar/#servicios">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Servicios IDEZar</span>
+                    </a>
+                    <h2 class="lead destacado pull-left">Servicios IDEZar</h2>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li class=""><a href="http://idezar.zaragoza.es/visorMapaRuido/">Acceso al visor</a></li>
+
+                </ul>
+            </div>            
+            <div class="fnd-gris-claro" id="visualizacion">
+                 <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+	<p>Es una nueva herramienta que permite visualizar de forma interactiva sobre el mapa de la ciudad, los niveles sonoros obtenidos como resultado del estudio realizado sobre el mapa del ruido de viales urbanos de Zaragoza.</p>					 
+                    <h3>Funcionalidades
+                    </h3>
+ <ul><li><strong>Zona de previsualización</strong> de mapas con los planos disponibles que corresponden a los distintos periodos del día, para facilitar la elección del usuario del plano a visualizar.</li>
+<li><strong>Área de mapa</strong> donde se muestran, sobre la cartografía de la ciudad, los niveles sonoros correspondientes al periodo del día seleccionado. El nivel de ruido se representa según el color asignado a los diferentes intervalos, que puede consultarse en la Leyenda. Además, puede escogerse la transparencia del mapa de ruido visualizado para adaptar su visualización sobre la cartografía.</li>
+<li><strong>Herramientas de interacción.</strong> El mapa dispone de herramientas de interacción que permiten realizar zoom, desplazamientos, etc. así como la impresión del mapa con toda la información visible en el momento.</li>
+<li><strong>Información</strong> descriptiva de los datos visualizados (año, periodo de cálculo, etc.), enlace de descarga al catálogo de datos abiertos para facilitar la reutilización de la información y acceso al informe con la descripción de la metodología de cálculo y resultados detallados de la elaboración del mapa.</li>
+<li><strong>Acceso integrado a toda la información urbana</strong>, permitiendo superponer otras capas de información de interés como el estado del tráfico, los equipamientos de la ciudad, etc.</li>
+<li>Además ofrece grandes <strong>avances en usabilidad</strong> como el diseño responsivo, que lo hace accesible desde cualquier dispositivo móvil o el zoom progresivo que mejora la interacción con la información cartográfica.</li></ul>
+<div class="row-fluid">
+	<div class="text-center">
+		<img src="/cont/paginas/idezar/img/mapa_del_ruido_interactivo.png" class="" alt=""/>
+	</div>
+</div>
+
+
+                </div>
+            </div>     
+
+        </sede:content>
+    </body>
+
+</html>
+

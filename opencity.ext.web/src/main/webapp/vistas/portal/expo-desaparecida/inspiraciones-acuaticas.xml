@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida >> Inspiraciones Acuáticas" description="En el décimo aniversario de la Expo 2008 Agua y Desarrollo Sostenible 
+presentamos un recorrido virtual por aquellas arquitecturas e instalaciones de 
+carácter efímero, creadas  para el marco de los 93 días de la muestra y que ya 
+no se conservan" author="Ayuntamiento de Zaragoza. Archivo Municipal" keywords="expo, 2008, cultura, ocio, medio ambiente, Agua y Desarrollo Sostenible, environment, Water and Sustainable Development"/>    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.css"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+        .cluster {
+            background: #2d84c8;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #2d84c8;
+            font-family: monospace;
+        }
+
+        .cluster:before {
+            content: ' ';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            border: 1px solid white;
+        }
+
+        .digits-1 {
+            font-size: 1.4em;
+            height: 28px;
+            width: 28px;
+            line-height: 28px;
+            margin-top: -14px;
+            margin-left: -14px;
+        }
+
+        .digits-2 {
+            font-size: 1.6em;
+            height: 34px;
+            width: 34px;
+            line-height: 35px;
+            margin-top: -17px;
+            margin-left: -17px;
+        }
+
+        .digits-2:before {
+            border-width: 2px;
+        }
+
+        .digits-3 {
+            font-size: 1.8em;
+            height: 48px;
+            width: 47px;
+            line-height: 47px;
+            border-width: 3px;
+            margin-top: -24px;
+            margin-left: -24px;
+        }
+
+        .digits-3:before {
+            border-width: 3px;
+        }
+
+        .digits-4 {
+            font-size: 1.8em;
+            height: 58px;
+            width: 58px;
+            line-height: 57px;
+            border-width: 4px;
+            margin-top: -29px;
+            margin-left: -29px;
+        }
+
+        .digits-4:before {
+            border-width: 4px;
+        }
+
+        .list-noticia a {
+            color: #202020;
+        }
+
+        .list-noticia li {
+            border-bottom: 1px solid #E6E6E6;
+            /*fnd-gris-claro*/
+            margin-bottom: .5em;
+            padding-bottom: .5em;
+        }
+
+        @media (min-width: 768px) {
+            .list-aviso li {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content>
+        <p>
+          <img alt=" " class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/vertiente/cabecera-vertiente.gif" />
+        </p>
+        <div class="row">
+            <div class="col-md-12 card">
+ 
+                    <h2>
+         La Expo desaparecida > Inspiraciones Acuáticas. El Hombre Vertiente
+            </h2>
+                    <hr class="sm" />
+                  <div class="text-justify">
+<p><strong>Fuera del frente fluvial</strong> donde se alojaban las plazas temáticas, entre el Pabellón Puente y el Puente del Tercer Milenio, se edificó un <strong>anfiteatro</strong> con forma exterior de concha y con capacidad para 3000 personas, su diseño climático fue desarrollado por el arquitecto Félix Escrig. Contaba con un escenario de 10 metros de profundidad, 26 de ancho y 15 de altura, un marco inigualable para la representación de uno de los espectáculos más aclamados de la Expo: el Hombre Vertiente.</p><p>
+
+<strong>Hombre Vertiente</strong> es una obra de teatro aéreo ideada por Pichón Baldinu y Gabriela Baldini de la compañía argentina 'Ojalá!'. Se realizaron a lo largo de la muestra 360 representaciones: 6 pases diarios de veinte minutos de duración. Se calcula que pudieron disfrutarla más de <strong>830.000 espectadores</strong>.</p><p>
+La representación conjugaba la expresión plástica, sensorial, artística y abstracta para mostrar la relación del  hombre con el agua a través de los personajes Aguador, Nilo y Chaac.</p> 
+             </div>       <div class="linea"></div><h3 class="color-destacados">Más Información</h3>         
+  <ul class="list-unstyled">     
+  
+    <li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="http://www.zaragoza.es/nuba/app/results/ahis?pa=1&amp;sr=1&amp;q=hombre+vertiente&amp;st=.1.6.100.30891.1171249">Fotografías Hombre Vertiente  </a></li>
+<li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="http://www.zaragoza.es/nuba/app/results/ahis?vm=nv&amp;ob=os:1&amp;pa=1&amp;p=306&amp;st=.1.6.100.30891.1171249&amp;i=1174823">Fotografías Expo 2008</a></li>
+
+<li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="https://bit.ly/2s62QaR">Bibliografía</a></li>
+ 
+           </ul>
+         
+            </div>
+        </div>
+			  
+			  
+			  
+			   <div class="row">
+            <div class="col-md-12 card">
+			
+			
+			
+			<h2>Hombre Vertiente</h2>
+ 
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h3>
+                    <hr class="sm color-destacados" /> 
+					
+					
+					
+									
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/221848-escenario.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/221848-escenario.gif"/> </a></div>
+            
+			  <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=221848&amp;p=0&amp;i=786402"> Exp: 221848-2008. Escenario</a></p> 	
+				
+				
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0074636-08.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0074636-08.gif"/> </a></div>
+				   <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0074636&amp;p=0&amp;i=1034613"> Exp: 0074636-2008. Alzado y Planta</a></p> 	
+             
+				
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0074636-08-cubierta.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0074636-08-cubierta.gif"/> </a></div>
+				   <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0074636&amp;p=0&amp;i=1034613"> Exp: 0074636-2008. Cubierta, Alzado y Planta</a></p> 	
+					
+					
+					
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0144947.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0144947.gif"/> </a></div>
+             <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0144947&amp;p=0&amp;i=1172574"> Sign: 0144947</a></p> 	   
+				
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0144992.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0144992.gif"/> </a></div>
+				   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0144992&amp;p=0&amp;i=1172619"> Sign: 0144992</a></p> 	
+            
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0145007.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0145007.gif"/> </a></div>
+				   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145007&amp;p=0&amp;i=1172634"> Sign: 0145007</a></p> 	
+              
+				
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0145020.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0145020.gif"/></a></div>
+				   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145020&amp;p=0&amp;i=1172647"> Sign: 0145020</a></p> 	
+                
+				
+				
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0145060.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0145060.gif"/> </a></div>
+				   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145060&amp;p=0&amp;i=1172687">  Sign: 0145060</a></p> 	
+               
+				
+				
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0145106.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0145106.gif"/> </a></div>
+				   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145106&amp;p=0&amp;i=1172733"> Sign: 0145106</a></p> 	
+ 
+				
+				
+				
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/proyecto/0145107.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/proyecto/0145107.gif"/> </a></div>
+               
+			     <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145107&amp;p=0&amp;i=1172734"> Sign: 0145107</a></p> 	
+				
+				
+
+               
+			   
+			   
+			   
+			   
+			    </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+ <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145062.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145062.gif"/></a></div>
+                 
+      				   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145062&amp;p=0&amp;i=1172689"> Sign: 0145062</a></p> 	
+
+	  
+	  
+	   <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145189.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145189.gif"/> </a></div>
+                 
+   
+				
+				      				   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145189&amp;p=0&amp;i=1172816"> Sign: 0145189</a></p> 	
+
+				
+					   <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145191.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145191.gif"/> </a></div>
+  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145191&amp;p=0&amp;i=1172818"> Sign: 0145191</a></p> 	
+             
+			  
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145196.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145196.gif"/> </a></div>
+            <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145196&amp;p=0&amp;i=1172823"> Sign: 0145196</a></p> 	     
+   			  
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145197.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145197.gif"/></a></div>
+				
+				        <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145197&amp;p=0&amp;i=1172824">  Sign: 0145197</a></p> 	
+				
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145205.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145205.gif"/></a></div>
+								        <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145205&amp;p=0&amp;i=1172832">   Sign: 0145205</a></p> 	
+
+								
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145206.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145206.gif"/> </a></div>
+				 
+								        <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145206&amp;p=0&amp;i=1172833">   Sign: 0145206</a></p> 	
+
+				
+											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0145207.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0145207.gif"/> </a></div>
+				
+   								        <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145207&amp;p=0&amp;i=1172834">   Sign: 0145207</a></p> 	
+       
+		  
+		  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/vertiente/gran/durante/0147141.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/vertiente/peq/durante/0147141.gif"/></a></div>
+		     <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0147141&amp;p=0&amp;i=1174769">  Sign: 0147141</a></p> 
+		  
+		  
+		    </div>  </div>
+    
+                </div>  </div>
+ 
+ 
+ 			 
+ 
+ 
+    </sede:content>
+ 
+</body>
+
+</html>

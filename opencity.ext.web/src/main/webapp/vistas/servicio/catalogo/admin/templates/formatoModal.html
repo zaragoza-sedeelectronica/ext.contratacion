@@ -1,0 +1,137 @@
+<div id="modalBorrar">
+    <div class="modal-header">
+        <h3>{{registro.id ? 'Modificar' : 'A&ntilde;adir'}} Formato. {{ registro.title }}</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <fieldset class="form-horizontal">
+                 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="dato">Nombre:</label>
+                    <div class="col-sm-8">
+                    	<input class="form-control" name="title" type="text" ng-model="dato.title" value="{{ dato.title }}" />
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" name="id" type="text" ng-model="dato.id" value="{{ dato.id }}" disabled/>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                	<label for="dato.issued" class="col-sm-2 control-label">Creaci&oacute;n:</label>
+					<div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="dato.issued" is-open="datepickers.issued" ng-required="true" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'issued')">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <label for="dato.modified" class="col-sm-2 control-label">Modificaci&oacute;n:</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="dato.modified" is-open="datepickers.modified" ng-required="true" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'modified')">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="dato.accessURL">Formato:</label>
+                    <div class="col-sm-4">
+                    	<select class="form-control" data-ng-model="dato.mediaType" ng-options="obj.id as obj.text for obj in mediaType"></select>
+                    </div>
+                    <label class="col-sm-2 control-label" for="dato.tipoMedio">Tipo Medio:</label>
+                    <div class="col-sm-4">
+                    	<select class="form-control" data-ng-model="dato.tipoMedio" ng-options="obj as obj.title for obj in tipoMedio"></select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="dato.description">Descripci&oacute;n:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="4" name="dato.description" ng-model="dato.description" value="{{ dato.description }}"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                	<label class="col-sm-2 control-label" for="dato.accessURL">URI Acceso:</label>
+                	<div class="input-group col-sm-8">
+                       	<input class="form-control" type="text" name="accessURL" ng-model="dato.accessURL" value="{{ dato.accessURL }}"/>
+                       	<div class="input-group-addon" ng-show="dato.accessURL">
+							<a href="{{dato.accessURL}}" target="_blank">
+								<span class="glyphicon glyphicon-share"></span>
+							</a>
+                       	</div>
+                   	</div>
+                </div>
+                
+                <div class="form-group">
+                	<label class="col-sm-2 control-label" for="dato.downloadURL">URI Descarga:</label>
+                	<div class="col-sm-3">
+                		<input class="form-control" type="text" name="bytes" ng-model="dato.bytes" value="{{ dato.bytes }}" placeholder="bytes"/>
+                   	</div>
+                   	
+                   	<div class="input-group col-sm-7">
+                   		<input class="form-control" type="text" name="downloadURL" ng-model="dato.downloadURL" value="{{ dato.downloadURL }}"/>
+                   		<div class="input-group-addon" ng-show="dato.downloadURL">
+							<a href="{{dato.downloadURL}}" target="_blank">
+								<span class="glyphicon glyphicon-share"></span>
+							</a>
+                       	</div> 
+                	</div>
+                </div>
+                
+                <div class="form-group">
+                	<label class="col-sm-2 control-label" for="dato.license">Licencia:</label>
+                	<div class="input-group col-sm-8">
+                       	<input class="form-control" type="text" name="license" ng-model="dato.license" value="{{ dato.license }}"/>
+                       	<div class="input-group-addon" ng-show="dato.license">
+							<a href="{{dato.license}}" target="_blank">
+								<span class="glyphicon glyphicon-share"></span>
+							</a>
+                       	</div>
+                   	</div>
+                </div>
+                
+                <div class="form-group">
+                	<label class="col-sm-2 control-label" for="dato.rights">Derechos:</label>
+                	<div class="input-group col-sm-8">
+                       	<input class="form-control" type="text" name="rights" ng-model="dato.rights" value="{{ dato.rights }}"/>
+                       	<div class="input-group-addon" ng-show="dato.rights">
+							<a href="{{dato.rights}}" target="_blank">
+								<span class="glyphicon glyphicon-share"></span>
+							</a>
+                       	</div>
+                   	</div>
+                </div>
+                <table class="table table-condensed table-striped">
+                <caption>Relaciones<button class="btn btn-default btn-xs" ng-click="addRel()">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button></caption>
+                <tr><th>Nombre</th><th>URL</th><th></th></tr>
+                <tr ng-repeat="rel in dato.rel track by $index">
+                	<td><input class="form-control" type="text" name="rel.title" ng-model="rel.title" value="{{rel.title}}"/></td>
+                	<td><input class="form-control" type="text" name="rel.uri" ng-model="rel.uri" value="{{rel.uri}}"/></td>
+                	<!--
+                	TODO No funciona el borrado de la relación, en api para que al hacer el EntidadBase.combinar prevalece los datos eliminados 
+                	<td><button type="button" class="btn btn-default" ng-click="borrarRel($index)">
+						<span class="glyphicon glyphicon-trash"></span> -->
+					</button></td>
+                </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="save()">Guardar</button>
+        <button class="btn btn-warning" ng-click="cancelar()">Cancelar</button> 
+    </div>
+</div>

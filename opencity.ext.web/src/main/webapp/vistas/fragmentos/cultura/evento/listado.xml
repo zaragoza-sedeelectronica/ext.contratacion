@@ -1,0 +1,28 @@
+<h3 th:if="${titulo}" th:text="${titulo}"></h3>
+<ul class="list-group nomargin overflow-y">
+    <li th:each="act: ${listado}" class="list-group-item" vocab="http://schema.org/" th:with="uri='/ciudad/actividades/ficha_Agenda?codigo=' + ${act.id}" typeof="Event" th:attr="resource=${uri}">
+        <!--/* <a th:href="${#httpServletRequest.requestURI} + 'servicio/actividades/' + ${act.id}"> */-->
+        <a th:href="'/sede/servicio/cultura/evento/' + ${act.id}">
+            <span class="text-info">
+                <!--/* TOFIX: SOLO CONTEMPLA UN LUGAR Y SUS HORARIOS */-->
+                <!--/* <th:block th:if="${act.subEvent.size() > 0} and ${act.subEvent[0].startDate}" th:text="${#utils.tratarFechas(act.subEvent[0].startDate, act.subEvent[0].endDate)}"></th:block> */-->
+                <th:block th:if="${act.subEvent.size() > 0} and ${act.subEvent[0].startDate}" th:text="${#calendars.format(act.subEvent[0].startDate,'dd MMMM yyyy')}"></th:block>
+                <th:block th:if="${act.subEvent.size() > 0} and ${act.subEvent[0].endDate} and not ${#strings.equals(act.subEvent[0].startDate, act.subEvent[0].endDate)}" th:text="' a ' + ${#calendars.format(act.subEvent[0].endDate,'dd MMMM yyyy')}"></th:block>
+                <!--/* <th:block th:text="${act.subEvent[0].openingHours.size()}"></th:block> */-->
+                <span class="destacado" th:if="${act.subEvent.size() > 0} and ${act.subEvent[0].openingHours.size() > 0}">
+                    <th:block th:if="${act.subEvent[0].openingHours.size() > 1}">
+                        Varios Horarios
+                    </th:block>
+                    <th:block th:if="${act.subEvent[0].openingHours.size() == 1}">
+                        <th:block th:text="${act.subEvent[0].openingHours[0].dayOfWeek}"></th:block>
+                        <th:block th:text="${act.subEvent[0].openingHours[0].startTime}"></th:block>
+                        a
+                        <th:block th:if="${act.subEvent[0].openingHours[0].endTime}" th:text="${act.subEvent[0].openingHours[0].endTime}"></th:block>
+                    </th:block>
+                </span>
+            </span>
+            <!--/* <p class="list-group-item-text" th:text="${act.subEvent[0].lugar.title}"></p> */-->
+            <p class="list-group-item-text" th:text="${act.title}"></p>
+        </a>
+    </li>
+</ul>

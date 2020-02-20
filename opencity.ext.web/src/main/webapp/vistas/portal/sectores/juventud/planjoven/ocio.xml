@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="4 Plan Joven. Ocio" description="" author="" last-modified="Thu Nov 13 00:00:00 CET 2014" keywords="plan joven, programacion">
+    </sede:meta>
+    <style>
+    body {
+        padding-top: 57px;
+    }
+    
+    @media (min-width: 768px) {
+        .btn-participa {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div style="position:relative;" class="text-center">
+            <img class="img-responsive full-width" src="//zaragoza.es/cont/paginas/gobierno-abierto/img/4planjoven.jpg" alt="" />
+           
+        </div>
+        <hr class="sm" />
+        <div class="row">
+            <h2> Ocio</h2>
+            <div>
+                <img class="pull-left" alt="" src="https://www.zaragoza.es/cont/vistas/portal/sectores/juventud/planjoven/img/icono-ocio.jpg" />
+                <p>
+                    Debemos reflexionar sobre el ocio juvenil, ya que es uno de los ámbitos fundamentales en los que se desarrolla la juventud. Ello implicará:</p>
+                <ul>
+                    <li> Repensar y desarrollar espacios de encuentro y socialización acordes con una realidad juvenil plural y cambiante.
+                    </li>
+                    <li> Pensar el modelo de ocio que impulsamos a nivel municipal y cómo tenemos en cuenta las diferencias entre las personas y en los barrios según los condicionantes socioeconómicas ya que son un factor importante y fundamental en la elección del modelo de ocio y de su acceso.
+                    </li>
+                    <li> Plantear las adicciones vinculadas al ocio entre las que nos preocupan las del juego y otros hábitos de riesgo que queremos afrontar desde una perspectiva del empoderamiento y de la capacitación para elegir.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Documentación</h3>
+                <ul>
+                    <li>
+                        <a class="pdf" href="/contenidos/sectores/jovenes/doca-ocio-formacion.pdf"> Ocio Formativo
+                                </a></li>
+                    <li>
+                        <a href="/contenidos/sectores/jovenes/Acta1reunion-GrupoOcioyFormacion.pdf" class="pdf">Acta 1</a>
+                    </li>
+                    <li><a href="/contenidos/sectores/jovenes/Acta2reunion-GrupoOcioyFormacion.pdf" class="pdf">Acta 2
+                                </a></li>
+                </ul>
+            </div>
+             
+        </div>
+        <sede:formulario id1="1" id2="2" />
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $(".collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

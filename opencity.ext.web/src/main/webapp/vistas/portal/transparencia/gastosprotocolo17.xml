@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Gastos protocolarios 2017" description="Transparencia " author="" last-modified="Fri Jun 1 00:00:00 CET 2018" keywords="ayuntamiento, ciudad, Zaragoza, España, protocolo, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado"/>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Gastos Servicio de Protocolo 2017</h2>
+        <div class="pull-right card"><a href="/sede/portal/transparencia/gastosprotocolo16">2016</a></div>
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th>Concepto</th>
+                <th>2017</th>
+                <th>2016</th>
+            </tr>
+            <tr class="destacado">
+                <td><a href="https://www.zaragoza.es/ciudad/encasa/hacienda/presupuestos/conceptoGasto_EjecucionPresupuesto?id=17ALC--9221-22601" title="ejecución">Partida Presupuestaria</a></td>
+                <td>100.000 €</td><td>150.000 €</td>
+            </tr>
+            <tr class="destacado">
+                <td>Total Gastos</td>
+                <td>66.872,27 €</td><td>93.858,28 €</td>
+            </tr>
+            <tr>
+                <td>Gastos de Representación</td>
+                <td>13.873,54 €</td><td>19.546,31 €</td>
+            </tr>
+            <tr>
+                <td>Gastos de Recepciones</td>
+                <td>32.946,25 €</td><td>31.580,19 €</td>
+            </tr>
+            <tr>
+                <td>Gastos de Oficina</td>
+                <td>8.249,14 €</td><td> 	19.546,31 €</td>
+            </tr>
+            <tr>
+                <td>Otros Gastos</td>
+                <td>11.803,34 €</td><td> 	32.306,95 €</td>
+            </tr>
+        </table>
+        <h3>Desglose</h3>
+        <div class="container-fluid">
+            <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                <li role="presentation" class="active"><a href="#repre" aria-controls="que" role="tab" data-toggle="tab">Representación</a></li>
+                <li role="presentation"><a href="#recep" aria-controls="que" role="tab" data-toggle="tab"> Recepciones</a></li>
+                <li role="presentation"><a href="#ofic" aria-controls="que" role="tab" data-toggle="tab"> Oficina</a></li>
+                <li role="presentation"><a href="#otros" aria-controls="que" role="tab" data-toggle="tab"> Otros Gastos</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div sede:class="tab-content">
+                <h2 class="tab-title" data-toggle="collapse" data-target="#repre" aria-expanded="false">Representación</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="repre">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed table-bordered">
+                            <caption>Gastos de Representación</caption>
+                            <tr>
+                                <th>TERCERO</th>
+                                <th>CONCEPTO</th>
+                                <th>IMPORTE</th>
+                                <th>FACTURA</th>
+                            </tr>
+                            <tr>
+                             <td>   Prensa diaria aragonesa S.A.</td><td>Esquela Hijo Adoptivo</td><td>235,95 €</td><td>471097020</td></tr>
+<tr><td>Timbaleros San Valero 2017</td><td>Salida en Corporación</td><td>631,05 €</td><td>******</td></tr>
+<tr><td>Blue media comunicación</td><td>Esquela Hijo Adoptivo</td><td>235,95 €</td><td>ME/79494</td></tr>
+<tr><td>La estilográfica moderna</td><td>Reposición diploma Hijo Predilecto</td><td>211,75 €</td><td>35</td></tr>
+<tr><td>ASC musical de inst.viento metal</td><td>Actuación musical homenaje Berta Cáceres</td><td>170,00 €</td><td>Metálico</td></tr>
+<tr><td>Mármoles y granitos Garbel S.A</td><td>Lápida de "La Pilara"</td><td>798,60 €</td><td>269/2017</td></tr>
+<tr><td>Flores María Pilar</td><td>Flores</td><td>60,00 €</td><td>67</td></tr>
+<tr><td>Flores María Pilar</td><td>Flores</td><td>60,00 €</td><td>95</td></tr>
+<tr><td>Flores María Pilar</td><td>Flores</td><td>120,00 €</td><td>100</td></tr>
+<tr><td>Larraz</td><td>Banda para Pabellón Ceremonias</td><td>163,35 €</td><td>F/1702144</td></tr>
+<tr><td>Flores María Pilar</td><td>Flores</td><td>60,00 €</td><td>124</td></tr>
+<tr><td>Pedro Faci SA</td><td>Medallas de Oro de la Ciudad</td><td>2.117,50 €</td><td>46208</td></tr>
+<tr><td>Prensa diaria aragonesa S.A.</td><td>Esquela exconcejal</td><td>235,95 €</td><td>471099564</td></tr>
+<tr><td>Blue media comunicación</td><td>Esquela exconcejal</td><td>235,95 €</td><td>17PL03148</td></tr>
+<tr><td>Cabildo metropolitano</td><td>Obequios delegación Cambrils</td><td>11,00 €</td><td>Metálico</td></tr>
+<tr><td>Viajes Turopa S.A.</td><td>Desplazamiento delegación Cambrils</td><td>421,20 €</td><td>000609/17</td></tr>
+<tr><td>Arrabal cristalería y enmarcaciones S.L</td><td>Diplomas medallas y distinciones Pilar 2017</td><td>2.534,77 €</td><td>2017-0041</td></tr>
+<tr><td>Timbaleros Medallas y Distinciones 2017</td><td>Salida en Corporación</td><td>631,05 €</td><td>******</td></tr>
+<tr><td>Prensa diaria aragonesa S.A.</td><td>Esquela fallecimiento exconcejal</td><td>235,95 €</td><td>471100152</td></tr>
+<tr><td>Timbaleros Ofrenda de flores 2017</td><td>Salida en Corporación</td><td>631,05 €</td><td>******</td></tr>
+<tr><td>Blue media comunicación</td><td>Esquela fallecimiento exconcejal</td><td>235,95 €</td><td>17PL04424</td></tr>
+<tr><td>M.A Jarza 17 S.L.L</td><td>Bandas pleno infantil 30 de noviembre</td><td>820,86 €</td><td></td></tr>
+<tr><td>Aspace</td><td>Felicitaciones de Navidad</td><td>122,50 €</td><td>03 MB</td></tr>
+<tr><td>ATADES</td><td>Felicitaciones de Navidad</td><td>440,44 €</td><td>AS17131</td></tr>
+<tr><td>La estilográfica moderna</td><td>Boligrafos para firmas</td><td>374,86 €</td><td>174</td></tr>
+<tr><td>Kairós</td><td>Felicitaciones de Navidad</td><td>147,62 €</td><td>5</td></tr>
+<tr><td>Francisco Javier Lázaro Núñez</td><td>Diligencia de apertura Libro de Oro de la Ciudad</td><td>439,42 €</td><td>17024</td></tr>
+<tr><td>Flores María Pilar</td><td>Corona de laurel Homenaje al Justicia de Aragón</td><td>60,00 €</td><td>194</td></tr>
+<tr><td>Pedro Faci SA</td><td>Medalla de Oro del Deporte</td><td>1.430,82 €</td><td>46544</td></tr>
+  <tr class="destacado">
+                                <td colspan="2" class="text-center">Total gastos representación</td>
+                                <td>13.873,54 €</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <h2 class="tab-title" data-toggle="collapse" data-target="#recep" aria-expanded="false">Recepciones</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="recep">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed table-bordered">
+                            <caption>Gastos de Recepción</caption>
+                            <tr>
+                                <th>TERCERO</th>
+                                <th>CONCEPTO</th>
+                                <th>IMPORTE</th>
+                                <th>FACTURA</th>
+                            </tr>
+                           <tr>
+                           <td>EID Servicio catering</td><td>Aperitivo Gala del Deporte 2016</td><td>1.320,00 €</td><td>007-17</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Patrón de bomberos</td><td>2.992,00 €</td><td>1</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Vino de honor premios 3 de abril</td><td>1.320,00 €</td><td>2</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Vino de honor Día de Europa</td><td>572,00 €</td><td>3</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción Congreso inteligencia emocional</td><td>935,00 €</td><td>4</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Vino de honor Patrona Policía Local</td><td>2.992,00 €</td><td>5</td></tr>
+<tr><td>EID Servicio catering</td><td>Vino de honor premio "Mujer y deporte"</td><td>792,00 €</td><td>031-17</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción Club beisbol Miralbueno</td><td>330,00 €</td><td>6</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción niños saharauis</td><td>770,00 €</td><td>7</td></tr>
+<tr><td>Montal</td><td>Desayuno jornada economía bien común</td><td>180,00 €</td><td>VF 17/23</td></tr>
+<tr><td>Montal</td><td>Recepción congreso jóvenes investigadores</td><td>330,00 €</td><td>VF 17/238</td></tr>
+<tr><td>Montal</td><td>Desayuno recepción Embajadores Asean</td><td>275,00 €</td><td>VF 17/237</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción Real Zaragoza</td><td>660,00 €</td><td>8</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción Zaragoza CFF</td><td>495,00 €</td><td>9</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción EIFOLK 2017</td><td>1.320,00 €</td><td>10</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción Rios Renovables</td><td>495,00 €</td><td>11</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción Tecnyconta</td><td>495,00 €</td><td>12</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>Recepción Mann Filter</td><td>495,00 €</td><td>13</td></tr>
+<tr><td>Cafetería Seminario</td><td>Desayunos Jornadas SSPP</td><td>1.694,75 €</td><td>11 /12 /13 -2017</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>presentación Fiestas del Pilar</td><td>2.970,00 €</td><td>15</td></tr>
+<tr><td>Ebro restauraciones</td><td>cóctel Medallas y distinciones</td><td>2.950,00 €</td><td>C7/228</td></tr>
+<tr><td>Aragonesa de gastronomía S.L.</td><td>recepción Casas Regionales</td><td>2.970,00 €</td><td>16</td></tr>
+<tr><td>Combi catering</td><td>entrega premios del Pilar</td><td>1.072,50 €</td><td>02/280</td></tr>
+<tr><td>Combi catering</td><td>Zaragozano ejemplar y entidades ciudadanas</td><td>2.145,00 €</td><td>02/279</td></tr>
+<tr><td>Fundación ADUNARE</td><td>Desayuno pleno infantil</td><td>924,00 €</td><td>2017375</td></tr>
+<tr><td>Ebro restauraciones</td><td>Recepción personal municipal jubilado 2017</td><td>1.452,00 €</td><td>C7/279</td></tr>
+
+
+                            <tr>
+                                <td colspan="2" class="destacado">Total gastos recepciones</td>
+                                <td>32.946,25€</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <h2 class="tab-title" data-toggle="collapse" data-target="#ofic" aria-expanded="false">Oficina</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="ofic">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed table-bordered">
+                            <caption>Gastos de Oficina</caption>
+                            <tr>
+                                <th>TERCERO</th>
+                                <th>CONCEPTO</th>
+                                <th>IMPORTE</th>
+                                <th>FACTURA</th>
+                            </tr>
+                         
+                            <tr><td>CARPOSA</td><td>suscripción "Los cargos en el poder"</td><td>376,00 €</td><td>1784/17</td></tr>
+<tr><td>Larraz</td><td>Reposición banderas</td><td>10,54 €</td><td>F/1700564</td></tr>
+<tr><td>Larraz</td><td>Material para actos</td><td>94,50 €</td><td>F/1700563</td></tr>
+<tr><td>Barreiro Soria</td><td>material de oficina</td><td>235,95 €</td><td>1-49428</td></tr>
+<tr><td>iberti</td><td>Reposición banderas</td><td>412,22 €</td><td>2017000410</td></tr>
+<tr><td>iberti</td><td>Reposición banderas</td><td>809,93 €</td><td>2017000538</td></tr>
+<tr><td>Larraz</td><td>Bandera visita Embajador</td><td>14,00 €</td><td>Metálico</td></tr>
+<tr><td>Barreiro Soria</td><td>Material de oficina</td><td>355,26 €</td><td>Metálico</td></tr>
+<tr><td>Iberti</td><td>Reposición banderas</td><td>1.004,78 €</td><td>2017000712</td></tr>
+<tr><td>Pixartprinting</td><td>Roll up Jornadas gestióN SSPP</td><td>206,49 €</td><td>Metálico</td></tr>
+<tr><td>Disfraces Bacanal S.L.</td><td>Reposición bandera gay balcón</td><td>15,51 €</td><td>Metálico</td></tr>
+<tr><td>Larraz</td><td>Material para actos</td><td>7,65 €</td><td>Metálico</td></tr>
+<tr><td>Larraz</td><td>Bandera visita viceprimer ministro Serbia</td><td>67,94 € </td><td>F1702886</td></tr>
+<tr><td></td><td>Material actos protocolarios</td><td>7,20 €</td><td>Metálico</td></tr>
+<tr><td></td><td>Lanyards y fundas acreditaciones Pilar 2017</td><td>217,80 €</td><td>Metálico</td></tr>
+<tr><td>iberti</td><td>Reposición banderas balcón salón de Plenos</td><td>813,56 €</td><td>2017001850</td></tr>
+<tr><td>Tourline express</td><td>Envíos urgentes de mensajería</td><td>67,99 €</td><td>02-280</td></tr>
+<tr><td>Encuadernaciones Zaragoza</td><td>Libro de Oro de la Ciudad</td><td>778,03 €</td><td>2092</td></tr>
+<tr><td>iberti</td><td>Reposición banderas</td><td>1.807,45 €</td><td>2017002278</td></tr>
+<tr><td>Litocian S.L.</td><td>Papelería y sobres Alcalde</td><td>629,20 €</td><td>20735</td></tr>
+<tr><td>Fundación ADUNARE</td><td>Bolígrafos para reuniones</td><td>307,34 €</td><td>2017376</td></tr>
+<tr><td>Coop. El Rollo Vegetal</td><td>material de oficina</td><td>4,80 €</td><td>Metálico</td></tr>
+<tr><td>Multi 100 S.L.</td><td>Caja para guardar el libro de oro de la Ciudad</td><td>5,00 €</td><td>Metálico</td></tr>
+
+  <tr>
+                                <td colspan="2" class="destacado">Total gastos oficina</td>
+                                <td>8.249,14 €
+</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <h2 class="tab-title" data-toggle="collapse" data-target="#otros" aria-expanded="false">Otros gastos</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="otros">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed table-bordered">
+                            <caption>Otros Gastos</caption>
+                            <tr>
+                                <th>TERCERO</th>
+                                <th>CONCEPTO</th>
+                                <th>IMPORTE</th>
+                                <th>FACTURA</th>
+                            </tr>
+                            <tr><td>Aragonesa de reproducciones gráficas</td><td>Impresión fotografía Berta Cáceres</td><td>90,75 €</td><td>700452</td></tr>
+                            <tr><td>Tourline express</td><td>Envíos urgentes mensajería</td><td>22,66 €</td><td>2017/001586</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>6,15 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>8,10 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>10,00 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>10,90 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>10,90 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>7,45 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>5,00 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>4,75 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>7,10 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>11,00 €</td><td>Metálico</td></tr>
+                            <tr><td>Congreso protocolo UNED</td><td>Cuota inscripción Congreso</td><td>120,00 €</td><td>Metálico</td></tr>
+                            <tr><td>Congreso protocolo UNED</td><td>Cuota inscripción Congreso</td><td>80,00 €</td><td>Metálico</td></tr>
+                            <tr><td>Congreso protocolo UNED</td><td>Cuota inscripción Congreso</td><td>80,00 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>8,35 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>7,10 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>7,50 €</td><td>Metálico</td></tr>
+                            <tr><td>Tourline express</td><td>Envíos urgentes mensajería</td><td>60,02 €</td><td>2017/002281</td></tr>
+                            <tr><td>tipolinea</td><td>libros aniversario AGM</td><td>2.995,20 €</td><td>282</td></tr>
+                            <tr><td>Millenium S.L.</td><td>Vinilo para actos</td><td>87,12 €</td><td>1700295</td></tr>
+                            <tr><td>Tourline express</td><td>Envíos urgentes mensajería</td><td>22,66 €</td><td>2017/005332</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>5,75 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>6,40 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Marcos obsequios Alcaldía</td><td>36,01 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Marcos obsequios Alcaldía</td><td>10,01 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Placas zaragozanos ejemplares</td><td>10,00 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>8,40 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>18,95 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>16,60 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>2,20 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>18,95 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>8,10 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>7,60 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>6,50 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>12,10 €</td><td>Metálico</td></tr>
+                            <tr><td>Agrupación de personas sordas de Zgz y Aragón</td><td>Interpretación lengua de signos Pleno 29 de septiembre</td><td>735,00 €</td><td>168/17</td></tr>
+                            <tr><td>Agrupación de personas sordas de Zgz y Aragón</td><td>Interpretación lengua de signos Pleno 17 de octubre</td><td>192,96 €</td><td>191/17</td></tr>
+                            <tr><td>Asociación cultural Tierra A.C</td><td>Libros obsequio Alcaldía</td><td>2.199,60 €</td><td>33/17</td></tr>
+                            <tr><td>Daniel Bolea S.L.</td><td>reparación mesa despacho Alcalde</td><td>1.818,63 €</td><td>211</td></tr>
+                            <tr><td>Merche Izuel Negrete</td><td>Restauración pendón de la Ciudad</td><td>1.258,40 €</td><td>8</td></tr>
+                            <tr><td>NTC</td><td>Desayunos semana europea de la movilidad</td><td>531,96 €</td><td>20171281</td></tr>
+                            <tr><td>Agrupación de personas sordas de Zgz y Aragón</td><td>Interpretación lengua de signos diversos actos Pilar 2017</td><td>276,00 €</td><td>190</td></tr>
+                            <tr><td>Bibiana Erustres</td><td>Servicio de interpretación visita del Alcalde</td><td>290,40 €</td><td>Metálico</td></tr>
+                            <tr><td>Tintorería Boente</td><td>Limpieza fundas sillas</td><td>333,96 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>5,10 €</td><td>Metálico</td></tr>
+                            <tr><td>Congreso Internacional de Protocolo</td><td>Cuota inscripción Congreso</td><td>272,25 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Almuerzo trabajo</td><td>54,00 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>6,80 €</td><td>Metálico</td></tr>
+                            <tr><td></td><td>Taxi desplazamientos</td><td>8,00 €</td><td>Metálico</td></tr>
+
+                            <tr>
+                                <td colspan="2" class="destacado">Total otros gastos</td>
+                                <td>11.803,34 €</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

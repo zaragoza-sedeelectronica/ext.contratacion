@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Calidad. Indicadores del Servicio de Suministro de Agua"
+                description="Indicadores del Servicio de Suministro de Agua."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="ayuntamiento, ciudad, Zaragoza, España, suministro de agua, servicio público, relación administración-administrado">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Indicadores
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <main id="main">
+                        <h2>Indicadores del Servicio de Suministro de Agua</h2>
+                        <p>Es interés de Gestión de Aguas de Aragón (en adelante, GAA) conocer la opinión de los
+                            usuarios del servicio de altas y bajas por teléfono del suministro de agua, en orden a
+                            aconocer los aspectos más y menos valorados del proceso, así como la satisfacción de los
+                            usuarios con los mismos.
+                        </p>
+                        <p>Concretamentel se trata de obtener información relevante respecto a los dos aspectos básicos
+                            que componen este servicio: contratación (tanto telefónica, como presencial) y la
+                            cumplimentación del servicio solicitado (instalación o desisnstalación del contador).
+                        </p>
+                        <p>Para ello, se han realizado un total de 601 encuestas telefónicas a usuarios de este servicio
+                            que hayan tramitado tanto telefónicamente, como vía personal, solicitudes de alta, baja,
+                            cambio de titular o traslados en los 30 días inmediatamente anteriores al comienzo del
+                            trabajo de campo.
+                        </p>
+
+                    </main>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Organizacion Municipal" description="Portal que recoge información sobre la administración municipal y la composición de los órganos que conforman la organización municipal del Ayuntamiento de Zaragoza: alcalde, pleno, gobierno de Zaragoza, grupos municipales, Sociedades Municipales, Organismos Autónomos, Juntas Municipales y Juntas Vecinales. Acceda a las sesiones plenarias del Ayuntamiento, a los acuerdos de la Junta del Gobierno Local o del Consejo de la Gerencia de Urbanismo.  Se publica la relación de cargos de confianza del ayuntamiento y el importe individual o colectivo de sus retribuciones.  A través del catálogo de procedimientos, se pueden tramitar de forma electrónica procedimientos administrativos del Ayuntamiento de Zaragoza. Conozca la Casa Consistorial, tanto su breve historia como su estilo artístico. El ciudadano puede enviar sus sugerencias y observaciones  en el  servicio quejas y sugerencias." author="" last-modified="Thu Dec 23 00:00:00 CET 2010" keywords="ayuntamiento, ciudad, administración local, administración electrónica, organización administrativa, alcalde, Pleno Municipal, Gobierno de Zaragoza, grupos municipales, catálogo, procedimientos administrativos, acuerdos institucionales, Consejo de Gerencia de Urbanismo, legislación local, organismos autónomos, sociedades municipales, Juntas Municipales, Juntas Vecinales,  sede de la administración, debate sobre el estado de la ciudad, relación administración-administrado, servicio de quejas y sugerencias, council, city, local government, electronic government, administrative structures, mayor, political representation, catalogue, administrative procedure, institutional agreement, local legislation, public institution, firm governed by commercial law , administration headquarters, citizen-authority relations, complaints and suggestions service"/>
+    <link rel="manifest" href="//www.zaragoza.es/cont/vistas/portal/organizacion/manifest.json"/>
+</head>
+
+<body>
+    <sede:content>
+    	<div class="row">
+    		<div class="col-sm-4">
+	        	<div class="card">
+	            	<h3><a href="/sede/portal/organizacion/alcalde/">El Alcalde</a></h3>
+	        	</div>
+	        	<div class="card">
+	            	<h3><a href="/sede/portal/organizacion/servicio/agenda-institucional/">Agenda Institucional TODO Revisar Antonio</a></h3>
+	        	</div>
+	        </div>
+	        <div class="col-sm-4 card">
+	            <h3><a href="/sede/portal/organizacion/plenos/">El Pleno</a></h3>
+	            <ul>
+	                <li>La corporación TODO Migrar biografias</li>
+	                <li>Sesiones plenarias TODO</li>
+	                <li>Retransmisión en directo TODO</li>
+	                <li>Comisiones plenarias TODO</li>
+	            </ul>
+	        </div>
+	        <div class="col-sm-4 card">
+	            <h3><a href="/sede/portal/organizacion/gobierno-zaragoza">Gobierno de Zaragoza</a></h3>
+	            <ul>
+	                <li>Composición</li>
+	                <li>Acuerdos TODO</li>
+	                <li>Código Buen Gobierno</li>
+	                <li>Agenda Abierta</li>
+	            </ul>
+	        </div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-sm-4 card">
+	            <h3>Administración municipal</h3>
+	            <ul>
+	                <li><a href="/sede/portal/organizacion/consejeros-gobierno">Consejeros de Gobierno</a></li>
+	                <li><a href="/sede/portal/organizacion/concejales-delegados">Concejales Delegados</a></li>
+	                <li><a href="/sede/portal/organizacion/areas-gobierno">Áreas de Gobierno</a></li>
+	                <li><a href="/sede/portal/organizacion/servicio/organigrama/">Organigrama Administrativo</a></li>
+	                <li><a href="/sede/portal/organizacion/plantilla-rpt">Plantilla y
+	                    <acronym title="Relacion de Puestos de Trabajo">RPT</acronym></a>
+	                </li>
+	                <li><a href="/sede/portal/organizacion/personal-eventual">Personal Eventual</a></li>
+	                <li><a href="/sede/portal/organizacion/declaraciones">Declaración de bienes y actividades</a></li>
+	                <li><a href="/sede/portal/organizacion/retribuciones">Retribuciones</a></li>
+	                <li><a href="/sede/portal/organizacion/liberados-sindicales">Liberados Sindicales</a></li>
+	            </ul>
+	        </div>
+	        <div class="col-sm-4">
+	        	<div class="card">
+		            <h3><a href="/sede/portal/organizacion/servicio/junta-administrativa/">Juntas Municipales y Vecinales</a></h3>
+		        </div>
+	        	<div class="card">
+		            <h3>Grupos municipales</h3>
+		            <ul>
+		                <li><a href="/sede/portal/organizacion/grupo-pp">Grupo Municipal Popular (PP)</a></li>
+		                <li><a href="/sede/portal/organizacion/grupo-zec">Grupo Municipal de Zaragoza en Común (ZEC)</a></li>
+		                <li><a href="/sede/portal/organizacion/grupo-psoe">Grupo Municipal Socialista (PSOE)</a></li>
+		                <li><a href="/sede/portal/organizacion/grupo-ciudadanos">Grupo Municipal de Ciudadanos-Partido de la Ciudadanía (C)</a></li>
+		                <li><a href="/sede/portal/organizacion/grupo-cha">Grupo Municipal de Chunta Aragonesista (CHA)</a></li>
+		            </ul>
+		        </div>
+		    </div>
+	        <div class="col-sm-4">
+	        	<div class="card">
+		        	<ul>
+		        		<li><a href="/sede/portal/organizacion/servicio/normativa/materia/137">Decretos</a></li>
+		        		<li><a href="/sede/servicio/convenios">Convenios</a></li>
+		        		<li><a href="/sede/portal/organizacion/servicio/normativa/483">Reglamento orgánico</a></li>
+		        		<li><a href="/sede/portal/organizacion/debate">Debate ciudad</a></li>
+		        		<li>La casa Consistorial</li>
+		        		<li>Catálogo de procedimientos</li>
+		        	</ul>
+		        </div>
+		        <div class="card">
+		            <h3>Consejo de gerencia</h3>
+		            <ul>
+		                <li>Composición</li>
+		                <li>Acuerdos</li>
+		            </ul>
+		        </div>
+		    </div>
+	    </div>
+	    <div class="row">
+	        <div class="col-sm-4 card">
+	            <h3>Organismos Autónomos</h3>
+	            <ul>
+	                <li><a href="/sede/portal/organizacion/zaragoza-turismo">Zaragoza Turismo</a></li>
+	                <li><a href="/sede/portal/organizacion/patronato-educacion-y-bibliotecas">Patronato Municipal de Educación y Bibliotecas</a></li>
+	                <li><a href="/sede/portal/organizacion/patronato-artes-escenicas-imagen">Patronato Municipal de las Artes Escénicas y de la imagen</a></li>
+	                <li><a href="/sede/portal/organizacion/zaragoza-dinamica">Zaragoza Dinámica: Instituto Municipal de Empleo y Fomento Empresarial</a></li>
+	                <li><a href="/sede/portal/organizacion/instituto-agua">Instituto Municipal del Agua</a></li>
+	            </ul>
+	        </div>
+	        <div class="col-sm-4 card">
+	            <h3>Sociedades Mercantiles</h3>
+	            <p>Sociedades Mercantiles cuyo <strong>capital social pertenece integramente</strong> al Ayuntamiento de Zaragoza.</p>
+	            <ul>
+	                <li><a href="/sede/portal/organizacion/zaragoza-cultural">Sociedad Municial Zaragoza Cultural S.A.U.</a></li>
+	                <li><a href="/sede/portal/organizacion/zaragoza-deporte">Zaragoza Deporte Municipal S.A.</a></li>
+	                <li><a href="/sede/portal/organizacion/zaragoza-vivienda">Sociedad Municipal Zaragoza Vivienda, S.L.U.</a></li>
+	                <li><a href="/sede/portal/organizacion/zaragoza-desarrollo-expo">ZGZ Arroba Desarrollo Expo, S.A.</a></li>
+	                <li><a href="/sede/portal/organizacion/ecociudad-zaragoza">Ecociudad Zaragoza, S.A.U.</a></li>
+	            </ul>
+	        </div>
+	        <div class="col-sm-4 card">
+	            <h3>Sociedades Mixtas</h3>
+	            <p>Sociedades Mercantiles cuyo <strong>capital social es superior al 50%</strong> por parte del Ayuntamiento de Zaragoza</p>
+	            <ul>
+	                <li><a href="/sede/portal/organizacion/mercazaragoza">Mercado Central Abastecimiento de Zaragoza, S.A. (MERCAZARAGOZA)</a></li>
+	            </ul>
+	        </div>
+	    </div>
+        <div class="row">
+            <div class="col-md-12 cdma">
+                <sede:aviso titulo="Destacados" clase="w25 " nresultados="20" resumen="si" imagen="si" portal="Organización municipal" tipo="1"></sede:aviso>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

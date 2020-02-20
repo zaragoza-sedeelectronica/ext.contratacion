@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Social. Zaragoza es Cultura" 
+               description="Zaragoza es Cultura, espacio de la sede electrónica del Ayuntamiento de Zaragoza, ofrece noticias y vídeos con información actualizada sobre los eventos culturales de la ciudad: cine, deportes, exposiciones, música, teatro, medio ambiente, gastronomía y conferencias. Puede también seguirnos en las redes sociales"  
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, cultura, manifestación cultural, difusión de la cultura, cine, deporte, exposición, música, teatro, medio ambiente, gastronomía, conferencia, vídeo, noticias, redes sociales, city, council, Saragossa, electronic site, local government, culture, cultural event, dissemination of culture, cinema, sport, exhibition, music, theatre, environment, gastronomy, talk, news, social network
+"></sede:meta>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143; /* h2 line-height == a line-height*/
+    }
+    ul.submenu {
+        margin: 0;
+    }
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+    ul.submenu li{
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }
+    .offset-target:before {
+        content:"";
+        display:block;
+        height:67px; /* fixed header height*/
+        margin:-67px 0 0; /* negative fixed header height */
+    }
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/quienes-somos">Quiénes Somos</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/participacion">Participación</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/profesional">Profesional</a></li>
+                <li class="col-xs-6 col-sm-2"><h2 class="elemento">Social</h2></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="http://eepurl.com/dv0mCb">Suscríbete</a></li>
+                <li class="col-xs-6 col-sm-2">
+                    <ul class="list-inline nomargin navbar-right text-center padding-t05em">
+                        <li>
+                            <a itemprop="sameAs" href="https://twitter.com/ZCultura">
+                                <span class="fab fa-2x fa-twitter-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.facebook.com/ZgzCultura">
+                                <span class="fab fa-2x fa-facebook-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.youtube.com/channel/UCEqVjSU87_mASvoCHzCc2Vg">
+                                <span class="fab fa-youtube fa-2x text-color" aria-hidden="true"></span>
+                                <span class="oculto">Youtube</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.instagram.com/zcultura">
+                                <span class="fab fa-2x fa-instagram text-color" aria-hidden="true"></span>
+                                <span class="oculto">Instagram</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/servicio/cultura/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Cultura</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Social</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="#videos">Vídeos Destacados</a></li>
+                    <li><a href="#redes-sociales">Redes Sociales</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-6">
+                <a data-height="500" class="twitter-timeline" data-lang="es" data-theme="light" data-link-color="#E81B16" href="https://twitter.com/ZCultura">Tweets by TwitterDev</a>
+                <script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="col-md-6">
+                <div class="fb-page" data-href="https://www.facebook.com/ZgzCultura" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/ZgzCultura" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ZgzCultura">ZCultura</a></blockquote>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title offset-target" id="videos">Vídeos destacados <a class="small" href="https://www.youtube.com/channel/UCEqVjSU87_mASvoCHzCc2Vg">>> Ver más vídeos</a></h3>
+        <!-- <hr class="sm color-ayto"/> -->
+        <div class="section-content">
+            <sede:video lista="610"></sede:video>
+        </div>
+
+        <h3 class="section-title offset-target" id="redes-sociales">Redes Sociales</h3>
+        <!-- <hr class="sm color-ayto"/> -->
+        <div class="section-content">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed">
+                    <caption>Redes Sociales</caption>
+                    <thead>
+                        <tr>
+                            <th id="servicio">SERVICIO</th>
+                            <th id="facebook">FACEBOOK</th>
+                            <th id="twitter">TWITTER</th>
+                            <th id="instagram">INSTAGRAM</th>
+                            <th id="youtube">YOUTUBE</th>
+                            <th id="otros">OTROS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td headers="servicio">Zaragoza es Cultura</td>
+                            <td headers="facebook">
+                                <a title="Enlace Externo a Facebook" href="https://www.facebook.com/ZgzCultura"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                            </td>
+                            <td headers="twitter">
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/ZCultura"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                            </td>
+                            <td headers="instagram">
+                                <a title="Enlace externo a Instagram" href="https://www.instagram.com/zcultura"><span class="fab fa-instagram fa-2x" aria-hidden="true"></span><span class="sr-only">Instagram</span></a>
+                            </td>
+                            <td headers="youtube">
+                                <a title="Enlace Externo a Youtube" href="https://www.youtube.com/channel/UCEqVjSU87_mASvoCHzCc2Vg"> <span class="fab fa-youtube fa-2x" aria-hidden="true"></span><span class="sr-only">Youtube</span> </a>
+                            </td>
+                            <td headers="otros"></td>
+                        </tr>
+                        <tr>
+                            <td headers="servicio">Auditorio</td>
+                            <td headers="facebook">
+                                <a title="Enlace Externo a Facebook" href="https://www.facebook.com/AuditorioZGZ"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                            </td>
+                            <td headers="twitter">
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/AuditorioZGZ"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                            </td>
+                            <td headers="instagram">
+                                <a title="Enlace externo a Instagram" href="https://www.instagram.com/auditoriozaragoza"><span class="fab fa-instagram fa-2x" aria-hidden="true"></span><span class="sr-only">Instagram</span></a>
+                            </td>
+                            <td headers="youtube">
+                                <a title="Enlace Externo a Youtube" href="https://www.youtube.com/channel/UC8E48arBEDZN5aEL7Txvc4A"> <span class="fab fa-youtube fa-2x" aria-hidden="true"></span><span class="sr-only">Youtube</span> </a>
+                            </td>
+                            <td headers="otros">
+                                <a title="Enlace externo a SoundCloud" href="https://soundcloud.com/auditorio-zaragoza"><span class="fab fa-soundcloud fa-2x" aria-hidden="true"></span><span class="sr-only">SoundCloud</span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td headers="servicio">PMAEI</td>
+                            <td headers="facebook">
+                                <a title="Enlace Externo a Facebook" href="https://www.facebook.com/filmotecadezaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                                <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span>
+                                <a title="Enlace Externo a Facebook" href="https://www.facebook.com/TeatrodelMercado"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                                <a title="Enlace Externo a Facebook" href="https://www.facebook.com/TeatroPrincipaldeZaragoza/"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                            </td>
+                            <td headers="twitter">
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/TeatroZgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/pmaeizgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/teatromercado"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/CDanzaZGZ"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                            </td>
+                            <td headers="instagram">
+                                <a title="Enlace externo a Instagram" href="https://www.instagram.com/teatroprincipaldezaragoza/"><span class="fab fa-instagram fa-2x" aria-hidden="true"></span><span class="sr-only">Instagram</span></a>
+                            </td>
+                            <td headers="youtube"></td>
+                            <td headers="otros"></td>
+                        </tr>
+                        <tr>
+                            <td headers="servicio">Fiestas del Pilar</td>
+                            <td headers="facebook">
+                                <a title="Enlace Externo a Facebook" href="https://www.facebook.com/FiestasdelPilar.Oficial"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                            </td>
+                            <td headers="twitter">
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/FiestasPilarOfi"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                            </td>
+                            <td headers="instagram"></td>
+                            <td headers="youtube"></td>
+                            <td headers="otros"></td>
+                        </tr>
+                        <tr>
+                            <td headers="servicio">CHZ</td>
+                            <td headers="facebook">
+                                <a title="Enlace Externo a Facebook" href="https://www.facebook.com/Centro-de-Historias-Zaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                            </td>
+                            <td headers="twitter">
+                                <a title="Enlace Externo a Twitter" href="https://twitter.com/chzgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                            </td>
+                            <td headers="instagram"></td>
+                            <td headers="youtube"></td>
+                            <td headers="otros"></td>
+                        </tr>
+                        <tr>
+                            <td headers="servicio">Zaragoza Audiovisual</td>
+                            <td headers="facebook"></td>
+                            <td headers="twitter"></td>
+                            <td headers="instagram"></td>
+                            <td headers="youtube">
+                                <a title="Enlace Externo a Youtube" href="https://www.youtube.com/user/zaragozaaudiovisual"> <span class="fab fa-youtube fa-2x" aria-hidden="true"></span><span class="sr-only">Youtube</span> </a>
+                            </td>
+                            <td headers="otros"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </sede:content>
+    <div id="fb-root"></div>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.9";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    /*]]>*/
+    </script>
+</body>
+
+</html>

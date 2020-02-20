@@ -1,0 +1,35 @@
+<table class="table table-striped table-condensed">
+	<tr>
+		<th>Nombre</th>
+		<th>Dirección</th>
+		<th>Contacto</th>
+	</tr>
+	<tr th:each="equip : ${resultado}" class="" th:classappend="${equip.geometry} ? geo : nogeo" sede:rdf="${equip.voc()}"
+		th:attr="about=${equip.uri}, typeOf=*{type} ? *{type} : 'http://vocab.linkeddata.es/kos/urbanismo-infraestructuras/equipamiento'">
+		<td>
+			<a th:unless="${pathId != null}" th:href="${equip.uri}" sede:rdf="${equip.get('title')}"></a>
+			<a th:if="${pathId != null}" th:href="@{{id}(id=${equip.id})}" sede:rdf="${equip.get('title')}"></a>
+			<th:block th:if="${equip.geometry}" th:utext="${equip.geometry.getRdf()}"></th:block>
+		</td>
+		<td>
+			<span th:if="${equip.calle}" th:text="${equip.calle}" />
+		</td>
+		<td>
+			<th:block th:if="${equip.tel} and ${equip.tel.tel}" class="tel">
+				<th:block th:if="${currentDevice.isMobile()} == true">
+					<a th:href="'tel:' + ${equip.tel.tel}">
+						<span sede:rdf="${equip.tel.get('tel')}" />
+					</a>
+				</th:block>
+				<th:block th:if="${currentDevice.isMobile()} != true">
+					<span sede:rdf="${equip.tel.get('tel')}" />
+				</th:block>
+			</th:block>
+			<th:block th:if="${equip.email}" class="email">
+				<a class="small" sede:rdf="${equip.prop('email')}"
+					th:href="'mailto:' + ${equip.email}" th:text="${equip.email}" />
+			</th:block>
+		</td>
+
+	</tr>
+</table>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Gestión de Equipamientos" description="" author="" last-modified="" keywords=""/>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Gestión de Equipamientos</h2>
+        <ul class="row list-unstyled">
+            <li class="col-md-3" th:if="${#utils.tienePermiso(attr_peticion.getCredenciales(), 'ORGA', 'CENTRO', 'DET')}">
+                <h3 class="text-sm-center text-primary">
+                    <a href="./centro/">
+                        <span class="fa fa-3x fa-building text-color" aria-hidden="true" style="vertical-align:middle;"></span>
+                        <span class="visible-md-block visible-lg-block"></span>
+                        Centros
+                    </a>
+                </h3>
+            </li>
+        </ul>
+    </sede:content>
+</body>
+
+</html>

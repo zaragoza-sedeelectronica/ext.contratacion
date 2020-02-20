@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Equipamientos Culturales. Zaragoza es Cultura. Ayuntamiento de Zaragoza" description="Equipamientos CUlturales de la Ciudad de Zaragoza. Accesibilidad" author="" keywords="equipamientos, accesibilidad, callejero, Zaragoza"></sede:meta>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    ocultarArbolCapas = false;
+    var i = 0;
+    var dataActualidad = "{title: 'Parking Reservado',claseIcono:'parqdis',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoparking.json'},{title: 'Espacio Reservado',claseIcono:'espacioreservado',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoespaciosreservados.json'},{title: 'Baño Adaptado',claseIcono:'badap',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoaseoadap.json'},{title: 'Bucle Magnético',claseIcono:'buclemagne',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geobucle.json'},{title: 'Subtitulado',claseIcono:'subtitulado',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geosubtitulado.json'},{title: 'Lengua de Signos',claseIcono:'lenguasignos',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geolenguasig.json'},{title: 'Signoguias',claseIcono:'signoguia',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geosignoguias.json'},{title: 'Audioguias',claseIcono:'audioguia',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoaudioguias.json'},{title: 'Braille',claseIcono:'braille',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geobraille.json'},{title: 'Magnificadores',claseIcono:'magnificadores2',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geomaginificadores.json'},{title: 'Maquetas Táctiles',claseIcono:'maquetastactiles',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geomaquetas.json'},{title: 'Celiacos',claseIcono:'singluten',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geogluten.json'},{title: 'Perros Guía',claseIcono:'perroguia',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoperrosguia.json'},{title: 'Código QR',claseIcono:'qrcode',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/fiestaspilar/geoqrcode.json'}";
+    treeOrderDataList = ["actualidad"];
+    /*]]>*/
+    </script>
+    <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js"></script>
+    <style type="text/css">
+    ul#menu {
+        border-bottom: 2px solid #E81B16;
+        font-weight: bold;
+    }
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143; /* h2 line-height == a line-height*/
+    }
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+    ul.submenu li{
+        /*border-left: 1px solid #E81B16;*/
+        /*padding: .25em;*/
+    }
+    /*ul.submenu li a:before {
+        content: "";
+        width: 15px;
+        height: 20px;
+        display: inline-block;
+        border-left: 1px solid #E81B16;
+        border-bottom: 1px solid #E81B16;
+        margin-bottom: 4px;
+        margin-right: 5px;
+    }*/
+    ul.submenu li{
+        border: 1px solid #E81B16;
+        padding: .5em;
+        margin-top: .5em;
+        margin-left: .5em;
+    }
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }
+    .offset-target:before {
+        content:"";
+        display:block;
+        height:67px; /* fixed header height*/
+        margin:-67px 0 0; /* negative fixed header height */
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav class="clearfix">
+            <ul class="list-unstyled row no-gutter text-center nomargin" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/quienes-somos">Quiénes Somos</a></li>
+                <li class="col-xs-6 col-sm-2"><h2 class="elemento">Equipamientos</h2></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/participacion">Participación</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/profesional">Profesional</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/social">Social</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="http://eepurl.com/dv0mCb">Suscríbete</a></li>
+            </ul>
+            <div class="clearfix">
+                <ul class="list-inline nomargin navbar-right text-center">
+                    <li>
+                        <a itemprop="sameAs" href="https://twitter.com/ZCultura">
+                            <span class="fab fa-twitter-square" aria-hidden="true"></span>
+                            <span class="oculto">Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a itemprop="sameAs" href="https://www.facebook.com/ZgzCultura">
+                            <span class="fab fa-facebook-square" aria-hidden="true"></span>
+                            <span class="oculto">Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a itemprop="sameAs" href="https://www.youtube.com/channel/UCEqVjSU87_mASvoCHzCc2Vg">
+                            <span class="fab fa-youtube" aria-hidden="true"></span>
+                            <span class="oculto">Youtube</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a itemprop="sameAs" href="https://www.instagram.com/zcultura">
+                            <span class="fab fa-instagram" aria-hidden="true"></span>
+                            <span class="oculto">Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--/* <ul class="list-inline text-sm-center submenu">
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#accesibilidad">Accesibilidad</a></li>
+            </ul> */-->
+        </nav>
+        
+        <!--/* <h3 class="color-ayto offset-target" id="catalogo">Catalógo de Equipamientos</h3>
+        <hr class="sm color-ayto"/> */-->
+        <div class="row margin-t2em">
+            <div class="col-sm-4 hidden-xs">
+                <img class="img-responsive" src="https://www.zaragoza.es/cont/paginas/noticias/1.museodelforo-ext.danielmarcos.jpg" alt=""/>
+            </div>
+            <div class="col-sm-8">
+                <p class="lead"><span class="far fa-arrow-alt-circle-right" aria-hidden="true"></span> Accede al <a href="/sede/portal/cultura/servicio/equipamiento/list?fq=temas_smultiple:%28%22Cultura+y+Ocio%22%29">Catalógo de Equipamientos Culturales</a></p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="margin-b1em" action="/sede/portal/cultura/servicio/equipamiento/list" method="get" enctype="application/x-www-form-urlencoded">
+                            <label for="nombreQuery">Busca un <span class="text-primary">EQUIPAMIENTO</span></label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" id="nombreQuery" name="query" class="form-control" placeholder="Introduce un nombre..."/>
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="fa fa-search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <p class="destacado">
+                            o consulta en el 
+                            <a href="//idezar.zaragoza.es/callejero/">
+                                <!--/* <span style="vertical-align: middle;" class="far fa-map" aria-hidden="true"></span> */-->
+                                CALLEJERO
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="destacado">Categorías: </p>
+                        <ul>
+                            <li><a href="/sede/portal/cultura/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Cultura+y+Ocio%22%29%20AND%20titularidad_smultiple%3A%28%22Municipal%22%29">Municipales</a></li>
+                            <li><a href="/sede/portal/cultura/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Cultura+y+Ocio%22%29%20AND%20titularidad_smultiple%3A%28%22Privado%22%29">Empresas</a></li>
+                            <li><a href="/sede/portal/cultura/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Cultura+y+Ocio%22%29%20AND%20titularidad_smultiple%3A%28%22Otras%20administraciones%22%29">Otras administraciones</a></li>
+                        </ul>
+                        <p class="destacado">También te puede interesar:</p>
+                        <ul>
+                            <li><a href="/sede/portal/cultura/observatorio/patrimonio">Patrimonio</a></li>
+                            <li><a href="/sede/portal/cultura/servicio/edificio-historico">Catálogo de Edificios Histórico Artísticos</a></li>
+                            <li><a href="/sede/portal/cultura/servicio/arte-publico">Catálogo de Arte Público</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <h3 class="color-ayto offset-target" id="accesibilidad">Accesibilidad</h3>
+        <hr class="sm color-ayto"/>
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+                <div id="mapa">
+                    <div class="separador" id="facadeStatus">&nbsp;</div>
+                    <script type="text/javascript">
+                        /*<![CDATA[*/
+                        var ifrm = document.createElement("iframe");
+                        ifrm.setAttribute("name", "mapahome");
+                        ifrm.setAttribute("id", "mapahome");
+                        ifrm.setAttribute("title", "La Ciudad al Instante");
+                        ifrm.setAttribute("scrolling", "no");
+                        ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                        ifrm.setAttribute("frameBorder", "0");
+                        ifrm.style.width.value = "100%";
+                        document.getElementById("mapa").appendChild(ifrm);
+                        /*]]>*/
+                    </script>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+            	<img src="//www.zaragoza.es/cont/paginas/img/avisos/accesi3.jpg" class="img-rounded img-shadow hidden-xs" alt="" />
+            	<h4><a href="/ciudad/cultura/observatorio/estudios/transversales.htm"><span class="fa fa-book" aria-hidden="true"></span> Informe Accesibilidad Universal</a></h4>
+            	<h4><a href="/ciudad/cultura/observatorio/accesibilidad.htm"><span class="fa fa-book" aria-hidden="true"></span> Protocolo accesibilidad universalz</a></h4>
+            	<p><a href="/ciudad/cultura/observatorio/enlace/fiestaspilar/mapaaccesible.htm">Más información</a></p>
+            </div>
+        </div>
+
+    </sede:content>
+</body>
+
+</html>

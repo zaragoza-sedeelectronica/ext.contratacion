@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Visualización indicadores sociodemográficos. Infraestructura de Datos Espaciales de Zaragoza." description="Funcionalidades que ofrece el visor" author="Ayuntamiento de Zaragoza" subject="" keywords="ayuntamiento, ciudad, Zaragoza, España, vocabularios, conjuntos de datos, datos abiertos, administración local, gobierno abierto" last-modified="28-05-2018" audience="Ciudadanía" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Visualización indicadores sociodemográficos</h2>
+        <a class="btn btn-primary pull-right" href="http://idezar.zaragoza.es/visorDemografico">Acceso al Servicio</a>
+        <p>
+            El Visor de indicadores sociodemográficos permite
+            <strong>visualizar y conocer la situación sociodemográfica de la ciudad</strong> de forma interactiva e intuitiva.
+        </p>
+        <p>
+            Muestra distintas escalas geográficas de representación atendiendo a la naturaleza del problema, y al público al que va dirigido.
+        </p>
+        <p>
+            Permite acceder a <strong>más de 60 indicadores de la ciudad</strong> a distintos niveles de agrupación (junta, sección censal, malla 100, etc.) referidos a seis grandes áreas temáticas Distribución de Población, Estructura de población, Nivel de renta y formación, Hogares, Migraciones y Organización social de los cuidados.
+        </p>
+        <h3>NUEVAS FUNCIONALIDADES<em>(Octubre 2017)</em></h3>
+        <div class="span12 alert alert-info">
+            <ul>
+                <li>
+                    Visualización de
+                    <strong>equipamientos próximos</strong> a un punto
+                </li>
+                <li>
+                    <strong>Evolución temporal de indicadores</strong> . Muestra datos de distintos años para un mismo indicador permitiendo seleccionar un año concreto o ver evolución de forma dinámica
+                </li>
+                <li>
+                    Visualización de
+                    <strong>nuevos formatos de representación</strong> como gráficos de sectores y esferas, para mejorar la visualización de indicadores
+                </li>
+            </ul>
+        </div>
+        <div class="row-fluid">
+            <div class="span4">
+                <img src="/cont/paginas/idezar/img/demografia4.jpg" alt="" />
+            </div>
+            <div class="span4">
+                <img src="/cont/paginas/idezar/img/demografia6.jpg" alt="" />
+            </div>
+            <div class="span4">
+                <img src="/cont/paginas/idezar/img/demografia5.jpg" alt="" />
+            </div>
+        </div>
+        <h3>MÁS FUNCIONALIDADES</h3>
+        <ul>
+            <li>
+                <strong>Zona de previsualización</strong> de mapas con la representación de los indicadores para facilitar la elección del usuario de la información a visualizar sobre el mapa.
+            </li>
+            <li>
+                Visualización de la información con
+                <strong>distintos niveles de agregación</strong> según la escala (junta, sección censal y malla 100)
+            </li>
+            <li>
+                <strong>Representación</strong> de los distintos indicadores según sus características (superficial, globos, etc.).
+            </li>
+            <li>
+                <strong>Leyenda</strong> descriptiva adaptada a la representación del indicador seleccionado.
+            </li>
+            <li>
+                Información asociada al indicador seleccionado y posibilidad de descarga del mismo.
+            </li>
+            <li>
+                <strong>Impresión del mapa visible</strong> con toda la información asociada al indicador.
+            </li>
+            <li>
+                Otras funcionalidades como: acceso a los equipamientos de la ciudad, búsqueda de vías con acceso a su historia, etc.
+            </li>
+            <li>
+                Además ofrece grandes
+                <strong>avances en usabilidad</strong> como el diseño responsivo, que lo hace accesible desde cualquier dispositivo móvil o el zoom progresivo que mejora la interacción con la información cartográfica.
+            </li>
+        </ul>
+        <p>
+            La representación de la información mediante herramientas cartográficas dota a los ciudadanos de unas capacidades analíticas de la información urbana, que ayuda a relacionar una multitud de variables de gran valor para los procesos de diagnosis.
+        </p>
+        <p class="alert alert-info">
+            Para la construcción de esta visor se ha contado con la colaboración de:
+            <strong>Grupo de Sistemas de Información Avanzados (IAAA)</strong> y
+            <strong>Grupo de Estudios en Ordenación del Territorio (GEOT)</strong> de la Universidad de Zaragoza.
+            <br/> Los trabajos realizados en este visor están en marcados dentro de las actividades de la
+            <a href="https://www.zaragoza.es/sede/portal/gobierno-abierto/participacion/catedra/territorio/">Cátedra de Territorio, Sociedad y Visualización Geográfica</a>
+        </p>
+    </sede:content>
+</body>
+
+</html>

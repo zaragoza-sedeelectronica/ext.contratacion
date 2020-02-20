@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Trámites y Servicios" category="Ayuntamiento en casa" description="El Ayuntamiento en Casa facilita, por medios electrónicos, el acceso a la información sobre los servicios municipales que puede realizar el ciudadano de forma presencial, telefónica o en la sede electrónica. Permite la gestion de trámites y conocer el estado de los mismos a través de la Carpeta Ciudadana o descargar la instancia general e impresos que se encuentran disponibles en la sede electrónica. Acceda al servicio de cita previa y de verificación de documentos. También pone a su disposición una base de datos de preguntas frecuentes y le posibilita enviar quejas y sugerencias." keywords="sede,web,zaragoza,trámite,procedimiento,servicio" />
+<style>
+        .label-default {
+            border: 1px solid #000;
+            color: #000;
+        }
+        @media (min-width: 768px) {
+            .bloque-tramites.agrupacion li{
+                min-height: 16em;
+            }
+        }
+        .bloque-tramites a {
+            color: #000;
+        }
+        .bloque-tramites.listado {
+            background: none repeat scroll 0 0 rgba(255,73,64,0.6);
+        }
+        .bloque-tramites.listado .titulo {
+            background-color: #ff4940;
+            color: #FFF;
+            padding: .25em .25em .25em 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+        <div class="col-sm-8">
+        <h2>Encuentra el trámite que buscas:</h2>
+        
+        <form method="get" action="./servicio/tramite/" class="well">
+            <div class="input-group">
+                <label for="query" class="oculto">Buscar trámite</label>
+                <input type="text" name="query" id="query" th:value="${param.query} ? ${param.query[0]} : ''" class="form-control" placeholder="Realice su consulta" />
+                <span class="input-group-btn">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                </span>
+            </div>
+        </form>
+        </div>
+        <div class="col-sm-2 margin-b1em pull-right">
+        <a href="/sede/portal/tramites-servicios/carpeta-ciudadana"><img src="/cont/paginas/encasa/img/tarjeta_c.jpg" class="img-responsive nodeco" alt="Mi Carpeta" /></a>
+        </div>
+        </div>
+        <!--/*<sede:aviso temas="" nresultados="8" portal="Urbanismo" titulo="Destacamos" fragment="fragmentos/aviso/list"></sede:aviso>*/-->
+
+        <ul class="row no-gutter list-unstyled bloque-tramites agrupacion text-center">
+            <th:block th:include="portal/tramites-servicios/bloque" />
+        </ul>
+
+        <div class="row no-gutter bloque-tramites listado margin-b2em">
+            <div class="col-xs-12 col-md-4">
+                <h3 class="titulo margin-a0em">Trámites en Plazo</h3>
+                <sede:tramite plazo="s"></sede:tramite>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <h3 class="titulo margin-a0em">Trámites Destacados</h3>
+                <sede:tramite destacados="s" numero="15"></sede:tramite>
+            </div>
+            <div class="col-xs-12 col-md-4 titulo">
+                <img class="img-responsive pull-right" src="/cont/vistas/portal/tramites-servicios/img/conCertificadoElectronicoC.png" alt=""/>
+                <h3 class="titulo margin-a0em">Servicios en L&iacute;nea</h3>
+                <ul>
+                    <li><a href="/sede/servicio/tramite/?fq=certificado_b%3A%28%22true%22%29">Tr&aacute;mites Con Certificado</a></li>
+                    <li><a href="/sede/servicio/tramite/?fq=certificado_b%3A%28%22true%22%29%20AND%20enlinea_b%3A%28%22true%22%29">Tr&aacute;mites Sin Certificado</a></li>
+                    <li><a href="/tramita-2.0/zaragoza/es/VerificacionCiudadanoAction.action">Verificación de documentos</a></li>
+                <li><a href="/recursos_unicos/firma/ayudaComponenteFirma.jsp">Ayuda Técnica para Identificación y Firma</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-4 titulo">
+                <h3 class="titulo margin-a0em">Personas Jurídicas</h3>
+                <ul>
+                  <li><a href="/sede/portal/tramites-servicios/facturacion-electronica">Facturación electrónica</a></li>
+               <li><a href="/sede/portal/tramites-servicios/servicio/tramite/?fq=dirigidoa_smultiple%3A%28%22Empresas%22%29">Empresas</a></li> 
+               <li><a href="https://www.zaragoza.es/sede/portal/tramites-servicios/servicio/tramite/?fq=dirigidoa_smultiple%3A%28%22Asociaciones%22%29">Asociaciones</a></li>               <li><a href="/sede/servicio/tramite/?query=contratistas">Contratistas</a></li>  
+               <li><a href="/sede/portal/tramites-servicios/servicio/tramite/?fq=dirigidoa_smultiple%3A%28%22Personas+Jur\u00eddicas%22%29">Todos los Trámites</a></li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+    
+</body>
+
+</html>

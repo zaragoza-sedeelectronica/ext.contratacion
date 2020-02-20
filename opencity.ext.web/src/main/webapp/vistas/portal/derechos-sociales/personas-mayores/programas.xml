@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Programas. Personas Mayores" 
+               description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece programas y recursos informativos adaptados a las necesidades de  la tercera edad" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service">
+    </sede:meta>
+	
+</head>
+
+<body>
+    <sede:content>
+        <h2>Programas</h2>
+        <div class="row">
+            <div class="col-xs-12">      
+			
+			 
+ 
+                <div class="card clearfix">
+         
+                    <hr class="sm" />
+                    <sede:aviso portal="Programas Mayores" nresultados="6" clase="col-xs-12 col-sm-6 col-md-4"> </sede:aviso>
+                </div>
+            </div>
+           
+         </div>
+ 
+    </sede:content>
+</body>
+
+</html>

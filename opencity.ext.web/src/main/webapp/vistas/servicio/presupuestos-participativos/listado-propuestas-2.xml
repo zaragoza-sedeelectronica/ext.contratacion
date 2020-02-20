@@ -1,0 +1,158 @@
+<ul class="row list-unstyled">
+    <li class="col-md-12 clearfix margin-b1em" th:each="registro : ${listado.body.result}">
+        <div class="row">
+            <div th:class="${registro.status} ? 'col-md-8' : 'col-md-12'">
+                <div class="card clearfix">
+                    <h3>
+                        <th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}" class="pull-right">
+                            Id: <strong th:text="${registro.id}"/>
+                            <strong th:if="${registro.visible} == 'N'">
+                                BORRADA
+                            </strong>
+                        </th:block>
+                        <a th:href="'/sede/servicio/presupuestos-participativos/' + ${registro.id}" sede:rdf="${registro.get('title')}"></a>
+                    </h3>
+                    <p>
+                        Realizado por <strong th:text="${registro.usuarioAlta}"></strong>
+                        <th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}" class="pull-right">
+                            (<strong th:text="${registro.usuarioPub}" />)
+                        </th:block>
+                        <span th:if="${registro.menor18}" class="label label-success">menor de 18 años</span> el <span class="text-info"><th:block th:text="${#calendars.format(registro.creationDate,'EEEE dd MMMM HH:mm')}"></th:block> h.</span>
+                        <th:block th:if="${registro.representacion}">
+                            en representación de <strong sede:rdf="${registro.get('representacion')}"></strong>.
+                        </th:block>
+                    </p>
+                    <p>
+                        Propuesta para <strong><span th:text="${registro.soloNombreJunta}"></span></strong>
+                        <!-- <th:block th:if="${registro.tema}"> en la categoría de <strong th:text="${registro.tema.title}"></strong></th:block> -->
+                        <span th:if="${registro.tema}" th:text="${registro.tema.title}" class="label label-primary"></span>
+                    </p>
+                    <hr class="nomargin" />
+                    <div class="margin-a1em" sede:rdf="${registro.prop('description')}" th:text="${#strings.abbreviate(registro.description, 150)}"></div>
+                    <div th:if="${registro.creador} and ${registro.creador.aceptaMail} == true" role="alert" class="alert alert-success nomargin">
+                        Este usuario/a tiene <strong>activada</strong> la recepción de correos electrónicos.
+                    </div>
+                    <div th:if="${registro.creador} and ${registro.creador.aceptaMail} == false" role="alert" class="alert alert-warning nomargin">
+                        Este usuario/a tiene <strong>desactivada</strong> la recepción de correos electrónicos.
+                    </div>
+                    <div class="pull-right" th:if="${#utils.desde('12-03-2018', '20:00')} and ${registro.status} == 'S' or ${registro.status} == 'U' or ${registro.status} == 'F'">
+                        <span class="fa fa-check-circle text-success" title="Apoyos Recibidos" aria-hidden="true"></span> Apoyos Recibidos: <span th:text="${registro.votosAFavor} == null ? '0' : ${registro.votosAFavor}"></span>
+                        <span class="sr-only">Apoyos Recibidos</span>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 text-center" th:if="${registro.status}">
+                <div class="visible-panel popover static-popover" th:classappend="${currentDevice.isMobile()} ? 'bottom' : 'right'">
+                    <div class="arrow"></div>
+
+                    <!--/* status = 'S' - Pasa a apoyos y priorización */-->
+                    <th:block th:if="${registro.status} == 'S' and ${#utils.hasta('26-03-2018')}">
+                        <!--/* Se muestra título de popover si la sesión no está iniciada y la propuesta no está rechazada */-->
+                        <div class="popover-title text-center" th:if="not ${session.sess_ciudadano} and ${registro.status} == 'S'">
+                            <h4><strong class="text-primary">APOYAR</strong> esta PROPUESTA</h4>
+                        </div>
+                        <!--/* Se muestra título de popover si la sesión está iniciada, la propuesta es de la junta del usuario o la propuesta es de Ciudad y la propuesta tiene estado 'Pasa a apoyos y priorización' (S) */-->
+                        <div class="popover-title text-center" th:if="${session.sess_ciudadano} and (${session.sess_ciudadano.juntaActual} == null or ${session.sess_ciudadano.juntaActual} == ${registro.junta} or ${registro.junta} == 'Ciudad') and ${registro.status} == 'S'">
+                            <h4 th:if="${registro.votoUsuario}!='positivo'"><strong class="text-primary">APOYAR</strong> esta PROPUESTA</h4>
+                            <h4 th:if="${registro.votoUsuario}=='positivo'"><strong class="text-primary">RETIRAR APOYO</strong> de esta PROPUESTA</h4>
+                        </div>
+                        <div class="popover-content text-center">
+                            <!--/* Si la sesión está iniciada y la propuesta pertenece a la junta del usuario o la propuesta es de Ciudad, permite votar
+                            Si la junta del usuario/a es *null* aparece el botón de apoyo que te redirige al formulario de inserción de los datos de padrón */-->
+                            <th:block th:if="${session.sess_ciudadano} and (${session.sess_ciudadano.juntaActual} == null or ${session.sess_ciudadano.juntaActual} == ${registro.junta} or ${registro.junta} == 'Ciudad') and ${registro.status} == 'S'">
+                                <!--/* Realizar apoyo */-->
+                                <a th:href="@{/servicio/presupuestos-participativos/{id}/a-favor(id=${registro.id})}"><span th:if="${registro.votoUsuario}!='positivo'" class="fa fa-check-circle fa-5x text-success" title="Apoyar esta Propuesta" aria-hidden="true"></span> </a>
+                                <span th:if="${registro.votoUsuario}!='positivo'" class="sr-only">Apoyar esta propuesta</span>
+                                <!--/* Retirar apoyo */-->
+                                <a th:href="@{/servicio/presupuestos-participativos/{id}/en-contra(id=${registro.id})}"><span th:if="${registro.votoUsuario}=='positivo'" class="fas fa-times fa-5x text-primary" title="Retirar apoyo de esta propuesta" aria-hidden="true"></span> </a>
+                                <span th:if="${registro.votoUsuario}=='positivo'" class="sr-only">Retirar apoyo de esta propuesta</span>
+                                <span class="sr-only">apoyos recibidos</span>
+                            </th:block>
+                            <!--/* Si la sesión está iniciada y la propuesta NO pertenece a la junta del usuario o NO es propuesta de Ciudad, NO permite votar y muestra advertencia. En caso de tener estado distinto de 'Pasa a apoyos y priorización' (S), oculta este mensaje en favor del mensaje de estado
+                            Este mensaje solo aparece si la junta del usuario/a es *null* */-->
+                            <th:block th:if="${session.sess_ciudadano} and (${session.sess_ciudadano.juntaActual} != null and ${session.sess_ciudadano.juntaActual} != ${registro.junta} and ${registro.junta} != 'Ciudad') and ${registro.status} == 'S'" th:href="@{{id}/a-favor(id=${registro.id})}">
+                                <div role="alert" class="alert alert-danger margin-t05em">Sólo puede apoyar propuestas pertenecientes a su distrito o propuestas de Ciudad.</div>
+                            </th:block>
+                            <!--/* Si la sesión no está iniciada, al pasar el ratón por la zona muestra mensaje para loguear */-->
+                            <th:block th:if="not ${session.sess_ciudadano}">
+                                <!--/* Si la propuesta está rechazada no mostramos el icono de apoyo */-->
+                                <span th:if="${registro.status} == 'S'" class="fa fa-check-circle fa-5x text-success" title="Apoyos Recibidos" aria-hidden="true"></span>
+                                <span th:if="${registro.status} == 'S'" class="sr-only">Apoyos recibidos</span>
+                                <!--/* Mensaje onHover en el popover para logearte o registrarte en la Plataforma de Gobierno Abierto */-->
+                                <div th:if="!${session.sess_ciudadano}" class="hidden-panel">
+                                    <strong> Necesitas <a th:href="${#utils.getLinkLoginUsuario(#httpServletRequest)}" class="text-primary">iniciar sesión</a> o <a href="/sede/acceso/" class="text-primary">registrarte</a> para participar. </strong>
+                                </div>
+                            </th:block>
+                        </div>
+                    </th:block>
+
+                    <!--/* status != 'S' - Se muestra el estado de la propuesta (consultar Propuesta.java) */-->
+                    <th:block th:unless="${registro.status} == 'S' and ${#utils.hasta('26-03-2018')}">
+                        <div class="popover-title text-center">
+                            <h4><strong class="text-primary">ESTADO</strong> de la PROPUESTA</h4>
+                        </div>
+                        <div class="popover-content text-center clearfix">
+                            <div th:if="${registro.status} == 'U'" role="alert" class="alert alert-success">
+                                Esta propuesta ha sido priorizada por la ciudadanía.
+                                <div th:if="${registro.motivoResumen}" th:utext="${registro.motivoResumen}"></div>
+                            </div>
+                            <div th:if="${registro.status} == 'F'" role="alert" class="alert alert-success">
+                                Esta propuesta ha sido priorizada por la mesa.
+                                <div th:if="${registro.motivoResumen}" th:utext="${registro.motivoResumen}"></div>
+                            </div>
+                            <div th:if="${registro.status} == 'S'" role="alert" class="alert alert-info">
+                                Esta propuesta ha estado en debate. No ha sido seleccionada para valoración técnica.
+                            </div>
+                            <div th:if="${registro.status} == 'R'" role="alert" class="alert alert-danger">
+                                Esta propuesta ha sido retirada por el creador.
+                            </div>
+                            <div th:if="${registro.status} == 'P'" role="alert" class="alert alert-warning">
+                                Esta propuesta está pendiente de reformulación.
+                            </div>
+                            <div th:if="${registro.status} == 'N'" role="alert" class="alert alert-danger">
+                                Esta propuesta ha sido retirada del debate.
+                                <div th:if="${registro.motivoResumen}" th:utext="${registro.motivoResumen}"></div>
+                            </div>
+                            <div th:if="*{status} == 'A'" role="alert" class="alert alert-warning">
+                                Esta propuesta se encuentra en ratificación.
+                                <div th:if="*{motivoResumen}" th:utext="*{motivoResumen}"></div>
+                            </div>
+                            <div th:if="*{status} == 'V'" role="alert" class="alert alert-success">
+                                Esta propuesta se encuentra en votación.
+                                <div th:if="*{motivoResumen}" th:utext="*{motivoResumen}"></div>
+                            </div>
+                            <!--/* Si no tiene estado y tiene resumen breve (unificadas y otros casos) */-->
+                            <div th:if="not ${registro.status} and ${registro.motivoResumen}" class="alert alert-info" th:utext="${registro.motivoResumen}"></div>
+                            <th:block th:if="${not #lists.isEmpty(registro.valoraciones)}">
+                                <div th:if="${registro.motivo} == 'pendiente'" role="alert" class="alert alert-info">Quedan valoraciones por realizar</div>
+                                <div th:if="${registro.motivo} == 'viable'" role="alert" class="alert alert-success">Viable</div>
+                                <div th:if="${registro.motivo} == 'no viable'" role="alert" class="alert alert-danger">NO Viable</div>
+                            </th:block>
+                            <th:block th:if="${registro.status} == 'E'">
+                                <div role="alert" class="alert alert-success">
+                                    Esta propuesta ha sido seleccionada para su ejecución.
+	                                <br/>
+	                                <th:block th:if="${registro.estadoObra}">
+	                                    <strong>Estado de la obra: </strong>
+	                                    <th:block th:text="${registro.estadoObra}"></th:block>
+	                                    <br/>
+	                                    <strong th:if="${registro.fechaObra}">Fecha: </strong>
+	                                    <th:block th:text="${registro.fechaObra}"></th:block>
+	                                    <strong th:if="${registro.fechaFinObra}">Fecha fin: </strong>
+	                                    <th:block th:text="${registro.fechaFinObra}"></th:block>
+	                                </th:block>
+	                                <th:block th:if="${registro.motivoResumen}">
+	                                    <br/>
+	                                    <th:block th:utext="${registro.motivoResumen}"></th:block>
+	                                </th:block>
+                                </div>
+                            </th:block>
+                        </div>
+                    </th:block>
+
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

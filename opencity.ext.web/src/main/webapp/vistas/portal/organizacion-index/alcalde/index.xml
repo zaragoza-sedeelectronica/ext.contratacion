@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" xmlns="http://www.w3.org/1999/xhtml"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Pedro Santisteve, Alcalde de Zaragoza"
+                description="Discurso Investidura. Pedro Santisteve, Alcalde de Zaragoza"
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Fri Oct 07 00:00:00 CEST 2016"
+                keywords="alcalde, pedro santisteve, discursos">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris {
+            background-color: #f1f1f1;
+            padding: 0;
+            }
+
+            .fnd-gris .col-sm-6 {
+            padding: 0;
+            }
+
+            .fnd-gris-claro {
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            border-right: solid 2px #000;
+            padding-right: 10px;
+            margin-right: 10px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .tab-content {
+            border-left: solid 0px #ddd;
+            border-right: solid 0px #ddd;
+            border-bottom: solid 0px #ddd;
+            border-radius: 0px 0px 10px 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            position: relative;
+            }
+
+            .tab-content h2 {
+            font-size: 42px;
+            margin: 0 0 30px;;
+            }
+
+            .botones {
+            height: 150px;
+            }
+
+            .botones>li {
+            width: 100%;
+            padding: 5px;
+            background-color: #fff;
+            border: 0px;
+            float: left;
+            text-align: center;
+            }
+
+            @media (max-width: 767px) {
+            .botones>li {
+            border-bottom: solid 2px #000;
+            }
+            .botones>li:nth-child(4) {
+            border-bottom: 0;
+            }
+            }
+            @media (min-width: 768px) {
+            .botones>li:nth-child(1) {
+            border-radius: 10px 0 0 0;
+            border-bottom: solid 1px #000;
+            border-right: solid 1px #000;
+            }
+            .botones>li:nth-child(2) {
+            border-radius: 0 10px 0 0;
+            border-bottom: solid 1px #000;
+            border-left: solid 1px #000;
+            }
+            .botones>li:nth-child(3) {
+            border-radius: 0 0 0 10px;
+            border-top: solid 1px #000;
+            border-right: solid 1px #000;
+            }
+            .botones>li:nth-child(4) {
+            border-radius: 0 0 10px 0;
+            border-top: solid 1px #000;
+            border-left: solid 1px #000;
+            }
+            }
+
+            .botones>li>a {
+            display: block;
+            width: 100%;
+            color: #E81B16;
+            text-decoration: none;
+            }
+
+            .botones>li:hover {
+            background-color: #000;
+            }
+
+            .botones>li.active,
+            .botones>li.active a,
+            .botones>li.active:hover {
+            background-color: #000;
+            color: #fff;
+            }
+
+            h3 {
+            color: #E81B16;
+            }
+
+            h3 a {
+            font-weight: bold;
+            font-size: 14px;
+            }
+
+            @media (max-width: 767px) {
+            .margin-t2em.titulo-org {
+            margin-top: -20px !important;
+            }
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+            .titulo-org h2 {
+            font-size: 24px;
+            }
+            .botones {
+            font-size: 10px;;
+            }
+            }
+
+            @media (min-width: 768px) {
+            .fnd-gris-claro {
+            padding-top: 20px;
+            }
+            .cabecera {
+            height: 150px;
+            }
+            .fnd-gris {
+            margin-top: -130px !important;
+            }
+            .img-cabecera {
+            border-radius: 0 6px 6px 0;
+            }
+            .fnd-gris div.col-sm-12 {
+            position: absolute;
+            bottom: -120px;
+            }
+            .botones {
+            height: auto;
+            }
+            .botones>li {
+            width: calc( 50% - 2px);
+            }
+            }
+
+            @media (min-width: 992px) {
+            .fnd-gris div.col-sm-12 {
+            position: absolute;
+            bottom: -110px;
+            }
+            }
+            @media (min-width: 1200px) {
+            .fnd-gris div.col-sm-12 {
+            position: absolute;
+            bottom: -200px;
+            }
+            }
+
+            a span.fab {
+            transform: translateY(7px);
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin cabecera">
+
+            </div>
+
+            <div class="fnd-gris-claro">
+                <div class="container margin-b2em margin-t2em fnd-gris radius titulo-org">
+                    <div class="col-sm-6">
+                        <h2 class="text-right">
+                            <small>Alcalde de la Ciudad de Zaragoza</small>
+                            <br/>
+                            Pedro Santiesteve Roche
+                            <abbr title="Zaragoza en Común"></abbr>
+                        </h2>
+                        <div class="col-sm-12">
+                            <div class="text-right">
+                                <p style="line-height: 2em;">Correo Electrónico:
+                                    <a
+                                            href="mailto:psantisteve@zaragoza.es">psantisteve@zaragoza.es
+                                    </a>
+                                    |
+                                    <a href="https://twitter.com/pedrosantisteve">
+                                        <span style="font-size: 2em;" class="fab fa-twitter-square"></span>
+                                    </a>
+                                </p>
+                            </div>
+                            <ul class="botones list-unstyled" role="tablist">
+                                <li class="active">
+                                    <a href="#biografia" aria-controls="biografia" role="tab"
+                                       data-toggle="tab">BIOGRAFÍA
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" href="#discurso" aria-controls="discurso" role="tab"
+                                       data-toggle="tab">DISCURSO INVESTIDURA
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" href="#agenda" aria-controls="agenda" role="tab"
+                                       data-toggle="tab">AGENDA INSTITUCIONAL
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" href="#responde" aria-controls="responde" role="tab"
+                                       data-toggle="tab">AYUNTAMIENTO RESPONDE
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        <img src="/cont/vistas/portal/organizacion/img/alcalde.jpg" width="600"
+                             class="img-responsive img-cabecera" alt=""/>
+                    </div>
+                </div>
+
+                <div class="container margin-b2em margin-t2em fnd-blanco radius">
+                    <article class="row col-md-12">
+
+                        <!-- Versión desktop -->
+                        <div class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane active" id="biografia">
+                                <h2 class="text-right">
+                                    <strong>Biografía</strong>
+                                </h2>
+                                <p>Nacido en Zaragoza, el día 28 de Mayo de 1958.</p>
+                                <h3>EXPERIENCIA DOCENTE</h3>
+                                <p>
+                                    <strong>2014-2015</strong>
+                                    Imparte la asignatura de Derecho y Ética en el nuevo plan de Estudios de Grado a los
+                                    alumnos de 4º de grado. Módulo de formación en el Máster de la Abogacía.
+                                </p>
+                                <p>
+                                    <strong>2000-2014</strong>
+                                    Profesor Asociado del Departamento de Derecho Público de la Facultad de Derecho,
+                                    desarrolla como labor docente el Programa de la Asignatura TEORIA DEL DERECHO,
+                                    dirigido a los Alumnos de 1º de Derecho conforme al Plan de Estudios entonces
+                                    vigente.
+                                </p>
+                                <p>
+                                    <strong>2012-2013</strong>
+                                    Imparte docencia en el DIPLOMA DE ESPECIALIZACION EN JUSTICIA RESTAURATIVA Y GESTION
+                                    DE LA CONVIVENCIA.
+                                </p>
+                                <p>
+                                    <strong>1993-2000</strong>
+                                    Profesor Asociado del Departamento de Derecho Público de la Facultad de Derecho
+                                    desarrolla como labor docente la parte del Programa de la Asignatura de Derecho
+                                    Natural dirigido a los alumnos de dos grupos de 1º de Derecho que lleva por
+                                    título<em>Crítica del Derecho</em>, así como un Seminario de prácticas de la misma
+                                    asignatura a un grupo de 1º de Derecho.
+                                </p>
+                                <p>
+                                    <strong>1992-1993</strong>
+                                    En calidad de Profesor Asociado del Área de Filosofía del Derecho, Moral y Política,
+                                    adscrita al Departamento de Derecho Público de la Facultad de Derecho y durante
+                                    dicho curso académico desarrolla el seminario de prácticas:
+                                    <em>Metodología y
+                                        Argumentación Jurídica
+                                    </em>
+                                    dirigido a los alumnos de 5º Curso.
+                                </p>
+                                <p>
+                                    <strong>1991-1992</strong>
+                                    Desarrollo del mismo Seminario citado anteriormente a los alumnos de 5º Curso de la
+                                    Facultad de Derecho, en la asignatura de Filosofía del Derecho.
+                                </p>
+                                <h3>EXPERIENCIA PROFESIONAL</h3>
+                                <p>Trabaja como Abogado con despacho profesional propio, integrado dentro del grupo
+                                    <em>
+                                        SENDA
+                                    </em>
+                                    abogados/asesores. Especialista en Derecho Penal; experto en Derecho
+                                    Penitenciario.
+                                </p>
+                                <p><strong>1985-2011</strong>Realiza, de modo habitual, actuaciones jurídicas ante el
+                                    Juzgado de Vigilancia Penitenciaria con sede en esta Ciudad, en defensa de los
+                                    derechos de la personas sometidas a penas de privación de libertad.
+                                </p>
+                                <h3>OTRAS COLABORACIONES Y PARTICIPACION EN JORNADAS</h3>
+                                <p>
+                                    <strong>2013</strong>
+                                    Ponente en el XVII Congreso Anual de Políticas Sociales:
+                                    <em>Como afrontar la futura
+                                        sociedad de la exclusión y sus efectos
+                                    </em>
+                                    (Vitoria Gasteiz.
+                                </p>
+                                <p>
+                                    <strong>2005-20013</strong>
+                                    Colabora con el Colegio de Abogados de Zaragoza (REICAZ en los Cursos de Formación
+                                    para Letrados que opten a su adscripción al S.O.P. (Servicio de Orientación
+                                    Penitenciaria.
+                                </p>
+                                <p><strong>2012</strong>.- Jornadas<em>Concepción Arenal: Impulsora de reformas</em>,
+                                    organizada por la Facultad de Ciencias Sociales y del Trabajo, Universidad de
+                                    Zaragoza. Jornadas de la COORDINADORA PARA LA PREVENCIÓN Y DENUNCIA DE LA TORTURA
+                                    (CPDT)- 20 ANIVERSARIO DE ASAPA, realizadas en Zaragoza los días 23 y 24 Noviembre
+                                    2012.
+                                </p>
+                                <p>
+                                    <strong>2011</strong>
+                                    Ponente en el XV Congreso de la Escuela de Trabajo Social de Gasteiz-Vitoria
+                                    <em>
+                                        Politicas Sociales para abolir la prisión.
+                                    </em>
+                                </p>
+                                <p>Invitado por el SIP (Seminario de Investigación para la Paz) interviene como experto
+                                    en Derecho Penitenciario junto a la Directora General de Instituciones
+                                    Penitenciarias, Mercedes Gallizo Llamas, en unas jornadas sobre el Sistema
+                                    Penitenciario español.
+                                </p>
+                                <h3>FORMACION</h3>
+                                <p><strong>2008-2010</strong>Curso de<em>Conflictos, Liderazgo y Cambio
+                                    Organizacional</em>, Programa Superior, organizado por el Centro de Formación de la
+                                    Cámara de Comercio e Industria de Zaragoza en colaboración con la Fundación
+                                    Findhorne. 2006.- Iª Promoción del Curso de formación de Mediadores impartido por el
+                                    REICAZ.
+                                </p>
+                                <h3>PUBLICACIONES</h3>
+                                <p>Coautor del Libro
+                                    <em>Manual de Ejecución Penitenciaria. Defenderse en la Carcel</em>
+                                    Ed.
+                                    Colex. Madrid 2011.
+                                </p>
+                                <h3>ACTIVIDADES EXTRAPROFESIONALES</h3>
+                                <p>
+                                    <strong>1993-2013</strong>
+                                    Socio fundador y miembro activo de la Asociacion de Seguimiento y Apoyo a Presos y
+                                    presas en Aragón (ASAPA).
+                                </p>
+                                <p>En el año 2000 es designado por dicha Asociación para recoger la Medalla al Mérito
+                                    Social otorgada por el Gobierno de Aragón a dicha entidad y entregada por el
+                                    Presidente de la Comunidad Autónoma D.Marcelino Iglesias.
+                                </p>
+                                <p>
+                                    <strong>1997</strong>
+                                    Interpone, como asesor jurídico de dicha asociación, Recurso de Amparo ante el
+                                    Tribunal Constitucional siendo con núm.792/97 promovido por los miembros de una
+                                    Asociación de Apoyo a Presos. Estimado por Sentencia del Tribunal Constitucional de
+                                    fecha 15.01.2001 donde se destaca la diligencia de las investigaciones llevadas a
+                                    cabo por la ASAPA, lo convincente del resultado de la misma y, por consiguiente,
+                                    restableciendo a la Asociación en el uso de la libertad de expresión con relación al
+                                    derecho a la crítica de los cargos públicos, en este caso de Instituciones
+                                    Penitenciarias.
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="discurso">
+                                <h2 class="text-right">
+                                    <strong>Discurso</strong>
+                                    de
+                                    <strong>investidura</strong>
+                                </h2>
+                                <h3>BUENOS DÍAS, VECINOS Y VECINAS</h3>
+                                <p>He dedicado toda mi vida adulta a la defensa de los derechos humanos. Dice un sabio
+                                    jurista italiano que los derechos fundamentales son la ley del más débil; cierto,
+                                    los que nada tienen sólo tienen derechos, pero su protección y salvaguarda está
+                                    encomendada a los poderes públicos y debe ser cosa de todos los días. La democracia
+                                    no es un estado, no es un régimen, es la acción que, sin cesar, arranca a los
+                                    gobiernos oligárquicos, el monopolio de la vida pública y, a la riqueza, la
+                                    omnipotencia sobre las vidas.
+                                </p>
+                                <p>Mi trabajo como alcalde, así como el de todos los concejales y concejalas agrupados
+                                    en Zaragoza en Común, va a ser el de la lucha permanente por la plena satisfacción
+                                    para la mayoría de la población de esos derechos humanos.
+                                </p>
+                                <p>Vivimos tiempos difíciles en que intereses egoístas, mezquinos, de acumulación de
+                                    riqueza en unas pocas manos, ha provocado una situación de emergencia social. Esas
+                                    injustas políticas, a favor de los poderosos, muestran un desolador escenario al
+                                    dejar de cubrir los poderes públicos necesidades básicas de la población: aumento de
+                                    la pobreza energética en 34.000 hogares, situaciones de insuficiencia alimentaria
+                                    que afectan a niños (la pobreza infantil denunciada por UNICEF alcanza al 27% de
+                                    ellos; problemas de movilidad dado que 21.000 hogares no tienen ascensor en una
+                                    ciudad con 100.000 personas de más de 70 años (el 60% de ellas mujeres solas),
+                                    25.000 hogares zaragozanos con ingresos inferiores a 300 euros al mes y la
+                                    vergonzosa cifra de casi 500 desahucios en el primer trimestre de 2015, 3.000 en los
+                                    últimos dos años, cuatro diarios.
+                                </p>
+                                <p>Cuando una organización social, un estado, es incapaz de dar justa satisfacción a las
+                                    necesidades básicas de las personas lo que se socava es, la dignidad humana, que no
+                                    es otra cosa que la posibilidad de elegir entre diferentes opciones vitales; es
+                                    evidente que sin igualdad, sin derechos sociales asegurados de forma efectiva, no
+                                    hay posibilidad de ejercicio de las restantes libertades.
+                                </p>
+                                <p>Una ciudad digna, nuestra Zaragoza, no puede tolerar esa vergüenza, esa iniquidad,
+                                    ese cúmulo de actos inmorales que conforman el clima de abyecta corrupción que nos
+                                    invade.
+                                </p>
+                                <p>Por que para nosotros, la prioridad son las personas, es por lo que vamos a acometer
+                                    un Plan de Emergencia Social, en el que, entre otras cosas, se promueva dotar a la
+                                    ciudad de un Parque de Viviendas públicas y se aumente al 2% del Presupuesto los
+                                    créditos destinados a cubrir las necesidades básicas de la población.
+                                </p>
+                                <p>Cuestión de derechos. No de compasión. Ni de caridad. Ni de donaciones gratuitas.
+                                    Son, derechos, de igualdad. En una sociedad de trabajo escaso, mal repartido y peor
+                                    remunerado, hay que plantearse la necesidad de liderar el proceso hacia una renta
+                                    básica, hacia una cobertura universal de las necesidades de la ciudadanía. De
+                                    momento, a lo largo de la legislatura, vamos a implementar el parque público de
+                                    vivienda hasta las cinco mil a través de subrogaciones de familias deudoras de buena
+                                    fe y con una sola vivienda en propiedad, cesión conveniada de particulares, compra o
+                                    expropiación de uso a la SAREB, intentando que salgan al mercado de alquiler una
+                                    parte de esas casi 40.000 viviendas hoy vacías; con apoyo municipal a la obra social
+                                    de las plataformas de personas afectadas por desahucios, recuperando inmuebles
+                                    abandonados y creando una oficina antidesahucios que ofrezca una alternativa
+                                    habitacional. Todo ello al tiempo, intentaremos generar empleo rehabilitando
+                                    viviendas bajo criterios de eficiencia, ahorro energético y renovación de los
+                                    barrios.
+                                </p>
+                                <p>Asimismo, pondremos en marcha un programa de lucha contra la pobreza energética, con
+                                    el objeto de acabar con el drama de cientos de familias que no pueden siquiera
+                                    permitirse calentar sus viviendas durante los crudos inviernos que sufrimos los
+                                    habitantes de Zaragoza.
+                                </p>
+                                <p>Pero todo ello no implica que la Ciudad de Zaragoza no deba ser, también solidaria
+                                    con el resto de pueblos que forman parte de este planeta que compartimos, llamado
+                                    Tierra. Por ello impulsaremos la cooperación al desarrollo, con el fin de ayudar a
+                                    aquellos que no tienen la fortuna de vivir, como nosotros, en los mal llamados
+                                    países desarrollados, y a los cuales hay que garantizar también condiciones dignas
+                                    de vida.
+                                </p>
+                                <p>Vamos a desarrollar políticas específicas para mayores, para la juventud más
+                                    abandonada y mejor formada pero con peor presente desde hace muchos años, y para la
+                                    infancia mediando su implicación activa como sujetos de derecho, así como políticas
+                                    transversales de igualdad de género.
+                                </p>
+                                <p>Debemos reconstruir el tejido empresarial autónomo y la exportación de las empresas
+                                    locales, apoyar la economía social y favorecer el comercio de proximidad, frente a
+                                    los negocios exclusivos y ajenos a la sostenibilidad, social y medioambiental, de
+                                    las grandes superficies del extrarradio.
+                                </p>
+                                <p>Las calles (y no los viales) son los espacios básicos de relación que hacen ciudad y
+                                    para que cumplan con esa función, es imprescindible un tejido comercial que haga
+                                    dinámico el espacio público pensado para todos y todas.
+                                </p>
+                                <p>Debemos generar políticas de empleo digno y de calidad, alejadas de los criterios de
+                                    precariedad que se vienen sucediendo, en las que tener trabajo es compatible con ser
+                                    muy pobre. E incluir cláusulas sociales en las contratas municipales.
+                                </p>
+                                <p>Queremos poner en valor instrumentos con los que ya cuenta la ciudad, como Zaragoza
+                                    Activa, que debe ser un importante mecanismo para la dinamización económica de la
+                                    ciudad, así como la creación e impulso de viveros de empresas. Debemos tener como
+                                    objetivo la consolidación del empleo público, para lo cual es necesario que se lleve
+                                    a cabo la convocatoria de las plazas de la oferta Pública de Empleo de años
+                                    anteriores, y que asimismo se produzca a la elaboración de una nueva oferta para los
+                                    próximos años.
+                                </p>
+                                <p>Pondremos en marcha líneas de crédito subvencionadas para aquellos jóvenes que
+                                    habiendo tenido que emigrar durante la crisis que quieran regresar a través de la
+                                    fórmula del autoempleo. No podemos olvidar a aquellos que no tuvieron otra
+                                    alternativa que marcharse, ante la pasividad de unas instituciones, incapaces y en
+                                    ocasiones insensibles ante la situación sufrida por quienes representan el futuro de
+                                    nuestra sociedad.
+                                </p>
+                                <p>Seguramente, en la actual situación de crisis, no es posible llevar a cabo
+                                    modificaciones de carácter tributario que reduzcan la presión fiscal porque menos
+                                    ingresos son menos derechos. Pero sí vamos a explorar medidas que redistribuyan esa
+                                    carga más justamente, con progresividad fiscal, lucha contra el fraude y
+                                    bonificaciones y apoyo a quienes no puedan hacer frente a sus obligaciones
+                                    tributarias.
+                                </p>
+                                <p>Estabilidad financiera, significa: dotar de presupuesto a todas las partidas de gasto
+                                    que Zaragoza y sus habitantes necesitan. Por encima de cualquier otro interés
+                                    privado o coyuntural, de cualquiera, y en la que quienes hasta ahora no aportaron su
+                                    esfuerzo y su comprensión, deberán aportarlo desde ya. Los derechos sociales de
+                                    vivienda, salud, alimentación, educación, saneamiento, energía, y cultura deben ser
+                                    objeto de satisfacción por parte de los poderes públicos.
+                                </p>
+                                <p>Pensamos que es compatible cumplir los criterios de sostenibilidad financiera, sin
+                                    elevar la presión fiscal de la mayoría. La estabilidad financiera no se hace a costa
+                                    de gravar con impuestos a los más débiles, si no con aportaciones progresivas de
+                                    quien más tiene, como por ejemplo a través del IBI o de una tasa ecológica a las
+                                    grandes superficies comerciales.
+                                </p>
+                                <p>Apostaremos decididamente por modelos más económicos, justos y democráticos de
+                                    gestión de los servicios públicos básicos mediante la remunicipalización de los
+                                    mismos, tras los correspondientes estudios técnicos que analicen su viabilidad,
+                                    basados en la mejora de la eficiencia en el servicio prestado, la disminución de su
+                                    carga presupuestaria y pensando en las condiciones laborales de los empleados de las
+                                    actuales contratas que, lejos de engordar la plantilla municipal, aportarán mayor
+                                    eficacia en la gestión, ahorro en el costes y mejora en el servicio.
+                                </p>
+                                <p>Creemos en la eficiencia también en el modelo urbano. Necesitamos accesibilidad
+                                    universal a demanda de las personas mayores y de movilidad reducida a los centros
+                                    sanitarios en cada barrio, y un diseño amable y sostenible de todos los barrios,
+                                    renovando los más viejos y dotando de servicios a los nuevos, sobre todo los del
+                                    Distrito Sur, que necesitan representación propia en el marco de mayor autonomía de
+                                    las Juntas de Distrito con verdadera participación en la toma de decisiones. En
+                                    torno a la participación, que deberá contar con un nuevo Reglamento que incluya el
+                                    derecho a consultas ciudadanas vinculantes, es muy importante que sean los vecinos
+                                    quienes decidan el futuro de sus barrios gestionando y marcando prioridades de al
+                                    menos una parte de los recursos que se les asignen mediante la fórmula de los
+                                    llamados presupuestos participativos.
+                                </p>
+                                <p>Creemos que la representación de los grupos municipales en consejos de administración
+                                    de las Sociedades Públicas, Juntas y Consejos de Patronatos e Institutos
+                                    municipales, órganos supramunicipales, así como consejos sectoriales, observatorios
+                                    y otros órganos consultivos puede ser ejercida, no solo por concejales, sino por
+                                    cualquier otra persona de la sociedad civil que sea designada por dichos grupos.
+                                </p>
+                                <p>Apostamos por la máxima transparencia, para lo cual permitiremos que sean públicos
+                                    los Consejos de Administración de las empresas públicas 100% municipales y de las
+                                    Juntas y Consejos de Patronatos y Comisiones Plenarias. La movilidad es una
+                                    necesidad a tomarse en serio. Un Verdadero Plan de Movilidad global en la ciudad ha
+                                    de asegurar que todas las personas podamos ir y venir a todos los sitios, en
+                                    especial a aquellos lugares donde se prestan los servicios básicos, de un modo
+                                    sostenible y asequible.
+                                </p>
+                                <p>Apostamos por los peatones, las bicicletas, el transporte público, incluido el taxi,
+                                    en todos los barrios y para todos los barrios, y por realizar el estudio de
+                                    viabilidad de la segunda línea de tranvía, a la vista del cual se determine su
+                                    conveniencia, y en su caso, su mejor trazado. Creemos en un Plan hecho por toda la
+                                    ciudad, en un verdadero proceso participativo, con transparencia, y alejado de la
+                                    opacidad con la que se ha venido actuando desde los despachos públicos. Una
+                                    ciudadanía que se afirme solidaria tiene que defender el sustento y continuidad de
+                                    su entorno para las futuras generaciones sin hipotecar su futuro como venimos
+                                    haciéndolo. El derecho a vivir en un medio ambiente sano, equilibrado y seguro, a
+                                    disfrutar de la biodiversidad presente en el mundo, debe hacer de nuestra Ciudad un
+                                    referente en la lucha contra el cambio climático y en la transición hacía la
+                                    sostenibilidad.
+                                </p>
+                                <p>La correcta gestión municipal del Medio Ambiente es un paradigma transformador que
+                                    defiende el derecho de las personas a un entorno saludable de manera sostenible,
+                                    ecológica y socialmente justa, y a decidir acerca de nuestras políticas energéticas,
+                                    agrícolas y alimentarias, así como sobre la gestión de los bienes y recursos
+                                    naturales locales con las personas y la Naturaleza en el centro. Ello comporta
+                                    también mejorar, cuanto antes, el ciclo integral del agua para que sea más eficiente
+                                    y siempre pública, y conseguir una Zaragoza amiga de los animales.
+                                </p>
+                                <p>El contexto en el que digo esto es en el de una ciudad muy endeudada y con retos
+                                    económicos pendientes, demasiados, que dedica a pagar deuda diez veces más recursos,
+                                    que los destinados a financiar ayudas de urgente necesidad, y que se enfrenta a una
+                                    nueva situación aún más grave, que es la nueva ley antiayuntamientos, dictada por el
+                                    Gobierno de España que nos roba competencias, recursos y libertad de acción,
+                                    hipotecando muchas posibilidades de desarrollo sostenible a las personas que vivimos
+                                    en esta querida Ciudad nuestra. En este sentido, los pagos a la sociedad Alta
+                                    Velocidad son una injusta rémora que deben ser revisados y renegociados, para que no
+                                    supongan un estrangulamiento económico para las arcas municipales.
+                                </p>
+                                <p>Zaragoza necesita una Auditoría Municipal Permanente para rendir cuentas a la
+                                    ciudadanía y que nos permita saber el estado real de las cosas y las causas que las
+                                    han generado, así como a ayudar a los gestores públicos a prestar los servicios que
+                                    demandan los ciudadanos de una forma más eficiente y transparente.
+                                </p>
+                                <p>Defender Zaragoza, su autonomía municipal y financiera supone hoy, también, combatir
+                                    estas disposiciones del Gobierno central, estableciendo colaboraciones
+                                    institucionales fijando un nuevo marco de relaciones, una Alianza municipalista, con
+                                    ciudades como Madrid, Barcelona o Coruña. Porque en esta pelea, Zaragoza, no está
+                                    sola.
+                                </p>
+                                <p>En este camino esperamos la colaboración generosa y comprensiva del nuevo Gobierno de
+                                    Aragón, que aborde con visión de Estado la debida atención a una ciudad que acoge a
+                                    más del 50% de la población aragonesa en el 5% de su territorio. Así, concretamos
+                                    proyectos y propuestas que han sido claras, colectivas y transparentes desde el
+                                    principio. La Zaragoza de todos y de todas. Transparente y participada en las
+                                    decisiones. Por eso me gusta recordar que, transparencia, es camino de democracia
+                                    frente a la opacidad en la que habita la corrupción.
+                                </p>
+                                <p>Queremos asegurar la laicidad en todos los aspectos de la vida pública municipal para
+                                    lo cual, entre otras cosas, modificaremos el Reglamento de Protocolo, Ceremonial,
+                                    Honores y Distinciones.
+                                </p>
+                                <p>Pretendemos ahondar en la necesidad de llevar a cabo actuaciones que permitan
+                                    recuperar la memoria histórica de nuestra ciudad, con el objetivo de cumplir
+                                    ampliamente con la justicia, reparación y el reconocimiento de aquellos que
+                                    sufrieron, directa o indirectamente, las consecuencias de la Guerra Civil y la
+                                    posterior dictadura franquista en nuestro país. Impulsaremos una política cultural
+                                    ligada a la creación artística propia, promoviendo un gran Pacto por la Cultura que
+                                    trascienda legislaturas, partidos y cambios en el gobierno municipal y que implique
+                                    a toda la sociedad zaragozana. Los concejales y concejales de este futuro gobierno
+                                    municipal, de cuya autoridad para formarlo me habéis investido en este acto, vamos a
+                                    dar la cara ante nuestros vecinos y vecinas en todos los distritos
+                                    comprometiéndonos, una vez al mes, a hablar, debatir y responder de nuestro trabajo
+                                    y de las dificultades que en su desempeño vamos encontrando.
+                                </p>
+                                <p>Todo esto no es sólo un estilo de gobierno, sino una forma de pensar y trabajar en
+                                    común.
+                                </p>
+                                <p>En un ejercicio político democrático diario, pretendemos un pacto continuo con las
+                                    fuerzas aquí representadas y con toda la ciudad para sacar adelante nuestras líneas
+                                    verdes de consenso que fueron elaboradas por miles de ciudadanos y ciudadanas
+                                    durante meses, presentadas y ratificadas por más de 80.000 ciudadanos y ciudadanas
+                                    ante las urnas. Esa estabilidad política se sustenta en el diálogo continuo,
+                                    auspiciando, los acuerdos necesarios con quien haga falta cada día. Tenemos disensos
+                                    con otras fuerzas progresistas. Por supuesto. Por eso hablamos de dialogo y pacto
+                                    permanente con toda la ciudad, con todos los sectores, con todas las entidades, con
+                                    los empleados y empleadas municipales, sobre quienes recae una gran responsabilidad
+                                    y no siempre obtienen el reconocimiento que se merecen. En ellos, en su criterio
+                                    técnico, competencia y saber hacer vamos a buscar permanente apoyo intentando no
+                                    sólo contagiarles nuestro entusiasmo e ilusión sino incorporando criterios de
+                                    gestión más racionales y eficientes.
+                                </p>
+                                <p>Es obligado agradecer en este esfuerzo por la estabilidad del futuro Gobierno
+                                    Municipal el apoyo que nos han otorgado en este acto de investidura fuerzas
+                                    políticas como el PSOE y los compañeros y compañeras de Chunta Aragonesista.
+                                    Ciertamente habrá que hablar y mucho sobre temas como el Estadio de la Romareda, los
+                                    servicios de los que hay que dotar a los barrios del Sur o una estrategia conjunta
+                                    para que la deuda contraída por el Gobierno Autónomo con la Ciudad tenga el debido
+                                    retorno. Es una nueva era, que necesita de la ilusión que la impulsa, y con alturas
+                                    de miras pero mirando a todos y todas.
+                                    <br/>
+                                </p>
+                                <p>
+                                    <em>Que tiengamos suerte, treballemos a comunal y faigamos complenganza y buemvivir
+                                        ta totz y todas en una Zaragoza comuna. Buen Diya.
+                                    </em>
+                                </p>
+                                <p><em>(Que tengamos suerte, trabajemos juntos y generemos buen vivir para todos y todas
+                                    en una Zaragoza Común. Buenos días)</em>.
+                                </p>
+                                <p>Gracias.</p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="agenda">
+                                <h2 class="text-right">
+                                    <strong>Agenda</strong>
+                                    institucional
+                                </h2>
+                                <iframe src="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=dmc24rsjhnt7daf8ao5pq41jbo%40group.calendar.google.com&amp;ctz=Europe/Madrid"
+                                        style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no">
+                                    <a href="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=dmc24rsjhnt7daf8ao5pq41jbo%40group.calendar.google.com&amp;ctz=Europe/Madrid">
+                                        Acceso al calendario
+                                    </a>
+                                </iframe>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="responde">
+                                <h2 class="text-right">
+                                    <strong>Ayuntamiento responde</strong>
+                                </h2>
+                                <div class="radius hidden-xs"
+                                     style="background-color: #f9f9f9;height: 60px; padding:10px;margin-top: 30px;">
+                                    <div class="col-sm-1">
+                                        <img class="margin-r1em" alt=""
+                                             src="https://zaragoza.es/cont/paginas/organizacion/img/aytoresp-desdebarrios/iconoPQ_pregunta2.png"/>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>Formula una
+                                            <a
+                                                    href="/ciudadania/gobierno-abierto/participar/aytoresponde/insertarPregunta_Participacion?dirigidoa=Alcaldia">
+                                                pregunta
+                                            </a>
+                                            a Pedro Santisteve
+                                        </strong>
+                                        <br/>(La pregunta más apoyada durante el mes, será contestada)
+                                    </div>
+                                </div>
+                                <div class="margin-a1em linea"></div>
+                                <p class="especial-alert-info">
+                                    <img src="/cont/paginas/bs/img/alerts/mensajeInformacion.png" alt=""/>
+                                    El
+                                    <abbr title="Excelentísimo">Excmo.</abbr>
+                                    Alcalde
+                                    <strong>Pedro Santisteve
+                                    </strong>
+                                    responde
+                                    a las preguntas realizadas por la ciudadanía:
+                                </p>
+                                <div class="linea">&nbsp;</div>
+                                <div>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=344">
+                                                            TARJETAS CIUDADANAS
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Pregunta en Fase de Debate</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=316">
+                                                            QUEJAS Y SUGERENCIAS
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 17/04/2018</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=241">
+                                                            OPOSICIONES Y DISCAPACIDAD
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 18/05/2017</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=139">
+                                                            ESTIÉRCOL Y WC PORTATILES A 20 METROS DE CASA
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 16/05/2016</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=131">
+                                                            PODAS DE ARBOLES
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 03/05/2016</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=124">
+                                                            LICENCIA PARA LOS MÚSICOS CALLEJEROS
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 20/04/2016</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=74">
+                                                            TRANSPORTE PÚBLICO VALDESPARTERA
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 27/01/2016</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=25">
+                                                            SIN ESPACIOS PÚBLICOS EN ARCOSUR
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 17/12/2015</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                    <dt>
+                                        <div class="row-fluid margin-t1em">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propciud-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p>
+                                                        <strong>Pregunta Ciudadana</strong>
+                                                    </p>
+                                                    <h3>
+                                                        <a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/aytoresponde/pregunta_Participacion?oid=7">
+                                                            ¿QUÉ ES AYUNTAMIENTO RESPONDE?
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <img class="nodeco margin-r1em" alt="Pregunta Ciudadana"
+                                                         title="Pregunta Ciudadana"
+                                                         src="https://zaragoza.es/cont/paginas/gobierno-abierto/img/propmun-g.png"/>
+                                                </div>
+                                                <div class="col-sm-5">Respondida el 09/10/2015</div>
+                                            </div>
+                                        </div>
+                                        <div class="linea">&nbsp;</div>
+                                    </dt>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

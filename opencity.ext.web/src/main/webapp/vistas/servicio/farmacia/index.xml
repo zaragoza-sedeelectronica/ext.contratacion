@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Farmacias" keywords="sede,web,farmacias,guardia" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Farmacias <a th:href="@{/servicio/farmacia/(fecha=${#calendars.format(fechaAnterior,'dd-MM-yyyy')})}" class="btn btn-xs">&laquo; <span class="sr-only">d&iaacute;a anterior</span></a> <small class="badge" th:text="${#calendars.format(fecha,'EEEE, dd MMM yyyy')}"/> <a th:href="@{/servicio/farmacia/(fecha=${#calendars.format(fechaSiguiente,'dd-MM-yyyy')})}" class="btn btn-xs">&raquo;<span class="sr-only">d&iaacute;a siguiente</span></a></h2>
+        <ul class="list-inline">
+            <li> <a th:href="@{/servicio/farmacia/(tipo=guardia, fecha=${#calendars.format(fecha,'dd-MM-yyyy')})}" th:class="(!${param.tipo} or ${#strings.equals(param.tipo[0],'guardia')}) ? 'btn btn-primary' : 'btn btn'">De guardia</a></li>
+            <li><a th:href="@{/servicio/farmacia/(tipo=horarioAmpliado, rows=200, fecha=${#calendars.format(fecha,'dd-MM-yyyy')})}" th:class="(${param.tipo} and ${#strings.equals(param.tipo[0],'horarioAmpliado')}) ? 'btn btn-primary' : 'btn'">Horario ampliado</a></li>
+            <li><a th:href="@{/servicio/farmacia/(tipo=todas, rows=500, fecha=${#calendars.format(fecha,'dd-MM-yyyy')})}" th:class="(${param.tipo} and ${#strings.equals(param.tipo[0],'todas')})? 'btn btn-primary' : 'btn'">Todas</a></li>
+        </ul>
+        Filas: <span th:text="${resultado.body.rows}" /> Inicio: <span th:text="${resultado.body.start}" /> Total: <span th:text="${resultado.body.totalCount}"></span>
+        <div id="mapa-leaflet" style="height: 30em"></div>
+        <ul class="list-unstyled">
+            <th:block th:each="registro : ${resultado.body.result}">
+                <li class="card" th:classappend="${registro.geometry} ? geo : nogeo" sede:rdf="${registro.voc()}" th:attr="about=${registro.uri}"><span class="badge" th:if="${registro.guardia}">De Guardia</span> <strong sede:rdf="${registro.get('title')}"></strong>
+                    <div th:if="${registro.telefonos}">Teléfono: <span sede:rdf="${registro.get('telefonos')}"></span></div>
+                    <div sede:rdf="${registro.get('calle')}"></div>
+                    <div sede:rdf="${registro.get('horario')}" th:if="!${registro.guardia}"></div>
+                    <th:block th:if="${registro.geometry}" th:utext="${registro.geometry.getRdf()}"></th:block>
+                    <div th:if="${registro.guardia}"><em>Horario de guardia:</em>
+                        <span th:text="${registro.guardia.horario}" />. <span th:text="${registro.guardia.sector}" />. Turno: <span th:text="${registro.guardia.turno}" />
+                    </div>
+                </li>
+            </th:block>
+        </ul>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var vocab = "schema:Pharmacy";
+    var pois = [];
+    $("li[typeOf]").each(function() {
+        if ($(this).attr("typeOf").indexOf(vocab) >= 0) {
+            var icon = '//www.zaragoza.es/contenidos/iconos/farmacia.png';
+            if ($(this).attr("typeOf").indexOf('FarmaciaHorarioAmpliado') >= 0) {
+                icon = '//www.zaragoza.es/contenidos/iconos/farmaciahorarioespecial.png';
+            } else if ($(this).attr("typeOf").indexOf('FarmaciaGuardia') >= 0) {
+                icon = '//www.zaragoza.es/contenidos/iconos/farmaciaguardia.png';
+            }
+            var latitude = $(this).find("[property='latitude']").attr("content");
+            var longitude = $(this).find("[property='longitude']").attr("content");
+            if (latitude && longitude) {
+                var marker = L.marker([latitude, longitude], {
+                    icon: L.icon({
+                        iconUrl: icon,
+                        iconSize: [22, 20],
+                        iconAnchor: [22, 20],
+                        popupAnchor: [-10, -20]
+                    })
+                }).bindPopup($(this).html());
+                pois.push(marker);
+
+            }
+        }
+    });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, errorPosition);
+    } else {
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    }
+
+    function showPosition(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        //var latitude = 41.652020560953645;
+        //var longitude = -0.9845429715135259;
+
+
+        if (latitude < 41.998914010914405 && latitude > 41.429966005785936 && longitude < -0.5080683157393229 && longitude > -1.443420883267586) {
+            var user = L.marker([latitude, longitude]);
+            pois.push(user);
+            var group = L.featureGroup(pois).addTo(map);
+            map.setView(new L.LatLng(latitude, longitude), 3);
+
+            var locationArray = $("li.geo");
+            locationArray.sort(function(a, b) {
+                var latA = $(a).find("[property='latitude']").attr("content");
+                var latB = $(b).find("[property='latitude']").attr("content");
+                var longA = $(a).find("[property='longitude']").attr("content");
+                var longB = $(b).find("[property='longitude']").attr("content");
+                var dist = distance(latA, longA, latitude, longitude) - distance(latB, longB, latitude, longitude);
+                return dist;
+            });
+            var parent = $("li.geo").first().parent();
+            $("li.geo").remove();
+            for (var i = locationArray.length; i >= 0; i--) {
+                parent.prepend(locationArray[i]);
+            }
+
+        } else {
+            alert('Coordenadas no ubicadas en Zaragoza')
+            var group = L.featureGroup(pois).addTo(map);
+            map.fitBounds(group.getBounds());
+        }
+    }
+
+    function errorPosition(error) {
+        console.log("ERRORRRRRRR");
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    }
+
+
+    function distance(lat1, lon1, lat2, lon2) {
+        var p = 0.017453292519943295; // Math.PI / 180
+        var c = Math.cos;
+        var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+            c(lat1 * p) * c(lat2 * p) *
+            (1 - c((lon2 - lon1) * p)) / 2;
+
+        return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+    }
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

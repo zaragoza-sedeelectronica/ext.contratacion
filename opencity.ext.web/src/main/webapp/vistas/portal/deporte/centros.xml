@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es"><head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <sede:meta title="Equipamientos de Deporte" 
+               description= "El portal Deporte tiene como objetivo proporcionar informacion sobre todo tipo de instalaciones deportivas de la ciudad, normativa vigente y subvenciones relacionada sobre deporte, las federaciones y asociaciones deportivas existentes...Facilita realizar reserva de instalaciones, trámites y conocer las actividades y cursos que se realizan en la ciudad. Conozca los datos económicos y presupuestarios destinados a deporte en la ciudad y el balance de las piscinas de verano. Los compromisos de calidad se encuentran recogidos en las cartas de servicios y en la certificación ambiental obtenida por los centros deportivos de los barrios rurales. A través del servicio, tu opinión importa, el ciudadano puede enviar sus sugerencias y observaciones." 
+			 keywords="ayuntamiento, ciudad, Zaragoza, España, estructura institucional, organización administrativa, Servicio de Instalaciones Deportivas, instalaciones deportivas, fitness, legislación local, balnearios urbanos, piscinas de verano, piscinas cubiertas, campos de fútbol, formalidades administrativas, relación administración-administrado, administración electrónica, reservas, actividades, ayudas, carta de servicios, Centros Deportivos Municipales Rurales, certificación de calidad, estadística, presupuesto, gasto presupuestario, asociaciones">
+    </sede:meta>    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+     }
+	        .fase {
+            background-color: #202020;
+            color: #fff;
+            font-weight: bold;
+        }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+   .fnd-turismo {
+        background: #d68100;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #55a7b3;
+    } 
+    </style>
+</head>
+
+
+
+
+
+<body>
+
+
+
+
+
+    <sede:content> 
+<hr class="sm"/>
+<div class="row">
+	<div class="col-md-12">	
+		<div class="row text-center">
+			<div class="col-md-3">
+			 <a href="/sede/portal/deporte/servicio/equipamiento/catalog?category.idInList=56,57&amp;rows=100 "> 
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/centros-deportivos.png"/></a>
+			</div> 
+			<div class="col-md-3">
+				 <a href="/sede/portal/deporte/servicio/equipamiento/category/1921">  
+						<img  alt="" width="150" src="/cont/vistas/portal/deporte/img/fitness.png"/></a>
+			</div>
+				  
+ 
+<div class="col-md-3">
+<a href="/sede/portal/deporte/servicio/equipamiento/category/1920">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/balnearios.png"/></a>
+				 
+			</div>   <div class="col-md-3">
+				 <a href="/sede/portal/deporte/padel">  
+						<img alt="" width="150" src="/cont/vistas/portal/deporte/img/padel.png"/></a>
+				  </div></div>  
+			
+				<div class="row text-center">
+
+			
+			
+				  
+				
+				
+				<div class="col-md-3">
+				<a href="/sede/portal/deporte/servicio/equipamiento/category/55">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/futbol.png"/></a>
+				  </div>
+				  
+				  
+				  
+				  
+				  <div class="col-md-3"><a href="/sede/portal/deporte/servicio/equipamiento/category/140">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/piscinas.png"/>
+				 
+				</a>
+				</div> 
+				
+				
+			
+			  <div class="col-md-3"><a href="/sede/portal/deporte/servicio/equipamiento/category/166">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/piscinas-cubiertas.png"/>
+				 
+				</a>
+				</div>   <div class="col-md-3"><a href="/sede/portal/deporte/servicio/equipamiento/category/167">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/piscinas-verano.png"/>
+				 
+				</a>
+				</div> 
+				  </div> 
+			
+				<div class="row text-center">
+				
+				
+			
+			
+			
+			  <div class="col-md-3"><a href="http://www.zaragoza.es/sede/servicio/asociacion/?fq=categoria_smultiple%3A%28%22Entidades+Ciudadanas.+Deportivas.%22%29">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/federaciones.png"/>
+				 
+				</a>
+				</div> 
+				
+			<div class="col-md-3"><a href="/sede/portal/deporte/servicio/equipamiento/category/76">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/elementales.png"/>
+				 
+				</a>
+				</div> 
+			
+
+		
+		
+		
+		
+		<div class="col-md-3"><a href="/sede/portal/deporte/otras-instalaciones">
+				<img alt="" width="150" src="/cont/vistas/portal/deporte/img/otros.png"/>
+				  </a>
+			</div> 
+				
+				 
+
+			
+
+			
+				</div>
+		</div>
+				 
+
+			 
+			</div>
+ 
+	 
+ 
+ 
+ 
+
+
+
+ 
+	 
+ 
+ 
+ 
+
+ 
+ 
+ 
+</sede:content> 
+</body>
+
+</html>

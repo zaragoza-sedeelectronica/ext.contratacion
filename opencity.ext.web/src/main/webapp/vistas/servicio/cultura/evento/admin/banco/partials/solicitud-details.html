@@ -1,0 +1,777 @@
+<h3>Banco de Actividades > Cat&aacute;logo > Solicitud de actividad</h3>
+
+<button class="btn btn-primary btn-sm" ng-click="listarSolicitudes()" ng-show="permisos.DET">
+    <span class="fa fa-list" aria-hidden="true"></span>
+    <span class="hidden-xs">Listado solicitudes</span>
+</button>
+    
+<hr/>
+
+<div class="inform repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+<form novalidate name="mainForm" ng-submit="mainForm.$valid && guardar()">
+
+	<div class="row">
+	    <div class="col-md-12 form-group">
+			<button type="submit" class="btn btn-default" ng-show="permisos.MOD">
+				<span class="fa fa-check" aria-hidden="true"></span> 
+				<span class="hidden-xs"> Guardar</span>
+			</button>
+	        <modal-banco-borrar recurso="evento/admin/banco/solicitud"></modal-banco-borrar>
+			<boton-debug ng-model="registro" ng-show="debug"></boton-debug>
+			<button type="button" class="btn btn-default pull-right" ng-show="permisos.DET"
+				ng-disabled="sendMailDisabled" ng-click="previewRequestMail(registro.id, true);">
+				<span class="fa fa-envelope" aria-hidden="true"></span> 
+				<span class="hidden-xs"> Mail Entidad solicitante</span>
+			</button>
+			<button type="button" class="btn btn-default pull-right" ng-show="permisos.DET"
+				ng-disabled="sendMailDisabled" ng-click="previewRequestMail(registro.id, false);">
+				<span class="fa fa-envelope" aria-hidden="true"></span> 
+				<span class="hidden-xs"> Mail Entidad que imparte</span>
+			</button>
+	    </div>
+	    
+	</div>
+
+	<div class="alert alert-danger" ng-show="mainForm.$submitted && mainForm.$invalid">
+		<ul>
+			<li ng-repeat="(key, errors) in mainForm.$error track by $index"> 
+				<!-- Errores: <strong>{{ key }}</strong> -->
+				<div ng-if="key === 'required'">
+					<strong>Faltan campos por completar:</strong>
+					<ul>
+						<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> es obligatorio.</li>
+					</ul>	
+				</div>
+				<div ng-if="key !== 'required'">
+					<ul>
+						<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> tiene un error: <strong>{{ key }}</strong>.</li>
+					</ul>	
+				</div>
+			</li>
+		</ul>
+	</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <fieldset>
+            <legend>Datos de la Solicitud 
+            	<span ng-show="debug">[mainFormValid:<strong ng-class="{'text-success': mainForm.$valid, 'text-danger': !mainForm.$valid}">{{mainForm.$valid}}</strong>]</span>
+            </legend>
+
+		    <div class="row">
+		        <div class="col-md-12 form-horizontal">
+		            <div class="form-group">
+		            	<label class="col-md-3 control-label">Código Solicitud:</label>
+		            	<div class="col-md-2">
+	                        <input class="form-control" type="number" id="id_solicitud" ng-value="registro.id" disabled/>
+	                    </div>
+                        <label for="ampliacion" class="col-md-5 control-label">
+                            <input type="checkbox" id="ampliacion" name="ampliacion" ng-model="registro.ampliacion"/>
+                            Ampliación de Solicitud:
+                        </label>
+		            	<div class="col-md-2" ng-if="registro.ampliacion">
+	                        <input class="form-control" type="number" id="id_solicitud_ampliada" ng-model="registro.idSolicitudAmpliada"
+	                        	min="1" placeholder="Código solicitud"/>
+	                    </div>
+		            </div>
+
+		            <div class="form-group">
+	                    <label class="col-md-3 control-label">
+	                    	Actividad solicitada:
+	                    </label>
+	                    <div class="col-md-2">
+	                        <input style="border-color:#CCC;" class="form-control" name="id" type="text" ng-value="registro.actividad.id" ng-disabled="true"/>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <input class="form-control" type="text" id="titulo" ng-value="registro.actividad.title" ng-disabled="true"/>
+	                    </div>
+	                </div>
+
+                   	<div class="form-group">
+	                    <label class="control-label col-md-3">
+	                    	Tipo de actividad:
+	                    </label>
+	                    <div class="col-md-9">
+							<input type="text" class="form-control" ng-disabled="true" ng-value="registro.actividad.durationType" />
+						</div>
+					</div>
+
+                   	<div class="form-group">
+	                    <label class="control-label col-md-3">
+	                    	Entidad que imparte:
+                    	</label>
+	                    <div class="col-md-9">
+							<input type="text" class="form-control" ng-disabled="true" ng-value="registro.actividad.entity.title" />
+						</div>
+					</div>
+
+		            <div class="form-group">
+		            	<label class="col-md-3 control-label">
+		            		Código actividad en Agenda:
+	            		</label>
+		            	<div class="col-md-3">
+							<div class="input-group">
+	                        	<input class="form-control" type="number" min="1" ng-model="registro.codActo" ng-value="registro.codActo" />
+							    <span class="input-group-btn" >
+							        <button type="button" class="btn btn-default" ng-click="infoActo()" ng-disabled="registro.codActo == null">
+							            Cargar Info
+							        </button>
+							        <button type="button" class="btn btn-default" ng-click="limpiarActo()" ng-disabled="registro.codActo == null">
+							            Limpiar
+							        </button>
+							    </span>
+							</div>
+	                    </div>
+		            	<div class="col-md-6" ng-if="nombreActo">
+		            		<div class="input-group">
+	                        	<input class="form-control" type="text" ng-model="nombreActo" ng-value="nombreActo" ng-disabled="true"/>
+	                        	<span class="input-group-btn" >
+									<button type="button" class="btn btn-default" ng-click="abrirActo()" ng-disabled="registro.codActo == null">
+									    <span class="glyphicon glyphicon-share"></span>
+									</button>
+	                        	</span>
+	                        </div>
+	                    </div>
+		            </div>
+
+		            <div class="form-group">
+		            	<label class="col-md-3 control-label">
+		            		Estado solicitud:
+	            		</label>
+		            	<div class="col-md-2">
+	                        <select class="form-control" ng-model="registro.estado">
+	                        	<option value=""></option>
+	                        	<option value="EN_ESTUDIO">En Estudio</option>
+	                        	<option value="CONCEDIDA">Concedida</option>
+	                        	<option value="DENEGADA">Denegada</option>
+	                        	<option value="ANULADA">Anulada</option>
+	                        </select>
+	                    </div>
+		            </div>
+
+                   	<div class="form-group" ng-if="(registro.estado === 'DENEGADA') || (registro.estado === 'ANULADA')">
+	                    <label for="motivo" class="control-label col-md-3">
+	                    	<span>Motivo denegación/anulación:</span>
+                    	</label>
+                    	<div class="col-md-9">
+                    		<textarea ck-editor-new id="motivo" name="motivo" ng-model="registro.motivo" class="form-control"></textarea>
+                    	</div>
+                   	</div>
+
+                   	<div class="form-group">
+	                    <label for="observaciones" class="control-label col-md-3">
+	                    	<span>Observaciones:</span>
+                    	</label>
+                    	<div class="col-md-9">
+                    		<textarea ck-editor-new id="observaciones" name="observaciones" ng-model="registro.observaciones" class="form-control"></textarea>
+                    	</div>
+                   	</div>
+		        </div>
+		    </div>
+			
+			<div class="col-md-12">
+				<uib-tabset>
+
+  					<uib-tab heading="Solicitante">
+					    <div class="row">
+					        <div class="col-md-12 form-horizontal">
+					            <div class="form-group">
+					            	<label class="col-md-3 control-label" for="nombreSolicitante">
+				                    	<span class="obligatorio">Grupo / Entidad solicitante:</span>
+				                    </label>
+				                    <div class="col-md-9">
+				                        <input class="form-control" type="text" id="nombreSolicitante" ng-model="registro.nombreSolicitante"
+				                        	required name="Grupo / Entidad solicitante" placeholder="Nombre del grupo o entidad solicitante"/>
+				                    </div>
+					            </div>
+		                    	<div class="form-group">
+				                    <label for="addressStreet" class="control-label col-md-3">
+				                    	<span class="obligatorio">Dirección:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<input type="text" class="form-control required" id="addressStreet" ng-model="registro.addressStreet"
+				                    		required name="Dirección" placeholder="Dirección"/>
+				                    </div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="postalCode" class="control-label col-md-3">
+				                    	<span class="obligatorio">Código Postal:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<input type="text" class="form-control required" id="postalCode" ng-model="registro.postalCode"
+				                    		required name="Código Postal" placeholder="Código Postal"/>
+				                    </div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="cif" class="control-label col-md-3">CIF:</label>
+				                    <div class="col-md-9">
+				             	       <input type="text" class="form-control" id="cif" ng-model="registro.cif" placeholder="CIF (si procede)"/>
+				                    </div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="email" class="control-label col-md-3">
+				                    	<span class="obligatorio">Correo electrónico:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<input type="email" class="form-control required" id="email" ng-model="registro.email"
+				                    		required name="Correo electrónico" placeholder="Correo electrónico"/>
+				                    </div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="responsableActividad" class="control-label col-md-3">
+				                    	<span class="obligatorio">Responsable actividad:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<input type="text" class="form-control required" id="responsableActividad" ng-model="registro.responsableActividad"
+				                    		required name="Responsable actividad" placeholder="Nombre y apellidos del responsable de la actividad"/>
+				                    </div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="cargoResponsable" class="control-label col-md-3">Cargo del responsable:</label>
+				                    <div class="col-md-9">
+				                    	<input type="text" class="form-control" id="cargoResponsable" ng-model="registro.cargoResponsable"
+				                    		placeholder="Cargo que ocupa en la organización el responsable de la actividad"/>
+				                    </div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="telephone" class="control-label col-md-3">
+				                    	<span class="obligatorio">Teléfono:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<input type="tel" class="form-control required" id="telephone" ng-model="registro.telephone"
+				                    		required "name="Teléfono" placeholder="Teléfono de contacto"/>
+				                    </div>
+		                    	</div>
+				            </div>
+			            </div>
+		            </uib-tab>
+
+  					<uib-tab heading="Realización">
+					    <div class="row">
+					        <div class="col-md-12 form-horizontal">
+                                <div class="form-group">
+				                    <label class="control-label col-md-3" for="monitor">
+				                    	<span class="obligatorio">Monitor:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<select id="monitor" ng-model="registro.monitor.id" name="Monitor" class="form-control" required>
+                                             <option ng-repeat="mon in registro.actividad.monitors" class="list-unstyled" ng-value="mon.id">{{mon.title}}</option>
+										</select>
+									</div>
+								</div>
+		                    	<div class="form-group">
+				                    <label for="lugarRealizacion" class="control-label col-md-3">
+				                    	<span class="obligatorio">Lugar de realización:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<input type="text" class="form-control required" id="lugarRealizacion" ng-model="registro.lugarRealizacion"
+				                    		required name="Lugar de realización" placeholder="Lugar donde se realizará la actividad"/>
+				                    </div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="distrito" class="control-label col-md-3">
+				                    	<span>Barrio rural:</span>
+			                    	</label>
+				                    <div class="col-md-9">
+				                    	<select id="distrito" ng-model="registro.distrito" name="Barrio rural" class="form-control"
+                                            ng-options="distrito.title for distrito in distritos track by distrito.id" class="list-unstyled">
+                                            <option value=""></option>
+										</select>
+									</div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="horario" class="control-label col-md-3">
+				                    	<span>Horario de realización:</span>
+			                    	</label>
+			                    	<div id="horario_raw" class="col-md-9" ng-if="errorEnHorario">
+			                    		<textarea id="horario" name="Horario de realización" ng-model="registro.horario" class="form-control"></textarea>
+			                    	</div>
+			                    	<div id="horario_table" class="col-md-9" ng-if="!errorEnHorario">
+			                    		<table id="table_horario" class="table table-striped table-condensed table-bordered table-btn" style="text-align:center;">
+			                    			<thead>
+			                    				<tr>
+			                    					<th class="col-md-3" style="text-align:center;">Día de la semana</th>
+			                    					<th class="col-md-3" style="text-align:center;">Hora inicio</th>
+			                    					<th class="col-md-3" style="text-align:center;">Hora fin</th>
+			                    					<th class="col-md-2" style="text-align:center;"></th>
+			                    				</tr>
+			                    			</thead>
+			                    			
+			                    			<tbody>
+			                    				<tr ng-repeat="tramo in tramos">
+			                    					<td>{{tramo.dia}}</td>
+			                    					<td>{{tramo.horaIni}}</td>
+			                    					<td>{{tramo.horaFin}}</td>
+			                    					<td>
+			                    						<button type="button" class="btn btn-default btn-xs" ng-click="removeTime($index);">
+			                    							<span class="glyphicon glyphicon-trash"></span> Eliminar
+			                    						</button>
+		                    						</td>
+			                    				</tr>
+			                    			</tbody>
+			                    			
+			                    			<tfoot>
+			                    				<tr>
+			                    					<td>
+								                    	<select class="form-control" ng-model="tramo.dia" ng-options="dia for dia in selector.dias">
+								                    	</select>
+													</td>
+			                    					<td >
+			                    						<div class="col-md-5" style="padding:0;">
+				                    						<select class="form-control" ng-model="tramo.horaIni" ng-options="hora for hora in selector.horas">
+				                    						</select>
+			                    						</div>
+			                    						<div class="col-md-5" style="padding:0;">
+				                    						<select class="form-control" ng-model="tramo.minutoIni">
+				                    							<option>00</option>
+																<option>15</option>
+																<option>30</option>
+																<option>45</option>
+				                    						</select>
+				                    					</div>
+													</td>
+			                    					<td >
+			                    						<div class="col-md-5" style="padding:0;">
+				                    						<select class="form-control" ng-model="tramo.horaFin" ng-options="hora for hora in selector.horas">
+				                    						</select>
+			                    						</div>
+			                    						<div class="col-md-5" style="padding:0;">
+				                    						<select class="form-control" ng-model="tramo.minutoFin">
+				                    							<option>00</option>
+																<option>15</option>
+																<option>30</option>
+																<option>45</option>
+				                    						</select>
+				                    					</div>
+													</td>
+			                    					<td >
+							                    		<input id="btn-hora" type="button" class="btn btn-info" value="Añadir tramo" ng-click="addTime()"/>
+			                    					</td>
+			                    				</tr>
+			                    			</tfoot>
+		                    			</table>
+			                    	</div>
+		                    	</div>
+		                    	<div class="form-group">
+				                    <label for="calendario" class="control-label col-md-3">
+				                    	<span>Calendario de la actividad:</span>
+			                    	</label>
+			                    	<div id="calendario_raw" class="col-md-9" ng-if="errorEnCalendario">
+			                    		<textarea id="calendario" name="Calendario de la actividad" ng-model="registro.calendario" class="form-control"></textarea>
+			                    	</div>
+				                    <div id="calendario_list" class="col-md-9" ng-if="!errorEnCalendario">
+			                    		<div class="col-md-3" ng-repeat="dia in calendario" style="margin:5px;">
+			                    			<span ng-style="{color: dia.festivo ? 'red' : ''}">{{dia.fecha | date : "EEEE dd/MM/yyyy"}}
+				                    			<button type="button" class="btn btn-default btn-xs" ng-click="removeDate($index)">
+	                    							<span class="glyphicon glyphicon-trash"></span>
+	                    						</button>
+                    						</span>
+			                    		</div>
+			                    		<div class="col-md-12"> </div>
+				                    	<div class="col-md-6" style="padding-top:8px; float:left;">
+											<input type="date" style="margin:5px;" ng-model="diaSeleccionado.fecha"/>
+				                    		<input id="btn-dia" type="button" class="btn btn-info" value="Añadir día" ng-click="addDate()" ng-disabled="!diaSeleccionado.fecha" />
+				                    	</div>
+				                    </div>
+		                    	</div>
+					        </div>
+				        </div>
+			        </uib-tab>
+			        
+  					<uib-tab heading="Participantes">
+					    <div class="row">
+					        <div class="col-md-12 form-horizontal">
+					            <div class="form-group">
+					            	<label class="col-md-3 control-label">Número de inscritos Agenda:</label>
+					            	<div class="col-md-2">
+				                        <input class="form-control" type="number" ng-disabled="true" ng-model="numInscritosOnline" />
+				                    </div>
+					            </div>
+					            <div class="form-group">
+					            	<label class="col-md-3 control-label">Número de inscritos formulario:</label>
+					            	<div class="col-md-2">
+				                        <input class="form-control" type="number" min="0" ng-model="registro.numParticipantes" />
+				                    </div>
+					            	<div class="col-md-7">
+				                        <span class="help-inline">
+											<em>(No a través de la actividad publicada en Agenda Juvenil)</em>
+										</span>
+				                    </div>
+					            </div>
+					            <div class="form-group">
+					            	<label class="col-md-3 control-label">Inscritos formulario:</label>
+					            	<div class="col-md-9">
+				                    	<textarea class="form-control" ng-model="registro.participantes" rows="6" maxlength="4000"
+				                    		placeholder="Nombre y apellidos &#10;Fecha nacimiento &#10;Teléfono &#10; &#10;..." ></textarea>
+										<span class="help-inline">
+											<i>Participantes ya inscritos (no a través de la actividad publicada en Agenda Juvenil).</i>
+											<br/>
+											Lista con nombre y apellidos, fecha de nacimiento y teléfono de contacto.
+										</span>
+				                    </div>
+					            </div>
+					        </div>
+				        </div>
+			        </uib-tab>
+
+  					<!--uib-tab heading="Facturación">
+					    <div class="row">
+					        <div class="col-md-12 form-horizontal">
+					        
+					            <div class="form-group" ng-if="registro.actividad.hourPrice">
+					            	<div class="col-md-12">
+					            		<label class="control-label">Precio por hora ({{ registro.actividad.hourPrice.toFixed(2) }}&euro;/h)</label>
+					            	</div>
+					            	
+					            	<div ng-repeat="mes in meses">
+					            		<div class="col-md-12">
+					            			<hr/>
+											<div class="col-md-2">
+							            		<label class="control-label">Mes:</label>
+					                        	<input class="form-control" type="text" ng-disabled="true" ng-value="mes.nombre" />
+					                    	</div>
+					                    	<div class="col-md-1"> </div>
+											<div class="col-md-2">
+							            		<label class="control-label">Horas:</label>
+					                        	<input class="form-control" type="number" ng-disabled="true" ng-value="mes.horasNormales" />
+					                    	</div>
+					                    	<div class="col-md-2"> </div>
+							            	<div class="col-md-2">
+								            	<label class="control-label">Precio hora:</label>
+							                	<div class="input-group">
+						                        <input class="form-control" type="number" ng-disabled="true" ng-value="registro.actividad.hourPrice.toFixed(2)" />
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;/h</a>
+													</div>
+						                        </div>
+						                    </div>
+							            	<div class="col-md-2">
+								            	<label class="control-label">Importe:</label>
+							                	<div class="input-group">
+						                            <input class="form-control" type="number" ng-disabled="true"
+						                            	ng-value="(registro.actividad.hourPrice * mes.horasNormales).toFixed(2)"/>
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;</a>
+													</div>
+						                        </div>
+						                    </div>
+						                </div>
+						                <div class="col-md-12">
+					                    	<div class="col-md-3"> </div>
+											<div class="col-md-2">
+							            		<label class="control-label">Horas nocturnas:</label>
+					                        	<input class="form-control" type="number" ng-disabled="true" ng-value="mes.horasNocturnas" />
+					                    	</div>
+											<div class="col-md-2">
+							            		<label class="control-label">Horas festivas:</label>
+					                        	<input class="form-control" type="number" ng-disabled="true" ng-value="mes.horasFestivas" />
+					                    	</div>
+							            	<div class="col-md-2">
+								            	<label class="control-label">Nocturno / festivo:</label>
+							                	<div class="input-group">
+						                        <input class="form-control" type="number" ng-disabled="true" ng-value="hourPrice.toFixed(2)" />
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;/h</a>
+													</div>
+						                        </div>
+						                    </div>
+							            	<div class="col-md-2">
+								            	<label class="control-label">Suplemento horas:</label>
+							                	<div class="input-group">
+						                        <input class="form-control" type="number" ng-disabled="true"
+						                        	ng-value="((mes.horasNocturnas + mes.horasFestivas) * hourPrice).toFixed(2)" />
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;</a>
+													</div>
+						                        </div>
+						                    </div>
+				                    	</div>
+				                    	<div class="col-md-12">
+					                    	<div class="col-md-3"> </div>
+											<div class="col-md-2">
+							            		<label class="control-label">Sesiones:</label>
+					                        	<input class="form-control" type="number" ng-disabled="true" ng-value="mes.numSesiones" />
+					                    	</div>
+							            	<div class="col-md-2" ng-if="registro.distrito">
+								            	<label class="control-label">Distancia por sesión:</label>
+							                	<div class="input-group">
+						                        <input class="form-control" type="number" ng-disabled="true" ng-value="registro.distrito.distance * 2" />
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">km</a>
+													</div>
+						                        </div>
+						                    </div>
+							            	<div class="col-md-2" ng-if="registro.distrito">
+								            	<label class="control-label">Desplazamiento:</label>
+							                	<div class="input-group">
+						                        <input class="form-control" type="number" ng-disabled="true" ng-value="registro.distrito.kmPrice.toFixed(2)" />
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;/km</a>
+													</div>
+						                        </div>
+						                    </div>
+							            	<div class="col-md-2" ng-if="registro.distrito">
+								            	<label class="control-label">Supl. kilometraje:</label>
+							                	<div class="input-group">
+						                        <input class="form-control" type="number" ng-disabled="true"
+						                        	ng-value="(mes.numSesiones * registro.distrito.distance * 2 * registro.distrito.kmPrice).toFixed(2)" />
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;</a>
+													</div>
+						                        </div>
+						                    </div>
+				                    	</div>
+				                    	<div class="col-md-12">
+					                    	<div class="col-md-9"> </div>
+							            	<div class="col-md-2">
+								            	<label class="control-label">Total:</label>
+							                	<div class="input-group">
+						                            <input class="form-control" type="number" ng-disabled="true"
+						                            	ng-value="(registro.actividad.hourPrice * mes.horasNormales + (mes.horasNocturnas + mes.horasFestivas) * hourPrice + mes.numSesiones * registro.distrito.distance * 2 * registro.distrito.kmPrice).toFixed(2)"/>
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;</a>
+													</div>
+						                        </div>
+						                    </div>
+						                </div>
+						                <div class="col-md-12">
+					                    	<div class="col-md-7"> </div>
+							            	<div class="col-md-2">
+								            	<label class="control-label">Colaboración Servicio ({{registro.actividad.fundingPercentage}}%+supl.):</label>
+							                	<div class="input-group">
+						                            <input class="form-control" type="number" ng-disabled="true"
+						                            	ng-value="(registro.actividad.hourPrice * mes.horasNormales * (registro.actividad.fundingPercentage / 100) + (mes.horasNocturnas + mes.horasFestivas) * hourPrice + mes.numSesiones * registro.distrito.distance * 2 * registro.distrito.kmPrice).toFixed(2)"/>
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;</a>
+													</div>
+						                        </div>
+							            	</div>
+							            	<div class="col-md-2">
+								            	<label class="control-label">Importe solicitante ({{100 - registro.actividad.fundingPercentage}}%):</label>
+							                	<div class="input-group">
+						                            <input class="form-control" type="number" ng-disabled="true"
+						                            	ng-value="((registro.actividad.hourPrice * mes.horasNormales) * ((100 - registro.actividad.fundingPercentage) / 100)).toFixed(2)"/>
+													<div class="input-group-btn">
+														<a class="btn btn-default disabled">&euro;</a>
+													</div>
+						                        </div>
+							            	</div>
+				                    	</div>
+					            	</div>
+					            	
+					            </div>
+					            
+					            <div class="form-group" ng-if="registro.actividad.totalPrice">
+					            	<div class="col-md-12">
+					            		<label class="control-label">Precio total</label>
+					            	</div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Importe actividad:</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="registro.actividad.totalPrice.toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+				                    </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Sesiones:</label>
+				                        <input class="form-control" type="number" ng-disabled="true" ng-value="numSesiones" />
+				                    </div>
+					            	<div class="col-md-2" ng-if="registro.distrito">
+						            	<label class="control-label">Distancia por sesión:</label>
+					                	<div class="input-group">
+				                        <input class="form-control" type="number" ng-disabled="true" ng-value="registro.distrito.distance * 2" />
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">km</a>
+											</div>
+				                        </div>
+				                    </div>
+					            	<div class="col-md-2" ng-if="registro.distrito">
+						            	<label class="control-label">Suplemento km:</label>
+					                	<div class="input-group">
+				                        <input class="form-control" type="number" ng-disabled="true" ng-value="registro.distrito.kmPrice.toFixed(2)" />
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;/km</a>
+											</div>
+				                        </div>
+				                    </div>
+					            	<div class="col-md-2" ng-if="registro.distrito">
+						            	<label class="control-label">Kilometraje:</label>
+					                	<div class="input-group">
+				                        <input class="form-control" type="number" ng-disabled="true"
+				                        	ng-value="(numSesiones * registro.distrito.distance * 2 * registro.distrito.kmPrice).toFixed(2)" />
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+				                    </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Total:</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="(registro.actividad.totalPrice + numSesiones * registro.distrito.distance * 2 * registro.distrito.kmPrice).toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+				                    </div>
+					            	<div class="col-md-8"> </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Colaboración Servicio ({{registro.actividad.fundingPercentage}}% + suplementos):</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="((numSesiones * registro.distrito.distance * 2 * registro.distrito.kmPrice) + (registro.actividad.totalPrice * (registro.actividad.fundingPercentage / 100))).toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+					            	</div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Importe solicitante ({{100 - registro.actividad.fundingPercentage}}%):</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="(registro.actividad.totalPrice * ((100 - registro.actividad.fundingPercentage) / 100)).toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+					            	</div>
+					            </div>
+					            
+					            <div class="form-group" ng-if="registro.actividad.participantPrice">
+					            	<div class="col-md-12">
+					            		<label class="control-label">Precio por participante finalizado</label>
+					            	</div>
+					            	<div class="col-md-1"> </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Inscritos online:</label>
+				                        <input class="form-control" type="number" ng-disabled="true" ng-value="numInscritosOnline" />
+				                    </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Inscritos offline:</label>
+					                    <input class="form-control" type="number" ng-disabled="true" ng-value="registro.numParticipantes" />
+				                    </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Total inscritos:</label>
+					                    <input class="form-control" type="number" ng-disabled="true" ng-value="numInscritosOnline + registro.numParticipantes" />
+				                    </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Precio por inscrito:</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="registro.actividad.participantPrice.toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+				                    </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Total:</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="(totalPorParticipante = (numInscritosOnline + registro.numParticipantes) * registro.actividad.participantPrice).toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+				                    </div>
+					            	<div class="col-md-1"> </div>
+					            	<div class="col-md-7"> </div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Colaboración Servicio ({{registro.actividad.fundingPercentage}}%):</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="(totalPorParticipante * (registro.actividad.fundingPercentage / 100)).toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+					            	</div>
+					            	<div class="col-md-2">
+						            	<label class="control-label">Importe solicitante ({{100 - registro.actividad.fundingPercentage}}%):</label>
+					                	<div class="input-group">
+				                            <input class="form-control" type="number" ng-disabled="true"
+				                            	ng-value="(totalPorParticipante * ((100 - registro.actividad.fundingPercentage) / 100)).toFixed(2)"/>
+											<div class="input-group-btn">
+												<a class="btn btn-default disabled">&euro;</a>
+											</div>
+				                        </div>
+					            	</div>
+					            	<div class="col-md-1"> </div>
+					            </div>
+				        	</div>
+			        	</div>
+		        	</uib-tab-->
+
+					<uib-tab heading="Facturación">
+						<div class="row">
+							<div class="col-md-12 form-horizontal">
+					        
+								<div class="form-group">
+									<div class="col-md-12" style="margin-bottom: 20px;">
+										<label class="control-label">Facturas disponibles:</label>
+									</div>
+									<div class="col-md-1"></div>
+									<div class="col-md-10">
+										<table class="table table-striped table-condensed table-bordered table-btn">
+											<thead>
+												<tr>
+													<th>Fecha</th>
+													<th>Importe total</th>
+													<th>Porcentaje subvención</th>
+													<th>Colaboración servicio (incluye suplementos)</th>
+													<th>Importe solicitante</th>
+													<th>Nº factura</th>
+													<th>Operaciones</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="factura in facturas">
+													<td>{{factura.month}}</td>
+													<td>{{factura.totalAmount.toFixed(2)}}&euro;</td>
+													<td><span ng-if="factura.fundingPercentage">{{factura.fundingPercentage}}%</span><span ng-if="!factura.fundingPercentage">0%</span></td>
+													<td>{{factura.serviceAmount.toFixed(2)}}&euro;
+														<span ng-if="factura.vatPercentage || factura.irpfPercentage">
+															<br/>({{factura.serviceTotal.toFixed(2)}}&euro;
+															<span ng-if="factura.vatPercentage">IVA</span>
+															<span ng-if="factura.irpfPercentage">IRPF</span>
+															incl.)
+														</span>
+													</td>
+													<td>{{factura.requesterAmount.toFixed(2)}}&euro;
+														<span ng-if="factura.vatPercentage || factura.irpfPercentage">
+															<br/>({{factura.requesterTotal.toFixed(2)}}&euro;
+															<span ng-if="factura.vatPercentage">IVA</span>
+															<span ng-if="factura.irpfPercentage">IRPF</span>
+															incl.)
+														</span>
+													</td>
+													<td>{{factura.invoiceNumber}}</td>
+													<td><button type="button" class="btn btn-default btn-xs" ng-click="abrirFactura(factura.id);"><span class="glyphicon glyphicon-eye-open"></span> Ver detalle</button></td>
+												</tr>
+												<tr ng-if="!facturas||(facturas.length==0)">
+													<td colspan="7" class="text-center">No hay ninguna factura disponible</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+
+							</div>
+						</div>
+					</uib-tab>
+
+	            </uib-tabset>
+            </div>
+    						
+        </fieldset>
+
+    </div>
+
+</div>
+</form>

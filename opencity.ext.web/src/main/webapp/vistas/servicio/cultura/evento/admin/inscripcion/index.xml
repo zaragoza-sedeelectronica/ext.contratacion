@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Listado de Inscripciones (admin)" description="Listado de Inscripciones (admin)" author="Ayuntamiento de Zaragoza" keywords="sede,web,inscripciones" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type="text/css"></link>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2>Listado de actividades</h2>
+        
+        <a class="btn btn-primary btn-sm pull-right margin-l05em" href="/sede/servicio/cultura/evento/admin/">
+            <span class="fa fa-home" aria-hidden="true"></span>
+            <span class="hidden-xs"> Gestión de Agenda</span>
+        </a>
+        <form method="get" action=".">
+            Título <input type="text" name="titleContains" id="titleContains" th:value="${param.titleContains} ? ${param.titleContains[0]} : ''"/>
+            <label><input type="radio" value="0" name="estadoAct" th:checked="${param.estadoAct} and ${#strings.equals(param.estadoAct[0], '0')}"/> Todas</label>
+            <label><input type="radio" value="1" name="estadoAct" th:checked="${param.estadoAct} and ${#strings.equals(param.estadoAct[0], '1')}"/> En inscripción</label>
+            <label><input type="radio" value="2" name="estadoAct" th:checked="${param.estadoAct} and ${#strings.equals(param.estadoAct[0], '2')}"/> Terminadas</label>
+            <label><input type="radio" value="3" name="estadoAct" th:checked="${param.estadoAct} and ${#strings.equals(param.estadoAct[0], '3')}"/> Futuras</label>
+            <button type="submit">Buscar</button>
+        </form>
+        <hr class="sm"/>
+        <div class="table-responsive">
+            <table class="table table-striped table-consended table-bordered table-hover">
+                <thead>
+                    <tr> 
+                        <td class="col-xs-1">ID</td>
+                        <td class="col-xs-3">ACTIVIDAD</td>
+                        <td class="col-xs-2">LUGAR</td>
+                        <td class="col-xs-2">FECHA</td>
+                        <td class="col-xs-2">INSCRIPCIÓN</td>
+                        <td class="col-xs-1">IMPARTE</td>
+                        <td class="col-xs-1">MONITOR</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${resultado}" th:each="registro : ${resultado.result}">
+                        <td>
+                            <a th:text="${registro.id}" th:href="'./' + ${registro.id} + '/list'"></a>
+                        </td>
+                        <td><th:block th:text="${registro.title}"/> <a th:href="${registro.uri}" target="_blank"><span class="glyphicon glyphicon-export"></span></a></td>
+                        <td>
+                            <div th:unless="${#strings.contains(registro.portales,'juvenil')}" property="location" typeof="Place">
+                                <!--/* Varios lugares de realización en la actividad */-->
+                                <th:block th:if="${registro.subEvent.size() > 1}">
+                                    <span property="name">Varios lugares</span>
+                                    <span property="address" class="oculto">Varios lugares</span>
+                                </th:block>
+                                <!--/* Único lugar de realización en la actividad */-->
+                                <th:block th:if="${registro.subEvent.size() == 1} and ${registro.subEvent[0].location} != null">
+                                    <span property="name" th:text="${#strings.equals(registro.subEvent[0].location.title, 'Fuera de Zaragoza')} ? ${registro.location} : ${registro.subEvent[0].location.title}"></span>
+                                    <span property="address" class="oculto" th:text="${#strings.equals(registro.subEvent[0].location.title, 'Fuera de Zaragoza')} ? ${registro.location} : ${registro.subEvent[0].location.streetAddress}"></span>
+                                </th:block>
+                            </div>
+                            <!--/* Lugares Agenda Juvenil */-->
+                            <th:block th:if="${#strings.contains(registro.portales,'juvenil')}" th:utext="${registro.textSearch}"/>
+                        </td>
+                        <td th:text="${#utils.tratarFechas(registro.startDate, registro.endDate)}"></td>
+                        <td th:if="${registro.registration}"><th:block th:if="${registro.registration.startDate}">
+                            <strong>Desde: </strong>
+                            <th:block th:text="${#calendars.format(registro.registration.startDate,'dd-MM-yyyy')} + '. '"></th:block>
+                        </th:block>
+                        <th:block th:if="${registro.registration.endDate}">
+                            <strong>Hasta: </strong>
+                            <th:block th:text="*{#calendars.format(registro.registration.endDate,'dd-MM-yyyy')} + '. '"></th:block>
+                        </th:block>
+                            Inscritos: <th:block th:text="${registro.registration.inscritos}"/>
+                            Plazas:<th:block th:text="${registro.registration.plazasOnline}"/>
+                        </td> 
+                        <td>
+                            <th:block th:each="imparte : ${registro.performer}">
+                                <th:block th:text="${imparte.title}"/>
+                            </th:block>
+                        </td>
+                        <td>
+                            <th:block th:each="monitor : ${registro.monitores}">
+                                <th:block th:text="${monitor.name}"/>
+                            </th:block>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('.table').DataTable({
+            'paging': false,
+            'bInfo': false,
+            'order': [
+                [0, 'asc']
+            ],
+            'language': {
+                'sSearch': 'Buscar:'
+            }
+        });
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Mis inscripciones" keywords="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, actividades, buscador, actos, eventos, agenda" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2>Mis Inscripciones</h2>
+		<hr/>
+		<h4 th:if="${(enCurso.size() == 0) and (proximas.size() == 0) and (finalizadas.size() == 0)}">Todav&#237;a no te has inscrito en ninguna actividad.</h4>
+		
+		<h3 th:if="${enCurso.size() > 0}">En curso:</h3>
+        <ul class="row list-unstyled">
+            <li th:each="doc: ${enCurso}" sede:rdf="${doc.acto.voc()}" th:attr="about=${doc.acto.url}" class="col-xs-12 col-sm-12 col-md-6">
+                <th:block th:include="servicio/cultura/evento/inscripcion/card-acto" />
+            </li>
+        </ul>
+		<h3 th:if="${proximas.size() > 0}">Pr&#243;ximas:</h3>
+        <ul class="row list-unstyled">
+            <li th:each="doc: ${proximas}" sede:rdf="${doc.acto.voc()}" th:attr="about=${doc.acto.url}" class="col-xs-12 col-sm-12 col-md-6">
+                <th:block th:include="servicio/cultura/evento/inscripcion/card-acto" />
+            </li>
+        </ul>
+		<h3 th:if="${finalizadas.size() > 0}">Finalizadas:</h3>
+        <ul class="row list-unstyled">
+            <li th:each="doc: ${finalizadas}" sede:rdf="${doc.acto.voc()}" th:attr="about=${doc.acto.url}" class="col-xs-12 col-sm-12 col-md-6">
+                <th:block th:include="servicio/cultura/evento/inscripcion/card-acto" />
+            </li>
+        </ul>
+        <th:block th:if="false" th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

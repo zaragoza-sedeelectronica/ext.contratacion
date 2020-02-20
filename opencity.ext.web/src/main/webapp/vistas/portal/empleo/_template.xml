@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="sectores">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+    </style>
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <sede:breadcrumb title="Zaragoza Empleo" link="/sede/portal/empleo/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/sede/portal/empleo/', 'text':'Empleo'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <nav role="navigation" class="container-fluid">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+			                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/empleo/emprender">Emprender</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/empleo/formacion">Formación</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/empleo/empleo">Empleo</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/empleo/comercio">Comercio </a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/empleo/empresas">Empresas</a></li>
+				     <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/empleo/innovacion">Innovación y Desarrollo Local</a></li>
+
+            </ul>
+        </nav>
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <!--/* <div class="overlay" style="display: none;"></div> */-->
+        <!--/* Menu lateral de portal */-->
+        <!--/* <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class=""><a href="/sede/portal/sectores/personas-mayores/servicio/equipamiento/category/92">Red de Centros</a></li>
+                <li class=""><a href="/ciudad/sectores/mayores/listado_Tema?dirigido=17">Servicios</a></li>
+                <li class=""><span>Cursos</span>
+                    <ul class="nav">
+                        <li class=""><a href="objetivos">Objetivos</a></li>
+                        <li class=""><a href="comunicacion">Programas</a></li>
+                        <li class=""><a href="grupos-actividad">Grupos de Actividad</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="ciudades-amigables">Ciudades Amigables</a></li>
+                <li class=""><a href="parques">Parques de Mayores </a></li>
+                <li class=""><a href="comedor-mayores">Comedor de Mayores</a></li>
+             
+            
+                <li class=""><a href="http://zaragozaciudad.net/blogdelmayor/" title="Se va a abrir enlace externo">Blog del Mayor</a></li>
+                <li class=""><a href="https://www.zaragoza.es/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">Ayúdanos a Mejorar</a></li>
+            </ul>
+        </nav> */-->
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

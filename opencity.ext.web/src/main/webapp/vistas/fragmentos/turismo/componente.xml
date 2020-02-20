@@ -1,0 +1,5 @@
+<div class="card" th:object="${componente.body}">
+	<h2 th:text="*{titulo}"></h2>
+
+	<a th:href="*{url}" th:text="*{textoEnlace}"></a>
+</div>

@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <sede:breadcrumb title="Administración Empresas" link="/opencityext/servicio/contratacion-publica/admin/empresa/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'},{'link':'/opencityext/servicio/contratacion-publica/admin/', 'text':'Administración de contratos'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <div class="overlay" style="display: none;"></div> 
+          <!--/* Menu lateral de portal */-->       
+        	<div class="row">
+        		<div class="col-sm-6">
+			        <form method="get" action="/opencityext/servicio/contratacion-publica/admin/empresa/" class="form-inline">
+				        <div class="form-group">
+				            <label for="titleContains" class="sr-only">Nombre</label>
+				            <input type="text" name="nombreContains" id="nombreContains" placeholder="Nombre" class="form-control"/>
+				        </div>
+				        <input type="submit" value="Consultar" class="btn btn-primary"/>
+
+                        <a href="/opencityext/servicio/contratacion-publica/admin/empresa/new" class="btn btn-success">Insertar</a>
+			       	</form>
+			    </div>
+       	</div>
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

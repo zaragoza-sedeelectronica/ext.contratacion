@@ -1,0 +1,43 @@
+table.table-btn tr td:last-child {
+    white-space: nowrap;
+    width: 1px;
+}
+
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    /*width:500px;*/
+    width: 100%;
+    height: 500px;
+}
+
+.sham-spinner-blocker {
+    float: right;
+    margin: -10px 0;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    color: rgb(138, 109, 59);
+    background-color: rgb(252, 248, 227);
+    border-color: rgb(250, 235, 204);
+}
+
+.sham-spinner-container .spinner {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 0px 5px -5px 0px;
+    -webkit-animation: a 2s infinite linear;
+    animation: a 2s infinite linear;
+}
+
+.sham-spinner-container .spinner:before {
+    content: "\f110";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+}

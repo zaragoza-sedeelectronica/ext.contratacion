@@ -1,0 +1,35 @@
+<div id="modalSelectURI">
+	<div class="modal-header">
+		<h3> Seleccione el recurso del cual tomar la URI </h3>
+	</div>
+	
+
+	<div class="modal-body">
+		<div class="container-fluid form-horizontal">
+			<div class="form-group">
+			    <div 
+					class="radio"
+					ng-repeat="r in resSPARQL"
+					>
+					<label> 							
+						<input
+							type="radio"
+							name="uri"
+							ng-value="r.uri.value"
+							ng-model="$parent.uri"
+				            >
+							{{r.nombre.value}}
+		         	</label>
+				</div>
+			</div>
+			<a ng-href="{{uri}}" target="_blank">{{uri}}</a>
+		</div>	
+	</div>
+
+
+	<div class="modal-footer" >
+		<button class="btn btn-primary" ng-click="save()">Guardar</button>
+		<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	</div>
+	
+</div>

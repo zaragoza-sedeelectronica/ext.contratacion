@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Zaragoza Cultural" description="" author="" last-modified="Thu Nov 13 00:00:00 CET 2014" keywords="cultura, programacion">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+            <li role="presentation" class="active"><a href="#obj" aria-controls="obj" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> Objeto</a></li>
+            <li role="presentation"><a href="#cons" aria-controls="cons" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Consejo</a></li>
+            <li role="presentation"><a href="#esta" aria-controls="esta" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Estatutos</a></li>
+            <li role="presentation"><a href="#presu" aria-controls="presu" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Presupuesto</a></li>
+            <li role="presentation"><a href="#plan" aria-controls="plan" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Plantilla</a></li>
+        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#obj" aria-expanded="false"> Objeto</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="obj">
+                <p>El objeto social de Zaragoza Cultural es la conservación y difusión del patrimonio artístico, científico, bibliográfico y documental de la ciudad de Zaragoza, la planificación, programación, gestión y difusión de actividades culturales, en cualquiera de sus manifestaciones, de forma directa o en colaboración con otras entidades; la convocatoria y concesión de subvenciones, ayudas, concursos, premios y becas en materia cultural; la dirección, gestión y explotación de equipamientos culturales, en especial el Auditorio-Palacio de Congresos de Zaragoza, tanto de carácter especializado como de carácter general, que le sean encomendados por el Ayuntamiento de Zaragoza; la colaboración con otras iniciativas públicas y privadas en proyectos culturales; la participación en Proyectos Europeos y de Cooperación Internacional, así como cualquier otra actividad que pudiera redundar en el fomento y desarrollo del tejido cultural de la ciudad de Zaragoza en los ámbitos de la creación, la producción, la formación y la difusión o cualquier actividad relacionada con las anteriores que el Ayuntamiento le pudiera asignar.</p>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#cons" aria-expanded="false">Consejo</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="cons">
+                <dl>
+                    <dt>Presidente</dt>
+                    <dd>Ilmo. Sr. D. Pedro Santisteve Roche </dd>
+                    <dt>Vicepresidente </dt>
+                    <dd>D. Fernando Rivarés Gómez </dd>
+                    <dt>Consejeros </dt>
+                    <dd>
+                        <ul>
+                            <li>Dª Arantzazu Gracia Moreno </li>
+                            <li>Dª María Dolores Ranera Gómez </li>
+                            <li>D. David Lozano Garbala </li>
+                            <li>D. Pedro Navarro López </li>
+                            <li>D. Jorge Azcón Navarro </li>
+                            <li>Dª María Navarro Viscasillas </li>
+                            <li>D. Enrique Collados Mateo</li>
+                            <li>Dª Sara María Fernández Escuer </li>
+                            <li>Dª Leticia Crespo Mir</li>
+                        </ul>
+                    </dd>
+                    <dt>Técnicos Especializados</dt>
+                    <dd>
+                        <ul>
+                            <li>D. Miguel Ruiz León</li>
+                            <li>D. Saúl Esclarín Serrano</li>
+                            <li>D. Aurelio Abad Gutiérrez</li>
+                            <li>D. Fernando París Roche</li>
+                        </ul>
+                    </dd>
+                    <dt>Secretario</dt>
+                    <dd>D. Luis Jiménez Abad</dd>
+                    <dt>Interventor</dt>
+                    <dd>D. José Ignacio Notivoli Mur</dd>
+                    <!--/* <dt>Directora-Gerente</dt>
+                    <dd><a href="file:///F|/seccionweb/cont/WebContent/vistas/portal/cultura/zaragoza-cultural/elena-laseca" title="Curriculum vitae">Dª Elena Laseca Ferrández</a></dd> */-->
+                </dl>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#esta" aria-expanded="false"> Estatutos</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="esta">
+                <p><strong>Aprobación definitiva</strong> por Junta General de la Sociedad el 26.09.2014</p>
+                <h3>TÍTULO I : DENOMINACIÓN, OBJETO  Y  DOMICILIO DE LA SOCIEDAD</h3>
+                <p><strong>Artículo 1. Denominación y régimen jurídico.</strong></p>
+                <p><strong>1.- </strong>Con la denominación de <em>Sociedad Municipal Zaragoza Cultural  S.A.U.</em> se constituye una sociedad mercantil local, de carácter unipersonal, con la forma de sociedad anónima que se regirá por los presentes Estatutos y por lo previsto en el Real Decreto Legislativo 1/2010, de 2 de julio, que aprueba el Texto Refundido de la Ley de Sociedades de Capital.</p>
+                <p><strong>2.- </strong>Su régimen legal, en aplicación de lo establecido en el artículo 85 ter. de la Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local, se acomodará íntegramente al ordenamiento jurídico privado, salvo las materias en que le sea de aplicación la normativa presupuestaria, contable, de control financiero, de control de eficacia y contratación.</p>
+                <p><strong>Artículo 2. Objeto social.</strong></p>
+                <p><strong>1.-</strong> El objeto social de Zaragoza Cultural es la conservación y difusión del patrimonio artístico, científico, bibliográfico y documental de la ciudad de Zaragoza, la planificación, programación, gestión y difusión de actividades culturales, en cualquiera de sus manifestaciones, de forma directa o en colaboración con otras entidades; la convocatoria y concesión de subvenciones, ayudas, concursos, premios y becas en materia cultural; la dirección, gestión y explotación de equipamientos culturales, en especial el Auditorio-Palacio de Congresos de Zaragoza, tanto de carácter especializado como de carácter general, que le sean encomendados por el Ayuntamiento de Zaragoza; la colaboración con otras iniciativas públicas y privadas en proyectos culturales; la participación en Proyectos Europeos y de Cooperación Internacional, así como cualquier otra actividad que pudiera redundar en el fomento y desarrollo del tejido cultural de la ciudad de Zaragoza en los ámbitos de la creación, la producción, la formación y la difusión o cualquier actividad relacionada con las anteriores que el Ayuntamiento le pudiera asignar.</p>
+                <p><strong>2.- </strong>Tendrá como objetivos de su actuación:</p>
+                <ul>
+                    <li>a) Conservar, incrementar y difundir el patrimonio artístico, científico, bibliográfico y documental de la Ciudad de Zaragoza para favorecer el acceso universal a la cultura.</li>
+                    <li>b) Apoyar a las industrias culturales locales, buscando el equilibrio entre el incremento del bienestar y la creación de riqueza.</li>
+                    <li>c) Impulsar la actividad de las entidades culturales sin ánimo de lucro para consolidar un fuerte sector cultural local.</li>
+                    <li>d) Favorecer el diálogo interdisciplinar y el reconocimiento de la diversidad cultural.</li>
+                    <li>e) Desarrollar un concepto de cultura socialmente útil para la ciudad, desde una perspectiva de la cultura como motor de transformación y de fortalecimiento de la cohesión social.</li>
+                    <li>f) Colaborar con las iniciativas que favorezcan la calidad de la gestión cultural que llevan a cabo las diversas entidades que operan en la ciudad, mejorando la capacidad técnica de sus gestores y potenciando el trabajo en red.</li>
+                    <li>g) Cooperar con los agentes culturales en la creación de nuevos públicos para la cultura y el fomento de los hábitos de consumo cultural en la ciudad de Zaragoza.</li>
+                    <li>h) Promover y difundir la cultura aragonesa en el ámbito de Zaragoza</li>
+                    <li>i) Promover la consideración de la cultura como instrumento para la proyección exterior de la ciudad y para incentivar su atractivo turístico.</li>
+                    <li>j) Explotar comercialmente los bienes y actividades de la entidad.</li>
+                    <li>k) Difundir la cultura en el ámbito de su actuación, a través de todo tipo de actividades, incluidas las desarrolladas en la vía pública.</li>
+                    <li>l) Promover la celebración y participar en la organización de las fiestas tradicionales de la ciudad.</li>
+                </ul>
+                <p><strong>3.-</strong> Para el cumplimiento de estos objetivos Zaragoza Cultural dispondrá de los inmuebles cuya gestión le transfiera el Ayuntamiento de Zaragoza con sus correspondientes infraestructuras y equipamientos.</p>
+                <p><strong>4.- </strong>Para el mejor cumplimiento de sus fines, Zaragoza Cultural podrá realizar actividades comerciales que estén relacionadas con su objeto social, en la medida que acuerden sus órganos de gobierno, y podrá establecer todo tipo de acuerdos o convenios con entidades e instituciones públicas y privadas, nacionales e internacionales. Así como cualquier otra actuación que se le encomiende relacionada con su ámbito de actividad.</p>
+                <p><strong>Artículo 3. Domicilio social.</strong></p>
+                <p>1.- El domicilio social se fija en la ciudad de Zaragoza, en el Torreón Fortea, sito en calle Torrenueva, 25. 50003 de Zaragoza.</p>
+                <p>2.- El Consejo de Administración podrá acordar el traslado del domicilio social dentro del mismo término municipal.</p>
+                <h3>TíTULO II: CAPITAL SOCIAL Y ACCIONES</h3>
+                <p><strong>Artículo 4. Capital social.</strong></p>
+                <p><strong>1.- </strong>El capital social se fija en sesenta mil ciento un euro con veintiún céntimos (60.101´21 €), representado por cien (100) acciones nominativas de los números 1 al 100 ambos inclusive, estando íntegramente suscritas y desembolsadas. El Ayuntamiento de Zaragoza es el titular de todas las acciones.</p>
+                <p><strong>2.- </strong>La Junta General podrá aumentar o reducir el capital social conforme a las disposiciones legales vigentes.</p>
+                <p><strong>Artículo 5. Acciones.</strong></p>
+                <p><strong>1.-</strong> Los títulos representativos de las acciones, que serán de igual clase y serie con los mismos derechos, se extenderán en libros talonarios con numeración correlativa y tendrán la firma del Presidente del Consejo de Administración y otro administrador designado por el propio Consejo. Los títulos podrán ser múltiples.</p>
+                <p><strong>2.-</strong> Las acciones son intransferibles a persona distinta de su titular, el Ayuntamiento de Zaragoza.</p>
+                <h3>TíTULO III: óRGANOS DE LA SOCIEDAD</h3>
+                <p><strong>Artículo 6. órganos.</strong></p>
+                <p>La dirección y administración de la Sociedad corresponderá a los siguientes órganos:</p>
+                <ul>
+                    <li>a) La Junta General</li>
+                    <li>b) El Consejo de Administración</li>
+                    <li>c) El Director Gerente</li>
+                </ul>
+                <h4>CAPíTULO I: LA JUNTA GENERAL</h4>
+                <p><strong>Artículo 7. La Junta General.</strong></p>
+                <p><strong>1.- </strong>La Junta General estará formada por el socio único Ayuntamiento de Zaragoza.</p>
+                <p><strong>2.-  </strong>Serán Presidente y Secretario de la Junta General el Alcalde y el Secretario General del Pleno del Ayuntamiento de Zaragoza, respectivamente, o las personas que legalmente les sustituyan.</p>
+                <p><strong>3.-  </strong>El Interventor General, en el ejercicio de sus funciones de control y fiscalización, asistirá con voz pero sin voto a las reuniones de la Junta General.</p>
+                <p><strong>4.- </strong>Podrán asistir a las reuniones de la Junta General, con voz pero sin voto, los miembros del Consejo de Administración que no reúnan la condición de Concejal y cualesquiera otras personas a las que se conceda este derecho.</p>
+                <p><strong>Artículo 8. Clases de Juntas Generales.</strong></p>
+                <p><strong>1.- </strong>Las Juntas Generales podrán ser ordinarias o extraordinarias.</p>
+                <p><strong>2.-  </strong>La Junta General se reunirá necesariamente y con carácter de ordinaria dentro de los seis primeros meses de cada ejercicio, para censurar la gestión social, aprobar, en su caso, las cuentas del ejercicio anterior y resolver sobre la aplicación del resultado.</p>
+                <p><strong>3.- </strong>Toda Junta que no sea la prevista en el apartado anterior tendrá la consideración de Junta General Extraordinaria.</p>
+                <p><strong>4.-  </strong>La Junta general extraordinaria se reunirá siempre que la convoque el Presidente, a instancia del Consejo de Administración y a petición de miembros de la Corporación municipal en el número que determine su Reglamento Orgánico para solicitar reuniones extraordinarias.</p>
+                <p><strong>Artículo 9. Funciones de la Junta General.</strong></p>
+                <p>Además de las funciones reseñadas en el artículo anterior, la Junta General tendrá las siguientes facultades:</p>
+                <ul>
+                    <li>a) Determinar el número de Consejeros que han de formar el Consejo de Administración.</li>
+                    <li>b) Nombrar y cesar a los miembros del Consejo de Administración.</li>
+                    <li>c) Modificar los Estatutos de la Sociedad.</li>
+                    <li>d) Aumentar o reducir el capital social.</li>
+                    <li>e) Emitir obligaciones u otros títulos que creen deuda.</li>
+                    <li>f) Las demás facultades que las disposiciones legales vigentes o estos estatutos atribuyan expresamente a la Junta General.</li>
+                </ul>
+                <p><strong>Artículo 10. Convocatoria, constitución y acuerdos.</strong></p>
+                <p><strong>1.-</strong> Las Juntas Generales, ordinarias y extraordinarias, serán convocadas por el Presidente.</p>
+                <p><strong>2.- </strong>La Junta General formará su voluntad social, conforme a la normativa administrativa, a través de todos los miembros de la Corporación Municipal constituida en Pleno.</p>
+                <p><strong>3.-</strong> De las reuniones de la Junta General se levantarán actas que serán transcritas a los correspondientes libros, siendo firmadas por el Presidente y el Secretario de la Junta General o por las personas que legalmente les sustituyan.</p>
+                <p><strong>4.- </strong>Los acuerdos de la Junta General podrán acreditarse en la forma prevista en el artículo 109 del Reglamento del Registro Mercantil.</p>
+                <h4>CAPíTULO II : El CONSEJO DE ADMINISTRACIóN</h4>
+                <p><strong>Artículo 11. El Consejo de Administración.</strong></p>
+                <p><strong>1.- </strong>El Consejo de Administración estará compuesto por un mínimo de tres y un máximo de doce miembros.</p>
+                <p><strong>2.- </strong>Los miembros del Consejo de Administración serán nombrados por un periodo de cuatro años.</p>
+                <ul>
+                    <li>El cargo de Consejero será revocable, renunciable y reelegible uno o más veces por periodos de igual duración.</li>
+                    <li>No podrán ser Consejero las personas que legalmente resultan incompatibles de acuerdo con la legislación vigente.</li>
+                    <li>El Consejo de Administración designará de entre sus miembros a su Presidente. En todo caso, el Presidente del Consejo de Administración será, siendo Consejero, el Alcalde de Zaragoza.</li>
+                    <li>El Consejo de Administración podrá designar a un Vicepresidente, de entre sus miembros, a propuesta del Presidente.</li>
+                    <li>El Presidente, en los casos de ausencia, vacante o enfermedad, será sustituido por el Vicepresidente y en caso de ausencia de ambos, por el Consejero más antiguo y, de tener igual antigüedad, por el de más edad.</li>
+                </ul>
+                <p><strong>3.- </strong>El Consejo de Administración nombrará y cesará a la persona que haya de desempeñar el cargo de Secretario del Consejo de Administración, que podrá no ser Consejero, el cual asistirá a las reuniones del Consejo con voz y sin voto, salvo que ostente la calidad de Consejero.</p>
+                <p>El Secretario será sustituido por el Consejero de menor edad en los casos de ausencia, vacante o enfermedad.</p>
+                <p><strong>4.- </strong>El Interventor General, en el ejercicio de sus funciones de control y fiscalización, asistirá con voz pero sin voto a las reuniones del Consejo de Administración.</p>
+                <p><strong>5.- </strong>Podrán asistir a las reuniones del Consejo de Administración, el Director-Gerente de la Sociedad y hasta seis técnicos designados por el Presidente, todos ellos con voz pero sin voto.</p>
+                <p><strong>6.- </strong>El cargo de miembro del Consejo de Administración no implica una remuneración fija.</p>
+                <p><strong>Artículo 12. Funcionamiento del Consejo de Administración</strong></p>
+                <p><strong>1.- </strong>Las sesiones del Consejo podrán ser ordinarias y extraordinarias, y se celebrarán en primera y en segunda convocatoria.</p>
+                <p>El Consejo de Administración se reunirá en sesión ordinaria, como mínimo, una vez al trimestre, en la fecha y hora que señale el Presidente.</p>
+                <p><strong>2.- </strong>El Consejo se reunirá en sesión extraordinaria:</p>
+                <ul>
+                    <li>a) Por iniciativa del Presidente.</li>
+                    <li>b) Los administradores que constituyan al menos un tercio de los miembros del consejo podrán convocarlo, indicando el orden del día, para su celebración, si, previa petición al presidente, éste sin causa justificada no hubiera hecho la convocatoria en el plazo de un mes.</li>
+                </ul>
+                <ul>
+                    <li>Las sesiones del Consejo serán convocadas por el Presidente, por escrito (carta, telex, telegrama, correo electrónico o telefax), con cuarenta y ocho horas de antelación a la fecha prevista, salvo en los casos de urgencia, que será apreciada por el Presidente, debiendo incluirse en este caso, como primer punto del orden del día, el pronunciamiento del Consejo sobre la urgencia, y si ésta no resulta apreciada mediante el voto favorable de la mayoría simple de los miembros asistentes se levantará la sesión.</li>
+                    <li>La convocatoria contendrá la fecha, hora y lugar de celebración de la sesión, así como el orden del día de los asuntos a tratar.</li>
+                    <li>No será necesaria la convocatoria cuando estuviesen reunidos todos los miembros del Consejo y acuerden unánimemente celebrarla.</li>
+                    <li>Para la válida celebración de las sesiones, en primera o segunda convocatoria, será necesaria la asistencia de la mayoría del número legal de miembros del Consejo, presentes o representados, debiendo mantenerse este quórum durante toda la sesión. En todo caso se requerirá la asistencia del Presidente y del Secretario o de quienes legalmente les sustituyan.</li>
+                    <li>En los casos de ausencia o enfermedad, los miembros del Consejo podrán ser representados por otro miembro, mediante escrito dirigido al Presidente.</li>
+                    <li>En el supuesto de que no hubiera quorum, la sesión se entenderá convocada automática dos horas después.</li>
+                    <li>A las reuniones del Consejo de Administración podrán asistir, con voz pero sin voto, aquellas personas cuya presencia estime de interés el Presidente en razón de los asuntos a tratar.</li>
+                    <li>Así mismo, podrá asistir a las sesiones del órgano de administración, con voz pero sin voto, un representante de los trabajadores de la Sociedad.</li>
+                </ul>
+                <p><strong>3.- </strong>Los acuerdos se adoptarán por mayoría absoluta de los miembros presentes en la sesión (presentes o representados). En el supuesto de votaciones con resultado de empate, decidirá el voto de calidad del Presidente.</p>
+                <ul>
+                    <li>En las sesiones ordinarias no podrá ser objeto de deliberación o acuerdo ningún asunto que no figure incluido en el orden del día, salvo que sea declarada la urgencia con el voto favorable de la mayoría simple de los miembros asistentes.</li>
+                    <li>En las sesiones extraordinarias no se tratarán otros asuntos que los incluidos en el orden del día, a no ser que sean de carácter urgente, estén presentes todos los miembros del Consejo y así se acuerde por unanimidad.</li>
+                </ul>
+                <p><strong>Artículo 13. Atribuciones del Consejo de Administración</strong></p>
+                <p><strong>1.- </strong>Corresponden al Consejo de Administración de la Sociedad las siguientes atribuciones:</p>
+                <ul>
+                    <li>a) La propuesta a la Junta General de la aprobación del estado de previsión de ingresos y gastos.</li>
+                    <li>b) La propuesta a la Junta General de la aprobación de las Cuentas Anuales.</li>
+                    <li>c) Aprobar la formalización de empréstitos, créditos, avales u otras garantías o cualquier instrumento financiero al servicio de sus finalidades.</li>
+                    <li>d) La aprobación de la plantilla de personal y la determinación y modificación de las condiciones de trabajo y del convenio colectivo de los trabajadores.</li>
+                    <li>e) Tomar razón de la relación de puestos de trabajo y de la estructura organizativa de la entidad, aprobadas por la Presidencia.</li>
+                    <li>f) En materia de contratación, los contratos sujetos a regulación armonizada.</li>
+                    <li>g) La creación de delegaciones, oficinas y sucursales en el término municipal de Zaragoza.</li>
+                    <li>h) La aprobación de la política de actuación y gestión de la Sociedad y del programa anual de trabajo.</li>
+                    <li>i) La aprobación de la memoria de la gestión anual.</li>
+                    <li>j) La propuesta a la Junta General de la modificación de los Estatutos.</li>
+                    <li>k) La propuesta a la Junta General de la disolución de la Sociedad.</li>
+                    <li>l) El ejercicio de acciones administrativas y judiciales y la defensa en los procedimientos que puedan incoarse contra la Sociedad en materia de competencia del Consejo.</li>
+                    <li>m) La corrección disciplinaria en el caso de faltas muy graves, incluido el despido del personal propio.</li>
+                    <li>n) Dictar las normas de funcionamiento del mismo Consejo en aquello no previsto en los presentes Estatutos y en la normativa de régimen local sobre órganos colegiados y aprobar, en su caso, un reglamento de régimen interior.</li>
+                    <li>o) La modificación del domicilio social.</li>
+                    <li>p) Nombra y cesar al Secretario del Consejo de Administración</li>
+                    <li>q) Otras funciones que le atribuyan estos Estatutos y las que expresamente le pueda atribuir la normativa vigente.</li>
+                </ul>
+                <p><strong>2.- </strong>El Consejo de Administración podrá delegar sus competencias en el Presidente, el Vicepresidente y el Director-Gerente, con excepción de las señaladas en los apartados a, b, c, j, k, l, m, n, o, p, del párrafo anterior de este artículo.</p>
+                <p><strong>Artículo 14. Facultades de Presidente del Consejo de Administración.</strong></p>
+                <p><strong>1.-</strong> Corresponden al Presidente, en su condición de órgano ejecutivo del Consejo de Administración, las siguientes atribuciones:</p>
+                <ul>
+                    <li>a) Representar a la sociedad en todos los asuntos judiciales y extrajudiciales ante los tribunales, corporaciones, autoridades y personas físicas y jurídicas de toda clase, así como ejercer las acciones, en caso de urgencia, sin perjuicio de la ulterior ratificación por el Consejo.</li>
+                    <li>b) Formar el orden del día, convocar, presidir, suspender y levantar las sesiones y dirigir las deliberaciones, decidiendo los empates con voto de calidad.</li>
+                    <li>c) Publicar, ejecutar y hacer cumplir los acuerdos de la Junta General y del Consejo de Administración.</li>
+                    <li>d) Ordenar los gastos fijos y las atenciones ordinarias dentro de los límites legales y estatutarios, pudiendo delegar en el Director Gerente.</li>
+                    <li>e) Dirigir e inspeccionar los servicios y actividades de la Sociedad.</li>
+                    <li>f) Proponer las directrices de la actuación de la Sociedad para garantizar su gestión.</li>
+                    <li>g) Proponer al Consejo el nombramiento del Director Gerente.</li>
+                    <li>h) En materia de contratación, los contratos que no estén atribuidos al Consejo de Administración.</li>
+                </ul>
+                <p><strong>2.- </strong>El Presidente podrá delegar todas o alguna de sus atribuciones en el Vicepresidente.</p>
+                <p>El Vicepresidente tendrá la función de sustituir al Presidente en caso de ausencia o enfermedad u otra causa justificada en la cual ostentará idénticas facultades.</p>
+                <p><strong>Artículo 15. Delegación de facultades: Consejeros Delegados y Comisión Ejecutiva.</strong></p>
+                <p><strong>1.- </strong>El Consejo de Administración podrá delegar todas o parte de sus facultades, excepto las expresamente indelegables por ley, en uno o más Consejeros Delegados, o en una Comisión Ejecutiva integrada por tres o más Consejeros. Todo ello, sin perjuicio de los apoderamientos que pueda otorgar a cualquier persona.</p>
+                <p><strong>2.- </strong>El Secretario de la Comisión Ejecutiva será el Secretario del Consejo de Administración. A las sesiones de la Comisión Ejecutiva podrán asistir, con voz pero sin voto, otras personas para que ejerzan funciones de asesoramiento.</p>
+                <p><strong>3.- </strong>El Interventor General, en el ejercicio de sus funciones de control y fiscalización, asistirá con voz pero sin voto a las reuniones de la Comisión Ejecutiva.</p>
+                <p><strong>4.- </strong>La delegación permanente de alguna facultad del Consejo de Administración en la Comisión Ejecutiva o en el Consejero Delegado y la designación de los administradores que hayan de ocupar tales cargos, requerirán para su validez el voto favorable de las dos terceras partes de los componentes del Consejo y no producirán efecto alguno hasta su inscripción en el Registro Mercantil.</p>
+                <h4>CAPíTULO III : EL DIRECTOR GERENTE</h4>
+                <p><strong>Artículo 16. Nombramiento y cese.</strong></p>
+                <p>El Director Gerente será nombrado por el Consejo de Administración a propuesta del Presidente y estará sujeto a la sociedad mediante un contrato de trabajo especial de alta dirección. Su cese y separación podrá hacerse libremente por el Consejo de Administración.</p>
+                <p><strong>Artículo 17. Funciones.</strong></p>
+                <p><strong>1.- </strong>Corresponde al Director Gerente la coordinación general de las actividades de la Sociedad, velar por la eficiencia de la gestión según los objetivos definidos, elaborar la propuesta de presupuesto anual y asumir las funciones de gerente, responsabilizándose, por tanto, de las cuestiones relativas a la organización de la Sociedad, del control presupuestario y del seguimiento de la gestión ordinaria de la Sociedad.</p>
+                <p><strong>2.- </strong>El Director Gerente tendrá las facultades que le confiera el Consejo de Administración, correspondiéndole en todo caso las siguientes:</p>
+                <ul>
+                    <li>a) Desarrollar las políticas y directrices sobre las actividades de la Sociedad siguiendo los criterios establecidos por otros órganos, de acuerdo con sus competencias.</li>
+                    <li>b) Dirigir y planificar los objetivos anuales fijados, en especial los relativos a la gestión y explotación de los contenidos de la Sociedad.</li>
+                    <li>c) La preparación y presentación al Consejo de cuantos informes y propuestas estime oportunas en relación con las actividades de la Sociedad o que puedan redundar en el mejor logro y desenvolvimiento de los intereses de la Sociedad.</li>
+                    <li>d) La firma de la correspondencia, recibos, libramientos, facturas, talones y en general cuantos documentos sean precisos para el desarrollo de su cometido, sin perjuicio de las delegaciones o apoderamientos en otras personas.</li>
+                    <li>e) El ejercicio efectivo de las facultades de representación, administración y gestión ordinaria de la Sociedad, de conformidad con lo dispuesto en los presentes Estatutos.</li>
+                    <li>f) Asistir, con voz y sin voto, a todas las reuniones del Consejo de Administración.</li>
+                    <li>g) Ejercer la dirección y control de todo el personal al servicio de la Sociedad.</li>
+                    <li>h) Ejecutar y hacer cumplir los acuerdos del Consejo de Administración, siguiendo las instrucciones del Presidente.</li>
+                    <li>i) Presentar propuestas de resolución a los órganos decisorios de la Corporación.</li>
+                    <li>j) Corrección e imposición de sanciones por faltas leves.</li>
+                    <li>k) Desarrollar la estructura organizativa y de personal.</li>
+                    <li>l) Informar diligentemente al Consejo de Administración así como al Presidente de su actuación y de los asuntos que conciernan a la gestión de la Sociedad.</li>
+                </ul>
+                <p><strong>3.- </strong>Los titulares de los puestos de dirección estarán sujetos al régimen de incompatibilidades del personal al servicio de las Administraciones Públicas.</p>
+                <h3>TíTULO IV : RéGIMEN ECONóMICO</h3>
+                <p><strong>Artículo 18. Ejercicio Social.</strong></p>
+                <p>El ejercicio social se ajustará al año natural, a excepción del primero, que comenzará en el momento de la constitución de la sociedad y finalizará el treinta y uno de diciembre del mismo año.</p>
+                <p><strong>Artículo 19. Cuentas Anuales.</strong></p>
+                <p><strong>1.- </strong>En el plazo máximo de los tres meses siguientes al cierre del ejercicio social, el Consejo de Administración formulará las cuentas anuales, el informe de gestión y la propuesta de aplicación del resultado, así como, en su caso, las cuentas y el informe de gestión consolidados.</p>
+                <p><strong>2.- </strong>Las cuentas anuales comprenderán el balance, la cuenta de pérdidas y ganancias, un estado que refleje los cambios en el patrimonio neto del ejercicio, un estado de flujos de efectivo en su caso, y la memoria.</p>
+                <p><strong>3.- </strong>Toda la documentación referida será sometida por la Presidencia a examen y aprobación de la Junta General convocándola a tal fin en sesión ordinaria.</p>
+                <p><strong>Artículo 20. Normativa patrimonial, contractual, presupuestaria, contable y de control.</strong></p>
+                <p><strong>1.- </strong>La Sociedad se ajustará a la normativa reguladora de las Haciendas Locales y a lo establecido en el Reglamento Orgánico del Ayuntamiento de Zaragoza, específicamente en lo que se refiere a previsión de gastos e ingresos, programas anuales de actuación, inversiones y financiación, contabilidad y control y fiscalización; sin perjuicio de lo previsto en la normativa mercantil.</p>
+                <p><strong>2.- </strong>De conformidad con lo dispuesto en el Reglamento Orgánico del Ayuntamiento de Zaragoza, la Intervención General Municipal ejercerá las funciones de control y fiscalización de la sociedad de acuerdo con lo establecido en la legislación vigente.</p>
+                <p><strong>3.- </strong>La Sociedad en cuanto a su patrimonio formará y mantendrá un inventario de la totalidad de los bienes y derechos que lo integran, así como los bienes que le pudieran ser adscritos para el cumplimiento de sus funciones.</p>
+                <p><strong>4.- </strong>El inventario se rectificara, en su caso, anualmente el 31 de diciembre de cada año y se someterá al Consejo de Administración.</p>
+                <p><strong>5.- </strong>En materia de contratación le será aplicable la normativa de contratación del sector público. Asimismo la sociedad tiene la condición de medio propio al servicio del Ayuntamiento de Zaragoza para las encomiendas relativas a materias propias del objeto social.</p>
+                <h3>TíTULO V : DISOLUCION</h3>
+                <p><strong>Artículo 21. Causas.</strong></p>
+                <p>La Sociedad se disolverá por acuerdo de la Junta General cuando concurran alguna de las causas establecidas en la legislación mercantil y por la supresión del servicio acordada por el Ayuntamiento titular del mismo.</p>
+                <h3>TíTULO VI : JURISDICCIÓN</h3>
+                <p><strong>Artículo 22. Jurisdicción.</strong></p>
+                <p><strong>1.- </strong>La Sociedad estará sometida a las normas comunes sobre competencia y jurisdicción aplicables a las personas de derecho privado, sin perjuicio de las responsabilidades que procedan en función de la naturaleza de los bienes y derechos que constituyen su patrimonio.</p>
+                <p><strong>2.- </strong>Las divergencias se someterán a la competencia de los Juzgados y Tribunales de Zaragoza.</p>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#presu" aria-expanded="false"> Presupuesto</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="presu">
+                <div class="pull-right tarjeta">
+                    <a class="external-link" href="http://www.rendiciondecuentas.es/es/consultadeentidadesycuentas/buscarCuentas/consultarCuenta.html?dd=true&amp;idEntidadPpal=8108&amp;idEntidad=68220&amp;idTipoEntidad=O&amp;idModelo=3&amp;ejercicio=2015&amp;nifEntidad=P5030301E" title="enlace Externo">Cuenta General 2015</a></div>
+                <h3>Resumen del Presupuesto 2016</h3>
+                <table class="table table-striped table-condensed table-bordered">
+                    <caption>S.M. Zaragoza Cultural, S.A.U</caption>
+                    <tbody>
+                        <tr>
+                            <th colspan="4" id="ingr">Ingresos</th>
+                            <th id="gast" colspan="4">Gastos</th>
+                        </tr>
+                        <tr>
+                            <th headers="ingr" id="cap">Cap</th>
+                            <th headers="ingr" id="denom">Denominación</th>
+                            <th headers="ingr" id="eur">Euros</th>
+                            <th headers="ingr" id="porc">%</th>
+                            <th headers="gast" id="cap1">Cap</th>
+                            <th headers="gast" id="denom1">Denominación</th>
+                            <th headers="gast" id="eur1">Euros</th>
+                            <th headers="gast" id="porc1">%</th>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 1 </td>
+                            <td headers="ingr denom"> Impuestos Directos </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> 1 </td>
+                            <td headers="gast denom1"> Gastos de Personal </td>
+                            <td headers="gast eur1"> 2.140.580,00 </td>
+                            <td headers="gast porc1"> 23,46 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 2 </td>
+                            <td headers="ingr denom"> Impuestos Indirectos </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> 2 </td>
+                            <td headers="gast denom1"> Gastos Corrientes en Bienes y Servicios </td>
+                            <td headers="gast eur1"> 6.982.789,00 </td>
+                            <td headers="gast porc1"> 76,54 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 3 </td>
+                            <td headers="ingr denom"> Tasas, precios públicos y otros Ingresos </td>
+                            <td headers="ingr eur"> 3.051.705,00 </td>
+                            <td headers="ingr porc"> 33,45 </td>
+                            <td headers="gast cap1"> 3 </td>
+                            <td headers="gast denom1"> Gastos Financieros </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 4 </td>
+                            <td headers="ingr denom"> Transferencias Corrientes </td>
+                            <td headers="ingr eur"> 6.071.664,00 </td>
+                            <td headers="ingr porc"> 66,55 </td>
+                            <td headers="gast cap1"> 4 </td>
+                            <td headers="gast denom1"> Transferencias Corrientes </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 5 </td>
+                            <td headers="ingr denom"> Ingresos Patrimoniales </td>
+                            <td headers="ingr eur"> 0,00 </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"> </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> <strong>Operaciones Corrientes</strong> </td>
+                            <td headers="ingr eur"> <strong>9.123.369,00</strong> </td>
+                            <td headers="ingr porc"> 100,00 </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"> <strong>Operaciones Corrientes</strong> </td>
+                            <td headers="gast eur1"> <strong>9.123.369,00</strong> </td>
+                            <td headers="gast porc1"> 100,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"> </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 6 </td>
+                            <td headers="ingr denom"> Enajenación de Inversiones Reales </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> 6 </td>
+                            <td headers="gast denom1"> Inversiones Reales </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 7 </td>
+                            <td headers="ingr denom"> Transferencias de Capital </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> 7 </td>
+                            <td headers="gast denom1"> Transferencias de Capital </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> <strong>Operaciones de Capital</strong> </td>
+                            <td headers="ingr eur"> <strong>0,00    </strong> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"><strong>Operaciones de Capital</strong> </td>
+                            <td headers="gast eur1"><strong>    0,00</strong> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> <strong>OPERACIONES NO FINANCIERAS</strong> </td>
+                            <td headers="ingr eur"> <strong>9.123.369,00</strong> </td>
+                            <td headers="ingr porc"> 100,00 </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"> <strong>OPERACIONES NO FINANCIERAS</strong> </td>
+                            <td headers="gast eur1"> <strong>9.123.369,00   </strong> </td>
+                            <td headers="gast porc1"> 100,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"> </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 8 </td>
+                            <td headers="ingr denom"> Activos Financieros </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> 8 </td>
+                            <td headers="gast denom1"> Activos Financieros </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> 9 </td>
+                            <td headers="ingr denom"> Pasivos Financieros </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> 9 </td>
+                            <td headers="gast denom1"> Pasivos Financieros </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> <strong>OPERACIONES FINANCIERAS</strong> </td>
+                            <td headers="ingr eur"> <strong>0,00</strong> </td>
+                            <td headers="ingr porc"> 0,00 </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"> <strong>OPERACIONES FINANCIERAS</strong> </td>
+                            <td headers="gast eur1"> <strong>0,00</strong> </td>
+                            <td headers="gast porc1"> 0,00 </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> </td>
+                            <td headers="ingr eur"> </td>
+                            <td headers="ingr porc"> </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"> </td>
+                            <td headers="gast eur1"> </td>
+                            <td headers="gast porc1"> </td>
+                        </tr>
+                        <tr>
+                            <td headers="ingr cap"> </td>
+                            <td headers="ingr denom"> <strong>Total Ingresos</strong> </td>
+                            <td headers="ingr eur"> <strong>9.123.369,00</strong> </td>
+                            <td headers="ingr porc"> 100,00 </td>
+                            <td headers="gast cap1"> </td>
+                            <td headers="gast denom1"><strong>  Total Gastos</strong> </td>
+                            <td headers="gast eur1"> <strong>9.123.369,00</strong> </td>
+                            <td headers="gast porc1"> 100,00 </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#plan" aria-expanded="false"> Plantilla</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="plan">
+                <table class="table table-striped table-condensed table-bordered" summary="Plantilla de zaragoza deporte">
+                    <tbody>
+                        <tr>
+                            <th>PLAZA</th>
+                            <th>DENOMINACIÓN</th>
+                            <th>Grupo</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Directora Gerente: Elena Laseca</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Director Artístico Auditorio: Miguel Ángel Tapia </td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Superior Planificación y Cooperación (Vacante)</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Superior Planificación: Cristina Martinez</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Adjunto de Fiscalización y Control Eco-Financ: (26%) Carlos Romance</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Superior Comunicación: Sonia Sin</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Superior Gestión Programas: Carmen Blasco</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Superior Administración: Antonio Francia </td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Superior Audiovisuales: Daniel Ríos</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Superior Contabilidad: Elva Muñoz</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Medio Relaciones Institucionales: Jesús Ángel González </td>
+                            <td>A2</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Medio Imagen: (Vacante)</td>
+                            <td>A1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Medio Comunicación: Elena Solano</td>
+                            <td>A2</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Medio Planificación: F. Javier García</td>
+                            <td>A2</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Técnico Medio Gestión Programas: Victor Domeque, Jose María Pons</td>
+                            <td>A2</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Medio Instalaciones Audiovisuales: Jose Luís Martínez</td>
+                            <td>A2</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Medio Gestión: (Vacante)</td>
+                            <td>A2</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Gestión Programas: Mª Luisa Soler</td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Coordinación Proyectos-Redes: (Vacante) </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Programación: (Vacante) </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Coordinador Programación: Javier Ramirez </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Técnico Producción: Angel Marrón, Luis Merchan, Julio Lezcano, Javier Arellano </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Producción Musical: Carlos Estella </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Producción Sonido: Jose Manuel Huerta </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Producción Audiovisual: Álvaro Mazarrasa </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Planificación y Cooperación: Diego Garulo </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Técnico Comunicación: Pilar Mairo </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Administrativo: Mª Jesús Gregorio, Cristina Lafuente, Manuel Viñuales, Victoria Rincón (Adscrito) </td>
+                            <td>C1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Auxiliar Producción y Equipamientos (relevo): Tomás Maz - Javier Beltran </td>
+                            <td>C2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Auxiliar Administrativo: Irene Aragües, Montserrat Rubio, Margarita Rueda, Adscrito </td>
+                            <td>C2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

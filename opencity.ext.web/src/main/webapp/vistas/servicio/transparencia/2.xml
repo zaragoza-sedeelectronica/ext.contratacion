@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-3 block-2 text-center">
+        <a href="/ciudad/ticketing/datos_Ticketing">
+            <h4>
+                <span class="far fa-map fa-4x"/>
+                <br/>
+                <span class="padding-t05em center-block">Quejas y Sugerencias <th:block th:text="${#dates.year(#dates.createNow())}"/></span>
+            </h4>
+            <hr class="sm"/>
+            <span class="num-quejas" th:text="${totalQys}"/>
+            <br/> Recibidas
+        </a>
+    </div>
+    <div class="col-md-3 block-3 text-center">
+        <a href="/sede/servicio/equipamiento/">
+            <h4>
+                <span class="fa fa-users fa-4x"/>
+                <br/>
+                <span class="padding-t05em center-block">Equipamientos</span>
+            </h4>
+            <hr class="sm"/>
+            <span class="num-equipamientos" th:text="${totalEquipamientos}"/>
+            <br/> Equipamientos
+        </a>
+    </div>
+    <div class="col-md-3 block-4 text-center">
+        <a href="/ciudad/encasa/buscar_Tramite">
+            <h4>
+                <span class="far fa-file-alt fa-4x"/>
+                <br/>
+                <span class="padding-t05em center-block">Trámites y Servicios</span>
+            </h4>
+            <hr class="sm"/>
+            <span class="num-tramites" th:text="${totalTramites}"/>
+            <br/> Trámites
+        </a>
+    </div>
+    <div class="col-md-3 block-5 text-center">
+        <a href="/ciudad/noticias/">
+            <h4>
+                <span class="far fa-newspaper fa-4x" />
+                <br/>
+                <span class="padding-t05em center-block">Noticias</span>
+            </h4>
+            <hr class="sm"/>
+            <span class="num-noticias" th:text="${totalNoticias}"/>
+            <br/> Noticias
+        </a>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Equipamientos de la ciudad"/>
+</head>
+
+<body>
+    <sede:content>
+        <div th:each="cat: ${resultado.body.result}">
+            <h2 th:text="${cat.title}"/>
+            <table class="table table-condensed table-striped">
+                <tr>
+                    <th>Centro</th>
+                    <th>Líder</th>
+                </tr>
+                <tr th:each="equip: ${cat.equipamiento}">
+                    <td><th:block th:text="${equip.id}"/> 
+                        <a th:href="'/sede/servicio/equipamiento/category/admin/' + @{{id}/equip/{idequip}/edit(id=${cat.id}, idequip=${equip.id})}" th:text="${equip.title}"/>
+                    </td>
+                    <td>
+                        <i th:if="not ${#maps.containsKey(lideres, equip.id)}" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <i th:if="${#maps.containsKey(lideres, equip.id)}" class="fa fa-check-circle" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </sede:content>
+</body>
+
+</html>

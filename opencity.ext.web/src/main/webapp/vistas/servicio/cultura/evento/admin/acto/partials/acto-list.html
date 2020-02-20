@@ -1,0 +1,167 @@
+<div class="row">
+    <div class="col-md-12">
+
+         <nav class="navbar navbar-default" ng-show="permisos.DET">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                    <span class="sr-only">Desplegar búsqueda rápida</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">Búsqueda rápida</span>
+            </div>
+            <div class="collapse navbar-collapse" id="buscadoresTarget">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="number" class="form-control input-sm" ng-model="qsearch.id" placeholder="Buscar por id..." style="width:80px;">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-sm" ng-model="qsearch.title" placeholder="Buscar por nombre...">
+                    </div>
+                    <div class="form-group">
+                        <autocompletado class="input-sm" modelo="qsearch.tema" uri="/sede/servicio/cultura/evento/categoria" filtro="title" retorno="id" placeholder="Buscar por tema..."></autocompletado>
+                    </div>
+                    <div class="form-group">
+                        <autocompletado class="input-sm" modelo="qsearch.type" uri="/sede/servicio/cultura/evento/formato" filtro="title" retorno="title" placeholder="Buscar por formato..."></autocompletado>
+                    </div>
+                    <div class="form-group">
+                        <autocompletado class="input-sm" modelo="qsearch.entidad" uri="/sede/servicio/cultura/evento/entidad" filtro="title" retorno="id" fiql="updated==true" placeholder="Buscar por entidad..."></autocompletado>
+                    </div>
+                    <div class="form-group">
+                        <autocompletado class="input-sm" modelo="qsearch.lugar" uri="/sede/servicio/cultura/evento/lugar-realizacion" filtro="title" retorno="id" placeholder="Buscar por lugar..."></autocompletado>
+                    </div>
+                    <div class="form-group" ng-if="permisos.ADMIN">
+                        <select class="form-control input-sm" id="qsearchPortal" name="qsearchPortal" ng-model="qsearch.portal" ng-options="portal.id as portal.title for portal in portales track by portal.id" style="width:100px">
+                            <option value="" disabled selected hidden>Portal...</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-default btn-sm" ng-click="buscar(qsearch)"><span class="fab fa-searchengin" aria-hidden="true"></span> Filtrar</button>
+                </form>
+            </div>
+        </nav> 
+
+    </div> 
+</div>
+
+<div class="row">
+    <div class="col-md-12" class="clearfix">
+        <div class="repeat-item alert alert-{{alert.type}} alert-dismissible" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <div role="alert" class="alert alert-info" ng-show="registros.length == 0">
+            Para comenzar realiza una búsqueda o acción.
+        </div>
+        <div ng-show="permisos.DET && registros.length > 0">
+            <div>
+                <span class="margin-r2em">
+                    Número de resultados: {{registros.length}} <span ng-show="totalCount > 0">de {{totalCount}}</span>
+                    (Pág. {{currentPage}})
+                </span>
+                <span ng-show="filtrosParaListado !== undefined">
+                    Filtros aplicados: <span ng-bind-html="filtrosParaListado | pintarFiltros"></span>
+                    <!-- <button type="button" class="btn btn-xs btn-default" ng-click="limpiarFiltrosDaoListar();">Limpiar Filtros</button> -->
+                </span>
+                <span ng-show="permisos.MOD && checkList.length > 0" class="pull-right checklist-tools">
+                    <span ng-repeat="c in checkList"> <span class="label label-warning">{{c.id}}</span> </span>
+                    <modal-borrar recurso="evento"></modal-borrar>
+                    <boton-visibilidad></boton-visibilidad>
+                </span>
+                <ul style="margin-top:-15px;" class="margin-b05em navbar-right" uib-pagination boundary-links="true" total-items="totalCount" max-size="maxSizePage" ng-model="currentPage" ng-change="pageChanged()" items-per-page="itemsPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            </div>
+            <!-- <div class="table-responsive"> -->
+                <table class="table table-bordered table-hover table-striped table-btn nomargin">
+                    <thead>
+                        <tr>
+                            <!--/*
+                            <th ng-if="permisos.MOD"></th>
+                            <th th-orden order="'id'" by="order" reverse="reverse">ID</th>
+                            <th th-orden order="'title'" by="order" reverse="reverse">NOMBRE</th>
+                            <th th-orden order="'portal.title'" by="order" reverse="reverse" ng-if="permisos.ADMIN">PORTALES</th>
+                            <th th-orden order="'organizer.title'" by="order" reverse="reverse">ENTIDAD</th>
+                            <th th-orden order="'subEvent.location.title'" by="order" reverse="reverse">LUGAR</th>
+                            <th th-orden order="'lastUpdated'" by="order" reverse="reverse" class="col-md-1">ÚLTIMA MOD.</th>
+                            <th ng-if="permisos.MOD" class="no-print">ACCIONES</th>
+                            */-->
+                            <th ng-if="permisos.MOD"></th>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th ng-if="permisos.ADMIN">PORTALES</th>
+                            <th>ENTIDAD</th>
+                            <th>LUGAR</th>
+                            <th class="col-md-1">ÚLTIMA MOD.</th>
+                            <th ng-if="permisos.MOD" class="no-print">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="registro in registros | orderBy:order:reverse" ng-class="{warning : registro.validacion === 'S', danger : (registro.visible === 'N' && registro.validacion !== 'S')}">
+                            <td ng-show="permisos.MOD">
+                                <input type="checkbox" checklist-model="checkList" checklist-value="registro">
+                            </td>
+                            <td data-title="ID">
+                                <a href="#/edit/{{ registro.id }}">{{registro.id}}</a>
+                            </td>
+                  			<td data-title="Nombre">
+                                <a href="#/edit/{{ registro.id }}">{{registro.title}}</a>
+                                
+
+                                <a class="btn" href="#/edit/{{ registro.id }}" target="_blank" title="Abrir en pestaña nueva"><span class="glyphicon glyphicon-export"></span></a>
+
+                            </td>
+                            <td data-title="Portales" ng-if="permisos.ADMIN">
+                                <ul class="list-unstyled">
+                                    <span class="label label-info">
+                                        <span class="fas fa-user" aria-hidden="true"></span> {{registro.codUsuario}}
+                                    </span>
+                                    <li ng-repeat="p in registro.portales">
+                                        <a class="badge" href="#/edit/{{ registro.id }}">{{p.portal.title}}</a>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td data-title="Entidad">
+                                <ul>
+                                    <li ng-repeat="o in registro.organizer">
+                                        <a href="#/edit/{{ registro.id }}">{{o.title}}</a>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td data-title="Lugar">
+                                <li ng-repeat="l in registro.subEvent">
+                                    <a href="#/edit/{{ registro.id }}">{{l.location.title}}<br/><span class="small">{{l.startDate | date:'dd-MM-yyyy'}} - {{l.endDate | date:'dd-MM-yyyy'}}</span></a>
+                                </li>
+                            </td>
+                            <td data-title="Fecha Modificación">
+                                <a href="#/edit/{{ registro.id }}">{{registro.lastUpdated | date:'dd-MM-yyyy'}}</a>
+                                
+                                <span class="badge" ng-if="registro.validacion === 'S'">{{registro.usuarioAlta}}</span>
+                            </td>
+                            <td data-title="Operaciones" ng-show="permisos.MOD" class="no-print">
+                                <span ng-if="registro.codUsuario == usuario.propiedades.usr_agenda || permisos.ADMIN">
+                                    <modal-borrar recurso="evento"></modal-borrar>
+                                    <boton-visibilidad></boton-visibilidad>
+                                </span>
+                                
+                                <button ng-if="registro.codUsuario != usuario.propiedades.usr_agenda && !permisos.ADMIN && permisos.VAL" class="btn btn-default btn-xs" type="button" ng-click="desasociarPortal(registro)"">Desasociar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- </div> -->
+
+            <!-- TotalCount {{totalCount}}
+            currentPage {{currentPage}}
+            Páginas {{totalCount / 50}} -->
+
+            <!-- Registros por página <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select> -->
+
+            <ul class="margin-t05em navbar-right" uib-pagination boundary-links="true" total-items="totalCount" max-size="maxSizePage" ng-model="currentPage" ng-change="pageChanged()" items-per-page="itemsPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            
+            <div role="alert" class="alert alert-warning spinner-tabla" ng-show="busy">
+                <span class="spinner"></span> Espera por favor, se estan cargando los datos.
+            </div>
+        </div>
+
+    </div> <!-- /span12 -->
+</div> <!-- /row-fluid -->

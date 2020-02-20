@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Profesional. Zaragoza es Cultura. Ayuntamiento de Zaragoza" description="Servicios y directorios del Área de Cultura orientados a profesionales" author="" keywords="profesionales, ayudas y subvenciones, premios y concursos, trámites y servicios, observatorio de cultura, artistas y creadores, equipamientos, empresas, patrimonio, asociaciones, avisos destacados, Zaragoza, professionals, grants and subsidies, awards and contests, procedures and services, observatory of culture, artists and creators, equipment, companies, heritage, associations, prominent notices, Saragossa"></sede:meta>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+	    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #ebacaa;
+    } 
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }
+
+    .offset-target:before {
+        content: ";
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #f3d2d1;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    /* Elementos de listado con icono fa */
+    .section-content ul { list-style-type: none; }
+    .section-content li:before {    
+        font-family: 'Font Awesome\ 5 Free';
+        content: '\f0a9';
+        margin: 0 0.2em 0 -1.2em;
+    }
+    /* Oculta fecha premios en plazo */
+    .date {display: none;} 
+    </style>
+</head>
+
+<body>
+    <sede:content>
+ 
+        <h2 class="section-title offset-target" id="servicios">Cifras</h2>
+               <div class="row">
+			            <div class="col-md-12">
+      
+ 
+                <div class="col-md-4"><h3 class="color-noticias">
+  Colecciones 
+</h3>
+ <div class="full-screen-box text-justify">
+                    
+
+
+ 
+       <p>
+
+De las <strong>300.000 piezas exhumadas</strong> en el solar del teatro romano, se ha seleccionado una muestra representativa de 98 o 130 piezas originales, que se exponen en vitrinas, además de las que forman parte de las escenografías.<br/>
+
+                                                                      [Enlace a DOMUS – CERES]</p>
+																	  </div>  </div>  <div class="col-md-4">   <h3 class="color-noticias">
+
+  Visitantes 2013-2017</h3><div class="full-screen-box text-justify">
+																	  
+																	<h4>
+
+
+ 
+
+
+ 
+ 
+ 
+
+
+
+ Procedencia geográfica</h4><p>
+
+
+El Museo del Teatro de Caesaraugusta, como parte de la Ruta de Caesaraugusta y de los cinco museos municipales, es uno de los activos culturales más importantes de la ciudad.</p><p> Es visitado anualmente por el público de Zaragoza y de Aragón, así como por visitantes procedentes de España, Europa y del resto del mundo.
+</p>  
+
+
+<table class="table table-striped table-condensed table-bordered" summary="Preventivos Protección Civil">
+ 
+    <tbody>
+       <tr><th colspan="1" rowspan="1" id="2013">2013</th>
+	   <th colspan="1" rowspan="1" id="2014">2014</th>
+	   <th colspan="1" rowspan="1" id="2015">2015</th>
+	   <th colspan="1" rowspan="1" id="2016">2016</th>
+	   <th colspan="1" rowspan="1" id="2017">2017</th>
+	    
+	   </tr> 
+	    <tr><td colspan="1" rowspan="1" headers="2013">34440
+</td><td colspan="1" rowspan="1" headers="2014">39097
+</td><td colspan="1" rowspan="1" headers="2015">40464
+</td><td colspan="1" rowspan="1" headers="2016">48594
+</td><td colspan="1" rowspan="1" headers="2017">48104
+</td> 
+ 
+
+
+ 
+
+</tr>
+
+    </tbody>
+</table>
+
+
+
+</div>   </div> <div class="col-md-4">  <h3 class="color-noticias">
+ Actividades  </h3> <div class="full-screen-box text-justify">
+
+
+<p>
+
+
+En los museos municipales se celebran múltiples actividades, relacionadas con la conmemoración del  Día Internacional del Museo, el programa Un domingo en el Museo o el programa de actividades didácticas, además de conferencias, presentaciones culturales, ciclos musicales, representaciones teatrales,  cursos, reuniones, etc. 
+</p><p>
+Durante el año 2017 en el Museo del Teatro de Caesaraugusta se registraron las siguiente cifras de participación:
+</p> 
+
+<ul><li>
+
+     
+ Actividades culturales: 58 >>
+ Participantes: 5.901 </li> <li>
+ Actividades didácticas: 110 >>
+ Participantes: 2.615</li></ul> </div>
+                 </div>
+				 
+				 
+				 
+			 
+				 
+				</div></div> 
+				 
+				 
+				      <h3 class="section-title offset-target" id="servicios">Publicaciones</h3>
+					    <div class="row">
+			            <div class="col-md-12">
+      
+					
+					 
+					
+					<h3>Museo del Teatro de Caesaraugusta. Guía didáctica</h3>
+            
+      
+                <div class="col-md-6">
+                    <img class="img-responsive margin-auto" alt="" src="https://www.zaragoza.es/cont/paginas/catalogopublicaciones/img/portadas/11477.jpg"/>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                    <dl class="dl-horizontal">
+                        
+                        
+                        <dt>Editorial:</dt>
+                        <dd>Servicio de Cultura</dd>
+                        <dt>Año:</dt>
+                        <dd>2018</dd>
+                        <dt>Dimensiones:</dt>
+                        <dd>24x21,5</dd>
+                        <dt>Número de páginas:</dt>
+                        <dd>26</dd>
+                        <dt>ISBN:</dt>
+                        <dd>978-84-8069-608-1</dd>
+                        <dt>Precio:</dt>
+                        <dd>4 euros</dd>
+						<dt>Acceso al Documento</dt>
+						<dd><a href="http://www.zaragoza.es/contenidos/cultura/publicaciones/TeatroRomano.pdf" class="pdf">Descarga</a></dd>
+                        
+                        
+                        
+                        
+                    </dl>
+                </div>
+      
+  
+   
+           <a href="/sede/servicio/publicacion-municipal/list?titleContains=&amp;year=&amp;author=museo+del+teatro&amp;isbn=&amp;coleccion.id=&amp;tipo.id=">Ver Todas las Publicaciones</a>
+					 </div> </div> 
+					
+           <h3 class="section-title offset-target">Organización</h3>    <div class="row">
+			            <div class="col-md-12"></div><p>
+El Servicio de Cultura, dependiente orgánicamente de la Consejería de Economía y Cultura del Ayuntamiento de Zaragoza, se encarga de la gestión y administración conjunta del Museo del Teatro, que se integra en la Ruta de Caesaraugusta, y del Museo Pablo Gargallo. 
+</p><p>
+La plantilla del Servicio de Cultura está formada por oficiales de atención al público y mantenimiento, personal de gestión y administración, técnicos medios y técnicos superiores.
+</p> 
+ </div> 
+      
+         
+           
+       
+    </sede:content>
+</body>
+
+</html>

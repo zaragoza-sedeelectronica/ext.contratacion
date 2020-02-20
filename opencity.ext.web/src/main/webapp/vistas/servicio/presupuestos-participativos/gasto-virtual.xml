@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Gasto Virtual. Presupuestos participativos" keywords="sede,web,turismo,monumentos" />
+    <style>
+    @media(max-width:767px){
+        .pie-chart, .label-chart {
+            display: none !important;
+        }
+        .ellipsis-xs {
+            overflow: hidden;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            display: block;
+            white-space: nowrap;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .card{
+            min-height: 18em;
+        }
+    }
+
+    a.btn-spend{
+        text-decoration: none;
+    }
+
+    .card {    
+        position: relative;
+        padding-bottom: 90px;
+    }
+
+    li .card.active{
+        border: 3px solid #D43F3A;
+    }
+
+    .card-footer {
+        padding-top: 0 !important;
+    }
+
+    .card-footer a {
+        text-decoration: none;
+    }
+
+    .pct-line { width:100%; text-align:center; border-bottom: 1px solid #ccc; line-height:0.1em; margin-bottom: 10px; color: #666 } 
+    .pct-line #pct { background:#fff; padding:0 10px; border: 1px solid #ccc; }
+
+    .label-chart {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-right: 5px;
+    }
+
+    .modal-content {
+        border-radius: 0;
+    }
+
+    .modal-header{
+        color: white;
+        background-color: #E81B16;
+    }
+
+    </style>
+</head>
+
+<body>
+    <sede:content>
+    <th:block th:if="${errpres}" th:include="fragmentos/error" />
+    <!--/* <th:block th:if="not ${errpres} and ${#utils.desde('05-04-2017')} or (${session.sess_ciudadano} != null and ${session.sess_ciudadano.email == 'mjferuiz@zaragoza.es'})"> */-->
+    <th:block th:if="${#utils.desde(endVotacion)} or ${#utils.hasta(startVotacion)} or ${tipo == 'ciudad'} or (not ${session.sess_ciudadano.junta.contains('JV')}) or ${session.sess_ciudadano.junta.contains('Monzalbarba')}">
+        <h2>Gasto Virtual</h2>
+        <div class="alert alert-info">El proceso de votación no está vigente</div>
+    </th:block>
+    <th:block th:if="${#utils.enPlazo(startVotacion, endVotacion)} and (not ${tipo == 'ciudad'} and ${session.sess_ciudadano.junta.contains('JV')}) and ${resultado} and not ${session.sess_ciudadano.junta.contains('Monzalbarba')}">
+        <div class="row">
+            <div class="col-xs-4">
+                <h2>Gasto Virtual</h2>        
+            </div>
+            <div class="col-xs-8">
+                <div class="modal fade" id="modalFinish" tabindex="-1" role="dialog" aria-labelledby="modalFinishLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="modalFinishLabel">
+                                    ¿Has terminado de realizar tu votación?
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div role="alert" class="alert alert-info">
+                                    Recuerda que podrás cambiar tantas veces como quieras la selección de tus propuestas, el sistema de votación estará activo durante toda la fase 4 de votación (del 24 de septiembre al 3 de octubre de 2018).
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Seguir votando</button>
+                                <a th:href="@{/servicio/presupuestos-participativos/confirmar-{tipo}(tipo=${tipo})}" class="btn btn-success enlace">He terminado</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="button" class="btn btn-success btn-sm margin-t05em" data-toggle="modal" data-target="#modalFinish">
+                        He terminado
+                    </button>
+                    <button class="btn btn-primary btn-sm margin-t05em" type="button" data-toggle="collapse" data-target="#instrucciones" aria-expanded="false" aria-controls="instrucciones">
+                      ¿Necesitas ayuda?
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default nomargin">
+            <div class="panel-heading" data-toggle="collapse" href="#instrucciones" aria-expanded="false" aria-controls="instrucciones">
+                <a class="btn-block collapsed" role="button" aria-expanded="false" aria-controls="instrucciones" data-toggle="collapse" href="#instrucciones">
+                    <span class="text-color"><span class="fa fa-info-circle" aria-hidden="true"></span> Instrucciones</span>
+                </a>
+            </div>
+            <div class="panel-body collapse nopadding" th:classappend="${resultado.body.spent} == 0 and ${currentDevice.isMobile()} == false ? in" id="instrucciones" style="position:relative" aria-controls="instrucciones">
+                <div class="padding-a1em">
+                    <p>Puedes invertir el presupuesto disponible para tu distrito seleccionando aquellas propuestas que consideres de mayor interés, restándose el presupuesto de realización de cada propuesta elegida al presupuesto asociado a tu distrito.</p>
+                    <!--/* <span id="step1">Paso 1</span> | <span id="step2">Paso 2</span> | <span id="step3">Paso 3</span> */-->
+                    <div role="alert" class="alert alert-info nomargin">
+                        <ul class="list-unstyled nomargin">
+                            <li th:if="not ${tipo=='ciudad'}"><span class="far fa-hand-point-right" aria-hidden="true"></span>Se requiere realizar una <strong>inversión mínima del 51% </strong>del presupuesto asociado a tu distrito para que la votación realizada sea válida.</li>
+                            <li><span class="far fa-hand-point-right" aria-hidden="true"></span> <strong>Podrás cambiar tantas veces como quieras</strong> la selección de tus propuestas, el sistema de votación estará activo durante toda la fase 4 de votación (del 18 de junio al 9 de julio de 2018).</li>
+                            <li><span class="far fa-hand-point-right" aria-hidden="true"></span> Cuando hayas terminado de seleccionar las propuestas, confirma tu selección pulsando el botón <strong>He terminado</strong> en la parte superior derecha de la pantalla.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="sm"/>
+
+        <th:block th:include="fragmentos/error(clase='additional-info')" />
+<!--/*         <ul>
+            <li>Gastado:
+                <th:block th:text="${resultado.body.spent}" />
+            </li>
+            <li>Por Gastar:
+                <th:block th:text="${porGastar}" />
+            </li>
+            <li>Gasto asignado a
+                <th:block th:text="${session.sess_ciudadano.soloNombreJunta}" />
+                <th:block th:text="${gastoJunta}" />
+                (100%)
+            </li>
+        </ul> */-->
+        <div class="additional-info alt"></div>
+        <hr class="sm"/>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 margin-b1em pie-chart">
+                <canvas id="donut" width="100" height="100" />
+            </div>
+            <div class="col-sm-12 col-md-9">
+                <div class="card cart padding-a1em">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped active first" role="progressbar" th:attr="aria-valuenow=${resultado.body.spent}, aria-valuemax=${gastoJunta}" aria-valuemin="0" style="min-width: 2em;">
+                            0%
+                        </div>
+                        <div class="progress-bar progress-bar-warning progress-bar-striped second">
+                            <span class="sr-only">10% Complete (danger)</span>
+                        </div>
+                    </div>
+                    <h3 class="row no-gutter">
+                        <div class="col-xs-8 margin-b05em">
+                            <th:block th:if="${tipo == 'ciudad'}">
+                                Gasto asignado a ciudad
+                            </th:block>
+                            <th:block th:if="not ${tipo == 'ciudad'}">
+                                Gasto asignado al distrito <span class="text-success" th:text="${session.sess_ciudadano.soloNombreJunta}"></span>  
+                            </th:block>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <span class="text-success" th:text="${#numbers.formatDecimal(gastoJunta,0,'POINT',2,'COMMA')} + ' €'"></span>
+                        </div>
+                    </h3>
+                    <ul class="list-unstyled">
+                        <li th:each="registro : ${resultado.body.list.result}" th:if="${registro.votoUsuario} == 'positivo'" class="propuesta clearfix">
+                            <div class="row no-gutter">
+                                <div class="col-xs-8">
+                                    <!--/* <a th:href="@{/servicio/presupuestos-participativos/{id}/excluir(id=${registro.id})}" role="button" title="Eliminar">
+                                        <span class="fas fa-times text-primary" aria-hidden="true"></span> 
+                                    </a> */-->
+                                    <span class="label-chart"></span>
+                                    <a class="titulo btn-spend ellipsis-xs" th:href="@{{id}(id=${registro.id})}" sede:rdf="${registro.get('title')}"></a>
+                                </div>
+                                <div class="col-xs-4 text-right">
+                                    <span class="valor hidden" th:text="${registro.coste}"></span>
+                                    <span class="text-primary" th:text="'- ' + ${#numbers.formatDecimal(registro.coste,0,'POINT',2,'COMMA')} + ' €'"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr class="sm"/>
+                    <div class="row no-gutter">
+                        <div class="col-xs-8">
+                            <span class="label-chart restante"></span>
+                            <span>Presupuesto restante para invertir</span>
+                        </div>
+                        <div class="col-xs-4">
+                            <span class="pull-right" th:text="${#numbers.formatDecimal(porGastar,0,'POINT',2,'COMMA')} + ' €'"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="row list-unstyled">
+            <li class="col-sm-6 col-md-3 clearfix margin-b1em" th:each="registro : ${resultado.body.list.result}" th:with="pct=((${registro.coste} / ${gastoJunta}) * 100)">
+                <div class="card clearfix nomargin" th:classappend="${registro.votoUsuario}==positivo ? active : ''">
+
+                    <th:block th:if="${session.sess_ciudadano} and (${session.sess_ciudadano.juntaActual} == ${registro.junta} or ${registro.junta == 'Ciudad'})">
+
+                        <a th:if="${registro.votoUsuario}==negativo or ${registro.votoUsuario}==null" class="btn-spend" style="color:#202020;" th:href="@{/servicio/presupuestos-participativos/{id}/incluir-{tipo}(id=${registro.id},tipo=${tipo})}">
+                            <span class="fa fa-plus-circle fa-2x text-success" aria-hidden="true" style="vertical-align:middle;"></span> 
+                            <strong class="text-success">INVERTIR</strong> en
+                            <h3 class="title nomargin text-primary" sede:rdf="${registro.get('title')}"></h3>
+                        </a>
+
+                        <a th:if="${registro.votoUsuario}==positivo" class="btn-spend" style="color:#202020;" th:href="@{/servicio/presupuestos-participativos/{id}/excluir-{tipo}(id=${registro.id}, tipo=${tipo})}">
+                            <span class="fa fa-minus-circle fa-2x text-primary" aria-hidden="true" style="vertical-align:middle;"></span> 
+                            <strong class="text-primary">RETIRAR INVERSIÓN</strong> en
+                            <h3 class="title nomargin text-primary" sede:rdf="${registro.get('title')}"></h3>
+                        </a>
+
+                    </th:block>
+                    <!--/* <p>
+                        Realizado por <strong th:text="${registro.usuarioAlta}"></strong>
+                        <span th:if="${registro.menor18}" class="label label-success">menor de 18 años</span> el <span class="text-info"><th:block th:text="${#calendars.format(registro.creationDate,'EEEE dd MMMM HH:mm')}"></th:block> h.</span>
+                        <th:block th:if="${registro.representacion}">
+                            en representación de <strong sede:rdf="${registro.get('representacion')}"></strong>.
+                        </th:block>
+                    </p> */-->
+                    <!-- <hr class="sm"/> -->
+                    <!-- <div class="text-center"> -->
+                        
+                        
+                        
+                    <!-- </div> -->
+                    
+                    <!-- <input name="progress" class="progress" type="checkbox" th:value="${registro.coste}"/> -->
+                    <!-- <div class="margin-a1em" sede:rdf="${registro.prop('description')}" th:text="${#strings.abbreviate(registro.description, 150)}"></div> -->
+                    <div class="card-footer text-center">
+                        <div class="pct-line">
+                            <strong class="small" id="pct" th:text="${#numbers.formatDecimal(pct,1,2,'COMMA')} + ' %'"></strong>
+                        </div>
+                        <div class="margin-b1em">
+                            <!-- <strong class="text-primary" th:text="${#numbers.formatInteger(registro.coste,3,'POINT')} + ' €'"></strong> -->
+                            <strong class="text-primary" th:text="${#numbers.formatDecimal(registro.coste,0,'POINT',2,'COMMA')} + ' €'"></strong>
+                            de
+                            <strong class="text-success" th:text="${#numbers.formatInteger(gastoJunta,3,'POINT')} + ' €'"></strong>
+                        </div> 
+                        <!-- <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus"  class="text-primary" data-placement="bottom" th:attrappend="data-content=${registro.motivo}"> -->
+                        <a class="more-info" th:href="'/sede/servicio/presupuestos-participativos/' + ${registro.id}" th:attrappend="data-title=${registro.title},data-description=${registro.description},data-motivo=${registro.motivo},data-motivo-resumen=${registro.motivoResumen}">
+                            Más información
+                        </a>
+                    </div>
+                </div>
+                <div th:if="${registro.votoUsuario} == 'positivo'" class="ribbon-wrapper">
+                    <div class="ribbon-primary">Seleccionada</div>
+                </div>
+            </li>
+        </ul>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="nomargin" id="modalLabel">
+                            <span class="fa fa-puzzle-piece" aria-hidden="true"></span> 
+                             <span class="modal-title"></span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="text-primary text-uppercase"><strong>Descripción</strong></h5>
+                        <div class="modal-description"></div>
+                        <h5 class="text-primary text-uppercase"><strong>Viabilidad de la propuesta</strong></h5>
+                        <div class="modal-motivo"></div>
+                        <blockquote class="modal-motivo-resumen border-color-ayto"></blockquote>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-primary enlace">Ir a la ficha de detalle de la propuesta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+    </sede:content>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!--/* http://www.bootply.com/106527 */-->
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+        var total = [[${gastoJunta}]];
+        var porGastar = [[${porGastar}]];
+        //console.log(total + ':' + typeof total);
+        var gastoUsuario = [[${resultado.body.spent}]];
+        //console.log(gastoUsuario + ':' + typeof gastoUsuario);
+        var pctUsuario = parseFloat(((gastoUsuario / total) * 100).toFixed(2));
+        //console.log(pctUsuario + ':' + typeof pctUsuario);
+
+        // Si es porcentaje es menor del 51% mostramos mensaje adicional
+        if(pctUsuario < 51 && '[[${tipo}]]' !== 'ciudad') {
+            $('.additional-info.alt, #modalFinish .modal-body').append('<div role="alert" class="alert alert-danger margin-t1em margin-b0em">Para que el voto sea válido debes consumir, <strong>como mínimo un 51%</strong> del presupuesto disponible.<br/>Por favor, completa tu voto.</div>');
+        } else if ('[[${tipo}]]' !== 'ciudad') {
+            $('.additional-info.alt, #modalFinish .modal-body').append('<div role="alert" class="alert alert-success margin-t1em">Al superar el 51% de inversión su votación ya puede terminar su votación aunque puede seguir incluyendo propuestas hasta agotar el gasto asociado al distrito.</div>');
+        }
+
+        // Oculta los mensajes alert que contenienen la clase .additional-info en 5s.
+        $(".alert.additional-info").fadeTo(5000, 500).slideUp(500, function(){
+            $(".alert.additional-info").slideUp(500);
+        });
+
+        // Popover dinámico con HTML inscrustado dentro.
+        /*$("[data-toggle=popover]").popover({
+            container: 'body',
+            html: true,
+            content: function() {
+                return $(this).attr("popover-content");
+            }
+        });*/
+
+        // Accesibilidad: Si JS está habilitado modificamos el enlace por un modal
+        $('.more-info').each(function(){
+            $(this).attr({            
+                'data-link': $(this).attr('href'),
+                'href': '#',
+                'data-toggle': 'modal',
+                'data-target': '#modal'
+            });
+        });
+        // Cargar el contenido del modal dinámico
+        $('#modal').on('show.bs.modal', function (event) {
+            var anchor = $(event.relatedTarget);
+            var modal = $(this);
+            modal.find('.modal-title').text(anchor.data('title'));
+            modal.find('.modal-description').text(anchor.data('description'));
+            modal.find('.modal-motivo').html(anchor.data('motivo'));
+            modal.find('.modal-motivo-resumen').text(anchor.data('motivo-resumen'));
+            modal.find('.enlace').attr('href', anchor.data('link'));
+        });
+
+        // Efecto de opacidad para centrar la atención de usuario/usuaria
+        /*$('#step1').click(function(){
+            var bd = $('<div class="modal-backdrop fade in"></div>');
+            bd.appendTo(document.body);
+            $('#instrucciones').css('z-index', 1050);
+            $('.cart').css('z-index', 1050);
+            setTimeout(function() {
+                bd.fadeOut(500, function() { $(this).remove(); });
+            }, 2000);
+        });*/
+
+        // Carga de valores del pieChart
+        var labels = [];
+        labels.push('Restante');
+        $('li.propuesta .titulo').each(function() { labels.push($(this).text()) });
+        var values = [];
+        values.push(porGastar);
+        $('li.propuesta .valor').each(function() { values.push(parseInt($(this).text())) });
+        // Array de colores
+        var colorsArray = ['#FFC300','#FF5733','#C70039','#900C3F','#581845','#4A3791','#0066CC','#009999','#66CC99','#CBE593'];
+        $('.label-chart').each(function(i){
+            $(this).css('background-color', colorsArray[i+1]);});
+        $('.label-chart.restante').css('background-color', colorsArray[0]);
+
+        // Función para generar un array dinámico de colores RGB aleatorio
+        var dynamicColorsArray = function(length) {
+            var colorsArray = [];
+            for(var i = 0; i < length; i++) {
+                var r = Math.floor(Math.random() * 255);
+                var g = Math.floor(Math.random() * 255);
+                var b = Math.floor(Math.random() * 255);
+                colorsArray.push('rgb(' + r + ',' + g + ',' + b + ')');
+            };
+            return colorsArray;
+        };
+
+        var data = {
+            labels: labels,
+            datasets: [{
+                data: values,
+                //backgroundColor: dynamicColorsArray(values.length)
+                backgroundColor: colorsArray.splice(0, values.length)
+            }]
+        };
+        var ctx = document.getElementById("donut").getContext("2d");
+        var doughnutChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var value = data.datasets[0].data[tooltipItem.index];
+                            var label = data.labels[tooltipItem.index];
+                            return ' ' + label + ': ' + value + ' €';
+                        }
+                    }
+                }
+            }
+        });
+
+        $('.progress-bar.first').css('width', pctUsuario.toFixed(2) + '%').attr('aria-valuenow', pctUsuario).text(pctUsuario.toFixed(2) + '%');
+
+        $(".card").not('.cart').on({
+            mouseenter: function () {
+                if(!$(this).hasClass('active')){
+                    console.log($(this).find('#pct').text().replace(',', '.'));
+                    var pctPropuesta = parseFloat($(this).find('#pct').text().replace(',', '.'));
+                    console.info('% del usuario: ' + pctUsuario + ' % ||| % de la nueva propuesta: ' + pctPropuesta + ' %');
+                    console.log(typeof pctUsuario);
+                    console.log(typeof pctPropuesta);
+                    console.log(pctUsuario + pctPropuesta);
+                    if(pctUsuario + pctPropuesta > 100) {
+                        console.log('entra')
+                        /*$('.btn-spend').click(function(e) {
+                            e.preventDefault();
+                        });*/
+                        $('.additional-info').addClass('alert alert-danger').text('El gasto elegido supera el asociado al distrito.').fadeTo(2000, 500).slideUp(500, function(){
+                            $('.additional-info').slideUp(500);
+                        });
+                        return;
+                    };
+                    if(pctUsuario == 0.00){    
+                        $('.progress-bar.first').css('width', pctPropuesta + '%').attr('aria-valuenow', pctPropuesta).text(pctPropuesta + '%');
+                    } else {
+                        $('.progress-bar.second').css('width', pctPropuesta + '%').attr('aria-valuenow', pctPropuesta).text(pctPropuesta + '%'); 
+                    };
+                };
+            },
+            mouseleave: function () {
+                if(!$(this).hasClass('active')){
+                    var pctPropuesta = 0;
+                    if(pctUsuario == 0.00){    
+                        $('.progress-bar.first').css('width', pctPropuesta + '%').attr('aria-valuenow', pctPropuesta).text(pctPropuesta + '%');
+                    } else {
+                        $('.progress-bar.second').css('width', pctPropuesta + '%').attr('aria-valuenow', pctPropuesta).text(pctPropuesta + '%'); 
+                    }; 
+                }
+            }
+        });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

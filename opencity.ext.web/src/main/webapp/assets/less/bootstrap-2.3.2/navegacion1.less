@@ -1,0 +1,114 @@
+@import "variables.less";
+
+//TODO: Eliminar 
+#la_ciudad{background: @colorCiudad;}
+#o_gob{background:@colorOgob;}
+#el_ayto{background:@colorAyto;}
+#la_cultura{background: @colorCultura;}
+#la_gente{background: @colorGente;}
+#turismo{background: @colorTurismo;}
+
+.navegacion1{
+    padding: 2px 0 2px;
+    
+    .elem-principal{
+	    position:absolute;
+	    left: 0;
+		min-height: 1.55em;
+//		padding: 0em;
+//		margin: 0em;
+		margin-left: 0.2em;
+	}
+    
+    ul{
+    	list-style-type: none;
+	    margin:0;
+	    float:right;
+	    
+	    li{
+		    float:left;
+			min-height:1.55em !important;
+		}
+    }
+    
+    .elem-principal a, .elem a{
+	    color: @white;
+	    padding: 0 .5em 0;
+	    text-transform: uppercase;
+	    text-decoration: none;
+	    display: inline-block;
+		vertical-align: -2px;
+	}
+	
+	form{
+		margin:0;
+    	float:right;
+    	
+    	input.i-buscar{
+		 	min-height: 1.45em !important;
+		 	margin: 0 0.225em; 
+		    border-radius:0;
+		}
+		
+		input.btn-buscar{
+			min-height: 1.65em !important;
+			padding: 0 1em;
+			margin-right: .2em;
+		    background-color: red;
+		    color: white;
+		    border: 1px solid red;
+		    font-weight: bold;
+		    font-size: 11px;
+		}
+	}
+}
+
+// Portrait tablet to landscape and desktop
+@media (max-width: 979px) {
+	
+	.navegacion1 {
+		.remarcada-ogob a span{position:absolute;top:-1000px;}
+	    .remarcada-ogob a:before{content:'Gob. Abierto';visibility:visible;}
+	    .remarcada-ayto a span{position:absolute;top:-1000px;}
+	    .remarcada-ayto a:before{content:'Ayuntamiento';visibility:visible;}
+	    .remarcada-ciudad a span{position:absolute;top:-1000px;}
+	    .remarcada-ciudad a:before{content:'Ciudad';visibility:visible;}
+	    .remarcada-gente a span{position:absolute;top:-1000px;}
+	    .remarcada-gente a:before{content:'Gente';visibility:visible;}
+	    
+	    .elem, .elem-principal{
+       		font-size: .9em;
+    	}
+	}
+
+}
+
+// Portrait tablet and phones
+@media (max-width: 767px) { 
+	
+	.navegacion1 ul{
+		margin-top:1.8em;
+		float: none;
+	}
+	.navegacion1 .elem-principal, .navegacion1 ul li{
+		margin: 0;
+		width: 20%;
+		text-align: center;
+	}
+	.navegacion1 .elem-principal a, .navegacion1 .elem a{
+		padding: 0;
+	}
+
+}
+
+// Landscape phones and down
+@media (max-width: 480px) { 
+	
+	.navegacion1 .remarcada-ayto a:before{
+		content:'Ayto.';
+	}
+	.navegacion1 .remarcada-ogob a:before{
+		content:'G.Abierto';
+	}
+	input.i-buscar{width: 15em;}
+}

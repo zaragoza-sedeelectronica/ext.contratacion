@@ -1,0 +1,12 @@
+<h3 th:if="${titulo}" th:text="${titulo}"></h3>
+<div th:if="${#lists.isEmpty(listado)}" role="alert" class="alert alert-info">
+    No aparecen trámites disponibles
+</div>
+<ul class="list-tramites-servicios">
+    <li class="margin-b05em" th:if="${listado.size() != 0}" th:each="doc: ${listado}">
+        <a th:text="${doc.title}" th:href="'/sede/servicio/tramite/' + ${doc.id}"></a>
+        <br/><span th:if="${doc.plazoFin}" class="label label-default">
+            <th:block th:text="${#utils.tratarFechas(doc.plazoInicio, doc.plazoFin)}"></th:block>
+        </span>
+    </li>
+</ul>

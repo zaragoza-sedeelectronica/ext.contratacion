@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Mercados de Zaragoza" description="Mercados de la ciudad de Zaragoza" author="Ayuntamiento de Zaragoza" last-modified="Tue Jan 16 10:00:00 CET 2016" keywords="mercados, públicos, privados, ciudad, markets, public, private, city, Saragossa"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <style type="text/css">
+    @media (max-width: 768px) {
+        .listado-equipamiento>li {
+            width: 230px;
+        }
+        .thumbnail.overlay {
+            background-color: #FFF;
+        }
+    }
+    .thumbnail {
+        border: 0;
+        width: 94%;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+	
+	   <!--<div class="row">
+	    <div class="col-sm-12">
+		
+		 <div class="card">		
+		 
+		<h2><a href="/sede/portal/mercados/servicio/cultura/evento/188685">Mercado Medieval de las tres Culturas 2018 <img width="170px" src="/cont/vistas/portal/mercados//img/mercado_medieval_de_las_tres_.png" class="pull-right" alt=""/></a></h2>
+		<p>El Mercado se desarrollará a lo largo de todo el fin de semana en torno a la plaza del Pilar, plaza trasera de La Lonja, plaza de La Seo, plaza San Bruno, Pabostria, calle Palafox, puente de Piedra y Balcón de San Lázaro</p>
+		<p><a href="https://www.zaragoza.es/cont/paginas/actividades/documento/programa_mercado_medieval.pdf" class="pdf">Programa <span class="oculto">Documento en formato pdf</span></a></p>
+
+	     <h2 class="titulo-test margin-b05em">Aniversario Mercado Pza San Bruno</h2><div class="img-responsive pull-right"></div>	<h3>En busca del tesoro: 25 años del Mercado de San Bruno</h3>
+	   <p>
+
+Te proponemos una aventura matinal: descubrir los tesoros del Mercado de San Bruno.</p><p> Todos los domingos, detrás de La Seo, encontrarás muchas curiosidades y rarezas en un paraíso para coleccionistas, para amantes de las antigüedades o entusiastas de la alimentación tradicional aragonesa, entre otras cosas. Un mercado singular situado entre calles llenas de historia, en un entorno emblemático y monumental en el que, además, descubrirás bares y restaurantes donde tomar un aperitivo, descansar y coger fuerzas para continuar. Tal vez en ese instante ya hayas encontrado tu tesoro.</p>
+ 
+		</div></div></div>-->
+
+
+      
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2 class="titulo-test">Destacados</h2>
+                    <hr class="sm"/><a href="http://www.zaragoza.es/sede/servicio/cultura/evento/list?idPortal=9">
+<img src="/cont/vistas/portal/mercados/img/Mercados_navidad.png" alt="Construye la ciudad con el comercio de proximidad" class="img-responsive margin-b1em"/></a>
+               <p>   <span class="far fa-hand-point-right" aria-hidden="true"></span> 25.01.19 >> Reparto en <a href="/contenidos/mercado/barrios-reparto-febrero.xlsx"><strong>36 Mercados de Zaragoza</strong></a> de los siguientes materiales promocionales : </p>
+<ul>
+    <li>4000 bol&iacute;grafos</li>
+    <li>6000 Recetarios <em><a href="/contenidos/mercado/recetario-febrero.pdf" class="pdf">La Cuesta de Enero</a></em></li>
+</ul>
+ <!--
+ 
+  <ul class="row no-gutter list-unstyled nomargin">
+                    <li class="col-sm-6">
+                           
+                                <div class="thumbnail overlay row no-gutter margin-l1em">
+                                    <div class="col-xs-3 col-sm-12 col-md-12">
+                                        <img width="250" height="200" property="image" typeof="schema:image" alt="" src="/cont/vistas/portal/mercados/img/subv.jpg" class="img-responsive" />
+                                    </div>
+                                    <a href="/sede/servicio/tramite/30241" class="caption col-xs-6 col-sm-4 col-md-4">
+                                        <h3>Subvenciones 2018<br/>Resolución Definitiva</h3>   
+                                      
+                                    </a>
+                                </div>
+                             
+                        </li>
+						 
+						
+						 
+                      
+						
+						 <li class="col-sm-6">
+ 
+                                <div class="thumbnail overlay row no-gutter">
+                                    <div class="col-xs-3 col-sm-12 col-md-12">
+                                        <img width="250" height="200" property="image" typeof="schema:image" alt="" src="/cont/vistas/portal/mercados/img/mercado-80dias.gif" class="img-responsive" />
+                                    </div>
+                                    <a href="http://campamentoscientificos.es/la-vuelta-al-mercado-80-dias/" title="Se va abrir enlace externo" class="caption col-xs-6 col-sm-4 col-md-4">
+                                        <h3>La Vuelta al Mercado en 80 días </h3>
+										
+										 
+ 
+
+
+
+ 
+                                    </a>
+                                </div>
+                             
+                        </li>
+						
+						</ul> -->
+         </div>
+           
+                <!--/* 
+                <img alt="" src="/cont/vistas/portal/mercados/img/mercados_corazon.jpg" class="img-responsive"/>
+                <h3><a href="https://www.zaragoza.es/cont/paginas/noticias/mercados_presentacion2.pdf" class="pdf">Mercados con Corazón</a></h3>
+                */-->
+                
+           </div>
+            <!--/*<div class="col-md-4">*/-->
+                <!--/* <h2>Actividades</h2> */-->
+                <!--/* <hr class="sm"/> */-->
+                <!--/* <sede:calendario-agenda carpeta="/ciudad/actividades/calendario_Agenda"/> */-->
+               <!--/*  <sede:agenda titulo="Actividades" numero="30" programa="Programacion Cultural Semanal Rastro" fragment="fragmentos/cultura/evento/listado" />*/-->
+            <!--/* </div>*/-->
+             <div class="col-sm-6">
+       <div class=""><h2>Redes Sociales</h2>
+            <ul class="list-inline nomargin navbar-right text-center padding-t05em ">
+                        <li>
+                            <a href="https://twitter.com/mercadoszgz" itemprop="sameAs">
+                                <span aria-hidden="true" class="fab fa-2x fa-twitter-square text-color"></span>
+                                <span class="oculto">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://es-la.facebook.com/MercadosdeZaragoza/" itemprop="sameAs">
+                                <span aria-hidden="true" class="fab fa-2x fa-facebook-square text-color"></span>
+                                <span class="oculto">Facebook</span>
+                            </a>
+                        </li>
+                       
+                        <li>
+                            <a href="https://www.instagram.com/MercadosZgz" itemprop="sameAs">
+                                <span aria-hidden="true" class="fab fa-2x fa-instagram text-color"></span>
+                                <span class="oculto">Instagram</span>
+                            </a>
+                        </li>
+                    </ul>
+         
+ <div class="col-md-12">
+                <a data-height="400" class="twitter-timeline" data-lang="es" data-theme="light" data-link-color="#E81B16" href="https://twitter.com/mercadoszgz">Tweets by mercadoszgz</a>
+                <script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+      </div>      
+        </div>
+     <div class="row" >      
+       <div class="col-sm-12">
+                        <div class="card">
+                            <h2 class="titulo-test">Noticias</h2>
+                            <hr class="sm"/> 
+ 
+                      <sede:noticia listado="s" espacio="" usuario="" texto="" tema="Mercados y Consumo" numero="4" resumen="" fecha="" carpeta="/sede/portal/mercados/"></sede:noticia>
+                        </div>
+                </div>
+         
+</div> 
+   <div class="row">
+   <div class="col-sm-12">
+      
+	   <div class="row">
+	    <div class="col-sm-7">
+	     <div class="card">
+	     <h2 class="titulo-test margin-b05em">Antiguos mercados de pescado</h2>
+              <div class="row">          	   
+              
+		<div class=" col-xs-6"><a href="/sede/portal/mercados/mercado-pescados"><img alt="" src="/cont/vistas/portal/mercados/Fotos_modernas/mMercadodePescados013.jpg" height="200" /><br/>C. Cívico Delicias</a> </div>	   
+
+		 <div class=" col-xs-6"><a href="/sede/portal/mercados/teatro-mercado"><img alt="" src="/cont/vistas/portal/mercados/teatro/ANI9553p.JPG"/><br/>Teatro del mercado</a> </div>
+		
+		</div>
+		</div></div>
+		
+		
+		
+		
+		
+		
+        <div class="col-sm-5">
+        <div class="card">
+<h2 class="titulo-test margin-b05em"><a href="/sede/portal/mercados/servicio/noticia/226822">Nueva Marca para mercados</a></h2>
+		<div class="img-responsive"><img alt="" src="/cont/vistas/portal/mercados/img/logo.jpg"/></div>
+	   
+	    <div class="row">
+	       <div class="col-sm-3 col-xs-6 img-responsive"><img width="120" src="/cont/vistas/portal/mercados/img/LogoMercados.jpg" alt=""/></div>
+	        <div class="col-sm-3 col-xs-6 img-responsive"><img width="120" src="/cont/vistas/portal/mercados/img/LogoMercadoCentralLanuza.jpg" alt=""/></div>
+	       <div class="col-sm-3 col-xs-6 img-responsive"><img width="120" src="/cont/vistas/portal/mercados/img/LogoMercadoSVicentePaul.jpg" alt=""/></div>
+	       <div class="col-sm-3 col-xs-6 img-responsive"><img  width="120" src="/cont/vistas/portal/mercados/img/LogoMercadoValdespartera.jpg" alt=""/></div>
+	       </div>
+	    </div>
+	    </div>
+	 </div>
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+		  
+	 
+
+ <sede:aviso clase="col-xs-12 col-sm-4 col-md-3" portal="Mercados" imagen="si" resumen="si" nresultados="12"> </sede:aviso>
+             <hr/>
+          
+  </div>    
+		
+
+		
+		
+		 
+</div>
+   <h3 class="fase nomargin padding-a05em">  Vídeos de actividades</h3>
+           <sede:video nresultados="9" clase="col-xs-6 col-sm-3 col-md-3" lista="730"></sede:video> 
+      
+        <div class="card">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h2 class="titulo-test">Mercados</h2>
+                    <div class="caption ">
+   
+ </div>
+       
+      
+       </div>   <div class="col-sm-10">
+         <div role="alert" class="alert alert-info"><strong>Servicio Jurídico de Mercados: </strong>
+     <span class="tel"><span class="fa fa-phone"></span> <span property="vcard:Tel schema:telephone">976 724 740</span></span>
+     <span class="email"><span class="fa fa-at"></span> <a href="mailto:mercadosmunicipales@zaragoza.es" typeof="vcard:email" property="email">mercadosmunicipales@zaragoza.es</a></span>
+     </div>       </div>
+            </div>
+            <div id="mapa-leaflet" style="height: 30em"></div>
+
+            <div class="row">
+                <div class="col-md-push-4 col-md-8 clearfix">
+                    <p class="nomargin destacado text-right">
+                        <!-- <img title="Datos Abiertos" alt="" class="pull-right" src="/cont/paginas/risp/img/datosabiertos" width="50" height="50"/> -->
+                        Disponible en Datos Abiertos
+                    </p> 
+                    <ul class="list-inline pull-right">
+                        <li class="nopadding"><a href="https://www.zaragoza.es/sede/servicio/equipamiento/category/118.geojson">GeoJSON</a> | </li>
+                        <li class="nopadding"><a href="https://www.zaragoza.es/sede/servicio/equipamiento/category/118.json">JSON</a> | </li>
+                        <li class="nopadding"><a href="https://www.zaragoza.es/sede/servicio/equipamiento/category/118.xml">XML</a> | </li> 
+                        <li class="nopadding"><a href="https://www.zaragoza.es/sede/servicio/equipamiento/category/118.csv">CSV</a></li>
+                        <!--/*<li class="nopadding"><a href="https://www.zaragoza.es/sede/servicio/equipamiento/category/118.xls">XLS</a></li>*/-->
+                    </ul>
+                </div>
+                <div id="buscador" class="col-md-pull-8 col-md-4 col-xs-12 hidden">
+                    <select id="junta" name="junta" class="form-control" title="Buscar" ></select>
+                </div>
+            </div>
+
+            <hr class="sm"/>
+
+            <h3 class="nomargin margin-b05em">Públicos</h3>
+            <div class="publicos">
+                <div role="alert" class="alertJuntas alert alert-info hidden">No existen mercados para la junta especificada.</div>
+                <sede:equipamiento carpeta="/sede/portal/mercados/servicio/equipamiento/" fq="titularidad_smultiple:Municipal AND subtemas_smultiple:Mercados"/>
+            </div>
+
+            <h3 class="nomargin margin-b05em">Privados</h3>
+            <div class="privados">
+                <div role="alert" class="alert alert-info">Información obtenida del <a href="https://www.zaragoza.es/cont/paginas/noticias/estudiomercadosayto.pdf" class="pdf">Estudio de los Mercados de barrio <span class="oculto">documento en formato pdf</span></a> elaborado por MercaZaragoza (Febrero 2017)</div>
+                <div role="alert" class="alertJuntas alert alert-info hidden">No existen mercados para la junta especificada.</div>
+                <sede:equipamiento carpeta="/sede/portal/mercados/servicio/equipamiento/" fq="titularidad_smultiple:Privado AND subtemas_smultiple:Mercados"/>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/es.js"></script>
+
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $(".ampliar.collapse").collapse();
+        $(".masinfo").on('click', function() {
+            if ($(this).find('.fa-chevron-down').length > 0) {
+                $(this).find('.fa-chevron-down').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            } else {
+                $(this).find('.fa-chevron-up').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+            };
+        });
+    });
+
+    $('#buscador').removeClass('hidden');
+    $("#junta").select2({
+        ajax: {
+            url: 'https://www.zaragoza.es/sede/servicio/distrito',
+            dataType: 'json',
+            type: "GET",
+            quietMillis: 50,
+            data: function (term) {
+                return {
+                    fl : 'id,title',
+                    q: 'title==' + term.term + '*'
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.result, function (item) {
+                        return {
+                            text: item.title,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        },
+        minimumInputLength: 2,
+        placeholder: 'Encuentra los mercados de tu Junta Municipal',
+        allowClear: true,
+    });
+
+    $('#junta').on("select2:select", function(e) { 
+        var item = e.params.data;
+        console.log('select');
+        $('.btn-filtro').removeClass('hidden').find('.texto').html(item.title);
+
+        $(document).ready(function() {
+            $('.juntas').attr("hidden", true);
+            $('.juntas').each(function( index ) {
+                if ($( this ).text().indexOf(item.text) >= 0) {
+                    $( this ).attr("hidden",false);
+                }
+            });
+
+            //Mercados Públicos
+            var numPublicos = 0;
+            var numPublicosOcultos = 0;
+            $('.publicos .juntas').each(function( index ) {
+                numPublicos = numPublicos + 1;
+                if ($( this ).is(':hidden')) {
+                    numPublicosOcultos = numPublicosOcultos + 1;
+                }
+            });
+            if (numPublicos == numPublicosOcultos) {
+                $('.publicos .alertJuntas').removeClass('hidden');
+            }
+
+            //Mercados Privados
+            var numPrivados = 0;
+            var numPrivadosOcultos = 0;
+            $('.privados .juntas').each(function( index ) {
+                numPrivados = numPrivados + 1;
+                if ($( this ).is(':hidden')) {
+                    numPrivadosOcultos = numPrivadosOcultos + 1;
+                }
+            });
+            if (numPrivados == numPrivadosOcultos) {
+                $('.privados .alertJuntas').removeClass('hidden');
+            }
+        });
+    });
+    $('#junta').on("select2:unselect", function(e) { 
+        var data = e.params.data;
+        console.log('unselect');
+        $('#junta').typeahead('val', '');
+        $('.juntas').attr("hidden", false);
+        $('.alertJuntas').addClass("hidden");
+        $('.btn-filtro').addClass('hidden').find('.texto').empty();
+    });
+    /*]]>*/
+    </script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    $("li[typeOf]").each(function() {
+
+        var icon = '//www.zaragoza.es/contenidos/iconos/location.png';
+        var latitude = $(this).find("[property='latitude']").attr("content");
+        var longitude = $(this).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            var marker = L.marker([latitude, longitude], {
+                icon: L.icon({
+                    iconUrl: icon,
+                    iconSize: [22, 20],
+                    iconAnchor: [22, 20],
+                    popupAnchor: [-10, -20]
+                })
+            }).bindPopup($(this).html());
+            pois.push(marker);
+        };
+    });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, errorPosition);
+    var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    } else {
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    };
+
+    function showPosition(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        //var latitude = 41.652020560953645;
+        //var longitude = -0.9845429715135259;
+        if (latitude < 41.998914010914405 && latitude > 41.429966005785936 && longitude < -0.5080683157393229 && longitude > -1.443420883267586) {
+            var user = L.marker([latitude, longitude]);
+            pois.push(user);
+            var group = L.featureGroup(pois).addTo(map);
+            map.setView(new L.LatLng(latitude, longitude), 3);
+            //map.fitBounds(group.getBounds());
+
+            var locationArrayPublicos = $(".publicos ul li.geo");
+            locationArrayPublicos.sort(function(a, b) {
+                var latA = $(a).find("[property='latitude']").attr("content");
+                var latB = $(b).find("[property='latitude']").attr("content");
+                var longA = $(a).find("[property='longitude']").attr("content");
+                var longB = $(b).find("[property='longitude']").attr("content");
+                var dist = distance(latA, longA, latitude, longitude) - distance(latB, longB, latitude, longitude);
+                return dist;
+            });
+            var ulPublico = $(".publicos ul");
+            $(".publicos ul li").remove();
+            for (var i = locationArrayPublicos.length; i >= 0; i--) {
+                ulPublico.prepend(locationArrayPublicos[i]);
+            };
+
+            var locationArrayPrivados = $(".privados ul li.geo");
+            locationArrayPrivados.sort(function(a, b) {
+                var latA = $(a).find("[property='latitude']").attr("content");
+                var latB = $(b).find("[property='latitude']").attr("content");
+                var longA = $(a).find("[property='longitude']").attr("content");
+                var longB = $(b).find("[property='longitude']").attr("content");
+                var dist = distance(latA, longA, latitude, longitude) - distance(latB, longB, latitude, longitude);
+                return dist;
+            });
+            var ulPrivado = $(".privados ul");
+            $(".privados ul li").remove();
+            for (var i = locationArrayPrivados.length; i >= 0; i--) {
+                ulPrivado.prepend(locationArrayPrivados[i]);
+            };
+            
+
+        } else {
+           alert('Coordenadas no ubicadas en Zaragoza')
+            var group = L.featureGroup(pois).addTo(map);
+            map.fitBounds(group.getBounds());
+        };
+    };
+
+    function errorPosition(error) {
+        console.log("ERRORRRRRRR");
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    };
+
+    function distance(lat1, lon1, lat2, lon2) {
+        var p = 0.017453292519943295; // Math.PI / 180
+        var c = Math.cos;
+        var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+            c(lat1 * p) * c(lat2 * p) *
+            (1 - c((lon2 - lon1) * p)) / 2;
+        return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+    };
+    /*]]>*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="8 Marzo. Prensa" description="" author="" last-modified="Tue Dec 09 00:00:00 CET 2018" keywords="">
+    </sede:meta>
+<!--     <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+    <style>
+    .list-noticia a{
+        color: #202020;
+    }
+    .list-noticia li{
+        border-bottom: 1px solid #E6E6E6; /*fnd-gris-claro*/
+        margin-bottom: .5em;
+        padding-bottom: .5em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <img class="img-responsive full-width" src="//zaragoza.es/cont/vistas/portal/prensa/img/banner-8marzo.jpg" alt="" />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                 
+                    <hr class="sm" />
+                    <p> <strong>8 de marzo de 2018. </strong></p><p>Esta va a ser una fecha para marcar en la Historia con 
+mayúsculas. Desde hace casi un año, mujeres de todo el Estado trabajan de la 
+mano para sacar adelante una <strong>Huelga Feminista</strong>. Porque la precarización de las 
+mujeres no responde sólo al mundo laboral. Por eso, también en Zaragoza, saldrán 
+a la calle algunas de las reivindicaciones: <strong>laboral</strong>, porque nuestros contratos 
+son peores (temporales y a jornada parcial) y seguimos cobrando hasta un 25% 
+menos por un mismo trabajo; <strong>estudiantil</strong>, porque el ámbito educativo es espacio 
+de aprendizaje y construcción de roles; de <strong>consumo</strong>, porque nuestros cuerpos se 
+consideran objetos de compra y venta, porque somos explotadas para que otros/as 
+con más capacidad adquisitiva puedan consumir de forma irresponsable y porque 
+seguimos pagando una <em>tasa rosa</em>; y de <strong>cuidados</strong>, porque por nuestras manos 
+sigue pasando, casi en exclusiva, la tarea de reproducción y sostenibilidad de 
+la vida, perpetuando roles y, por tanto, la discriminación.
+</p><p>
+Este año, desde el servicio de Igualdad del Ayuntamiento de Zaragoza, queremos 
+dar visibilidad a estas realidades. Recoger testimonios de las precarizaciones 
+que atraviesan nuestras vidas y que se pondrán en manifiesto el 8M, pero también 
+queremos mostrar esos otros liderazgos que no encajan con los modos de hacer del 
+BBVAH (burgués blanco varón adulto heterosexual).</p><p><em><strong>
+
+¡Esperamos encontrarnos en alguno de los actos!</strong></em>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card clearfix">
+                    <h2 class="titulo-test color-destacados">Destacados</h2>
+                    <hr class="sm color-destacados" />
+                    <sede:aviso fragment="/fragmentos/cultura/list-aviso" portal="Prensa-banner" imagen="si" resumen="si" nresultados="12"> </sede:aviso>
+                </div>
+                
+                
+                <div class="card">
+                    <h2 class="nomargin color-agenda">Agenda</h2>
+                    <hr class="sm color-agenda" />
+                    <sede:agenda numero="8" programa="8 de marzo" fragment="fragmentos/cultura/evento/listado" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" title="Vídeo destacado de Cultura" width="560" height="315" src="https://www.youtube.com/embed/hukCxSz54tg" frameborder="0" allowfullscreen="allowfullscreen">
+                        Reproductor de vídeo no soportado. <a href="https://www.youtube.com/watch?v=hukCxSz54tg">Enlace al vídeo en youtube.com</a>
+                    </iframe>
+                </div> -->
+                
+               <div class="card">
+			   <h2 class="nomargin color-agenda">Pies para qué los quiero</h2>
+                    <hr class="sm color-agenda" />
+                    <div class="pull-right"><img src="/cont/vistas/portal/prensa/img/pies-quiero.png" alt="" /></div>
+                    <p>
+                     Festival de danza organizado, coreografiado y bailado por mujeres. Éstas 
+protagonizan la programación del Patronato Municipal de Artes Escénicas y de la 
+Imagen durante el mes de marzo. 
+                    </p>
+                    <p>
+                        <span class="far fa-hand-point-right" aria-hidden="true"></span>  
+                        <strong><a href="https://zaragoza.es/ciudad/actividades/listado_Agenda?programa=pies">Listado</a></strong> 
+                    </p>
+					<div class="linea"></div>
+					<h2 class="nomargin color-agenda">Supervivientes</h2>
+                    <hr class="sm color-agenda" />
+                    <div class="pull-right"><img src="/cont/vistas/portal/prensa/img/supervivientes.png" alt="" /></div>
+                    <p>
+                    La violencia machista como tema en el arte contemporáneo del Estado 
+español.<br/>
+Exposición colectiva comisariada por Elena Fraj y Esther Moren.
+                    </p>
+                    <p>
+                        <span class="far fa-hand-point-right" aria-hidden="true"></span>  
+                        <strong><a href="https://zaragoza.es/ciudad/actividades/detalle_Agenda?id=184130">Exposición</a></strong> 
+                    </p><div class="linea"></div>
+                    <h2 class="nomargin color-agenda">#Cartografiasdemujeres</h2>
+                    <hr class="sm color-agenda" />
+                    <div class="pull-right"><img src="/cont/paginas/img/avisos/pilo-gallizo.jpg" alt="" /></div>
+                    <p>
+                     Marco, fotógrafa y profesora de Plástica. Exposición que pone de relieve la presencia de la fotografía en la cultura visual del alumnado y su potente poder educativo, tanto en la dimensión plástica como en la emocional. Sala Rotonda.
+                    </p>
+                    <p>
+                        <span class="far fa-hand-point-right" aria-hidden="true"></span>  
+                        <strong><a href="https://zaragoza.es/ciudad/actividades/detalle_Agenda?id=184237">Exposición</a></strong> 
+                    </p>
+                    
+                </div>
+                <div class="card">
+                    <h2 class="nomargin color-noticias">Noticias</h2>
+                    <hr class="sm color-noticias" />
+                    <sede:noticia listado="s" espacio="" usuario="" texto="" tema="Cultura" numero="3" resumen="" fecha="" carpeta="/sede/portal/cultura/"></sede:noticia>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <h2 class="nomargin">Actividades en el mapa</h2>
+                    <hr class="sm"/>
+                    <div id="mensaje" role="alert" class="alert hide"></div>
+                    <div id="mapa-leaflet"></div>
+                </div>
+            </div>
+        </div> -->
+    </sede:content>
+<!--     <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('#jornadas .collapse').collapse();
+
+        var query = '/sede/servicio/cultura/evento/list.geojson?q=program.id==32&srsname=wgs84&rows=100';
+        var popup;
+        var markers;
+        $.getJSON(query, function(data) {
+            $('#mensaje').addClass('hide')
+            if (data.features.length > 0) {
+                var geojson = L.geoJson(data, {
+                    pointToLayer: function(feature, latlng) {
+                        var icono = data.properties.icon;
+                        var texto = '<a href="' + feature.properties.alt + '"><strong>' + feature.properties.title + '</strong></a><br/>' + feature.properties.subEvent[0].location.title;
+                        return L.marker(latlng, {
+                            icon: L.icon({
+                                iconUrl: icono,
+                                iconSize: [22, 20],
+                                iconAnchor: [22, 20],
+                                popupAnchor: [-10, -20]
+                            })
+                        }).bindPopup(texto);
+                    }
+                });
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+                map.fitBounds(geojson.getBounds());
+                map.addLayer(geojson);
+            } else {
+                $('#mensaje').html('La consulta no ha devuelto resultados');
+                $('#mensaje').removeClass('hide').addClass('alert-danger');
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+            };
+        });
+
+    });
+
+    /*]]>*/
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<h3 th:if="${titulo}" th:text="${titulo}"></h3>
+<ul class="list-unstyled">
+    <li th:each="doc: ${listado}" class="media card" vocab="http://schema.org/" th:with="uri=(${carpeta != null} ? ${carpeta} : ${#httpServletRequest.requestURI}) + 'servicio/noticia/' + ${doc.id}" typeof="NewsArticle" th:attr="resource=${uri}">
+        <div class="media-body">
+            <a th:href="${uri}"><h4 class="media-heading" property="name" th:text="${doc.title}"></h4></a>
+            <span class="label label-info" th:text="${#calendars.format(doc.creationDate,'dd MMMM yyyy')}" th:attr="property='dateCreated', content=${doc.creationDate}" />
+        	<p th:utext="${doc.summary}" />
+        </div>
+        <div class="media-right" th:if="${doc.image}">
+            <img property="image" class="media-object" th:src="'//www.zaragoza.es' + ${doc.image}" alt=""/>
+        </div>
+    </li>
+</ul>
+<a th:if="${verMas}" th:href="'/sede/servicio/noticia/list?fq=temas_smultiple%3A(&quot;'+${#utils.toUnicode(verMas)}+'&quot;)'" class="pull-right">Ver más noticias</a>

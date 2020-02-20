@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="José Antonio Hernández Romeo (IND). Alcalde de San Gregorio"
+                description="Realizados estudios de graduado escolar, se dedica como profesión a la metalurgia, siendo miembro y presidente del comité de Pikolín. Ha sido vocal y presidente de la A.V.V. Los Molinos, así como vocal de la Hermandad de San Gregorio. Fue asesor del Consejero de Medio Ambiente del Gobierno de Aragón durante siete años (hasta 2011). Desde el año 1992 es el representante del Alcalde en el barrio rural de San Gregorio."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Wed Oct 19 00:00:00 CET 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza,   José Antonio Hernández Romeo, San Gregorio   Barrios rurales"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>Alcalde de San Gregorio</small>
+                    <span>|</span>
+                    José Antonio Hernández Romeo
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <div class="pull-right">
+                        <img alt="José Antonio Hernández Romeo"
+                             src="/cont/paginas/organizacion/img/alcaldes-barrio/hernandez-romeo.jpg"/>
+                    </div>
+                    <p>
+                        Realizados estudios de graduado escolar, se dedica como profesión a la metalurgia, siendo
+                        miembro y presidente del comité de Pikolín. Ha sido vocal y presidente de la A.V.V. Los Molinos,
+                        así como vocal de la Hermandad de San Gregorio. Fue asesor del Consejero de Medio Ambiente del
+                        Gobierno de Aragón durante siete años (hasta 2011). Desde el año 1992 es el representante del
+                        Alcalde en el barrio rural de San Gregorio.
+                    </p>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+<meta charset="utf-8" />    
+    <sede:meta title="Presentación" description="portal dedicado a las políticas de Igualdad del Ayuntamiento de Zaragoza" author="Ayuntamiento de Zaragoza" keywords="igualdad, plan de igualdad, participación, gender gap, participation, Oficina de Transversalidad, Servicio de Igualdad, trámites y servicios, equipamientos, avisos destacados, Zaragoza, rocedures and services, equipment, prominent notices, Saragossa"></sede:meta>    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+ ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+
+
+
+    
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }
+
+    .offset-target:before {
+        content: ";
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    /* Elementos de listado con icono fa */
+    .section-content ul { list-style-type: none; }
+    .section-content li:before {    
+        font-family: 'Font Awesome\ 5 Free';
+        content: '\f0a9';
+        margin: 0 0.2em 0 -1.2em;
+    }
+    /* Oculta fecha premios en plazo */
+    .date {display: none;} 
+    </style>
+</head>
+
+<body>
+    <sede:content>
+	
+	  <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+            <li role="presentation" class="active"><a href="#plan" aria-controls="plan" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> Plan de Igualdad</a></li>
+            <li role="presentation"><a href="#comision" aria-controls="comision" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> Comisión de Igualdad</a></li>
+            <li role="presentation"><a href="#protocolo" aria-controls="protocolo" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Protocolo de Acoso</a></li>
+             <li role="presentation"><a href="#transversalidad" aria-controls="transversalidad" role="tab" data-toggle="tab"><span class="fa fa-cogs" aria-hidden="true"></span> Oficina de Transversalidad</a></li> 
+ 
+        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#plan" aria-expanded="false"> Plan de Igualdad </h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="plan">
+            <div class="well well-sm text-justify">
+			
+			
+			
+			
+	
+	
+	<h3>PLAN DE IGUALDAD PARA LAS EMPLEADAS Y EMPLEADOS DEL AYUNTAMIENTO DE ZARAGOZA (2016-2019) </h3> 
+	
+	
+	
+<p>
+(*) Este plan sigue vigente y está incorporado al Pacto Convenio de los empleados y empleadas del Ayuntamiento de Zaragoza 2016-2019, según su artículo 65.
+</p>
+       
+	   
+	   
+	   <div class="pull-right"><img src="/cont/vistas/portal/plan-igualdad/img/plan-municipal.jpg"/><br/>
+	   <a href="/contenidos/igualdad/triptico-igualdad.pdf" class="pdf">Folleto Plan de Igualdad</a>
+ </div>
+           
+
+<ol><li><a href="#introduccion">Introducción</a></li><li><a href="#mesa">Mesa para la igualdad</a></li><li><a href="#diagnostico">Diagnóstico de la plantilla municipal</a></li>
+<li><a href="#planayto">Plan de igualdad para empleadas y empleados del Ayuntamiento de Zaragoza</a> </li><ol><li><a href="#compromisos">Compromisos</a></li><li><a href="#aplicacion">Ámbito de aplicación</a></li><li><a href="#temporal">Ámbito temporal</a></li><li><a href="#objetivos">Objetivos Generales</a></li><li><a href="#metodologia">Metodología</a></li><li><a href="#areas">Áreas de trabajo</a></li><li><a href="#comisionigualdad">Comisión para la  Igualdad</a></li><li><a href="#seguimiento">Seguimiento y evaluación</a></li><li><a href="#medios">Medios para la puesta en marcha del Plan de Igualdad</a></li></ol>
+
+
+<li><a href="#protocoloacoso">Protocolo de actuación frente al acoso sexual y el acoso por razón de sexo</a></li>
+<li><a href="#disposicion">Disposición final</a></li><li><a href="#genero">Anexo I - Terminología de género</a></li><li><a href="#igualdad">Anexo II - Agente de igualdad. Definición y funciones básicas</a></li></ol><h3 id="introduccion">1. INTRODUCCIÓN</h3><p>El artículo 14 de la Constitución Española de 1978 recoge como derecho fundamental la igualdad de las personas ante la ley y prohíbe cualquier tipo de discriminación por razón de sexo, consagrando el art. 9.2 del texto constitucional la obligación por parte de los poderes públicos de garantizar que esa igualdad sea real y efectiva. No obstante, el reconocimiento constitucional del derecho a la igualdad y a la no discriminación por razón de sexo, las acciones ya emprendidas y los progresos alcanzados, no han sido suficientes para superar los obstáculos que dificultan su plena efectividad.</p><p>Es evidente que una parte sustancial de los obstáculos subsistentes para el logro de la igualdad plena de oportunidades, en la práctica, se derivan esencialmente de la concepción tradicional de la división de papeles entre el hombre y la mujer en la sociedad. Y aunque en los últimos años, se han observado cambios importantes en los modelos familiares y en las formas de convivencia, así como se constata que las relaciones hombre-mujer en el ámbito doméstico han evolucionado y se ha producido una paulatina flexibilización de los roles asignados a uno u otro sexo, también es cierto que la incorporación de las mujeres al mercado laboral se ha dado en unas  condiciones de desigualdad y discriminación que resulta necesaria una acción normativa dirigida a corregir estas situaciones.</p><p>En este contexto se elabora y aprueba la <strong>Ley Orgánica 3/2007</strong>, de 22 de marzo, para la Igualdad Efectiva de Mujeres y Hombres, partiendo del reconocimiento de que mujeres y hombres son iguales en dignidad humana, e iguales en derechos y deberes, estableciendo a lo largo de su articulado las medidas para combatir todas las manifestaciones aún subsistentes de discriminación por razón de sexo y promoviendo la igualdad efectiva entre mujeres y hombres, dedicando especial atención a las garantías de carácter procesal para reforzar la protección judicial del derecho a la igualdad y a la corrección de la desigualdad en el ámbito específico de las relaciones laborales.</p><p>El doble objetivo que persigue la Ley de Igualdad, por un lado, eliminar las diversas formas de discriminación hacia la mujer y, por otro, promover la igualdad real entre mujeres y hombres, se sitúa en el ámbito de la empresa dentro de la negociación colectiva, para que sean las partes las que acuerden su contenido. De este modo se dota a la negociación colectiva de una función socialmente relevante en la promoción de la igualdad entre hombres y mujeres, de manera que esta negociación está llamada a ser una vía de expansión y desarrollo del principio de igualdad.</p><p>La Ley de Igualdad, en su artículo 45.2, establece que las empresas de más de doscientos cincuenta trabajadores deberán elaborar un Plan de Igualdad que será objeto de negociación con la representación sindical, y en el artículo 46 define un Plan de Igualdad como <em>"un conjunto ordenado de medidas adoptadas después de realizar un diagnóstico de situación, tendente a alcanzar en la empresa la igualdad de trato entre mujeres y hombres y a eliminar la discriminación por razón de sexo"</em>, estableciendo los objetivos concretos a alcanzar, las estrategias y prácticas a adoptar para su consecución y los sistemas de seguimiento y evaluación de los objetivos fijados.</p><p>Por otro lado, la<strong> Ley Orgánica 7/2007</strong>, de 12 de abril, del Estatuto Básico del Empleado Público, en su Disposición Adicional Octava señala expresamente la obligación de las Administraciones Públicas a respetar la igualdad de trato y de oportunidades en el ámbito laboral y, con esta finalidad éstas deberán adoptar las medidas necesarias dirigidas a evitar cualquier tipo de discriminación laboral entre mujeres y hombres; debiendo <em>"elaborar y aplicar un Plan de Igualdad a desarrollar en el convenio colectivo o acuerdo de condiciones de trabajo del personal funcionario que se aplicable, en los términos previstos en el mismo"</em>.</p><p>En el caso del Ayuntamiento de Zaragoza, los artículos 68 y 76 del <strong>Pacto Convenio 2008- 2011</strong> recogieron el compromiso de constituir una Mesa Técnica para la Igualdad con el cometido de elaborar un Plan de Igualdad para el Ayuntamiento de Zaragoza y hacer un seguimiento de la puesta en marcha e impacto del mismo. Posteriormente, los artículos 64 y 74 del <strong>Pacto-Convenio 2012-2015</strong> determinan que <em>"la Corporación y los sindicatos firmantes se comprometen a elevar a la aprobación del órgano competente, en el mes de junio de 2012, el Plan de Igualdad del Ayuntamiento de Zaragoza. Las medidas recogidas en el mismo se incorporarán al texto del Pacto-Convenio y se llevará a cabo un seguimiento y evaluación de implantación de las mismas, en los términos que se establezca en el Plan de Igualdad aprobado"</em>.</p><p>De este modo, una vez elaborado el Informe de Diagnóstico Final de la plantilla municipal, presentadas las propuestas de acciones para el desarrollo del Plan de Igualdad, por la representación sindical, así como finalizadas las sesiones de trabajo y negociación de la Mesa Técnica para la Igualdad, se presenta para su aprobación un conjunto de medidas dirigidas a las empleadas y empleados del Ayuntamiento de Zaragoza con el firme propósito no sólo de alcanzar en el Ayuntamiento como empresa la igualdad de trato y de oportunidades entre mujeres y hombres sino de contribuir en nuestra ciudad a la desaparición de la discriminación por razón de sexo.</p><h3 id="mesa">2. MESA PARA LA IGUALDAD</h3><p>Con fecha 9 de marzo de 2009 se constituyó la Mesa para la Igualdad prevista en los artículos 68 y 76 del Pacto-Convenio 2008-2011, teniendo por objetivo la elaboración de un Plan de Igualdad que introdujera la perspectiva de género en todas las actuaciones del Ayuntamiento de Zaragoza.</p><p>La Mesa para la Igualdad ha estado integrada, desde su constitución, por personas representantes de las distintas áreas municipales y dos personas de cada uno de los sindicatos con representación en el Ayuntamiento.</p><p>En dicha Mesa se fijó:</p><ul><li>El compromiso del Ayuntamiento de Zaragoza en el establecimiento y desarrollo de políticas que integren la igualdad de trato y oportunidades entre mujeres y hombres, así como el impulso y fomento de medidas para conseguir la igualdad real en el seno de la organización.</li><li>La realización de unas jornadas de formación en igualdad de oportunidades para las personas que componían esta Mesa.    <ul><li>La asistencia técnica especializada en igualdad.</li><li>Garantizar la información continua sobre el proceso, a través del Portal Corporativo.</li></ul>    </li><li>El método de trabajo a seguir: elaboración del diagnóstico, presentación y debate de propuestas y aprobación.</li></ul><p>Tal y como se recoge en los artículos 64 y 74 del Pacto-Convenio 2012-2015, la Mesa para la Igualdad ha terminado su cometido en el mes de marzo de 2013, con la elaboración de una propuesta de Plan de Igualdad para las empleadas y empleados del Ayuntamiento de Zaragoza para su aprobación por el órgano competente y su posterior incorporación al texto del Pacto-Convenio en vigor.</p><h3 id="diagnostico">3. DIAGNÓSTICO DE LA PLANTILLA MUNICIPAL</h3><p>Como se ha señalado anteriormente, el artículo 46 de la Ley Orgánica 3/2007, de 22 de marzo, indica que para poder adoptar las medidas que sean necesarias para corregir posibles situaciones de discriminación y/o desigualdad es preciso, <em>"realizar un informe de situación"</em> previo, es decir, un diagnóstico de la plantilla que servirá para detectar y valorar en qué aspectos se observan carencias en la empresa en relación a la igualdad entre mujeres y hombres.</p><p>En el Ayuntamiento de Zaragoza, teniendo en cuenta que los trabajos para este diagnóstico comenzaron en el primer semestre de 2009, la Mesa para la Igualdad decidió analizar la información de un año completo, tomando como referencia el año 2008, y, además, acordó utilizar como punto de partida las recomendaciones de análisis de datos, tanto cuantitativos como cualitativos, incluidas en el <em>Manual para elaborar un Plan de Igualdad en la Empresa</em>, de la Secretaría General de Políticas de Igualdad y el Ministerio de Trabajo y Asuntos Sociales.</p><p>Tal y como indicaba dicho Manual, se trató de estudiar desde una perspectiva de género, las características de la empresa: Ayuntamiento de Zaragoza y su estructura organizativa, las características de la plantilla, el acceso y el desarrollo de la carrera profesional, la formación, promoción, las condiciones de trabajo y las remuneraciones, entre otros. No obstante, fue necesario adaptar las recomendaciones de este Manual a la realidad de la plantilla del Ayuntamiento y de la función pública, a través de diversas reuniones y conversaciones entre el Servicio de Análisis y Estudios de los Recursos, el Servicio de Relaciones Laborales y el Servicio de Innovación y Desarrollo del Ayuntamiento, responsable del mantenimiento y gestión de la herramienta informática que gestiona los datos de la plantilla.</p><p>Se decidió realizar cuatro grandes actuaciones:</p><ul><li>Obtención de información sobre aspectos cuantitativos del Ayuntamiento, la representación sindical y la plantilla.</li><li>Obtención de información sobre aspectos cualitativos en relación con las actuaciones del Ayuntamiento en distintas materias de gestión interna (cultura de la organización, formación, promoción, conciliación, etc.).</li><li>Realización de cuestionarios a todo el personal municipal sobre cuestiones relativas a la igualdad efectiva entre hombres y mujeres en el entorno laboral.</li><li>Realización de un cuestionario a la representación sindical.</li></ul><p>Dada la complejidad de la plantilla municipal: más de cinco mil empleados y empleadas, el elevado número de perfiles profesionales y la organización por áreas que ha sufrido distintos cambios; los trabajos de análisis de datos y formulación de conclusiones duraron varios meses, hasta que el informe de Diagnóstico Final se dio por finalizado y aprobado en la reunión de la Mesa para la Igualdad de fecha 11 de mayo de 2010.</p><p>Los ámbitos temáticos definidos en dicho informe son:</p><ul><li>I. Plantilla, Relación de Puestos de Trabajo, Acceso y Promoción: colectivos masculinizados y feminizados.    <ol><li>Distribución de la plantilla por sexo.</li><li>Distribución de la plantilla por colectivos de actividad, grupos profesionales, puestos de trabajo y áreas de gestión.</li><li>Distribución de la plantilla por antigüedad. Acceso.</li><li>Distribución de la plantilla por edades.</li><li>Distribución de la plantilla por relaciones jurídicas. Fijeza y temporalidad en el empleo.</li><li>Promoción.</li></ol>    </li><li>II. Retribuciones</li><li>III. Formación.</li><li>IV. Conciliación de la vida personal, laboral y familiar.    <ol><li>Movimientos de personal: Altas.</li><li>Movimientos de personal: Bajas (definitivas y temporales)</li></ol>    </li><li>V. Información sobre Acoso Sexual y Riesgo Laboral.</li><li>VI. Cultura de la Organización: Comunicación, Sensibilización y Participación.</li></ul><p>Desde la aprobación del Informe de Diagnóstico Final, previo al Plan de Igualdad, el documento íntegro, con todos los datos obtenidos y las conclusiones finales, se encuentra en el Portal Corporativo (Intranet) para que las empleadas y empleados municipales puedan consultarlo.</p><p>La Mesa para la Igualdad, tomando como punto de partida las conclusiones derivadas del análisis de los datos obtenidos, ha formulado a continuación, los objetivos específicos de cada una de las áreas de trabajo y las acciones concretas para conseguirlos, que son las que finalmente han determinado el Plan de Igualdad para las empleadas y empleados del Ayuntamiento de Zaragoza.</p><h3 id="planayto">4.  PLAN DE IGUALDAD PARA EMPLEADAS Y EMPLEADOS DEL AYUNTAMIENTO DE ZARAGOZA</h3><h3 id="compromisos">4.1 Compromisos</h3><p>El presente Plan de Igualdad ha sido elaborado por la Mesa para la Igualdad creada por el Ayuntamiento de Zaragoza y compuesta por éste y la representación sindical, y ratificado en un acuerdo entre ambas partes para elevarlo a la aprobación del órgano competente, para su incorporación en el Pacto-Convenio 2012-2015, todo ello de conformidad con lo dispuesto en la Ley Orgánica 3/2007 de 22 de Marzo; teniendo como compromiso principal garantizar la igualdad real y efectiva de oportunidades entre mujeres y hombres en el seno del Ayuntamiento de Zaragoza y evitar cualquier tipo de discriminación por razón de sexo.</p><p>En orden a asegurar la aplicación efectiva del principio de igualdad y la ausencia de discriminación entre mujeres y hombres, las partes negociadoras se comprometen, en el ámbito de sus competencias, a poner en marcha las medidas y acciones acordadas en este Plan de Igualdad y asumen como propias las definiciones recogidas en la Ley Orgánica 3/2007, de 22 de Marzo, y cualquier otra norma que sobre esta materia pudiera desarrollarse.</p><h3 id="aplicacion">4.2 ámbito de aplicación</h3><p>Los acuerdos contenidos en el Plan de Igualdad serán de aplicación directa a todo el personal funcionario y laboral del Ayuntamiento de Zaragoza; así como al personal de los organismos autónomos municipales (patronatos y sociedades) dando traslado a las empresas contratadas por el Ayuntamiento de Zaragoza, a los efectos de su conocimiento y aplicación si procede.</p><h3 id="temporal">4.3 ámbito temporal</h3><p>La duración de este Plan de Igualdad se extenderá desde su aprobación por el órgano competente hasta el 31 de diciembre de 2015, debiendo establecerse, por parte de la Comisión para la Igualdad, un calendario de actuaciones anuales con su correspondiente seguimiento y evaluación de ejecución de las mismas.</p><h3 id="objetivos">4.4 Objetivos Generales</h3><ul><li>Conseguir una representación equilibrada de mujeres y hombres en el ámbito del Ayuntamiento de Zaragoza, en todos los grupos profesionales.</li><li>Promover procesos de selección y promoción en igualdad que eviten la segregación vertical y horizontal y la utilización del lenguaje sexista.</li><li>Promover y mejorar las posibilidades de acceso de la mujer a puestos de responsabilidad, contribuyendo a reducir desigualdades y desequilibrios que pudieran darse dentro del seno del Ayuntamiento.</li><li>Establecer acciones específicas para la selección y promoción de mujeres y hombres en plazas y puestos en los que están subrepresentados.</li><li>Informar de manera específica a las mujeres de los cursos de formación para puestos que tradicionalmente hayan estado ocupados por hombres.</li><li>Realizar acciones formativas y de sensibilización sobre igualdad de trato y oportunidades.</li><li>Conseguir un grado de corresponsabilidad más equilibrado entre mujeres y hombres en la utilización de las medidas de conciliación de la vida personal, familiar y laboral, mediante campañas de sensibilización y difusión de los permisos y excedencias legales existentes y de las mejoras establecidas en el Ayuntamiento de Zaragoza y las que se puedan establecer en este Plan de Igualdad.</li><li>Integrar la perspectiva de género en todas las esferas de actuación del Ayuntamiento.</li><li>Promover medidas que corrijan las causas que ocasionan la discriminación indirecta en las retribuciones de las empleadas y empleados municipales.</li><li>Integrar, en los programas de salud laboral, las distintas necesidades de mujeres y hombres y las medidas necesarias para abordarlas adecuadamente.</li><li>Promover condiciones de trabajo que eviten el acoso sexual y el acoso por razón de sexo y arbitrar procedimientos específicos para su prevención y para dar cauce a las denuncias o reclamaciones que puedan formular quienes hayan sido objeto del mismo.</li></ul><h3 id="metodologia">4.5  Metodología</h3><p>Es necesaria la utilización de una metodología de carácter colectivo-integral, ya que el Plan de Igualdad del Ayuntamiento de Zaragoza pretende incidir positivamente no sólo en la situación de las mujeres sino en toda la  plantilla municipal.</p><p>Las medidas acordadas tendrán que aplicarse de manera transversal, puesto que han de implicar a todas las áreas de gestión de la organización municipal.</p><p>El Plan de Igualdad será dinámico y de desarrollo progresivo, pudiendo estar sometido a cambios constantes en función de los resultados obtenidos y de las necesidades que pudieran presentarse, por ello otra de las características será su flexibilidad, debiendo adaptarse a las diferentes situaciones que se produzcan como resultado de la puesta en marcha de las acciones acordadas.</p><p>El objetivo final,  que es acabar con las posibles discriminaciones y lograr una igualdad real, se conseguirá por el cumplimiento de objetivos sistemáticos, desarrollados temporalmente hasta conseguir la igualdad efectiva entre las empleadas y los empleados municipales.</p><h3 id="areas">4.6 Áreas de trabajo</h3><p>Para poder alcanzar los objetivos previstos hemos considerado oportuno trabajar sobre las siguientes áreas dentro de la organización del Ayuntamiento:</p><p><strong>4.6.1 ÁREA DE TRABAJO I: ACCESO, FORMACIÓN, PROMOCIÓN PROFESIONAL Y RETRIBUCIONES</strong></p><p><strong>4.6.1.1 Plantilla y Relación de puestos de Trabajo </strong></p><table summary="4.6.1.1 Plantilla y Relación de puestos de Trabajo"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>REVISAR LA DENOMINACIÓN DE LAS PLAZAS DE LA PLANTILLA Y DE LOS PUESTOS DE LA R.P.T. UTILIZANDO UN LENGUAJE NO SEXISTA</td><td>            <p>1. Empleo de un lenguaje neutro o en femenino/masculino en la denominación de las plazas y los puestos de trabajo de la plantilla municipal y en los requisitos y titulaciones necesarias.</p>            <p>2. Uso de formas neutras o en femenino/masculino en el lenguaje y los conceptos que se empleen para describir las funciones de los puestos de trabajo, evitando también los estereotipos y/o prejuicios sexistas.</p>            </td></tr></tbody></table><p><strong>4.6.1.2 Acceso </strong></p><table summary="4.6.1.2 Acceso"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>UTILIZAR LA PERSPECTIVA DE GÁNERO EN LAS OFERTAS DE EMPLEO Y LAS PRUEBAS SELECTIVAS</td><td>            <p>1. Con la aprobación de la oferta de empleo, en la que se relacionan las plazas, titulación requerida y forma de acceso al Ayuntamiento de Zaragoza, se acompañará un estudio de género de la misma.</p>            <p>2. En las bases de los procesos de selección se incluirán las funciones de la plaza convocada adecuando su denominación y descripción a un uso no sexista o estereotipado del lenguaje.</p>            <p>3. Las bases serán informadas por la Comisión Técnica de Igualdad revisando el lenguaje utilizado y proponiendo medidas de acción positiva en las mismas, si procede.</p>            <p>4. Todos los temarios sobre los que se desarrollan las pruebas selectivas deberán contener uno o dos temas, según  el grupo de la plaza objeto de la convocatoria (1 tema para: A.P., C2 y C1; y 2 temas para: A2 y A1), relativos a la normativa vigente en materia de igualdad de género.</p>            <p>5. Al finalizar los procesos selectivos, se analizarán los resultados desagregados por sexo para detectar cualquier indicio que apunte a una discriminación indirecta o impacto adverso, aportando medidas para su estimación en futuros procesos.</p>            </td></tr><tr><td>EVITAR LA MASCULINIZACIÓN Y FEMINIZACIÓN DE PLAZAS Y PUESTOS</td><td>            <p>1. En las bases de todas las convocatorias de procesos selectivos que realice el Ayuntamiento se incluirá un párrafo que señale si existe infrarrepresentación de personas de alguno de los sexos, incluyendo el objetivo del Plan de Igualdad de evitar esta situación.</p>            <p>2. Dar mayor publicidad, a través de la Web municipal y del Portal Corporativo, de las convocatorias de plazas de Policía Local y Bomberos, incidiendo en las posibilidades de acceso a las mismas de las mujeres.</p>            <p>3. Revisión de puntuaciones, baremos y marcas en aquellas pruebas de selección que dificulten el acceso de mujeres, estableciendo acciones positivas que favorezcan su incorporación.</p>            </td></tr><tr><td>FOMENTAR LA PARIDAD EN LOS ORGANOS DE SELECCIÓN</td><td>1. En la composición de los tribunales y de las comisiones de valoración para el acceso al empleo público se tendera al criterio de paridad entre ambos sexos.</td></tr><tr><td>GARANTIZAR LA IGUALDAD DE OPORTUNIDADES EN LOS PROCESOS DE ACCESO</td><td>            <p>1. Con carácter previo a la celebración del primer ejercicio se reunirá al Tribunal y/o Comisión de Valoración con algún miembro de la Comisión de Igualdad al efecto de celebrar una sesión específica en formación de género.</p>            <p>2. Los órganos de selección velarán por el cumplimiento del principio de igualdad y no discriminación.</p>            </td></tr></tbody></table><p><strong>4.6.1.3 Formación       </strong></p><table summary="4.6.1.3 Formación"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>FOMENTAR LA PARTICIPACIÓN DE MUJERES Y HOMBRES EN PROCESOS FORMATIVOS Y FAVORECER SU DESARROLLO PROFESIONAL</td><td>            <p>1. Elaboración de un estudio de las necesidades formativas de las mujeres en el Ayuntamiento de Zaragoza.</p>            <p>2. Incluir en el Plan de Formación la introducción de cuotas de participación femenina o masculina  de hasta el 40 % en cursos de formación voluntaria en aquellos puestos o sectores en que exista subrepresentación masculina o femenina.</p>            <p>3. Valoración como mérito de la formación en materia de igualdad de género, tanto en los procesos de promoción interna como en los de provisión de puestos.</p>            </td></tr><tr><td>INTRODUCIR MECANISMOS QUE FACILITEN LA CONCILIACIÓN DE LA VIDA PERSONAL, LABORAL Y FAMILIAR CON LA FORMACIÓN</td><td>            <p>1. Ampliación de los cursos de formación on-line en el Plan de Formación.</p>            <p>2. Acceso preferente, durante un año, a los cursos de formación al personal municipal que se incorpora al puesto de trabajo después de permisos o excedencias relacionados con la conciliación de la vida personal, laboral y familiar.</p>            <p>3. Envío de información periódica, a través de correo electrónico o cualquier otro medio, de la convocatoria de los cursos de formación municipales para el personal que se encuentra de permiso o excedencia relacionado con la conciliación de la vida personal, laboral y familiar.</p>            </td></tr><tr><td>INCLUIR CURSOS SOBRE GÁNERO E IGUALDAD DE OPORTUNIDADES EN LA FORMACIÓN DEL AYUNTAMIENTO</td><td>            <p>1. Inclusión en el Plan de Formación Municipal, de cursos genéricos sobre igualdad, perspectiva de género y utilización de lenguaje no sexista, con carácter de reciclaje, para toda la plantilla municipal, con sucesivas ediciones.</p>            <p>2. Inclusión en el Plan de Formación Municipal de cursos específicos sobre: Corresponsabilidad doméstica y familiar, Coeducación, Salud y Género, con carácter voluntario, para toda la plantilla municipal, con sucesivas ediciones.</p>            <p>3. Utilización de lenguaje no sexista en todos los cursos que se oferten.</p>            </td></tr></tbody></table><p><strong>4.6.1.4 Promoción Profesional y Retribuciones</strong></p><table summary="4.6.1.4 Promoción Profesional y Retribuciones"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>GARANTIZAR LA IGUALDAD EN LOS PROCESOS DE PROMOCIÓN</td><td>            <p>1. Realización por la Comisión de Igualdad de un estudio comparado de los factores que inciden en la carrera profesional de las empleadas y empleados municipales con el fin de adoptar medidas efectivas para evitar las desigualdades detectadas.</p>            <p>2. Efectuar un estudio para la revisión del valor real de la antigüedad en los procesos de promoción y provisión para evitar la discriminación indirecta sobre las mujeres para su posterior incorporación al Pacto-Convenio.</p>            <p>3. Valoración, en todos los casos (para la subida de nivel y la valoración de méritos de los concursos), de los cursos en materia de igualdad, en las mismas condiciones que el resto de cursos de formación (ya sean impartidos o recibidos).</p>            </td></tr><tr><td>EQUILIBRAR LA PRESENCIA DE MUJERES Y HOMBRES EN LOS DISTINTOS GRUPOS Y NIVELES</td><td>            <p>1. Elaboración de procesos de promoción interna basados en los principios de mérito y capacidad, para equilibrar la presencia de mujeres y hombres en los puestos de responsabilidad y toma de decisiones.</p>            <p>2. Fomento de la participación, a través del Portal Corporativo, de los empleados y empleadas municipales en las convocatorias de promoción para las plazas y puestos en los que se encuentre subrepresentado su sexo.</p>            </td></tr><tr><td>CORREGIR LAS DESIGUALDADES RETRIBUTIVAS ENTRE LOS EMPLEADOS Y EMPLEADAS MUNICIPALES</td><td>1. Realización de un análisis comparativo de retribuciones por sexo, teniendo en cuenta todos los componentes variables que percibe el personal municipal (productividades, horas extraordinarias, dietas, gratificaciones, premios, etc.).</td></tr><tr><td>FOMENTAR LA PARIDAD EN LOS ORGANOS COLEGIADOS</td><td>1. En la composición de los tribunales y de las comisiones de valoración para la promoción interna y los procesos de provisión de puestos se tenderá al criterio de paridad entre ambos sexos.</td></tr></tbody></table><p><strong>4.6.2 ÁREA DE TRABAJO II: CONCILIACIÓIN DE LA VIDA PERSONAL, LABORAL Y FAMILIAR. ACOSO SEXUAL Y ACOSO POR RAZÓN DE SEXO</strong></p><p><strong>4.6.2.1 Conciliación de la vida personal, laboral y familiar       </strong></p><table summary="4.6.2.1 Conciliación de la vida personal, laboral y familiar"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>PROPICIAR EL USO DE LOS DERECHOS DE CONCILIACIÓN EXISTENTES</td><td>            <p>1. Difusión, entre toda la plantilla, de las medidas de conciliación de la vida laboral, familiar y personal  establecidas en el Pacto-Convenio vigente.</p>            <p>2. Difusión de los datos estadísticos anuales, desagregados por sexo, sobre la utilización de las medidas de conciliación.</p>            <p>3. Convocatoria de un concurso de ideas, entre toda la plantilla, para mejorar con sugerencias la utilización de las medidas de conciliación de la vida personal, laboral y familiar.</p>            </td></tr><tr><td>CONCIENCIAR A LA PLANTILLA SOBRE LA  IMPORTANCIA DE    COMPARTIR LA RESPONSABILIDAD FAMILIAR Y DOMÁSTICA</td><td>            <p>1. Difusión y sensibilización, a través del Portal Corporativo y de mensajes en las nóminas, sobre el valor y la importancia de la corresponsabilidad doméstica y familiar, dirigida especialmente a los empleados municipales.</p>            <p>2. Creación de un grupo de reflexión, a través del Portal Corporativo, sobre la nueva masculinidad y las ventajas de la corresponsabilidad.</p>            <p>3. Utilización de referentes de hombres corresponsables en el cuidado, en la difusión de las medidas de conciliación.</p>            <p>4. Conceder el permiso de maternidad y lactancia a los hombres cuando el otro progenitor no trabaje.</p>            </td></tr></tbody></table><p><strong> 4.6.2.2 Acoso sexual y acoso por razón de sexo</strong></p><table summary="4.6.2.2 Acoso sexual y acoso por razón de sexo"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>DESARROLLAR E IMPULSAR LA PREVENCIÓN DEL ACOSO SEXUAL Y EL ACOSO POR RAZÓN DE SEXO DENTRO DEL AYUNTAMIENTO</td><td>            <p>1. Desarrollo de campañas de sensibilización, a través de la Web municipal y del Portal Corporativo, dirigidas a la plantilla municipal, al personal de los organismos autónomos y de sociedades municipales, para la prevención del acoso sexual y acoso por razón de sexo.</p>            <p>2. Elaboración de códigos de buenas prácticas para prevenir el acoso sexual y el acoso por razón de sexo.</p>            <p>3. Desarrollo de acciones formativas dirigidas a corregir comportamientos y actitudes sexistas susceptibles de generar un ambiente proclive a las situaciones de acoso.</p>            </td></tr><tr><td>ELABORAR, APROBAR Y DIFUNDIR UN PROTOCOLO DE ACTUACIÓN FRENTE AL ACOSO SEXUAL Y EL ACOSO POR RAZÓN DE SEXO</td><td>            <p>1. Elaboración y aprobación de un Protocolo de actuación frente al acoso sexual y al acoso por razón de sexo.</p>            <p>2. Desarrollo de un sistema de recogida y gestión confidencial de datos que permita valorar la incidencia y carácter de los supuestos de acoso en la plantilla.</p>            <p>3. Difusión sobre el procedimiento a seguir y funcionamiento del protocolo en el caso de acoso sexual y acoso por razón de sexo.</p>            </td></tr></tbody></table><p><strong> 4.6.2.3 Prevención, Salud y Seguridad en el Trabajo      </strong></p><table summary="4.6.2.3 Prevención, Salud y Seguridad en el Trabajo"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>INCLUIR LA PERSPECTIVA DE GÁNERO EN EL ÁMBITO DE LA SALUD LABORAL Y LA PREVENCIÓN DE RIESGOS LABORALES</td><td>            <p>1. Desarrollo de un sistema de recogida de datos que permita valorar de forma desagregada por sexo todos los aspectos relativos a la prevención y salud laboral, en el ámbito municipal.</p>            <p>2. Estudio específico (a través de encuestas) sobre las condiciones en las que se desarrolla el trabajo doméstico, la doble jornada y la dedicación al cuidado de otras personas, para conocer su incidencia sobre la salud del personal municipal.</p>            <p>3. Realización y aprobación de un nuevo Protocolo sobre las condiciones de trabajo de la mujer embarazada.</p>            <p>4. Formación para el personal sanitario del Servicio de Prevención y Salud Laboral sobre "Salud y Género", para el desarrollo de acciones preventivas.</p>            <p>5. Información en la revisión médica de empresa, sobre la necesidad de realizar exámenes preventivos específicos en las mujeres y los hombres.</p>            <p>6. Incorporación de señalética con imágenes tanto de hombres como de mujeres en las instalaciones municipales de nueva creación.</p>            <p>7. Inclusión, en los planes de prevención de los centros de trabajo, de los lugares destinados a empleadas y empleados municipales, para su adecuación a la normativa vigente.</p>            </td></tr></tbody></table><p><strong>4.6.3 ÁREA DE TRABAJO III: CULTURA DE LA ORGANIZACIÓN: COMUNICACIÓN, SENSIBILIZACIÓN Y PARTICIPACIÓN</strong></p><p><strong> 4.6.3.1 Creación de la figura del Agente de la Igualdad      </strong></p><table summary="4.6.3.1 Creación de la figura del Agente de la Igualdad"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>CREAR LA FIGURA DE AGENTE DE IGUALDAD</td><td>1. Creación de la figura de "Agente de Igualdad" para personas del grupo A2, y con la titulación académica requerida por la normativa vigente. Con la definición y funciones incluidas en el Anexo II de este Plan.</td></tr></tbody></table><p><strong>4.6.3.2 Sistema Estadístico</strong></p><table summary="4.6.3.2 Sistema Estadístico"><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>MEJORAR LA GESTIÓN DE LA INFORMACIÓN DESAGREGÁNDOLA POR SEXO</td><td>            <p>1. Inclusión sistemática de la variable de sexo en las memorias, estadísticas, encuestas, estudios  o cualquier soporte de recogida de datos, en todas las áreas del Ayuntamiento.</p>            <p>2. Introducción de nuevos indicadores que permitan conocer los roles, valores, condiciones, situaciones, necesidades y aspiraciones profesionales de hombres y mujeres de la plantilla municipal.</p>            <p>3. Introducción de indicadores que permitan conocer variables cuya concurrencia genera situaciones de discriminación.</p>            </td></tr></tbody></table><p><strong>  4.6.3.3 Comunicación, Sensibilización y Participación </strong></p><table summary="4.6.3.3 Comunicación, Sensibilización y Participación "><tbody><tr><th>OBJETIVOS</th><th>ACCIONES</th></tr><tr><td>INTRODUCIR LA PERSPECTIVA DE GÁNERO EN LA WEB MUNICIPAL</td><td>            <p>1. Apertura de un apartado específico de "Políticas de Igualdad". En el que al menos aparezcan:</p>            <ul><li>Plan de Igualdad de la Ciudad</li><li>Plan de Igualdad de las empleadas y empleados municipales</li><li>Información orientada a la promoción de la igualdad entre mujeres y hombres.</li><li>Enlaces con organismos de igualdad.</li></ul>            <p>2. Utilización de la perspectiva de género en el diseño y contenido, de la página Web municipal. Con especial atención al uso de un lenguaje y de unas imágenes no sexistas.</p>            </td></tr><tr><td>INTRODUCIR LA PERSPECTIVA DE GÁNERO EN EL PORTAL CORPORATIVO (Intranet municipal)</td><td>            <p>1. Creación de un apartado específico sobre "Políticas de Igualdad", en el Portal Corporativo, en el que al menos se incluya:</p>            <ul><li>El proceso de elaboración y aprobación del Plan de Igualdad (constitución de la Mesa, curso de formación, informe de diagnóstico sobre la plantilla, negociación y aprobación del Plan).</li><li>Seguimiento y evaluación del Plan.</li><li>Enlaces con organismos de igualdad y con otras administraciones públicas que tengan elaborados planes de empresa.</li></ul>            <p>2. Revisión del contenido del Portal Corporativo para introducir la perspectiva de género en su diseño y contenido. Con especial atención al uso de un lenguaje y de unas imágenes no sexistas.</p>            </td></tr><tr><td>UTILIZAR UN LENGUAJE Y MENSAJES NO SEXISTAS NI DISCRIMINATORIO</td><td>            <p>1. Difusión, a través del Portal Corporativo, de un manual de estilo administrativo sobre el uso no sexista del lenguaje.</p>            <p>2. Promover la incorporación de programas informáticos para la corrección del lenguaje sexista en los textos administrativos.</p>            <p>3. Revisión de todos los documentos administrativos, solicitudes, impresos y formularios utilizados por el personal municipal y por la ciudadanía para adecuarlos a las normas de lenguaje no sexista.</p>            <p>4. Uso de un lenguaje y de imágenes no sexistas ni discriminatorias en todos los medios de comunicación municipales (publicaciones, folletos, campañas divulgativas, etc.)</p>            </td></tr><tr><td>INFORMAR Y SENSIBILIZAR A LA REPRESENTACIÓN SINDICAL</td><td>            <p>1. Envío de información periódica, a la representación sindical, de las actualizaciones de la  legislación vigente en materia de igualdad de oportunidades, acciones positivas y mecanismos legales de tutela de los principios de igualdad y no discriminación.</p>            <p>2. Realización de una sesión formativa en materia de igualdad y no discriminación, específica para los delegados y delegadas sindicales, componentes de la Junta de Personal y del Comité de Empresa.</p>            </td></tr><tr><td>SENSIBILIZAR A LA PLANTILLA MUNICIPAL A TRAVÁS DE LA INFORMACIÓN Y COMUNICACIÓN</td><td>            <p>1. Difusión del Plan de Igualdad, una vez aprobado, e información continuada de las acciones que se vayan desarrollando y de los resultados obtenidos, a través de los distintos medios de comunicación interna (Portal Corporativo, correos electrónicos, etc.)</p>            <p>2. Creación de un "Buzón de Igualdad" dentro del apartado de "Políticas de Igualdad", del Portal Corporativo, donde se recojan sugerencias, iniciativas, dudas o quejas en relación al Plan de Igualdad de los empleados y empleadas municipales.</p>            <p>3. Realización de campañas de información general en materia de igualdad dirigidas tanto a los empleados y empleadas municipales como al personal de otras empresas que prestan servicios en cualquiera de las instalaciones municipales.</p>            <p>4. Inclusión, de forma periódica, de mensajes concisos sobre la igualdad de oportunidades y la no discriminación por razón de género, en el pie de la nómina de la plantilla municipal.</p>            <p>5. Elaboración de campañas de sensibilización específicas para la modificación de actitudes discriminatorias y estereotipos sexistas para toda la plantilla municipal.</p>            <p>6. Creación de canales bidireccionales de comunicación que mejoren la transmisión de la información y la posibilidad de aclarar dudas.</p>            <p>7. Difusión de las valoraciones, informes o estudios que pudieran elaborarse por la Comisión para la Igualdad o por los Agentes de Igualdad del Ayuntamiento de Zaragoza, en materia de igualdad y comunicación e imagen bajo la perspectiva de género.</p>            </td></tr><tr><td>SENSIBILIZAR A LA ESTRUCTURA MUNICIPAL EN MATERIA DE IGUALDAD Y NO DISCRIMINACIÓN</td><td>            <p>1. Formación básica, con carácter de reciclaje, sobre temas de igualdad y género a las estructuras directivas de todas las áreas municipales.</p>            <p>2. Difusión del contenido del Plan de Igualdad a todas las áreas municipales para una mejor coordinación y colaboración en la ejecución de las acciones aprobadas.</p>            </td></tr></tbody></table><h3 id="comisionigualdad">4.7 Comisión para la  Igualdad</h3><p>La Comisión para la Igualdad  tendrá por objeto la coordinación, supervisión y seguimiento de las medidas acordadas en el Plan de Igualdad, con la finalidad de garantizar el derecho a la igualdad entre las empleadas y empleados municipales y promover su efectividad.</p><p>Esta Comisión, de carácter permanente, estará constituida de forma paritaria por personas representantes del Equipo de Gobierno y la representación sindical, garantizándose la presencia de todos los sindicatos que legalmente tengan derecho a la negociación colectiva. Igualmente formará parte de ella la persona o personas que ocupen los puestos de Agente de Igualdad.</p><p>Entre sus <strong>funciones</strong> podrán estar:</p><ul><li>La coordinación con todas las áreas y servicios para la implantación y seguimiento del Plan de Igualdad.</li><li>La elaboración del calendario anual de las acciones a desarrollar.</li><li>La colaboración para la incorporación de un uso no sexista del lenguaje.</li><li>La elaboración de propuestas para llevar a la Mesa General de Negociación, de aquellas acciones dirigidas a erradicar la segregación horizontal y vertical, así como la discriminación directa o indirecta.</li><li>La vigilancia del cumplimiento del principio de igualdad de oportunidades y trato, teniendo para ello la posibilidad de solicitar y acceder a los datos oportunos sin perjuicio del cumplimiento de la normativa de Protección de Datos de Carácter Personal.</li><li>La promoción de iniciativas que conduzcan a una mejor implementación de las medidas acordadas, especialmente las referidas a la sensibilización y formación sobre igualdad y no discriminación por razón de sexo.</li><li>La consulta y emisión de informes, así como el seguimiento de cuestiones que pudieran suscitarse sobre discriminaciones directas o indirectas por razón de género.</li><li>El asesoramiento, desde la perspectiva de género, a otras Comisiones o Mesas, en consonancia con el principio de transversalidad.</li><li>El conocimiento, seguimiento y propuestas en relación a los informes de impacto de género que pudieran elaborarse, relativos al acceso al empleo público y a la promoción profesional.</li><li>La elaboración de una memoria anual de carácter público, donde se recogerá el trabajo realizado.</li></ul><p>La Comisión se reunirá de forma ordinaria una vez cada dos meses, convocándose dicha reunión con siete días de antelación y, de forma extraordinaria, a propuesta de al menos tres integrantes de la misma, con dos días de antelación.</p><p>Para que esta Comisión pueda realizar su tarea se le facilitará la siguiente información estadística: distribución de la plantilla, cambios de categoría o nivel retributivo, contratos temporales, reducciones de jornada, permisos de maternidad y paternidad, flexibilidad horaria, horas lactancia, excedencias, etc., a través de los medios que se consideren oportunos desde el Departamento de Recursos Humanos.</p><p>La Comisión, una vez constituida, regulará su propio funcionamiento y cometido en todo lo no previsto en este artículo.</p><h3 id="seguimiento">4.8 Seguimiento y evaluación</h3><p>El seguimiento y la evaluación del Plan de Igualdad tendrán como objetivo examinar la intervención que se está realizando a través de la puesta en marcha de las acciones propuestas y analizar el cumplimiento final de los objetivos previstos. Su planteamiento ha de tener en cuenta los efectos de la intervención en la igualdad de oportunidades entre mujeres y hombres y las relaciones de género.</p><p>Para ello, la Comisión para la Igualdad tendrá que definir un proceso de seguimiento y evaluación del cumplimiento de los objetivos y medidas definidas en el Plan. Así pues, tendrá que determinar qué indicadores y herramientas de recogida de información se van a utilizar para que faciliten información desagregada por sexo sobre los resultados del Plan y el impacto en relación a la reducción de las desigualdades de acceso y desarrollo profesional. Igualmente tendrá que precisar los indicadores cuantitativos y cualitativos que permitan visibilizar los resultados de las acciones y objetivos, tanto a corto como a medio y largo plazo.</p><p>La evaluación tendrá los siguientes objetivos:</p><ul><li>Conocer el grado de cumplimiento de los objetivos del Plan.</li><li>Analizar el desarrollo del proceso del Plan.</li><li>Reflexionar sobre la continuidad de las acciones, si se constata que se requiere más tiempo para corregir las desigualdades.</li><li>Identificar nuevas necesidades que requieran acciones para fomentar y garantizar la igualdad de oportunidades en la empresa de acuerdo con el compromiso adquirido.</li><li>La evaluación podrá estructurarse en tres ejes:</li><li>Evaluación de resultados, en la que ha de tenerse en cuenta el grado de cumplimiento de los objetivos planteados en el Plan de Igualdad, el nivel de corrección de las desigualdades detectadas en el diagnóstico y el grado de consecución de los resultados esperados.</li><li>Evaluación del proceso, viendo el nivel de desarrollo de las acciones emprendidas, el grado de dificultad encontrado en el desarrollo de las acciones, el tipo de dificultades y soluciones emprendidas y los cambios producidos en las acciones y desarrollo del Plan atendiendo a su flexibilidad.</li>
+<li>Evaluación de impacto, observando el grado de acercamiento a la igualdad de oportunidades, cambios en la cultura del Ayuntamiento y la reducción de desequilibrios en la presencia y participación de mujeres y hombres.</li></ul><h3 id="medios">4.9 Medios para la puesta en marcha del Plan de Igualdad</h3><p>Para el desarrollo y la puesta en marcha de las acciones acordadas en el presente Plan de Igualdad, el Ayuntamiento de Zaragoza utilizará el personal y los medios propios disponibles, con el fin de que no se genere coste alguno.</p>
+
+
+
+<h3 id="protocoloacoso">5. PROTOCOLO DE ACTUACIÓN FRENTE AL ACOSO SEXUAL Y EL ACOSO POR RAZÓN DE SEXO</h3>
+
+ 
+<h3>Comisión 	para la  Igualdad de Empleadas y Empleados Municipales. Junio 2016</h3>
+<h3>I. DECLARACIÓN DE PRINCIPIOS</h3>
+<p>Toda persona tiene derecho a la igualdad y a la no discriminación, a la salvaguarda de la dignidad, a la integridad moral, a la intimidad y al trabajo. En virtud de esos derechos el Ayuntamiento de Zaragoza declara que el acoso sexual, acoso por razón de sexo y acoso por orientación sexual suponen un atentado a la dignidad de las personas trabajadoras, por lo que rechaza y prohíbe cualquier práctica de este tipo en el trabajo, y hace expreso pronunciamiento de no tolerar estas acciones, así como de facilitar los medios precisos para impedir su manifestación en el ámbito laboral.</p>
+<p>El acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual, constituyen comportamientos reprobables que vulneran las normas que regulan los deberes y derechos básicos de la plantilla del Ayuntamiento de Zaragoza, entre los que mencionamos:</p>
+<ul><li>El derecho a la igualdad en mujeres y hombres.
+</li><li>El derecho a la consideración debida a su dignidad.
+</li><li>El derecho a su integridad física y moral.
+</li><li>El derecho al trabajo y a una adecuada política de seguridad y salud.
+</li><li>El derecho al honor, a la intimidad personal y familiar y a su propia imagen.</li></ul>
+<p>Queda por tanto expresamente prohibido cualquier comportamiento o conducta de esta naturaleza, pudiendo ser consideradas, con independencia de lo establecido en la legislación penal, como falta muy grave, dando lugar a las sanciones que este Protocolo y la Ley 7/2007, de 12 de abril, del Estatuto Básico del Empleado Público proponen para este tipo de conductas.</p>
+<p>Cualquier persona que preste servicios en este Ayuntamiento, y en concreto los cargos electos, órganos y personal directivo, independientemente del carácter o naturaleza jurídica de su relación con la misma, se compromete a prevenir la problemática del acoso sexual, acoso por razón de sexo y acoso por orientación sexual en el trabajo. En especial sus órganos y personal directivo deben proveer todos los medios a su alcance para prevenir, evitar y en su caso, detectar y eliminar cualquier situación de acoso sexual, acoso por razón de sexo y acoso por orientación sexual.</p>
+<p>En consecuencia, el Ayuntamiento de Zaragoza y la representación de las organizaciones sindicales se comprometen a prevenir y sancionar en su caso, conforme a lo regulado por medio del presente Protocolo, el acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual con las debidas garantías, tomando en consideración las normas constitucionales, laborales, administrativas y declaraciones de principios y derechos fundamentales en el trabajo. Se garantizará en todo caso que la asistencia y protección de las víctimas se realice siguiendo los principios de sigilo, respeto, profesionalidad, objetividad e imparcialidad y celeridad.</p>
+
+<p>La Comisión para la Igualdad tendrá derecho a recibir información periódica sobre el número de denuncias por acoso sexual, acoso por razón de sexo y acoso por orientación sexual, de los resultados de las investigaciones incluyendo el archivo de denuncias, y de las medidas que se adopten en virtud de lo previsto en el presente Protocolo.</p>
+<p>En cualquier caso todo el personal del Ayuntamiento de Zaragoza deberá observar y respetar las medidas contenidas en este Protocolo y en la normativa aplicable.</p>
+<h3>II. NORMATIVA</h3>
+<h4>Normativa Internacional:</h4>
+<p>Declaración Universal de Derechos Humanos: arts. 3 y 5
+Convenio no 111o O.I.T. De 25 de junio de 1958, relativo a la discriminación en materia de empleo.</p>
+<h4>Normativa Europea:</h4>
+<p>Directiva 76/2007/CEE del Consejo de 9 de febrero de 1976 "Igualdad de trato", modificada por Directiva 2002/73/CE del Parlamento Europeo relativa a la aplicación del principio de igualdad de trabajo entre hombres y mujeres en lo que se refiere al acceso al empleo, a la formación y a la promoción profesionales y a las condiciones de trabajo.</p>
+<p>Declaración del Consejo de 19 de diciembre de 1991, relativa a la aplicación de la Recomendación 92/131/CE de la Comisión de la Comunidades europeas de 27 de noviembre de 1991, en la cual se incluye un "Código de Conducta"encaminado a combatir el acoso sexual en el trabajo de los países de la CE.</p>
+<p>Directiva 2006/54//CE del Parlamento Europeo y del Consejo de 5/07/2006.</p>
+<p>Acuerdo marco europeo de 26 de abril de 2007, sobre acoso y violencia en el lugar de trabajo.</p>
+<h4>Normativa estatal:</h4>
+<p>Constitución Española 1978: arts. 1.1; 9.2; 10.1; 14; 15, 18.1, 35.1, 40.2 y 53.2.</p>
+<p>Ley Orgánica 3/2007 de 22 de marzo, para la Igualdad Efectiva de Mujeres y Hombres
+(LOIEMH): arts. 3, 7, 8,48 y 62.</p>
+<p>Ley Orgánica 10/1995, de 23 de noviembre, Código Penal: arts. 184, 191, 443 y 445.</p>
+<p>Ley 31/1995, de 8 de noviembre, de Prevención de Riesgos Laborales: art 14.</p>
+<p>Ley 7/2007 de 12 de abril del Estatuto Básico del Empleado Público; arts. 14, 53 y 95,2.</p>
+<p>Real Decreto 33/1986, de 10 de enero, por el que se aprueba el Reglamento de 3/18 Régimen Disciplinario de los Funcionarios de la Administración del Estado.</p>
+
+<p>Real Decreto Legislativo 1/1995, de 24 de marzo que aprueba el Texto Refundido de la Ley del Estatuto de los Trabajadores.</p>
+<p>Real Decreto Legislativo 5/2000, de 4 de agosto, por el que se aprueba el Texto Refundido de la Ley sobre Infracciones y Sanciones en el Orden Social.</p>
+<p>Ley 36/2011, de 10 de octubre, Reguladora de la Jurisdicción Social.</p>
+<p>Ley 29/1998, de 13 de julio, reguladora de la Jurisdicción Contencioso-Administrativa. Resolución de 28 de julio de 2011, de la Secretaría de Estado para la Función Pública que aprueba el Acuerdo de 27/07/2011 de la Mesa General de Negociación de la Administración General del Estado sobre el Protocolo de actuación frente al acoso sexual y al acoso por razón de sexo en el ámbito de la A.G.E. Y de los Organismo Públicos vinculados.</p>
+<p>Criterio Técnico 69/2009 sobre actuaciones de la Inspección de Trabajo y Seguridad Social en materia de acoso y violencia en el trabajo.</p>
+
+
+<p><strong>Otra normativa:</strong> Convenio/Pacto del Ayuntamiento de Zaragoza 2016/19.</p>
+
+
+<h3>III. ALCANCE</h3>
+<p>El presente protocolo será de aplicación a todo el personal del Ayuntamiento de Zaragoza. Las empresas externas contratadas por el Ayuntamiento, empresas colaboradoras, sociedades y patronatos municipales serán informadas de la existencia de este protocolo de actuación.</p>
+<p> Cuando se produzca un caso de este tipo entre personal municipal y personal de una empresa externa contratada se aplicarán los mecanismos de coordinación empresarial.</p>
+
+
+
+
+
+<h4>IV. DEFINICIONES</h4>
+<p><strong>ACOSO SEXUAL</strong> es toda conducta de naturaleza sexual, desarrollada en el ámbito de organización y dirección de una entidad empleadora o en relación o como consecuencia de una relación laboral, en la que se plantea una amenaza que afecta al empleo o a las condiciones de trabajo de la víctima a fin de obtener provecho sexual, o en todo caso, tiene como objetivo o como consecuencia, crearle un entorno laboral intimidatorio, degradante u ofensivo.</p>
+<p>El acoso sexual contempla dos tipos diferenciados: el acoso de intercambio o chantaje sexual y el acoso ambiental.</p>
+
+<p><strong>Acoso de Intercambio o Chantaje Sexual:</strong> el producido por personal superior jerárquico o personas cuyas decisiones pueden tener efectos sobre el empleo y las condiciones de trabajo de la persona acosada.</p>
+<p>A modo de ejemplo, pueden constituir chantaje sexual: demandas de favores sexuales, cuando éstas están relacionadas, directa o indirectamente, con la carrera profesional, la mejora de las condiciones de trabajo o la conservación del puesto de trabajo.</p>
+<p><strong>Acoso Ambiental:</strong> aquella conducta que crea un entorno laboral intimidatorio, hostil o humillante para la persona que es objeto de la misma.</p>
+<p>A modo de ejemplo, pueden constituir acoso sexual: observaciones sugerentes y desagradables; chistes o comentarios sobre la apariencia o aspecto; abusos verbales deliberados de contenido libidinoso; invitaciones impúdicas o comprometedoras; uso de imágenes pornográficas y o eróticas en los lugares y herramientas de trabajo; gestos obscenos; observación clandestina de personas en lugares reservados, como los servicios, vestuarios; etc.</p>
+<p><strong>ACOSO POR RAZÓN DE SEXO</strong> es todo comportamiento en relación o que tiene como causa los estereotipos de género (prejuicios, ideas preconcebidas y trato discriminatorio a mujeres y hombres por razón de su sexo), desarrollado de forma sistemática en el ámbito de organización y dirección de una entidad empleadora o en relación o como consecuencia de una relación laboral, que tiene como objetivo o como consecuencia atentar contra la dignidad y la integridad física o psíquica de una persona y crear un entorno intimidatorio, degradante u ofensivo, pudiendo poner en peligro su empleo, en especial, cuando estas actuaciones se encuentran relacionadas con la opción sexual o con las situaciones de maternidad, paternidad y asunción de otros cuidados familiares.</p>
+<p>A modo de ejemplo, pueden constituir acoso por razón de sexo, siempre que se realicen sobre una persona por razón de su sexo: las descalificaciones públicas y reiteradas sobre la persona, su trabajo y su implicación en el mismo; los comentarios continuos y vejatorios sobre el aspecto físico, o sobre la opción o ideología sexual; impartir órdenes contradictorias y por tanto imposibles de cumplir simultáneamente; impartir órdenes vejatorias; las actitudes que comporten vigilancia extrema y continua; la orden de aislar e incomunicar a una personal; la agresión física; etc.</p>
+<p><strong>ACOSO POR ORIENTACIÓN SEXUAL</strong> es cualquier comportamiento basado en la orientación sexual, identidad de género y/o expresión de género de una persona que tenga la finalidad o provoque el efecto de atentar contra su dignidad o su integridad física o psíquica o de crear un entorno intimidatorio, hostil, degradante, humillante, ofensivo o molesto. A modo de ejemplo, pueden ser acoso por razón de orientación sexual expresiones ridiculizantes, comentarios jocosos sobre el aspecto físico, modales, formas de vestir o de hablar; tratar de aislar a la persona en su ambiente laboral; humillarle delante de sus compañeros o compañeras por su orientación sexual; hacerle insinuaciones sexuales; proferir insultos y/o vejaciones; etc.</p>
+
+
+<h3>V. MEDIDAS PREVENTIVAS</h3>
+
+<p>Con el objeto de prevenir y evitar al acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual, se establecen las siguientes actuaciones:</p>
+<ul><li>Declaración oficial de principios en la que se señale el compromiso con la prevención y erradicación del acoso sexual y defensa del derecho a la dignidad de las personas trabajadoras, fomentando el respeto entre todo el personal de la entidad.</li>
+<li>Difusión del Protocolo de forma que sea conocido por el personal municipal y organismos autónomos del Ayuntamiento de Zaragoza a través de la Intranet municipal y correo corporativo.</li>
+<li>Documentos divulgativos que faciliten información dando a conocer la existencia del Protocolo y sus principales características, así como en la Web donde podrán descargarlo.</li>
+<li>Sesiones de información y campañas específicas explicativas del contenido del Protocolo, derechos y deberes de las personas trabajadoras, de sus representantes y de la Administración, sanciones y responsabilidades establecidas, medidas cautelares, etc.</li>
+<li>Manuales de Acogida.</li>
+<li>Formación específica para las personas que van a participar en el procedimiento, y a asistir a las presuntas víctimas, sobre el procedimiento a seguir y la forma en la que deben actuar cada una de las partes implicadas.</li>
+<li>Formación específica sobre el Protocolo en los cursos de reciclaje del personal municipal, enmarcados en el Plan de Igualdad para Empleados y Empleadas, con especial hincapié en mandos intermedios y jefaturas de servicio.</li></ul>
+
+
+<h4>VI. GARANTÍAS EN EL DESARROLLO DEL PROCEDIMIENTO</h4>
+
+<p>En el transcurso del procedimiento de investigación de acosos se tendrán en cuenta las siguientes garantías:</p>
+<ul><li>1.  Confidencialidad: las personas que intervengan en el procedimiento tienen obligación de guardar una estricta confidencialidad y no deben transmitir ni divulgar información sobre el contenido de las denuncias presentadas, resueltas o en proceso de investigación de las que tengan conocimiento. Por ello, desde el momento en que se formule la denuncia, se asignará un código numérico que se utilizará para identificar la denuncia concreta tratando de preservar la identidad de las personas a las implicadas en el procedimiento.
+Todo el personal que haya participado en cualesquiera de las actuaciones previstas en el presente protocolo queda sujeto al deber de secreto, debiendo firmar el documento de acuerdo de confidencialidad y no divulgación de información, según anexo.</li>
+<li>2. Respeto y protección de la dignidad de las personas: las actuaciones o diligencias deben realizarse con la mayor prudencia y con el debido respeto a todas las personas implicadas, que en ningún caso podrán recibir un trato desfavorable por este motivo. La organización deberá adoptar las medidas pertinentes para garantizar este derecho a las personas tanto presuntamente acosadas como acosadoras. Las personas implicadas podrán ser asistidas por algun/a acompañante de su elección, en todo momento a lo largo del procedimiento, si así lo requieren.
+</li><li>3. Diligencia y celeridad: la investigación y la resolución sobre la conducta denunciada deben ser realizadas con la debida profesionalidad, diligencia y sin demoras indebidas, de forma que el procedimiento pueda ser completado en el menor tiempo posible respetando las garantías debidas.
+</li><li>4. Imparcialidad: el procedimiento debe garantizar una audiencia imparcial y un tratamiento justo para todas las personas afectadas. Todas las personas que intervengan en el procedimiento actuarán de buena fe en el esclarecimiento de los hechos denunciados.
+</li><li>5. Prohibición de represalias: se prohíben expresamente las represalias contra las personas que efectúen una denuncia, comparezcan como testigos o participen en una investigación sobre acoso sexual, acoso por razón de sexo o acoso por orientación sexual, en los términos previstos en la normativa aplicable.
+</li><li>6. La aplicación de este protocolo no impedirá en ningún caso la utilización, paralela o posterior, por parte de las personas implicadas, de las acciones legales oportunas.
+</li><li>7. Las denuncias, alegaciones o declaraciones que se demuestren como intencionadamente fraudulentas o dolosas, y realizadas con el objetivo de causar un mal injustificado a la persona denunciada, serán sancionadas. No se considerará falsa o calumniosa la denuncia presentada de buena fe aunque no se haya podido constatar la veracidad de la misma.</li></ul>
+
+
+<h4>VII. FIGURAS GARANTES DEL PROCEDIMIENTO</h4>
+
+<p>Los órganos encargados de aplicar el procedimiento establecido en casos de acoso sexual, acoso por razón de sexo y acoso por orientación sexual serán los siguientes:</p>
+<h4>1. ASESORÍA CONFIDENCIAL</h4>
+<p>Se denomina Asesoría Confidencial al grupo de personas competentes para la recepción de denuncias e iniciación del procedimiento según el presente Protocolo.</p>
+<p>Estará compuesta por Asesoras/es Confidenciales. Las personas designadas inicialmente como Asesoras/es Confidenciales serán las/los Agentes de Igualdad y aquellas Delegadas/os de Prevención que de forma voluntaria reciban formación sobre materia de igualdad entre hombres y mujeres, sobre acoso sexual, acoso por razón de sexo y acoso por orientación sexual y sobre la aplicación del presente Protocolo. También podrán optar a formar parte de la Asesoría Confidencial el personal municipal que tenga la formación y condiciones requeridas para desempeñar las funciones encomendadas por este Protocolo.</p>
+<p>La Asesoría Confidencial estará compuesta por un máximo de diez personas.</p>
+<p>La formación y las condiciones que se requieran para la designación de Asesoras/es Confidenciales será determinada por la Comisión de Igualdad.</p>
+<p>La identidad de las/los Asesoras/es Confidenciales se dará a conocer a toda la plantilla municipal, así como la forma en que se podrá contactar con estas personas.</p>
+<p>Sus funciones serán las siguientes:</p>
+<ul><li>1. Dar información sobre el presente protocolo al personal municipal que lo solicite.
+</li><li>2. Recibir las denuncias por acoso sexual, acoso por razón de sexo y acoso por orientación sexual.
+</li><li>3. Informar a la persona denunciante sobre sus derechos y formas de actuación posibles.
+</li><li>4. Realizar un primer análisis de los hechos denunciados para confirmar la veracidad de la denuncia con la máxima rapidez y confidencialidad.
+</li><li>5. Identificar la situación denunciada para adoptar las pautas de actuación según indica el protocolo (no admitir a trámite, iniciar el procedimiento informal o iniciar el procedimiento formal).
+</li><li>6. Llevar a cabo el procedimiento informal según lo previsto en este protocolo.
+</li><li>7. Realizar una labor de mediación entre las partes, si es posible.
+</li><li>8. Emitir un informe de valoración con conclusiones y propuestas estimadas del que dará información al Servicio de Relaciones Laborales y al Comité de Asesoramiento según cada caso.
+</li><li>9. Remitir los casos de indicios de acoso al Comité de Asesoramiento.</li></ul>
+
+
+<ul><li>10. Emitir una memoria anual que incluya el registro, resolución y evaluación de los casos de acoso sexual, acoso por razón de sexo y acoso por orientación sexual, así como indicadores sobre las medidas preventivas y sobre los procedimientos de garantía que se recogen en este protocolo.</li></ul>
+<p>Si del análisis inicial de los datos se obtuviesen indicios de acoso, la Asesoría Confidencial solicitará la constitución de forma urgente del Comité de Asesoramiento.</p>
+<h4>2. COMITÉ DE ASESORAMIENTO</h4>
+<p>Es el órgano colegiado que desarrolla el procedimiento formal de resolución de denuncias por acoso sexual, acoso por razón de sexo y acoso por orientación sexual.</p>
+<p>Estará formado por: dos técnicos/as del Servicio Prevención y Salud Laboral, una persona de la Asesoría Confidencial, un abogado/a de la Asesoría Jurídica, un Psicólogo/a del Servicio de Igualdad y dos representantes Sindicales. El documento de constitución del Comité de Asesoramiento además de nombrar a las personas que componen el mismo, designará a una de ellas como tramitadora.</p>
+<p>La persona nombrada como Asesor/a Confidencial en el Comité de Asesoramiento no podrá haber participado en el procedimiento informal sobre el que se esté actuando.</p>
+<p>Cuando el Comité lo considere necesario podrá ser asistido por profesionales expertos en distintas materias relacionadas con la situación presentada.</p>
+<p>Las personas que integran el Comité de Asesoramiento recibirán la formación necesaria en igualdad de género, acoso sexual, acoso por razón de sexo y acoso por orientación sexual, así como en los contenidos de este protocolo para su aplicación adecuada.</p>
+<p>Sus funciones serán las siguientes:</p>
+<ol><li> Dar audiencia a la persona denunciante.
+</li><li>Notificar por escrito a la persona denunciada la existencia de la denuncia y darle audiencia.
+</li><li>Recabar información complementaria y determinar si se aprecian o no indicios suficientes de acoso sexual, de acoso por razón de sexo o acoso por orientación sexual.
+</li><li> Emitir un informe de valoración con las conclusiones y medidas propuestas concretas que se remitirá al Servicio de Relaciones Laborales u órgano competente.
+</li><li> Comunicar la resolución adoptada a la persona denunciante y a la persona denunciada.
+</li><li> Supervisar el cumplimiento de las medidas propuestas en el informe de valoración.
+</li><li> Resolver las alegaciones presentadas.
+</li><li>Informar anualmente a la Comisión de Igualdad de las acciones llevadas a cabo.</li></ol>
+<h4>3. NOMBRAMIENTOS</h4>
+<p>La Presidencia de la Comisión de Igualdad nombrará a las personas que forman parte de la Asesoría Confidencial y del Comité de Asesoramiento.</p>
+
+
+
+
+<h4>VIII. PROCEDIMIENTO DE ACTUACIÓN</h4>
+<p><strong>A) Presentación de la denuncia.</strong></p>
+<p>El procedimiento se iniciará con la presentación de la queja o denuncia interna a una persona de la Asesoría Confidencial o a través del Servicio de Prevención y Salud Laboral.</p>
+<p>La denuncia podrá ser de forma verbal o escrita. Si fuese verbal la persona denunciante deberá ratificarla por escrito. No se admitirán a trámite las denuncias anónimas.</p>
+<p>La denuncia podrá ser formulada por:</p>
+<ul><li>1. Persona presuntamente acosada y/o su representante legal.
+</li><li>2. La representación sindical, previa autorización de la persona presuntamente acosada.
+</li><li>3. Cualquier empleada o empleado público de forma motivada. En este caso la presunta víctima deberá ratificar la existencia del acoso.</li></ul>
+<p>Una vez presentada la denuncia se reunirán de urgencia dos personas de la Asesoría Confidencial, procurando que una de ellas siempre sea un/a Agente de Igualdad. En caso de que la o el denunciante se haya dirigido directamente a una persona determinada de la Asesoría Confidencial, ésta iniciará el procedimiento de actuación.</p>
+<p><strong>B) Análisis inicial de la Asesoría Confidencial.</strong></p>
+<p>La Asesoría Confidencial realizará un análisis de los datos objetivos del caso para confirmar la veracidad de la denuncia observando por ejemplo la congruencia de los hechos relatados o la existencia por el contrario de imprecisiones y contradicciones.</p>
+<p>Como conclusión de este primer análisis, la Asesoría Confidencial podrá:</p>
+<ul><li>a) No admitir a trámite dicha denuncia si se considera que la situación denunciada no pertenece al ámbito de este Protocolo. En este caso se remitirá un escrito a la persona denunciante informándole de los motivos por los que no se continúa con el proceso.
+</li><li>b) Iniciar el procedimiento informal.
+</li><li>c) Identificar la situación denunciada como acoso sexual, acoso por razón de sexo o por orientación sexual y dar comienzo al procedimiento formal.</li></ul>
+<p>Si se estima conveniente con el objetivo de impedir la continuidad de las presuntas situaciones de acoso y preservar la seguridad y salud de la persona denunciante, podrá proponer a Relaciones Laborales las medidas cautelares necesarias, con especial atención a la separación de la presunta víctima y de la persona denunciada.</p>
+<p>La persona denunciante podrá en todo momento desistir del procedimiento. En todo caso y de oficio, podrá continuar la investigación de la denuncia si se detectaran indicios claros de acoso.</p>
+
+
+<p><strong>C) Procedimiento Informal</strong></p>
+<p>En los supuestos en que de las actuaciones realizadas se deduzcan indicios de acoso, la Asesoría Confidencial iniciará un procedimiento de valoración de la denuncia, pudiendo recabar más información y señalar la existencia o no de posibles testigos.</p>
+<p>El Procedimiento Informal tratará de resolver el problema sin necesidad de iniciar el procedimiento formal. De este modo, y como resultado de las comprobaciones realizadas, pueden producirse las siguientes situaciones:</p>
+<ul><li>a) La persona denunciante y la persona denunciada identifican y analizan los hechos y hay un compromiso de no repetición.
+</li><li>b) La Asesoría Confidencial propone determinadas actuaciones para solucionar el problema y ambas partes muestran su acuerdo y conformidad.
+</li><li>c) No se alcanza acuerdo alguno y se inicia el procedimiento formal. En este supuesto se procurará la protección suficiente de la víctima y de la persona denunciante, en cuanto a su seguridad y salud, interviniendo para impedir la continuidad de las presuntas situaciones de acoso y proponiendo a este efecto la separación temporal laboral de ambas personas, si fuera necesario.</li></ul>
+<p>La Asesoría Confidencial dará conocimiento del resultado del procedimiento informal al Comité de Asesoramiento y si fuera necesario al Servicio de Relaciones Laborales.</p>
+<p>El Procedimiento Informal se resolverá a la mayor celeridad posible a partir de la presentación de la denuncia.</p>
+<div><img src="http://intranet.red.zaragoza.es/intranet/cont/paginas/intranet/igualdad/img/organigrama.jpg" alt="Organigrama del Procedimiento"/></div>
+<p><strong>D) Procedimiento Formal.</strong></p>
+<p>El Procedimiento Formal, se iniciará en los siguientes supuestos:</p>
+<p>Cuando las actuaciones denunciadas sean valoradas como indicios de acoso</p>
+<p>No se alcance un acuerdo a través del procedimiento informal</p>
+<p>Se reitere la conducta que ha motivado la denuncia por parte de la persona denunciada</p>
+<p>O cuando la persona denunciante no considere adecuado acudir al procedimiento informal y se vean indicios de acoso sexual, acoso por razón de sexo o por orientación sexual.</p>
+<p>La Asesoría Confidencial convocará al Comité de Asesoramiento, que deberá reunirse en el plazo más urgente posible para dar cuenta de los hechos. Le trasladará el informe del Procedimiento Informal si hubiera existido éste, así como la denuncia recabada por escrito.</p>
+<p>El Comité notificará la presentación de la denuncia a la persona denunciada lo más rápidamente posible y se le citará por escrito, con fecha y hora, en presencia o no de la persona denunciante. En dicho escrito se le informará de la existencia de la denuncia y se le advertirá de que su no comparecencia pudiera ser considerada como un acto de obstrucción en la investigación de los hechos.</p>
+<p>El Comité utilizará los procedimientos de investigación a su alcance, entrevistando a las partes, así como a las y los testigos y terceras personas implicadas si las hubiera. En los casos que se considere necesario, bien por las características de la situación investigada, bien por contrastar el análisis realizado, se podrá solicitar asesoramiento externo a personas u organizaciones expertas en psicosociología, derecho, salud laboral, etc. en el ámbito de la prevención y actuación ante el acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual.</p>
+<p>El Comité elaborará un informe de valoración de la actuación investigada, en el que se indicarán las conclusiones alcanzadas y la consiguiente resolución, pudiendo contemplarse las siguientes alternativas:</p>
+<ul><li>a) Archivo de la denuncia, por alguno de los siguientes motivos:
+<br/>Desestimiento de la persona denunciante (en todo caso, en función de la gravedad y de oficio, podrá continuar la investigación de la denuncia si se detectaran indicios de acoso).
+<br/>Falta de objeto o insuficiencia de indicios.
+Cuando de las actuaciones practicadas se pueda dar por resuelto el contenido de la denuncia, reflejando, en su caso, el acuerdo alcanzado entre las partes.
+</li>
+<li>b) Si del análisis del caso se dedujera alguna otra falta distinta de los tipos de acosos objeto de este Protocolo y que estuviera tipificada en la normativa laboral existente, se propondría la incoación del expediente disciplinario que corresponda.
+</li><li>c) Cuando del referido informe se deduzca con claridad la existencia de acoso sexual, acoso por razón de sexo o acoso por orientación sexual, el Comité de Asesoramiento instará al Servicio de Relaciones Laborales a la incoación de un expediente informativo y la adopción de las correspondientes medidas correctoras de la situación, así como de medidas sancionadoras, si fuese necesario. El informe de valoración del Comité de Asesoramiento tendrá, a todos los efectos, carácter de iniciación de Expediente Informativo a resolver por el Servicio de Relaciones Laborales u órgano competente.
+
+</li><li>d) El informe de conclusiones del Comité de Asesoramiento podrá enumerar conductas, hechos o situaciones detectadas que sean indicios para considerar la existencia de acoso sexual en los que habrá que determinar la frecuencia e intencionalidad de las mismas.</li></ul>
+<p> Como ejemplo se pueden enumerar entre otras las siguientes conductas:</p>
+<ul><li>Abusos verbales deliberados de contenido libidinoso.
+</li><li>Uso de imágenes pornográficas y eróticas en los lugares de trabajo o a través de las herramientas de trabajo.
+</li><li>Gestos y/o comentarios obscenos.
+</li><li>Bromas sexuales.
+</li><li>Rumores sobre la vida sexual de las personas o presumir de habilidades sexuales.
+</li><li>Comentarios irrespetuosos insistentes sobre la orientación sexual de las personas.
+</li><li>Mensajes al móvil con comentarios fuera de tono.
+</li><li>Invitaciones impúdicas o comprometedoras.
+</li><li>Contacto físico innecesario, rozamientos, proximidad excesiva, buscar quedarse a solas, arrinconar...
+</li><li>Las descalificaciones públicas y reiteradas sobre una persona, su trabajo y su implicación en el mismo, que se realicen por razón de género y de orientación sexual.
+</li><li>Los comentarios continuos vejatorios y discriminatorios sobre el aspecto físico así como expresiones machistas y de contenido sexual.
+</li><li>Comentarios despectivos sobre la opción o ideología sexual de una persona por razón de orientación sexual.
+</li><li>Impartir órdenes basadas en estereotipos sexistas con intenciones vejatorias.
+</li><li>Las actitudes que comporten vigilancia extrema y continua, realizadas sobre una persona por razón de género y de orientación sexual.
+</li><li>Presionar para citas indeseadas.
+</li><li>Otras...</li></ul>
+<p>El procedimiento formal, hasta la elaboración y comunicación del informe de valoración, durará el menor tiempo posible garantizando la mayor agilidad en todo el proceso.</p>
+<p>Dicho informe se trasladará al Servicio de Relaciones Laborales u órgano competente en la materia disciplinaria para que proponga la resolución del expediente sancionador al órgano competente encargado de la incoacción del expediente disciplinario.</p>
+<p>El Servicio de Relaciones Laborales u órgano competente, en relación al presente protocolo tendrá las siguientes funciones:</p>
+<ul><li>Adopción de las medidas cautelares, si proceden, propuestas por el Comité de Asesoramiento o por la Asesoría Confidencial.
+</li><li>Tramitación del expediente disciplinario a la mayor celeridad posible.
+</li><li>Prestar ayuda y colaboración necesarias para que los órganos intervinientes en este protocolo desarrollen sus funciones.
+</li><li>Comunicar al Comité de Asesoramiento las medidas sancionadoras adoptadas a los efectos de su seguimiento y evaluación.
+</li></ul>
+<p><strong>E) Resolución de alegaciones.</strong></p>
+<p>De la resolución del Comité de Asesoramiento. se dará traslado a la persona denunciada y a la presunta víctima. Las partes implicadas podrán alegar en el plazo máximo de cinco días laborables, presentando nuevas pruebas o argumentaciones.</p>
+<p>En el supuesto de alegaciones, el Comité de Asesoramiento valorará las alegaciones presentada por la persona denunciante o denunciada y acordará rechazar las alegaciones o continuar con el procedimiento en vista de las nuevas pruebas o argumentaciones presentadas. Si éstas son sólidas, completará la investigación, atendiendo a la información complementaria que pueda existir.</p>
+<p>Como resultado de este proceso podrá:</p>
+<ul><li>a) Rechazar la alegación y dar por buena la resolución anteriormente adoptada.
+</li><li>b) Modificar la resolución anteriormente adoptada en función de las alegaciones presentadas.</li></ul>
+<p>De la decisión aquí adoptada se dará traslado a la persona denunciante, a la persona denunciada y a la Dirección del Área donde presta sus servicios la persona presuntamente acosada.</p>
+<p>El plazo para recabar la nueva información y adoptar una decisión definitiva deberá realizarse con la mayor celeridad desde la recepción de las alegaciones.</p>
+<h3>IX. SEGUIMIENTO Y EVALUACIÓN</h3>
+<p>El Servicio de Relaciones Laborales u órgano competente informará al Comité de Asesoramiento de las medidas adoptadas tras el informe de conclusiones y valoración de cada expediente disciplinario así como del cumplimiento efectivo de las mismas por acoso sexual, por razón de sexo o por orientación sexual,en el menor tiempo posible.</p>
+<p>La Asesoría Confidencial llevará el control y registro de las denuncias presentadas así como de la resolución de los expedientes resultantes de procedimiento informal y del procedimiento formal. Llevará también el registro de las distintas actuaciones preventivas desarrolladas con el personal municipal, con el objetivo de realizar anualmente un informe que remitirá al Comité de Asesoramiento.</p>
+<p>Anualmente, la Asesoría Confidencial remitirá al Servicio de Relaciones Laborales u órgano competente y a la Comisión de Igualdad una Memoria/Evaluación de las actuaciones realizadas a lo largo del año.</p>
+<p>Ambos informes deberán de incluir indicadores relacionados con las medidas aplicadas (medidas de comunicación realizadas, horas de formación impartidas...) así como indicadores de los procedimientos de garantía (denuncias tramitadas, datos de personas denunciantes y denunciadas desagregados por sexo, procedimientos informales desarrollados, procedimientos formales, denuncias sancionadas...).</p>
+
+<p>Además se prevé la evaluación del propio protocolo como herramienta de prevención y actuación contra el acoso sexual , por razón de sexo o por orientación sexual, tras la tramitación de las tres primeras denuncias o al año de su implantación, y siempre que se produzcan cambios legales o mejoras en los conocimientos técnicos al respecto.</p>
+<p>La Comisión para la Igualdad realizará el control y seguimiento de la aplicación de este Protocolo con la finalidad de detectar su efectivo funcionamiento y real eficacia en la detección y eliminación de las situaciones de acoso sexual, por razón de sexo y por orientación sexual, en el Ayuntamiento de Zaragoza. Si se detectaran fallos de aplicación que le restasen efectividad en la consecución de su objetivo, la Comisión propondrá su modificación siguiendo los trámites oportunos.</p>
+<p>Si hubiera una norma legal o convencional de ámbito superior que afectara al contenido del presente Protocolo, quienes firman el mismo se comprometen a su inmediata adecuación.</p>
+
+<p><em>El Ayuntamiento de Zaragoza declara que el acoso sexual, acoso por razón de sexo y acoso por orientación sexual suponen un atentado a la dignidad de las personas trabajadoras, por lo que rechaza y prohíbe cualquier práctica de este tipo en el trabajo, y hace expreso pronunciamiento de no tolerar estas acciones.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="disposicion">6. DISPOSICIÓN FINAL</h3><p>Al finalizar la vigencia del presente Plan de Igualdad para las empleadas y empleados del Ayuntamiento de Zaragoza y tras la evaluación de los resultados obtenidos se valorará realizar la solicitud del Distintivo Empresarial en Materia de Igualdad, recogido en el artículo 50 de la Ley Orgánica 3/2007, de acuerdo con la normativa vigente en ese momento.</p>
+<h3 id="genero">ANEXO I.TERMINOLOGÍA DE GÉNERO</h3>
+<p>Es fundamental fijar conceptos y aclarar términos que pueden facilitar la comprensión de las propuestas y motivaciones que aparecen en el Plan de Igualdad.</p>
+<p><strong>Principio de igualdad de trato entre mujeres y hombres</strong></p>
+<ul><li>Definido en el art. 3 de la Ley Orgánica 3/2007, de 22 de marzo,<em> "el principio de igualdad de trato entre mujeres y hombres supone la ausencia de toda discriminación, directa o indirecta, por razón de sexo, y, especialmente, las derivadas de la maternidad, la asunción de obligaciones familiares y el estado civil"</em></li>
+</ul>
+<p><strong>Discriminación directa e indirecta</strong></p>
+<p>Las prácticas discriminatorias son directas cuando se trata de forma desigual a una persona en base a uno de los motivos prohibidos en el ordenamiento jurídico, como puede ser el sexo.
+<br/>La discriminación indirecta tiene lugar cuando se establecen condiciones formalmente neutras respecto al sexo pero que resulten desfavorables para las mujeres y carecen, además, de una causa objetiva y justificada.
+</p>
+<p><strong>Segregación ocupacional</strong></p>
+<ul><li>Tradicionalmente, mujeres y hombres han desempeñado profesiones diferentes en el mercado de trabajo. Esta división tradicional se ha reproducido a todos los niveles en el ámbito laboral, generando áreas de trabajo, departamentos y ocupaciones masculinizadas o feminizadas, es lo que se denomina segregación horizontal.Junto a esta segregación <strong>horizontal</strong>, que responde a un histórico reparto entre sexos de roles sociales, se produce la segregación <strong>vertical</strong> que obedece a un desequilibrado e injusto reparto del poder, los hombres son mayoría en los puestos o categorías profesionales de los escalafones superiores, mientras que las mujeres ocupan, en proporción superior a la que les correspondería, los puestos de trabajo menos cualificados. Esta segregación vertical se produce incluso en los sectores más feminizados.</li></ul>
+<p><strong>Perspectiva de género, transversalidad y mainstreaming</strong></p>
+<p>La perspectiva de género hace posible analizar desde otra óptica la realidad que nos rodea y percibir la existencia de los obstáculos que encuentra el desarrollo del principio de igualdad en la sociedad. Nos permite diseñar medidas o acciones que tiendan a eliminar estos obstáculos.<br/>La transversalidad de género ha de ser un eje específico que guíe la actuación municipal para mejorar e incrementar la coordinación entre todas las áreas municipales, con el objetivo de integrar la perspectiva de género, en el mayor número posible de actuaciones.<br/>La transversalidad implica el avance hacia una sociedad más justa e igualitaria a través de una mirada global a las diferentes realidades desde una perspectiva de género, es decir teniendo en cuenta cómo afectan las diferentes medidas y actuaciones a las mujeres en todas sus situaciones.<br/>
+Aplicar el enfoque transversal de género supone el cuestionamiento de la organización social de género tradicional, y la voluntad de participar en la elaboración de una alternativa de organización social acorde con las necesidades y aspiraciones de las mujeres y los hombres. Su desarrollo se realiza a través del estudio y evaluación permanente de las condiciones de vida de las mujeres y hombres, sus posibilidades, expectativas, sus semejanzas y sus  diferencias.<br/>El enfoque transversal de género, no es solamente una metodología de estudio e intervención social, conlleva un posicionamiento ético político, que trasciende el ámbito público profesional e influye en la vida de quienes forman parte del proceso. Afecta a todas las instituciones y ámbitos de la vida porque finalmente el objetivo es la transformación de la sociedad.
+<br/>El término anglosajón "mainstreaming, internacionalmente aceptado para identificar este enfoque, añade un grado más al concepto de transversalidad: incorpora la idea de corriente principal, de tal manera que a la lucha por la igualdad en todos los ámbitos de la sociedad, se añade la conversión de esta reivindicación en preocupación prioritaria de las políticas públicas.</p>
+
+<p><strong>Impacto de género</strong></p>
+<p>Los informes de impacto de género suponen una técnica de valoración prospectiva, es decir un estudio y análisis "ex ante" del proyecto normativo que se promueve con el objetivo de verificar si en el momento de planificar las medidas que contiene, se ha tenido en cuenta el impacto que producirá en los hombres y en las mujeres, advirtiendo de cuáles pueden ser las consecuencias deseadas y las no deseadas y proponiendo en su caso su modificación. Se podría definir como un mecanismo en búsqueda de la igualdad.<br/>En el análisis de género intentamos encontrar respuesta a unas preguntas "clave" siempre desagregadas por sexos. Esta información permite el conocimiento de los factores de desigualdad, la toma de conciencia y la actuación sobre estos factores para modificarlos.<br/>Decisiones políticas que parecen no sexistas pueden tener un diferente impacto en las mujeres y los hombres. Se procede a una evaluación del impacto de género para evitar consecuencias negativas no intencionales y para mejorar la eficacia de las políticas.</p><p><strong>Acciones positivas</strong></p><ul><li>Es evidente que una parte sustancial de los obstáculos subsistentes para el logro de la igualdad plena de oportunidades en la práctica no son de carácter jurídico sino que se derivan esencialmente para la concepción tradicional de la división de papeles entre el hombre y la mujer en la sociedad. Estos obstáculos perjudican la situación de la mujer en el empleo y, para contrarrestar dicha situación, la acción positiva desempeña un papel fundamental.<br/>En este sentido, la acción positiva trata de completar la legislación sobre la igualdad de trato con cualquier medida que contribuya a eliminar las desigualdades en la práctica.<br/>Las acciones positivas, a las que hace mención la Ley Orgánica 3/2007, de 22 de marzo en su artículo 3 y siguientes, son aquellas actuaciones de impulso y promoción que tratan de eliminar las desigualdades de hecho y establecer la igualdad entre mujeres y hombres. Es decir, permite la incorporación de medidas específicas a favor de las mujeres para conseguir la igualdad efectiva. Tales medidas, serán aplicables en tanto subsistan dichas situaciones y deben ser razonables y proporcionadas en relación con el objetivo perseguido en cada caso.</li></ul><p><strong>Sexismo lingüístico</strong></p><ul><li>En la actualidad contamos con una legislación ante la cual hombres y mujeres somos iguales ante la ley y poseemos los mismos derechos y deberes, pero la realidad es que, aún hoy en día, la mujer sigue estando en clara desventaja frente al hombre y una de sus manifestaciones es la ocultación de la mujer en el lenguaje, así como su representación mediante imágenes sexistas o discriminatorias.<br/>En este sentido cobra importancia la perspectiva de género y el uso del lenguaje dado que éste, no es sexista al disponer de masculino, femenino y neutro, de genéricos... Somos las personas quienes le damos un uso sexista al lenguaje y este término "sexismo" tal y como lo recoge el Diccionario de la Real Academia designa la "discriminación de personas de un sexo por considerarlo inferior a otro".<br/>El femenino es el que de manera sistemática ha sufrido este trato en todos los ámbitos de la vida, y en el lingüístico no es una excepción. No deja de resultar, como poco, curioso, el hecho de encontrar en esta ardua tarea de conseguir un lenguaje no sexista, argumentos en contra de este planteamiento, críticas e incluso irónicas burlas.<br/>El lenguaje es la expresión del pensamiento, transmite la forma de pensar, de sentir y de actuar, en cada momento y situación y el predominio de lo masculino en la sociedad ha contribuido a que el género masculino prevalezca sobre el género femenino, y a que sea lo masculino quien determina el uso de la lengua, de ahí que la discriminación consista en el uso genérico del masculino como genérico referencial para los dos sexos.<br/>La importancia de la corrección del lenguaje radica en que lo que no se nombra no existe, es decir, al no nombrar a las mujeres se las invisibiliza de la cultura, de la ciencia, la economía... y por otro lado el lenguaje ha servido y sirve como corriente transmisora de ideas, valores y pensamientos que van naturalizando comportamientos, actitudes, creencias y formas de vida diferentes para cada uno de los sexos.<br/>No podemos dejar de destacar que el sexismo lingüístico no radica en la lengua española como sistema, sino que se hayan consolidado y aceptado determinados usos como correctos por la comunidad hablante. Pero los usos cambian y lo que antaño se consideraba en las gramáticas y diccionarios como error se convierten en norma y viceversa. Esto nos lleva, evidentemente, a la concepción de la lengua como realidad en continuo cambio, en continua evolución. Es más, no hay que olvidar que la lengua evoluciona en cada época para responder a las necesidades de la comunidad que la utiliza, de ahí que en una sociedad como la nuestra, en la que se demanda una mayor igualdad entre los sexos, la lengua, como producto social, no sólo ha de reflejar esa igualdad, sino contribuir a ella.</li></ul><h3 id="igualdad">ANEXO II - AGENTE DE IGUALDAD. DEFINICIÓN Y FUNCIONES BÁSICAS</h3><p>Es aquel o aquella profesional que diseña, dirige, coordina, dinamiza, implementa, gestiona y evalúa planes, programas, proyectos y campañas de acción referidos a la igualdad de oportunidades y género en diferentes áreas y escenarios profesionales.</p><p>Ha de ser capaz de analizar e investigar la realidad en relación a la igualdad de género y diseñar, implementar y evaluar programas, proyectos, acciones, campañas, normas y pautas.</p>
+<p>Tendrá que manejar: metodologías de investigación cualitativa y cuantitativa, técnicas de dinámica de grupos, de animación, de planificación, de redacción de proyectos, de evaluación, de observación y de entrevista.</p><p>El objetivo primordial de esta persona será introducir el enfoque integrado de género o perspectiva de género en todas las Áreas organizativas, y muy especialmente a través del Departamento de Recursos Humanos, contrarrestando los efectos de la socialización diferencial de género y contribuyendo a la construcción de un modelo social igualitario.</p><p>Será la persona que se ocupe de analizar, intervenir y evaluar la realidad en relación a la igualdad de oportunidades, para ello habrá de vigilar que se aplique la transversalidad de género en todas las políticas municipales y por todas las personas implicadas y la aplicación de medidas positivas necesarias para contrarrestar o corregir las desigualdades existentes.</p>
+<p>Las funciones más importantes a desarrollar serán las siguientes:</p>
+<ul>
+<li>Desarrollar y evaluar el Plan de Igualdad junto con la Comisión para la Igualdad de la cual formará parte, así como desarrollar las acciones positivas, programas y proyectos relacionados con la Igualdad de Oportunidades.</li><li>Esta figura será la receptora de posibles denuncias de discriminación por razón de género que puedan producirse y las trasladará a la Comisión para la Igualdad de la que formará parte.</li><li>Elaborar proyectos destinados a favorecer la integración de mujeres en la plantilla municipal y especialmente en puestos donde esté subrepresentada.</li><li>Asesorar y sensibilizar a los profesionales del Ayuntamiento de Zaragoza en la inclusión de la perspectiva de género.</li><li>Crear redes y favorecer cauces de coordinación con otros organismos que realicen labores análogas en la promoción de la igualdad de las mujeres.</li><li>Analizar informaciones y datos, así como evaluaciones sobre la aplicación del Plan de Igualdad.</li>
+<li>Apoyar las medidas de conciliación de la vida familiar, laboral y personal, desde el análisis y el seguimiento de las mismas.</li>
+<li>Proponer y fomentar nuevas medidas de conciliación.</li>
+<li>Favorecer y promover campañas de sensibilización para modificar actitudes discriminatorias y estereotipos sexistas.</li><li>Impulsar la utilización de los manuales de estilo sobre el uso no sexista del lenguaje.</li>
+<li>Fomentar la corresponsabilidad doméstica y familiar. Desarrollar medidas de sensibilización y prevención del acoso sexual y del acoso por razón de sexo. Así como realizar un seguimiento de las denuncias sobre acoso sexual y acoso por razón de sexo que pudieran darse</li></ul>
+
+
+<div class="pull-right"><strong>Zaragoza, 18 de abril de 2013</strong></div>
+
+ 
+			
+			
+			
+			
+</div> </div> 
+
+
+   
+            <h2 class="tab-title" data-toggle="collapse" data-target="#comision" aria-expanded="false"> Comisión de Igualdad</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="comision">
+            <div class="well well-sm text-justify">
+			
+			
+			
+			   <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="https://www.zaragoza.es/sede/portal/plan-igualdad/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Plan de Igualdad</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Comisión Igualdad</p>
+                </div>
+                 <ul class="list-inline navbar-right submenu">
+				  <li><a href="comision"> Comisión</a></li>   
+                    <li><a href="antecedentes">Antecedentes</a></li>
+                    <li><a href="constitucion">Constitucion</a></li>
+                  
+                </ul>
+            </div>
+        </nav>
+			
+			
+			
+			
+			
+			
+<p>  La Comisi&#243;n para la Igualdad tendr&#225; por objeto la <strong>coordinaci&#243;n, supervisi&#243;n y seguimiento</strong> de las medidas acordadas en el Plan de Igualdad, con la finalidad de garantizar el derecho a la igualdad entre las empleadas y  los empleados municipales y promover su efectividad. </p><p> 	Entre sus <strong>funciones</strong> podr&#225;n estar:</p><ul><li>La coordinaci&#243;n con todas las &#225;reas y servicios para la <strong>implantaci&#243;n y seguimiento del Plan de Igualdad</strong>.</li><li>  La elaboraci&#243;n del calendario anual de las acciones a desarrollar.  </li><li>La colaboraci&#243;n para la incorporaci&#243;n de un <strong>uso no sexista del lenguaje</strong>.  </li><li>La elaboraci&#243;n de propuestas para llevar a la Mesa General de Negociaci&#243;n, de aquellas <strong>acciones dirigidas a erradicar la segregaci&#243;n horizontal y vertical</strong>, as&#237; como la discriminaci&#243;n directa o indirecta.  </li><li>La vigilancia del <strong>cumplimiento del principio de igualdad de oportunidades y trato</strong>, teniendo para ello la posibilidad de solicitar y acceder a los datos oportunos sin perjuicio del cumplimiento de la normativa de Protecci&#243;n de Datos de Car&#225;cter Personal.  </li><li>La promoci&#243;n de iniciativas que conduzcan a una mejor implementaci&#243;n de las medidas acordadas, especialmente las referidas a la sensibilizaci&#243;n y formaci&#243;n sobre igualdad y no discriminaci&#243;n por raz&#243;n de sexo.  </li><li>La consulta y emisi&#243;n de informes, as&#237; como el seguimiento de cuestiones que pudieran suscitarse sobre discriminaciones directas o indirectas por raz&#243;n de g&#233;nero.  </li><li>El asesoramiento, desde la perspectiva de g&#233;nero, a otras Comisiones o Mesas, en consonancia con el principio de transversalidad.  </li><li>El conocimiento, seguimiento y propuestas en relaci&#243;n a los <strong>informes de impacto de g&#233;nero</strong> que pudieran elaborarse, relativos al acceso al empleo p&#250;blico y a la promoci&#243;n profesional.  </li><li> La elaboraci&#243;n de una memoria anual de car&#225;cter p&#250;blico, donde se recoger&#225; el trabajo realizado.	</li></ul> 
+			
+			
+			
+			
+			</div> </div>
+			
+			
+			            <h2 class="tab-title" data-toggle="collapse" data-target="#protocolo" aria-expanded="false"> Protocolo de Acoso</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="protocolo">
+            <div class="well well-sm text-justify">
+			
+			
+			 <div class="row"> <div class="col-md-12">
+			  <div class="col-md-7">
+			 <h3>PROTOCOLO DE ACTUACI&#211;N FRENTE AL ACOSO SEXUAL</h3><p><strong>EL ACOSO POR RAZ&#211;N DE SEXO Y EL ACOSO POR ORIENTACIÓN SEXUAL</strong></p>
+
+ 
+ 
+ 
+ 
+<p><strong>Modificado por acuerdo de la Comisión para la Igualdad de Empleadas y Empleados Municipales el 24 de Junio de 2016 quedando su redacción actual.</strong></p>
+
+<h3>I. DECLARACIÓN DE PRINCIPIOS</h3>
+<p>Toda persona tiene derecho a la igualdad y a la no discriminación, a la salvaguarda de la dignidad, a la integridad moral, a la intimidad y al trabajo. En virtud de esos derechos el Ayuntamiento de Zaragoza declara que el acoso sexual, acoso por razón de sexo y acoso por orientación sexual suponen un atentado a la dignidad de las personas trabajadoras, por lo que rechaza y prohíbe cualquier práctica de este tipo en el trabajo, y hace expreso pronunciamiento de no tolerar estas acciones, así como de facilitar los medios precisos para impedir su manifestación en el ámbito laboral.</p>
+<p>El acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual, constituyen comportamientos reprobables que vulneran las normas que regulan los deberes y derechos básicos de la plantilla del Ayuntamiento de Zaragoza, entre los que mencionamos:</p>
+<ul><li>El derecho a la igualdad en mujeres y hombres.
+</li><li>El derecho a la consideración debida a su dignidad.
+</li><li>El derecho a su integridad física y moral.
+</li><li>El derecho al trabajo y a una adecuada política de seguridad y salud.
+</li><li>El derecho al honor, a la intimidad personal y familiar y a su propia imagen.</li></ul>
+<p>Queda por tanto expresamente prohibido cualquier comportamiento o conducta de esta naturaleza, pudiendo ser consideradas, con independencia de lo establecido en la legislación penal, como falta muy grave, dando lugar a las sanciones que este Protocolo y la Ley 7/2007, de 12 de abril, del Estatuto Básico del Empleado Público proponen para este tipo de conductas.</p>
+<p>Cualquier persona que preste servicios en este Ayuntamiento, y en concreto los cargos electos, órganos y personal directivo, independientemente del carácter o naturaleza jurídica de su relación con la misma, se compromete a prevenir la problemática del acoso sexual, acoso por razón de sexo y acoso por orientación sexual en el trabajo. En especial sus órganos y personal directivo deben proveer todos los medios a su alcance para prevenir, evitar y en su caso, detectar y eliminar cualquier situación de acoso sexual, acoso por razón de sexo y acoso por orientación sexual.</p>
+<p>En consecuencia, el Ayuntamiento de Zaragoza y la representación de las organizaciones sindicales se comprometen a prevenir y sancionar en su caso, conforme a lo regulado por medio del presente Protocolo, el acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual con las debidas garantías, tomando en consideración las normas constitucionales, laborales, administrativas y declaraciones de principios y derechos fundamentales en el trabajo. Se garantizará en todo caso que la asistencia y protección de las víctimas se realice siguiendo los principios de sigilo, respeto, profesionalidad, objetividad e imparcialidad y celeridad.</p>
+
+<p>La Comisión para la Igualdad tendrá derecho a recibir información periódica sobre el número de denuncias por acoso sexual, acoso por razón de sexo y acoso por orientación sexual, de los resultados de las investigaciones incluyendo el archivo de denuncias, y de las medidas que se adopten en virtud de lo previsto en el presente Protocolo.</p>
+<p>En cualquier caso todo el personal del Ayuntamiento de Zaragoza deberá observar y respetar las medidas contenidas en este Protocolo y en la normativa aplicable.</p>
+<h3>II. NORMATIVA</h3>
+<h4>Normativa Internacional:</h4>
+<p>Declaración Universal de Derechos Humanos: arts. 3 y 5
+Convenio no 111o O.I.T. De 25 de junio de 1958, relativo a la discriminación en materia de empleo.</p>
+<h4>Normativa Europea:</h4>
+<p>Directiva 76/2007/CEE del Consejo de 9 de febrero de 1976 "Igualdad de trato", modificada por Directiva 2002/73/CE del Parlamento Europeo relativa a la aplicación del principio de igualdad de trabajo entre hombres y mujeres en lo que se refiere al acceso al empleo, a la formación y a la promoción profesionales y a las condiciones de trabajo.</p>
+<p>Declaración del Consejo de 19 de diciembre de 1991, relativa a la aplicación de la Recomendación 92/131/CE de la Comisión de la Comunidades europeas de 27 de noviembre de 1991, en la cual se incluye un "Código de Conducta"encaminado a combatir el acoso sexual en el trabajo de los países de la CE.</p>
+<p>Directiva 2006/54//CE del Parlamento Europeo y del Consejo de 5/07/2006.</p>
+<p>Acuerdo marco europeo de 26 de abril de 2007, sobre acoso y violencia en el lugar de trabajo.</p>
+<h4>Normativa estatal:</h4>
+<p>Constitución Española 1978: arts. 1.1; 9.2; 10.1; 14; 15, 18.1, 35.1, 40.2 y 53.2.</p>
+<p>Ley Orgánica 3/2007 de 22 de marzo, para la Igualdad Efectiva de Mujeres y Hombres
+(LOIEMH): arts. 3, 7, 8,48 y 62.</p>
+<p>Ley Orgánica 10/1995, de 23 de noviembre, Código Penal: arts. 184, 191, 443 y 445.</p>
+<p>Ley 31/1995, de 8 de noviembre, de Prevención de Riesgos Laborales: art 14.</p>
+<p>Ley 7/2007 de 12 de abril del Estatuto Básico del Empleado Público; arts. 14, 53 y 95,2.</p>
+<p>Real Decreto 33/1986, de 10 de enero, por el que se aprueba el Reglamento de 3/18 Régimen Disciplinario de los Funcionarios de la Administración del Estado.</p>
+
+<p>Real Decreto Legislativo 1/1995, de 24 de marzo que aprueba el Texto Refundido de la Ley del Estatuto de los Trabajadores.</p>
+<p>Real Decreto Legislativo 5/2000, de 4 de agosto, por el que se aprueba el Texto Refundido de la Ley sobre Infracciones y Sanciones en el Orden Social.</p>
+<p>Ley 36/2011, de 10 de octubre, Reguladora de la Jurisdicción Social.</p>
+<p>Ley 29/1998, de 13 de julio, reguladora de la Jurisdicción Contencioso-Administrativa. Resolución de 28 de julio de 2011, de la Secretaría de Estado para la Función Pública que aprueba el Acuerdo de 27/07/2011 de la Mesa General de Negociación de la Administración General del Estado sobre el Protocolo de actuación frente al acoso sexual y al acoso por razón de sexo en el ámbito de la A.G.E. Y de los Organismo Públicos vinculados.</p>
+<p>Criterio Técnico 69/2009 sobre actuaciones de la Inspección de Trabajo y Seguridad Social en materia de acoso y violencia en el trabajo.</p>
+
+
+<p><strong>Otra normativa:</strong> Convenio/Pacto del Ayuntamiento de Zaragoza 2016/19.</p>
+
+
+<h3>III. ALCANCE</h3>
+<p>El presente protocolo será de aplicación a todo el personal del Ayuntamiento de Zaragoza. Las empresas externas contratadas por el Ayuntamiento, empresas colaboradoras, sociedades y patronatos municipales serán informadas de la existencia de este protocolo de actuación.</p>
+<p> Cuando se produzca un caso de este tipo entre personal municipal y personal de una empresa externa contratada se aplicarán los mecanismos de coordinación empresarial.</p>
+
+
+
+
+
+<h4>IV. DEFINICIONES</h4>
+<p><strong>ACOSO SEXUAL</strong> es toda conducta de naturaleza sexual, desarrollada en el ámbito de organización y dirección de una entidad empleadora o en relación o como consecuencia de una relación laboral, en la que se plantea una amenaza que afecta al empleo o a las condiciones de trabajo de la víctima a fin de obtener provecho sexual, o en todo caso, tiene como objetivo o como consecuencia, crearle un entorno laboral intimidatorio, degradante u ofensivo.</p>
+<p>El acoso sexual contempla dos tipos diferenciados: el acoso de intercambio o chantaje sexual y el acoso ambiental.</p>
+
+<p><strong>Acoso de Intercambio o Chantaje Sexual:</strong> el producido por personal superior jerárquico o personas cuyas decisiones pueden tener efectos sobre el empleo y las condiciones de trabajo de la persona acosada.</p>
+<p>A modo de ejemplo, pueden constituir chantaje sexual: demandas de favores sexuales, cuando éstas están relacionadas, directa o indirectamente, con la carrera profesional, la mejora de las condiciones de trabajo o la conservación del puesto de trabajo.</p>
+<p><strong>Acoso Ambiental:</strong> aquella conducta que crea un entorno laboral intimidatorio, hostil o humillante para la persona que es objeto de la misma.</p>
+<p>A modo de ejemplo, pueden constituir acoso sexual: observaciones sugerentes y desagradables; chistes o comentarios sobre la apariencia o aspecto; abusos verbales deliberados de contenido libidinoso; invitaciones impúdicas o comprometedoras; uso de imágenes pornográficas y o eróticas en los lugares y herramientas de trabajo; gestos obscenos; observación clandestina de personas en lugares reservados, como los servicios, vestuarios; etc.</p>
+<p><strong>ACOSO POR RAZÓN DE SEXO</strong> es todo comportamiento en relación o que tiene como causa los estereotipos de género (prejuicios, ideas preconcebidas y trato discriminatorio a mujeres y hombres por razón de su sexo), desarrollado de forma sistemática en el ámbito de organización y dirección de una entidad empleadora o en relación o como consecuencia de una relación laboral, que tiene como objetivo o como consecuencia atentar contra la dignidad y la integridad física o psíquica de una persona y crear un entorno intimidatorio, degradante u ofensivo, pudiendo poner en peligro su empleo, en especial, cuando estas actuaciones se encuentran relacionadas con la opción sexual o con las situaciones de maternidad, paternidad y asunción de otros cuidados familiares.</p>
+<p>A modo de ejemplo, pueden constituir acoso por razón de sexo, siempre que se realicen sobre una persona por razón de su sexo: las descalificaciones públicas y reiteradas sobre la persona, su trabajo y su implicación en el mismo; los comentarios continuos y vejatorios sobre el aspecto físico, o sobre la opción o ideología sexual; impartir órdenes contradictorias y por tanto imposibles de cumplir simultáneamente; impartir órdenes vejatorias; las actitudes que comporten vigilancia extrema y continua; la orden de aislar e incomunicar a una personal; la agresión física; etc.</p>
+<p><strong>ACOSO POR ORIENTACIÓN SEXUAL</strong> es cualquier comportamiento basado en la orientación sexual, identidad de género y/o expresión de género de una persona que tenga la finalidad o provoque el efecto de atentar contra su dignidad o su integridad física o psíquica o de crear un entorno intimidatorio, hostil, degradante, humillante, ofensivo o molesto. A modo de ejemplo, pueden ser acoso por razón de orientación sexual expresiones ridiculizantes, comentarios jocosos sobre el aspecto físico, modales, formas de vestir o de hablar; tratar de aislar a la persona en su ambiente laboral; humillarle delante de sus compañeros o compañeras por su orientación sexual; hacerle insinuaciones sexuales; proferir insultos y/o vejaciones; etc.</p>
+
+
+<h3>V. MEDIDAS PREVENTIVAS</h3>
+
+<p>Con el objeto de prevenir y evitar al acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual, se establecen las siguientes actuaciones:</p>
+<ul><li>Declaración oficial de principios en la que se señale el compromiso con la prevención y erradicación del acoso sexual y defensa del derecho a la dignidad de las personas trabajadoras, fomentando el respeto entre todo el personal de la entidad.</li>
+<li>Difusión del Protocolo de forma que sea conocido por el personal municipal y organismos autónomos del Ayuntamiento de Zaragoza a través de la Intranet municipal y correo corporativo.</li>
+<li>Documentos divulgativos que faciliten información dando a conocer la existencia del Protocolo y sus principales características, así como en la Web donde podrán descargarlo.</li>
+<li>Sesiones de información y campañas específicas explicativas del contenido del Protocolo, derechos y deberes de las personas trabajadoras, de sus representantes y de la Administración, sanciones y responsabilidades establecidas, medidas cautelares, etc.</li>
+<li>Manuales de Acogida.</li>
+<li>Formación específica para las personas que van a participar en el procedimiento, y a asistir a las presuntas víctimas, sobre el procedimiento a seguir y la forma en la que deben actuar cada una de las partes implicadas.</li>
+<li>Formación específica sobre el Protocolo en los cursos de reciclaje del personal municipal, enmarcados en el Plan de Igualdad para Empleados y Empleadas, con especial hincapié en mandos intermedios y jefaturas de servicio.</li></ul>
+
+
+<h4>VI. GARANTÍAS EN EL DESARROLLO DEL PROCEDIMIENTO</h4>
+
+<p>En el transcurso del procedimiento de investigación de acosos se tendrán en cuenta las siguientes garantías:</p>
+<ul><li>1.  Confidencialidad: las personas que intervengan en el procedimiento tienen obligación de guardar una estricta confidencialidad y no deben transmitir ni divulgar información sobre el contenido de las denuncias presentadas, resueltas o en proceso de investigación de las que tengan conocimiento. Por ello, desde el momento en que se formule la denuncia, se asignará un código numérico que se utilizará para identificar la denuncia concreta tratando de preservar la identidad de las personas a las implicadas en el procedimiento.
+Todo el personal que haya participado en cualesquiera de las actuaciones previstas en el presente protocolo queda sujeto al deber de secreto, debiendo firmar el documento de acuerdo de confidencialidad y no divulgación de información, según anexo.</li>
+<li>2. Respeto y protección de la dignidad de las personas: las actuaciones o diligencias deben realizarse con la mayor prudencia y con el debido respeto a todas las personas implicadas, que en ningún caso podrán recibir un trato desfavorable por este motivo. La organización deberá adoptar las medidas pertinentes para garantizar este derecho a las personas tanto presuntamente acosadas como acosadoras. Las personas implicadas podrán ser asistidas por algun/a acompañante de su elección, en todo momento a lo largo del procedimiento, si así lo requieren.
+</li><li>3. Diligencia y celeridad: la investigación y la resolución sobre la conducta denunciada deben ser realizadas con la debida profesionalidad, diligencia y sin demoras indebidas, de forma que el procedimiento pueda ser completado en el menor tiempo posible respetando las garantías debidas.
+</li><li>4. Imparcialidad: el procedimiento debe garantizar una audiencia imparcial y un tratamiento justo para todas las personas afectadas. Todas las personas que intervengan en el procedimiento actuarán de buena fe en el esclarecimiento de los hechos denunciados.
+</li><li>5. Prohibición de represalias: se prohíben expresamente las represalias contra las personas que efectúen una denuncia, comparezcan como testigos o participen en una investigación sobre acoso sexual, acoso por razón de sexo o acoso por orientación sexual, en los términos previstos en la normativa aplicable.
+</li><li>6. La aplicación de este protocolo no impedirá en ningún caso la utilización, paralela o posterior, por parte de las personas implicadas, de las acciones legales oportunas.
+</li><li>7. Las denuncias, alegaciones o declaraciones que se demuestren como intencionadamente fraudulentas o dolosas, y realizadas con el objetivo de causar un mal injustificado a la persona denunciada, serán sancionadas. No se considerará falsa o calumniosa la denuncia presentada de buena fe aunque no se haya podido constatar la veracidad de la misma.</li></ul>
+
+
+<h4>VII. FIGURAS GARANTES DEL PROCEDIMIENTO</h4>
+
+<p>Los órganos encargados de aplicar el procedimiento establecido en casos de acoso sexual, acoso por razón de sexo y acoso por orientación sexual serán los siguientes:</p>
+<h4>1. ASESORÍA CONFIDENCIAL</h4>
+<p>Se denomina Asesoría Confidencial al grupo de personas competentes para la recepción de denuncias e iniciación del procedimiento según el presente Protocolo.</p>
+<p>Estará compuesta por Asesoras/es Confidenciales. Las personas designadas inicialmente como Asesoras/es Confidenciales serán las/los Agentes de Igualdad y aquellas Delegadas/os de Prevención que de forma voluntaria reciban formación sobre materia de igualdad entre hombres y mujeres, sobre acoso sexual, acoso por razón de sexo y acoso por orientación sexual y sobre la aplicación del presente Protocolo. También podrán optar a formar parte de la Asesoría Confidencial el personal municipal que tenga la formación y condiciones requeridas para desempeñar las funciones encomendadas por este Protocolo.</p>
+<p>La Asesoría Confidencial estará compuesta por un máximo de diez personas.</p>
+<p>La formación y las condiciones que se requieran para la designación de Asesoras/es Confidenciales será determinada por la Comisión de Igualdad.</p>
+<p>La identidad de las/los Asesoras/es Confidenciales se dará a conocer a toda la plantilla municipal, así como la forma en que se podrá contactar con estas personas.</p>
+<p>Sus funciones serán las siguientes:</p>
+<ul><li>1. Dar información sobre el presente protocolo al personal municipal que lo solicite.
+</li><li>2. Recibir las denuncias por acoso sexual, acoso por razón de sexo y acoso por orientación sexual.
+</li><li>3. Informar a la persona denunciante sobre sus derechos y formas de actuación posibles.
+</li><li>4. Realizar un primer análisis de los hechos denunciados para confirmar la veracidad de la denuncia con la máxima rapidez y confidencialidad.
+</li><li>5. Identificar la situación denunciada para adoptar las pautas de actuación según indica el protocolo (no admitir a trámite, iniciar el procedimiento informal o iniciar el procedimiento formal).
+</li><li>6. Llevar a cabo el procedimiento informal según lo previsto en este protocolo.
+</li><li>7. Realizar una labor de mediación entre las partes, si es posible.
+</li><li>8. Emitir un informe de valoración con conclusiones y propuestas estimadas del que dará información al Servicio de Relaciones Laborales y al Comité de Asesoramiento según cada caso.
+</li><li>9. Remitir los casos de indicios de acoso al Comité de Asesoramiento.</li></ul>
+
+
+<ul><li>10. Emitir una memoria anual que incluya el registro, resolución y evaluación de los casos de acoso sexual, acoso por razón de sexo y acoso por orientación sexual, así como indicadores sobre las medidas preventivas y sobre los procedimientos de garantía que se recogen en este protocolo.</li></ul>
+<p>Si del análisis inicial de los datos se obtuviesen indicios de acoso, la Asesoría Confidencial solicitará la constitución de forma urgente del Comité de Asesoramiento.</p>
+<h4>2. COMITÉ DE ASESORAMIENTO</h4>
+<p>Es el órgano colegiado que desarrolla el procedimiento formal de resolución de denuncias por acoso sexual, acoso por razón de sexo y acoso por orientación sexual.</p>
+<p>Estará formado por: dos técnicos/as del Servicio Prevención y Salud Laboral, una persona de la Asesoría Confidencial, un abogado/a de la Asesoría Jurídica, un Psicólogo/a del Servicio de Igualdad y dos representantes Sindicales. El documento de constitución del Comité de Asesoramiento además de nombrar a las personas que componen el mismo, designará a una de ellas como tramitadora.</p>
+<p>La persona nombrada como Asesor/a Confidencial en el Comité de Asesoramiento no podrá haber participado en el procedimiento informal sobre el que se esté actuando.</p>
+<p>Cuando el Comité lo considere necesario podrá ser asistido por profesionales expertos en distintas materias relacionadas con la situación presentada.</p>
+<p>Las personas que integran el Comité de Asesoramiento recibirán la formación necesaria en igualdad de género, acoso sexual, acoso por razón de sexo y acoso por orientación sexual, así como en los contenidos de este protocolo para su aplicación adecuada.</p>
+<p>Sus funciones serán las siguientes:</p>
+<ol><li> Dar audiencia a la persona denunciante.
+</li><li>Notificar por escrito a la persona denunciada la existencia de la denuncia y darle audiencia.
+</li><li>Recabar información complementaria y determinar si se aprecian o no indicios suficientes de acoso sexual, de acoso por razón de sexo o acoso por orientación sexual.
+</li><li> Emitir un informe de valoración con las conclusiones y medidas propuestas concretas que se remitirá al Servicio de Relaciones Laborales u órgano competente.
+</li><li> Comunicar la resolución adoptada a la persona denunciante y a la persona denunciada.
+</li><li> Supervisar el cumplimiento de las medidas propuestas en el informe de valoración.
+</li><li> Resolver las alegaciones presentadas.
+</li><li>Informar anualmente a la Comisión de Igualdad de las acciones llevadas a cabo.</li></ol>
+<h4>3. NOMBRAMIENTOS</h4>
+<p>La Presidencia de la Comisión de Igualdad nombrará a las personas que forman parte de la Asesoría Confidencial y del Comité de Asesoramiento.</p>
+
+
+
+
+<h4>VIII. PROCEDIMIENTO DE ACTUACIÓN</h4>
+<p><strong>A) Presentación de la denuncia.</strong></p>
+<p>El procedimiento se iniciará con la presentación de la queja o denuncia interna a una persona de la Asesoría Confidencial o a través del Servicio de Prevención y Salud Laboral.</p>
+<p>La denuncia podrá ser de forma verbal o escrita. Si fuese verbal la persona denunciante deberá ratificarla por escrito. No se admitirán a trámite las denuncias anónimas.</p>
+<p>La denuncia podrá ser formulada por:</p>
+<ul><li>1. Persona presuntamente acosada y/o su representante legal.
+</li><li>2. La representación sindical, previa autorización de la persona presuntamente acosada.
+</li><li>3. Cualquier empleada o empleado público de forma motivada. En este caso la presunta víctima deberá ratificar la existencia del acoso.</li></ul>
+<p>Una vez presentada la denuncia se reunirán de urgencia dos personas de la Asesoría Confidencial, procurando que una de ellas siempre sea un/a Agente de Igualdad. En caso de que la o el denunciante se haya dirigido directamente a una persona determinada de la Asesoría Confidencial, ésta iniciará el procedimiento de actuación.</p>
+<p><strong>B) Análisis inicial de la Asesoría Confidencial.</strong></p>
+<p>La Asesoría Confidencial realizará un análisis de los datos objetivos del caso para confirmar la veracidad de la denuncia observando por ejemplo la congruencia de los hechos relatados o la existencia por el contrario de imprecisiones y contradicciones.</p>
+<p>Como conclusión de este primer análisis, la Asesoría Confidencial podrá:</p>
+<ul><li>a) No admitir a trámite dicha denuncia si se considera que la situación denunciada no pertenece al ámbito de este Protocolo. En este caso se remitirá un escrito a la persona denunciante informándole de los motivos por los que no se continúa con el proceso.
+</li><li>b) Iniciar el procedimiento informal.
+</li><li>c) Identificar la situación denunciada como acoso sexual, acoso por razón de sexo o por orientación sexual y dar comienzo al procedimiento formal.</li></ul>
+<p>Si se estima conveniente con el objetivo de impedir la continuidad de las presuntas situaciones de acoso y preservar la seguridad y salud de la persona denunciante, podrá proponer a Relaciones Laborales las medidas cautelares necesarias, con especial atención a la separación de la presunta víctima y de la persona denunciada.</p>
+<p>La persona denunciante podrá en todo momento desistir del procedimiento. En todo caso y de oficio, podrá continuar la investigación de la denuncia si se detectaran indicios claros de acoso.</p>
+
+
+<p><strong>C) Procedimiento Informal</strong></p>
+<p>En los supuestos en que de las actuaciones realizadas se deduzcan indicios de acoso, la Asesoría Confidencial iniciará un procedimiento de valoración de la denuncia, pudiendo recabar más información y señalar la existencia o no de posibles testigos.</p>
+<p>El Procedimiento Informal tratará de resolver el problema sin necesidad de iniciar el procedimiento formal. De este modo, y como resultado de las comprobaciones realizadas, pueden producirse las siguientes situaciones:</p>
+<ul><li>a) La persona denunciante y la persona denunciada identifican y analizan los hechos y hay un compromiso de no repetición.
+</li><li>b) La Asesoría Confidencial propone determinadas actuaciones para solucionar el problema y ambas partes muestran su acuerdo y conformidad.
+</li><li>c) No se alcanza acuerdo alguno y se inicia el procedimiento formal. En este supuesto se procurará la protección suficiente de la víctima y de la persona denunciante, en cuanto a su seguridad y salud, interviniendo para impedir la continuidad de las presuntas situaciones de acoso y proponiendo a este efecto la separación temporal laboral de ambas personas, si fuera necesario.</li></ul>
+<p>La Asesoría Confidencial dará conocimiento del resultado del procedimiento informal al Comité de Asesoramiento y si fuera necesario al Servicio de Relaciones Laborales.</p>
+<p>El Procedimiento Informal se resolverá a la mayor celeridad posible a partir de la presentación de la denuncia.</p>
+<div><img src="http://intranet.red.zaragoza.es/intranet/cont/paginas/intranet/igualdad/img/organigrama.jpg"/></div>
+<p><strong>D) Procedimiento Formal.</strong></p>
+<p>El Procedimiento Formal, se iniciará en los siguientes supuestos:</p>
+<p>Cuando las actuaciones denunciadas sean valoradas como indicios de acoso</p>
+<p>No se alcance un acuerdo a través del procedimiento informal</p>
+<p>Se reitere la conducta que ha motivado la denuncia por parte de la persona denunciada</p>
+<p>O cuando la persona denunciante no considere adecuado acudir al procedimiento informal y se vean indicios de acoso sexual, acoso por razón de sexo o por orientación sexual.</p>
+<p>La Asesoría Confidencial convocará al Comité de Asesoramiento, que deberá reunirse en el plazo más urgente posible para dar cuenta de los hechos. Le trasladará el informe del Procedimiento Informal si hubiera existido éste, así como la denuncia recabada por escrito.</p>
+<p>El Comité notificará la presentación de la denuncia a la persona denunciada lo más rápidamente posible y se le citará por escrito, con fecha y hora, en presencia o no de la persona denunciante. En dicho escrito se le informará de la existencia de la denuncia y se le advertirá de que su no comparecencia pudiera ser considerada como un acto de obstrucción en la investigación de los hechos.</p>
+<p>El Comité utilizará los procedimientos de investigación a su alcance, entrevistando a las partes, así como a las y los testigos y terceras personas implicadas si las hubiera. En los casos que se considere necesario, bien por las características de la situación investigada, bien por contrastar el análisis realizado, se podrá solicitar asesoramiento externo a personas u organizaciones expertas en psicosociología, derecho, salud laboral, etc. en el ámbito de la prevención y actuación ante el acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual.</p>
+<p>El Comité elaborará un informe de valoración de la actuación investigada, en el que se indicarán las conclusiones alcanzadas y la consiguiente resolución, pudiendo contemplarse las siguientes alternativas:</p>
+<ul><li>a) Archivo de la denuncia, por alguno de los siguientes motivos:
+<br/>Desestimiento de la persona denunciante (en todo caso, en función de la gravedad y de oficio, podrá continuar la investigación de la denuncia si se detectaran indicios de acoso).
+<br/>Falta de objeto o insuficiencia de indicios.
+Cuando de las actuaciones practicadas se pueda dar por resuelto el contenido de la denuncia, reflejando, en su caso, el acuerdo alcanzado entre las partes.
+</li><li>b) Si del análisis del caso se dedujera alguna otra falta distinta de los tipos de acosos objeto de este Protocolo y que estuviera tipificada en la normativa laboral existente, se propondría la incoación del expediente disciplinario que corresponda.
+</li><li>c) Cuando del referido informe se deduzca con claridad la existencia de acoso sexual, acoso por razón de sexo o acoso por orientación sexual, el Comité de Asesoramiento instará al Servicio de Relaciones Laborales a la incoación de un expediente informativo y la adopción de las correspondientes medidas correctoras de la situación, así como de medidas sancionadoras, si fuese necesario. El informe de valoración del Comité de Asesoramiento tendrá, a todos los efectos, carácter de iniciación de Expediente Informativo a resolver por el Servicio de Relaciones Laborales u órgano competente.
+
+</li><li>d) El informe de conclusiones del Comité de Asesoramiento podrá enumerar conductas, hechos o situaciones detectadas que sean indicios para considerar la existencia de acoso sexual en los que habrá que determinar la frecuencia e intencionalidad de las mismas.</li></ul>
+<p> Como ejemplo se pueden enumerar entre otras las siguientes conductas:</p>
+<ul><li>Abusos verbales deliberados de contenido libidinoso.
+</li><li>Uso de imágenes pornográficas y eróticas en los lugares de trabajo o a través de las herramientas de trabajo.
+</li><li>Gestos y/o comentarios obscenos.
+</li><li>Bromas sexuales.
+</li><li>Rumores sobre la vida sexual de las personas o presumir de habilidades sexuales.
+</li><li>Comentarios irrespetuosos insistentes sobre la orientación sexual de las personas.
+</li><li>Mensajes al móvil con comentarios fuera de tono.
+</li><li>Invitaciones impúdicas o comprometedoras.
+</li><li>Contacto físico innecesario, rozamientos, proximidad excesiva, buscar quedarse a solas, arrinconar...
+</li><li>Las descalificaciones públicas y reiteradas sobre una persona, su trabajo y su implicación en el mismo, que se realicen por razón de género y de orientación sexual.
+</li><li>Los comentarios continuos vejatorios y discriminatorios sobre el aspecto físico así como expresiones machistas y de contenido sexual.
+</li><li>Comentarios despectivos sobre la opción o ideología sexual de una persona por razón de orientación sexual.
+</li><li>Impartir órdenes basadas en estereotipos sexistas con intenciones vejatorias.
+</li><li>Las actitudes que comporten vigilancia extrema y continua, realizadas sobre una persona por razón de género y de orientación sexual.
+</li><li>Presionar para citas indeseadas.
+</li><li>Otras...</li></ul>
+<p>El procedimiento formal, hasta la elaboración y comunicación del informe de valoración, durará el menor tiempo posible garantizando la mayor agilidad en todo el proceso.</p>
+<p>Dicho informe se trasladará al Servicio de Relaciones Laborales u órgano competente en la materia disciplinaria para que proponga la resolución del expediente sancionador al órgano competente encargado de la incoacción del expediente disciplinario.</p>
+<p>El Servicio de Relaciones Laborales u órgano competente, en relación al presente protocolo tendrá las siguientes funciones:</p>
+<ul><li>Adopción de las medidas cautelares, si proceden, propuestas por el Comité de Asesoramiento o por la Asesoría Confidencial.
+</li><li>Tramitación del expediente disciplinario a la mayor celeridad posible.
+</li><li>Prestar ayuda y colaboración necesarias para que los órganos intervinientes en este protocolo desarrollen sus funciones.
+</li><li>Comunicar al Comité de Asesoramiento las medidas sancionadoras adoptadas a los efectos de su seguimiento y evaluación.
+</li></ul>
+<p><strong>E) Resolución de alegaciones.</strong></p>
+<p>De la resolución del Comité de Asesoramiento. se dará traslado a la persona denunciada y a la presunta víctima. Las partes implicadas podrán alegar en el plazo máximo de cinco días laborables, presentando nuevas pruebas o argumentaciones.</p>
+<p>En el supuesto de alegaciones, el Comité de Asesoramiento valorará las alegaciones presentada por la persona denunciante o denunciada y acordará rechazar las alegaciones o continuar con el procedimiento en vista de las nuevas pruebas o argumentaciones presentadas. Si éstas son sólidas, completará la investigación, atendiendo a la información complementaria que pueda existir.</p>
+<p>Como resultado de este proceso podrá:</p>
+<ul><li>a) Rechazar la alegación y dar por buena la resolución anteriormente adoptada.
+</li><li>b) Modificar la resolución anteriormente adoptada en función de las alegaciones presentadas.</li></ul>
+<p>De la decisión aquí adoptada se dará traslado a la persona denunciante, a la persona denunciada y a la Dirección del Área donde presta sus servicios la persona presuntamente acosada.</p>
+<p>El plazo para recabar la nueva información y adoptar una decisión definitiva deberá realizarse con la mayor celeridad desde la recepción de las alegaciones.</p>
+<h3>IX. SEGUIMIENTO Y EVALUACIÓN</h3>
+<p>El Servicio de Relaciones Laborales u órgano competente informará al Comité de Asesoramiento de las medidas adoptadas tras el informe de conclusiones y valoración de cada expediente disciplinario así como del cumplimiento efectivo de las mismas por acoso sexual, por razón de sexo o por orientación sexual,en el menor tiempo posible.</p>
+<p>La Asesoría Confidencial llevará el control y registro de las denuncias presentadas así como de la resolución de los expedientes resultantes de procedimiento informal y del procedimiento formal. Llevará también el registro de las distintas actuaciones preventivas desarrolladas con el personal municipal, con el objetivo de realizar anualmente un informe que remitirá al Comité de Asesoramiento.</p>
+<p>Anualmente, la Asesoría Confidencial remitirá al Servicio de Relaciones Laborales u órgano competente y a la Comisión de Igualdad una Memoria/Evaluación de las actuaciones realizadas a lo largo del año.</p>
+<p>Ambos informes deberán de incluir indicadores relacionados con las medidas aplicadas (medidas de comunicación realizadas, horas de formación impartidas...) así como indicadores de los procedimientos de garantía (denuncias tramitadas, datos de personas denunciantes y denunciadas desagregados por sexo, procedimientos informales desarrollados, procedimientos formales, denuncias sancionadas...).</p>
+
+<p>Además se prevé la evaluación del propio protocolo como herramienta de prevención y actuación contra el acoso sexual , por razón de sexo o por orientación sexual, tras la tramitación de las tres primeras denuncias o al año de su implantación, y siempre que se produzcan cambios legales o mejoras en los conocimientos técnicos al respecto.</p>
+<p>La Comisión para la Igualdad realizará el control y seguimiento de la aplicación de este Protocolo con la finalidad de detectar su efectivo funcionamiento y real eficacia en la detección y eliminación de las situaciones de acoso sexual, por razón de sexo y por orientación sexual, en el Ayuntamiento de Zaragoza. Si se detectaran fallos de aplicación que le restasen efectividad en la consecución de su objetivo, la Comisión propondrá su modificación siguiendo los trámites oportunos.</p>
+<p>Si hubiera una norma legal o convencional de ámbito superior que afectara al contenido del presente Protocolo, quienes firman el mismo se comprometen a su inmediata adecuación.</p>
+
+<p><em>El Ayuntamiento de Zaragoza declara que el acoso sexual, acoso por razón de sexo y acoso por orientación sexual suponen un atentado a la dignidad de las personas trabajadoras, por lo que rechaza y prohíbe cualquier práctica de este tipo en el trabajo, y hace expreso pronunciamiento de no tolerar estas acciones.</em></p>
+
+</div>
+
+ 
+			  <div class="col-md-5">
+ 
+ 
+ <div>
+<img src="http://intranet.red.zaragoza.es/intranet/cont/paginas/intranet/igualdad/img/protocolo-acoso.jpg"/></div>
+
+<h3>Documentación</h3><ul><li>
+<a href="/contenidos/igualdad/protocolo-acoso1619.pdf" class="pdf">Protocolo Acoso</a>
+</li><li>
+<a href="/contenidos/igualdad/comunicado-acoso.pdf" class="pdf">Comunicado Presentación del Protcolo</a>
+</li><li><a href="http://www.zaragoza.es/ciudad/noticias/detalle_Noticia?id=225433">Presentación del Protocolo</a></li><li> 
+ <a href="/contenidos/igualdad/triptico-acoso.pdf" class="pdf"> Folleto Informativo </a></li> </ul>
+ 
+
+
+</div>
+
+ </div> </div>
+
+
+ </div> </div>
+			
+			
+			
+			
+			  <h2 class="tab-title" data-toggle="collapse" data-target="#transversalidad" aria-expanded="false"> Oficina de Transversalidad</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="transversalidad">
+            <div class="well well-sm text-justify">
+			 
+<div class="row">  
+		
+		  <div class="col-md-12">
+		
+		  
+		 <sede:equipamiento id="27707" ocultos="mapa,tabs"></sede:equipamiento> </div></div> 
+			
+			</div></div>
+			
+			
+			
+			
+			</div> 
+			
+			
+			
+			
+			
+			
+			
+
+ </sede:content>
+</body>
+
+</html>

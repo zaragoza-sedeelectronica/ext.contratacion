@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+
+    <meta charset="utf-8" />
+    <sede:meta title="Casa de las Culturas. Quiénes Somos"/>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+	  body {
+        padding-top: 57px;
+     }
+	        .fase {
+            background-color: #202020;
+            color: #fff;
+            font-weight: bold;
+        }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+   .fnd-culturas {
+        background: #f4f5f5;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #55a7b3;
+    } 
+    .fa {
+        vertical-align: middle;
+    }
+
+    @media (min-width: 768px) {
+        .list-aviso>li {
+            min-height: 16em;
+        }
+		    
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+
+    }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content>      
+        <h2>Información y Asesoramiento</h2>
+		
+
+		 
+ 
+
+
+
+
+
+ <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row no-gutter step-box fnd-culturas">
+                  
+                    <div class="col-md-10 padding-a1em fnd-gris-claro">     
+					  <h3 class="nomargin">Atención y Asesoramiento Social</h3>	
+<p>
+Desde la que se da respuesta a las necesidades personales y sociales de la población inmigrante de nuestra ciudad.</p>
+<p> Las principales necesidades detectadas en este colectivo son: la <strong>información, el trabajo y dificultad de adaptación al entorno</strong>.</p>
+                    </div>  <div class="col-md-2 padding-a1em">
+                        
+							<div class="text-center"><a href="/servicio/tramite/279"><img  src="/cont/vistas/portal/derechos-sociales/casa-culturas1/img/icono-atencion-asesoramiento.png"/></a></div>
+                   <h4 class="nomargin">Más Información</h4>	 </div>
+                </div>
+            </div>
+        </div>
+       
+    <div class="linea"></div>
+ <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row no-gutter step-box fnd-culturas">
+                   
+                    <div class="col-md-10 padding-a1em fnd-gris-claro"> <h3 class="nomargin">Intérpretes y Traducción</h3>	
+ 
+<p>El Servicio de Intérpretes pone a disposición de los distintos Servicios Municipales y a las Entidades sociales sin ánimo de lucro de la ciudad, un conjunto de Intérpretes, preferentemente de idiomas de uso poco habitual en nuestro entorno, que faciliten la relación entre la Administración Municipal, los recursos sociales y las personas extranjeras; y a éstas la posibilidad de comunicarse y manifestar sus demandas y ejercer sus derechos.</p><p>Incluye también la interpretación escrita, no oficial.</p><p>El servicio de intérpretes y traducción atiende las demandas de 21 idiomas, además de 15 dialectos africanos y 3 dialectos indios.</p><p><strong>¿Cuando se presta el servicio?</strong></p><ul>    <li>Los servicios de interpretación se pueden realizar de lunes a viernes, de 8 a 22 h.</li></ul><p><strong>¿Quien puede solicitarlo?</strong></p><p>Se puede solicitar desde cualquier dependencia municipal o entidad social sin ánimo de lucro de Zaragoza.</p>                    </div>
+      
+				<div class="col-md-2 padding-a1em">
+                        
+							<div class="text-center"><a href="/servicio/tramite/279"><img  src="/cont/vistas/portal/derechos-sociales/casa-culturas1/img/icono-atencion-asesoramiento.png"/></a></div>
+                   <h4 class="nomargin">Más Información</h4>	 </div>
+         
+            </div>  </div>
+        </div>
+	   
+ <div class="linea"></div>
+ <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row no-gutter step-box fnd-culturas">
+                   
+                    <div class="col-md-10 padding-a1em fnd-gris-claro"> <h3 class="nomargin">Reagrupación Familiar </h3>
+<p>Desde la Casa de las Culturas se presta información sobre el proceso de reagrupación familiar y también se emite el Informe de Vivienda Suficiente necesario para solicitar la autorización de residencia temporal para la reagrupación familiar. Se trata de un Informe que acredita la disponibilidad, por parte del reagrupante, de una vivienda -que habrá de ser la habitual- adecuada para atender las necesidades de él y su familia. El informe es necesario en el momento de la solicitud y en la renovación de las autorizaciones de residencia por reagrupación.</p><p>Regulado por la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social y por el Real Decreto 557/2011, de 20 de abril, por el que se aprueba el Reglamento de la Ley Orgánica 4/2000, sobre derechos y libertades de los extranjeros en España y su integración social, tras su reforma por Ley Orgánica 2/2009.</p><p><strong> ¿Quien puede solicitarlo?</strong></p>
+<p>Aquella persona empadronada y con residencia efectiva en la ciudad de Zaragoza que desee reagrupar a algún familiar (según marco normativo) o que desee renovar la autorización de residencia por reagrupación familiar.</p>     
+
+           </div><div class="col-md-2 padding-a1em">
+                        
+							<div class="text-center"><a href="/servicio/tramite/279"><img  src="/cont/vistas/portal/derechos-sociales/casa-culturas1/img/icono-atencion-asesoramiento.png"/></a></div>
+                   <h4 class="nomargin">Más Información</h4>	 </div>
+           </div>
+            </div>
+        </div>
+	   
+	   
+	    <div class="linea"></div>
+ <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row no-gutter step-box fnd-culturas">
+               
+                    <div class="col-md-10 padding-a1em fnd-gris-claro"> <h3 class="nomargin">Inserción Social por Arraigo </h3>
+<p>El informe de inserción social por arraigo es un informe requerido en Extranjería para la obtención de un permiso de residencia por circunstancias excepcionales. En dicho informe ha de quedar acreditado el grado de integración en España de la persona solicitante, para ello se debe acreditar una permanencia continuada en España durante un periodo mínimo de tres años, así como los medios económicos con los que va a contar el interesado durante el período de vigencia de dicha autorización. Además se valora, el grado de conocimiento del castellano, los posibles vínculos familiares que pudiese tener, las acciones formativas realizadas o la participación en las redes sociales de su entorno.</p><h3>¿Quien puede solicitarlo?</h3><p>Aquella persona empadronada y con residencia efectiva en la ciudad de Zaragoza que desee regularizar su situación administrativa a través de la autorización de residencia por circunstancias excepcionales, tal como señala el marco normativo.</p>           </div>
+      <div class="col-md-2 padding-a1em">
+                        
+							<div class="text-center"><a href="/servicio/tramite/279"><img  src="/cont/vistas/portal/derechos-sociales/casa-culturas1/img/icono-atencion-asesoramiento.png"/></a></div>
+                   <h4 class="nomargin">Más Información</h4>	 </div>
+            </div>
+        </div>
+	     </div>
+
+    </sede:content>
+</body>
+
+</html>

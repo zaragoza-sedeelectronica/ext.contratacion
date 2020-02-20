@@ -1,0 +1,39 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="btnModalCancelar()">
+        	<span aria-hidden="true">&times;</span>
+        	<span class="sr-only">Close</span>
+        </button>
+        <h3>Gesti&oacute;n de entidad</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="accion.entExtTitle">Nombre:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="entExtTitle" id="entExtTitle" ng-model="accion.entidadExternaSelected.name" value="{{ accion.entidadExternaSelected.name }}" />
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control input-mini" name="accion.entidadExternaSelected.id" type="text" ng-model="accion.entidadExternaSelected.id" value="{{ accion.entidadExternaSelected.id }}" disabled/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="accion.entExtEmail">Correo electr&oacute;nico:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="email" name="entExtEmail" id="entExtEmail" ng-model="accion.entidadExternaSelected.email" value="{{ accion.entidadExternaSelected.email }}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="accion.entidadExternaSelected.phone">Tel&eacute;fono:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="tel" name="entExtPhone" id="entExtPhone" ng-model="accion.entidadExternaSelected.phone" value="{{ accion.entidadExternaSelected.phone }}" />
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="btnModalCancelar()">Cancelar</button> 
+        <button class="btn btn-success" ng-click="btnModalGuardarEntidad()">Guardar</button>
+    </div>
+</div>

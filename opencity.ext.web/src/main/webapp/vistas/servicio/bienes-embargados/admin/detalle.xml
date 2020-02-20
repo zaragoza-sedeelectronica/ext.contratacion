@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Bienes embargados'" keywords="sede,web,monumento" />
+</head>
+
+<body>
+    <sede:content>
+        
+        <th:block th:if="${home}">
+            <ul class="nav nav-pills">
+                <li><a href="./list">Listado de actos anteriores</a></li>
+                <li><a href="./new?tipo=subasta">Nuevo acto de subasta</a></li>
+                <li><a href="./new?tipo=venta">Nuevo acto de venta directa</a></li>
+                <li><a href="./lote/">Gestión de lotes</a></li>
+                <li><a href="./tercero/">Gestión de Licitadores</a></li>
+            </ul>
+        </th:block>
+        <div class="row" th:if="${resultado.statusCode} == 200">
+            <div class="col-md-6" th:each="reg : ${resultado.body}" th:object="${reg}" sede:rdf="*{voc()}">
+                <th:block th:include="servicio/bienes-embargados/acto-list(actodetail=${reg})" />
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

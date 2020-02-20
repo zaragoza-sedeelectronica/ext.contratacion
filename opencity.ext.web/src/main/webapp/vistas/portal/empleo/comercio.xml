@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Emprender" description="Oferta de empleo municipal y privada, viveros, coworking, formación, cursos, subvenciones y asesorías sobre empleo" author="Ayuntamiento de Zaragoza" keywords="ayuntamiento, ciudad, Zaragoza, España, coworking, viveros, subvenciones, asesorías, formación, comercio local, emprendedores, empresas, entrepeneurs, employment, courses, local commerce, enterprises, council, city, Saragossa, Spain,  administrative formalities, electronic government">
+    </sede:meta>
+    <style type="text/css">
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav role="navigation">
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/empleo/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Empleo</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Comercio</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="comercio-buscador">Buscador</a></li>
+                    <li><a href="formacion-desempleados">Formación Para Desempleados</a></li>
+                 
+                </ul>
+            </div>
+        </nav>
+       
+       
+<div class="row">
+	<div class="col-md-12">
+	
+	<p>Mirar tema del buscador ya que es externo</p>
+	
+	
+	
+		<h3>
+			Subvenciones
+		</h3>
+
+		<hr class="sm"/>	 Sólo hay  una, no haría pestaña nueva. Subvenciones lo pasaría a primera cuándo estén vigentes todas porque en total hay pocas
+ 		 <h3>Acciones Apoyo al Comercio</h3><p>Contenido repetido de formación sobre comercio</p>
+		  <h3>Consumo sostenible</h3><p>No hay info</p>
+		   <h3>Redes</h3><p>No hay info</p>
+		     <h3>Locales Vivos</h3><p>No hay info</p>	     <h3>Made in ZGZ</h3>  <h3>Guía de Comercios de Proximidad</h3> 
+			 
+			 
+			 <p>Se indica enlace externo pero en la web creo que tenemos la info mejor enlace: https://www.zaragoza.es/sede/portal/comercio/ . Creo que en genenal esta página habría que mirar lo que hay en la zaragoza.es</p>
+	</div>
+ </div>  
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Votación Movera. Presupuestos Participativos 2018" author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Wed Sep 19 00:00:00 CEST 2018" keywords="ayuntamiento, ciudad, Zaragoza, Espana, presupuestos, presupuestos participativos, administracion electronica, participacion, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment, budget participatifs, Parcitipatory budgeting" />
+    <style type="text/css">
+        @media print{
+            header {
+                display:none;
+            }
+            .navbar-portal {
+                display: none;
+            }
+            .buttons {
+                display: none;
+            }
+            h3 {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                margin: 0 important!;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-md-12">
+                <img class="col-md-3 pull-left margin-t1em margin-l1em" src="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/img/zgz.png" height="50" width="190" />
+                <img class="col-md-8 margin-t1em pull-right margin-r1em margin-b1em" src="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/img/cabecera-bbrr-2018-papeleta2.jpg" height="90" width="415" />                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-justify buttons">
+                <input type="button" class="btn btn-primary pull-right" onclick="window.print();return false;" value="Imprimir"></input>
+                <a href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/movera.pdf"><input type="button" class="btn btn-primary pull-right margin-r1em" value="Descargar papeleta"></input></a>
+            </div>
+        </div>
+          
+        <div class="row col-md-12">
+            <div class="table-responsive text-center">
+                <table class="table table-bordered margin-t1em fnd-gris-claro">
+                    <tr>
+                        <th class="col-md-3 text-center" id="barrio"><h3> <strong>MOVERA</strong>  </h3></th>
+                        <th class="col-md-3 text-center" id="presupuesto"><h3><strong>Presupuesto<br/> 76.583 €</strong></h3></th>
+                        <th class="col-md-6" id="barrio"><h3> <strong>Número registro:</strong>  </h3><br/><span class="pull-right">(Sello)</span></th>
+                    </tr>
+                </table>
+            </div>
+            <h3><strong>Cómo votar:</strong></h3>
+            <ul>
+                <li class="margin-b1em"><strong>WEB / INTERNET: </strong>Del 24 de septiembre al 3 de octubre<br/>Plataforma de Gobierno Abierto: <a href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/gasto-virtual-distrito">https://www.zaragoza.es/sede/servicio/presupuestos-participativos/gasto-virtual-distrito</a></li>
+                <li><strong>PRESENCIAL: </strong>Mañanas del 24 de septiembre al 3 de octubre de 8:30h a 13.30h y jueves 27 por la tarde de 17:00h. a 21:00h.<br/>Junta vecinal. Pza. Mayor, 1</li>
+            </ul>                          
+            <div class="table-responsive">
+                <table class="table table-condensed table-bordered margin-t1em">
+                    <tr>
+                        <th class="col-md-1 text-center fnd-gris-claro" id="id">	ID	</th>
+                        <th class="col-md-8 text-center fnd-gris-claro" id="propuesta">	PROPUESTA	</th>
+                        <th class="col-md-2 text-center fnd-gris-claro" id="cuantia">	CUANTÍA	</th>
+                        <th class="col-md-1 text-center fnd-gris-claro" id="prioridad">	ORDEN DE PREFERENCIA</th>
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>	3346	</strong></td>			
+                        <td headers="propuesta">ARREGLO CAMINO SAN RAMON CON TORRE VIRREINA</td>		
+                        <td class="text-center" headers="cuantia">	47.867 €	</td>
+                        <td headers="prioridad"></td>
+                    </tr>                    
+                    <tr>
+                        <td class="text-center" headers="id"><strong>	3363	</strong></td>			
+                        <td headers="propuesta">CREACIÓN DE UN STREET WORKOUT</td>		
+                        <td class="text-center" headers="cuantia">	24.500 €	</td>
+                        <td headers="prioridad"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3364    </strong></td>          
+                        <td headers="propuesta">SUPRESIÓN BARRERAS ARQUITECTÓNICAS BARRIO DE MOVERA</td>        
+                        <td class="text-center" headers="cuantia">  24.158 €    </td>
+                        <td headers="prioridad"></td>
+                    </tr>                    
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3365    </strong></td>          
+                        <td headers="propuesta">INSTALACIÓN FUENTE AGUA POTABLE PLAZA VIRREINA</td>       
+                        <td class="text-center" headers="cuantia">  3.000 €    </td>
+                        <td headers="prioridad"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3609    </strong></td>          
+                        <td headers="propuesta">SUSTITUCIÓN VENTANAS CENTRO CULTURAL LUGARICO CERDAN</td>        
+                        <td class="text-center" headers="cuantia">  16.000 €    </td>
+                        <td headers="prioridad"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3620    </strong></td>          
+                        <td headers="propuesta">MEJORA PATIO COLEGIO JUAN PABLO BONET</td>        
+                        <td class="text-center" headers="cuantia">  1.230 €    </td>
+                        <td headers="prioridad"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3694    </strong></td>          
+                        <td headers="propuesta">Colocación de aparato de pedalear en zona de ejercicios</td>        
+                        <td class="text-center" headers="cuantia">  1.573 €    </td>
+                        <td headers="prioridad"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3724    </strong></td>          
+                        <td headers="propuesta">SUSTITUCIÓN SUELO AULAS CEIP MAESTRO DON PEDRO OROS</td>        
+                        <td class="text-center" headers="cuantia">  8.000 €    </td>
+                        <td headers="prioridad"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3725    </strong></td>          
+                        <td headers="propuesta">ASFALTADO CAMINO VADO-CASA LISBONA</td>        
+                        <td class="text-center" headers="cuantia">  41.745 €    </td>
+                        <td headers="prioridad"></td>
+                    </tr>
+                </table>
+            </div>                  
+        </div>
+        <div class="row">
+            <h3>Instrucciones:</h3>
+            <ol class="col-md-12 margin-a1em">
+                <li>Para votar presencialmente es necesario acercarte a la Junta vecinal con tu documento de identificación.</li>
+                <li>En esta papeleta de votación aparecen listadas las propuestas ciudadanas que los servicios técnicos han valorado como viables, junto al presupuesto que se les ha asignado.</li>
+                <li>Para que el voto cuente es necesario asignar un número del 1 al 10 (o en su caso, al número total de propuestas listadas) según tu orden de preferencias, siendo el 1 la propuesta que consideras más prioritaria y el 10 la que menos.</li>
+                <li>Tienes una casilla preparada para escribir el número que asignas a cada propuesta.</li>
+                <li>No se repetirá ningún número del 1 al 10 (o al número total de propuestas listadas).</li>
+                <li>Si te equivocas, tacha la numeración errónea y escribe una nueva.</li>
+                <li>Si no se asigna un valor a cada propuesta o se repite el mismo valor para dos o más propuestas, el voto resultará no válido.</li>
+                <li>Las papeletas rotas o ininteligibles serán consideradas nulas.</li>
+                <li>Una vez hayas priorizado todas las propuestas, la papeleta se introduce en la urna.</li>
+                <li>Si se ha votado digitalmente, no se podrá votar presencialmente.</li>
+                <li>Una vez que la papeleta, sellada y con el código asignado, haya sido depositada en la urna, ya no podrás volver a participar en este proceso.</li>
+                <li>Sólo se podrán votar las propuestas del barrio en el que se está empadronado/a.</li>
+            </ol>
+        </div>
+    </sede:content>
+</body>
+
+</html>

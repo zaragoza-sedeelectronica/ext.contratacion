@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Premios y concursos" keywords="sede,web,premios,concursos" />
+    <meta th:if="${#httpServletRequest.getParameter('materia.id')} or ${param.historico}" name="robots" content="noindex, follow"/>
+</head>
+
+<body>
+    <sede:content>
+        <form method="get" action="./list" class="clearfix">
+            <div class="row">
+                <div class="col-sm-2" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}">
+                    <a href="./new" class="btn btn-warning btn-xs">Nuevo registro</a>
+                </div>
+                <label aria-label="Consultar:" class="sr-only" for="titleContains">Consultar: </label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input type="hidden" name="historico" value="true" />
+                        <input type="text" name="titleContains" id="titleContains" th:value="${param.titleContains} ? ${param.titleContains[0]} : ''" class="form-control" placeholder="Realice su consulta" />
+                        <span class="input-group-btn">
+                                <input type="submit" value="Consultar" class="btn btn-primary" />
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr />
+        <!-- Nav tabs -->
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+            <li role="presentation" class="active"><a href="#enplazo" aria-controls="enplazo" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> En plazo</a></li>
+            <li role="presentation"><a href="#resueltos" aria-controls="resueltos" role="tab" data-toggle="tab"><span class="fa fa-trophy" aria-hidden="true"></span> Resueltos</a></li>
+            <li role="presentation"><a href="#pendientes" aria-controls="pendientes" role="tab" data-toggle="tab"><span class="fa fa-info" aria-hidden="true"></span> Pendientes</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#enplazo" aria-expanded="false">En Plazo</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="enplazo">
+                <div role="alert" class="alert alert-info" th:if="${#lists.isEmpty(resultado.body.enPlazo)}">No existen convocatorias en plazo de presentaci&oacute;n</div>
+                <ul class="row list-unstyled" th:if="${not #lists.isEmpty(resultado.body.enPlazo)}">
+                    <li th:each="doc: ${resultado.body.enPlazo}" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}" class="col-xs-12 col-sm-12 col-md-6">
+                        <th:block th:include="servicio/premios-concursos/detalle-listado" />
+                    </li>
+                </ul>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#resueltos" aria-expanded="false">Resueltos</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="resueltos">
+                <div role="alert" class="alert alert-info" th:if="${#lists.isEmpty(resultado.body.resueltos)}">No existen convocatorias vigentes resueltas</div>
+                <ul class="row list-unstyled" th:if="${not #lists.isEmpty(resultado.body.resueltos)}">
+                    <li th:each="doc: ${resultado.body.resueltos}" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}" class="col-xs-12 col-sm-12 col-md-6">
+                        <th:block th:include="servicio/premios-concursos/detalle-listado" />
+                    </li>
+                </ul>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#pendientes" aria-expanded="false">Pendientes</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="pendientes">
+                <div role="alert" class="alert alert-info" th:if="${#lists.isEmpty(resultado.body.pendientes)}">No existen convocatorias en plazo pendientes</div>
+                <ul class="row list-unstyled" th:if="${not #lists.isEmpty(resultado.body.pendientes)}">
+                    <li th:each="doc: ${resultado.body.pendientes}" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}" class="col-xs-12 col-sm-12 col-md-6">
+                        <th:block th:include="servicio/premios-concursos/detalle-listado" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos Participativos 2018. Bases del Proceso" description="Bases del proceso participativo Presupuestos Participativos 2018 aprobadas por el Gobierno de Zaragoza el 13 de diciembre de 2017" author="Ayuntamiento de Zaragoza" keywords="sede, web, ayuntamiento, ciudad, Zaragoza, España, gobierno abierto, participación social, transparencia administrativa, colaboración, administración local, relación administración-administrado, propuestas, consultas públicas, mapas colaborativos, servicio de quejas y sugerencias, comunidades virtuales, ZAC, blog, Consejo de la Ciudad, Escuela de Participación Ciudadana, instituciones públicas, asociaciones, censo, legislación local, council, city, Saragossa, Spain, open government, social participation, administrative transparency, collaboration, local government, citizen-authority relation, proposals, public consultation, collaboration maps, complaints and suggestions service, virtual community,blog, City Council, Citizen Participation School, public institutions, associations, census, local legislation" />
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        /*display: block;*/
+        display: inline-block;
+        padding: 10px 0px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+    .inline-header {
+        display: inline-block;
+        vertical-align: baseline;
+        line-height: 100%;
+    }
+
+
+    @media (max-width: 480px) {
+        header.navbar-portal .portal-header {
+            width: 100px;
+        }
+        h1 {
+            /*font-size: 22px;*/
+        }
+    }
+    
+    #mapa {
+        box-shadow: none;
+        margin: 0 !important;
+    }
+    #mapahome {
+        height: 230px;
+    }
+    
+    .modal-contenido{
+      background-color: #fff;
+      max-width: 500px;
+      padding: 10px 20px;
+      margin: 20% auto;
+      position: relative;
+    }
+    .modal{
+      background-color: rgba(0,0,0,.5);
+      position:fixed;
+      top:0;
+      right:0;
+      bottom:0;
+      left:0;
+      opacity:0;
+      pointer-events:none;
+      transition: all 5s;
+    }
+    
+    #haztupropuesta:target{
+      opacity:1;
+      pointer-events:auto;
+      display: inline;
+    }
+     
+    .list-aviso p {
+        font-size: 1.5em;
+        margin-top: 2em;
+    }
+    
+	
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <!--/*<nav role="navigation">
+             <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><span class="fa fa-info-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/que-son">Qué son</a></li>
+                <li class="col-xs-6 col-sm-2 active"><span class="fa fa-cog" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/fases">Fases</a></li>
+                <li class="col-xs-6 col-sm-2"><span class="far fa-comment-alt" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/mesas">Mesas</a></li>
+                */--><!--/*<li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/servicio/presupuestos-participativos/new">Haz tu propuesta</a></li>*/--><!--/*
+                <li class="col-xs-6 col-sm-2"><span class="fas fa-file-alt" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/documentacion">Documentación</a></li>
+                <li class="col-xs-6 col-sm-2"><span class="fa fa-question-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/preguntas-frecuentes">Preg. Frecuentes</a></li>
+                <li class="col-xs-6 col-sm-2"><span class="far fa-check-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/servicio/presupuestos-participativos/edicion/1/obras">Ejecución 2017</a></li>
+            </ul>
+        </nav>*/-->
+        <div class="row">
+			
+<h2>¿Cómo queda la distribución del presupuesto?</h2>
+<p>Las Bases de Ejecución del Presupuesto General del Ayuntamiento de Zaragoza establecen que las aplicaciones presupuestarias correspondientes a los Presupuestos Participativos se distribuirán proporcionalmente en los Distritos y Barrios Rurales atendiendo a los criterios siguientes:</p>
+
+<ul><li>10% según criterio lineal fijo y común 
+</li><li>40% en función de la población 
+</li><li>20% según accesibilidad a equipamientos 
+</li><li>20% en función de la renta 
+</li><li>10% según extensión área urbana</li></ul>
+<br/>
+<h3>Distribución Presupuestaria en Distritos Urbanos</h3>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+<tr><th id="b1">	Junta	</th><th id="b2">	Población Padrón municipal 1.1.2017	</th><th id="b3">	% de población	</th><th id="b4">	Resultado obtenido	</th><th id="b5">	% sobre distritos urbanos	</th><th id="b6">	Inversión habitante/	</th></tr>
+<tr><td headers="b1"><strong>	ACTUR-REY FERNANDO	</strong></td><td headers="b2">	59346	</td><td headers="b3">	8,88%	</td><td headers="b4"><strong>	578740	</strong></td><td headers="b5">	8,27%	</td><td headers="b6">	9,75	</td></tr>
+<tr><td headers="b1"><strong>	CASABLANCA	</strong></td><td headers="b2">	9983	</td><td headers="b3">	1,49%	</td><td headers="b4"><strong>	287569	</strong></td><td headers="b5">	4,11%	</td><td headers="b6">	28,81	</td></tr>
+<tr><td headers="b1"><strong>	CASCO HISTÓRICO	</strong></td><td headers="b2">	46015	</td><td headers="b3">	6,89%	</td><td headers="b4"><strong>	444766	</strong></td><td headers="b5">	6,35%	</td><td headers="b6">	9,67	</td></tr>
+<tr><td headers="b1"><strong>	CENTRO	</strong></td><td headers="b2">	52968	</td><td headers="b3">	7,93%	</td><td headers="b4"><strong>	466226	</strong></td><td headers="b5">	6,66%	</td><td headers="b6">	8,8	</td></tr>
+<tr><td headers="b1"><strong>	DELICIAS	</strong></td><td headers="b2">	102998	</td><td headers="b3">	15,42%	</td><td headers="b4"><strong>	719257	</strong></td><td headers="b5">	10,28%	</td><td headers="b6">	6,98	</td></tr>
+<tr><td headers="b1"><strong>	EL RABAL	</strong></td><td headers="b2">	78082	</td><td headers="b3">	11,69%	</td><td headers="b4"><strong>	645486	</strong></td><td headers="b5">	9,22%	</td><td headers="b6">	8,27	</td></tr>
+<tr><td headers="b1"><strong>	LA ALMOZARA	</strong></td><td headers="b2">	30417	</td><td headers="b3">	4,55%	</td><td headers="b4"><strong>	368691	</strong></td><td headers="b5">	5,27%	</td><td headers="b6">	12,12	</td></tr>
+<tr><td headers="b1"><strong>	LAS FUENTES	</strong></td><td headers="b2">	42192	</td><td headers="b3">	6,32%	</td><td headers="b4"><strong>	453566	</strong></td><td headers="b5">	6,48%	</td><td headers="b6">	10,75	</td></tr>
+<tr><td headers="b1"><strong>	MIRALBUENO	</strong></td><td headers="b2">	12649	</td><td headers="b3">	1,89%	</td><td headers="b4"><strong>	335750	</strong></td><td headers="b5">	4,80%	</td><td headers="b6">	26,54	</td></tr>
+<tr><td headers="b1"><strong>	OLIVER VALDEFIERRO	</strong></td><td headers="b2">	29829	</td><td headers="b3">	4,47%	</td><td headers="b4"><strong>	391912	</strong></td><td headers="b5">	5,60%	</td><td headers="b6">	13,14	</td></tr>
+<tr><td headers="b1"><strong>	SAN JOSE	</strong></td><td headers="b2">	66039	</td><td headers="b3">	9,89%	</td><td headers="b4"><strong>	554590	</strong></td><td headers="b5">	7,92%	</td><td headers="b6">	8,4	</td></tr>
+<tr><td headers="b1"><strong>	SANTA ISABEL	</strong></td><td headers="b2">	13665	</td><td headers="b3">	2,05%	</td><td headers="b4"><strong>	363144	</strong></td><td headers="b5">	5,19%	</td><td headers="b6">	26,57	</td></tr>
+<tr><td headers="b1"><strong>	TORRERO	</strong></td><td headers="b2">	39129	</td><td headers="b3">	5,86%	</td><td headers="b4"><strong>	460668	</strong></td><td headers="b5">	6,58%	</td><td headers="b6">	11,77	</td></tr>
+<tr><td headers="b1"><strong>	UNIVERSIDAD	</strong></td><td headers="b2">	49745	</td><td headers="b3">	7,45%	</td><td headers="b4"><strong>	452929	</strong></td><td headers="b5">	6,47%	</td><td headers="b6">	9,11	</td></tr>
+<tr><td headers="b1"><strong>	SUR	</strong></td><td headers="b2">	34960	</td><td headers="b3">	5,23%	</td><td headers="b4"><strong>	476706	</strong></td><td headers="b5">	6,81%	</td><td headers="b6">	13,64	</td></tr>
+<tr><td headers="b1"><strong>		</strong></td><td headers="b2">	<strong>668.017</strong>	</td><td headers="b3">		</td><td headers="b4"><strong>	7.000.000 euros	</strong></td><td headers="b5">		</td><td headers="b6">	10,48	</td></tr>
+</table>
+</div>
+
+<!--/*<h3>Distribución Presupuestaria en Barrios Rurales</h3>
+               <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+
+<tr><th id="a1">	DISTRITO	</th><th id="a2">	Población	</th><th id="a3">	% de población	</th><th id="a4">	Resultado obtenido	</th><th id="a5">	% sobre juntas vecinales	</th><th id="a6">	Inversión habitante/euros	</th></tr>
+<tr><td headers="a1"><strong>	ALFOCEA	</strong></td><td headers="a2">	187	</td><td headers="a3">	0,60%	</td><td headers="a4">	<strong>37924</strong>	</td><td headers="a5">	3,79%	</td><td headers="a6">	203	</td></tr>
+<tr><td headers="a1"><strong>	CASETAS	</strong></td><td headers="a2">	7367	</td><td headers="a3">	23,79%	</td><td headers="a4">	<strong>144653</strong>	</td><td headers="a5">	14,47%	</td><td headers="a6">	20	</td></tr>
+<tr><td headers="a1"><strong>	GARRAPINILLOS	</strong></td><td headers="a2">	5375	</td><td headers="a3">	17,36%	</td><td headers="a4">	<strong>118770</strong>	</td><td headers="a5">	11,88%	</td><td headers="a6">	22	</td></tr>
+<tr><td headers="a1"><strong>	JUSLIBOL  EL ZORONGO	</strong></td><td headers="a2">	2631	</td><td headers="a3">	8,50%	</td><td headers="a4">	<strong>80663</strong>	</td><td headers="a5">	8,07%	</td><td headers="a6">	31	</td></tr>
+<tr><td headers="a1"><strong>	LA CARTUJA	</strong></td><td headers="a2">	2087	</td><td headers="a3">	6,74%	</td><td headers="a4">	<strong>144653</strong>	</td><td headers="a5">	8,54%	</td><td headers="a6">	41	</td></tr>
+<tr><td headers="a1"><strong>	MONTAÑANA	</strong></td><td headers="a2">	3268	</td><td headers="a3">	10,56%	</td><td headers="a4">	<strong>82675</strong>	</td><td headers="a5">	8,27%	</td><td headers="a6">	25	</td></tr>
+<tr><td headers="a1"><strong>	MONZALBARBA	</strong></td><td headers="a2">	1934	</td><td headers="a3">	6,25%	</td><td headers="a4">	<strong>60486</strong>	</td><td headers="a5">	6,05%	</td><td headers="a6">	31	</td></tr>
+<tr><td headers="a1"><strong>	MOVERA	</strong></td><td headers="a2">	2511	</td><td headers="a3">	8,11%	</td><td headers="a4">	<strong>72680</strong>	</td><td headers="a5">	7,27%	</td><td headers="a6">	29	</td></tr>
+<tr><td headers="a1"><strong>	PEÑAFLOR	</strong></td><td headers="a2">	1253	</td><td headers="a3">	4,05%	</td><td headers="a4">	<strong>53866</strong>	</td><td headers="a5">	5,39%	</td><td headers="a6">	43	</td></tr>
+<tr><td headers="a1"><strong>	SAN GREGORIO	</strong></td><td headers="a2">	597	</td><td headers="a3">	1,93%	</td><td headers="a4">	<strong>47481</strong>	</td><td headers="a5">	4,75%	</td><td headers="a6">	80	</td></tr>
+<tr><td headers="a1"><strong>	SAN JUAN DE MOZARRIFAR	</strong></td><td headers="a2">	2589	</td><td headers="a3">	8,36%	</td><td headers="a4">	<strong>68803</strong>	</td><td headers="a5">	6,88%	</td><td headers="a6">	27	</td></tr>
+<tr><td headers="a1"><strong>	TORRECILLA	</strong></td><td headers="a2">	25	</td><td headers="a3">	0,08%	</td><td headers="a4">	<strong>43819</strong>	</td><td headers="a5">	4,38%	</td><td headers="a6">	1753	</td></tr>
+<tr><td headers="a1"><strong>	VENTA DEL OLIVAR	</strong></td><td headers="a2">	955	</td><td headers="a3">	3,08%	</td><td headers="a4">	<strong>58356</strong>	</td><td headers="a5">	5,84%	</td><td headers="a6">	61	</td></tr>
+<tr><td headers="a1"><strong>	VILLARRAPA	</strong></td><td headers="a2">	182	</td><td headers="a3">	0,59%	</td><td headers="a4">	<strong>44459</strong>	</td><td headers="a5">	4,45%	</td><td headers="a6">	244	</td></tr>
+<tr><td headers="a1"><strong>		</strong></td><td headers="a2">	<strong>30961</strong>	</td><td headers="a3">		</td><td headers="a4">	1.000.001,00 euros	</td><td headers="a5">		</td><td headers="a6">	<strong>32</strong>	</td></tr></table>
+</div>*/-->
+
+
+        </div>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#accordion .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

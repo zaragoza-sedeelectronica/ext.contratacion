@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${agenda.statusCode.value()} == 200 ? ${agenda.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Cita previa'" keywords="sede,web,cita,previa" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <form th:if="${registro.statusCode.value()} == 200" th:action="@{/servicio/cita-previa/{id}/save(id=${agenda.body.id})}" th:object="${dato}" method="post">
+            <h2>Cita previa <small th:text="${agenda.body.title}" /></h2>
+            <div role="alert" class="alert alert-danger" th:if="${error_nif}">
+                <input type="hidden" name="v" value="s"/>
+                Usted puede:
+                <ul>
+                    <li>Modificar los datos de la cita.</li>
+                    <li>Pulsar <strong>Crear</strong> para dar de alta una nueva cita con el mismo DNI.</li>
+                    <li>Pulsar <strong>Borrar y crear</strong> para eliminar las citas asociadas a ese DNI y crear una cita nueva con los datos actuales.</li>
+                </ul>
+                <div class="form-inline">
+                    <input type="submit" name="submit" value="Crear" class="boton btn btn-primary" />
+                    <input type="submit" name="borrar" value="Borrar y crear" class="boton btn btn-warning" />
+                </div>
+                Si envía el formulario creará otra cita con ese DNI, sino, puede <a href="/citapreviaweb/CitaBuscar.do"><strong>cancelar las citas asociadas</strong></a>
+            </div>
+            <div class="well"><span class="fa fa-home" />
+                <th:block th:text="${agenda.body.address_estructura}" />
+            </div>
+            <p role="alert" class="alert alert-info" th:utext="${agenda.body.description}" />
+            <div role="alert" class="alert alert-danger" th:if="not ${huecos}">
+                No existen horas libres para solicitar cita previa
+
+                <th:block th:each="dia, iterador : ${resultado.body.result}"  th:if="${iterador.index >= iterador.size -1}">
+                  hasta el <th:block sede:rdf="${dia.get('fecha','EEEE dd MMMM')}"/>
+                </th:block>
+
+            </div>
+            <div class="row" th:if="${huecos}">
+                <div class="col-sm-5">
+                    <fieldset>
+                        <legend><span>Seleccionar d&iacute;a y hora</span></legend>
+                        <ul class="row list-unstyled">
+                            <li th:each="dia : ${resultado.body.result}" th:if="${not #lists.isEmpty(dia.horas)}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <strong sede:rdf="${dia.get('fecha','EEEE dd MMMM')}" />
+                                <ul class="list-unstyled">
+                                    <li th:each="hora : ${dia.horas}">
+                                        <label th:for="'cal' + ${#dates.format(dia.fecha, 'dd-MM-yyyy')} + '_' + ${hora.hora}">
+                                            <input type="radio" id="'cal' + ${#dates.format(dia.fecha, 'dd-MM-yyyy')} + '_' + ${hora.hora}" name="timestamp" th:value="${#dates.format(dia.fecha, 'dd-MM-yyyy')} + ' ' + ${hora.hora}" required="true" 
+                                            th:checked="*{timestamp} == (${#dates.format(dia.fecha, 'dd-MM-yyyy')} + ' ' + ${hora.hora})"
+                                            />
+                                            <span class="sr-only" th:text="${#dates.format(dia.fecha, 'dd-MM-yyyy')}" /> <small th:text="${hora.hora}" />
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </div>
+                <div class="col-sm-7">
+                    <fieldset>
+                        <legend><span>Datos personales</span></legend>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="nombre"><span class="obligatorio">Nombre</span></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" th:field="*{nombre}" size="40" required="true" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="apellidos"><span class="obligatorio">Apellidos</span></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" th:field="*{apellidos}" size="40" required="true" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="dni"><span class="obligatorio">DNI</span></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" th:field="*{nif}" size="11" required="true" />
+                            </div>
+                        </div>
+                        <p role="alert" class="alert alert-info">Introduzca un teléfono o un correo electrónico de contacto</p>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="telefono">Teléfono contacto</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="tel" th:field="*{telefono}" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="email">Correo Electrónico</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="email" th:field="*{email}" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="lopd">LOPD</label>
+                            <div class="col-sm-8"><span class="help-inline"><input type="checkbox" th:field="*{lopd}" /> Autorizo recibir comunicaciones por correo electrónico.</span></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend><span>Datos para la preparación de la cita</span></legend>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="expediente">Expediente y año</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" th:field="*{expediente}" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-4 control-label" for="motivo"><span class="obligatorio">Motivo</span></label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" th:field="*{motivo}" rows="6" required="true"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <input type="submit" name="submit" value="Enviar" class="boton btn btn-primary" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </sede:content>
+</body>
+
+</html>

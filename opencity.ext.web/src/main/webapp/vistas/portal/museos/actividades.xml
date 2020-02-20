@@ -1,0 +1,234 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es"><head>
+    <meta charset="utf-8" />
+    <sede:meta title="Qué Ver" description="
+El portal de Bibliotecas Municipales pretende dar a conocer las diversas actividades, noticias y servicios que ofrece la red de bibliotecas Municipales del Ayuntamiento de Zaragoza." author="Ayuntamiento de Zaragoza" last-modified="" audience="ciudadanía" keywords="ayuntamiento, ciudad, Zaragoza, España, Bibliotecas Municipales, directorio, actividades, guía, archivo, centro de documentación, informración y documentación, servicios, carné de socio, administración local, relación administración-administrado, servicio de quejas y sugerencias, council, city, Saragossa, Spain, libraries, archives, docuementation center , document directory, activities, local government, citizen-authority relations, complaints and suggestions service"/>    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    .titulo-test {
+        margin: 0 0 .5em !important;
+    }
+
+    .bloque-agenda .programa {
+        background: none;
+        color: inherit;
+    }
+
+    .bloque-agenda .programa a {
+        color: #E81B16;
+    }
+
+    .thumbnail.overlay {
+        border: none;
+    }
+
+    ul.list-actividades li, ul.list-noticias li, ul.list-programas li  {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    @media (min-width: 768px) {
+        ul.list-actividades li, ul.list-noticias li, ul.list-programas li  {
+            min-height: 15em;
+        }
+        .thumbnail.overlay img {
+            min-height: 18em;
+        }
+        .thumbnail.overlay .caption {
+            max-height: 6.8em;
+            min-height: 6.8em;
+            padding: .5em !important;
+        }
+        .thumbnail.overlay .caption p {
+            margin: 0;
+        }
+    }
+
+    .img-container {
+        position: relative;
+    }
+
+    .img-container .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-color: #fff;
+        /*#008a00;*/
+        overflow: hidden;
+        /*width: 75%;*/
+        width: 100%;
+        height: 25%;
+        transition: .5s ease;
+        /*border-radius: 6px 6px 0 0;*/
+    }
+    /*.img-container:hover .overlay {
+        height: 25%;
+    }*/
+
+    .img-container .text {
+        white-space: nowrap;
+        color: #202020;
+        /*#8958a9;*/
+        /*#fff;*/
+        /*font-size: 14px;*/
+        /*font-size: 12px;*/
+        font-size: .85em;
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    .list-noticia a {
+        color: #202020;
+    }
+
+    .list-noticia li {
+        border-bottom: 1px solid #E6E6E6;
+        /*fnd-gris-claro*/
+        margin-bottom: .5em;
+        padding-bottom: .5em;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+    /*ul#menu .elemento:first-child:before {
+        content:'';
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          top: 0;
+          left: 0;          
+          background: #CCC;
+    }*/
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+    #calendar {
+        margin-bottom: 0;
+    }
+
+    .nav-bottom {
+        background: #E81B16;
+    }
+    
+    .nav-bottom ul li {
+        padding: .5em 0em .5em 1em;
+        /*margin: .5em 0em .5em;*/
+    }
+    
+    .nav-bottom ul li a {
+        border-left: 1px solid #fff;
+        color: #fff;
+        padding: .5em;
+    }
+
+    .nav-bottom ul li a:hover {
+        background: #B50000;
+    }
+
+
+    .caption {
+        color: #202020;
+        font-weight: bold !important;
+    }
+
+    .left-ribbon{
+        position: relative;
+        background: #EEE;
+        border: 1px solid #CCC;
+        box-shadow: 0px 1px 3px rgba(0,0,0,.2);
+        padding: 10px 15px;
+        clear: both;
+        margin-left: -24px;
+        float: left;
+    }
+     
+    .left-ribbon::before{
+        display: block;
+        width: 10px;
+        height: 0px;
+        position: absolute;
+        bottom: -10px;
+        left: -1px;
+        content: ";
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #757575;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+ 
+	 
+ 
+		 <hr class="sm"/>
+			
+			 
+ 
+	 
+
+		 
+ 
+    <div class="row">
+	   <div class="col-md-12">
+	   
+	   
+	   
+     
+            <div class="col-md-8">
+            
+     
+                <div class="card">
+                    <h2 class="titulo-test">Actividades</h2>
+                    <sede:agenda carpeta="/sede/portal/museos/servicio/cultura/evento/" numero="6" portal="11" destacadas="s" fragment="/fragmentos/cultura/evento/list-img-alt"></sede:agenda>
+                </div>
+            </div>
+			
+			
+			<div class="col-md-4">
+			 
+
+			 
+                   
+                                    <!-- <h2 class="titulo-test"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Calendario</h2> -->
+                                    <sede:calendario-agenda carpeta="/sede/servicio/cultura/evento/calendar/"></sede:calendario-agenda>
+                                </div> </div> </div> 
+ 
+				
+			 
+</sede:content>
+    
+</body>
+
+</html>

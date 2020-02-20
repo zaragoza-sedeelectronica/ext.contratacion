@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Formación por la diversidad cultural. Casa de las Culturas"/>
+    <meta name="robots" content="noindex, nofollow"/>
+</head>
+
+<body>
+    <sede:content>
+    	<h2>Admitidos al curso: <th:block th:text="${curso}"/></h2>
+    	<ul>
+            <li th:each="doc: ${resultado.body.result}">
+                <th:block th:text="${doc.nombre}"/>
+                <th:block th:text="${doc.apellidos}"/>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+    
+</body>
+
+</html>

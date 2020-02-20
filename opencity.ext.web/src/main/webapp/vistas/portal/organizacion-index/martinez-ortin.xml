@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="María Elena MartÍnez Ortín (C's)"
+                description="Organización Municipal, Pleno Municipal, Curriculum Vitae de María Elena Martínez Ortin(C´s)"
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza,  María Elena Martínez Ortin, (C´s)">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        <abbr title="Ciudadanos">C's</abbr>
+                    </small>
+                    <span>|</span>
+                    María Elena Martínez Ortín
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <article class="row col-md-12">
+
+                        <!-- Versión móvil -->
+                        <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                            <div class="col-md-4 col-xs-12 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/Cs_Elena_Martinez.jpg"
+                                     alt="María Elena MartÍnez Ortín"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-MARIA-ELENA-MARTINEZ-ORTIN.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_CIUDADANIA/MARIA_ELENA_MARTINEZ_ORTIN.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-MARIA-ELENA-MART%C3%8DNEZ-ORTIN.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_CIUDADANIA/MARIA_ELENA_MARTINEZ_ORTIN.pdf'} 
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePersonal" aria-expanded="false"
+                                               aria-controls="collapsePersonal">
+                                                INFORMACIÓN PERSONAL
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPersonal">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <strong>Nacimiento:</strong>
+                                                Zaragoza, en el año 1970.
+                                            </li>
+                                            <br/>
+                                            <li>Casada, con dos hijos.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseAcademica" aria-expanded="false"
+                                               aria-controls="collapseAcademica">
+                                                FORMACIÓN ACADÉMICA
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingAcademica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Diplomada en Administración de Empresas por ESSAM, Escuela Superior de
+                                                Administración.
+                                            </li>
+                                            <br/>
+                                            <li>Titulada en Inglés por Pitman Examinations Institute.</li>
+                                            <br/>
+                                            <li>Titulada en Francés por la Chambre de Commerce et d'Industrie de
+                                                Paris.
+                                            </li>
+                                            <br/>
+                                            <li>Certificado de Capacitación Profesional para Transporte Nacional e
+                                                Internacional de Mercancías y Actividades Auxiliares.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseProfesional"
+                                               aria-expanded="false" aria-controls="collapseProfesional">
+                                                EXPERIENCIA PROFESIONAL
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingProfesional">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Ha trabajado durante más de 20 años en varias Pymes y en una
+                                                multinacional, desarrollando tareas de responsabilidad en distintos
+                                                departamentos como Logística, Exportación y Atención al Cliente.
+                                            </li>
+                                            <br/>
+                                            <li>Ha gestionado una pequeña empresa familiar de transporte de la que es
+                                                socia.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseContacto" aria-expanded="false"
+                                               aria-controls="collapseContacto">
+                                                CONTACTO
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingContacto">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <span class="far fa-envelope margin-t1em"></span>
+                                                <a href="mailto:emartinezortin@zaragoza.es" shape="rect">
+                                                    emartinezortin@zaragoza.es
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Versión desktop -->
+                        <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                            <div class="col-md-4 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/Cs_Elena_Martinez.jpg"
+                                     alt="María Elena MartÍnez Ortín"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-MARIA-ELENA-MARTINEZ-ORTIN.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_CIUDADANIA/MARIA_ELENA_MARTINEZ_ORTIN.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-MARIA-ELENA-MART%C3%8DNEZ-ORTIN.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_CIUDADANIA/MARIA_ELENA_MARTINEZ_ORTIN.pdf'} 
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>INFORMACIÓN PERSONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>
+                                        <strong>Nacimiento:</strong>
+                                        Zaragoza, en el año 1970.
+                                    </li>
+                                    <br/>
+                                    <li>Casada, con dos hijos.</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>FORMACIÓN ACADÉMICA</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Diplomada en Administración de Empresas por ESSAM, Escuela Superior de
+                                        Administración.
+                                    </li>
+                                    <br/>
+                                    <li>Titulada en Inglés por Pitman Examinations Institute.</li>
+                                    <br/>
+                                    <li>Titulada en Francés por la Chambre de Commerce et d'Industrie de Paris.</li>
+                                    <br/>
+                                    <li>Certificado de Capacitación Profesional para Transporte Nacional e Internacional
+                                        de Mercancías y Actividades Auxiliares.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA PROFESIONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Ha trabajado durante más de 20 años en varias Pymes y en una multinacional,
+                                        desarrollando tareas de responsabilidad en distintos departamentos como
+                                        Logística, Exportación y Atención al Cliente.
+                                    </li>
+                                    <br/>
+                                    <li>Ha gestionado una pequeña empresa familiar de transporte de la que es socia.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>CONTACTO</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l05em">
+                                    <li class="col-md-12 margin-b1em">
+                                        <span class="far fa-envelope"></span>
+                                        <a href="mailto:emartinezortin@zaragoza.es" shape="rect">
+                                            emartinezortin@zaragoza.es
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <aside class="row col-md-12 margin-a1em">
+                        <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;src=bh88nhko6r1efnsmi3hqi2atbs%40group.calendar.google.com&amp;ctz=Europe/Madrid"
+                                style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no">
+                            <a href="https://calendar.google.com/calendar/embed?src=bh88nhko6r1efnsmi3hqi2atbs%40group.calendar.google.com&amp;ctz=Europe/Madrid">
+                                Acceso al calendario
+                            </a>
+                        </iframe>
+                    </aside>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

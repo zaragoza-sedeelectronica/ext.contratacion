@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Contratos. Anuncios"/>
+    <script src="https://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:if="${registro.body.visible} == 'N'">
+            <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./unlock}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+        </th:block>
+        <th:block th:if="${registro.body.visible} == 'S'">
+            <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./lock}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+        </th:block>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/contratacion-publica/admin/{id_contrato}/anuncio/{id}/save(id_contrato=${dato.contrato.id},id=${registro.body.id})}" th:object="${dato}" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <!--/*<th:block th:include="fragmentos/control-fields" />*/-->
+            <div class="fieldset">
+                <fieldset>
+                    <legend><a th:href="@{/servicio/contratacion-publica/admin/{id}/edit(id=${dato.contrato.id})}"><th:block th:text="${dato.contrato.title}"/></a></legend>
+                    	<div th:if="${registro.body.sello}" class="alert alert-danger">Al ser un anuncio con sello de tiempo, no se puede modificar, si lo desea puede eliminar y volver a crear el anuncio</div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="title">Título</label>
+                            <div class="col-sm-10">
+                                <input th:disabled="${registro.body.sello}" class="form-control" type="text" th:name="title" th:value="${dato.title}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="type.id">Tipo</label>
+                            <div class="col-sm-3">
+                                <select th:disabled="${registro.body.sello}" th:field="${dato.type.id}" class="form-control">
+                                    <option value="1">Información previa</option>
+                                    <option value="2">Anuncio de Licitación</option>
+                                    <option value="3">Pliegos Técnicos</option>
+                                    <option value="4">Pliegos Administrativos</option>
+                                    <option value="5">Adjudicación provisional</option>
+                                    <option value="6">Adjudicación definitiva</option>
+                                    <option value="7">Histórico</option>
+                                    <option value="8">Acuerdos marco</option>
+                                    <option value="9">Otras informaciones</option>
+                                    <option value="10">Fecha límite de presentación</option>
+                                    <option value="11">Presupuesto</option>
+                                    <option value="12">Resumen</option>
+                                    <option value="13">Mesa Contratación</option>
+                                    <option value="14">Licitadores</option>
+                                    <option value="15">Publicación BOE</option>
+                                    <option value="16">Publicación BOPZ</option>
+                                    <option value="17">Publicación BOA</option>
+                                    <option value="18">Publicación DOUE</option>
+                                    <option value="19">Anuncio Publicación plataforma del estado</option>
+                                    <option value="27">Adjudicación BOE</option>
+                                    <option value="28">Adjudicación BOPZ</option>
+                                    <option value="29">Adjudicación BOA</option>
+                                    <option value="30">Adjudicación DOUE</option>
+                                    <option value="20">Formalización</option>
+                                    <option value="21">Adjudicación plataforma del estado</option>
+                                    <option value="22">Formalización BOE</option>
+                                    <option value="23">Formalización BOPZ</option>
+                                    <option value="24">Formalización BOA</option>
+                                    <option value="25">Formalización DOUE</option>
+                                    <option value="26">Formalización plataforma del estado</option>
+                                    <option value="31">Modificación Adjudicación</option>
+                                    <option value="32">Modificación Licitación</option>
+                                    <option value="33">Modificación Contrato</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label" for="pubDate">Fecha publicación</label>
+                            <div class="col-sm-2">
+                            	<input class="form-control datepicker" type="text" th:field="*{pubDate}" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker"/>
+                            </div>
+                            <label class="col-sm-2 control-label" for="visualizarprimera">En primera</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" type="text" th:name="visualizarprimera" th:value="${dato.visualizarprimera}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="title">Descripción</label>
+                            <div class="col-sm-10">
+                                <textarea th:disabled="${registro.body.sello}" rows="10" class="form-control ckeditor" th:field="${dato.description}" size="4000" required="true" />
+                            </div>
+                        </div>
+                    <div class="form-group" th:if="not ${registro.body.sello}">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            Cargar adjunto
+                            <input type="file" name="file"/> <br/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" th:if="not ${registro.body.sello}"/>
+                            <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DEL')}" th:href="delete" onclick="return confirm('Desea eliminar el elemento?')" class="btn btn-danger"><span class="fas fa-trash-alt"></span> Borrar</a>
+                        </div>
+                        
+                    </div>
+                    
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org"
+	th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.actividad.title} : 'Página de error'" lang="es" th:object="${registro.body}" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="'Solicitud de actividad: ' + ${titulo} + '. Banco de Actividades'" description="Solicitud de actividad del catálogo del Banco de Actividades Juveniles" author="Unidad de gestión de la web municipal" keywords="actos, concierto, actividades, cursos" />
+    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
+   
+    <style type="text/css">
+    /* ELIMINAR DE main.css */
+
+    @media (max-width: 767px) {
+        .thumbnail.overlay {
+            background-color: #FFF;
+        }
+    }
+
+    .card-description {
+        border-left: 3px solid #006b87;
+    }
+
+    #event-detail .panel-default>.panel-heading {
+        font-weight: bold;
+        color: #FFF;
+        background: #006b87;
+    }
+
+    #event-detail .panel-heading a:after {
+        color: #FFF;
+    }
+
+    #event-detail .panel {
+        border-color: #0e3944;
+    }
+
+    .profile-content h3 {
+        margin: 15px 0 10px 0!important;
+    }
+
+    .stats {
+        width: 100%;
+        margin: 30px auto;
+        text-align: center;
+        display: table;
+    }
+
+    .stats .statis {
+        display: table-cell;
+        width: 25%;
+        vertical-align: top;
+    }
+
+    .ibox-content {
+        background-color: #FFFFFF;
+        color: inherit;
+        padding: 0px 20px 20px 20px;
+    }
+
+    .feed-activity-list .feed-element {
+        border-bottom: 1px solid #E7EAEC;
+    }
+
+    .feed-element {
+        padding: 15px 0 15px 0;
+    }
+
+    .feed-element img.img-circle,
+    .dropdown-messages-box img.img-circle {
+        width: 38px;
+        height: 38px;
+    }
+
+    .feed-element &gt;
+    .pull-left {
+        margin-right: 10px;
+    }
+
+    .feed-element .well {
+        border: 1px solid #E7EAEC;
+        box-shadow: none;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        padding: 10px 20px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .img-circle {
+        border-radius: 50%;
+    }
+
+    .text-navy {
+        color: #1AB394;
+    }
+
+    .feed-element .actions {
+        margin-top: 10px;
+    }
+
+    .feed-photo {
+        height: 180px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .list-block {
+        max-height: 250px;
+        overflow-y: auto;
+    }
+
+    .list-activity {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-md-12" id="event-detail">
+				<div th:if="${mensaje}" th:class="${mensaje.status} == 200 ? 'alert alert-success' : 'alert alert-danger'" th:utext="${mensaje.mensaje}" th:classappend="${clase} != null ? ${clase} : ''">
+				</div>
+                <div th:object="${registro.body}">
+                    <h2>Solicitud de '<span th:text="*{actividad.title}" property="name"></span>'</h2>
+
+                    <ul class="list-inline margin-b1em">
+                        <li class="nopadding" th:if="*{actividad.scope}">
+                            <a th:href="'/sede/servicio/actividades/juvenil/banco/query?fq=scope%3A(&quot;'+*{#utils.toUnicode(actividad.scope.title)}+'&quot;)'" th:text="*{actividad.scope.title}" class="label label-primary margin-r05em"></a>
+                            <a th:text="*{actividad.durationType}" class="label label-warning margin-r05em"></a>
+                        </li>
+                    </ul>
+
+					<p class="alert alert-warning" role="alert" style="color: #db0808;" >Si ya has concretado todos los detalles de la actividad con la entidad que la imparte, rellena los datos y pulsa en <strong>Tramitar solicitud</strong>.</p>
+<!--                     <p class="alert alert-info"><strong>Importante: </strong>Solicite la actividad con al menos 7 días de antelación con respecto al inicio de la misma.</p> -->
+
+                    <form method="post" th:action="@{/servicio/actividades/juvenil/banco/solicitud/save}" class="well form-horizontal" accept-charset="utf-8">
+            
+	                    <div class="row">
+	                    	<div class="form-group col-md-12" th:if="*{actividad.durationType} == 'Curso escolar'">
+			                    <label class="control-label col-md-3" for="ampliacion">Ampliación de Solicitud</label>
+			                    <div class="col-md-1">
+				                    <input type="checkbox" value="true" id="ampliacion" name="ampliacion" th:checked="*{ampliacion}" onclick="this.checked ? $('#solicitudAmpliada').show() : $('#solicitudAmpliada').hide()"/>
+			                    </div>
+			                    <div id="solicitudAmpliada" class="col-md-8">
+				                    <label class="control-label col-md-5" for="idSolicitudAmpliada">Código de la Solicitud a ampliar</label>
+				                    <div class="col-md-3">
+					                    <input type="number" class="form-control" id="idSolicitudAmpliada" name="idSolicitudAmpliada" min="1" th:value="*{idSolicitudAmpliada}"/>
+					                </div>
+				                </div>
+	                    	</div>
+	                    	
+	                    	<div class="col-md-12">
+	                            <!--/* PANELES */-->
+	                            <div class="panel-group" id="requester-accordion" role="tablist" aria-multiselectable="true">
+	                            	<!-- /* Solicitante /* -->
+	                            	<div class="panel panel-default">
+	                            		<div class="panel-heading">
+	                            			<h3 class="panel-title">
+	                            				Solicitante
+	                            			</h3>
+	                            		</div>
+	                            		<div class="panel-collapse collapse in">
+	                            			<div class="panel-body">
+						                    	<div class="form-group col-md-12">
+								                    <label for="nombreSolicitante" class="control-label col-md-3">
+								                    	<span class="obligatorio">Grupo / Entidad solicitante</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<input type="text" class="form-control" id="nombreSolicitante" name="nombreSolicitante"
+								                    		th:required="true" th:value="*{nombreSolicitante}" placeholder="Nombre del grupo o entidad solicitante"/>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="addressStreet" class="control-label col-md-3">
+								                    	<span class="obligatorio">Dirección</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<input type="text" class="form-control required" id="addressStreet" name="addressStreet"
+								                    		th:required="true" th:value="*{addressStreet}" placeholder="Dirección"/>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="postalCode" class="control-label col-md-3">
+								                    	<span class="obligatorio">Código Postal</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-2">
+								                    	<input type="number" class="form-control required" id="postalCode" name="postalCode"
+								                    		min="50001" max="50999" th:required="true" th:value="*{postalCode}" placeholder="Código Postal"/>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="cif" class="control-label col-md-3">CIF</label>
+								                    <div class="col-md-2">
+								             	       <input type="text" class="form-control" id="cif" name="cif" th:value="*{cif}" placeholder="CIF (si procede)"/>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="email" class="control-label col-md-3">
+								                    	<span class="obligatorio">Correo electrónico</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<input type="email" class="form-control required" id="email" name="email"
+								                    		th:required="true" th:value="*{email}" placeholder="Correo electrónico"/>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="responsableActividad" class="control-label col-md-3">
+								                    	<span class="obligatorio">Responsable actividad</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<input type="text" class="form-control required" id="responsableActividad" name="responsableActividad"
+								                    		th:required="true" th:value="*{responsableActividad}" placeholder="Nombre y apellidos del responsable de la actividad"/>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="cargoResponsable" class="control-label col-md-3">Cargo del responsable</label>
+								                    <div class="col-md-9">
+								                    	<input type="text" class="form-control" id="cargoResponsable" name="cargoResponsable"
+								                    		th:value="*{cargoResponsable}" placeholder="Cargo que ocupa en la organización el responsable de la actividad"/>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="telephone" class="control-label col-md-3">
+								                    	<span class="obligatorio">Teléfono</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<input type="tel" class="form-control required" id="telephone" name="telephone"
+								                    		th:required="true" th:value="*{telephone}" placeholder="Teléfono de contacto"/>
+								                    </div>
+						                    	</div>
+	                            			</div>
+	                            		</div>
+	                            	</div>
+	                            </div>
+	                            
+								<div class="row" id="javascript-warning">
+			                        <div class="col-md-9 alert alert-warning" role="alert">
+			                            Por favor, habilita JavaScript en tu navegador para facilitarte la introducción de horario, calendario y participantes.
+			                        </div>
+			                    </div>
+	                            
+	                            <div class="panel-group" id="event-accordion" role="tablist" aria-multiselectable="true">
+	                                <!--/* Actividad */-->
+	                                <div class="panel panel-default">
+	                                    <div class="panel-heading" role="tab" id="entity-title">
+	                                        <h3 class="panel-title">
+	                                        	Actividad
+	                                        </h3>
+	                                    </div>
+	                                    <div id="entity" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="organizer-title">
+	                                        <div class="panel-body">
+	                                        	<!-- /* Actividad */ -->
+						                    	<div class="form-group col-md-12">
+								                    <label class="control-label col-md-3">Título</label>
+								                    <div class="col-md-9">
+		                                                <input type="text" class="form-control" th:disabled="true" th:value="*{actividad.title}" />
+		                                                <input type="hidden" th:value="*{actividad.id}" name="actividad.id"/>
+		                                            </div>
+	                                        	</div>
+	                                            <!--/* Entidad ofertante */-->
+						                    	<div class="form-group col-md-12">
+								                    <label class="control-label col-md-3">Entidad ofertante</label>
+								                    <div class="col-md-9">
+		                                                <input type="text" class="form-control" th:disabled="true" th:value="*{actividad.entity.title}" />
+		                                            </div>
+	                                            </div>
+	                                            <!--/* Monitor */-->
+	                                            <div th:if="*{not #lists.isEmpty(actividad.monitors)}" class="form-group col-md-12">
+								                    <label class="control-label col-md-3" for="monitor">
+								                    	<span class="obligatorio">Monitor/a</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<select id="monitor" name="monitor.id" class="form-control" th:required="true" >
+								                    		<option></option>
+			                                                <option th:each="mon : *{actividad.monitors}" class="list-unstyled" th:text="${mon.title}"
+			                                                	th:selected="*{monitor != null} and (*{monitor.id} == ${mon.id})" th:value="${mon.id}"></option>
+	                                                	</select>
+	                                                </div>
+	                                            </div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="lugarRealizacion" class="control-label col-md-3">
+								                    	<span class="obligatorio">Lugar de realización</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<input type="text" class="form-control required" id="lugarRealizacion" name="lugarRealizacion"
+								                    		th:required="true" th:value="*{lugarRealizacion}" placeholder="Lugar donde se realizará la actividad"/>
+								                    </div>
+						                    	</div>
+	                                            <!--/* Barrios */-->
+	                                            <div th:if="${not #lists.isEmpty(distritos)}" class="form-group col-md-12">
+								                    <label class="control-label col-md-3" for="distrito">Barrio rural</label>
+								                    <div class="col-md-4">
+								                    	<select id="distrito" name="distrito.id" class="form-control">
+								                    		<option></option>
+			                                                <option th:each="distr : ${distritos}" class="list-unstyled" th:text="${distr.title}"
+			                                                	th:selected="*{distrito != null} and (*{distrito.id} == ${distr.id})" th:value="${distr.id}"></option>
+	                                                	</select>
+	                                                </div>
+	                                            </div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="horario" class="control-label col-md-3">
+								                    	<span class="obligatorio">Horario de realización</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+							                    	<div id="horario_acc" class="col-md-9">
+							                    		<textarea id="horario" name="horario" class="form-control" th:text="*{horario}"></textarea>
+							                    		<span class="help-inline"><i>Introduce los tramos horarios en los que se realizará la actividad a lo largo de la semana, uno por línea. Ejemplo:</i>
+							                    			<br/>lunes 10:00-12:00<br/>miércoles 11:30-13:30
+							                    		</span>
+							                    	</div>
+								                    <div id="horario_js" class="col-md-9" style="display:none;">
+							                    		<input type="hidden" id="horario" name="horario" th:value="*{horario}"/>
+							                    		<table id="table_horario">
+							                    			<thead>
+							                    				<tr>
+							                    					<th class="col-md-3" style="text-align:center;">Día de la semana</th>
+							                    					<th class="col-md-3" style="text-align:center;">Hora inicio</th>
+							                    					<th class="col-md-3" style="text-align:center;">Hora fin</th>
+							                    					<th class="col-md-2" style="text-align:center;"></th>
+							                    				</tr>
+							                    			</thead>
+							                    			<tbody>
+							                    			</tbody>
+							                    			<tfoot>
+							                    				<tr height="8"></tr>
+							                    				<tr>
+							                    					<td class="col-md-3">
+												                    	<select class="form-control" id="horario_dia">
+												                    		<option value="lunes">lunes</option>
+												                    		<option value="martes">martes</option>
+												                    		<option value="miércoles">miércoles</option>
+												                    		<option value="jueves">jueves</option>
+												                    		<option value="viernes">viernes</option>
+												                    		<option value="sábado">sábado</option>
+												                    		<option value="domingo">domingo</option>
+												                    	</select>
+																	</td>
+							                    					<td class="col-md-3">
+							                    						<div class="col-md-5" style="padding:0;">
+								                    						<select class="form-control" id="hora_inicio">
+								                    							<option>00</option>
+								                    							<option>01</option>
+								                    							<option>02</option>
+								                    							<option>03</option>
+								                    							<option>04</option>
+								                    							<option>05</option>
+								                    							<option>06</option>
+								                    							<option>07</option>
+								                    							<option>08</option>
+								                    							<option selected="selected">09</option>
+								                    							<option>10</option>
+								                    							<option>11</option>
+								                    							<option>12</option>
+								                    							<option>13</option>
+								                    							<option>14</option>
+								                    							<option>15</option>
+								                    							<option>16</option>
+								                    							<option>17</option>
+								                    							<option>18</option>
+								                    							<option>19</option>
+								                    							<option>20</option>
+								                    							<option>21</option>
+								                    							<option>22</option>
+								                    							<option>23</option>
+								                    						</select>
+							                    						</div>
+							                    						<div class="col-md-5" style="padding:0;">
+								                    						<select class="form-control" id="minuto_inicio">
+																				<option>00</option>
+																				<option>15</option>
+																				<option>30</option>
+																				<option>45</option>
+								                    						</select>
+								                    					</div>
+																	</td>
+							                    					<td class="col-md-3">
+							                    						<div class="col-md-5" style="padding:0;">
+								                    						<select class="form-control" id="hora_fin">
+								                    							<option>00</option>
+								                    							<option>01</option>
+								                    							<option>02</option>
+								                    							<option>03</option>
+								                    							<option>04</option>
+								                    							<option>05</option>
+								                    							<option>06</option>
+								                    							<option>07</option>
+								                    							<option>08</option>
+								                    							<option>09</option>
+								                    							<option selected="selected">10</option>
+								                    							<option>11</option>
+								                    							<option>12</option>
+								                    							<option>13</option>
+								                    							<option>14</option>
+								                    							<option>15</option>
+								                    							<option>16</option>
+								                    							<option>17</option>
+								                    							<option>18</option>
+								                    							<option>19</option>
+								                    							<option>20</option>
+								                    							<option>21</option>
+								                    							<option>22</option>
+								                    							<option>23</option>
+								                    						</select>
+							                    						</div>
+							                    						<div class="col-md-5" style="padding:0;">
+								                    						<select class="form-control" id="minuto_fin">
+																				<option>00</option>
+																				<option>15</option>
+								                    							<option>30</option>
+																				<option>45</option>
+								                    						</select>
+								                    					</div>
+																	</td>
+							                    					<td class="col-md-2">
+											                    		<input id="btn-hora" type="button" class="btn btn-info pull-right" value="Añadir tramo" onclick="addTime()"/>
+							                    					</td>
+							                    				</tr>
+							                    			</tfoot>
+							                    		</table>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="calendario" class="control-label col-md-3">
+								                    	<span class="obligatorio">Calendario de la actividad</span><span class="oculto"> (campo obligatorio)</span>
+							                    	</label>
+							                    	<div id="calendario_acc" class="col-md-9">
+							                    		<textarea id="calendario" name="calendario" class="form-control" th:text="*{calendario}"></textarea>
+							                    		<span class="help-inline"><i>Introduce los días en los que se realizará la actividad, uno por línea. Ejemplo:</i>
+							                    			<br/>05/03/2019<br/>23/04/2019
+							                    		</span>
+							                    	</div>
+								                    <div id="calendario_js" class="col-md-9" style="display:none;">
+							                    		<input type="hidden" id="calendario" name="calendario" th:value="*{calendario}"/>
+								                    	<div class="col-md-12">
+								                    		<label for="dia_seleccionado">Día(s) seleccionado(s)</label>
+								                    	</div>
+								                    	<div id="lista_calendario" class="col-md-12">
+								                    	</div>
+								                    	<div class="col-md-6" style="padding-top:8px; float:left;">
+<!-- 															<input id="dia_seleccionado" type="date" th:min="${primerDia}" class="col-md-2 form-control" style="width:160px;" /> -->
+															<input id="dia_seleccionado" type="date" class="col-md-2 form-control" style="width:160px;" />
+								                    		<input id="btn-dia" type="button" class="btn btn-info" style="margin-left:15px;" value="Añadir día" onclick="addDate()" />
+								                    	</div>
+								                    </div>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="codActo" class="control-label col-md-3">Código actividad en Agenda</label>
+								                    <div class="col-md-2">
+									                    <input type="number" class="form-control" id="codActo" name="codActo" th:value="*{codActo}" min="1"/>
+								                    </div>
+									                <span class="col-md-7 help-inline">Identificador de la actividad, si ya está publicada en Agenda Juvenil.</span>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+									                <span class="col-md-3"> </span>
+								                    <div class="col-md-7">
+										                <input type="button" class="btn btn-info" id="btn_actividad" value="Obtener información Actividad" style="display:none;"/>
+									                </div>
+								                </div>
+						                    	<div id="nombreActividad" class="form-group col-md-12" style="display:none;">
+								                    <label class="control-label col-md-3">
+								                    	<span>Nombre actividad en Agenda</span>
+							                    	</label>
+								                    <div class="col-md-9">
+								                    	<input class="form-control" id="nombreActividadAgenda" th:disabled="true"/>
+								                    </div>
+						                    	</div>
+						                    	<div id="inscritosOnline" class="form-group col-md-12" style="display:none;">
+								                    <label class="control-label col-md-3">
+								                    	<span>Número de inscritos en Agenda</span>
+							                    	</label>
+								                    <div class="col-md-2">
+								                    	<input class="form-control" id="numInscritosOnline" th:disabled="true"/>
+								                    </div>
+													<span class="col-md-7 help-inline">Número de participantes inscritos a través de la Plataforma de Gobierno Abierto.</span>
+						                    	</div>
+						                    	<div class="form-group col-md-12">
+								                    <label for="participantes" class="control-label col-md-3">
+								                    	<span>Participantes<br/><em>(No incluir los inscritos en la Agenda Juvenil)</em></span>
+							                    	</label>
+								                    <div id="participantes_acc" class="col-md-9">
+								                    	<textarea class="form-control" id="participantes" name="participantes" rows="6" maxlength="4000"
+								                    		placeholder="Nombre y apellidos &#10;Fecha nacimiento &#10;Teléfono &#10; &#10;..." th:text="*{participantes}">
+								                    	</textarea>
+														<span class="help-inline">
+															<i>Participantes ya inscritos (no a través de la actividad publicada en Agenda Juvenil).</i>
+															<br/>
+															Lista con nombre y apellidos, fecha de nacimiento y teléfono de contacto.
+														</span>
+								                    </div>
+								                    <div id="participantes_js" class="col-md-9" style="display:none;">
+							                    		<input type="hidden" id="participantes" name="participantes" th:value="*{participantes}"/>
+							                    		<table id="table_participantes">
+							                    			<thead>
+							                    				<tr>
+							                    					<th style="width:40%; text-align:center;">Nombre y apellidos</th>
+							                    					<th style="width:20%; text-align:center;">Fecha nacimiento</th>
+							                    					<th style="width:30%; text-align:center;">Teléfono</th>
+							                    					<th style="width:10%; text-align:center;"></th>
+							                    				</tr>
+							                    			</thead>
+							                    			<tbody></tbody>
+							                    			<tfoot>
+							                    				<tr height="8"></tr>
+							                    				<tr>
+							                    					<td >
+																		<input id="nombre_apell" type="text" class="form-control" style="width:100%;"/>
+																	</td>
+							                    					<td class="col-md-1" style="text-align:center;">
+																		<input id="fecha_nac" type="date" class="form-control" style="width:160px;" />
+																	</td>
+							                    					<td >
+																		<input id="telefono" type="text" class="form-control"/>
+																	</td>
+							                    					<td >
+											                    		<input id="btn-add-participant" type="button" class="btn btn-info pull-right" value="Añadir" onclick="addParticipant()"/>
+							                    					</td>
+							                    				</tr>
+							                    			</tfoot>
+							                    		</table>
+								                    </div>
+						                    	</div>
+						                    	<div id="num_participantes_acc" class="form-group col-md-12">
+								                    <label for="numParticipantes" class="control-label col-md-3">
+								                    	<span>Número de participantes</span>
+							                    	</label>
+								                    <div class="col-md-2">
+								                    	<input type="number" class="form-control" id="numParticipantes" name="numParticipantes" th:value="*{numParticipantes}" min="0" value="0"/>
+								                    </div>
+													<span class="col-md-7 help-inline">Número de participantes inscritos en el cuadro anterior.</span>
+						                    	</div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <!--/* ./panel-group */-->
+	                       </div>
+						</div>
+						
+	                    <div class="form-group">
+	                        <div class="col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-4">
+				                <th:block th:include="fragmentos/recaptcha" />
+	                            <button type="submit" class="btn btn-primary" style="margin-left:80px;">Tramitar solicitud</button>
+	                        </div>
+	                    </div>
+	                    
+					</form>
+                </div>
+            </div>
+        </div>
+        <th:block th:include="servicio/actividades/juvenil/banco/footer-banco" />
+    </sede:content>
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+		var festivos = /*[[${festivos}]]*/ 'default';
+
+		$(document).ready(function() {
+	        $("#javascript-warning").remove();
+	        
+			if (!$("#ampliacion").prop('checked')) {
+				$("#solicitudAmpliada").hide();
+			}
+	        
+	        $("#horario_acc").remove();
+	        $("#calendario_acc").remove();
+	        $("#participantes_acc").remove();
+
+			var horarioVal = $("#horario").val();
+			if (horarioVal != "") {
+				var tramos = horarioVal.split("\n");
+				for (var i = 0, len = tramos.length; i < len; i++) {
+					if (tramos[i] != "") {
+						addRestoredTime(tramos[i]);
+					}
+				}
+			}
+	        $("#horario_js").show();
+			
+			var calendarioVal = $("#calendario").val();
+			if (calendarioVal != "") {
+				var dias = calendarioVal.split("\n");
+				for (var i = 0, len = dias.length; i < len; i++) {
+					if (dias[i] != "") {
+						addRestoredDate(dias[i]);
+					}
+				}
+			}
+	        $("#calendario_js").show();
+	        
+	        $("#numParticipantes").prop('readonly', true);
+	        var participantesVal = $("#participantes").val();
+	        if (participantesVal !== "") {
+	        	var textLines = participantesVal.split("\n");
+	        	var name = "";
+	        	var date = "";
+	        	var phone = "";
+	        	for (var i = 0, len = textLines.length; i < len; i++) {
+	        		if (textLines[i] === "") {
+			        	// New participant. If some info left, add participant and go to next line
+			        	if ((name !== "") || (date !== "") || (phone !== "")) {
+		        			addRestoredParticipant(name, date, phone);
+			        	}
+			        	name = "";
+			        	date = "";
+			        	phone = "";
+	        			continue;
+	        		}
+	        		if (name === "") {
+	        			name = textLines[i];
+	        			continue;
+	        		}
+	        		if (date === "") {
+	        			date = textLines[i];
+	        			continue;
+	        		}
+	        		if (phone === "") {
+	        			phone = textLines[i];
+	        			addRestoredParticipant(name, date, phone);
+			        	name = "";
+			        	date = "";
+			        	phone = "";
+	        			continue;
+	        		}
+	        	}
+	        	// If some info left, add participant
+	        	if ((name !== "") || (date !== "") || (phone !== "")) {
+        			addRestoredParticipant(name, date, phone);
+	        	}
+	        }
+	        $("#participantes_js").show();
+	        
+			$.ajaxSetup({ cache: false });
+	        $("#btn_actividad").click(function() {
+	        	var codActo = $("#codActo").val();
+	        	if (codActo > 0) {
+					$.getJSON("acto/" + codActo, function(data, status) {
+						if (status === "success") {
+							$("#nombreActividadAgenda").val(data.nombre);
+							$("#numInscritosOnline").val(data.numInscritos);
+							$("#nombreActividad").show();
+							$("#inscritosOnline").show();
+						} else {
+							$("#nombreActividad").hide();
+							$("#inscritosOnline").hide();
+							alert("Error al obtener información de la actividad. Compruebe que el código corresponde a una actividad de Agenda.");
+						}
+					}).fail(function( jqxhr, textStatus, error ) {
+						$("#nombreActividad").hide();
+						$("#inscritosOnline").hide();
+						alert("Error al obtener información de la actividad. Compruebe que el código corresponde a una actividad de Agenda.");
+					});
+				}
+			});
+	        $("#btn_actividad").show();
+	    });
+	    
+	    function getUUID() {
+	    	return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+	    }
+	    
+		function addTime() {
+			var dia = $("#horario_dia").val();
+			var horaInicio = $("#hora_inicio").val() + ':' + $("#minuto_inicio").val();
+			var horaFin = $("#hora_fin").val() + ':' + $("#minuto_fin").val();
+			var tramo = dia + " " + horaInicio + "-" + horaFin;
+			var inputHorario = $("#horario").val();
+			if (inputHorario.indexOf(tramo) === -1) {
+				var uuid = "t_" + getUUID();
+				$("#horario").val(inputHorario + tramo + "\n");
+				$("#table_horario").find("tbody").append('<tr id="' + uuid + '" name="' + tramo + '" style="text-align:center;background:#eee;"><td>'
+					+ dia + '</td><td>' + horaInicio + '</td><td>' + horaFin + '</td><td>' 
+					+ '<a class="btn btn-danger" style="padding:2px 6px;margin:2px;" onclick="removeTime(\'' + uuid + '\')"><span class="fa fa-trash"></span> Eliminar</a>' 
+					+ '</td></tr>');
+			}
+		}
+    	
+	    function removeTime(uuid) {
+	    	var row = $("#" + uuid);
+	    	var time = row.attr("name");
+	    	var inputHorario = $("#horario").val();
+	    	inputHorario = inputHorario.replace(time + "\n", "");
+	    	$("#horario").val(inputHorario);
+	    	row.remove();
+	    }
+	    
+	    function checkHoliday(dateStr) {
+	    	for (var i = 0; i < festivos.length; i++) {
+	    		if (festivos[i] === dateStr) {
+	    			return true;
+	    		}
+	    	}
+	    	return false;
+	    }
+
+		function addDate() {
+			var inputDate = $("#dia_seleccionado").val();
+			if (inputDate) {
+				var date = new Date(Date.parse(inputDate));
+				var day = date.getDate();
+				var holiday = (date.getDay() == 0);
+				if (day < 10) { day = "0" + day; }
+				var month = date.getMonth() + 1;
+				if (month < 10) { month = "0" + month; }
+				var fecha = day + "/" + month + "/" + date.getFullYear();
+				if (!holiday) {
+					holiday = checkHoliday(fecha);
+				}
+				var inputCalendario = $("#calendario").val();
+				if (inputCalendario.indexOf(fecha) === -1) {
+					var uuid = "d_" + getUUID();
+					$("#calendario").val(inputCalendario + fecha + "\n");
+					var style = holiday ? 'style="color:#a94442; font-weight:bold;"' : '';
+					$("#lista_calendario").append('<span class="col-md-3" id="' + uuid + '" name="' + fecha + '" ' + style + '>' + fecha
+						+ '<a class="btn btn-danger" style="padding:2px 6px;margin:2px 4px;" onclick="removeDate(\'' + uuid + '\')"><span class="fa fa-trash"></span></a>'
+						+ '</span>');
+				}
+			}
+		}
+    	
+	    function removeDate(uuid) {
+	    	var item = $("#" + uuid);
+	    	var date = item.attr("name");
+	    	var inputCalendario = $("#calendario").val();
+	    	inputCalendario = inputCalendario.replace(date + "\n", "");
+	    	$("#calendario").val(inputCalendario);
+	    	item.remove();
+	    }
+	    
+	    function addParticipant() {
+			var nombre = $("#nombre_apell").val().trim();
+			var fecha = $("#fecha_nac").val();
+			var telefono = $("#telefono").val().trim();
+			if ((nombre !== "") && fecha && (telefono !== "")) {
+				var date = new Date(Date.parse(fecha));
+				var day = date.getDate();
+				if (day < 10) { day = "0" + day; }
+				var month = date.getMonth() + 1;
+				if (month < 10) { month = "0" + month; }
+				var fechaNac = day + "/" + month + "/" + date.getFullYear();
+				
+				var participante = nombre + "\n" + fechaNac + "\n" + telefono;
+				var inputParticipantes = $("#participantes").val();
+				if (inputParticipantes.indexOf(participante) === -1) {
+					var uuid = "p_" + getUUID();
+					inputParticipantes += participante + "\n\n";
+					$("#participantes").val(inputParticipantes);
+					$("#table_participantes").find("tbody").append('<tr id="' + uuid + '" name="' + participante + '" style="text-align:center;background:#eee;"><td>'
+						+ nombre + '</td><td>' + fechaNac + '</td><td>' + telefono + '</td><td>' 
+						+ '<a class="btn btn-danger" style="padding:2px 6px;margin:2px;" onclick="removeParticipant(\'' + uuid + '\')"><span class="fa fa-trash"></span> Eliminar</a>' 
+						+ '</td></tr>');
+	    			updateParticipantsNumber();
+					$("#nombre_apell").val("");
+					$("#fecha_nac").val("");
+					$("#telefono").val("");
+				}
+			}
+	    }
+
+	    function removeParticipant(uuid) {
+	    	var item = $("#" + uuid);
+	    	var participant = item.attr("name");
+			var inputParticipantes = $("#participantes").val();
+	    	inputParticipantes = inputParticipantes.replace(participant + "\n\n", "");
+	    	$("#participantes").val(inputParticipantes);
+	    	item.remove();
+	    	updateParticipantsNumber();
+	    }
+	    
+	    function updateParticipantsNumber() {
+	    	$("#numParticipantes").val($("#table_participantes tbody tr").size());
+	    }
+	    
+		function addRestoredTime(time) {
+			var splitted1 = time.split(" ");
+			var dia = splitted1[0];
+			var splitted2 = splitted1[1].split("-");
+			var horaInicio = splitted2[0];
+			var horaFin = splitted2[1];
+			var uuid = "t_" + getUUID();
+			$("#table_horario").find("tbody").append('<tr id="' + uuid + '" name="' + time + '" style="text-align:center;background:#eee;"><td>'
+				+ dia + '</td><td>' + horaInicio + '</td><td>' + horaFin + '</td><td>' 
+				+ '<a class="btn btn-danger" style="padding:2px 6px;margin:2px;" onclick="removeTime(\'' + uuid + '\')"><span class="fa fa-trash"></span> Eliminar</a>' 
+				+ '</td></tr>');
+		}
+    	
+		function addRestoredDate(dateStr) {
+			var splitted = dateStr.split('/');
+			var dia = splitted[0];
+			var mes = splitted[1];
+			var anio = splitted[2];
+			var date = new Date(Number(anio), Number(mes-1), Number(dia));
+			var holiday = (date.getDay() == 0);
+			if (!holiday) {
+				holiday = checkHoliday(dateStr);
+			}
+			var style = holiday ? 'style="color:#a94442; font-weight:bold;"' : '';
+			var uuid = "d_" + getUUID();
+			$("#lista_calendario").append('<span class="col-md-3" id="' + uuid + '" name="' + dateStr + '" ' + style + '>' + dateStr
+				+ '<a class="btn btn-danger" style="padding:2px 6px;margin:2px 4px;" onclick="removeDate(\'' + uuid + '\')"><span class="fa fa-trash"></span></a>'
+				+ '</span>');
+		}
+		
+		function addRestoredParticipant(name, date, phone) {
+			var participante = name + "\n" + date + "\n" + phone;
+			var uuid = "p_" + getUUID();
+			$("#table_participantes").find("tbody").append('<tr id="' + uuid + '" name="' + participante + '" style="text-align:center;background:#eee;"><td>'
+				+ name + '</td><td>' + date + '</td><td>' + phone + '</td><td>' 
+				+ '<a class="btn btn-danger" style="padding:2px 6px;margin:2px;" onclick="removeParticipant(\'' + uuid + '\')"><span class="fa fa-trash"></span> Eliminar</a>' 
+				+ '</td></tr>');
+   			updateParticipantsNumber();
+		}
+    	
+    /*]]>*/
+    </script>
+</body>
+
+</html>

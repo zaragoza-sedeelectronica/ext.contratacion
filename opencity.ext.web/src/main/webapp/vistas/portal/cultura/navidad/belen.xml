@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Ayuntamiento de Zaragoza. Navidad. El Belén" description="Portal dedicado a la festividad de Navidad en la ciudad de Zaragoza. Este portal recoge la oferta cultural, educativa y de ocio que se lleva a cabo en la ciudad en Navidad. 
+	  actividades, belén, cabalgata de reyes, reyes magos. Activities" author="Ayuntamiento de Zaragoza" keywords="Ayuntamiento, Zaragoza, España, Navidad, Ciudad, cultura, turismo, actividades, espacios, diciembre, enero, Cabalgata de Reyes Magos, Belén Plaza del Pilar, council, Spain, christmas, activities, december, january, wise man, leisure time">
+    </sede:meta>
+       <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        /*content: ";*/
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+   <sede:content>
+        <nav>
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                  <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/navidad/belen">El Belén</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/navidad/reyesmagos">Reyes Magos</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/navidad/multimedia">Multimedia</a></li>
+				   <li class="col-xs-6 col-sm-2"><a class="elemento" href="/ciudad/turismo/es/regala-zaragoza/">Turismo</a></li>
+                 <li class="col-xs-6 col-sm-2">
+                    <ul class="list-inline nomargin navbar-right text-center padding-t05em">
+                         <li>
+                            <a itemprop="sameAs" href="https://twitter.com/ZCultura">
+                                <span class="fab fa-2x fa-twitter-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.facebook.com/ZgzCultura/">
+                                <span class="fab fa-2x fa-facebook-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.instagram.com/zcultura/">
+                                <span class="fab fa-2x fa-instagram text-color" aria-hidden="true"></span>
+                                <span class="oculto">Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.youtube.com/channel/UCEqVjSU87_mASvoCHzCc2Vg">
+                                <span class="fab fa-youtube fa-2x text-color" aria-hidden="true"></span>
+                                <span class="oculto">Youtube</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+ 
+ 
+		 
+ 
+	   <h2> El Belén</h2>
+  
+ 
+			<div class="row">
+            <div class="col-md-12"><div role="alert" class="alert alert-info">
+			<a href="https://www.zaragoza.es/sede/portal/cultura/navidad/servicio/cultura/evento/195105">Consulta horarios</a></div>
+                      <div class="pull-right"><img src="/cont/paginas/navidad/img/belen-navidad-portada.jpg" alt=""/></div>
+			<div>Zaragoza es la ciudad de Espa&ntilde;a con el <strong>Bel&eacute;n Gigante m&aacute;s grande</strong> con figuras de tama&ntilde;o real. Est&aacute; ubicado en la plaza del Pilar, y cada a&ntilde;o recibe cientos de miles de visitas de zaragozanos y turistas, siendo el centro de todas las actividades navide&ntilde;as. La superficie total del bel&eacute;n es de <strong>1.800 metros cuadrados</strong> de superficie total y 1.066 de zona de ajardinada.</div>
+<div>&nbsp;</div>
+<div>El bel&eacute;n est&aacute; formado por <strong>56 figuras</strong> principales de tama&ntilde;o real, ambientadas en un escenario donde est&aacute;n ubicadas representaciones de diversos animales como ovejas, cabras, perros, patos, ocaS... En total, son <strong>100 figuras</strong> que recrean la tradici&oacute;n.</div>
+<div>&nbsp;</div>
+<div>Las construcciones habituales como el <em>Portal o el Zoco de Mercaderes</em>, ambientan un espacio donde se representan escenas tradicionales de oficios aragoneses, como un carpintero y su aprendiz, un alfarero con su torno, una familia (padre, madre y ni&ntilde;a) de matac&iacute;a o un artesano del mimbre elaborando una cesta.</div>
+		   </div>      
+  </div>           
+
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

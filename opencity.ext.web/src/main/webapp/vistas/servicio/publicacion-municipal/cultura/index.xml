@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Catálogo de publicaciones. Cultura" keywords="sede,web,cultura,catalogo,publicaciones" />
+    <style>
+		
+.cuadro-h {
+height: 263px;
+background: #e9e9e9;
+border-radius: 5px;
+width: 100%;
+padding-left: 0;
+padding-right: 0;
+margin-bottom: 30px;
+}
+
+.cuadro-h img {
+padding-bottom: 0;
+border-radius: 5px 0 0 5px;
+padding-left: 0 !important;
+}
+
+.cuadro-h div {
+padding-left: 10px !important;
+}
+
+.cuadro-h h3 {
+font-size: 24px;
+padding: 0px;
+}
+
+.cuadro-v {
+	position: relative;
+	padding: 0 15px 25px 0;
+}
+
+.cuadro-v img {
+padding-bottom: 0;
+border-radius: 5px 5px 0 0;
+}
+
+.dive {
+min-height: 125px;
+margin-top: 0;
+background: #e9e9e9;
+padding: 5px 10px 5px 10px;
+border-radius: 0px 0px 5px 5px;
+}
+
+.cuadro-v h3 {
+font-size: 22px;
+margin-top: 5px;
+}
+
+.cuadro-v h3 a {
+color: #E83437 !important;
+font-weight: bold;
+}
+
+
+     
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <!-- <h2>Catálogo de publicaciones. Colecciones</h2> -->
+        <a title="Editar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="@{/servicio/publicacion-municipal/tipo/}" class="btn btn-primary btn-xs pull-right">Gestión de Materias</a>
+
+       
+		<div class="row">
+
+
+            <div class="col-md-12">
+				<h2>Encuentra la publicación que buscas</h2>
+				
+               <form method="get" action="../list" class="well form-horizontal">
+                   
+                        <!--/*<legend>Consulta</legend>*/-->
+                        <div class="form-group">
+                            <label class="col-md-1 col-xs-3 control-label" for="titleContains">Título</label>
+                            <div class="col-md-11 col-xs-9">
+                                <input class="form-control" type="text" name="titleContains" id="titleContains" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 col-xs-3 control-label" for="year">Año</label>
+                            <div class="col-md-2 col-xs-9">
+                                <input class="form-control" type="text" name="year" id="year" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 col-xs-3 control-label" for="author">Autor</label>
+                            <div class="col-md-11 col-xs-9">
+                                <input class="form-control" type="text" name="author" id="author" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 col-xs-3 control-label" for="isbn">ISBN</label>
+                            <div class="col-md-3 col-xs-9">
+                                <input class="form-control" type="text" name="isbn" id="isbn" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 col-md-1 control-label" for="coleccion.id">Colección</label>
+                            <div class="col-xs-9 col-md-11">
+                                <select class="form-control" name="coleccion.id" id="coleccion.id">
+                                    <option value=""></option>
+                                    <option th:each="doc: ${resultado.body.result}" th:value="${doc.id}" th:text="${doc.title}" th:selected="${doc.id}==${idCategoria}" />
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 col-md-1 control-label" for="tipo.id">Materia</label>
+                            <div class="col-xs-9 col-md-11">
+                                <select class="form-control" name="tipo.id" id="tipo.id">
+                                    <option value=""></option>
+                                    <option th:each="doc: ${tipo.body.result}" th:value="${doc.id}" th:text="${doc.title}" th:selected="${doc.id}==${idCategoria}" />
+                                </select>
+                            </div>
+                        </div>
+                        <!--/* <div class="form-group" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}"> */-->
+                        <div class="form-group">
+                            <div class="col-xs-6 col-md-2 control-label" for="tipo.id"><strong>Publicación electrónica</strong></div>
+                            <div class="col-xs-6 col-md-10">
+                                <input type="radio" name="publicacionElectronica" value="true" aria-label="si" /> Sí
+                                <input type="radio" name="publicacionElectronica" value="false" aria-label="no"/> No
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+                                <input type="submit" value="Consultar" class="boton btn btn-primary" />
+                            </div>
+                        </div>
+                   
+                </form>				
+
+				</div>			
+		</div>
+
+		<div class="row">
+            <div class="col-md-12">
+				<h2>Publicaciones destacadas</h2>
+				<hr class="sm"/>
+			    <sede:aviso clase="col-xs-6 col-sm-3 col-md-2" portal="Catalogo de Publicaciones" imagen="si" resumen="si" nresultados="8" tipo="1"></sede:aviso>	
+			</div>
+		</div>	
+		
+		<div class="row">
+            <div class="col-md-12">
+				<h2>Catálogos disponibles</h2>
+				<hr class="sm"/>
+				<div class="col-md-6 hidden-xs hidden-sm" style="padding: 0.25em 1em 0 0;">						
+<div class="cuadro-h">
+<img src="/cont/vistas/servicio/publicacion-municipal/img/publicaciones-02.png" class="img-responsive
+col-md-6" alt=""/>
+<div class="col-md-6">
+<h3>Catálogo de exposiciones</h3>
+                    <hr class="sm"/>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2019&amp;coleccion.id=12">2019</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2018&amp;coleccion.id=12">2018</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2017&amp;coleccion.id=12">2017</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2016&amp;coleccion.id=12">2016</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2015&amp;coleccion.id=12">2015</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2014&amp;coleccion.id=12">2014</a>
+
+</div>
+</div>
+</div>
+
+				<div class="col-md-6 hidden-xs hidden-sm" style="padding: 0.25em 1em 0 0;">						
+<div class="cuadro-h">
+<img src="/cont/vistas/servicio/publicacion-municipal/img/publicaciones-04.png" class="img-responsive
+col-md-6" alt=""/>
+<div class="col-md-6">
+<h3>Publicaciones digitalizadas</h3>
+<hr class="sm"/>
+<p>                 <a href="/sede/servicio/publicacion-municipal/list?tipo.id=21&amp;publicacionElectronica=true">Historia</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=4&amp;publicacionElectronica=true">Arte</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=3&amp;publicacionElectronica=true"> Arquitectura</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=38&amp;publicacionElectronica=true">Urbanismo</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=9&amp;publicacionElectronica=true">Cine</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=18&amp;publicacionElectronica=true">Folklore</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=27&amp;publicacionElectronica=true">Medioambiente</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=15&amp;publicacionElectronica=true">Educación</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=2&amp;publicacionElectronica=true">Arqueología</a>
+</p>
+</div>
+</div>
+</div>
+
+<div class="col-sm-6 hidden-md hidden-lg" style="padding: 0.25em 1em 0 0;">
+<div class="cuadro-v">
+<img src="/cont/vistas/servicio/publicacion-municipal/img/publicaciones-02-device.png"
+class="img-responsive" alt=""/>
+<div class="dive">
+<h3>Catálogo de exposiciones</h3>
+                    <hr class="sm"/>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2019&amp;coleccion.id=12">2019</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2018&amp;coleccion.id=12">2018</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2017&amp;coleccion.id=12">2017</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2016&amp;coleccion.id=12">2016</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2015&amp;coleccion.id=12">2015</a>
+<a class="label label-primary" href="/sede/servicio/publicacion-municipal/list?year=2014&amp;coleccion.id=12">2014</a>
+
+</div>
+</div>
+</div>
+
+<div class="col-sm-6 hidden-md hidden-lg" style="padding: 0.25em 1em 0 0;">
+<div class="cuadro-v">
+<img src="/cont/vistas/servicio/publicacion-municipal/img/publicaciones-04-device.png"
+class="img-responsive" alt=""/>
+<div class="dive">
+<h3>Publicaciones digitalizadas</h3>
+<hr class="sm"/>
+<p>                 <a href="/sede/servicio/publicacion-municipal/list?tipo.id=21&amp;publicacionElectronica=true">Historia</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=4&amp;publicacionElectronica=true">Arte</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=3&amp;publicacionElectronica=true"> Arquitectura</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=38&amp;publicacionElectronica=true">Urbanismo</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=9&amp;publicacionElectronica=true">Cine</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=18&amp;publicacionElectronica=true">Folklore</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=27&amp;publicacionElectronica=true">Medioambiente</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=15&amp;publicacionElectronica=true">Educación</a> &bull;
+                    <a href="/sede/servicio/publicacion-municipal/list?tipo.id=2&amp;publicacionElectronica=true">Arqueología</a>
+</p>
+</div>
+</div>
+</div>
+
+		
+		</div>
+		</div>
+		
+		
+			
+
+        <!--/*<div class="row">			
+			<div class="col-md-12">					
+            <div class="card">
+                <h2>Materias</h2>
+                <hr class="sm"/>
+				<ul>
+                    <li th:each="doc: ${resultado.body.result}"><a th:href="@{'coleccion/{id}'(id=${doc.id})}" th:text="${doc.title}" /></li>
+                </ul>                
+            </div>
+            </div>
+
+        </div>*/-->
+
+
+    </sede:content>
+</body>
+
+</html>

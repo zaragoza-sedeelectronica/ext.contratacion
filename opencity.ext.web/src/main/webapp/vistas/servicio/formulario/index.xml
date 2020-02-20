@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Formularios vigentes" author="Ayuntamiento de Zaragoza" keywords="sede,web,formulario" />
+</head>
+
+<body>
+    <sede:content>
+        <ul class="list-unstyled">
+            <li class="card" th:each="doc: ${resultado.body.result}">
+                <a th:href="${doc.id}" th:text="${doc.title}"/>
+                <span class="label label-info" th:if="${doc.startDate}" th:text="' desde ' + ${#calendars.format(doc.startDate, 'EEEE dd MMMM yyyy')}"/>
+                <span class="label label-info" th:if="${doc.endDate}" th:text="' hasta ' + ${#calendars.format(doc.endDate, 'EEEE dd MMMM yyyy')}"/>
+                <div th:utext="${doc.description}"/>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

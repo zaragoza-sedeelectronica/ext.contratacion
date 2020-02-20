@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Inscripción"/>
+</head>
+
+<body>
+    <sede:content>
+		<th:block th:include="fragmentos/error" />
+		<form method="post" th:action="@{/servicio/cultura/evento/admin/inscripcion/{idActo}/{idInscripcion}/save-noogob(idActo=${acto.id},idInscripcion=${dato.id})}" th:object="${dato}">
+			<h2><a th:href="'/sede/servicio/cultura/evento/admin/inscripcion/' + ${acto.id} + '/list'" th:text="${acto.title}"/> <small>Inscripción</small></h2>
+			<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="nombre"><span class="obligatorio">Nombre:</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <input class="form-control" type="text" th:field="*{nombre}" required="required"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                    	<label for="apellidos"><span class="obligatorio">Apellidos:</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <input class="form-control" type="text" th:field="*{apellidos}" required="required"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="dni"><span class="obligatorio">DNI/NIF/NIE:</span><span class="oculto"> (campo obligatorio)</span></label>
+                    <div class="form-group">
+                        <input class="form-control" type="text" th:field="*{dni}" required="required"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-4">
+                    <label for="fechaNacimiento"><span class="obligatorio">Fecha de nacimiento:</span><span class="oculto"> (campo obligatorio)</span></label>
+                    <div class="form-group">
+                        <input class="form-control datepicker" type="text" th:field="*{fechaNacimiento}" placeholder="Formato: dd/mm/yyyy" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" required="required"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="telefono"><span class="obligatorio">Teléfono:</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <input class="form-control" type="tel" th:field="*{telefono}" required="required"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                    	<label for="mail">Email:</label>
+                        <input class="form-control" type="email" th:field="*{mail}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="control-label" for="estadoInscripcion">Estado de la Inscripción:</label>
+                <select class="form-control" th:field="*{estadoInscripcion}">
+                	<option value=""></option>
+                    <option value="Inscrito">Inscrito</option>
+                    <option value="Preinscrito">Preinscrito</option>
+                    <option value="Cancelada">Cancelada</option>
+                    <option value="Anulada">Anulada</option>
+                    <option value="En Reserva">En Reserva</option>
+                    <option value="Asiste">Asiste</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Finalizado">Finalizado</option>
+                </select>
+            </div>
+			<div class="col-md-6 form-group">
+                <label class="control-label" for="genero">Género:</label>
+                <select class="form-control" th:field="*{genero}">
+                	<option value="">Seleccionar</option>
+                    <option value="M">Hombre</option>
+                    <option value="F">Mujer</option>
+                    <option value="O">Otro</option>
+                </select>
+            </div>
+            <div class="form-actions margin-t2em">
+            	<div class="form-check">
+				  <input class="form-check-input" type="checkbox" th:field="*{lopd}" required="required"/>
+				  <label class="form-check-label" for="lopd">
+				    Protección de datos.
+				  </label> Autorizo al Ayuntamiento de Zaragoza al tratamiento informático de sus datos, así como la inclusión y exposición pública de mi nombre en el listado de admitidos a cursos.
+				</div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" th:field="*{cesionImagenes}"/>
+                  <label class="form-check-label" for="lopd">
+                    Fotos y vídeos
+                  </label>. Autorizo a que el Ayuntamiento de Zaragoza utilice y publique las fotos y vídeos realizados en esta actividad, así como la publicación en sus redes sociales, folletos informativos relacionados con las actividades del Ayuntamiento de Zaragoza y para el archivo fotográfico del mismo.
+                </div>
+                <input name="insertar" class="btn btn-primary" value="Inscribir" type="submit" />
+            </div>
+		</form>
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+</body>
+
+</html>

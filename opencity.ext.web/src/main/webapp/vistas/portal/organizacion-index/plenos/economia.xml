@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" xmlns="http://www.w3.org/1999/xhtml"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Organización Municipal. La Corporación 2015"
+                   description="Pleno: concejales por orden de elección, 2015" author=""
+                   last-modified="Fri Oct 16 00:00:00 CEST 2015"
+                   keywords="ayuntamiento, ciudad, administración local, Pleno Municipal, concejales, estructura institucional, relación administración-administrado"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris {
+            background-color: #f1f1f1;
+            padding: 0;
+            }
+
+            .fnd-gris .col-sm-6 {
+            padding: 0;
+            }
+
+            .fnd-gris-claro {
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            border-right: solid 2px #000;
+            padding-right: 10px;
+            margin-right: 10px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .tab-content {
+            border-left: solid 0px #ddd;
+            border-right: solid 0px #ddd;
+            border-bottom: solid 0px #ddd;
+            border-radius: 0px 0px 10px 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            position: relative;
+            }
+
+            .tab-content h2 {
+            font-size: 42px;
+            margin: 0 0 30px;;
+            }
+
+            .botones {
+            height: 150px;
+            }
+
+            .botones>li {
+            width: 100%;
+            padding: 5px;
+            background-color: #fff;
+            border: 0px;
+            float: left;
+            text-align: center;
+            }
+
+            @media (max-width: 767px) {
+            .botones>li {
+            border-bottom: solid 2px #000;
+            }
+            .botones>li:nth-child(6) {
+            border-bottom: 0;
+            }
+            }
+            @media (min-width: 768px) {
+            .botones>li:nth-child(1) {
+            border-radius: 10px 0 0 0;
+            border-bottom: solid 1px #000;
+            border-right: solid 1px #000;
+            }
+            .botones>li:nth-child(2) {
+            border-radius: 0 10px 0 0;
+            border-bottom: solid 1px #000;
+            border-left: solid 1px #000;
+            }
+            .botones>li:nth-child(3) {
+            border-bottom: solid 1px #000;
+            border-top: solid 1px #000;
+            border-right: solid 1px #000;
+            }
+            .botones>li:nth-child(4) {
+            border-bottom: solid 1px #000;
+            border-top: solid 1px #000;
+            border-left: solid 1px #000;
+            }
+            .botones>li:nth-child(5) {
+            border-radius: 0 0 0 10px;
+            border-top: solid 1px #000;
+            border-right: solid 1px #000;
+            }
+            .botones>li:nth-child(6) {
+            border-radius: 0 0 10px 0;
+            border-top: solid 1px #000;
+            border-left: solid 1px #000;
+            }
+            }
+
+            .botones>li>a {
+            display: block;
+            width: 100%;
+            color: #E81B16;
+            text-decoration: none;
+            }
+
+            .botones>li:hover {
+            background-color: #000;
+            }
+
+            .botones>li.active,
+            .botones>li.active a,
+            .botones>li.active:hover {
+            background-color: #000;
+            color: #fff;
+            }
+
+            h3, h4 {
+            color: #E81B16;
+            }
+
+            h3 a {
+            font-weight: bold;
+            font-size: 14px;
+            }
+
+            @media (max-width: 767px) {
+            .margin-t2em.titulo-org {
+            margin-top: -20px !important;
+            }
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+            .titulo-org h2 {
+            font-size: 24px;
+            }
+            .botones {
+            font-size: 10px;;
+            }
+            .botones .pull-right {
+            margin-right: 8px;
+            }
+            }
+
+            @media (max-width: 767px) {
+            .botones .pull-right {
+            margin-right: -5px !important;
+            }
+            .botones {
+            height: 190px;
+            }
+            }
+
+            @media (min-width: 768px) {
+            .fnd-gris-claro {
+            padding-top: 20px;
+            }
+            .cabecera {
+            height: 150px;
+            }
+            .fnd-gris {
+            margin-top: -130px !important;
+            }
+            .img-cabecera {
+            border-radius: 0 6px 6px 0;
+            }
+            .fnd-gris div.col-sm-12 {
+            position: absolute;
+            bottom: -120px;
+            }
+            .botones {
+            height: auto;
+            }
+            .botones>li {
+            width: calc( 50% - 2px);
+            }
+
+            .botones .pull-right {
+            margin-right: 8px;
+            }
+            }
+
+            @media (min-width: 992px) {
+            .fnd-gris div.col-sm-12 {
+            position: absolute;
+            bottom: -150px;
+            }
+            }
+            @media (min-width: 1200px) {
+            .fnd-gris div.col-sm-12 {
+            position: absolute;
+            bottom: -200px;
+            }
+            }
+
+            a span.fab {
+            transform: translateY(7px);
+            }
+
+            .composicion .col-xs-6.col-md-4.col-lg-3{
+            padding: 0;
+            }
+
+            .composicion .col-sm-6 {
+            padding: 5px;
+            }
+
+            .composicion .col-sm-6 img {
+            border-radius: 6px 0 6px 0;
+            }
+
+            .composicion .col-sm-6 a {
+            position: absolute;
+            width: calc(100% - 10px);
+            background-color: rgba(0,0,0,0.5);
+            color: #ffffff;
+            bottom: 5px;
+            padding: 10px;
+            border-radius: 0 0 6px 0;
+            line-height: 16px;
+            height: 100px;
+            }
+
+            .tab-content {
+            border-radius: 10px;
+            }
+
+            .panel-heading a:after {
+            float: left;
+            color: white;
+            background-color: #000;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 20px;
+            margin-right: 10px;
+            }
+
+            .panel-heading a.collapsed:after {
+            content: "\f105";
+            }
+
+            .panel-default>.panel-heading {
+            background-color: #fff;
+            border: 0;
+            }
+
+            .panel {
+            border: 0;
+            webkit-box-shadow: 0 0 0;
+            box-shadow: 0 0 0;
+            }
+
+            .panel-group .panel-heading+.panel-collapse>.panel-body {
+            border: 0;
+            }
+
+            @media (min-width: 768px) {
+            .panel-body {
+            padding-left: 50px;
+            }
+            }
+
+            .panel-title>a {
+            color: #E81B16;
+            }
+
+            .panel-title>a:hover,
+            .panel-title>a:focus,
+            .panel-title>a:active {
+            text-decoration: none;
+            }
+
+            .panel-title h4 {
+            color: #E81B16;
+            }
+
+            .panel-heading ul {
+            margin-top: -50px;
+            margin-bottom: 50px;
+            }
+
+            .panel-heading ul a:after {
+            display: none;
+            }
+
+            .alert.alert-info {
+            background-color: #e9e9e9;
+            border: 0;
+            border-radius: 10px;
+            padding: 10px 15px 10px 70px;
+            color: #000;
+            }
+
+            .vertical-align {
+            display: flex;
+            align-items: center;
+            }
+
+            .alert.alert-info strong {
+            color: #2222ff;
+            }
+
+            .alert-info {
+            background-position-y: center;
+            }
+
+            .fa.fa-info {
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            line-height: 40px;
+            background-color: #ccccff;
+            color: #ffffff;
+            }
+
+            #accordion0 .pull-right {
+            margin-left: 15px;
+            padding: 5px 20px;
+            margin-top: -8px;
+            }
+
+            .anios .pull-right {
+            margin-left: 5px;
+            padding: 0;
+            }
+
+            .anios .pull-left {
+            padding: 0;
+            }
+
+            .anios a {
+            display: block;
+            padding: 5px 15px;
+            }
+
+            .btn-default {
+            margin-bottom: 5px;
+            }
+
+            .btn-default a {
+            text-decoration: none;
+            color: #000;
+            }
+
+            .btn-danger {
+            color: #fff;
+            background-color: #E83437;
+            border-color: #E83437;
+            margin-bottom: 5px;
+            }
+
+            .btn-danger a {
+            color: #fff;
+            text-decoration: none;
+            }
+
+            .btn-danger:active,
+            .btn-danger:focus,
+            .btn-danger.active {
+            background-color: #000000;
+            border-color: #000000;
+            }
+
+            @media (max-width: 1199px) {
+            #accordion0 .pull-right {
+            margin-left: 10px;
+            padding: 5px 10px;
+            }
+            }
+
+            @media (max-width: 991px) {
+            #accordion0 .pull-right {
+            margin-top: 10px;
+            }
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+
+            .input-group .form-control,
+            .input-group-addon {
+            color: #fff;
+            background-color: #000;
+            border-radius: 20px;
+            border: 0;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            <!--width: 16.6%;-->
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+            .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .tab-content {
+            overflow: auto;
+            padding: 0;
+            }
+            .table-responsive {
+            border: 0;
+            }
+
+            .tab-content {
+            overflow: auto;
+            padding: 0;
+            }
+            .table-responsive {
+            border: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin cabecera">
+
+            </div>
+
+            <div class="fnd-gris-claro">
+                <div class="container margin-b2em margin-t2em fnd-gris radius titulo-org">
+                    <div class="col-sm-6">
+                        <h2 class="text-right">
+                            <small>Organización Municipal</small>
+                            <br/>
+                            El Pleno
+                        </h2>
+                        <div class="col-sm-12">
+                            <ul class="botones list-unstyled">
+                                <li class="">
+                                    <a href="/sede/portal/organizacion/plenos/">LA CORPORACIÓN
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/sede/portal/organizacion/plenos/grupos-municipales">GRUPOS
+                                        MUNICIPALES
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" href="/sede/portal/organizacion/plenos/sesiones-plenarias">
+                                        SESIONES PLENARIAS
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a class="" href="/sede/portal/organizacion/plenos/comisiones">COMISIONES
+                                        PLENARIAS
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class=""
+                                       href="/sede/portal/organizacion/plenos/agenda-abierta">AGENDA
+                                        ABIERTA
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/sede/portal/organizacion/plenos/directo">RETRANSMISIÓN EN
+                                        DIRECTO
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        <img src="/cont/vistas/portal/organizacion/img/pleno.jpg" width="600"
+                             class="img-responsive img-cabecera" alt=""/>
+                    </div>
+                </div>
+                <div class="fnd-blanco container radius margin-t2em">
+                    <div class="">
+                        <h2 class="text-right">
+                            Comisiones Plenarias
+                        </h2>
+
+                        <ul class="nav nav-tabs">
+                            <li class="">
+                                <a href="/sede/portal/organizacion/plenos/comisiones">
+                                    Presidencia y Participación
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/sede/portal/organizacion/plenos/urbanismo">
+                                    Urbanismo y Sostenibilidad
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/sede/portal/organizacion/plenos/derechos">
+                                    Derechos Sociales
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="/sede/portal/organizacion/plenos/economia">
+                                    Economía y Cultura
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/sede/portal/organizacion/plenos/servicios">
+                                    Servicios Públicos y Personal
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="alert alert-info margin-t2em">
+                            <div class="row vertical-align">
+                                <div class="">
+                                    <strong>ACTAS:</strong>
+                                    Se publican las partes de las actas relativas al seguimiento y control de los
+                                    órganos de Gobierno o aquellos asuntos que sea público el debate en los términos
+                                    establecidos en el Reglamento Orgánico Municipal, salvo las deliberaciones
+                                    internas en cumplimiento de lo dispuesto en el artículo 19.1.e) de la Ordenanza
+                                    sobre Transparencia y libre acceso a la información.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div role="tabpanel"
+                             class="tab-pane margin-b2em margin-t2em fnd-blanco radius"
+                             id="economia">
+                            <h3 class="">
+                                ECONOMÍA Y CULTURA
+                            </h3>
+                            <ul class="list-unstyled anios" role="tablist">
+                                <li class="btn btn-default pull-right">
+                                    <a href="/sede/portal/organizacion/plenos/comisiones-anteriores">
+                                        ANTERIORES
+                                    </a>
+                                </li>
+
+                                <li class="btn btn-default pull-right">
+                                    <a href="#42015" aria-controls="22015" role="tab" data-toggle="tab">2015
+                                    </a>
+                                </li>
+
+                                <li class="btn btn-default pull-right">
+                                    <a href="#42016" aria-controls="22016" role="tab" data-toggle="tab">2016
+                                    </a>
+                                </li>
+
+                                <li class="btn btn-default pull-right">
+                                    <a href="#42017" aria-controls="22017" role="tab" data-toggle="tab">2017
+                                    </a>
+                                </li>
+
+                                <li class="btn btn-default pull-right">
+                                    <a href="#42018" aria-controls="22018" role="tab" data-toggle="tab">2018
+                                    </a>
+                                </li>
+                                <li class="active btn btn-default pull-right">
+                                    <a href="#42019" aria-controls="22019" role="tab" data-toggle="tab">2019
+                                    </a>
+                                </li>
+                                <li class="btn btn-default pull-left">
+                                    <a href="#4composicion" aria-controls="22019" role="tab"
+                                       data-toggle="tab">Composición
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel"
+                                     class="tab-pane active margin-b2em margin-t2em fnd-blanco radius"
+                                     id="42019">
+                                    <table summary="" class="table table-responsive tabla-bn">
+                                        <tr>
+                                            <th class="col-md-2">Fecha</th>
+                                            <th class="col-md-4">Sesión</th>
+                                            <th class="col-md-3">Orden del día</th>
+                                            <th class="col-md-3">Actas</th>
+                                        </tr>
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                18.01.2019
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/72044"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div role="tabpanel"
+                                     class="tab-pane margin-b2em margin-t2em fnd-blanco radius"
+                                     id="4composicion">
+                                    <ul>
+                                        <li><strong>Presidente</strong>: D. Fernando Rivarés Esco.
+                                        </li>
+                                        <li><strong>Vicepresidente</strong>: D. Pablo Muñoz San Pío.
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        <strong>Grupo Municipal Popular:</strong>
+                                    </p>
+                                    <ul>
+                                        <li>Dª. María Navarro Viscasillas (Portavoz)</li>
+                                        <li>D. Enrique Collados Mateo</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Grupo Municipal de Zaragoza en Común:</strong>
+                                    </p>
+                                    <ul>
+                                        <li>D. Fernando Rivarés Esco (Portavoz)</li>
+                                        <li>D. Pablo Muñoz San Pío</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Grupo Municipal Socialista PSOE:</strong>
+                                    </p>
+                                    <ul>
+                                        <li>D. Francisco Javier Trívez Bielsa (Portavoz)</li>
+                                        <li>Dª. María Dolores Ranera Gómez</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Grupo Municipal de Ciudadanos-Partido de la Ciudadanía:
+                                        </strong>
+                                    </p>
+                                    <ul>
+                                        <li>Dª. Sara María Fernández Escuer (Portavoz)</li>
+                                        <li>Dª. Cristina García Torres</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Grupo Municipal de Chunta Aragonesista:</strong>
+                                    </p>
+                                    <ul>
+                                        <li>D. Carmelo Javier Asensio Bueno (Portavoz)</li>
+                                        <li>Dª Leticia Crespo Mir</li>
+                                    </ul>
+                                </div>
+                                <div role="tabpanel"
+                                     class="tab-pane active margin-b2em margin-t2em fnd-blanco radius"
+                                     id="42018">
+                                    <table summary="" class="table table-responsive tabla-bn">
+                                        <tr>
+                                            <th class="col-md-2">Fecha</th>
+                                            <th class="col-md-4">Sesión</th>
+                                            <th class="col-md-3">Orden del día</th>
+                                            <th class="col-md-3">Actas</th>
+                                        </tr>
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                14.12.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/71642"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-141218.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                16.11.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/71082"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-161118.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                12.11.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/70903"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-121118.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                19.10.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/70502"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-191018.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                05.10.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/70226"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-051018.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                20.09.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/69863"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-200918.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                24.07.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/68665"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-240718.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                16.07.2018 (10:00)
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/68522"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/tablon/Acta-ec-160718.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                16.07.2018 (9:00)
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Especial de
+                                                Cuentas
+                                            </td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/68503"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-160718-cuentas.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                15.06.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/67792"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/acta-economia-15junio1.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha2" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                31.05.2018
+                                            </td>
+                                            <td headers="sesion2" rowspan="1" colspan="1">Extraordinaria
+                                                (Especial Cuentas)
+                                            </td>
+                                            <td headers="orden2" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/67522"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas2" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-310518-extr.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                18.05.2018
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="https://www.zaragoza.es/sede/portal/agenda-institucional/servicio/fehaciente/67127"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-180518.pdf"
+                                                   class="pdf"></a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                20.04.2018
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1672"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-200418.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                16.03.2018
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1609"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-160318.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                20.02.2018
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1531"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-200218e.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                16.02.2018
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1524"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-160218.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                19.01.2018
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1446"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-190118.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                08.01.2018
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1434"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-080118.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div role="tabpanel"
+                                     class="tab-pane active margin-b2em margin-t2em fnd-blanco radius"
+                                     id="42017">
+                                    <table summary="" class="table table-responsive tabla-bn">
+                                        <tr>
+                                            <th class="col-md-2">Fecha</th>
+                                            <th class="col-md-4">Sesión</th>
+                                            <th class="col-md-3">Orden del día</th>
+                                            <th class="col-md-3">Actas</th>
+                                        </tr>
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                19.12.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1395"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-191217.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                27.11.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                                (Pto. 2018 Área)
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1320"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-271117Ex.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                17.11.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria (09:00
+                                                horas)
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1289"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-171117.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                17.11.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                                (14:00 horas)
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1285"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-171117ex.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                20.10.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1241"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-201017.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                06.10.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                                (OO.FF)
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1226"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-061017.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                15.09.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1166"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-150917.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                14.07.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1115"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-140717.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                16.06.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=1042"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-20170616.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                25.05.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=994"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-250517.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                21.04.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=932"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-210417.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                17.03.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=825"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-170317.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                10.02.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=756"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                                <br/>
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=758"
+                                                   shape="rect">Anexo al Orden
+                                                    del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-100217.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                25.01.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=692"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                                <br/>
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=693"
+                                                   shape="rect">Anexo al Orden
+                                                    del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-250117.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                03.01.2017
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=673"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-030117.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div role="tabpanel"
+                                     class="tab-pane active margin-b2em margin-t2em fnd-blanco radius"
+                                     id="42016">
+                                    <table summary="" class="table table-responsive tabla-bn">
+                                        <tr>
+                                            <th class="col-md-2">Fecha</th>
+                                            <th class="col-md-4">Sesión</th>
+                                            <th class="col-md-3">Orden del día</th>
+                                            <th class="col-md-3">Actas</th>
+                                        </tr>
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                22.12.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=643"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                                <br/>
+                                                <a href="/contenidos/organizacion/comisiones/anexo-ec-221216.pdf"
+                                                   class="pdf">Anexo al Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-221216.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                22.12.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=642"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-221216ex.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                24.11.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=587"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-241116.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                24.10.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria y
+                                                Urgente
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=530"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-241016.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                20.10.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=521"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-201016.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                22.09.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=310"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-220916.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                21.07.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=256"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-210716.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                23.06.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=208"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-230616.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                15.06.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria y
+                                                Conjunta
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=194"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/ActaConjunta.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                31.05.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Especial Cuentas
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=175"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-310516.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                19.05.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=156"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                                <br/>
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/detalleAnexo_AgendaInstitucional?id=159">
+                                                    Anexo al Orden del día
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-190516.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                21.04.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=48701"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-210416.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                17.03.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=47657"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                                <br/>
+                                                <a href="/contenidos/organizacion/comisiones/anexo-ec-170316.pdf"
+                                                   class="pdf">Anexo al Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-170316.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                18.02.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=46977"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-180216.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                09.02.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=46757"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-090216.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                21.01.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=46437"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-210116.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                13.01.2016
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Extraordinaria
+                                            </td>
+                                            <td headers="orden4" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=46277"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas4" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-130116ex.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div role="tabpanel"
+                                     class="tab-pane active margin-b2em margin-t2em fnd-blanco radius"
+                                     id="42015">
+                                    <table summary="" class="table table-responsive tabla-bn">
+                                        <tr>
+                                            <th class="col-md-2">Fecha</th>
+                                            <th class="col-md-4">Sesión</th>
+                                            <th class="col-md-3">Orden del día</th>
+                                            <th class="col-md-3">Actas</th>
+                                        </tr>
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                17.12.2015
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden1d" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=45717"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                                <br/>
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=45757"
+                                                   shape="rect">Anexo al Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas1d" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-171215.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                19.11.2015
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden1d" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=44717"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas1d" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-191115.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                22.10.2015
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden1d" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=43654"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas1d" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-221015.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                24.09.2015
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden1d" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=42978"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas1d" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-261015.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td headers="fecha4" rowspan="1" colspan="1">
+                                                <span class="fa fa-play-circle"></span>
+                                                23.07.2015
+                                            </td>
+                                            <td headers="sesion4" rowspan="1" colspan="1">Ordinaria</td>
+                                            <td headers="orden1d" rowspan="1" colspan="1">
+                                                <a href="http://www.zaragoza.es/ciudad/organizacion/plenos/ver_Fehaciente?id=41793"
+                                                   shape="rect">
+                                                    <span class="far fa-file-alt fa-lg"></span>
+                                                    Orden del día
+                                                </a>
+                                            </td>
+                                            <td headers="actas1d" rowspan="1" colspan="1">
+                                                <a href="/contenidos/organizacion/comisiones/Acta-ec-230715.pdf"
+                                                   class="pdf">
+                                                    <span class="far fa-file-pdf fa-lg"></span>
+                                                    Acta
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div role="tabpanel"
+                                     class="tab-pane margin-b2em margin-t2em fnd-blanco radius"
+                                     id="4anteriores">
+                                    <table summary="" class="table table-responsive tabla-bn">
+                                        <tr>
+                                            <th class="col-md-2">Fecha</th>
+                                            <th class="col-md-4">Sesión</th>
+                                            <th class="col-md-3">Orden del día</th>
+                                            <th class="col-md-3">Actas</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

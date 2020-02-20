@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.propiedades.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Mapa colaborativo'" category="Participación Ciudadana"  keywords="sede, web, mapa, risp, colaborativo"  />
+    <style>
+        iframe {
+            width:100%;
+            border:0;
+            height:30em;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" class="container-fluid">
+            <h2><img th:if="*{propiedades.icon} and *{propiedades.icon != 'generico'}" th:src="*{propiedades.icon}" width="30" height="30" alt=""/> <th:block th:text="*{propiedades.title}"/> <a th:href="*{propiedades.id} + '/edit'" th:if="*{propiedades.type == 'collaborative'} or *{propiedades.containsKey('owned')}" class="btn btn-primary"><th:block th:text="*{propiedades.get('owned')} ? 'Editar' : 'Colaborar'"/></a></h2>
+            
+            <iframe th:src="'https://www.zaragoza.es/mapa/?id=' + *{propiedades.id}" title="Mapa colaborativo">
+                <a th:href="'https://www.zaragoza.es/mapa/?id=' + *{propiedades.id}"> Acceder al contenido </a>
+            </iframe>
+
+            <div class="fnd-gris-claro padding-a05em form-inline border-solid">
+                <label for="insertar">Inserta el mapa en otro sitio web o llévate el conjunto de datos:</label>
+                <span class="input-group">
+                    <input class="form-control" id="insertar" size="100" onClick="this.select();" type="text" th:value="'&lt;iframe src=&quot;https://www.zaragoza.es/mapa/?id=' + *{propiedades.id} + '&quot; style=&quot;width:100%;border:0;height:30em&quot;/&gt;'" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary btn-copy js-tooltip js-copy" data-toggle="tooltip" data-placement="bottom" data-copy="john.doe@email.com" title="Copiar al portapapeles">
+                            <span class="far fa-clipboard" aria-hidden="true"></span>
+                        </button>
+                        <a class="btn btn-primary" th:href="'/opencityext/servicio/mapa-colaborativo/' + *{propiedades.id} + '.xml'">XML</a>
+                        <a class="btn btn-primary" th:href="'/opencityext/servicio/mapa-colaborativo/' + *{propiedades.id} + '.geojson'">GeoJSON</a>
+                        <a class="btn btn-primary" href="/opencityext/portal/datos-abiertos/servicio/catalogo/1080">
+                            <span class="fa fa-info-circle" aria-hidden="true"></span>
+                            Más información
+                        </a>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </sede:content>
+    <script>
+        /*<![CDATA[*/
+            function copyToClipboard(text, el) {
+                var copyTest = document.queryCommandSupported('copy');
+                var elOriginalText = el.attr('data-original-title');
+                if (copyTest === true) {
+                    var copyTextArea = document.createElement('textarea');
+                    copyTextArea.value = text;
+                    document.body.appendChild(copyTextArea);
+                    copyTextArea.select();
+                    try {
+                        var successful = document.execCommand('copy');
+                        var msg = successful ? '¡Copiado!' : 'Ops, error al copiar';
+                        el.attr('data-original-title', msg).tooltip('show');
+                    } catch (err) {
+                        console.log('Error al copiar al portapapeles');
+                    };
+                    document.body.removeChild(copyTextArea);
+                    el.attr('data-original-title', elOriginalText);
+                } else {
+                    // Fallback if browser doesn't support .execCommand('copy')
+                    window.prompt('Copy to clipboard: Ctrl+C or Command+C, Enter', text);
+                };
+            };
+
+            $(document).ready(function() {
+                $('.js-tooltip').tooltip();
+                $('.js-copy').click(function() {
+                    var text = $('#insertar').val();
+                    var el = $(this);
+                    copyToClipboard(text, el);
+                });
+            });
+        /*]]>*/
+    </script>
+</body>
+
+</html>

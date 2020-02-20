@@ -1,0 +1,93 @@
+@import "mixins.less";
+@import "variables.less";
+
+//
+// Listados Destacados
+// --------------------------------------------------
+
+// TODO: Revisar si es necesario aï¿½adir al <li> display:inline-table (span de titulo en vista mï¿½vil)
+// Si la imï¿½gen en vista mï¿½vil es mï¿½s pequeï¿½a que la resoluciï¿½n de la ventana,
+// la imï¿½gen no ocupa todo el ancho de la ventana, pero el span si, ya que el <li> tiene display:block
+.w16, .w20, .w25, .w33, .w50 {
+	margin: 0;
+	list-style-type: none;
+}
+
+.w16 > li, .w20 > li, .w25 > li, .w33 > li, .w50 > li{
+	margin: 0 .5% 1em;
+	float:left;
+	height: 11.5em;
+	overflow: hidden;
+	
+	.titular{
+		text-align: center;
+		height: 4.5em;
+	}
+}
+
+ul.w16 > li {width: 15%;}
+ul.w20 > li {width: 19%;}
+ul.w25 > li {width: 24%;}
+ul.w33 > li {width: 32%;}
+ul.w50 > li {width: 49%;}
+
+// Dos elementos por línea, puesto que más en esta resolución es demasiado contenido.
+@media (max-width: 767px) {
+	
+	ul.w16 > li, ul.w20 > li, ul.w25 > li, ul.w33 > li{
+		width: 49%;
+	}
+	
+}
+
+// Un elemento por línea, puesto que más en esta resolución es demasiado contenido.
+@media (max-width: 480px) {
+	
+	ul.w16 > li, ul.w20 > li, ul.w25 > li, ul.w33 > li{
+		width: 100%;
+		margin: 0 0 1em;
+
+		// Elimanos los tamaños fijos al perder los float (vista en columna 1 a 1)
+		clear: left;
+		height: inherit;
+		.titular{
+			height: inherit;
+		}
+	}
+	
+}
+//Problemas en CDMA con altura de aviso tb se aplica a etopia
+.cdma ul.w25 > li{height:16em;}
+.cdma ul.w33 > li{height:16em;}
+.grande ul.w25 > li{height:20em;}
+.grande ul.w33 > li{height:20em;}
+//Viveristas
+.viveristas ul.w50 > li{height:27.5em;}
+.viveristas ul.w33 > li{height:23.5em;}
+.viveristas .sombra-imagen{box-shadow:none !important;}
+
+
+//
+// Listados Agenda (sobreescribe los estilos de
+// listados destacados en la mayoría de los casos)
+// --------------------------------------------------
+.agenda-list{
+//	display: table;
+//	table-layout: fixed;
+//	border-collapse:separate;
+//	border-spacing:.25em;
+	a:hover{text-decoration: none;}
+	li{
+		height: 22.5em;
+		// Bug firefox
+//		display: table-cell;
+//		display: inline-table;
+//		margin: 0;
+//		width: 25%;
+		background-color: rgba(0, 0, 0, .7);
+		img{width: 100%; height: 220px;}
+	}
+	.titular{
+		h3, p{margin:0; color: @white !important;}
+	}
+}

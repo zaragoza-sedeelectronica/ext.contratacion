@@ -1,0 +1,38 @@
+@import "mixins.less";
+@import "variables.less";
+
+// Responsive: Tablet to desktop
+// --------------------------------------------------
+
+@media screen and (min-width: 768px) {
+	.equal, .equal > div[class*='span-'] {  
+      	display: -webkit-box;
+      	display: -moz-box;
+      	display: -ms-flexbox;
+      	display: -webkit-flex;
+      	display: flex;
+		flex:1 0 auto;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	// Fixed grid
+	#grid > .core(@gridColumnWidth768, @gridGutterWidth768);
+
+	// Fluid grid
+	#grid > .fluid(@fluidGridColumnWidth768, @fluidGridGutterWidth768);
+
+	// Input grid
+	#grid > .input(@gridColumnWidth768, @gridGutterWidth768);
+  	
+  	// Soluci�n al bug de Bootstrap solapamiento de inputs en form-horizontal (dos columnas en grid)
+    // por defecto -> width: 160px
+    .form-horizontal .control-label {width:125px;} //text-align: left;
+    // por defecto -> margin-left: 180px
+    .form-horizontal .controls {margin-left: 145px;}
+    // por defecto -> padding-left: 180px
+    .form-horizontal .form-actions {padding-left: 145px;}
+    //TOFIX Revisar si es necesario
+    input, textarea, .uneditable-input {} //width: 180px;  por defecto 206
+}

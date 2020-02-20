@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Certificación. Marco estratégico."
+                description="Calidad. Certificación."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="ayuntamiento, ciudad, Zaragoza, España, certificación de calidad, administración local, servicios públicos, relación administración-administrado">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Certificación
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <main id="main">
+                        <h3>
+                            <strong>
+                                <a href="/ciudad/gestionmunicipal/calidad/marco.htm">Marco Estratégico</a>
+                            </strong>
+                        </h3>
+                        <h3>Certificaciones Municipales</h3>
+                        <ul>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/brintro.htm">Centros Deportivos de los Barrios
+                                    Rurales
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/enlace/IMSP/inicio/calidad.htm">Instituto
+                                    Municipal de la Salud
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/turismo.htm">Turismo</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/enlace/urbanismo/gerencia/calidad.htm">
+                                    Urbanismo
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/enlace/servicios/aenor.htm">Web Municipal</a>
+                            </li>
+                        </ul>
+                    </main>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

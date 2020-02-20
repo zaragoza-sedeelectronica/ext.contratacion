@@ -1,0 +1,24 @@
+<div th:if="${temperatura}" class="row no-gutter bloque-agenda">
+    <div class="col-xs-6 caja-dia text-center padding-a1em">
+        <span class="dia-mes" th:text="${temperatura.getDia()}"></span>
+        <span class="letra-mes" th:text="${temperatura.getPrimeraLetraMes()}"></span>
+    </div>
+    <div class="col-xs-6 clearfix fnd-gris-oscuro padding-a05em text-center">
+	    <a href="/ciudad/meteorologia/">
+	        <img th:if="${temperatura.icon == 11}" th:src="'//www.zaragoza.es/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" alt="Soleado" class="pull-center margin-r10em" />
+	        <img th:if="${temperatura.icon == 12}" th:src="'//www.zaragoza.es/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" alt="Poco Nuboso" class="pull-center margin-r10em" />
+	        <img th:if="${temperatura.icon == 13}" th:src="'//www.zaragoza.es/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" alt="Intervalos nubosos" class="pull-center margin-r10em" />
+	        <img th:if="${temperatura.icon == 14}" th:src="'//www.zaragoza.es/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" alt="Nuboso" class="pull-center margin-r10em" />
+	        <img th:if="${temperatura.icon == 15}" th:src="'//www.zaragoza.es/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" alt="Muy nuboso" class="pull-center margin-r10em" />
+	        <img th:if="${temperatura.icon == 24}" th:src="'//www.zaragoza.es/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" alt="Nuboso con lluvia" class="pull-center margin-r10em" />
+	        <img th:if="${temperatura.icon == 25}" th:src="'//www.zaragoza.es/cont/paginas/bs/img/tiempoBs/meteo/' + ${temperatura.icon} + '.png'" alt="Muy nuboso con lluvia" class="pull-center margin-r10em" />
+	        <p class="pull-left lead margin-v05em">
+	            <abbr title="Maxima">Max</abbr>.
+	            <span id="tempmax" th:text="${temperatura.max}"></span>&deg; /
+	            <abbr title="Minima"> Min</abbr>.
+	            <span id="tempmin" th:text="${temperatura.min}"></span>&deg;
+	            <!-- /* <img src="/cont/paginas/bs/img/tiempoBs/masinfo2.png" alt="Más información meteorológica" class="mas" /> */ -->
+	        </p>
+	    </a>
+	</div>
+</div>

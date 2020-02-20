@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Adopción de animales" keywords="sede,web" />
+</head>
+
+<body>
+    <sede:content>
+        <div th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}" class="pull-right">
+            <a href="../new" class="btn btn-primary">Nuevo registro</a>
+        </div>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/monumento/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Actualizar Datos</span></legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="title">Nombre</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{title}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="description">Descripci&oacute;n</label>
+                        <div class="col-sm-10">
+                            <textarea rows="10" class="form-control" th:field="*{description}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="estilo">Estilo</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{estilo}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="address">Direcci&oacute;n</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{address}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="phone">Tel&eacute;fono</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{phone}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="fax">Fax</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{fax}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="horario">Horario</label>
+                        <div class="col-sm-10">
+                            <textarea rows="10" class="form-control" th:field="*{horario}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="price">Precio</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{price}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="datacion">Dataci&oacute;n</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{datacion}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="uso">Uso</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{uso}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="pois">Puntos de inter&eacute;s</label>
+                        <div class="col-sm-10">
+                            <textarea rows="10" class="form-control" th:field="*{pois}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="datos">Datos</label>
+                        <div class="col-sm-10">
+                            <textarea rows="10" class="form-control" th:field="*{datos}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="visita">Visita</label>
+                        <div class="col-sm-10">
+                            <textarea rows="10" class="form-control" th:field="*{visita}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="x">X</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{x}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="y">Y</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{y}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="foursquare">Foursquare</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{foursquare}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="top">Destacado</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{top}">
+                                <option value="S">S</option>
+                                <option value="N">N</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Credenciales" description="Edición de usuarios" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2><a href="/opencityext/servicio/credenciales/user/">Usuarios</a></h2>
+        <form th:if="${registro.statusCode.value()} == 200" th:action="@{/servicio/credenciales/user/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+            <th:block th:include="fragmentos/control-fields" />
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Actualizar Datos</span></legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="login">Login</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{login}" size="100" readonly="true"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="nombre">Nombre</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{nombre}" size="100" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="apellido1">Primer apellido</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{apellido1}" size="100" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="apellido2">Segundo apellido</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{apellido2}" size="100" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="codigoServicioDefecto">Servicio por defecto</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{codigoServicioDefecto}" size="100" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="codigoSeccionDefecto">Sección por defecto</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{codigoSeccionDefecto}" size="100" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="visible">Visible</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{visible}" size="100" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="correoElectronico">Correo</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{correoElectronico}" size="100" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!--/*<div class="form-group">
+                                <label class="col-sm-4 control-label" for="correoElectronico">Grupos de usuario</label>
+                                    <div class="col-sm-8">
+                                        <th:block th:each="grupo, stat: *{gczGrupoUsuarios}">
+                                            <input class="form-control" type="text" th:field="*{gczGrupoUsuarios[__${stat.index}__].id}"/>
+                                            <input class="form-control" type="text" th:field="*{gczGrupoUsuarios[__${stat.index}__].title}"/>
+                                        </th:block>
+                                    </div>
+                            </div>*/-->
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="correoElectronico">Grupos de Usuario</label>
+                                <div class="col-sm-8">
+                                    
+                                    <select name="gczGrupoUsuarios" class="select-grupos form-control" multiple="multiple" tabindex="-1" aria-hidden="true">
+                                        <option th:each="doc, row: *{gczGrupoUsuarios}" th:value="${doc.id}"
+                                            th:text="${doc.code}" selected="selected"/>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="correoElectronico">Propiedades</label>
+                                <div class="col-sm-10">
+                                       <table id="datatable">
+                                        <tr><th>Etiqueta</th><th>Valor</th></tr>
+                                        <tr th:each="prop, stat: *{gczPropiedadUsuarios}">
+                                            <td><input class="form-control" type="text" th:field="*{gczPropiedadUsuarios[__${stat.index}__].id.etiqueta}"/>
+                                            <input class="form-control" type="hidden" th:field="*{gczPropiedadUsuarios[__${stat.index}__].id.idUsuario}"/></td>
+                                            <td><input class="form-control" type="text" th:field="*{gczPropiedadUsuarios[__${stat.index}__].valor}"/></td>
+                                        </tr>
+                                    </table>
+                                    <button id="add" class="fa fa-plus-circle">Añadir propiedad</button>
+                                    <button id="del" class="fas fa-trash-alt">Borrar última propiedad</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+
+        $(".select-grupos").select2({
+            tags: true,
+            ajax: {
+                url: '/opencityext/servicio/credenciales/group',
+                dataType: 'json',
+                type: "GET",
+                quietMillis: 50,
+                data: function (term) {
+                    return {
+                        fl : 'id,code,title',
+                        q: 'title==' + term.term + '*'
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data.result, function (item) {
+                            return {
+                                text: item.code + ' ' + item.title,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+          },
+          minimumInputLength: 2
+        });
+
+        var num = [[${dato.gczPropiedadUsuarios.size()}]];
+        var id = [[${dato.id}]];
+        $( "#add" ).click(function(event) {
+            event.preventDefault();
+            $('#datatable tr:last').after('<tr>\
+                        <td><input class="form-control" name="gczPropiedadUsuarios[' + num + '].id.etiqueta" type="text" id="gczPropiedadUsuarios' + num + '.id.etiqueta" required="required"/>\
+                        <input class="form-control" name="gczPropiedadUsuarios[' + num + '].id.idUsuario" type="hidden" id="gczPropiedadUsuarios' + num + '.id.idUsuario" value="' + id + '"/>\
+                        <td><input class="form-control" name="gczPropiedadUsuarios[' + num + '].valor" type="text" id="gczPropiedadUsuarios' + num + '.valor" required="required"/></td>\
+                    </tr>');
+            num = num + 1;
+        });
+        $( "#del" ).click(function(event) {
+            event.preventDefault();
+            $('#datatable tr:last').remove();
+            num = num - 1;
+        });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

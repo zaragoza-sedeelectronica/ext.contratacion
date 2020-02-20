@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+   <head>
+      <meta charset="utf-8" />
+      <sede:meta title="PICH: Proyectos sociales" description="El portal de la Oficina del Plan Integral del Casco Histórico ofrece recursos sobre los proyectos que desarrollan en áreas como deportes, cultura, derechos sociales, solares urbanos, medio ambiente, limpieza, comercio, turismo y participación además de ofrecer información sobre sus actividades." category="" subject="" author="" last-modified="2018-09-13" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España, Oficina Plan Integral Casco histórico, participación, solares urbanos, formalidades administrativas, administración electrónica, relación administración-administrado, participación social, actividades, concursos, servicio de quejas y sugerencias, council, city, Saragossa, Spain, administrative formalities, electronic government, citizen-authority relations, participation, urbanism, culture, social rights, environment, social participation, green area, activities, contest, complaints and suggestions service" priority="" robots=""></sede:meta>
+   </head>
+   <style>
+      titulo-seccion {
+      line-height: 66px;
+      font-size: 42px;
+      }
+      .fnd-blanco {
+      background-color: #ffffff;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      .fnd-gris-claro {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: -40px;
+      }
+      .titulo-org h2,
+      .procesos h2{
+      color: #e83437;
+      font-size: 42px;
+      padding-bottom: 20px;
+      }
+      .titulo-org h2 small,
+      .titulo-org h2 span{
+      color: #000000;
+      }
+      .panel-heading a:after {
+      float: left;
+      color: white;
+      background-color: #000;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      margin-right: 10px;
+      }
+      .panel-heading a.collapsed:after {
+      content: "\f105";
+      }
+      .panel-default>.panel-heading {
+      background-color: #fff;
+      border: 0;
+      }
+      .panel {
+      border: 0;
+      webkit-box-shadow: 0 0 0;
+      box-shadow: 0 0 0;
+      }
+      .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border: 0;
+      }
+      .panel-body {
+      padding-left: 50px;
+      }
+      .panel-title>a {
+      color: #E81B16;
+      }
+      .panel-title>a:hover,
+      .panel-title>a:focus,
+      .panel-title>a:active {
+      text-decoration: none;
+      }
+   </style>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Proyectos Sociales</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <nav>
+                  <div class="second-bar clearfix">
+                     <div class="hidden-xs">
+                        <a class="btn-back pull-left" href="https://www.zaragoza.es/sede/portal/pich/"><span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span> <span class="oculto">Volver a PICH</span> </a>
+                        <p class="lead destacado margin-l05em margin-b0em pull-left">
+                           Proyectos Sociales
+                        </p>
+                     </div>
+                     <ul class="list-inline navbar-right submenu">
+                        <li>
+                           <a href="derechos-sociales">Sociales</a>
+                        </li>
+                        <li>
+                           <a href="sociomusicales">Sociomusicales</a>
+                        </li>
+                        <li>
+                           <a href="socioeducativos">Socioeducativos</a>
+                        </li>
+                        <li>
+                           <a href="sociodeportivos">Sociodeportivos</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              Presentación
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              El <strong>Plan Integral del Casco Histórico </strong> incide en todas aquellas acciones de marcado carácter social que quedan recogidas en la Línea Estratégica 1 <em>Participación, Convivencia y Cohesión Social</em> (Plan Integral del Casco Histórico 2013-2020).
+                           </p>
+                           <p>
+                              Los Programas y Proyectos de carácter social tienen como finalidad favorecer el bienestar y la calidad de vida de los/as vecinos y vecinas del Barrio, fundamentalmente de aquellas personas más vulnerables, incidiendo en los más jóvenes (formación, empleo, ocio y tiempo libre).
+                           </p>
+                           <p>
+                              Desde la oficina del PICH se apuesta por el desarrollo de acciones orientadas hacia la disminución del desempleo, mejora de la formación, potenciación de la vida sociocultural en el barrio, aumentando el movimiento y diversidad de personas en el Casco Histórico. También son objetivos de estas actuaciones la dinamización económica, el aumento de la cohesión social y el nivel de convivencia de su población multicultural. Esta diversidad cultural dota de características propias al Casco Histórico, generando demandas específicas en el plano convivencial, mediación vecinal, salud pública, entre otros.
+                           </p>
+                           <p>
+                              Trabajar la inserción laboral, la formación, la integración, continúan siendo un objetivo del Plan Integral del Casco Histórico, por lo que se desarrollan diferentes programas en este sentido:
+                           </p>
+                           <ul>
+                              <li>
+                                 El Proyecto Agentes Comunitarios <em>AMEDIAR</em>.
+                              </li>
+                              <li>
+                                 El programa de Comida a Domicilio y Centro de Día <em>Los Sitios</em>.
+                              </li>
+                              <li>
+                                 El Programa de Empleo de Inclusión <em>FACHADAS</em>.
+                              </li>
+                              <li>
+                                 El Proyecto de Intervención sociocomunitaria de cargas familiares <em>MIMBRES</em>.
+                              </li>
+                              <li>
+                                 Segunda oportunidad educativa para la personas en situación de vulnerabilidad social.
+                              </li>
+                           </ul>
+                           <p>
+                              Acciones en diferentes ámbitos:
+                           </p>
+                           <p>
+                              Proyectos sociomusicales.
+                           </p>
+                           <p>
+                              Proyectos sociodeportivos.
+                           </p>
+                           <p>
+                              Proyectos socioformativos.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              MIMBRES
+                           </h3>
+                           <h4>
+                              Proyecto de Intervención sociocomunitaria de cargas familiares
+                           </h4>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              Es un Proyecto que se desarrolla desde el año 2010 siendo un gran apoyo para padres y madres (fundamentalmente), ya que apuesta por ser un proyecto de acompañamiento educativo de las familias del Barrio, además de ser un proyecto de inserción socio laboral para mujeres con dificultades de acceso al mercado laboral. Posibilita que las madres del barrio, de diferentes culturas, puedan trabajar fuera de su hogar sabiendo que sus hijos están en su casa, cuidados por otras vecinas, con las que han establecido relación previamente.
+                           </p>
+                           <p>
+                              Es un programa de intervención comunitaria, de redes de apoyo y ayuda mutua que responde a la propuesta de la medida 1.5. del PICH 2013-2020 <em>Mantenimiento e impulso de Programas de intervención Comunitaria, de Redes de Apoyo y Ayuda mutua, como cargas familiares, refuerzos educativos,... , que posibiliten la conciliación familiar, social y laboral de las familias, con especial incidencia en las familias monoparentales/monomarentales</em>.
+                           </p>
+                           <p>
+                              Mimbres es un Proyecto que aún a pesar de ser un proyecto de implantación en todo el Casco Histórico se identifica, sin embargo, más con el Barrio de La Magdalena que con el resto de zonas, al estar muy unido a la Entidad que lo gestiona a través de convenio, Gusantina Asociación Socioeducativa.
+                           </p>
+                           <p>
+                              Además se caracteriza por ser un <strong>Proyecto de Intervención Sociocomunitaria de Cargas Familiares </strong> que tiene cinco líneas claras de actuación que se encuadran dentro de los Objetivos del Proyecto:
+                           </p>
+                           <ol>
+                              <li>
+                                 Soporte a madres que trabajan
+                              </li>
+                              <li>
+                                 Formación para el empleo e Inserción Sociolaboral de mujeres en el cuidado de menores
+                              </li>
+                              <li>
+                                 Flexibilización y adaptación a las necesidades familiares
+                              </li>
+                              <li>
+                                 Relación de lazos de confianza entre las mujeres del proyecto (madres trabajadoras y mujeres jóvenes cuidadoras)
+                              </li>
+                              <li>
+                                 Proceso de crecimiento personal y profesional
+                              </li>
+                           </ol>
+                           <p>
+                              En cuanto a los <strong>objetivos del Proyecto</strong> cabe destacar:
+                           </p>
+                           <ul>
+                              <li>
+                                 Posibilitar la conciliación familiar y laboral de las mujeres inmigrantes
+                              </li>
+                              <li>
+                                 Conseguir unos niveles de calidad en el cuidado de los niños y niñas
+                              </li>
+                              <li>
+                                 Establecer una red de apoyo entre las familias del Barrio
+                              </li>
+                              <li>
+                                 Generar procesos formativos con jóvenes del Barrio
+                              </li>
+                              <li>
+                                 Apoyar la salud emocional de las madres inmigrantes y autóctonas
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              COMIDA A DOMICILIO
+                           </h3>
+                           <h4>
+                              Atención de necesidades básicas
+                           </h4>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              Este programa responde a la propuesta de la medida 1.7. del PICH 2013-2020 <em>Continuación y ampliación del Programa Comida a Domicilio, dirigido a toda la población que por determinadas circunstancias sociales, familiares y de salud no puedan realizar la compra y cocinado de alimentos</em>.
+                           </p>
+                           <p>
+                              Este Proyecto va dirigido a toda la población del Casco Histórico que por determinadas circunstancias (de edad, de movilidad, circunstancias familiares, laborales y/o económicas...etc.) ve limitada la capacidad de compra y preparación de alimentos. Es un proyecto de Atención a Personas Dependientes mediante el reparto de comida elaborada a domicilio en los espacios de intervención del Plan integral del Casco Histórico, zonas de San Pablo, La Magdalena, Viejo Rabal y Barrio de Jesús.
+                           </p>
+                           <p>
+                              Durante el año 2017 la crisis económica ha seguido azotando a la población más vulnerable, lo que hace que se siga incidiendo en este programa que tiene como objeto el atender las necesidades básicas de la población y prevenir así situaciones que puedan derivar en la exclusión y la marginación social y acentuar con ello la desigualdad de los vecinos y vecinas de nuestro Barrio.
+                           </p>
+                           <p>
+                              En este programa se han atendido hasta el año 2017 las demandas de <strong>186 personas</strong> que han sido las <strong>usuarias del servicio</strong>.
+                           </p>
+                           <p>
+                              Estas personas han venido <strong>derivadas</strong> por los CMSS de los Barrios y zonas que comprende el Plan Integral del Casco Histórico:
+                           </p>
+                           <ul>
+                              <li>
+                                 CMSS San Pablo
+                              </li>
+                              <li>
+                                 CMSS La Madalena
+                              </li>
+                              <li>
+                                 CMSS ARRABAL
+                              </li>
+                              <li>
+                                 CMSS La Jota
+                              </li>
+                              <li>
+                                 Oficina Plan Integral Casco Histórico
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              CARRERA DEL GANCHO
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <div class="pull-right">
+                              <img alt="" src="/cont/vistas/portal/pich/img/carrera-gancho.gif"/>
+                           </div>
+                           <p>
+                              Dentro del Plan Integral del Casco Hitórico 2013-2020, en relación con la <strong>línea 1 <em>Participación, convivencia y cohesion social</em>, se reconoce la necesidad e importancia de promocionar el deporte, impulsar programas culturales y consolidar encuentros y ciclos ya existentes.</strong>
+                           </p>
+                           <p>
+                              En este ámbito se desarrolla la Carrera del Gancho, cuyo acto central tuvo lugar el 10 de junio, organizada por Fundación Federico Ozanam, junto a más de 80 colectivos vecinales, sociales y artísticos del barrio y la ciudad, y el apoyo de la Oficina PICH.
+                           </p>
+                           <p>
+                              Se trata de una Fiesta popular protagonizada por un barrio, sus vecinos, comerciantes, entidades, y profesionales. Una muestra creativa que pretende poner en valor el Barrio del Gancho através de actividades en la Calle, promoviendo la convivencia intercultural y la cohesión social en el Casco Histórico de Zaragoza.
+                           </p>
+                           <p>
+                              Este proyecto se dasarrolla en dos tiempos diferentes:
+                           </p>
+                           <ul>
+                              <li>
+                                 Un trabajo a lo largo del año, teniendo mayor intensidad durante los meses de mayo y junio: Talleres de teatro infantil, Taller de teatro Intercomuniario, Taller de fotorreportaje, Taller de decoración de la Carrera, Presentación de la Escuela de Radio Comunitaria y Talleres de gastronomia intercultural. Posteriormente, en septiembre se desarrollaron actividades adicionales como la Compañia de teatro intercultural, teatro intercultural para niños, Escuela de Radio Comunitaria y la Exposición “La Carrera del Gancho”.
+                              </li>
+                              <li>
+                                 Programación de actividades del evento central: juegos, cuentos, campeonato de rayuela, ganchillo, carrera de obstáculos para invidentes, talleres participativos (Cadeneta), <em>Comilona de carrera</em>, la <em>carrera de los sentidos</em>, teatro, <em>Carrera nocturna</em>, entre otras.
+                              </li>
+                           </ul>
+                           <p>
+                              Tras años de la realización, la Carrera del Gancho se ha convertido en señal de identidad del barrio, consiguiendo ser una referencia social, cultural y deportiva de la ciudad.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              PROYECTO CIRCOLES
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              El <strong>proyecto de circo social en colegios del Casco Histórico</strong>&nbsp;(Circoles) se ha desarrolla en diferentes colegios: Carmen y San José, Santo Domingo, Colegio Tenerias y Cándido Domingo. Esta actividad permite trabajar con las jóvenes en un <strong>entorno formal </strong>, dentro de unas <strong>normas de convivencia definidas </strong>, aumentar la relación con las familias de los participantes, y conseguir una mayor implicación. Los objetivos que se persigue con esta actuación en colegios son:
+                           </p>
+                           <ul>
+                              <li>
+                                 Crear uniones entre los diferentes colegios del Casco Histórico a través de las diferentes actividades que ofrece la Escuela de Circo Social, y aumentar la participación juvenil.
+                              </li>
+                              <li>
+                                 Desarrollar la creatividad, la expresión artística, aptitudes psicomotoras, la capacidad de interrelación personal, la capacidad de expresión y decisión, entre otras.
+                              </li>
+                              <li>
+                                 Potenciar la dinamización comunitaria e intercultural y la promoción de la cohesión social.
+                              </li>
+                              <li>
+                                 Promover el desarrollo humano en la ciudadanía a través del circo, una propuesta pedagógica, transformadora y de activación comunitaria donde se consigue estimular la creatividad del participante y promover sus actitudes sociales.
+                              </li>
+                              <li>
+                                 Conseguir la participación activa de la juventud del barrio y de la comunidad, a través de la formación en artes circenses, no sólo como espectadores sino como agentes culturales.
+                              </li>
+                              <li>
+                                 Conectar con los jóvenes logrando que se apropien de valores personales y sociales a través del circo.
+                              </li>
+                              <li>
+                                 Difundir el arte circense en la comunidad, reconociendo y valorando el circo como patrimonio artístico y cultural de nuestra ciudad.
+                              </li>
+                              <li>
+                                 Llevar el circo a la calle y reivindicar y recuperar el espacio público y explorar el uso del espacio semiprivado o privado como los patios vecinales, las plazas interiores de algunos edificios, como lugar de convivencia intercultural y relación cotidiana, de respeto, de diálogo y de visualización social de sus participantes como miembros de la comunidad.
+                              </li>
+                              <li>
+                                 Formar formadores capaces de autoabastecer el proyecto y de incorporarse a la gestión del mismo.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              PROYECTO CIRCAPZ
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              Nuestro planteamiento es trabajar a nivel físico todas las posibilidades e función de su situación, adaptando cada técnica para poder llevarla acabo y buscando juntos nuevos caminos. A nivel personal y grupal nos centraremos en la confianza, la autoestima, la perseverancia y la superación, para lograr la cohesión grupal y fomentar la creatividad y la construcción conjunta.
+                           </p>
+                           <p>
+                              Esta actividad hace que la persona con discapacidad tenga que salir de su entorno seguro y exponerse a nuevas situaciones, fuera de su rutina; y al superar día a día esas barreras que creía imposibles, sale fortalecida, a nivel personal, también en el día a día en el trabajo con el grupo y de cara al exterior cuando muestra sus progresos.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              CIRCO SOCIAL
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              La <strong>Escuela de Circo Social del Casco Histórico</strong> es un proyecto en construcción, en fase de propuesta y abierto al enriquecimiento y las sugerencias de agentes, instituciones, colectivos, artistas del circo y todos aquellos que desde su ocupación, o su interés quieran proponer mejoras que lo enriquezcan y perfeccionen.
+                           </p>
+                           <p>
+                              Los actores sociales -colegios, asociaciones, centros de tiempo libre y de ocio para jóvenes- del barrio de San Pablo vienen realizando actividades de circo como <strong>herramienta educativa y de socialización</strong>.
+                           </p>
+                           <p>
+                              En los últimos años se han visto reforzadas en la práctica de las <strong>.disciplinas de circo con adolescentes y jóvenes desde el Piee, la Casa de Juventud y el Centro de Tiempo Libre</strong>, desarrollando un trabajo de calidad basado en la integración de grupos vulnerables, y permitiendo la mejora de determinadas situaciones de riesgo social.
+                           </p>
+                           <p>
+                              La colaboración de la Escuela de Circo Social, el PICH y la Junta de Distrito del Casco Histórico permite la celebración de un <strong>Festival de Circo Social</strong> anual.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              AMEDIAR
+                           </h3>
+                           <h4>
+                              Intermediación Comunitaria
+                           </h4>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              La convivencia, la comunicación, la <strong>resolución pacífica de conflictos</strong>, la implicación y participación en lo comunitario por parte de los vecinos y vecinas, los profesionales y las entidades del Casco Histórico son entre otras las actuaciones objeto del Convenio que se lleva a cabo con la Entidad <em>Asociación de Mediadores y Mediadoras AMEDIAR</em> desde el año 2010, y que se enmarca en la medida 1.4 (Línea estratégica 1 <em>Participación Convivencia y Cohesión Social</em>) del Plan Integral 2013-2020.
+                           </p>
+                           <ul>
+                              <li>
+                                 Ayudan a solucionar problemas a través del diálogo y la mediación.
+                              </li>
+                              <li>
+                                 Difunden&nbsp; y practican formas no violentas de comunicarse.
+                              </li>
+                              <li>
+                                 Informan sobre el barrio y favorecen las relaciones entre vecinos y vecinas.
+                              </li>
+                           </ul>
+                           <p>
+                              Calle San Pablo, 75 (local) 50003 Zaragoza
+                           </p>
+                           <p>
+                              De 9 a 2 (de lunes a viernes) y de 5 a 8 ( de lunes a jueves)
+                           </p>
+                           <p>
+                              976 97 81 16 / 608 197 481 / amediarpich@yahoo.es
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              TEATRO DE MUJERES
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              Esta actividad consiste en la realización de <strong>talleres de formación teatral en la que participan mujeres de diferentes culturas</strong>, y a las que se les invita a una representación en el Teatro Principal, dentro del festival ZGZ ESCENA.
+                           </p>
+                           <p>
+                              El objetivo de esta actividad es <strong>dotar de un aprendizaje básico en la interpretación, favorecer la relación y la participación de las mujeres en un ámbito lúdico</strong>. Los talleres se realizaron bajo la dirección de Pepa Gamboa, en colaboración con el Patronato Municipal de Artes Escénicas.
+                           </p>
+                           <p>
+                              Dentro de las actividades culturales el <strong>Taller de Teatro para mujeres: Entre Nosotras, mujeres</strong> a escena se desarrolla entre el Centro Social Comunitario Luis Buñuel y el Centro de Historias.
+                           </p>
+                           <p>
+                              Se trata de una <strong>actividad gratuita dirigida a mujeres</strong> que les gusta el juego y el teatro y les apetece un momento parasi mismas.
+                           </p>
+                           <p>
+                              Para más información: 687 392 112 / 663 568 280 (Whatsapp) / teatro.cascoviejo@gmail.com
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

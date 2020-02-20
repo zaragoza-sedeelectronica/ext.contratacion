@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Emprender" description="Oferta de empleo municipal y privada, viveros, coworking, formación, cursos, subvenciones y asesorías sobre empleo" author="Ayuntamiento de Zaragoza" keywords="ayuntamiento, ciudad, Zaragoza, España, coworking, viveros, subvenciones, asesorías, formación, comercio local, emprendedores, empresas, entrepeneurs, employment, courses, local commerce, enterprises, council, city, Saragossa, Spain,  administrative formalities, electronic government">
+    </sede:meta>
+    <style type="text/css">
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav role="navigation">
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/empleo/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Empleo</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Emprender</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="emprender">Espacios</a></li>
+                    <li><a href="formacion">Formación</a></li>
+                    <li><a href="asesorias">Asesorías</a></li>
+                    <li><a href="subvenciones">Subvenciones</a></li>
+					 <li><a href="emprendedores">Nuestros Emprendedores</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h2>Emprender</h2>
+       
+<div class="row">
+	<div class="col-md-12">
+		<h3>
+			Viveros
+		</h3>
+
+		<hr class="sm"/>	 
+		 
+			<ul class="list-unstyled nomargin clearfix" role="menu">
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/empleo/servicio/equipamiento/500"> </a>
+
+					<div class="img-container">
+						<a href="/ciudad/sectores/activa/viveroempresas.htm"><img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/sectores/activa/img/zgz_act.jpg"/> </a>
+
+						<div class="overlay">
+							<div class="text">
+								<a href="/ciudad/sectores/activa/viveroempresas.htm">Zaragoza Activa  </a>
+							</div>
+						</div>
+						<a href="/ciudad/sectores/activa/viveroempresas.htm"> </a>
+					</div>
+					<a href="/ciudad/sectores/activa/viveroempresas.htm"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/empleo/servicio/equipamiento/5405">  </a>
+					<div class="img-container">
+						<a href="/sede/portal/empleo/servicio/equipamiento/5405">
+						<img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/centros/img/activaarmas.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/empleo/servicio/equipamiento/5405">La Terminal
+								 </a>
+							</div>
+						</div>
+						<a href="/sede/portal/empleo/servicio/equipamiento/5405"> </a>
+					</div>
+					<a href="/sede/portal/empleo/servicio/equipamiento/5405"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/empleo/servicio/equipamiento/5125"><!--/* <a href="/ciudad/museos/es/puerto/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/empleo/servicio/equipamiento/5125">
+						<img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/img/avisos/aviso_ciem.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/empleo/servicio/equipamiento/5125">CIEM</a>
+							</div>
+						</div>
+						<a href="/sede/portal/empleo/servicio/equipamiento/5125"> </a>
+					</div>
+					<a href="/sede/portal/empleo/servicio/equipamiento/5125"> </a>
+				</li>
+				 
+				 
+			</ul>
+ 		 	</div>
+ 
+	</div>
+ 
+<h3>Coworking</h3>
+
+<hr class="sm"/>	 <div class="row">
+	 <div class="col-md-12">
+			<ul class="list-unstyled nomargin clearfix" role="menu">
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/empleo/servicio/equipamiento/500"> </a>
+
+					<div class="img-container">
+						<a href="/sede/portal/empleo/servicio/equipamiento/4907"><img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/sectores/activa/img/zgz_act.jpg"/> </a>
+
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/sectores/personas-mayores/servicio/equipamiento/5405">La Terminal  </a>
+							</div>
+						</div>
+						<a href="/sede/portal/empleo/servicio/equipamiento/5405"> </a>
+					</div>
+					<a href="/sede/portal/empleo/servicio/equipamiento/5405"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/empleo/servicio/equipamiento/5405">  </a>
+					<div class="img-container">
+						<a href="/sede/portal/empleo/servicio/equipamiento/5405">
+						<img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/centros/img/activaarmas.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/ciudad/sectores/activa/lacolaboradora/">La Colaboradora
+								 </a>
+							</div>
+						</div>
+						<a href="/ciudad/sectores/activa/lacolaboradora/"> </a>
+					</div>
+					<a href="/ciudad/sectores/activa/lacolaboradora/"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/empleo/servicio/equipamiento/5125"><!--/* <a href="/ciudad/museos/es/puerto/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/empleo/servicio/equipamiento/5125">
+						<img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/img/avisos/aviso_ciem.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/empleo/servicio/equipamiento/5125">CIEM</a>
+							</div>
+						</div>
+						<a href="/sede/portal/empleo/servicio/equipamiento/5125"> </a>
+					</div>
+					<a href="/sede/portal/empleo/servicio/equipamiento/5125"> </a>
+				</li>
+				 
+				 
+			</ul>
+ 		 
+	</div>
+ </div>  
+    </sede:content>
+</body>
+
+</html>

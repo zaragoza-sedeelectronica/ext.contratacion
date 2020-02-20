@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Formación por la diversidad cultural. Casa de las Culturas"/>
+</head>
+
+<body>
+    <sede:content>
+		<div class="alert alert-info" th:if="${#utils.hasta('19-02-2019')} or ${#utils.desde('22-02-2019')}">
+    		Ha terminado el periodo de inscripción.
+    	</div>
+
+	    <th:block th:if="${#utils.desde('20-02-2019')} and ${#utils.hasta('21-02-2019')}">
+	    	<th:block th:if="not ${param.programa}">
+		    	<ul>
+		    		<li><a href="?programa=1">Conociendo otras culturas</a></li>
+		    		<li><a href="?programa=2">Nueva ciudadanía</a></li>
+		    		<li><a href="?programa=3">Gestión de la diversidad cultural</a></li>	
+		    	</ul>
+		    </th:block>
+		    <th:block th:if="${param.programa}">
+		    
+		    	<th:block th:include="fragmentos/error" />
+		    	<!--/*CONOCIENDO*/-->
+		    	<th:block th:if="not ${param.programa} or ${param.programa[0] == '1'}">
+		        <h2>Conociendo otras culturas</h2>
+		        <p>Cursos de idiomas, de bailes del mundo, meditación, cerámica, teatro, capoeira, … que nos permitirán conocer aspectos de la cultura de otros países y aprender a valorar la diversidad como un elemento enriquecedor de nuestra sociedad. Todos los cursos son de iniciación y están impartidos por asociaciones de inmigrantes que colaboran con la Casa de las Culturas. </p>
+				<p>La música estará presente a través de un Coro, desde el que se interpretarán canciones de diferentes partes del mundo y en lenguas diversas.</p>
+				<p>Dirigidos a: <span class="destacado">población en general, mayores de 16 años.</span></p>
+				</th:block>
+				<!--/*ENDCONOCIENDO*/-->
+				<!--/*NUEVACIUDADANIA*/-->
+				<th:block th:if="not ${param.programa} or ${param.programa[0] == '2'}">
+		        <h2>Nueva ciudadanía</h2>
+		        <p>Acciones formativas destinadas al conocimiento de aspectos relacionados con nuestra cultura y organización política y social, así como a los recursos que ofrece la ciudad, con el fin de favorecer la participación e integración de la población extranjera en la vida de nuestra ciudad.</p>
+				<p>Dirigidos a: <span class="destacado">población extranjera, mayores de 18 años.</span></p>
+				</th:block>
+				<!--/*ENDNUEVACIUDADANIA*/-->
+				<!--/*GESTIONDIVERSIDAD*/-->
+				<th:block th:if="${param.programa[0] == '3'}">
+		        <h2>Gestión de la diversidad cultural</h2>
+		        <p>Cursos orientados a proporcionar las herramientas necesarias que ayuden a llevar a cabo una adecuada gestión de la diversidad cultural en diferentes ámbitos profesionales, así como para la  prevención y resolución de conflictos motivados por las diferencias culturales.</p>
+				<p>Dirigidos a: <span class="destacado">profesionales</span> (educadores, trabajadores sociales, monitores de tiempo libre, mediadores,...) <span class="destacado">y personas que trabajan con la población extranjera y/o gitana, mayores de 18 años</span></p>
+				</th:block>
+				<!--/*ENDGESTIONDIVERSIDAD*/-->
+
+
+				<form method="post" th:action="@{/servicio/inscripcion-casa-culturas/save(programa=${param.programa[0]})}" th:object="${dato}">
+					
+					<div class="row">
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label for="nombre"><span class="obligatorio">Nombre:</span> <strong th:text="${session.sess_ciudadano.name}"></strong></label>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <label for="dni"><span class="obligatorio">DNI/NIF/NIE:</span> <strong th:if="${session.sess_ciudadano.nif} or ${session.sess_ciudadano.documentoIdentificativo}"><th:block th:text="${session.sess_ciudadano.nif}"/> <th:block th:text="${session.sess_ciudadano.documentoIdentificativo}"/></strong></label>
+		                    <th:block th:if="not ${session.sess_ciudadano.nif} and not ${session.sess_ciudadano.documentoIdentificativo}">
+		                    	<span class="oculto"> (campo obligatorio)</span>
+		                    	<div class="form-group">
+		                        	<input class="form-control" type="text" name="dni" required="required"/>
+		                    	</div>
+		                    </th:block>
+		                </div>
+		            </div>
+		            <div class="row">
+		            	<div class="col-md-4">
+		                    <label for="fechaNacimiento"><span class="obligatorio">Fecha de nacimiento:</span><strong th:if="${session.sess_ciudadano.perfil} and ${session.sess_ciudadano.perfil.fechaNacimiento}" th:text="${#dates.format(session.sess_ciudadano.perfil.fechaNacimiento,'dd-MM-yyyy')}"></strong></label>
+		                    <th:block th:if="not ${session.sess_ciudadano.perfil} or not ${session.sess_ciudadano.perfil.fechaNacimiento}">
+		                    	<span class="oculto"> (campo obligatorio)</span>
+		                    	<div class="form-group">
+		                        	<input class="form-control" type="text" name="fechaNacimiento" required="required" placeholder="formato: dd-mm-yyyy"/>
+		                    	</div>
+		                    </th:block>
+		                </div>
+		                <div class="col-md-4">
+		                    <label for="telefono"><span class="obligatorio">Teléfono:</span><strong th:if="${session.sess_ciudadano.mobile} or (${session.sess_ciudadano.perfil} and ${session.sess_ciudadano.perfil.telefonoContacto})"><th:block th:text="${session.sess_ciudadano.mobile}"/> <th:block th:if="${session.sess_ciudadano.perfil}" th:text="${session.sess_ciudadano.perfil.telefonoContacto}"/></strong></label>
+		                    <th:block th:if="not ${session.sess_ciudadano.mobile} and (not ${session.sess_ciudadano.perfil.telefonoContacto} or not ${session.sess_ciudadano.perfil.telefonoContacto})">
+		                    	<span class="oculto"> (campo obligatorio)</span>
+		                    	<div class="form-group">
+		                        	<input class="form-control" type="text" name="telefonoContacto" required="required"/>
+		                    	</div>
+		                    </th:block>
+		                </div>
+		            </div>
+					
+
+		            <!--/*CONOCIENDO*/-->
+			    	<th:block th:if="${param.programa[0] == '1'}">
+			    	<div class="alert alert-info">Puede seleccionar un máximo de 2 cursos</div>
+			    	<div class="row">
+			    		<!-- /*<div class="col-md-3">
+			    			<fieldset><legend>Idiomas</legend>
+			    			<div class="form-group">
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="189558" name="codes" id="acto189558"/> <label class="form-check-label" for="acto189558">Árabe</label> Lunes de 18 a 19 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="189559" name="codes" id="acto189559"/> <label class="form-check-label" for="acto189559">Chino</label> Martes de 17,30 a 18,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="189560" name="codes" id="acto189560"/> <label class="form-check-label" for="acto189560">Rumano</label> Jueves de 18 a 19 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="189561" name="codes" id="acto189561"/> <label class="form-check-label" for="acto189561">Ruso</label> Jueves de 19,30 a 20,30 h</div>
+						    </div>
+							</fieldset>
+						</div>*/-->
+						<div class="col-md-4">
+			        		<fieldset><legend>Bailes del Mundo</legend>
+			        		<div class="form-group">
+				        		<div class="form-check"><input class="form-check-input" type="checkbox" value="197449" name="codes" id="acto197449"/> <label class="form-check-label" for="acto197449">Ritmos latinos</label> Lunes de 10,30 a 11,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197421" name="codes" id="acto197421"/> <label class="form-check-label" for="acto197421">Bailes argelinos</label> Lunes de 19,30 a 20,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197441" name="codes" id="acto197441"/> <label class="form-check-label" for="acto197441">Flamenco</label> Martes de 10,30 a 11,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197444" name="codes" id="acto197444"/> <label class="form-check-label" for="acto197444">Danza africana 1</label> Martes de 19,30 a 20,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197445" name="codes" id="acto197445"/> <label class="form-check-label" for="acto197445">Danza africana 2</label> Miércoles de 17 a 18 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197446" name="codes" id="acto197446"/> <label class="form-check-label" for="acto197446">Danzas tradicionales de Latinoamérica</label> Miércoles de 10,30 a 11,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197450" name="codes" id="acto197450"/> <label class="form-check-label" for="acto197450">Bailes hebreos, sefardíes e israelíes</label> Jueves de 11,30 a 12,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197452" name="codes" id="acto197452"/> <label class="form-check-label" for="acto197452">Bolliwood</label> Jueves de 19,30 a 20,30 h</div>
+						        
+				        	</div>
+				        	</fieldset>
+			        	</div>
+			        	<div class="col-md-4">
+			        		<fieldset><legend>Música</legend>
+				        	<div class="form-group">
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197464" name="codes" id="acto197464"/> <label class="form-check-label" for="acto197464">Coro de las Culturas</label> Jueves de 17,30 a 19 h</div>
+						    </div>
+							</fieldset>
+			        	</div>
+			        	<div class="col-md-4">
+			        		<fieldset><legend>Otros</legend>
+				        	<div class="form-group">
+				        	<div class="form-check"><input class="form-check-input" type="checkbox" value="197454" name="codes" id="acto197454"/> <label class="form-check-label" for="acto197454">Meditación</label> Lunes de 18 a 19h.</div>
+				        		<div class="form-check"><input class="form-check-input" type="checkbox" value="197457" name="codes" id="acto197457"/> <label class="form-check-label" for="acto197457">Cerámica</label>  Martes de 18:30 a 20 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197463" name="codes" id="acto197463"/> <label class="form-check-label" for="acto197463">Teatro</label> Miércoles de 18,30 a 20,30 h</div>
+						        <div class="form-check"><input class="form-check-input" type="checkbox" value="197455" name="codes" id="acto197455"/> <label class="form-check-label" for="acto197455">Capoeira</label> Martes de 18 a 19 h</div>
+						        
+						    </div>
+							</fieldset>
+			        	</div>
+			        </div>
+			    	</th:block>
+					<!--/*ENDCONOCIENDO*/-->
+					<!--/*NUEVACIUDADANIA*/-->
+					<th:block th:if="${param.programa[0] == '2'}">
+						<div class="alert alert-info">Puede seleccionar 2 cursos</div>
+			        	<div class="form-check"><input class="form-check-input" type="checkbox" value="197466" name="codes" id="acto197466"/> <label class="form-check-label" for="acto197466">Preparación de los exámenes de nacionalidad</label> Miércoles de 19 a 20,30h</div>
+			        	<div class="form-check"><input class="form-check-input" type="checkbox" value="197477" name="codes" id="acto197477"/> <label class="form-check-label" for="acto197477">Ciudadanía Activa 1</label> del 1 al 12 de abril, de 10 a 12 h</div>
+			        	<div class="form-check"><input class="form-check-input" type="checkbox" value="197480" name="codes" id="acto197480"/> <label class="form-check-label" for="acto197480">Ciudadanía Activa 2</label> del 3 al 14 de junio, de 10 a 12h</div>
+			        </th:block>
+					<!--/*ENDNUEVACIUDADANIA*/-->
+					<!--/*GESTIONDIVERSIDAD*/-->
+					<th:block th:if="${param.programa[0] == '3'}">
+						<div class="alert alert-info">Puede seleccionar un máximo de 2 cursos</div>				
+			        <div class="form-check"><input class="form-check-input" type="checkbox" value="197491" name="codes" id="acto197491"/> <label class="form-check-label" for="acto197491">Diversidad cultural</label> Martes de 18,30 a 20 h. Desafíos y oportunidades en la sociedad actual</div>
+			        <div class="form-check"><input class="form-check-input" type="checkbox" value="197484" name="codes" id="acto197484"/> <label class="form-check-label" for="acto197484">Mediación Intercultural</label> Lunes de 16,30 a 18,30h.</div>
+			        <!-- /*<div class="form-check"><input class="form-check-input" type="checkbox" value="189595" name="codes" id="acto189595"/> <label class="form-check-label" for="acto189595">Zaragoza ciudad intercultural</label> Viernes de 12 a 13,30 h. Visión de la ciudad desde el concepto de interculturalidad. Situación sociodemográfica de las poblaciones gitana y extranjera en la ciudad y respuesta institucional y social ante las necesidades derivadas de la diversidad cultural.</div>
+			        <div class="form-check"><input class="form-check-input" type="checkbox" value="189604" name="codes" id="acto189604"/> <label class="form-check-label" for="acto189604">Trabajar la diversidad cultural</label> Miércoles de 18 a 19,30 h. Técnicas para trabajar la diversidad a través de juegos, dinámicas y una comunicación asertiva.</div>*/-->
+					</th:block>
+					<!--/*ENDGESTIONDIVERSIDAD*/-->
+
+					
+		            <div class="form-actions margin-t2em">
+		            	<div class="form-check">
+						  <input class="form-check-input" type="checkbox" value="true" id="lopd" name="lopd" required="required"/>
+						  <label class="form-check-label" for="lopd">
+						    Consentimiento
+						  </label> ACEPTO las condiciones descritas en la información básica y adicional en cuanto a protección de datos de caracter personal.
+						</div>
+		                <input name="insertar" class="btn btn-primary" value="Inscribir" type="submit" />
+		            </div>
+		  <div class="margin-t3em info alert alert-info">
+            <p class="lead">Información básica sobre Protección de Datos</p>
+            <hr class="sm"/>
+            <dl class="dl-horizontal">
+                <dt><strong>Responsable</strong>:</dt><dd>Ayuntamiento de Zaragoza. Servicios Sociales Especializados. Casa de las Culturas y de la Solidaridad.</dd>
+                <dt><strong>Finalidad</strong>:</dt><dd>Tus datos de carácter personal serán tratados e incorporados en la actividad "Formación por la Diversidad Cultural", con la finalidad de participar en el proceso de inscripción y matrícula de los cursos.</dd>
+                <dt><strong>Legitimación</strong>:</dt><dd>La licitud del tratamiento de tus datos es el cumplimiento de una obligación legal y el de una misión realizada en interés público o en el ejercicio de poderes públicos conferidos.</dd>
+                <dt><strong>Destinatarios</strong>:</dt><dd>Los datos se comunicarán exclusivamente a los profesores y profesoras encargados de impartir los cursos. </dd>
+                <dt><strong>Derechos</strong>:</dt><dd>Podrás ejercer los derechos de acceso, rectificación, supresión, portabilidad de tus datos, así como de limitación y oposición a su tratamiento en la dirección de Casa de las Culturas y de la Solidaridad, C/ Palafox, 29. Zaragoza 50001 o en <a href="mailto:serviciosinmigrantes@zaragoza.es">serviciosinmigrantes@zaragoza.es</a></dd>
+                <dt><strong>Información Adicional</strong>:</dt><dd>Si lo desea puede consultar la <a href="https://www.zaragoza.es/sede/portal/info-adicional-proteccion-datos#formaciondiversidad">información adicional sobre Protección de Datos de Carácter Personal</a>.</dd>
+
+            </dl>
+            <p>El interesado reconoce la recepción de esta información procedente de la Casa de las Culturas y de la Solidaridad del Ayuntamiento de Zaragoza.</p>
+        </div>
+				</form>
+			</th:block>
+		</th:block>
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+</body>
+
+</html>

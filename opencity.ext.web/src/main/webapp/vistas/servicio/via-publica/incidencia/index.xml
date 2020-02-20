@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Incidencias en la vía pública" keywords="ayuntamiento, ciudad, Zaragoza, Espana, sede,incidencia,vía,pública,trafico,cortes" description="Cortes de agua, cortes de trafico, cortes de gas, afeccciones importantes al trafico que ocurren en al via publica"/>
+<style>
+	 .resultado1:nth-child(2n+2) {
+    float: right !important;
+    }
+    .resultado1:nth-child(2n+1) {
+    float: left !important;
+    clear: both;
+    }
+    .resultado li:nth-child(3n) {
+    float: right !important;
+    }
+    .resultado li:nth-child(3n+1) {
+    float: left !important;
+    clear: both;
+    }
+    .card {
+       
+       
+        min-height: 245px;       
+    }
+    
+    @media (min-width: 768px) {
+        .card {
+            min-height: 15em;
+        }
+    }
+    @media (min-width: 768px){
+.bs-example {
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+	}
+}
+.bs-example {    
+    padding: 45px 15px 15px;
+    margin: 0 -15px 15px;
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-width: 1px 0;
+    -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+    box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+}
+    </style>
+</head>
+
+<body>
+    <sede:content>
+		<div class="col-md-12">
+			<h2>Incidencias en la vía pública</h2>
+			 <div class="col-md-12">
+				<p class="nomargin destacado text-right">
+					Descargar:
+					<a href="https://www.zaragoza.es/sede/servicio/catalogo/1080">Datos Abiertos</a>
+				</p>
+				<ul class="list-inline pull-right">
+					<li class="nopadding">
+						<a th:href="'/sede/servicio/via-publica/incidencia.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+							JSON
+						</a>                                |
+					</li>
+					<li class="nopadding">
+						<a th:href="'/sede/servicio/via-publica/incidencia/.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+							XML
+						</a>
+						|
+					</li>
+					<li class="nopadding">
+						<a th:href="'/sede/servicio/via-publica/incidencia.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+							CSV
+						</a>
+					</li>
+				</ul>
+			</div>
+        </div>
+        <div class="bs-example">
+        <ul  class="nav nav-tabs tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#trafico" aria-controls="trafico" role="tab" data-toggle="tab"><span class="fa fa-exclamation-triangle"></span> Tráfico, Cortes de agua</a></li>
+            <li role="presentation"><a href="#bomberos" aria-controls="bomberos" role="tab" data-toggle="tab"><span class="fa fa-fire-extinguisher"></span> Servicios de bomberos</a></li>
+        </ul>
+        </div>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#trafico" aria-expanded="false">Tráfico, Cortes de agua</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="trafico">
+                <div class="container-fluid">
+                    <div th:if="${resultado.body.totalCount} &lt; 1" role="alert" class="alert alert-info">No existen incidencias vigentes</div>
+                    <th:block th:if="${resultado.body.totalCount} &gt; 0">
+                       <div><a href=".?tipo.id=2"  class="label label-success margin-r05em">Afecciones importantes</a> <a href=".?tipo.id=1"  class="label label-success margin-r05em">Cortes de Tráfico</a> <a href=".?tipo.id=0"  class="label label-success margin-r05em">Cortes de Agua</a></div>
+                        <ul class="list-unstyled row margin-t05em resultado">
+                            <th:block th:each="registro : ${resultado.body.result}">
+                                <li class="col-xs-12 col-sm-6 col-md-4 " th:classappend="${registro.geometry} ? geo : nogeo" sede:rdf="${registro.voc()}">
+                                    <div class="card">
+                                    <img th:src="${registro.icon}" alt="" /> <a th:href="@{/servicio/via-publica/incidencia/{id}(id=${registro.id})}"><strong sede:rdf="${registro.get('title')}" /></a> 
+                                    <a th:href="'.?tipo.id=' + ${registro.tipo.id}" sede:rdf="${registro.tipo.get('title')}" class="label label-success margin-r05em"></a>
+                                    <p th:if="${registro.motivo}" class="shorten" sede:rdf="${registro.get('motivo')}" />
+                                    <div><strong>Inicio:</strong> <span th:text="${registro.inicioText}" />. <strong>Hasta:</strong> <span th:text="${registro.finText}" /></div>
+                                    <div th:if="${registro.tramo}" sede:rdf="${registro.get('tramo')}"><strong>Tramo: </strong></div>
+                                    </div>
+                                   <!--/*  <div th:if="${registro.desvio}"><strong>Desvío:</strong> <span th:if="${registro.desvio}" class="shorten" sede:rdf="${registro.get('desvio')}" /></div>
+                                   <div th:if="${registro.observaciones}"><strong>Observaciones:</strong> <span th:if="${registro.observaciones}" class="shorten" sede:rdf="${registro.get('observaciones')}" /></div>
+                                    <th:block th:if="${registro.geometry}" th:utext="${registro.geometry.getRdf()}"></th:block>*/-->
+                                </li>
+                            </th:block>
+                        </ul>
+                        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+                    </th:block>
+                </div>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#bomberos" aria-expanded="false">Servicios de bomberos</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="bomberos">
+                <div class="container-fluid">
+                    <div th:if="${resultadoBomberosAbierto.totalCount} &lt; 1 and ${resultadoBomberosCerrado.totalCount} &lt; 1 " role="alert" class="alert alert-info">No existen servicios de bomberos vigentes</div>
+                    <th:block th:if="${resultadoBomberosAbierto.totalCount} &gt; 0 or ${resultadoBomberosCerrado.totalCount} &gt; 0">
+                        <ul class="list-unstyled row margin-t05em resultado1">
+                            <th:block th:each="registro : ${resultadoBomberosAbierto.result}">
+                                <li class="col-xs-12 col-sm-6 col-md-6 resultado1" sede:rdf="${registro.voc()}">
+                                    <div class="card">
+                                        <span sede:rdf="${registro.get('fecha', 'HH:mm')}" /> <strong sede:rdf="${registro.get('tipoSiniestro')}" />
+                                        <div>
+                                            <span sede:rdf="${registro.get('direccion')}" />
+                                            <th:block th:if="${registro.duracion}"> Duración: <span sede:rdf="${registro.get('duracion')}" /></th:block>
+                                            <div th:if="${not #lists.isEmpty(registro.recursos)}">
+                                                <strong>Recursos</strong>
+                                                <ul class="normal">
+                                                    <li class="normal" th:each="rec : ${registro.recursos}" th:text="${rec}" />
+                                                </ul>
+                                            </div>
+                                      <div class="ribbon-wrapper">
+                                        <div class="ribbon-primary">abierto</div>
+                                    </div>
+                                        </div>
+                                    
+                                    </div>
+                                    
+                                </li>
+                            </th:block>
+                            <th:block th:each="registro : ${resultadoBomberosCerrado.result}">
+                                <li class="col-xs-12 col-sm-6 col-md-6" sede:rdf="${registro.voc()}">
+                                    <div class="card">
+                                        <span sede:rdf="${registro.get('fecha', 'HH:mm')}" /> <strong sede:rdf="${registro.get('tipoSiniestro')}" />
+                                        <div>
+                                            <span sede:rdf="${registro.get('direccion')}" />
+                                            <th:block th:if="${registro.duracion}"> Duración: <span sede:rdf="${registro.get('duracion')}" /></th:block>
+                                            <div th:if="${not #lists.isEmpty(registro.recursos)}">
+                                                <strong>Recursos</strong>
+                                                <ul class="normal">
+                                                    <li class="normal" th:each="rec : ${registro.recursos}" th:text="${rec}" />
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ribbon-wrapper">
+                                        <div class="ribbon-info">cerrado</div>
+                                    </div>
+                                </li>
+                            </th:block>
+                        </ul>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="https://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".shorten").shorten({
+            "showChars": 200,
+            "moreText": "Más",
+            "lessText": "Menos",
+        });
+    });
+    </script>
+</body>
+
+</html>

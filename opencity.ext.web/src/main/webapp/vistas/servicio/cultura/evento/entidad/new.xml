@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Insertar nueva entidad. Agenda Zaragoza" keywords="actos, concierto, actividades, cursos" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2>Insertar una entidad</h2>
+        <form th:action="@{/servicio/cultura/evento/entidad/save}" th:object="${dato}" method="post" id="newForm">
+            <div role="alert" class="alert alert-info">
+                <p>Si usted desea proponer al Ayuntamiento la incorparación a nuestra web de una entidad organizadora que actualmente no figura en la Agenda Zaragoza, puede rellenar el siguiente formulario que será enviado para su verificación y posterior inclusión en la web.</p>
+                <p><span class="obligatorio"></span><span class="oculto"> (campo obligatorio)</span> Los campos con asterisco son obligatorios (no escriba todo en mayúsculas)</p>
+            </div>
+            <div role="alert" class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+            </div>
+            <fieldset>
+                <legend>Datos de la entidad</legend>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="title">
+                                <span class="obligatorio">Título:</span><span class="oculto"> (campo obligatorio)</span>
+                            </label>
+                            <input type="text" name="title" id="title" size="50" th:field="*{title}" placeholder="Añadir título de la entidad" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="streetAddress">Dirección:</label>
+                            <input type="text" name="streetAddress" id="streetAddress" size="50" th:field="*{streetAddress}" placeholder="Añadir dirección de la entidad" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="addressLocality">Localidad:</label>
+                            <input type="text" name="addressLocality" id="addressLocality" size="50" th:field="*{addressLocality}" placeholder="Añadir localidad de la entidad" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="addressRegion">Provincia:</label>
+                            <input type="text" name="addressRegion" id="addressRegion" size="50" th:field="*{addressRegion}" placeholder="Añadir provincia de la entidad" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Tel. fijo:</label>
+                            <input type="text" name="telephone" id="telephone" size="50" th:field="*{telephone}" placeholder="Añadir teléfono fijo de la entidad" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="faxNumber">Fax:</label>
+                            <input type="text" name="faxNumber" id="faxNumber" size="50" th:field="*{faxNumber}" placeholder="Añadir número de fax de la entidad" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="postalCode">C. Postal:</label>
+                            <input type="text" name="postalCode" id="postalCode" size="50" th:field="*{postalCode}" placeholder="Añadir código postal de la entidad" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="addressCountry">País:</label>
+                            <input type="text" name="addressCountry" id="addressCountry" size="50" th:field="*{addressCountry}" placeholder="Añadir país de la entidad" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone2">Tel. móvil:</label>
+                            <input type="text" name="telephone2" id="telephone2" size="50" th:field="*{telephone2}" placeholder="Añadir teĺéfono móvil de la entidad" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico:</label>
+                            <input type="text" name="email" id="email" size="50" th:field="*{email}" placeholder="Añadir email de la entidad" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="url">Web:</label>
+                            <input type="text" name="url" id="url" size="50" th:field="*{url}" placeholder="Añadir web de la entidad" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="openingHours">Horario de atención:</label>
+                            <input type="text" name="openingHours" id="openingHours" size="50" th:field="*{openingHours}" placeholder="Añadir horario de la entidad" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-actions">
+                <!--/* <input type="text" name="debug" value="S"/> */-->
+                <input name="insertar" class="btn btn-primary" value="Insertar" type="submit" />
+            </div>
+        </form>
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_es.min.js"></script>
+    <script type="text/javascript" src="/cont/vistas/servicio/cultura/evento/insertarAgenda.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-8">
+        <h3 th:if="not ${heading}" class="nomargin font-18"><a th:href="'/sede/servicio/tramite/' + ${proc.id}" th:text="${proc.title}"></a></h3>
+        <h4 th:if="${heading =='h4'}" class="nomargin font-18"><a th:href="'/sede/servicio/tramite/' + ${proc.id}" th:text="${proc.title}"></a></h4>
+        <span class="text-info pull-left" th:if="${proc.plazoInicio} or ${proc.plazoFin}" th:text="${#utils.tratarFechas(proc.plazoInicio, proc.plazoFin)}"></span>
+        <div class="pull-left margin-l05em">
+            <div th:if="${proc.enlaceResolucionDef}" class="label label-info">
+                <abbr title="Resolución">Res.</abbr> definitiva
+            </div>
+            <div th:unless="${proc.enlaceResolucionDef}">
+                <div th:if="${proc.enlaceResolucion}" class="label label-info">
+                    <abbr title="Resolución">Res.</abbr> provisional
+                </div>
+                <div th:if="!${proc.enlaceResolucion} and ${#utils.enPlazo(proc.plazoInicio, proc.plazoFin)}" class="label label-info">
+                    en plazo
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <!--/* <div th:if="${proc.enlaceResolucionDef}" class="ribon-estilo">
+                <div class="ribbon-info">
+                    <abbr title="Resolución">Res. </abbr>
+                    <br/>definitiva
+                </div>
+            </div>
+            <div th:unless="${proc.enlaceResolucionDef}" class="ribon-estilo">
+                <div th:if="${proc.enlaceResolucion}" class="ribon-estilo">
+                    <div class="ribbon-info">
+                        <abbr title="Resolución">Res. </abbr>
+                        <br/> provisional
+                    </div>
+                </div>
+                <div th:if="!${proc.enlaceResolucion} and ${#utils.enPlazo(proc.plazoInicio, proc.plazoFin)}" class="ribon-estilo">
+                    <div class="ribbon-info"> en plazo</div>
+                </div>
+            </div> */-->
+        <span class="sr-only">Formas de Tramitación:</span>
+        <ul class="list-inline">
+            <li th:if="${proc.enLinea} or ${proc.certificado}" class="margin-r05em">
+                <span class="fa fa-2x fa-globe" aria-hidden="true" title="Online"></span>
+                <span class="sr-only">Online</span>
+            </li>
+            <li th:if="${proc.presencial}" class="margin-r05em">
+                <span class="far fa-user-circle fa-2x" aria-hidden="true" title="Presencial"></span>
+                <span class="sr-only">Presencial</span>
+            </li>
+            <li th:if="${proc.telefono}" class="margin-r05em">
+                <span class="fa fa-2x fa-phone" aria-hidden="true" title="Por teléfono"></span>
+                <span class="sr-only">Por teléfono</span>
+            </li>
+            <li th:if="${proc.correo}" class="margin-r05em">
+                <span class="fa fa-2x fa-envelope" aria-hidden="true" title="Por correo postal"></span>
+                <span class="sr-only">Por correo postal</span>
+            </li>
+        </ul>
+        <!--/* <span th:if="${proc.certificado}" class="badge">con certificado electrónico</span> */-->
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Página de login" description="Acceso como usuario registrado" author="Ayuntamiento de Zaragoza. Unidad de Gestión de la Web Municipal. webmunicipal@zaragoza.es" keywords="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City" />
+    <style type="text/css">
+        .form-container{max-width:330px;margin:0 auto}
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
+</head>
+
+<body>
+    <sede:content>
+        <div class="form-container">
+            <th:block th:include="fragmentos/error" />
+            <form th:action="@{/acceso/restaurar(token=${token})}" method="post" class="form-horizontal">
+                    <fieldset>
+                        <legend><span>Cambiar contrase&ntilde;a</span></legend>
+                            <label for="pass" class="col-sm-2 control-label sr-only">Contrase&ntilde;a</label>
+                            <input type="password" class="form-control" name="pass" id="pass" placeholder="Contraseña" />
+
+                            <label for="pass_rep" class="col-sm-2 control-label sr-only">Repetir Contrase&ntilde;a</label>
+                            <input type="password" class="form-control" name="pass_rep" id="pass_rep" placeholder="Repetir contraseña" />
+                            <th:block th:include="fragmentos/recaptcha" />
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Modificar</button>
+                    </fieldset>
+                </form>
+        </div>
+    </sede:content>
+</body>
+
+</html>

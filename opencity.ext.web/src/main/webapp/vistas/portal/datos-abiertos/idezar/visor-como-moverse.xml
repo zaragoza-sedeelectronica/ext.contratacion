@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Visualización indicadores sociodemográficos. Infraestructura de Datos Espaciales de Zaragoza." description="Funcionalidades que ofrece el visor" author="Ayuntamiento de Zaragoza" subject="" keywords="ayuntamiento, ciudad, Zaragoza, España, vocabularios, conjuntos de datos, datos abiertos, administración local, gobierno abierto" last-modified="28-05-2018" audience="Ciudadanía" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Cómo moverse en transporte público</h2>
+        <a class="btn btn-primary pull-right" href="http://idezar.zaragoza.es/visorComoMoverse/">Acceso al Servicio</a>
+        <p>
+            Cómo moverse en transporte público permite a los usuarios
+            <strong>planificar sus desplazamientos en tiempo real por Zaragoza</strong> mediante el cálculo de itinerarios personalizados, teniendo en cuenta sus preferencias, momento del día, etc., y siempre con información oficial y actualizada. Permite obtener la ruta óptima en transporte público, minimizando la duración de los trayectos y mejorando la movilidad en transporte público por la ciudad.
+        </p>
+        <h3>Funcionalidades</h3>
+        <ul>
+            <li>
+                Visualización sobre el mapa de
+                <strong>toda la red de transporte público</strong> de forma detallada y útil: líneas de transporte con detalle de paradas, sentidos, etc.
+            </li>
+            <li>
+                Visualización de la ruta resultado sobre el mapa indicando
+                <strong>postes de subida, bajada, trasbordo,</strong> etc. así como el recorrido a pie desde el origen y hasta el destino.
+            </li>
+            <li>
+                Informe
+                <strong>detallado de la ruta</strong> incluyendo desplazamientos a pie.
+            </li>
+            <li>
+                Estimación de
+                <strong>tiempos de llegada</strong> en cada parada.
+            </li>
+        </ul>
+        <div>
+            <img src="/cont/paginas/idezar/img/como_moverse2.png" alt="" />
+        </div>
+    </sede:content>
+</body>
+
+</html>

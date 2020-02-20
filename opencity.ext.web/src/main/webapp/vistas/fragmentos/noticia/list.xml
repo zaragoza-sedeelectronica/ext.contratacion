@@ -1,0 +1,15 @@
+<h3 th:if="${titulo}" th:text="${titulo}"></h3>
+<ul class="list-unstyled list-noticia clearfix">
+    <li th:class="${clase} != null ? ${clase} : 'col-xs-12'" th:each="doc: ${listado}" vocab="http://schema.org/" th:with="uri=(${carpeta != null} ? ${carpeta} : ${#httpServletRequest.requestURI}) + 'servicio/noticia/' + ${doc.id}" typeof="NewsArticle" th:attr="resource=${uri}">
+        <div class="row no-gutter">
+            <div th:if="${doc.image}" class="col-xs-3 col-sm-12 col-md-12" >
+                <img th:if="${doc.image}" class="img-responsive" width="480" height="320" th:src="'//www.zaragoza.es/cont/paginas/noticias/' + ${doc.image}" alt="" property="image" />
+            </div>
+            <div class="caption  padding-a05em" th:classappend="${doc.image} ? 'col-xs-9 col-sm-12 col-md-12' : 'col-xs-12'">
+                <strong class="date" th:text="${#calendars.format(doc.creationDate,'dd MMMM yyyy')}" th:attr="property='dateCreated', content=${doc.creationDate}" /> »
+                <a th:href="${uri}"><span property="name" th:text="${doc.title}"></span></a>
+            </div>
+        </div>
+    </li>
+</ul>
+<a th:if="${verMas}" th:href="'/sede/servicio/noticia/list?fq=temas_smultiple%3A(&quot;'+${#utils.toUnicode(verMas)}+'&quot;)'" class="pull-right">Ver más noticias</a>

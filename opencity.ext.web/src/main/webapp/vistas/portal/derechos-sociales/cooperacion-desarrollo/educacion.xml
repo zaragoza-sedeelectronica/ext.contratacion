@@ -1,0 +1,155 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es"><head>
+    <meta charset="utf-8" />
+ <sede:meta title="Educación para el Desarrollo" 
+            description="La ciudad mantiene desde 1982 una política municipal de cooperación al desarrollo en solidaridad con los más desfavorecidos y las minoría étnicas. Recursos de información en el portal Derechos Sociales, espacio de la sede electrónica del Ayuntamiento de Zaragoza, sobre los proyectos de Ayuda Humanitaria sobre educación al desarrollo, Comercio Justo y Consumo responsable" 
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, voluntariado social, política de cooperación, subvención, ayuda humanitaria, ayuda a los refugiados, América Latina, África, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, voluntary work, cooperation policy, subsidy, humanitarian aid, aid to refugees, Latin América, complaints and suggestions service"/>
+	 
+    <style type="text/css">
+    
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content><nav>
+<div class="second-bar clearfix">
+		<div class="hidden-xs">
+			<a class="btn-back pull-left" href="/sede/portal/derechos-sociales/cooperacion-desarrollo/"><span class="fa fa-inverse fa-2x fa-chevron-left"
+aria-hidden="true"></span><span class="oculto">Volver a Cooperación al Desarrollo</span> </a>						<p class="lead destacado margin-l05em margin-b0em pull-left">
+				¿Qué hacemos?
+			</p>
+		</div>
+
+		<ul class="list-inline navbar-right submenu">
+			<li>
+				<a href="proyectos">Proyectos</a>
+			</li>
+			<li>
+				<a href="accion-humanitaria">Acción Humanitaria</a>
+			</li>
+			<li>
+				<a href="educacion">Educación para el desarrollo</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<h2>
+	Educación para el desarrollo
+</h2>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="col-md-9">
+			<p>
+				La Educación para el Desarrollo cuenta con un gran arraigo en la ciudad de Zaragoza y ha sufrido profundos cambios desde las primeras acciones de <em>sensibilización</em> hasta las actuales ligadas a la nueva concepción de la Educación para el Desarrollo y la Ciudadanía Global (EpDCG)
+			</p>
+
+			<p>
+				Cuenta con un documento estratégico que la conceptualiza y ordena. Se trata de la <strong>Estrategia Aragonesa de Educación para el Desarrollo y Ciudadanía Global</strong> elaborada de forma participativa entre otros, por este Ayuntamiento, Gobierno de Aragón, Diputación Provincial de Zaragoza y Federación Aragonesa de Solidaridad Constituye la guía para la acción de este Ayuntamiento en el sector.
+			</p>
+
+			<p>
+				Tanto el <strong>Pacto contra la Pobreza</strong> como el recientemente subscrito <strong>Pacto por la Cooperación al Desarrollos en el marco de los ODS</strong> contempla <strong>la reserva de al menos el 10% de los fondos del Presupuesto</strong> para estas actividades.
+			</p>
+
+			<p>
+				Tal vez una de las más relevantes ha sido la puesta en marcha, junto con la Federación Aragonesa de Solidaridad (FAS), del <strong> UNAQUI</strong> que, entre otros recursos, ha construido, con financiación de este Ayuntamiento, un potente <strong>catálogo de recursos educativos</strong>.
+			</p>
+
+			<p>
+				La otra gran apuesta de esta Institución es la de impulsar acciones relacionadas con el <strong>Consumo Responsable</strong> que comprende también las del <strong>Comercio Justo</strong> implicando además a la propia Entidad en materia de contratación pública.
+			</p>
+
+			<p>
+				La FAS, en colaboración con este Ayuntamiento, elaboró el <strong>Informe Diagnóstico sobre el estado del Comercio Justo en la Ciudad</strong>. En Abril de 2017 el Municipio de <strong>Zaragoza</strong> consiguió el status de <strong>Ciudad por el Comercio Justo</strong> dado que cumplía todos los requisitos exigidos por la Red.
+			</p>
+
+			<p>
+				La misma FAS, con apoyo económico de este Ayuntamiento impulsa sistemáticamente acciones y proyectos relacionados con el sector. Tal es el caso de <strong>SURALIA</strong> un <strong>espacio de Comercio Justo</strong> donde además de adquirir y consumir sus productos, puede encontrase todo tipo de información y actividades.
+			</p>
+
+			<p>
+				Para conocer más sobre este tema así como entidades dedicadas a ello, puntos de distribución, etc, pueden visitar las webs de <strong><a href="http://www.suralia.es">suralia.es</a> </strong> y <strong><a href="http://www.zaragozacomerciojusto.org"> zaragozacomerciojusto.org</a></strong>
+			</p>
+		</div>
+
+		<div class="col-md-3">
+			<img alt="" class="img-responsive" src="/cont/vistas/portal/derechos-sociales/cooperacion-desarrollo/img/educacion.jpg"/><img alt="" class="img-responsive" src="/cont/vistas/portal/derechos-sociales/cooperacion-desarrollo/img/comercio-justo.jpg"/>
+			<h3 class="margin-v05em color-ayto">
+				Más información
+			</h3>
+
+			<ul class="list-unstyled">
+			<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="http://unaqui.aragonsolidario.org/">Unaqui</a></li>
+			
+			<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="http://unaqui.aragonsolidario.org/index.php/k2">Catálogo de Recursos Educativos</a></li>
+			<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="http://ciudadjusta.ideas.coop/ciudades-por-el-comercio-justo/">Ciudades por el Comercio Justo</a></li>
+			
+			 
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+					<a class="pdf" href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/comercio-justo-acreditacion.pdf"><strong>Acreditación Comercio Justo</strong></a>
+				</li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+					<a class="pdf" href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/informe-diagnostico-comercio-justo.pdf"><strong>Informe Dignóstico Comercio Justo</strong></a>
+				</li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+					<a class="pdf" href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/estrategia-aragonesa.pdf"><strong>Estrategia Aragonesa de Educación para el Desarrollo y la Ciudadanía Global</strong></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</sede:content>
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Autodiagnóstico para el Foro del Distrito Actur. Presupuestos Participativos 2018" description="Autodiagnóstico para el Foro del Distrito del Actur" author="Ayuntamiento de Zaragoza" last-modified=" Wed Feb 07 10:00:00 CET 2018 " audience="" keywords="gobierno abierto, presupuestos participativos, autodiagnostico">
+
+    </sede:meta>
+    <style type="text/css">
+    .fnd-turismo {
+        background: #d68100;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #31708f;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+   
+	<br/>
+        <div class="full-screen-box text-justify">
+            <h2 class="nomargin"><strong>Actur-Rey Fernando</strong>: Diagnóstico y catálogo de reclamaciones históricas</h2>
+            <hr class="sm" />
+            <div class="row">
+                <div class="col-md-1">
+                    <h3><strong>Nº</strong></h3><hr class="sm" />
+                </div>
+                <div class="col-md-5">
+                    <h3><strong>Título</strong></h3><hr class="sm" />
+                </div>
+                <div class="col-md-5">
+                    <h3><strong>Descripción</strong></h3><hr class="sm" />
+                </div>
+                <!--/*<div class="col-md-2">
+                    <p><strong>Ubicación</strong> <small><em>Opcional</em></small></p>
+                </div>
+                <div class="col-md-2">
+                    <p><strong>Beneficiarios</strong> <small><em>Opcional</em></small></p>
+                </div>*/-->
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>1</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Acondicionamiento solar junto al IES Tiempos Modernos</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Habilitar el solar A.9.09 como zona de deporte libre, con aparatos para jovenes (tipo calistenia) y otra de aparatos para gimnasia de mayores. Complementar todo ello con algún arbol que proporcione sombra y mobiliario urbano (bancos y papeleras)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>2</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Mejora del entorno de la "Casa del Barrio" de Parque Goya</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Complementar lo ya realizado con la plantación de árboles y arbustos (con el correspondiente sistema de riego) y el necesario mobiliario urbano (alumbrado, bancos y papeleras</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>3</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Mejora iluminación de la Plaza de Ortilla</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Modificar el alumbrado actual, de manera que se aumente su luminosidad en las aceras y zonas peatonales.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>4</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Cubrimiento excenario en Plaza de la Tauromaquia</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Cubrimiento superior y trasero del escenario situado en Plza. Tauromaquia. Este espacio es usado durante los actos festivos y culturales y carece de cualquier tipo de protección tanto para la lluvia como para el cierzo.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>5</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Nuevo campo de futbol 7 en el campo del Ranillas</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Construcción de un campo de futbol 7 a continuación del campo actual, utilizando el espacio libre dentro del mismo recinto y el espacio sin uso delante del Pabellón Río Ebro. El campo se complementaría con todos los servicios necesarios para su uso.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>6</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Acondicionar, en Parque Goya, el subterraneo de acceso al Parque de los Tapices </strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Mejora urbanística del paso subterráneo que comunica el Pº Rafael Esteve con la Plza del Tantalo y el Parque de los Tapices. Se propone nivelar todo el espacio para eliminar riesgos, mejorar su saneamiento y la instalación de iluminación. También se propone la intervención artística en sus muros de manera regulada para mejorar estéticamente y que se convierta en un espacio atractivo para los vecinos.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>7</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Unión directa, peatonal y ciclista, de Parque Goya con el Actur Rey Fernando </strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>El Distrito está separado geográficamente, en más de 1 km, en dos partes claramente diferenciadas Actur Rey Fernando y Parque Goya. Actualmente para ir, peatonalmente o en bici, de una zona a otra hay que dar un rodeo por las Avdas de la Ronda de Boltaña y Luciano Gracia. Nuestra propuesta es la de realizar una conexión más directa y rápida desde la esquina conformada por la interconexión de las calles La Fragua, Volaverunt (donde ya hay carril bici) y Vicente Cazcarra, hacia el pasaje que cruza por debajo de la autovía A2 conectando con la calle José Borobia González y el Parque de los Cineastas. La idea sería realizar una especie de bulevar, utilizable por peatones y ciclistas, con la instalación progresiva de alumbrado, arboles de sombra, bancos,... que facilite el transito de ambas zonas del Distrito. Para ello podría ser factible utilizar parte de la infraestructura ya construida, pues hay algún camino ya asfaltado que coincidiría con el trazado propuesto y se podría integrar en este circuito.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>8</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Creación de zonas de esparcimiento canino</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Dado el número creciente de vecinos que tienen perros y la necesidad, y obligación, de sacarlos a la calle, para pasear, hacer ejercicio, socializarse y "aliviarse", sería conveniente que desde el Ayuntamiento, atendiendo a la Ordenanza Municipal de Control y Tenencia de Animales, se articularan medidas que facilitasen esta labor. Por ello, solicitamos que en todos los parques perimetrales del distrito se habilitase, progresivamente, una zona para mascotas, con su correspondiente valla, convenientemente separada de las zonas de juegos infantiles, con fácil acceso, con un suelo adecuado, con fuente, sombra, alumbrado, bancos y con contenedor para excrementos. </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>9</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Acondicionar un andador que una la calle el Coloso con la calle Federico Engels</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Habilitar el paso de peatones  desde Parque Goya I a Zalfonada, y a la inversa, a través del pasaje que pasa por debajo de la Autovía del Nordeste (A-2, Z40, E90) para facilitar el transito al CEIP Parque Goya, a los IES Parque Goya y Avempace, Escuela de Idiomas y vecinos en general</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>10</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Instalación de fuente de agua de boca en el potrero de Octavio Paz</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>En el potrero situado en el solar ubicado entre la calle Octavio Paz y la Avda. Gómez de Avellaneda hay una zona deportiva y un espacio para juegos de niños pequeños. Proponemos y solicitamos la instalación de una fuente de agua de boca para uso y disfrute de los usuarios de las instalaciones.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>11</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Instalacionde Desfibriladores (DEA)</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Con cierta frecuencia nos encontramos con la noticia de que una persona ha fallecido en cualquier sitio de la ciudad por un infarto. A veces  la ayuda no llegan a tiempo y las personas que están cerca no saben cómo actuar. "El desfibrilador externo (DEA) es un aparato electrónico que diagnostica y trata la parada cardiorrespiratoria cuando es debida a la fibrilación ventricular o a una taquicardia ventricular sin pulso, restableciendo un ritmo cardíaco efectivo.  La fibrilación ventricular es la causa más frecuente de muerte súbita." Nuestra propuesta es que se coloquen desfibriladores en todas las dependencias municipales de publica concurrencia del barrio, centros civicos, centros de mayores, pabellones y dependencias deportivas, policia de barrio (incluso algún aparato para llevar en los coches patrulla)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>12</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Colocación de aparatos de juegos adaptados en parques infantiles</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>En el distrito contamos con varias zonas de juegos infantiles. En ninguna se dispone de aparatos para ser usado por niños y niñas con discapacidad motora (incluso en muchos de ellos el acceso está sumamente complicado por ser el suelo de arena, lo que dificulta el acceso con silla de rueda). Solicitamos la adecuación progresiva de todos las zonas de juegos infantiles, de manera que sean totalmente accesibles al espacio y a los aparatos especificos para su diversión</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>13</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Creación de un espacio para BMX - Skatepark - Parkour - Grafitis</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Habilitar un espacio para la practica de disciplinas deportivas que no disponen de una zona para su desarrollo. Nuestra propuesta es para el solar contiguo al CEIP José Antonio Labordeta y el resto de la parcela A.7.01 (la chopera que está a continuación, entre el colegio y la A2). Se trataría de integrar el espacio deportivo en la zona de arbolado (con la correspondiente protección de estos) tomando elementos del cotidiano vivir para armar así un gran lugar para todos, de manera que sea un lugar amable y útil al resto de la gente. Como el espacio es amplio, se puede compaginar y entremezclar con elementos para practicar el Parkour y aprovechar estos u otros que se construyan (paredes, pergolas, vallas, soportes,...) para otra otra actividad totalmente consustancial con lo propuesto anteriormente, los grafitis . Se entiende que la zona estaría iluminada , con servicios y con fuente de agua de boca. En definitiva, crear una zona donde los jovenes encuentren un espacio ludico, de libertad, puedan reunirse, practicar deportes, con seguridad. Dar utilidad a un espacio poco utilizado y casi degradado</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <p>14</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Creación de un carril bici a lo largo de todo Pablo Ruiz Picasso</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p> La gran avenida que vertebra el barrio de este a oeste, Pablo Ruiz Picasso, carece de carril bici, pese a tener 3 carriles de circulación y uno de aparcamiento. Nuestra propuesta es la de acondicionarr carriles en la totalidad de la avenida (desde la Glorieta de las Banderas hasta Salvador Allende) en ambos sentido de circulación, aprorovechando la zona de tierra que discurre paralela a la acera, entre esta y la zona de aparcamiento, que ahora está totalmente degradada y sin mantenimiento.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>15</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Creación de un anillo verde deportivo.</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Se propone, la realización de un circuito deportivo, una especie de anillo deportivo, que bordee el barrio, uniendo todos los parques perimetrales, con la correspondiente señalización y la colocación de aparatos para ejercicios, integrando y aprovechando los aparatos de gimnasia ya instalados en algunos parques. Concretamente, la propuesta sería unir mediante un circuito (definido, marcado, señalizado e iluminado) los parques de la zona oeste (contiguos a la Avda. José Atarés) por el norte (en paralelo a la A2) hasta los parque del este (paralelos a la autovía de Huesca) y por el sur (por Valle de Broto o por José Atarés)</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>16</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Colocación de paneles informativos para cartelería social</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Instalación de soportes que posibiliten la colocación de cartelería social (información de asociaciones, entidades sociales, organismos públicos,....) excepto particulares y publicidad. Estos soportes se colocarían, distribuidos por todo el distrito, en la cercanía de las entidades que lo soliciten, de centros públicos y/o en lugares de transito o de pública concurrencia. ..</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>17</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Acondicionar el solar contiguo a la Escuela de Arte</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Proponemos el acondicionamiento de ese espacio como aparcamiento. Nuestra propuesta sería la de modificar los viarios actuales, de manera que quede una sola calle ( justo enfrente de Valero Julian Ripol Urbano, para facilitar la entrada y salida de esta calle a las dos avenidas) y una amplia zona de aparcamiento a ambos lados.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>18</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Instalación de medidores de contaminación electromagnética</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p> En diferentes zonas de la ciudad hay instalados sensores de parámetros mediambientales, medidores de niveles acusticos y otros En nuestro Distrito no hay ninguna estación medidora y especialmente, preocupa a los vecinos la contaminación por ondas electromagnéticas de baja y alta frecuencia. En el Distrito tenemos además de multitud de antenas de telefonía, instaladas en el espacio urbano, la subestación de Los Leones, junto a Parque Goya, y multitud de centros de transformación distribuidos por todo el entorno urbano, que emiten contaminación electromgnética, pero que desconocemos su cantidad pues no hay constancia de medidas por parte de ningun organismo independiente. En aplicación del principio de precaución y puesto que, parece ser, que cada vez hay más personas electrosensibles, solicitamos: * La instalación de una estacíón que controle los niveles de contaminación mediambiental en el Distrito, incluida la electromagnética. * El suministro de un medidor, portatil, de ondas electromagnéticas de baja y alta frecuencia a la Policia de barrio, para realizar controles rutinarios y esporádicos</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>19</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Mantenimiento y mejora de las zonas verdes</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>En el barrio hay muchas zonas verdes que se han ido degradando con el paso de los años. Proponemos realizar una repoblación progresiva de todos los arboles que se han ido cayendo, secando o eliminados por cualquier motivo. Por ejemplo en la calle Ildefonso Manuel Gil, donde se han ido eliminando más de 30 ejemplares.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>20</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Accesibilidad al Parque del Buen Humor y Andador Paula Montal</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>En la esquina de la Avda. de Valle de Broto con la Avda. José Atarés, hay varios acesos para acceder al, y desde, Andador Paula Montal Fornés, en un lateral hay dos zonas con escaleras y una rampa y en la otra (partiendo desde la parada del bus urbano hasta un espacio encementado en el propio parque y embaldosado en la esquina del Andador Paula Montal) hay una rampa de tierra ( para el acceso de vehiculos de mantenimiento al parque) que no facilita su uso por personas con discapacidad motora, muy especialmente en los días de lluvia. Por lo alejado, en dirección contraria al bus, de la primera rampa y por su elevada inclinación, proponemos que se acondicione la rampa de tierra que está más cerca de la parada del bus, instalando una superficie que facilite su transito con sillas de rueda y la colocación de vallas de sujección para personas con mobilidad reducida.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>21</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Posibilitar giro a la izquierda a la salida de la calle Emilia Pardo Bazán</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>La calle Emilia Pardo Bazan tiene salida, obligatoria, a la derecha en su incorporación a la Avda. Pablo Ruiz Picasso. Esto conlleva que muchos vehículos tienen que ir hasta la Glorieta de Angel Guinda para efectuar el giro a la izquierda. Desde la implantación del tranvía, esta maniobra provoca la acumulación de vehículos en la glorieta y prolonga el tiempo de uso del vehículo, con la consiguiente contaminación. En las inmediaciones de esta calle está el cuartel de la Policia de barrio, centro logistico de la Cruz Roja, donde se estacionan las ambulancias, Centro de Salud Amparo Poch y Banco de Alimento entre otros y la salida a la izquierda dirijiría directamente hacia la salida de la ciudad por la Z40,  centros hospitalarios, estación intermodal,  universidad,... </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <p>22</p>
+                </div>
+                <div class="col-md-5">
+                    <p><strong>Centro Cívico en Parque Goya</strong></p>
+                </div>
+                <div class="col-md-5">
+                    <p>Parque Goya precisa de un espacio multidisciplinar abierto a la participación de las personas del barrio. Un equipamiento de proximidad accesible. Hay muchas razones: población, ausencia de servicios municipales, cohesión social, participación ciudadana,...</p>
+                </div>
+            </div>
+
+</div>
+        <div role="alert" class="alert alert-info">Descarga el <a href="/contenidos/presupuestos-participativos/diagnosticoActur2018.pdf" class="pdf">Acta de la sesión de diagnóstico y reclamaciones históricas</a> de la Mesa de Presupuestos Participativos.</div>
+
+
+
+        <!--/*<div role="alert" class="alert alert-info">Acceso al <a href="/contenidos/presupuestos-participativos/autodianosticoACTUR.pdf" class="pdf">Documento de autodiagnóstico completo<span class="oculto">(Documento en formato pdf)</span></a></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h2>Qué Agrupamos y Priorizamos así</h2>
+                    <hr />
+                        <ul>
+                        <li>Intervención en Parque Goya para la mejora urbanística, mejora de zonas verdes y de ocio y tiempo libre.</li>
+                        <li>Potenciación del arte callejero y de la cultura a través de intervenciones aprovechando la singularidad del nombre de las calles del distrito:
+                        cineastas, poetas/poetisas, escritores, Goya,...</li>
+                        <li>Mejora de zonas verdes en general y de espacios al aire para la práctica de actividades deportivas y de ocio</li>
+                        <li>Facilitar la unión peatonal entre las distintas zonas del barrio</li>
+                        </ul>
+                </div>
+             </div>
+           </div>*/-->
+            
+       
+        
+        
+    </sede:content>
+</body>
+
+</html>

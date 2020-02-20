@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Infraestructura de Datos Espaciales de Zaragoza" last-modified="Mon May 13 00:00:00 CET 2019" remove_viewport="s"/>
+        <style>
+            #viewer {
+                width: 100%;
+                height: 75vh;
+                border: 0;
+            }
+            .margin-t3em {
+                margin-top: 0 !important;
+            }
+            
+			h2 {
+				line-height: 20px;
+				
+			}
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 10px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 10px;
+            background-color: #ffffff;            
+            }	
+            
+            .radius {
+            border-radius: 10px;
+            }
+                      		            
+            
+/* ACCESO PORTAL */
+
+                .acceso-portal {
+                background-color: #E9E9E9;
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-radius: 10px;
+                margin: 15px 15px 20px 0;
+                }
+
+                .conoce-idezar {
+				background-image: url('/cont/vistas/portal/idezar/img/conoce-idezar.png');
+				background-size: contain;
+				background-position: left;
+                }
+                
+                .que-es-ide {
+				background-image: url('/cont/vistas/portal/idezar/img/que-es-ide.png');
+				background-size: contain;
+				background-position: left;
+                }                
+
+                .acceso-portal div {
+                background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(204,204,204,1));
+                padding: 10px;
+                border-radius: 10px;
+                }
+
+                .acceso-portal {
+                padding: 0;
+                }
+
+                .acceso-portal a {
+                color: #333333;
+                font-size: 20px;
+                }
+
+/* CUADRO FOTO CON ENLACE */               
+                .cuadro {
+                position: relative;
+                background-color: #cccccc;
+                border-radius: 10px;
+                }
+
+                .img-rounded {
+                border-radius: 10px 10px 0 0 !important;
+                }
+
+                .cuadro img {
+                padding-bottom: 0;
+                margin: 0px;
+                }
+
+                .cuadro h3 {
+                background-color: rgba(0,0,0,0.7);
+                width: 100%;
+                text-align: center;
+                font-size: 16px;
+                padding: 10px;
+                margin-top: 0;
+                border-radius: 0px 0px 10px 10px;
+                }
+
+                .cuadro h3 a {
+                color: #ffffff !important;
+                font-weight: bold;
+                }                            
+
+                .mapa-destacado {
+                color: #333333;
+                font-size: 20px;
+				margin-top: 1em;
+                }
+
+/* CUADRO VERTICAL */
+
+                .cuadro-v {
+                position: relative;
+                padding-top: 15px;                
+                }
+
+                .cuadro-v img {
+                padding-bottom: 0;
+                border-radius: 5px 5px 0 0;
+                }
+
+                .cuadro-v div {
+                margin-top: 0;
+                background-color: #e9e9e9;
+                padding: 10px 10px 3px 10px;
+                border-radius: 0px 0px 5px 5px;
+                }
+
+                .cuadro-v h3 {
+                font-size: 1.25em;
+                line-height: 1em;
+                margin-top: 5px;
+                }
+
+                .cuadro-v h3 a {
+                color: #E83437 !important;
+                }
+
+                @media (max-width: 767px) {
+                .cuadro-v {
+                margin-top: 30px;
+                }
+                }
+                
+/* CUADRO b */
+
+                .cuadro-b {
+                position: relative;
+                padding-top: 15px;                
+                }
+
+                .cuadro-b img {
+                padding-bottom: 0;
+                border-radius: 5px;
+                }
+
+                .cuadro-b div {
+                margin-top: 0;
+                padding: 10px;
+                border-radius: 0px 0px 5px 5px;
+                }
+
+                .cuadro-b h3 {
+                font-size: 1.25em;
+                line-height: 1em;
+                margin-top: 5px;
+                }
+
+                .cuadro-b h3 a {
+                color: #E83437 !important;
+                }
+
+                @media (max-width: 767px) {
+                .cuadro-b {
+                margin-top: 30px;
+                }
+                }
+                
+/* Apps movil */
+
+                .apps {
+                margin-top: 10px;					
+				text-align:center;
+                }
+                
+                
+                .apps p {
+                color: #000000;
+                font-weight: bold;
+                font-size: 16px;
+                }
+                
+                .apps img {
+					display:block;
+					margin-left: auto;
+					margin-right: auto;					
+					height: 100px;
+					margin-bottom: 10px;
+				}
+				
+/* Planos temáticos */
+
+	.tarjeta {
+		box-shadow: 0px 10px 20px -15px grey;
+        position: relative;
+		max-width: 47%;
+        padding: 0 0 1em 0;
+        margin: 0 1em 1em 1em;
+        border-radius: 0px 0px 10px 10px;         
+	}
+		
+	.tarjeta-1 h3 {
+		background-color: #1B4F72;
+        color: #ffffff !important;		
+        width: 100%;
+        text-align: left;
+        font-size: 1.50em;
+        padding: 10px;
+        }
+        
+	.tarjeta-1-a {
+		background-color: #AED6F1;	
+        width: 100%;
+        margin: -10px 0 10px;
+        padding: 10px 0 10px 0;		
+	}		
+        
+	.tarjeta-1-b {
+		background-color: #D6EAF8;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}
+	
+	.tarjeta-1-c {
+		background-color: #EBF5FB;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}			        
+        
+	.tarjeta-2 h3 {
+		background-color: #4A235A;
+        color: #ffffff !important;		
+        width: 100%;
+        text-align: left;
+        font-size: 1.50em;
+        padding: 10px;
+        }
+        
+	.tarjeta-2-a {
+		background-color: #D2B4DE;	
+        width: 100%;
+        margin: -10px 0 10px;
+        padding: 10px 0 10px 0;		
+	}		
+        
+	.tarjeta-2-b {
+		background-color: #E8DAEF;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}
+	
+	.tarjeta-2-c {
+		background-color: #F4ECF7;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}        
+        
+	.tarjeta-3 h3 {
+		background-color: #4D5656;
+        color: #ffffff !important;		
+        width: 100%;
+        text-align: left;
+        font-size: 1.50em;
+        padding: 10px;
+        }
+        
+	.tarjeta-3-a {
+		background-color: #D5DBDB;	
+        width: 100%;
+        margin: -10px 0 10px;
+        padding: 10px 0 10px 0;		
+	}		
+        
+	.tarjeta-3-b {
+		background-color: #EAEDED;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}
+	
+	.tarjeta-3-c {
+		background-color: #F4F6F6;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}  
+	        
+	.tarjeta-4 h3 {
+		background-color: #7E5109;
+        color: #ffffff !important;		
+        width: 100%;
+        text-align: left;
+        font-size: 1.50em;
+        padding: 10px;
+        }
+
+	.tarjeta-4-a {
+		background-color: #FAD7A0;	
+        width: 100%;
+        margin: -10px 0 10px;
+        padding: 10px 0 10px 0;		
+	}		
+        
+	.tarjeta-4-b {
+		background-color: #FDEBD0;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}
+	
+	.tarjeta-4-c {
+		background-color: #FEF5E7;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}          
+        
+	.tarjeta-5 h3 {
+		background-color: #78281F;
+        color: #ffffff !important;		
+        width: 100%;
+        text-align: left;
+        font-size: 1.50em;
+        padding: 10px;
+        }
+
+	.tarjeta-5-a {
+		background-color: #F5B7B1;	
+        width: 100%;
+        margin: -10px 0 10px;
+        padding: 10px 0 10px 0;		
+	}		
+        
+	.tarjeta-5-b {
+		background-color: #FADBD8;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}
+	
+	.tarjeta-5-c {
+		background-color: #FDEDEC;	
+        width: 100%;
+        margin: -10px 0 10px 0;
+        padding: 10px 0 10px 0;		
+	}
+	
+	.tarjeta-6 h3 {
+		background-color: #0B5345;
+        color: #ffffff !important;		
+        width: 100%;
+        text-align: left;
+        font-size: 1.50em;
+        padding: 10px;
+        }	 
+        
+	.equipamientos {
+		width: 95% !important;
+	}
+
+	
+/* Cuadro h */	
+                .cuadro-h {
+                height: 255px;
+                background: #e9e9e9;
+                border-radius: 5px;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                margin-bottom: 30px;
+                }
+
+                .cuadro-h img {
+                padding-bottom: 0;
+                border-radius: 5px 0 0 5px;
+                padding-left: 0 !important;
+
+                .cuadro-h div {
+                padding-left: 15px !important;
+                }
+
+                .cuadro-h h3 {
+                font-size: 22px;
+                padding: 20px;
+                }
+                
+            .redes-sociales {
+            font-size: 42px !important;
+            position: absolute;
+            bottom: 0px;
+            }              
+              
+        </style>
+<script type="text/javascript">
+	<![CDATA[		ocultarArbolCapas = false;			var i = 0;			var dataActualidad = "{title: 'Afecciones Imp.',claseIcono:'afecciones',clase:'visible',id: '" + i + "',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Incidencias?id=2&georss_html=s&georss_icono=afecciones&srsname=utm30n_etrs89'}\,{title: 'Cortes de Tráfico',claseIcono:'cortesdetrafico',clase:'oculto',id: '" + (++i) + "',url:'http://www.zaragoza.es/georref/json/hilo/ver_Incidencias?id=1&georss_html=s&georss_icono=cortesdetrafico&srsname=utm30n_etrs89'}\,{title: 'Cortes de Agua',claseIcono:'cortesdeagua',clase:'oculto',id: '" + (++i) + "',url:'http://www.zaragoza.es/georref/json/hilo/ver_Incidencias?id=0&georss_html=s&georss_icono=cortesdeagua&srsname=utm30n_etrs89'}\,{title: 'Tiempos de Recorrido',claseIcono:'panelesInformativos',clase:'visible',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Recorrido?georss_html=s&georss_icono=panelesInformativos&georss_q=s&srsname=utm30n_etrs89'}";var dataMovilidad = "{title: 'Cortes de Tráfico',claseIcono:'cortesdetrafico',clase:'oculto',id: '" + (++i) + "',url:'http://www.zaragoza.es/georref/json/hilo/ver_Incidencias?id=1&georss_html=s&georss_icono=cortesdetrafico&srsname=utm30n_etrs89'}\		,{title: 'Afecciones Imp.',claseIcono:'afecciones',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Incidencias?id=2&georss_html=s&georss_icono=afecciones&srsname=utm30n_etrs89'}\,{title: 'Paradas y tiempos Bus',claseIcono:'bus',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/transporte-urbano/poste.geojson?srsname=utm30n_etrs89'}\,{title: 'Estaciones Bizi',claseIcono:'estacionesBizi2',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/resultado_Buscador?georss_q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:(%22Bizi%22)&georss_rows=1500&georss_html=s&titulo=Estaciones Bizi&refresh=t&srsname=utm30n_etrs89'}\,{title: 'AparcaBicis',claseIcono:'aparcabicis',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/aparcabici_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Bicebergs',claseIcono:'biceberg',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/biceberg_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Carriles Bici',claseIcono:'carrilesBici',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/contenidos/bici/carriles_UTM30N_ETRS89.json'}\,{title: 'Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/aparcamientos_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Accesos Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/accesosParking_Equipamiento?georss_propiedades=s&srsname=utm30n_etrs89'}\,{title: 'Estacionamiento...discapidad',claseIcono:'estmin',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/estacionamientoPersonasDiscapacidad_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Estacionamientos moto',claseIcono:'estacionamiento_motos',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/estacionamientoMoto_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Estaciones de Servicio',claseIcono:'estacionServicio',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/estacionesDeServicio_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Paradas de Taxi',claseIcono:'paradasdeTaxi',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/paradasTaxi_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Parquímetros',claseIcono:'parquimetro_ESRO',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/parquimetros_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Cercanías',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/trafico/paradas_cercanias_UTM30N_ETRS89.json'}\,{title: 'Tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/trafico/estado/transporte/tranvia_UTM30N_ETRS89.json'}\,{title: 'Propuesta Linea 2 Tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/trafico/linea2_tranvia.json'}\		,{title: 'Tiempos de Recorrido',claseIcono:'panelesInformativos',clase:'oculto',id: '" + (++i) + "',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Recorrido?georss_html=s&georss_icono=panelesInformativos&georss_q=s&srsname=utm30n_etrs89'}";  var dataTrafico = ",{title: 'Estado de Tráfico',claseIcono:'estadodetrafico',clase:'oculto',id: '500',url: 'http://www.zaragoza.es/trafico/estado/tramos_UTM30N_ETRS89.json'}"; 					var dataEquipamientos = "{\		title: 'Administración Pública',\		id: '" + (++i) + "',\		children: [\			{title: 'Ayuntamiento',claseIcono:'ayuntamiento',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=129&georss_html=s&georss_icono=ayuntamiento&srsname=utm30n_etrs89'}\,{title: 'Atención Ciudadana',claseIcono:'atencionCiudadana',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=134&georss_html=s&georss_icono=atencionCiudadana&srsname=utm30n_etrs89'}\			,{title: 'Otros Organismos',claseIcono:'administracionPublica',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=720&georss_html=s&georss_icono=administracionPublica&srsname=utm30n_etrs89'}\                	]\		}\		,{\		title: 'Arte',\		id: '" + (++i) + "',\		children: [\			{title: 'Arte Público',claseIcono:'arte',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/verconsulta_Piezas?georss_barrio=-&georss_epoca=-&georss_id=287&srsname=utm30n_etrs89'}\,{title: 'Edificios Hist-Artistico (+1000)',claseIcono:'arte',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/resultado_Buscador?georss_q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:(%22Edificios%20Hist\u00f3rico%20Art\u00edsticos%22)&georss_rows=1500&georss_icono=arte&titulo=Edificios%20Historico-Artisticos&srsname=utm30n_etrs89'}\			,{title: 'Monumentos',claseIcono:'arte',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Monumento?georss_html=s&georss_icono=arte&srsname=utm30n_etrs89'}\                	]\		}\,{\		title: 'Ciencia y Tecnología',\		id: '" + (++i) + "',\		children: [\			{title: 'Puntos Wifi',claseIcono:'wizi',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Wifi?georss_html=s&srsname=utm30n_etrs89'}\			,{title: 'Centros de Innovación',claseIcono:'innovacion',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=480&georss_html=s&georss_icono=innovacion&srsname=utm30n_etrs89'}\	]\		}\,{\		title: 'Cultura y Ocio',\		id: '" + (++i) + "',\		children: [\			{title: 'Archivos',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=34&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\			,{title: 'Bibliotecas y Centros de Documentación',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/resultado_Buscador?georss_q=(subtemas_smultiple:(%22Centros%20Documentaci\u00f3n%22)%20OR%20subtemas_smultiple:Bibliotecas)&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\			,{title: 'Cine',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=50&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\			,{title: 'Galerías de Arte',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=580&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\,{title: 'Librerías',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_4',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=500&georss_html=s&georss_icono=culturaYocio'}\	,{title: 'Ludotecas',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_5',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=51&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\			,{title: 'Museos',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_6',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=53&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\			,{title: 'Teatros',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_7',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=58&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\			,{title: 'Salas de Exposiciones',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_8',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=54&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\			,{title: 'Salas de Música',claseIcono:'culturaYocio',clase:'oculto',id: '" + i + "_9',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=880&georss_html=s&georss_icono=culturaYocio&srsname=utm30n_etrs89'}\		]\		\		}\		,{\		title: 'Deporte',\		id: '" + (++i) + "',\		children: [\			{title: 'Campos de Fútbol',claseIcono:'deporte',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=55&georss_html=s&georss_icono=deporte&srsname=utm30n_etrs89'}\			,{title: 'Centros y Pabellones',claseIcono:'deporte',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_junto=t&georss_html=s&georss_icono=deporte&srsname=utm30n_etrs89'}\			,{title: 'Instalaciones Elementales',claseIcono:'deporte',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=76&georss_inc=200&georss_html=s&georss_icono=deporte&srsname=utm30n_etrs89'}\			,{title: 'Piscinas Municipales',claseIcono:'deporte',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=140&georss_html=s&georss_icono=deporte&srsname=utm30n_etrs89'}\		]\		}\		,{\		title: 'Educación',\		id: '" + (++i) + "',\		children: [\			{title: 'Adultos',claseIcono:'educacion',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=65&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\,{title: 'Antenas del CIPAJ',claseIcono:'educacion',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/resultado_Buscador?georss_q=Antenas%20AND%20-tipocontenido_s:estatico%20AND%20category:Recursos&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\			,{title: 'Infantil',claseIcono:'educacion',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=61&georss_inc=200&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\			,{title: 'Formación Artes Escénicas',claseIcono:'educacion',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=75&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\			,{title: 'Formación Expresión Artística',claseIcono:'educacion',clase:'oculto',id: '" + i + "_4',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=37&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\,{title: 'Formación Profesional',claseIcono:'educacion',clase:'oculto',id: '" + i + "_5',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=680&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\			,{title: 'Formación Musical',claseIcono:'educacion',clase:'oculto',id: '" + i + "_6',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=66&georss_html=s&georss_icono=educacion'}\			,{title: 'Idiomas',claseIcono:'educacion',clase:'oculto',id: '" + i + "_7',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=681&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\,{title: 'PIEE: Espacios Escolares',claseIcono:'educacion',clase:'oculto',id: '" + i + "_8',url: 'http://www.zaragoza.es/georref/json/hilo/resultado_Buscador?georss_q=Title:PIEE%20AND%20-tipocontenido_s:estatico%20AND%20category:Recursos&georss_rows=1500&georss_icono=educacion&srsname=utm30n_etrs89'}\			,{title: 'Primaria',claseIcono:'educacion',clase:'oculto',id: '" + i + "_9',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=62&georss_html=s&georss_inc=200&georss_icono=educacion&srsname=utm30n_etrs89'}\			,{title: 'Secundaria',claseIcono:'educacion',clase:'oculto',id: '" + i + "_10',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=63&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\,{title: 'Técnicas Deportivas',claseIcono:'educacion',clase:'oculto',id: '" + i + "_11',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=682&georss_html=s&georss_icono=educacion&srsname=utm30n_etrs89'}\			,{title: 'Universitaria',claseIcono:'educacion',clase:'oculto',id: '" + i + "_12',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=280&georss_html=s&georss_icono=educacion'}\		]\		}\,{\		title: 'Empleo',\		id: '" + (++i) + "',\		children: [\			{title: 'Centros Ocupacionales',claseIcono:'empleo',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=68&georss_html=s&georss_icono=empleo&srsname=utm30n_etrs89'}\			,{title: 'Centros Sociolaborales',claseIcono:'empleo',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=74&georss_html=s&georss_icono=empleo&srsname=utm30n_etrs89'}\			,{title: 'Escuelas Taller',claseIcono:'empleo',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=67&georss_html=s&georss_icono=empleo&srsname=utm30n_etrs89'}\,{title: 'Oficinas de Empleo INAEM',claseIcono:'empleo',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=741&georss_html=s&georss_icono=empleo&srsname=utm30n_etrs89'}\		]\}\,{\		title: 'Empresa',\		id: '" + (++i) + "',\		children: [\			{title: 'Apoyo y Fomento',claseIcono:'empresas',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=683&georss_html=s&georss_icono=empresas&srsname=utm30n_etrs89'}\			,{title: 'Arquitectura y Diseño',claseIcono:'empresas',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=620&georss_inc=500&georss_html=s&georss_icono=empresas&srsname=utm30n_etrs89'}\			,{title: 'Distribuidoras',claseIcono:'empresas',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=520&georss_html=s&georss_icono=empresas&srsname=utm30n_etrs89'}\			,{title: 'Editoriales',claseIcono:'empresas',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=222&georss_html=s&georss_icono=empresas'}\			,{title: 'Gestión Cultural',claseIcono:'empresas',clase:'oculto',id: '" + i + "_4',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=600&georss_html=s&georss_icono=empresas&srsname=utm30n_etrs89'}\,{title: 'Parques Empresariales',claseIcono:'empresas',clase:'oculto',id: '" + i + "_5',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=900&georss_html=s&georss_icono=empresas&srsname=utm30n_etrs89'}\,{title: 'Prod. y prom. Musical',claseIcono:'empresas',clase:'oculto',id: '" + i + "_6',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=561&georss_html=s&georss_icono=empresas&srsname=utm30n_etrs89'}\			,{title: 'Prod y prom. Artes escenicas',claseIcono:'empresas',clase:'oculto',id: '" + i + "_7',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=560&georss_html=s&georss_icono=empresas&srsname=utm30n_etrs89'}\]\		}\		,{\		title: 'Medio Ambiente',\		id: '" + (++i) + "',\		children: [\			{title: 'Gestión de Residuos',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=153&georss_html=s&georss_icono=medioAmbiente&srsname=utm30n_etrs89'}\,{title: 'Gestión del Agua',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=84&georss_html=s&georss_icono=medioAmbiente&srsname=utm30n_etrs89'}\			,{title: 'Puntos Limpios',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=87&georss_html=s&georss_icono=medioAmbiente'}\			,{title: 'Zonas Verdes',claseIcono:'medioAmbiente',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=820&georss_html=s&georss_icono=medioAmbiente&srsname=utm30n_etrs89'}\		]\		}\		,{\		title: 'Participación Ciudadana',\		id: '" + (++i) + "',\		children: [\	{title: 'Casas de Juventud',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=42&georss_html=s&georss_icono=participacionCiudadana&srsname=utm30n_etrs89'}\,{title: 'Centros Cívicos',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=93&georss_html=s&georss_icono=participacionCiudadana&srsname=utm30n_etrs89'}\			,{title: 'Centros de Convivencia',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=47&georss_html=s&georss_icono=participacionCiudadana&srsname=utm30n_etrs89'}\			,{title: 'Juntas Municipales',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=90&georss_html=s&georss_icono=participacionCiudadana&srsname=utm30n_etrs89'}\			,{title: 'Juntas Vecinales',claseIcono:'participacionCiudadana',clase:'oculto',id: '" + i + "_4',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=91&georss_html=s&georss_icono=participacionCiudadana&srsname=utm30n_etrs89'}\		]\		}\		,{\		title: 'Protección Ciudanana',\		id: '" + (++i) + "',\		children: [\			{title: 'Bomberos y Protección Civil',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=95&georss_html=s&georss_icono=proteccionCiudadana&srsname=utm30n_etrs89'}\			,{title: 'Justicia',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=700&georss_html=s&georss_icono=proteccionCiudadana&srsname=utm30n_etrs89'}\			,{title: 'Policia Local',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=96&georss_html=s&georss_icono=proteccionCiudadana&srsname=utm30n_etrs89'}\			,{title: 'Policia Nacional',claseIcono:'proteccionCiudadana',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=760&georss_html=s&georss_icono=proteccionCiudadana&srsname=utm30n_etrs89'}\		]\		}\		,{\		title: 'Sanidad y Consumo',\		id: '" + (++i) + "',\		children: [\		{title: 'Centros de Salud',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=781&georss_html=s&georss_icono=sanidadYconsumo&srsname=utm30n_etrs89'}\		,{title: 'Farmacias',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/farmacias_Equipamiento?georss_html=s'}\		,{title: 'Hospitales',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=780&georss_html=s&georss_icono=sanidadYconsumo&srsname=utm30n_etrs89'}\		,{title: 'Protección del Consumidor',claseIcono:'sanidadYconsumo',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=100&georss_html=s&georss_icono=sanidadYconsumo&srsname=utm30n_etrs89'}\		]\		}\		,{\		title: 'Servicios Sociales',\		id: '" + (++i) + "',\		children: [\{title: 'Centros de Base',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=921&georss_html=s&georss_icono=serviciosSociales&srsname=utm30n_etrs89'}\,{title: 'Centros de Día',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=923&georss_html=s&georss_icono=serviciosSociales&srsname=utm30n_etrs89'}\,{title: 'Centros Municipales',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=105&georss_html=s&georss_icono=serviciosSociales'}\		,{title: 'Centros de Tiempo Libre',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=49&georss_html=s&georss_icono=serviciosSociales&srsname=utm30n_etrs89'}\,{title: 'Hogares',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_4',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=922&georss_html=s&georss_icono=serviciosSociales'}\,{title: 'Residencias',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_5',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=920&georss_html=s&georss_icono=serviciosSociales'}\,{title: 'Servicios Sociales Especializados',claseIcono:'serviciosSociales',clase:'oculto',id: '" + i + "_6',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=45&georss_html=s&georss_icono=serviciosSociales&srsname=utm30n_etrs89'}\		]\		}\		,{\		title: 'Servicios Urbanos',\		id: '" + (++i) + "',\		children: [\{title: 'Aseos Públicos',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=1060&georss_html=s&georss_icono=serviciosUrbanos&srsname=utm30n_etrs89'}\,{title: 'Cementerios',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=110&georss_html=s&georss_icono=serviciosUrbanos&srsname=utm30n_etrs89'}\		,{title: 'Mercados',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=118&georss_html=s&georss_icono=serviciosUrbanos'}\,{title: 'Oficinas de Correos',claseIcono:'serviciosUrbanos',clase:'oculto',id: '" + i + "_3',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=800&georss_html=s&georss_icono=serviciosUrbanos&srsname=utm30n_etrs89'}\		]\		}\,{\		title: 'Tráfico y Transporte',\		id: '" + (++i) + "',\		children: [\			{title: 'Estaciones y Aeropuerto',claseIcono:'transporte',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=840&georss_html=s&georss_icono=transporte&srsname=utm30n_etrs89'}\,{title: 'Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/aparcamientos_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Estaciones de Servicio',claseIcono:'estacionServicio',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/estacionesDeServicio_Equipamiento?georss_html=s&srsname=utm30n_etrs89'}\			]\		}\,{\		title: 'Turismo y Hostelería',\		id: '" + (++i) + "',\		children: [\			{title: 'Alojamientos',claseIcono:'alojamiento2',clase:'oculto',id: '" + i + "_0',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Alojamiento?georss_html=s&georss_icono=alojamiento2&srsname=utm30n_etrs89'}\			,{title: 'Restaurantes',claseIcono:'hosteleria',clase:'oculto',id: '" + i + "_1',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Restaurante?georss_html=s&srsname=utm30n_etrs89'}\,{title: 'Oficinas de Turismo',claseIcono:'turismo',clase:'oculto',id: '" + i + "_2',url: 'http://www.zaragoza.es/georref/json/hilo/ver_Centro?georss_id=123&georss_html=s&georss_icono=turismo&srsname=utm30n_etrs89'}\		]\}";		]]></script>
+<script type="text/javascript" src="/js/homeMapa.js"></script>          
+ 
+
+    </head>
+    <body>
+        <sede:content>
+			
+            <div class="text-left margin-auto nomargin">
+                    <mapa/>           
+					<p class="text-center padding-t2em"><em>¿Aquí tiene que salir el mapa "Zaragoza al Instante"?</em></p>				
+                <!--/*<h2 class="text-right titulo-seccion">Título</h2>*/-->
+                <!--/*<iframe id="viewer" alt="Callejero"></iframe>*/-->
+            </div>
+
+	<div class="col-md-12" id="servicios">
+                            <div class="redes-sociales pull-right">
+                                <a href="https://www.facebook.com/ZGZopencity/"><span class="fab fa-facebook-square fa-3x"></span></a>
+                                <a href="https://twitter.com/ZGZopencity"><span class="fab fa-twitter-square fa-3x"></span></a>
+                            </div> 					 
+                    <h2>Moverse por <strong>Zaragoza</strong></h2>
+                    <hr class="sm"/>
+
+	<div class="row">					
+	<div class="col-md-4 col-xs-12 cuadro-v">
+		<img src="/cont/vistas/portal/idezar/img/visor-callejero.png" class="img-responsive" alt=""/>
+		<div>         
+                                <h3 class="text-center">Callejero / Guía urbana</h3>
+                                <hr class="sm"/>
+                        <ul class="list-unstyled list-inline text-center">
+						<li><a href="http://www.zaragoza.es/sede/portal/callejero/">Visor</a></li> &bull;
+						<li><a href="callejero">Descripción</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/risp/detalle_Risp?id=22">Conjunto de datos</a></li>						
+						</ul>  
+        </div>                              
+        </div>
+                   
+                    <div class="col-md-4 col-xs-12 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/visor-moverse.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                           <div>          
+                                <h3 class="text-center">Cómo moverse</h3>
+                                <hr class="sm"/>                                
+                        <ul class="list-unstyled list-inline text-center">
+						<li><a href="https://www.zaragoza.es/sede/portal/idezar/mapa/comoMoverse/">Visor</a></li> &bull;
+						<li><a href="moverse">Descripción</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/sede/servicio/catalogo/?fq=temas_smultiple%3A%28%22Transporte%22%29">Conjunto de datos</a></li>						
+						</ul>                                 
+                           </div>
+                    </div>
+                    <div class="col-md-4 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/visor-bizi.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                           <div>          
+                                <h3 class="text-center">Apps para móviles</h3>
+                                <hr class="sm"/>                                
+                        <ul class="list-unstyled list-inline text-center">
+						<li><a href="https://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-91">Apparca</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-22">Estaziona</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-7">Tráfico</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-19">Bizi</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-20">Taxi</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-21">Rutas</a></li> &bull;												
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-89">Mapas</a></li> &bull;												
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-90">Sugerencias</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/idezar/buscar_Aplicacion?q=id:rispapp-1">Farmacias</a></li> &bull;
+						</ul>                                 
+                           </div>
+                    </div>                                                                                                                                             
+</div>                  
+</div>
+
+<div class="col-md-12">            
+            <div class="fnd-gris-claro">
+                 <div class="fnd-blanco radius" id="herramientas">					 
+                    <div class="clearfix">											 
+                    <h2 class="">Conocer <strong>Zaragoza</strong>
+                    </h2>
+                <hr class="sm"/>
+                <h3>Indicadores</h3>
+				<div class="row">
+				<div class="col-md-6 hidden-xs hidden-sm">
+                <div class="cuadro-h">
+                <img src="/cont/vistas/portal/idezar/img/visor-mapa-ruido-b.png" class="img-responsive
+                col-sm-6"/>
+                <div class="col-sm-6">
+                <h3>Mapa del ruido de viales urbanos</h3>
+                        <hr class="sm"/>
+                        <p>Herramienta que permite visualizar los niveles sonoros obtenidos como resultado del estudio realizado sobre el mapa del ruido de viales urbanos de Zaragoza.</p>                                
+						<ul class="list-unstyled">
+						<li><span class="far fa-hand-point-right"></span> <a href="/sede/portal/idezar/mapa/ruido/">Visor</a></li>
+						<li><span class="far fa-hand-point-right"></span> <a href="mapa-ruido">Descripción</a></li>
+						</ul> 
+                </div>
+                </div>
+				</div>
+				
+				<div class="col-md-6 hidden-xs hidden-sm">
+                <div class="cuadro-h">
+                <img src="/cont/vistas/portal/idezar/img/visor-demografico-b.png" class="img-responsive
+                col-sm-6"/>
+                <div class="col-sm-6">
+                <h3>Indicadores demográficos</h3>
+                        <hr class="sm"/>
+                        <p>Permite visualizar y conocer la situación sociodemográfica de la ciudad de forma interactiva e intuitiva.</p>                                
+                        <ul class="list-unstyled">
+						<li><span class="far fa-hand-point-right"></span> <a href="http://idezar.zaragoza.es/visorDemografico/">Visor</a></li>
+						<li><span class="far fa-hand-point-right"></span> <a href="demografia">Descripción</a></li>
+						<li><span class="far fa-hand-point-right"></span> <a href="https://www.zaragoza.es/sede/portal/datos-abiertos/servicio/catalogo/1460">Conjunto de datos</a></li>						
+						</ul> 
+                </div>
+                </div>
+				</div>				
+				
+				</div>
+
+
+
+
+
+				<ul class="row list-unstyled hidden-md hidden-lg">
+						
+					<li class="col-sm-3 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/visor-mapa-ruido.png"
+                                     class="img-responsive" alt=""/>
+						<div>
+                                <h3 class="text-center">Mapa del ruido de viales urbanos</h3>
+                        <hr class="sm"/>                                
+						<ul class="list-unstyled">
+						<li><span class="far fa-hand-point-right"></span> <a href="http://idezar.zaragoza.es/visorMapaRuido/">Visor</a></li>
+						<li><span class="far fa-hand-point-right"></span> <a href="mapa-ruido">Descripción</a></li>
+						</ul>
+						</div>                         
+                    </li>
+					<li class="col-sm-3 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/visor-demografico.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                            <div>
+                                <h3 class="text-center">Indicadores demográficos</h3>
+                        <hr class="sm"/>                                
+                        <ul class="list-unstyled">
+						<li><span class="far fa-hand-point-right"></span> <a href="http://idezar.zaragoza.es/visorDemografico/">Visor</a></li>
+						<li><span class="far fa-hand-point-right"></span> <a href="demografia">Descripción</a></li>
+						<li><span class="far fa-hand-point-right"></span> <a href="https://www.zaragoza.es/sede/portal/datos-abiertos/servicio/catalogo/1460">Conjunto de datos</a></li>						
+						</ul>      
+                            </div>                              
+                    </li>						
+				</ul>
+                <h3>Mapas</h3>
+                
+				<ul class="row list-unstyled">
+					
+                <li class="col-sm-3 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/visor-historico.png"
+                                     class="img-responsive" alt=""/>
+                            <div>
+                                <h3 class="text-center">Zaragoza histórica</h3>
+                        <hr class="sm"/>                                
+                        <ul class="list-unstyled list-inline text-center">
+						<li><a href="/sede/portal/idezar/mapa/historico/">Visor</a></li>  &bull;
+						<li><a href="historia">Descripción</a></li>
+						</ul>    
+                            </div>                           
+                </li>					
+					
+                <li class="col-sm-3 cuadro-v">
+					<img src="/cont/vistas/portal/idezar/img/arte-publico.png"
+                                     class="img-responsive" alt=""/>
+                            <div>
+                                <h3 class="text-center">Arte público</h3>
+                        <hr class="sm"/>                                
+                        <ul class="list-unstyled list-inline text-center">
+						<li><a href="http://www.zaragoza.es/sede/portal/arte-publico/">Presentación</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/sede/servicio/arte-publico">Catálogo</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/sede/portal/arte-publico/itinerarios/">Itinerarios</a></li>
+						</ul>    
+                            </div>                       
+
+                </li> 					
+                    <li class="col-sm-3 cuadro-v">
+					<img src="/cont/vistas/portal/idezar/img/paseo-zgz-mujer.png"
+                                     class="img-responsive" alt="imagen por determinar"/>
+                            <div>
+                                <h3 class="text-center">La Zaragoza de las mujeres</h3>
+                        <hr class="sm"/>                                
+                        <ul class="list-unstyled list-inline text-center">
+						<li><a href="https://www.zaragoza.es/sede/servicio/publicacion-municipal/11638">Publicación</a></li>
+						
+						</ul>    
+                            </div>                        
+                    </li>									
+                    <li class="col-sm-3 cuadro-v">
+					<a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/lista_Aportacion"><img src="/cont/vistas/portal/idezar/img/mapas-colaborativos-b.png"
+                                     class="img-responsive"/></a>
+                            <div>
+                                <h3 class="text-center">Mapas colaborativos</h3>
+                        <hr class="sm"/>                                
+                        <ul class="list-unstyled list-inline text-center">
+						<li><a href="http://www.zaragoza.es/ciudadania/gobierno-abierto/participar/lista_Aportacion">Mapas</a></li> &bull;
+						<li><a href="http://www.zaragoza.es/ciudad/sectores/jovenes/cipaj/mapavisitantes/mapavisitantes.htm">Jóvenes y visitantes</a></li> &bull;
+						<li>Rutas con corazón</li>
+						</ul>    
+                            </div>                    
+                    </li>				
+				
+				</ul>         
+				</div>
+   
+			</div>
+                
+                
+</div>
+</div>     
+              
+<div class="col-md-12" id="mapa-geoportal">
+	<h2 class="">Mapa del <strong>geoportal</strong></h2>
+		<hr class="sm"/>
+
+	<div class="row">          
+	<ul class="list-unstyled">
+	<li class="col-md-6 tarjeta tarjeta-1">
+		<h3>Evolución Histórica, Organización administrativa y Planeamiento Urbano</h3>
+		<div class="tarjeta-1-a">
+		<ul>
+		<li><a href="https://www.zaragoza.es/sede/portal/idezar/mapa/historico/">Visor de cartografía histórica</a> &bull; <small>A desarrollar</small></li>
+		</ul>
+		</div>
+		<div class="tarjeta-1-b">
+		<ul>
+		<li><a href="http://www.zaragoza.es/ciudad/viapublica/movilidad/estacionamientos/">Zaragoza en España</a></li><li>
+			Zaragoza en Aragón</li><li>
+			Zaragoza en su Comarca</li><li>
+			Zaragoza Distritos y Juntas Vecinales</li><li>
+			Zaragoza Distritos Censales</li><li>
+			Zaragoza Secciones Censales</li><li>
+			Zaragoza Manzanero</li><li>
+			Zaragoza Catastro/Portalero</li>
+		</ul>
+		</div>
+		<div class="tarjeta-1-c">
+		<ul>
+			<li>Zaragoza Zonas Escolares</li><li>
+			Zaragoza Sectores Sanitarios y Zonas Básicas de Salud</li><li>
+			Zaragoza Zonas Básicas de Salud</li><li>
+			Zaragoza Consorcio de Trasnsportes del Área de Zaragoza
+			</li>
+		</ul>
+		</div>
+
+		<ul>
+			<li>Normas Ubanísticas</li><li>
+			Estructura urbanística (distribución de hojas)</li><li>
+			Clasificación del suelo (distribución de hojas)</li><li>
+			Calificación y regulación del suelo (distribución de hojas)</li><li>
+			Casco Histórico Ordenación</li><li>
+			Casco Histórico Calificación</li><li>
+			Planes Parciales</li>
+		</ul>
+	</li>
+						
+	<li class="col-md-6 tarjeta tarjeta-2">
+	<h3>Población, poblamiento y actividades económicas</h3>
+		<div class="tarjeta-2-b">						
+		<ul>
+		<li>Distribución de la población</li><li>
+		Evolución de la población</li><li>
+		Estructura y composición de la población</li><li>
+		Composición de los hogares</li><li>
+		Origen</li><li>
+		Movimientos de la población</li>
+		</ul>
+		</div>
+		<div class="tarjeta-2-c">	
+		<ul><li>
+		Nivel de formación</li><li>
+		Niveles de renta</li><li>
+		Empleo</li><li>
+		Actividades económicas (se pueden incluir las licencias)</li>
+		</ul>
+		</div>
+		<ul><li>
+		Año de construcción</li><li>
+		Sup</li><li>
+		Tipología</li><li>
+		Características de la vivienda </li><li>
+		Solares y viendas vacías</li>
+		</ul>  
+	</li>						
+	</ul>
+</div>
+
+<div class="row">
+	<ul class="list-unstyled">
+	<li class="col-md-6 tarjeta tarjeta-3">
+		<h3>Equipamientos, infraestructuras, servicios y organización de cuidados</h3>
+		<ul>
+			<li>Equipamientos y servicios &bull; <small>A desarrollar</small></li><li>
+			Organización de los cuidados &bull; <small>A desarrollar</small></li><li>
+			Transporte y movilidad	&bull; <small>A desarrollar</small></li><li>
+			Accesibilidad a los equipamientos &bull; <small>A desarrollar</small></li>
+		</ul>
+    </li>
+                    
+	<li class="col-md-6 tarjeta tarjeta-4">
+	<h3>Mapas colaborativos</h3>
+		<div class="tarjeta-4-c">		
+		<ul>
+			<li>Quejas y sugerencias &bull; <small class="color-gris-claro">Pendiente de organizar</small></li>
+		</ul>
+		</div>
+		<div>		
+		<ul>	
+			<li>
+			Mapas Emocionales  &bull; <small class="color-gris-claro">Pendiente de organizar</small></li>					
+		</ul>
+		</div>
+		<hr class="sm"/>
+		<p class="text-center"><em>Tenemos los mapas colaborativos en el apartado anterior</em></p>          
+	</li>
+	</ul>
+</div>
+
+<div class="row">
+	<ul class="list-unstyled">
+	<li class="col-md-6 tarjeta tarjeta-5">
+	<h3>Patrimonio, bienes culturales y actividad turística</h3>
+		<div class="tarjeta-5-b">	
+		<ul>
+		<li>Bienes de Interés Cultural</li><li>
+		Monumentos Históricos</li></ul>
+		</div>
+		<div class="tarjeta-5-c">		
+		<ul>		
+		<li>Fiestas y celebraciones</li><li>
+		Semana Santa</li></ul>
+		</div>
+		<ul>		
+		<li>Itinerarios Culturales</li><li>
+		Itinerarios lúdicos</li><li>
+		Itinerarios naturales y paisajísticos</li><li>
+		Monumentos de interés turístico</li><li>
+		Alojamiento, hostelería y servicios turísticos
+		</li></ul>
+	</li>
+	
+	<li class="col-md-6 tarjeta tarjeta-6">
+	<h3>Medioambiente y sostenibilidad</h3>
+		<ul>
+		<li>Infraestructura verde</li><li>
+		Ruido</li><li>
+		Calidad del aire</li><li>
+		Agua</li><li>
+		Puntos limpios</li><li>
+		Clima</li>
+		</ul>	
+	</li>
+	</ul>	
+</div>
+</div>
+
+
+<div class="col-md-12 padding-t1em" id="herramientas">
+<div class="row">            
+<div class="col-md-9">					 				 
+                    <h2 class="">Herramientas y <strong>visores</strong>
+                    </h2>
+				<hr class="sm"/>
+				<ul class="row list-unstyled">						
+					<li class="col-sm-4 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/imag_datosAbiertos-idezar.jpg"
+                                     class="img-responsive" alt="Datos Abiertos"/>
+							<div>
+								<h3 class="text-center">Datos abiertos</h3>
+								<hr class="sm"/>         
+                                <p class="text-center">
+								<a href="/sede/portal/idezar/mapa/datosAbiertos/">Visor</a> &bull; 
+								<a href="/sede/portal/datos-abiertos/servicio/catalogo/">Catálogo</a></p>
+								  
+                            </div>                              
+                    </li>
+                    
+					<li class="col-sm-4 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/metadatos.jpg"
+                                     class="img-responsive" alt="Visores, metadatos y descargas"/>
+							<div>
+								         
+                                <p class="text-center">
+								<a href="visualizacion">Visores</a> &bull; 
+								<a href="metadatos">Metadatos</a> &bull;
+								<a href="descarga">Descargas</a></p>  
+                            </div>                              
+                    </li>
+                    
+					<li class="col-sm-4 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/visualizacion.jpg"
+                                     class="img-responsive" alt=""/>
+							<div>         
+                                <p class="text-center">
+								<a href="visualizacion">Conoce <strong>IDEZar</strong></a> &bull; 
+								<a href="metadatos">¿Qué es una <strong>IDE</strong>?</a></p>  
+                            </div>                              
+                    </li>                                          
+                    
+                </ul>				
+                </div>
+                				
+<div class="col-md-3">					 				 
+                <h2 class="">Colabora</h2>
+				<hr class="sm"/>
+				<ul class="row list-unstyled">						
+					<li class="col-md-12 cuadro-v">
+                                <img src="/cont/vistas/portal/idezar/img/catedra-territorio.png"
+                                     class="img-responsive" alt=""/>
+							<div>         
+                                <p class="text-center">
+								<a href="/sede/portal/participacion/catedra/territorio/">Cátedra de Territorio, Sociedad y Visualización Geográfica</a></p>  
+                            </div>					
+					</li>
+				</ul>				
+</div>
+				                
+</div>                
+</div>               
+
+
+						
+        </sede:content>
+        <script type="text/javascript">
+		/*<![CDATA[*/
+            
+        /*]]>*/
+        </script>
+        <script type="text/javascript">
+		/*<![CDATA[*/
+            var viewer_url = 'https://idezar.zaragoza.es/callejero2019/';
+            $(document).ready(function() {
+                resizeViewer();
+                var loc = window.location.toString();
+                var params = loc.split('?')[1];
+                if (params != undefined) {
+                    viewer_url += '?' + params;
+                }
+                $('iframe#viewer').attr('src', viewer_url);
+                function resizeViewer() {
+                var header = parseInt($('header').css("height"));
+                var footer = parseInt($('footer').css("height"));
+                $('#viewer').css("height", "100vh").css("height", "-=" + header).css("height", "-=" + footer);
+                $('#wrapper').css("height", $('#viewer').css("height"));
+            }
+            });
+        /*]]>*/
+        </script> 
+    </body>
+
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Morosidad"
+                   keywords="sede,web,Morosidad,ayuntamiento,zaragoza, Morosidad"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.1/css/bootstrap-slider.min.css"/>
+        <style type="text/css">
+            .buscar{
+            text-align: right;
+            }
+            .codEntidad{
+            padding: 40px !important;
+            }
+            th {
+            text-align:center;
+            }
+            .table-responsive caption {
+            font-weight: bold;
+            text-align:center;
+            color: #000000;
+            }
+            .card{
+                border-radius:20px;
+            }
+            .card h3{
+             padding-top:20px
+            }
+
+            @-moz-document url-prefix(){
+            .ribbon-wrapper {
+            top: 0px !important;
+            }
+            }
+            .list-unstyled{
+            clear: both;
+            }
+            .success{
+            color:#05760B !important;
+            }
+            .info{
+            color:#006b87 !important
+            }
+            .card-description {
+            border-left: 3px solid #D01715;
+            }
+            .panel-collapse > .panel-default > .panel-heading {
+            font-weight: bold;
+            color: #FFF;
+            background: #D01715;
+            }
+            .panel-heading a:after {
+            color: #FFF;
+            }
+            .panel-collapse {
+            border-color: #a21210;
+            }
+            hr {
+            border-color: #DADDDD;
+            }
+            .color-1 {
+            color: #05760B;
+            }
+            .color-2 {
+            color: #006BA8;
+            }
+            #rangoImporte .slider-selection {
+            background: #BABABA;
+            }
+            .second-bar {
+            background: #E6E6E6;
+            border-radius: .5em;
+            padding: .5em;
+            border: 1px solid #CCC;
+            margin-bottom: 1em;
+            }
+            ul.submenu li {
+            border: 1px solid #CCC;
+            background: #FFF;
+            padding: .5em;
+            border-radius: .5em;
+            }
+            ul.submenu {
+            margin: 0;
+            }
+            ul#menu {
+            /*border-bottom: 2px solid #E81B16;*/
+            border: 1px solid #CCC;
+            font-weight: bold;
+            margin-bottom: 1em;
+            border-radius: 0 0 .5em .5em;
+            }
+            ul#menu .elemento {
+            display: block;
+            padding: 10px 15px;
+            margin: 0;
+            font-size: 1em;
+            font-weight: bold;
+            line-height: 1.42857143;
+            /* h2 line-height == a line-height*/
+            }
+
+            ul#menu h2 {
+            background: #E81B16;
+            color: white;
+            }
+            body {
+            padding-top: 57px;
+            }
+            .resultado li:nth-child(2n+2) {
+            float: right !important;
+            }
+            .resultado li:nth-child(2n+1) {
+            float: left !important;
+            clear: both;
+            }
+            .ribbon-wrapper {
+            width: 85px;
+            height: 88px;
+            overflow: hidden;
+            position: absolute;
+            top: 0px !important;
+            right: 13px;
+            }
+            .title{
+                color:#D01714;
+            }
+        </style>
+    </head>
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error" />
+            <div th:if="${resultado.statusCode.value()} == 200" th:object="${resultado.body}"
+                 vocab="http://schema.org/">
+                <form id="BuscadorAvanzado" method="get">
+                    <div id="buscadorContratos" class="panel-collapse">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="buscadorContratos-title">
+                                <h3 class="panel-title">
+                                        Búsqueda Avanzada
+                                </h3>
+                            </div>
+                            <div class="clearfix padding-a1em">
+                                <div class="form-group col-md-4">
+                                    <label for="entity" class="control-label col-md-3">Entidad:</label>
+                                    <div class="col-md-9">
+                                        <select id="entity" name="codEntidad" class="form-control">
+                                            <option value="">- Selecciona Entidad -</option>
+                                            <option value="02-50-297-AP-006">Ecociudad Zaragoza SAU</option>
+                                            <option value="02-50-297-AP-002"> Merc. Ctral. Abastecimiento de Zaragoza, S.A. (MERCAZARAGOZA)</option>
+                                            <option value="02-50-297-AO-005">Inst. M. Empleo y Fomento Empresarial</option>
+                                            <option value="02-50-297-AO-001">Inst. Municipal del Agua</option>
+                                            <option value="02-50-297-AA-000">Ayuntamiento de Zaragoza</option>
+                                            <option value="02-50-297-AO-002">P. M. Artes Escénicas y de la Imagen</option>
+                                            <option value="02-50-297-AO-004">P. M. Educación y Bibliotecas</option>
+                                            <option value="02-50-297-AP-001">S. M. Zaragoza Cultural, S.A.</option>
+                                            <option value="02-50-297-AP-003">Zaragoza Deporte Municipal, S.A.</option>
+                                            <option value="02-50-297-AO-003">P. M. Turismo</option>
+                                            <option value="02-50-297-AP-004">S. M. Zaragoza Vivienda S. L.</option>
+                                            <option value="02-50-297-AP-007">ZGZ Arroba Desarrollo Expo, S.A.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="year" class="control-label col-md-3">Año:</label>
+                                    <div class="col-md-9">
+                                        <select id="year" name="ejercicio" class="form-control">
+                                            <option value="" selected="selected">- Selecciona año -</option>
+                                            <option th:value="${#dates.format(#dates.createNow(), 'yyyy').toString()}"
+                                                    th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></option>
+                                            <option th:value="${#dates.format(#dates.createNow(), 'yyyy')}-1"
+                                                    th:text="${#dates.format(#dates.createNow(), 'yyyy')}-1"></option>
+                                            <option th:value="${#dates.format(#dates.createNow(), 'yyyy')}-2"
+                                                    th:text="${#dates.format(#dates.createNow(), 'yyyy')}-2"></option>
+                                            <option th:value="${#dates.format(#dates.createNow(), 'yyyy')}-3"
+                                                    th:text="${#dates.format(#dates.createNow(), 'yyyy')}-3"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="trimestre" class="control-label col-md-3">Trimestre:</label>
+                                    <div class="col-md-9">
+                                        <select id="trimestre" name="trimestre" class="form-control">
+                                            <option value="" selected="selected">- Selecciona Trimestre -</option>
+                                            <option th:value="1" th:text="'1ºTrimestre'"></option>
+                                            <option th:value="2" th:text="'2ºTrimestre'"></option>
+                                            <option th:value="3" th:text="'3ºTrimestre'"></option>
+                                            <option th:value="4" th:text="'4ºTrimestre'"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12 buscar">
+                                    <input type="submit" id="enviar" value="Consultar"
+                                           class="btn btn-primary"></input>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class=" col-md-12" th:if="${#lists.isEmpty(resultado.body.result)}">
+                    <div class="col-md-12 clearfix">
+                        <div class="solr-search-criteria">
+                            <strong>Criterios aplicados:</strong>
+                            <ul th:if="${#httpServletRequest.getQueryString() != null}" class="list-inline margin-a1em">
+                                <li th:if="${#httpServletRequest.getParameter('ejercicio')!='' and #httpServletRequest.getParameter('ejercicio')!=null}" th:text="'Año: '+${#httpServletRequest.getParameter('ejercicio')}" class="label label-success">En licitación</li>
+                                <th:block if="${#httpServletRequest.getParameter('trimestre')}" th:switch="${#httpServletRequest.getParameter('trimestre')}">
+                                    <li th:case="1" th:text="'Trimestre: 1'" class="label label-success">En licitación</li>
+                                    <li th:case="2" th:text="'Trimestre: 2'" class="label label-success">En licitación</li>
+                                    <li th:case="3" th:text="'Trimestre: 3'" class="label label-success">En licitación</li>
+                                    <li th:case="4" th:text="'Trimestre: 4'" class="label label-success">En licitación</li>
+                                </th:block>
+                                <li th:if="${#httpServletRequest.getParameter('codEntidad')!='' and #httpServletRequest.getParameter('codEntidad')!=null }" th:text=" 'Codigo de Entidad: '+${#httpServletRequest.getParameter('codEntidad')}" class="label label-success">En licitación</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info col-md-12">
+                    No existen Periodos Medios de Pago
+                    </div>
+                </div>
+                <div class="second-bar col-md-12" th:if="${not #lists.isEmpty(resultado.body.result)}">
+                    <div class="col-md-5 clearfix">
+                        <div class="solr-search-criteria">
+                            <strong>Criterios aplicados:</strong>
+                            <ul th:if="${#httpServletRequest.getQueryString() != null}" class="list-inline margin-a1em">
+                                <li th:if="${#httpServletRequest.getParameter('ejercicio')!='' and #httpServletRequest.getParameter('ejercicio')!=null}" th:text="'Año: '+${#httpServletRequest.getParameter('ejercicio')}" class="label label-success">En licitación</li>
+                                <th:block if="${#httpServletRequest.getParameter('trimestre')}" th:switch="${#httpServletRequest.getParameter('trimestre')}">
+                                    <li th:case="1" th:text="'Trimestre: 1'" class="label label-success">En licitación</li>
+                                    <li th:case="2" th:text="'Trimestre: 2'" class="label label-success">En licitación</li>
+                                    <li th:case="3" th:text="'Trimestre: 3'" class="label label-success">En licitación</li>
+                                    <li th:case="4" th:text="'Trimestre: 4'" class="label label-success">En licitación</li>
+                                </th:block>
+                                <li th:if="${#httpServletRequest.getParameter('codEntidad')!='' and #httpServletRequest.getParameter('codEntidad')!=null }" th:text=" 'Codigo de Entidad: '+${#httpServletRequest.getParameter('codEntidad')}" class="label label-success">En licitación</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-7 clearfix">
+                        <p class="nomargin destacado text-right">
+                            Descargar:
+                            <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
+                        </p>
+                        <ul class="list-inline pull-right">
+                            <li class="nopadding">
+                                <a th:href="'/sede/servicio/morosidad.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                    JSON
+                                </a>                                |
+                            </li>
+                            <li class="nopadding">
+                                <a th:href="'/sede/servicio/morosidad.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                    XML
+                                </a>
+                                |
+                            </li>
+                            <li class="nopadding">
+                                <a th:href="'/sede/servicio/morosidad.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                    CSV
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card col-md-12 clearfix"  th:each="items:${resultado.body.result}" >
+                    <th:block th:if="${items.trimestre!=null}" th:switch="${items.trimestre}">
+                        <th:block th:case="1" th:include="servicio/morosidad/detalle-listado"/>
+                        <th:block th:case="2" th:include="servicio/morosidad/detalle-listado"/>
+                        <th:block th:case="3" th:include="servicio/morosidad/detalle-listado"/>
+                        <th:block th:case="4" th:include="servicio/morosidad/detalle-listado"/>
+                    </th:block>
+                   <!-- <p th:text="${items}"></p>-->
+                    </div>
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/sede/js/typeahead.bundle.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/less/bootstrap-slider-master/dist/bootstrap-slider.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+        //Cuando se inserta en Título también busca en Objeto
+        $('#title').change(function () {
+           // console.log("entra");
+            //console.log($('#title').val());
+            //$('#objeto').val($('#title').val());
+        });
+
+        //Se activa el input Servicio cuando se selecciona la Entidad Ayto Zgz
+        $("select#entity").change(function () {
+            if ($('#entity').val() == 1) {
+                $('#servicioDiv').toggle();    
+                $('#servicio').removeAttr('disabled');
+            } else {
+                $('#servicio').attr('disabled','disabled');
+                if($('#servicioDiv').css('display')=='block')$('#servicioDiv').toggle(); 
+            }
+        });
+
+        //Rango Importe (con/sin IVA)
+        $("#rangoImporte").slider({});
+        $('div#rangoImporte').addClass('slider-disabled');
+        $('.rangoImporte').attr('data-slider-enabled','false');
+        $('input:radio').change(function () {
+            $('#rangoImporte').removeClass('slider-disabled');
+            console.log($(this));
+            if ($(this).val() == 'false') { //con IVA
+
+                $('#rangoImporte').attr('data-slider-enabled','true');
+                  $('#importeFrom').attr('name','importeConIVAFrom');
+                $('#importeTill').attr('name','importeConIVATill');
+            } else if ($(this).val() == 'true') { //sin IVA
+                $('#importeFrom').attr('name','importeSinIVAFrom');
+                $('#importeTill').attr('name','importeSinIVATill');
+            }
+        });
+        $('#entityEnlace').change(function (e) {
+        e.preventDefault();
+            var listValue = $(this).val();
+           $(location).attr('href','/sede/servicio/periodopagoproveedores/?codEntidad='+listValue);
+
+        });
+
+        //Cada vez que cambia el importe se actualizan los input hidden 
+        $('#rangoImporte').change(function () {
+            var listValue = $('.rangoImporte').val().split(',');
+           
+            $('#importeFrom').val(listValue[0]);
+            $('#importeTill').val(listValue[1]);
+        });
+        
+
+        //Buscador Servicio
+        var servicioDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/perfil-contratante/servicio-gestor/?rows=10&q=title==%QUERY*&fl=id,title',
+                
+                filter: function(response) {
+                //console.log(response);
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+       
+        $('#servicio').typeahead(null, {
+            name: 'servicios',
+            displayKey: function(results) {
+                return results.title;
+            },
+            source: servicioDataset
+        });
+        $('#servicio').bind('typeahead:select', function(ev, suggestion) {
+            //console.log('Selection: ' + JSON.stringify(suggestion));
+            var item = suggestion;
+            $('#servicioGestor').val(item.id);
+            //table.draw();
+        });
+        //Buscador Cpv
+        var cpvDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/perfil-contratante/cpv/?rows=10&q=titulo==%QUERY*&fl=id,titulo',
+
+                filter: function(response) {
+                //console.log(response);
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        //Buscador CPV
+       /* var cpvDataset = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('cpv'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: '/sede/servicio/perfil-contratante/cpv.json'
+        });*/
+        //console.log(cpvDataset);
+
+        $('#cpvSelect').typeahead(null, {
+            name: 'cpv',
+            limit: 15,
+            displayKey: 'titulo',
+            source: cpvDataset
+        });
+        $('#cpvSelect').bind('typeahead:select', function(ev, suggestion) {
+            //console.log('Selection: ' + JSON.stringify(suggestion));
+            var item = suggestion;
+            $('#cpv').val(item.id);
+            //table.draw();
+        });
+        /*]]>*/
+        </script>
+    </body>
+</html>

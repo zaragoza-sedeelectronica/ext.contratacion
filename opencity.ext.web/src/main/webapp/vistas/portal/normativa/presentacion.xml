@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Normativa Municipal"
+                description="Ordenanzas y Reglamentos Municipales"
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, legislación local, derecho fiscal, relación administración-administrado">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Presentación
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <main id="main">
+                        <div id="rscont">
+                            <ul>
+                                <li>El art. 4.1.a) de la Ley 7/85, de 2 de Abril, Reguladora de las Bases de Régimen
+                                    Local (LRBRL), atribuye a los Ayuntamientos potestad reglamentaria, es decir,
+                                    capacidad para desarrollar, dentro de la esfera de sus competencias, lo dispuesto en
+                                    las leyes estatales o autonómicas. Como consecuencia de esta potestad, los
+                                    Ayuntamientos pueden dictar disposiciones de carácter general y de rango inferior a
+                                    ley, sin que, en ningún caso, estas disposiciones puedan contener preceptos opuestos
+                                    a las leyes.     <div class="sep"></div>
+                                </li>
+                                <li>Sin perjuicio de los Bandos de la Alcaldía-Presidencia, (objeto de una regulación
+                                    específica en el artículo 128 del Reglamento Orgánico del Ayuntamiento de Zaragoza),
+                                    la potestad reglamentaria de los Ayuntamientos se materializa a través de las
+                                    Ordenanzas y Reglamentos aprobados por el Pleno Municipal. Se habla de Ordenanzas
+                                    para referirse a las normas municipales con efectos sobre los ciudadanos y de
+                                    Reglamentos para las normas internas, de autoorganización. Sin embargo, se trata de
+                                    dos términos que expresan una misma realidad jurídica: normas de naturaleza
+                                    reglamentaria elaboradas por el Pleno de un Ayuntamiento.     <div
+                                            class="sep"></div>
+                                </li>
+                                <li>La aprobación de las Ordenanzas y Reglamentos municipales, en general, se ajusta al
+                                    siguiente procedimiento (art. 49 LRBRL):     <div class="sep"></div>
+                                    <ul>
+                                        <li>Aprobación inicial por el Pleno, por mayoría simple</li>
+                                        <li>Información pública y audiencia a los interesados por el plazo mínimo de 30
+                                            días para la presentación de reclamaciones y sugerencias (el anuncio se
+                                            expone al público en el Tablón de Edictos del Ayuntamiento y se publica en
+                                            el Boletín Oficial de la Provincia).
+                                        </li>
+                                        <li>Resolución de todas las reclamaciones y sugerencias presentadas dentro del
+                                            plazo y aprobación definitiva por el Pleno. En el acuerdo inicial se puede
+                                            establecer que, si no se presentan reclamaciones, la Ordenanza o Reglamento
+                                            se considerará aprobada definitivamente de forma automática.
+                                        </li>
+                                        <li>Publicación en el Boletín Oficial de la Provincia         <div
+                                                class="sep"></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Este procedimiento tiene algunas modificaciones para algunos tipos de Ordenanzas y
+                                    Reglamentos municipales concretos (por ejemplo, las Ordenanzas fiscales -véase el
+                                    artículo 17 de la Ley de Haciendas Locales)     <div class="sep"></div>
+                                </li>
+                            </ul>
+                            <p>La entrada en vigor de las Ordenanzas y Reglamentos municipales se produce, una vez
+                                publicado el texto íntegro, cuando han transcurrido 15 días contados desde la recepción
+                                por la Administración del Estado y la de las Comunidades Autónomas de la comunicación
+                                del acuerdo municipal que debe remitirles el Ayuntamiento. (arts.70.2 y 65.2 LRBRL)
+                            </p>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

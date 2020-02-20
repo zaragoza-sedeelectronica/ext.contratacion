@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h3 class="modal-title">Asociar servicio a la actividad</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>{{registro.id}} | {{registro.title}}</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error': horarioForm.startDate.$invalid}">
+                        <label for="" class="col-sm-4 control-label">Fecha Inicio de destacado:</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input name="fechaInicio" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="actoPortal.featuredStartDate" is-open="datepickers.featuredStartDate" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'featuredStartDate')">
+                                        <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error': subEventForm.endDate.$invalid && subEventForm.endDate.$dirty}">
+                        <label for="" class="col-sm-4 control-label">Fecha Final de destacado:</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input name="fechaFinal" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="actoPortal.featuredEndDate" is-open="datepickers.featuredEndDate" ng-required="true" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" datepicker-options="{minDate: featuredStartDate}" ng-change="dateSelected(featuredEndDate)"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'featuredEndDate')">
+                                        <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="numOrden">Nº de orden destacado:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="number" id="numOrden" name="numOrden" ng-model="actoPortal.featuredOrder" style="width:4em"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea ck-editor-new id="descripcion" name="descripcion" ng-model="actoPortal.description">{{ featuredDescription }}</textarea>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="confirmarModal()">Aceptar</button>
+    <button type="button" class="btn btn-warning" ng-click="cancelarModal()">Cancelar</button>
+</div>

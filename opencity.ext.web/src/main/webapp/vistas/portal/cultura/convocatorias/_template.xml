@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="cultura">
+
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <h1><a href="/sede/servicio/cultura/convocatorias">Convocatorias</a></h1>
+                    <sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/sede/servicio/cultura/', 'text':'Cultura'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera(query='category:(&quot;Actividades&quot;)', titlePortal='Agenda')" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <!--/* <div class="overlay" style="display: none;"></div> */-->
+        <!--/* Menu lateral de portal */-->
+        <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li><a href="/sede/portal/artepublico/">Arte Público</a></li>
+				<li><a href="/sede/portal/cultura/convocatorias/ayudas">Convocatorias</a>
+				    <ul class="list-group">
+				        <li><a href="/sede/portal/cultura/convocatorias/ayudas">Ayudas y Subvenciones</a></li>
+				        <li><a href="/sede/portal/cultura/convocatorias/concursos">Premios y Concursos</a></li>
+				    </ul>
+				</li>
+				<li><a href="/sede/portal/cultura/buscar_Centro?&temas_smultiple=Cultura%20y%20Ocio">Equipamientos</a></li>
+				<li><a href="/sede/portal/cultura/agenda/">Guía de Ocio</a></li>
+				<li><a href="/sede/portal/cultura/observatorio/">Observatorio de la Cultura</a></li>
+				<li><a href="/sede/portal/cultura/patrimonio/enlace/cultura/observatorio/directorios/patrimonio">Patrimonio</a></li>
+				<li><a href="/sede/portal/catalogopublicaciones/">Publicaciones</a></li>
+				<li><a href="/sede/portal/cultura/zaragozacultural/">Sociedad Zaragoza Cultural</a></li>
+				<li><a href="https:/www.zaragoza.es/sede/portal/ticketing/verNuevaQuejaAnonima_Ticketing">Tu opinión importa</a></li>
+            </ul>
+        </nav>
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

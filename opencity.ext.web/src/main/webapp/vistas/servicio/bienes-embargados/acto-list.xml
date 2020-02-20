@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="row">
+        <div class="col-sm-1">
+            <span th:if="${actodetail.tipo} == 'subasta'" class="fa fa-4x fa-gavel"></span> 
+            <span th:if="${actodetail.tipo} == 'venta'" class="fa fa-4x fa-shopping-bag"></span> 
+        </div>
+        <div class="col-sm-11">
+            <a title="Editar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="@{/servicio/bienes-embargados/admin/{id}/edit(id=${actodetail.id})}" class="btn btn-warning btn-xs pull-right"><span class="fa fa-edit"></span> Editar</a>
+            <a th:href="@{/servicio/bienes-embargados/{id}(id=${actodetail.id})}"><span th:text="${actodetail.tipoText}"></span></a>
+            <ul>
+                <li th:if="${actodetail.offerDate}">Presentación de ofertas: <span sede:rdf="${actodetail.get('offerDate','EEEE dd MMMM yyyy HH:mm')}"></span></li>
+                <li>Fecha: <span sede:rdf="${actodetail.get('startDate','EEEE dd MMMM yyyy HH:mm')}"></span></li>
+                <li><span class="badge"> <th:block th:text="${actodetail.lotes.size()}"/> lotes</span></li>
+            </ul>
+        </div>
+    </div>
+</div>

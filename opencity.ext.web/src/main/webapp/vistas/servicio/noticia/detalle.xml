@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Noticia'"/>
+    <meta name="description" th:if="${registro.statusCode.value() == 200} and ${registro.body.summary}" th:attr="content=${registro.body.summary}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.css" />
+    <link th:if="${registro.statusCode.value()} == 200" rel="canonical" th:href="${registro.body.group.canonical} + ${registro.body.id}"/>
+    <!--/* <link rel="amphtml" th:href="${registro.body.uri} + '/amp'" /> */-->
+    <style type="text/css">
+        .card {
+            position: relative;
+            padding-top: 1.5em;
+        }
+        
+        /* .img-responsive */
+        .description img{ 
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .offset-target:before {
+            content:"";
+            display:block;
+            height:67px; /* fixed header height*/
+            margin:-67px 0 0; /* negative fixed header height */
+        }
+        </style>
+</head>
+
+<body>
+    <sede:content>
+        
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" vocab="http://schema.org/" typeof="Article NewsArticle" th:attr="about=${registro.body.uri}">
+            
+            <meta property="publisher" content="Ayuntamiento de Zaragoza"/>
+            <th:block th:if="*{authorCode == 1}">
+                <meta property="author" content="Gabinete de prensa"/>
+            </th:block>
+            
+            <div class="card">
+                <!--/* COMENTADO TEMPORALMENTE HASTA PUBLICAR EL NUEVO PORTAL DE NOTICIAS*/-->
+                <!--/* <a class="card-date" th:if="*{dateCreated}" property="datePublished" sede:rdf="*{get('dateCreated')}" th:href="'/sede/servicio/noticia/list?fq=fecha_dt%3A(%22'+*{#utils.toUnicode(dateCreated)}+'%22)'"></a> */-->
+                
+
+                <div class="row margin-b3em">
+                    <div class="col-md-3 col-md-push-9 text-center" th:if="*{not #lists.isEmpty(image)} or *{not #lists.isEmpty(video)}">
+                        <div th:if="*{not #lists.isEmpty(video)}" class="embed-responsive embed-responsive-16by9 margin-b1em">
+                            <!-- <span sede:rdf="${video[0].get('title')}" />
+                            <span sede:rdf="${video[0].get('description')}" />
+                            <span sede:rdf="${video[0].get('duration')}" />
+                            <span th:if="${video[0].creationDate}" sede:rdf="${video[0].get('creationDate')}"></span> -->
+                            <iframe class="embed-responsive-item" th:src="*{video[0].link}">
+                                <a th:href="*{video[0].link}"></a>
+                            </iframe>
+                        </div>
+                        <th:block th:if="*{not #lists.isEmpty(image)}">
+                            <a th:if="*{#lists.isEmpty(video)}" property="image" typeof="ImageObject" th:href="'//www.zaragoza.es' + *{image[0].src}" data-toggle="lightbox" th:attr="data-title=*{image[0].title}" data-gallery="alt-gallery">
+                                <img property="url" th:src="'//www.zaragoza.es' + *{image[0].src}" th:alt="*{image[0].title}" class="img-responsive margin-b05em"/>
+                                <!--/* FIXME: Generar tamaño de las imagenes en api  */-->
+                                <meta property="width" content="1200"/>
+                                <meta property="height" content="800"/>
+                            </a>
+                            <ul class="list-inline" th:if="*{image.size() >= 1}">
+                                <li th:each="img, i : *{image}" class="text-center" th:if="${i.index >= 1} or *{not #lists.isEmpty(video)}">
+                                    <a property="image" typeof="ImageObject" th:href="'//www.zaragoza.es' + ${img.src}" data-toggle="lightbox" th:attr="data-title=${img.title}" data-gallery="alt-gallery">
+                                        <img property="url" th:src="'//www.zaragoza.es' + ${img.src}" th:alt="${img.title}" class="img-small" width="40" />
+                                        <!--/* FIXME: Generar tamaño de las imagenes en api  */-->
+                                        <meta property="width" content="1200"/>
+                                        <meta property="height" content="800"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </th:block>
+                    </div>
+                    <div th:class="*{not #lists.isEmpty(image)} ? 'col-md-9 col-md-pull-3' : 'col-xs-12 col-sm-12 col-md-12'">
+                        <h2 class="nomargin" property="headline" th:utext="*{title}"></h2>
+                        <span class="small text-info" th:if="*{dateCreated}" property="datePublished" sede:rdf="*{get('dateCreated')}"></span>
+                        <hr class="sm"/>
+                        <p th:if="*{summary}" th:utext="*{summary}" class="text-justify"></p>
+                        <!--/* <div class="clearfix" th:if="*{not #lists.isEmpty(attachment)} or *{not #lists.isEmpty(gallery)}"> */-->
+                        <div class="clearfix" th:if="*{not #lists.isEmpty(gallery)}">
+                            <!-- <ul class="list-unstyled pull-right">
+                                <li><a href="#attachment">Documentos adjuntos</a></li>
+                                <li><a href="#main-gallery">Galería de imágenes</a></li>
+                            </ul> -->
+                            <div class="navbar-right"><a href="#" id="mostrar-galeria"><span class="far fa-file-image" aria-hidden="true"></span> Ver Galería de imágenes</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span th:if="*{not #lists.isEmpty(category)}" th:each="cat, i : *{category}" th:unless="${i.index >= 8}" class="label label-success" th:text="${cat.title}" sede:rdf="${cat.prop()}"></span>
+                    <!--/* COMENTADO TEMPORALMENTE HASTA PUBLICAR EL NUEVO PORTAL DE NOTICIAS*/-->
+                    <!--/* <a th:if="*{not #lists.isEmpty(category)}" th:each="cat, i : *{category}" th:unless="${i.index >= 8}" class="label label-success" th:text="${cat.title}" sede:rdf="${cat.prop()}" th:href="'/sede/servicio/noticia/?q=category.title==' + ${cat.title} + '*'"></a> */-->
+
+                    <th:block th:include="/fragmentos/share-button(title='Compartir', uri=*{uri}, text=*{title})"></th:block>
+                </div>
+            </div>
+            <th:block th:if="*{description}">
+                <div property="description" th:utext="*{description}" class="card description text-justify"></div>
+            </th:block>
+            <th:block th:if="*{not #lists.isEmpty(gallery)}">
+                <sede:collapse heading="h3" text="'Galería'" icon="fa-file-image">
+                    <ul class="list-inline" id="main-gallery">
+                        <li th:each="imag : *{gallery}" class="text-center">
+                            <a property="image" typeof="ImageObject" th:href="'//www.zaragoza.es' + ${imag.src}" data-toggle="lightbox" th:attr="data-title=${imag.title}" data-gallery="main-gallery">
+                                <img sede:rdf="*{prop('gallery')}" th:src="'//www.zaragoza.es' + ${imag.src}" th:alt="${imag.title}" class="img-polaroid" />
+                            </a>
+                        </li>
+                    </ul>
+                </sede:collapse>
+            </th:block>
+            <th:block th:if="*{not #lists.isEmpty(info)}">
+                <sede:collapse heading="h3" text="'Más información'" icon="fa-info">
+                    <ul>
+                        <li th:each="anex : *{info}" sede:rdf="*{prop('info')}">
+                            <th:block th:if="${anex.link}">
+                                <a th:href="'//' + ${anex.link.url}" th:utext="${anex.title}" sede:rdf="${anex.link.prop()}" />
+                            </th:block>
+                            <th:block th:if="!${anex.link}">
+                                <th:block th:utext="${anex.title}" />
+                            </th:block>
+                            <th:block th:if="${anex.contact}">
+                                <span th:if="${anex.contact.phone}">Tel&eacute;fono: <span sede:rdf="${anex.contact.get('phone')}"></span></span>
+                                <span th:if="${anex.contact.fax}">Fax: <span sede:rdf="${anex.contact.get('fax')}"></span></span>
+                                <span th:if="${anex.contact.mail}">Correo electr&oacute;nico: <a sede:rdf="${anex.contact.prop('mail')}" th:href="'mailto:' + ${anex.contact.mail}" th:text="${anex.contact.mail}"/></span>
+                            </th:block>
+                            <th:block th:if="${anex.address}">
+                                <span th:if="${anex.address.street}">Calle: <span sede:rdf="${anex.address.get('street')}"></span></span>
+                                <span th:if="${anex.address.number}">N&uacute;mero: <span sede:rdf="${anex.address.get('number')}"></span></span>
+                                <span th:if="${anex.address.openingHours}">Horario: <span sede:rdf="${anex.address.get('openingHours')}"></span></span>
+                                <span th:if="${anex.address.postalCode}">C&oacute;digo Postal: <span sede:rdf="${anex.address.get('postalCode')}"></span></span>
+                                <span th:if="${anex.address.city}">Ciudad: <span sede:rdf="${anex.address.get('city')}"></span></span>
+                                <span th:if="${anex.address.province}">Provincia: <span sede:rdf="${anex.address.get('province')}"></span></span>
+                                <span th:if="${anex.address.country}">Pa&iacute;s: <span sede:rdf="${anex.address.get('country')}"></span></span>
+                            </th:block>
+                        </li>
+                    </ul>
+                </sede:collapse>
+            </th:block>
+            <th:block th:if="*{not #lists.isEmpty(attachment)}">
+                <sede:collapse heading="h3" text="'Documentos Adjuntos'" icon="fa-file">
+                    <ul id="attachment">
+                        <li th:each="anex : *{attachment}" property="associatedMedia" typeof="MediaObject" th:attr="resource=${anex.link}">
+                            <a target="_blank" th:href="${anex.link}" th:class="${#strings.indexOf(anex.link, '.pdf') > 0} ? pdf : ''">
+                                <span property="name" th:utext="${anex.title}" />
+                            </a>
+                        </li>
+                    </ul>
+                </sede:collapse>
+            </th:block>
+            <th:block th:if="*{not #lists.isEmpty(audio)}">
+                <sede:collapse heading="h3" text="'Audio'" icon="far fa-file-audio">
+                    <ul class="list-unstyled">
+                        <li th:each="anex : *{audio}" property="audio" typeof="AudioObject" th:attr="resource=${anex.link}">
+                            <!--/* <a th:href="${anex.link}" th:attr="resource=${anex.link}">
+                                <span th:utext="${anex.title}" />
+                            </a> */-->
+                            <span th:utext="${anex.title}"></span>
+                            <audio th:src="${anex.link}" preload="auto"/>
+                            <!--/* <span th:utext="${anex.description}" /> */-->
+                            <!--/* | <strong>Duración:</strong> <span class="text-info" th:utext="${anex.duration}"></span> */-->
+                        </li>
+                    </ul>
+                </sede:collapse>
+            </th:block>
+            <th:block th:if="*{not #lists.isEmpty(video)}">
+                <sede:collapse heading="h3" text="'Video'" icon="fa-file-video">
+                    <ul class="row list-unstyled">
+                        <li th:each="anex : *{video}" sede:rdf="*{prop('video')}" th:attr="resource=${anex.link}" class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <span sede:rdf="${anex.get('title')}" />
+                                <span sede:rdf="${anex.get('description')}" />
+                                <span sede:rdf="${anex.get('duration')}" />
+                                <span th:if="${anex.creationDate}" sede:rdf="${anex.get('creationDate')}"></span>
+                                <iframe class="embed-responsive-item" th:src="${anex.link}">
+                                    <a th:href="${anex.link}"></a>
+                                </iframe>
+                            </div>
+                        </li>
+                    </ul>
+                </sede:collapse>
+            </th:block>
+        </div>
+        <!--/* <th:block th:include="fragmentos/comentario/list(action='/servicio/noticia/')" /> */-->
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/noticias/js/audio/audio.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.js"></script>
+    <script type="text/javascript">
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true
+        });
+    });
+    audiojs.events.ready(function() {
+        audiojs.createAll();
+    });
+    $(document).on('click', '[id="mostrar-galeria"]', function (event) {
+        event.preventDefault();
+        $(document).find('#main-gallery li a').first().ekkoLightbox();
+    });
+    </script>
+    <!--/* <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-575e857a98d6e3a9"></script> */-->
+</body>
+
+</html>

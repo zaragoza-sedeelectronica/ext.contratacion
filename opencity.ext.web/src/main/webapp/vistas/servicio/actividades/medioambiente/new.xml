@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Insertar nueva actividad. Agenda Zaragoza" keywords="actos, concierto, actividades, cursos" />
+</head>
+
+<body>
+    <sede:content container="false">
+
+        <div class="row">
+
+            <div class="col-md-9 col-md-push-3" id="event-detail">
+
+            <th:block th:include="fragmentos/error" />
+            <h2>Insertar actividad</h2>
+            <form th:action="@{/servicio/actividades/{portal}/evento/save(portal=${portal})}" th:object="${dato}" method="post" id="newForm" enctype="multipart/form-data" class="col-md-12">
+                <div role="alert" class="alert alert-info">
+                    <p>Si deseas difundir actividades para jóvenes, rellena el siguiente formulario y será enviado para su verificación y posterior inclusión en la Agenda Joven del CIPAJ.</p>
+                    <p><span class="obligatorio"></span> <span class="oculto"> (campo obligatorio)</span> Los campos con asterisco son obligatorios (no escribas todo en mayúsculas)</p>
+                </div>
+                <div role="alert" class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                </div>
+                <fieldset>
+                    <legend>Nombre de la actividad</legend>
+                    <div class="row margin-b2em">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title">
+                                    <span class="obligatorio">Título:</span><span class="oculto"> (campo obligatorio)</span>
+                                </label>
+                                <input type="text" name="title" id="title" size="50" th:field="*{title}" placeholder="Añadir título de la actividad" class="form-control" />
+                            </div>
+                            <label for="descripcion">Descripción:</label>
+                            <textarea placeholder="Añadir descripción de la actividad y/o información relacionada o cualquier información que se considere importante." class="form-control" name="descripcion" id="descripcion" cols="50" rows="10" th:field="*{description}"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="url">Página web de referencia:</label>
+                            <input type="text" name="url" id="url" placeholder="Ej: http://www.zaragoza.es" size="50" maxlength="150" value="" class="form-control" th:field="*{url}" />
+                            <br/>
+                            <label for="twitter">Perfil de twitter:</label>
+                            <input type="text" name="twitter" id="twitter" size="50" value="" placeholder="https://www.twitter.com/usuario" class="form-control" th:field="*{twitter}" />
+                            <br/>
+                            <label for="facebook">Página de facebook:</label>
+                            <input type="text" name="facebook" id="facebook" size="50" maxlength="150" value="" placeholder="https://www.facebook.com/pagina" class="form-control" th:field="*{facebook}" />
+                            <br/>
+                            <label for="facebook">Perfil de Instagram:</label>
+                            <input type="text" name="instagram" id="instagram" size="50" maxlength="150" value="" placeholder="https://www.instagram.com/usuario" class="form-control" th:field="*{instagram}" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Fechas y horario de la actividad</legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="startDate">Fecha de inicio:</label>
+                                <input class="form-control datepicker" type="text" name="startDate" id="startDate" placeholder="Formato: dd/mm/yyyy" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="endDate"><span class="obligatorio">Fecha de fin:</span><span class="oculto"></span></label>
+                            <div class="form-group">
+                                <input class="form-control datepicker" required="required" type="text" name="endDate" id="endDate" placeholder="Formato: dd/mm/yyyy" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="openingHours">Horario:</label>
+                        <textarea placeholder="Ej: de lunes a viernes, de 9 a 21,15 h" class="form-control" name="horario" id="horario"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Entidad organizadora</legend>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="entidad_title">
+                                    <span class="obligatorio">Nombre:</span><span class="oculto"> (campo obligatorio)</span>
+                                </label>
+                                <input type="hidden" name="entidad_id" id="entidad_id" value="" />
+                                <input type="text" name="entidad_title" id="entidad_title" value="" size="50" autocomplete="off" placeholder="Buscar entidad organizadora" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info margin-t05em">
+                        Puedes añadir más de una entidad organizadora seleccionando una diferente.
+                        <br/>En caso de no encontrar la entidad organizadora puede <a class="btn btn-primary btn-xs" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">crear una nueva</a>.
+                        <br/>
+                        Si necesitas modificar algún dato añádelo en <a href="#comentariosContacto">Comentarios al Cipaj</a>.
+                    </div>
+                    <!--/* Collapse creación de una nueva entidad organizadora */-->
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="title">
+                                            <span class="obligatorio">Nombre:</span><span class="oculto"> (campo obligatorio)</span>
+                                        </label>
+                                        <input type="text" name="title" id="title" size="50" th:name="entidad_titleNew" th:value="${param.entidad_titleNew} ? ${param.entidad_titleNew[0]} : ''" placeholder="Añadir nombre de la entidad" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="streetAddress">Dirección:</label>
+                                        <input type="text" th:name="entidad-streetAddress" th:value="${param.get('entidad-streetAddress')} ? ${param.get('entidad-streetAddress')[0]} : ''" placeholder="Añadir dirección de la entidad" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="addressLocality">Localidad:</label>
+                                        <input type="text" th:name="entidad-addressLocality" th:value="${param.get('entidad-addressLocality')} ? ${param.get('entidad-addressLocality')[0]} : ''" placeholder="Añadir localidad de la entidad" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="addressRegion">Provincia:</label>
+                                        <input type="text" th:name="entidad-addressRegion" th:value="${param.get('entidad-addressRegion')} ? ${param.get('entidad-addressRegion')[0]} : ''" placeholder="Añadir provincia de la entidad" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telephone">Tel. fijo:</label>
+                                        <input type="text" th:name="entidad-telephone" th:value="${param.get('entidad-telephone')} ? ${param.get('entidad-telephone')[0]} : ''" placeholder="Añadir teléfono fijo de la entidad" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="faxNumber">Fax:</label>
+                                        <input type="text" th:name="entidad-faxNumber" th:value="${param.get('entidad-faxNumber')} ? ${param.get('entidad-faxNumber')[0]} : ''" placeholder="Añadir número de fax de la entidad" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="postalCode">C. Postal:</label>
+                                        <input type="text" th:name="entidad-postalCode" th:value="${param.get('entidad-postalCode')} ? ${param.get('entidad-postalCode')[0]} : ''" placeholder="Añadir código postal de la entidad" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="addressCountry">País:</label>
+                                        <input type="text" th:name="entidad-addressCountry" th:value="${param.get('entidad-addressCountry')} ? ${param.get('entidad-addressCountry')[0]} : ''" placeholder="Añadir país de la entidad" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telephone2">Tel. móvil:</label>
+                                        <input type="text" th:name="entidad-telephone2" th:value="${param.get('entidad-telephone2')} ? ${param.get('entidad-telephone2')[0]} : ''" placeholder="Añadir teĺéfono móvil de la entidad" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Correo electrónico:</label>
+                                        <input type="text" th:name="entidad-email" th:value="${param.get('entidad-email')} ? ${param.get('entidad-email')[0]} : ''" placeholder="Añadir email de la entidad" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="url">Web:</label>
+                                        <input type="text" th:name="entidad-url" th:value="${param.get('entidad-url')} ? ${param.get('entidad-url')[0]} : ''" placeholder="Añadir web de la entidad" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="openingHours">Horario de atención:</label>
+                                        <input type="text" th:name="entidad-openingHours" th:value="${param.get('entidad-openingHours')} ? ${param.get('entidad-openingHours')[0]} : ''" placeholder="Añadir horario de la entidad" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-b2em datos-entidad"  th:style="*{organizer.isEmpty()} ? 'display:none;'">
+                        <div class="col-md-12">
+                            <hr class="sm" />
+                            <table id="listado-entidades" class="table table-striped table-condensed table-bordered table-hover table-btn">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre de la entidad organizadora</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="ent, i : *{organizer}" th:id="'entidad-' + ${i.index}">
+                                        <td>
+                                            <input class="form-control" type="text" th:name="'org[' + ${i.index} + '].title'" th:id="'org' + ${i.index} + '.title'" th:value="*{organizer[__${i.index}__].title}" readonly="readonly"/>
+                                            <input class="form-control" type="hidden" name="orgid" th:id="'org' + ${i.index} + '.id'" th:value="*{organizer[__${i.index}__].id}"/>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-default" type="button" th:attr="onclick='borrarEntidad(' + ${i.index} + ')'">Borrar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Lugar de realización</legend>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="equipamiento_title">Lugar:</label>
+                                <input type="hidden" name="equipamiento_id" id="equipamiento_id" value="" />
+                                <input type="text" name="equipamiento_title" id="equipamiento_title" value="" size="80" autocomplete="off" placeholder="Buscar lugar de realización" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info margin-t05em">
+                        Si no encuentras el lugar, añade la información relacionada en la <a href="#descripcion"><em>descripción</em></a> de la actividad.
+                        <br/>Si la actividad se realiza fuera de Zaragoza, introduce 'Fuera de Zaragoza'. En el campo Observaciones el sitio concreto.
+                        <br/>Puedes añadir más de un lugar de realización seleccionando uno diferente.
+                    </div>
+                    <hr class="sm" />
+                    <div class="row datos-lugar" th:style="*{subEvent.isEmpty()} ? 'display:none;'">
+                        <div class="col-md-12">
+                            <table id="listado-lugares" class="table table-striped table-condensed table-bordered table-hover table-btn">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre del lugar</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Final <span class="oculto"> (campo obligatorio)</span></th>
+                                        <th>Horario</th>
+                                        <th>Observaciones</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="sub, stat : *{subEvent}">
+                                        <td>
+                                            <input class="form-control" type="text" th:name="'se[' + ${stat.index} + '].location.title'" th:id="'se' + ${stat.index} + '.location.title'" th:value="*{subEvent[__${stat.index}__].location.title}" readonly="readonly"/>
+                                            <input class="form-control" type="hidden" name="equipid" th:id="'se' + ${stat.index} + '.location.id'" th:value="*{subEvent[__${stat.index}__].location.id}"/>
+                                        </td>
+                                        <td>
+                                            <input class="form-control datepicker" placeholder="Formato: dd/mm/yyyy" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" th:name="'se[' + ${stat.index} + '].startDate'" th:id="'se' + ${stat.index} + '.startDate'" th:value="*{subEvent[__${stat.index}__].startDate} ? *{#dates.format(subEvent[__${stat.index}__].startDate,'dd/MM/yyyy')} : ''"/>
+                                        </td>
+                                        <td>
+                                            <input class="form-control datepicker" placeholder="Formato: dd/mm/yyyy" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" th:name="'se[' + ${stat.index} + '].endDate'" th:id="'se' + ${stat.index} + '.endDate'" th:value="*{#dates.format(subEvent[__${stat.index}__].endDate,'dd/MM/yyyy')}"/>
+                                        </td>
+                                        <td>
+                                            <input class="form-control" type="text" th:name="'se[' + ${stat.index} + '].horario'" th:id="'se' + ${stat.index} + '.horario'" th:value="*{subEvent[__${stat.index}__].horario}"/>
+                                        </td>
+                                        <td>
+                                            <input class="form-control" type="text" th:name="'se[' + ${stat.index} + '].comment'" th:id="'se' + ${stat.index} + '.comment'" th:value="*{subEvent[__${stat.index}__].comment}"/>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-default" type="button" th:attr="onclick='borrarLugar(' + ${stat.index} + ')'">Borrar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Inscripción (si requiere inscripción previa)</legend>
+                    <div class="row margin-b2em">
+                        <div class="col-md-6">
+                            <label for="f_inicio_inscrip">Fecha inicio:</label>
+                            <input type="text" id="f_inicio_inscrip" name="f_inicio_inscrip" value="" size="10" maxlength="30" placeholder="Formato: dd/mm/aaaa" class="form-control" th:field="*{registration.startDate}" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="f_final_inscrip">Fecha fin:</label>
+                            <input type="text" id="f_final_inscrip" name="f_final_inscrip" value="" size="10" maxlength="30" placeholder="Formato: dd/mm/aaaa" class="form-control" th:field="*{registration.endDate}" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" />
+                        </div>
+                    </div>
+                    <div class="row margin-b2em">
+                        <div class="col-md-6">
+                            <label for="horario_inscrip">Horario:</label>
+                            <textarea name="horario_inscrip" id="horario_inscrip" cols="50" rows="3" placeholder="Ej: De lunes a viernes, de 09:00 a 21:00h" class="form-control" th:field="*{registration.openingHours}"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="requisitos_inscrip">Requisitos:</label>
+                            <textarea name="requisitos_inscrip" id="requisitos_inscrip" cols="50" rows="3" placeholder="Requisitos o documentación necesaria para la inscripción" class="form-control" th:field="*{registration.description}"></textarea>
+                        </div>
+                    </div>
+                    <div class="alert alert-info margin-v1em">Datos a rellenar solo si el lugar de inscripción es diferente al de la entidad organizadora.</div>
+                    <div class="row margin-b2em">
+                        <div class="col-md-6">
+                            <label for="lugar_inscrip">Lugar:</label>
+                            <input type="text" name="lugar_inscrip" size="50" id="lugar_inscrip" value="" placeholder="Buscar lugar de inscripción" class="form-control" th:field="*{registration.title}" />
+                            <br/>
+                            <br/>
+                            <label for="direccion_inscrip">Dirección:</label>
+                            <input type="text" name="direccion_inscrip" id="direccion_inscrip" value="" size="50" placeholder="calle, número, escalera, piso..." class="form-control" th:field="*{registration.streetAddress}" />
+                            <br/>
+                            <label for="telefono_inscrip">Teléfono:</label>
+                            <input type="text" name="telefono_inscrip" id="telefono_inscrip" value="" size="15" maxlength="30" placeholder="Móvil o fijo" class="form-control" th:field="*{registration.telephone}" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="web_inscrip">Página web inscripción:</label>
+                            <input type="text" name="web_inscrip" id="web_inscrip" value="" size="50" placeholder="Ej: http://www.zaragoza.es" class="form-control" th:field="*{registration.url}" />
+                            <br/>
+                            <label for="email_inscrip">Correo electrónico:</label>
+                            <input type="text" name="email_inscrip" id="email_inscrip" value="" size="50" placeholder="nombre@dominio.com" class="form-control" th:field="*{registration.email}" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tipo de la actividad</legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category">
+                                    <span class="obligatorio">Tema principal:</span><span class="oculto"> (campo obligatorio)</span>
+                                </label>
+                                <select class="form-control" name="category" id="category" multiple="multiple">
+                                    <option th:each="tema : ${category.body.result}" th:value="${tema.id}" th:text="${tema.title}" th:selected="${dato.category.contains(tema)}"/>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="programa_id">Programa oficial:</label>
+                                <input type="hidden" name="programa_id" id="programa_id" value="" th:field="*{program.id}" />
+                                <input type="text" name="programa_title" id="programa_title" value="" size="80" autocomplete="off" placeholder="(ciclo, programa, campaña, jornadas...)" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="type">
+                                    <span class="obligatorio">Formato de la actividad:</span><span class="oculto"> (campo obligatorio)</span>
+                                </label>
+                                <select name="type" id="type" class="form-control" th:field="*{type}">
+                                    <option value=""></option>
+                                    <option th:each="formato : ${type.body.result}" th:value="${formato.title}" th:text="${formato.title}" />
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-b2em form-horizontal">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="col-sm-7 control-label" for="minAge">Edad mínima:</label>
+                                <div class="col-sm-5">
+                                    <input class="form-control" name="minAge" id="minAge" type="text" th:field="*{minAge}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="col-sm-7 control-label" for="maxAge">Edad máxima:</label>
+                                <div class="col-sm-5">
+                                    <input class="form-control" name="maxAge" id="maxAge" type="text" th:field="*{maxAge}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="col-sm-8 control-label" for="edadSinEspecificar">Sin especificar</label>
+                                <div class="col-sm-4">
+                                    <input type="checkbox" name="edadSinEspecificar" id="edadSinEspecificar"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Precios</legend>
+                    <div class="row margin-b2em">
+                        <div class="col-md-6">
+                            <label for="comentarios_entrada" class="sr-only">Precio:</label>
+                            <textarea id="comentarios_entrada" name="comentarios_entrada" class="form-control" th:field="*{priceComment}" placeholder="Precios, descuentos, comentarios, etc."/>
+                        </div>
+                        <label for="gratuita">Gratuita</label>
+                        <input type="checkbox" id="gratuita" name="gratuita" value="s"/>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Sin barreras</legend>
+                    <p class="destacado">¿Está contemplada la participación de personas con discapacidad en esta actividad?</p>
+                    <div class="form-inline">
+                        <label for="accessible_si">SI</label>
+                        <input type="radio" name="accessible" value="S" id="accessible_si" th:field="*{accessible}" class="margin-r2em"/>
+                        <label for="accessible_no">NO</label>
+                        <input type="radio" name="accessible" value="N" id="accessible_no" th:field="*{accessible}" checked="checked"/>
+                    </div>
+                    <p class="small">CERMI Aragón (C/ Concepción Saiz de Otero, 10. Tel 976 106 265. <a href="mailto:cermiaragon@cermiaragon.es">cermiaragon@cermiaragon.es</a>) puede ayudarte a programar una actividad sin barreras.</p>
+                </fieldset>
+                <fieldset>
+                    <legend>Anexos</legend>
+                    <div class="row margin-b2em">
+                        <div class="col-md-12">
+                            <label for="anexo-documento">Programa oficial:</label>
+                            <input type="file" name="file" id="anexo-documento"/> (html, zip, pdf, txt, xls, doc, ppt, xml o jpg, no superior a 3MB)
+                            <br/>
+                            <br/>
+                            <label for="anexo-imagen">Imagen:</label>
+                            <input type="file" name="image" id="anexo-imagen"/> (png, jpg o gif, no superior a 3MB)                        
+                            <br/>
+                            <br/>
+                            <label for="anexo-sonido">Sonido:</label>
+                            <input type="file" name="sound" id="anexo-sonido"/> (wav o mp4, no superior a 3MB)         
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                <legend>Quién introduce los datos (<em>esta información no será publicada</em>)</legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nombre_contacto">
+                                    <span class="obligatorio">Nombre de contacto:</span>
+                                    <span class="oculto"> (campo obligatorio)</span>
+                                </label>
+                                <input type="text" required="required" name="nombre_contacto" id="nombre_contacto" size="50" maxlength="75" value="" placeholder="Nombre de la persona de contacto" class="form-control" th:field="*{nombreContacto}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email_contacto">Correo electrónico de contacto:</label>
+                                <input type="text" name="email_contacto" id="email_contacto" value="" size="22" maxlength="75" placeholder="nombre@dominio.com" class="form-control" th:field="*{emailContacto}" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="telefono_contacto"><span class="obligatorio">Tel. de contacto:</span><span class="oculto"> (campo obligatorio)</span>
+                                </label>
+                                <input type="text" required="required" name="telefono_contacto" id="telefono_contacto" value="" size="15" maxlength="50" placeholder="Móvil o fijo" class="form-control" th:field="*{telefonoContacto}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-t1em margin-b2em">
+                        <div class="col-md-12">
+                            <label for="comentariosContacto">Comentarios al CIPAJ:</label>
+                            <textarea placeholder="Añadir cualquier información adicional que se considere importante al CIPAJ" class="form-control" name="comentariosContacto" id="comentariosContacto" cols="50" rows="4" th:field="*{comentariosContacto}"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-actions">
+                    <input name="insertar" class="btn btn-primary" value="Insertar" type="submit" />
+                </div>
+            </form>
+        </div>
+        <sede:solr q="*:* AND diasHastaFinalizacion_i:[0 TO 10000] AND portal_smultiple:14 AND fechaFinal_dt:[NOW-1DAY TO *] AND -(fechaFinalInscripcion_dt:[* TO NOW-1DAY] AND fechaFinalInscripcion_dt:[* TO *])" rows="0" start="0" fragment="servicio/actividades/medioambiente/resultadoFacetas" class="org.sede.servicio.actividades.entity.Acto" facetas="temas_smultiple,formatoActividad_smultiple,distrito_smultiple,programa_smultiple,rangoEdad_smultiple"/>
+
+        </div>
+        <br/>
+
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_es.min.js"></script>
+    <script type="text/javascript" src="/cont/vistas/servicio/cultura/evento/insertarAgenda.js"></script>
+</body>
+
+</html>

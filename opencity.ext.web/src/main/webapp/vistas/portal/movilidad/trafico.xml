@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+   <head>
+      <meta charset="utf-8" />
+      <sede:meta title="Tráfico" description="El portal de la Oficina del Plan Integral del Casco Histórico ofrece recursos sobre los proyectos que desarrollan en áreas como deportes, cultura, derechos sociales, solares urbanos, medio ambiente, limpieza, comercio, turismo y participación además de ofrecer información sobre sus actividades." category="" subject="" author="" last-modified="2018-09-13" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España, Oficina Plan Integral Casco histórico, participación, solares urbanos, formalidades administrativas, administración electrónica, relación administración-administrado, participación social, actividades, concursos, servicio de quejas y sugerencias, council, city, Saragossa, Spain, administrative formalities, electronic government, citizen-authority relations, participation, urbanism, culture, social rights, environment, social participation, green area, activities, contest, complaints and suggestions service" priority="" robots=""></sede:meta>
+   </head>
+   <style>
+      titulo-seccion {
+      line-height: 66px;
+      font-size: 42px;
+      }
+      .fnd-blanco {
+      background-color: #ffffff;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      .fnd-gris-claro {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: -40px;
+      }
+      .titulo-org h2, .procesos h2{
+      color: #e83437;
+      font-size: 42px;
+      padding-bottom: 20px;
+      }
+      .titulo-org h2 small, .titulo-org h2 span{
+      color: #000000;
+      }
+      ul.submenu {
+      margin: 0;
+      }
+      .btn-back.pull-left {
+      padding: .25em .5em;
+      background: #E81B16;
+      border-radius: .5em;
+      }
+      .second-bar {
+      background: #E6E6E6;
+      border-radius: .5em;
+      padding: .5em;
+      border: 1px solid #CCC;
+      margin-bottom: 2em;
+      }
+      ul.submenu li {
+      border: 1px solid #CCC;
+      background: #FFF;
+      padding: .5em;
+      border-radius: .5em;
+      }
+      .offset-target:before {
+      content: '';
+      display: block;
+      height: 67px;
+      /* fixed header height*/
+      margin: -67px 0 0;
+      /* negative fixed header height */
+      }
+      .section-title {
+      background: #E6E6E6;
+      border-radius: .5em .5em 0 0;
+      padding: .5em;
+      border: 1px solid #CCC;
+      margin: 0;
+      }
+      .section-content {
+      border: 1px solid #CCC;
+      background: #FFF;
+      padding: .5em;
+      border-radius: 0 0 .5em .5em;
+      margin-bottom: 1em;
+      }
+      ul.resultado>li:nth-child(4n){
+      float:right;
+      }
+      ul.resultado>li:nth-child(4n+1){
+      float:left;
+      clear:both;
+      }
+      .alert-data{
+      background-color:pink;
+      }
+      
+      img{
+      padding:0.5em;
+      }
+   </style>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Mapa de Tráfico</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <nav>
+                  <div class="second-bar clearfix">
+                     <div class="hidden-xs">
+                        <a class="btn-back pull-left" href="https://www.zaragoza.es/sede/portal/movilidad/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Movilidad</span>
+                        </a>
+                        <p class="lead destacado margin-l05em margin-b0em pull-left">Tráfico</p>
+                     </div>
+                     <ul class="list-inline navbar-right submenu">
+                        <li><a href="trafico"> Mapa</a></li>
+                        <li><a href="tiempostrafico">Paneles de tiempos</a></li>
+                        <li><a href="incidencias">Incidencias</a></li>
+                        <li><a href="estacionamiento">Estacionamiento</a></li>
+                     </ul>
+                  </div>
+               </nav>
+               <div role="alert" class="alert alert-data" style="font-size:14px;line-height: 1.42857143;color: #202020;">
+                  <h4>Datos disponibles en formato abierto para descarga</h4>
+                  <p>
+                     Puede consultar 
+                     <a href="/sede/servicio/catalogo/291">Estado del tráfico
+                     </a>
+                     desde el Catálogo de datos abiertos
+                  </p>
+               </div>
+               <div class="alert alert-info">Este servicio también está disponible para móvil <a href="/sede/servicio/aplicacion/7">Información sobre la aplicación</a><br/><strong>Actualización automática cada 5 minutos</strong></div>
+				<div class="leyenda">
+					<h4>Leyenda</h4>
+					<div class="row">
+						<p class="col-md-4"><img src="http://www.zaragoza.es/cont/paginas/img/verde.gif"/>Fluido</p>
+						<p class="col-md-4"><img src="http://www.zaragoza.es/cont/paginas/img/naranja.gif"/>Denso</p>
+						<p class="col-md-4"><img src="http://www.zaragoza.es/cont/paginas/img/rojo.gif"/>Congestionado</p>
+						<p class="col-md-4"><img src="http://www.zaragoza.es/contenidos/iconos/panelesInformativos.png"/>Paneles</p>
+						<p class="col-md-4"><img src="http://www.zaragoza.es/cont/paginas/img/incidencias/cortesdetrafico.gif"/>Cortes</p>
+						<p class="col-md-4"><img src="http://www.zaragoza.es/contenidos/iconos/afecciones.png"/>Afecciones</p>
+					</div>
+				</div>
+               <script type="text/javascript">function FormComponentFacade() {		this.operacionFinalizada = operacionFinalizada;	this.visualizadorCargado = visualizadorCargado;	function operacionFinalizada(exito) {		if(!exito) {			alert('Error');		}	}	function visualizadorCargado(exito, name) {	parent.frames['trafico'].getFacade().centrarMapa(673220.86874, 4611627.5, 680156.13126, 4615932.5, "EPSG:23030", null);		refresco();	}	}var facade = new FormComponentFacade();  function getFacade()    {        return facade;    }function refresco() {	parent.frames['trafico'].getFacade().pintarTrafico();	t=setTimeout("refresco()", 5 * 60 * 1000);}</script>
+               <iframe style="width:100%;height:40em" id="iframetrafico" title="Estado del trafico" name="trafico" src="https://www.zaragoza.es/monitorTrafico/" frameborder="0">Visualización del estado del tráfico en la ciudad</iframe>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Fiestas del Pilar 2018" description="Página oficial de las Fiestas del Pilar 2018. Del sábado 6 de octubre al domingo 14 de octubre de 2018" category="Fiestas del Pilar" author="Ayuntamiento de Zaragoza" keywords="Ayuntamiento, Zaragoza, España, Fiestas del Pilar, Ciudad, cultura, turismo, actividades, espacios, octubre" last-updated="22-06-2018" audience="Ciudadanía" />
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        ocultarArbolCapas = false;
+        treeOrderDataList = ['actualidad','movilidad'];
+        var i = 0;
+        
+        var dataActualidad = "{title: 'Programación Hoy ',claseIcono:'agenda',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/sede/servicio/cultura/evento/hoy.geojson?srsname=utm30n_etrs89'}, {title: 'Espacios',claseIcono:'participacionCiudadana',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/equipamiento/list.geojson?rows=2000&category.id=1840&srsname=utm30n_etrs89'}, {title: 'Recursos Protección Civil ',claseIcono:'sanidadYconsumo',clase:'visible',id: '" + (++i) + "',url: '/sede/servicio/mapa-colaborativo/725.geojson'}, {title: 'Puntos Seguros Si es Si ',claseIcono:'serviciosSociales',clase:'visible',id: '" + (++i) + "',url: '/sede/servicio/mapa-colaborativo/727.geojson'}, {title: 'Puntos Control Policía Nacional ',claseIcono:'proteccionCiudadana',clase:'visible',id: '" + (++i) + "',url: '/sede/servicio/mapa-colaborativo/728.geojson'}";
+
+        var dataMovilidad = "{title: 'Cortes de Tráfico',claseIcono:'cortesdetrafico',clase:'oculto',id: '" + (++i) + "',url:'//www.zaragoza.es/sede/servicio/via-publica/incidencia.geojson?tipo.id=1&srsname=utm30n_etrs89'}\
+        ,{title: 'Afecciones Imp.',claseIcono:'afecciones',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/via-publica/incidencia.geojson?tipo.id=2&srsname=utm30n_etrs89'}\
+        ,{title: 'Paradas y tiempos Bus',claseIcono:'bus',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/transporte-urbano/poste-autobus.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estaciones Bizi',claseIcono:'estacionesBizi2',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/estacion-bicicleta.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'AparcaBicis en Vía Pública',claseIcono:'aparcabici',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-bicicleta.geojson?srsname=utm30n_etrs89&tipo=Abierto&rows=1000'}\
+        ,{title: 'AparcaBicis en recinto',claseIcono:'aparcabici_recinto',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-bicicleta.geojson?srsname=utm30n_etrs89&tipo=Cerrado&rows=1000'}\
+        ,{title: 'AparcaBicis vigilado',claseIcono:'aparcabici_vigilado',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-bicicleta.geojson?srsname=utm30n_etrs89&tipo=Vigilado&rows=1000'}\
+        ,{title: 'Carriles Bici',claseIcono:'carrilesBici',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/bici/carriles_UTM30N_ETRS89.json'}\
+        ,{title: 'Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-publico.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Accesos Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-accesos.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estacionamiento...discapidad',claseIcono:'estmin',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-personas-discapacidad.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'Estacionamientos moto',claseIcono:'estacionamiento_motos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-moto.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'Estaciones de Servicio',claseIcono:'estacionServicio',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/estacion-servicio.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Paradas de Taxi',claseIcono:'paradasdeTaxi',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parada-taxi.geojson?srsname=utm30n_etrs89&rows=300'}\
+        ,{title: 'Parquímetros',claseIcono:'parquimetro_ESRO',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parquimetro.geojson?srsname=utm30n_etrs89&rows=1000'}\
+        ,{title: 'Cercanías',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/paradas_cercanias_UTM30N_ETRS89.json'}\
+        ,{title: 'Tiempos de espera del tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/transporte-urbano/parada-tranvia.geojson?srsname=utm30n_etrs89&rows=100'}\
+        ,{title: 'Recorrido del tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/estado/transporte/tranvia_UTM30N_ETRS89.json'}\
+        ,{title: 'Propuesta Linea 2 Tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/linea2_tranvia.json'}\
+        ,{title: 'Tiempos de Recorrido',claseIcono:'panelesInformativos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/tiempos-recorrido.geojson?srsname=utm30n_etrs89'}";
+        
+        /*]]>*/
+    </script>
+    <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    .titulo-test {
+        margin: 0 0 .5em !important;
+    }
+    .bloque-agenda .programa {
+        background: none;
+        color: inherit;
+    }
+    .bloque-agenda .programa a {
+        color: #E81B16;
+    }
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143; /* h2 line-height == a line-height*/
+    }
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+    ul.list-actividades, ul.list-noticias {
+        padding-left: 5px;
+        padding-right: 5px;
+        
+    }
+    ul.list-actividades li, ul.list-noticias li {
+        padding-left: 5px;
+        padding-right: 5px;  
+    }
+
+    ul.list-actividades .caption p, ul.list-noticias .caption p {
+        margin: 0;
+    }
+
+    @media (min-width: 768px) {
+        ul.list-aviso > li{
+            min-height: 16em;
+        }
+        ul.list-actividades li, ul.list-noticias li {
+            min-height: 16em;
+        }
+    }
+
+    .img-main {
+        max-height: 315px;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        
+        <div style="position:relative">
+            <img class="img-responsive full-width img-main margin-b1em" src="/cont/vistas/portal/cultura/fiestas-pilar/img/cabecera-pilares-18.jpg" alt="Fiestas del Pilar 2018. Del 6 al 14 de Octubre. Zaragoza" />
+            <!--/* <a href="/sede/servicio/cultura/" style="position:absolute;right: 1em;bottom: 1em;-webkit-filter: invert(.8);">
+                <span class="sr-only">Cultura</span>
+                <img height="41" src="//www.zaragoza.es/cont/paginas/img/sede/cultura/logo-cultura.png" alt="Logotipo Zaragoza Cultura"/>
+            </a> */-->
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <sede:aviso fragment="fragmentos/aviso/single" portal="Fiestas del Pilar: Destacado Primera" nresultados="1"> </sede:aviso>
+            </div>
+            <div class="col-md-6">
+                <a data-height="400" class="twitter-timeline" data-lang="es" data-theme="light" data-link-color="#E81B16" href="https://twitter.com/FiestasPilarOfi">Tweets by Fiestas del Pilar</a>
+                <script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+
+        <div class="row">
+        <!--/*    <div class="col-md-4">
+                <div class="card">
+                    <h2 class="titulo-test">Actividades</h2>
+                    <sede:agenda clase="col-xs-12 col-sm-6" carpeta="/sede/portal/fiestas-pilar/servicio/cultura/evento/" numero="8" portal="11" destacadas="s" fragment="/fragmentos/cultura/evento/list-img-alt"></sede:agenda>
+                </div>
+            </div>*/-->
+            <div class="col-md-8">
+            <!--/* <div class="col-md-8"> */-->
+                <div class="card">
+                    <h2 class="titulo-test">Actualidad <small class="margin-t05em pull-right"><a href="/sede/portal/cultura/fiestas-pilar/noticias">Más noticias</a></small></h2>
+                    <sede:noticia listado="s" imagen="s" espacio="15" usuario="" texto="" tema="Fiestas del Pilar" numero="8" resumen="" fecha="" carpeta="/sede/portal/cultura/fiestas-pilar/" fragment="/fragmentos/cultura/custom-list-noticia"></sede:noticia>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <form action="/sede/portal/cultura/fiestas-pilar/servicio/cultura/evento" method="get" enctype="application/x-www-form-urlencoded">
+                        <label for="nombre">Buscar una <span class="text-primary">ACTIVIDAD</span></label>
+                        <div class="input-group input-group-sm">
+                            <input type="text" id="nombre" name="query" class="form-control" placeholder="Introduce un título..." />
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default" title="Buscar Actividad">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <h3 class="color-destacados margin-t1em">Destacamos</h3>
+                    <hr class="sm color-destacados" />
+                    <sede:aviso clase="col-xs-12" portal="Fiestas del Pilar" imagen="si" resumen="si" nresultados="12"> </sede:aviso>
+                    <!-- <h3 class="margin-t1em margin-b05em"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Hoy en Zaragoza</h3> -->
+                    <!-- <sede:calendario-agenda listado="S" carpeta="/sede/portal/cultura/fiestas-pilar/servicio/cultura/evento/calendar" portal="11"></sede:calendario-agenda> -->
+                    
+                    <!--<h3 class="margin-t1em margin-b05em">Descarga de programas</h3><div class="pull-right"><img width="150" height="100" alt="Programa Infantil" src="/cont/paginas/fiestaspilar/img/programa-infantil-portada.jpg"/></div>
+                    <ul class="list-unstyled nomargin">
+                        <li><span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="/contenidos/fiestaspilar/fiestas_pilar_2017_bolsillo.pdf" class="pdf">De bolsillo</a></li>
+                        <li><span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="/contenidos/fiestaspilar/programa-infantil17.pdf" class="pdf">Infantil  </a></li>
+                    </ul>-->
+                  </div>
+				  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card clearfix">
+                     <h3 class="color-destacados margin-t1em">Pilar Responsable</h3>
+                    <hr class="sm color-destacados" />
+                    <sede:aviso clase="col-xs-12 col-sm-3" portal="Pilar responsable" imagen="si" resumen="si" nresultados="12"> </sede:aviso>
+				   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div id="mapa">
+                    <div class="separador" id="facadeStatus">&nbsp;</div>
+                    <script type="text/javascript">
+                        /*<![CDATA[*/
+                        var ifrm = document.createElement("iframe");
+                        ifrm.setAttribute("name", "mapahome");
+                        ifrm.setAttribute("id", "mapahome");
+                        ifrm.setAttribute("title", "La Ciudad al Instante");
+                        ifrm.setAttribute("scrolling", "no");
+                        ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                        ifrm.setAttribute("frameBorder", "0");
+                        ifrm.style.width.value = "100%";
+                        document.getElementById("mapa").appendChild(ifrm);
+                        /*]]>*/
+                    </script>
+                </div>
+            </div>
+        </div>
+	    <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <h2 class="titulo-test">Espacios</h2>
+                        </div>
+                        <div class="col-sm-7">
+                            <form class="form-inline" method="get" action="http://idezar.zaragoza.es/callejero/index.jsp">
+                                <label for="busca-calle">Buscar en el <span class="text-primary">CALLEJERO</span></label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" value="" size="50" id="busca-calle" name="search" class="form-control" placeholder="Encuentra una calle..."/> 
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-default" title="Buscar calle">
+                                            <span class="fa fa-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-3">
+                            <p class="margin-v05em text-right"><a href="//idezar.zaragoza.es/callejero/"><span style=" vertical-align: middle;" class="far fa-map" aria-hidden="true"></span> CALLEJERO</a></p>
+							<p class="margin-v05em text-right"><a href="/sede/portal/cultura/fiestas-pilar/webcam-pilar"><span style=" vertical-align: middle;" class="far fa-video" aria-hidden="true"></span> WebCam Plaza Pilar</a></p>
+                        </div>
+                    </div>
+                    <sede:equipamiento tab="actividades" carpeta="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/" fq="subtemas_smultiple:&quot;Espacios destacados Fiestas del Pilar&quot;"/>
+                </div>
+            </div>
+        </div>
+       
+        <!--/* <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <ul class="list-inline text-sm-right">
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="http://idezar.zaragoza.es/callejero/">Callejero</a></li>
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/viapublica/movilidad/bici/">En Bici</a></li>
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/viapublica/movilidad/como-ir/">En Transporte Público</a></li>
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/ciudad/viapublica/movilidad/movi/pie.htm">Rutas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> */-->
+        <div class="fnd-gris-claro padding-a05em clearfix">
+            <img class="pull-left" width="40" height="45" src="/cont/paginas/fiestaspilar/img/iconos2014/iconoDatosAbiertos.png" alt="Datos Abiertos"/>
+            <p class="margin-t1em">En <strong>Datos Abiertos</strong> puedes encontrar el <a href="/sede/portal/cultura/fiestas-pilar/servicio/catalogo/282">listado de actividades</a> y los <a href="/sede/portal/cultura/fiestas-pilar/servicio/catalogo/300">espacios</a> de las Fiestas del Pilar en diferentes formatos.</p>
+        </div>
+    </sede:content>
+</body>
+
+</html>

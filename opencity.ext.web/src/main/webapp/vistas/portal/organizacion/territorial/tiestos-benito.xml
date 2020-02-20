@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Joaquín Tiestos Benito (PSOE). Alcalde de Monzalbarba"
+                description="Nació hace 56 años. De profesión mecánico ajustador, pasó a formar parte de la plantilla de Opel España en 1981, ocupando en la actualidad la plaza de mecánico especialista de mantenimiento. Ha realizado varios cursos a nivel profesional, y ha ocupado distintos cargos en asociaciones, agrupaciones, comisiones, vinculadas al barrio rural de Monzalbaba. Puso en marcha, a finales de 1988, la Asociación de VecinosMiguel Servet, que ya funcionó con anterioridad (de 1979 a 1983). Tras presentarse a la consulta para Alcalde de Barrio, desde 1999 es el alcalde de dicho barrio rural. "
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Wed Oct 19 00:00:00 CET 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza,  Joaquín Tiestos Benito, (PSOE) , Monzalbarba, Barrios rurales"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>Alcalde de Monzalbarba</small>
+                    <span>|</span>
+                    Joaquín Tiestos Benito
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <div class="pull-right">
+                        <img src="/cont/paginas/organizacion/img/alcaldes-barrio/tiestos-benito.jpg"
+                             alt="Joaquín Tiestos Benito "/>
+                    </div>
+                    <p>Nació hace 56 años.</p>
+                    <p>De profesión mecánico ajustador, pasó a formar parte de la plantilla de Opel España en 1981,
+                        ocupando en la actualidad la plaza de mecánico especialista de mantenimiento. Ha realizado
+                        varios cursos a nivel profesional, y ha ocupado distintos cargos en asociaciones, agrupaciones,
+                        comisiones, vinculadas al barrio rural de Monzalbaba.
+                    </p>
+                    <p>Puso en marcha, a finales de 1988, la Asociación de Vecinos<em>Miguel Servet</em>, que ya
+                        funcionó con anterioridad (de 1979 a 1983).
+                    </p>
+                    <p>Tras presentarse a la consulta para Alcalde de Barrio, desde 1999 es el
+                        <strong>alcalde de dicho barrio rural.</strong>
+                    </p>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

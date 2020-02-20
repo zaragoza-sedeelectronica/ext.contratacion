@@ -1,0 +1,58 @@
+<th:block th:include="fragmentos/error" />
+<div th:if="${registro.statusCode.value()} == 200">
+    <form th:action="@{/servicio/formulario/{id}/save(id=${session.sess_ciudadano} ? 'u/' + *{id}: ( ${session.sess_risp} or ${editByUser} ? (${edit} ? *{id} + '/' + *{code}: 'a/' + *{id}) : *{id}))}" th:object="${dato}" method="post" class="form-horizontal">
+        <h2 sede:rdf="*{get('title')}"></h2>
+        <th:block  th:if="not ${mensaje}" th:utext="*{description}" />
+        <a th:if="${dato.publicAnswer}" th:href="'/sede/servicio/formulario/' + ${dato.id} + '/answer'" class="btn btn-warning">Consulta las propuestas realizadas</a>
+
+        <span th:if="${detail} and ${dato.getNombreUsuario()}" th:text="'Realizada por ' + ${dato.getNombreUsuario()}" class="label label-primary"/>
+
+        <div class="card" th:if="*{code} and not ${dato.publicAnswer}">
+            Identificador de registro: <strong th:text="*{code}"/>
+            <th:block th:if="${readonly}">
+                <a th:if="*{token}" th:href="'./token/'+ *{token} + '/pdf'" class="btn btn-info">Generar PDF</a>
+            </th:block>
+            <th:block th:if="not ${readonly}">
+                <a th:if="*{token}" th:href="'../token/'+ *{token} + '/pdf'" class="btn btn-info">Generar PDF</a>
+            </th:block>
+
+            <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')} and not ${edit}" th:href="@{./{id}/edit(id=*{code})}" class="btn btn-warning"><span class="fa fa-plus" /> Editar Registro</a>
+        </div>
+        <!--/* TODO Control de fechas */-->
+        <!--/* si hay más de una sección mostramos los datos de la sección*/-->
+        <th:block th:if="*{section.size() > 1}">
+            <th:block th:each="sec : *{section}">
+                <th:block th:if="${sec.visible=='A'} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}">
+                    <section th:attr="id='section_' + ${sec.id}" class="card" th:if="not ${detail} or ${sec.visible=='S'} or ${mostrarOcultos}">
+                        <fieldset>
+                            <legend th:attr="id='legend_section_' + ${sec.id}"><h3 th:text="${sec.title}" th:attr="id='title_' + ${sec.id}"></h3></legend>
+                            <th:block th:utext="${sec.description}"></th:block>
+                            <th:block th:include="servicio/formulario/seccion(seccion=${sec})" />
+                        </fieldset>
+                    </section>
+                </th:block>
+                <th:block th:if="not ${sec.visible=='A'}">
+                    <section th:attr="id='section_' + ${sec.id}" class="card" th:if="not ${detail} or ${sec.visible=='S'} or ${mostrarOcultos}">
+                        <fieldset>
+                            <legend th:attr="id='legend_section_' + ${sec.id}"><h3 th:text="${sec.title}" th:attr="id='title_' + ${sec.id}"></h3></legend>
+                            <th:block th:utext="${sec.description}"></th:block>
+                            <th:block th:include="servicio/formulario/seccion(seccion=${sec})" />
+                        </fieldset>
+                    </section>
+                </th:block>
+            </th:block>
+        </th:block>
+        
+        <th:block th:if="*{section.size() == 1}">
+            <!--/* si sólo hay una sección no mostramos los datos de la sección*/-->
+            <th:block th:include="servicio/formulario/seccion(seccion=*{section.get(0)})" />
+        </th:block>
+        <div class="row" th:if="not ${readonly} and not ${detail}"><div class="col-md-12"><input type="submit" value="Enviar" class="btn btn-primary btn-lg" /></div></div>
+        <div th:if="not ${readonly} and not ${detail}" role="alert" class="alert alert-info">
+             <th:block th:if="*{textLopd}" th:utext="*{textLopd}"/>
+             <p th:if="not *{textLopd}">
+                Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (<a href="http://www.boe.es/buscar/doc.php?id=DOUE-L-2016-80807">Reglamento</a>).<br/><a href="http://www.zaragoza.es/sede/servicio/tramite/23680">Ver Derechos</a>
+             </p>
+        </div>
+    </form>
+</div>

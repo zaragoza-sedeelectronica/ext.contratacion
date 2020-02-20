@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es" th:object="${registro.body}" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Voluntariado Zaragoza'" keywords="actos, concierto, actividades, cursos" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style type="text/css">
+        /* ELIMINAR DE main.css */
+        @media (max-width: 767px) {}
+            .thumbnail.overlay {
+                background-color: #FFF;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}">
+            <h2 th:text="${registro.body.title}" property="name" ></h2>
+
+            <div class="row">
+                <div class="col-md-3 col-md-push-9 text-center">
+                    <!--/* Imagen asociada a la actividad (Prioridad ++) */-->
+                    
+                    <th:block th:include="/fragmentos/share-button(title='Compartir', uri=*{uri}, text=*{title})"></th:block>
+
+                    <div class="clearfix margin-b1em"></div>
+                    <th:block th:if="${currentDevice.isNormal()}">
+                        <p><strong><span class="fa fa-qrcode"></span> Llévate la actividad a tú móvil</strong></p>
+                        <img class="qr" th:title="'QrCode de la actividad' + *{title}" th:alt="'QrCode de la actividad' + *{title}" th:src="'http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;choe=UTF-8&amp;chld=H&amp;chl=//www.zaragoza.es/sede/servicio/actividades/' + *{id}" />
+                    </th:block>
+                </div>
+                <div class="col-md-9 col-md-pull-3">
+                    <div class="well" th:if="*{description}" property="description" th:utext="*{description}"></div>
+                    <div class="well" th:if="*{numVoluntarios}" property="description">
+                        <strong>Número de voluntarios: </strong>
+                        <span th:utext="*{numVoluntarios}"></span>
+                    </div>
+                    <div class="well" th:if="*{numVoluntarios}" property="description">
+                        <strong>Horario: </strong><br/>
+                        <th:block th:if="!*{startDate} and !*{endDate}">
+                            A diario
+                        </th:block>
+                        <th:block th:if="*{startDate}">
+                            <th:block th:if="*{#strings.equals(#calendars.format(startDate,'dd-MM-yyyy'), #calendars.format(endDate,'dd-MM-yyyy'))}">
+                                El <span property="endDate" th:text="*{#calendars.format(endDate,'dd-MM-yyyy')}" />
+                            </th:block>
+                            
+                            <th:block th:unless="*{#strings.equals(#calendars.format(startDate,'dd-MM-yyyy'), #calendars.format(endDate,'dd-MM-yyyy'))}">
+                                <th:block th:if="*{startDate}">
+                                    Del <span property="startDate" th:text="*{#calendars.format(startDate,'dd-MM-yyyy')}" /> al
+                                
+                                    <span property="endDate" th:text="*{#calendars.format(endDate,'dd-MM-yyyy')}" />
+                                </th:block>
+                            </th:block>
+                        </th:block>
+                        <th:block th:if="*{startDate} and *{endDate}">
+                            de 
+                            <span property="startDate" th:text="*{#calendars.format(startDate,'HH:mm')}" /> a <span property="endDate" th:text="*{#calendars.format(endDate,'HH:mm')}" />
+                        </th:block>
+                    </div>
+                    <div class="panel-group" id="event-accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default" th:if="*{not #lists.isEmpty(localizacionVol)}">
+                            <div class="panel-heading" role="tab" id="subevents-title">
+                                <h3 class="panel-title">
+                                        <a role="button" data-toggle="collapse" href="#subevents" aria-expanded="true" aria-controls="subevents">
+                                            <span class="far fa-building"></span> Lugares de realización
+                                        </a>
+                                    </h3>
+                            </div>
+                        </div>
+                        <div id="idMapa" class="oculto" th:if="*{idMapa}" th:text="*{idMapa}"></div>
+                        <div id="mapa-leaflet" th:if="*{idMapa}">
+                            &nbsp;
+                        </div>
+                        <div id="subevents" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" role="tabpanel" aria-labelledby="subevents-title" th:if="*{not #lists.isEmpty(localizacionVol)}">
+                            <table class="table">
+                                <tr>
+                                    <th><span class="fas fa-map-marker-alt fa-lg"></span> Dónde</th>
+                                </tr>
+                                <tr th:each="se, i : *{localizacionVol}">
+                                    <td property="location" typeof="Place">
+                                        <span th:if="${se.title}" th:text="${se.title}"></span>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript" th:if="*{idMapa}">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('#jornadas .collapse').collapse();
+        var idMapa = $('#idMapa').text();
+        console.log("idMapa: " + idMapa);
+
+        var query = 'https://www.zaragoza.es/sede/servicio/mapa-colaborativo/' + idMapa + '.geojson?srsname=wgs84';
+        var popup;
+        var markers;
+        $.getJSON(query, function(data) {
+            $('#mensaje').addClass('hide')
+            if (data.features.length > 0) {
+                var geojson = L.geoJson(data, {
+                    pointToLayer: function(feature, latlng) {
+                        var icono = data.properties.icon;
+                        var texto = '<strong>' + feature.properties.title + '</strong><br/>' + feature.properties.description;
+                        return L.marker(latlng
+                            , {
+                                icon: L.icon({
+                                    iconUrl: icono,
+                                    iconSize: [22, 20],
+                                    iconAnchor: [22, 20],
+                                    popupAnchor: [-10, -20]
+                            })
+                        }).bindPopup(texto);
+                    }
+                });
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+                map.fitBounds(geojson.getBounds());
+                map.setZoom(5);
+                map.addLayer(geojson);
+            } else {
+                $('#mensaje').html('La consulta no ha devuelto resultados');
+                $('#mensaje').removeClass('hide').addClass('alert-danger');
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+            };
+        });
+
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

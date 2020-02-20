@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Desde los barrios" 
+               description="Desde los barrios es un programa de rendición de cuentas que se lleva a cabo en el municipio. En cada barrio, con carácter mensual, acude al Centro Cívico un miembro del equipo de gobierno para informar a la ciudadanía de las acciones realizadas en su área y responder a las preguntas que le sean formuladas. En la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, puede consultar fecha y lugar de celebración."  
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, comunicación política, barrio, equipo de gobierno, city, council, Saragossa, electronic site, local government,open government, citizen-authority relation, social participation, political communication, neighborhood, district, government team"  
+               />
+    <style type="text/css">
+    #rscont a {
+        color: #202020 !important;
+    }
+
+    .list-barrios li {
+        border: 1px solid #fff;
+    }
+
+    .list-barrios li:hover {
+        background: #eee;
+    }
+
+    h2>span {
+        padding: 0 .5em 0;
+        border-left: 2px solid #e81b16;
+        border-right: 2px solid #e81b16;
+    }
+    
+            .redes-sociales {
+			margin-top: 3px;
+			margin-right: 0px;				
+            font-size: 42px;
+			position: relative;
+            }      
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div class="container-fluid">
+                            <div class="pull-right redes-sociales">
+                                <a href="https://www.facebook.com/ZGZopencity/"><span class="fab fa-facebook-square color-ayto"></span></a>
+                                <a href="https://twitter.com/ZGZopencity"><span class="fab fa-twitter-square color-ayto"></span></a>
+                            </div>				
+            <h2>Desde los Barrios</h2>
+            <hr class="sm"/>
+            <div class="row">
+			 <div class="col-md-4">	
+			<img class="padding-t1em img-responsive" src="https://www.zaragoza.es/cont/vistas/portal/participacion/img/DesdeLosBarrios_FernandoRivares_definitivo.jpg" alt="" />
+			</div>
+                <div class="col-md-8">
+                    <h3>Próxima comparecencia: <strong>Fernando Rivarés Esco</strong></h3>
+
+						<div class="col-md-12 well">
+						<div class="col-md-6"><p><i class="fas fa-map-marker-alt"></i><strong> Dónde</strong></p>
+						<p>Centro Cívico Salvador Allende (Las Fuentes) <br/>
+C/ Florentino Ballesteros, 8</p></div>
+						<div class="col-md-6"><p><i class="fas fa-calendar-day"></i><strong> Cuándo</strong></p>
+						<p><del>Miércoles, 16 de enero de 2019</del><br/>Jueves, 31 de enero de 2019<br/>18:00 - 20:00 horas</p></div>
+						
+						</div>
+						<!--/*<h4>ANULADO EL ACTO programado para el 20 de diciembre de 2018, en el Centro Cívico de La Almozara</h4>*/-->
+						
+                        <h4>¿Tienes alguna pregunta para FERNANDO RIVARÉS, Consejero de Economía y Cultura?</h4>
+                        <p>
+                            Desde los Barrios es un espacio de encuentro donde los concejales y concejalas del <strong>equipo de Gobierno del Ayuntamiento</strong> de Zaragoza se reunen con vecinos y vecinas para <strong>conversar y dar respuesta a cuestiones relativas a la gestión de sus diferentes Áreas</strong>.</p>
+                        <p>
+                            Estos encuentros son presenciales y tienen lugar en espacios municipales con periodicidad mensual. Las sesiones se realizan -salvo por motivos excepcionales- la segunda o tercera semana de cada mes, alternando las comparecencias de los y las responsables públicos, de modo que, a lo largo del año, se rindan cuentas por todas las áreas de Gobierno y se llegue al mayor número de distritos y barrios rurales de la ciudad.</p>
+                        <p>
+                            Cada concejal o concejala expondrá <strong>durante 30 minutos</strong> las <strong>principales líneas de actuación, proyectos y gestión de su Área</strong>. Tras esta exposición se atenderá las preguntas de los vecinos y vecinas.
+                        </p>
+                    </div>
+				</div>
+                <div class="col-md-12">
+                    <!--<div> <img src="https://www.zaragoza.es/cont/paginas/actividades/imagen/desdes_barrioshijar.png" alt="" /></div>
+                    <h3>AGENDA</h3>
+                    <h3>Pablo Híjar Bayarte</h3>
+                    <ul>
+                        <li>20 de diciembre. Centro Cívico Almozara. A las 18:00 h.</li>
+                    </ul>-->
+                 <div class="col-md-4"></div>   
+                 <div class="col-md-8">     
+            <hr class="sm"/>
+                    <h3>Anteriores</h3>
+                    <ul><li><a href="http://www.zaragoza.es/sede/servicio/cultura/evento/185844">Arantza Gracia Moreno</a> - Centro Cívico Garrapinillos - 27 NOVIEMBRE 2018</li>
+						<li><a href="http://www.zaragoza.es/sede/servicio/cultura/evento/185845">Pablo Muñoz</a> - Centro Cívico Manuel Vázquez Guardiola (Barrio Oliver) - 23 OCTUBRE 2018</li>
+                        <li><a href="http://www.zaragoza.es/sede/servicio/cultura/evento/185846">Luisa Broto</a> - Centro Cívico Universidad - 26 SEPTIEMBRE 2018</li>
+                        <li><a href="http://www.zaragoza.es/sede/servicio/cultura/evento/185843">Alberto Cubero</a> - Centro Cívico Miralbueno - 14 JUNIO 2018</li>
+                        <li><a href="/sede/servicio/cultura/evento/185842">Elena Giner</a> - Centro Cívico La Cartuja Baja - 17 MAYO 2018</li>
+                        <li><a href="/sede/servicio/cultura/evento/186422">Teresa Artigas</a> - Centro de Convivencia Pedro Laín Entralgo - 20 ABRIL 2018</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

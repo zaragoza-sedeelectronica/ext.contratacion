@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Indicador Económico Presupuestario" keywords="sede,web,Indicador,Económico,,presupuestario,ayuntamiento,zaragoza,contratación" />
+    <style>
+        th{
+        text-align:center;
+        }
+        #BuscadorAvanzado{
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+        padding: 20px;
+        }
+        .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+        }
+        .title{
+        color:#D01714;
+        }
+        .list-unstyled {
+        clear: both;
+        }
+        .slider {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        }
+        .slider.slider-horizontal {
+        width: 210px;
+        height: 20px;
+        }
+        .slider.slider-horizontal .slider-track {
+        height: 10px;
+        width: 100%;
+        margin-top: -5px;
+        top: 50%;
+        left: 0;
+        }
+        .slider.slider-horizontal .slider-selection,
+        .slider.slider-horizontal .slider-track-low,
+        .slider.slider-horizontal .slider-track-high {
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        }
+        .slider.slider-horizontal .slider-tick,
+        .slider.slider-horizontal .slider-handle {
+        margin-left: -10px;
+        }
+        .slider.slider-horizontal .slider-tick.triangle,
+        .slider.slider-horizontal .slider-handle.triangle {
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        border-width: 0 10px 10px 10px;
+        width: 0;
+        height: 0;
+        border-bottom-color: #2e6da4;
+        margin-top: 0;
+        }
+        .slider.slider-horizontal .slider-tick-container {
+        white-space: nowrap;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        }
+        .slider.slider-horizontal .slider-tick-label-container {
+        white-space: nowrap;
+        margin-top: 20px;
+        }
+        .slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
+        padding-top: 4px;
+        display: inline-block;
+        text-align: center;
+        }
+        .slider.slider-horizontal .tooltip {
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        }
+        .slider.slider-horizontal.slider-rtl .slider-track {
+        left: initial;
+        right: 0;
+        }
+        .slider.slider-horizontal.slider-rtl .slider-tick,
+        .slider.slider-horizontal.slider-rtl .slider-handle {
+        margin-left: initial;
+        margin-right: -10px;
+        }
+        .slider.slider-horizontal.slider-rtl .slider-tick-container {
+        left: initial;
+        right: 0;
+        }
+        .slider.slider-horizontal.slider-rtl .tooltip {
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+        }
+        .slider.slider-vertical {
+        height: 210px;
+        width: 20px;
+        }
+        .slider.slider-vertical .slider-track {
+        width: 10px;
+        height: 100%;
+        left: 25%;
+        top: 0;
+        }
+        .slider.slider-vertical .slider-selection {
+        width: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        }
+        .slider.slider-vertical .slider-track-low,
+        .slider.slider-vertical .slider-track-high {
+        width: 100%;
+        left: 0;
+        right: 0;
+        }
+        .slider.slider-vertical .slider-tick,
+        .slider.slider-vertical .slider-handle {
+        margin-top: -10px;
+        }
+        .slider.slider-vertical .slider-tick.triangle,
+        .slider.slider-vertical .slider-handle.triangle {
+        border-width: 10px 0 10px 10px;
+        width: 1px;
+        height: 1px;
+        border-left-color: #2e6da4;
+        border-right-color: #2e6da4;
+        margin-left: 0;
+        margin-right: 0;
+        }
+        .slider.slider-vertical .slider-tick-label-container {
+        white-space: nowrap;
+        }
+        .slider.slider-vertical .slider-tick-label-container .slider-tick-label {
+        padding-left: 4px;
+        }
+        .slider.slider-vertical .tooltip {
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        }
+        .slider.slider-vertical.slider-rtl .slider-track {
+        left: initial;
+        right: 25%;
+        }
+        .slider.slider-vertical.slider-rtl .slider-selection {
+        left: initial;
+        right: 0;
+        }
+        .slider.slider-vertical.slider-rtl .slider-tick.triangle,
+        .slider.slider-vertical.slider-rtl .slider-handle.triangle {
+        border-width: 10px 10px 10px 0;
+        }
+        .slider.slider-vertical.slider-rtl .slider-tick-label-container .slider-tick-label {
+        padding-left: initial;
+        padding-right: 4px;
+        }
+        .slider.slider-disabled .slider-handle {
+        background-image: -webkit-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
+        background-image: -o-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
+        background-image: linear-gradient(to bottom, #dfdfdf 0%, #bebebe 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdfdfdf', endColorstr='#ffbebebe', GradientType=0);
+        }
+        .slider.slider-disabled .slider-track {
+        background-image: -webkit-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
+        background-image: -o-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
+        background-image: linear-gradient(to bottom, #e5e5e5 0%, #e9e9e9 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe5e5e5', endColorstr='#ffe9e9e9', GradientType=0);
+        cursor: not-allowed;
+        }
+        .slider input {
+        display: none;
+        }
+        .slider .tooltip {
+        pointer-events: none;
+        }
+        .slider .tooltip.top {
+        margin-top: -36px;
+        }
+        .slider .tooltip-inner {
+        white-space: nowrap;
+        max-width: none;
+        }
+        .slider .hide {
+        display: none;
+        }
+        .slider-track {
+        position: absolute;
+        cursor: pointer;
+        background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #f9f9f9 100%);
+        background-image: -o-linear-gradient(top, #f5f5f5 0%, #f9f9f9 100%);
+        background-image: linear-gradient(to bottom, #f5f5f5 0%, #f9f9f9 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        }
+        .slider-selection {
+        position: absolute;
+        background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: -o-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff5f5f5', GradientType=0);
+        -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 4px;
+        }
+        .slider-selection.tick-slider-selection {
+
+        }
+        .slider-track-low,
+        .slider-track-high {
+        position: absolute;
+        background: transparent;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 4px;
+        }
+        .slider-handle {
+        position: absolute;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background-color: #E81B16;
+        background-image: -webkit-linear-gradient(top, #E81B16 0%, #E81B16 100%);
+        background-image: -o-linear-gradient(top, #E81B16 0%, #E81B16 100%);
+        background-image: linear-gradient(to bottom, #E81B16 0%, #E81B16 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
+        filter: none;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+        border: 0px solid transparent;
+        }
+        .slider-handle:hover {
+        cursor: pointer;
+        }
+        .slider-handle.round {
+        border-radius: 50%;
+        }
+        .slider-handle.triangle {
+        background: transparent none;
+        }
+        .slider-handle.custom {
+        background: transparent none;
+        }
+        .slider-handle.custom::before {
+        line-height: 20px;
+        font-size: 20px;
+        content: '\2605';
+        color: #726204;
+        }
+        .slider-tick {
+        position: absolute;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: -o-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff5f5f5', GradientType=0);
+        -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        filter: none;
+        opacity: 0.8;
+        border: 0px solid transparent;
+        }
+        .slider-tick.round {
+        border-radius: 50%;
+        }
+        .slider-tick.triangle {
+        background: transparent none;
+        }
+        .slider-tick.custom {
+        background: transparent none;
+        }
+        .slider-tick.custom::before {
+        line-height: 20px;
+        font-size: 20px;
+        content: '\2605';
+        color: #726204;
+        }
+        .slider-tick.in-selection {
+
+        }
+    </style>
+</head>
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error" />
+            <div th:if="${resultado.statusCode.value()} == 200" th:object="${resultado.body}" vocab="http://schema.org/">
+                <header class="header">
+                    <h2 class="title" >Indicadores Económicos Presupuestarios  </h2>
+                    <span th:each="indicador:${resultado.body.result}">
+                     <input type="hidden" id="anyoSlider" th:value="${indicador.ejercicio}"/>
+                     </span>
+                </header>
+                <form id="BuscadorAvanzado" method="get">
+                    <div class="form-group col-md-9">
+                        <label for="anyo" class="control-label col-md-3"> Ejercicio:</label>
+                        <input id="anyo" name="ejercicio" type="text" />
+                    </div>
+                    <div class="form-group col-md-3 buscar">
+                        <input type="submit" id="enviar" value="Consultar"
+                               class="btn btn-primary"></input>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+                <div class="second-bar clearfix">
+                    <div class="col-md-6">
+                        <div class="solr-search-criteria">
+                            <strong>Criterios aplicados:</strong>
+                            <ul th:if="${#httpServletRequest.getQueryString() != null}" class="list-inline margin-a1em">
+                                <li th:if="${#httpServletRequest.getParameter('ejercicio')!='' and #httpServletRequest.getParameter('ejercicio')!=null}" th:text="'Ejercicio: '+${#httpServletRequest.getParameter('ejercicio')}" class="label label-success">En licitación</li>
+
+                            </ul>
+                            <ul th:if="${#httpServletRequest.getQueryString() == null}" class="list-inline margin-a1em">
+                                <li th:each="indicador:${resultado.body.result}" th:text="'Ejercicio: '+${indicador.ejercicio}" class="label label-success"></li>
+                            </ul>
+                        </div>
+                    </div>
+                   <div class="col-md-6 clearfix">
+                            <p class="nomargin destacado text-right">
+                                Disponible en
+                                <a href="https://www.zaragoza.es/sede/servicio/catalogo/2201">Datos Abiertos</a>
+                            </p>
+                            <ul class="list-inline pull-right">
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/morosidad/indicadores.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        JSON
+                                    </a>                                |
+                                </li>
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/morosidad/indicadores.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        XML
+                                    </a>
+                                    |
+                                </li>
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/morosidad/indicadores.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        CSV
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class=""  th:each="indicador:${resultado.body.result}">
+                            <header>
+                                <h2 class="title" th:text="'Ejercicio '+${indicador.ejercicio}"></h2>
+                            </header>
+                            <div th:unless="${indicador.ejercicio eq 2013 or indicador.ejercicio eq 2011}" class="table-responsive">
+                                <table class="table card table-striped table-condensed table-bordered" summary="Indicadores Contables">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2">Presupuestos de Gastos Corrientes</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Concepto/Valor</th>
+                                            <th>Evolucion</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Ejecución del presupuesto de gastos</strong> <br/>(Obligaciones reconocidas netas / Créditos definitivos )
+                                                <span th:text="${#numbers.formatDecimal(indicador.obligaciones,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.creditos,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.obligaciones/indicador.creditos}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosEjecucionGastos" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.ejecucionGastos}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartEjecucionGastos"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Realización de pagos</strong><br/>(Pagos líquidos / Obligaciones reconocidas netas)
+                                                <span th:text="${#numbers.formatDecimal(indicador.pagosLiquidos,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.obligaciones,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.pagosLiquidos/indicador.obligaciones}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosRealizacionPresupuestoPagos" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.realizacionPresupuestoPagos}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartRealizacionPresupuestoPagos"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Gastos por habitante</strong> <br/>(Obligaciones reconocidas netas / Número de habitantes )
+                                                <span th:text="${#numbers.formatDecimal(indicador.obligaciones,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.numHabitantes,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.obligaciones/indicador.numHabitantes}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')+' €'}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosGastosHabitante" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.gastosHabitante}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartGastosHabitante "></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Inversión por habitante</strong><br/>(Obligaciones reconocidas netas ( Cap. VI y VII ) / Número de habitantes)
+                                                <span th:text="${#numbers.formatDecimal(indicador.obligacionesCapVI,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.numHabitantes,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.obligacionesCapVI/indicador.numHabitantes}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosInversionHabitante" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.inversionHabitante}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartInversionHabitante"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Esfuerzo inversor</strong><br/>(Obligaciones reconocidas netas ( Cap. VI y VII ) / Obligaciones reconocidas netas )
+                                                <span th:text="${#numbers.formatDecimal(indicador.obligacionesCapVI,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.obligaciones,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.obligacionesCapVI/indicador.obligaciones}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosEsfuerzoInversor" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.esfuerzoInversor}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartEsfuerzoInversor"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">Presupuesto de Ingresos Corrientes</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Ejecución del presupuesto de ingresos</strong><br/> (Derechos reconocidos netos  / Previsiones definitivas )
+                                                <span th:text="${#numbers.formatDecimal(indicador.derechosReconocidos,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.previsiones,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.derechosReconocidos/indicador.previsiones}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosEjecucionIngresos" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.ejecucionIngresos}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartEjecucionIngresos"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Realización de cobros </strong><br/> (Recaudación neta / Derechos reconocidos netos
+                                                <span th:text="${#numbers.formatDecimal(indicador.recaudacion,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.derechosReconocidos,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.recaudacion/indicador.derechosReconocidos}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosRealizacionPresupuestoCobros" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.realizacionPresupuestoCobros}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartRealizacionPresupuestoCobros"></div>
+                                            </td>
+                                        </tr>
+                                        <tr><td>
+                                            <strong>Autonomía </strong><br/> (Derechos reconocidos netos (Cap.1 a 3,5,6 y 8) / Derechos reconocidos netos totales )
+                                            <span th:text="${#numbers.formatDecimal(indicador.derechoReconocidoCap13568,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.derechosReconocidos,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.derechoReconocidoCap13568/indicador.derechosReconocidos}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                        </td>
+                                            <td>
+                                                <div id="datosAutonomia" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.autonomia}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartAutonomia"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Autonomía fiscal </strong><br/>(Derechos reconocidos netos (Cap. 1 a 3,exp.38 y 39) / Derechos reconocidos netos totales)
+                                                <span th:text="${#numbers.formatDecimal(indicador.derechoReconocidoCap133839,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.derechosReconocidos,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.derechoReconocidoCap133839/indicador.derechosReconocidos}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosAutonomiaFiscal" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.autonomiaFiscal}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartAutonomiaFiscal"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Superávit/déficit por habitante</strong><br/>(Resultado presupuestario ajustado / Número de habitantes)
+                                                <span th:text="${#numbers.formatDecimal(indicador.presupuestoAjustado,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.numHabitantes,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.presupuestoAjustado/indicador.numHabitantes}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')+' €'}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosSuperhabitHabitante" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.superhabitHabitante}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartSuperhabitHabitante"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">Presupuestos cerrados</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Realización de pagos</strong><br/> (Pagos / Saldo inicial obligaciones )
+                                                <span th:text="${#numbers.formatDecimal(indicador.pagos,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.saldoInicialObligaciones,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.pagos/indicador.saldoInicialObligaciones}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosRealizacionCobros" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.realizacionCobros}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartRealizacionCobros"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Realización de cobros</strong><br/> (Cobros / Saldo inicial de derechos )
+                                                <span th:text="${#numbers.formatDecimal(indicador.cobros,3,'POINT',2,'COMMA')}+' / '+${#numbers.formatDecimal(indicador.saldoInicialDerechos,3,'POINT',2,'COMMA')}+' = '"></span><strong><span th:with="resultado=${indicador.cobros/indicador.saldoInicialDerechos}" th:text="${#numbers.formatDecimal(resultado,1,2,'COMMA')}"></span></strong>
+                                            </td>
+                                            <td>
+                                                <div id="datosRealizacionPagos" th:each="datos:${grafico.body.result}">
+                                                    <span th:each="item:${datos.realizacionPagos}"> <input type="hidden" th:value="${item}"></input></span>
+                                                </div>
+                                                <div id="chartRealizacionPagos"></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:if="${indicador.ejercicio eq 2013}" class="table-responsive" >
+                                <table class="table table-striped table-condensed table-bordered" summary="Indicadores Contables"><tbody><tr><th>Información Contable y Presupuestaria</th><th>Valor</th></tr><tr><td>Superávit o déficit por Habitante<br/>(Resultado presupuestario ajustado / Nº Habitantes)</td><td>50.684.726,64 / 682.004 =74,32 euros</td></tr><tr><td>Autonomía Fiscal <br/> (Derechos reconocidos netos de ingresos tributarios / Derechos reconocidos netos totales)</td><td>395.110.742,20/709.070.868,64=0,56</td></tr><tr><th colspan="2">Ingresos y Gastos municipales</th></tr><tr><td>Ingresos Fiscales por Habitante <br/> (Ingresos Tributarios / Nº Habitantes)</td><td>395.110.742,20 / 682.004 = 579,34 euros</td></tr><tr><td>Gastos por Habitante <br/> (Obligaciones reconocidas netas / Nº Habitantes) </td><td>678.309.784,49 / 682.004 = 994,58 euros</td></tr><tr><td>Inversión por Habitante<br/> (Obligaciones Reconocidas netas (Cap. VI y VII) / Nº Habitantes)</td><td>64.342.685,92 / 682.004 = 94,34 euros</td></tr>
+                                    <tr><td>Periodo medio de pago Cap. II y VI<br/>(Obligaciones pendientes de pago (Cap II a VI) x 365 / Obligaciones reconocidas netas)</td><td>37.551.097,76 * 365/272.908.817,20 = 50,22 dias</td></tr>
+                                    <tr><td>Periodo medio de pago<br/>(Obligaciones pendientes de pago x 365 / Obligaciones reconocidas netas)</td><td>94.796.282,50 * 365/678.309.784,49 = 51,01 dias</td></tr>
+                                    <tr><td>Periodo medio de cobro (Cap I a III)<br/> (Derechos pendientes de cobro (Cap I a III) x 365 / Derechos renocidos netos)</td><td>54.951.281,64 * 365 /417.661.212,85= 48,02 dias</td></tr><tr><th colspan="2">Deudas Municipales</th></tr>
+                                    <tr><td>Periodo medio de cobro<br/> (Derechos pendientes de cobro (Cap I a III) x 365 / Derechos renocidos netos)</td><td>83.694.875,25 *365 / 709.070.868,64= 43,08 dias</td></tr>
+                                    <tr><th colspan="2">Deudas Municipales</th></tr>
+                                    <tr><td>Evolución de la deuda Municipal</td><td><a href="/ciudad/encasa/hacienda/deuda.htm">Acceso <span class="oculto">a la evolucion de la deuda</span></a></td></tr><tr><td>Endeudamiento por Habitante <br/> (Pasivo exigible (financiero) / Nº Habitantes )</td><td>930.003.833,73 / 682.004 = 1363,63 euros</td></tr>
+                                    <tr><td> Endeudamiento Relativo<br/>(Deuda Municipal / Presupuesto Total Ayuntamiento) </td><td>930.003.833,73/ 702.975.523,03 = 1,32</td></tr>
+                                    <tr><th colspan="2">Urbanismo y Obras públicas</th></tr><tr><td>Inversión en infraestructuras por Habitante <br/> (Gastos del ejercicio (ejecutados) en inversion (capitulo 6) en infraestructuras) / Nº Habitantes</td><td>30.522.069,31 / 682.004 = 44,75 euros</td></tr></tbody></table>
+                            </div>
+                            <div th:if="${indicador.ejercicio eq 2011}" class="table-responsive" >
+                                <table class="table table-striped table-condensed table-bordered" summary="Indicadores Contables"><tbody><tr><th>Información Contable y Presupuestaria</th><th>Valor</th></tr><tr><td>Superávit o déficit por Habitante<br/>(Resultado presupuestario ajustado / Nº Habitantes)</td><td>-25.734.011,5 / 674.725 =-38,14 euros</td></tr><tr><td>Autonomía Fiscal <br/> (Derechos reconocidos netos de ingresos tributarios / Derechos reconocidos netos totales)</td><td>0,58</td></tr><tr><th colspan="2">Ingresos y Gastos municipales</th></tr><tr><td>Ingresos Fiscales por Habitante <br/> (Ingresos Tributarios / Nº Habitantes)</td><td>369.254.348,91 / 674.725 = 547,27 euros</td></tr><tr><td>Gastos por Habitante <br/> (Obligaciones reconocidas netas / Nº Habitantes) </td><td>667.633.640,25 / 674.725 = 989,49 euros</td></tr><tr><td>Inversión por Habitante<br/> (Obligaciones Reconocidas netas (Cap. VI y VII) / Nº Habitantes)</td><td>76.871.419,25 / 674.725 = 113,93 euros</td></tr><tr><td>Periodo medio de pago<br/>(Obligaciones pendientes de pago x 365 / Obligaciones reconocidas netas)</td><td>120,61 dias</td></tr><tr><td>Periodo medio de cobro<br/> (Derechos pendientes de cobro (Cap I a III) x 365 / Derechos renocidos netos)</td><td>55,31 dias</td></tr><tr><th colspan="2">Deudas Municipales</th></tr><tr><td>Evolución de la deuda Municipal</td><td><a href="/ciudad/encasa/hacienda/deuda.htm">Acceso <span class="oculto">a la evolucion de la deuda</span></a></td></tr><tr><td>Endeudamiento por Habitante <br/> (Pasivo exigible (financiero) / Nº Habitantes )</td><td>870.233.316 / 674.725 = 1289,76 euros</td></tr><tr><td> Endeudamiento Relativo<br/>(Deuda Municipal / Presupuesto Total Ayuntamiento) </td><td>867.515.335,22	/ 743.032.871,30 = 1,168</td></tr><tr><th colspan="2">Urbanismo y Obras públicas</th></tr><tr><td>Inversión en infraestructuras por Habitante <br/> (Gastos del ejercicio (ejecutados) en inversion (capitulo 6) en infraestructuras) / Nº Habitantes</td><td>56.283.228,32 / 674.725 = 83,42 euros</td></tr></tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+        </sede:content>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"/>
+        <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/sede/js/typeahead.bundle.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/less/bootstrap-slider-master/dist/bootstrap-slider.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+             $(document).ready(function() {
+             				  valueInicial=$('#anyoSlider').val();
+                var d = new Date();
+                actual= d.getFullYear();
+                var slider = new Slider("#anyo", {
+                ticks: [2011,2013,actual-4,actual-3,actual-2,actual-1],
+                ticks_labels: [2011,2013,actual-4,actual-3,actual-2,actual-1],
+                ticks_snap_bounds: 20,
+                value:valueInicial,
+                });
+              });
+             /*]]>*/
+        </script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    window.onload = function () {
+         datosAntes=[];
+         datosDespues=[];
+        var fecha = new Date();
+        var anyoActual = fecha.getFullYear();
+        var mesActual=fecha.getMonth();
+        itemEjecucionGastos=$("#datosEjecucionGastos input");
+        itemRealizacionPresupuestoPagos=$("#datosRealizacionPresupuestoPagos input");
+        itemGastosHabitante=$("#datosGastosHabitante input");
+        itemInversionHabitante=$("#datosInversionHabitante input");
+        itemEsfuerzoInversor=$("#datosEsfuerzoInversor input");
+        itemEjecucionIngresos=$("#datosEjecucionIngresos input");
+        itemRealizacionPresupuestoCobros=$("#datosRealizacionPresupuestoCobros input");
+        itemAutonomia=$("#datosAutonomia input");
+        itemAutonomiaFiscal=$("#datosAutonomiaFiscal input");
+        itemSuperHabit=$("#datosSuperhabitHabitante input");
+        itemRealizacionCobros=$('#datosRealizacionCobros input ');
+        itemRealizacionPagos=$('#datosRealizacionPagos input');
+
+        if(itemEjecucionGastos.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart1);
+         }
+         if(itemRealizacionPresupuestoPagos.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart2);
+         }
+         if(itemGastosHabitante.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart3);
+         }
+         if(itemInversionHabitante.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart4);
+         }
+         if(itemEsfuerzoInversor.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart5);
+         }
+          if(itemEjecucionIngresos.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart6);
+         }
+          if(itemRealizacionPresupuestoCobros.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart7);
+         }
+          if(itemAutonomia.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart8);
+         }
+          if(itemAutonomiaFiscal.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart9);
+         }
+         if(itemSuperHabit.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart10);
+         }
+          if(itemRealizacionCobros.length>0){
+             google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+             google.charts.setOnLoadCallback(drawChart11);
+        }
+        if(itemRealizacionPagos.length>0){
+             google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+             google.charts.setOnLoadCallback(drawChart12);
+         }
+    }
+
+    function drawChart10(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Superávit/déficit por habitante ');
+         for (var i=0;i < itemSuperHabit.length;i++){
+      // console.log(itemSuperHabit[i].defaultValue);
+        var datos=(itemSuperHabit[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+       //console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+            count: 30,
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartSuperhabitHabitante'));
+       chart.draw(data, options);
+    }function drawChart11(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Realización de pagos');
+         for (var i=0;i < itemRealizacionCobros.length;i++){
+      // console.log(itemRealizacionCobros[i].defaultValue);
+        var datos=(itemRealizacionCobros[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+       //console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+            count: 30,
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartRealizacionCobros'));
+       chart.draw(data, options);
+    }
+    function drawChart12(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Realización de cobros');
+         for (var i=0;i < itemRealizacionPagos.length;i++){
+      // console.log(itemRealizacionPagos[i].defaultValue);
+        var datos=(itemRealizacionPagos[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+       //console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+            count: 30,
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartRealizacionPagos'));
+       chart.draw(data, options);
+    }
+    function drawChart1(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Ejecución del presupuesto de gastos');
+         for (var i=0;i < itemEjecucionGastos.length;i++){
+      // console.log(itemEjecucionGastos[i].defaultValue);
+        var datos=(itemEjecucionGastos[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+      // console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+            count: 30,
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+            minValue: 500
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartEjecucionGastos'));
+       chart.draw(data, options);
+    }
+    function drawChart2(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Realización de pagos');
+         for (var i=0;i < itemRealizacionPresupuestoPagos.length;i++){
+      // console.log(itemRealizacionPresupuestoPagos[i].defaultValue);
+        var datos=(itemRealizacionPresupuestoPagos[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+       //console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+            minValue: 0
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartRealizacionPresupuestoPagos'));
+       chart.draw(data, options);
+    }
+    function drawChart3(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Gastos por habitante');
+         for (var i=0;i < itemGastosHabitante.length;i++){
+      // console.log(itemGastosHabitante[i].defaultValue);
+        var datos=(itemGastosHabitante[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+      // console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+            count: 30,
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartGastosHabitante'));
+       chart.draw(data, options);
+    }
+     function drawChart4(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Inversión por habitante');
+         for (var i=0;i < itemInversionHabitante.length;i++){
+      // console.log(itemInversionHabitante[i].defaultValue);
+        var datos=(itemInversionHabitante[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+      // console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartInversionHabitante'));
+       chart.draw(data, options);
+    }
+    function drawChart5(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Esfuerzo inversor');
+         for (var i=0;i < itemEsfuerzoInversor.length;i++){
+      // console.log(itemEsfuerzoInversor[i].defaultValue);
+        var datos=(itemEsfuerzoInversor[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+      // console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartEsfuerzoInversor'));
+       chart.draw(data, options);
+    }
+     function drawChart6(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Ejecución del presupuesto de ingresos');
+         for (var i=0;i < itemEjecucionIngresos.length;i++){
+      // console.log(itemEjecucionIngresos[i].defaultValue);
+        var datos=(itemEjecucionIngresos[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+      // console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartEjecucionIngresos'));
+       chart.draw(data, options);
+    }
+    function drawChart7(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Realización de cobros');
+         for (var i=0;i < itemRealizacionPresupuestoCobros.length;i++){
+      // console.log(itemRealizacionPresupuestoCobros[i].defaultValue);
+        var datos=(itemRealizacionPresupuestoCobros[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+       //console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartRealizacionPresupuestoCobros'));
+       chart.draw(data, options);
+    }
+     function drawChart8(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Autonomía');
+         for (var i=0;i < itemAutonomia.length;i++){
+      // console.log(itemAutonomia[i].defaultValue);
+        var datos=(itemAutonomia[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+      // console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartAutonomia'));
+       chart.draw(data, options);
+    }
+    function drawChart9(){
+        totales=[];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Año');
+        var j=2015;
+        data.addColumn('number', 'Autonomía Fiscal');
+         for (var i=0;i < itemAutonomiaFiscal.length;i++){
+      // console.log(itemAutonomiaFiscal[i].defaultValue);
+        var datos=(itemAutonomiaFiscal[i].defaultValue);
+        totales.push([new Date(j,11,31), parseFloat(datos)]);
+        j++;
+        }
+      // console.log(totales)
+        data.addRows(totales);
+         var options = {
+          title: '',
+          is3D:true,
+          legend: 'none',
+          width: 300,
+          height: 100,
+          hAxis: {
+
+             color: 'transparent',
+            gridlines: {
+             color: 'transparent'
+             },
+
+          },
+          vAxis: {
+           color: 'transparent',
+           textPosition:'none',
+            showValue:false,
+            gridlines: {
+            color: 'transparent'},
+
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chartAutonomiaFiscal'));
+       chart.draw(data, options);
+    }
+        /*]]>*/
+        </script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+
+             /*]]>*/
+        </script>
+    </body>
+</html>

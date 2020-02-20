@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Crear propuesta. Presupuestos participativos" description="Alta de propuesta" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+    <style type="text/css">@import url(/gcz/js/calendar/calendar-gcz.css);</style>
+    <script type="text/javascript" src="/gcz/js/calendar/calendar.js"></script>
+    <script type="text/javascript" src="/gcz/js/calendar/lang/calendar-es.js"></script>
+    <script type="text/javascript" src="/gcz/js/calendar/calendar-setup.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/presupuestos-participativos/save-private}" th:object="${dato}" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Crear propuesta para el distrito o junta vecinal <span th:text="${junta}" class="badge"></span></span></legend>
+
+                    <div role="alert" class="alert alert-info info">Los campos obligatoriamente requeridos se señalan mediante el icono <span class="obligatorio"></span><span class="oculto"> (campo obligatorio)</span>.</div>
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="title"><span class="obligatorio">Usuario:</span><span class="oculto"></span></label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <select th:field="*{userId}" class="form-control" required="required">
+                                <option value="">Seleccionar</option>
+                                <optgroup label="Municipal">
+                                    <option value="12065">Actur</option>
+                                    <option value="12075">El Rabal</option>
+                                    <option value="12076">Miralbueno</option>
+                                    <option value="12079">Torrero</option>
+                                    <option value="12082">Casablanca</option>
+                                    <option value="12085">Delicias</option>
+                                    <option value="12086">Oliver</option>
+                                    <option value="12088">Universidad</option>
+                                    <option value="12090">Casco</option>
+                                    <option value="12093">Almozara</option>
+                                    <option value="12094">San Jose</option>
+                                    <option value="12095">Centro</option>
+                                    <option value="12096">Las Fuentes</option>
+                                    <option value="12097">Santa Isabel</option>
+                                    <option value="12083">Distrito Sur</option>
+                                </optgroup>
+                                <optgroup label="Vecinal">
+                                    <option value="24430">San Juan de Mozarrifar</option>
+                                    <option value="24429">Cartuja Baja</option>
+                                    <option value="24428">Peñaflor</option>
+                                    <option value="25075">Movera</option>
+                                    <option value="25076">San Gregorio</option>
+                                    <option value="25077">Montañana</option>
+                                    <option value="25078">Juslibol</option>
+                                    <option value="25079">Venta del Olivar</option>
+                                    <option value="25080">Monzalbarba</option>
+                                    <option value="25081">Alfocea</option>
+                                    <option value="25082">Garrapinillos</option>
+                                    <option value="25083">Casetas</option>
+                                    <option value="36851">Villarrapa</option>
+                                    <option value="36852">Torrecilla de Valmadrid</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <!--/*<div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="esDeCiudad">Propuesta de ciudad</label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <input type="checkbox" id="esDeCiudad" th:checked="*{esDeCiudad}" name="esDeCiudad" />
+                        </div>
+                    </div>*/-->
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="usuarioPub" required="required"><span class="obligatorio">Datos de usuario:</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <textarea rows="10" class="form-control" th:field="*{usuarioPub}" maxlength="4000" required="required" placeholder="Introduce los datos de usuario"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="title"><span class="obligatorio">Título:</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <input class="form-control" type="text" th:field="*{title}" maxlength="400" required="required" placeholder="Introduce un título para tu propuesta" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="representacion">Representando a</label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <input class="form-control" type="text" th:field="*{representacion}" maxlength="4000" placeholder="Si representas una asociación, entidad o grupo social, indica su nombre." />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="description" required="required"><span class="obligatorio">Descripción:</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <textarea rows="10" class="form-control" th:field="*{description}" maxlength="4000" required="required" placeholder="Explica detalladamente cuales son las necesidades y motivos de tu propuesta."/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="objetivos" required="required"><span class="obligatorio">Objetivos:</span><span class="oculto"> (campo obligatorio)</span></label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <textarea rows="10" class="form-control" th:field="*{objetivos}" maxlength="4000" required="required" placeholder="Indica los objetivos o necesidades de tu distrito por los que creas tu propuesta." />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="beneficiarios">Beneficiarios</label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <textarea rows="10" class="form-control" th:field="*{beneficiarios}" maxlength="2000" placeholder="A quién va dirigida tu propuesta."/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-3 col-lg-2 control-label" for="observaciones">Observaciones</label>
+                        <div class="col-sm-8 col-md-9 col-lg-7">
+                            <textarea rows="10" class="form-control" th:field="*{observaciones}" maxlength="4000" placeholder="Si quieres añadir algun detalle adicional o consideración a tener en cuenta de tu propuesta."/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-2 control-label" for="img">Imagen</label>
+                        <div class="col-sm-9 col-md-10">
+                            <input class="form-control" type="text" th:field="*{image}" size="100" />
+                            <input type="file" th:if="not *{image}" name="img" /> <span class="help-block">Formato admitido: jpg, png. Horizontal. Las imágenes se escalan automáticamente a 960x720</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-2 control-label" for="anexo">Adjunto</label>
+                        <div class="col-sm-9 col-md-10">
+                            <input type="file" name="anexo" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-8 col-md-9 col-lg-7">
+                            <input type="submit" name="submit" value="Crear propuesta" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+</body>
+
+</html>

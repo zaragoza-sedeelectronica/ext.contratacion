@@ -1,0 +1,12 @@
+<ul class="list-unstyled video-list-thumbs row">
+    <li th:class="${claseVideo} != null ? ${claseVideo} : 'col-lg-3 col-sm-4 col-xs-6'" th:each="video : ${listado}">
+        <a th:href="'https://www.youtube.com/watch?v=' + ${video.id}" th:title="${video.title}">
+            <div class="img-box">
+                <img th:src="'http://i.ytimg.com/vi/' + ${video.id} + '/mqdefault.jpg'" alt="" class="img-responsive" height="130" />
+            </div>
+            <th:block th:text="${video.title}"></th:block>
+            <span class="fa fa-play-circle" aria-hidden="true"></span> 
+            <span class="duration" th:text="${#calendars.format(video.pubDate, 'dd-MM-yyyy')}"></span>
+        </a>
+    </li>
+</ul>

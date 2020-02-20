@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+    lang="es">
+
+    <head>
+        <meta charset="utf-8" />
+        <sede:meta
+            title="Ayuntamiento de Zaragoza. Policía Local de Zaragoza."
+            description="El portal Policía Zaragoza proporciona información sobre el servicio: su historia, servicios de atención a los ciudadanos, programa de Educación Vial, museo, el parque móvil, trámites y normativa relacionados. En Tu opinión importa, la ciudadanía puede enviar sus sugerencias y observaciones."
+            author="Ayuntamiento de Zaragoza"
+            last-modified="Thu Oct 06 00:00:00 CEST 2016"
+            keywords="ayuntamiento, ciudad, Zaragoza, España, policia local, servicio público, historia, Unidad de Caballería, educación cívica, juegos, museo, parque móvil, administración electrónica, formalidades administrativas, legislación  local, relación administración-administrado, servicio de quejas y sugerencias, council, city, Saragossa, Spain, municipal police, public service, history, civics, gaming, museum, vehicle fleet, electronic government, administrative formalities, local legislation, citizen-authority relations, complaints and suggestions service">
+        </sede:meta>
+        <link rel="stylesheet"
+            href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+        <link rel="stylesheet"
+            href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+        <script
+            src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+        <script
+            src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+        <script
+            src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .cuadro {
+            position: relative;
+            background-color: #cccccc;
+            border-radius: 10px;
+            width: 18%;
+            margin: 1%;
+            float: left;
+            }
+
+            .img-rounded {
+            border-radius: 10px 10px 0 0 !important;
+            }
+
+            .cuadro img {
+            padding-bottom: 0;
+            margin: 0px;
+            }
+
+            .cuadro h3 {
+            background-color: rgba(0,0,0,0.7);
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
+            border-radius: 0px 0px 10px 10px;
+            }
+
+            .cuadro h3 a {
+            color: #ffffff !important;
+            font-weight: bold;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div
+                class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Caballería
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div
+                    class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img alt="Parque infantil"
+                                src="/cont/paginas/policia/img/benhur.jpg" />
+                                <br/>
+                    <strong>Ben-Hur</strong>: nacido en 1997 y comprado en 2000
+                        </div>
+
+                        <div class="col-md-4">
+                            <img alt="Parque infantil 2"
+                                src="/cont/paginas/policia/img/capitan.jpg" />
+                                <br />
+                    <strong>Capit&#225;n</strong>: nacido en 1995 y comprado en 1999
+                        </div>
+
+                        <div class="col-md-4">
+                            <img alt="Parque infantil 3"
+                                src="/cont/paginas/policia/img/juncal.jpg" />
+                                <br />
+                    <strong>Juncal</strong>: nacido en 2002 y comprado en 2006
+                        </div>
+                        <div class="col-md-4">
+                            <img alt="Parque infantil 4"
+                                src="/cont/paginas/policia/img/pilgrim.jpg" />
+                                <br />
+                    <strong>Pilgrim</strong>: nacido en 2003 y comprado en 2006
+                        </div>
+
+                        <div class="col-md-4">
+                            <img alt="Parque infantil 5"
+                                src="/cont/paginas/policia/img/principe.jpg" />
+                                <br />
+                    <strong>Pr&#237;ncipe</strong>: nacido en 1995 y comprado en 2000
+                        </div>
+
+                        <div class="col-md-4">
+                            <img alt="Parque infantil 6"
+                                src="/cont/paginas/policia/img/taliban.jpg" />
+                                <br />
+                <strong>Trueno</strong>: nacido en 1997 y comprado en 2001
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+</html>

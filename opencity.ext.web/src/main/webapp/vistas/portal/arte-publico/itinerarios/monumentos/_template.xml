@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <sede:breadcrumb title="Arte Público" link="/sede/portal/arte-publico/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'}, {'link':'/sede/servicio/cultura/', 'text':'Cultura'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+                <!-- <th:block th:include="fragmentos/cabecera(path='/sede/servicio/cultura/evento', query='category:(&quot;Actividades&quot;)', titlePortal='Agenda')" /> -->
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <div class="container-fluid">
+            <nav class="nav-main" role="navigation">
+                <ul class="list-unstyled row no-gutter text-center" id="menu">
+                    <li class="col-xs-4 col-sm-2 col-sm-offset-3"><span class="fa fa-info-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/arte-publico/">Presentación</a></li>
+                    <li class="col-xs-4 col-sm-2 active"><span class="fa fa-cog" aria-hidden="true"></span> <a class="elemento" href="/sede/servicio/arte-publico">Catálogo</a></li>
+                    <li class="col-xs-4 col-sm-2 active"><span class="fa fa-cog" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/arte-publico/itinerarios/">Itinerarios</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container-fluid">
+            <div class="card clearfix">
+                <p>Recorrido Monumentos Conmemorativos</p>
+                <ol class="text-left col-md-12">
+                    <div class="col-md-4">
+                        <li><a href="espana">Plaza España</a></li>
+                        <li><a href="independencia">Paseo Independencia</a></li>
+                        <li><a href="aragon">Plaza Aragón</a></li>
+                    </div>
+                    <div class="col-md-4">
+                        <li><a href="paraiso">Plaza Basilio Paraiso</a></li>
+                        <li><a href="sasera">Glorieta Sasera</a></li>
+                        <li><a href="constitucion">Paseo Constitución</a></li>
+                    </div>
+                    <div class="col-md-4">
+                        <li><a href="sitios">Plaza de los Sitios</a></li>
+                        <li><a href="costa">De la calle Joaquín Costa a la de Felipe Sanclemente</a></li>
+                        <li><a href="carmen">De la Plaza del Carmen a Salamero</a></li>
+                    </div>
+                </ol>
+            </div>
+        </div>
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

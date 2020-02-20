@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Restaurantes" keywords="sede,web,ayuntamiento,zaragoza,españa,ciudad,council,turismo,restaurante" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Restaurantes</h2>
+        <img class="full-width" alt="gastronomía" src="//www.zaragoza.es/cont/paginas/turismo/img/sep2010/organiza_viaje/gastronomia/intro_Gastronomia.jpg" />
+        <!-- <th:block th:include="fragmentos/buscador/resultado" /> -->
+        <div class="card">
+            <h3>Búsqueda</h3>
+            <ul>
+                <li><a href="listado?q=tenedores==1" class="tipsel">1 Tenedor</a></li>
+                <li><a href="listado?q=tenedores==2" class="tip">2 Tenedores</a></li>
+                <li><a href="listado?q=tenedores==3" class="tip">3 Tenedores</a></li>
+                <li><a href="listado_Restaurante?tipo=Hotel" class="tip">Restaurantes de Hoteles</a></li>
+                <li><a href="/ciudad/turismo/es/profesionales/zaragoza-congresos/organiza-evento/listado_Zcb?id=5">Restaurantes Socios Zaragoza Congresos</a></li>
+                <li><a href="listado_Restaurante?tipo=Finca" class="tip">Fincas de Catering</a></li>
+            </ul>
+            <form method="get" action="#" class="form-inline fnd-gris-claro padding-a05em border-dotted">
+                <label class="oculto" for="nombre">Buscar por nombre: </label>
+                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Buscar por nombre" />
+                <input type="submit" class="boton btn btn-primary margin-l05em" value="Buscar" />
+            </form>
+        </div>
+        <!-- th:block th:text="${resultado.body.result}"/> -->
+        <h3>Resultados de la búsqueda</h3>
+            <table class="table table-striped table-condensed table-bordered">
+                <thead>
+                    <tr><th id="nom">Nombre</th>
+                    <th id="dir">Dirección</th>
+                    <th id="tel">Teléfono</th>
+                    <th id="cat">Categoría</th></tr>
+                </thead>
+                <tbody>
+                    <tr th:each="registro, i : ${resultado.body.result}">
+                        <td>
+                            <a sede:rdf="*{registro.get('title')}" th:href="*{registro.id}"></a>
+                        </td>
+                        <td sede:rdf="*{registro.get('streetAddress')}"></td>
+                        <td sede:rdf="*{registro.get('tel')}"></td>
+                        <td sede:rdf="*{registro.get('tenedores')}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+    </sede:content>
+</body>
+
+</html>

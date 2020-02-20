@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos participativos" keywords="sede,web,turismo,presupuestos participativos" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div class="margin-b1em hidden-print">
+            <a href="?visible=N" class="btn btn-primary">Pendientes</a>
+            <a href="?visible=S" class="btn btn-success">Realizadas</a>
+            <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')}" href="/sede/servicio/presupuestos-participativos/admin-valoracion/" class="btn btn-info">Todas</a>
+            <a href="/sede/servicio/presupuestos-participativos/valoracion" class="btn btn-warning">Asignadas a mi</a>
+			<div class="pull-right">
+                Ordenar por:
+                <a href="?sort=coste asc" class="btn btn-warning">Por coste</a>
+                <a href="?sort=service asc" class="btn btn-warning">Por servicio</a>
+            </div>
+        </div>
+        <ul class="row no-gutter hidden-print">
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Actur')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Actur' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">ACTUR-Rey Fernando</a></li>
+            <li class="col-md-3"><a th:classappend="(${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'casablanca')}) ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Casablanca' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Casablanca</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Casco')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Casco' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Casco Histórico</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Centro')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Centro' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Centro</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Rabal')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Rabal' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">El Rabal</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Delicias')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Delicias' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Delicias</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Almozara')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Almozara' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">La Almozara</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Fuentes')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Fuentes' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Las Fuentes</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Miralbueno')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Miralbueno' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Miralbueno</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Oliver')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Oliver' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Oliver-Valdefierro</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Jos')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Jos' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">San José</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Isabel')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Isabel' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Santa Isabel</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Torrero')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Torrero' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Torrero-La Paz</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Universidad')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Universidad' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Universidad</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Universidad')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Sur' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Distrito Sur</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Ciudad')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Ciudad' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Ciudad</a></li>
+            <li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Alfocea')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Alfocea' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Alfocea</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Casetas')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Casetas' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Casetas</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Garrapinillos')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Garrapinillos' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Garrapinillos</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Zorongo')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Zorongo' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Zorongo</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Cartuja')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Cartuja' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Cartuja</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Olivar')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Olivar' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Venta del Olivar</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Montañana')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Montañana' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Montañana</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Monzalbarba')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Monzalbarba' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Monzalbarba</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Movera')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Movera' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Movera</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Peñaflor')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Peñaflor' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Peñaflor</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Gregorio')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Gregorio' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">San Gregorio</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Mozarrifar')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Mozarrifar' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">San Juan de Mozarrifar</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Torrecilla')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Torrecilla' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Torrecilla de Valmadrid</a></li>
+<li class="col-md-3"><a th:classappend="${param['propuesta.juntaContains']} and ${#strings.containsIgnoreCase(param['propuesta.juntaContains'][0],'Villarrapa')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin-valoracion/?rows=500&amp;propuesta.juntaContains=Villarrapa' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param.visible} ? '&amp;visible=' + ${param.visible[0]} : '')">Villarrapa</a></li>
+        </ul>
+        <table class="table table-striped table-consended table-bordered table-hover">
+        <caption>
+            Valoraciones. Número de propuestas<th:block th:if="${param['propuesta.juntaContains']}" th:text="' en ' + ${param['propuesta.juntaContains'][0]}"></th:block>: 
+            <th:block th:text="${resultado.body.totalCount}"></th:block>
+            <a th:if="${param['propuesta.juntaContains']} or ${param.visible} or ${param.sort}" href="/sede/servicio/presupuestos-participativos/admin-valoracion" class="btn btn-primary btn-xs pull-right"><span class="fas fa-trash-alt" aria-hidden="true"></span> Limpiar filtro</a>
+        </caption>
+        <thead>
+            <tr>
+                <td class="col-xs-1">ID</td>
+                <td class="col-xs-5">PROPUESTA</td>
+                <td class="col-xs-2">JUNTA</td>
+                <td class="col-xs-2">SERVICIO</td>
+                <td class="col-xs-2">COSTE</td>
+                <td class="col-xs-1">VIABLE</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="registro : ${resultado.body.result}">
+                <td>
+                    <label class="label" th:classappend="${registro.visible} =='S' ? 'label-success' : 'label-primary'">
+                        <th:block th:if="${registro.visible} == 'S'">Realizada</th:block>
+                        <th:block th:if="${registro.visible} == 'N'">Pendiente</th:block>
+                    </label>
+                </td>
+                <td>
+                    <a th:href="'/sede/servicio/presupuestos-participativos/' + ${registro.propuesta.id}" th:text="${registro.propuesta.id} + ': ' + ${registro.propuesta.title}"/>
+                    <pre th:if="${registro.description}" th:text="${registro.description}"/>
+                </td>
+                <td>
+                    <th:block th:utext="${registro.propuesta.junta}"></th:block>
+                </td>
+                <td>
+                    <th:block th:utext="${registro.gestor}"></th:block> <th:block th:utext="${registro.service}"></th:block>
+                </td>
+                <td>
+                    <span th:if="${registro.coste}" th:text="${#numbers.formatDecimal(registro.coste,0,'POINT',2,'COMMA')} + ' €'"></span>
+                </td>
+                <td>
+                    <strong th:if="${registro.viable} == true">Viable</strong>
+                    <strong th:if="${registro.viable} == false">No Viable</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

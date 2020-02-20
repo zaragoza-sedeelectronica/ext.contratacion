@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Ayuntamiento de Zaragoza. Redes Sociales Municipales" description="Redes Sociales Municipales" author="Ayuntamiento de Zaragoza" keywords="redes sociales, medios sociales, participación, comunicación, web 2.0">
+    </sede:meta>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type="text/css"></link>
+    <style type="text/css">
+    .second .social-networks {
+        text-align: right !important;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Instrumento de comunicación con el Ayuntamiento</h2>
+        <hr class="sm" />
+        <div class="row">
+            <div class="col-md-8">
+                <img class="img-responsive" src="//www.zaragoza.es/cont/paginas/img/sede/misc/primavera-social.jpg" alt="" />
+            </div>
+            <div class="col-md-4 second">
+                <h3>www.zaragoza.es</h3>
+                <th:block th:include="/fragmentos/redes-sociales"></th:block>
+            </div>
+        </div>
+        <h2><img alt="" src="//www.zaragoza.es/cont/paginas/bs/img/social/sociales-ayto.png"/>Directorio de Redes Municipales</h2>
+        <hr class="sm" />
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th id="servicio">SERVICIO</th>
+                        <th id="facebook">FACEBOOK</th>
+                        <th id="twitter">TWITTER</th>
+                        <th id="pinterest">PINTEREST</th>
+                        <th id="otros">OTROS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td headers="servicio">Bibliotecas Municipales</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/BibliotecasPublicasMunicipalesdeZaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/ZGZBibliotecas"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">
+                            <a title="Enlace externo a Pinterest" href="http://pinterest.com/bibliozaragoza/"><span class="fab fa-pinterest-square fa-2x" aria-hidden="true"></span><span class="sr-only">Pinterest</span></a>
+                        </td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Centros C&#237;vicos</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/CentrosCivicosZaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/CivicosZgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Sal&#243;n del C&#243;mic</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/SalonComicZgz"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/SalonComicZgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <!--/* <tr>
+                        <td headers="servicio">A la Fresca</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/AlaFresca"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">&#160;</td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr> */-->
+                    <tr>
+                        <td headers="servicio">CDAMAZ</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/CDAMAZ?sk=wall"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/CDAMAZ"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Casas de Juventud y PIEES</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="http://www.facebook.com/pages/Casas-de-Juventud-y-Piees-de-Zaragoza/197954576990229"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/@CasasyPieesZgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">CIPAJ</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/cipaj"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/CIPAJ"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Oficina de Emnacipaci&#243;n Joven</td>
+                        <td headers="facebook">
+                            <a href="https://www.facebook.com/pages/Oficina-Emancipaci%C3%B3n-Ayuntamiento-de-Zaragoza/497699526915769?ref=hl"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <!--/* <a title="Enlace Externo a Twitter" href="https://twitter.com/@emancipacionZgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a> */-->
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Vivienda Joven</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/pages/Vivienda-Joven-Zaragoza/389160467778579"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/viviendajovzgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">12 Lunas</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/pages/12-Lunas-Ayuntamiento-de-Zaragoza/345746528809845 "> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/12lunaszgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <!--/* <tr>
+                        <td headers="servicio">Marca Zaragoza</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/marcazaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/Marca_Zaragoza"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span></a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr> */-->
+                    <tr>
+                        <td headers="servicio">Milla Digital</td>
+                        <td headers="facebook">
+                            <!--/* <a title="Enlace Externo a Facebook" href="https://www.facebook.com/milladigital"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a> */-->
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/milladigital"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">CIEM Zaragoza</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/pages/CIEM-Zaragoza/211162782244477?ref=ts"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/CIEMZaragoza"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">WIZI</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/WIZIzaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/wizi_zaragoza"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <!--/* <tr>
+                        <td headers="servicio">Tarjeta Ciudadana</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/tarjetazaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="http://twitter.com/tarjetazaragoza"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr> */-->
+                    <tr>
+                        <td headers="servicio">Oficina PICH</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/PICHZaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">&#160;</td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Zaragoza Activa</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/ZaragozaActiva"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/ZGZActiva"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros">
+                            <a title="Enlace Externo al canal de Youtube" href="https://www.youtube.com/user/ZaragozaActiva"><span class="fab fa-youtube fa-2x" aria-hidden="true"></span><span class="sr-only">Youtube</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Zona Empleo</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/zonaempleozgz"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/Zona_Empleo"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">BJ Cubit</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/BJCubit"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a href="https://twitter.com/BJCubit"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <!--/* <tr>
+                        <td headers="servicio">Zaragoza Emprende</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/pages/Zaragoza-Emprende/182827968425067"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">&#160;</td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr> */-->
+                    <!--/* <tr>
+                        <td headers="servicio">Zaragoza Global</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/zaragozaglobal"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/ZaragozaGlobal"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">&#160;</td>
+                        <td headers="otros"></td>
+                    </tr> */-->
+                    <tr>
+                        <td headers="servicio">Zaragoza Turismo</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/TurismoZaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/ZaragozaTurismo"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest">
+                            <a title="Enlace externo a Pinterest" href="http://pinterest.com/ZaragozaTourism/"><span class="fab fa-pinterest-square fa-2x" aria-hidden="true"></span><span class="sr-only">Pinterest</span></a>
+                        </td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Medio Ambiente</td>
+                        <td headers="facebook"></td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/EducacionMA"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Etopia</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/etopia.milladigital"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/etopia_"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Etopia Kids</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/Etopia.Kids"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/etopia_kids"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Pleno infantil</td>
+                        <td headers="facebook"></td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/plenoinfantil"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Educación</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/ZaragozaEducacion"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/ZgzEducacion"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">La Colaboradora</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/lacolaboradora"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/lacolaboradora"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Conservatorio Municipal Elemental de Música</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/c.m.e.m.z.c.m.e.m.z"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/CMEMZaragoza"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Patronato Municipal de las Artes Escénicas y de la Imagen</td>
+                        <td headers="facebook"></td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/pmaeizgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Servicio de Juventud</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/JuventudZGZ"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/JuventudZGZ"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Museo del Fuego</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/museodelfuego"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/MuseoFuego"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Zaragoza Deporte</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/ZaragozaDeporte"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/zaragozadeporte"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Casa de las Culturas</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/CasadelasCulturasZaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter"></td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Bizi Zaragoza</td>
+                        <td headers="facebook"></td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/biZiZGZ"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Zaragoza Dinámica</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/ZaragozaDinamica"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/ZDinamica"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Tramita</td>
+                        <td headers="facebook"></td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/tramitazgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Laboratorio Audiovisual de Zaragoza</td>
+                        <td headers="facebook"></td>
+                        <td headers="twitter"></td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros">
+                            <a title="Enlace Externo al canal de Youtube" href="https://www.youtube.com/user/zaragozaaudiovisual"><span class="fab fa-youtube fa-2x" aria-hidden="true"></span><span class="sr-only">Youtube</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Centro de Historias</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/ZaragozaDinamica"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/chzgz"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Instituto Municipal de Salud Pública</td>
+                        <td headers="facebook">
+                            <a title="Enlace Externo a Facebook" href="https://www.facebook.com/imspzaragoza"> <span class="fab fa-facebook-square fa-2x" aria-hidden="true"></span><span class="sr-only">Facebook</span> </a>
+                        </td>
+                        <td headers="twitter"></td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                    <tr>
+                        <td headers="servicio">Policía</td>
+                        <td headers="facebook"></td>
+                        <td headers="twitter">
+                            <a title="Enlace Externo a Twitter" href="https://twitter.com/policiazaragoza"> <span class="fab fa-twitter-square fa-2x" aria-hidden="true"></span><span class="sr-only">Twitter</span> </a>
+                        </td>
+                        <td headers="pinterest"></td>
+                        <td headers="otros"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>
+            <a title="Enlace Externo al canal de Youtube" href="https://www.youtube.com/user/webzgz/featured">
+                <span class="fab fa-youtube fa-2x" aria-hidden="true"></span> Youtube
+            </a>
+        </h2>
+        <hr class="sm" />
+        <sede:video lista="last"></sede:video>
+        <h2>
+            <a title="Enlace Externo al canal de Youtube" href="http://www.flickr.com/photos/zaragoza_es/sets/">
+                <span class="fab fa-flickr fa-2x" aria-hidden="true"></span> Flickr
+            </a>
+        </h2>
+        <hr class="sm" />
+    	<a data-flickr-embed="true" href="https://www.flickr.com/photos/zaragoza_es/albums/72157681408970523" title="Jornadas 4 Plan Joven">
+            <img class="img-responsive" src="https://c1.staticflickr.com/5/4271/34800713442_95d3c0594e_z.jpg" alt="Jornadas 4 Plan Joven" />
+        </a>
+        <script async="async" src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+        <h2>
+            <a title="Enlace Externo al Blog Ciudadanía" href="http://www.zaragozaciudad.net/">
+            <img alt="" src="//www.zaragoza.es/cont/paginas/gobierno-abierto/participar/img/icono_BLOG.png"/>
+                Blog Ciudadan&#237;a
+            </a>
+        </h2>
+        <h3>¿Qué es?</h3>
+        <p>El sitio en el que convergen las voces de los zaragozanos. Un sitio para el debate y la participación ciudadana en la red. La vida y el sentimiento de una ciudad desde el punto de vista de sus auténticos protagonistas. ¿Todavía no estás integrado en tu ciudad? Zaragoza te está esperando...</p>
+        <!--/* <div class="pull-right"><img src="//www.zaragoza.es/cont/paginas/aprovecha/img/blog.jpg" alt="" /> </div> */-->
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Servicios</h3>
+                <ul>
+                    <li>Directorio de los blogs de Zaragoza, clasificados por barrios y temáticamente</li>
+                    <li>Contenido permanentemente actualizado</li>
+                    <li>RSS de los contenidos para su lectura en agregadores</li>
+                    <li>Creación y gestión gratuitas de tu propio blog bajo el dominio zaragozaciudad.net </li>
+                    <li>Edición sencilla e intuitiva</li>
+                    <li>Publicación de imágenes</li>
+                    <li>Diseño completamente personalizable</li>
+                    <li>Potente motor de búsqueda</li>
+                    <li>RSS, Pings y todas esas cosas raras que tanto les gustan a los técnicos...</li>
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <h3>Weblogs Municipales</h3>
+                <ul>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/juvypiees/">Casas y <abbr title="Proyecto de Integración de Espacios Escolares">PIEES</abbr></a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/docublogambiental/">Centro de Documentaci&#243;n</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/blogdelmayor/">Mayor</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/caminosescolares/">Caminos Escolares</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/cipaj/">Cipaj</a> (J&#243;venes)</li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/emancipacion/">Emancipaci&#243;n joven</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/huertosescolares/">Huertos Escolares</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/jovenesyrios/">J&#243;venes y R&#237;os</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/parquegoyapintaverde/">Parque Goya Pinta Verde</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://www.viviendajovenzaragoza.blogspot.com.es/">Vivienda Joven</a></li>
+                    <li><a title="Se va a abrir enlace externo" href="http://zaragozaciudad.net/sinbarreras/">Zaragoza Sin Barreras</a></li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('.table').DataTable({
+            'paging': false,
+            'bInfo': false,
+            'order': [
+                [0, 'asc']
+            ],
+            'language': {
+                'sSearch': 'Buscar:'
+            }
+        });
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Formación" description="Oferta de empleo municipal y privada, viveros, coworking, formación, cursos, subvenciones y asesorías sobre empleo" author="Ayuntamiento de Zaragoza" keywords="ayuntamiento, ciudad, Zaragoza, España, coworking, viveros, subvenciones, asesorías, formación, comercio local, emprendedores, empresas, entrepeneurs, employment, courses, local commerce, enterprises, council, city, Saragossa, Spain,  administrative formalities, electronic government">
+    </sede:meta>
+    <style type="text/css">
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav role="navigation">
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/empleo/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Empleo</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Formación</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="formacion-desempleados">Formación</a></li>
+                  
+					 <li><a href="programas">Programas</a></li>
+                </ul>
+            </div>
+        </nav>   
+		<div class="row">
+            <div class="col-md-12">   <h2>Formación</h2>
+			
+			<div class="col-md-4">
+        <h3>Para Desempleados</h3>
+     
+               <ul>
+			   <li> Campus Online (falta enlace) </li>  
+			   <li> Centros de Formación (revisarlos e incluirlos en zaragoza.es)</li>
+			   <li> Escuelas Taller(revisarlos e incluirlos en zaragoza.es) </li> 
+			      <li> Centros sociolaborales (falta enlace) </li> 
+				  
+				       <li><a href="https://www.zaragoza.es/ciudad/sectores/mujer/formacion.htm"> Casa de la Mujer </a> </li> 
+					       <li> <a href="https://www.zaragoza.es/ciudad/sectores/social/detalle_Centro?id=538">Escuela de Jardinería el Pinar </a> </li> 
+						    <li><a href="https://www.zaragoza.es/ciudad/sectores/jovenes/"> Juventud </a></li> 
+			  </ul>
+            </div> 
+		 <div class="col-md-4">
+
+		  <h3>Para Emprender</h3>
+               <ul>
+               <ul>
+			   <li> Emplea-T y Emprende(enlace exterior) </li>  
+			   <li> <a href="http://www.zaragoza.es/ciudad/sectores/activa/semillero.htm">Semillero de Ideas</a></li>
+			   <li>  <a href="http://www.zaragoza.es/ciudad/sectores/activa/explorer.htm">Explorer</a></li> 
+			      <li> <a href="http://www.zaragoza.es/ciudad/sectores/activa/lacolaboradora/"> La Colaboradora </a></li> 
+				  
+				    
+			   <li> Flip and Do (falta enlace)</li>
+					     </ul>
+			  
+            </div>
+ 
+		 <div class="col-md-4">
+
+		
+		  <h3>Sobre Comercio</h3>
+     
+               <ul>
+			   <li><a href="https://zaragozacomercio.es/escaparates-seduccion-a-traves-de-la-ventana-al-comercio"> Escaparatismo</a> (Info externa pero se podría hacer una página, es sólo una página estilo blog) </li>  
+			   <li> <a href="https://zaragozacomercio.es/redes-sociales-una-forma-sencilla-de-saltar-al-mundo-digital">Redes Sociales y Comunicación </a> (Info externa pero se podría hacer una página, es sólo una página estilo blog) </li>
+			   
+			  </ul>
+            </div>
+         
+		 <div class="col-md-4">
+		
+		  <h3>Para otros Colectivos</h3>
+ 
+ 
+               <ul>
+			   <li> <a href="https://www.etopiakids.es/">Etopia Kids </a></li>  
+			   <li> Flip and Do (falta enlace)</li>
+			  </ul>
+			  
+            </div>
+        </div>
+		
+		      </div>
+		 
+    </sede:content>
+</body>
+
+</html>

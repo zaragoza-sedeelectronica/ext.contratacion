@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Bienes inmuebles" keywords="sede,web,bien,inmueble" />
+</head>
+
+<body>
+    <sede:content>
+        <form method="get" action="" class="form-inline">
+            <div class="input-group">
+                <label for="tema.id" class="sr-only">Categor&iacute;a</label>
+                <select class="form-control" name="tema.id" id="tema.id">
+                    <option value=""></option>
+                    <option th:each="doc: ${tema.body.result}" th:value="${doc.id}" th:text="${doc.title}" th:selected="${dato.tema} and ${doc.id}==${dato.tema.id}" />
+                </select>
+                <span class="input-group-btn">
+					<input type="submit" value="Consultar" class="btn btn-primary"/>
+				</span>
+            </div>
+        </form>
+        <div class="col-md-4 pull-right">
+            <p class="nomargin destacado text-right">
+                Descargar:
+                <a href="https://www.zaragoza.es/sede/servicio/catalogo/2120">Datos Abiertos</a>
+            </p>
+            <ul class="list-inline pull-right">
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/bienes-inmuebles.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        JSON
+                    </a>                                |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/bienes-inmuebles.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        XML
+                    </a>
+                    |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/bienes-inmuebles.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        CSV
+                    </a>
+                </li>
+            </ul>
+        </div>       
+        <hr/>
+        <div th:if="${dato.tema} and ${dato.tema.id} == 13" role="alert" class="alert alert-info">Bienes de titularidad no municipal arrendados por el Ayuntamiento a terceros</div>
+        <div th:if="${dato.tema} and ${dato.tema.id} == 1" role="alert" class="alert alert-info">Bienes cedidos por el Ayuntamiento a un tercero (Cesionario)</div>
+        <table class="table table-striped table-condensed table-bordered table-hover">
+            <tr>
+                <th th:if="${dato.tema} and ${dato.tema.id} != 1 and ${dato.tema.id} != 13">Id Activo</th>
+                <th th:if="${dato.tema} and ${dato.tema.id} != 13">Descripci&oacute;n</th>
+                <th>Direcci&oacute;n</th>
+                <th th:if="${dato.tema} and ${dato.tema.id} == 1">Cesionario</th>
+                <th th:if="${dato.tema} and ${dato.tema.id} == 13">Uso</th>
+                <th th:if="${dato.tema} and ${dato.tema.id} != 1 and ${dato.tema.id} != 13">Fecha alta</th>
+            </tr>
+            <tr th:each="doc: ${resultado.body.result}" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}">
+                <td th:if="${dato.tema} and ${dato.tema.id} != 1 and ${dato.tema.id} != 13"><span sede:rdf="${doc.get('id')}" /></td>
+                <td th:if="${dato.tema} and ${dato.tema.id} != 13"><span sede:rdf="${doc.get('description')}" /></td>
+                <td><span sede:rdf="${doc.get('direccion')}" /></td>
+                <td th:if="${dato.tema} and ${dato.tema.id} == 1"><span sede:rdf="${doc.get('cesario')}" /></td>
+                <td th:if="${dato.tema} and ${dato.tema.id} == 13"><span sede:rdf="${doc.get('uso')}" /></td>
+                <td th:if="${dato.tema} and ${dato.tema.id} != 1 and ${dato.tema.id} != 13"><span sede:rdf="${doc.get('fechaalta')}" /></td>
+            </tr>
+        </table>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

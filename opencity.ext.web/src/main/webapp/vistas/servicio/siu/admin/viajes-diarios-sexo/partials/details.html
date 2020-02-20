@@ -1,0 +1,139 @@
+<div class="inform repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+<form novalidate name="mainForm" ng-submit="mainForm.$valid && guardar()">
+<div class="row">
+
+    <div class="col-md-12">
+		<button type="submit" class="btn btn-default" ng-show="permisos.MOD">
+			<span class="fa fa-check" aria-hidden="true"></span> 
+			<span class="hidden-xs"> Guardar</span>
+		</button>
+        <modal-registro-borrar></modal-registro-borrar>
+		<boton-debug ng-model="registro" ng-show="debug"></boton-debug>
+    </div>
+
+</div>
+
+<hr/>
+
+<div role="alert" class="alert alert-danger" ng-show="mainForm.$submitted && mainForm.$invalid">
+	<ul>
+		<li ng-repeat="(key, errors) in mainForm.$error track by $index"> 
+			<!-- Errores: <strong>{{ key }}</strong> -->
+			<div ng-if="key === 'required'">
+				<strong>Faltan campos por completar:</strong>
+				<ul>
+					<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> es obligatorio.</li>
+				</ul>	
+			</div>
+			<div ng-if="key !== 'required'">
+				<ul>
+					<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> tiene un error: <strong>{{ key }}</strong>.</li>
+				</ul>	
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <fieldset>
+			<legend>Datos del registro</legend>
+			
+            <div class="row margin-b2em">
+                <div class="col-md-7 form-horizontal">
+
+                    <!-- Tipo e identificador -->
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.registerType.$touched) && mainForm.registerType.$invalid}">
+                        <label class="col-sm-2 control-label" for="registerType">
+                        	<span class="obligatorio">Medio:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="registerType" id="registerType" ng-model="registro.medio_transporte" required>
+                                <option value="Autobus Urbano">Autobús urbano</option>
+                                <option value="Autobus rural">Autobús rural</option>
+                                <option value="Bici">Bicicleta</option>
+                                <option value="Tranvia">Tranvía</option>
+                                <option value="Vehiculo privado">Vehículo privado</option>
+                            </select>
+                            <span ng-show="mainForm.$submitted || mainForm.registerType.$touched">
+                                <span class="help-block" ng-show="mainForm.registerType.$error.required">Introduce el tipo.</span>
+                            </span>
+                        </div>
+                        <label class="col-sm-1 control-label">
+                        	<span>ID:</span>
+                        </label>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input style="border-color:#CCC;" class="form-control" name="id" type="text" ng-model="registro.id" value="{{ registro.id }}" disabled/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Género -->
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.registerGender.$touched) && mainForm.registerGender.$invalid}">
+                        <label class="col-sm-2 control-label" for="registerGender">
+                        	<span class="obligatorio">Género:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="registerGender" id="registerGender" ng-model="registro.sexoId" required>
+                                <option value="Mujeres">Mujeres</option>
+                                <option value="Hombres">Hombres</option>
+                            </select>
+                            <span ng-show="mainForm.$submitted || mainForm.registerGender.$touched">
+                                <span class="help-block" ng-show="mainForm.registerGender.$error.required">Introduce el género.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Año y Mes -->
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.registerYear.$touched) && (mainForm.registerYear.$invalid || mainForm.registerMonth.$invalid)}">
+                        <label class="col-sm-2 control-label" for="registerYear">
+                        	<span class="obligatorio">Año:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" name="registerYear" id="registerYear" ng-model="registro.anyo" value="{{ registro.anyo }}" required/>
+                            <span ng-show="mainForm.$submitted || mainForm.registerYear.$touched">
+                                <span class="help-block" ng-show="mainForm.registerYear.$error.required">Introduce el año del registro.</span>
+                            </span>
+                        </div>
+                        <label class="col-sm-2 control-label" for="registerMonth">
+                        	<span class="obligatorio">Mes:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" name="registerMonth" id="registerMonth" ng-model="registro.mes" placeholder="1-12" value="{{ registro.mes }}" required/>
+                            <span ng-show="mainForm.$submitted || mainForm.registerMonth.$touched">
+                                <span class="help-block" ng-show="mainForm.registerMonth.$error.required">Introduce el mes del registro.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Valor -->
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.registerValue.$touched) && mainForm.registerValue.$invalid}">
+                        <label class="col-sm-2 control-label" for="registerValue">
+                        	<span class="obligatorio">Viajes:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" name="registerValue" id="registerValue" ng-model="registro.viajes" value="{{ registro.viajes }}" required/>
+                            <span ng-show="mainForm.$submitted || mainForm.registerValue.$touched">
+                                <span class="help-block" ng-show="mainForm.registerValue.$error.required">Introduce el valor del registro.</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+				</div>
+
+            </div>
+
+        </fieldset>
+
+    </div>
+
+</div>
+</form>

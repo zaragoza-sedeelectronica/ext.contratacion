@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Clavos Topográficos" keywords="sede,web,ciudad,topografia,clavos,urbanismo" autor="Servicio de información geografica Gerencia Urbanismo.Ayuntamiento de zaragoza" />
+    <style>
+    .alert-data{
+		background-image: url(/cont/paginas/risp/img/datosabiertos);
+    padding-left: 55px;
+    background-color: #f1ebf5!important;
+	}
+	.alert-data h4{
+		font-weight:bold;
+	}
+    </style>
+</head>
+<body>
+    <sede:content>
+        <h2>Clavos topográficos</h2>
+        <div class="col-md-12">
+        <form method="get" action="./list" class="well form-horizontal">
+            <div class="form-group">
+                <input type="hidden" name="fl" value="poligono,numero,xEtrs89,yEtrs89,hEtrs89,emplazamiento,emplazamiento_alt,photo,image"/>
+                <label for="poligono" class="control-label col-md-2">Polígono</label>
+                <div class="col-md-10">
+                    <input type="text" name="poligono" id="poligono" placeholder="Polígono" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="numero" class="control-label col-md-2">Número</label>
+                <div class="col-md-10">
+                    <input type="text" name="numero" id="numero" placeholder="Número" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emplazamiento" class="control-label col-md-2">Emplazamiento</label>
+                <div class="col-md-10">
+                    <select class="form-control select2-single" name="emplazamiento" id="emplazamiento">
+                        <option value="">Seleccione</option>
+                        <option th:each="doc: ${resultado}" th:value="${doc}" th:text="${doc}"/>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+                    <input type="submit" value="Consultar" class="btn btn-primary"/>
+                    <input id="resetBtn" type="reset" value="Borrar" class="btn btn-info"/>
+                </div>
+            </div>
+        </form>
+        </div>
+        <div class="col-md-12">
+            <div role="alert" class="alert alert-data">               
+                <h4>Datos disponibles en formato abierto para descarga</h4>
+                <p>
+                    Puede consultar la
+                    <a href="/sede/servicio/catalogo/247">Clavos Topográficos</a>
+                    desde el Catálogo de datos abiertos
+                </p>
+            </div>
+        </div>
+        <th:block th:include="servicio/clavo-topografico/footer" />
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/es.js"></script>
+    <script type="text/javascript">
+   /* $(".select2-single").select2({
+        theme: "bootstrap",
+        placeholder: "Selecciona emplazamiento",
+        maximumSelectionSize: 6,
+        containerCssClass: ':all:'
+    });*/
+    $('#resetBtn').on('click', function(e){
+    	$(".select2-single").val(null).trigger('change');
+
+	});
+	</script>
+</body>
+
+</html>

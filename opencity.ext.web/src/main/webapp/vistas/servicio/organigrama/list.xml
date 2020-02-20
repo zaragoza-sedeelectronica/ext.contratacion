@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Organización Municipal" keywords="sede,quejas,organización,municipal" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Resultado</h2>
+        <ul class="list-unstyled">
+            <li th:each="doc: ${resultado}" class="card" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}">
+                <a th:href="${doc.uri}"><span sede:rdf="${doc.get('title')}" /></a>
+            </li>
+        </ul>
+        <th:block th:include="servicio/organigrama/buscador" />
+    </sede:content>
+</body>
+
+</html>

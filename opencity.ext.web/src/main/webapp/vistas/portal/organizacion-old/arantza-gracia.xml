@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta 
+        title="Arantzazu Gracia Moreno (ZEC)" 
+        description="Organización Municipal, Pleno Municipal, Curriculum Vitae de Arantzazu Gracia Moreno (ZEC)" 
+        author="Ayuntamiento de Zaragoza" 
+        last-modified="Tue Oct 11 00:00:00 CEST 2016" 
+        keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Arantzazu Gracia Moreno, ZEC">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <article class="row col-md-12">
+            
+            <!-- Versión móvil -->
+            <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                <h2 class="margin-l05em">Arantzazu Gracia Moreno <abbr title="Zaragoza en Común"></abbr></h2>
+                <div class="col-md-4 col-xs-12 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="//www.zaragoza.es/cont/paginas/organizacion/img/concejales/Zec_Arantza_Gracia.jpg" alt="Arantzazu Gracia Moreno" />
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-ARANTZAZU-GRACIA-MORENO.pdf'},
+                            {year:'2016', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_%20ZARAGOZA_EN_COMUN/ARANTZAZA_GRACIA_MORENO.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-ARANZAZU-GRACIA-MORENO.pdf'}, 
+                            {year:'2016', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_%20ZARAGOZA_EN_COMUN/ARANTZAZA_GRACIA_MORENO.pdf'} 
+                        } 
+                    }" />
+                </div>
+
+                <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePersonal" aria-expanded="false" aria-controls="collapsePersonal">
+                                INFORMACIÓN PERSONAL
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPersonal">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <strong>Nacimiento:</strong> Zaragoza, el 20 de octubre de 1978. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAcademica" aria-expanded="false" aria-controls="collapseAcademica">
+                                FORMACIÓN ACADÉMICA
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAcademica">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Licenciada en Historia del Arte por la Universidad de Zaragoza en 2001, continuó sus estudios de doctorado en Italia, presentando el DEA en 2005 sobre <em>Compromiso político contra la guerra en las artes plásticas españolas. 1980-2002</em>. </li><br/>
+                                <li> En paralelo obtuvo el postgrado de <em>Educación en museos</em>. </li><br/> 
+                                <li> Posteriormente, el máster Museos: Comunicación y educación, ambos en la Universidad de Zaragoza. </li><br/>
+                                <li> Actualmente, cursa el Grado Superior de Técnico en Educación Infantil. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingFormacion">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFormacion" aria-expanded="false" aria-controls="collapseFormacion">
+                                    FORMACION COMPLEMENTARIA
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFormacion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFormacion">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Becas de estancias en Italia, Perú y Uruguay. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProfesional" aria-expanded="false" aria-controls="collapseProfesional">
+                                    EXPERIENCIA PROFESIONAL
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProfesional">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Educadora especializada en adultos en el Centro Obrero de Formación (CODEF) como voluntaria durante los cursos 1988-1989 y 1989-1990. </li><br/>
+                                <li> Tutora en el módulo adscrito a la <em>Escuela Taller Salvador Allende</em> Contratación 17/12/90 al 17/12/91. </li><br/>
+                                <li> Educadora familiar en el programa de intervención socio-familiar gestionado por la AAVV <em>Aldebarán</em> de Valdefierro. Año 1994. </li><br/>
+                                <li> Trabajadora Social en Comisión Ciudadana Antisida de Aragón (CCAS), durante el periodo 1997/1998. </li><br/>
+                                <li> Trabajadora Social del Ayuntamiento de Zaragoza, desempeñando tareas en los barrios de Oliver, San Pablo y San José (05/11/1998 al 30/05/2015). </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseContacto" aria-expanded="false" aria-controls="collapseContacto">
+                                CONTACTO
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingContacto">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <span class="far fa-envelope margin-t1em"></span>
+                                    <a href="mailto:agraciamoreno@zaragoza.es" shape="rect">agraciamoreno@zaragoza.es</a>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Versión desktop -->
+            <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                <div class="col-md-4 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="//www.zaragoza.es/cont/paginas/organizacion/img/concejales/Zec_Arantza_Gracia.jpg" alt="Arantzazu Gracia Moreno" />
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-ARANTZAZU-GRACIA-MORENO.pdf'},
+                            {year:'2016', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_%20ZARAGOZA_EN_COMUN/ARANTZAZA_GRACIA_MORENO.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-ARANZAZU-GRACIA-MORENO.pdf'}, 
+                            {year:'2016', url: 'https://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_%20ZARAGOZA_EN_COMUN/ARANTZAZA_GRACIA_MORENO.pdf'} 
+                        } 
+                    }" />
+                </div>
+                <h2 class="margin-l05em margin-b1em">Arantzazu Gracia Moreno <abbr title="Zaragoza en Común"></abbr></h2>
+
+                <div class="card col-md-8">
+                    <h3>INFORMACIÓN PERSONAL</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> <strong>Nacimiento:</strong> Zaragoza, el 20 de octubre de 1978. </li>
+                    </ul>  
+                </div> 
+
+                <div class="card col-md-8">
+                    <h3>  FORMACIÓN ACADÉMICA </h3>
+                    <hr/>                    
+                    <ul class="panel-body list-unstyled margin-l05em">
+                        <li> Licenciada en Historia del Arte por la Universidad de Zaragoza en 2001, continuó sus estudios de doctorado en Italia, presentando el DEA en 2005 sobre <em>Compromiso político contra la guerra en las artes plásticas españolas. 1980-2002</em>. </li><br/>
+                        <li> En paralelo obtuvo el postgrado de <em>Educación en museos</em>. </li><br/> 
+                        <li> Posteriormente, el máster Museos: Comunicación y educación, ambos en la Universidad de Zaragoza. </li><br/>
+                        <li> Actualmente, cursa el Grado Superior de Técnico en Educación Infantil. </li>
+                    </ul>
+                </div>                  
+                
+                <div class="card col-md-8">    
+                    <h3>FORMACIÓN COMPLEMENTARIA</h3>
+                    <hr/>
+                    <div class="margin-l1em">
+                        <li> Becas de estancias en Italia, Perú y Uruguay. </li>
+                    </div>                    
+                </div>
+                
+                <div class="card col-md-8">
+                    <h3>EXPERIENCIA PROFESIONAL</h3>
+                    <hr/>
+                    <div class="margin-l1em">
+                        <li> Educadora especializada en adultos en el Centro Obrero de Formación (CODEF) como voluntaria durante los cursos 1988-1989 y 1989-1990. </li><br/>
+                        <li> Tutora en el módulo adscrito a la <em>Escuela Taller Salvador Allende</em> Contratación 17/12/90 al 17/12/91. </li><br/>
+                        <li> Educadora familiar en el programa de intervención socio-familiar gestionado por la AAVV <em>Aldebarán</em> de Valdefierro. Año 1994. </li><br/>
+                        <li> Trabajadora Social en Comisión Ciudadana Antisida de Aragón (CCAS), durante el periodo 1997/1998. </li><br/>
+                        <li> Trabajadora Social del Ayuntamiento de Zaragoza, desempeñando tareas en los barrios de Oliver, San Pablo y San José (05/11/1998 al 30/05/2015). </li>
+                    </div>
+                </div>
+                
+                <div class="card col-md-8">    
+                    <h3> CONTACTO </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l05em">
+                        <li class="col-md-12 margin-b1em"> <span class="far fa-envelope"></span>
+                            <a href="mailto:agraciamoreno@zaragoza.es" shape="rect">agraciamoreno@zaragoza.es</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+
+        </article>
+
+        <aside class="row col-md-12 margin-t2em">
+            <div class="noticia_agenda col-md-12 margin-auto">
+                <iframe src="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=eqldkuhugjh167l4g7uugojc8o%40group.calendar.google.com&amp;ctz=Europe/Madrid" style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no"><a href="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=eqldkuhugjh167l4g7uugojc8o%40group.calendar.google.com&amp;ctz=Europe/Madrid">Acceso al Calendario</a></iframe>
+            </div>
+        </aside>
+    </sede:content>
+</body>
+
+</html>

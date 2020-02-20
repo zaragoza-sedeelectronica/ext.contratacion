@@ -1,0 +1,439 @@
+<div class="row">
+    <div class="col-md-12">
+
+         <nav class="navbar navbar-default" >
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="buscadoresTarget">
+                    <form role="search" accept-charset="utf-8">
+
+					<table class="col-md-12">
+						<thead>
+							<tr>
+								<th class="col-md-6 navbar-brand hidden-desktop">Actividad</th>
+								<th class="col-md-6 navbar-brand hidden-desktop">Perfil usuario</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td valign="top">
+									<!-- ACTIVIDAD -->
+									
+									<div>
+										<label class="col-sm-5 control-label" style="margin-top: 8px;" for="title">
+										<span>Nombre:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+			                            	<input id="title" type="text" class="form-control" ng-model="qsearch.title"/>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="tema">
+											<span>Tema:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+	<!-- 										<select class="form-control" id="tema" name="tema" ng-model="qsearch.tema" ng-options="tema as tema.title for tema in category track by tema.id"></select> -->
+											<select multiple class="form-control" id="tema" name="tema" ng-model="qsearch.tema" ng-options="tema as tema.title for tema in category track by tema.id"></select>
+										</div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="programa">
+											<span>Programa:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <autocompletado id="programa" name="programa" modelo="qsearch.programa" uri="/sede/servicio/cultura/evento/admin/programa" filtro="title" retorno="title"></autocompletado>
+				                        </div>
+		                            </div>
+		                            
+		                            <div>
+	 									<label class="col-sm-5 control-label" style="margin-top: 8px;" for="lugarRealizacion">
+											<span>Lugar:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <autocompletado id="lugarRealizacion" name="lugarRealizacion" modelo="qsearch.lugar" uri="/sede/servicio/cultura/evento/lugar-realizacion" filtro="title" retorno="title"></autocompletado>
+				                        </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="organizer">
+											<span>Entidad que organiza:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <autocompletado id="organizer" name="organizer" modelo="qsearch.organizer" uri="/sede/servicio/cultura/evento/admin/entidad" filtro="title" retorno="title"></autocompletado>
+				                        </div>
+		                            </div>
+		                            		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="performer">
+											<span>Entidad que imparte:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <autocompletado id="performer" name="performer" modelo="qsearch.performer" uri="/sede/servicio/cultura/evento/admin/entidad" filtro="title" retorno="title"></autocompletado>
+				                        </div>
+		                            </div>
+		                            
+		                            <div>
+										<label class="col-sm-5 control-label" style="margin-top: 8px;" for="origen">
+											<span>Origen:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+											<select class="form-control" id="origen" name="origen" ng-model="qsearch.origen" ng-options="origen for origen in origenes">
+				                                <option value=""></option>
+				                            </select>
+										</div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="bloqueZ16">
+											<span>Bloque ZGZ16:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <autocompletado id="bloqueZ16" name="bloqueZ16" modelo="qsearch.blockZGZ16" uri="/sede/servicio/zgz16" filtro="title" retorno="title"></autocompletado>
+				                        </div>
+		                            </div>
+		                            
+		                            <div>
+										<label class="col-sm-5 control-label" style="margin-top: 8px;" for="fechaDesde">
+											<span>Fecha inicio desde:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+											<div class="input-group">
+						                        <input type="text" id="fechaDesde" name="fechaDesde" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="qsearch.fecha_desde" is-open="datepickers.fromDate" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" my-date/>
+						                        <span class="input-group-btn">
+						                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'fromDate')">
+						                                <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+						                            </button>
+						                        </span>
+						                    </div>
+										</div>
+		                            </div>
+		                            
+		                            <div>
+										<label class="col-sm-5 control-label" style="margin-top: 8px;" for="fechaHasta">
+											<span>Fecha inicio hasta:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+											<div class="input-group">
+						                        <input type="text" id="fechaHasta" name="fechaHasta" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="qsearch.fecha_hasta" is-open="datepickers.untilDate" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" my-date/>
+						                        <span class="input-group-btn">
+						                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'untilDate')">
+						                                <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+						                            </button>
+						                        </span>
+						                    </div>
+										</div>
+		                            </div>
+								</td>
+								
+								<td valign="top">
+									<!-- PERFIL USUARIO -->
+									<div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="edad">
+											<span>Edad:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+											<select class="form-control" id="edad" ng-model="qsearch.user_edad">
+												<option value=""></option>
+												<option value="0-14">&lt;15</option>
+												<option value="15-19">15-19</option>
+												<option value="20-24">20-24</option>
+												<option value="25-29">25-29</option>
+												<option value="30-99">&gt;29</option>
+											</select>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="genero">
+											<span>G&#233;nero:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <select class="form-control" id="genero" ng-model="qsearch.user_genero">
+				                                <option value=""></option>
+				                                <option value="F">Mujer</option>
+				                                <option value="M">Hombre</option>
+				                                <option value="O">Otro</option>
+				                            </select>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="pais">
+											<span>Pa&#237;s:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <select class="form-control" id="pais" ng-model="qsearch.user_pais">
+				                                <option value=""></option>
+				                                <option value="E">España</option>
+				                                <option value="UE">Unión Europea</option>
+				                                <option value="O">Otros</option>
+				                            </select>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="estudiosActuales">
+											<span>Estudios cursando:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <select class="form-control" id="estudiosActuales" ng-model="qsearch.user_estudios_actuales">
+				                                <option value=""></option>
+				                                <option value="ESO">Educación Secundaria Obligatoria (ESO)</option>
+<!-- 				                                <option value="BACH">Bachiller</option> -->
+				                                <option value="FPGM">FP Básica</option>
+<!-- 				                                <option value="FPGS">FP. Grado superior</option> -->
+				                                <option value="SOCL">Centros Sociolaborales</option>
+				                                <option value="OTR">Otros</option>
+				                            </select>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="estudios">
+											<span>Estudios finalizados:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <select class="form-control" id="estudios" ng-model="qsearch.user_estudios">
+				                                <option value=""></option>
+				                                <option value="ST">Sin titulación</option>
+				                                <option value="ESO">ESO</option>
+				                                <option value="BACH">Bachiller</option>
+				                                <option value="FPGM">FP. Grado medio</option>
+				                                <option value="FPGS">FP. Grado superior</option>
+				                                <option value="UNIV">Grado universitario o equivalente</option>
+				                                <option value="OTR">Otro</option>
+				                            </select>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="independiente">
+											<span>Vive independiente:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <select class="form-control" id="independiente" ng-model="qsearch.user_independiente">
+				                                <option value=""></option>
+				                                <option value="S">S&#237;</option>
+				                                <option value="N">No</option>
+				                            </select>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+		 								<label class="col-sm-5 control-label" style="margin-top: 8px;" for="ocupacion">
+											<span>Ocupaci&#243;n:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+				                            <select class="form-control" id="ocupacion" ng-model="qsearch.user_ocupacion">
+				                                <option value=""></option>
+				                                <option value="EST">Estudiante</option>
+				                                <option value="EMP">Trabajador/a por cuenta ajena</option>
+				                                <option value="AUT">Autónomo/a</option>
+				                                <option value="DES">Desempleado/a</option>
+				                                <option value="OTR">Otra</option>
+				                            </select>
+			                            </div>
+		                            </div>
+		                            
+		                            <div>
+			                            <label class="col-sm-5 control-label" style="margin-top: 8px;" for="distrito">
+											<span>Barrio en el que vive:</span>
+										</label>
+										<div class="col-sm-7" style="margin-bottom: 10px;">
+		                                   <select id="distrito" class="form-control" ng-model="qsearch.user_distrito">
+		                                       <option value=""></option>
+		                                       <option value="ACTUR-Rey Fernando">ACTUR-Rey Fernando</option>
+		                                       <option value="Casablanca">Casablanca</option>
+		                                       <option value="Casco Histórico"> Casco Histórico</option>
+		                                       <option value="Centro">Centro</option>
+		                                       <option value="El Rabal">El Rabal</option>
+		                                       <option value="Delicias">Delicias</option>
+		                                       <option value="La Almozara">La Almozara</option>
+		                                       <option value="Las Fuentes">Las Fuentes</option>
+		                                       <option value="Miralbueno">Miralbueno</option>
+		                                       <option value="Oliver-Valdefierro">Oliver-Valdefierro</option>
+		                                       <option value="San José">San José</option>
+		                                       <option value="Santa Isabel">Santa Isabel</option>
+		                                       <option value="Torrero-La Paz">Torrero-La Paz</option>
+		                                       <option value="Universidad">Universidad</option>
+		                                       <option value="Alfocea">Alfocea</option>
+		                                       <option value="Casetas">Casetas</option>
+		                                       <option value="Garrapinillos">Garrapinillos</option>
+		                                       <option value="Juslibol-El Zorongo">Juslibol-El Zorongo</option>
+		                                       <option value="Cartuja Baja">Cartuja Baja</option>
+		                                       <option value="Venta del Olivar">Venta del Olivar</option>
+		                                       <option value="Montañana">Montañana</option>
+		                                       <option value="Monzalbarba">Monzalbarba</option>
+		                                       <option value="Movera">Movera</option>
+		                                       <option value="Peñaflor">Peñaflor</option>
+		                                       <option value="San Gregorio">San Gregorio</option>
+		                                       <option value="San Juan de Mozarrifar">San Juan de Mozarrifar</option>
+		                                       <option value="Torrecilla de Valmadrid">Torrecilla de Valmadrid</option>
+		                                       <option value="Villarrapa">Villarrapa</option>
+		                                   </select>
+			                            </div>
+		                            </div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<div style="padding: 20px;text-align: center;clear: both;"">
+                    <button type="submit" class="btn btn-default" ng-click="buscar(qsearch)">Filtrar</button>
+                    <button type="button" class="btn btn-default" ng-click="limpiarFiltros(qsearch);">Limpiar</button>
+                    </div>
+
+                    </form>
+                    <!--<div class="btn-group navbar-right">
+                        <label class="btn btn-default navbar-btn" ng-model="modoBusqueda" btn-radio="0">Automática</label>
+                        <label class="btn btn-default navbar-btn" ng-model="modoBusqueda" btn-radio="1">Manual</label>
+                    </div>-->
+                </div>
+            </div>
+        </nav> 
+
+    </div> 
+</div>
+
+<div class="row" >
+    <div class="col-md-12">
+        <div class="repeat-item alert alert-{{alert.type}} alert-dismissible" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+      <div class="table-responsive" ng-if="registros.length > 0">
+          <table id="actividades_table" class="table table-striped table-condensed table-hover" >
+              <thead>
+                  <tr>
+<!--                       <th class="col-xs-1">ID</th> -->
+                      <th class="col-xs-2">Título</th>
+                      <th class="col-xs-2">Tema</th>
+                      <th class="col-xs-2">Programa</th>
+                      <th class="col-xs-2">Lugar</th>
+                      <th class="col-xs-2">Entidad que organiza</th>
+                      <th class="col-xs-2">Entidad que imparte</th>
+                      <th class="col-xs-2">Origen</th>
+                      <th class="col-xs-1">Fecha inicio</th>
+                      <th class="col-xs-1">Fecha fin</th>
+                      <th class="col-xs-1" title="Inscritos">Ins.</th>
+                      <th class="col-xs-1" title="Asistentes">As.</th>
+                      <th class="col-xs-1" title="Finalizados">Fin.</th>
+                      <th class="col-xs-1" title="Cuestionarios rellenados">Cue.</th>
+                      <th class="col-xs-1 activity_score" title="Valoración">Val.</th>
+                      <th class="col-xs-1 show_activity"></th>
+                  </tr>
+              </thead>
+              <tbody style="font-size: smaller;">
+                  <tr ng-repeat="registro in registros">
+<!--                       <td>{{registro.id}}</td> -->
+                      <td>{{registro.acto.title}}</td>
+                      <td>
+                          <span ng-repeat="cat in registro.acto.category">{{cat.title}}{{$last ? '' : ', '}}</span>
+                      </td>
+                      <td>{{registro.acto.program.title}}</td>
+                      <td>
+                          <span ng-repeat="se in registro.acto.subEvent">{{se.location.title}}{{$last ? '' : ', '}}</span>
+                      </td>
+                      <td>
+                          <span ng-repeat="organizer in registro.acto.organizer">{{organizer.title}}{{$last ? '' : ', '}}</span>
+                      </td>
+                      <td>
+                          <span ng-repeat="performer in registro.acto.performer">{{performer.title}}{{$last ? '' : ', '}}</span>
+                      </td>
+                      <td>{{registro.acto.origen}}</td>
+                      <td>{{registro.acto.startDate | date : "dd/MM/yyyy" }}</td>
+                      <td>{{registro.acto.endDate | date : "dd/MM/yyyy" }}</td>
+                      <td title="Inscritos">{{registro.inscritos}}</td>
+                      <td title="Asistentes">{{registro.asistentes}}</td>
+                      <td title="Finalizados">{{registro.finalizados}}</td>
+                      <td title="Cuestionarios rellenados">{{registro.cuestionarios}}</td>
+                      <td title="Valoración">{{registro.valoracion}}</td>
+                      <td title="Ver estadísticas de la actividad (filtradas)">
+                          <a ng-if="registro.valoracion" class="btn btn-default" style="padding: 3px 6px;font-size: 12px;"
+                          	 ng-click="detalle(registro.acto.id, qsearch)"><span class="fa fa-eye"></span></a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          
+          <span><strong><i>TOTALES</i></strong></span>&nbsp;&nbsp;&nbsp;
+          <span>Inscritos: <strong>{{ totales.inscritos }}</strong>, </span>
+          <span>Asistentes: <strong>{{ totales.asistentes }}</strong>, </span>
+          <span>Finalizados: <strong>{{ totales.finalizados }}</strong>, </span>
+          <span>Valoración: <strong>{{ totales.valoracion | number : 2 }}</strong></span>
+          
+			<script type="text/javascript" charset="utf-8">
+			<![CDATA[
+	          $(document).ready(function() {
+	        	    $('#actividades_table').DataTable( {
+	        	        dom: 'Blfrtip',
+	        	        buttons: [
+	        	        	{
+	        	        		extend: 'copyHtml5',
+	        	        		text: 'Copiar'
+
+	        	        	},
+ 	        	            'excelHtml5',
+	        	            'csvHtml5',
+	        	            {
+	        	                extend: 'pdfHtml5',
+	        	                orientation: 'landscape'
+	        	            }
+	        	        ],
+	        	        columnDefs: [
+	        	        	{
+	        	        		"targets": "activity_score",
+	        	        		"render": function(data, type, row) {
+	        	        			var score = parseFloat(data);
+	        	        			if (!isNaN(score) && isFinite(score)) {
+	        	        				return score.toFixed(2);
+	        	        			}
+	        	        			else {
+	        	        				return null;
+	        	        			}
+	        	        		}
+	        	        	},
+	        	        	{
+	        	        		"targets": "show_activity",
+	        	        		"orderable": false
+	        	        	}
+	        	        ],
+	        	        lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"] ],
+	        	        pagingType: "full_numbers",
+		                language: {
+		                	"sProcessing":     "Procesando...",
+		                    "sLengthMenu":     "Mostrar _MENU_ registros",
+		                    "sZeroRecords":    "No se encontraron resultados",
+		                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+		                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+		                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+		                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+		                    "sInfoPostFix":    "",
+		                    "sSearch":         "Buscar:",
+		                    "sUrl":            "",
+		                    "sInfoThousands":  ".",
+		                    "sLoadingRecords": "Cargando...",
+		                    "oPaginate": {
+		                        "sFirst":    "Primero",
+		                        "sLast":     "Último",
+		                        "sNext":     "Siguiente",
+		                        "sPrevious": "Anterior"
+		                    },
+		                    "oAria": {
+		                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+		                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+		                    }
+		                }
+	        	    } );
+	        	} );
+			]]>
+			</script>
+      </div>
+	</div>
+</div>

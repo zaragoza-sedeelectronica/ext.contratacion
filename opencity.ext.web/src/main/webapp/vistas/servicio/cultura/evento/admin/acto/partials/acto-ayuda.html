@@ -1,0 +1,349 @@
+<div class="row" id="pdfContent">
+    <div class="col-md-12">
+
+        <h2>
+            Ayuda Sistema de Gestión de Actividades Agenda Zaragoza
+            <a href="/cont/vistas/servicio/cultura/evento/admin/img/doc_agenda.pdf" class="btn btn-primary btn-sm hidden-print pull-right">
+                <span class="far fa-file-pdf" aria-hidden="true"></span>
+                Descargar en PDF
+            </a>
+        </h2>
+        
+        <hr/>
+
+        <div class="well">
+            <strong>Indice de contenidos:</strong>
+            <hr/>
+            <ul>
+                <li>Acceso a la gestión</li>
+                <li>Listado de actividades</li>
+                <li>
+                    Búsquedas
+                    <ul>
+                        <li>Búsqueda rápida</li>
+                        <li>Búsqueda avanzada</li>
+                    </ul>
+                </li>
+                <li ng-show="permisos.NEW">Inserción de nueva actividad</li>
+                <li ng-show="permisos.PUB">Actividades pendientes de validación</li>
+                <li>
+                    Detalle de actividad
+                    <ul>
+                        <li>Parte superior: Campos generales</li>
+                        <li>
+                            Parte inferior: Campos específicos. Pestañas.
+                            <ul>
+                                <li>Tipo de actividad</li>
+                                <li>Lugar de realización</li>
+                                <li>Inscripción</li>
+                                <li>Tipo de entrada</li>
+                                <li>Entidad organizadora</li>
+                                <li>Clasificación de la actividad</li>
+                                <li>Anexos</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div role="alert" class="alert alert-warning">
+            <strong>IMPORTANTE: </strong>
+            Algunas opciones puede variar o no aparecer dependiendo de los permisos de acceso del usuario o usuaria.
+        </div>
+
+        <h3>Acceso a la gestión</h3>
+        <div class="fnd-gris-claro padding-a1em margin-b05em">
+            <h4>Dirección para entrar en el sistema de gestión de Agenda Zaragoza:</h4>
+            <a href="https://www.zaragoza.es/sede/servicio/cultura/evento/admin/">https://www.zaragoza.es/sede/servicio/cultura/evento/admin/</a>
+            <br/>
+            <small>** Es importante acceder siempre con protocolo seguro <strong>HTTPS://</strong></small>
+        </div>
+        <p>Al acceder al sistema nos solicita introducir los credenciales de usuario. Para ello se debe usar el <u>usuario y contraseña de GCZ</u>. <br/>En caso de tener algun problema con tus credenciales de acceso puedes enviar una petición a <a href="mailto:peticiones-web@zaragoza.es">peticiones-web@zaragoza.es</a>.</p>
+        Al entrar aparece las diferentes secciones de la gestión <strong>Actos, Programas, Entidades Organizadoras, Temas, etc.</strong> (algunas secciones pueden variar en función del usuario o usuaria).</p>
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/gestion_home.png" alt="Página de inicio de la gestión de Agenda Zaragoza" title="Página de inicio de la gestión de Agenda Zaragoza"/>
+        <ul>
+            <li><strong>Actos:</strong> Gestión de actividades.</li>
+            <li><strong>Programas:</strong> Consulta de programas o ciclos que agrupan conjuntos de actividades.</li>
+            <li><strong>Entidades Organizadoras:</strong> Consulta de entidades o asociaciones organizadoras de actividades.</li>
+            <li><strong>Temas:</strong> Consulta de temáticas que categorizan una actividad.
+        </ul>
+        <div role="alert" class="alert alert-info">
+            <strong>Notas:</strong>
+            <ul>
+                <li>Los subtemas han sido sustituídos por los formatos de actividad.</li>
+                <li>Los lugares de realización han sido integrados en la base de datos perteneciente a Equipamientos. Para cualquier corrección o modificación ponerse en contacto con la Oficina de la Web Municipal (<a href="mailto:peticiones-web@zaragoza.es">peticiones-web@zaragoza.es</a>)</li>
+            </ul>
+        </div>
+        
+        <br/>
+
+        <h3>Listado de actividades</h3>
+        <p>En la pantalla por defecto, en la que se visualizan a través de tabla las actividades. Para obtener resultados es necesario realizar una primera búsqueda.</p>
+
+        <h3>Búsquedas</h3>
+
+        <h4>Búsqueda rápida</h4>
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/busqueda_1.jpg" alt="Búsqueda rápida" title="Búsqueda rápida"/>
+        <p>En la pantalla de <button type="button" class="btn btn-primary btn-sm" ng-click="listar()" ng-show="permisos.DET"><span class="glyphicon glyphicon-list"></span><span class="hidden-xs"> Listado general</span></button> de actividades aparece un formulario de búsqueda con los siguientes campos:</p>
+        <ul>
+            <li><strong>ID: </strong> Identificador de la actividad</li>
+            <li><strong>Nombre: </strong>Nombre de la actividad.</li>
+            <li><strong>Entidad: </strong>Entidad organizadora.</li>
+            <li><strong>Lugar: </strong> Lugar de realización de la actividad. En caso de que una actividad tenga varios lugares de realización aparecen todas las coincidencias.</li>
+        </ul>
+        <div role="alert" class="alert alert-info">
+            <strong>Nota:</strong>
+            En la búsqueda rápida, si recupera un único resultado, se envía directamente al detalle de dicha actividad.
+        </div>
+
+        <br/>
+
+        <h4>Búsqueda avanzada</h4>
+        Al hacer click en <button type="button" class="btn btn-primary btn-sm" ng-show="permisos.DET" ng-click="modalBusqueda()" path="evento-zaragoza"><span class="glyphicon glyphicon-search"></span><span class="hidden-xs"> Búsqueda</span></button> se accede a la búsqueda avanzada:
+        <ul>
+            <li><strong>ID: </strong> Identificador único de la actividad.</li>
+            <li><strong>Nombre: </strong>Nombre de la actividad.</li>
+            <li><strong>Cita destacada: </strong> Frase destacada para mostrar/filtrar en la web.</li>
+            <li><strong>Rango de fechas: </strong> Permite filtrar actividades en un rango de fechas concreto.</li>
+            <li><strong>Programa: </strong> Programa de la actividad. Este campo identifica las diferentes fiestas locales.</li>
+            <li><strong>Lugar: </strong> Lugar de realización de la actividad (equipamiento).</li>
+        	<li><strong>Tema: </strong>Temática de la actividad. Se puede gestionar desde la sección Temas en la parte superior del servicio.</li>
+            <li><strong>Sector de Población: </strong>Sector de población/Población destinataria. Ejemplo: Jóvenes, Mujer, etc.</li>
+            <li><strong>Buscar en archivo histórico: </strong>Checkbox para mostrar <u>exclusivamente</u> actividades del archivo histórico. Una vez en el listado, permite recuperar la actividad pulsando el botón copiar.</li>
+            <li>
+                <strong>Actividades sin publicar (No visibles): </strong>Checkbox para mostrar <u>exclusivamente</u> actividades de que no están publicadas al ciudadano.
+                <br/>
+                La publicación de las actividades puede modificarse desde el listado o el detalle con los botones:
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-close"></span></button>
+             </li>
+             <li><strong>Actividades sin caducidad (No histórico)</strong>Checkbox para mostrar <u>exclusivamente</u> actividades que no caducan, es decir, se ha bloqueado manualmente que pasen a histórico al caducar. Para modificar este valor se debe acceder a la pestaña <em>Clasificación de la actividad</em> y marcar el checkbox <em>Envíar a histórico al caducar</em>.</li>
+        </ul> 
+
+        <br/>
+
+        <div ng-show="permisos.NEW">
+            <h3>Inserción de nueva actividad</h3>
+            Para insertar una nueva actividad pulsar sobre el botón: 
+            <p><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span><span class="hidden-xs"> Nueva actividad</span></button></p>
+            <p>Existen algunos campos obligatorios para la creación de una nueva actividad:
+            <ul>
+                <li>Título de la actividad</li>
+                <li>Temática/s de la actividad, este campo es múltiple.</li>
+                <li>Lugar de realización de la actividad, de este modo poder georreferenciar la misma.</li>
+                <li>Tipo de actividad. Este campo se autocompleta con el código del servicio gestor de publicación.</li>
+            </ul>
+            <div role="alert" class="alert alert-info">
+                <strong>Nota:</strong>
+                Los campos obligatorios se aumentarán en un futuro próximo.
+            </div>
+            <br/>
+        </div>
+
+        <div ng-if="permisos.VAL">
+            <h3>Actividades pendientes de Validación</h3>
+            <p><button type="button" ng-if="permisos.VAL" class="btn btn-sm btn-primary" ng-click="listarPendientesValidacion()"><span class="glyphicon glyphicon-inbox"></span> Pendientes de validación <span class="badge ng-binding">0</span></button></p>
+            <p>Indica el número de actividades insertadas en el sistema por la ciudadanía y que están pendientes de validación. 
+            <br/>
+            Estas actividades son las que se envían a través del formulario público: <a href="https://www.zaragoza.es/sede/servicio/cultura/evento/new">https://www.zaragoza.es/sede/servicio/cultura/evento/new</a> (o el correspondiente al portal del servicio gestor).</p>
+            <p>Las actividades de la ciudadanía <u>se publican por defecto</u> pero aparecen en este listado como actividades pendientes de validación para que el servicio gestor las revise. Se excluirán las que atenten contra los derechos humanos, las que tengan fines delictivos, las que utilicen lenguaje insultante u ofensivo. Aquellas cuyo contenido atente contra la legislación vigente en materia de derechos fundamentales y libertades públicas, especialmente en lo concerniente al derecho al honor, la intimidad y la propia imagen.</p>
+            <br/>
+            <div role="alert" class="alert alert-info">
+                <strong>Nota: </strong>
+                A diferencia de la gestión antigua, en la que la actividad se validaba por defecto al acceder al detalle, ahora es necesario pulsar el botón de guardar para que la actividad quede validada.    
+            </div>
+            
+            <br/>
+        </div>
+
+        <div>
+            <h3>Revisión</h3>
+            Permite revisar las actividades publicadas en busca de fallos o defectos en su publicación. Es un mecanismo útil ya que puede descubrir fallos en las actividades que se han generado desde la gestión antigua y se modifican desde la gestión nueva.
+            <p><button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-check"></span><span class="hidden-xs">Revisión</span></button></p>
+            <br/>
+        </div>
+
+        <h3>Detalle de actividad</h3>
+        <p>Aquí se detallan todos los campos que puede incluír una actividad. Los campos obligatoriamente requeridos se señalan mediante el icono <span class="obligatorio"></span><span class="oculto"> (campo obligatorio)</span>. 
+        <div role="alert" class="alert alert-info">
+            <strong>Notas:</strong>
+            <ul>
+                <li>Estos campos son los mismos que para la inserción de una nueva actividad, pero se puede encontrar alguna actividad ya publicada en el sistema que no contenga alguno de los campos obligatorios, esto es debido a la antigua gestión de la agenda y debe ser corregido.</li>
+                <li>Las actividades pertenecientes a Zaragoza Activa y Zaragoza Congresos solo pueden ser copiadas para generar una nueva actividad, <strong>no es posible modificarlas</strong>.</li>
+            </ul>
+        </div>
+
+        <br/><br/>  
+        <h4>Parte Superior. Campos básicos</h4>
+        <hr/>
+
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/agenda3.jpg" alt="Parte Superior. Campos básicos" title="Parte Superior. Campos básicos"/>
+        <ul>
+            <li><strong>Título: </strong>Introducimos el título de la actividad. Que sea identificativo de la misma, lo más breve posible, que no incluya palabras como exposición, jornada, etc. porque más tarde estas van a ir en tema y queda repetitivo.</li>
+            <li><strong>Reseña Destacados: </strong> Sólo lo rellenamos nosotros. Es la leyenda que aparece en destacados de Agenda. Tiene que ser breve.</li>
+            <li><strong>Página web de referencia: </strong>Aquí se indica la página web, en caso de que la actividad tenga su propia web, sea un grupo musical, etc.</li>
+            <li><strong>Twitter: </strong>Se incluye el twitter de la organización, evento, artista, etc. en caso de que nos lo hayan indicado.</li>
+            <li><strong>Facebook: </strong>Se incluye el facebook de la organización, evento, artista, etc. en caso de que nos lo hayan indicado.</li>
+            <li><strong>Descripción: </strong>Se describe la actividad con un breve resumen.<br/>
+            En el campo fuente html podemos meter la descripción en texto plano así no dará error con caracteres extraños que se producen al copiar y pegar directamente de word o de un pdf.<br/>
+            Además incluye pestañas para maquetar al igual que ofrece Microsoft Word. Se puede poner en negrita, listados, etc.
+            </li>
+        </ul>
+
+        <br/><br/>
+        <h4>Parte Inferior. Campos específicos</h4>
+        <hr/>
+
+        <h5>Pestaña: Tipo de Actividad</h5>
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/detalle_tipo_actividad.jpg" alt="Parte Inferior. Pestaña: Tipo de Actividad" title="Parte Inferior. Pestaña: Tipo de Actividad"/>
+        <ul>
+            <li><strong>Querys: </strong>Este campo se utiliza para realizar querys. Como norma general lo mejor es que al meter una programación amplia se nos comunique como rellenarlo.<br/>
+            <em>Por ejemplo: </em>Podemos querer recuperar en bloque la información de cabezudos de las Fiestas del Pilar. Nos puede convenir poner en programa Fiestas del Pilar y en query cabezudos para luego recuperar todo este bloque conjuntamente. 
+            </li>
+            <li><strong>Programa: </strong>Título del programa/ciclo de la actividad. Este campo servirá para realizar una búsqueda agrupada de un conjunto de actividades a través de su programa. A este título de programa, le acompaña una descripción que se puede consultar en la sección <u>Programas</u>. Al seleccionar este campo, aparece un campo de <strong>Programa antigua gestión</strong>, este campo es para mantener compatibilidad con el sistema anterior, se marcará con el mismo título que el seleccionado.</li>
+            <li><strong>Mostrar Programa:</strong>Si se quiere mostrar el título del programa en el detalle de la actividad.</li>
+            <li><strong>Temas: </strong>Elegir temática de la actividad. El número de temáticas ha sido reducido y normalizado a favor de la normativa referente al Esquema Nacional de Interoperabilidad.</li>
+            <li><strong>Formato: </strong>Elegir formato. Campo adicional a las temáticas para categorizar las actividades. Este campo se irá ampliando conforme se necesiten nuevos formatos.</li>
+            <li><strong>Población: </strong>Elegir la población a la que va dirigida. Normalemente se elige población general por defecto. Se elige mujer para cursos de la mujer, inmigrantes para las de casa de las culturas, etc. Es decir, luego van por sectores de población dependiendo de los sectores de población que tenemos en la web.</li>
+        </ul>
+        <br/>
+
+        <h5>Pestaña: Lugar de Realización</h5>
+        <ul>
+            <li><strong>Lugar de realización: </strong>Aparece un buscador para buscar el lugar en el que se realiza la actividad. Si no aparece el lugar se tienen que poner en contacto con la Web Municipal (<a href="mailto:peticiones-web@zaragoza.es">peticiones-web@zaragoza.es</a>) para incluirlo a través de la base de datos de equipamientos.<br/>
+            Aparece una pantalla emergente para rellenar los horarios y fechas. Ahora ofrece la posibilidad de rellenar fechas alternas.<br/>
+            <strong>Nota: </strong>Se han generado tres lugares de realización especiales para clasificar actividades que no dispongan de lugar de realización definido: actividades fuera de Zaragoza, actividades itinerantes, etc.
+                <ul class="list-unstyled">
+                    <li class="margin-b05em"><span class="label label-primary">5245</span> <strong>Lugar por determinar</strong></li>
+                    <li class="margin-b05em"><span class="label label-primary">6447</span> <strong>Varios lugares</strong></li>
+                    <li class="margin-b05em"><span class="label label-primary">20637</span> <strong>Fuera de Zaragoza</strong></li>
+                    <li class="margin-b05em"><span class="label label-primary">28267</span> <strong>Ver descripción</strong></li>
+                    <li class="margin-b05em"><span class="label label-primary">28268</span> <strong>Online</strong></li>
+                </ul>
+            </li>
+        </ul>
+        <p>La información adicional relativa al lugar de realización se puede añadiren el campo <u>Comentarios adicionales al lugar</u>.</p>
+        <p>Algunos equipamientos disponen de información relativa a los espacios y salas de los que se compone. En caso de que un equipamiento tenga espacios definidos, el desplegable se desbloqueará permitiendo seleccionar un único espacio para el equipamiento. Por ejemplo: Equipamiento: Auditorio de Zaragoza - Espacio: Sala Mozart.</p>
+
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/lugar_realizacion.png" alt="Pestaña: Lugar de Realización. Pantalla Horarios y Fechas" title="Pestaña: Lugar de Realización. Pantalla Horarios y Fechas"/>
+        <ul>
+            <li>
+                <strong>Horario (formato texto): </strong>Indicar horarios. Se puede rellenar como siempre indicando de lunes a viernes a las 12h. Etc. Es el horario propio que ve el ciudadano.
+                <br/>
+                <strong>NOTA: </strong> Este campo sólo se visualizá en la versión de agenda antigua: <a href="//www.zaragoza.es/ciudad/actividades/"></a>
+                <br/>
+                <strong>NOTA2: </strong> Este campo se autocompleta automáticamente al seleccionar los horarios del calendario (al pulsar sobre el botón Añadir días).</a>
+            </li>
+            <li><strong>Comentarios adicionales al lugar: </strong>Rellenar datos aclaratorios/complementarios sobre el lugar de realización.</li>
+            <li><strong>Fecha Inicio: </strong>Fecha inicio actividad.</li>
+            <li><strong>Fecha Final: </strong>Fecha final actividad. Campo obligatorio.</li>
+            <li><strong>Días de la semana: </strong>Selector múltiple de días de realización de la actividad. Es decir, una actividad puede ser en la misma semana solo los lunes, miércoles y viernes. Se rellenarían entonces aquí con su horario correspondiente. También nos permite rellenar si es entre semana (De lunes a Viernes) o en fin de semana (Sábado y Domingo).</li>
+            <li><strong>Hora de Apertura: </strong>Hora inicio. Es la hora que aparece en el calendario.</li>
+            <li><strong>Hora de Cierre: </strong>Hora final (opcional a través del checkbox). Es la hora que aparece en el calendario. </li>
+            <li><strong>Añadir días:</strong> Al pulsar el botón se genera un registro por cada día/horas seleccionado previamente. Al pulsar eśte botón, aparece un campo de <strong>Horario gestión antigua</strong>, este campo es para mantener compatibilidad con el sistema anterior, se marcará con el mismo horario de calendario que el seleccionado.</li>
+        </ul>
+        <br/>
+
+        <h5>Pestaña: Inscripción</h5>
+        <p>Apartado para cumplimentar opcionalmente en caso de que exista un proceso de inscripción, sea presencial o dígital.</p>
+        <ul>
+            <li><strong>Lugar: </strong>Lugar de inscripción. Al igual que el lugar de realización, funciona con la base de datos de equipamiento, pero la diferencia es que podemos añadir información adicional al título.</li>
+            <li><strong>Dirección: </strong> Dirección.</li>
+            <li><strong>Teléfono: </strong> Teléfono para inscribirse.</li>
+            <li><strong>Fax: </strong> Fax para inscribirse </li>
+            <li><strong>Requisitos: </strong> Requisitos de inscripción. DNI, formación, etc.</li>
+            <li><strong>Web Inscripción: </strong> De la inscripción.</li>
+            <li><strong>Fecha Inicio: </strong> De la inscripción.</li>
+            <li><strong>Fecha Fin: </strong> De la inscripción.</li>
+            <li><strong>Horario: </strong>Para inscribirse.</li>
+        </ul>
+        <br/>
+     
+        <h5>Pestaña: Tipo de Entrada</h5>
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/detalle_tipo_entrada.jpg" alt="Parte Inferior. Pestaña: Tipo de Entrada" title="Parte Inferior. Pestaña: Tipo de Entrada"/>
+        <p>Hay que pulsar el botón de añadir precio para que nos permita rellenar la información del precio. <br/>
+        Vemos que aparece un desplegable que nos permite seleccionar si se trata de una actividad gratuita, con descuento, para grupos, etc.</p>
+        <p>Si por ejemplo hay dos tipos de entrada pulsaríamos otra vez el campo de añadir precio y volveríamos a seleccionar el tipo de entrada y su precio correspondiente. Por defecto el número mínimo de personas es 1.</p>
+        <div role="alert" class="alert alert-info">
+            <strong>Nota: </strong>Si se selecciona el tipo de entrada <strong>Gratuita</strong>, se marcará automáticamente el campo Actividad gratuita (checkbox) y se desactiva el poder introducir texto libre en el precio.
+        </div>
+        <p>En la parte inferior:</p>
+        <ul>
+            <li><strong>Comentarios de la entrada: </strong>Información adicional a los precios.</li>
+            <li><strong>Precio gestión antigua: </strong>Campo de texto libre para los precios. Este campo será eliminado en un futuro y solo se mantiene por compatibilidad con la antigua gestión.</li>
+        </ul>
+        <br/>
+
+        <h5>Pestaña: Entidad Organizadora</h5>
+        <p>
+            Campo autocompletado para seleccionar las entidades organizadoras de la actividad.
+        </p>
+        <div role="alert" class="alert alert-info">
+            A diferencia de la antigua gestión, ahora <strong>se permite seleccionar multiples entidades organizadoras por cada actividad</strong>.
+            <br/>
+            El autocompletado recupera las entidades organizadoras que han sido revisadas, en caso no de encontrar la entidad organizadora correspondiente o que algun dato sea erróneo, notificar mediante petición para la inserción de la misma.
+        </div>
+
+        <br/>
+        
+        <div id="destacados" ng-show="permisos.DEST">
+            <h5>Pestaña: Clasificación de la actividad</h5>
+            <div role="alert" class="alert alert-info"><strong>Nota:</strong> Este campo puede variar dependiendo del usuario que accede a la gestión.</div>
+            <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/detalle_clasificacion.png" alt="Parte Inferior. Pestaña: Clasificación de actividad" title="Parte Inferior. Pestaña: Clasificación de actividad"/>
+            <ul>
+                <li ng-show="permisos.ADMIN">
+                    <strong>Destacar actividad (checkbox): </strong>Permite habilitar los campos para destacar una activadad. <u>Este campo es automático</u>, en caso que las fechas de destacados no cumplan con el criterio de fecha actual se desactiva por defecto y se vuelve a activar automáticamente si en el futuro se cumple el rango de fechas de destacado.
+                </li>
+                <li ng-show="permisos.ADMIN">
+                    <strong>Destacadas Agenda Zaragoza: </strong> Campos para destacar por la Web Municipal
+                    <ul>
+                        <li>Fecha Inicio: Para que aparezca en destacados.</li>
+                        <li>Fecha Fin: Para que no aparezca ya en destacados.</li>
+                        <li>Número de orden: Ordenación de los destacados.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Destacadas Servicio/Portal: </strong> Campos para destacar por el servicio/portal reflejado en el tipo de acto.
+                    <ul>
+                        <li>Fecha Inicio: Para que aparezca en destacados.</li>
+                        <li>Fecha Fin: Para que no aparezca ya en destacados.</li>
+                        <li>Número de orden: Ordenación de los destacados.</li>
+                    </ul>
+                </li>
+                <li><strong>Fecha para Histórico: </strong>Si queremos que una actividad vaya a histórico en una fecha concreta.</li>
+                <li><strong>Envíar a histórico al caducar: </strong>Indica si una actividad pasará al archivo histórico al caducar. Por defecto está marcada que <u>sí</u> se envíe.
+                <div role="alert" class="alert alert-info">
+                    <strong>Notas: </strong>
+                    <ul>
+                        <li>En caso de que la actividad no tenga un lugar de realización asociado y por tanto una fecha final de realización, el sistema no puede detectar el día de caducidad de la actividad, por lo que se debe establecer una fecha en el campo: <em>Fecha para Histórico</em>.</li>
+                        <li>Este checkbox sustituye a la antigua funcionalidad de marcar actividad como <em>permanente</em>. En caso de <u>desmarcar</u> la opción de envíar a histórico al caducar, se considera que la actividad es permanente a pesar de tener fecha final en el lugar de realización.</li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+
+        <br/>
+
+        <h5>Pestaña: Anexos</h5>
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/detalle_anexos.jpg" alt="Parte Inferior. Pestaña: Anexos" title="Parte Inferior. Pestaña: Anexos"/>
+        <p>La ficha de anexos permite adjuntar una documento (pdf,txt), una fotografía (jpg, png, gif), un archivo de audio (wav,mp3) y un enlace a un vídeo de internet.</p>
+        <p>En cada selector de adjunto aparece un botón con el dibujo correspondiente a cada tipo de adjunto. Dicho icono es un botón para visualizar el contenido del adjunto en caso de que dicha actividad lo tenga, en caso contrario dicho botón aparece deshabilitado.</p>
+        <img class="img-responsive" src="/cont/vistas/servicio/cultura/evento/admin/img/adjunto-seleccion.png" alt="Adjuntos seleccionados" title="Adjuntos seleccionados"/>
+        <p><strong>Imagen: </strong>Por defecto, si no se adjunta fotografía a la actividad, la temática de la actividad lleva asociada una imagen genérica que se mostrará como fotografía propia de la actividad en la ficha de la Sede Electónica.</p>
+        <p>En el momento de seleccionar una imagen, aparece un editor de imagen que permite recortar la imagen al tamaño obligatorio seleccionando la porción de imagen más adecuada.</p>
+        <p>Existen dos modelos de imagen:</p>
+        <ul>
+            <li><strong>Imagen vertical: </strong> Tamaño mínimo 320x480.</li>
+            <li><strong>Imagen horizontal: </strong> Tamañó mínimo 960x640.</li>
+        </ul>
+        <div role="alert" class="alert alert-info">
+            <strong>Nota: </strong>El editor de imagen no funciona en versiones antiguas de Mozilla Firefox o Google Chrome. En caso de no estar soportado por la versión del navegador del usuario, la aplicación permite únicamente subir la imagen a tamaño real, debiendo recortarla el usuario en su propio equipo con una herramienta de retoque digítal.
+        </div>
+        <p>El botón
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            <span class="hidden-xs"> Borrar anexos</span>
+        </button> permite borrar todos los adjuntos de una actividad. Esto puede ser útil cuando se realiza una copia de una actividad y dicha copia no se quieren mantener los adjuntos.</p>
+
+    </div> <!-- /span12 -->
+</div> <!-- /row-fluid -->

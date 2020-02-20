@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Consejo Sectorial de Acción Social. Consejo de la Ciudad de Zaragoza. Órganos Consultivos y de Participación." description="" author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Fri Abr 27 00:00:00 CET 2018" keywords="Gobierno Abierto, participación, consejos sectoriales, consejo de la ciudad, Zaragoza, open goverment, city council">
+    </sede:meta>
+    <style>
+    body {
+        padding-top: 57px;
+    }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <sede:content>
+
+        <div class="row">
+			<div class="col-md-12">
+           <a class="btn btn-primary pull-right margin-t1em margin-b0em" href="consejos-sectoriales">Consejos Sectoriales</a> <a class="btn btn-primary pull-right margin-t1em margin-b0em margin-r1em" href="consejo-ciudad">Consejo de la ciudad</a>
+            <h2>Consejo Sectorial de <strong>Acción Social</strong></h2>
+             <hr class="sm color-ayto" />
+             <p>El Consejo Sectorial de Acción Social, es un órgano de participación e información, control y asesoramiento, de naturaleza consultiva y de ámbito municipal que surge en 1990. Su finalidad y objetivos es la de facilitar la participación de los ciudadanos y canalizar la información de las entidades asociativas en los asuntos municipales relativos a la Acción Social.</p>
+
+        </div>		
+		</div>
+        
+        
+        <!--/*	Espacio para ubicar noticias, últimos plenos, etc.*/-->
+        
+     			        <h3>Agenda</h3>
+     			        <div class="table-responsive">
+<table summary="Actividades plenarias" class="table table-striped table-condensed table-bordered">
+    <thead>
+    <tr>
+        <th class="col-md-4">Fechas</th>
+        <th class="col-md-4">Orden del día</th>
+        <th class="col-md-4">Acuerdos</th>
+    </tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td>12.06.18</td>
+	<td><a href="http://www.zaragoza.es/ciudad/tablon/detalleAnexo_Tablon?id=1823"> Orden del día</a></td>
+	<td></td>
+	</tr>		
+	<tr>
+	<td>13.03.18</td>
+	<td><a href="/cont/paginas/gestionmunicipal/tablon/orden_consj_sect_acs_2018_03_13.pdf" class="pdf"> Orden del día</a></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td>14.11.17</td>
+	<td> <a href="/cont/paginas/gestionmunicipal/tablon/orden-consejo-accion-social141117.pdf" class="pdf">Orden del día</a></td>
+    <td><a href="/cont/paginas/gestionmunicipal/tablon/CS-accion-social-2017-11-14-a.pdf" class="pdf">Acta</a></td>
+    </tr>
+    <tr>
+		<td>11.07.17</td>
+		<td><a href="/cont/paginas/gestionmunicipal/tablon/orden-consejo-accion-social110717.pdf" class="pdf"> Orden del Día</a></td>
+		<td><a href="/cont/paginas/gestionmunicipal/tablon/acta-consejo-accion-social110717.pdf" class="pdf"> Acta</a></td>
+	</tr>
+	<tr><td>30.03.17</td>
+<td><a href="/cont/paginas/gestionmunicipal/tablon/orden-consejo-accion-social300317.pdf" class="pdf"> Orden del Día</a></td>
+<td><a href="/cont/paginas/gestionmunicipal/tablon/acta-consejo-accion-social300317.pdf" class="pdf"> Acta</a></td>
+</tr>
+<tr><td>24.11.2016</td>
+<td><a href="https://www.zaragoza.es/ciudad/tablon/detalleAnexo_Tablon?id=1580">Orden del día</a></td>
+<td><a href="https://www.zaragoza.es/cont/paginas/gestionmunicipal/tablon/acta_consejosectorialaccinsocial_24nov2016.pdf" class="pdf">Acta</a></td>
+</tr>
+<tr>
+<td>12.07.2016</td>
+<td><a href="https://www.zaragoza.es/ciudad/tablon/detalle_Tablon?id=26922">Orden del día</a></td>
+<td><a href="https://www.zaragoza.es/cont/paginas/gestionmunicipal/tablon/acta_consejosectorialaccinsocial_12julio2016.pdf" class="pdf">Acta</a></td>
+</tr>
+<tr>
+<td>03.02.2016</td>
+<td><a href="https://www.zaragoza.es/ciudad/tablon/detalleAnexo_Tablon?id=1578">Orden del día</a></td>
+<td><a href="/cont/paginas/gestionmunicipal/tablon/acta_reuninconsejosectorialaccinsocial_3febrero2016.pdf" class="pdf">Acta</a></td>
+</tr>
+<tr>
+<td>03.12.2015</td>
+<td><a href="https://www.zaragoza.es/ciudad/tablon/detalleAnexo_Tablon?id=1575">Orden del día</a></td>
+<td><a href="/cont/paginas/gestionmunicipal/tablon/acta_consejosectorialaccinsocial_3dic2015.pdf" class="pdf">Acta</a></td>
+</tr>
+<tr>
+<td>08.10.2015</td>
+<td><a href="https://www.zaragoza.es/ciudad/tablon/detalleAnexo_Tablon?id=1563">Orden del día</a></td>
+<td><a href="/cont/paginas/gestionmunicipal/tablon/acta_consejosectorialaccinsocial_8oct2015.pdf" class="pdf">Acta</a></td>
+</tr>
+</tbody>								
+</table>							
+</div>
+		
+<ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+    <li role="presentation" class="active"><a href="#reglamento" aria-controls="reglamento" role="tab" data-toggle="tab">Reglamento</a></li>
+    <li role="presentation"><a href="#composicion" aria-controls="composicion" role="tab" data-toggle="tab">Composición</a></li>
+</ul>
+
+<div sede:class="tab-content">
+    <h2 class="tab-title" data-toggle="collapse" data-target="#reglamento" aria-expanded="false">Reglamento</h2>
+    <div role="tabpanel" sede:class="tab-pane active" id="reglamento">
+		<div class="row">			
+		<div class="col-md-3"></div>
+		<div class="col-md-9">
+<h3>Reglamento del Consejo de Acción Social</h3>
+
+
+<p><strong>Aprobación definitiva</strong> por Ayuntamiento Pleno el 22.04.2009. </p>
+</div>
+
+	<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">
+			<h3 class="margin-t0em">Naturaleza</h3></div>
+		<div class="col-md-9 margin-t0em">
+<p>Consejo Sectorial de Acción Social, es un órgano de participación e información, control y asesoramiento, de naturaleza consultiva y de ámbito municipal que surge en 1990 como Consejo Local de Acción Social, transformándose, por acuerdo Plenario de 29/10/1999 en Consejo Sectorial de Acción Social, y configurándose en este momento bajo la dependencia del Consejo de la Ciudad, conforme a lo establecido en los Artículos 95 y siguientes y 116 y siguientes del Reglamento de Órganos Territoriales y Participación Ciudadana de 2005. Su finalidad y objetivos es la de facilitar la participación de los ciudadanos y canalizar la información de las entidades asociativas en los asuntos municipales relativos a la Acción Social</p>			
+		</div>
+
+	<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">
+			<h3 class="margin-t0em">Funciones</h3></div>
+		<div class="col-md-9 margin-t0em">
+<p>Corresponderán a este Consejo, dentro del ámbito de sus competencias, las siguientes funciones:</p>
+<ul><li>Realizar estudios y presentar iniciativas referidas a la problemática o necesidades y situaciones de la ciudad.</li><li>Asesorar a los órganos del Consejo, en relación a los asuntos o problemas planteados, cuando así se les requiera.</li><li>Proponer conjuntamente soluciones a problemas del sector de Acción Social.    </li><li>Colaborar en los estudios y elaboración de Programas, Proyectos y Disposiciones Generales del Sector.</li><li> Informar al Ayuntamiento a requerimiento de éste.    </li><li>Ser foro permanente de información, debate y análisis sobre el desarrollo de la Ciudad en relación con la acción social. </li></ul><p>Además llevará a cabo las funciones propias atribuidas por la Ley de Servicios Sociales de Aragón a los Consejos Municipales de Servicios Sociales.</p>			
+		</div>
+	<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">
+			<h3 class="margin-t0em">Organización</h3></div>
+		<div class="col-md-9 margin-t0em">		
+<p>El Consejo Sectorial de Acción Social contará con la siguiente estructura:</p>
+<ul>
+	<li>Pleno del Consejo</li>
+	<li>Presidente del Consejo</li>
+	<li>Secretaria</li>
+	<li>Comisiones de trabajo</li>
+</ul>
+</div>
+
+	<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">
+			<h3 class="margin-t0em">El Pleno</h3></div>
+		<div class="col-md-9 margin-t0em">		
+		<h4>Presidente</h4>
+		<ul>
+			<li>La Vicealcaldesa  y Consejera  del Área de Presidencia y Derechos Sociales</li>
+			</ul>
+			<h4>Vocales</h4>
+			<ul>
+				<li>La Concejala Delegada de Educación e Inclusión</li>
+				<li>La Consejera de Participación, Transparencia y Gobierno abierto del Ayuntamiento de Zaragoza </li>
+				<li>El/a Concejal/a Delegado/a de Planes Integrales del Ayuntamiento de Zaragoza</li>
+				<li>Un/a Concejal/a  miembro de cada Grupo Político Municipal del Ayuntamiento de Zaragoza</li>
+				<li>El Coordinador General del Área de Presidencia y Derechos Sociales del Ayuntamiento de Zaragoza.</li>
+				<li>El/a Director/a Gerente del Instituto Aragonés de Servicios Sociales del Gobierno de Aragón</li>
+				<li>El Gerente de la Sociedad Municipal Zaragoza Vivienda S.L.U.</li>
+				<li> Un o una representante de cada una de las siguientes entidades sociales:
+				<ul>
+					<li> de la Junta Gestora de la Casa de las Culturas.</li>
+					<li> de Cruz Roja.</li>
+					<li>de la ONCE.</li>
+					<li>de Cáritas Diocesana.</li>
+					<li>de la Fundación <em>Federico Ozanam</em>.</li>
+					<li>de Disminuidos Físicos de Aragón (DFA)</li>
+					<li>de la Federación de Asociaciones de Barrios de Zaragoza (FABZ).</li>
+					<li>de la Unión Autónoma Asociación de Vecinos <em>Cesaraugusta</em>.</li>
+					<li>del Comité español de personas con discapacidad. CERMI Aragón</li>
+					<li> de la Asociación Aragonesa de Empresas de Inserción. AREI</li>
+					<li>de la Fundación La Caridad</li>
+					<li>de la Fundación Adunare  </li>
+					<li>del Colegio Profesional de Trabajadores Sociales de Aragón</li>
+					<li>del conjunto de las Asociaciones de Mujeres</li>
+					<li>de la Red Aragonesa de Entidades Sociales para la Inclusión.</li>
+					<li>de FEAPS Aragón Plena Inclusión          </li>
+					<li>de la Fundación el Tranvía            </li>
+					<li>del Observatorio Aragonés de la Discapacidad Intelectual              </li>
+					<li>de la Federación Asociaciones de Educación de Adultos. FAEA                </li>
+					<li>de la Federación Aragonesa de la Solidaridad. FAS                  </li>
+					<li>de la Coordinadora Aragonesa del Voluntariado                    </li>
+					<li>del sindicato UGT                      </li>
+					<li>del sindicato CCOO</li>
+					</ul>
+					</li>
+					</ul>
+					<p>Asimismo, formarán parte del Pleno del Consejo, con voz pero sin voto:</p>
+					<ul>
+						<li>La Jefa de Gabinete de la Vicealcaldesa</li>
+						<li>El Jefe de la Oficina Técnica de Planificación y Programación</li>
+						<li> Un representante de la Oficina Técnica del Consejo de la Ciudad.</li>
+						<li> Los jefes de Servicio de los Servicios Sociales</li>
+						</ul>
+						<h4>Secretario/a</h4>
+						<p> Será Secretaria de actas del Consejo, la Jefa del Servicio Jurídico del Área de Presidencia y Derechos Sociales.</p>
+						<p>La pertenencia al Pleno del Consejo de los representantes de las Asociaciones y Entidades lo es en razón de la condición que ostenten en las mismas, cesando en el momento en que se pierda dicha cualidad y siendo sustituido automáticamente por quien la posea.</p><p>En caso de ausencia o enfermedad, y en general cuando concurra alguna causa justificada, los titulares del Pleno del Consejo podrán ser sustituidos, acreditándolo ante la Secretaría del mismo.</p>
+						<h4>Funciones del Pleno</h4>
+						<p>Corresponden al Pleno las funciones referidas al Consejo.</p>
+						<h4>Funcionamiento</h4>
+						<p>Se reunirá al menos dos veces al año en sesión ordinaria y sus acuerdos tendrán el carácter de informe o petición y no serán vinculantes para los órganos de Gobierno Municipal, debiendo contar con el visto bueno del Consejo de laCiudad.</p><p>En lo no previsto en las presentes normas, serán de aplicación las normas defuncionamiento y organización previstas en el Reglamento de Órganos Territoriales y de Participación Ciudadana de 28/7/2005.</p>
+</div>
+	<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">
+			<h3 class="margin-t0em">Diligencia</h3></div>
+		<div class="col-md-9 margin-t0em">	
+<p>La realizo para hacer constar que las presentes normas fueron dictaminadas por la Comisión Plenaria de Presidencia y Acción Social en sesión celebrada el día 15 de abril de 2009 y aprobadas por el Excmo. Ayuntamiento Pleno en sesión celebrada el día 22 de abril de 2009.</p>
+<p> I.C. de Zaragoza, a 7 de abril de 2017<br/>LA JEFE DEL SERVICIO JURÍDICO DEPRESIDENCIA Y ACCIÓN SOCIAL<br/>ASUNCIÓN HERAS ÍÑIGUEZ</p>
+</div>
+</div>
+</div>			
+							
+		
+    
+    <h2 class="tab-title" data-toggle="collapse" data-target="#composicion" aria-expanded="false">Composición</h2>
+    <div role="tabpanel" sede:class="tab-pane active" id="composicion">		
+		<div class="row">
+			
+		<div class="col-md-3">		
+		<h3 class="margin-t05em">Entidades</h3>			
+		</div>
+		<div class="col-md-9 margin-t1em">
+<h4>Coordinadora Aragonesa del Voluntariado</h4> <h4>
+Observatorio Aragonés Discapacidad Intelectual</h4> <h4>
+Plena Inclusión</h4> <h4>
+Federación Asociaciones Educación de Adultos. FAEA </h4>  
+ 
+ 
+<h4>Red Aragonesa de Entidades Sociales para la Inclusión </h4>
+<ul><li>Daniel Gimeno.
+Coordinador 
+y Presidente de la Fundación La Caridad</li></ul>
+<h4>
+Junta Gestora de la Casa de las Culturas</h4>
+<ul><li>Mohamed Yumani .
+(Presidente de Asociación de Inmigrantes Saharauis en Aragón -AISA)</li></ul>
+<h4>CÁRITAS  Diocesana de Zaragoza. </h4>
+<ul><li>Cristina García.
+Secretaria General</li></ul>
+<h4>CRUZ ROJA Española de Zaragoza</h4>
+<ul><li>Antonio González</li><li>
+Julián Martínez</li></ul>
+<h4>Fundación FEDERICO OZANAM</h4> 
+<ul><li>Chemari Lamana.
+Director Gerente</li></ul>
+<h4>Organización Nacional de Ciegos (ONCE)</h4>
+<ul><li>Carmen Maldonado</li></ul>
+<h4>Fundación EL TRANVÍA.</h4>
+<ul><li>Javier Aribau.
+Director Gerente. </li></ul>
+<h4>Fundación Disminuidos Físicos de Aragón. 
+DFA</h4>
+<ul><li>Juan Carlos Castro</li><li>
+J. Molina</li></ul>
+
+<h4>Comité Español de Representantes de Personas con Discapacidad de Aragón -CERMI Aragón-</h4>
+<ul><li>Marta Valencia. Presidenta</li><li>
+Ruth Quintana</li></ul>
+<h4>Asociación Aragonesa de Empresas de Inserción -AREI- </h4>
+<ul><li>Marisa Esteve.
+Gerente</li></ul>
+<h4>Fundación Adunare </h4>
+<ul><li>María Jesús Ruiz.
+Directora</li></ul>
+<h4>Colegio Profesional de Trabajadores Sociales. </h4>
+<ul><li>Javier Escartín. 
+Presidente</li></ul>
+<h4>Por las Asociaciones de Mujeres
+Club de opinión -La Sabina-</h4>
+<ul><li>Gloria Labarta</li></ul>
+<h4>UGT.      Unión General de Trabajadores</h4>
+<ul><li>Purificación Huerta</li><li>
+Marga Moya</li></ul>
+<h4>CC.OO   Comisiones Obreras</h4>
+<ul><li>Eva Murillo</li></ul>
+<h4>Federación Barrios (FABZ)</h4>
+<ul><li>Nieves Boj</li><li>
+Oscar García</li></ul>
+<h4>Unión Vecinal Cesaraugusta</h4>
+<ul><li>Manuel Ortiz</li></ul>
+<h4>Federación Aragonesa de Solidaridad (FAS)</h4>
+<ul><li>Jonatán Ejea</li></ul>
+<h4>Fundación La Caridad</h4>
+<ul><li>Daniel Gimeno</li></ul>						
+		</div>
+		
+		<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">		
+		<h3 class="margin-t05em">Componentes políticos</h3>			
+		</div>
+		<div class="col-md-9 margin-t05em">
+<h4>Consejera del Área de Derechos Sociales Presidenta del Consejo. </h4>
+<ul><li>Luisa Broto</li></ul>
+<h4>Concejala Delegada de Inclusión Social y Educación </h4>
+<ul><li>Arantza Gracia </li></ul>
+<h4>Grupo Municipal Socialista (PSOE) </h4>
+<ul><li>Lola Campos </li></ul>
+<h4>Grupo Municipal Popular (PP)</h4>
+<ul><li>Reyes Campillo</li></ul>
+<h4>Grupo Municipal Chunta Aragonesista (CHA) </h4>
+<ul><li>Carmelo Asensio</li></ul>
+<h4>Grupo Municipal Ciuadanos</h4>
+<ul><li>Cristina García Torres</li></ul>
+
+
+		
+		</div>		
+		
+					
+		<div class="linea">&nbsp;</div>				
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Personal Municipal</h3>			
+		</div>
+		<div class="col-md-9 margin-t05em">
+<h4>Coordinador General del Área Derechos Sociales</h4>
+<ul><li>Nacho Celaya</li></ul>
+<h4>Oficina Técnica de Planificación y Programación </h4>
+<ul><li>Pedro Compte</li><li>
+Carmen Bastón Rial</li></ul>
+<h4>Oficina Técnica de Empleo, Emprendimiento e Inclusión Social.</h4>
+<ul><li>Jesús Alquézar</li></ul>
+<h4>Jefa de la Oficina Técnica Consejo Ciudad</h4>
+<ul><li>Rosa Bleda</li></ul>
+<h4>Sociedad Municipal Zaragoza Vivienda S.L.U</h4>
+<ul><li>Pilar Aguerri. </li></ul>
+<h4>Jefa de Servicios Sociales Comunitarios </h4> 
+<ul><li>Teresa Yago</li></ul>
+<h4>Jefa de Servicios Sociales Especializados</h4> 
+<ul><li>Yolanda Mañas</li></ul>
+<h4>Adjunto Jefe SS Comunitarios</h4>
+<ul><li>Patxo Rivas</li></ul>
+<h4>Jefa Servicio Administrativo de Derechos Sociales</h4>
+<ul><li>Asun Heras.</li></ul>
+		</div>
+		
+		<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">		
+		<h3 class="margin-t05em">Otras Administraciones</h3>			
+		</div>
+		<div class="col-md-9 margin-t05em">
+			<h4>Instituto Aragonés de Servicios Sociales </h4>
+<ul><li>Joaquín Santos.
+Director Gerente</li></ul>	
+		</div>
+		
+</div>
+	</div>
+
+			
+
+</div>
+		
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

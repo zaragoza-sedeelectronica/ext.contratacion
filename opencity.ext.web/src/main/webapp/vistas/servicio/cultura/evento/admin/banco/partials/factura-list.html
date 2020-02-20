@@ -1,0 +1,143 @@
+<h3>Banco de Actividades > Facturas</h3>
+
+<div class="row">
+    <div class="col-md-12">
+
+         <nav class="navbar navbar-default" ng-show="permisos.DET">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand hidden-desktop">Búsqueda rápida</span>
+                </div>
+                <div class="collapse navbar-collapse" id="buscadoresTarget">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <select name="type" id="type" class="form-control" ng-model="qsearch.invoiceStatus">
+                                <option value="">Estado de la factura</option>
+                                <option value="TRAMITADA">Tramitada</option>
+                                <option value="VALIDADA">Validada</option>
+                                <option value="RECHAZADA">Rechazada</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="qsearch.nombreActividad" placeholder="Buscar por nombre actividad...">
+                        </div>
+                        <div class="form-group">
+                            <autocompletado modelo="qsearch.entidad" uri="/sede/servicio/cultura/evento/admin/banco/entidad/list" filtro="title" retorno="id" placeholder="Buscar por entidad..."></autocompletado>
+                        </div>
+                        <button type="submit" class="btn btn-default" ng-click="buscar(qsearch)">Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </nav> 
+
+    </div> 
+</div>
+
+<div class="row">
+    <div class="col-md-12" class="clearfix">
+        <div class="repeat-item alert alert-{{alert.type}} alert-dismissible" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <div class="alert alert-info" ng-show="registros.length == 0">
+            Para comenzar realiza una búsqueda o acción.
+        </div>
+        <div ng-show="permisos.DET && registros.length > 0">
+            <div>
+                <span class="margin-r2em">
+                    N&uacute;mero de resultados: {{registros.length}} <span ng-show="totalCount > 0">de {{totalCount}}</span>
+                </span>
+                <span ng-show="filtrosParaListado !== undefined">
+                    Filtros aplicados: <span ng-bind-html="filtrosParaListado | pintarFiltros"></span>
+                    <!-- <button type="button" class="btn btn-xs btn-default" ng-click="limpiarFiltrosDaoListar();">Limpiar Filtros</button> -->
+                </span>
+<!--                 <span ng-show="permisos.MOD && checkList.length > 0" class="pull-right checklist-tools"> -->
+<!--                     <span ng-repeat="c in checkList"> <span class="label label-warning">{{c.id}}</span> </span> -->
+<!--                     <modal-borrar></modal-borrar> -->
+<!--                     <boton-visibilidad></boton-visibilidad> -->
+<!--                 </span> -->
+
+                <ul style="margin-top:-15px;" class="margin-b05em navbar-right" uib-pagination boundary-links="true" total-items="totalCount" max-size="maxSizePage" ng-model="currentPage" ng-change="pageChanged()" items-per-page="itemsPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            </div>
+            <table class="table table-bordered table-hover table-striped table-btn">
+                <thead>
+                    <tr>
+                        <th ng-show="permisos.MOD"></th>
+                        <!--th th-orden style="cursor:pointer;" order="'id'" by="order" reverse="reverse">Nº FACTURA</th-->
+                        <th th-orden style="cursor:pointer;" order="'solicitud.id'" by="order" reverse="reverse">Nº SOLICITUD</th>
+                        <th th-orden style="cursor:pointer;" order="'creationDate'" by="order" reverse="reverse" class="col-md-1">FECHA SOLICITUD</th>
+                        <th th-orden style="cursor:pointer;" order="'solicitud.actividad.title'" by="order" reverse="reverse">ACTIVIDAD SOLICITADA</th>
+                        <th th-orden style="cursor:pointer;" order="'solicitud.actividad.entity.title'" by="order" reverse="reverse">ENTIDAD OFERTANTE</th>
+                        <th th-orden style="cursor:pointer;" order="'solicitud.nombreSolicitante'" by="order" reverse="reverse">SOLICITANTE</th>
+                        <th th-orden style="cursor:pointer;" order="'invoiceStatus'" by="order" reverse="reverse">ESTADO</th>
+                        <th th-orden style="cursor:pointer;" order="'totalAmount'" by="order" reverse="reverse">IMPORTE TOTAL</th>
+                        <th th-orden style="cursor:pointer;" order="'serviceAmount'" by="order" reverse="reverse">COLABORACIÓN SERVICIO</th>
+                        <th th-orden style="cursor:pointer;" order="'invoiceNumber'" by="order" reverse="reverse">Nº FACTURA</th>
+                        <th th-orden style="cursor:pointer;" order="'invoiceDate'" by="order" reverse="reverse">FECHA FACTURA</th>
+                        <th th-orden style="cursor:pointer;" order="'processingDate'" by="order" reverse="reverse">FECHA TRAMITACIÓN</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros | orderBy:order:reverse">
+                        <td ng-show="permisos.MOD">
+                            <input type="checkbox" checklist-model="checkList" checklist-value="registro">
+                        </td>
+                        <!--td data-title="ID"><a href="#/invoices/edit/{{ registro.id }}">{{registro.id}}</a></td-->
+                        <td data-title="ID Solicitud"><a href="#/requests/edit/{{ registro.solicitud.id }}">{{registro.solicitud.id}}</a></td>
+                        <td data-title="Fecha Solicitud">
+                            <a href="#/requests/edit/{{ registro.solicitud.id }}">{{registro.solicitud.creationDate | date:'dd-MM-yyyy'}}</a>
+                        </td>
+              			<td data-title="Actividad">
+                            <a href="#/activities/edit/{{ registro.solicitud.actividad.id }}">
+                            	{{registro.solicitud.actividad.title}}
+                            </a>
+                            <a class="btn" href="#/activities/edit/{{ registro.solicitud.actividad.id }}" target="_blank" title="Abrir actividad en pestaña nueva"><span class="glyphicon glyphicon-export"></span></a>
+                        </td>
+                        <td data-title="Entidad ofertante">
+                            <a href="#/entities/edit/{{ registro.solicitud.actividad.entity.id }}">
+                            	{{registro.solicitud.actividad.entity.title}}
+                            </a>
+                            <a class="btn" href="#/entities/edit/{{ registro.solicitud.actividad.entity.id }}" target="_blank" title="Abrir en pestaña nueva"><span class="glyphicon glyphicon-export"></span></a>
+                        </td>
+                        <td data-title="Solicitante">
+                        	<span>{{registro.solicitud.nombreSolicitante}}</span>
+                        </td>
+                        <td data-title="Estado factura">
+                        	<span>{{registro.invoiceStatus}}</span>
+                        </td>
+                        <td data-title="Importe total">
+                        	<span>{{registro.totalAmount}}&euro;</span>
+                        </td>
+                        <td data-title="Colaboración servicio">
+                        	<span>{{registro.serviceAmount}}&euro;</span><span ng-if="registro.fundingPercentage"> ({{registro.fundingPercentage}}% + supl.)</span>
+                        </td>
+                        <td data-title="Nº factura">
+                            <a href="#/invoices/edit/{{ registro.id }}">{{registro.invoiceNumber}}</a>
+                        </td>
+                        <td data-title="Fecha factura">
+                            <a href="#/invoices/edit/{{ registro.id }}">{{registro.invoiceDate | date:'dd-MM-yyyy'}}</a>
+                        </td>
+                        <td data-title="Fecha tramitación">
+                            <a href="#/invoices/edit/{{ registro.id }}">{{registro.processingDate | date:'dd-MM-yyyy'}}</a>
+                        </td>
+                        <td data-title="Operaciones">
+                            <button type="button" class="btn btn-default" ng-click="abrirFactura(registro.id)" title="Ver detalle"><span class="fas fa-eye" aria-hidden="true"></span></button>
+                            <span ng-show="permisos.MOD"><modal-banco-borrar recurso="evento/admin/banco/factura"></modal-banco-borrar></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <ul class="margin-t05em navbar-right" uib-pagination boundary-links="true" total-items="totalCount" max-size="maxSizePage" ng-model="currentPage" ng-change="pageChanged()" items-per-page="itemsPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+
+            <div class="alert alert-warning spinner-tabla" ng-show="busy">
+                <span class="spinner"></span> Espera por favor, se estan cargando los datos.
+            </div>
+        </div>
+
+    </div> <!-- /span12 -->
+</div> <!-- /row-fluid -->

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos Participativos 2018. Prensa" description="Portal dedicado a anunciar la segunda edición de los Presupuestos Participativos del Ayuntamiento de Zaragoza."
+    author="Ayuntamiento de Zaragoza" keywords="ayuntamiento, ciudad, Zaragoza, Espana, presupuestos, presupuestos participativos, administracion electronica, participacion, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment, budget participatifs, Parcitipatory budgeting">
+    </sede:meta>
+       <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: ";
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+   <sede:content>
+        <nav role="navigation">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                  <!--/*<li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/navidad/belen">El Belén</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/navidad/reyesmagos">Reyes Magos</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/navidad/multimedia">Multimedia</a></li>
+				   <li class="col-xs-6 col-sm-2"><a class="elemento" href="/ciudad/turismo/es/regala-zaragoza/">Turismo</a></li>*/-->
+                 <li class="col-xs-12 col-sm-12">
+                    <ul class="list-inline nomargin navbar-right text-center padding-t05em">
+                         <li>
+                            <a itemprop="sameAs" href="https://twitter.com/ZCultura">
+                                <span class="fab fa-2x fa-twitter-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.facebook.com/ZgzCultura/">
+                                <span class="fab fa-2x fa-facebook-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.instagram.com/zcultura/">
+                                <span class="fab fa-2x fa-instagram text-color" aria-hidden="true"></span>
+                                <span class="oculto">Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.youtube.com/channel/UCEqVjSU87_mASvoCHzCc2Vg">
+                                <span class="fab fa-youtube fa-2x text-color" aria-hidden="true"></span>
+                                <span class="oculto">Youtube</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+ 
+ 
+		 
+ 
+	   <h2> Presupuestos Participativos 2018</h2>
+			<div class="container-fluid">
+			<div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12 pull-right padding-a1em"><img class="img-responsive" src="/cont/paginas/img/sede/presupuestos-participativos/pres-part-2018.jpg" alt=""/></div>
+			<div class="col-md-8 col-sm-6 col-xs-12 img-rounded padding-a1em fnd-gris-claro"><p>El Gobierno de Zaragoza <strong>ha aprobado las bases de los Presupuestos Participativos 2018</strong>, que el día 12 de diciembre recibieron el <strong>dictamen favorable, por unanimidad, del Consejo de Ciudad</strong>. Esta aprobación es, de hecho, el lanzamiento del próximo proceso, que arrancará en enero con la constitución de las Mesas de Presupuestos en las juntas de distrito y, como novedad en esta nueva edición, en los barrios rurales de Zaragoza.</p>
+			<p>Otra de las novedades destacadas, además de la inclusión de los barrios rurales, es la posibilidad de realizar propuestas tanto para el distrito o barrio en el que se esté empadronado/a como para ciudad, es decir, proyectos que sirvan para realizar mejoras o inversiones en más de un distrito.</p>
+			<p>Tal y como se refleja en el borrador del Presupuesto municipal, actualmente en proceso de aprobación, en su edición de 2018 los Presupuestos Participativos dispondrán de un presupuesto de 10 millones de euros. De ellos, 2.500.000 estarán consignados en la Gerencia de Urbanismo en 2018 y el resto, 7.500.000 euros, se incluirán a través de un plurianual. Los 10 millones de euros de estos Presupuestos Participativos se distribuirán entre <strong>Distritos</strong> (7); <strong>Barrios Rurales</strong> (1); y <strong>Proyectos de Ciudad</strong> (2 millones).</p>
+			<p>En las próximas semanas se podrá ver, en el portal de Gobierno Abierto, toda la información relativa a la nueva edición de Presupuestos Participativos.</p>
+			<p>Puedes consultar las <a href="https://www.zaragoza.es/sede/portal/presupuestos-participativos/doc-bases-2008" target="_blank" class="destacado">Bases del proceso</a> aprobadas por el Gobierno de Zaragoza el 13 de diciembre de 2017. También puedes descargar el documento en formato .pdf pinchando <a class="pdf" href="//www.zaragoza.es/contenidos/presupuestos-participativos/Documento_Presupuestos_Participativos_2018.pdf">aquí</a></p>
+			<p>Si quieres ver cómo resultó el proceso en la primera edición, puedes acceder mediante <a href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/">este enlace</a>.</p>
+			</div>     
+  </div>
+  </div>           
+
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

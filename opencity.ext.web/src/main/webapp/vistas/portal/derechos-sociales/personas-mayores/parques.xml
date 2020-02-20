@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Parques de Mayores"
+               description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece información sobre parques para mayores: espacios para el ejercicio físico y las relaciones sociales entre personas de la tercera edad" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service">
+    </sede:meta>
+	
+ 
+       <style type="text/css">
+    
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+                        <nav>
+    <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/derechos-sociales/personas-mayores/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Personas Mayores</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Tu Ciudad</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">   <li><a href="comercio-amigable">Comercios Amigables</a></li>
+                    <li><a href="ciudades-amigables">Ciudades Amigables</a></li>
+                 
+                    <li><a href="rutas-amigables">Rutas Amigables</a></li>
+					  <li><a href="parques">Parques</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h2>Parques de Mayores</h2>
+        <div class="row">
+            <div class="col-xs-12">        <div role="alert" class="alert alert-info"><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/personas-mayores/servicio/publicacion-municipal/11250">Guía de ejercicio físico en parques de mayores </a></div>
+
+                <div class="padding-a1em fnd-gris-claro clearfix">
+                    <p>Como complemento de las actividades de ejercicio f&#237;sico y mantenimiento que los Centros de Convivencia de Mayores ofrecen, como los talleres de psicomotricidad, tai - chi, relajaci&#243;n etc., el Ayuntamiento de Zaragoza, a trav&#233;s de las Concejal&#237;as del Mayor y de Parques y Jardines, as&#237; como desde diferentes Juntas Municipales de Distrito, ha instalado Parques de Mayores distribuidos por toda la Ciudad y ubicados preferentemente en zonas pr&#243;ximas a los Centros de Mayores as&#237; como en diferentes parques de la Ciudad.</p>
+                    <p>Los Parques de Mayores, son equipamientos adaptados para mayores que unen la posibilidad de realizar <strong>ejercicio saludable</strong> de una forma entretenida, con la creaci&#243;n de espacios que facilitan la <strong>relaci&#243;n personal y social </strong>entre los mayores. Esta formado por una serie de <strong>elementos modulares</strong> adaptados para su uso al aire libre y antivand&#225;licos. Cada m&#243;dulo cuenta con un cartel de instrucciones para el correcto uso del mismo &#160;</p>
+                    <p>Los diferentes aparatos que forman estos parques de mayores permiten realizar <strong>ejercicios de mantenimiento</strong> adaptados a las personas mayores, as&#237; se han instalado m&#243;dulos de ejercicio para extremidades superiores, inferiores y tronco, mediante aparatos para ejercicio de <strong>pedaleo, giro de cintura y movilizaci&#243;n de brazos y piernas.</strong></p>
+                    <p>Desde su instalaci&#243;n son muchas las personas mayores que utilizan estos aparatos, estando prevista la pr&#243;xima instalaci&#243;n en otros centros de mayores.</p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img class="margin-auto img-responsive" src="http://www.zaragoza.es/cont/vistas/portal/derechos-sociales/personas-mayores/img/parques2.jpg" alt="" />        
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="margin-auto img-responsive" src="http://www.zaragoza.es/cont/vistas/portal/derechos-sociales/personas-mayores/img/parques1.jpg" alt="" />        
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="margin-auto img-responsive" src="http://www.zaragoza.es/cont/vistas/portal/derechos-sociales/personas-mayores/img/parques3.png" alt="" />  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/* <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <h3>UBICACI&#211;N</h3>
+                <div class="padding-a1em fnd-gris-claro">
+                    <ul>
+                        <li><strong>Actur</strong>: C/ Pedro Saputo </li>
+                        <li> <strong>Casablanca</strong>: En el&#160; <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=503">Centro de Convivencia para Mayores.</a></li>
+                        <li> <strong>Casco Hist&#243;rico</strong>: Parque Bruil, junto a las pistas de petanca</li>
+                        <li> <strong>Centro</strong>: Jard&#237;n del <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=510">Centro de Convivencia para Mayores</a> Lain Entralgo.</li>
+                        <li><strong>Centro</strong>: Parque Miraflores (entre el colegio Miraflores y la calle Illueca).</li>
+                        <li><strong>Delicias</strong>: Parque Delicias </li>
+                        <li><strong>El Rabal:</strong> En C/ Matilde Sang&#252;esa, frente al Centro de Mayores,</li>
+                        <li> <strong>Garrapinillos</strong>: C/ Arag&#243;n, junto al Centro C&#237;vico. </li>
+                        <li> <strong>Juslibol</strong>: C/ Bar, sn. En el Parque de Juslibol. </li>
+                        <li> <strong>La Almozara</strong>: En el <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=500">Centro de Convivencia para Mayores</a>.</li>
+                        <li> <strong>La Almozara</strong>: Parque de la Aljafer&#237;a</li>
+                        <li> <strong>La Cartuja:</strong> En el <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=502">Centro de Convivencia para Mayores</a>.</li>
+                        <li> <strong>Las Fuentes: </strong> Parque Torre Ramona</li>
+                        <li><strong>La Jota: </strong>En el <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=508">Centro de Convivencia para Mayores</a>.</li>
+                        <li> <strong>Monzalbarba:</strong> Junto a la pista de petanca del <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=513">Centro de Convivencia para Mayores</a>. </li>
+                        <li> <strong>Monta&#241;ana</strong>: Parque de la plaza de las vaquillas </li>
+                        <li><strong>Movera</strong>: En el <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=514">Centro de Convivencia para Mayores</a> y Parque Padre Claret </li>
+                        <li><strong>Pe&#241;aflor:</strong> En el <a href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=516" shape="rect">Centro de Convivencia para Mayores</a>.</li>
+                        <li> <strong>San Jos&#233;:</strong> Pza. Mayor s/n</li>
+                        <li> <strong>Santa Isabel:</strong> Avda. Santa isabel 100 , zona trasera del <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=522">Centro de Convivencia para Mayores</a>
+                        </li>
+                        <li> <strong>Torrero-La Paz</strong>: Frente <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=755">Centro de Convivencia para Mayores </a>de Torrero.</li>
+                        <li> <strong>Torrero-La Paz:</strong> Plaza. Las Chinas</li>
+                        <li> <strong>Torrero-La Paz: </strong>Parque Camino de Cuarte</li>
+                        <li> <strong>Universidad</strong>: Parque Grande </li>
+                        <li> <strong>Valdefierro</strong>: En el <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=524">Centro de Convivencia para Mayores</a></li>
+                        <li> <strong>San Gregorio:</strong> En el <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/mayores/detalle_Centro?id=519">Centro de Convivencia para Mayores</a>. </li>
+                        <li> <strong>San Juan:</strong> Zona ajardinada de entrada al Pabell&#243;n Deportivo </li>
+                    </ul>
+                </div>
+            </div>
+        </div> */-->
+    </sede:content>
+</body>
+
+</html>

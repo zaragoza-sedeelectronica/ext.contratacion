@@ -1,0 +1,2922 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Bomberos y Protección Civil"
+                   description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece servicios y recursos informativos adaptados a las necesidades de la tercera edad: comedores de mayores, teléfonos de urgencia, tramitación de ayudas, bodas de oro, cita previa médica, publicaciones, preguntas frecuentes, parques de mayores, rutas, comercios y ciudades amigables… Facilita la participación en los grupos de actividad, cursos, talleres y programas sociales que se llevan a cabo en los centros de convivencia para mayores. Haga llegar sus quejas y sugerencias a través de Ayúdanos a mejorar."
+                   keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service"
+        >
+        </sede:meta>
+        <style type="text/css">
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .fa {
+            vertical-align: middle;
+            }
+
+            @media (min-width: 768px) {
+            .list-aviso>li {
+            min-height: 16em;
+            }
+            .listado-equipamiento-solr li {
+            min-height: 25em;
+            }
+            }
+
+            .left-ribbon {
+            /*position: relative;*/
+            position: absolute;
+            bottom: 5px;
+            background: #EEE;
+            border: 1px solid #CCC;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+            padding: 10px 15px;
+            clear: both;
+            /*margin-left: -24px;*/
+            margin-left: -10px;
+            float: left;
+            }
+
+            .left-ribbon::before {
+            display: block;
+            width: 10px;
+            height: 0px;
+            position: absolute;
+            bottom: -10px;
+            left: -1px;
+            content: '';
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #757575;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: 0px;
+            font-size: 20px;
+            }
+
+            .menu-consejos li.active a {
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            @media (max-width: 768px) {
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+
+            h3 {
+            color: #D01715;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            <!--width: 16.6%;-->
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+            .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Plan de Emergencia
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+
+                <div class="container-fluid">
+                    <ul class="nav menu fnd-blanco radius menu-consejos" role="tablist">
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/emergencia"
+                               style="border-radius: 10px 0 0 10px; border-right: solid 2px #000000; line-height: 56px;">
+                                Presentación
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/normativa"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Normativa de Interés
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center active">
+                            <a href="/sede/portal/bomberos/territorio"
+                               style="border-radius: 0; border-right: solid 2px #000000;">
+                                Territorio y Organización
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/plan-actuacion"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Plan de Actuación
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/catalogo"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Catálogo de Recursos
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="http://www.zaragoza.es/catalogo/"
+                               style="border-radius: 0 10px 10px 0;">Sistema de Gestión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h2 class="text-right">
+                        Normativa
+                    </h2>
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#caracteristicas" aria-controls="caracteristicas" role="tab" data-toggle="tab">
+                                Características
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#riesgos" aria-controls="riesgos" role="tab" data-toggle="tab">
+                                Identificación de Riesgos
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#prevencion" aria-controls="prevencion" role="tab" data-toggle="tab">
+                                Medidas de prevención
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#autoproteccion" aria-controls="autoproteccion" role="tab" data-toggle="tab">
+                                Autoprotección
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#civil" aria-controls="civil" role="tab" data-toggle="tab">
+                                Protección Civil
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="caracteristicas" class="tab-pane active">
+
+                            <ul>
+                                <li>
+                                    <a href="#situacion">Situación</a>
+                                </li>
+                                <li>
+                                    <a href="#poblacion">Población</a>
+                                </li>
+                                <li>
+                                    <a href="#clima">Climatología</a>
+                                </li>
+                                <li>
+                                    <a href="#infra">Infraestructuras</a>
+                                </li>
+                            </ul>
+
+                            <div id="situacion">
+                                <h3>Situación geográfica</h3>
+                                <ul>
+                                    <li>Municipio = Zaragoza.</li>
+                                    <li>Comarca (a la que pertenece) = Zaragoza.</li>
+                                    <li>Código INE (Código de municipio) = 50.297.</li>
+                                    <li>Superficie = 967.065<abbr title="kilómetros cuadrados">Km2</abbr>.
+                                    </li>
+                                    <li>Altitud del núcleo principal = 240<abbr title="metros">m</abbr>.
+                                    </li>
+                                </ul>
+                                <p>Zaragoza, como centro geográfico y de encuentro del hexágono formado por Madrid,
+                                    Valencia, Barcelona, Toulouse, Bordeaux y Bilbao, es un punto neurálgico en el
+                                    sudeste europeo. Está emplazada en el centro de un área que, en un radio de 350
+                                    kilómetros , reúne el 60% de la población española y el 80% de su Producto Interior
+                                    Bruto.
+                                </p>
+                                <p>La ciudad está situada a 240 metros de altitud sobre el nivel del mar, en la margen
+                                    derecha del valle medio del Ebro, y en ella confluyen, además del Ebro, los ríos
+                                    Gállego y Huerva, la ciudad es atravesada por el Canal Imperial de Aragón. Su
+                                    población asciende actualmente a 648.304 habitantes, 614.905 en el Censo del año
+                                    2001, y es, según estos datos, la quinta ciudad de España.
+                                </p>
+                                <p>Zaragoza es capital y centro político-administrativo de la Comunidad Autónoma de
+                                    Aragón, una de las 17 autonomías que conforman el Estado español y que cuenta con
+                                    una superficie total de 47.650 kilómetros cuadrados, el 9'44% del territorio
+                                    nacional.
+                                </p>
+                                <p>El término municipal tiene 1.059' 9 kilómetros cuadrados y es, por tanto, uno de los
+                                    más grandes de España.
+                                </p>
+                                <p>Por carretera, Zaragoza se encuentra bien comunicada con la red nacional y la
+                                    europea, a través del eje del Ebro y de las autopistas mediterránea y atlántica, y
+                                    por el paso central del Somport, con la próxima ejecución del eje Norte-Sur.
+                                </p>
+                                <h3>Aeropuerto de Zaragoza</h3>
+                                <p>El aeropuerto de Zaragoza, muy próximo a la ciudad, soportaba escaso tráfico de
+                                    pasajeros hasta 2004, año en el que se empezaron a instalar en la ciudad las
+                                    denominadas líneas de bajo coste ofertando vuelos diarios o semanales a diversas
+                                    capitales europeas. Además en períodos vacacionales tales como verano y Semana Santa
+                                    se siguen programando vuelos charter, destacando los programados por parte de
+                                    diferentes Compañías Aéreas.
+                                </p>
+                                <p>La situación de este aeropuerto cerca de Cataluña, País Vasco, Navarra, La Rioja o
+                                    incluso el sur de Francia, hacen por un lado que las compañías de bajo coste
+                                    atraigan viajeros para llenar sus vuelos, pero por otra parte impiden que otras
+                                    aerolíneas sin subvenciones se establezcan en Zaragoza, ya que la cercanía de los
+                                    aeropuertos de Bilbao y Barcelona restan área de influencia al aeropuerto de
+                                    Zaragoza. Además a todo esto hay que sumar que con la llegada del<acronym
+                                            title="Alta Velocidad Española">AVE</acronym>, Madrid está a sólo dos horas
+                                    de Zaragoza, lo que imposibilita que el aeropuerto se especialice en vuelos
+                                    nacionales.
+                                </p>
+                                <table summary="Tabla de distancias kilométricas a las diferentes capitales de provincia"
+                                       class="table table-responsive tabla-bn">
+                                    <caption>TABLA DE DISTANCIAS KILOMÉTRICAS A LAS DIFERENTES CAPITALES DE PROVINCIA
+                                    </caption>
+                                    <tr>
+                                        <th id="capital3">CAPITAL</th>
+                                        <th id="distancia3">DISTANCIA (<abbr title="kilómetros">Km</abbr>.)
+                                        </th>
+                                        <th id="capital4">CAPITAL</th>
+                                        <th id="distancia4">DISTANCIA (<abbr title="kilómetros">Km</abbr>.)
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">ALBACETE</td>
+                                        <td headers="distancia3">403</td>
+                                        <td headers="capital4">LOGROÑO</td>
+                                        <td headers="distancia4">171</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">ALICANTE</td>
+                                        <td headers="distancia3">526</td>
+                                        <td headers="capital4">LUGO</td>
+                                        <td headers="distancia4">679</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">ALMERÍA</td>
+                                        <td headers="distancia3">737</td>
+                                        <td headers="capital4">MADRID</td>
+                                        <td headers="distancia4">321</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">ÁVILA</td>
+                                        <td headers="distancia3">428</td>
+                                        <td headers="capital4">MÁLAGA</td>
+                                        <td headers="distancia4">843</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">BADAJOZ</td>
+                                        <td headers="distancia3">726</td>
+                                        <td headers="capital4">MURCIA</td>
+                                        <td headers="distancia4">538</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">BARCELONA</td>
+                                        <td headers="distancia3">306</td>
+                                        <td headers="capital4">ORENSE</td>
+                                        <td headers="distancia4">724</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">BILBAO</td>
+                                        <td headers="distancia3">299</td>
+                                        <td headers="capital4">OVIEDO</td>
+                                        <td headers="distancia4">586</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">BURGOS</td>
+                                        <td headers="distancia3">302</td>
+                                        <td headers="capital4">PALENCIA</td>
+                                        <td headers="distancia4">387</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">CÁCERES</td>
+                                        <td headers="distancia3">625</td>
+                                        <td headers="capital4">PAMPLONA</td>
+                                        <td headers="distancia4">177</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">CÁDIZ</td>
+                                        <td headers="distancia3">969</td>
+                                        <td headers="capital4">PONTEVEDRA</td>
+                                        <td headers="distancia4">837</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">CASTELLÓN</td>
+                                        <td headers="distancia3">270</td>
+                                        <td headers="capital4">SALAMANCA</td>
+                                        <td headers="distancia4">539</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">CIUDAD REAL</td>
+                                        <td headers="distancia3">517</td>
+                                        <td headers="capital4">SAN SEBASTIÁN</td>
+                                        <td headers="distancia4">259</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">CÓRDOBA</td>
+                                        <td headers="distancia3">710</td>
+                                        <td headers="capital4">SANTANDER</td>
+                                        <td headers="distancia4">396</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">LA CORUÑA</td>
+                                        <td headers="distancia3">833</td>
+                                        <td headers="capital4">SEGOVIA</td>
+                                        <td headers="distancia4">413</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">CUENCA</td>
+                                        <td headers="distancia3">268</td>
+                                        <td headers="capital4">SEVILLA</td>
+                                        <td headers="distancia4">858</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">GERONA</td>
+                                        <td headers="distancia3">388</td>
+                                        <td headers="capital4">SORIA</td>
+                                        <td headers="distancia4">158</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">GRANADA</td>
+                                        <td headers="distancia3">732</td>
+                                        <td headers="capital4">TARRAGONA</td>
+                                        <td headers="distancia4">233</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">GUADALAJARA</td>
+                                        <td headers="distancia3">261</td>
+                                        <td headers="capital4">TERUEL</td>
+                                        <td headers="distancia4">185</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">HUELVA</td>
+                                        <td headers="distancia3">949</td>
+                                        <td headers="capital4">TOLEDO</td>
+                                        <td headers="distancia4">390</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">HUESCA</td>
+                                        <td headers="distancia3">74</td>
+                                        <td headers="capital4">VALENCIA</td>
+                                        <td headers="distancia4">341</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">JAÉN</td>
+                                        <td headers="distancia3">647</td>
+                                        <td headers="capital4">VALLADOLID</td>
+                                        <td headers="distancia4">425</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">LEÓN</td>
+                                        <td headers="distancia3">471</td>
+                                        <td headers="capital4">VITORIA</td>
+                                        <td headers="distancia4">253</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="capital3">LÉRIDA</td>
+                                        <td headers="distancia3">148</td>
+                                        <td headers="capital4">ZAMORA</td>
+                                        <td headers="distancia4">525</td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    <strong>Distancias a las localidades próximas</strong>
+                                </p>
+                                <p>
+                                    <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/distancias.gif"
+                                         longdesc="distanciasimg.htm"
+                                         alt="Distancias a las localidades más próximas a Zaragoza"/>
+                                </p>
+                                <table summary="Evolución del tráfico de pasajeros en el aeropuerto de Zaragoza"
+                                       class="table table-responsive tabla-bn">
+                                    <caption>EVOLUCIÓN DEL TRÁFICO DE PASAJEROS EN EL AEROPUERTO DE ZARAGOZA</caption>
+                                    <tr>
+                                        <th id="anio">Año</th>
+                                        <th id="pasajeros">Nº Pasajeros</th>
+                                        <th id="anio2">Año</th>
+                                        <th id="pasajeros2">Nº Pasajeros</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="anio">1996</td>
+                                        <td headers="pasajeros">216.020</td>
+                                        <td headers="anio2">2001</td>
+                                        <td headers="pasajeros2">222.167</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="anio">1997</td>
+                                        <td headers="pasajeros">252.220</td>
+                                        <td headers="anio2">2002</td>
+                                        <td headers="pasajeros2">228.557</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="anio">1998</td>
+                                        <td headers="pasajeros">222.363</td>
+                                        <td headers="anio2">2003</td>
+                                        <td headers="pasajeros2">228.069</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="anio">1999</td>
+                                        <td headers="pasajeros">247.340</td>
+                                        <td headers="anio2">2004</td>
+                                        <td headers="pasajeros2">215.213</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="anio">2000</td>
+                                        <td headers="pasajeros">246.720</td>
+                                        <td headers="anio2">2005</td>
+                                        <td headers="pasajeros2">381.849</td>
+                                    </tr>
+                                </table>
+                                <h3>Infraestructura ferroviaria</h3>
+                                <p>Zaragoza cuenta con una nueva estación de ferrocarril: la Estación Intermodal de
+                                    Delicias, un completo centro que se ubica en una superficie, de 75 hectáreas . El
+                                    proyecto contempla también una estación de autobuses, centros comerciales y de
+                                    negocios y dos hoteles.
+                                </p>
+                                <p>Alta Velocidad.</p>
+                                <p>El 11 de octubre de 2003 se inauguró la línea de alta velocidad
+                                    Madrid-Zaragoza-Lérida, que con paradas intermedias en Guadalajara y Calatayud,
+                                    asegura la conexión de Zaragoza con Madrid en unas 2 horas y con Lérida en unos 45
+                                    minutos, a través de trenes AVE. Por otro lado, los trenes Altaria de RENFE que unen
+                                    Madrid con Barcelona, unido a la ampliación de la Línea de Alta Velocidad hasta
+                                    Barcelona confirman una vez más la estratégica situación geográfica de Zaragoza.
+                                </p>
+                                <p>Línea convencional.</p>
+                                <p>En el Término Municipal se hallan las líneas convencionales dispuestas en dos
+                                    alturas, sobre superficie o sobre viaducto, además de una vía subterránea desde la
+                                    estación Zaragoza - Delicias hasta la zona de Miraflores con un tramo de
+                                    aproximadamente 4 kilómetros de longitud, ( 3746 metros ).
+                                </p>
+                                <h3>Distritos de Zaragoza</h3>
+                                <p>Zaragoza se divide administrativamente en quince distritos. A su vez el Distrito
+                                    Rural se subdivide en catorce Barrios Rurales. Los Distritos se rigen por las Juntas
+                                    Municipales y los Barrios Rurales por las Juntas Vecinales.
+                                </p>
+                                <table summary="Distritos municipales" class="table table-responsive tabla-bn">
+                                    <caption>DISTRITOS MUNICIPALES</caption>
+                                    <tr>
+                                        <th abbr="Distritos" id="distritos">Distritos Municipales</th>
+                                        <th id="superficie">Superficie (<abbr title="metros cuadrados">m2</abbr>)
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Actur- Rey Fernando</td>
+                                        <td headers="superficie">9.671.295</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Casablanca</td>
+                                        <td headers="superficie">66.192.700</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Casco Histórico</td>
+                                        <td headers="superficie">1.984.383</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Centro</td>
+                                        <td headers="superficie">1.808.623</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Delicias</td>
+                                        <td headers="superficie">3.284.606</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">El Rabal</td>
+                                        <td headers="superficie">8.375.902</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">La Almozara</td>
+                                        <td headers="superficie">3.767.367</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Las Fuentes</td>
+                                        <td headers="superficie">6.314.793</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Miralbueno</td>
+                                        <td headers="superficie">8.224.553</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Oliver- Valdefierro</td>
+                                        <td headers="superficie">4.339.479</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">San José</td>
+                                        <td headers="superficie">3.680.812</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Santa Isabel</td>
+                                        <td headers="superficie">7.970.473</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Torrero</td>
+                                        <td headers="superficie">111.876.200</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Universidad</td>
+                                        <td headers="superficie">3.020.154</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="distritos">Distrito Rural</td>
+                                        <td headers="superficie">726.554.109</td>
+                                    </tr>
+                                </table>
+                                <p>Dentro de cada Distrito y de cada Barrio Rural se podrán reconocer los núcleos de
+                                    población separados y aislados territorialmente que tengan unas características
+                                    especiales y los conformen como una identidad propia para constituirse en Concejos
+                                    Locales, facilitándoles así la participación en su correspondiente Junta Municipal o
+                                    Vecinal.
+                                </p>
+                                <table summary="Barrios rurales" class="table table-responsive tabla-bn">
+                                    <caption>BARRIOS RURALES</caption>
+                                    <tr>
+                                        <th id="rural">Distrito Rural</th>
+                                        <th id="sup">Superficie (<abbr title="metros">m</abbr>)
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Alfocea</td>
+                                        <td headers="sup">11.312.410</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Casetas</td>
+                                        <td headers="sup">6.345.331</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Garrapinillos</td>
+                                        <td headers="sup">141.236.300</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Juslibol</td>
+                                        <td headers="sup">299.560.300</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">La Cartuja Baja</td>
+                                        <td headers="sup">123.980.600</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Montañana</td>
+                                        <td headers="sup">13.608.360</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Monzalbarba</td>
+                                        <td headers="sup">13.464.060</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Movera</td>
+                                        <td headers="sup">22.755.570</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Peñaflor</td>
+                                        <td headers="sup">50.927.580</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">San Gregorio</td>
+                                        <td headers="sup">1.934.793</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">San Juan de Mozarrifar</td>
+                                        <td headers="sup">10.885.790</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Torrecilla</td>
+                                        <td headers="sup">20.155.670</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Venta del Olivar</td>
+                                        <td headers="sup">9.235.637</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="rural">Villarrapa</td>
+                                        <td headers="sup">1.151.708</td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    <strong>Mapa de distritos de Zaragoza</strong>
+                                </p>
+                                <p>
+                                    <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/distritos.gif"
+                                         longdesc="distritosimg.htm" alt="Mapa de distritos de Zaragoza"/>
+                                </p>
+                            </div>
+                            <div id="poblacion">
+                                <h3>Datos Demográficos 2008 &gt;&gt;Totales &gt;&gt;</h3>
+                                <h3>Población Total Por Edad y Sexo</h3>
+                                <table summary="Población Total Por Edad y Sexo"
+                                       class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="fila1">Edad</th>
+                                        <th id="fila2">Hombres</th>
+                                        <th id="fila3">Mujeres</th>
+                                        <th id="fila4">Total</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">0-4</td>
+                                        <td headers="fila2">16801</td>
+                                        <td headers="fila3">16056</td>
+                                        <td headers="fila4">
+                                            <strong>32857</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">5-9</td>
+                                        <td headers="fila2">15434</td>
+                                        <td headers="fila3">14437</td>
+                                        <td headers="fila4">
+                                            <strong>29871</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">10-14</td>
+                                        <td headers="fila2">14837</td>
+                                        <td headers="fila3">14305</td>
+                                        <td headers="fila4">
+                                            <strong>29142</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">15-19</td>
+                                        <td headers="fila2">16268</td>
+                                        <td headers="fila3">15600</td>
+                                        <td headers="fila4">
+                                            <strong>31868</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">20-24</td>
+                                        <td headers="fila2">20759</td>
+                                        <td headers="fila3">19790</td>
+                                        <td headers="fila4">
+                                            <strong>40549</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">25-29</td>
+                                        <td headers="fila2">28123</td>
+                                        <td headers="fila3">26150</td>
+                                        <td headers="fila4">
+                                            <strong>54273</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">30-34</td>
+                                        <td headers="fila2">31996</td>
+                                        <td headers="fila3">28927</td>
+                                        <td headers="fila4">
+                                            <strong>60923</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">35-39</td>
+                                        <td headers="fila2">29872</td>
+                                        <td headers="fila3">27674</td>
+                                        <td headers="fila4">
+                                            <strong>57546</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">40-44</td>
+                                        <td headers="fila2">27340</td>
+                                        <td headers="fila3">26817</td>
+                                        <td headers="fila4">
+                                            <strong>54157</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">45-49</td>
+                                        <td headers="fila2">24781</td>
+                                        <td headers="fila3">25417</td>
+                                        <td headers="fila4">
+                                            <strong>50198</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">50-54</td>
+                                        <td headers="fila2">21370</td>
+                                        <td headers="fila3">23192</td>
+                                        <td headers="fila4">
+                                            <strong>44562</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">55-59</td>
+                                        <td headers="fila2">19379</td>
+                                        <td headers="fila3">21495</td>
+                                        <td headers="fila4">
+                                            <strong>40874</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">60-64</td>
+                                        <td headers="fila2">17658</td>
+                                        <td headers="fila3">19859</td>
+                                        <td headers="fila4">
+                                            <strong>37517</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">65-69</td>
+                                        <td headers="fila2">13036</td>
+                                        <td headers="fila3">14971</td>
+                                        <td headers="fila4">
+                                            <strong>28007</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">70-74</td>
+                                        <td headers="fila2">12609</td>
+                                        <td headers="fila3">16466</td>
+                                        <td headers="fila4">
+                                            <strong>29075</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">75-79</td>
+                                        <td headers="fila2">10745</td>
+                                        <td headers="fila3">15452</td>
+                                        <td headers="fila4">
+                                            <strong>26197</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">80-84</td>
+                                        <td headers="fila2">6960</td>
+                                        <td headers="fila3">12047</td>
+                                        <td headers="fila4">
+                                            <strong>19007</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">&gt;85</td>
+                                        <td headers="fila2">4628</td>
+                                        <td headers="fila3">11029</td>
+                                        <td headers="fila4">
+                                            <strong>15657</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">No Consta</td>
+                                        <td headers="fila2">3</td>
+                                        <td headers="fila3">0</td>
+                                        <td headers="fila4">
+                                            <strong>3</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="fila1">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td headers="fila2">
+                                            <strong>332599</strong>
+                                        </td>
+                                        <td headers="fila3">
+                                            <strong>349684</strong>
+                                        </td>
+                                        <td headers="fila4">
+                                            <strong>682283</strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h3>Población Extranjera por Sexo y Continente</h3>
+                                <table summary="Población Extranjera por Sexo y Continente"
+                                       class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="pob1">Continente</th>
+                                        <th id="pob2">Hombres</th>
+                                        <th id="pob3">Mujeres</th>
+                                        <th id="pob4">Total</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">Europa</td>
+                                        <td headers="pob2">20056</td>
+                                        <td headers="pob3">16800</td>
+                                        <td headers="pob4">
+                                            <strong>36856</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">África</td>
+                                        <td headers="pob2">13904</td>
+                                        <td headers="pob3">6663</td>
+                                        <td headers="pob4">
+                                            <strong>20567</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">América</td>
+                                        <td headers="pob2">13505</td>
+                                        <td headers="pob3">17195</td>
+                                        <td headers="pob4">
+                                            <strong>30700</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">Asia</td>
+                                        <td headers="pob2">2388</td>
+                                        <td headers="pob3">1918</td>
+                                        <td headers="pob4">
+                                            <strong>4306</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">Oceanía</td>
+                                        <td headers="pob2">4</td>
+                                        <td headers="pob3">12</td>
+                                        <td headers="pob4">
+                                            <strong>16</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">Apátridas</td>
+                                        <td headers="pob2">30</td>
+                                        <td headers="pob3">13</td>
+                                        <td headers="pob4">
+                                            <strong>43</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">No Consta</td>
+                                        <td headers="pob2">2</td>
+                                        <td headers="pob3">1</td>
+                                        <td headers="pob4">
+                                            <strong>3</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="pob1">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td headers="pob2">
+                                            <strong>49889</strong>
+                                        </td>
+                                        <td headers="pob3">
+                                            <strong>42602</strong>
+                                        </td>
+                                        <td headers="pob4">
+                                            <strong>92491</strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h3>Población Total por Juntas Municipales</h3>
+                                <table summary="Población Total por Distritos Censales"
+                                       class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="dc1">Distrito</th>
+                                        <th id="dc2">Hombres</th>
+                                        <th id="dc3">Mujeres</th>
+                                        <th id="dc4">Total</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Casco Histórico</td>
+                                        <td headers="dc2">22462</td>
+                                        <td headers="dc3">23590</td>
+                                        <td headers="dc4">
+                                            <strong>46052</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Centro</td>
+                                        <td headers="dc2">25790</td>
+                                        <td headers="dc3">31213</td>
+                                        <td headers="dc4">
+                                            <strong>57003</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Delicias</td>
+                                        <td headers="dc2">55976</td>
+                                        <td headers="dc3">59470</td>
+                                        <td headers="dc4">
+                                            <strong>115446</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Universidad</td>
+                                        <td headers="dc2">24641</td>
+                                        <td headers="dc3">28273</td>
+                                        <td headers="dc4">
+                                            <strong>52914</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Casablanca</td>
+                                        <td headers="dc2">9217</td>
+                                        <td headers="dc3">9331</td>
+                                        <td headers="dc4">
+                                            <strong>18548</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">San José</td>
+                                        <td headers="dc2">33700</td>
+                                        <td headers="dc3">36374</td>
+                                        <td headers="dc4">
+                                            <strong>70074</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Las Fuentes</td>
+                                        <td headers="dc2">22314</td>
+                                        <td headers="dc3">22787</td>
+                                        <td headers="dc4">
+                                            <strong>45101</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">La Almozara</td>
+                                        <td headers="dc2">12680</td>
+                                        <td headers="dc3">13304</td>
+                                        <td headers="dc4">
+                                            <strong>25984</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Miralbueno</td>
+                                        <td headers="dc2">4308</td>
+                                        <td headers="dc3">4279</td>
+                                        <td headers="dc4">
+                                            <strong>8587</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Oliver- Valdefiero</td>
+                                        <td headers="dc2">14610</td>
+                                        <td headers="dc3">14420</td>
+                                        <td headers="dc4">
+                                            <strong>29030</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Torrero - La Paz</td>
+                                        <td headers="dc2">18009</td>
+                                        <td headers="dc3">18656</td>
+                                        <td headers="dc4">
+                                            <strong>36665</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Actur- Rey Fernando</td>
+                                        <td headers="dc2">29376</td>
+                                        <td headers="dc3">29316</td>
+                                        <td headers="dc4">
+                                            <strong>58692</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">El Rabal</td>
+                                        <td headers="dc2">38213</td>
+                                        <td headers="dc3">37937</td>
+                                        <td headers="dc4">
+                                            <strong>76150</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">Santa Isabel</td>
+                                        <td headers="dc2">5920</td>
+                                        <td headers="dc3">5913</td>
+                                        <td headers="dc4">
+                                            <strong>11833</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="dc1">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td headers="dc2">
+                                            <strong>317216</strong>
+                                        </td>
+                                        <td headers="dc3">
+                                            <strong>334863</strong>
+                                        </td>
+                                        <td headers="dc4">
+                                            <strong>652079</strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h3>Población Total por Juntas Vecinales</h3>
+                                <table summary="Población Total por Juntas Vecinales"
+                                       class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="col1">Distrito</th>
+                                        <th id="col2">Hombres</th>
+                                        <th id="col3">Mujeres</th>
+                                        <th id="col4">Total</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">La Cartuja</td>
+                                        <td headers="col2">1122</td>
+                                        <td headers="col3">1070</td>
+                                        <td headers="col4">
+                                            <strong>2192</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Torrecilla de Valmadrid</td>
+                                        <td headers="col2">14</td>
+                                        <td headers="col3">14</td>
+                                        <td headers="col4">
+                                            <strong>28</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Juslibol-El Zorongo</td>
+                                        <td headers="col2">1237</td>
+                                        <td headers="col3">1134</td>
+                                        <td headers="col4">
+                                            <strong>2371</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">San Juan de Mozarrifar</td>
+                                        <td headers="col2">1153</td>
+                                        <td headers="col3">1110</td>
+                                        <td headers="col4">
+                                            <strong>2263</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Montañana</td>
+                                        <td headers="col2">1635</td>
+                                        <td headers="col3">1637</td>
+                                        <td headers="col4">
+                                            <strong>3272</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">San Gregorio</td>
+                                        <td headers="col2">279</td>
+                                        <td headers="col3">287</td>
+                                        <td headers="col4">
+                                            <strong>566</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Peñaflor</td>
+                                        <td headers="col2">535</td>
+                                        <td headers="col3">526</td>
+                                        <td headers="col4">
+                                            <strong>1061</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Movera</td>
+                                        <td headers="col2">1548</td>
+                                        <td headers="col3">1502</td>
+                                        <td headers="col4">
+                                            <strong>3050</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Garrapinillos</td>
+                                        <td headers="col2">2511</td>
+                                        <td headers="col3">2392</td>
+                                        <td headers="col4">
+                                            <strong>4903</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Venta del Olivar</td>
+                                        <td headers="col2">435</td>
+                                        <td headers="col3">541</td>
+                                        <td headers="col4">
+                                            <strong>976</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Monzalbarba</td>
+                                        <td headers="col2">902</td>
+                                        <td headers="col3">904</td>
+                                        <td headers="col4">
+                                            <strong>1806</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Villarrapa</td>
+                                        <td headers="col2">66</td>
+                                        <td headers="col3">69</td>
+                                        <td headers="col4">
+                                            <strong>135</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Alfocea</td>
+                                        <td headers="col2">94</td>
+                                        <td headers="col3">75</td>
+                                        <td headers="col4">
+                                            <strong>169</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">Casetas</td>
+                                        <td headers="col2">3852</td>
+                                        <td headers="col3">3560</td>
+                                        <td headers="col4">
+                                            <strong>7412</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="col1">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td headers="col2">
+                                            <strong>15383</strong>
+                                        </td>
+                                        <td headers="col3">
+                                            <strong>14821</strong>
+                                        </td>
+                                        <td headers="col4">
+                                            <strong>30204</strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h3>Población Extranjera por Juntas Municipales</h3>
+                                <table summary="Población Extranjera por Juntas Municipales"
+                                       class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="c1">Distrito Censal</th>
+                                        <th id="c2">
+                                            <strong>Europa</strong>
+                                        </th>
+                                        <th id="c3">
+                                            <strong>Africa</strong>
+                                        </th>
+                                        <th id="c4">
+                                            <strong>America</strong>
+                                        </th>
+                                        <th id="c5">
+                                            <strong>Asia</strong>
+                                        </th>
+                                        <th id="c6">
+                                            <strong>Oceania</strong>
+                                        </th>
+                                        <th id="c7">
+                                            <strong>Apatridas</strong>
+                                        </th>
+                                        <th id="c8">
+                                            <strong>No Consta</strong>
+                                        </th>
+                                        <th id="c9">
+                                            <strong>Total</strong>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Casco Histórico</td>
+                                        <td headers="c2">3774</td>
+                                        <td headers="c3">3399</td>
+                                        <td headers="c4">2737</td>
+                                        <td headers="c5">521</td>
+                                        <td headers="c6">2</td>
+                                        <td headers="c7">0</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>10433</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Centro</td>
+                                        <td headers="c2">2354</td>
+                                        <td headers="c3">440</td>
+                                        <td headers="c4">2343</td>
+                                        <td headers="c5">300</td>
+                                        <td headers="c6">5</td>
+                                        <td headers="c7">1</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>5443</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Delicias</td>
+                                        <td headers="c2">8424</td>
+                                        <td headers="c3">4871</td>
+                                        <td headers="c4">7684</td>
+                                        <td headers="c5">1296</td>
+                                        <td headers="c6">1</td>
+                                        <td headers="c7">24</td>
+                                        <td headers="c8">1</td>
+                                        <td headers="c9">
+                                            <strong>22301</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Universidad</td>
+                                        <td headers="c2">2791</td>
+                                        <td headers="c3">747</td>
+                                        <td headers="c4">2707</td>
+                                        <td headers="c5">447</td>
+                                        <td headers="c6">0</td>
+                                        <td headers="c7">4</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>6696</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Casablanca</td>
+                                        <td headers="c2">415</td>
+                                        <td headers="c3">153</td>
+                                        <td headers="c4">573</td>
+                                        <td headers="c5">18</td>
+                                        <td headers="c6">0</td>
+                                        <td headers="c7">0</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>1159</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">San José</td>
+                                        <td headers="c2">5114</td>
+                                        <td headers="c3">1701</td>
+                                        <td headers="c4">3474</td>
+                                        <td headers="c5">564</td>
+                                        <td headers="c6">2</td>
+                                        <td headers="c7">1</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>10856</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Las Fuentes</td>
+                                        <td headers="c2">2496</td>
+                                        <td headers="c3">2111</td>
+                                        <td headers="c4">2289</td>
+                                        <td headers="c5">353</td>
+                                        <td headers="c6">1</td>
+                                        <td headers="c7">6</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>7256</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">La Almozara</td>
+                                        <td headers="c2">1056</td>
+                                        <td headers="c3">793</td>
+                                        <td headers="c4">684</td>
+                                        <td headers="c5">122</td>
+                                        <td headers="c6">1</td>
+                                        <td headers="c7">0</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>2656</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Miralbueno</td>
+                                        <td headers="c2">276</td>
+                                        <td headers="c3">124</td>
+                                        <td headers="c4">133</td>
+                                        <td headers="c5">14</td>
+                                        <td headers="c6">1</td>
+                                        <td headers="c7">0</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>548</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Oliver- Valdefierro</td>
+                                        <td headers="c2">1234</td>
+                                        <td headers="c3">1325</td>
+                                        <td headers="c4">895</td>
+                                        <td headers="c5">93</td>
+                                        <td headers="c6">0</td>
+                                        <td headers="c7">0</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>3547</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Torrero - La Paz</td>
+                                        <td headers="c2">2329</td>
+                                        <td headers="c3">1234</td>
+                                        <td headers="c4">1780</td>
+                                        <td headers="c5">113</td>
+                                        <td headers="c6">0</td>
+                                        <td headers="c7">2</td>
+                                        <td headers="c8">1</td>
+                                        <td headers="c9">
+                                            <strong>5459</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Actur-Rey Fernando</td>
+                                        <td headers="c2">1326</td>
+                                        <td headers="c3">675</td>
+                                        <td headers="c4">1043</td>
+                                        <td headers="c5">174</td>
+                                        <td headers="c6">1</td>
+                                        <td headers="c7">1</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>3220</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">El Rabal</td>
+                                        <td headers="c2">2996</td>
+                                        <td headers="c3">2415</td>
+                                        <td headers="c4">2974</td>
+                                        <td headers="c5">256</td>
+                                        <td headers="c6">0</td>
+                                        <td headers="c7">2</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>8643</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">Santa Isabel</td>
+                                        <td headers="c2">323</td>
+                                        <td headers="c3">93</td>
+                                        <td headers="c4">192</td>
+                                        <td headers="c5">12</td>
+                                        <td headers="c6">0</td>
+                                        <td headers="c7">0</td>
+                                        <td headers="c8">0</td>
+                                        <td headers="c9">
+                                            <strong>620</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="c1">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td headers="c2">
+                                            <strong>34908</strong>
+                                        </td>
+                                        <td headers="c3">
+                                            <strong>20081</strong>
+                                        </td>
+                                        <td headers="c4">
+                                            <strong>29508</strong>
+                                        </td>
+                                        <td headers="c5">
+                                            <strong>4283</strong>
+                                        </td>
+                                        <td headers="c6">
+                                            <strong>14</strong>
+                                        </td>
+                                        <td headers="c7">
+                                            <strong>41</strong>
+                                        </td>
+                                        <td headers="c8">
+                                            <strong>2</strong>
+                                        </td>
+                                        <td headers="c9">
+                                            <strong>88837</strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h3>Población Extranjera por Juntas Vecinales</h3>
+                                <table summary="Población Extranjera por Distritos Censales"
+                                       class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="d1">Distrito Censal</th>
+                                        <th id="d2">
+                                            <strong>Europa</strong>
+                                        </th>
+                                        <th id="d3">
+                                            <strong>Africa</strong>
+                                        </th>
+                                        <th id="d4">
+                                            <strong>America</strong>
+                                        </th>
+                                        <th id="d5">
+                                            <strong>Asia</strong>
+                                        </th>
+                                        <th id="d6">
+                                            <strong>Oceania</strong>
+                                        </th>
+                                        <th id="d7">
+                                            <strong>Apatridas</strong>
+                                        </th>
+                                        <th id="d8">
+                                            <strong>No Consta</strong>
+                                        </th>
+                                        <th id="d9">
+                                            <strong>Total</strong>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">La Cartuja</td>
+                                        <td headers="d2">61</td>
+                                        <td headers="d3">34</td>
+                                        <td headers="d4">23</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">1</td>
+                                        <td headers="d9">
+                                            <strong>118</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Torrecilla de Valmadrid</td>
+                                        <td headers="d2">0</td>
+                                        <td headers="d3">1</td>
+                                        <td headers="d4">0</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>1</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Juslibol-El Zorongo</td>
+                                        <td headers="d2">45</td>
+                                        <td headers="d3">9</td>
+                                        <td headers="d4">111</td>
+                                        <td headers="d5">3</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>168</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">San Juan de Mozarrifar</td>
+                                        <td headers="d2">105</td>
+                                        <td headers="d3">3</td>
+                                        <td headers="d4">40</td>
+                                        <td headers="d5">4</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>148</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Montañana</td>
+                                        <td headers="d2">120</td>
+                                        <td headers="d3">44</td>
+                                        <td headers="d4">43</td>
+                                        <td headers="d5">4</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">1</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>212</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">San Gregorio</td>
+                                        <td headers="d2">14</td>
+                                        <td headers="d3">7</td>
+                                        <td headers="d4">23</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>44</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Peñaflor</td>
+                                        <td headers="d2">27</td>
+                                        <td headers="d3">3</td>
+                                        <td headers="d4">45</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>75</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Movera</td>
+                                        <td headers="d2">176</td>
+                                        <td headers="d3">70</td>
+                                        <td headers="d4">121</td>
+                                        <td headers="d5">1</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d9">
+                                            <strong>368</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Garrapinillos</td>
+                                        <td headers="d2">292</td>
+                                        <td headers="d3">13</td>
+                                        <td headers="d4">237</td>
+                                        <td headers="d5">15</td>
+                                        <td headers="d6">1</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">1</td>
+                                        <td headers="d9">
+                                            <strong>558</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Venta del Olivar</td>
+                                        <td headers="d2">28</td>
+                                        <td headers="d3">9</td>
+                                        <td headers="d4">17</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">1</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>55</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Monzalbarba</td>
+                                        <td headers="d2">88</td>
+                                        <td headers="d3">31</td>
+                                        <td headers="d4">56</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>175</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Villarrapa</td>
+                                        <td headers="d2">4</td>
+                                        <td headers="d3">0</td>
+                                        <td headers="d4">6</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>10</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Alfocea</td>
+                                        <td headers="d2">13</td>
+                                        <td headers="d3">2</td>
+                                        <td headers="d4">0</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">0</td>
+                                        <td headers="d8">0</td>
+                                        <td headers="d9">
+                                            <strong>15</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">Casetas</td>
+                                        <td headers="d2">975</td>
+                                        <td headers="d3">260</td>
+                                        <td headers="d4">470</td>
+                                        <td headers="d5">0</td>
+                                        <td headers="d6">0</td>
+                                        <td headers="d7">1</td>
+                                        <td headers="d8">5</td>
+                                        <td headers="d9">
+                                            <strong>1707</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="d1">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td headers="d2">
+                                            <strong>1948</strong>
+                                        </td>
+                                        <td headers="d3">
+                                            <strong>486</strong>
+                                        </td>
+                                        <td headers="d4">
+                                            <strong>1192</strong>
+                                        </td>
+                                        <td headers="d5">
+                                            <strong>23</strong>
+                                        </td>
+                                        <td headers="d6">
+                                            <strong>2</strong>
+                                        </td>
+                                        <td headers="d7">
+                                            <strong>2</strong>
+                                        </td>
+                                        <td headers="d8">
+                                            <strong>1</strong>
+                                        </td>
+                                        <td headers="d9">
+                                            <strong>3654</strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="clima">
+                                <h3>Climatología.</h3>
+                                <p>Zaragoza tiene un clima continental caracterizado por una elevada diversidad, con
+                                    altas temperaturas en verano y medio-bajas en invierno, escasa pluviometría y un
+                                    régimen de vientos muy continuo que canalizados por la depresión del Ebro, proceden
+                                    bien de Noroeste. (Cierzo) o de Sureste (bochorno).
+                                </p>
+                                <p>Clima: Es el estado medio de los elementos meteorológicos de una localidad
+                                    considerando un período largo de tiempo. El clima de una localidad viene determinado
+                                    por los factores climatológicos: latitud, longitud, altitud, orografía y
+                                    continentalidad.
+                                </p>
+                                <table summary="Valores climatológicos normales en Zaragoza"
+                                       class="table table-responsive tabla-bn">
+                                    <caption>Valores climatológicos normales en Zaragoza. (Datos del observatorio del
+                                        Aeropuerto de Zaragoza)
+                                        <br/>
+                                        <strong>Periodo: 1971-2000 Altitud (<abbr title="metros">m</abbr>): 247<abbr
+                                                title="latitud">Lat.</abbr>: 41 39 43
+                                            <abbr title="longitud">Long.</abbr>
+                                            : 1 00 29 Medias y Totales mensuales:
+                                        </strong>
+                                    </caption>
+                                    <tr>
+                                        <th id="MES">MES</th>
+                                        <th id="T">T</th>
+                                        <th id="TM1">TM</th>
+                                        <th id="TM2">Tm</th>
+                                        <th id="R">R</th>
+                                        <th id="H">H</th>
+                                        <th id="DR">DR</th>
+                                        <th id="DN">DN</th>
+                                        <th id="DT">DT</th>
+                                        <th id="DF">DF</th>
+                                        <th id="DH">DH</th>
+                                        <th id="DD">DD</th>
+                                        <th id="I">I</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Enero</td>
+                                        <td headers="T">6,4</td>
+                                        <td headers="TM1">10,3</td>
+                                        <td headers="TM2">2,4</td>
+                                        <td headers="R">22</td>
+                                        <td headers="H">75</td>
+                                        <td headers="DR">4</td>
+                                        <td headers="DN">1</td>
+                                        <td headers="DT">0</td>
+                                        <td headers="DF">7</td>
+                                        <td headers="DH">8</td>
+                                        <td headers="DD">5</td>
+                                        <td headers="I">133</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Febrero</td>
+                                        <td headers="T">8,4</td>
+                                        <td headers="TM1">13,3</td>
+                                        <td headers="TM2">3,5</td>
+                                        <td headers="R">20</td>
+                                        <td headers="H">68</td>
+                                        <td headers="DR">4</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">0</td>
+                                        <td headers="DF">3</td>
+                                        <td headers="DH">5</td>
+                                        <td headers="DD">5</td>
+                                        <td headers="I">165</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Marzo</td>
+                                        <td headers="T">10,9</td>
+                                        <td headers="TM1">16,6</td>
+                                        <td headers="TM2">5,2</td>
+                                        <td headers="R">20</td>
+                                        <td headers="H">60</td>
+                                        <td headers="DR">4</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">0</td>
+                                        <td headers="DF">1</td>
+                                        <td headers="DH">2</td>
+                                        <td headers="DD">7</td>
+                                        <td headers="I">210</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Abril</td>
+                                        <td headers="T">13,0</td>
+                                        <td headers="TM1">18,7</td>
+                                        <td headers="TM2">7,4</td>
+                                        <td headers="R">35</td>
+                                        <td headers="H">58</td>
+                                        <td headers="DR">5</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">1</td>
+                                        <td headers="DF">1</td>
+                                        <td headers="DH">0</td>
+                                        <td headers="DD">5</td>
+                                        <td headers="I">221</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Mayo</td>
+                                        <td headers="T">17,2</td>
+                                        <td headers="TM1">23,2</td>
+                                        <td headers="TM2">11,2</td>
+                                        <td headers="R">44</td>
+                                        <td headers="H">56</td>
+                                        <td headers="DR">6</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">4</td>
+                                        <td headers="DF">0</td>
+                                        <td headers="DH">0</td>
+                                        <td headers="DD">4</td>
+                                        <td headers="I">263</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Junio</td>
+                                        <td headers="T">21,3</td>
+                                        <td headers="TM1">27,7</td>
+                                        <td headers="TM2">14,8</td>
+                                        <td headers="R">31</td>
+                                        <td headers="H">52</td>
+                                        <td headers="DR">4</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">4</td>
+                                        <td headers="DF">0</td>
+                                        <td headers="DH">0</td>
+                                        <td headers="DD">8</td>
+                                        <td headers="I">295</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Julio</td>
+                                        <td headers="T">24,5</td>
+                                        <td headers="TM1">31,5</td>
+                                        <td headers="TM2">17,6</td>
+                                        <td headers="R">18</td>
+                                        <td headers="H">49</td>
+                                        <td headers="DR">3</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">4</td>
+                                        <td headers="DF">0</td>
+                                        <td headers="DH">0</td>
+                                        <td headers="DD">14</td>
+                                        <td headers="I">337</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Agosto</td>
+                                        <td headers="T">24,4</td>
+                                        <td headers="TM1">31,0</td>
+                                        <td headers="TM2">17,8</td>
+                                        <td headers="R">17</td>
+                                        <td headers="H">53</td>
+                                        <td headers="DR">2</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">4</td>
+                                        <td headers="DF">0</td>
+                                        <td headers="DH">0</td>
+                                        <td headers="DD">11</td>
+                                        <td headers="I">311</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Septiembre</td>
+                                        <td headers="T">20,7</td>
+                                        <td headers="TM1">26,7</td>
+                                        <td headers="TM2">14,7</td>
+                                        <td headers="R">27</td>
+                                        <td headers="H">59</td>
+                                        <td headers="DR">3</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">3</td>
+                                        <td headers="DF">1</td>
+                                        <td headers="DH">0</td>
+                                        <td headers="DD">7</td>
+                                        <td headers="I">231</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Octubre</td>
+                                        <td headers="T">15,5</td>
+                                        <td headers="TM1">20,7</td>
+                                        <td headers="TM2">10,3</td>
+                                        <td headers="R">30</td>
+                                        <td headers="H">69</td>
+                                        <td headers="DR">5</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">1</td>
+                                        <td headers="DF">2</td>
+                                        <td headers="DH">0</td>
+                                        <td headers="DD">5</td>
+                                        <td headers="I">192</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Noviembre</td>
+                                        <td headers="T">10,0</td>
+                                        <td headers="TM1">14,3</td>
+                                        <td headers="TM2">5,8</td>
+                                        <td headers="R">30</td>
+                                        <td headers="H">74</td>
+                                        <td headers="DR">5</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">0</td>
+                                        <td headers="DF">5</td>
+                                        <td headers="DH">2</td>
+                                        <td headers="DD">4</td>
+                                        <td headers="I">146</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">Diciembre</td>
+                                        <td headers="T">7,1</td>
+                                        <td headers="TM1">10,7</td>
+                                        <td headers="TM2">3,5</td>
+                                        <td headers="R">23</td>
+                                        <td headers="H">77</td>
+                                        <td headers="DR">5</td>
+                                        <td headers="DN">0</td>
+                                        <td headers="DT">0</td>
+                                        <td headers="DF">8</td>
+                                        <td headers="DH">6</td>
+                                        <td headers="DD">4</td>
+                                        <td headers="I">116</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="MES">AÑO</td>
+                                        <td headers="T">15,0</td>
+                                        <td headers="TM1">20,4</td>
+                                        <td headers="TM2">9,5</td>
+                                        <td headers="R">318</td>
+                                        <td headers="H">62</td>
+                                        <td headers="DR">50</td>
+                                        <td headers="DN">1</td>
+                                        <td headers="DT">21</td>
+                                        <td headers="DF">28</td>
+                                        <td headers="DH">25</td>
+                                        <td headers="DD">80</td>
+                                        <td headers="I">2614</td>
+                                    </tr>
+                                </table>
+                                <p>En la tabla se han reflejado los valores climatológicos del último año completo del
+                                    que se tiene referencia.
+                                </p>
+                                <table summary="Leyenda" class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="significado" colspan="2" abbr="Significado">Significado de las columnas
+                                            de datos:
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">T</td>
+                                        <td headers="significado">Temperatura media mensual/anual (<abbr
+                                                title="grados centígrados">°C</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">TM</td>
+                                        <td headers="significado">Media mensual/anual de las temperaturas máximas
+                                            diarias (<abbr title="grados centígrados">°C</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">Tm</td>
+                                        <td headers="significado">Media mensual/anual de las temperaturas mínimas
+                                            diarias (<abbr title="grados centígrados">°C</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">R</td>
+                                        <td headers="significado">Precipitación mensual/anual media (<abbr
+                                                title="milimetros">mm</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">H</td>
+                                        <td headers="significado">Humedad relativa media (%)</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">DR</td>
+                                        <td headers="significado">Número medio mensual/anual de días de precipitación
+                                            superior o igual a 1
+                                            <abbr title="milimetros">mm</abbr>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">DN</td>
+                                        <td headers="significado">Número medio mensual/anual de días de nieve</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">DT</td>
+                                        <td headers="significado">Número medio mensual/anual de días de tormenta</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">DF</td>
+                                        <td headers="significado">Número medio mensual/anual de días de niebla</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">DH</td>
+                                        <td headers="significado">Número medio mensual/anual de días de helada</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">DD</td>
+                                        <td headers="significado">Número medio mensual/anual de días despejados</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="significado">I</td>
+                                        <td headers="significado">Número medio mensual/anual de horas de sol</td>
+                                    </tr>
+                                </table>
+                                <p>Información sacada del
+                                    <a href="http://www.inm.es/cgi-bin/valnor.sh.2001?NOMBRE=9434">Instituto Nacional de
+                                        Meteorológia.
+                                    </a>
+                                </p>
+                                <p>A continuación se introduce el resumen anual/mensual climatológico desde el
+                                    observatorio del aeropuerto de Zaragoza en el año 2005.
+                                </p>
+                                <table summary="Datos climatológicos del 2005. Medias y Totales mensuales"
+                                       class="table table-responsive tabla-bn">
+                                    <caption>Datos climatológicos: 2005. Medias y Totales mensuales:</caption>
+                                    <tr>
+                                        <th id="mes2">MES</th>
+                                        <th id="t2">T</th>
+                                        <th id="tm3">TM</th>
+                                        <th id="tm4">Tm</th>
+                                        <th id="slp2">SLP</th>
+                                        <th id="h2">H</th>
+                                        <th id="pp2">PP</th>
+                                        <th id="vv2">VV</th>
+                                        <th id="v2">V</th>
+                                        <th id="vm2">VM</th>
+                                        <th id="vg2">Vg</th>
+                                        <th id="ra2">RA</th>
+                                        <th id="sn2">SN</th>
+                                        <th id="ts2">TS</th>
+                                        <th id="fg2">FG</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Enero</td>
+                                        <td headers="t2">4</td>
+                                        <td headers="tm3">7,5</td>
+                                        <td headers="tm4">1,1</td>
+                                        <td headers="slp2">1.024,6</td>
+                                        <td headers="h2">78,6</td>
+                                        <td headers="pp2">0,76</td>
+                                        <td headers="vv2">7</td>
+                                        <td headers="v2">19,6</td>
+                                        <td headers="vm2">33,1</td>
+                                        <td headers="vg2">94,3</td>
+                                        <td headers="ra2">2</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">0</td>
+                                        <td headers="fg2">14</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Febrero</td>
+                                        <td headers="t2">5.,1</td>
+                                        <td headers="tm3">10,3</td>
+                                        <td headers="tm4">0,7</td>
+                                        <td headers="slp2">1.020,1</td>
+                                        <td headers="h2">64,4</td>
+                                        <td headers="pp2">13,2</td>
+                                        <td headers="vv2">10,2</td>
+                                        <td headers="v2">22,4</td>
+                                        <td headers="vm2">34</td>
+                                        <td headers="vg2">79,5</td>
+                                        <td headers="ra2">9</td>
+                                        <td headers="sn2">2</td>
+                                        <td headers="ts2">0</td>
+                                        <td headers="fg2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Marzo</td>
+                                        <td headers="t2">10,5</td>
+                                        <td headers="tm3">17,8</td>
+                                        <td headers="tm4">4,2</td>
+                                        <td headers="slp2">1.018,1</td>
+                                        <td headers="h2">55,7</td>
+                                        <td headers="pp2">10,66</td>
+                                        <td headers="vv2">9,7</td>
+                                        <td headers="v2">16,1</td>
+                                        <td headers="vm2">28,1</td>
+                                        <td headers="vg2">68,3</td>
+                                        <td headers="ra2">9</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">2</td>
+                                        <td headers="fg2">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Abril</td>
+                                        <td headers="t2">14,2</td>
+                                        <td headers="tm3">20,9</td>
+                                        <td headers="tm4">8,3</td>
+                                        <td headers="slp2">-</td>
+                                        <td headers="h2">58,5</td>
+                                        <td headers="pp2">11,43</td>
+                                        <td headers="vv2">10,7</td>
+                                        <td headers="v2">17,9</td>
+                                        <td headers="vm2">31,1</td>
+                                        <td headers="vg2">87</td>
+                                        <td headers="ra2">11</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">3</td>
+                                        <td headers="fg2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Mayo</td>
+                                        <td headers="t2">18,9</td>
+                                        <td headers="tm3">26</td>
+                                        <td headers="tm4">12,7</td>
+                                        <td headers="slp2">1.016,6</td>
+                                        <td headers="h2">53,1</td>
+                                        <td headers="pp2">56,89</td>
+                                        <td headers="vv2">10,8</td>
+                                        <td headers="v2">16,6</td>
+                                        <td headers="vm2">28,7</td>
+                                        <td headers="vg2">70,2</td>
+                                        <td headers="ra2">10</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">5</td>
+                                        <td headers="fg2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Junio</td>
+                                        <td headers="t2">24,2</td>
+                                        <td headers="tm3">32,6</td>
+                                        <td headers="tm4">171</td>
+                                        <td headers="slp2">1.016</td>
+                                        <td headers="h2">50,3</td>
+                                        <td headers="pp2">58,18</td>
+                                        <td headers="vv2">11,1</td>
+                                        <td headers="v2">16,5</td>
+                                        <td headers="vm2">35</td>
+                                        <td headers="vg2">98,2</td>
+                                        <td headers="ra2">9</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">8</td>
+                                        <td headers="fg2">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Julio</td>
+                                        <td headers="t2">25,2</td>
+                                        <td headers="tm3">33.4</td>
+                                        <td headers="tm4">18,5</td>
+                                        <td headers="slp2">1.015,4</td>
+                                        <td headers="h2">47,9</td>
+                                        <td headers="pp2">0,76</td>
+                                        <td headers="vv2">11,6</td>
+                                        <td headers="v2">19,7</td>
+                                        <td headers="vm2">31,9</td>
+                                        <td headers="vg2">63</td>
+                                        <td headers="ra2">2</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">2</td>
+                                        <td headers="fg2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Agosto</td>
+                                        <td headers="t2">23,5</td>
+                                        <td headers="tm3">31,3</td>
+                                        <td headers="tm4">17,8</td>
+                                        <td headers="slp2">1.016,5</td>
+                                        <td headers="h2">52,7</td>
+                                        <td headers="pp2">17,27</td>
+                                        <td headers="vv2">11,8</td>
+                                        <td headers="v2">20,7</td>
+                                        <td headers="vm2">32,9</td>
+                                        <td headers="vg2">64,8</td>
+                                        <td headers="ra2">7</td>
+                                        <td headers="sn2">1</td>
+                                        <td headers="ts2">5</td>
+                                        <td headers="fg2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Septiembre</td>
+                                        <td headers="t2">20,4</td>
+                                        <td headers="tm3">27,2</td>
+                                        <td headers="tm4">14,9</td>
+                                        <td headers="slp2">1.019,8</td>
+                                        <td headers="h2">56,5</td>
+                                        <td headers="pp2">22,85</td>
+                                        <td headers="vv2">11,2</td>
+                                        <td headers="v2">15,1</td>
+                                        <td headers="vm2">25,9</td>
+                                        <td headers="vg2">75,9</td>
+                                        <td headers="ra2">6</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">1</td>
+                                        <td headers="fg2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Octubre</td>
+                                        <td headers="t2">16,3</td>
+                                        <td headers="tm3">21,8</td>
+                                        <td headers="tm4">12,1</td>
+                                        <td headers="slp2">1.018,1</td>
+                                        <td headers="h2">74,4</td>
+                                        <td headers="pp2">24,12</td>
+                                        <td headers="vv2">10,1</td>
+                                        <td headers="v2">13,2</td>
+                                        <td headers="vm2">23,2</td>
+                                        <td headers="vg2">57,2</td>
+                                        <td headers="ra2">13</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">2</td>
+                                        <td headers="fg2">2</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Noviembre</td>
+                                        <td headers="t2">9,6</td>
+                                        <td headers="tm3">14,4</td>
+                                        <td headers="tm4">5,7</td>
+                                        <td headers="slp2">1.018,3</td>
+                                        <td headers="h2">75</td>
+                                        <td headers="pp2">42,42</td>
+                                        <td headers="vv2">9,7</td>
+                                        <td headers="v2">16</td>
+                                        <td headers="vm2">28,4</td>
+                                        <td headers="vg2">85,2</td>
+                                        <td headers="ra2">12</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">0</td>
+                                        <td headers="fg2">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="mes2">Diciembre</td>
+                                        <td headers="t2">4,3</td>
+                                        <td headers="tm3">8,7</td>
+                                        <td headers="tm4">0,7</td>
+                                        <td headers="slp2">1.026,6</td>
+                                        <td headers="h2">77,4</td>
+                                        <td headers="pp2">4,82</td>
+                                        <td headers="vv2">8,9</td>
+                                        <td headers="v2">15,5</td>
+                                        <td headers="vm2">28,4</td>
+                                        <td headers="vg2">77,8</td>
+                                        <td headers="ra2">9</td>
+                                        <td headers="sn2">0</td>
+                                        <td headers="ts2">0</td>
+                                        <td headers="fg2">6</td>
+                                    </tr>
+                                </table>
+                                <p>En la tabla se han reflejado los valores climatológicos del último año completo del
+                                    que se tiene referencia, el valor &quot;Vg&quot; representa la racha máxima de
+                                    velocidad del viento en el mes evaluado.
+                                </p>
+                                <table summary="Leyenda2 " class="table table-responsive tabla-bn">
+                                    <tr>
+                                        <th id="datos" colspan="2" abbr="Datos">Significado de las columnas de datos:
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">T</td>
+                                        <td headers="datos">Temperatura media (<abbr title="grados centígrados">
+                                            ºC.</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">TM</td>
+                                        <td headers="datos">Temperatura máxima media (<abbr title="grados centígrados">
+                                            ºC.</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">Tm</td>
+                                        <td headers="datos">Temperatura mínima media (<abbr title="grados centígrados">
+                                            ºC.</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">SLP</td>
+                                        <td headers="datos">Presión atmosférica a nivel del mar (<abbr
+                                                title="milibares">mb</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">H</td>
+                                        <td headers="datos">Humedad relativa media (%)</td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">PP</td>
+                                        <td headers="datos">Precipitación total de lluvia y/o nieve derretida (<abbr
+                                                title="milímetros">mm</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">VV</td>
+                                        <td headers="datos">Visibilidad media (<abbr title="Kilómetros">Km</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">V</td>
+                                        <td headers="datos">Velocidad media del viento (<abbr title="Kilómetros hora">
+                                            Km/h</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">VM</td>
+                                        <td headers="datos">Velocidad máxima sostenida del viento (<abbr
+                                                title="Kilómetros hora">Km/h</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">Vg.</td>
+                                        <td headers="datos">Velocidad de ráfagas máximas de viento (<abbr
+                                                title="Kilómetros hora">Km/h</abbr>)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">RA</td>
+                                        <td headers="datos">Indica si hubo lluvia o llovizna (En la media mensual, total
+                                            días que llovió)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">SN</td>
+                                        <td headers="datos">Indica si nevó (En la media mensual, total días que nevó)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">TS</td>
+                                        <td headers="datos">Indica si hubo tormenta (En la media mensual, total días con
+                                            tormenta)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="datos">FG</td>
+                                        <td headers="datos">Indica si hubo niebla (En la media mensual, total días con
+                                            niebla)
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p>Para el desarrollo, control y actuación en las emergencias provocadas por
+                                    inclemencias meteorológicas, se desarrollarán los correspondientes Planes Especiales
+                                    de Protección Civil.
+                                </p>
+                            </div>
+                            <div id="infra">
+                                <h3>Infraestructuras, vías de comunicación y servicios básicos.</h3>
+                                <p>Las infraestructuras y vías de comunicación de la ciudad de Zaragoza han sido y son
+                                    diseñadas en función de su emplazamiento, centro neurálgico de tres ejes:
+                                </p>
+                                <ul>
+                                    <li>El Valle del Ebro que transcurre de Noroeste a Sureste.</li>
+                                    <li>El eje Norte-Sur que comunica con Huesca y Teruel</li>
+                                    <li>El corredor Madrid-Barcelona</li>
+                                </ul>
+                                <p>La importancia del análisis de los servicios básicos radica en la aparición de
+                                    factores de riesgo en caso de anomalía en el suministro de estos servicios, y el
+                                    soporte de las infraestructuras existentes en los procedimientos de actuación como
+                                    métodos paliativos. Se analizan a continuación los equipamientos básicos que posee
+                                    la ciudad, describiéndolos de forma resumida.
+                                </p>
+                                <h4>Redes de distribución e instalaciones</h4>
+                                <ul>
+                                    <li>Abastecimiento de Agua</li>
+                                    <li>Saneamiento</li>
+                                    <li>Alumbrado Público</li>
+                                    <li>Electricidad</li>
+                                    <li>Gas</li>
+                                    <li>Redes de Telecomunicación</li>
+                                </ul>
+                                <h4>Redes de comunicación</h4>
+                                <ul>
+                                    <li>Carreteras y autopistas</li>
+                                    <li>Ferrocarriles</li>
+                                    <li>Aeropuerto</li>
+                                    <li>Transporte colectivo exterior</li>
+                                    <li>Transporte colectivo urbano</li>
+                                </ul>
+                                <h4>Servicios públicos</h4>
+                                <ul>
+                                    <li>Bomberos y Protección Civil</li>
+                                    <li>Policía Local</li>
+                                    <li>Parques y Jardines</li>
+                                    <li>Edificios de la administración municipal</li>
+                                    <li>Mataderos, Mercados</li>
+                                    <li>Hospitales, clínicas y ambulatorios</li>
+                                    <li>Cementerios y servicios funerarios</li>
+                                    <li>Centros de Juventud, Residencias 3ª edad y Centros de atención a la mujer</li>
+                                    <li>Centros y Residencias de discapacitados</li>
+                                    <li>Centros deportivos</li>
+                                    <li>Colegios públicos y privados</li>
+                                    <li>Centros Universitarios</li>
+                                    <li>Bibliotecas</li>
+                                    <li>Limpieza pública</li>
+                                    <li>Puntos limpios y retirada de residuos</li>
+                                </ul>
+                                <h4>Actividades y usos colectivos</h4>
+                                <ul>
+                                    <li>Garajes de uso público y privado</li>
+                                    <li>Cines, teatros y auditorios</li>
+                                    <li>Estaciones de autobuses</li>
+                                    <li>Hoteles</li>
+                                    <li>Emisoras de radio y televisión, diarios locales</li>
+                                    <li>Empresas de ambulancias</li>
+                                    <li>Empresas distribuidoras de productos farmacéuticos</li>
+                                </ul>
+                                <h4>Otros edificios públicos</h4>
+                                <ul>
+                                    <li>Delegación del Gobierno-Guardia Civil-Policía Nacional</li>
+                                    <li>Edificios de las Fuerzas Armadas</li>
+                                    <li>Gobierno de Aragón. Las Cortes y el Justicia</li>
+                                    <li>Edificios de la Administración de Justicia</li>
+                                </ul>
+                                <p>De los anteriores enumerados, se hace un extracto de aquellos que son susceptibles de
+                                    ser centros de albergue, y acogida provisional de personal evacuadas:
+                                </p>
+                                <h4>Centros de acogida</h4>
+                                <ul>
+                                    <li>Centros de Juventud</li>
+                                    <li>Residencias de 3ª edad</li>
+                                    <li>Centros deportivos</li>
+                                    <li>Colegios públicos y privados</li>
+                                    <li>Hoteles</li>
+                                </ul>
+                                <p>Se adjuntan en el ANEXO I los planos correspondientes a las infraestructuras y
+                                    servicios de la ciudad detallados anteriormente.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div id="riesgos" class="tab-pane active">
+                            <h3>Identificación de Riesgos</h3>
+                            <ul>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/presentacionr.htm">
+                                        Presentación
+                                    </a>
+                                </li>
+                                <li>Clasificación
+                                    <ul>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/nucleares.htm">
+                                                Emergencias Nucleares
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/forestales.htm">
+                                                Incendios Forestales
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/inundaciones.htm">
+                                                Inundaciones
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/quimicos.htm">
+                                                Químicos. Accidente mayor en la industria química o
+                                                asimilable
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/tm_peligrosas.htm">
+                                                Transporte de Mercancías Peligrosas
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/at_civil.htm">
+                                                Accidentes en transporte civil
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/acuatico.htm">
+                                                Actividades deportivas en medio acuático
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/incenexplotros.htm">
+                                                Incendios, explosivos y otros
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/rmeteorologia.htm">
+                                                Riesgos derivados de la Meteorología
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/rfalloabastecimiento.htm">
+                                                Riesgos por fallo en el abastecimiento de
+                                                los servicios elementales
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/sanitarios.htm">
+                                                Riesgos Sanitarios
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/rchumanas.htm">
+                                                Riesgos derivados de grandes concentraciones
+                                                humanas
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/interconexion.htm">
+                                        Interconexión
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/riesgos/mapas.htm">
+                                        Mapas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="prevencion" class="tab-pane active">
+                            <h3>Medidas preventivas para evitar o reducir el riesgo</h3>
+                            <h3>Presentación</h3>
+                            <p>Una característica especial de los Planes Locales de Protección Civil es su carácter
+                                preventivo. Por ello, dedicaremos este apartado a describir las medidas adoptadas o que
+                                se estiman necesarias con el fin de controlar como mínimo los riesgos que alguna ocasión
+                                hayan derivado en situaciones de emergencia, de manera que éstas no vuelvan a
+                                producirse.
+                            </p>
+                            <h3>
+                                <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/control.htm">
+                                    Control del Riesgo
+                                </a>
+                            </h3>
+                            <ul>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/nucleares.htm">
+                                        Emergencias Nucleares
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/forestales.htm">
+                                        Incendios forestales
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/inundaciones.htm">
+                                        Inundaciones
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/quimicos.htm">
+                                        Químicos. Accidente mayor en la industria Química o
+                                        asimilable
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/tm_peligrosas.htm">
+                                        Trasporte de Mercancías Peligrosas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/at_civil.htm">
+                                        Accidentes en el trasporte Civil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/acuaticos.htm">
+                                        Actividades deportivas en medio acuático
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/incenexplotros.htm">
+                                        Incendios, explosiones y otros
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/rmeteorologia.htm">
+                                        Riesgos derivados de la Meterorología
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/falloabastecimiento.htm">
+                                        Riesgo por fallo en el abastecimiento de los
+                                        servicios elementales
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/sanitarios.htm">
+                                        Riesgos Sanitarios
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/medidas/.htm">
+                                        Riesgos derivados de Grandes Concentraciones Humanas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="autoproteccion" class="tab-pane active">
+                            <h3>La promoción de la Autoprotección</h3>
+                            <p>Se debe fomentar la autoprotección ciudadana, como medida de protección de la población
+                                con sus propias fuerzas ante una situación de emergencia que requiera la actuación de la
+                                protección civil. Para ello hay que establecer como primera fórmula de actuación un
+                                complejo sistemas de acciones preventivas e informativas. Es decir, la población debe
+                                adquirir conciencia de los riesgos que pueden sufrir y familiarizarse con las medidas de
+                                protección que en su caso, debe utilizar. Se debe garantizar un sistema de formación,
+                                divulgación y práctica continuada de las medidas de autoprotección a utilizar por la
+                                población ante una emergencia determinada.
+                            </p>
+                            <ul>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/presentacion.htm">Presentación</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/nucleares.htm">Emergencias Nucleares</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/forestales.htm">Incendios Forestales</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/inundaciones.htm">Inundaciones</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/quimicos.htm">Químicos: Accidente mayor en la industria Química o
+                                        asimilable
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/tm_peligrosas.htm">Transporte de Mercancías Peligrosas</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/at_civil.htm">Accidentes en el transporte civil</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/acuaticos.htm">Actividades deportivas en medio acuático</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/inc_industriales.htm">Incendios, explosivos y otros</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/rmeteorologia.htm">Riesgos derivados de la meteorología</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/falloabastecimiento.htm">Riesgo por fallo de abastecimiento de los
+                                        servicios elementales
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/sanitarios.htm">Riesgos Sanitarios</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.zaragoza.es/ciudad/bomberos/planemergencia/territorio/autoproteccion/humanosabiertos.htm">Riesgos derivados de grandes concentraciones humanas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="civil" class="tab-pane active">
+                            <h3>Protección Civil</h3>
+                            <ul id="menu_interior">
+                                <li>Presentación</li>
+                                <li>
+                                    <a href="#comision">Comisión Local</a>
+                                </li>
+                                <li>
+                                    <a href="#serviciopc">El Servicio</a>
+                                </li>
+                                <li>
+                                    <a href="#voluntariado">Voluntariado</a>
+                                </li>
+                            </ul>
+                            <h3>Presentación</h3>
+                            <p>
+                                <strong>La organización local de Protección Civil</strong>
+                            </p>
+                            <p>El presente Plan define las bases para una eficaz organización de la Protección Civil en
+                                Zaragoza fundada en los siguientes elementos:
+                            </p>
+                            <ul>
+                                <li>Comisión Local de Protección Civil.</li>
+                                <li>Servicios y recursos municipales y supramunicipales.</li>
+                            </ul>
+                            <div id="comision">
+                                <h3>La Comisión Local de Protección Civil</h3>
+                                <p>Es un órgano de asesoramiento y colaboración que facilita la coordinación de todos
+                                    los medios y recursos de los que se dispone en el ámbito de la planificación. La
+                                    responsabilidad decisoria recae en el Alcalde que es la autoridad única en esta
+                                    materia (Ley 7/1985 de 2 de abril,
+                                    <abbr title="artículo">art.</abbr>
+                                    21.1.).
+                                </p>
+                                <h3>Composición</h3>
+                                <ul>
+                                    <li>Presidente: El Alcalde de la Ciudad.</li>
+                                    <li>Vicepresidente: Teniente Alcalde Delegado de Servicios Públicos.</li>
+                                    <li>Vocales:
+                                        <ul>
+                                            <li>Director del Área de Servicios Públicos.</li>
+                                            <li>Jefe del Servicio contra Incendios, de Salvamento y Protección Civil.
+                                            </li>
+                                            <li>Superintendente Jefe de Policía Local.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Secretario: Secretario General del Ayuntamiento de Zaragoza.</li>
+                                </ul>
+                                <p>El Alcalde podrá designar otras personas representativas de entidades vinculadas a
+                                    Protección Civil, Delegación de Gobierno y/o Diputación General de Aragón, como
+                                    miembros permanentes o como consultores para actuaciones o temas concretos.
+                                </p>
+                                <p>
+                                    <img alt="" longdesc="organigramaimg.htm"
+                                         src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/organigrama.gif"/>
+                                </p>
+                                <h3>Funciones</h3>
+                                <p>Las funciones de la Comisión Local de Protección Civil serán las siguientes:</p>
+                                <ul>
+                                    <li>Informar las normas que se dicten en el ámbito municipal sobre Protección
+                                        Civil.
+                                    </li>
+                                    <li>Elaboración, desarrollo e implantación del Plan Municipal de Protección Civil y
+                                        de los correspondientes Planes Especiales y Sectoriales.
+                                    </li>
+                                    <li>Informar las propuestas de resolución de los expedientes sancionadores por
+                                        supuesta infracción a la normativa vigente sobre la presente materia, cuya
+                                        competencia corresponde a los órganos de gobierno municipal.
+                                    </li>
+                                    <li>Solicitar la colaboración de entidades y organismos relacionados con Protección
+                                        Civil.
+                                    </li>
+                                    <li>Dirigir y coordinar las comisiones que se creen para el desarrollo de programas
+                                        relacionados con la Protección Civil.
+                                    </li>
+                                    <li>Asesorar a la Presidencia en situaciones de emergencia, catástrofe o calamidad
+                                        pública.
+                                    </li>
+                                    <li>Proponer los modos operativos concretos de los distintos Grupos de Acción que se
+                                        definirán en este Plan.
+                                    </li>
+                                    <li>Informar los planes sectoriales que se realicen en desarrollo del presente Plan
+                                        y las modificaciones precisas para la permanente actualización, con propuesta a
+                                        los órganos decisorios del Ayuntamiento.
+                                    </li>
+                                    <li>Conocer y proponer los planes operativos redactados, sobre los acontecimientos
+                                        ciudadanos que implican riesgos por gran concentración de personas u otros
+                                        motivos objetivos.
+                                    </li>
+                                    <li>Estudiar aquellas propuestas que se planteen, bien a iniciativa individual de
+                                        alguno de sus miembros o de forma colectiva a los fines de mejora, desarrollo e
+                                        implantación del presente Plan, con su acuerdo si procede, para su aprobación
+                                        por los órganos decisorios del Ayuntamiento.
+                                    </li>
+                                    <li>Proponer la incorporación en el Registro de Entidades Colaboradoras de
+                                        Protección Civil de aquellos colectivos privados que lo soliciten, a los efectos
+                                        de su autorización y participación en las tareas que se les encomienden.
+                                    </li>
+                                </ul>
+                                <h3>Convocatoria</h3>
+                                <p>La convocatoria se hará siempre por parte del Alcalde de la Ciudad.</p>
+                                <p>Puede ser en dos circunstancias concretas: en situación de normalidad, y en situación
+                                    de emergencia, prevista o producida.
+                                </p>
+                                <ul>
+                                    <li>En situación de normalidad, la Comisión Local de Protección Civil se reunirá una
+                                        vez al año, como mínimo, previa convocatoria a todos sus miembros, con quince
+                                        días de antelación, al menos. El Orden del Día lo fijará el órgano convocante,
+                                        si bien los miembros podían presentar propuestas relacionadas con las funciones
+                                        que tiene encomendadas la Comisión.
+                                    </li>
+                                    <li>En situación de emergencia, prevista o producida, la Comisión se reunirá con
+                                        carácter inmediato, con el fin de valorar la situación y proponer y adoptar las
+                                        medidas a tomar para resolver la situación presente.
+                                    </li>
+                                    <li>Si la situación es de emergencia prevista se definirá como emergencia-alerta.
+                                    </li>
+                                    <li>Si la situación es de emergencia producida se definirá como
+                                        emergencia-alarma-acción.
+                                    </li>
+                                    <li>Esta convocatoria se mantendrá abierta en tanto dure la situación declarada.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="serviciopc">
+                                <h3>El Servicio contra Incendios, de Salvamento y Protección Civil</h3>
+                                <p>Le corresponde a este Servicio la ejecución de las funciones que por Ley tienen
+                                    encomendadas los municipios y está a su cargo la Protección Civil Municipal , el
+                                    funcionamiento del Centro de Coordinación Operativa Local y la Agrupación de
+                                    Voluntarios.
+                                </p>
+                                <p>Las funciones que se desempeñan son:</p>
+                                <ul>
+                                    <li>Actualización permanente del Plan Municipal de Protección Civil, incluidos los
+                                        mapas de Riesgos y catálogo de Recursos.
+                                    </li>
+                                    <li>Promoción y control de la Autoprotección corporativa y ciudadana a todos los
+                                        niveles, en particular la población escolar y la juventud.
+                                    </li>
+                                    <li>Creación de una conciencia de colaboración y coordinación entre todos los
+                                        servicios llamados en caso de emergencia a participar, a efectos de que el Plan
+                                        Municipal de Protección Civil se implante en todo su programa y contenido.
+                                    </li>
+                                    <li>Realización de pruebas o simulacros de prevención de riesgos, catástrofes y
+                                        calamidades públicas.
+                                    </li>
+                                    <li>Mantenimiento de permanente contacto con los diversos niveles administrativos de
+                                        Protección Civil: Delegación de Gobierno y Diputación General de Aragón, a fin
+                                        de intercambiar información y coordinar, en su caso, las acciones que se
+                                        emprendan.
+                                    </li>
+                                    <li>Organización y mantenimiento del Centro de Coordinación Operativa Local
+                                        (CECOPAL) definiendo los medios humanos, materiales y de funcionamiento, a los
+                                        fines que les son propios.
+                                    </li>
+                                    <li>Conocimiento y control sobre los Planes de Autoprotección de los
+                                        establecimientos ciudadanos que reciben gran cantidad de público, así como los
+                                        industriales afectados por el Real Decreto sobre accidentes mayores.
+                                    </li>
+                                    <li>Redacción de los planes operativos en eventos ciudadanos que reúnen gran número
+                                        de personas en recintos cerrados o espacios abiertos, con la finalidad de prever
+                                        víctimas o daños y actuar de forma coordinada en caso de emergencia.
+                                    </li>
+                                    <li>Fomento del voluntariado y coordinación entre los distintos grupos existentes y
+                                        que se formen bajo mando único. A este fin se creará un Registro de entidades
+                                        colaboradoras de Protección Civil municipal, en el cual se incluirán aquellas
+                                        entidades legalmente creadas que puedan ser homologadas para su presencia y
+                                        participación en operaciones de prevención o emergencias.
+                                    </li>
+                                    <li>Redacción de propuestas acerca de Reglamento de la Agrupación de Voluntarios, y
+                                        revisiones en su caso, así como, instrucciones internas en orden al cumplimiento
+                                        de las misiones encomendadas.
+                                    </li>
+                                    <li>Gestión de la Agrupación de Voluntarios de Protección Civil municipal, en orden
+                                        a su formación, alta de nuevos miembros y bajas, en su caso, propuestas de
+                                        nombramientos, dotación de recursos y asignación de funciones, conforme al
+                                        Reglamento vigente.
+                                    </li>
+                                    <li>Promoción y organización de la formación de personal de los servicios
+                                        relacionados con la Protección Civil.
+                                    </li>
+                                    <li>En caso de que exista, asegurar el cumplimiento de la normativa vigente en
+                                        materia de prevención de riesgos, mediante el ejercicio de las correspondientes
+                                        facultades de inspección y propuesta de servicios.
+                                    </li>
+                                    <li>Solicitar la colaboración y asesoramiento de los distintos Servicios Operativos
+                                        relacionados con esta materia.
+                                    </li>
+                                </ul>
+                                <p>Para cumplir el deber de resolver catástrofes, calamidades o emergencias de todo tipo
+                                    en Zaragoza, se pondrán a disposición de la Protección Civil todos los recursos
+                                    humanos y materiales disponibles en el municipio de Zaragoza, sean de titularidad
+                                    municipal o de titularidad privada.
+                                </p>
+                                <p>Se consideran los servicios de titularidad municipal y de titularidad no municipal,
+                                    tanto del ámbito público como privado. La actuación operativa en el ámbito de la
+                                    Protección Civil se asienta como fuerza principal en los servicios y recursos
+                                    profesionales.
+                                </p>
+                                <p>Los servicios y recursos municipales son los llamados a actuar en un primer escalón.
+                                    A ellos se suman los demás recursos humanos y materiales, de titularidad pública o
+                                    privada que sean necesarios.
+                                </p>
+                            </div>
+                            <div id="voluntariado">
+                                <h3>El voluntariado de Protección Civil</h3>
+                                <p>El Servicio contra Incendios, de Salvamento y Protección Civil ha procedido a
+                                    actualizar el Reglamento de la Agrupación de Voluntarios de Protección Civil siendo
+                                    aprobado por el Excelentísimo Ayuntamiento en Pleno en sesión celebrada el 30 de
+                                    septiembre de 2005 (
+                                    <acronym title="Boletin Oficial de la Provincia">BOP</acronym>
+                                    <abbr title="número">nº</abbr>
+                                    251 y 275, de 2 y 30 de noviembre de 2005 ) Este Reglamento recoge tanto la
+                                    experiencia acumulada durante estos años como los nuevos retos que la ciudad
+                                    plantea, se redacta y se implanta este Reglamento, que pretende ser un instrumento
+                                    nacido para encuadrar voluntades de servicio y capacidades técnicas y hacerlas
+                                    eficaces en las misiones que la Agrupación de Voluntarios asuma, en el ámbito de
+                                    este Ayuntamiento, cuando sea requerida para ello.
+                                </p>
+                                <p>El Voluntariado de Protección Civil se constituye como una doble necesidad:</p>
+                                <ul>
+                                    <li>Presencia y participación de la sociedad en su propia seguridad haciendo oferta
+                                        de solidaridad y espíritu altruista.
+                                    </li>
+                                    <li>Actuación de una fuerza operativa cuantificable y cualificada, colaboradora y
+                                        polifacética en numerosas situaciones de emergencia.
+                                    </li>
+                                </ul>
+                                <p>En situaciones de catástrofe masiva es muy importante y necesaria la colaboración
+                                    ciudadana no sólo en forma pasiva cumpliendo las normas que se dicten, sino de forma
+                                    activa incorporada a las tareas de salvamento o atención a vidas y bienes, en las
+                                    formas que se establezcan.
+                                </p>
+                                <p>No obstante esta colaboración ciudadana no debe ser de forma masiva e indiscriminada,
+                                    ya que, la presencia de personas, simplemente voluntariosas, y no encuadradas en
+                                    unidades operativas, además de no ser útiles, pueden generar problemas añadidos a
+                                    los presentes.
+                                </p>
+                                <p>En este sentido no se admitirá la presencia en el escenario ni la colaboración de
+                                    personas que no sean previamente llamadas o admitidas en función de una tarea
+                                    específica. En todos los casos actuarán bajo instrucciones de persona responsable o
+                                    bajo el mando operativo.
+                                </p>
+                                <p>Por todo ello la captación de voluntariado se hará preferentemente con carácter
+                                    previo, a fin de contar con personas preparadas, en función de tres grupos básicos:
+                                </p>
+                                <ul>
+                                    <li>Agrupación municipal de Voluntarios de Protección Civil integrado por aquellas
+                                        personas que manifiesten una identificación con los objetivos y adquieran la
+                                        capacitación necesaria.
+                                    </li>
+                                    <li>Asociaciones Civiles legalmente constituidas para la prestación no lucrativa de
+                                        servicios colaboradoras en actuaciones propias de Protección Civil.
+                                    </li>
+                                    <li>Personas cualificadas en determinadas materias o colectivos especializados que
+                                        se incorporan a tareas relacionadas con Protección Civil.
+                                    </li>
+                                </ul>
+                                <p>Otras Agrupaciones de Voluntarios relacionadas con la Emergencia se mencionarán en el
+                                    Catálogo de Medios y Recursos, mencionando expresamente su alcance, finalidad,
+                                    capacidad y objetivos.
+                                </p>
+                                <p>Asimismo constará en dicho Catálogo responsable y teléfono de contacto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

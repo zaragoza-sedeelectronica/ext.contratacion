@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h3 class="modal-title">Selección de monitor de la actividad:</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" novalidate name="subEventForm">
+        <fieldset>
+            <legend>Monitores/as</legend>
+            <ul class="list-unstyled">
+                <li ng-repeat="monitor in acto.monitores">
+                    <span class="fa fa-user" aria-hidden="true"></span> 
+                    {{monitor.name}}
+                    <span class="text-primary cursor-pointer" ng-click="eliminarMonitor(monitor.id)">
+                        <span class="fas fa-times" aria-hidden="true"></span> Borrar monitor/a
+                    </span>
+                </li>
+            </ul>
+            <label form="email">Añadir nuevo monitor/a</label>
+            <div class="row">
+                <div class="col-sm-8 col-md-6">
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="email" id="email" ng-model="email" placeholder="Introduce la dirección de email del monitor"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" ng-click="asociarMonitor(email)"><span class="fa fa-plus" aria-hidden="true"></span> Añadir</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="cancelarModal()">Aceptar</button>
+</div>

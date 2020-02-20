@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Servicio contra incendios, de Salvamento y protección civil" keywords="sede,web,bomberos,incendios" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Servicio contra incendios, de Salvamento y protección civil</h2>
+        <ul class="list-unstyled row margin-t05em">
+                <th:block th:each="registro : ${resultado.body.result}">
+                    <li class="col-xs-12 col-sm-6 col-md-6" sede:rdf="${registro.voc()}">
+                        <div class="card row" style="min-height:10em;">
+                            <span sede:rdf="${registro.get('fecha', 'HH:mm')}" /> <strong sede:rdf="${registro.get('tipoSiniestro')}" />
+                            <div>
+                                <span sede:rdf="${registro.get('direccion')}" />
+                                <th:block th:if="${registro.duracion}"> Duración: <span sede:rdf="${registro.get('duracion')}" /></th:block>
+                                <div th:if="${not #lists.isEmpty(registro.recursos)}">
+                                    <strong>Recursos</strong>
+                                    <ul>
+                                        <li th:each="rec : ${registro.recursos}" th:text="${rec}" />
+                                    </ul>
+                                </div>
+                          <!--/*<div class="ribbon-wrapper">
+                            <div class="ribbon-primary">abierto</div>
+                        </div>*/-->
+                            </div>
+                        
+                        </div>
+                        
+                    </li>
+                </th:block>
+            </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

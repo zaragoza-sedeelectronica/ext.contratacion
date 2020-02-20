@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="facet-search card">
+            <div class="border-dotted margin-b1em padding-a05em clearfix hidden-xs hidden-sm">
+                <form method="get" th:action="${#httpServletRequest.requestURI}" class="form-horizontal">
+                    <!--/* <div class="form-group has-feedback"> */-->
+                    <label aria-label="Consultar:" class="sr-only" for="query">Consultar:</label>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input type="text" name="query" id="query"
+                                   th:value="${param.query} ? ${param.query[0]} : ''" class="form-control"
+                                   placeholder="Realice su consulta"/>
+                            <!--/* <a href="#"><span class="glyphicon glyphicon-remove-circle form-control-feedback form-control-clear" aria-hidden="true"></span></a> */-->
+                            <span class="input-group-btn">
+                                <input type="submit" value="Consultar" class="btn btn-primary"/>
+                            </span>
+                        </div>
+                    </div>
+                    <!--/* </div> */-->
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')}" class="pull-right">
+                        <a href="./new" class="btn btn-info btn-xs">
+                            <span class="fa fa-plus-circle"></span>
+                            Nuevo registro
+                        </a>
+                    </span>
+                    <div class="results margin-b1em">
+                        <span>
+                            <th:block th:text="${resultado.body.totalCount}"/>
+                            resultados encontrados
+                        </span>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="/opencityext/portal/buscador">Ayuda</a>
+                            </li>
+                            <th:block th:utext="${resultado.body.getEnlacesReutilizacion(#httpServletRequest)}"/>
+                            <li>|
+                                <a href="/opencityext/portal/datos-abiertos/solr">Más información</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div th:if="${param.fq} or ${param.query}" class="solr-search-criteria">
+                        <ul class="list-inline nopadding margin-a05em">
+                            <li th:if="${param.query}" class="label label-primary">
+                                <span th:text="${param.query[0]}"/>
+                                <a th:href="${resultado.body.eliminarQueryFilter(#httpServletRequest)}" class="remove">
+                                    <span class="sr-only">Quitar filtro</span>
+                                    <span aria-hidden="true">×</span>
+                                </a>
+                            </li>
+                            <th:block th:if="${param.fq}" th:each="faceta : ${resultado.body.facetas}">
+                                <li class="label label-default" th:each="valorFaceta : ${faceta.values}"
+                                    th:if="${#strings.indexOf(#utils.decode(param.fq[0]), valorFaceta.name)} > 0">
+                                    <span th:text="${valorFaceta.name}"/>
+                                    <a th:href="${faceta.enlaceEliminarFaceta(valorFaceta.name, #httpServletRequest)}"
+                                       class="remove">
+                                        <span class="sr-only">Quitar filtro</span>
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </li>
+                            </th:block>
+                        </ul>
+                        <a th:if="${param.query} or ${param.fq}" th:href="${#httpServletRequest.requestURI}"
+                           class="btn btn-xs btn-warning hidden-xs hidden-sm">Borrar todo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+<div class="col-md-3">
+    <div class="panel-heading accordion-heading visible-sm visible-xs">
+        <a class="accordion-toggle btn-block collapsed" role="button" aria-expanded="false" aria-controls="collapseinc"
+           data-toggle="collapse" href="#accordion">
+            <span>Filtrar los resultados</span>
+        </a>
+    </div>
+
+    <div class="card card--filters collapse visible-md-up" id="accordion" aria-expanded="false" role="tablist"
+         aria-multiselectable="true">
+        <div class="panel-group">
+            <div th:each="faceta, i: ${resultado.body.facetas}"
+                 th:classappend="not ${#strings.contains(faceta.name,'_b')} ? 'panel panel-default' : ''">
+                <th:block th:if="not ${#strings.contains(faceta.name,'_b')}">
+                    <div class="panel-heading">
+                        <span th:text="${faceta.etiqueta}">No Id!</span>
+                    </div>
+                    <th:block th:utext="${faceta.getCollapsedList(#httpServletRequest, 3)}"/>
+
+                </th:block>
+                <th:block th:if="${#strings.contains(faceta.name,'_b')}">
+                    <div>
+                        <span th:text="${faceta.etiqueta}">No Id!</span>
+                    </div>
+                    <legend class="sr-only">Seleccione la forma de tramitación:</legend>
+                    <ul class="list-group">
+                        <!-- ahora son checkbox!!! -->
+                        <th:block th:utext="${faceta.getLista(#httpServletRequest)}"/>
+                        <!--<input id="internet" type="checkbox" name="forma-tramite" value="internet" />
+                        <label for="internet">Internet</label>
+                        -->
+                    </ul>
+                </th:block>
+            </div>
+        </div>
+        <th:block th:if="${nextToFacets}">
+            <div th:include="${nextToFacets}"/>
+        </th:block>
+    </div>
+</div>
+<div class="col-md-9">
+    <dl>
+        <th:block th:each="doc: ${resultado.body.result}" th:if="${doc}">
+            <dt class="card nomargin">
+                <h3 class="nomargin">
+                    <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')}"
+                       th:href="@{{id}/edit(id=${doc.id})}" class="btn btn-warning btn-xs">
+                        <span class="fa fa-edit"></span>
+                    </a>
+
+                    <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')}"
+                       th:href="@{{id}/delete(id=${doc.id})}" onclick="return confirm('Desea eliminar el elemento?')"
+                       class="btn btn-danger btn-xs pull-right">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                    <th:block th:if="${uri}">
+                        <a th:href="${doc.uri}" th:text="${doc.title}"></a>
+                    </th:block>
+                    <th:block th:if="not ${uri}">
+                        <a th:href="@{{id}(id=${doc.id})}" th:text="${doc.title}"></a>
+                    </th:block>
+                </h3>
+            </dt>
+            <dd class="card">
+                <div th:if="${doc.class.name == 'org.sede.servicio.buscador.entity.Resultado'}"
+                     class="label label-default" th:text="${doc.category}"></div>
+                <div th:if="${doc.description}" th:utext="${doc.description}"></div>
+                <div th:if="${doc.lastUpdated}" class="cursiva">Actualizado el
+                    <span th:text="${#calendars.format(doc.lastUpdated,'dd MMMM yyyy')}"/>
+                </div>
+            </dd>
+        </th:block>
+    </dl>
+</div>
+</div>
+<th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}"/>

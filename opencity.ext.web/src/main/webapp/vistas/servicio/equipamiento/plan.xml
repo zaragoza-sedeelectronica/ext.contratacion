@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Planificación. Agenda de actividades" keywords="sede,web,actos, concierto, actividades, cursos" />
+    <style>
+    @media print {
+        @page { 
+            size: landscape;
+        }
+
+        a[href]:after {
+            content: "" !important;
+        }
+        
+        #wrapper.toggled {
+           padding-left: 0;
+        }
+        
+        #cultura .navbar-portal, #cultura h1, #cultura .portal-header {
+            display: block;
+            background-color: #883da0 !important;
+        }
+
+        .pull-right {
+            display: none;
+        }
+
+        #cultura .portal-header *, *:before, #cultura .portal-header *:after {
+            background: transparent !important;
+            color: #fff !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <!--             <div class="btn-group" data-toggle="buttons">
+                <button type="button" class="btn btn-primary" th:classappend="(${param.type != null} and ${param.period[0]} == 'day') or ${param.period == null} ? active : ''">
+                    Diario
+                </button>
+                <button type="button" class="btn btn-primary" th:classappend="${param.type != null} and ${param.period[0]} == 'week' ? active : ''">
+                    Semanal
+                </button>
+                <button type="button" class="btn btn-primary" th:classappend="${param.type != null} and ${param.period[0]} == 'month' ? active : ''">
+                    Mensual
+                </button>
+            </div>
+
+            <div class="btn-group" data-toggle="buttons">
+                <button type="button" class="btn btn-primary" th:classappend="(${param.type != null} and ${param.type[0]} == 'equipment') or ${param.type == null} ? active : ''">
+                    Equipamiento
+                </button>
+                <a href="" type="button" class="btn btn-primary" th:classappend="${param.type != null} and ${param.type[0]} == 'space' ? active : ''">
+                    Espacios
+                </a>
+            </div>
+
+            <th:block th:if="${param.type != null} and ${param.type[0]} == 'space'">
+                <h2>Espacios de <small th:text="*{title}"></small></h2>
+                <ul class="row list-unstyled">
+                    <li class="col-md-3" th:each="s : *{space}">
+                        <a th:href="${s.id}" th:text="${s.title}"></a>
+                    </li>
+                </ul>
+            </th:block> -->
+            <!-- <ul th:if="${actosSemana} and ${not #lists.isEmpty(actosSemana)}" class="list-unstyled clearfix">
+                    <h3>Actividades mostradas</h3>
+                    <li th:each="evt : ${actosSemana}">
+                        <a th:href="'/sede/servicio/cultura/evento/' + ${evt.id}">
+                            <th:block th:text="${evt.title}"></th:block>
+                            <th:block th:each="subevent, i : ${evt.subEvent}">
+                                <th:block th:text="${#calendars.format(subevent.startDate, 'dd-MM-yyyy')}" />
+                                <th:block th:text="${#calendars.format(subevent.endDate, 'dd-MM-yyyy')}" />
+                                <th:block th:text="'(' + ${subevent.comment} + ')'" />
+                                <th:block th:text="${subevent.space.id}" />
+                                <th:block th:each="openingHours, i : ${subevent.openingHours}">
+                                    <th:block th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime} + '[' + ${openingHours.dayOfWeek} + ']'"></th:block>
+                                </th:block>
+                            </th:block>
+                        </a>
+                    </li>
+                </ul> -->
+            <div class="">
+                <h2>Espacios de <small th:text="*{title}"></small></h2>
+                <ul class="row list-unstyled hidden-print">
+                    <li class="col-md-3" th:each="s : *{space}">
+                        <a th:class="${param.space != null} and ${s.id} == ${param.space[0]} ? destacado" th:href="'?space=' + ${s.id}" th:text="${s.title}"></a>
+                    </li>
+                </ul>
+            </div>
+            <table class="table table-bordered" th:if="${actosMes}">
+                <caption>Planning Mensual del espacio de un equipamiento</caption>
+                <thead>
+                    <tr>
+                        <th>Sala
+                            <th:block th:text="${param.space[0]}" />
+                        </th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sábado</th>
+                        <th>Domingo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:with="semanas=${ { {num: '1', nom: '1ª Semana'}, {num: '2', nom: '2ª Semana'}, {num: '3', nom: '3ª Semana'}, {num: '4', nom: '4ª Semana'}, {num: '5', nom: '5ª Semana'} } }">
+                        <tr th:each="semana : ${semanas}">
+                            <td th:text="${semana.nom}"></td>
+                            <td>
+                                <th:block th:each="event, i : ${actosMes}">
+                                    <th:block th:each="subevent, i : ${event.subEvent}">
+                                        <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="(${subevent.comment == '0'} or ${subevent.comment} == ${semana.num}) and ${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${openingHours.dayOfWeek} == Lunes">
+                                            <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                                <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                                <small th:text="${event.title}"></small>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                            <td>
+                                <th:block th:each="event, i : ${actosMes}">
+                                    <th:block th:each="subevent, i : ${event.subEvent}">
+                                        <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="(${subevent.comment == '0'} or ${subevent.comment} == ${semana.num}) and ${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${openingHours.dayOfWeek} == Martes">
+                                            <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                                <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                                <small th:text="${event.title}"></small>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                            <td>
+                                <th:block th:each="event, i : ${actosMes}">
+                                    <th:block th:each="subevent, i : ${event.subEvent}">
+                                        <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="(${subevent.comment == '0'} or ${subevent.comment} == ${semana.num}) and ${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${openingHours.dayOfWeek} == Miércoles">
+                                            <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                                <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                                <small th:text="${event.title}"></small>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                            <td>
+                                <th:block th:each="event, i : ${actosMes}">
+                                    <th:block th:each="subevent, i : ${event.subEvent}">
+                                        <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="(${subevent.comment == '0'} or ${subevent.comment} == ${semana.num}) and ${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${openingHours.dayOfWeek} == Jueves">
+                                            <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                                <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                                <small th:text="${event.title}"></small>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                            <td>
+                                <th:block th:each="event, i : ${actosMes}">
+                                    <th:block th:each="subevent, i : ${event.subEvent}">
+                                        <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="(${subevent.comment == '0'} or ${subevent.comment} == ${semana.num}) and ${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${openingHours.dayOfWeek} == Viernes">
+                                            <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                                <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                                <small th:text="${event.title}"></small>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                            <td>
+                                <th:block th:each="event, i : ${actosMes}">
+                                    <th:block th:each="subevent, i : ${event.subEvent}">
+                                        <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="(${subevent.comment == '0'} or ${subevent.comment} == ${semana.num}) and ${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${openingHours.dayOfWeek} == Sábado">
+                                            <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                                <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                                <small th:text="${event.title}"></small>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                            <td>
+                                <th:block th:each="event, i : ${actosMes}">
+                                    <th:block th:each="subevent, i : ${event.subEvent}">
+                                        <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="(${subevent.comment == '0'} or ${subevent.comment} == ${semana.num}) and ${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${openingHours.dayOfWeek} == Domingo">
+                                            <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                                <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                                <small th:text="${event.title}"></small>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+            <table class="table table-bordered" th:if="${actosSemana}">
+                <caption>Planning Semanal:
+                    <th:block th:text="*{title}" />
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Espacio/Sala</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sábado</th>
+                        <th>Domingo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s : *{space}">
+                        <td>
+                            <th:block th:text="${s.title}" />
+                            <!--<th:block th:text="'('+${s.id}+')'"/>-->
+                        </td>
+                        <td>
+                            <th:block th:each="event, i : ${#lists.sort(actosSemana)}">
+                                <th:block th:each="subevent, i : ${event.subEvent}">
+                                    <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${subevent.space.id} == ${s.id} and ${openingHours.dayOfWeek} == Lunes">
+                                        <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                            <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                            <small th:text="${event.title}"></small>
+                                        </a>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                        </td>
+                        <td>
+                            <th:block th:each="event, i : ${#lists.sort(actosSemana)}">
+                                <th:block th:each="subevent, i : ${event.subEvent}">
+                                    <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${subevent.space.id} == ${s.id} and ${openingHours.dayOfWeek} == Martes">
+                                        <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                            <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                            <small th:text="${event.title}"></small>
+                                        </a>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                        </td>
+                        <td>
+                            <th:block th:each="event, i : ${#lists.sort(actosSemana)}">
+                                <th:block th:each="subevent, i : ${event.subEvent}">
+                                    <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${subevent.space.id} == ${s.id} and ${openingHours.dayOfWeek} == Miércoles">
+                                        <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                            <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                            <small th:text="${event.title}"></small>
+                                        </a>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                        </td>
+                        <td>
+                            <th:block th:each="event, i : ${#lists.sort(actosSemana)}">
+                                <th:block th:each="subevent, i : ${event.subEvent}">
+                                    <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${subevent.space.id} == ${s.id} and ${openingHours.dayOfWeek} == Jueves">
+                                        <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                            <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                            <small th:text="${event.title}"></small>
+                                        </a>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                        </td>
+                        <td>
+                            <th:block th:each="event, i : ${#lists.sort(actosSemana)}">
+                                <th:block th:each="subevent, i : ${event.subEvent}">
+                                    <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${subevent.space.id} == ${s.id} and ${openingHours.dayOfWeek} == Viernes">
+                                        <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                            <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                            <small th:text="${event.title}"></small>
+                                        </a>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                        </td>
+                        <td>
+                            <th:block th:each="event, i : ${#lists.sort(actosSemana)}">
+                                <th:block th:each="subevent, i : ${event.subEvent}">
+                                    <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${subevent.space.id} == ${s.id} and ${openingHours.dayOfWeek} == Sábado">
+                                        <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                            <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                            <small th:text="${event.title}"></small>
+                                        </a>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                        </td>
+                        <td>
+                            <th:block th:each="event, i : ${#lists.sort(actosSemana)}">
+                                <th:block th:each="subevent, i : ${event.subEvent}">
+                                    <th:block th:each="openingHours, i : ${subevent.openingHours}" th:if="${#dates.createNow().compareTo(subevent.startDate) == 1} and ${#dates.createNow().compareTo(subevent.endDate) != 1} and ${subevent.space.id} == ${s.id} and ${openingHours.dayOfWeek} == Domingo">
+                                        <a th:href="'/sede/servicio/cultura/evento/' + ${event.id}">
+                                            <p class="destacado text-info nomargin" th:text="${openingHours.startTime} + ' - ' + ${openingHours.endTime}"></p>
+                                            <small th:text="${event.title}"></small>
+                                        </a>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </sede:content>
+</body>
+
+</html>

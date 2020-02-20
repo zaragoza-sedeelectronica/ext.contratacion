@@ -1,0 +1,138 @@
+<div class="modal-header">
+    <h3 class="modal-title">Seleccion horario/lugar en:</h3>
+    <h4 class="modal-title">
+    	<span class="margin-l2em"><strong>{{subEvent.location.title}}</strong></span>
+		<div class="btn-group" uib-dropdown>
+			<button type="button" class="btn btn-xs btn-default dropdown-toggle" uib-dropdown-toggle>
+				<span class="glyphicon glyphicon-info-sign"></span>
+			</button>
+			<div class="dropdown-menu" style="padding: 5px; min-width: 260px;" ng-bind-html="subEvent.location | objetoEnListaHTML">
+			</div>
+		</div>
+	</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" novalidate name="subEventForm">
+        <fieldset>
+            <legend>Espacio o sala del equipamiento</legend>
+            <select class="form-control" ng-options="space as space.title for space in subEvent.location.space track by space.id" ng-model="subEvent.space" ng-disabled="subEvent.location.space === undefined">
+                <option value="">-- Selecciona un espacio/sala --</option>
+            </select>
+        </fieldset>
+        <fieldset>
+        <legend>Horario de la ficha de Ciudad</legend>
+
+            <div class="row"> 
+                <div class="col-md-6">
+                    <label for="horario">Horario (texto):</label>
+                    <textarea ck-editor-new id="horario" name="horario" ng-model="subEvent.horario">{{ subEvent.horario }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="comment">Comentarios adicionales al lugar:</label>
+                    <textarea ck-editor-new type="text" class="form-control"  id="comment" name="comment" ng-model="subEvent.comment">{{ subEvent.comment }}</textarea>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error': horarioForm.startDate.$invalid}">
+                        <label for="" class="col-sm-4 control-label">Fecha Inicio:</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input name="fechaInicio" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="subEvent.startDate" is-open="datepickers.dateStart" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" datepicker-options="{maxDate: subEvent.endDate}"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'dateStart')">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error': subEventForm.endDate.$invalid && subEventForm.endDate.$dirty}">
+                        <label for="" class="col-sm-4 control-label">
+                            <span class="obligatorio">Fecha Final: </span><span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input name="fechaFinal" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="subEvent.endDate" is-open="datepickers.dateEnd" ng-required="true" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" datepicker-options="{minDate: subEvent.startDate}" ng-change="dateSelected(subEvent.endDate)"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'dateEnd')">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </fieldset>
+
+        <fieldset>
+            <legend>Horario del calendario</legend>
+
+            <!-- <div class="form-group">
+                <label class="col-sm-3 control-label">Hora de Inicio: </label>
+                <div class="col-sm-3">
+                    <timepicker ng-model="subEvent.horaInicio" show-meridian="ismeridian"></timepicker> 
+                </div>
+                <label class="col-sm-3 control-label">Hora de Fin: </label>
+                <div class="col-sm-3">
+                    <timepicker ng-model="subEvent.horaFinal" show-meridian="ismeridian"></timepicker>
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">D&iacute;a de la semana: </label>
+                <div class="col-sm-8">
+                    <select multiple class="form-control" ng-options="horario as horario.dayOfWeek for horario in horarios" ng-model="horarioSelecc"><option value="">-- Selecciona un horario --</option></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="small text-center" ng-show="subEvent.horaInicio"><strong>Horario gestión antigua:</strong> {{subEvent.horaInicio}} a {{subEvent.horaFinal}}</div>
+                <label class="col-sm-3 control-label">Hora de inicio: </label>
+                <div class="col-sm-3">
+                    <div uib-timepicker ng-model="startTime" show-meridian="ismeridian"></div>
+                </div>
+                <label class="col-sm-3 control-label"><input type="checkbox" ng-model="endTimeBoolean" ng-true-value="'S'" ng-false-value="'N'"/> Hora de fin: </label>
+                <div class="col-sm-3">
+                    <div uib-timepicker ng-model="endTime" show-meridian="ismeridian"></div>
+                </div>
+                <label class="col-sm-3 control-label" for="maximumCapacity">Plazas totales: </label>
+                <div class="col-sm-3">
+                    <input type="number" min="1" ng-model="maximumCapacity" class="form-control" id="maximumCapacity">
+                </div>
+            </div>
+            <button type="button" class="btn btn-default" ng-click="crearTabla(horarioSelecc, startTime, endTime, endTimeBoolean, maximumCapacity);" ng-disabled="horarioSelecc != undefined && horarioSelecc.length === 0">
+                <span class="glyphicon glyphicon-plus"></span> Añadir días
+            </button>
+            <hr>
+            <table class="table table-striped table-condensed table-bordered" ng-show="subEvent.openingHours.length > 0"> 
+                <tr>
+                    <th>Día de la semana</th>
+                    <th>Hora de apertura</th>
+                    <th>Hora de cierre</th>
+                    <th>Plazas Totales</th>
+                    <th>Plazas Disponibles</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr ng-repeat="h in subEvent.openingHours">
+                    <td>{{h.dayOfWeek}}</td>
+                    <td>{{h.startTime | date:'HH:mm'}}</td>
+                    <td>{{h.endTime | date:'HH:mm'}}</td>
+                    <td>{{h.maximumCapacity}}</td>
+                    <td>{{h.remainingCapacity}}</td>
+                    <td><button type="button" class="btn btn-xs btn-default margin-l05em" ng-click="borrarHorario($index);"><span class="glyphicon glyphicon-trash" ng-disabled="remainingCapacity < maximumCapacity"></span><span class="hidden-xs"> Borrar</span></td>
+                </tr>
+            </table>
+        </fieldset>
+  
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="agregarHorario()" ng-disabled="subEventForm.$invalid">OK</button>
+    <button type="button" class="btn btn-warning" ng-click="cancelarModal()">Cancelar</button>
+</div>

@@ -1,0 +1,36 @@
+<th:block th:if="${not #lists.isEmpty(valoraciones)}">
+<h3>Valoraciones</h3>
+<div th:if="${viable} == null" role="alert" class="alert alert-info">Quedan valoraciones por realizar</div>
+<div th:if="${viable} == true or ${registro.body.id} == 2175" role="alert" class="alert alert-success">Viable</div>
+<div th:if="${viable} == false and ${registro.body.id} != 2175" role="alert" class="alert alert-danger">NO Viable</div>
+
+<div class="panel-group" id="event-accordion" role="tablist" aria-multiselectable="true">
+    <div th:each="valoracion : ${valoraciones}" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${valoracion.usuarioPub} != null" class="panel panel-default">
+        <div class="panel-heading" role="tab" th:id="${valoracion.id} + 'title'">
+            <h3 class="panel-title">
+            	<a role="button" data-toggle="collapse" data-parent="#event-accordion" th:href="'#av' + ${valoracion.id}" aria-expanded="true" th:attr="aria-controls='v'+ ${valoracion.id}">
+		            <span class="label label-warning" th:if="${valoracion.visible == 'N'}">Pendiente</span>
+		        	<strong th:text="${valoracion.gestor}" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')}"/>
+			    	<strong th:text="${valoracion.service}"/>
+			    	<span class="label label-success" th:if="${valoracion.viable} == true">Viable</span>
+			    	<span class="label label-danger" th:if="${valoracion.viable} == false">No Viable</span>
+            	</a>
+	    		<th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')}" sede:rdf="${valoracion.get('lastUpdated', 'dd MMMM yyyy HH:mm')}"/>
+				<th:block th:if="${valoracion.coste}">
+					Coste: <span th:text="${#numbers.formatDecimal(valoracion.coste,0,'POINT',2,'COMMA')} + ' €'"/>
+				</th:block>
+	    </h3>
+        </div>
+        <div th:id="'av' + ${valoracion.id}" class="panel-collapse collapse" role="tabpanel" th:attr="aria-labelledby='v'+ ${valoracion.id}">
+            <th:block th:if="${valoracion.usuarioPub} == null">
+	            <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id_prop}/valoracion/{id}/unlock(id_prop=${valoracion.propuesta.id}, id=${valoracion.id})}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+	        </th:block>
+	        <th:block th:if="${valoracion.usuarioPub} != null">
+	            <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id_prop}/valoracion/{id}/lock(id_prop=${valoracion.propuesta.id}, id=${valoracion.id})}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+	        </th:block>
+	        <pre th:if="${valoracion.description}" th:text="${valoracion.description}"/>
+
+        </div>
+	</div>
+</div>
+</th:block>

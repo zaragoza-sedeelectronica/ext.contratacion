@@ -1,0 +1,24 @@
+<strong>COMPARTIR</strong>
+<ul class="list-inline">
+    <li>
+        <a itemprop="sameAs" title="Comparte esta propuesta en Facebook" target="_blank" th:href="'http://www.facebook.com/sharer.php?u=http://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id} + '&amp;t=Presupuestos Participativos, propuesta: ' + *{title}">
+            <span class="fab fa-facebook-square fa-4x" alt="Comparte la propuesta en Facebook" title="Compartir en Facebook"></span>
+            <span class="sr-only">Compartir propuesta en facebook</span>
+            <span class="oculto">Compartir<br/>en Facebook</span>
+        </a>
+    </li>
+    <li>
+        <a itemprop="sameAs" title="Comparte esta propuesta en Twitter" target="_blank" th:href="'https://twitter.com/intent/tweet?text=Presupuestos Participativos, propuesta: ' + *{title} + '&amp;url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id}">
+            <span class="fab fa-twitter-square fa-4x " alt="Comparte la propuesta en Twitter" title="Compartir en Twitter"></span>
+            <span class="sr-only">Compartir propuesta en Twitter</span>
+            <span class="oculto">Compartir en Twitter</span>
+        </a>
+    </li>
+    <li>
+        <a itemprop="sameAs" title="Comparte esta propuesta en Google+" target="_blank" th:href="'https://plus.google.com/share?url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id}">
+            <span class="fab fa-google-plus-square fa-4x " alt="Comparte la propuesta en Google+" title="Compartir en Google+"></span>
+            <span class="sr-only">Compartir propuesta en Google+</span>
+            <span class="oculto">Compartir en Google+</span>
+        </a>
+    </li>
+</ul>

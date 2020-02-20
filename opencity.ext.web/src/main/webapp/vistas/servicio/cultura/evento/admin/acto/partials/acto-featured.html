@@ -1,0 +1,63 @@
+<h2 class="nomargin margin-b05em">Actividades destacadas</h2>
+<div class="row">
+    <div class="col-md-6 form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Selecciona fecha:</label>
+            <div class="col-sm-8">
+                <div class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="dateSelected" is-open="datepickers.dateSelected" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" ng-change="selectDate(dateSelected)" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'dateSelected')" ng-disabled="registro.historico === 'N'">
+                            <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" class="clearfix">
+            <div class="repeat-item alert alert-{{alert.type}} alert-dismissible" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+            <div role="alert" class="alert alert-info" ng-show="registros.length == 0">
+                Para comenzar realiza una búsqueda o acción.
+            </div>
+            <div ng-if="permisos.DET && registros.length > 0">
+                <div>
+                    <span class="margin-r2em">
+                    N&uacute;mero de resultados: {{registros.length}} <span ng-show="totalCount > 0">de {{totalCount}}</span>
+                    </span>
+                </div>
+                <table class="table table-bordered table-hover table-striped table-btn">
+                    <thead>
+                        <tr>
+                            <th th-orden order="'id'" by="order" reverse="reverse">ID</th>
+                            <th th-orden order="'title'" by="order" reverse="reverse">NOMBRE</th>
+                            <th th-orden order="'portales.featuredStartDate'" by="order" reverse="reverse">FECHA INICIO DEST.</th>
+                            <th th-orden order="'portales.featuredEndDate'" by="order" reverse="reverse">FECHA INICIO DEST.</th>
+                            <th th-orden order="'portales.featuredOrder'" by="order" reverse="reverse">ORDEN DEST.</th>
+                            <th th-orden order="'lastUpdated'" by="order" reverse="reverse" class="col-md-1">ÚLTIMA MOD.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="registro in registros | orderBy:order:reverse">
+                            <td data-title="ID"><a href="#/edit/{{ registro.id }}">{{registro.id}}</a></td>
+                            <td data-title="Nombre">
+                                <a href="#/edit/{{ registro.id }}">{{registro.title}}</a>
+                                <a class="btn" href="#/edit/{{ registro.id }}" target="_blank" title="Abrir en pestaña nueva"><span class="glyphicon glyphicon-export"></span></a>
+                            </td>
+                            <td data-title="FECHA INICIO DEST.">{{getCampoPortalAsociado(registro, 'featuredStartDate') | date:'dd-MM-yyyy'}}</td>
+                            <td data-title="FECHA FIN DEST.">{{getCampoPortalAsociado(registro, 'featuredEndDate') | date:'dd-MM-yyyy'}}</td>
+                            <td data-title="ORDEN DEST.">{{getCampoPortalAsociado(registro, 'featuredOrder')}}</td>
+                            <td data-title="Fecha Modificación">
+                                <a href="#/edit/{{ registro.id }}">{{registro.lastUpdated | date:'dd-MM-yyyy'}}</a>
+                                <span class="badge" ng-if="registro.validacion === 'S'">{{registro.usuarioAlta}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div role="alert" class="alert alert-warning spinner-tabla" ng-show="busy">
+                    <span class="spinner"></span> Espera por favor, se estan cargando los datos.
+                </div>
+            </div>
+        </div>
+    </div>

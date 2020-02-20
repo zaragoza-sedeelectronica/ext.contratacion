@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+    <style type="text/css">
+        .iconsFormat{
+        font-size: 50px;
+        background-color: #FFFFFF;
+        color: #D01714;
+        border-radius: 5px;
+        }
+        .tituloNav{
+        font-size: 1.5em;
+        }
+        .navCapa{
+        border-bottom: 2px solid #E81B16;
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+        padding-top:10px;
+        }
+    </style>
+</th:block>
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <h1><a href="/sede/servicio/periodopagoproveedores/">Periodo Medio de Pago a Proveedores</a></h1>
+                    <sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <div class="overlay" style="display: none;"></div>
+        <!--/* Menu lateral de portal */-->
+            <nav class="container-fluid" role="navigation">
+                <div class="row navCapa">
+                    <div class="col-xs-12 col-sm-3 text-center border-left-2">
+                        <a href="/sede/servicio/periodopagoproveedores/">
+                            <i class="fas fa-search iconsFormat"></i>
+                            <p class="tituloNav">Buscador</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 text-center border-left-2">
+                        <span th:with="anyo=(${#dates.format(#dates.createNow(), 'yyyy')}-1)">
+                        <a th:href="|/sede/servicio/periodopagoproveedores/indicadores/|">
+
+                            <i class="fas fa-chart-pie iconsFormat"></i>
+                            <p class="tituloNav">Indicadores</p>
+                        </a>
+                        </span>
+                    </div>
+
+                </div>
+                <th:block th:include="fragmentos/readspeaker"></th:block>
+            </nav>        
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org"
+      estilo="ayto">
+    <th:block th:fragment="cssjs">
+        <th:block th:include="fragmentos/cssjs"/>
+    </th:block>
+
+    <body>
+        <th:block th:fragment="header">
+            <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+                <div class="container-fluid">
+                    <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                        <span class="hamb-top"></span>
+                        <span class="hamb-middle">MENU</span>
+                        <span class="hamb-bottom"></span>
+                    </button> */-->
+                    <th:block th:include="fragmentos/logo"/>
+                    <div class="pull-left portal-header">
+                        <sede:breadcrumb title="Organización Administrativa" titlemobile="Organización"
+                                         link="/ciudad/organizacion/"
+                                         value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'}, {'link':'/ciudad/ayto/', 'text':'Ayuntamiento'}, {'link':'/sede/portal/organizacion/', 'text':'Organización Municipal'}, {'link':'/sede/portal/organizacion/administrativa/', 'text':'Organización Administrativa'}]"/>
+                    </div>
+                    <th:block th:include="fragmentos/cabecera"/>
+                    <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+                </div>
+            </header>
+        </th:block>
+        <th:block th:fragment="menu">
+            <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+            <!--/* <div class="overlay" style="display: none;"></div> */-->
+            <!--/* Menu lateral de portal */-->
+            <!--/* <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                    <li><a href="/sede/portal/organizacion/alcalde/">El Alcalde</a></li>
+                    <li><a href="/sede/portal/organizacion/plenos/concejales">El Pleno</a></li>
+                    <li><a href="/sede/portal/organizacion/gobiernozaragoza/gobierno_zaragoza">Gobierno de Zaragoza</a></li>
+                    <li><a href="/sede/portal/organizacion/grupos-municipales">Grupos Municipales</a></li>
+                    <li><a href="/sede/portal/organizacion/index_AgendaInstitucional">Agenda Institucional</a></li>
+                    <li><a href="/sede/portal/organizacion/admonmunicipal/consejeros">Administraci&oacute;n Municipal</a></li>
+                    <li><a href="/sede/portal/organizacion/catalogoprocedimientos/">Cat&aacute;logo Procedimientos</a></li>
+                    <li><a href="/sede/portal/organizacion/consejogerencia/enlace/urbanismo/consejogerencia/composicion">Consejo de Gerencia</a></li>
+                    <li><a href="/sede/portal/organizacion/enlace/normativa/listado_Normativa?codmateria=137">Decretos</a></li>
+                    <li><a href="/sede/portal/organizacion/buscar_Convenios">Convenios</a></li>
+                    <li><a href="/sede/portal/organizacion/organismos-sociedades">Organismos / Sociedades</a></li>
+                    <li><a href="/sede/portal/organizacion/juntas-municipales">Juntas Municipales</a></li>
+                    <li><a href="/sede/portal/organizacion/juntas-vecinales">Juntas Vecinales</a></li>
+                    <li><a href="/sede/portal/organizacion/servicio/normativa/483">Reglamento Org&aacute;nico</a></li>
+                    <li><a href="/sede/portal/organizacion/debate">Debate Ciudad</a></li>
+                    <li><a href="/sede/portal/organizacion/casaconsistorial/historia">La Casa Consistorial</a></li>
+                    <li><a href="https:/www.zaragoza.es/sede/portal/ticketing/verNuevaQuejaAnonima_Ticketing">Quejas y Sugerencias</a></li>
+                </ul>
+            </nav> */-->
+        </th:block>
+        <th:block th:fragment="footer">
+            <th:block th:include="fragmentos/pie"/>
+            <th:block th:include="fragmentos/js"/>
+        </th:block>
+    </body>
+
+</html>

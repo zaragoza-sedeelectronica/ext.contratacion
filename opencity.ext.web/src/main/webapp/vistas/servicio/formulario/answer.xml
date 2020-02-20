@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Formulario" keywords="sede,web,formulario" />
+    <style>
+
+ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+ol ol {
+    margin: 0 0 0 2em; /* Add some left margin for inner lists */
+}
+.rectangle-list a:not(.btn){
+    position: relative;
+    display: block;
+    padding: 1em;
+    *padding: .4em;
+    margin: .5em 0 .5em 2.5em;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    transition: all .3s ease-out;   
+}
+
+.rectangle-list a:not(.btn):hover{
+    background: #eee;
+}
+
+.rectangle-list a:not(.btn):hover .click{
+    display: block !important;
+} 
+
+.rectangle-list a:not(.btn):before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #fa8072;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.rectangle-list a:not(.btn):after{
+    position: absolute; 
+    content: '';
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;               
+}
+
+.rectangle-list a:not(.btn):hover:after{
+    left: -.5em;
+    border-left-color: #fa8072;             
+}
+
+
+a.wrap:hover .click {display:visible;}
+
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2><small th:text="${formulario.body.title}"></small></h2>
+        <hr class="sm"/>
+        <div class="clearfix">
+            <div class="navbar-right margin-l3em">
+                <span class="fas fa-calendar-alt" aria-hidden="true"></span> Fecha de creación: <span class="text-info destacado" th:text="${#calendars.format(formulario.body.creationDate, 'dd-MM-yyyy')}"></span>
+            </div>
+            <div class="navbar-right margin-l3em" th:if="${formulario.body.startDate} and ${formulario.body.endDate}">
+                <span class="fas fa-calendar-alt" aria-hidden="true"></span> Duración de: <span class="text-info destacado" th:text="${#calendars.format(formulario.body.startDate, 'dd-MM-yyyy')}"></span> al <span class="text-info destacado" th:text="${#calendars.format(formulario.body.endDate, 'dd-MM-yyyy')}"></span>
+            </div>
+            <div class="navbar-left margin-l3em"><span class="far fa-file-alt" aria-hidden="true"></span> Número de registros: <span class="text-primary destacado" th:text="${resultado.body.rows}" /></div>
+            
+            <div role="alert" class="alert alert-info" th:if="${resultado.body.rows &lt; 1}">Todavía no se ha recibido ninguna propuesta</div>
+        </div>
+        <ol class="rectangle-list">
+            <li class="clearfix" th:each="registro : ${resultado.body.result}">
+                <a class="wrap" th:href="'answer/' + @{{id}(id=${registro.id})}">
+                    <div class="margin-b05em"><strong><span class="far fa-calendar-check" aria-hidden="true"></span> Fecha:</strong> <span class="text-info destacado" sede:rdf="${registro.get('creationDate', 'EEEE dd MMMM yyyy HH:mm')}"></span></div>
+                    <div th:if="not ${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}">
+                        <strong><span class="far fa-user-circle" aria-hidden="true"></span> Realizada por</strong> 
+                        <span th:if="${registro.user}" class="label label-primary" th:text="${registro.user.screen_name} ? ${registro.user.screen_name} : ${registro.user.name}"></span>
+                        <span th:if="not ${registro.user}" class="label label-primary" th:text="${registro.getNombreUsuario()}"></span>
+                        <span class="label label-primary" th:unless="${registro.user} or ${registro.getNombreUsuario()}">Anónimo</span>
+                        <em class="small pull-right click hidden">Haz click para acceder al registro...</em>
+                    </div>
+                    <div th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}">
+                        <strong><span class="far fa-user-circle" aria-hidden="true"></span> Realizada por</strong> <span class="label label-primary" th:text="${registro.getPorAlias('NAME')}"></span>
+                        <span class="label label-success" th:text="${registro.getPorAlias('MAIL')}"></span>
+                        <em class="small pull-right click hidden">Haz click para acceder al registro...</em>
+                    </div>
+                </a>
+                <th:block th:if="${registro.visible} == 'N'">
+                    <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="'answer/' + @{{id}/unlock(id=${registro.id})}" class="btn btn-danger btn-xs pull-right" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+                </th:block>
+                <th:block th:if="${registro.visible} == 'S'">
+                    <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="'answer/' + @{{id}/lock(id=${registro.id})}" class="btn btn-warning btn-xs pull-right" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+                </th:block>
+            </li>
+        </ol>
+    </sede:content>
+</body>
+
+</html>

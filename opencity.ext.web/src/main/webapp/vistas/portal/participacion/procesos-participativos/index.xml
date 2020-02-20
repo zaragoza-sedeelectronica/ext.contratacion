@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Procesos Participativos"
+                   description="En interés de que los ciudadanos y ciudadanas participen y colaboren para disponer de mejores servicios públicos y calidad de la información, el municipio pone a su disposición distintas herramientas: encuestas para recoger sus opiniones e intereses y mapas colaborativos para entre todos mostrar y conocer nuestra ciudad.  Puede obtener información en la plataforma Gobierno Abierto en la sede electrónica del Ayuntamiento de Zaragoza y participar en los procesos abiertas.  Consulte la normativa sobre el procedimiento de participación y los procesos cerrados."
+                    keywords="ciudad, Zaragoza, sede electrónica, gobierno abierto, ayuntamiento, gobierno municipal,gobierno local, administración municipal, relación administración-administrado, participación ciudadana, desarrollo participativo, participación social,  
+city, Saragossa, e-government, open government, open gov, council, local government, local authority, citizen-authority relations, public participation, participatory development, social participation, public service,"  
+                   category="El Ayuntamiento"
+                   subject="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, Sector Público, Sociedad y Bienestar, Ciencia y Tecnología"
+                  
+                   last-modified="14-05-2018"
+                   audience="Ciudadanía"/>
+        <style type="text/css">
+            @media (min-width: 768px) {
+            .card {
+            min-height: 10em;
+            }
+            }
+
+            .full-screen-box {
+            margin-bottom: 14px;
+            }
+
+            a.full {
+            /*display: inline-block;*/
+            width: 100%;
+            height: 100%;
+            }
+
+            @media (min-width: 768px) {
+            .listado-datos .card {
+            min-height: 10em;
+            }
+            }
+
+            .card h3.btn {
+            font-size: 1em;
+            }
+
+            .procesos .img-container {
+            background: url('/cont/vistas/portal/participacion/img/p-manos-unidas.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: bottom;
+            }
+
+            .card h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            }
+
+            .listado-datos li:nth-child(1) .radius {
+            border: 4px solid #F42F26;
+            }
+
+            .listado-datos li:nth-child(2) .radius {
+            border: 4px solid #01D1C4;
+            }
+
+            .listado-datos li:nth-child(3) .radius {
+            border: 4px solid #A962DC;
+            }
+
+            .listado-datos li:nth-child(4) .radius {
+            border: 4px solid #FF9C27;
+            }
+
+            .listado-datos h3 {
+            min-height: 3.5em;
+            }
+
+            .listado-datos .lead {
+            font-size: 36px;
+            }
+
+            .cuadro {
+            position: relative;
+            background-color: #cccccc;
+            border-radius: 10px;
+            width: 100%;
+            }
+
+            .img-rounded {
+            border-radius: 10px 10px 0 0 !important;
+            }
+
+            .cuadro img {
+            padding-bottom: 0;
+            }
+
+            .cuadro h3 {
+            position: relative;
+            background-color: rgba(0,0,0,0.7);
+            height: 54px;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 0;
+            border-radius: 0px 0px 10px 10px;
+            }
+
+            .cuadro h3 a {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            color: #ffffff !important;
+            font-weight: bold;
+            }
+
+            .cuadro div {
+            position: relative;
+            background-color: #e9e9e9;
+            padding: 5px;
+            margin: 0;
+            height: 90px;
+            }
+
+            .cuadro p {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            }
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .margin-b2em.fnd-gris-claro {
+            padding-top: 5px;
+            padding-bottom: 30px;
+            margin-bottom: -42px !important;
+            }
+
+            .titulo-procesos h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            }
+
+            .titulo-procesos h2 small,
+            .titulo-procesos h2 span,
+            .procesos h2 small,
+            .procesos h2 span {
+            color: #000000;
+            }
+
+            .icono-zona {
+            background-color: #E83437;
+            height: 58px !important;
+            width: 65px !important;
+            border-radius: 10px 0 0 10px;
+            padding: 0;
+            margin-right: 0;
+            }
+
+            .menu-procesos {
+            height: 58px;
+            position: relative;
+            color: #ffffff;
+            background: #ffffff;
+            border-radius: 0 10px 10px 0;
+            margin-right: -60px;
+            }
+
+            .menu-procesos div {
+            position: relative;
+            width: 20%;
+            padding: 0 20px;
+            border-right: solid 1px #333333;
+            height: 58px;
+            }
+
+            .menu-procesos div:last-child {
+            border-right: 0px;
+            }
+
+            .menu-procesos div a {
+            position: absolute;
+            font-size: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            }
+
+            @media (min-width: 768px) {
+            .menu-procesos {
+            width: calc(100% - 287px);
+            }
+            .menu-procesos div a {
+            font-size: 12px;
+            }
+            }
+
+            @media (min-width: 1200px) {
+            .menu-procesos {
+            width: 885px;
+            }
+            .menu-procesos div a {
+            font-size: 16px;
+            }
+            }
+
+            .cuadro-negro {
+            background-color: #000000;
+            color: #e9e9e9;
+            margin: 0 10px 0 0;
+            padding: 0 20px;
+            line-height: 27px;
+            height: 58px;
+            }
+
+            .cuadro-negro span {
+            font-size: 28px;
+            font-weight: bold;
+            }
+
+            .borde-d {
+            border-radius: 0 10px 10px 0;
+            margin: 0;
+            }
+
+            .menu-procesos-movil li {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            border-bottom: solid 2px #333333;
+            font-size: 20px;
+            }
+
+            .menu-procesos-movil li:first-child {
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 24px;
+            }
+
+            .cuadro .cerrado {
+            border-radius: 10px !important;
+            }
+
+            .btn-rn {
+            position: relative;
+            margin: 30px 0 0 0;
+            padding: 0;
+            }
+
+            .btn-rn a {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff;
+            font-size: 24px;
+            line-height: 24px;
+            }
+
+            .btn-rn .cuadro-negro {
+            width: 180px;
+            }
+
+            .btn-rn .icono-zona {
+            padding: 10px;
+            }
+
+            @media (max-width: 767px) {
+            .btn-rn .cuadro-negro {
+            width: 215px;
+            margin-right: 40px;
+            }
+
+            .btn-rn {
+            position: relative;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            }
+            }
+
+            .redes-sociales {
+            margin-top: 15px;
+            font-size: 65px;
+            bottom: 0px;
+            }
+            
+	.asdf {
+		height: 222px; !important
+	}
+		
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="">
+                <div class="container-fluid text-left margin-auto nomargin titulo-procesos">
+                    <h2 class="text-right">
+                        <small>Participación</small>
+                        <span>|</span>
+                        Procesos Participativos
+                    </h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="/cont/vistas/portal/participacion/img/p-manos-unidas.png"
+                                 class="img-responsive" alt=""/>
+                        </div>
+                        <div class="col-sm-6">
+                            <!--/*<p class="text-right"><a href="/sede/portal/consulta-publica/servicio/normativa/5823">Decreto: Instrucción sobre el procedimiento</a>
+                            </p>*/-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid" style="padding: 0;">
+                    <div class="pull-right col-sm-2 redes-sociales">
+                        <a href="https://www.facebook.com/ZGZopencity/"><span class="fab fa-facebook-square"></span></a>
+                        <a href="https://twitter.com/ZGZopencity"><span class="fab fa-twitter-square"></span></a>
+                    </div>
+                    <div class="pull-right col-sm-3 btn-rn">
+                        <div class="pull-right cuadro-negro borde-d">
+                            <a href="/sede/portal/consulta-publica/">Consultas<br/>públicas</a>
+                        </div>
+                        <div class="pull-right icono-zona">
+                            <img src="/cont/vistas/portal/participacion/img/Participacion/icono_consultas.png"
+                                 class="img-responsive" alt=""/>
+                        </div>
+                    </div>                    
+                    <div class="pull-right col-sm-3 btn-rn">
+                        <div class="pull-right cuadro-negro borde-d">
+                            <a href="/sede/portal/participacion/encuestas/">Encuestas</a>
+                        </div>
+                        <div class="pull-right icono-zona">
+                            <img src="/cont/vistas/portal/participacion/img/Participacion/icono_encuestas.png"
+                                 class="img-responsive" alt=""/>
+                        </div>
+                    </div>
+                    <div class="pull-right col-sm-3 btn-rn">
+                        <div class="pull-right cuadro-negro borde-d">
+                            <a href="/sede/servicio/mapa-colaborativo/" class="">Mapas<br/>colaborativos</a>
+                        </div>
+                        <div class="pull-right icono-zona">
+                            <img src="/cont/vistas/portal/participacion/img/Participacion/icono_mapasColaborativos.png"
+                                 class="img-responsive" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visible-xs menu-procesos-movil">
+                <ul class="list-unstyled">
+                    <li>
+                        <span class="fa fa-cogs" aria-hidden="true"></span>
+                        Procesos Participativos
+                    </li>
+                    <li>
+                        <a href="#abiertos">Abiertos</a>
+                    </li>
+                    <li>
+                        <a href="#2018">Cerrados año 2018</a>
+                    </li>
+                    <li>
+                        <a href="#2017">Cerrados año 2017</a>
+                    </li>
+                    <li>
+                        <a href="#2016">Cerrados año 2016</a>
+                    </li>
+                    <li>
+                        <a href="#anteriores">Cerrados años anteriores</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fnd-gris-claro" style="padding-top: 30px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="">
+                            <div class="fnd-blanco radius lead nomargin hidden-xs">
+                                <div class="pull-left icono-zona">
+                                    <img src="/cont/vistas/portal/participacion/img/ProcesosParticipativos/icono_accesoProcesosParticipativos.png" alt=""/>
+                                </div>
+                                <div class="pull-left cuadro-negro">
+                                    Procesos
+                                    <br/>
+                                    <span>Participativos</span>
+                                </div>
+                                <div class="row pull-left menu-procesos">
+                                    <div class="pull-left">
+                                        <a href="#abiertos">Abiertos</a>
+                                    </div>
+                                    <div class="pull-left">
+                                        <a href="#2018">Cerrados<br/>año 2018
+                                        </a>
+                                    </div>
+                                    <div class="pull-left">
+                                        <a href="#2017">Cerrados<br/>año 2017
+                                        </a>
+                                    </div>
+                                    <div class="pull-left">
+                                        <a href="#2016">Cerrados<br/>año 2016
+                                        </a>
+                                    </div>
+                                    <div class="pull-left">
+                                        <a href="#anteriores">Cerrados<br/>años anteriores
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius procesos" id="abiertos">
+                    <div class="clearfix">
+                        <h2 class="text-right" style="color: #000000">procesos participativos
+                            <strong>abiertos</strong>
+                        </h2>
+                    </div>
+                    <ul class="row list-unstyled list-ogob">
+                         <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_CiudadaniaDiversa.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/derechos-sociales/diversidad-cultural/">Plan para una
+                                        Ciudadanía
+                                        Diversa e Intercultural
+                                    </a>
+                                </h3>
+                            </div>
+                        <div class="ribbon-wrapper">
+                        <div class="ribbon-info"><span style="font-size:75%;">DOCUMENTO FINAL</span></div>
+						</div>                            
+                        </li>							
+						<li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/delicias-gob-ab.png" class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center"><a href="/sede/portal/participacion/procesos-participativos/delicias/">Desarrollo de Actividades Distrito Delicias</a></h3>
+                            </div>
+                                                <div class="ribbon-wrapper">
+                        <div class="ribbon-info">FASE 4</div>
+                    </div>  
+                        </li>						
+						<li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/oliver-gob-ab.png" class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center"><a href="/sede/portal/participacion/procesos-participativos/oliver-valdefierro/">Gastos y actividades en Oliver-Valdefierro</a></h3>
+                            </div>
+                        </li>						
+							
+						
+						                       
+                    </ul>
+
+                    <ul class="row list-unstyled list-ogob">
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/imag_ECAZ30.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/medioambiente/ecaz/proceso-participativo">Estrategia de Cambio Climático, Calidad del Aire y Salud de Zaragoza
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>						
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_AlimentacionSaludable.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/medioambiente/alimentacion/">Estrategia de alimentación
+                                        saludable
+                                        y sostenible
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>					
+
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/imag_PresupuestosPart2018-b.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/servicio/presupuestos-participativos/">Presupuestos Participativos
+                                        2018
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_PresupuestosPartBarriosRurales2018.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/presupuestos-barrios-rurales/">Pptos. Participativos Barrios
+                                        Rurales 2018
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+
+                        
+                    </ul>
+                <ul class="row list-unstyled list-ogob">
+					
+
+                    </ul>
+                </div>
+
+                <div class="container-fluid margin-b2em fnd-blanco radius procesos">
+                    <h2 class="text-right" id="2018">
+                        <small>procesos participativos
+                            <strong>cerrados</strong>
+                        </small>
+                        <span>|</span>
+                        2018
+                    </h2>
+                    <ul class="row list-unstyled list-ogob">
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_4PlanJoven.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/sectores/juventud/planjoven/">4º Plan Joven</a>
+                                </h3>
+                            </div>
+                        </li>
+
+                    <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_MovilidadUrbanaSostenible.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/movilidad/plan-movilidad/">Plan de Movilidad Sostenible</a>
+                                </h3>
+                            </div>
+                        </li>
+
+
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_CentroCivicoParqueGoya.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/participacion/civico-parque-goya/">Nuevo Centro Cívico
+                                        Parque Goya
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/ficha-sinhogarismo-gob-ab.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/derechos-sociales/sinhogarismo/">Plan integral para personas sin hogar
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>                        
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_PortaldelMayor.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/derechos-sociales/personas-mayores/">Móvil y edad: Portal del
+                                        Mayor
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_PortaldelMayorRutas.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/movil-edad/#rutas">Móvil y edad: Rutas Amigables</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/cerrados2018.jpg"
+                                     class="img-rounded img-responsive cerrado" alt=""/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-fluid margin-b2em fnd-blanco radius procesos">
+                    <h2 class="text-right" id="2017">
+                        <small>procesos participativos
+                            <strong>cerrados</strong>
+                        </small>
+                        <span>|</span>
+                        2017
+                    </h2>
+                    <ul class="row list-unstyled list-ogob">
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/prepart2017.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Portal donde figura la relación de propuestas ciudadanas ejecutadas en la
+                                            primera
+                                            edición de los Presupuestos Participativos.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/sede/servicio/presupuestos-participativos/edicion/1/obras/">Presupuestos
+                                        Participativos 2017
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2017-cabecera-asamblea-ciudadana.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>En la Asamblea Ciudadana se renuevan, cada dos años, los representantes
+                                            de
+                                            asociaciones y entidades vecinales en el Consejo de Ciudad.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/participacion/consejos/asamblea-ciudadana/">VI Asamblea Ciudadana</a>
+                                </h3>
+                            </div>
+                        </li>
+
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2017-iiplan-igualdad.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Proceso participativo previo a la elaboración del II Plan de Igualdad de la ciudad de Zaragoza 2018-2021
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="http://www.zaragoza.es/sede/servicio/propuesta/444">II Plan de Igualdad</a>
+                                </h3>
+                            </div>
+                        </li>
+						</ul>
+						<ul class="row list-unstyled list-ogob">
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_LuchaPobrezaInfantil-b.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/sectores/social/plan-pobreza-infantil/">Plan Pobreza
+                                        infantil
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>							
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/imag_PlanInfraestructuraVerde-b.jpg"
+                                     class="img-rounded img-responsive asdf" alt=""/>
+    
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/medioambiente/planinfraverde/">Plan Director de
+                                        infraestructura
+                                        verde
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>							
+							
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2017-consulta-juslibol3.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Octubre de 2017. Celebración de la Encuesta Ciudadana para la elección de
+                                            alcalde
+                                            o alcaldesa del barrio de Juslibol según el decreto aprobado a tal efecto.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="https://www.zaragoza.es/ciudadania/gobierno-abierto/participar/eleccion-alcalde-juslibol.htm">
+                                        Elección del Alcalde de Juslibol
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2017-ps-pt-rurales.png"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Fruto del convenio para la cooperación en la realización de un plan de
+                                            obras
+                                            en
+                                            los Barrios Rurales del municipio de Zaragoza entre la Diputación Provincial
+                                            de
+                                            Zaragoza y el Ayuntamiento de Zaragoza.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/presupuestos-barrios-rurales/2017/">Presupuestos Participativos
+                                        Barrios
+                                        Rurales 2017
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2017-suv-derechos-soc2.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>El objeto es promover la iniciativa social sin ánimo de lucro, potenciar
+                                            la
+                                            participación y las actuaciones del tercer sector para conseguir una mayor
+                                            eficacia
+                                            en las competencias municipales.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/ciudad/sectores/social/proceso-participativo-ayudas.htm">Subvenciones
+                                        Acción
+                                        Social 2017
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/cerrados2017.jpg"
+                                     class="img-rounded img-responsive cerrado" alt=""/>
+                            </div>
+                        </li>                        
+                        </ul>
+                        <!--/*<ul class="row list-unstyled list-ogob">
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/cerrados2017.jpg"
+                                     class="img-rounded img-responsive cerrado"/>
+                            </div>
+                        </li>
+                    </ul>*/-->
+                </div>
+                <div class="container-fluid margin-b2em fnd-blanco radius procesos">
+                    <h2 class="text-right" id="2016">
+                        <small>procesos participativos
+                            <strong>cerrados</strong>
+                        </small>
+                        <span>|</span>
+                        2016
+                    </h2>
+                    <ul class="row list-unstyled list-ogob">
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-linea2-tranvia.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Proceso de participación para conocer la opinión de los vecinos sobre las
+                                            diferentes alternativas de trazado de la línea 2 del tranvía
+                                            determinadas por el estudio de viabiliad.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/sede/servicio/linea-2-tranvia/">Línea 2 del Tranvía</a>
+                                </h3>
+                            </div>
+                        </li>
+
+
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-parque-venecia2.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Consensuadas una serie de obras para el barro, los vecinos y vecinas
+                                            empadronados
+                                            en el mismo fueron convocados a participar en una consulta para elejir el
+                                            orden
+                                            de
+                                            prioridad.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/ciudadania/urbanismo/participativo/parque-venecia.htm">Parque Venecia</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-delicias.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Proceso para abrir a la participación de entidades, servicios y vecinos
+                                            la
+                                            distribución
+                                            de la partida de Gastos y Actividades de la Junta.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/ciudadania/gobierno-abierto/espacios/juntas/104/enlace/gobierno-abierto/participar/presupuestosdelicias.htm">
+                                        Distritbución de la partida de gastos y
+                                        actividades en Delicias
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-oliver.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Proceso para abrir a la participación de entidades, servicios y vecinos
+                                            la
+                                            distribución
+                                            de la partida de Gastos y Actividades de la Junta.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/ciudadania/gobierno-abierto/espacios/juntas/108/enlace/gobierno-abierto/participar/presupuestosoliver.htm">
+                                        Distribución de la partida de gastos y actividades
+                                        en Oliver-Valdefierro
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-SantaIsabel.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Busca la participación directa de los vecinos y vecinas con el fin de
+                                            establecer
+                                            las principales necesidades de nuestro barrio e incluirlas en el presupuesto
+                                            anual
+                                            de la junta.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/ciudadania/gobierno-abierto/espacios/juntas/110/enlace/gobierno-abierto/participar/presupuestossantaisabel.htm">
+                                        Presupuestos Participativos en la Junta Municipal
+                                        de Santa Isabel 2016
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-Suv-derechos-soc.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>El objeto es promover la iniciativa social sin ánimo de lucro, potenciar
+                                            la
+                                            participación y las actuaciones del tercer sectorpara conseguir una mayor
+                                            eficacia
+                                            en las competencias municipales.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/ciudad/sectores/social/proceso-participativo-ayudas.htm">Subvenciones
+                                        Acción
+                                        Social 2016
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-parque-pignatelli.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <div>
+                                    <p class="text-center">
+                                        <small>Tratándose de un suelo municipal lindando con un parque, es perfecto
+                                            para diseñar colectivamente el destino de ese suelo tras un proceso de
+                                            participación
+                                            que fije necesidades y prioridades.
+                                        </small>
+                                    </p>
+                                </div>
+                                <h3 class="text-center">
+                                    <a href="/ciudadania/urbanismo/participativo/pignatelli.htm">Parque Pignatelli</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4"></li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/cerrados2016.jpg"
+                                     class="img-rounded img-responsive cerrado" alt=""/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-fluid margin-b2em fnd-blanco radius procesos">
+                    <h2 class="text-right" id="anteriores">
+                        <small>procesos participativos
+                            <strong>cerrados</strong>
+                        </small>
+                        <span>|</span>
+                        años anteriores
+                    </h2>
+                    <ul class="row list-unstyled list-ogob">
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2016-Mapa-Colaborativo.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/sede/portal/participacion/procesos-participativos/servicio/mapa-colaborativo/14">Mapa colaborativo Pleno Infantil
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2012-afluencia_turistica.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/ciudad/noticias/detalle_Noticia?id=153595">Zonas de gran afluencia turística
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/2012-EntornoPlazaPilar.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/ciudadania/gobierno-abierto/participar/resultado_Murallas">Mejora del entorno Plaza del Pilar Murallas Romanas
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/Consulta_Open_Data.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="http://consultadatos.zaragoza.es/">
+                                        Consulta sobre open data
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/Proyecto_Halcon_Peregrino.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/ciudad/medioambiente/espacios/especies/halcon.htm">Proyecto hacón Peregrino
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/Rehabilitacion_Centro_Historico.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/contenidos/participacion/centrohistorico/revitalizacion_centro_hco.pdf">
+                                        La cultura transforma el centro
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/Consulta_Puente_Hierro.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/ciudad/servicios/Votacion_Infraestructura">Nuevos colores para el Puente de Hierro
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/Zivis_supercomputador.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/contenidos/conocimiento/zivis/DipticoZivis.pdf">Zivis. El primer gran computador ciudadano
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="cuadro">
+                                <img src="/cont/vistas/portal/participacion/img/procesos/Ps_Part_ElRabal.jpg"
+                                     class="img-rounded img-responsive" alt=""/>
+                                <h3 class="text-center">
+                                    <a href="/ciudad/presupuestos-participativos/index.htm">Presupuestos Participativos El Rabal (2005-2006)
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Datos Planta Potabilizadora" keywords="sede,web,calidad,agua"></sede:meta>
+
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+
+
+                <div class="fieldset">
+                    <fieldset>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="startDate">Fecha Inicial</label>
+                            <div class="col-sm-10">
+                            <!--    <input class="form-control" type="text" th:field="${#dates.format(fech_ini, 'dd/MMM/yyyy')}" size="10" />-->
+                                <input type="date"  th:field="*{startDate}" size="10" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="endDate">Fecha Final</label>
+                            <div class="col-sm-10">
+                                <input type="date"  th:field="*{endDate}" size="10" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="caudal">Caudal</label>
+                            <div class="col-sm-10">
+                                <input  type="text" th:field="*{caudal}" size="10" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="canal">% Canal Imperial</label>
+                            <div class="col-sm-10">
+                                <input  type="text" th:field="*{canal}" size="10" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="yesa">% Embalse Yesa</label>
+                            <div class="col-sm-10">
+                                <input  type="text" th:field="*{yesa}" size="10" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="ebro">% ebro</label>
+                            <div class="col-sm-10">
+                                <input  type="text" th:field="*{ebro}" size="10" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="conductividad">Conductividad</label>
+                            <div class="col-sm-10">
+                                <input  th:field="*{conductividad}" size="10" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="dureza_f">Dureza</label>
+                            <div class="col-sm-10">
+                                <input  type="text" th:field="*{dureza_f}" size="10" /> º F -
+                                <input type="text" th:field="*{dureza_c}" size="10" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+        </div>
+    </sede:content>
+
+</body>
+
+</html>

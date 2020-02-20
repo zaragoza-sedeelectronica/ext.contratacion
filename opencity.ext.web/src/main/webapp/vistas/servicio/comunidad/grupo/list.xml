@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Grupos" keywords="risp,opendata,grupo" />
+    <style type="text/css">
+        .height5{min-height:5em}
+    </style>
+</head>
+
+<body>
+    <sede:content>
+	    <h2>Grupos <!--<a href="./new" class="btn btn-primary">Crear Mapa</a>--></h2>
+        <th:block th:include="fragmentos/error" />
+        <ul class="row list-unstyled">
+		    <li th:each="doc:${resultado.body.result}" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="card height5">
+                    <img th:if="${doc.image}" th:src="${doc.image}" height="70" alt=""/>
+                    <a th:href="${doc.id}"><th:block th:text="${doc.title}" /></a>
+                	
+                    <div th:if="${doc.type == 'collaborative'}" class="ribbon-wrapper">
+                         <div class="ribbon-info">Colabora</div>
+                    </div>
+                </div>
+            </li>
+			
+		<div th:if="false">
+			<li class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="card height5">
+                    <img src="//www.zaragoza.es/cont/paginas/centros/img/casamorlanes.jpg" height="70" alt=""/>
+                    <a href="/sede/servicio/comunidad/grupo/1"><th:block th:text="'Técnicos de Juventud'" /></a>
+                    <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Colabora</div>
+                    </div>
+                </div>				 
+            </li>
+			
+			<li class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="card height5">
+                    <img src="//www.zaragoza.es/cont/paginas/actividades/imagen/c.png" height="70" alt=""/>
+                    <a href="/sede/servicio/comunidad/grupo/5"><th:block th:text="'Comunidad de Escape Show'" /></a>
+                    <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Colabora</div>
+                    </div>
+                </div>				 
+            </li>
+			<li class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="card height5">
+                    <img src="//www.zaragoza.es/cont/paginas//sectores/jovenes/cipaj/img/logoantenas.jpg" height="70" alt=""/>
+                    <a href="/sede/servicio/comunidad/grupo/3"><th:block th:text="'Antenas CIPAJ'" /></a>
+                    <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Colabora</div>
+                    </div>
+                </div>				 
+            </li>
+			<li class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="card height5">
+                    <img src="//www.zaragoza.es/cont/paginas/sectores/jovenes/cipaj/img/antenas/20676.jpg" height="70" alt=""/>
+                    <a href="/sede/servicio/comunidad/grupo/5"><th:block th:text="'Antena Colegio El Buen Pastor'" /></a>
+                    <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Colabora</div>
+                    </div>
+                </div>				 
+            </li>
+			
+			<li class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="card height5">
+                    <img src="//www.zaragoza.es/cont/paginas/centros/img/centro-civico-almozara.jpg" height="70" alt=""/>
+                    <a href="/sede/servicio/comunidad/grupo/5"><th:block th:text="'Casa Juventud Almozara'" /></a>
+                    <div class="ribbon-wrapper">
+                         <div class="ribbon-info">Colabora</div>
+                    </div>
+                </div>				 
+            </li>
+			
+		</div>	
+        </ul>
+		
+		<!--
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+		-->
+    </sede:content>
+</body>
+
+</html>

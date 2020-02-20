@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Respuestas" keywords="sede,web,formulario" />
+
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="servicio/formulario/respuestas" />
+    </sede:content>
+
+</body>
+
+</html>

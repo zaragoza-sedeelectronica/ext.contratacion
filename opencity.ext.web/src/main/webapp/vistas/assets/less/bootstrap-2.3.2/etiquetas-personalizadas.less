@@ -1,0 +1,59 @@
+@import "mixins.less";
+@import "variables.less";
+
+//
+// Etiquetas personalizadas
+// --------------------------------------------------
+
+// Localización de Centros: <localizacion_centro id="[int]" />
+.ficha-centro {
+	ul.localizacion-centro {
+		li{padding: .2em 0 .2em 2em; margin-bottom: .25em;}
+		li.direccion{background: url(/cont/paginas/bs/img/loca/direccion.png) no-repeat;}
+		li.tel{background: url(/cont/paginas/bs/img/loca/telefono.png) no-repeat;}
+		li.fax{background: url(/cont/paginas/bs/img/loca/fax.png) no-repeat;}
+		li.email{background: url(/cont/paginas/bs/img/loca/email.png) no-repeat;}
+		li.url{background: url(/cont/paginas/bs/img/loca/url.png) no-repeat;}
+		li.geo{background: url(/cont/paginas/bs/img/loca/localizacion.png) no-repeat;}
+		li.horario{background: url(/cont/paginas/bs/img/loca/horario.png) no-repeat;}
+		li ul li{padding:0;}
+	}
+	
+	.gente-p  .w33 img{max-width:250px}
+	.gente-p  .w25 img{max-width:200px}	
+}
+
+
+// Videos: <video1 lista="[int]" img="s">
+.video {
+    background-color: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    padding: 2px;
+    width: 95%;
+}
+.contenedor_video {
+    background-image: none;
+    background-position: left top;
+    background-repeat: repeat-x;
+    width: 100%;
+    text-align: center;
+}
+.listavideo {
+    background-color: #E5E3E3;
+    list-style: none outside none !important;
+    border-radius: 4pt 4pt 4pt 4pt;
+    height: 4.2em;
+    margin: 3px 10px !important;
+    padding: 3px !important;
+    position: relative;
+    top: -10px;
+    width: 92%;
+}
+
+.listavideo li {
+    background-image: none !important;
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 0 0 4px !important;
+    width: 25%;
+}

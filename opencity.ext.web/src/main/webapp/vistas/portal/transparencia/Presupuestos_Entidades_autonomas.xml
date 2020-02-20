@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Transparencia Municipal. Presupuestos Entidades autonomas 2018" description="Transparencia " author="" last-modified="Tue Apr 13 00:00:00 CET 2018" keywords="ayuntamiento, ciudad, Zaragoza, España, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Presupuestos Entidades Autonomas 2018</h2>
+        <div class="container-fluid">
+            <h3><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+            <ul>
+                <li><a href="//www.zaragoza.es/contenidos/encasa/hacienda/presupuestos/2018/definitivo/8_Resumenes_Presupuestos_Organismos_Autonomos_Mpales_y_Sociedades_Mpales_2018.xls">Excel</a></li>
+                <li><a href="https://www.zaragoza.es/contenidos/encasa/hacienda/presupuestos/2018/definitivo/8_Resumenes_Presupuestos_Organismos_Autonomos_Mpales_y_Sociedades_Mpales_2018.ods">Ods</a></li>
+            </ul>
+            <div class="col-md-12">
+                <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                    <li role="presentation" class="active"><a href="#artes" aria-controls="que" role="tab" data-toggle="tab"> Artes Escénicas de la Imagen</a></li>
+                    <li role="presentation"><a href="#educacion" aria-controls="que" role="tab" data-toggle="tab"> Educación y Bibliotecas</a></li>
+                    <li role="presentation"><a href="#turismo" aria-controls="que" role="tab" data-toggle="tab"> Turismo</a></li>
+                    <li role="presentation"><a href="#empleo" aria-controls="que" role="tab" data-toggle="tab"> Empleo y Fomento empresarial</a></li>
+                    <li role="presentation"><a href="#vivienda" aria-controls="que" role="tab" data-toggle="tab">Vivienda</a></li>
+                    <li role="presentation"><a href="#cultural" aria-controls="que" role="tab" data-toggle="tab">Cultural</a></li>
+                    <li role="presentation"><a href="#deporte" aria-controls="que" role="tab" data-toggle="tab">Deporte</a></li>
+                    <li role="presentation"><a href="#expo" aria-controls="que" role="tab" data-toggle="tab">Zgz Arroba Desarrollo Expo</a></li>
+                    <li role="presentation"><a href="#ecociudad" aria-controls="que" role="tab" data-toggle="tab">Ecociudad  Zaragoza, S.A.U</a></li>
+                </ul>
+                <div sede:class="tab-content">
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#artes" aria-expanded="false">Artes Escénicas de la Imagen</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="artes">
+                        <th:block th:fragment="imagen">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/PMAEI2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/PMAEI_Liquidacion2017.pdf">Liquidación 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary="Presupuesto Organismo Autónomo de las Artes Escénicas de la Imagen" class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Organismo Autónomo de las Artes Escénicas de la Imagen</caption>
+                                    <tr>
+                                        <th colspan="4">Ingresos</th>
+                                        <th colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Impuestos Directos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>1</td>
+                                        <td>Gastos de Personal</td>
+                                        <td>2.731.934,26</td>
+                                        <td>41,19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Impuestos Indirectos </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>2</td>
+                                        <td>Gastos Corrientes en Bienes y Servicios</td>
+                                        <td>3.593.565,74</td>
+                                        <td>54,18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Tasas, precios públicos y otros Ingresos</td>
+                                        <td>2.084.877,00</td>
+                                        <td>31,43</td>
+                                        <td>3</td>
+                                        <td>Gastos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>4.344.250,00</td>
+                                        <td>65,49</td>
+                                        <td> 4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>147.500,00</td>
+                                        <td> 2,22</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td>43.873,00</td>
+                                        <td>0,66</td>
+                                        <td>5</td>
+                                        <td>Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>6.473.000,00</td>
+                                        <td>97,59</td>
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>6.473.000,00</td>
+                                        <td>97,59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Enajenación de Inversiones Reales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Inversiones Reales</td>
+                                        <td>40.000,00</td>
+                                        <td>0,60</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td>40.000,00</td>
+                                        <td>0,60</td>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>40.000,00</td>
+                                        <td>0,60</td>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>40.000,00</td>
+                                        <td>0,60</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>6.513.000,00</td>
+                                        <td>98,19</td>
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>6.513.000,00</td>
+                                        <td>98,19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td>120.000,00</td>
+                                        <td>1,81</td>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td>120.000,00</td>
+                                        <td>1,81</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td>120.000,00</td>
+                                        <td>1,81</td>
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td>120.000,00</td>
+                                        <td>1,81</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td>6.633.000,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Total Gastos</td>
+                                        <td>6.633.000,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#educacion" aria-expanded="false">Educación y Bibliotecas</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="educacion">
+                        <th:block th:fragment="educacion">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/PMEB2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/PMEB_Liquidacion_2017.pdf">Liquidación 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary=" Presupuesto Patronato de Educación y Bibliotecas" class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Patronato de Educación y Bibliotecas</caption>
+                                    <tr>
+                                        <th colspan="4">Ingresos</th>
+                                        <th colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td> Impuestos Directos </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 1</td>
+                                        <td> Gastos de Personal</td>
+                                        <td> 10.462.000,00</td>
+                                        <td> 83,58</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td> Impuestos Indirectos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 2</td>
+                                        <td> Gastos Corrientes en Bienes y Servicios</td>
+                                        <td>1.755.500,00</td>
+                                        <td> 14,02</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td> Tasas, precios públicos y otros Ingresos</td>
+                                        <td>1.596.000,00</td>
+                                        <td>12,75</td>
+                                        <td>3</td>
+                                        <td> Gastos Financieros</td>
+                                        <td> 11.000,00</td>
+                                        <td> 0,09</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>10.709.500,00</td>
+                                        <td>85,56</td>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>23.000,00</td>
+                                        <td>0,18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td>2.000,00</td>
+                                        <td>0,02</td>
+                                        <td> 5</td>
+                                        <td>Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                        <td> </td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td> Operaciones Corrientes</td>
+                                        <td> 12.307.500,00</td>
+                                        <td> 98,32 </td>
+                                        <td></td>
+                                        <td> Operaciones Corrientes</td>
+                                        <td> 12.251.500,00</td>
+                                        <td> 97,87</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td> Enajenación de Inversiones Reales </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 6</td>
+                                        <td> Inversiones Reales </td>
+                                        <td> 216.000,00</td>
+                                        <td> 1,73</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td> Transferencias de Capital </td>
+                                        <td> 160.000,00 </td>
+                                        <td> 1,28 </td>
+                                        <td> 7</td>
+                                        <td> Transferencias de Capital </td>
+                                        <td> </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td> Operaciones de Capital</td>
+                                        <td> 160.000,00 </td>
+                                        <td> 1,28 </td>
+                                        <td></td>
+                                        <td> Operaciones de Capital</td>
+                                        <td> 216.000,00</td>
+                                        <td> 1,73</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td> OPERACIONES NO FINANCIERAS</td>
+                                        <td> 12.467.500,00 </td>
+                                        <td> 99,60 </td>
+                                        <td></td>
+                                        <td> OPERACIONES NO FINANCIERAS</td>
+                                        <td> 12.467.500,00 </td>
+                                        <td> 99,60</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td> Activos Financieros</td>
+                                        <td> 50.000,00 </td>
+                                        <td> 0,40 </td>
+                                        <td> 8</td>
+                                        <td> Activos Financieros </td>
+                                        <td>50.000,00</td>
+                                        <td> 0,40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td> Pasivos Financieros </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 9</td>
+                                        <td> Pasivos Financieros </td>
+                                        <td> </td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td> OPERACIONES FINANCIERAS</td>
+                                        <td> 50.000,00</td>
+                                        <td> 0,40 </td>
+                                        <td></td>
+                                        <td> OPERACIONES FINANCIERAS</td>
+                                        <td> 50.000,00</td>
+                                        <td> 0,40</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td> 12.517.500,00 </td>
+                                        <td>100,00 </td>
+                                        <td></td>
+                                        <td> Total Gastos</td>
+                                        <td> 12.517.500,00 </td>
+                                        <td> 100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#turismo" aria-expanded="false">Turismo</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="turismo">
+                        <th:block th:fragment="turismo">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/ZgzTurismo2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/ZCultural_CUENTAS_ANUALES_AUDITORIA_2017.pdf">Cuenta anual y auditoría 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary=" Presupuesto Patronato de Turismo" class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Patronato de Turismo</caption>
+                                    <tr>
+                                        <th colspan="4">Ingresos</th>
+                                        <th colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Impuestos Directos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 1</td>
+                                        <td>Gastos de Personal</td>
+                                        <td>792.500,00</td>
+                                        <td>27,94</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Impuestos Indirectos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>2</td>
+                                        <td>Gastos Corrientes en Bienes y Servicios</td>
+                                        <td>1.950.300,00</td>
+                                        <td>68,75</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Tasas, precios públicos y otros Ingresos</td>
+                                        <td>207.300,00</td>
+                                        <td>7,31</td>
+                                        <td>3</td>
+                                        <td>Gastos Financieros </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>2.629.500,00</td>
+                                        <td>92,69</td>
+                                        <td> 4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>25.000,00</td>
+                                        <td>0,88</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>5</td>
+                                        <td>Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>2.836.800,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>2.767.800,00</td>
+                                        <td>97,57</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Enajenación de Inversiones Reales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Inversiones Reales</td>
+                                        <td>69.000,00</td>
+                                        <td>2,43</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>69.000,00</td>
+                                        <td>2,43</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>2.836.800,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>2.836.800,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td>2.836.800,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Total Gastos</td>
+                                        <td>2.836.800,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#empleo" aria-expanded="false">Empleo y Fomento Empresarial</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="empleo">
+                        <th:block th:fragment="empleo">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/IMEFEZ2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/IMEFEZ_Liquidacion_2017.pdf">Liquidación 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary=" Instituto Municipal de Empleo y Fomento Empresarial" class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Instituto Municipal de Empleo y Fomento Empresarial</caption>
+                                    <tr>
+                                        <th colspan="4">Ingresos</th>
+                                        <th colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                        <th>Cap</th>
+                                        <th>Denominación</th>
+                                        <th>Euros</th>
+                                        <th>%</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Impuestos Directos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 1</td>
+                                        <td>Gastos de Personal</td>
+                                        <td>3.070.145,67</td>
+                                        <td>34,84</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Impuestos Indirectos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>2</td>
+                                        <td>Gastos Corrientes en Bienes y Servicios</td>
+                                        <td>4.058.021,33</td>
+                                        <td>46,04</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Tasas, precios públicos y otros Ingresos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>3</td>
+                                        <td>Gastos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>8.763.167,00</td>
+                                        <td>99,43</td>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>1.635.000,00</td>
+                                        <td>18,55</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>5</td>
+                                        <td>Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>8.763.167,00</td>
+                                        <td>99,43</td>
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>8.763.167,00</td>
+                                        <td>99,43</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Enajenación de Inversiones Reales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Inversiones Reales</td>
+                                        <td>20.000,00</td>
+                                        <td>0,23</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td>20.000,00</td>
+                                        <td>0,23</td>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>20.000,00</td>
+                                        <td>0,23</td>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>20.000,00</td>
+                                        <td>0,23</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>8.783.167,00</td>
+                                        <td>99,66</td>
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>8.783.167,00</td>
+                                        <td>99,66</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td>30.000,00</td>
+                                        <td>0,34</td>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td>30.000,00</td>
+                                        <td>0,34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td></td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td>30.000,00</td>
+                                        <td>0,34</td>
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td>30.000,00</td>
+                                        <td>0,34</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td>8.813.167,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Total Gastos</td>
+                                        <td>8.813.167,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#vivienda" aria-expanded="false">Zaragoza Vivienda</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="vivienda">
+                        <th:block th:fragment="vivienda">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/ZVivienda2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a> <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/ZVivienda_ CUENTAS_ANUALES_AUDITORIA2017.pdf">Cuenta anual y auditoría 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary=" Sociedad Municipal Zaragoza Vivienda, S.L.U" class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Sociedad Municipal Zaragoza Vivienda, S.L.U</caption>
+                                    <tr>
+                                        <th colspan="4" id="ingr">Ingresos</th>
+                                        <th id="gast" colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th headers="ingr" id="cap">Cap</th>
+                                        <th headers="ingr" id="denom">Denominación</th>
+                                        <th headers="ingr" id="eur">Euros</th>
+                                        <th headers="ingr" id="porc">%</th>
+                                        <th headers="gast" id="cap1">Cap</th>
+                                        <th headers="gast" id="denom1">Denominación</th>
+                                        <th headers="gast" id="eur1">Euros</th>
+                                        <th headers="gast" id="porc1">%</th>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 1 </td>
+                                        <td headers="ingr denom"> Impuestos Directos </td>
+                                        <td headers="ingr eur"> </td>
+                                        <td headers="ingr porc"> 0,00 </td>
+                                        <td headers="gast cap1"> 1 </td>
+                                        <td headers="gast denom1"> Gastos de Personal </td>
+                                        <td headers="gast eur1"> 4.559.997 </td>
+                                        <td headers="gast porc1"> 18,23 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 2 </td>
+                                        <td headers="ingr denom"> Impuestos Indirectos </td>
+                                        <td headers="ingr eur"> </td>
+                                        <td headers="ingr porc"> 0,00 </td>
+                                        <td headers="gast cap1"> 2 </td>
+                                        <td headers="gast denom1"> Gastos Corrientes en Bienes y Servicios </td>
+                                        <td headers="gast eur1"> 5.834.480 </td>
+                                        <td headers="gast porc1"> 23,32 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 3 </td>
+                                        <td headers="ingr denom"> Tasas, precios públicos y otros Ingresos </td>
+                                        <td headers="ingr eur"> 7.375.345 </td>
+                                        <td headers="ingr porc"> 29,48 </td>
+                                        <td headers="gast cap1"> 3 </td>
+                                        <td headers="gast denom1"> Gastos Financieros </td>
+                                        <td headers="gast eur1"> 314.120 </td>
+                                        <td headers="gast porc1"> 1,26 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 4 </td>
+                                        <td headers="ingr denom"> Transferencias Corrientes </td>
+                                        <td headers="ingr eur"> 4.270.873 </td>
+                                        <td headers="ingr porc"> 17,07 </td>
+                                        <td headers="gast cap1"> 4 </td>
+                                        <td headers="gast denom1"> Transferencias Corrientes </td>
+                                        <td headers="gast eur1"> 2.113.130 </td>
+                                        <td headers="gast porc1"> 8,45 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 5 </td>
+                                        <td headers="ingr denom"> Ingresos Patrimoniales </td>
+                                        <td headers="ingr eur"> 654.042 </td>
+                                        <td headers="ingr porc"> 2,61 </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> </td>
+                                        <td headers="gast eur1"> </td>
+                                        <td headers="gast porc1"> 0,00 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"> <strong>Operaciones Corrientes</strong> </td>
+                                        <td headers="ingr eur"> <strong>12.300.260  </strong> </td>
+                                        <td headers="ingr porc"> 49,17 </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> <strong>Operaciones Corrientes</strong> </td>
+                                        <td headers="gast eur1"> <strong>12.821.727 </strong> </td>
+                                        <td headers="gast porc1"> 51,25 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"> </td>
+                                        <td headers="ingr eur"> </td>
+                                        <td headers="ingr porc"> </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> </td>
+                                        <td headers="gast eur1"> </td>
+                                        <td headers="gast porc1"> 0,00 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 6 </td>
+                                        <td headers="ingr denom"> Enajenación de Inversiones Reales </td>
+                                        <td headers="ingr eur"> 832.636 </td>
+                                        <td headers="ingr porc"> 3,33 </td>
+                                        <td headers="gast cap1"> 6 </td>
+                                        <td headers="gast denom1"> Inversiones Reales </td>
+                                        <td headers="gast eur1"> 5.459.079 </td>
+                                        <td headers="gast porc1"> 21,82 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 7 </td>
+                                        <td headers="ingr denom"> Transferencias de Capital </td>
+                                        <td headers="ingr eur"> 10.229.079 </td>
+                                        <td headers="ingr porc"> 40,89 </td>
+                                        <td headers="gast cap1"> 7 </td>
+                                        <td headers="gast denom1"> Transferencias de Capital </td>
+                                        <td headers="gast eur1"> 3.800.000 </td>
+                                        <td headers="gast porc1"> 15,19 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"> <strong>Operaciones de Capital</strong> </td>
+                                        <td headers="ingr eur"> <strong>    11.061.715</strong> </td>
+                                        <td headers="ingr porc"> 44,22 </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> <strong>Operaciones de Capital</strong> </td>
+                                        <td headers="gast eur1"> <strong>3.800.000  </strong> </td>
+                                        <td headers="gast porc1"> 37,01 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"> <strong>OPERACIONES NO FINANCIERAS</strong> </td>
+                                        <td headers="ingr eur"> <strong>23.361.975  </strong> </td>
+                                        <td headers="ingr porc"> 93,39 </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> <strong>OPERACIONES NO FINANCIERAS</strong> </td>
+                                        <td headers="gast eur1"> <strong>22.080.806</strong> </td>
+                                        <td headers="gast porc1"> 88,27 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"> </td>
+                                        <td headers="ingr eur"> </td>
+                                        <td headers="ingr porc"> </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> </td>
+                                        <td headers="gast eur1"> </td>
+                                        <td headers="gast porc1"> 0,00 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 8 </td>
+                                        <td headers="ingr denom"> Activos Financieros </td>
+                                        <td headers="ingr eur"> </td>
+                                        <td headers="ingr porc"> 0,00 </td>
+                                        <td headers="gast cap1"> 8 </td>
+                                        <td headers="gast denom1"> Activos Financieros </td>
+                                        <td headers="gast eur1"> 24.000,00 </td>
+                                        <td headers="gast porc1"> 0,10 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> 9 </td>
+                                        <td headers="ingr denom"> Pasivos Financieros </td>
+                                        <td headers="ingr eur"> 1.653.780 </td>
+                                        <td headers="ingr porc"> 6,61 </td>
+                                        <td headers="gast cap1"> 9 </td>
+                                        <td headers="gast denom1"> Pasivos Financieros </td>
+                                        <td headers="gast eur1"> 2.910.949 </td>
+                                        <td headers="gast porc1"> 11,64 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"> <strong>OPERACIONES FINANCIERAS</strong> </td>
+                                        <td headers="ingr eur"> <strong>1.653.780   </strong> </td>
+                                        <td headers="ingr porc"> 6,61 </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> <strong>OPERACIONES FINANCIERAS</strong> </td>
+                                        <td headers="gast eur1"> <strong>2.934.949</strong> </td>
+                                        <td headers="gast porc1"> 11,73 </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"> </td>
+                                        <td headers="ingr eur"> </td>
+                                        <td headers="ingr porc"> </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> </td>
+                                        <td headers="gast eur1"> </td>
+                                        <td headers="gast porc1"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td headers="ingr cap"> </td>
+                                        <td headers="ingr denom"><strong>   Total Ingresos</strong> </td>
+                                        <td headers="ingr eur"> <strong>    25.015.755  </strong> </td>
+                                        <td headers="ingr porc"> 100,00 </td>
+                                        <td headers="gast cap1"> </td>
+                                        <td headers="gast denom1"> <strong>Total Gastos</strong> </td>
+                                        <td headers="gast eur1"> <strong>25.015.755 </strong> </td>
+                                        <td headers="gast porc1"> 100,00 </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#cultural" aria-expanded="false">Zaragoza Cultural</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="cultural">
+                        <th:block th:fragment="cultural">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/ZCultural2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/ZCultural_CUENTAS_ANUALES_AUDITORIA_2017.pdf">Cuenta anual y auditoria 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary="Sociedad Municipal Zaragoza Cultural, S.A.U" class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Sociedad Municipal Zaragoza Cultural, S.A.U</caption>
+                                    <tr>
+                                        <th colspan="4" id="ingr">Ingresos</th>
+                                        <th id="gast" colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th headers="ingr" id="cap">Cap</th>
+                                        <th headers="ingr" id="denom">Denominación</th>
+                                        <th headers="ingr" id="eur">Euros</th>
+                                        <th headers="ingr" id="porc">%</th>
+                                        <th headers="gast" id="cap1">Cap</th>
+                                        <th headers="gast" id="denom1">Denominación</th>
+                                        <th headers="gast" id="eur1">Euros</th>
+                                        <th headers="gast" id="porc1">%</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Impuestos Directos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 1</td>
+                                        <td> Gastos de Personal</td>
+                                        <td> 2.112.000,00</td>
+                                        <td> 20,47</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td> Impuestos Indirectos </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 2</td>
+                                        <td> Gastos Corrientes en Bienes y Servicios</td>
+                                        <td> 7.588.132,00</td>
+                                        <td> 73,56</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td> Tasas, precios públicos y otros Ingresos</td>
+                                        <td> 3.734.164,00 </td>
+                                        <td> 36,20</td>
+                                        <td> 3</td>
+                                        <td> Gastos Financieros </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>6.580.968,00</td>
+                                        <td>63,80</td>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td>560.000,00</td>
+                                        <td>5,43</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>5</td>
+                                        <td>Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>10.315.132,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>10.260.132,00</td>
+                                        <td>99,47</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Enajenación de Inversiones Reales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Inversiones Reales</td>
+                                        <td>55.000,00</td>
+                                        <td>0,53</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>55.000,00</td>
+                                        <td>0,53</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>10.315.132,00</td>
+                                        <td>100,00 </td>
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>10.315.132,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>8</td>
+                                        <td>Activos Financieros </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td>10.315.132,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Total Gastos</td>
+                                        <td>10.315.132,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#deporte" aria-expanded="false">Zaragoza Deporte</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="deporte">
+                        <th:block th:fragment="deporte">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/ZDEPORTE2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/ZDeporte_CUENTAS_ANUALES_AUDITORIA 2017.pdf">Cuenta anual y auditoria 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary="Zaragoza Deporte Municipal, S.A." class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Zaragoza Deporte Municipal, S.A.</caption>
+                                    <tr>
+                                        <th colspan="4" id="ingr">Ingresos</th>
+                                        <th id="gast" colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th headers="ingr" id="cap">Cap</th>
+                                        <th headers="ingr" id="denom">Denominación</th>
+                                        <th headers="ingr" id="eur">Euros</th>
+                                        <th headers="ingr" id="porc">%</th>
+                                        <th headers="gast" id="cap1">Cap</th>
+                                        <th headers="gast" id="denom1">Denominación</th>
+                                        <th headers="gast" id="eur1">Euros</th>
+                                        <th headers="gast" id="porc1">%</th>
+                                    </tr>
+                                    <tr>
+                                        <td> 1</td>
+                                        <td>Impuestos Directos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 1</td>
+                                        <td> Gastos de Personal</td>
+                                        <td> 1.270.000,00</td>
+                                        <td> 17,56</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td> Impuestos Indirectos </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 2</td>
+                                        <td> Gastos Corrientes en Bienes y Servicios</td>
+                                        <td> 3.141.500,00</td>
+                                        <td> 43,44</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td> Tasas, precios públicos y otros Ingresos</td>
+                                        <td> 2.096.500,00</td>
+                                        <td> 28,99</td>
+                                        <td> 3</td>
+                                        <td> Gastos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes </td>
+                                        <td> 3.685.000,00</td>
+                                        <td> 50,95 </td>
+                                        <td> 4</td>
+                                        <td> Transferencias Corrientes </td>
+                                        <td> 1.370.000,00</td>
+                                        <td> 18,94</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td> 5</td>
+                                        <td> Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>5.781.500,00</td>
+                                        <td>79,94</td>
+                                        <td></td>
+                                        <td> Operaciones Corrientes</td>
+                                        <td>5.781.500,00</td>
+                                        <td>79,94</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Enajenación de Inversiones Reales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Inversiones Reales</td>
+                                        <td>1.451.000,00</td>
+                                        <td>20,06</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td>1.451.000,00</td>
+                                        <td>20,06</td>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>1.451.000,00</td>
+                                        <td>20,06</td>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>1.451.000,00</td>
+                                        <td>20,06</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>7.232.500,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>7.232.500,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>8</td>
+                                        <td>Activos Financieros </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td>7.232.500,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Total Gastos</td>
+                                        <td>7.232.500,00</td>
+                                        <td> 100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#expo" aria-expanded="false">Zgz Arroba Desarrollo Expo, S.A.</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="expo">
+                        <th:block th:fragment="expo">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/Z_DESARROLLO_EXPO2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>  <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/ZDesarrollo_CUENTAS ANUALES_AUDITORIA 2017.pdf">Cuenta anual y auditoría 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary="Sociedad Municipal Zgz Arroba Desarrollo Expo, S.A." class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Sociedad Municipal Zgz Arroba Desarrollo Expo, S.A.</caption>
+                                    <tr>
+                                        <th colspan="4" id="ingr">Ingresos</th>
+                                        <th id="gast" colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th headers="ingr" id="cap">Cap</th>
+                                        <th headers="ingr" id="denom">Denominación</th>
+                                        <th headers="ingr" id="eur">Euros</th>
+                                        <th headers="ingr" id="porc">%</th>
+                                        <th headers="gast" id="cap1">Cap</th>
+                                        <th headers="gast" id="denom1">Denominación</th>
+                                        <th headers="gast" id="eur1">Euros</th>
+                                        <th headers="gast" id="porc1">%</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td> Impuestos Directos</td>
+                                        <td></td>
+                                        <td> 1</td>
+                                        <td></td>
+                                        <td> Gastos de Personal</td>
+                                        <td> 391.600,00</td>
+                                        <td>16,32</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td> Impuestos Indirectos </td>
+                                        <td></td>
+                                        <td> 2</td>
+                                        <td></td>
+                                        <td> Gastos Corrientes en Bienes y Servicios</td>
+                                        <td> 2.008.208,00</td>
+                                        <td> 83,68</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td> Tasas, precios públicos y otros Ingresos</td>
+                                        <td> 25.000,00</td>
+                                        <td> 1,04 </td>
+                                        <td> 3</td>
+                                        <td> Gastos Financieros</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes </td>
+                                        <td>1.799.808,00</td>
+                                        <td>75,00</td>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td>575.000,00</td>
+                                        <td>23,96</td>
+                                        <td>5</td>
+                                        <td>Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>2.399.808,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>2.399.808,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Enajenación de Inversiones Reales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Inversiones Reales </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Operaciones de Capital </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>2.399.808,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>2.399.808,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td>2.399.808,00</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Total Gastos</td>
+                                        <td>2.399.808,00</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#ecociudad" aria-expanded="false">Ecociudad  Zaragoza, S.A.U</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="ecociudad">
+                        <th:block th:fragment="ecociudad">
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/presupuestos_Entidades/Ecociudad2018.pdf">Presupuesto Completo<span class="oculto">documento en formato pdf</span></a>
+                            <a class="btn btn-danger pdf" href="/contenidos/gobierno-abierto/transparencia/liquidacion_auditoria/Ecociudad_CUENTAS_ANUALES_AUDITORIA_2017.pdf">Cuenta anual y auditoria 2017<span class="oculto">documento en formato pdf</span></a>
+                            <div class="table-responsive">
+                                <table summary="Ecociudad  Zaragoza, S.A.U" class="table table-striped table-condensed table-bordered">
+                                    <caption>Presupuesto 2018 Ecociudad Zaragoza, S.A.U.</caption>
+                                    <tr>
+                                        <th colspan="4" id="ingr">Ingresos</th>
+                                        <th id="gast" colspan="4">Gastos</th>
+                                    </tr>
+                                    <tr>
+                                        <th headers="ingr" id="cap">Cap</th>
+                                        <th headers="ingr" id="denom">Denominación</th>
+                                        <th headers="ingr" id="eur">Euros</th>
+                                        <th headers="ingr" id="porc">%</th>
+                                        <th headers="gast" id="cap1">Cap</th>
+                                        <th headers="gast" id="denom1">Denominación</th>
+                                        <th headers="gast" id="eur1">Euros</th>
+                                        <th headers="gast" id="porc1">%</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Impuestos Directos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>1</td>
+                                        <td>Gastos de Personal</td>
+                                        <td>734.808,07</td>
+                                        <td>2,45</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Impuestos Indirectos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>2</td>
+                                        <td>Gastos Corrientes en Bienes y Servicios</td>
+                                        <td>23.475.127,06</td>
+                                        <td>78,32</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Tasas, precios públicos y otros Ingresos</td>
+                                        <td>27.669.588,33</td>
+                                        <td>92,32</td>
+                                        <td>3</td>
+                                        <td>Gastos Financieros</td>
+                                        <td>161.212,00</td>
+                                        <td> 0,54</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>4</td>
+                                        <td>Transferencias Corrientes</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Ingresos Patrimoniales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>5</td>
+                                        <td>Fondo de Contingencia y otros imprevistos</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>27.669.588,33</td>
+                                        <td>92,32</td>
+                                        <td></td>
+                                        <td>Operaciones Corrientes</td>
+                                        <td>24.371.147,13</td>
+                                        <td>81,31</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Enajenación de Inversiones Reales</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Inversiones Reales</td>
+                                        <td>4.026.754,13</td>
+                                        <td>13,43</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>7</td>
+                                        <td>Transferencias de Capital</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Operaciones de Capital</td>
+                                        <td>4.026.754,13</td>
+                                        <td>13,43</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>27.669.588,33</td>
+                                        <td>92,32</td>
+                                        <td></td>
+                                        <td>OPERACIONES NO FINANCIERAS</td>
+                                        <td>28.397.901,26</td>
+                                        <td>94,75</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Activos Financieros</td>
+                                        <td>2.302.588,00</td>
+                                        <td>7,68</td>
+                                        <td>8</td>
+                                        <td> Activos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Pasivos Financieros</td>
+                                        <td>1.574.275,07</td>
+                                        <td>5,25</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td>2.302.588,00</td>
+                                        <td>7,68</td>
+                                        <td></td>
+                                        <td>OPERACIONES FINANCIERAS</td>
+                                        <td>1.574.275,07</td>
+                                        <td>5,25</td>
+                                    </tr>
+                                    <tr class="destacado">
+                                        <td></td>
+                                        <td>Total Ingresos</td>
+                                        <td>29.972.176,33</td>
+                                        <td>100,00</td>
+                                        <td></td>
+                                        <td>Total Gastos</td>
+                                        <td>29.972.176,33</td>
+                                        <td>100,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                </div>
+                <!--/*tabcontent*/-->
+            </div>
+            <!--/*col12*/-->
+        </div>
+        <!--/*container*/-->
+    </sede:content>
+</body>
+
+</html>
