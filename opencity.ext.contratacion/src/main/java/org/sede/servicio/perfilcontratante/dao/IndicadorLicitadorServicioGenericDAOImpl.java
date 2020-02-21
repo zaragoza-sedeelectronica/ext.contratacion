@@ -50,10 +50,10 @@ public class IndicadorLicitadorServicioGenericDAOImpl extends GenericDAOImpl<Ind
     }
     public BigDecimal consultaTotalLicitaciones(BigDecimal idEmpresa,BigDecimal servicio,String year){
         Query q = em().createNativeQuery("select COUNT(O.ID_OFER) as TOTALGANADOS\n" +
-                " from PERFILCONTRATANTE.PERFIL_CONTRATO CONT" +
-                " inner join PERFILCONTRATANTE.PERFIL_OFERTA O" +
+                " from PERFIL_CONTRATO CONT" +
+                " inner join PERFIL_OFERTA O" +
                 " on CONT.ID_CONTRATO = O.ID_CONTRATO" +
-                "  inner join PERFILCONTRATANTE.PERFIL_EMPRESA E" +
+                "  inner join PERFIL_EMPRESA E" +
                 "  on E.ID_EMPRESA=O.ID_EMPRESA" +
                 "  where CONT.ID_PORTAL=1" +
                 "  and E.ID_EMPRESA=:IDEMPRESA " +
