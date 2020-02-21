@@ -127,8 +127,8 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 	public HashMap<Integer,Integer> getContratosPorAnyo(String nif) {
 		HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
 		Query query = em().createQuery("select TO_CHAR(CONT.FECHA_PRESENTACION, 'yyyy'), COUNT(*) " +
-										"from PERFILCONTRATANTE.PERFIL_CONTRATO CONT " +
-										"    inner join PERFILCONTRATANTE.PERFIL_ADJUDICACION ADJ on CONT.ID_CONTRATO = ADJ.ID_CONTRATO " +
+										"from PERFIL_CONTRATO CONT " +
+										"    inner join PERFIL_ADJUDICACION ADJ on CONT.ID_CONTRATO = ADJ.ID_CONTRATO " +
 										"where ADJ.NIF_ADJU like " + nif +
 										" group by TO_CHAR(CONT.FECHA_PRESENTACION, 'yyyy')");
 //		query.setParameter("anyo",new Timestamp(start.getTime()));
