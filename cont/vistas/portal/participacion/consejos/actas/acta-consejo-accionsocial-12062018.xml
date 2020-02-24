@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+          <sede:meta title="Consejo Sectorial de Acción Social"        
+                 description="El Consejo Sectorial de Acción Social, antes de 1999 conocido como Consejo Local de Acción Social, es un órgano de participación de carácter consultivo y ámbito municipal. Facilita la participación de la ciudadanía y canaliza la información de las entidades asociativas, vecinales, colectivos, servicios municipales y otras administraciones colaborando en la planificación, desarrollo, evaluación y rendición de cuentas de las políticas de carácter social de la ciudad dirigidas a los grupos de población más desfavorecidos. En la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, dispone de recursos de información y documentación: reglamento, organización y composición del Pleno, agenda, orden del día y actas de las reuniones."  
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, legislación local, órgano consultivo, Consejo de la Ciudad, Consejo Sectorial, acción social, inclusión social y lucha contra la pobreza, city, council, Saragossa, electronic site, local government open government, citizen-authority relation,social participation, local legislation, advisory board,  City Council, Sectoral Council, social measures, Social inclusion and the fight against poverty"
+              >
+    </sede:meta>
+        <style>
+            body {
+            padding-top: 57px;
+            }
+
+
+            .titulo-procesos h2,
+            .procesos h2 {
+            color: #e83437 !important;
+            font-size: 42px !important;
+            }
+
+            .titulo-procesos h2 small,
+            .titulo-procesos h2 span,
+            .procesos h2 small,
+            .procesos h2 span {
+            color: #000000;
+            }
+
+            .ancho {
+            padding: 30px 0;
+            width: 100%;
+            }
+
+            .radius {
+            border-radius: 10px;
+            }
+
+            .ancho .fnd-blanco {
+            margin-bottom: 20px;
+            }
+
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: -15px;
+            font-size: 28px;
+            }
+
+            .menu-consejos li.active a {
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            .margin-t3em {
+            margin-top: 0 !important;
+            padding-top: 3em !important;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .cuadrado ul li div {
+            background-color: #e9e9e9;
+            border-radius: 10px;
+            padding-top: 10px;
+            padding-bottom: 60px;
+            margin-10px;
+            }
+
+            .cuadrado ul li div a {
+            margin-top: 5px;
+            color: #000000;
+            font-size: 20px;
+            }
+            .cuadrado ul li div img {
+            margin: 0px auto;
+            }
+
+            .fondo-dibujo {
+            background-image: url('/cont/vistas/portal/participacion/img/imagCabecera_ConsejoCiudad.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 200px;
+            }
+            
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn tr {
+
+            }
+
+            .tabla-bn td,
+            .tabla-bn th{
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+            
+            .redes-sociales {
+            margin-top: -13px;
+            font-size: 65px;
+            text-align: right;
+            }
+
+            @media (min-width: 768px) and (max-width: 1016px) {
+            .redes-sociales {
+            font-size: 44px;
+            }
+            }                             
+            
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container text-left margin-auto nomargin titulo-procesos fondo-dibujo">
+                <h2 class="text-right">
+                    <small>Participación</small>
+                    <span>|</span>
+                    Consejos Sectoriales
+                </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src=""
+                             class="img-responsive" alt=""/>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="container fnd-gris-claro ancho">
+                <div class="container-fluid">
+                    <div class="clearfix fnd-gris-claro">					
+                    <ul class="nav menu fnd-blanco radius col-sm-10 menu-consejos" role="tablist">
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/"
+                               style="border-radius: 10px 0 0 10px; border-right: solid 2px #000000;">Consejo de la
+                                Ciudad
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 active text-center">
+                            <a href="/sede/portal/participacion/consejos/consejos-sectoriales"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Consejos
+                                Sectoriales
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/grupos-trabajo"
+                               style="border-radius: 0 10px 10px 0;">Grupos de Trabajo
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="col-sm-2 redes-sociales">
+                        <a href="https://www.facebook.com/ZGZopencity/">
+                            <span class="fab fa-facebook-square"></span>
+                        </a>
+                        <a href="https://twitter.com/ZGZopencity">
+                            <span class="fab fa-twitter-square"></span>
+                        </a>
+                    </div>                       
+                </div>
+                <div class="container-fluid fnd-blanco radius">
+					<div class="col-md-12">
+					<h2>Consejo Sectorial de
+                    <strong>Acción Social</strong>
+                    </h2>
+					<p style="margin-bottom: 30px;">El Consejo Sectorial de Acción Social, es un órgano de participación e información, control y asesoramiento, de naturaleza consultiva y de ámbito municipal que surge en 1990. Su finalidad y objetivos es la de facilitar la participación de los ciudadanos y canalizar la información de las entidades asociativas en los asuntos municipales relativos a la Acción Social.</p>             
+
+
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation">
+                                <a href="/sede/portal/participacion/consejos/consejo-accionsocial#agenda">
+                                    <span class="far fa-calendar-check fa-lg"></span>
+                                    Agenda
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="/sede/portal/participacion/consejos/consejo-accionsocial#reglamento">
+                                    <span class="fa fa-address-card fa-lg"></span>
+                                    Reglamento
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="/sede/portal/participacion/consejos/consejo-accionsocial#composicion">
+                                    <span class="fas fa-users fa-lg"></span>
+                                    Composición
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="/sede/portal/participacion/consejos/consejo-accionsocial#doc">
+                                    <span class="far fa-file-pdf fa-lg"></span>
+                                    Documentación
+                                </a>
+                            </li>                            
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="agenda">
+        <div class="row">
+			<div class="col-md-12">				
+			        <h3 class="section-title offset-target">Acta del XII Consejo Sectorial de Acción Social, 12 de junio de 2018</h3>	
+			 <hr class="sm" />	
+	        </div>
+		<div class="col-md-3">
+					<h4 class="margin-t0em">Acta nº 21</h4>
+		</div>
+		<div class="col-md-9">
+<p>
+<strong>Salón de Recepciones</strong> Casa Consistorial (Plaza del Pilar, 2ª planta)<br/>
+Siendo las <strong>12.30 horas</strong> del día <strong>12 de junio de 2018</strong>, se reúnen en el Salón de Recepciones del<br/>
+Excmo. Ayuntamiento de Zaragoza, los miembros del Pleno del Consejo Sectorial de Acción Social:</p>
+		</div>
+
+		<div class="col-md-3">
+								<hr class="sm" />
+			<h4 class="margin-t0em">Asistentes</h4>
+		</div>
+		<div class="col-md-9">
+					<hr class="sm" />
+<ul>
+<li><strong>PRESIDENTA</strong>: Dª Luisa Broto, Consejera del Área de Presidencia y
+Derechos Sociales</li>
+<li><strong>VOCALES</strong>
+<ul><li>
+D. Miguel Serrano Martínez. Grupo Municipal Socialista (PSOE)</li><li>
+Dª Cristina García Torres. Grupo Municipal Ciudadanos</li><li>
+D. Félix Brocate Puri. Grupo Municipal Popular</li><li>
+D. Carmelo J. Asensio Bueno. Grupo Municipal Chunta Aragonesista (CHA)</li><li>
+D. Nacho Celaya. Coordinador General del Área de Presidencia y Derechos
+Sociales</li><li>
+Dª Silvina Ballestín Prieto. Instituto Aragonés de Servicios Sociales (IASS)</li><li>
+D. Francisco Javier Aribau. Fundación El Tranvía</li><li>
+Dª Estrelicia Izquierdo Lobo. Federación Aragonesa de Solidaridad (FAS)</li><li>
+Dª Susana Royo Beltrán. Cruz Roja</li><li>
+Dª Carmen Maldonado Moya. ONCE</li><li>
+D. Juan Carlos Castro, 
+D. Luis Molina Martínez.
+Fundación DFA</li><li>
+Dª Eva M.ª Velázquez Lozano. Plena Inclusión Aragón</li><li>
+Dª Elena Machín Sanz. Colegio Profesional de Trabajadores Sociales</li><li>
+D. José Mª Lamana Cónsola. Fundación Federico Ozanam</li><li>
+Dª Ana Mª Gutiérrez Mateo. CARITAS</li><li>
+Dª Marta Arjol Martínez. CC.OO Aragón</li><li>
+Dª Pura Huerta Laborda,
+Dª Margarita Moya.
+UGT Aragón</li><li>
+D. Óscar García Martínez. FABZ</li><li>
+Dª María Jesús Ruiz Antorán. Fundación Adunare</li><li>
+Dª Margarita Lambán Campillo. Coordinadora Aragonesa del Voluntariado</li><li>
+Dª Ana Núñez Vicente Fundación La Caridad</li><li>
+D. Daniel Gimeno Gandul,
+D. Adrián Serrano Villuendas.
+Red Aragonesa de Entidades Sociales para la Inclusión</li><li>
+Dª Marta Valencia Betrán. CERMI</li><li>
+Dª M.ª Teresa Sesé Oliver. Fórum de Entidades Aragonesas de Salud Mental</li><li>
+Dª Belén Portolés. YMCA</li><li>
+D. José Francisco López. Observatorio Aragonés de la Discapacidad</li><li>
+D. José Luis Rivas. Unión Vecinal Cesaraugusta</li><li>
+Dª Mª Jesús Extremiana. LARES ARAGÓN</li>
+
+</ul></li>
+
+<li><strong>Asisten como técnicos/as del Área de Derecho Sociales:</strong>
+<ul><li>
+D. Jesús Domínguez, Asesor del Área de Derechos Sociales.</li><li>
+D. Pedro Compte, Jefe de la Oficina de Planificación y Programación del Área de Derechos
+Sociales.</li><li>
+Dª Carmen Bastón, Jefa de Sección de la Oficina de Planificación y Programación del Área de
+Derechos Sociales.</li><li>
+Dª Teresa Yago, Jefa de Servicios Sociales Comunitarios.</li><li>
+Dª Pilar Aguerri Sánchez, de Zaragoza Vivienda.</li><li>
+Dª Eloísa García Paricio, de Zaragoza Vivienda.</li></ul></li>
+<li>
+<strong>Excusa su presencia</strong>: Dª Yolanda Mañas, Jefa de Servicios Sociales Especializados.</li>
+<li><strong>SECRETARÍA:</strong>
+<ul><li>Dª Asunción Heras, Jefa del Servicio Administrativo de Derechos Sociales.</li></ul>
+</li>
+</ul>					
+		</div>	
+					        			
+		<div class="col-md-3">
+								<hr class="sm" />
+			<h4 class="margin-t0em">Orden del día</h4>
+		</div>
+		<div class="col-md-9">
+					<hr class="sm" />
+<p>
+<strong>Punto Nº 1</strong>.- Lectura y aprobación del acta de la sesión anterior.</p><p>
+<strong>Punto Nº 2</strong>.- Dar cuenta por parte de la Consejera de las líneas de trabajo del Área de
+Derechos Sociales en relación al ámbito de Acción Social.</p>
+
+<p>
+<strong>Punto Nº 3</strong>.- Información de la candidatura de Zaragoza, Ciudad Amiga de la Infancia
+(UNICEF).</p>
+<p>
+<strong>Punto Nº 4</strong>.-  Comisiones de trabajo:</p>
+<ul><li>Resumen de los trabajos de la Comisión de Derechos Sociales. Comisión Transversal de la
+Discapacidad</li><li>
+Resumen de los trabajos realizados en la Comisión de Acción Comunitaria y Cohesión
+Social</li>
+</ul>
+<p>
+<strong>Punto Nº 5</strong>.- Aportaciones al debate sobre la composición y sentido del Consejo Sectorial de
+Acción Social.</p>
+<p><strong>Punto Nº 6</strong>.- Puntos de debate propuesto por las entidades.
+<br/><em>(Pendiente de recepción de propuestas... hasta el 1 de junio)</em></p>
+<p><strong>Punto Nº 7</strong>.- Ruegos y preguntas.</p>
+<p><em>Nota: Duración prevista de la sesión 1h 45'</em></p>	
+			</div>
+
+		<div class="col-md-3">
+								<hr class="sm" />
+			<h4 class="margin-t0em">Resumen de la sesión</h4>
+		</div>
+		<div class="col-md-9">
+					<hr class="sm" />
+<p>Inicia la sesión Dª Luisa Broto, Vicealcaldesa y Consejera de Presidencia y Derechos Sociales
+en su calidad de Presidenta, dando la bienvenida a los asistentes al décimo segundo Consejo
+Sectorial de Acción Social de esta legislatura.</p>
+<p>
+Excusa la presencia de Yolanda Mañas, Jefa de Servicio de los Servicios Sociales Especializados.</p>
+<p><strong>PUNTO Nº 1.- Lectura y aprobación del acta de la sesión anterior</strong></p>
+<p>
+ Los presentes aprobaron por unanimidad el acta remitida con anterioridad a la convocatoria.</p>
+<p><strong>PUNTO Nº 2.- Dar cuenta por parte de la Consejera de las líneas de trabajo del Área de
+Derechos Sociales en relación al ámbito de Acción Social</strong></p>
+<p><strong>2.1.- Oficina de Atención a la Ciudadania y Buenas Prácticas</strong></p>
+<p>
+ La Consejera pasa la palabra a Suso Dominguez para que informe al respecto.</p>
+ <p>
+ Recuerda a todas y a todos que disponen de un documento al respecto y pasa a hacer un
+breve resumen de su contenido :</p>
+<p>
+ Se trata de una propuesta innovadora que va a redundar en la mejora de la atención de los
+Servicios Sociales de la ciudad y que se basa en concebir a la persona como sujeto de derechos y
+como el centro de la atención.</p>
+<p>
+Forma parte de una estrategia más global que pretende mejorar y centrar los Servicios
+Sociales en los derechos y los cuidados de las personas.</p>
+<p>
+ Un modelo en consonancia con el nuevo modelo organizativo de los Servicios Sociales, con la
+adecuada dotación de personal, con las medidas de cuidado, formacion, supervision de los
+profesionales, con la mejora de los equipamientos que dignifiquen la atención, con lo normativo
+que facilite el acceso a los recursos, a la participacion...., señalando, en este ambito, el importante
+papel del Consejo Sectorial de Acción Social.</p>
+<p>
+ Destaca las cuatro líneas de trabajo:</p>
+ <ul>
+	 <li>Línea 1: Promocion de los Derechos y Deberes de la Ciudadanía:
+	 <p>Consiste en dar a conocer derechos y deberes en materia de Servicios Sociales,
+informacion de servicios y prestaciones que se tramitan desde los CMSS, mejorar la
+formación de los profesionales en materia de derechos y deberes, y la formación en temas
+especialmente sensibles como refugiados, inmigración, orientación sexual..., que se
+considera requieren una formación y cuidado especial.</p>
+	</li>
+	<li>Línea 2: Ética, Calidad y Buenas Practicas:
+	<p>Pretende garantizar que los ciudadanos puedan acceder en condiciones de igualdad a los
+servicios, desarrollar protocolos para quejas y sugerencias, realizar un analisis de las
+buenas practicas que ya se están llevando a cabo en los servicios sociales, ponerlas en
+valor e intentar generalizarlas a otros centros. En definitiva, ser proactivos en todos estos
+temas
+	</p>
+	</li>
+	<li>Línea 3: Atención a la Ciudadania:<p>
+ La Oficina sería un espacio específico en el cual la ciudadanía pueda presentar quejas,
+sugerencias, propuestas de mejora..., sin que ello implique que se cierren las demás puertas
+existentes: CMSS, Jefaturas de los Servicios, la propia Consejería..
+ Su objetivo sería centralizar todas las quejas, sugerencias, propuestas, elaborar
+tipologías, estudios y realizar análisis de todo ello.</p></li>
+	<li>Línea 4: Participacion:
+	<p>Se cree que cualquier proceso de mejora tiene que contar con la participación.</p>
+	<ul><li>En primer lugar, de las entidades representadas en el Consejo Sectorial de Acción
+Social. Para ello, se propone la creacion de una comisión especifica dependiente del
+Consejo, para trabajar estos temas</li>
+	<li>En segundo lugar, promoviendo procesos de participación en los territorios, a través
+de las Juntas de Distrito</li>
+	<li>Como reto de futuro, promover mecanismos de participacion de los propios usuarios en
+el diseño y funcionamiento de los Centros Municipales de Servicios Sociales.</li>
+	</ul>
+	<p>La Oficina está ubicada en el Centro Cívico Delicias, en la planta octava.</p>
+	<p>Tiene un horario de funcionamienton abierto, sin cita previa: los martes y miercoles de
+10 a 13 h, y los jueves de 16 a 19 h. El resto del horario será de atención con cita previa,
+que puede solicitarse a través de teléfono o de correo electrónico.</p>
+	<p>Abrirá sus puertas a toda la ciudadanía el día 18 de junio.</p>
+	<p>Se propone a los miembros del Consejo la lectura del documento entregado y se establece
+el plazo de 1 mes para realizar aportaciones y sugerencias al mismo a través del correo
+electrónico <a href="mailto:oficinadebuenaspracticas@zaragoza.es">oficinadebuenaspracticas@zaragoza.es</a></p>
+	</li>
+	</ul>
+
+<p><strong>2.2.- Propuesta de mapa de Convenios, Subvenciones en concurrencia competitiva,
+Concertacion:</strong></p>
+<p>La Consejera hace referencia al documento, entregado a todas y a todos, " Propuesta de
+criterios para gestionar las subvenciones en concurrencia competitiva, convenios, conciertos y
+contratos en el ámbito de los servicios sociales del Ayuntamiento de Zaragoza".</p>
+<p>Recuerda que la elaboracion del citado documento fue un reto que se adquirió desde la
+Consejería, de largo recorrido, que ha sido trabajado conjuntamente con PSOE y CHA, basado en
+una relacion de madurez e igualdad con todas las entidades de cara a tener un mapa de convenios,
+contratos, concertaciones, subvenciones en concurrencia competitiva, de la acción social.</p>
+<p>El compromiso era elaborar un documento con los partidos de izquierdas y presentarlo al
+Consejo Sectorial.</p>
+<p>Considera que el trabajo se ha cumplido, de tal manera que está redactado desde mayo 2017,
+pero por circunstancias de la situacion actual y de aritmética política, no está suscrito por los tres
+partidos.</p>
+<p>Se presenta al Consejo Sectorial por obligación y por compromiso, como una alternativa y
+herramienta de trabajo que permita hacer un mapa de todo lo existente en el ámbito de la acción
+social, ser evaluado en cada ejercicio y estar finalizado al terminar el mandato, de tal manera que
+permita, a partir de ahora, crear un campo de juego futuro, con unos criterios que considera son
+un punto y aparte que permitiría llegar al presupuesto de 2019, con una propuesta clara.</p>
+<p>Quiere dejar patente que siempre habrá que tener en cuenta que:</p>
+
+<ul>
+	<li>Hay una valoracion técnica, bien sea convenios, conciertos, subvenciones..</li>
+	<li>Hay un margen de disponibilidad política, que no discrecionalidad, entendiendo que la
+política significa que los gobiernos hagan apuestas concretas y claras.</li>
+	<li>Que esto es un trabajo ingente, que va a permitir que haya transparencia, que haya una
+fotografía, también transparente, a la hora de llevar a cabo propuestas a medio y largo plazo.</li>
+</ul>
+<p>Es un documento ambicioso en el que hay una parte de justificación en sí y otra parte en el que
+se recogen los criterios que entienden, pueden ayudar a plantear una apuesta hasta el 2019.
+</p>
+<p>Recuerda que el planteamiento era traer el documento al Consejo, le hubiera gustado que
+viniese con la firma de los tres partidos, hasta ahora no ha podido ser, ello no implica que no
+pueda serlo en el futuro.</p><p>
+Es un documento para trabajar, para debatir y hacer propuestas.</p>
+<p><strong>2.3.- Plan Integral de Sinhogarismo</strong></p>
+<p>La Consejera informa de la jornada que se realizó el 5 de junio, de presentación del retorno del
+proceso participativo del Plan Integral de Sinhogarismo, en el que hubo una mesa de expertos, una
+conferencia sobre la perspectiva que se tiene en relación a la exclusión residencial, que considera
+una apuesta política muy importante.</p><p>
+ El documento está en la web municipal. Se ha hecho ya la recogida del proceso participativo
+donde se señalan indicadores muy interesantes y faltaría la validación que se hará próximamente y
+la presentacion con los grupos políticos.</p><p>
+ Recuerda que se hizo una jornada abierta con entidades, con la red de personas que están
+trabajando en la inclusión, que han aportado una serie de experiencias muy interesantes.</p>
+<p><strong>2.4.- Propuesta de Reglamento de los Centros Municipales de Servicios Sociales</strong></p>
+<p>Interviene la Consejera informando que este es un proyecto que se elabora y se presenta por
+primera vez, que está encima de la mesa, y que quiere que se abra al debate.
+</p><p>Se elabora por exigencia del Decreto del Gobierno de Aragón por el que se regula la
+organización y funcionamiento de los Centros de Servicios Sociales en Aragón, que establece: "las
+entidades locales titulares del Centro de Servicios Sociales deberán aprobar un reglamento de
+funcionamiento interno del Centro y la Carta de derechos y deberes de las personas usuarias".
+</p><p>Se ha querido traer al Consejo Sectorial porque ello implica que se va a dotar a los Centros
+Municipales de Servicios Sociales de un reglamento propio. Se hará, una consulta publica, a través
+de Gobierno abierto, sobre la cual se informará previamente al Consejo para que todos/as que
+quieran hacer alguna aportación la pueda llevar adelante.
+</p><p><strong>2.5.- Subvenciones en materia de Acción Social en régimen de concurrencia competitiva,
+ejercicio 2018.</strong>
+</p><p>La Consejera pasa la palabra a Carmen Bastón para que informe.
+</p><p>Hace referencia al documento facilitado a todas y a todos que recoge una serie de datos
+generales sobre las convocatorias de subvenciones de los tres últimos años, 2016, 2017 y 2018:
+número de expedientes presentados, número de entidades nuevas, número de expedientes valorados
+positivamente, número de expedientes denegados, numero de expedientes excluídos y consignación
+presupuestaria municipal.
+</p><p>Respecto a la convocatoria del 2018, solamente se puede confirmar como dato, que han
+presentado 182 solicitudes, ya que en este momento, se está en la fase de valoración de los
+expedientes. Se está trabajando con un calendario que permita tener aprobada la resolucion
+provisional antes de finalizar el mes de julio, que es el compromiso adquirido por la Consejera en
+anteriores reuniones del Consejo.
+</p><p>Finalizada la exposición de los temas del punto 2, la Consejera abre un turno de palabras:
+</p><p><strong>Interviene Carmelo Asensio</strong>, de CHA, en referencia al punto 2.2, mapa de subvenciones y
+convenios.
+</p><p>Indica que, tal y como ha explicado la Consejera, se trata de un trabajo desarrollado entre los
+tres partidos de izquierdas, ZEC, PSOE Y CHA, en los dos últimos años. El hecho de que no se
+haya suscrito o rubricado la firma, no es debido solamente a la peculiar situación del
+Ayuntamiento, sino porque a su grupo, y cree que también al Gobierno, le interesa mucho testarlo
+con todos los componentes del Consejo, ver que propuestas se pueden incorporar y que aspectos se
+pueden mejorar.
+</p><p>La filosofía consiste en fijar unos criterios claros en las convocatorias de subvenciones, que ya
+se trabajó muy bien a través de varios talleres participativos y, sobre todo, que los convenios no
+sean utilizados como moneda política.
+</p>
+<p>Se ha intentado, de la forma mas objetiva posible, establecer los criterios que tienen que existir
+para que haya convenios, nuevos convenios, que convenios pueden pasar a subvenciones, que
+papel van a tener los conciertos, que es algo que hay que desarrollar más, pero que es una
+propuesta que está completamenta abierta.
+</p>
+<p>Afirma que le gustaría recibir valoraciones y aportaciones del tejido social y también de
+Ciudadanos y PP.	
+</p>
+<p><strong>Interviene Miguel Serrano, del PSOE en referencia a varios de los puntos expuestos:</strong></p>
+<ul><li><p>Respecto al mapa de subvenciones y convenios, indica que si bien el ambiente político en el
+Ayuntamiento ha dificultado la posibilidad de que este acuerdo se trabajara un poco más,
+no es el único motivo por lo que CHA y PSOE no han terminado de rematar el mismo.
+</p><p>Considera que se ha hecho un trabajo durante los ultimos años que se plasma en el
+documento que el Gobierno presenta hoy, pero hay que adaptarlo a los cambios legislativos
+que se han producido desde el inicio de la negociacion y se refiere a la legislación
+aragonesa en materia de conciertos, que abre unas perspectivas muy interesantes en la
+medida de valorar la posibilidad de incorporar a este acuerdo, el modelo de conciertos que
+se está llevando a cabo en el Gobierno de Aragón.
+</p><p>Hace un llamamiento a las entidades para que aporten inquietudes o necesidades que
+puedan encontrar ante la regulacion de subvenciones, convenios y conciertos.
+</p><p>Desde el PSOE están dispuestos a seguir trabajando para que la ciudad de Zaragoza pueda
+acabar la legislatura con un mapa claro y unas reglas de juego acordadas entre todos, para
+que el futuro esté más reglado. Por ello, entiende que es necesario el concurso de otras
+fuerzas politicas, de Ciudadanos y el PP y no solo de los partidos de izquierdas
+</p></li><li><p>Respecto a la Oficina de Atención a la Ciudadania y Buenas Prácticas, considera que es
+una iniciativa que puede resultar muy interesante y el único matiz o comentario que se
+puede hacer desde el grupo socialista es que no se convierta en una especie de tribunal de
+segunda lectura de expedientes, es decir, en un tribunal de apelación ante demandas que
+han sido denegadas por los Centros Municipales.
+Entiende que la filosofía que motiva la Oficina es muy positiva al incidir en la calidad de la
+atención y en la mejora de los procesos.
+</p></li><li><p>Respecto al Reglamento de los Centros Municipales de Servicios Sociales, le parece
+interesante abrirlo al debate. Es un trabajo que no se había hecho hasta ahora y que
+probablemente pueda solucionar muchos de los pequeños conflictos que se dan en el día a
+día en los Centros
+</p><p>También agradece a los técnicos el trabajo realizado por la premura para sacar las
+subvenciones.</p>
+</li></ul>
+<p><strong>Interviene Elena Machin, del Colegio Profesional de Trabajadores Sociales</strong> felicitando por la
+Oficina de Atención a la Ciudadanía que, independientemente de ver como se va a ir
+desarrollando, consideran va a ser muy útil.
+</p><p>También valoran positivamente la posibilidad de hacer aportaciones, aunque les hubiera
+gustado poder haberlas hecho antes de la presentación, sobre todo por el perfil que el Colegio
+Profesional tiene en referencia a los servicios sociales. Esperan que alguna/o de las/os
+trabajadoras/es de la Oficina tenga el perfil de trabajadora/or social.
+</p><p>Al no haber más palabras <strong>interviene la Consejera</strong>strong> en respuesta tanto a Carmelo Asensio como
+a Miguel Serrano respecto al mapa de subvenciones, convenios, concertaciones, informando que:
+</p><ul><li>Se ha hecho un ofrecimiento a Ciudadanos para hablar sobre el tema y se ha trabajado sobre
+él.
+</li><li>Con el PP existen ciertas diferencias, pero todas las aportaciones serán bienvenidas.
+</li></ul>
+<p>Recuerda que el documento no está cerrado, que es fundamental hacer un mapa de la acción
+social municipal de este calado en una ciudad en la que no hay que olvidar la historia, la
+trayectoria de los diferentes convenios, concertaciones.. Por eso se ha traído aquí, así como se ha
+asumido el embate de las subvenciones en concurrencia competitiva, que no satisfacían a nadie
+porque eran cuestionadas y se pusieron en el mismo plano técnicos, politicos y entidades en un
+ejercicio de madurez.
+</p><p>Vuelve a gradecer el trabajo realizado al PSOE y CHA, pero tambien les plantea que debe
+culminarse, y que ello implica abrir la mano, y a todas las entidades que, sintiendo la premura de
+tiempo, la idea es que se madure porque se trata de propuesta para los próximos presupuestos.
+Considera que hay tiempo para hablar, debatir y hacer aportaciones sin esperar a un Consejo
+Sectorial.
+</p><p>Indica que se está dispuesto, tanto desde la Oficina Técnica, como desde cualquier otro ámbito
+del Departamento de Derechos Sociales, a responder, plantear o realizar reuniones concretas.
+</p><p><strong>Nacho Celaya</strong> refuerza lo dicho por la Consejera y recuerda que, desde el principio, el
+principal objetivo es lograr un ejercicio de madurez en la relación entre los partidos, instituciones
+y entidades sociales.
+</p><p>Hace un repaso del proceso e indica que lo que se presenta es un documento político y se
+opta por ello cuando no se está de acuerdo en alguna cuestión esencial de lo que se está
+debatiendo. No debe olvidarse que en el fondo del debate está que pasa con los los convenios.
+</p><p>Para abordar este debate donde las distintas entidades legítimamente están en desacuerdo, se
+hace una apuesta reafirmando, tal y como se recoge en el documento, que los firmantes del mismo
+están a favor de los convenios como un instrumento esencial en el ámbito social, que nada tiene
+que envidiar a las subvenciones en relación a la transparencia. Se establecen unos criterios que
+van a ser conocidos por todos, se relacionan en los presupuestos con lo que la transparencia
+quedaría garantizada.
+</p><p>El documento recoge el compromiso para que, en un momento determinado, se diga que
+entidades podrían ir a convenios marco, cuales podrían pasar de subvenciones a convenios...
+</p><p>Recuerda que el documento no esta cerrado y ahora es el momento de la participación.
+</p><p>Considera que es importante situar, en la justa medida, la dificultad que ha tenido el recorrido
+de este documento.</p>
+<p><strong>Interviene Jesús Dominguez</strong> precisando algunas cuestiones respecto a la Oficina de Atención a la
+Ciudadanía y Buenas Prácticas. Quiere dejar claro que:</p>
+<ul><li>Nunca ha tenido caracter ejecutivo.
+</li><li>No va a sustituir la función de los profesionales de los Servicios Sociales en la aclaración
+de dudas o resolución de quejas, ni de las Directoras de los Centros, ni de las Jefaturas de
+los Servicios.
+</li><li>La Oficina tiene una visión de detección, análisis, reflexión y de propuestas de mejora.
+</li></ul><p>En respuesta a las cuestiones planteadas por la representante del Colegio Profesional de
+Trabajadores Sociales recuerda que desde el Área, ante cualquier proceso participativo, el
+procedimiento a seguir es siempre el mismo: elaborar un documento, su presentacion pública,
+presentación en el Consejo para aportaciones y que, como siempre se está abierto a valorar todas
+aquellas que se realicen.
+</p><p>Respecto a los perfiles de los trabajadores de la Oficina, señala que se ha sido muy
+cuidadoso sobre el proceso de selección de los mismos, de tal manera que fue un procedimiento
+abierto a casi todos los perfiles profesionales de los Servicios Sociales: trabajadores sociales,
+educadores sociales, psicólogos, técnicos auxiliares..., sin embargo a la convocatoria no se
+presentó ningún trabajador social.</p>
+<p><strong>Interviene Jose Mª Lamana, de la Fundación Federico Ozanam</strong> felicitando por el trabajo
+realizado en relación al mapa, si bien, partiendo que está inconcluso y hay que conseguir cerrarlo,
+lógicamente habrá que leer el documento.
+</p><p>Como entidad que propuso en el Consejo que habría que tener una perspectiva más amplia y
+abrir el tema también a los conciertos, cree que para poder cumplir unos plazos tan ajustados, el
+tema de los conciertos presenta algunas dificultades de aplicación de cara a tener una cierta
+operatividad en los presupuestos de 2019. Considera que es una cuestión a explorar y aunque sean
+defensores de la utilización de los mismos, sobre todo en sustitución de los contratos, no resulta tan
+evidente poder utilizarlos.
+</p><p>A priori, la Fundación plantea hacer aportaciones al documento, pero no abrir demasiados frentes
+más dado el grado de complicación de la situacion actual, e intentar tirar adelante si se quiere
+tener un porcentaje de aplicación de los conciertos en 2019.
+</p><p><strong>PUNTO Nº 3. Información de la candidatura de Zaragoza, Ciudad Amiga de la Infancia
+(UNICEF).</strong>
+</p><p>La Consejera pasa la palabra a Nacho Celaya para que informe acerca de la situación de
+esta propuesta surgida del debate sobre el estado de la ciudad.
+</p><p>Nacho hace referencia a la documentación que se ha puesto a disposición de los asistentes
+al Consejo, haciendo hincapié en que todos los documentos del trabajo realizado, hasta ahora, con
+las entidades puede consultarse en la página web:
+</p><ul><li>Un mapa explicativo del momento actual.
+</li><li>Información sobre el cumplimiento de plazos.
+</li><li>Un diagnóstico de la infancia, completado con un mapa de todos los
+recursos de infancia de Zaragoza, ya presentado públicamente por Luisa
+Broto y Teresa Yago con anterioridad.
+</li><li>La memoria de todo lo que se hace en el Ayuntamiento en el ámbito de la
+infancia, que pone de manifiesto la potencia de la ciudad en este tema, tanto
+en el ámbito público como en el social.
+</li><li>El Plan de Infancia que se presenta este año.</li></ul>
+<p>Respecto a este último punto, hace referencia a la propuesta que se le va a hacer a Unicef:
+que los ya existentes IV Plan Joven y Plan de Lucha contra la Pobreza Infantil formen parte de
+todo el Plan Local de Infancia y Adolescencia de la ciudad de Zaragoza.
+</p><p>De dicho plan local, resalta como aportación novedosa sus cinco objetivos estratégicos y
+nombra como el principal de ellos "el compromiso de construir de manera colectiva e implementar
+en cuatro años un modelo de participación infantil y juvenil para toda la ciudad". Ello supone que
+no se aspira solamente a que haya un Consejo de Infancia que represente a la infancia y la
+adolescencia, sino a hacer un modelo de participacion cuyas lineas se recogen en el documento.
+</p><p>Destaca la labor de los técnicos del Ayuntamiento en este plan y presenta como objetivo que
+el mismo sea considerado como un “plan cero”, un compromiso para que finalmente Zaragoza sea
+una Ciudad Amiga de la Infancia.
+</p><p>A continuación, la Consejera recuerda que esta propuesta quedará, en principio, resuelta
+y cerrada con Unicef en octubre del presente año, tras su visita y validación. Así mismo, resalta la
+importancia de este proceso con vistas al futuro, más allá del reconocimiento del sello de calidad.
+</p><p><strong>Interviene Ana M.ª Gutiérrez Mateo (Cáritas)</strong> para preguntar acerca del momento actual o
+desarrollo del Plan de Lucha contra la Pobreza Infantil, ya que le ha llegado información desde las
+Juntas de Distritos sobre la puesta en marcha de comisiones y a su entidad le gustaría también
+implicarse en el proceso.
+</p><p><strong>Nacho Celeya</strong> responde que ese tema será abordado en el punto 6 del orden del día,
+dedicado al debate propuesto por las entidades.
+</p><p>Posteriormente, <strong>la Consejera</strong> pasa al punto 4 del orden del día sobre Comisiones de
+Trabajo, cediéndole la palabra a Pedro Compte para que pueda informar acerca de la Comisión
+Transversal de la Discapacidad.
+</p><p><strong>PUNTO Nº4.- Comisiones de Trabajo</strong>
+</p><p><strong>Resumen de los trabajos de la Comisión de Derechos Sociales. Comisión
+Transversal de la Discapacidad</strong>
+</p><p>Pedro Compte comienza su exposición recordando que en el año 2016 en la Comisión
+Transversal de la Discapacidad se planteó un proceso ambicioso que consistía en crear una
+“comisión de comisiones” subdividida, además, en cuatro mesas: derechos sociales, movilidad ,
+contratación, y ocio, cultura y deporte.
+</p><p>Sin embargo, debido a diversas cuestiones del día a día, la única subcomisión que
+realmente ha funcionado ha sido la de derechos sociales.
+</p><p>Tras una seria de trabajos realizados, el pasado día 22 de marzo tuvo lugar una nueva
+reunión en la que participaron ONCE, ASZA, Disminuidos Físicos de Aragón, Salud Mental de
+Aragón, COCEMFE, CERMI y por parte del Ayuntamiento de Zaragoza, Zaragoza Vivienda, la
+Oficina Técnica de Planificación de Derechos Sociales y el Coordinador del Área. Allí se hizo
+balance del trabajo realizado en los dos últimos años y se cerraron algunos temas. Se llegó al
+acuerdo de que se daba por finalizada la anterior composición de una comisión con cuatro
+comisiones y se tomó la decisión de centrar el trabajo en el área de derechos sociales, ya que, el
+tema de la discapacidad está actualmente integrado en todos los procesos de planificación y
+participación del Ayuntamiento; es decir, sin necesidad de crear comisiones específicas, la
+discapacidad está representada en diferentes ámbitos, tales como la programación de las fiestas del
+Pilar, la remodelación del Mercado Central, la elaboración del IV Plan Joven o la revisión del
+Plan de Movilidad Sostenible de Zaragoza con la participación de las entidades de discapacidad
+en los grupos de trabajo. Debido a la normalización del tema, la creación de comisiones en el seno
+del Consejo Sectorial no supondría un valor añadido a esos procesos de participación que ya
+tienen en cuenta la discapacidad.
+</p><p>Pedro alude al manteniendo de la comisión específica de derechos sociales y pone de
+relieve, como uno de los últimos trabajos realizados, una revisión de las ordenanzas municipales de
+cara al año 2019, para cambiar conceptos y contenidos desde la óptica de la discapacidad. Es un
+documentos de trabajo ya enviado a los distintos servicios. 
+</p><p>Por otro lado, indica que se está trabajando en cuestiones como:</p>
+<ul><li>La revisión de la condición de discapacidad como elemento que considerar
+en los baremos de prestaciones y ordenanzas municipales, ya con un
+contenido económico.
+</li><li>La discapacidad auditiva, para darle prioridad a un tema poco tratado hasta
+ahora.
+</li><li>La accesibilidad universal de determinados equipamientos, como proyecto
+piloto.
+</li><li>La continuidad de los convenios de Zaragoza Vivienda con entidades de
+discapacidad, para proporcionarles sus servicios.
+</li><li>La visualización de la discapacidad en las campañas de comunicación
+municipales.</li></ul>
+
+<p><strong>Resumen de los trabajos realizados en la Comisión de Acción Comunitaria y
+Cohesión Social</strong></p><p>
+Luisa Broto pasa la palabra a Jesús Domínguez para informar acerca de esta Comisión.
+</p><p>Jesús comienza su intervención agradeciendo a Clara del Campo la labor que ha llevado
+a cabo en el Ayuntamiento y recuerda que esta Comisión empezó a funcionar en abril de 2017, a
+propuesta de la Fundación Federico Ozanam, para: analizar las experiencias de acción
+comunitaria y las buenas prácticas que tenían lugar en la ciudad de ese momento, compartir
+reflexiones, avanzar en la propuesta de definición de un marco de acción comunitaria para el
+Ayuntamiento de Zaragoza y, a partir de todo esto, elevar propuestas al Consejo Sectorial para que
+éste las validase y pudiesen finalmente ser aplicadas como políticas.
+</p><p>Indica que en esta comisión, además de los técnicos municipales, también participan
+Cáritas, Zaragoza Vivienda, Adunare, F. Ozanam, La Bezindalla, la AAVV Manuel Viola, la AAVV
+Oliver y la Fundación El Tranvía.
+</p><p>Hasta ahora, el trabajo fundamental de la comisión ha sido analizar las experiencias
+existentes en la ciudad con la participación de las entidades. Así, de esta manera, han sido
+examinadas las siguientes:
+</p><ul><li>Las viviendas sociales del Actur, con la colaboración de Zaragoza Vivienda
+y La Bezindalla.
+</li><li>Una experiencia puntural en el barrio de Las Fuentes, a través de la
+Fundación El Tranvía.
+</li><li>Delicias ACTÚA, con la coordinación de la AAVV Manuel Viola, CODEF y
+el Centro de Salud Delicias.
+</li><li>Las experiencias múltiples y con gran trayectoria de la AAVV Oliver.
+</li><li>Casco Histórico, a través del PICH y del Programa de Intervención Comunitaria Intercultural (ICI) de F. Ozanam.
+</li><li>Fundación Adunare, todavía pendiente de concretar.
+</li></ul>
+<p>Destaca el gran aprendizaje derivado del análisis de estas experiencias de marcado
+carácter comunitario, pero se ha podido constatar que hay mucha confusión respecto a los
+conceptos y metodologías en torno a la acción comunitaria siendo necesario avanzar en su
+definición conceptual y desarrollar un marco operativo para ella dentro de las servicios sociales o,
+incluso, más allá de éstos, dentro de toda la acción municipal para poder trabajar desde otra
+perspectiva.
+</p><p>Finaliza su intervención señalando que la Fundación Ozanam y La Bezindalla han
+elaborado un documento que recoge toda la labor anteriormente expuesta y sobre el que se está
+trabajando actualmente con el compromiso, por parte de la comisión, de presentar en el próximo
+Consejo Sectorial de noviembre la definición de algunos conceptos así como una serie de
+propuestas concretas para que puedan ser puestas en marcha.
+Luisa Broto agradece su intervención. Al no haber dudas entre los asistentes, la Consejera
+da paso al siguiente punto en el orden del día. </p>
+<p><strong>PUNTO Nº 5.- Aportaciones al debate sobre la composición y sentido del Consejo Sectorial de
+Acción Social.</strong></p><p>
+Pasa la palabra a Nacho Celaya
+</p><p>Hace referencia a los dos documentos que se enviaron, con caracter previo a esta reunión, a
+todos los componentes del Consejo, en el que se recogen las aportaciones realizadas sobre las que
+se va a desarrollar el debate.
+</p><p>Han sido 6 las entidades que han hecho aportaciones sobre la composición (quién) y 5 sobre
+el sentido (Qué), de las 23 entidades sociales miembros del Consejo y las 3 entidades que han
+solicitado formar parte del mismo.
+</p><p>Opciones planteadas en la reunión del Pleno:
+</p><p><u>Respecto a la composición del Consejo. Quién.</u>
+</p><p>Se plantean dos opciones para el debate:
+</p>
+<ol><li>No tocar nada, seguir todo como está, admitir a las 3 entidades que han solicitado formar
+parte del Consejo, dejando en 25 el número de entidades miembros y abriendo una lista de espera
+para nuevas incorporaciones.
+</li><li>Recoger e incorporar algunas de las aportaciones planteadas:
+	<ul>
+		<li>Aumentar a 30 el número máximo de entidades sociales miembros.
+		</li><li>La constatación de que existe una infrarepresentacion respecto a mayores e infancia y una
+sobrerepresentación respecto a la discapacidad, que podría servir como referencia a tener
+en cuenta ante nuevas solicitudes de incorporación.
+		</li><li>Las entidades de segundo y tercer nivel deberían comprometerse a compartir y hacer llegar
+a todas las entidades que las componen la información de los temas tratados, acuerdos
+adoptados... en el Consejo
+		</li><li>Que en las comisiones de trabajo pudieran participar entidades que no son miembros como
+ya se está haciendo, por ej, en la comisión de animación comunitaria y cohesion social.
+		</li><li>Establecer proporcionalidades en la composicion del plenario.</li>
+	</ul>
+</li></ol>
+<p><strong>La Consejera</strong> abre turno de palabras:</p>
+<p><strong>Interviene Miguel Serrano</strong>, indicando que desde el PSOE se plantearía la flexibilidad de
+incorporar a nuevos sectores infrarepresentados, ademas de infancia y mayores, quizás también a
+mujer como una perspectiva femenina dentro del ámbito de la acción social.
+</p><p>La propuesta de su partido iría por dar cabida a realidades que se quedan fuera y ampliar a
+30 el número de entidades sociales miembros.
+</p><p><strong>Interviene Chemari, de la Fundacion Federico Ozanam</strong> felicitando a los técnicos de la Oficina
+por el trabajo realizado de intentar sistematizar y ordenar todas las propuestas.
+</p><p>Respecto a las opciones planteadas, son partidarios de ampliar a 30 el numero de entidades
+sociales miembros del Consejo.
+</p><p><strong>Interviene Marta Arjol, de CCOO</strong> agradeciendo el esfuerzo que se ha hecho, compartir el ir
+hacia 30 el número de entidades sociales miembros del Consejo, las reflexiones sobre
+infrarepresentación y sobrerepresentación, pero toma la palabra sobre una reflexion realizada
+respecto al requisito de exigir, a las nuevas entidades, los avales por escrito de cinco miembros de
+derecho (entidades sociales) del Consejo, por la dificultad que se da en la práctica para no
+facilitarlo a las entidades que lo solicitan.
+</p>
+<p><strong>La Consejera</strong> cierra este apartado resumiendo <strong>los acuerdos adoptados</strong>:</p>
+<ul><li>Aumentar a 30 el número máximo de entidades sociales miembros.
+</li><li>Mantener el requisito de aportar aval escrito de 5 miembros de derecho (entidades sociales)
+del Consejo.
+</li><li>Los sectores infrarepresentados (mayores e infancia) tendrían prioridad ante nuevas
+solicitudes.
+</li><li>Abrir lista de espera una vez completado el número de 30 entidades.
+</li><li>No establecer proporcionalidades en la composicion del plenario.
+</li></ul>
+<p><u>Respecto al sentido del Consejo. Qué</u></p>
+<p>Nacho informa que el debate se plantea sobre tres principales reflexiones realizadas:
+</p>
+<ol>
+<li>Quizas se ha dedicado mucho tiempo a las subvenciones en concurrencia competitiva en
+relación a otros temas
+<p>Se acepta que es cierto, consecuencia de la propia dinámica del Consejo y de la oferta y la
+demanda, que ha propiciado dedicar más tiempo a este tema hasta llegar, tras tres procesos de
+participación, a una convocatoria de subvenciones bastante consensuada.
+</p>
+</li><li>Ha habido desde el Área otras iniciativas de mayor calado por la relevancia en el conjunto de
+la intervención social, que han pasado de puntillas por el Consejo, como por ej modelo de
+organización de los servicios sociales, el mapa de subvenciones y convenios, la concertacion de
+servicios sociales, el plan municipal de lucha contra la pobreza infantil...
+<p>Nacho considera que esta reflexión es importante, y recuerda que en el orden del día de las
+reuniones del Consejo se destina un punto para plantear aquellos temas que se consideren de
+relevancia e interés para ser tratados en las mismas. Esta es una vía que va a seguir abierta en el
+futuro.
+</p><p>Entiende que se debería plantear como objetivo avanzar en este punto y bien, a través de este
+método, o de otros que se consideren mas apropiados, demandar aquellos temas de interés para
+ser tratados y debatidos en las reuniones.</p></li>
+<li>Creación de comisiones de trabajo en el ámbito del Consejo
+<p>Informa que se han propuesto la constitucion de varias comisiones de trabajo: mujer, infancia
+y juventud, personas mayores, personas sin hogar....
+</p><p>Recuerda que:</p>
+<ul><li>
+Se están creando comisiones en todos los procesos de trabajo que se han puesto en marcha, Ej
+pobreza infantil, sinhogarismo.., en los que participan todos los sectores con representatividad en
+esos ámbitos.</li>
+<li>Se va a constituir en Consejo Sectorial de Igualdad en que va a aglutinar a todo este sector.
+</li><li>Habría que ser cauteloso e intentar organizar comisiones fundamentalmente con objetivos
+claros.
+</li></ul>
+</li></ol>
+<p>Como reflexión que se plantea desde el Área, a no ser que se decida otra cosa, es que de
+momento no se ve la necesidad de que ninguna comision en especial tenga la urgencia y la
+claridad necesaria para ponerse en marcha.</p>
+<p>
+Resume los <strong>acuerdos adoptados</strong>:</p>
+<ul>
+<li>Respecto al primer punto: el tema se cerraría con la elaboracion del mapa de
+subvenciones y convenios.
+</li><li>Respecto al segundo punto: plantearse como objetivo avanzar en la propuesta de temas de
+interés para ser debatidos en el Consejo, utilizando el espacio actual "puntos de debate
+propuesto por las entidades", u otro que se considere oportuno.
+</li><li>Respecto al tercer punto: debido al funcionamiento de diversas comisiones ligadas a los
+procesos de trabajo abiertos, de momento no se ve la necesidad de que ninguna comision
+especial tenga la urgencia y la claridad necesaria para ponerse en marcha a través del
+Consejo.</li></ul>
+<p><strong>
+PUNTO Nº6.- Puntos de debate propuesto por las entidades</strong></p>
+<p><strong>Caritas Diocesana</strong> plantea una propuesta en la que <strong>solicita información acerca del
+desarrollo del Plan de Lucha contra la Pobreza Infantil.</strong></p><p>
+Teresa Yago toma la palabra en respuesta a la citada pregunta haciendo un repaso
+general de las líneas estratégicas y de las actuaciones que se están poninendo en marcha,
+aludiendo concretamente a la corresponsabilidad y la transversalidad dentro del convenio marco
+de colaboración entre el Gobierno de Aragón y el Ayuntamiento de Zaragoza.</p><p>
+Menciona que, aunque no se ha realizado el convenio marco general que englobaría todas
+aquellas actuaciones que serían el “paraguas” para la lucha contra la pobreza infantil, sí que
+existen actualmente dos convenios en desarrollo muy importantes en este ámbito:</p>
+<ul>
+<li>Un convenio de colaboración para establecer las bases de la cooperación en
+materia de identificación del alumnado en riesgo de exclusión y mejora del
+proceso de escolarización en la ciudad de Zaragoza.
+<p>Este convenio ha sido ampliado este año. El año pasado se realizó como prueba
+piloto en el barrio de San José y, en el presente año, se ha llevado a cabo en San
+José, Delicias y Las Fuentes.</p><p>
+Se trata de un trabajo preventivo para mejorar la escolarización futura.</p>
+</li><li>Un convenio de colaboración que hay en el Ayuntamiento para la gestión de las
+prestaciones que proporcionan o refuerzan la alimentación y la atención
+sociosanitaria de los menores durante el período estival, el cual aporta una
+cuantía de 500.000 euros a la DGA para realizar esta atención en verano y
+reforzar así la mejora de la vida de los niños y niñas desde el punto de vista del
+ocio, bienestar, alimentación y su estado de salud.</li></ul>
+<p>
+Por otro lado, hace referencia a la creación de:</p>
+<ul>
+<li>Una mesa municipal interdepartamental.
+</li><li>
+La Comisión de Infancia dentro del propio Consejo Sectorial de Acción Social
+</li></ul>
+<p>En referencia a la mesa interdepartamental, indica que cuando se redactó el plan, aún no
+estaba en marcha la solicitud de la candidatura de Unicef “Ciudades Amigas de la Infancia y
+Adolescencia”. Ambas cosas han terminado por engarzarse, pues la creación de esta mesa surgió
+a raíz de las ciudades amigas y este marco general englobaría el tema concreto de la pobreza. Por
+eso, la creación de la mesa interdepartamental no ha sido considerada pertinente al estar
+funcionando la de Unicef.</p>
+<p>En cuanto a la Comisión de Infancia en el propio Consejo Sectorial, es una propuesta que,
+según el Coordinador y la Consejera, se va a tener en cuenta, pero no de forma inmediata.
+</p>
+<ul><li>Crear o reforzar las mesas de infancia en los distritos y barrios de la ciudad.
+Se hizo una reflexión inicial sobre cómo empezar y se tuvo claro que sería desde las Juntas
+de Distrito como lugar de participación social. A través de una carta informativa enviada desde la
+Coordinación de Área, se comunicó a las Juntas de Distrito el inicio de este proceso de las mesas
+de infancia.
+<p>Se ha hecho un primer diagnóstico de la situación existente en cada barrio o distrito.
+Puesto que Zaragoza tiene quince centros municipales con muchas diferencias entre sí de
+funcionamiento, población y características de las entidades de su territorio, no se podía pensar en
+una estrategia común para todos los lugares, sino que había que tener en cuenta las realidades de
+cada distrito.</p></li></ul>
+<p>El diagnóstico inicial realizado ha constado de dos partes:</p>
+<ul><li>Por un lado, el estudio de redes, que ya se presentó en el Consejo Sectorial
+</li><li>
+Por otro lado, la revisión que los Técnicos de Infancia de cada centro han hecho de
+su zona, del tipo de comisiones allí existentes y de su funcionamiento.
+</li></ul>
+<p>A partir del diagnóstico de los técnicos, se han celebrado reuniones en tres o cuatro
+centros que pudieran tener unas características similares para ensayar la estrategia de inicio de
+las mesas de infancia.</p>
+<p>Todo lo anterior es representativo del momento actual. El ritmo del progreso del trabajo
+depende de cada centro y de la propia estrategia de su zona. Había zonas con un potente tejido
+asociativo, con un liderazgo natural respecto al tema de infancia, y por eso se ha contado con esas
+entidades, para partir desde ahí. Otros barrios tienen un proceso comunitario muy elaborado y
+estructurado, y se va a contar con esa estructura. Será un proceso progresivo.
+</p><p>Por otro lado, Teresa resalta el hecho de que ha habido una situación de bajas laborales
+entre los educadores de infancia dentro del programa. Como las nuevas personas no tienen el
+mismo conocimiento del barrio que las anteriores, en este caso, sus correspondientes barrios se
+van a quedar los últimos en la estrategia de abordamiento. Además, hay que tener en cuenta otras
+circunstancias como las vacaciones, Zaragalla, etc.
+</p><p>Todo el proceso está en marcha y a las mesas están invitadas a participar todas las
+entidades sociales que trabajen en bien de la infancia en cada zona. Se hará una convocatoria
+general, que partirá o bien de la junta de distrito, o del centro municipal en coordinación, o se
+formará un pequeño grupo motor con entidades que ya tengan una tradición en la zona que
+convoque a todas las demás del lugar. A esa primera reunión estarán invitadas todas las entidades
+que participan. A partir de ahí, se hablará de la finalidad de las mesas, descrita en el propio plan
+contra la pobreza infantil, y se iniciará el trabajo conjunto. Serán las propias mesas de infancia las
+que tengan su propio andar con una línea común:</p>
+<ul>
+<li>Partir del conocimiento de lo que ocurre en la zona.
+</li><li>Delimitar qué diagnóstico se hace, qué situaciones son las más conflictivas o más
+necesitadas de una actuación, hacia dónde nos dirigimos.
+</li><li>Hacer programas que sean conjuntos entre las entidades que participan en la
+mesa.</li>
+</ul>
+<p>Concluye su intervención añadiendo que en tres barrios se están poniendo en marcha
+proyectos pilotos de salud comunitaria con salud pública. Para el próximo mes de octubre se tiene
+en mente celebrar una jornada para contar esta experiencia y finaliza diciendo que en el ámbito de
+la salud comunitaria también se encuentra incluido el tema de infancia.
+</p><p>La Consejera agradece su participación y pasa la palabra a Jesús Domínguez.
+</p><p>Jesús retoma el tema de las comisiones del Consejo Sectorial de Acción Social. Aclara que
+en la presentación de la Oficina de Atencion a la Ciudadanía, en el punto de participación, se ha
+hecho referencia a la promoción de la participación de agentes y entidades sociales en la mejora
+de los servicios sociales a través del Consejo Sectorial. En las actuaciones, además, se habla de
+crear una <strong>comisión de atención y buenas prácticas</strong> dentro del Consejo Sectorial, similar a la de
+atención comunitaria. Esta comisión no estaría destinada a todo el Consejo, sino a aquellas
+entidades que estén directamente interesadas y también a aquellas entidades que, aún cuando no
+estén representadas en el Consejo, podrían estar interesadas en participar en esta comisión en
+concreto. la idea principal es crear un espacio donde se pueda trabajar la percepción que se tiene
+respecto a la atención que se presta en los centros municipales.
+</p><p><strong>Interviene Chemari Lamana de F. Ozanam</strong> para hacer referencia a lo previamente dicho
+acerca de las mesas de infancia. Desde la fundación se alegran mucho de los pasos que se han
+dado. Seguidamente, desea resaltar dos cuestiones:</p>
+<ul><li>
+Las grandes diferencias existentes entre los distritos de la ciudad y lo
+complicado que resulta darles un tratamiento demasiado homogéneo. Piensa
+que desde los CMSS se debe mantener el liderazgo de estas mesas, al menos en
+el arranque. Cree que desde los Servicios Sociales Comunitarios se debe tener el
+liderazgo de partida de este proceso para evitar consecuencias extrañas debido
+a la situación de los distritos y las juntas de distrito. Teme que las mesas de
+infancia terminen siendo algo variopinto en cada sitio. Insiste en que los CMSS
+deberían tener tareas tales como fijar los objetivos o convocar las reuniones
+para evitar situaciones difusas.
+</li><li>
+Todo lo anterior llevaría a la siguiente cuestión: revisar el tema de la Comisión
+de Infancia dentro del Consejo Sectorial de Acción Social. Chemari piensa que,
+aún considerando que la constitución de las mesas en los distritos tiene todo el
+sentido, también debería haber una lógica de ciudad. Para él, esto le da mayor
+relevancia a la existencia de la Comisión de Infancia dentro del Consejo
+Sectorial.</li></ul>
+<p><strong>Teresa Yago</strong> interviene seguidamente para puntualizar que, aunque está de acuerdo con lo
+expresado por Chemari, no se puede desembarcar en un distrito sin contar con su junta de distrito,
+no se puede liderar si el liderazgo natural está en otro lugar. Los Servicios Sociales Comunitarios
+van a liderar esa puesta en marcha, pero lo que surja de las mesas de infancia será producto del
+trabajo de las entidades que están en ellas, desde la coordinación e impulso de los centros
+municipales. Es una cuestión técnica y hay que centrarse en el trabajo que se realiza directamente
+con la infancia, lo cual ya marca mucho el encuadre del trabajo. Por las características de la
+participación ciudadana y del trabajo comunitario, no se puede asegurar cual va a resultar de las
+mesas, pero sí se puede saber qué condiciones ponemos, las cuales serán comunes para todos los
+centros. Sin embargo, hay que contar con las realidades de los territorios.</p>
+<p>La Consejera agradece sus explicaciones y pasa da paso al siguiente punto del orden del día.
+</p><p><strong>PUNTO Nº 7.- Ruegos y preguntas.</strong></p>
+<p><strong>Interviene Ma Jesus Extremiana, de Lares Aragón</strong> preguntando a la Consejera cual es la
+situacion de las tres entidades que han solicitado formar parte del Consejo Sectorial.
+</p><p>La Consejera responde que estan incluídas, y aunque se hará una resolucion oficial, ya
+forman parte del Consejo como miembros de pleno derecho. Se hará la presentación oficial en la
+próxima reunión.
+</p><p>Mª Jesús da las gracias a la Consejera. Le parece muy interesante que Lares Aragón, como
+representante del colectivo de personas mayores, muy numeroso en Zaragoza, pueda participar en
+el Consejo.</p><p>
+Y sin más asuntos que tratar la Consejera finaliza la sesión a las 14,30 h. agradeciendo la
+asistencia y participación.</p>
+		</div>													
+								
+
+
+
+</div>								
+
+
+
+					
+	
+                            </div>
+
+
+                          
+
+
+
+
+                            </div>
+
+
+
+
+</div>
+
+                </div>
+
+                <div class="container-fluid fnd-blanco radius">
+                    <div class="col-sm-12">
+                        <h3 class="text-right">
+                            Consejos Sectoriales
+                            <strong>Activos</strong>
+                        </h3>
+                        <nav class="cuadrado">
+                            <ul class="list-inline nav-inf clearfix text-center">
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoAgenda21.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-agenda21">Agenda 21 Local</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoAccionSocial.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-accionsocial">Acción Social</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoCultura.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-cultura">Cultura</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoSeguimientoPICH.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-pich">Seguimiento del PICH</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoUrbanismoMovilidad.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-urbanismo">Urbanismo y Movilidad</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoIgualdad.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-igualdad">Igualdad</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

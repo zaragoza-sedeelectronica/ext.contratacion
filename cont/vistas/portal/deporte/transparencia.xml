@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+
+    <meta charset="utf-8" />
+    <sede:meta title="Transparencia. Deporte" 
+               description= "El portal Deporte tiene como objetivo proporcionar informacion sobre todo tipo de instalaciones deportivas de la ciudad, normativa vigente y subvenciones relacionada sobre deporte, las federaciones y asociaciones deportivas existentes...Facilita realizar reserva de instalaciones, trámites y conocer las actividades y cursos que se realizan en la ciudad. Conozca los datos económicos y presupuestarios destinados a deporte en la ciudad y el balance de las piscinas de verano. Los compromisos de calidad se encuentran recogidos en las cartas de servicios y en la certificación ambiental obtenida por los centros deportivos de los barrios rurales. A través del servicio, tu opinión importa, el ciudadano puede enviar sus sugerencias y observaciones." 
+			 keywords="ayuntamiento, ciudad, Zaragoza, España, estructura institucional, organización administrativa, Servicio de Instalaciones Deportivas, instalaciones deportivas, fitness, legislación local, balnearios urbanos, piscinas de verano, piscinas cubiertas, campos de fútbol, formalidades administrativas, relación administración-administrado, administración electrónica, reservas, actividades, ayudas, carta de servicios, Centros Deportivos Municipales Rurales, certificación de calidad, estadística, presupuesto, gasto presupuestario, asociaciones">
+    </sede:meta>
+	
+	
+	
+    <style type="text/css">
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="https://www.zaragoza.es/sede/portal/derechos-sociales/deporte/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Deporte</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Transparencia</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">   <li><a href="transparencia">Datos Abiertos</a></li>
+				  <li><a href="https://www.zaragoza.es/ciudad/gestionmunicipal/ayudasysubvenciones/listadoConv_AyudasSubvenciones?ejercicio=2016&amp;convocatoria=&amp;gestor=&amp;linea=18&amp;tipos="> Ayudas </a></li>   
+				
+ 
+                  
+                </ul>
+            </div>
+        </nav><h2>Datos Abiertos</h2>
+<ul class="list-unstyled"><li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/servicio/catalogo/300">Equipamientos</a></li>
+<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/servicio/catalogo/321">Piscinas</a></li>
+<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/servicio/catalogo/1040">Campos de Fútbol</a></li>
+<li><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/servicio/catalogo/49">Pabellones Deportivos</a></li></ul>    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

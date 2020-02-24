@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Sociedades Municipales. Zaragoza Desarrollo expo"
+                   description="Organizacion Municipal. Sociedades Municipales" author=""
+                   last-modified="Fri Apr 17 00:00:00 CET 2018"
+                   keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, estructura administrativa, sociedades municipales, organismos administrativos, relación administración-administrado"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        Sociedades Municipales
+                    </small>
+                    <span>|</span>
+                    ZGZ @ Desarrollo Expo, S.A. (En liquidación)
+                    <a href="http://www.zgzarrobadesarrolloexpo.com/" class="btn btn-danger">Sitio Web</a>
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h3>Objeto</h3>
+                    <div class="clearfix margin-b1em">
+                        <p>La sociedad tendrá por objeto la gestión de todas aquellas actuaciones, actividades e
+                            instalaciones deportivas que el Ayuntamiento de Zaragoza determine.
+                        </p>
+                        <p>En virtud de ello, serán sus fines:</p>
+                        <ol>
+                            <li>La sociedad tendrá por objeto social la tenencia, administración, conservación,
+                                explotación, desarrollo y cualquier otra actividad de gestión de las áreas y espacios
+                                públicos y de los bienes y derechos, muebles e inmuebles, materiales e inmateriales, con
+                                sus actividades, usos y servicios, resultantes de las obras, construcciones,
+                                urbanizaciones, reformas, rehabilitaciones, equipamientos, instalaciones y demás
+                                actuaciones realizadas en el ámbito de los espacios situados en el meandro de Ranillas y
+                                en los espacios de riberas vinculados a las obras del plan de acompañamiento de la
+                                Exposición Internacional de 2008.
+                            </li>
+                            <li>La sociedad tendrá por objeto social la <strong>explotación de actividades económicas en
+                                zonas verdes
+                            </strong> del término municipal de Zaragoza.
+                            </li>
+                            <li>La sociedad, como instrumento de gestión de las competencias municipales, tiene la
+                                consideración de medio propio y servicio técnico del Ayuntamiento de Zaragoza.
+                                <br/>
+                                En razón de su condición de medio propio y servicio técnico del municipio de Zaragoza,
+                                éste podrá conferir a la sociedad encomiendas de gestión que serán de ejecución
+                                obligatoria para la misma en cualesquiera actividades compatibles, análogas o
+                                relacionadas con su objeto social.
+                                <br/>
+                                Para el ejercicio de las actividades que integran su objeto social, la sociedad podrá
+                                realizar convenios y acuerdos con los organismos competentes, que deban coadyuvar, por
+                                razón de su competencia al mejor éxito de la gestión y subrogarse en aquéllos que firme
+                                el Ayuntamiento de Zaragoza y así se acuerde.
+                            </li>
+                            <li>Las actividades que constituyen el objeto social podrán ser desarrolladas en forma
+                                parcial o indirectamente mediante la titularidad de acciones o participaciones de
+                                sociedades de idéntico o análogo objeto.
+                            </li>
+                        </ol>
+                    </div>
+                    <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist"
+                        style="display:none;">
+                        <li role="presentation">
+                            <a href="#consejo" aria-controls="que" role="tab" data-toggle="tab">Consejo</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#estatutos" aria-controls="que" role="tab" data-toggle="tab">Estatutos</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#plantilla" aria-controls="que" role="tab" data-toggle="tab">Plantilla</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#organigrama" aria-controls="que" role="tab" data-toggle="tab">Organigrama</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#presupuestos" aria-controls="que" role="tab" data-toggle="tab">Presupuestos</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#cuentas" aria-controls="que" role="tab" data-toggle="tab">Cuentas abiertas</a>
+                        </li>
+                    </ul>
+
+
+                    <div sede:class="tab-content" id="Facetados">
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#consejo" aria-expanded="false">
+                            Consejo
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="consejo">
+                            <a href="/sede/servicio/agenda-institucional/?titleContains=expo&amp;type=Consejo+Administración+de+Sociedades+Municipales"
+                               class="btn btn-danger pull-right">Órdenes del día y actas
+                            </a>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <dl>
+                                        <dt>PRESIDENTE</dt>
+                                        <dd>D. PEDRO SANTISTEVE ROCHE (GRUPO MUNICIPAL Z.E.C.)</dd>
+                                        <dt>VICEPRESIDENTE</dt>
+                                        <dd>D. FERNANDO RIVARÉS ESCO (GRUPO MUNICIPAL Z.E.C.)</dd>
+                                        <dt>SECRETARIA</dt>
+                                        <dd>TERESA IBARZ AGUELO</dd>
+                                        <dt>GERENTE ZGZ</dt>
+                                        <dd>
+                                            <a href="bioexpo" title="Acceso a Curriculum">ALBERTO IPAS GARROS</a>
+                                        </dd>
+                                        <dt>REPRESENTANTE TRABAJADORES ZGZ</dt>
+                                        <dd>MIGUEL ANTONIO MAYNAR GRACIA</dd>
+                                        <dt>INTERVENTOR MUNICIPAL</dt>
+                                        <dd>JOSÉ IGNACIO NOTIVOLI MUR</dd>
+                                        <dt>CONSEJEROS (*)</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>D. PEDRO NAVARRO LOPEZ (GRUPO MUNICIPAL P.P.)</li>
+                                                <li>Dª MARIA NAVARRO VISCASILLAS (GRUPO MUNICIPAL P.P)</li>
+                                                <li>D. ANGEL CARLOS LORÉN VILLA (GRUPO MUNICIPAL P.P.)</li>
+                                                <li>Dª MARIA DE LOS REYES CAMPILLO CASTELLS (GRUPO MUNICIPAL P.P.)</li>
+                                                <li>Dª ELENA GINER MONGE (GRUPO MUNICIPAL Z.E.C.)</li>
+                                                <li>Dª MARIA DOLORES CAMPOS PALACIO (GRUPO MUNICIPAL PSOE)</li>
+                                                <li>D. FRANCISCO JAVIER TRÍVEZ BIELSA (GRUPO MUNICIPAL PSOE)</li>
+                                                <li>Dª SARA MARÍA FERNÁNDEZ ESCUER (GRUPO MUNICIPAL C'S)</li>
+                                                <li>Dª LETICIA CRESPO MIR (GRUPO MUNICIPAL CHA)</li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#estatutos" aria-expanded="false">
+                            Estatutos
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="estatutos">
+                            <p>
+                                <a href="http://www.parquedelagua.com/perfil-contratante/descargas/Estatutos_modificados_24_03_14.pdf"
+                                   class="pdf">Estatutos Vigentes (modificados el 24.03.14)
+                                </a>
+                            </p>
+                        </div>
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#presupuestos" aria-expanded="false">
+                            Presupuestos
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="presupuestos">
+                            <div class="pull-right tarjeta">
+                                <a class="external-link"
+                                   href="http://www.rendiciondecuentas.es/es/consultadeentidadesycuentas/buscarCuentas/consultarCuenta.html?dd=true&amp;idEntidadPpal=8108&amp;idEntidad=190920&amp;idTipoEntidad=O&amp;idModelo=3&amp;ejercicio=2016&amp;nifEntidad=P5030301E"
+                                   title="enlace Externo">Cuenta General 2016
+                                </a>
+                            </div>
+                            <h3>Resumen del Presupuesto 2018</h3>
+                            <div th:replace="portal/transparencia/Presupuestos_Entidades_autonomas :: expo"/>
+                        </div>
+
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#plantilla" aria-expanded="false">
+                            Plantilla
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="plantilla">
+
+                            <table class="table table-responsive tabla-bn">
+                                <tr>
+                                    <td><strong>Plazas</strong></td>
+                                    <td><strong>Denominación</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Órgano Directivo</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Director Técnico</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Jefe de Conservación</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Jefe de Mantenimiento</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Jefe de Actividades</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Secretaria de Dirección</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Administrativo</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#organigrama" aria-expanded="false">
+                            Organigrama
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="organigrama">
+
+                            <img src="/cont/paginas/organizacion/img/orgaarroba.jpg" alt="" longdesc="#orga"/>
+                            <div class="oculto" id="orga">
+                                <ul>
+                                    <li><strong>Presidente:</strong>Pedro Santisteve Roche
+                                    </li>
+                                    <li><strong>Vicepresidente:</strong>Fernando Rivarés Esco
+                                    </li>
+                                    <li>
+                                        <strong>Secretaria de Dirección:</strong>
+                                        Inés Bello Parga
+                                    </li>
+                                    <li>
+                                        <strong>Director Gerente:</strong>
+                                        Alberto Ipas Garros
+                                        <ul>
+                                            <li>
+                                                <strong>Director Técnico:</strong>
+                                                Rodolfo Soler García
+                                                <ul>
+                                                    <li>
+                                                        <strong>Jefe de Conservación:</strong>
+                                                        Fernando Iñigo Martín
+                                                    </li>
+                                                    <li>
+                                                        <strong>Jefe de Mantenimiento:</strong>
+                                                        Miguel Maynar Gracia
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>Jefe de Actividades:</strong>
+                                                Noelia Ferruz Ramos
+                                            </li>
+                                            <li><strong>Contable:</strong>Carlos Romance Carcas
+                                                <ul>
+                                                    <li>
+                                                        <strong>Administrativa:</strong>
+                                                        Ana I. Lamenca Lalaguna
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div role="tabpanel" sede:class="tab-pane active" id="cuentas">
+
+                            <a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=expo"
+                               class="btn btn-danger">Acceso a Cuentas abiertas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+
+    </body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Metadatos. Herramientas. Infraestructura de Datos Espaciales de Zaragoza" description="Información relativa a la Infraestructura de Datos Espaciales (IDE)" author="Ayuntamiento de Zaragoza" subject="" keywords="ayuntamiento, ciudad, Zaragoza, España, vocabularios, conjuntos de datos, datos abiertos, administración local, gobierno abierto" last-modified="28-05-2018" audience="Ciudadanía" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Herramientas</h2>
+        <ul class="nav nav-pills">
+            <li class="">
+                <a href="./visualizacion">Visualización</a>
+            </li>
+            <li class="active">
+                <a href="#">Catálogo de Metadatos</a>
+            </li>
+            <li class="">
+                <a href="./descarga">Descarga</a>
+            </li>
+        </ul>
+        <p>
+            La <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2007:108:0001:0014:ES:PDF" title="Enlace Exterior" class="external-link pdf">Directiva Inspire</a> (Infrastructure for Spatial Information in Europe) establece que las organizaciones responsables de la información geográfica de cada uno de los temas enumerados en sus anexos, deben crear sus <strong>metadatos</strong> a nivel de conjuntos de datos, series y servicios web y publicarlos a través de los denominados <strong>servicios de localización (catálogos de metadatos de datos y servicios)</strong>. Estos servicios posibilitan la búsqueda de conjuntos de datos espaciales y servicios partiendo de sus metadatos, además de mostrar el contenido de dichos metadatos (ver <a href="http://www.idee.es/metadatos" title="Enlace Exterior" class="external-link">http://www.idee.es/metadatos</a>).
+        </p>
+        <p>
+            El Ayuntamiento de Zaragoza ofrece un Catálogo de Metadatos según lo establecido por la Directiva INSPIRE en el que publica sus conjuntos de datos y servicios geográficos categorizados con los temas de los anexos de INSPIRE.
+        </p>
+        <p>
+            Asimismo, publica sus metadatos geográficos a través de un servicio web implementado según el
+            <strong>estándar CSW</strong> de <em>"OGC Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile for CSW 2.0"</em> según la recomendación de la <a href="http://inspire.jrc.ec.europa.eu/documents/Network_Services/TechnicalGuidance_DiscoveryServices_v3.1.pdf" class="pdf external-link" title="Enlace Exterior">Guía Técnica para la implementación de servicios de localización</a>. Este servicio es accesible a través de la siguiente URL:
+            <a href="http://idezar.zaragoza.es/inspire-node/services/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetCapabilities" class="external-link" title="Enlace Exterior">http://idezar.zaragoza.es/inspire-node/services/csw</a>.
+        </p>
+        <p>
+            En el siguiente enlace
+            <a href="http://idezar.zaragoza.es/geonetwork/srv/spa/test.csw" class="external-link" title="Enlace Exterior">http://idezar.zaragoza.es/geonetwork/srv/spa/test.csw</a> ofrecemos una demo que permite ejecutar peticiones sobre el servicio.
+        </p>
+        <h3>Ejemplos de peticiones soportadas</h3>
+        <h4>Listado de datasets ordenados por título</h4>
+<pre class="prettyprint notranslate">
+&lt;csw:GetRecords xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" service="CSW" version="2.0.2"
+resultType="results"&gt;
+    &lt;csw:Query typeNames="csw:Record"&gt;
+        &lt;csw:ElementSetName&gt;summary&lt;/csw:ElementSetName&gt;
+        &lt;csw:Constraint version="1.1.0"&gt;
+            &lt;Filter xmlns="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml"/&gt;
+        &lt;/csw:Constraint&gt;
+        &lt;ogc:SortBy xmlns:ogc="http://www.opengis.net/ogc"&gt;
+            &lt;ogc:SortProperty&gt;
+                &lt;ogc:PropertyName&gt;title&lt;/ogc:PropertyName&gt; 
+                &lt;ogc:SortOrder&gt;ASC&lt;/ogc:SortOrder&gt;
+            &lt;/ogc:SortProperty&gt;
+        &lt;/ogc:SortBy&gt;
+    &lt;/csw:Query&gt;
+&lt;/csw:GetRecords&gt;
+</pre>
+        <h4>Buscar datasets por texto en cualquier campo:</h4>
+<pre class="prettyprint notranslate ">
+&lt;csw:GetRecords xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:gmd="http://www.isotc211.org/2005/gmd" service="CSW" version="2.0.2" resultType="results"&gt;
+    &lt;csw:Query typeNames="csw:Record"&gt;
+        &lt;csw:Constraint version="1.1.0"&gt;
+            &lt;Filter xmlns="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml"&gt;
+                &lt;PropertyIsLike wildCard="%" singleChar="_" escapeChar="\"&gt;
+                    &lt;PropertyName&gt;AnyText&lt;/PropertyName&gt;
+                    &lt;Literal&gt;%Galacho%&lt;/Literal&gt;
+                &lt;/PropertyIsLike&gt;
+            &lt;/Filter&gt;
+        &lt;/csw:Constraint&gt;
+    &lt;/csw:Query&gt;
+&lt;/csw:GetRecords&gt;
+</pre>
+        <h4>Buscar datasets sobre una temática INSPIRE:</h4>
+<pre class="prettyprint notranslate ">
+&lt;csw:GetRecords xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:gmd="http://www.isotc211.org/2005/gmd" service="CSW" version="2.0.2" resultType="results"&gt;
+    &lt;csw:Query typeNames="csw:Record"&gt;
+        &lt;csw:Constraint version="1.1.0"&gt;
+            &lt;Filter xmlns="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml"&gt;
+                &lt;PropertyIsEqualTo&gt;
+                    &lt;PropertyName&gt;subject&lt;/PropertyName&gt;
+                    &lt;Literal&gt;Regiones biogeográficas&lt;/Literal&gt;
+                &lt;/PropertyIsEqualTo&gt;
+            &lt;/Filter&gt;
+        &lt;/csw:Constraint&gt;
+    &lt;/csw:Query&gt;
+&lt;/csw:GetRecords&gt;
+</pre>
+    </sede:content>
+</body>
+
+</html>

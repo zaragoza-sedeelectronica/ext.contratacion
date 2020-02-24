@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos participativos" keywords="sede,web,propuestas" />
+</head>
+
+<body>
+    <sede:content>
+        <dl>
+            <th:block th:each="registro : ${resultado.body.result}">
+                <dt>
+                    <div class="border-dotted-top fnd-gris-claro radius">
+                        <div class="padding-a05em">
+                            <h4><img src="https://www.zaragoza.es/cont/paginas/gobierno-abierto/img/pregciud-p.png" title="Pregunta Ciudadana" alt="Pregunta Ciudadana" class="nodeco margin-r1em"/>
+                                        <a th:href="@{{id}(id=${registro.id})}" th:text="${registro.title}"></a></h4></div>
+                    </div>
+                </dt>
+                <dd class="shadow clearfix margin-b05em margin-l0em">
+                    <p class="pull-left">Realizada por
+                        <th:block th:text="${registro.usuarioAlta}"></th:block> el
+                        <th:block sede:rdf="${registro.get('creationDate')}"></th:block>
+                    </p>
+                    <p class="pull-right">Apoyos Recibidos: <span class="txtColor" th:text="${registro.votosAFavor} == null ? '0' : ${registro.votosAFavor}"></span>
+                        <span class="fa fa-arrow-up" style="color:green" aria-hidden="true"></span> <span class="sr-only">votos a favor</span> <span class="txtColor" th:text="${registro.votosEnContra} == null ? '0' : ${registro.votosEnContra}"></span>
+                        <span class="fa fa-arrow-down" style="color:red" aria-hidden="true"></span> <span class="sr-only">votos a favor</span> <span class="hidden-phone">Comentarios: <th:block th:text="${registro.numComentarios} == null ? '0' : ${registro.numComentarios}"></th:block></span></p>
+                </dd>
+            </th:block>
+        </dl>
+    </sede:content>
+</body>
+
+</html>

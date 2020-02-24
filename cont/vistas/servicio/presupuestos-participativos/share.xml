@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Crear propuesta. Presupuestos participativos" description="Alta de propuesta" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+    <style type="text/css">
+    @import url(/gcz/js/calendar/calendar-gcz.css);
+    </style>
+    <script type="text/javascript" src="/gcz/js/calendar/calendar.js"></script>
+    <script type="text/javascript" src="/gcz/js/calendar/lang/calendar-es.js"></script>
+    <script type="text/javascript" src="/gcz/js/calendar/calendar-setup.js"></script>
+    <style type="text/css">
+    h2 {
+        font-size: 1.5em;
+        margin: .5em 0 !important;
+    }
+    .encabezado-propuesta {
+        color: white;
+        background-color: red;
+        padding: .25em .5em;
+        margin: .5em 0 !important;
+        border-radius: 5px;
+    }
+    .fa {
+        vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>    
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card clearfix">
+                    <h2 class="encabezado-propuesta"><strong><span class="fa fa-puzzle-piece" aria-hidden="true"> </span> PROPUESTA CIUDADANA</strong></h2>
+                    <a th:href="'/sede/servicio/presupuestos-participativos/' + ${dato.id}">
+                        <h3 class="text-primary text-uppercase" sede:rdf="${dato.get('title')}"></h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="lead">
+            <th:block th:include="fragmentos/error" />
+        </div>
+        <h3>¿Quieres compartir tu propuesta en las redes sociales?</h3>
+        <p>Pulsa sobre la red social en la que quieras compartir tu propuesta.</p>
+        <form th:action="@{/servicio/presupuestos-participativos/share}" th:object="${dato}" method="post">
+            <div class="redes clearfix">
+                <div class="col-sm-4">
+                    <a itemprop="sameAs" title="Comparte esta propuesta en Facebook" target="_blank" th:href="'http://www.facebook.com/sharer.php?u=http://www.zaragoza.es/sede/servicio/presupuestos-participativos/'+${dato.id}+'&amp;t=Presupuestos Participativos, propuesta:'+${dato.title}">
+                        <span class="fab fa-facebook-square fa-3x padding"></span> Compartir en Facebook
+                        <span class="oculto">Compartir en Facebook</span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a itemprop="sameAs" title="Comparte esta propuesta en Twitter" target="_blank" th:href="'https://twitter.com/intent/tweet?text=Presupuestos Participativos, propuesta:'+${dato.title}+'&amp;url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/'+${dato.id}">
+                        <span class="fab fa-twitter-square fa-3x padding"></span> Compartir en Twitter
+                        <span class="oculto">Compartir en Twitter</span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a itemprop="sameAs" title="Comparte esta propuesta en Google+" target="_blank" th:href="'https://plus.google.com/share?url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/'+${dato.id}">
+                        <span class="fab fa-google-plus-square fa-3x padding"></span> Compartir en Google+
+                        <span class="oculto">Compartir en Google+</span>
+                    </a>
+                </div>
+            </div>
+            <div class="form-group fnd-gris-claro padding-a2em">
+                <input type="hidden" th:field="*{id}" value="'+${dato.id}+'" />
+                <button type="submit" name="submit" class="btn btn-primary">
+                    <span class="fa fa-puzzle-piece" aria-hidden="true"></span> Ver mi nueva propuesta
+                </button>
+                <a href="/sede/servicio/presupuestos-participativos/user" class="btn btn-primary">
+                    <span class="fa fa-user" aria-hidden="true"></span> Ver todas mis propuestas
+                </a>
+                <a href="/sede/servicio/presupuestos-participativos/edicion/2" class="btn btn-primary">
+                    <span class="fa fa-list" aria-hidden="true"></span> Listado de propuestas
+                </a>
+            </div>
+        </form>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Bomberos y Protección Civil"
+                   description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece servicios y recursos informativos adaptados a las necesidades de la tercera edad: comedores de mayores, teléfonos de urgencia, tramitación de ayudas, bodas de oro, cita previa médica, publicaciones, preguntas frecuentes, parques de mayores, rutas, comercios y ciudades amigables… Facilita la participación en los grupos de actividad, cursos, talleres y programas sociales que se llevan a cabo en los centros de convivencia para mayores. Haga llegar sus quejas y sugerencias a través de Ayúdanos a mejorar."
+                   keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service"
+        >
+        </sede:meta>
+        <style type="text/css">
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .fa {
+            vertical-align: middle;
+            }
+
+            @media (min-width: 768px) {
+            .list-aviso>li {
+            min-height: 16em;
+            }
+            .listado-equipamiento-solr li {
+            min-height: 25em;
+            }
+            }
+
+            .left-ribbon {
+            /*position: relative;*/
+            position: absolute;
+            bottom: 5px;
+            background: #EEE;
+            border: 1px solid #CCC;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+            padding: 10px 15px;
+            clear: both;
+            /*margin-left: -24px;*/
+            margin-left: -10px;
+            float: left;
+            }
+
+            .left-ribbon::before {
+            display: block;
+            width: 10px;
+            height: 0px;
+            position: absolute;
+            bottom: -10px;
+            left: -1px;
+            content: '';
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #757575;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: 0px;
+            font-size: 20px;
+            }
+
+            .menu-consejos li.active a {
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            @media (max-width: 768px) {
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+
+            h3 {
+            color: #D01715;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            <!--width: 16.6%;-->
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+            .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Plan de Emergencia
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+
+                <div class="container-fluid">
+                    <ul class="nav menu fnd-blanco radius menu-consejos" role="tablist">
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/emergencia"
+                               style="border-radius: 10px 0 0 10px; border-right: solid 2px #000000; line-height: 56px;">
+                                Presentación
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/normativa"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Normativa de Interés
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/territorio"
+                               style="border-radius: 0; border-right: solid 2px #000000;">
+                                Territorio y Organización
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center active">
+                            <a href="/sede/portal/bomberos/plan-actuacion"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Plan de Actuación
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="/sede/portal/bomberos/catalogo"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Catálogo de Recursos
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-2 text-center">
+                            <a href="http://www.zaragoza.es/catalogo/"
+                               style="border-radius: 0 10px 10px 0;">Sistema de Gestión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h2 class="text-right">
+                        Plan de actuación ante emergencias
+                    </h2>
+
+
+                    <p>Esta parte del Plan Municipal de Protección Civil describirá las pautas de trabajo una
+                        vez declarada una emergencia, es decir:
+                    </p>
+                    <ul>
+                        <li>Planificación de las líneas de actuación.</li>
+                        <li>Intervención para el socorro de personas y bienes.</li>
+                        <li>Rehabilitación de servicios afectados a su estado inicial.</li>
+                    </ul>
+                    <p>Se tendrán en cuenta los datos existentes sobre los riesgos estudiados con anterioridad,
+                        así como los recursos humanos y materiales disponibles contenidos en el Catálogo de
+                        Medios y Recursos, con objeto de resolver eficazmente las emergencias que se produzcan.
+                    </p>
+                    <p>Estos datos provendrán, además de otros que se puedan considerar, de:</p>
+                    <ul>
+                        <li>Mapas de Riesgos elaborados.</li>
+                        <li>Catálogo de Medios y Recursos debidamente actualizado.</li>
+                    </ul>
+                    <p>Planes Especiales elaborados para cada Riesgo, que permitirán detallar mucho más los
+                        Planes de Actuación. Estos Planes Especiales irán sustituyendo, a medida que se
+                        elaboren, los detalles de prevención, autoprotección y actuación reflejadas en este
+                        documento.
+                    </p>
+
+                    <hr/>
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#estructura" aria-controls="estructura" role="tab" data-toggle="tab">
+                                Estructura
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#centros" aria-controls="centros" role="tab" data-toggle="tab">
+                                Centros de Actuación
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#activacion" aria-controls="activacion" role="tab" data-toggle="tab">
+                                Activación
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#medidas" aria-controls="medidas" role="tab" data-toggle="tab">
+                                Medidas de Protección
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#medios" aria-controls="medios" role="tab" data-toggle="tab">
+                                Medios y Recursos
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#implantacion" aria-controls="implantacion" role="tab" data-toggle="tab">
+                                Implantación y Mantenimiento
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab">
+                                Planes Específicos
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="estructura" class="tab-pane active">
+                            <h3>Estructuración ante emergencias.</h3>
+                            <p>La planificación, control y orden de cualquier catástrofe que suceda en el
+                                término municipal de Zaragoza corresponde al Alcalde de Zaragoza, de acuerdo con
+                                lo dispuesto en la legislación vigente.
+                            </p>
+                            <p>A los fines de información, asesoramiento y coordinación de los diversos
+                                efectivos puestos a servicio de la solución de la emergencia se crea la Comisión
+                                Local de Protección Civil de Zaragoza, cuya composición y funciones se ha
+                                descrito en el apartado &quot;Medidas de Autoprotección&quot; de este Plan, la
+                                cual tendrá a su disposición los servicios y recursos correspondientes a
+                                Sanidad, Seguridad, Rescate y Salvamento, Logística e Infraestructuras y Acción
+                                Social.
+                            </p>
+                            <p>
+                                <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/grupos.gif"
+                                     longdesc="gruposimg.htm"
+                                     alt="Cubo de la estuctura de los grupos integrantes del Plan de Actuación"/>
+                            </p>
+                            <p>La estructura se define gráficamente en el desarrollo del siguiente tetraedro.
+                                Para ello se define un código de colores para cada grupo de acción y se tiene en
+                                cuenta los medios y recursos disponibles para la misma. Esta estructura se
+                                explica detalladamente posteriormente en la activación del Plan.
+                            </p>
+                            <p>El tetraedro (cubo de estado) representará la situación de alerta, alarma o
+                                emergencia en el que deberán posicionarse los diferentes grupos de acción según
+                                la Evaluación del Riesgo que se realice en el
+                                <acronym title="Centro de Coordinación Operativo Local ">CECOPAL</acronym>
+                                o el responsable que proceda, según el nivel que se encuentre coloreado.
+                            </p>
+                            <p>
+                                <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/cubo1.gif"
+                                     longdesc="cubo1.htm"
+                                     alt="Cubo de Estado en blanco significa que no hay alerta, ni alarma, ni emergencia"/>
+                            </p>
+                            <p>
+                                <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/cubo2.gif"
+                                     longdesc="cubo2.htm"
+                                     alt="Cubo de Estado con el Grupo de Intervención en Estado de Alerta. (Coloreado hasta el primer nivel)"/>
+                            </p>
+                            <p>
+                                <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/cubo3.gif"
+                                     longdesc="cubo3.htm"
+                                     alt="Cubo con el Grupo de Intervención en Estado de Alarma. (Coloreado hasta el segundo nivel)"/>
+                            </p>
+                            <p>
+                                <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/cubo4.gif"
+                                     longdesc="cubo4.htm"
+                                     alt="Cubo con el Grupo de Intervención en Estado de Emergencia. (Coloreado hasta el tercer nivel)"/>
+                            </p>
+                            <h3>Organigrama.</h3>
+                            <p>
+                                <img alt="Organigrama de actuación ante una Emergencia"
+                                     longdesc="organigramaemer.htm"
+                                     src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/organigrama_emergencia.gif"/>
+                            </p>
+                        </div>
+                        <div id="centros" class="tab-pane">
+
+                            <h3>Los centros de actuación. Descripción y Funcionamiento</h3>
+                            <h3>Descripción</h3>
+                            <p>Se describen a continuación los centros de dirección de la emergencia, lugares
+                                donde ordinariamente se concentran los órganos decisorios y, en todo caso, se
+                                reciben todas las informaciones del escenario de la emergencia, se toman las
+                                decisiones o se reciben de la autoridad competente y se transmiten a los Grupos
+                                de Acción, estableciendo un flujo de comunicaciones, de ida y vuelta,
+                                permanente.
+                            </p>
+                            <p>En condiciones de siniestro ordinario, de magnitud controlada, cada Servicio
+                                municipal (Bomberos, Policía Local, Sanidad, Infraestructuras varias,<abbr
+                                        title="etcétera">etc.</abbr>) actúa, en el ámbito de sus competencias,
+                                con sus propios recursos o en colaboración con otros Servicios, sin que sea
+                                preciso activar al Plan. Por consiguiente los Centros de Actuación que se
+                                citarán, son medios o recursos extraordinarios adscritos de forma específica, en
+                                caso de emergencia, y condicionados a la activación del Plan.
+                            </p>
+                            <p>A los efectos de este Plan se denomina &quot;emergencia&quot; en un sentido
+                                amplio tanto el desencadenamiento de un siniestro como cualquier evento que por
+                                su magnitud cualitativa o cuantitativa sea capaz de generar un siniestro.
+                            </p>
+                            <p>En consecuencia cualquier previsión contemplada en el Punto &quot;Identificación
+                                de riesgos&quot;, puede ser objeto de declaración de &quot;emergencia&quot; por
+                                parte del Director del Plan.
+                            </p>
+                            <p>Estos Centros son:</p>
+                            <ul>
+                                <li>Centro de Coordinación Operativa Local (CECOPAL).</li>
+                                <li>Puesto de Mando Avanzado (PMA).</li>
+                            </ul>
+                            <h3>Centro de Coordinación Operativa Local (<acronym
+                                    title="Centro de Coordinación Operativa Local">CECOPAL</acronym>)
+                            </h3>
+                            <p>Es el conjunto de recursos humanos y materiales organizados para llevar la
+                                gestión de una emergencia desde que se ordena la activación del Plan hasta que
+                                se declara su finalización.
+                            </p>
+                            <p>El
+                                <acronym title="Centro de Coordinación Operativa Local">CECOPAL</acronym>
+                                actúa bajo el mando superior del Director del Plan y el mando inmediato del
+                                Director Técnico.
+                            </p>
+                            <p>Son funciones esenciales del<acronym
+                                    title="Centro de Coordinación Operativa Local">CECOPAL</acronym>, las
+                                siguientes:
+                            </p>
+                            <ul>
+                                <li>Recepción de información desde el lugar de la emergencia.</li>
+                                <li>Transmitir la activación del Plan de Emergencia ordenada por el Director del
+                                    Plan.
+                                </li>
+                                <li>Movilización de recursos según sea el tipo de emergencia y las diferentes
+                                    fases: alerta, alarma y acción.
+                                </li>
+                                <li>Control de las comunicaciones vía teléfono, fax, radio,
+                                    <acronym xml:lang="en" title="Global System for Mobile Communications">GSM
+                                    </acronym>
+                                    y a través de ellas envío de información que se solicite desde el escenario
+                                    y transmisión de órdenes al Puesto de Mando Avanzado (PMA).
+                                </li>
+                                <li>Coordinación de los Grupos de Acción y mantenimiento de la Unidad de
+                                    Mando.
+                                </li>
+                                <li>Comunicación permanente con el Centro de Coordinación Operativa de
+                                    Diputación General de Aragón y Delegación del Gobierno.
+                                </li>
+                                <li>Información actualizada y contrastada a los medios públicos y privados de
+                                    comunicación social: Prensa, radio y televisión.
+                                </li>
+                                <li>Llevar un registro, estadística y cuanta información se haya generado de las
+                                    actuaciones atendidas.
+                                </li>
+                            </ul>
+                            <p>El
+                                <acronym title="Centro de Coordinación Operativa Local">CECOPAL</acronym>
+                                se activará en toda emergencia municipal, por decisión del Director del Plan y
+                                actuará con los recursos previstos en el Plan. No obstante podrá incorporar
+                                recursos necesarios no previstos, actuando como<acronym
+                                        title="Centro de Coordinación Operativa Integrada">CECOPI</acronym>, o
+                                bien transferirá responsabilidades al
+                                <acronym title="Centro de Coordinación Operativa">CECOP</acronym>
+                                de la Diputación General de Aragón en caso de emergencia que supere el marco
+                                municipal.
+                            </p>
+                            <h3>Puesto de Mando Avanzado (PMA)</h3>
+                            <p>El Puesto de Mando Avanzado (PMA) es el órgano de dirección de la emergencia en
+                                el propio lugar en que se produce ésta.
+                            </p>
+                            <p>Su ubicación física se establecerá en lugar idóneo: Próximo al lugar para poder
+                                seguir la evolución con conocimiento exacto de la situación y seguro para estar
+                                a cubierto de accidentes previsibles que lo puedan inutilizar.
+                            </p>
+                            <p>El Director Técnico decidirá el emplazamiento del Puesto de Mando Avanzado y
+                                desde él realizará la coordinación de los distintos Grupos de Acción. Caso de no
+                                hallarse presente en el Puesto de Mando Avanzado designará al Jefe del Grupo de
+                                Acción que ha de ejercer la dirección del Puesto de Mando Avanzado y de los
+                                demás Grupos de Acción.
+                            </p>
+                            <p>El Puesto de Mando Avanzado reunirá a los Jefes de los distintos Grupos de Acción
+                                presentes en el lugar de la emergencia y establecerá los mecanismos de
+                                intervención y la comunicación con el Centro de Coordinación Operativa Local.
+                            </p>
+                            <p>El Puesto de Mando Avanzado se podrá ubicar en un pabellón portátil dispuesto
+                                para tal fin o en cualquier lugar disponible con las características necesarias
+                                para poder realizar su función de modo óptimo.
+                            </p>
+                        </div>
+                        <div id="activacion" class="tab-pane">
+                            <h3>Activación del Plan</h3>
+                            <p>El Plan Municipal de Protección Civil de Zaragoza se activará por el Director del Plan
+                                cuando a su juicio la emergencia reúna las características señaladas en punto 2.2, es
+                                decir, cuando se produzca una situación en que los daños producidos o previsibles puedan
+                                superar la capacidad de respuesta de los servicios habituales de urgencia y en
+                                consecuencia requieran, para ser paliados aquellos, la intervención especialmente
+                                coordinada y cuantitativamente extraordinaria de los servicios de protección.
+                            </p>
+                            <p>Cualquiera de los miembros del Comité Asesor que tenga información o juzgue acerca de
+                                algún evento que es constitutivo de emergencia, lo pondrá en conocimiento del Director
+                                del Plan, a los efectos de la activación de éste.
+                            </p>
+                            <p>
+                                <img src="https://www.zaragoza.es/cont/paginas/bomberos/planemergencia/img/normalidad.gif"
+                                     longdesc="normalidad.htm"
+                                     alt="Cubo representativo del Estado de Normalidad en el término Municipal"/>
+                            </p>
+                        </div>
+                        <div id="medidas" class="tab-pane">
+                            <h3>Medidas de protección &gt;&gt; Avisos a la población</h3>
+                            <p>La población tiene derecho a estar suficientemente informada sobre la evolución de un
+                                suceso que haya hecho necesaria la activación del Plan Municipal de Protección Civil.
+                                Pero esa información debe ser veraz, adecuada, que no genere una alarma innecesaria y
+                                contraproducente, pero que tampoco genere un exceso de confianza que la impela a no
+                                estar suficientemente preparada para las acciones que se pidan de ella en caso de
+                                necesidad.
+                            </p>
+                            <p>La accesibilidad actual a gran cantidad de medios de comunicación hace que en ocasiones,
+                                el exceso de información, cuando ésta es imprecisa o contradictoria, sea tan negativa
+                                para la gestión de una emergencia como la falta de ella.
+                            </p>
+                            <p>Por ello, toda la información difundida a la población referente a la evolución de la
+                                emergencia, será proporcionada por el Gabinete de Información, bajo la supervisión del
+                                Director del Plan Municipal de Protección Civil.
+                            </p>
+                            <p>En definitiva, se trata de proporcionar información veraz y concreta sobre la situación
+                                producida, a fin de que la ciudadanía conozca la realidad presente, la evolución
+                                continuada de la situación y los posibles daños probables o posibles, a fin de adoptar
+                                las conductas adecuadas.
+                            </p>
+                            <p>En conjunto se trata de informar de manera pronta y real, por medios autorizados y
+                                responsables y dar las necesarias pautas de conducta, a fin de que se adopten éstas y de
+                                hecho se asuma la autoprotección como obligatoria.
+                            </p>
+                            <p>A estos fines, se abrirá y mantendrá una vía de información continua, tal como:</p>
+                            <ul>
+                                <li>Los Jefes de los Grupos de Acción mantendrán informado al Director Técnico de la
+                                    situación real, dando cuenta de la evolución previsible, en su campo propio de
+                                    trabajo.
+                                </li>
+                                <li>El Director Técnico, con la información obtenida, la transmitirá de forma coherente
+                                    y resumida en lo esencial al Director del Plan y, en su más amplio sentido, al
+                                    <acronym title="Centro de Coordinación Operativo Local ">CECOPAL</acronym>, dentro
+                                    del cual el Gabinete de Información elaborará los boletines informativos,
+                                    transmitiéndolos por un medio abierto permanentemente, a los medios informativos.
+                                </li>
+                                <li>Los medios de comunicación, esencialmente las emisoras de radio y televisión,
+                                    emitirán los boletines informativos autorizados. Estos medios evitarán dar
+                                    informaciones que no estén debidamente contrastadas por órgano autorizado por el
+                                    Director del Plan.
+                                </li>
+                                <li>En el lugar del siniestro y posibles áreas influidas por éste, podrá transmitirse la
+                                    información antedicha por medio de megafonía fija o móvil, carteles u otro medio
+                                    útil.
+                                </li>
+                            </ul>
+                            <p>Se considera una parte fundamental en la actuación ante la emergencia además de la acción
+                                en la misma
+                            </p>
+                        </div>
+                        <div id="medios" class="tab-pane">
+                            <h3>Medios y recursos</h3>
+                            <p>La catalogación de medios y recursos movilizables en la emergencia se hace según lo
+                                establecido en el Catálogo Nacional de Medios y Recursos, para conseguir una
+                                homogeneización de los datos y la simple importación/exportación de las bases de datos
+                                que sostienen el catálogo.
+                            </p>
+                            <h3>DECLARACIÓN DE RESERVA EN LA RECOPILACIÓN Y MANTENIMIENTO DE DATOS</h3>
+                            <p>Toda la información que se recabe de ciudadanos, entidades y organismos y que esté
+                                afectada por la normativa vigente sobre protección de datos de carácter personal, deberá
+                                incluir el siguiente texto en el reverso del formulario de recopilación de datos:
+                            </p>
+                            <p>
+                                <em>El Ayuntamiento de Zaragoza ejecuta y mantiene un catálogo de los medios y recursos
+                                    ubicados en su Término Municipal, que forma parte de la estructura de gestión de
+                                    emergencias de la localidad. Este Ayuntamiento está legalmente capacitado para
+                                    requerir la información que en el anverso se especifica, siendo obligatoria su
+                                    aportación, de forma veraz, por parte de la persona física o jurídica a la que se
+                                    recaba, por cuanto la inexactitud deliberada o la negativa a facilitar esos datos,
+                                    podrá dar lugar a las acciones previstas en las leyes.
+                                </em>
+                            </p>
+                            <p>Cuando en el anverso se reflejen datos personales de terceras personas, quien rellene el
+                                formulario deberá comunicar a las mismas que esos datos se incluyen en el formato y el
+                                propósito para el que se incluyen.
+                            </p>
+                            <p>Los datos del anverso se recaban por razones de interés general y con el único propósito
+                                de mantener la estructura de gestión de emergencias. Así mismo y exclusivamente con ese
+                                propósito, también constarán en los ficheros de los Servicios de Protección Civil de la
+                                Comunidad Autónoma de Aragón, por sus competencias en planes de nivel superior al
+                                municipal.
+                            </p>
+                            <p>Los datos del anverso serán registrados en ficheros que reúnen las condiciones
+                                reglamentarias de reserva, integridad y seguridad.
+                            </p>
+                            <p>La recogida y tratamiento de estos datos se ajusta a lo establecido en la Ley Orgánica
+                                15/1999 de protección de datos de carácter personal.
+                            </p>
+                            <p>Todo el personal autorizado expresamente para recabar dicha información, deberá informar
+                                de dicho texto y recibir confirmación de que el mismo es leído y entendido por la
+                                persona a quien se solicita tal información.
+                            </p>
+                        </div>
+                        <div id="implantacion" class="tab-pane">
+                            <h3>Implantación y Mantenimiento</h3>
+                            <h3>IMPLANTACIÓN</h3>
+                            <p>El Plan Municipal de Protección Civil de Zaragoza es una normativa local de obligado
+                                cumplimiento cuando sea aprobado por el Órgano Municipal competente y que además se
+                                adopta como rectora de su ámbito de aplicación, por su homologación por la Comisión de
+                                Protección Civil de la Comunidad Autónoma de Aragón, quedando con ello integrado en la
+                                estructura aragonesa de gestión de emergencias.
+                            </p>
+                            <p>Para que sus directrices resulten efectivas en situación de emergencia, debe contar con
+                                una base firme y con un desarrollo real en situación de normalidad, al objeto de que
+                                tenga un resultado adecuado, si fuese necesario activarlo.
+                            </p>
+                            <p>A tal fin, el Ayuntamiento de Zaragoza asume la responsabilidad de su implantación,
+                                ejecutando las acciones expuestas en este capítulo, y una vez tramitado este Plan y
+                                aprobado por los órganos competentes de Ayuntamiento de Zaragoza, y Diputación General
+                                de Aragón, debe implantarse dentro de un periodo de tiempo suficiente pero lo más
+                                reducido posible.
+                            </p>
+                            <p>Se establece, en consecuencia, a partir de la aprobación definitiva del Plan el siguiente
+                                calendario:
+                            </p>
+                            <p>1º y 2º mes:</p>
+                            <ul>
+                                <li>Constitución de la Comisión Local de Protección Civil.</li>
+                                <li>Nombramiento del Comité Asesor y Gabinete de Información.</li>
+                                <li>Notificación y envío de un ejemplar del Plan a la Delegación del Gobierno.</li>
+                                <li>Notificación y envío de un ejemplar del Plan a los Jefes de Grupos de Acción.</li>
+                            </ul>
+                            <p>3º mes:</p>
+                            <ul>
+                                <li>Notificación a cada entidad o institución extramunicipal integrada en Grupos de
+                                    Acción.
+                                </li>
+                                <li>Difusión a todos los niveles ciudadanos.</li>
+                                <li>Reunión de trabajo de Jefes de Grupos de Acción, convocados por el Jefe del Grupo de
+                                    Intervención.
+                                </li>
+                            </ul>
+                            <p>4º y 5º mes:</p>
+                            <ul>
+                                <li>Reunión por separado de los Grupos de Acción, convocados por los respectivos Jefes,
+                                    a fin de poner en común planes de movilización y colaboración.
+                                </li>
+                                <li>Realización de listados complementarios de recursos.</li>
+                                <li>Realización de listados de personas.</li>
+                            </ul>
+                            <p>? 6º mes:</p>
+                            <ul>
+                                <li>Programación de simulacros de emergencia, por separado de los Grupos de Acción.</li>
+                            </ul>
+                            <h3>Medios de Coordinación</h3>
+                            <p>Se garantiza el mantenimiento de los medios existentes en el
+                                <acronym title="Centro de Coordinación Operativa Local">CECOPAL</acronym>
+                                y se ampliarán y mejorarán progresivamente, a fin de preservar al máximo su
+                                operatividad.
+                            </p>
+                            <h4>Dotación de medios específicos a los Grupos Operativos</h4>
+                            <p>Conforme a los riesgos inventariados, se mantendrán y perfeccionarán los medios
+                                municipales de apoyo a los grupos operativos para, en la medida de lo posible, prevenir
+                                tales riesgos o en su caso, afrontarlos con la máxima eficacia.
+                            </p>
+                            <h4>Información y formación de los integrantes del Plan Municipal de Protección Civil</h4>
+                            <p>Los integrantes del Plan Municipal de Protección Civil deben tener conocimiento de los
+                                mecanismos de su activación y deben asumir la importancia de su participación en el
+                                desarrollo de las actuaciones.
+                            </p>
+                            <p>A tal fin, se establece su inclusión en un programa continuo de formación e información
+                                sobre los mecanismos del Plan de Emergencia Municipal y del mantenimiento y
+                                actualizaciones que se vayan ejecutando.
+                            </p>
+                            <h4>Divulgación a la Población</h4>
+                            <p>Se dará la máxima difusión al Plan Municipal de Protección Civil entre la ciudadanía, por
+                                ser la comprensión, aceptación e interiorización de sus objetivos, la mejor herramienta
+                                para la consecución de los fines por los que se confecciona.
+                            </p>
+                            <p>Por tal motivo, se proveerá de un extracto del mismo a todos los colectivos y se
+                                promoverá un máximo consenso y participación en todas las acciones de mantenimiento y
+                                actualización que se acometan.
+                            </p>
+                            <h3>Comprobación mediante ejercicios y simulacros</h3>
+                            <p>Se comprobará el funcionamiento del sistema de gestión de emergencias y la movilización
+                                de los recursos incluidos en el mismo, mediante la realización de ejercicios y
+                                simulacros, tendentes a mantener la adecuada preparación de los medios disponibles, la
+                                disponibilidad de los recursos existentes y la necesaria coordinación de todos los
+                                integrantes del Plan Municipal de Protección Civil.
+                            </p>
+                            <h3>MANTENIMIENTO</h3>
+                            <h3>Actualización del Plan</h3>
+                            <p>Tanto el cuerpo del Plan Municipal de Protección Civil de Zaragoza, como sus anexos,
+                                están sujetos a modificaciones que exija la evolución de la realidad local.
+                            </p>
+                            <p>Este es el motivo por el que el Plan Municipal de Protección Civil se divide en un primer
+                                cuerpo de procedimiento normativo y en una serie de anexos al mismo, que forman conjunto
+                                con él, pero que se encuentran redactados en bloques independientes.
+                            </p>
+                            <p>La actualización del Plan Municipal de Protección Civil se regirá por el siguiente
+                                procedimiento:
+                            </p>
+                            <h4>Mantenimiento continuo</h4>
+                            <p>De forma continuada, el Servicio Contra Incendios, de Salvamento y Protección Civil,
+                                mantendrá actualizados los datos recogidos en el Plan Municipal de Protección Civil.
+                            </p>
+                            <p>Se habilitarán tres vías principales para el mantenimiento del mismo:</p>
+                            <ul>
+                                <li>Por medio de la Web Municipal con el acceso a zona restringida de usuarios.</li>
+                                <li>Mediante el envío de datos en el formato de base de datos definido.</li>
+                                <li>Mediante envío de fax al Servicio contra Incendios, de Salvamento y Protección
+                                    Civil.
+                                </li>
+                            </ul>
+                            <h4>Revisión anual</h4>
+                            <p>El Servicio contra Incendios, de Salvamento y Protección Civil informará anualmente a la
+                                Comisión Local de Protección Civil del estado de actualización del Plan Municipal de
+                                Protección Civil, proponiendo en su caso la Comisión Local, los cambios que considere
+                                oportunos, para proceder a la revisión anual del documento.
+                            </p>
+                            <h4>Período de vigencia</h4>
+                            <p>Pasados cuatro años tras su aprobación en Pleno Municipal, aún cuando se considere que el
+                                Plan Municipal de Protección Civil se encuentra suficientemente actualizado en su
+                                redacción, se realizarán consultas a los órganos superiores del Gobierno de Aragón por
+                                si fuera necesaria alguna modificación a incluir y se procederá a efectuar el trámite de
+                                someter de nuevo al Pleno, la ratificación de todo el texto del Plan Municipal de
+                                Protección Civil, tras lo cual se solicitará a la Comisión de Protección Civil de la
+                                Comunidad Autónoma la eventual homologación de lo aprobado.
+                            </p>
+                            <p>Las modificaciones al Plan Municipal de Protección Civil seguirán el siguiente
+                                procedimiento:
+                            </p>
+                            <p>Cualquier modificación a los anexos del Plan Municipal de Protección Civil será
+                                incorporada automáticamente y no necesitará de un procedimiento especial de aprobación
+                                por el Pleno Municipal a tal fin, por considerarse como trabajos normales de puesta al
+                                día, siendo el conjunto revisado cuando cumpla su período. Asimismo, las ligeras
+                                modificaciones referentes a la inclusión de alguna normativa legal que se proclame en el
+                                futuro o cualquier otra modificación puntual como cambios en cargos de responsables de
+                                grupos que no afecte al espíritu del Plan Municipal de Protección Civil, será
+                                incorporada como anexo provisional y no necesitará del trámite de sometimiento al Pleno
+                                de todo el texto, sino en su caso, la aprobación concreta por el Director del Plan y la
+                                eventual elevación al Pleno de tal modificación.
+                            </p>
+                            <p>Ante circunstancias que exijan cambios profundos en el Plan Municipal de Protección
+                                Civil, se iniciará por el Servicio Contra Incendios, de Salvamento y Protección Civil
+                                una revisión completa del mismo y serán llamados a consultas los diferentes integrantes
+                                de los Grupos de Acción que se citan en el Plan Municipal de Protección Civil y a la
+                                Comisión Local de Protección Civil, al objeto de elaborar un nuevo documento que será
+                                sometido a aprobación del Pleno Municipal a la mayor brevedad y una vez aprobado, se
+                                comunicará a la Comisión de Protección Civil de la Comunidad Autónoma Aragonesa.
+                            </p>
+                        </div>
+                        <div id="especificos" class="tab-pane">
+                            <h3>Planes y procedimientos de actuación ante riesgos determinados</h3>
+                            <p>Los planes de actuación ante los diferentes riesgos se elaboran en los documentos que
+                                contemplan cada riesgo de modo específico.
+                            </p>
+                            <ul>
+                                <li>Plan Especial de Protección Civil específico para riesgos meteorológicos. Aprobación
+                                    definitiva el 18 de mayo de 2007 por Decreto de la Ilma. Sra. Teniente de Alcalde
+                                    Consejera del Área de Servicios Públicos.
+                                    <a href="http://www.zaragoza.es/cont/paginas/bomberos/pdf/PlanMunicipalEspecificoMeteorologico.pdf">
+                                        Descargar documento PDF...
+                                    </a>
+                                </li>
+                                <li>Plan Especial de Actuación Sanitaria Extrahospitalaria en Emergencias Colectivas y
+                                    Catástrofes. Expediente nº 288.936/2008. Aprobación definitiva el 14 de marzo de
+                                    2008 por Decreto de la Ilma. Sra. Teniente de Alcalde Consejera del Área de
+                                    Servicios Públicos.
+                                    <a href="http://www.zaragoza.es/cont/paginas/bomberos/pdf/PlanEspecialActuacionExtrahospitalaria.pdf">
+                                        Descargar documento PDF...
+                                    </a>
+                                </li>
+                                <li>Plan Especial de Protección Civil ante situaciones de emergencia nuclear. Descargar
+                                    documento PDF. Expediente nº 283.590/2008. Aprobación definitiva el 11 de abril de
+                                    2008 por Decreto de la Ilma. Sra. Teniente de Alcalde Consejera del Área de
+                                    Servicios Públicos.
+                                    <a href="http://www.zaragoza.es/cont/paginas/bomberos/pdf/PlanEspecialEmergenciaNuclear.pdf">
+                                        Descargar documento PDF...
+                                    </a>
+                                </li>
+                                <li>Plan Especial de Protección Civil ante situaciones de grave riesgo por grandes
+                                    concentraciones humanas. Expediente nº 183.662/2008. Aprobación definitiva el 11 de
+                                    abril de 2008 por Decreto de la Ilma. Sra. Teniente de Alcalde Consejera del Área de
+                                    Servicios Públicos.
+                                    <a href="http://www.zaragoza.es/cont/paginas/bomberos/pdf/PlanEspecialConcentracionesHumanas.pdf">
+                                        Descargar documento PDF...
+                                    </a>
+                                </li>
+                                <li>Plan Especial de Protección Civil ante situaciones de grave riesgo por accidentes en
+                                    el transporte civil por carretera, por ferrocarril y aéreo. Expediente nº
+                                    183.711/2008. Aprobación definitiva el 11 de abril de 2008 por Decreto de la Ilma.
+                                    Sra. Teniente de Alcalde Consejera del Área de Servicios Públicos.
+                                    <a href="http://www.zaragoza.es/cont/paginas/bomberos/pdf/PlanEspecialTransporteCivil.pdf">
+                                        Descargar documento PDF...
+                                    </a>
+                                </li>
+                                <li>Plan Municipal de emergencias por transporte de mercancías peligrosas. Expediente nº
+                                    418.050/2010. Aprobación definitiva el 19 de marzo de 2010 por Decreto de la Ilma.
+                                    Sra. Teniente de Alcalde Consejera del Área de Servicios Públicos.
+                                    <a href="http://www.zaragoza.es/cont/paginas/bomberos/pdf/PlanMMPP.pdf">Descargar
+                                        documento PDF...
+                                    </a>
+                                </li>
+                                <li>Plan Especial de Protección Civil frente al riesgo por la interrupción total o
+                                    parcial y prolongada de suministro eléctrico a la población. Expediente nº
+                                    1.572.310/2010. Aprobación definitiva el 7 de enero de 2011 por Decreto de la Ilma.
+                                    Sra. Teniente de Alcalde Consejera del Área de Servicios Públicos.
+                                    <a href="http://www.zaragoza.es/cont/paginas/bomberos/pdf/PlanEspecialRiesgoInterrupcionSuministroElectrico.pdf">
+                                        Descargar documento PDF...
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

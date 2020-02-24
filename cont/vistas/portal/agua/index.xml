@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Agua"
+                   description="El portal Agua ofrece una relación de trámites, impresos e instancias, normativa, enlaces de interés y publicaciones asociados con el servicio de gestión del agua. Se proporciona  información detallada y desglosada sobre el anverso y reverso de la factura del agua. Podrá conocer los cortes de agua se están produciendo en la ciudad relacionadas o la calidad del agua del municipio de Zaragoza. A través del servicio información y sugerencias, la ciudadanía puede enviar sus sugerencias y observaciones."
+                   keywords="ayuntamiento, ciudad, Zaragoza, España, agua, servicio público, suministro de agua, análisis del agua, consumo de agua, utilización del agua, tarifas, facturación, administración local, administración electrónica, relación administración-administrado,  formalidades administrativas, formularios, recursos administrativos, legislación, publicaciones, direcciones de Internet, preguntas frecuentes, servicio de quejas y sugerencias, council, city, Saragossa, Spain, water, public service, water supply, water analysis, water consumption, use of water, rates, invoicing, local government, electronic government, citizen-authority relations, administrative formalities, forms, appeal to an administrative authority, legislation, publications, Internet address, frecuently asked questions, faq, complaints and suggestions service"
+        />
+        <style type="text/css">
+            body {
+            padding-top: 57px;
+            }
+            .bg {
+            background-color: #000;
+            }
+            .card {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            position: relative;
+            /*padding-bottom: 5em;*/
+            background: #E9E9E9;           
+
+            }
+            .card-footer {
+            background: #E6E6E6 !important;
+            }
+            .card:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            }
+            .card h2 {
+            font-size: 2em;
+            margin: .5em 0 .5em;
+            }
+            .card p {
+            <!--/*border-left: 3px solid #D01715;*/-->
+            }
+
+            h2 {
+            font-size: 1.6em;
+            margin: .7em 2em 0 2em;
+            }
+
+            .card a {
+            text-decoration: none;
+            }
+            @media (min-width: 1024px) {
+            .card {
+            min-height: 48em;
+            }
+            }
+            @media (max-width: 768px) {
+            .card {
+            min-height: 65em;
+            }
+            
+            .responsive{
+            margin-bottom:47px;
+            }
+            .responsive1{
+            margin-bottom:65px;
+            }
+            }
+
+            .fnd-gris-claro, .form-indice {
+            background: rgba(233,233,233,.5);
+            }
+
+            .pad20 {
+            padding: 25px 20px !important;
+            }
+
+            .pad20.destacado {
+            padding: 10px 20px !important;
+            }
+
+            .pad20 h3 {
+            margin-top: 0px;
+            font-size: 22px;
+            color: #D01715;
+            }
+
+            .pad20 h2 {
+            margin-top: 0;
+            font-size: 36px;
+            }
+
+            .pad20 h3 small {
+            color: #000;
+            }
+
+            .borde-l {
+            border-left: solid 2px #000;
+            padding-left: 10px;
+            }
+
+            .borde-r {
+            border-right: solid 2px #000;
+            padding-right: 10px;
+            }
+
+            .pad20 p {
+            margin-bottom: 0px;
+            }
+
+            .cuadro {
+            position: relative;
+            background-color: #cccccc;
+            border-radius: 10px;
+            margin-bottom:10px;
+            }
+
+            .img-rounded {
+            border-radius: 10px 10px 0 0 !important;
+            }
+
+            .cuadro img {
+            padding-bottom: 0;
+            margin: 0px;
+            }
+
+            .cuadro h3 {
+            background-color: rgba(0,0,0,0.7);
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 0;
+            border-radius: 0px 0px 10px 10px;
+            }
+
+            .cuadro h3 a {
+            color: #ffffff !important;
+            font-weight: bold;
+            }
+            @media (min-width: 425px) {
+            .card  img{
+            width: 100%;
+            }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="margin-b2em fnd-gris-claro" style="margin-top:-20px; min-height: 140px;">
+                <div class="text-center padding-a2em">
+                </div>
+            </div>
+            <div class="container-fluid" style="margin-top:-100px;">
+                <ul class="row list-unstyled list-ogob">
+                    <li class="col-sm-4">
+                        <div class="card">
+                            <a href="/sede/portal/agua/abastecimiento/servicio/tramite/tipo/23">
+                                <h2 class="text-right" style="line-height: 60px;">Abastecimiento
+                                </h2>
+                                <img src="/cont/vistas/portal/agua/img/oficina.jpg" class="img-responsive img-rounded"
+                                     width="360" alt="trámites"/>
+                                <div class="text-left pad20">
+                                    <h3 class="borde-l">
+                                        <small>Atención al ciudadano</small>
+                                        <br/>Oficina Municipal del Agua
+                                    </h3>
+                                    <p>Avda. Ranillas, 3 A, oficina 0A</p>
+                                    <p>50018 Zaragoza</p>
+                                    <p>Tel.: 976 293 840</p>
+                                    <p>
+                                        <a href="https://www.zaragoza.es/sede/portal/idezar/mapa/comoMoverse/?nd=Zentro%20Empresarial.%20Avda.%20Ranillas,%203%20A,%20oficina%200A%20(Recinto%20Expo)&amp;xd=675288.1&amp;yd=4615754.6">
+                                            Cómo llegar
+                                        </a>
+                                        en trasporte público
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="cuadro">
+                                    <img
+                                            src="/cont/vistas/portal/agua/img/factura.jpg"
+                                            class="img-rounded img-responsive" alt=""/>
+                                    <h3 class="text-center">
+                                        <a
+                                                href="/sede/portal/agua/factura/">Factura del agua
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="cuadro">
+                                    <img
+                                            src="http://www.zaragoza.es//cont/paginas/img/avisos/Corte-Agua.gif"
+                                            class="img-rounded img-responsive" alt=""/>
+                                    <h3 class="text-center">
+                                        <ul class="list-unstyled">
+                                        <li>
+                                            <a href="/sede/portal/agua/servicio/via-publica/incidencia/ ">· Cortes</a>
+                                        </li>    
+                                        <li>
+                                            <a href="/sede/servicio/tramite/28140">· Avisos cortes</a>
+                                        </li>
+                                      </ul>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-sm-4">
+                        <div class="card">
+                            <a href="/sede/portal/potabilizadora/">
+                                <h2 class="text-right" style="line-height: 60px;">Potabilizadora</h2>
+                                <img src="/cont/vistas/portal/agua/img/potabilizadora.jpg"
+                                     class="img-responsive img-rounded" width="360" alt="potabilizadora"/>
+                                <div class="text-left pad20 responsive">
+                                    <h3 class="borde-l">
+                                        <small>Atención al ciudadano</small>
+                                        <br/>Planta Potabilizadora
+                                    </h3>
+                                    <p>Vía Hispanidad, 45-47</p>
+                                    <p>50012 Zaragoza</p>
+                                    <p>Tel.: 976 721 560</p>
+                                    <p>
+                                        <a href="https://www.zaragoza.es/sede/portal/idezar/mapa/comoMoverse/?nd=V%C3%ADa%20Hispanidad,%2045-47&amp;xd=673829.66&amp;yd=4612062.21">
+                                            Cómo llegar
+                                        </a>
+                                        en trasporte público
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="cuadro">
+                                    <img
+                                            src="/cont/vistas/portal/agua/img/calidad.jpg"
+                                            class="img-rounded img-responsive" alt=""/>
+                                    <h3 class="text-center">
+                                        <a
+                                                href="http://www.zaragoza.es/sede/servicio/potabilizadora/">Datos
+                                            semanales
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="cuadro">
+                                    <img
+                                            src="/cont/vistas/portal/agua/img/grifo.jpg"
+                                            class="img-rounded img-responsive" alt=""/>
+                                    <h3 class="text-center">
+                                        <a
+                                                href="/sede/servicio/calidad-agua/">
+                                            Calidad del agua
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-sm-4">
+                        <div class="card">
+                            <a href="/sede/portal/agua/saneamiento/">
+                                <h2 class="text-right">Saneamiento y depuración</h2>
+                                <img src="/cont/vistas/portal/agua/img/seminario.jpg" class="img-responsive img-rounded"
+                                     width="360" alt="ecociudad"/>
+                                <div class="text-left pad20 responsive1">
+                                    <h3 class="borde-l">
+                                        <small>Atención al ciudadano</small>
+                                        <br/>Ecociudad
+                                    </h3>
+                                    <p>Vía Hispanidad, 20</p>
+                                    <p>50009 Zaragoza</p>
+                                    <p>Tel.: 976 724 418</p>
+                                    <p>
+                                        <a href="https://www.zaragoza.es/sede/portal/idezar/mapa/comoMoverse/?nd=V%C3%ADa%20Hispanidad,%2020&amp;xd=674094.66&amp;yd=4611606.41">
+                                            Cómo llegar
+                                        </a>
+                                        en trasporte público
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="cuadro">
+                                    <img
+                                            src="http://www.zaragoza.es//cont/paginas/img/avisos/plan-agua-avi.gif"
+                                            class="img-rounded img-responsive" alt=""/>
+                                    <h3 class="text-center">
+                                        <a
+                                                href="https://www.zaragoza.es/sede/servicio/publicaciones/11500">
+                                            Plan Director del Agua
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="cuadro">
+                                    <img
+                                            src="http://www.zaragoza.es//cont/paginas/img/avisos/politica-seg-avi.gif"
+                                            class="img-rounded img-responsive" alt=""/>
+                                    <h3 class="text-center">
+                                        <a
+                                                href="http://www.zaragoza.es/sede/servicio/publicaciones/11546">
+                                            Política de seguridad
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </sede:content>
+    </body>
+
+</html>

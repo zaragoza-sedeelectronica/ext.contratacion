@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <sede:meta title="Contratación Pública" keywords="sede,web,perfil,contratos,ayuntamiento,zaragoza,contratación" />
+        <style>
+            .title p{
+                font-size:20px;
+                font-family: inherit;
+                font-weight: 500;
+                line-height: 1.1;
+                color: inherit;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            body {
+            padding-top: 57px;
+            }
+            .btn-mesa{
+                margin-bottom:10px;
+            }
+            ul#menu {
+                border-bottom: 2px solid #E81B16;
+                border: 1px solid #CCC;
+                font-weight: bold;
+                margin-bottom: 1em;
+                border-radius: 0 0 .5em .5em;
+            }
+            ul#menu .elemento {
+                display: block;
+                padding: 10px 15px;
+                margin: 0;
+                font-size: 1em;
+                font-weight: bold;
+                line-height: 1.42857143;
+            }
+            .titulo-procesos h2,
+            .procesos h2 {
+                color: #e83437 !important;
+                font-size: 42px !important;
+            }
+
+            .titulo-procesos h2 small,
+            .titulo-procesos h2 span,
+            .procesos h2 small,
+            .procesos h2 span {
+                color: #000000;
+            }
+
+            .ancho {
+                padding: 30px 0;
+                width: 100%;
+            }
+
+            .radius {
+                border-radius: 10px;
+            }
+
+            .ancho .fnd-blanco {
+                margin-bottom: 20px;
+            }
+
+
+            .fnd-blanco {
+                background-color: #ffffff;
+            }
+
+            .menu-consejos li {
+                padding: 0px;
+            }
+
+            .menu-consejos li a {
+                margin-right: -15px;
+                font-size: 28px;
+            }
+
+            .menu-consejos li.active a {
+                border: 0px;
+                color: #ffffff;
+                background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+                border: 0px;
+            }
+
+            .margin-t3em {
+                margin-top: 0 !important;
+                padding-top: 3em !important;
+            }
+            .nav-tabs>li:last-child {
+             border-right: 0;
+            }
+            .nav-tabs>li>a {
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: 5px;
+            }
+            .nav-tabs {
+                border-bottom: solid 2px;
+            }
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .tab-content {
+                color: #000000;
+                border: 0 !important;
+            }
+
+            .cuadrado ul li div {
+                background-color: #e9e9e9;
+                border-radius: 10px;
+                padding-top: 10px;
+                padding-bottom: 60px;
+                margin:10px;
+            }
+
+            .cuadrado ul li div a {
+                margin-top: 5px;
+                color: #000000;
+                font-size: 20px;
+            }
+            .cuadrado ul li div img {
+            margin: 0px auto;
+            }
+
+            .fondo-dibujo {
+
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 200px;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn tr {
+
+            }
+
+            .tabla-bn td,
+            .tabla-bn th{
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+
+            .redes-sociales {
+            margin-top: -13px;
+            font-size: 65px;
+            text-align: right;
+            }
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+            @media (min-width: 768px) and (max-width: 1016px) {
+            .redes-sociales {
+            font-size: 44px;
+            }
+            }
+
+        </style>
+    </head>
+    <body>
+        <sede:content container="false">
+            <section content="mesa de contratacion">
+             <header>
+                 <div class="container text-left margin-auto nomargin titulo-procesos fondo-dibujo">
+                    <h2 class="text-right">
+                    <small>Perfil del Contratante</small>
+                    <span>|</span>
+                    Mesa de Contratacion
+                </h2>
+            </div>
+             </header>
+
+            <div class="container fnd-gris-claro ancho">
+            <div class="container-fluid fnd-blanco radius">
+                <article>
+                    <div class="col-md-12 col-sm-12">
+                  <h2 class="title" property="name">Composición de la mesa de contratación permanente</h2>
+                    <p class="title">Actualizada por resolución del Sr. Consejero de Economía y Cultura de 21 de enero de 2019.</p>
+                    <hr class="sm color-ayto"/>
+
+                    <ul class="list-inline navbar-left submenu">
+                        <li>
+                            <a class="btn btn-default btn-mesa" href="#presidente">Presidente</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-default btn-mesa" href="#vocales">Vocales</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-default btn-mesa" href="#secretaria">Secretaria</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-default btn-mesa" href="#vacantes">Vacantes</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-default btn-mesa" href="#resoluciones">Resoluciones relacionadas</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <h3 id="presidente">Presidente</h3>
+                    <hr class="sm"/>
+                    <div class="col-md-3 well">
+
+                    </div>
+                    <div class="col-md-9">
+                        <ul><li> D. Miguel Ruiz León, Coordinador del Área de Economía y Cultura </li></ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <h3 id="vocales">Vocales</h3>
+                    <hr class="sm"/>
+                    <div class="col-md-3 well">
+                    </div>
+                    <div class="col-md-9">
+                        <ul>
+                            <li>D. José Ignacio Notivoli Mur, Interventor General Municipal.</li>
+                            <li>D. Carlos Navarro del Cacho, Letrado Municipal que ejerce las funciones de Jefe de la Asesoría Jurídica Municipal.</li>
+                            <li>Un Concejal de los Grupos políticos no integrados en el equipo de gobierno municipal que por turno corresponda.</li>
+                            <li>Dª Ana Budría Escudero, Jefe del Departamento de Contratación y Patrimonio.</li>
+                            <li>Dª Azucena Ayala Andrés, Jefa del Servicio de Contratación.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <h3 id="secretaria">Secretaria:</h3>
+                    <hr class="sm"/>
+                    <div class="col-md-3 well">
+                    </div>
+                    <div class="col-md-9 ol-sm-12">
+                        <ul><li>Dª Sara Panadés Andreu, Jefa de la unidad de contratación.</li></ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <h3 id="vacantes">Vacante, ausencia, enfermedad u otra causa legal que impida la asistencia de los titulares:</h3>
+                    <hr class="sm"/>
+                    <div class="col-md-3 well">
+                    </div>
+                    <div class="col-md-9">
+                      <ul>
+                        <li>El Presidente por Dª Ana Budría Escudero, Jefa del Departamento de Contratación y Patrimonio.</li>
+                        <li>El Jefe de la Asesoría Jurídica Municipal por D. Luis Garcia-Mercadal y Garcia Loygorri, Dª  María Pilar Gómez Martín, Dª María Dolores Lorenz Rodriguez y D. Franciso Rivas Tena,  Letrados de la Asesoría Municipal por el orden indicado.</li>
+                        <li>El Interventor General por los siguientes funcionarios de la Intervención, D. Luis Zubero Imaz, Jefe del Departamento de la Intervención; Dª María José Piñeiro Antón, Jefa del Servicio de Control y Fiscalización y Dª Ana de la Hera Garbati, Adjunta a la Jefa del Servicio de Control y Fiscalización.</li>
+                        <li>La Secretaria de la Mesa por D. José María Lasierra Asún, Dª Lourdes Longas Lafuente, D. Alejandro Fortanet Foronda y funcionarios interinos adscritos al Departamento de Contratación y Patrimonio, indistintamente, habida cuenta de que el citado Departamento no cuenta con funcionarios de carrera con la suficiente cualificación en materia de contratación.</li>
+                        <li>En cuanto a la participación en la Mesa de Contratación de los grupos políticos que no forman parte del Equipo de Gobierno, de conformidad con lo previsto en la Disposición Adicional Octava del Reglamento Orgánico Municipal, existe un turno mensual para que un representante de un grupo político pueda participar en la condición de vocal con voz y voto, sin perjuicio que puedan asistir también un representante por cada grupo con voz y sin voto.</li>
+                        <li>La nueva composición de la Mesa de Contratación deberá publicarse en el Perfil de Contratante del Ayuntamiento de Zaragoza. </li>
+                      </ul>
+                    </div>
+                </div>
+                </article>
+                <article>
+                <div class="col-md-12 col-sm-12">
+                    <h3 id="resoluciones">Resoluciones relacionadas</h3>
+                    <hr class="sm"/>
+                    <div class="col-md-3 well">
+                    </div>
+                    <div class="col-md-9">
+                        <ul>
+                            <li><a class="external-link"  href="/ciudad/gestionmunicipal/contratos/resolucionmesenero19.htm">Resolución del Consejero de Economía y Cultura de 21 de enero de 2019</a></li>
+                            <li><a class="external-link" href="/ciudad/gestionmunicipal/contratos/resolucionmesabril18.htm">Resolución del Consejero de Economía y Cultura de 18 de abril de 2018</a></li>
+                            <li><a class="external-link" href="/ciudad/gestionmunicipal/contratos/resolucionmesa10-10-17.htm">Resolución del Consejero de Economía y Cultura de 10 de octubre de 2017</a></li>
+                            <li><a class="external-link" href="/ciudad/gestionmunicipal/contratos/resolucionmesa28-03-17.htm">Resolución del Consejero de Economía y Cultura de 28 de marzo de 2017</a></li>
+                            <li><a class="external-link" href="/ciudad/gestionmunicipal/contratos/resolucionmesa28-04.htm">Resolución del Consejero de Economía y Cultura de 28 de abril de 2016</a></li>
+                            <li><a class="external-link" href="/ciudad/gestionmunicipal/contratos/resolucionmesa01-03.htm">Resolución del Consejero de Economía y Cultura de 1 de marzo de 2016</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                </article>
+            </div>
+        </div>
+            </section>
+    </sede:content>
+    <script>
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Hazte Socio/a" 
+               description="Recursos de información sobre las Bibliotecas Infantiles Municipales en la sede electrónica del Ayuntamiento de Zaragoza: cómo hacerse socio/a" 
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, derecho a la cultura, derecho a la educación, noticias, agenda, biblioteca pública, carnet bibliotecario, biblioteca infantil, bibliobús, catálogo, servicio en línea, carta de servicios, guía de usuario, city, council, Saragossa, electronic site, local government, social rights, right to culture, right to education, news, public library, library card, children library, mobile library, catalogue, online service, citizen's charter, user guide"/>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/bibliotecas-municipales/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Bibliotecas</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Bibliotecas Infantiles</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="bibliotecas-infantiles"> Quiénes Somos</a></li>
+                    <li><a href="socio-infantil">Hazte Socio/a</a></li>
+                    <li><a href="encuentra-infantil">Qué Encontrar</a></li>
+                    <li><a href="hacer-infantil">Qué Hacer</a></li>
+                    <li><a href="recomendaciones-infantil">Te Gustará</a></li>
+                    <li><a href="buenas-practicas-infantil">Buenas Prácticas</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card"><div class="pull-right"><img alt="" src="/cont/vistas/portal/bibliotecas-municipales/img/carne-socio.jpg"/></div>
+                    <h2>¿Cómo puedes hacerte soci@?</h2>
+ 
+                    <p> Para poder llevarte<strong> materiales en préstamo o navegar por Internet </strong>debes ser socio de la biblioteca. </p>
+                    <p> Puedes hacerte socio de dos formas:</p>
+                    <ol>
+                        <li> Trayendo tu<strong> tarjeta ciudadana</strong>. Te la activaremos como socio de la biblioteca. Es gratuito e inmediato. </li>
+                        <li>Si no tienes tarjeta ciudadana deberás presentarnos un <strong>documento oficial de identificación</strong>. </li>
+                    </ol>
+                    <p> Independientemente de la forma en que te hagas socio, dado que eres menor, tendrás que venir con tu padre, tu madre o un representante legal.</p>
+                    <p> El carné te servirá para todas las <a href="https://www.zaragoza.es/sede/servicio/equipamiento/list?fq=temas_smultiple%3A%28%22Cultura+y+Ocio%22%29+AND+subtemas_smultiple%3A%28%22Bibliotecas%22%29%20AND%20titularidad_smultiple%3A%28%22Municipal%22%29"><strong>Bibliotecas Públicas Municipales de Zaragoza</strong></a></p>
+                    <p>Puedes utilizar el carné <strong>durante dos años</strong>, luego tendrás que renovarlo. </p>
+                    <p> Recuerda que el carné es solo tuyo, no deberías dejar que nadie más lo utilice por ti, porque tú eres el responsable de su uso.</p>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Descarga. Herramientas IDEZar. Infraestructura de Datos Especiales de Zaragoza IDEZar"
+                   description=""
+                   author="" last-modified="Thu Dec 23 00:00:00 CET 2019"
+                   keywords=""/>
+        <!--<link rel="manifest" href="//www.zaragoza.es/cont/vistas/portal/organizacion/manifest.json"/>-->
+        <style>
+            titulo-seccion {
+            line-height: 66px;
+            font-size: 42px;
+            }
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .panel-heading a:after {
+            float: left;
+            color: white;
+            background-color: #000;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 20px;
+            margin-right: 10px;
+            }
+
+            .panel-heading a.collapsed:after {
+            content: "\f105";
+            }
+
+            .panel-default>.panel-heading {
+            background-color: #fff;
+            border: 0;
+            }
+
+            .panel {
+            border: 0;
+            webkit-box-shadow: 0 0 0;
+            box-shadow: 0 0 0;
+            }
+
+            .panel-group .panel-heading+.panel-collapse>.panel-body {
+            border: 0;
+            }
+
+            .panel-body {
+            padding-left: 50px;
+            }
+
+            .panel-title>a {
+            color: #E81B16;
+            }
+
+            .panel-title>a:hover,
+            .panel-title>a:focus,
+            .panel-title>a:active {
+            text-decoration: none;
+            }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+    
+    .second-bar h2 {
+		margin: 0 0 0 0.5em !important;
+	}
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+    
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: inherit;
+        }
+    }
+     @media(max-width: 425px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }          
+
+/* Las pestañas */
+
+                @media (min-width: 768px) {
+                .nav-tabs>li {
+                border-right: solid 2px #000000;
+                margin-bottom: 10px;
+                width: 16.6%;
+                text-align: center;
+                }
+                }
+
+                @media (max-width: 768px) {
+                .nav-tabs>li {
+                width: 100%;
+                border-bottom: solid 2px #000000;
+                padding: 5px;
+                }
+                }
+
+                .nav-tabs>li:last-child {
+                border-right: 0;
+                }
+
+                .nav-tabs>li>a {
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: 5px;
+                }
+
+                .nav-tabs {
+                border-bottom: solid 2px;
+                }
+
+                .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+                .tab-content {
+                color: #000000;
+                border: 0 !important;
+                }
+                
+                
+
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right titulo-seccion">Descarga</h2>
+            </div>
+            <div class="container-fluid second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/idezar/#herramientas">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Herramientas IDEZar</span>
+                    </a>
+                    <h2 class="lead destacado pull-left">Herramientas IDEZar</h2>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li class=""><a href="visualizacion">Visualización</a></li>
+                    <li class=""><a href="metadatos">Catálogo de metadatos</a></li>
+                    <li class="">Descarga</li>
+                </ul>
+            </div>            
+    
+            
+            <div class="fnd-gris-claro" id="descarga">
+                 <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h3>Descarga
+                    </h3>
+                    <hr class="sm"/>
+<p>La <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2007:108:0001:0014:ES:PDF" title="Enlace Exterior" class="external-link pdf">Directiva Inspire</a> <em>(Infrastructure for Spatial Information in Europe)</em> establece que las organizaciones responsables de la información geográfica de cada uno de los temas enumerados en sus anexos deben publicar los datos a través de <strong>servicios de descarga</strong>. Estos servicios de descarga permiten descargar copias de conjuntos de datos espaciales o partes de ellos y además pueden ofrecer la posibilidad de edición de estos conjuntos de datos ( <a href="http://www.idee.es/datos" title="Enlace Exterior" class="external-link">www.idee.es/datos</a>).</p>
+<p>El Ayuntamiento de Zaragoza, según lo establecido por la Directiva INSPIRE,  publica sus datos geográficos relacionados con los temas de INSPIRE a través de un servicio Web implementado conforme a la <a href="http://inspire.jrc.ec.europa.eu/documents/Network_Services/Technical_Guidance_Download_Services_v3.1.pdf" title="Enlace Exterior" class="external-link pdf">Guía Técnica para la implementación de los servicios de descarga de la Directiva INSPIRE</a> (versión 3.1), y por tanto conforme a WFS versión 2.0 del Open Geospatial Consortium (OGC), siguiendo el modelo de datos definido para dicho reglamento para cada una de las temáticas definidas por INSPIRE.</p>
+<p> El <strong>servicio WFS</strong> ofrece acceso de lectura a datos vectoriales utilizando GML como protocolo subyacente para realizar consultas espaciales, recuperar los datos y manipular la geometría de los mismos.</p>
+<p>Este servicio es accesible a través de <a href="http://idezar.zaragoza.es/inspire-node/services/wfs" title="Enlace Exterior" class="external-link">http://idezar.zaragoza.es/inspire-node/services/wfs</a></p>
+<p>En la actualidad a través de dicho servicio se publican los datos geográficos de referencia de direcciones según el modelo de datos de direcciones establecido por INSPIRE.</p>
+<p>En <a href="http://idezar.zaragoza.es/inspire-node/console/client/client.xhtml" title="Enlace Exterior" class="external-link">http://idezar.zaragoza.es/inspire-node/console/client/client.xhtml</a> ofrecemos una demo que permite ejecutar peticiones sobre el servicio.</p>
+<h3>Ejemplos de peticiones soportadas</h3>
+<h4>Petición de capabilities del servicio</h4>
+<pre class="prettyprint notranslate "><![CDATA[http://idezar.zaragoza.es/inspire-node/services/wfs?Service=WFS&version=2.0.0&Request=GetCapabilities]]></pre>
+<h4>Listado de códigos postales</h4>
+<pre class="prettyprint notranslate "><![CDATA[<wfs:GetFeature xmlns:wfs="http://www.opengis.net/wfs/2.0"
+  xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:fes="http://www.opengis.net/fes/2.0"
+  xmlns:gml="http://www.opengis.net/gml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd"
+  xmlns:ad="urn:x-inspire:specification:gmlas:Addresses:3.0" service="WFS"
+ version="2.0.0" outputFormat="text/xml; subtype=gml/3.2.1">
+	<wfs:Query typeNames="ad:PostalDescriptor">
+	</wfs:Query>
+</wfs:GetFeature>]]></pre>
+<h4>Direcciones contenidas un determinado Bounding Box geográfico</h4>
+<pre class="prettyprint notranslate "><![CDATA[<wfs:GetFeature xmlns:wfs="http://www.opengis.net/wfs/2.0"
+  xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:fes="http://www.opengis.net/fes/2.0"
+  xmlns:gml="http://www.opengis.net/gml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd"
+  xmlns:ad="urn:x-inspire:specification:gmlas:Addresses:3.0" service="WFS"
+ version="2.0.0" outputFormat="text/xml; subtype=gml/3.2.1">
+ 	<wfs:Query typeNames="ad:Address" srsName="EPSG:25830">
+		<fes:Filter xmlns="http://www.opengis.net/ogc">
+			<fes:BBOX>
+				<fes:ValueReference>ad:position/ad:geometry</fes:ValueReference>
+				<gml:Envelope srsName="EPSG:25830">
+					<gml:coordinates cs="," decimal="." ts=" ">685152.491677489,4610011.45855448 686820.62560828,4620805.11631808</gml:coordinates>
+				</gml:Envelope>
+			</fes:BBOX>
+		</fes:Filter>  
+	</wfs:Query>
+</wfs:GetFeature>]]></pre>
+                </div>
+            </div>           
+  
+                        
+        </sede:content>
+    </body>
+
+</html>
+

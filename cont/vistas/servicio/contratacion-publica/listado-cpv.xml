@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Contratación Pública" author="Unidad de gestión de la web municipal" keywords="sede,web,perfil del contratante,transparencia" />
+    <meta name="robots" content="noindex, follow"/>
+</head>
+<body>
+    <sede:content>
+        <header>
+        <h2 class="sr-only">Listado de cpv</h2>
+        </header>
+        <hr/>
+        <div class="row">
+            <div class="col-md-9 col-lg-9 col-xs-12" th:each="doc: ${resultado.body.result}">
+                <p th:text="${'Cpv:'+doc.cpv}"></p>               
+            </div>
+            <div class="col-md-3 col-sm-12">
+                    <p class="nomargin destacado text-right">
+                        Descargar: <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
+                    </p>
+                    <ul class="list-inline pull-right">
+                        <!--/*<li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/servicio/' + id  + '.geojson?' + #httpServletRequest.getQueryString()}">GeoJSON</a> | </li>*/-->
+                        <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/cpv.json'}">JSON</a> | </li>
+                        <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/cpv.xml'}">XML</a> | </li>
+                        <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/cpv.csv'}">CSV</a></li>
+                    </ul>
+        </div>
+        
+        </div>      
+    </sede:content>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div th:if="not ${calendarEvents} or ${calendarEvents.size() == 0}" role="alert" class="alert alert-info">
+    No se encontraron más actividades
+</div>
+<div th:if="${calendarEvents} and ${calendarEvents.size() != 0}" class="calendar-list overflow-y nomargin">
+    <dl class="padding-a1em">
+        <th:block th:each="map : ${T(org.sede.servicio.actividades.Utils).asHashMap(calendarEvents)}">
+             <th:block th:each="mapEntry : ${map}">
+                 <dt class="border-dotted-bottom" th:text="${mapEntry.key}"></dt>
+                 <dd th:each="ad : ${mapEntry.value}">
+                    <a th:href="'/sede/servicio/' + (${portal} ? 'actividades/' + ${portal} : 'cultura/evento') +'/' + ${ad.id}" th:text="${ad.title}" class="destacado"></a>.
+                    
+                    <th:block th:each="lug, i : ${ad.subEvent}">
+                        <span class="small" th:if="not ${#strings.equals(lug.location.title, 'Lugar por determinar')} and not ${#strings.equals(lug.location.title, 'Fuera de Zaragoza')}" th:text="${lug.location.title}"/>
+
+                        <span class="small" th:if="${#strings.equals(lug.location.title, 'Lugar por determinar')} and ${lug.comment}" property="name" th:text="${lug.comment}"></span>
+                        <span class="small" th:if="${#strings.equals(lug.location.title, 'Fuera de Zaragoza')} and ${ad.location}" property="name" th:text="${ad.location}"></span>
+
+                    </th:block>
+                </dd>
+             </th:block>
+        </th:block>
+    </dl>
+</div>

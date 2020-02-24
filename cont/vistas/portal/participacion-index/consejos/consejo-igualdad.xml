@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Consejo Sectorial de Igualdad. Consejo de la Ciudad de Zaragoza. Órganos Consultivos y de Participación." description="" author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Mon Abr 30 00:00:00 CET 2018" keywords="Gobierno Abierto, participación, consejos sectoriales, consejo de la ciudad, Zaragoza, open goverment, city council">
+    </sede:meta>
+    <style>
+    body {
+        padding-top: 57px;
+    }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <sede:content>
+
+        <div class="row">
+			<div class="col-md-12">
+           <a class="btn btn-primary pull-right margin-t1em margin-b0em" href="consejos-sectoriales">Consejos Sectoriales</a> <a class="btn btn-primary pull-right margin-t1em margin-b0em margin-r1em" href="consejo-ciudad">Consejo de la ciudad</a>
+            <h2>Consejo Sectorial de <strong>Igualdad</strong></h2>
+             <hr class="sm color-ayto" />
+             <p>El Consejo Sectorial por la Igualdad es un órgano de participación e información, coordinación y cooperación, control y asesoramiento, de naturaleza consultiva y propositiva de ámbito municipal en temas de igualdad y diversidad entre géneros.</p>
+        </div>		
+		</div>
+        
+        
+        <!--/*	Espacio para ubicar noticias, últimos plenos, etc.*/-->
+        
+     			        <h3>Agenda</h3>
+             <hr class="sm" />
+     	<div class="row">
+		<div class="col-md-3">		
+		<h4 class="margin-t05em">Presentación de Solicitudes para la incorporación al Consejo</h4>			
+		</div>
+		<div class="col-md-9 margin-t1em">
+<p> 
+El Excmo.  Ayuntamiento Pleno, en sesión celebrada el día 24/11/2017, acordó la aprobación de  la creación del Consejo Sectorial de Igualdad de Zaragoza y del proyecto de normativa de funcionamiento interno (657177/17). 
+La normativa aparece publicada en la Web Municipal y en el B.O.P, del día 14 de diciembre de 2017. </p><p>
+El articulo 11 establece quien va a formar parte del Pleno, especificándose en el apartado 4º lo siguiente: </p><p>
+</p><p><em>Hasta un <strong>máximo de 25 personas</strong>: una o un representante de cada una de las asociaciones y entidades ciudadanas, recogidas en el registro municipal de Entidades Ciudadanas, que trabajen a favor de la promoción de la igualdad y la diversidad de género, que tengan entre sus principales objetivos la eliminación de discriminación entre sexos e identidades de género, la promoción del empoderamiento y participación real de las mujeres y del colectivo LGTBIQ en todos los aspectos de la vida. En sus estatutos deberá constar su compromiso con la igualdad de género y la promoción de las mujeres desde un enfoque de género y/o el compromiso de defender y reivindicar los derechos del colectivo LGTBIQ, así como la visibilización de los mismos en la sociedad y /o favorecer el reconocimiento y el respeto a las diferentes orientaciones afectivo - sexuales e identidades de género</em>. 
+</p><p>
+Al objeto de poder ejecutar lo preceptuado en el art. 13, en el sentido de que en la sesión constitutiva del Consejo <em>deberá incluirse la propuesta de la Presidencia en relación <strong>a qué personas y entidades formarán parte, sus estatutos e inscripción en el censo de entidades ciudadanas</strong>, todo ello sin perjuicio de que, con posterioridad a dicha sesión, se produzcan nuevas incorporaciones al Consejo</em>, se <strong>abre un periodo de  presentación de solicitudes para la incorporación al Consejo hasta el próximo día 1 de febrero.</strong>
+</p><p><strong>Las solicitudes se realizarán telemáticamente al correo electrónico <a href="mailto:igualdad@zaragoza.es"><strong>igualdad@zaragoza.es</strong></a>, debiendo indicar el Número de inscripción en el Registro de Entidades Ciudadanas y acompañar los estatutos de la Asociación.</strong>
+</p><p>Se hace constar que para formar parte del Pleno del Consejo de Igualdad,  las Asociaciones deberán reunir las condiciones establecidas en el articulo 11 de la normativa, tal y como ha quedado expuesto.
+</p><p>
+					Zaragoza,  12 de enero de 2018       </p><p>
+
+				La Concejala Delegada de Educación e Inclusión</p><p>
+
+					Fdº. Arantxa Gracia Moreno </p> 
+
+		</div>
+		</div>
+		     			        
+<!--/*<div class="table-responsive">
+<table summary="Actividades plenarias" class="table table-striped table-condensed table-bordered">
+    <thead>
+    <tr>
+        <th class="col-md-2">Fechas</th>
+        <th class="col-md-2">Orden del día</th>
+        <th class="col-md-8">Acuerdos</th>
+    </tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td>22/11/2017</td>
+	<td><a href="https://www.zaragoza.es/ciudad/tablon/detalle_Tablon?id=33904"> Orden del día</a></td>
+	<td>Constitución del Consejo</td>
+	</tr>
+
+</tbody>								
+</table>							
+</div>*/-->
+		
+<ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+    <li role="presentation" class="active"><a href="#reglamento" aria-controls="reglamento" role="tab" data-toggle="tab">Reglamento</a></li>
+    <li role="presentation"><a href="#composicion" aria-controls="composicion" role="tab" data-toggle="tab">Composición</a></li>
+    <!--/*<li role="presentation"><a href="#grupos-trabajo" aria-controls="grupos-trabajo" role="tab" data-toggle="tab">Grupos de Trabajo</a></li>*/-->
+</ul>
+
+<div sede:class="tab-content">
+    <h2 class="tab-title" data-toggle="collapse" data-target="#reglamento" aria-expanded="false">Reglamento</h2>
+    <div role="tabpanel" sede:class="tab-pane active" id="reglamento">
+		<div class="row">			
+		<div class="col-md-3"><h3 class="margin-t05em">Reglamento del Consejo sectorial de Igualdad</h3></div>
+		<div class="col-md-9 margin-t1em">
+        <div class="overflow-y" style="height:25em;">
+            <sede:normativa id="9043"></sede:normativa>
+        </div>
+		</div>
+		</div>
+	</div>			
+							
+		
+    
+    <h2 class="tab-title" data-toggle="collapse" data-target="#composicion" aria-expanded="false">Composición</h2>
+    <div role="tabpanel" sede:class="tab-pane active" id="composicion">		
+		<div class="row">
+			
+		<div class="col-md-3">		
+		<h3 class="margin-t05em"></h3>			
+		</div>
+		<div class="col-md-9 margin-t1em">
+			Por determinar
+		</div>
+	
+</div>
+	</div>
+
+    <h2 class="tab-title" data-toggle="collapse" data-target="#composicion" aria-expanded="false">Grupos de Trabajo</h2>
+    <div role="tabpanel" sede:class="tab-pane active" id="grupos-trabajo">		
+		<div class="row">
+
+		</div>
+	</div>
+			
+
+</div>
+		
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

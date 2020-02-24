@@ -1,0 +1,11 @@
+<h2><span class="far fa-hand-point-right" aria-hidden="true"></span> <th:block sede:rdf="${pregunta.get('title')}"></th:block></h2>
+<div class="margin-v1em" th:if="${pregunta.get('answer')}" sede:rdf="${pregunta.get('answer')}"></div>
+<th:block th:if="${not #lists.isEmpty(pregunta.procedimiento)}">
+	<h3>Trámites relacionados</h3>
+	<hr class="sm"/>
+	<ul>
+    	<li th:each="proc : ${pregunta.procedimiento}" sede:rdf="${proc.voc()}" th:attr="about=${proc.uri}">
+        	<a th:href="@{/servicio/tramite/{id}(id=${proc.id})}" th:text="${proc.title}"></a>
+    	</li>
+	</ul>
+</th:block>

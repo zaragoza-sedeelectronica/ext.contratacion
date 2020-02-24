@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Organismos Autónomos. Patronato Municipal de las Artes Escénicas y de la Imagen"
+                   description="Organizacion Municipal. Sociedades Municipales" author=""
+                   last-modified="Fri Apr 17 00:00:00 CET 2018"
+                   keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, estructura administrativa, sociedades municipales, organismos administrativos, relación administración-administrado"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        Sociedades Municipales
+                    </small>
+                    <span>|</span>
+                    Patronato Municipal de las Artes Escénicas y de la Imagen
+                    <a href="http://www.teatroprincipalzaragoza.com/repre.php" class="btn btn-info">Sitio Web</a>
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h3>Objeto</h3>
+                    <div class="clearfix margin-b1em">
+                        El objeto de la Sociedad es lograr una mayor eficacia en la acción municipal del fomento de la
+                        rehabilitación urbana, de la vivienda y otras edificaciones y urbanización del suelo, para
+                        lograr una revitalización integral de zonas urbanas degradadas así como la reducción
+                        consiguiente de los precios de venta y arrendamiento de los solares edificables y de las
+                        edificaciones resultantes
+                    </div>
+                    <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist"
+                        style="display:none;">
+                        <li role="presentation">
+                            <a href="#consejo" aria-controls="que" role="tab" data-toggle="tab">Consejo</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#estatutos" aria-controls="que" role="tab" data-toggle="tab">Estatutos</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#plantilla" aria-controls="que" role="tab" data-toggle="tab">Plantilla</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#presupuestos" aria-controls="que" role="tab" data-toggle="tab">Presupuestos</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#ayudas" aria-controls="que" role="tab" data-toggle="tab">Ayudas y Subvenciones</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#cuentas" aria-controls="que" role="tab" data-toggle="tab">Cuentas abiertas</a>
+                        </li>
+                    </ul>
+
+
+                    <div sede:class="tab-content" id="Facetados">
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#consejo" aria-expanded="false">
+                            Consejo
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="consejo">
+                            <a href="/sede/servicio/agenda-institucional/?titleContains=imagen&amp;type=Consejo+Administración+de+Sociedades+Municipales"
+                               class="btn btn-danger pull-right">Órdenes del día y actas
+                            </a>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <h3>Consejo del Patronato</h3>
+
+                                    <dt>
+                                        <strong>Presidente</strong>
+                                    </dt>
+                                    <dd>
+                                        <a shape="rect" href="/ciudad/organizacion/pedro-santisteve.htm">D.Pedro
+                                            Santisteve Roche&#160;
+                                        </a>
+                                    </dd>
+                                    <dt>
+                                        <strong>Vicepresidente</strong>
+                                    </dt>
+                                    <dd>
+                                        <a shape="rect" href="/ciudad/organizacion/fernando-rivares.htm">D. Fernando
+                                            Rivar&#233;s Esco
+                                        </a>
+                                    </dd>
+                                    <dt>
+                                        <strong>Gerente</strong>
+                                    </dt>
+                                    <dd>
+                                        <a shape="rect" href="/ciudad/noticias/detalle_Noticia?id=223353">D. Victor
+                                            López Carbajales
+                                        </a>
+                                    </dd>
+
+                                    <dt>
+                                        <strong>Vocales</strong>
+                                    </dt>
+                                    <dl>
+                                        <ul>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/pedro-navarro.htm">D. Pedro
+                                                    Navarro Lopez
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/campillo-castells.htm">D&#170;
+                                                    Mar&#237;a de los Reyes Campillo Castells
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/maria-navarro.htm">D&#170;
+                                                    Mar&#237;a Navarro Viscasillas
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/sebastian-contin.htm">D.
+                                                    Sebastian Contin Trillo-Figueroa
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/arantza-gracia.htm">Dª.
+                                                    Arantxa Gracia Moreno
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/dolores-ranera.htm">D&#170;
+                                                    Mar&#237;a Dolores Ranera G&#243;mez
+                                                </a>
+                                            </li>
+                                            <li>D. David Lozano Garbala</li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/sara-fernandez.htm">D&#170;
+                                                    Sara Mar&#237;a Fern&#225;ndez Escuer
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </dl>
+
+                                </div>
+                                <div class="span6">
+                                    <h3>Junta de Gobierno</h3>
+                                    <dl>
+                                        <dt>
+                                            <strong>Presidente</strong>
+                                        </dt>
+                                        <dd>
+                                            <a shape="rect" href="/ciudad/organizacion/fernando-rivares.htm">D. Fernando
+                                                Rivar&#233;s Esco
+                                            </a>
+                                            (Vicepresidente del Patronato)
+                                        </dd>
+                                        <dt>
+                                            <strong>Vocales</strong>
+                                        </dt>
+                                        <dd>
+                                            <ul>
+                                                <li>
+                                                    <a shape="rect" href="/ciudad/organizacion/maria-navarro.htm">D&#170;
+                                                        Mar&#237;a Navarro Viscasillas
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a shape="rect" href="/ciudad/organizacion/dolores-ranera.htm">D&#170;
+                                                        Mar&#237;a Dolores Ranera G&#243;mez
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a shape="rect" href="/ciudad/organizacion/sara-fernandez.htm">D&#170;
+                                                        Sara Mar&#237;a Fern&#225;ndez Escuer
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#estatutos" aria-expanded="false">
+                            Estatutos
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="estatutos">
+                            <!--<sede:normativa id="253"/>-->
+                        </div>
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#presupuestos" aria-expanded="false">
+                            Presupuestos
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="presupuestos">
+                            <div class="pull-right tarjeta">
+                                <a class="external-link"
+                                   href="http://www.rendiciondecuentas.es/es/consultadeentidadesycuentas/buscarCuentas/consultarCuenta.html?dd=true&amp;idEntidadPpal=8108&amp;idEntidad=68226&amp;idTipoEntidad=O&amp;idModelo=3&amp;ejercicio=2016&amp;nifEntidad=P5030301E"
+                                   title="enlace Externo">Cuenta General 2016
+                                </a>
+                            </div>
+                            <h3>Resumen del Presupuesto 2018</h3>
+                            <div th:replace="portal/transparencia/Presupuestos_Entidades_autonomas :: imagen"/>
+                        </div>
+
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#plantilla" aria-expanded="false">
+                            Plantilla
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="plantilla">
+
+                            <table class="table table-responsive tabla-bn">
+                                <caption>Plantilla Organismo Autónomo de las Artes Escénicas de la Imagen 2017</caption>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Plazas</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Denominación</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Grupo</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JEFE DE CONTROL,FISCALIZACION Y CONTABILIDAD</td>
+                                        <td>A1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>ENCARGADO GENERAL</td>
+                                        <td>A2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>ADMINISTRADOR</td>
+                                        <td>A2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECTOR DPTO.DIFUSION-EXHIB.</td>
+                                        <td>A2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>DIRECTOR DPTO.INVEST-ARCH</td>
+                                        <td>A2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>TECNICO CULTURAL</td>
+                                        <td>A2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>TECN.ACTV.DIDACT.Y PROYEC.ARTISTICOS</td>
+                                        <td>A2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>TECN.ACTV.DIDACT.Y PROYEC.ARTISTICOS</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>ANIMADOR CULTURAL</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>JEFE DE SALA</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JEFE ELECTRICO-MANTENIMIENTO</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JEFE TRAMOYA-MANTENIMIENTO</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JEFE MANTENIMIENTO</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>ADMINISTRATIVO CONTABILIDAD</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JEFE DE ADMINISTRACION</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>AUXILIAR AREA PROMOCION</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>PROYECCIONISTA</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JEFE DE PRODUCCION</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JEFE DE UNIDAD TÉCNICA</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>AYUDANTE DPTO. INV-ARCH.</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>OFICIAL 1a TRAMOYA-MANTENIMIENTO</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>OFICIAL 1a ELECTRICO-MANTENIMIENTO</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>TAQUILLERA</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>OFICIAL DE MANTENIMIENTO-CONDUCTOR</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>OFICIAL DE MANTENIMIENTO-CONDUCTOR (a extinguir)</td>
+                                        <td>C2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>ADMINISTRATIVO</td>
+                                        <td>C1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>AUXILIAR ADMINISTRATIVO (a extinguir)</td>
+                                        <td>C2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>AYUDANTE DPTO. INV.-ARCH.</td>
+                                        <td>C2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>PORTERO-ACOMODADOR</td>
+                                        <td>C2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>ACOMODADOR</td>
+                                        <td>C2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>ORDENANZA</td>
+                                        <td>A.G.P.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#ayudas" aria-expanded="false">Ayudas
+                            y Subvenciones
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="ayudas">
+
+                            <a href="/ciudad/gestionmunicipal/ayudasysubvenciones/listadoConv_AyudasSubvenciones?gestor=13"
+                               class="btn btn-danger">Acceso a Convocatorias y Resoluciones
+                            </a>
+                        </div>
+                        <div role="tabpanel" sede:class="tab-pane active" id="cuentas">
+
+                            <a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=imagen"
+                               class="btn btn-danger">Acceso a Cuentas abiertas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+
+    </body>
+
+</html>

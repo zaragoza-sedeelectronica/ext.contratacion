@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Contratación Pública" author="Unidad de gestión de la web municipal" keywords="sede,web,perfil del contratante,transparencia" />
+    <meta name="robots" content="noindex, follow"/>
+</head>
+
+<body>
+    <sede:content>
+        <h2 class="sr-only">Listado</h2>
+        <form method="get" action="./list" class="clearfix">
+            <div class="row">                
+                <label aria-label="Consultar:" class="sr-only" for="query">Consultar: </label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input type="text" name="titleContains" id="titleContains" th:value="${param.titleContains} ? ${param.titleContains[0]} : ''" class="form-control" placeholder="Realice su consulta" />
+                        <span class="input-group-btn">
+                            <input type="submit" value="Consultar" class="btn btn-primary" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        
+         <div th:if="${not #lists.isEmpty(resultado.body.result)}">
+            <ul class="row list-unstyled">
+
+              <li class="col-xs-12 col-sm-12 col-md-6" th:each="doc: ${resultado.body.result}" >
+                <p th:text="${servicioGestor}"></p>
+                <th:block th:if="${doc.estado_int.id==3 or doc.estado_int.id==6 or doc.estado_int.id==5 }" th:include="servicio/contratacion-publica/detalle-listado-adjudicado" />
+                <th:block th:unless="${doc.estado_int.id==3 or doc.estado_int.id==6 or doc.estado_int.id==5 }" th:include="servicio/contratacion-publica/detalle-listado-noadjudicado" />
+            </li>
+        </ul>
+        </div>
+       
+        <!--<th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />-->
+    </sede:content>
+</body>
+
+</html>

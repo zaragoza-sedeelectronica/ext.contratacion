@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es"
+	xmlns:th="http://www.thymeleaf.org"
+	th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+	<head>
+		<meta charset="utf-8" />
+		<sede:meta title=" ${titulo} + '. Registro de asociaciones'" keywords="asociacion,zaragoza" />
+	</head>
+
+	<body>
+		<sede:content>
+			<th:block th:include="fragmentos/error" />
+			<div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+				<h2 sede:rdf="*{get('title')}"></h2>
+				<span class="badge" th:text="*{category.title}" />
+				<ul>
+					<li>
+						Número de registro:  <span sede:rdf="*{get('id')}" />
+					</li>
+					<li th:if="*{address}" class="direccion">
+						Dirección de la sede:<span sede:rdf="*{get('address')}" />
+						<span sede:rdf="*{get('postalCode')}" />
+					</li>
+					<li th:if="*{president}">
+						Presidente/a: <span sede:rdf="*{get('president')}" />
+					</li>
+					
+					<li th:if="*{phone}" class="tel">
+						Tel&eacute;fono:  <span sede:rdf="*{get('phone')}" />
+					</li>
+					<li th:if="*{cif}">
+						CIF: <span sede:rdf="*{get('cif')}" />
+					</li>
+					<li th:if="*{mail}" class="email">
+						Correo electr&oacute;nico: <a sede:rdf="*{prop('mail')}" th:href="'mailto:' + *{mail}" th:text="*{mail}" />
+					</li>
+					<li th:if="*{link}" class="url">
+						Sitio web:  <a th:href="*{link}" sede:rdf="*{get('link')}" />
+					</li>
+				</ul>
+			</div>
+		</sede:content>
+	</body>
+</html>

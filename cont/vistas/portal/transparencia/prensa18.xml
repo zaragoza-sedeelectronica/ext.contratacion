@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Gastos de contrato de mediación Prensa Año 2018 " description="Transparencia " author="" last-modified="Tue Mar 25 00:00:00 CET 2018" keywords="ayuntamiento, ciudad, Zaragoza, España, servicio de cita previa, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado" />
+    <style>
+    .trans {
+        transform: rotateX(180deg);
+        overflow-x: auto;
+    }
+
+    .transfor {
+        transform: rotateX(180deg);
+    }
+    </style>
+    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+</head>
+
+<body>
+    <sede:content>
+        <div class="card pull-right"><span class="fa fa-link" aria-hidden="true"></span> <a href="/sede/portal/transparencia/prensa">Gastos años 2011-2017 </a></div>
+        <h2>Gastos de contrato de mediación Prensa Año 2018</h2>
+        <div class="container-fluid">
+            <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                <li role="presentation" class="active"><a href="#enero" aria-controls="que" role="tab" data-toggle="tab">Enero</a></li>
+                <li role="presentation"><a href="#feb" aria-controls="que" role="tab" data-toggle="tab"> Febrero</a></li>
+                <li role="presentation"><a href="#marzo" aria-controls="que" role="tab" data-toggle="tab"> Marzo</a></li>
+                <li role="presentation"><a href="#mayo" aria-controls="que" role="tab" data-toggle="tab"> Mayo</a></li>
+                <li role="presentation"><a href="#junio" aria-controls="que" role="tab" data-toggle="tab"> Junio</a></li>
+                <li role="presentation"><a href="#octubre" aria-controls="que" role="tab" data-toggle="tab"> Octubre</a></li>
+            </ul>
+            <div sede:class="tab-content">
+                <h2 class="tab-title" data-toggle="collapse" data-target="#enero" aria-expanded="false">Enero</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="enero">
+                    <div class="card pull-right"> <strong>Total</strong> <small><em>(IVA incluido)</em></small>: <big><strong>21.127</strong></big> <span class="fas fa-euro-sign" aria-hidden="true"></span></div>
+                    <h3 class="clearfix"><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                    <ul>
+                        <li><a href="/contenidos/gobierno-abierto/transparencia/Enero_2018_Prensa.xls">Excel</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="table-responsive trans">
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Enero</caption>
+                            <tr>
+                                <th colspan="10" class="text-center" id="prensa">Tablón de Prensa</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Periodicidad</th>
+                                <th>Módulos</th>
+                                <th>Tarifa Módulos</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Tarifa</th>
+                                <th>Descuento</th>
+                                <th>Total Neto</th>
+                                <th>Mes</th>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>14</td>
+                                <td>77 €</td>
+                                <td>1.078 €</td>
+                                <td>1</td>
+                                <td>1.078 €</td>
+                                <td>15%</td>
+                                <td>916,30 €</td>
+                                <td>Diciembre</td>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>6</td>
+                                <td>79 €</td>
+                                <td>474 €</td>
+                                <td>1</td>
+                                <td>474 €</td>
+                                <td>15%</td>
+                                <td>402,9 €</td>
+                                <td>Enero</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Enero</caption>
+                            <tr>
+                                <th colspan="4" class="text-center" id="radio">Tablón de Radio</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>RADIO ZARAGOZA</td>
+                                <td>1302,49€ </td>
+                                <td>1</td>
+                                <td>1.302,49 €</td>
+                            </tr>
+                            <tr>
+                                <td>COPE</td>
+                                <td>680,15 €</td>
+                                <td>1</td>
+                                <td>680,15 €</td>
+                            </tr>
+                            <tr>
+                                <td>ONDA CERO</td>
+                                <td>449,26 €</td>
+                                <td>1</td>
+                                <td>449,26 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO EBRO</td>
+                                <td>302,33€ </td>
+                                <td>1 </td>
+                                <td>302,33 € </td>
+                            </tr>
+                            <tr>
+                                <td>ES RADIO </td>
+                                <td>274,58€ </td>
+                                <td>1</td>
+                                <td>274,58 €</td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>5</td>
+                                <td>3.008,81 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="digital">Tablón digital</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>ELDIARIO.ES</td>
+                                <td> 1.147,81 €</td>
+                                <td>1</td>
+                                <td>1.147,81 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAINFO.ORG</td>
+                                <td> 1.177,31 € </td>
+                                <td> 1 </td>
+                                <td> 1.177,31 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPERIODICODEARAGON.COM </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>SOYDEZARAGOZA.ES </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>REDARAGON.COM </td>
+                                <td> 900 € </td>
+                                <td> 1 </td>
+                                <td> 900 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAGONDIGITAL.ES </td>
+                                <td> 600 € </td>
+                                <td> 1 </td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>EUROPAPRESS.ES/ARAGON </td>
+                                <td> 350 € </td>
+                                <td> 1 </td>
+                                <td> 350 € </td>
+                            </tr>
+                            <tr>
+                                <td>CONPEQUESENZGZ.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>DIARIOARAGONES.COM </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>EVENTOSZARAGOZA.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>IGASTROARAGON.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>MENUDASIDEAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>TENZARAGOZA.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ZARAGOZABUENASNOTICIAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPOLLOURBANO.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="ae">Actividades especiales</th>
+                            </tr>
+                            <tr>
+                                <th>Campaña</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>CAMPAÑA PAGO TRIBUTOS MUNICIPALES</td>
+                                <td> 4.857,2 €</td>
+                                <td>1</td>
+                                <td>4.857,2€ </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>1</td>
+                                <td>4.857,2 €</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Resumen Gastos Medios de comunicación Mes de Enero</caption>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Importe</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#radio">Radio</a></td>
+                                <td>3.008,81 €</td>
+                                <td>3.008,81 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#digital">Digital</a></td>
+                                <td>8.275,12 €</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#ae">Actividades Especiales</a></td>
+                                <td>4.857,20 €</td>
+                                <td>4.857,20 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#prensa">Prensa</a></td>
+                                <td>1.319,20 €</td>
+                                <td>1.319,20 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <h2 class="tab-title" data-toggle="collapse" data-target="#feb" aria-expanded="false">Febrero</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="feb">
+                    <div class="card pull-right"> <strong>Total</strong> <small><em>(IVA incluido)</em></small>: <big><strong>41.312,38</strong></big> <span class="fas fa-euro-sign" aria-hidden="true"></span></div>
+                    <h3 class="clearfix"><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                    <ul class="clearfix">
+                        <li><a href="/contenidos/gobierno-abierto/transparencia/Febrero_2018_Prensa.xls">Excel</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="table-responsive trans">
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Febrero</caption>
+                            <tr>
+                                <th colspan="10" class="text-center" id="prensa">Tablón de Prensa</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Periodicidad</th>
+                                <th>Módulos</th>
+                                <th>Tarifa Módulos</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Tarifa</th>
+                                <th>Descuento</th>
+                                <th>Total Neto</th>
+                                <th>Mes</th>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>18</td>
+                                <td>79 €</td>
+                                <td>1.422 €</td>
+                                <td>1</td>
+                                <td>1.422 €</td>
+                                <td>15%</td>
+                                <td>1.208,7 €</td>
+                                <td>5 Febrero</td>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>32</td>
+                                <td>79 €</td>
+                                <td>2.528 €</td>
+                                <td>1</td>
+                                <td>2.528 €</td>
+                                <td>15%</td>
+                                <td>2.148,80 €</td>
+                                <td>21 Febrero</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Febrero</caption>
+                            <tr>
+                                <th colspan="4" class="text-center" id="radio">Tablón de Radio</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>RADIO ZARAGOZA</td>
+                                <td>2.604,98 € </td>
+                                <td>1</td>
+                                <td>2.604,98 €</td>
+                            </tr>
+                            <tr>
+                                <td>COPE</td>
+                                <td>1.360,3 €</td>
+                                <td>1</td>
+                                <td>1.360,3 €</td>
+                            </tr>
+                            <tr>
+                                <td>ONDA CERO</td>
+                                <td>898,53 €</td>
+                                <td>1</td>
+                                <td>898,53 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO MARCA</td>
+                                <td>770 €</td>
+                                <td>1</td>
+                                <td>770 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO EBRO</td>
+                                <td>604,57€ </td>
+                                <td>1 </td>
+                                <td>604,57 € </td>
+                            </tr>
+                            <tr>
+                                <td>ES RADIO </td>
+                                <td>549,15€ </td>
+                                <td>1</td>
+                                <td>549,15 €</td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>6</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="digital">Tablón digital</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>ELDIARIO.ES</td>
+                                <td> 1.147,81 €</td>
+                                <td>1</td>
+                                <td>1.147,81 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAINFO.ORG</td>
+                                <td> 1.177,31 € </td>
+                                <td> 1 </td>
+                                <td> 1.177,31 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPERIODICODEARAGON.COM </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>SOYDEZARAGOZA.ES </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>REDARAGON.COM </td>
+                                <td> 900 € </td>
+                                <td> 1 </td>
+                                <td> 900 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAGONDIGITAL.ES </td>
+                                <td> 600 € </td>
+                                <td> 1 </td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>EUROPAPRESS.ES/ARAGON </td>
+                                <td> 350 € </td>
+                                <td> 1 </td>
+                                <td> 350 € </td>
+                            </tr>
+                            <tr>
+                                <td>CONPEQUESENZGZ.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>DIARIOARAGONES.COM </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>EVENTOSZARAGOZA.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>IGASTROARAGON.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>MENUDASIDEAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>TENZARAGOZA.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ZARAGOZABUENASNOTICIAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPOLLOURBANO.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>15</td>
+                                <td>8275,12 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="ae">Actividades especiales</th>
+                            </tr>
+                            <tr>
+                                <th>Campaña</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>SALUD 2000 </td>
+                                <td> 700 € </td>
+                                <td> 1</td>
+                                <td> 700 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES SER </td>
+                                <td> 1.600 € </td>
+                                <td> 1</td>
+                                <td> 1.600 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES COPE </td>
+                                <td> 1.200 € </td>
+                                <td> 1</td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>AGENDA CULTURAL ONDA CERO </td>
+                                <td> 1.000 € </td>
+                                <td> 1</td>
+                                <td> 1.000 € </td>
+                            </tr>
+                            <tr>
+                                <td>UNIDADES MOVILES ONDA CERO </td>
+                                <td> 545,46 € </td>
+                                <td> 1 </td>
+                                <td> 545,46 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES RADIO EBRO </td>
+                                <td> 600 € </td>
+                                <td> 1 </td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>PPTOS. PARTICIPATIVOS </td>
+                                <td> 6.187,95 € </td>
+                                <td> 1 </td>
+                                <td> 6.187,95 € </td>
+                            </tr>
+                            <tr>
+                                <td>HERALDO.ES - PARA MIRA PASA </td>
+                                <td> 3.888,90 € </td>
+                                <td> 1</td>
+                                <td> 3.888,90 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>8</td>
+                                <td>15.722,31 €</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Resumen Gastos Medios de comunicación Mes de Febrero</caption>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Importe</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#radio">Radio</a></td>
+                                <td>6.787,53 €</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#digital">Digital</a></td>
+                                <td>8.275,12 €</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#ae">Actividades Especiales</a></td>
+                                <td>15.722,31 €</td>
+                                <td>15.722,31 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#prensa">Prensa</a></td>
+                                <td>3.357,50 €</td>
+                                <td>3.357,50 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <h2 class="tab-title" data-toggle="collapse" data-target="#marzo" aria-expanded="false">Marzo</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="marzo">
+                    <div class="card pull-right"> <strong>Total</strong> <small><em>(IVA incluido)</em></small>: <big><strong>46.579,69</strong></big> <span class="fas fa-euro-sign" aria-hidden="true"></span></div>
+                    <h3 class="clearfix"><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                    <ul>
+                        <li><a href="/contenidos/gobierno-abierto/transparencia/Marzo_2018_Prensa.xls">Excel</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="table-responsive trans">
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Marzo</caption>
+                            <tr>
+                                <th colspan="10" class="text-center" id="prensa">Tablón de Prensa</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Periodicidad</th>
+                                <th>Módulos</th>
+                                <th>Tarifa Módulos</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Tarifa</th>
+                                <th>Descuento</th>
+                                <th>Total Neto</th>
+                                <th>Mes</th>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>10</td>
+                                <td>79 €</td>
+                                <td>790 €</td>
+                                <td>1</td>
+                                <td>790 €</td>
+                                <td>15%</td>
+                                <td>671,5 €</td>
+                                <td>9 Marzo</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Marzo</caption>
+                            <tr>
+                                <th colspan="4" class="text-center" id="radio">Tablón de Radio</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>RADIO ZARAGOZA</td>
+                                <td>2.604,98 € </td>
+                                <td>1</td>
+                                <td>2.604,98 €</td>
+                            </tr>
+                            <tr>
+                                <td>COPE</td>
+                                <td>1.360,3 €</td>
+                                <td>1</td>
+                                <td>1.360,3 €</td>
+                            </tr>
+                            <tr>
+                                <td>ONDA CERO</td>
+                                <td>898,53 €</td>
+                                <td>1</td>
+                                <td>898,53 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO MARCA</td>
+                                <td>770 €</td>
+                                <td>1</td>
+                                <td>770 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO EBRO</td>
+                                <td>604,57€ </td>
+                                <td>1 </td>
+                                <td>604,57 € </td>
+                            </tr>
+                            <tr>
+                                <td>ES RADIO </td>
+                                <td>549,15€ </td>
+                                <td>1</td>
+                                <td>549,15 €</td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>6</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="digital">Tablón digital</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>ELDIARIO.ES</td>
+                                <td> 1.147,81 €</td>
+                                <td>1</td>
+                                <td>1.147,81 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAINFO.ORG</td>
+                                <td> 1.177,31 € </td>
+                                <td> 1 </td>
+                                <td> 1.177,31 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPERIODICODEARAGON.COM </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>SOYDEZARAGOZA.ES </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>REDARAGON.COM </td>
+                                <td> 900 € </td>
+                                <td> 1 </td>
+                                <td> 900 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAGONDIGITAL.ES </td>
+                                <td> 600 € </td>
+                                <td> 1 </td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>EUROPAPRESS.ES/ARAGON </td>
+                                <td> 350 € </td>
+                                <td> 1 </td>
+                                <td> 350 € </td>
+                            </tr>
+                            <tr>
+                                <td>CONPEQUESENZGZ.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>DIARIOARAGONES.COM </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>EVENTOSZARAGOZA.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>IGASTROARAGON.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>MENUDASIDEAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>TENZARAGOZA.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ZARAGOZABUENASNOTICIAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPOLLOURBANO.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>15</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="digital">Tablón nacional digital</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>EXPANSION.COM</td>
+                                <td> 300 €</td>
+                                <td>1</td>
+                                <td>300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELECONOMISTA.COM</td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>CINCODIAS.ELPAIS.COM </td>
+                                <td> 200 € </td>
+                                <td> 1 </td>
+                                <td> 200 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>3</td>
+                                <td>800 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="ae">Actividades especiales</th>
+                            </tr>
+                            <tr>
+                                <th>Campaña</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>El SALTO MARZO 2018 ARAINFO </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES SER </td>
+                                <td> 1.600 € </td>
+                                <td> 1 </td>
+                                <td> 1.600 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES COPE </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>AGENDA CULTURAL ONDA CERO </td>
+                                <td> 1.000 € </td>
+                                <td> 1</td>
+                                <td> 1.000 € </td>
+                            </tr>
+                            <tr>
+                                <td>UNIDADES MOVILES ONDA CERO </td>
+                                <td> 545,46 € </td>
+                                <td> 1</td>
+                                <td> 545,46 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES RADIO EBRO </td>
+                                <td> 600 € </td>
+                                <td> 1</td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>HERALDO PATROCINIO - Seccion "Zaragoza, calle a calle" </td>
+                                <td> 6.000 € </td>
+                                <td> 1</td>
+                                <td> 6.000 € </td>
+                            </tr>
+                            <tr>
+                                <td>CAMPAÑA RESPETA LA CEBRA </td>
+                                <td> 9.816 € </td>
+                                <td> 1 </td>
+                                <td> 9.816 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>8</td>
+                                <td>21.961,46 €</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Resumen Gastos Medios de comunicación Mes de Marzo</caption>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Importe</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#radio">Radio</a></td>
+                                <td>6.787,53 €</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#digital">Digital</a></td>
+                                <td>9.075,12 €</td>
+                                <td>9.075,12 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#ae">Actividades Especiales</a></td>
+                                <td>21.961,46 €</td>
+                                <td>21.961,46 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#prensa">Prensa</a></td>
+                                <td>671,5 €</td>
+                                <td>671,5 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                 <h2 class="tab-title" data-toggle="collapse" data-target="#mayo" aria-expanded="false">Mayo</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="mayo">
+                    <div class="card pull-right"> <strong>Total</strong> <small><em>(IVA incluido)</em></small>: <big><strong>29.544,34</strong></big> <span class="fas fa-euro-sign" aria-hidden="true"></span></div>
+                    <h3 class="clearfix"><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                    <ul>
+                        <li><a href="/contenidos/gobierno-abierto/transparencia/Mayo_2018_Prensa.xls">Excel</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="table-responsive trans">
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Mayo</caption>
+                            <tr>
+                                <th colspan="10" class="text-center" id="prensa">Tablón de Prensa</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Periodicidad</th>
+                                <th>Módulos</th>
+                                <th>Tarifa Módulos</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Tarifa</th>
+                                <th>Descuento</th>
+                                <th>Total Neto</th>
+                                <th>Mes</th>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>18</td>
+                                <td>79 €</td>
+                                <td>1.422 €</td>
+                                <td>1</td>
+                                <td>1.422 €</td>
+                                <td>15%</td>
+                                <td>1.208,70 €</td>
+                                <td>Mayo</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Mayo</caption>
+                            <tr>
+                                <th colspan="4" class="text-center" id="radio">Tablón de Radio</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>RADIO ZARAGOZA</td>
+                                <td>2.604,98 € </td>
+                                <td>1</td>
+                                <td>2.604,98 €</td>
+                            </tr>
+                            <tr>
+                                <td>COPE</td>
+                                <td>1.360,3 €</td>
+                                <td>1</td>
+                                <td>1.360,3 €</td>
+                            </tr>
+                            <tr>
+                                <td>ONDA CERO</td>
+                                <td>898,53 €</td>
+                                <td>1</td>
+                                <td>898,53 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO MARCA</td>
+                                <td>770 €</td>
+                                <td>1</td>
+                                <td>770 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO EBRO</td>
+                                <td>604,57€ </td>
+                                <td>1 </td>
+                                <td>604,57 € </td>
+                            </tr>
+                            <tr>
+                                <td>ES RADIO </td>
+                                <td>549,15€ </td>
+                                <td>1</td>
+                                <td>549,15 €</td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>6</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="digital">Tablón digital</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>ELDIARIO.ES</td>
+                                <td> 1.147,81 €</td>
+                                <td>1</td>
+                                <td>1.147,81 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAINFO.ORG</td>
+                                <td> 1.177,31 € </td>
+                                <td> 1 </td>
+                                <td> 1.177,31 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPERIODICODEARAGON.COM </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>SOYDEZARAGOZA.ES </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>REDARAGON.COM </td>
+                                <td> 900 € </td>
+                                <td> 1 </td>
+                                <td> 900 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAGONDIGITAL.ES </td>
+                                <td> 600 € </td>
+                                <td> 1 </td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>EUROPAPRESS.ES/ARAGON </td>
+                                <td> 350 € </td>
+                                <td> 1 </td>
+                                <td> 350 € </td>
+                            </tr>
+                            <tr>
+                                <td>CONPEQUESENZGZ.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>DIARIOARAGONES.COM </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>EVENTOSZARAGOZA.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>IGASTROARAGON.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>MENUDASIDEAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>TENZARAGOZA.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ZARAGOZABUENASNOTICIAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPOLLOURBANO.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>15</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                          
+                            <tr>
+                                <th colspan="4" class="text-center" id="ae">Actividades especiales</th>
+                            </tr>
+                            <tr>
+                                <th>Campaña</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                           
+                            <tr>
+                                <td>ESPECIALES SER </td>
+                                <td> 1.600 € </td>
+                                <td> 1 </td>
+                                <td> 1.600 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES COPE </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>AGENDA CULTURAL ONDA CERO </td>
+                                <td> 1.250 € </td>
+                                <td> 1</td>
+                                <td> 1.250 € </td>
+                            </tr>
+                            <tr>
+                                <td>UNIDADES MOVILES ONDA CERO </td>
+                                <td> 545,46 € </td>
+                                <td> 1</td>
+                                <td> 545,46 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES RADIO EBRO </td>
+                                <td> 750 € </td>
+                                <td> 1</td>
+                                <td> 750 € </td>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO - ESPECIAL ARAGONESES</td>
+                                <td> 2.800 € </td>
+                                <td> 1</td>
+                                <td> 2.800 € </td>
+                            </tr>
+                           
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>6</td>
+                                <td>8.145,46 €</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Resumen Gastos Medios de comunicación Mes de Mayo</caption>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Importe</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#radio">Radio</a></td>
+                                <td>6.787,53 €</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#digital">Digital</a></td>
+                                <td>8.275,12 €</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#ae">Actividades Especiales</a></td>
+                                <td>21.961,46 €</td>
+                                <td>21.961,46 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#prensa">Prensa</a></td>
+                                <td>8.145,46 €</td>
+                                <td>8.145,46 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <h2 class="tab-title" data-toggle="collapse" data-target="#junio" aria-expanded="false">Junio</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="junio">
+                    <div class="card pull-right"> <strong>Total</strong> <small><em>(IVA incluido)</em></small>: <big><strong>32.948,13</strong></big> <span class="fas fa-euro-sign" aria-hidden="true"></span></div>
+                    <h3 class="clearfix"><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                    <ul>
+                        <li><a href="/contenidos/gobierno-abierto/transparencia/Junio_2018_Prensa.xls">Excel</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="table-responsive trans">
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Junio</caption>
+                            <tr>
+                                <th colspan="10" class="text-center" id="prensa">Tablón de Prensa</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Periodicidad</th>
+                                <th>Módulos</th>
+                                <th>Tarifa Módulos</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Tarifa</th>
+                                <th>Descuento</th>
+                                <th>Total Neto</th>
+                                <th>Mes</th>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>24</td>
+                                <td>79 €</td>
+                                <td>1.896 €</td>
+                                <td>1</td>
+                                <td>1.896 €</td>
+                                <td>15%</td>
+                                <td>1.611,60 €</td>
+                                <td>Junio</td>
+                            </tr>
+                               <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>21</td>
+                                <td>79 €</td>
+                                <td>1.659 €</td>
+                                <td>1</td>
+                                <td>1.659 €</td>
+                                <td>15%</td>
+                                <td>1.410,15 €</td>
+                                <td>Junio</td>
+                            </tr>
+                              
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Junio</caption>
+                            <tr>
+                                <th colspan="4" class="text-center" id="radio">Tablón de Radio</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>RADIO ZARAGOZA</td>
+                                <td>2.604,98 € </td>
+                                <td>1</td>
+                                <td>2.604,98 €</td>
+                            </tr>
+                            <tr>
+                                <td>COPE</td>
+                                <td>1.360,3 €</td>
+                                <td>1</td>
+                                <td>1.360,3 €</td>
+                            </tr>
+                            <tr>
+                                <td>ONDA CERO</td>
+                                <td>898,53 €</td>
+                                <td>1</td>
+                                <td>898,53 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO MARCA</td>
+                                <td>770 €</td>
+                                <td>1</td>
+                                <td>770 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO EBRO</td>
+                                <td>604,57€ </td>
+                                <td>1 </td>
+                                <td>604,57 € </td>
+                            </tr>
+                            <tr>
+                                <td>ES RADIO </td>
+                                <td>549,15€ </td>
+                                <td>1</td>
+                                <td>549,15 €</td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>6</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="digital">Tablón digital</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>ELDIARIO.ES</td>
+                                <td> 1.147,81 €</td>
+                                <td>1</td>
+                                <td>1.147,81 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAINFO.ORG</td>
+                                <td> 1.177,31 € </td>
+                                <td> 1 </td>
+                                <td> 1.177,31 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPERIODICODEARAGON.COM </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>SOYDEZARAGOZA.ES </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>REDARAGON.COM </td>
+                                <td> 900 € </td>
+                                <td> 1 </td>
+                                <td> 900 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAGONDIGITAL.ES </td>
+                                <td> 600 € </td>
+                                <td> 1 </td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>EUROPAPRESS.ES/ARAGON </td>
+                                <td> 350 € </td>
+                                <td> 1 </td>
+                                <td> 350 € </td>
+                            </tr>
+                            <tr>
+                                <td>CONPEQUESENZGZ.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>DIARIOARAGONES.COM </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>EVENTOSZARAGOZA.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>IGASTROARAGON.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>MENUDASIDEAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>TENZARAGOZA.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ZARAGOZABUENASNOTICIAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPOLLOURBANO.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>15</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                          
+                            <tr>
+                                <th colspan="4" class="text-center" id="ae">Actividades especiales</th>
+                            </tr>
+                            <tr>
+                                <th>Campaña</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                           
+                            <tr>
+                                <td>ESPECIALES SER </td>
+                                <td> 1.600 € </td>
+                                <td> 1 </td>
+                                <td> 1.600 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES COPE </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>AGENDA CULTURAL ONDA CERO </td>
+                                <td> 1.000 € </td>
+                                <td> 1</td>
+                                <td> 1.000 € </td>
+                            </tr>
+                            <tr>
+                                <td>UNIDADES MOVILES ONDA CERO </td>
+                                <td> 545,46 € </td>
+                                <td> 1</td>
+                                <td> 545,46 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES RADIO EBRO </td>
+                                <td> 600 € </td>
+                                <td> 1</td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELSALTO</td>
+                                <td> 2.200 € </td>
+                                <td> 1</td>
+                                <td> 2.200 € </td>
+                            </tr>
+                             <tr>
+                                <td>PERIODICO - ESPECIAL ED 1000</td>
+                                <td> 2.000 € </td>
+                                <td> 1</td>
+                                <td> 2.000 € </td>
+                            </tr>
+                           
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>7</td>
+                                <td>9.145,46 €</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Resumen Gastos Medios de comunicación Mes de Octubre</caption>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Importe</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#radio">Radio</a></td>
+                                <td>6.787,53 €</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#digital">Digital</a></td>
+                                <td>8.275,12 €</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#ae">Actividades Especiales</a></td>
+                                <td>9.145,46 €</td>
+                                <td>9.145,46 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#prensa">Prensa</a></td>
+                                <td>3.021,75 €</td>
+                                <td>3.021,75 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                 <h2 class="tab-title" data-toggle="collapse" data-target="#octubre" aria-expanded="false">Octubre</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="octubre">
+                    <div class="card pull-right"> <strong>Total</strong> <small><em>(IVA incluido)</em></small>: <big><strong>30.352,72</strong></big> <span class="fas fa-euro-sign" aria-hidden="true"></span></div>
+                    <h3 class="clearfix"><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                    <ul>
+                        <li><a href="/contenidos/gobierno-abierto/transparencia/Octubre_2018_Prensa.xls">Excel</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="table-responsive trans">
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Octubre</caption>
+                            <tr>
+                                <th colspan="10" class="text-center" id="prensa">Tablón de Prensa</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Periodicidad</th>
+                                <th>Módulos</th>
+                                <th>Tarifa Módulos</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Tarifa</th>
+                                <th>Descuento</th>
+                                <th>Total Neto</th>
+                                <th>Mes</th>
+                            </tr>
+                            <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>27</td>
+                                <td>79 €</td>
+                                <td>2.133 €</td>
+                                <td>1</td>
+                                <td>2.133 €</td>
+                                <td>15%</td>
+                                <td>1.813,05 €</td>
+                                <td>Octubre</td>
+                            </tr>
+                               <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>12</td>
+                                <td>79 €</td>
+                                <td>948 €</td>
+                                <td>1</td>
+                                <td>948 €</td>
+                                <td>15%</td>
+                                <td>805,80 €</td>
+                                <td>Octubre</td>
+                            </tr>
+                              <tr>
+                                <td>PERIODICO DE ARAGON</td>
+                                <td>Diario (Laborable) </td>
+                                <td>6</td>
+                                <td>79 €</td>
+                                <td>474 €</td>
+                                <td>1</td>
+                                <td>474 €</td>
+                                <td>15%</td>
+                                <td>402.90 €</td>
+                                <td>Octubre</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Gastos Medios de comunicación Mes de Octubre</caption>
+                            <tr>
+                                <th colspan="4" class="text-center" id="radio">Tablón de Radio</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>RADIO ZARAGOZA</td>
+                                <td>2.604,98 € </td>
+                                <td>1</td>
+                                <td>2.604,98 €</td>
+                            </tr>
+                            <tr>
+                                <td>COPE</td>
+                                <td>1.360,3 €</td>
+                                <td>1</td>
+                                <td>1.360,3 €</td>
+                            </tr>
+                            <tr>
+                                <td>ONDA CERO</td>
+                                <td>898,53 €</td>
+                                <td>1</td>
+                                <td>898,53 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO MARCA</td>
+                                <td>770 €</td>
+                                <td>1</td>
+                                <td>770 €</td>
+                            </tr>
+                            <tr>
+                                <td>RADIO EBRO</td>
+                                <td>604,57€ </td>
+                                <td>1 </td>
+                                <td>604,57 € </td>
+                            </tr>
+                            <tr>
+                                <td>ES RADIO </td>
+                                <td>549,15€ </td>
+                                <td>1</td>
+                                <td>549,15 €</td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>6</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" id="digital">Tablón digital</th>
+                            </tr>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td>ELDIARIO.ES</td>
+                                <td> 1.147,81 €</td>
+                                <td>1</td>
+                                <td>1.147,81 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAINFO.ORG</td>
+                                <td> 1.177,31 € </td>
+                                <td> 1 </td>
+                                <td> 1.177,31 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPERIODICODEARAGON.COM </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>SOYDEZARAGOZA.ES </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>REDARAGON.COM </td>
+                                <td> 900 € </td>
+                                <td> 1 </td>
+                                <td> 900 € </td>
+                            </tr>
+                            <tr>
+                                <td>ARAGONDIGITAL.ES </td>
+                                <td> 600 € </td>
+                                <td> 1 </td>
+                                <td> 600 € </td>
+                            </tr>
+                            <tr>
+                                <td>EUROPAPRESS.ES/ARAGON </td>
+                                <td> 350 € </td>
+                                <td> 1 </td>
+                                <td> 350 € </td>
+                            </tr>
+                            <tr>
+                                <td>CONPEQUESENZGZ.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>DIARIOARAGONES.COM </td>
+                                <td> 400 € </td>
+                                <td> 1 </td>
+                                <td> 400 € </td>
+                            </tr>
+                            <tr>
+                                <td>EVENTOSZARAGOZA.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>IGASTROARAGON.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>MENUDASIDEAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>TENZARAGOZA.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ZARAGOZABUENASNOTICIAS.COM </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr>
+                                <td>ELPOLLOURBANO.ES </td>
+                                <td> 300 € </td>
+                                <td> 1 </td>
+                                <td> 300 € </td>
+                            </tr>
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>15</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                          
+                            <tr>
+                                <th colspan="4" class="text-center" id="ae">Actividades especiales</th>
+                            </tr>
+                            <tr>
+                                <th>Campaña</th>
+                                <th>Tarifa</th>
+                                <th>Nº Inserciones</th>
+                                <th>Total Neto</th>
+                            </tr>
+                           
+                            <tr>
+                                <td>ESPECIALES SER </td>
+                                <td> 1.600 € </td>
+                                <td> 1 </td>
+                                <td> 1.600 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES COPE </td>
+                                <td> 1.200 € </td>
+                                <td> 1 </td>
+                                <td> 1.200 € </td>
+                            </tr>
+                            <tr>
+                                <td>AGENDA CULTURAL ONDA CERO </td>
+                                <td> 750 € </td>
+                                <td> 1</td>
+                                <td> 750 € </td>
+                            </tr>
+                            <tr>
+                                <td>UNIDADES MOVILES ONDA CERO </td>
+                                <td> 818,19 € </td>
+                                <td> 1</td>
+                                <td> 818,19 € </td>
+                            </tr>
+                            <tr>
+                                <td>ESPECIALES RADIO EBRO </td>
+                                <td> 450 € </td>
+                                <td> 1</td>
+                                <td> 450 € </td>
+                            </tr>
+                            <tr>
+                                <td>REVISTA ZARAGOZA HOSTELERA</td>
+                                <td> 300 € </td>
+                                <td> 1</td>
+                                <td> 300 € </td>
+                            </tr>
+                             <tr>
+                                <td>PRESUPUESTOS PARTICIPATIVOS (h+Pdco)</td>
+                                <td> 1.882,30 € </td>
+                                <td> 1</td>
+                                <td> 1.882,30 € </td>
+                            </tr>
+                           
+                            <tr class="destacado">
+                                <td></td>
+                                <td></td>
+                                <td>7</td>
+                                <td>7.000,49 €</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-condensed table-bordered transfor">
+                            <caption>Resumen Gastos Medios de comunicación Mes de Octubre</caption>
+                            <tr>
+                                <th>Medio</th>
+                                <th>Importe</th>
+                                <th>Total Neto</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#radio">Radio</a></td>
+                                <td>6.787,53 €</td>
+                                <td>6.787,53 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#digital">Digital</a></td>
+                                <td>8.275,12 €</td>
+                                <td>8.275,12 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#ae">Actividades Especiales</a></td>
+                                <td>21.961,46 €</td>
+                                <td>21.961,46 €</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#prensa">Prensa</a></td>
+                                <td>3.021,75 €</td>
+                                <td>3.021,75 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

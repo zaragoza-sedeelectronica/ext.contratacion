@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Encuesta Recinto Ferial Valdespartera" 
+               description="Procesos de Participación y Colaboración en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, es un sitio donde la ciudadanía puede participar y colaborar en planes estratégicos y diseño urbanístico de la ciudad a través de distintos instrumentos de participación y colaboración: mapas colaborativos, encuestas y presupuestos participativos. En este espacio puede consultar los procesos participativos abiertos y cerrados"
+               keywords="ciudad, Zaragoza, sede electrónica, gobierno abierto, ayuntamiento, administración local, relación administración-administrado, participación ciudadana, colaboración, Mapa colaborativo, edición colaborativa, encuesta, presupuestos participativos, urbanismo, plan estratégico, city, Saragossa, e-government, open government, open gov, council, local government, citizen-authority relations, public participation, collaboration, collaborative map, collaborative edition, survey, participatory budgeting, town planning, strategic plan" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css"/>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+   
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <th:block th:if="${param.test}">
+            <th:block th:if="${param.presencial}" th:text="${param.presencial[0]}" />
+            <th:block th:text="${param.presencial[0]=='qtyjs-daesfg-mmend'}" />
+        </th:block>
+        <h2>Encuesta Recinto Ferial</h2>
+    <div class="row margin-b2em">
+	<div class="col-md-8"><img class="img-responsive" src="/cont/vistas/portal/cultura/fiestas-pilar/img/Valdespartera.jpg" alt=""/></div>
+	<div class="col-md-4">
+	<div>
+		<a href="http://www.zaragoza.es/sede/servicio/formulario/301/" class="btn btn-success btn-sm">Acceso Online a la Encuesta</a>
+		</div>
+</div>
+</div>
+        
+        
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+           
+			<li role="presentation" class="active"><a href="#intro" aria-controls="intro" role="tab" data-toggle="tab"> Introducción</a></li>
+			<li role="presentation"><a href="#bases" aria-controls="bases" role="tab" data-toggle="tab"> Bases del Sorteo</a></li>
+            <li role="presentation"><a href="#sorteo" aria-controls="sorteo" role="tab" data-toggle="tab"> Resultados Sorteo</a></li>
+
+            
+        </ul>
+        <div sede:class="tab-content">
+           <h2 class="tab-title" data-toggle="collapse" data-target="#intro" aria-expanded="false"> Introducción</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="intro">
+                <div class="row">
+                    <div class="col-md-12">
+                      <p>   El Ayuntamiento de Zaragoza, organiza y gestiona cada año con la Sociedad Municipal Zaragoza Cultural, un programa de Fiestas del Pilar, que resulta un evento de gran trascendencia e importancia para los ciudadanos, así como un esencial atractivo turístico para la ciudad, cuya población aumenta en esas fechas considerablemente.</p>
+	<p>	Uno de los lugares más emblemáticos de las Fiestas del Pilar, es el RECINTO FERIAL VALDESPARTERA, donde se desarrollan diversas actividades dirigidas al ocio.</p>
+<p>	Para la correcta fijación de los precios máximos de las distintas actividades que allí se desarrollan y el grado de satisfacción de los usuarios, resulta adecuado realizar encuestas.</p>
+<p>	Para fomentar la participación ciudadana, dichas encuestas podrán ser realizadas presencialmente en el Recinto Ferial Valdespartera, o mediante el acceso a través de la página web del Ayuntamiento de Zaragoza o redes sociales. Además, se realizará un pequeño sorteo por dicha colaboración ciudadana.</p>
+<ol><li>OBJETO: El Ayuntamiento de Zaragoza,  a través de la Consejería de Servicios Públicos y Personal, con el fin de conocer el grado de satisfacción de los distintos usuarios del Recinto ferial Valdespartera, organiza un pequeño sorteo "El Recinto ferial: lo hacemos todos", entre las personas que realizan la encuesta elaborada para ello.</li>
+<li>ÁMBITO TERRITORIAL Y TEMPORAL: Las encuestas van dirigidas a analizar la tipología y grado de satisfacción de los usuarios del Recinto Ferial Valdespartera, situado en Zaragoza, en el periodo comprendido entre el 5 y el 21 de octubre de 2018, con motivo de las Fiestas del Pilar.</li>
+<li>CONDICIONES PARA PARTICIPAR Podrán participar en este sorteo toda persona MAYOR DE EDAD que haya  asistido al recinto ferial este año y  realizado la encuesta entre los días 5 y  16 de octubre de 2018, facilitando sus datos de identificación, por si resultase ganador (nombre, teléfono y/o correo electrónico).</li>
+<li>PREMIOS: Los premios del sorteo serán: 10 premios consistentes cada uno de ellos en: 4 entradas a la Carpa de  Oktoberfest Valdespartera , con consumición y bratwurst o similar.</li>
+<li>SORTEO: El sorteo se realizará el día 17 de octubre de 2018, a las 10:00 horas, mediante  sistema aleatorio con los códigos de identificación de las encuestas, sin que puedan participar menores de edad.</li>
+<li>COMUNICACIÓN AL GANADOR: El ganador será llamado por teléfono y/o se le remitirá un correo electrónico. Además el resultado del sorteo se publicará en la página web del Ayuntamiento.</li>
+<li>PROTECCIÓN DE DATOS: En cumplimiento de normativa aplicable en materia de protección de datos de carácter personal, el servicio gestor informa que los datos que se faciliten para participar en esta promoción, junto con los que se faciliten en caso de resultar premiado, son necesarios para participar en el sorteo y que serán destruidos una vez finalizado el mismo.</li></ol>
+                        </div>
+                       
+                       
+	                           
+                        </div>
+                    </div>
+		    <h2 class="tab-title" data-toggle="collapse" data-target="#sorteo" aria-expanded="false"> Resultados Sorteo</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="sorteo">
+                <div class="row">
+                    <div class="col-md-12">
+                      <table class="table table-striped table-condensed table-bordered"><caption>Ganadores del sorteo</caption>
+                        <tr><td>627676176</td></tr>
+                        <tr><td>Elenaayalam@hotmail.com</td></tr>
+                        <tr><td>644973327</td></tr>
+                        <tr><td>Juliogzlive@icloud.com</td></tr>
+                        <tr><td>622009329</td></tr>
+                        <tr><td>Nmozota@gmail.com</td></tr>
+                        <tr><td>644463331</td></tr>
+                        <tr><td>616153985</td></tr>
+                        <tr><td>Dere_zgz@hotmail.com</td></tr>
+                        <tr><td>Sofiialapuente@hotmail.com</td></tr>
+                        </table>
+                        </div>
+                       
+                       
+	                           
+                        </div>
+                    </div>
+               
+				<h2 class="tab-title" data-toggle="collapse" data-target="#bases" aria-expanded="false"> Bases</h2>
+        <div role="tabpanel" sede:class="tab-pane active" id="bases">
+        <div class="row">
+        <div class="col-md-12">
+         <p> Se sortean <strong>10 premios</strong> consistentes cada uno de ellos <strong>4 entradas de acceso a Oktoberfest Valdespartera, con derecho a consumición y  bratwurst</strong>.</p>
+<ol><li>Podrán participar en el sorteo  personas mayores de edad, que realicen la <strong>encuesta sobre el Recinto Ferial entre el 5 al el 16 de octubre de 2018</strong>.</li>
+<li>Para poder participar en el sorteo se deberá realizar correctamente la encuesta, aportando datos identificativos (nombre, teléfono y correo electrónico) que sólo serán utilizados para contactar con los ganadores.</li>
+<li>El nombre de los ganadores, será publicado en la página web municipal:<a href="https://www.zaragoza.es/sede/portal/cultura/fiestas-pilar/encuesta#sorteo">https://www.zaragoza.es/sede/portal/cultura/fiestas-pilar/encuesta#sorteo</a> el día 17 de octubre de 2018.</li>
+<li>El servicio gestor, remitirá correo electrónico e intentará ponerse  en contacto telefónicamente con las personas ganadoras, en horario de 8 a 15 horas desde el día 17 al 19 de octubre, e  indicando el lugar donde debe recoger el premio.</li>
+<li>Dichos  premios deberán ser canjeados antes del día 21 de octubre de 2018, momento en que el Recinto ferial termina la actividad.  Si transcurrido el plazo indicado, no se produce la retirada del premio, se entenderá que se renuncia al  mismo.</li>
+<li>Para recibir el premio, el ganador o ganadora podrá consentir ser fotografiado o fotografiada con las entradas, cediendo sus derechos de imagen y autorizando la publicación de su fotografía en los medios de comunicación y redes sociales gestionados por el Ayuntamiento de Zaragoza. </li>
+<li>En cumplimiento de la normativa aplicable en materia de protección de datos de carácter personal, el servicio gestor informa que los datos que se faciliten para participar en dicho sorteo, serán destruidos una vez finalizado el mismo.</li>
+</ol>
+
+
+            </div>
+            </div>
+            </div>
+			</div>
+         
+           
+           
+        
+    </sede:content>
+</body>
+
+</html>

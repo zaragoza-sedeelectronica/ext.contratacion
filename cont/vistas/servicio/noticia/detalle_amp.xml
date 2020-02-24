@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html amp="amp" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <script async="async" src="https://cdn.ampproject.org/v0.js"></script>
+    <!--/* NECESARIO PARA EL BUSCADOR DE ZARAGOZA.ES*/-->
+    <script async="async" custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <!--/* ---- */-->
+    <!--/* NECESARIO PARA ANALYTICS */-->
+    <script async="async" custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <amp-analytics>
+    <script type="application/json">
+    {
+      "requests": {
+        "pageview": "<th:block th:text="${registro.body.uri}"/>",
+      },
+      "triggers": {
+        "trackPageview": {
+          "on": "visible",
+          "request": "pageview"
+        }
+      }
+    }
+    </script>
+    </amp-analytics>
+    <!--/* ---- */-->
+    <sede:meta title=" ${titulo} + '. Noticia'" keywords="sede,web" />
+    <link rel="canonical" th:href="${registro.body.uri}" />
+    <style amp-boilerplate="amp-boilerplate">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="amp-boilerplate">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom="amp-custom">
+        .pull-right{
+            float:right;
+        }
+        .pull-left{
+            float:left;
+        }
+        .card {
+            background: rgb(255, 255, 255);
+            padding: 1em;
+            margin-bottom: 2em;
+            -webkit-box-shadow: 0 1px 6px 0 rgba(0,0,0,0.12),0 1px 6px 0 rgba(0,0,0,0.12);
+            box-shadow: 0 1px 6px 0 rgba(0,0,0,0.12),0 1px 6px 0 rgba(0,0,0,0.12);
+        }
+        .container-fluid {
+            max-width: 1170px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .clearfix:before,.clearfix:after {
+            content: " ";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}">
+            <div class="card">
+                <div class="clearfix">
+                    <a class="pull-left" th:if="*{dateCreated}" sede:rdf="*{get('dateCreated')}" th:href="'/sede/servicio/noticia/list?fq=fecha_dt%3A(&quot;'+*{#utils.toUnicode(dateCreated)}+'&quot;)'"></a>
+                    <a th:href="'//www.zaragoza.es' + *{image[0].src}">
+                        <amp-img class="pull-right" width="200" height="120" sede:rdf="*{prop('image')}" th:src="'//www.zaragoza.es' + *{image[0].src}" th:alt="*{image[0].title}" />
+                    </a>
+                    <h2 sede:rdf="${registro.body.get('title')}"></h2>
+                </div>
+                <hr/>
+                <p th:if="*{summary}" sede:rdf="*{get('summary')}"></p>
+                    <!-- </div> -->
+                <!-- </div> -->
+                <!-- <div class="card-footer">
+                    <a th:if="*{not #lists.isEmpty(category)}" th:each="cat, i : *{category}" th:unless="${i.index >= 8}" class="label label-success" th:text="${cat.title}" sede:rdf="${cat.prop()}" th:href="'/sede/servicio/noticia/?q=category.title==' + ${cat.title} + '*'"></a>
+                    <th:block th:include="/fragmentos/share-button(uri=*{uri}, text=*{title})"></th:block>
+                </div> -->
+            </div>
+            <th:block th:if="*{descriptionAmp}">
+                <div sede:rdf="*{prop('description')}" th:text="*{descriptionAmp}" class="card"></div>
+            </th:block>
+        </div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Obras'" author="Ayuntamiento de Zaragoza" keywords="sede,web,monumento"></sede:meta>
+
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}"  class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h2 sede:rdf="*{get('title')}"/>
+                    <div class="ribbon-wrapper">
+                        <span class="sr-only">Estado</span>
+                        <div th:if="*{status == 1}" class="ribbon-info">En proceso</div>
+                        <div th:if="*{status == 2}" class="ribbon-warning">En garantía</div>
+                        <div th:if="*{status == 3}" class="ribbon-primary">Finalizado</div>
+                    </div>
+                    <div><span sede:rdf="*{get('tipoVia')}"/> <span sede:rdf="*{get('address')}"/></div>
+                    <p>
+                        <span th:text="*{#utils.tratarFechas(startDate, endDate)}"/>
+
+                    </p>
+                    <p>
+                        <th:block th:if="*{alcance}">
+                            Alcance: 
+                            <span th:if="*{alcance == 1}" class="label label-success">Mayor</span>
+                            <span th:if="*{alcance == 2}" class="label label-warning">Menor</span>
+                        </th:block>
+                        <th:block th:if="*{nivelActuacion}">
+                            Nivel de actuación: 
+                            <span th:if="*{nivelActuacion == 'N'}" class="label label-success">Normal</span>
+                            <span th:if="*{nivelActuacion == 'P'}" class="label label-warning">Pequeño</span>
+                            <span th:if="*{nivelActuacion == 'G'}" class="label label-warning">Grande</span>
+                        </th:block>
+                        Expediente: <span th:text="*{expediente}"/>  
+                        Promotor: <span th:text="*{codigoGestor}" class="label label-info"/>
+                        <th:block th:if="*{presupuestoGlobalOriginal}">
+                            Presupuesto Global Original <strong th:text="*{#numbers.formatInteger(presupuestoGlobalOriginal,3,'POINT')}"/> 
+                        </th:block>
+                        <th:block th:if="*{pemInicial}">
+                            PEM Inicial <strong th:text="*{#numbers.formatInteger(pemInicial,3,'POINT')}"/> 
+                        </th:block>
+                        <th:block th:if="*{presupuestoTeoricoActualizado}">
+                            Presupuesto Teorico Actualizado <strong th:text="*{#numbers.formatInteger(presupuestoTeoricoActualizado,3,'POINT')}"/> 
+                        </th:block>
+
+                    </p>
+                    <div><pre sede:rdf="*{get('description')}"></pre></div>
+                    <h3>Proyecto</h3>
+                    <dl class="dl-horizontal">
+                        <dt th:if="*{tituloProyecto} and not *{#strings.equals(title, tituloProyecto)}">Título</dt>
+                        <dd th:if="*{tituloProyecto} and not *{#strings.equals(title, tituloProyecto)}" sede:rdf="*{get('tituloProyecto')}"/>
+                        
+                        <dt th:if="*{fechaProyecto}">Fecha</dt>
+                        <dd th:if="*{fechaProyecto}" sede:rdf="*{get('fechaProyecto')}"/>
+                        
+                        <dt th:if="*{fechaAprobacionProyecto}">Fecha</dt>
+                        <dd th:if="*{fechaAprobacionProyecto}" sede:rdf="*{get('fechaAprobacionProyecto')}"/>
+
+                        <dt th:if="*{fechaInformeSupervision}">Fecha Informe supervisión</dt>
+                        <dd th:if="*{fechaInformeSupervision}" sede:rdf="*{get('fechaInformeSupervision')}"/>
+
+                        <dt th:if="*{descripcionProyecto} and not *{#strings.equals(description, descripcionProyecto)}">Descripción</dt>
+                        <dd th:if="*{descripcionProyecto} and not *{#strings.equals(description, descripcionProyecto)}" sede:rdf="*{get('descripcionProyecto')}"/>
+                        <dt th:if="*{organoAprobacion}">Órgano aprobación</dt>
+                        <dd th:if="*{organoAprobacion}" sede:rdf="*{get('organoAprobacion')}"/>
+                        <dt th:if="*{autorProyecto}">Autor</dt>
+                        <dd th:if="*{autorProyecto}" sede:rdf="*{get('autorProyecto')}"/>
+                        <dt th:if="*{tecnicoSuperior}">Técnico superior</dt>
+                        <dd th:if="*{tecnicoSuperior}" sede:rdf="*{get('tecnicoSuperior')}"/>
+                        <dt th:if="*{directorObra}">Director obra</dt>
+                        <dd th:if="*{directorObra}" sede:rdf="*{get('directorObra')}"/>
+                        <dt th:if="*{directorEjecucion}">Director ejecución</dt>
+                        <dd th:if="*{directorEjecucion}" sede:rdf="*{get('directorEjecucion')}"/>
+                        <dt th:if="*{superficieConstruida}">Superficie construida</dt>
+                        <dd th:if="*{superficieConstruida}" sede:rdf="*{get('superficieConstruida')}"/>
+                        <dt th:if="*{superficieUtil}">Superficie útil</dt>
+                        <dd th:if="*{superficieUtil}" sede:rdf="*{get('superficieUtil')}"/>
+                    </dl>
+
+                </div>
+                <th:block th:text="*{contrato}"/>
+        </div>
+<pre>
+    FALTA OBTENER LOS DATOS DEL PROMOTOR A TRAVÉS DE ENTIDADES
+[, 
+¿¿¿idAsunto=122???, 
+reference=12-005, 
+matricula=SJO C CIVICO MEJORA CALEFACCIÓN SANCHEZ PUNTER, 
+equipamiento=121, 
+barrio=SJO, 
+uso=CIV Centro Cívico]
+
+</pre>
+        </div>
+    </sede:content>
+
+</body>
+
+</html>

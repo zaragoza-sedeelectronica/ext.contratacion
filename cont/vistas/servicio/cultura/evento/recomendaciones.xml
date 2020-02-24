@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Actividades Recomendadas. Agenda de Actividades de la Ciudad" keywords="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, actividades, buscador, actos, eventos, agenda" />
+    <style type="text/css">
+        .card {
+            position: relative;
+            padding-top: 1.5em;
+            padding-bottom: 60px;
+        }
+        @media (min-width: 768px) {
+            .card {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Actividades recomendadas</h2>
+
+        <th:block th:if="true">
+            <div role="alert" class="alert alert-info">
+                <p>Completa tu perfil y podremos recomendarte actividades adaptadas a tus preferencias.</p>
+                <p><a href="/sede/servicio/comunidad/perfil/user/edit" class="btn btn-primary">Completar perfil</a></p>
+            </div>
+        </th:block>
+        
+        <ul class="row list-unstyled">
+            <li th:each="doc : ${resultado.result}" class="col-xs-12 col-sm-6 col-md-4" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}" typeOf="Event">
+              <th:block th:include="fragmentos/cultura/evento/card(act=${doc})"></th:block>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

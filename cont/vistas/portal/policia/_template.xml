@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+
+    <th:block th:fragment="cssjs">
+        <th:block th:include="fragmentos/cssjs" />
+        <style type="text/css">
+            body {
+            padding-top: 57px;
+            }
+            ul#menu {
+            /*border-bottom: 2px solid #E81B16;*/
+            border: 1px solid #CCC;
+            font-weight: bold;
+            margin-bottom: 1em;
+            border-radius: 0 0 .5em .5em;
+            }
+
+            ul#menu .elemento {
+            display: block;
+            padding: 10px 15px;
+            margin: 0;
+            font-size: 1em;
+            font-weight: bold;
+            line-height: 1.42857143;
+            /* h2 line-height == a line-height*/
+            }
+
+            ul#menu h2 {
+            background: #E81B16;
+            color: white;
+            }
+        </style>
+    </th:block>
+
+    <body>
+        <th:block th:fragment="header">
+            <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+                <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <h1><a href="/sede/portal/policia/">Policía Local de Zaragoza</a></h1>
+                    <sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'}, {'link':'/ciudad/ayto/', 'text':'Ayuntamiento'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <div class="overlay" style="display: none;"></div> 
+        <!--/* Menu lateral de portal */-->
+
+        <nav role="navigation" class="container-fluid">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+             <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/servicio/equipamiento/list?query=policia">Equipamientos</a></li>
+             <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/servicio/tramite/?fq=temas_smultiple%3A%28%22Protecci%5Cu00f3n+y+Seguridad+Ciudadana%22%29%20AND%20temas_smultiple%3A%28%22Tr%5Cu00e1fico+y+V%5Cu00eda+P%5Cu00fablica%22%29">Trámites y servicios</a></li>
+             <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/servicio/normativa/list?fq=temas_smultiple%3A%28%22Polic%C3%ADa+Local%22%29">Normativa</a></li>
+                <!--<li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/servicio/equipamiento/20546">Museo</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/servicio/equipamiento/46">Educación Vial</a></li>-->
+                <!-- <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/servicio/equipamiento/998">Academia</a></li> -->
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/historia">Historia</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/parque-movil">Parque Móvil</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/policia/caballeria">Caballería</a></li>
+
+
+            </ul>
+        </nav>
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!--/* http://bootsnipp.com/snippets/featured/share-on-social-networks */-->
+<div class="btn-group share-group hidden-print">
+    <a data-toggle="dropdown" class="btn btn-sm btn-default">
+        <span class="fa fa-share-alt"></span> <th:block th:if="${title}" th:text="${title}"></th:block>
+    </a>
+    <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle share" title="Compartir">
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>
+            <a data-original-title="Twitter" data-toggle="tooltip" class="btn btn-twitter" data-placement="left" th:href="'https://twitter.com/intent/tweet?url=' + ${#utils.encode(uri)} + '&amp;text=' + ${#utils.encode(text)}">
+                <span class="fab fa-twitter"></span>
+                <span class="sr-only">Compartir en Twitter</span>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="Facebook" data-toggle="tooltip" class="btn btn-facebook" data-placement="left" th:href="'http://www.facebook.com/sharer.php?u=' + ${#utils.encode(uri)} + '&amp;t=' + ${#utils.encode(text)}">
+                <span class="fab fa-facebook-f"></span>
+                <span class="sr-only">Compartir en Facebook</span>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="Whatsapp" data-toggle="tooltip" class="btn btn-whatsapp" data-placement="left" th:href="'whatsapp://send?text=' + ${#utils.encode(text)} + ' - ' + ${#utils.encode(uri)}">
+                <span class="fab fa-whatsapp"></span>
+                <span class="sr-only">Compartir en Whatsapp</span>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="Google+" data-toggle="tooltip" class="btn btn-google" data-placement="left" th:href="'https://plus.google.com/share?url=' + ${#utils.encode(uri)}">
+                <span class="fab fa-google-plus-g"></span>
+                <span class="sr-only">Compartir en Google+</span>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="LinkedIn" data-toggle="tooltip" href="#" class="btn btn-linkedin" data-placement="left" th:href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + ${#utils.encode(uri)} +'&amp;title=' + ${#utils.encode(text)}">
+                <span class="fab fa-linkedin-in"></span>
+                <span class="sr-only">Compartir en LinkedIn</span>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="Pinterest" data-toggle="tooltip" href="#" class="btn btn-pinterest" data-placement="left" th:href="'https://pinterest.com/pin/create/button/?url=' + ${#utils.encode(uri)} + '&amp;description=' + ${#utils.encode(text)}">
+                <span class="fab fa-pinterest"></span>
+                <span class="sr-only">Compartir en Pinterest</span>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="Email" data-toggle="tooltip" class="btn btn-mail" data-placement="left" th:href="'mailto:?subject=He%20visto%20esto%20en%20www.zaragoza.es%20y%20creo%20que%20te%20puede%20interesar&amp;body=' + ${#strings.replace(text,' ','%20')} + '%0D%0A%0D%0A' + ${uri}">
+                <span class="fa fa-envelope"></span>
+                <span class="sr-only">Compartir por email</span>
+            </a>
+        </li>
+    </ul>
+</div>

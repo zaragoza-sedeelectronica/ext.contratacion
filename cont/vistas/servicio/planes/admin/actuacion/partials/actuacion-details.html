@@ -1,0 +1,1108 @@
+<style>
+    .align-middle {
+        vertical-align: middle !important;
+        text-align: center !important;
+    }
+</style>
+<div class="inform repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+<form novalidate name="mainForm" ng-submit="mainForm.$valid && guardar()">
+<div class="row">
+
+    <div class="col-md-12">
+		<button type="submit" class="btn btn-default" ng-show="permisos.MOD">
+			<span class="fa fa-check" aria-hidden="true"></span> 
+			<span class="hidden-xs"> Guardar</span>
+		</button>
+        <boton-visibilidad></boton-visibilidad>
+        <modal-borrar></modal-borrar>
+        <!--<modal-peticion></modal-peticion>-->
+		<boton-debug ng-model="registro" ng-show="debug"></boton-debug>
+    </div>
+
+</div>
+
+<hr/>
+
+<div class="alert alert-danger" ng-show="mainForm.$submitted && mainForm.$invalid">
+	<ul>
+		<li ng-repeat="(key, errors) in mainForm.$error track by $index"> 
+			<!-- Errores: <strong>{{ key }}</strong> -->
+			<div ng-if="key === 'required'">
+				<strong>Faltan campos por completar:</strong>
+				<ul>
+					<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> es obligatorio.</li>
+				</ul>	
+			</div>
+			<div ng-if="key !== 'required'">
+				<ul>
+					<li ng-repeat="e in errors">El campo <em>{{ e.$name }}</em> tiene un error: <strong>{{ key }}</strong>.</li>
+				</ul>	
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <fieldset>
+            <legend>Datos de la Actuación
+            	<span ng-show="debug">[mainFormValid:<strong ng-class="{'text-success': mainForm.$valid, 'text-danger': !mainForm.$valid}">{{mainForm.$valid}}</strong>]</span>
+            </legend>
+
+			<div class="row">
+                <div class="col-md-12 form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="btn-group" uib-dropdown>
+                                <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle>
+                                    <span class="fa fa-info-circle" aria-hidden="true"></span> Control
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" style="padding: 5px; min-width: 300px;">
+                                    <li ng-hide="location === '/new'"><strong>ID: </strong>{{ registro.id }}</li>
+                                    <li ng-hide="location === '/new'" class="divider"></li>
+                                    <li>
+                                        <strong>Servicio: </strong>
+                                        <span class="label label-primary margin-r05em" ng-repeat="portal in registro.portales">{{portal.title}}</span>
+                                    </li>
+                                    <li><strong>Usuario de agenda: </strong>{{registro.codUsuario}}<span ng-show="registro.codUsuario === 1"> (web)</span></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li ng-hide="location === '/new'"><strong>Fecha de alta: </strong>{{registro.creationDate | date:'dd-MM-yyyy'}}</li>
+                                    <li ng-hide="location === '/new'"><strong>Fecha de modificaci&oacute;n: </strong>{{registro.lastUpdated | date:'dd-MM-yyyy'}}</li>
+                                    <!-- <li><strong>Fecha de publicaci&oacute;n: </strong>{{registro.pubDate | date:'dd-MM-yyyy'}}</li> -->
+                                    <li><strong>Usuario de alta: </strong>{{registro.usuarioAlta}}</li>
+                                    <li><strong>Usuario de modificaci&oacute;n: </strong>{{registro.usuarioMod}}</li>
+                                    <!-- <li><strong>Usuario de publicaci&oacute;n: </strong>{{registro.usuarioPub}}</li> -->
+                                    <li role="separator" class="divider"></li>
+                                    <li><strong>Nombre: </strong>{{registro.nombreContacto}}</li>
+                                    <li><strong>Apellidos: </strong>{{registro.apellidosContacto}}</li>
+                                    <li><strong>Email: </strong>{{registro.emailContacto}}</li>
+                                    <li><strong>Teléfono: </strong>{{registro.telefonoContacto}}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-default" ng-click="cargarFicha(registro.id);" ng-disabled="location === '/new'">
+                            	<span class="fa fa-globe" aria-hidden="true"></span> 
+                            	Ver ficha
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row margin-b2em">
+                <div class="col-md-12 form-horizontal">
+
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.titulo.$touched) && mainForm.titulo.$invalid}">
+                        <label class="col-sm-2 control-label" for="titulo">
+                        	<span class="obligatorio">Titulo de la actuación:</span>
+                        	<span class="oculto"> (campo obligatorio)</span>
+                        </label>
+                        <div class="col-sm-7 col-md-8">
+                            <input class="form-control" type="text" name="titulo" id="titulo" ng-model="registro.title" required/>
+                            <span ng-show="mainForm.$submitted || mainForm.titulo.$touched">
+                                <span class="help-block" ng-show="mainForm.titulo.$error.required">Introduce el nombre de la actuación.</span>
+                            </span>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <input style="border-color:#CCC;" class="form-control" name="id" type="text" ng-model="registro.id" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="plan">Plan Estratégico:</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <autocompletado autocomplete="off" id="plan" name="plan" modelo="registro.plan" uri="/sede/servicio/planes/admin/list" filtro="title"
+                                            placeholder="Buscar plan estratégico..." campos="id,title"></autocompletado>
+                                <div class="input-group-btn">
+                                    <a ng-href="/sede/servicio/planes/admin/plan/#/edit/{{registro.plan.id}}" target="_blank" class="btn btn-default" ng-class="{'disabled' : registro.plan === undefined}">
+                                        <span class="glyphicon glyphicon-share"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="codigo">Código de la actuación:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="codigo" ng-model="registro.codigo"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="procedimiento">Procedimiento:</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <autocompletado autocomplete="off" id="procedimiento" name="procedimiento" modelo="registro.procedimiento" uri="/sede/servicio/tramite" filtro="title"
+                                                placeholder="Buscar procedimiento..." campos="id,title"></autocompletado>
+                                <div class="input-group-btn">
+                                    <a ng-href="/sede/servicio/tramite/{{registro.procedimiento.id}}" target="_blank" class="btn btn-default" ng-class="{'disabled' : registro.procedimiento === undefined}">
+                                        <span class="glyphicon glyphicon-share"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="descripcion">Descripción:</label>
+                        <div class="col-sm-10">
+                            <textarea ck-editor-new class="form-control" id="descripcion" name="descripcion" ng-model="registro.description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="responsableApellidos">Apellidos responsable:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="responsableApellidos" ng-model="registro.responsableApellidos"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="responsableNombre">Nombre responsable:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="responsableNombre" ng-model="registro.responsableNombre"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="responsableMatricula">Matrícula responsable:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="responsableMatricula" ng-model="registro.responsableMatricula"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': (mainForm.$submitted || mainForm.asociaciones.$touched) && mainForm.asociaciones.$invalid}">
+                        <label class="col-sm-2 control-label" for="asociaciones">Entidades colaboradoras (máx. 3):</label>
+                        <div class="col-sm-8">
+                            <autocompletado autocomplete="off" id="asociaciones" name="asociaciones" modelo="asociacion" uri="/sede/servicio/asociacion/list" filtro="title"
+                                            placeholder="Buscar entidad..." campos="id,title"></autocompletado>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="asociarEntidad(asociacion);asociacion=null;" ng-disabled="asociacion === undefined || asociacion === null">Añadir entidad</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2"> </div>
+                        <div class="col-sm-10">
+                            <table class="table table-striped table-condensed table-bordered table-btn" ng-show="registro.asociaciones && (registro.asociaciones.length > 0)">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Operaciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="asoc in registro.asociaciones">
+                                    <td>{{asoc.id}}</td>
+                                    <td>{{asoc.title}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="desasociarSubtema($index);">
+                                            <span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="colaboradores">Otros colaboradores:</label>
+                        <div class="col-sm-10">
+                            <textarea ck-editor-new class="form-control" id="colaboradores" name="colaboradores" ng-model="registro.colaboradores"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="ambito">Ámbito territorial:</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="ambito" id="ambito" ng-model="registro.ambitoTerritorial">
+                                <option value=""></option>
+                                <option value="Ciudad">Ciudad</option>
+                                <option value="Territorializada">Territorializada</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="registro.ambitoTerritorial === 'Territorializada'" ng-class="{'has-error': (mainForm.$submitted || mainForm.juntas.$touched) && mainForm.juntas.$invalid}">
+                        <label class="col-sm-2 control-label" for="juntas">Juntas (máx. 4):</label>
+                        <div class="col-sm-8">
+                            <autocompletado autocomplete="off" id="juntas" name="juntas" modelo="junta" uri="/sede/servicio/distrito" filtro="title"
+                                            placeholder="Buscar entidad..." campos="id,title"></autocompletado>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="asociarJunta(junta);junta=null;" ng-disabled="junta === undefined || junta === null">Añadir junta</button>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="registro.ambitoTerritorial === 'Territorializada'" >
+                        <div class="col-sm-2"> </div>
+                        <div class="col-sm-10">
+                            <table class="table table-striped table-condensed table-bordered table-btn" ng-show="registro.juntas && (registro.juntas.length > 0)">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Operaciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="junta in registro.juntas">
+                                    <td>{{junta.id}}</td>
+                                    <td>{{junta.title}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="desasociarJunta($index);">
+                                            <span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="duracion">Duración:</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="duracion" id="duracion" ng-model="registro.duracion">
+                                <option value=""></option>
+                                <option value="NS/NC">NS/NC</option>
+                                <option value="Puntual">Puntual</option>
+                                <option value="Semanal/Quincenal">Semanal/Quincenal</option>
+                                <option value="Mensual">Mensual</option>
+                                <option value="Trimestral">Trimestral</option>
+                                <option value="Semestral">Semestral</option>
+                                <option value="Anual">Anual</option>
+                                <option value="Escolar">Escolar</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-7" ng-if="registro.duracion">
+                            <span ng-if="registro.duracion == 'Puntual'">
+                            	<em>Menos de 5 días</em>
+                            </span>
+                            <span ng-if="registro.duracion == 'Semanal/Quincenal'">
+                            	<em>De 6 a 15 días</em>
+                            </span>
+                            <span ng-if="registro.duracion == 'Mensual'">
+                            	<em>De 16 a 30 días</em>
+                            </span>
+                            <span ng-if="registro.duracion == 'Trimestral'">
+                            	<em>De 31 a 90 días</em>
+                            </span>
+                            <span ng-if="registro.duracion == 'Semestral'">
+                            	<em>De 91 a 180 días</em>
+                            </span>
+                            <span ng-if="registro.duracion == 'Anual'">
+                            	<em>Superior a 180 días</em>
+                            </span>
+                            <span ng-if="registro.duracion == 'Escolar'">
+                            	<em>Superior a 180 días, ajustada a calendario escolar</em>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="ambito">Temporalización:</label>
+                        <div class="col-sm-10">
+                        	<label class="col-sm-12">
+                        		<input type="radio" name="temporalizacion" value="fechas" ng-model="formulario.temporalizacion"/>
+                        		Rango de fechas
+                        	</label>
+                        	<div class="col-sm-12" ng-if="formulario.temporalizacion == 'fechas'">
+			                    <div class="col-sm-6 form-group">
+				                	<label for="fInicio" class="col-sm-4 control-label">Fecha Inicio: </label>
+					                <div class="col-sm-6">
+					                    <div class="input-group">
+					                        <input type="text" id="fInicio" name="fInicio" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="registro.startDate" is-open="datepickers.startDate" datepicker-options="{maxDate: registro.endDate}" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" my-date/>
+					                        <span class="input-group-btn">
+					                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'startDate')">
+					                                <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+					                            </button>
+					                        </span>
+					                    </div>
+					                    <span class="help-block" ng-show="debug">
+                                               [{{registro.startDate}}]
+                                           </span>
+					                </div>
+					            </div>
+			                    <div class="col-sm-6 form-group">
+				                	<label for="fFin" class="col-sm-4 control-label">Fecha Fin: </label>
+					                <div class="col-sm-6">
+					                    <div class="input-group">
+					                        <input type="text" id="fFin" name="fFin" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="registro.endDate" is-open="datepickers.endDate" datepicker-options="{minDate: registro.startDate}" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" my-date/>
+					                        <span class="input-group-btn">
+					                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'endDate')">
+					                                <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+					                            </button>
+					                        </span>
+					                    </div>
+					                    <span class="help-block" ng-show="debug">
+                                               [{{registro.endDate}}]
+                                           </span>
+					                </div>
+					            </div>
+                        	</div>
+                        	<label class="col-sm-12">
+                        		<input type="radio" name="temporalizacion" value="prevision" ng-model="formulario.temporalizacion"/>
+                        		Previsión
+                        	</label>
+                        	<div class="col-sm-12" ng-if="formulario.temporalizacion == 'prevision'">
+	                        	<input class="form-control" type="text" name="prevision" ng-model="registro.temporalizacion"/>
+                        	</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="tipo">Tipo de actuación:</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="tipo" id="tipo" ng-model="registro.tipo">
+                                <option value=""></option>
+                                <option value="Nueva">Nueva</option>
+                                <option value="Reformulada">Reformulada</option>
+                                <option value="Continua">Continua</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-7" ng-if="registro.tipo">
+                            <span ng-if="registro.tipo == 'Nueva'">
+                            	<em>Actividad o servicio que no existía previamente a la redacción del Plan</em>
+                            </span>
+                            <span ng-if="registro.tipo == 'Reformulada'">
+                            	<em>Actividad o servicio existente previamente al Plan, pero que se ha modificado sustancialmente con motivo del Plan en sus objetivos, tipo de público destinatario, metodología y/u organización</em>
+                            </span>
+                            <span ng-if="registro.tipo == 'Continua'">
+                            	<em>Actividad o servicio existente previamente al Plan, sin modificaciones sustanciales internas, excepto el posible incremento cuantitativo de su volumen de servicios o actividades.</em>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<uib-tabset>
+    					<uib-tab heading="Destinatarios previstos">
+    						
+                            <div class="row">
+
+                                <div class="col-md-12 form-horizontal">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="destinatariosPrevisto">Destinatarios previstos:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ck-editor-new class="form-control" id="destinatariosPrevisto" name="destinatariosPrevisto" ng-model="registro.destinatariosPrevisto"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Personas físicas:</label>
+                                        <div class="col-sm-10">
+	                                        <table class="table table-bordered" id="tabla_{{registro.tablaDestinatariosPrevisto.id}}" width="100%">
+	                                        	<thead >
+	                                        		<tr>
+	                                        			<th class="align-middle">{{registro.tablaDestinatariosPrevisto.discriminador.title}}</th>
+	                                        			<th class="align-middle" ng-repeat="atributo in registro.tablaDestinatariosPrevisto.atributos">
+                                                            <div class="align-middle">
+                                                                <span>{{atributo.title}}</span>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <button ng-if="$index > 2" type="button" class="btn btn-default btn-xs"
+                                                                        ng-click="desplazarAtributo(registro.tablaDestinatariosPrevisto,$index,-1);">
+                                                                    <span class="glyphicon glyphicon-arrow-left"></span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <button ng-if="$index > 1" type="button" class="btn btn-default btn-xs"
+                                                                        ng-click="eliminarAtributo([registro.tablaDestinatariosPrevisto,registro.tablaDestinatariosRealizado],$index);">
+                                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <button ng-if="($index > 1) && ($index < registro.tablaDestinatariosPrevisto.atributos.length-1)" type="button" class="btn btn-default btn-xs"
+                                                                        ng-click="desplazarAtributo(registro.tablaDestinatariosPrevisto,$index,1);">
+                                                                    <span class="glyphicon glyphicon-arrow-right"></span>
+                                                                </button>
+                                                            </div>
+	                                        			</th>
+	                                        		</tr>
+	                                        	</thead>
+	                                        	<tbody>
+	                                        		<tr ng-repeat="valorDiscr in registro.tablaDestinatariosPrevisto.discriminador.valores">
+	                                        			<td class="align-middle"><strong>{{valorDiscr.valorDiscriminador}}</strong></td>
+	                                        			<td ng-repeat="atributo in registro.tablaDestinatariosPrevisto.atributos" id="valor_{{atributo.id}}_{{valorDiscr.id}}">
+                                                            <input class="form-control" type="text" id="input_{{atributo.id}}_{{valorDiscr.id}}" ng-model="valorTabla" ng-change="establecerValorTabla(registro.tablaDestinatariosPrevisto,valorDiscr,atributo);" ng-value="obtenerValorTabla(registro.tablaDestinatariosPrevisto,valorDiscr,atributo)"/>
+                                                        </td>
+	                                        		</tr>
+	                                        	</tbody>
+	                                        </table>
+
+				                            <div class="col-sm-4 input-group" style="float:right;">
+				                                <input class="form-control" ng-model="atributoDestPrev" placeholder="Añadir atributo actuación..." />
+				                                <div class="input-group-btn">
+				                                    <a ng-click="nuevoAtributo(registro.tablaDestinatariosPrevisto,atributoDestPrev,true);nuevoAtributo(registro.tablaDestinatariosRealizado,atributoDestPrev,true);atributoDestPrev=undefined;"
+				                                    	 class="btn btn-default" ng-class="{'disabled' : (atributoDestPrev === undefined) || (atributoDestPrev.trim() === '')}">
+				                                        <span class="glyphicon glyphicon-plus"></span>
+				                                    </a>
+				                                </div>
+				                            </div>
+
+                                            <div class="col-sm-4 input-group" style="float:right;margin-right:20px;">
+                                                <autocompletado autocomplete="off" modelo="atribStdDestPrev" uri="/sede/servicio/planes/admin/atributo/list" filtro="title"
+                                                                placeholder="Añadir atributo estandarizado..." campos="id,title"></autocompletado>
+                                                <div class="input-group-btn">
+                                                    <a ng-click="nuevoAtributo(registro.tablaDestinatariosPrevisto,atribStdDestPrev);nuevoAtributo(registro.tablaDestinatariosRealizado,atribStdDestPrev);atribStdDestPrev=undefined;"
+                                                    	class="btn btn-default" ng-class="{'disabled' : atribStdDestPrev === undefined}">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Personas jurídicas y otros:</label>
+                                        <div class="col-sm-10">
+                                            <table class="table table-bordered" id="tabla_{{registro.tablaOtrosDestPrevisto.id}}" width="100%">
+                                                <thead >
+                                                <tr>
+                                                    <th class="align-middle">{{registro.tablaOtrosDestPrevisto.discriminador.title}}</th>
+                                                    <th class="align-middle" ng-repeat="atributo in registro.tablaOtrosDestPrevisto.atributos">
+                                                        <div class="align-middle">
+                                                            <span>{{atributo.title}}</span>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaOtrosDestPrevisto.atributos.length > 1) && ($index > 0)"
+                                                                type="button" class="btn btn-default btn-xs" 
+                                                                ng-click="desplazarAtributo(registro.tablaOtrosDestPrevisto,$index,-1);desplazarAtributo(registro.tablaOtrosDestRealizado,$index,-1);"
+                                                                style="float:left;">
+                                                                <span class="glyphicon glyphicon-arrow-left"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button type="button" class="btn btn-default btn-xs"
+                                                            	ng-click="eliminarAtributo([registro.tablaOtrosDestPrevisto,registro.tablaOtrosDestRealizado],$index);">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaOtrosDestPrevisto.atributos.length > 1) && ($index < registro.tablaOtrosDestPrevisto.atributos.length-1)"
+                                                                type="button" class="btn btn-default btn-xs"
+                                                                ng-click="desplazarAtributo(registro.tablaOtrosDestPrevisto,$index,1);desplazarAtributo(registro.tablaOtrosDestRealizado,$index,1);"
+                                                                style="float:right;">
+                                                                <span class="glyphicon glyphicon-arrow-right"></span>
+                                                            </button>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="valorDiscr in registro.tablaOtrosDestPrevisto.discriminador.valores">
+                                                    <td class="align-middle">
+                                                        <div class="align-middle">
+                                                            <strong>{{valorDiscr.valorDiscriminador}}</strong>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaOtrosDestPrevisto.discriminador.valores.length > 1) && ($index > 0)"
+                                                                    ng-click="desplazarValor(registro.tablaOtrosDestPrevisto,$index,-1);desplazarValor(registro.tablaOtrosDestRealizado,$index,-1);"
+                                                                    type="button" class="btn btn-default btn-xs" style="float:left;">
+                                                                <span class="glyphicon glyphicon-arrow-up"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4 align-middle">
+                                                            <button type="button" class="btn btn-default btn-xs"
+                                                            	ng-click="eliminarValor([registro.tablaOtrosDestPrevisto,registro.tablaOtrosDestRealizado],$index);">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaOtrosDestPrevisto.discriminador.valores.length > 1) && ($index < registro.tablaOtrosDestPrevisto.discriminador.valores.length-1)"
+                                                                    ng-click="desplazarValor(registro.tablaOtrosDestPrevisto,$index,1);desplazarValor(registro.tablaOtrosDestRealizado,$index,1);"
+                                                                    type="button" class="btn btn-default btn-xs" style="float:right;">
+                                                                <span class="glyphicon glyphicon-arrow-down"></span>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td ng-repeat="atributo in registro.tablaOtrosDestPrevisto.atributos" id="valor_{{atributo.id}}_{{valorDiscr.id}}">
+                                                        <input class="form-control" type="text" id="input_{{atributo.id}}_{{valorDiscr.id}}"
+                                                               ng-model="valorTabla" ng-change="establecerValorTabla(registro.tablaOtrosDestPrevisto,valorDiscr,atributo);"
+                                                               ng-value="obtenerValorTabla(registro.tablaOtrosDestPrevisto,valorDiscr,atributo)"/>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="col-sm-4 input-group" style="float:left;">
+                                                <input class="form-control" ng-model="valorDiscOtrosDestPrev" placeholder="Añadir valor discriminador..." />
+                                                <div class="input-group-btn">
+                                                    <a ng-click="nuevoValorDisc(registro.tablaOtrosDestPrevisto,valorDiscOtrosDestPrev);nuevoValorDisc(registro.tablaOtrosDestRealizado,valorDiscOtrosDestPrev);valorDiscOtrosDestPrev=undefined;"
+                                                       class="btn btn-default" ng-class="{'disabled' : (valorDiscOtrosDestPrev === undefined) || (valorDiscOtrosDestPrev.trim() === '')}">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4 input-group" style="float:right;">
+                                                <input class="form-control" ng-model="atributoOtrosDestPrev" placeholder="Añadir atributo actuación..." />
+                                                <div class="input-group-btn">
+                                                    <a ng-click="nuevoAtributo(registro.tablaOtrosDestPrevisto,atributoOtrosDestPrev,true);nuevoAtributo(registro.tablaOtrosDestRealizado,atributoOtrosDestPrev,true);atributoOtrosDestPrev=undefined;"
+                                                       class="btn btn-default" ng-class="{'disabled' : (atributoOtrosDestPrev === undefined) || (atributoOtrosDestPrev.trim() === '')}">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+    					</uib-tab>
+    				
+    					<uib-tab heading="Presupuesto previsto">
+    						
+                            <div class="row">
+
+                                <div class="col-md-12 form-horizontal">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="gastoPrevisto">Presupuesto previsto:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ck-editor-new class="form-control" id="gastoPrevisto" name="gastoPrevisto" ng-model="registro.gastoPrevisto"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="tablaGastoPrevisto">Presupuesto de gasto previsto:</label>
+                                        <div class="col-sm-10">
+                                            <table class="table table-bordered" id="tabla_{{registro.tablaGastoPrevisto.id}}" width="100%">
+                                                <thead >
+                                                <tr>
+                                                    <th class="align-middle">{{registro.tablaGastoPrevisto.discriminador.title}}</th>
+                                                    <th class="align-middle" ng-repeat="atributo in registro.tablaGastoPrevisto.atributos">
+                                                        <div class="align-middle">
+                                                            <span>{{atributo.title}}</span>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaGastoPrevisto.atributos.length > 1) && ($index > 0)"
+                                                                ng-click="desplazarAtributo(registro.tablaGastoPrevisto,$index,-1);desplazarAtributo(registro.tablaGastoRealizado,$index,-1);"
+                                                                type="button" class="btn btn-default btn-xs" style="float:left;">
+                                                                <span class="glyphicon glyphicon-arrow-left"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button type="button" class="btn btn-default btn-xs"
+                                                            	ng-click="eliminarAtributo([registro.tablaGastoPrevisto,registro.tablaGastoRealizado],$index);">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaGastoPrevisto.atributos.length > 1) && ($index < registro.tablaGastoPrevisto.atributos.length-1)"
+                                                                ng-click="desplazarAtributo(registro.tablaGastoPrevisto,$index,1);desplazarAtributo(registro.tablaGastoRealizado,$index,1);"
+                                                                type="button" class="btn btn-default btn-xs" style="float:right;">
+                                                                <span class="glyphicon glyphicon-arrow-right"></span>
+                                                            </button>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="valorDiscr in registro.tablaGastoPrevisto.discriminador.valores">
+                                                    <td class="align-middle">
+                                                        <div class="align-middle">
+                                                            <strong>{{valorDiscr.valorDiscriminador}}</strong>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaGastoPrevisto.discriminador.valores.length > 1) && ($index > 0)"
+                                                                    ng-click="desplazarValor(registro.tablaGastoPrevisto,$index,-1);desplazarValor(registro.tablaGastoRealizado,$index,-1);"
+                                                                    type="button" class="btn btn-default btn-xs" style="float:left;">
+                                                                <span class="glyphicon glyphicon-arrow-up"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4 align-middle">
+                                                            <button type="button" class="btn btn-default btn-xs" ng-click="eliminarValor([registro.tablaGastoPrevisto,registro.tablaGastoRealizado],$index);">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaGastoPrevisto.discriminador.valores.length > 1) && ($index < registro.tablaGastoPrevisto.discriminador.valores.length-1)"
+                                                                    ng-click="desplazarValor(registro.tablaGastoPrevisto,$index,1);desplazarValor(registro.tablaGastoRealizado,$index,1);"
+                                                                    type="button" class="btn btn-default btn-xs" style="float:right;">
+                                                                <span class="glyphicon glyphicon-arrow-down"></span>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td ng-repeat="atributo in registro.tablaGastoPrevisto.atributos" id="valor_{{atributo.id}}_{{valorDiscr.id}}">
+                                                        <input class="form-control" type="text" id="input_{{atributo.id}}_{{valorDiscr.id}}"
+                                                               ng-model="valorTabla" ng-change="establecerValorTabla(registro.tablaGastoPrevisto,valorDiscr,atributo);"
+                                                               ng-value="obtenerValorTabla(registro.tablaGastoPrevisto,valorDiscr,atributo)"/>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="col-sm-4 input-group" style="float:left;">
+                                                <input class="form-control" ng-model="valorDiscGastoPrev" placeholder="Añadir valor discriminador..." />
+                                                <div class="input-group-btn">
+                                                    <a ng-click="nuevoValorDisc(registro.tablaGastoPrevisto,valorDiscGastoPrev);nuevoValorDisc(registro.tablaGastoRealizado,valorDiscGastoPrev);valorDiscGastoPrev=undefined;"
+                                                       class="btn btn-default" ng-class="{'disabled' : (valorDiscGastoPrev === undefined) || (valorDiscGastoPrev.trim() === '')}">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4 input-group" style="float:right;">
+                                                <input class="form-control" ng-model="atributoGastoPrev" placeholder="Añadir atributo actuación..." />
+                                                <div class="input-group-btn">
+                                                    <a ng-click="nuevoAtributo(registro.tablaGastoPrevisto,atributoGastoPrev,true);nuevoAtributo(registro.tablaGastoRealizado,atributoGastoPrev,true);atributoGastoPrev=undefined;"
+                                                       class="btn btn-default" ng-class="{'disabled' : (atributoGastoPrev === undefined) || (atributoGastoPrev.trim() === '')}">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+    					</uib-tab>
+    				
+                        <uib-tab heading="Seguimiento">
+
+                            <div class="row">
+
+                                <div class="col-md-12 form-horizontal">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="fechaActualizacion">Fecha actualización:</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="fechaActualizacion" name="fechaActualizacion" class="form-control" value="{{registro.lastUpdated | date : 'dd-MM-yyyy'}}" disabled/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="duracion">Estado de ejecución:</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" name="estadoEjecucion" id="estadoEjecucion" ng-model="registro.estadoEjecucion">
+                                                <option value=""></option>
+                                                <option value="Cancelada">Cancelada</option>
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="Iniciada">Iniciada</option>
+                                                <option value="Media">Media</option>
+                                                <option value="Consolidada">Consolidada</option>
+                                                <option value="Finalizada">Finalizada</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-7" ng-if="registro.estadoEjecucion">
+                                            <span ng-if="registro.estadoEjecucion == 'Cancelada'">
+                                                <em>La actuación, una vez prevista en el PLAN inicial, se ha cancelado, por motivos x, por lo que no se llevará a cabo.</em>
+                                            </span>
+                                            <span ng-if="registro.estadoEjecucion == 'Pendiente'">
+                                                <em><b>La actuación no tiene ejecución o actuaciones externas publicitadas con los usuarios o destinatarios.</b> Está en fase interna de estudios de necesidades, programación, redacción de pliegos...<br/>Gasto ejecutado-facturado / Desarrollo calendario: <b>0-15%</b></em>
+                                            </span>
+                                            <span ng-if="registro.estadoEjecucion == 'Iniciada'">
+                                                <em><b>La actuación se comunica con plazos y compromiso.</b> Existe publicidad externa de la actuación. <b>Se ha empezado a ejecutar</b> externamente con los destinatarios o usuarios. <br/>Gasto ejecutado-facturado / Desarrollo calendario: <b>16-30%</b></em>
+                                            </span>
+                                            <span ng-if="registro.estadoEjecucion == 'Media'">
+                                                <em><b>La actuación tiene un desarrollo medio de su ejecución material.</b> Fase intermedia de ejecución en su presupuesto, calendario con los usuarios...<br/>Gasto ejecutado-facturado / Desarrollo calendario: <b>31-60%</b></em>
+                                            </span>
+                                            <span ng-if="registro.estadoEjecucion == 'Consolidada'">
+                                                <em><b>El nivel de implementación de la acción es alto y la medida genera impacto.</b> Puede empezar a <b>evaluarse al mismo tiempo que se ejecuta, cabe reprogramar</b> para corregir desviaciones, consultar... <b>En actuaciones que se vienen realizando todos los años</b> se aplicaría este grado desde que se inicia la actividad con los usuarios.<br/>Gasto ejecutado-facturado / Desarrollo calendario: <b>61-90%</b></em>
+                                            </span>
+                                            <span ng-if="registro.estadoEjecucion == 'Finalizada'">
+                                                <em>La acción se considera <b>terminada. Evaluación a posteriori.</b></em>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="duracion">Participación de los/as usuarios/as:</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" name="participacionUsuarios" id="participacionUsuarios" ng-model="registro.participacionUsuarios">
+                                                <option value=""></option>
+                                                <option value="No procede">No procede</option>
+                                                <option value="Nula">Nula</option>
+                                                <option value="Baja">Baja</option>
+                                                <option value="Media">Media</option>
+                                                <option value="Alta">Alta</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-7" ng-if="registro.participacionUsuarios">
+                                            <span ng-if="registro.participacionUsuarios == 'No procede'">
+                                                <em>Por la naturaleza de la actuación. Por ejemplo: "firmar convenio UNICEF".</em>
+                                            </span>
+                                            <span ng-if="registro.participacionUsuarios == 'Nula'">
+                                                <em>No hay participación de los/as usuarios/as en ninguna de las fases, pero podría darse.</em>
+                                            </span>
+                                            <span ng-if="registro.participacionUsuarios == 'Baja'">
+                                                <em>Los/as usuarios/as del proyecto plantean propuestas y participan en UNA de las fases de la acción o proyecto/actuación.</em>
+                                            </span>
+                                            <span ng-if="registro.participacionUsuarios == 'Media'">
+                                                <em>Los/as usuarios/as del proyecto expresan su nivel de satisfacción y sus propuestas en DOS fases del proyecto/actuación, <b>siendo una de ellas la de diseño o propuesta inicial.</b></em>
+                                            </span>
+                                            <span ng-if="registro.participacionUsuarios == 'Alta'">
+                                                <em>Los/as usuarios/as del proyecto participan y expresan su nivel de satisfacción y sus propuestas en las TRES fases del proyecto/actuación.</em>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </uib-tab>
+    				
+    				
+                        <uib-tab heading="Destinatarios realizado">
+
+                            <div class="row">
+
+                                <div class="col-md-12 form-horizontal">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="destinatariosRealizado">Destinatarios realizado:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ck-editor-new class="form-control" id="destinatariosRealizado" name="destinatariosRealizado" ng-model="registro.destinatariosRealizado"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="tablaDestinatariosRealizado">Personas físicas:</label>
+                                        <div class="col-sm-10">
+	                                        <table class="table table-bordered" id="tabla_{{registro.tablaDestinatariosRealizado.id}}" width="100%">
+	                                        	<thead>
+	                                        		<tr>
+	                                        			<th class="align-middle">{{registro.tablaDestinatariosRealizado.discriminador.title}}</th>
+	                                        			<th class="align-middle" ng-repeat="atributo in registro.tablaDestinatariosRealizado.atributos">
+                                                            <span>{{atributo.title}}</span>
+	                                        			</th>
+	                                        		</tr>
+	                                        	</thead>
+	                                        	<tbody>
+	                                        		<tr ng-repeat="valorDiscr in registro.tablaDestinatariosRealizado.discriminador.valores">
+	                                        			<td class="align-middle"><strong>{{valorDiscr.valorDiscriminador}}</strong></td>
+	                                        			<td ng-repeat="atributo in registro.tablaDestinatariosRealizado.atributos" id="valor_{{atributo.id}}_{{valorDiscr.id}}">
+                                                            <input class="form-control" type="text" id="input_{{atributo.id}}_{{valorDiscr.id}}" ng-model="valorTabla" 
+                                                            	ng-change="establecerValorTabla(registro.tablaDestinatariosRealizado,valorDiscr,atributo);"
+                                                            	 ng-value="obtenerValorTabla(registro.tablaDestinatariosRealizado,valorDiscr,atributo)"/>
+                                                        </td>
+	                                        		</tr>
+	                                        	</tbody>
+	                                        </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="tablaOtrosDestRealizado">Personas jurídicas y otros:</label>
+                                        <div class="col-sm-10">
+                                            <table class="table table-bordered" id="tabla_{{registro.tablaOtrosDestRealizado.id}}" width="100%">
+                                                <thead >
+                                                <tr>
+                                                    <th class="align-middle">{{registro.tablaOtrosDestRealizado.discriminador.title}}</th>
+                                                    <th class="align-middle" ng-repeat="atributo in registro.tablaOtrosDestRealizado.atributos">
+                                                        <span>{{atributo.title}}</span>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="valorDiscr in registro.tablaOtrosDestRealizado.discriminador.valores">
+                                                    <td class="align-middle">
+                                                        <strong>{{valorDiscr.valorDiscriminador}}</strong>
+                                                    </td>
+                                                    <td ng-repeat="atributo in registro.tablaOtrosDestRealizado.atributos" id="valor_{{atributo.id}}_{{valorDiscr.id}}">
+                                                        <input class="form-control" type="text" id="input_{{atributo.id}}_{{valorDiscr.id}}"
+                                                               ng-model="valorTabla" ng-change="establecerValorTabla(registro.tablaOtrosDestRealizado,valorDiscr,atributo);"
+                                                               ng-value="obtenerValorTabla(registro.tablaOtrosDestRealizado,valorDiscr,atributo)"/>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </uib-tab>
+    				
+                        <uib-tab heading="Presupuesto realizado">
+
+                            <div class="row">
+
+                                <div class="col-md-12 form-horizontal">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="gastoRealizado">Presupuesto realizado:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ck-editor-new class="form-control" id="gastoRealizado" name="gastoRealizado" ng-model="registro.gastoRealizado"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="tablaGastoRealizado">Presupuesto de gasto realizado:</label>
+                                        <div class="col-sm-10">
+                                            <table class="table table-bordered" id="tabla_{{registro.tablaGastoRealizado.id}}" width="100%">
+                                                <thead >
+                                                <tr>
+                                                    <th class="align-middle">{{registro.tablaGastoRealizado.discriminador.title}}</th>
+                                                    <th class="align-middle" ng-repeat="atributo in registro.tablaGastoRealizado.atributos">
+                                                        <span>{{atributo.title}}</span>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="valorDiscr in registro.tablaGastoRealizado.discriminador.valores">
+                                                    <td class="align-middle">
+                                                        <strong>{{valorDiscr.valorDiscriminador}}</strong>
+                                                    </td>
+                                                    <td ng-repeat="atributo in registro.tablaGastoRealizado.atributos" id="valor_{{atributo.id}}_{{valorDiscr.id}}">
+                                                        <input class="form-control" type="text" id="input_{{atributo.id}}_{{valorDiscr.id}}"
+                                                               ng-model="valorTabla" ng-change="establecerValorTabla(registro.tablaGastoRealizado,valorDiscr,atributo);"
+                                                               ng-value="obtenerValorTabla(registro.tablaGastoRealizado,valorDiscr,atributo)"/>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </uib-tab>
+    				
+                        <uib-tab heading="Indicadores">
+
+                            <div class="row">
+
+                                <div class="col-md-12 form-horizontal">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="indicadoresPrevisto">Indicadores previstos:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ck-editor-new class="form-control" id="indicadoresPrevisto" name="indicadoresPrevisto" ng-model="registro.indicadoresPrevisto"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="indicadoresRealizado">Indicadores realizados:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ck-editor-new class="form-control" id="indicadoresRealizado" name="indicadoresRealizado" ng-model="registro.indicadoresRealizado"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="tablaIndicadoresRealizado">Indicadores realizados:</label>
+                                        <div class="col-sm-10">
+                                            <table class="table table-bordered" id="tabla_{{registro.tablaIndicadoresRealizado.id}}" width="100%">
+                                                <thead >
+                                                <tr>
+                                                    <th class="align-middle">{{registro.tablaIndicadoresRealizado.discriminador.title}}</th>
+                                                    <th class="align-middle" ng-repeat="atributo in registro.tablaIndicadoresRealizado.atributos">
+                                                        <div class="align-middle">
+                                                            <span>{{atributo.title}}</span>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaIndicadoresRealizado.atributos.length > 1) && ($index > 0)"
+                                                                type="button" class="btn btn-default btn-xs" ng-click="desplazarAtributo(registro.tablaIndicadoresRealizadoo,$index,-1);"
+                                                                    style="float:left;">
+                                                                <span class="glyphicon glyphicon-arrow-left"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button type="button" class="btn btn-default btn-xs" ng-click="eliminarAtributo(registro.tablaIndicadoresRealizado,$index);">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaIndicadoresRealizado.atributos.length > 1) && ($index < registro.tablaIndicadoresRealizado.atributos.length-1)"
+                                                                type="button" class="btn btn-default btn-xs" ng-click="desplazarAtributo(registro.tablaIndicadoresRealizado,$index,1);"
+                                                                style="float:right;">
+                                                                <span class="glyphicon glyphicon-arrow-right"></span>
+                                                            </button>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="valorDiscr in registro.tablaIndicadoresRealizado.discriminador.valores">
+                                                    <td class="align-middle">
+                                                        <div class="align-middle">
+                                                            <strong>{{valorDiscr.valorDiscriminador}}</strong>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaIndicadoresRealizado.discriminador.valores.length > 1) && ($index > 0)"
+                                                                    type="button" class="btn btn-default btn-xs" ng-click="desplazarValor(registro.tablaIndicadoresRealizado,$index,-1);"
+                                                                    style="float:left;">
+                                                                <span class="glyphicon glyphicon-arrow-up"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4 align-middle">
+                                                            <button type="button" class="btn btn-default btn-xs" ng-click="eliminarValor(registro.tablaIndicadoresRealizado,$index);">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button ng-if="(registro.tablaIndicadoresRealizado.discriminador.valores.length > 1) && ($index < registro.tablaIndicadoresRealizado.discriminador.valores.length-1)"
+                                                                    type="button" class="btn btn-default btn-xs" ng-click="desplazarValor(registro.tablaIndicadoresRealizado,$index,1);"
+                                                                    style="float:right;">
+                                                                <span class="glyphicon glyphicon-arrow-down"></span>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td ng-repeat="atributo in registro.tablaIndicadoresRealizado.atributos" id="valor_{{atributo.id}}_{{valorDiscr.id}}">
+                                                        <input class="form-control" type="text" id="input_{{atributo.id}}_{{valorDiscr.id}}"
+                                                               ng-model="valorTabla" ng-change="establecerValorTabla(registro.tablaIndicadoresRealizado,valorDiscr,atributo);"
+                                                               ng-value="obtenerValorTabla(registro.tablaIndicadoresRealizado,valorDiscr,atributo)"/>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="col-sm-4 input-group" style="float:left;">
+                                                <input class="form-control" ng-model="valorDiscIndic" placeholder="Añadir valor discriminador..." />
+                                                <div class="input-group-btn">
+                                                    <a ng-click="nuevoValorDisc(registro.tablaIndicadoresRealizado,valorDiscIndic);valorDiscIndic=undefined;"
+                                                       class="btn btn-default" ng-class="{'disabled' : (valorDiscIndic === undefined) || (valorDiscIndic.trim() === '')}">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4 input-group" style="float:right;">
+                                                <input class="form-control" ng-model="atributoIndic" placeholder="Añadir atributo actuación..." />
+                                                <div class="input-group-btn">
+                                                    <a ng-click="nuevoAtributo(registro.tablaIndicadoresRealizado,atributoIndic,true);atributoIndic=undefined;"
+                                                       class="btn btn-default" ng-class="{'disabled' : (atributoIndic === undefined) || (atributoIndic.trim() === '')}">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </uib-tab>
+    				
+                        <uib-tab heading="Análisis y valoración">
+
+                            <div class="row">
+
+                                <div class="col-md-12 form-horizontal">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="valoracion">Análisis y valoración de la ejecución:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ck-editor-new class="form-control" id="valoracion" name="valoracion" ng-model="registro.valoracion"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="documentos">Enlaces a documentos e imágenes:</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" id="tituloDocumento" placeholder="Título" ng-model="documentoTitulo"/>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" type="text" id="enlaceDocumento" placeholder="http://..." ng-model="documentoURL"/>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button type="button" class="btn btn-sm btn-primary" ng-click="asociarDocumento(documentoTitulo,documentoURL);documentoTitulo=null;documentoURL=null;" ng-disabled="documentoTitulo === null || documentoTitulo === undefined || documentoTitulo === '' || documentoURL === null || documentoURL === undefined || documentoURL === ''">Añadir enlace</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-2"> </div>
+                                        <div class="col-sm-10">
+                                            <table class="table table-striped table-condensed table-bordered table-btn" ng-show="registro.documentos && (registro.documentos.length > 0)">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Título</th>
+                                                    <th>Enlace</th>
+                                                    <th>Operaciones</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="doc in registro.documentos">
+                                                    <td>{{doc.id}}</td>
+                                                    <td>{{doc.title}}</td>
+                                                    <td>{{doc.enlace}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-default btn-xs" ng-click="desasociarDocumento($index);">
+                                                            <span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="documentos">Enlaces a datos abiertos:</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" id="tituloDatoAbierto" placeholder="Título" ng-model="datoAbiertoTitulo"/>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" type="text" id="enlaceDatoAbierto" placeholder="http://..." ng-model="datoAbiertoURL"/>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button type="button" class="btn btn-sm btn-primary" ng-click="asociarDatoAbierto(datoAbiertoTitulo,datoAbiertoURL);datoAbiertoTitulo=null;datoAbiertoURL=null;" ng-disabled="datoAbiertoTitulo === null || datoAbiertoTitulo === undefined || datoAbiertoTitulo === '' || datoAbiertoURL === null || datoAbiertoURL === undefined || datoAbiertoURL === ''">Añadir enlace</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-2"> </div>
+                                        <div class="col-sm-10">
+                                            <table class="table table-striped table-condensed table-bordered table-btn" ng-show="registro.datosAbiertos && (registro.datosAbiertos.length > 0)">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Título</th>
+                                                    <th>Enlace</th>
+                                                    <th>Operaciones</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="doc in registro.datosAbiertos">
+                                                    <td>{{doc.id}}</td>
+                                                    <td>{{doc.title}}</td>
+                                                    <td>{{doc.enlace}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-default btn-xs" ng-click="desasociarDatoAbierto($index);">
+                                                            <span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </uib-tab>
+
+                    </uib-tabset>
+				</div>
+			</div>
+
+        </fieldset>
+
+    </div>
+
+</div>
+</form>

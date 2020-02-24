@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <sede:meta title="Inscripción actividad" description="Inscripción de actividades" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+    </head>
+
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error" />
+            
+            <form th:action="@{/servicio/cultura/evento/admin/inscripcion/usuario/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+
+                <div class="row">
+                    <a href="/sede/servicio/cultura/evento/admin/inscripcion/new?refresh=y" class="text-muted col-md-12 margin-b05em">
+                    <span class="fa fa-angle-left"></span> Volver al formulario de inscripción</a>
+                </div>
+                <div class="fieldset">
+                    <fieldset>
+                        <legend><span>Datos del inscrito</span></legend>
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="nombre">
+                                        <span class="control-label obligatorio">Nombre:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <input th:attrappend="disabled=${dato.id} ? 'true'" type="text" id="name" name="name" value="" class="form-control" th:field="${ciudadano.name}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="email">
+                                        <span class="control-label obligatorio">Correo electrónico:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <input th:attrappend="disabled=${dato.id} ? 'true'" type="text" id="email" name="email" value="" class="form-control" th:field="${ciudadano.email}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="mobile">
+                                        <span class="control-label">Teléfono:</span>
+                                    </label>
+                                    <input th:attrappend="disabled=${dato.id} ? 'true'" type="text" id="mobile" name="mobile" value="" class="form-control" th:field="${ciudadano.mobile}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="nif">
+                                        <span class="control-label">DNI:</span>
+                                    </label>
+                                    <input th:attrappend="disabled=${dato.id} ? 'true'" type="text" id="nif" name="nif" value="" class="form-control" th:field="${ciudadano.nif}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="fechaNacimiento"> 
+                                        <span class="control-label obligatorio">Fecha de Nacimiento:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" value="" size="10" maxlength="30" placeholder="Formato: dd/mm/aaaa" class="form-control" th:field="${dato.fechaNacimiento}" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="genero">
+                                        <span class="control-label obligatorio">Género:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <div>
+                                        <select th:field="${dato.genero}" class="form-control" >
+                                            <option value="Hombre">Hombre</option>
+                                            <option value="Mujer">Mujer</option>
+                                            <option value="Otros">Otros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="codigoPostal">
+                                        <span class="control-label obligatorio">Código Postal:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <div>
+                                        <input type="text" id="codigo_postal" name="codigo_postal" value="" class="form-control" th:field="${dato.codigoPostal}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div th:if="${dato.id}" class="col-md-6 form-group">
+                                    <label for="penalizado">
+                                        <span class="control-label obligatorio">Usuario/a penalizado/a:</span><span class="oculto"> (campo obligatorio)</span>
+                                    </label>
+                                    <div>
+                                        <select th:field="${dato.penalizado}" class="form-control">
+                                            <option value="N">No</option>
+                                            <option value="S">Sí</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary margin-t3em" />
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </sede:content>
+        <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+        <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/sede/js/inscripciones.js"></script>
+    </body>
+
+</html>

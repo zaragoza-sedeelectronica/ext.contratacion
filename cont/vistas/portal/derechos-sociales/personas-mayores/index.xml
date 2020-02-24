@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Personas Mayores. Derechos Sociales" 
+               description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece servicios y recursos informativos adaptados a las necesidades de la tercera edad: comedores de mayores, teléfonos de urgencia, tramitación de ayudas, bodas de oro, cita previa médica, publicaciones, preguntas frecuentes, parques de mayores, rutas, comercios y ciudades amigables… Facilita la participación en los grupos de actividad, cursos, talleres y programas sociales que se llevan a cabo en los centros de convivencia para mayores. Haga llegar sus quejas y sugerencias a través de Ayúdanos a mejorar." 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service"
+                >
+    </sede:meta>
+    <style type="text/css">
+    .fa {
+        vertical-align: middle;
+    }
+
+    @media (min-width: 768px) {
+        .list-aviso>li {
+            min-height: 16em;
+        }
+        .listado-equipamiento-solr li {
+            min-height: 25em;
+        }
+    }
+
+    .left-ribbon {
+        /*position: relative;*/
+        position: absolute;
+        bottom: 5px;
+        background: #EEE;
+        border: 1px solid #CCC;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+        padding: 10px 15px;
+        clear: both;
+        /*margin-left: -24px;*/
+        margin-left: -10px;
+        float: left;
+    }
+
+    .left-ribbon::before {
+        display: block;
+        width: 10px;
+        height: 0px;
+        position: absolute;
+        bottom: -10px;
+        left: -1px;
+        content: '';
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #757575;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div style="position:relative;">
+            <img class="img-responsive full-width margin-b1em" src="/cont/vistas/portal/derechos-sociales/personas-mayores/img/cabecera.jpg" alt="" />
+            <div class="left-ribbon margin-b05em hidden-xs hidden-sm" aria-hidden="true" >
+                <span class="fa fa-info-circle" aria-hidden="true"></span> 
+                AUMENTA EL TAMAÑO DEL TEXTO<br/> PULSANDO LAS TECLAS
+                <a href="/sede/portal/derechos-sociales/personas-mayores/aumentar-fuente" class="small">
+                    <img src="/cont/vistas/portal/derechos-sociales/personas-mayores/img/aumentar-fuente-teclas.jpg" alt="Control y más" />
+                </a>
+            </div>
+        </div>
+        <th:block th:include="fragmentos/readspeaker"></th:block>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card clearfix">
+                    <h2>Destacados</h2>
+                    <hr class="sm" />
+                    <sede:aviso portal="Mayores Nuevos" nresultados="9" clase="col-xs-12 col-sm-6 col-md-4"> </sede:aviso>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="position:relative;padding-bottom:80px;">
+                    <h2>
+                        <span class="far fa-hand-point-right" aria-hidden="true"></span> Te puede Interesar
+                    </h2>
+                    <hr class="sm" />
+                    <ul>
+                        <li><a href="./preguntas-frecuentes#answer-9">Cita Previa Médico</a></li>
+                        <li><a href="./preguntas-frecuentes#answer-2">Viajes IMSERSO</a></li>
+                        <li><a href="./preguntas-frecuentes#answer-7">Tarjeta Gratuita Transporte</a></li>
+						<li><a href="./preguntas-frecuentes#answer-11">Líneas de Autobus</a></li>
+						<li><a href="./preguntas-frecuentes#answer-12">Teléfonos de Urgencia</a></li>
+                        <li><a class="destacado" href="/sede/portal/derechos-sociales/personas-mayores/preguntas-frecuentes">VER MÁS</a></li>
+                    </ul>
+                    <div class="embed-responsive embed-responsive-16by9 margin-b2em">
+					       <iframe class="embed-responsive-item" title="Vídeo Campaña Comercios Amigables" src="https://www.youtube.com/embed/30R_aW1SaEc" allowfullscreen=""></iframe>
+
+          <!--  <iframe class="embed-responsive-item" title=" Clarity Project" src="https://www.youtube.com/embed/6l8iuq7H-14?rel=0">Video no supported. <a href="https://www.youtube.com/embed/6l8iuq7H-14">link to video</a></iframe>-->
+        </div>
+                    <h2>
+                        <span class="fas fa-calendar-alt" aria-hidden="true"></span> Agenda
+                    </h2>
+                    <hr class="sm" />
+                    <strong>Consulta las actividades de <a class="lead" href="http://www.zaragoza.es/sede/portal/derechos-sociales/personas-mayores/servicio/cultura/evento?fq=dirigidoa_smultiple:%28%22Personas+Mayores%22%29%20AND%20fechaInicio_dt%3A[*%20TO%20NOW%2B1DAY]%20AND%20fechaFinal_dt%3A[NOW-1DAY%20TO%20*]">HOY</a></strong>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-block" href="https://www.zaragoza.es/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">
+                            <span class="far fa-thumbs-up fa-2x margin-r05em" aria-hidden="true"></span>Ayúdanos a Mejorar
+                        </a>
+                    </div>
+                    <sede:equipamiento id="20476" ocultos="imagen,mapa,tabs"></sede:equipamiento>
+					<div>
+                        <img width="130" src="/cont/paginas/img/avisos/red-convivencia-mayores.jpg" alt="Red de centros de convivencia"/>
+                        <a href="/sede/portal/derechos-sociales/personas-mayores/ciudades-amigables"><img width="130" src="/cont/paginas/img/avisos/ciudades-amigables.jpg" alt="Ciudades amigables"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card clearfix">
+                    <h2>Actualidad</h2>
+                    <hr class="sm" />
+                    <sede:noticia listado="s" imagen="s" usuario="" fecha="" espacio="1" numero="4" tema="Personas Mayores" carpeta="/sede/portal/derechos-sociales/personas-mayores/" fragment="/fragmentos/cultura/custom-list-noticia2"></sede:noticia>
+                    <a class="btn btn-xs btn-primary pull-right" href="http://www.zaragoza.es/sede/portal/derechos-sociales/personas-mayores/servicio/cultura/evento?fq=dirigidoa_smultiple:%28%22Personas+Mayores%22%29%20AND%20fechaInicio_dt%3A[*%20TO%20NOW%2B1DAY]%20AND%20fechaFinal_dt%3A[NOW-1DAY%20TO%20*]">Ver más noticias</a>
+                </div>
+                <div class="card">
+                    <h2>Actividades en los centros</h2>
+                    <hr class="sm" />
+                    <sede:equipamiento carpeta="/sede/portal/derechos-sociales/personas-mayores/servicio/equipamiento/" fq="subtemas_smultiple:&quot;Centros de Convivencia&quot;" tab="actividades" />
+                </div>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    //var currFFZoom = 1;
+    //var currIEZoom = 100;
+    //$('#plusBtn').on('click', function() {
+    //    var step = 0.02;
+    //    currFFZoom += step;
+    //    $('body').css('MozTransform', 'scale(' + currFFZoom + ')');
+    //    var stepie = 2;
+    //    currIEZoom += stepie;
+    //    $('body').css('zoom', ' ' + currIEZoom + '%');
+    //});
+    //$('#resetBtn').on('click', function() {
+    //    $('body').css('MozTransform', 'scale(' + 1 + ')');
+    //    $('body').css('zoom', ' ' + 100 + '%');
+    //});
+    //$('#minusBtn').on('click', function() {
+    //    var step = 0.02;
+    //    currFFZoom -= step;
+    //    $('body').css('MozTransform', 'scale(' + currFFZoom + ')');
+    //    var stepie = 2;
+    //    currIEZoom -= stepie;
+    //    $('body').css('zoom', ' ' + currIEZoom + '%');
+    //});
+    // Eliminamos el titulo 'Centro de Convivencia para ' de cada equipamiento de la salida SOLR
+    $('.listado-equipamiento-solr li a').each(function(){
+        $(this).text($(this).text().replace('Centro de Convivencia para ', ''));
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

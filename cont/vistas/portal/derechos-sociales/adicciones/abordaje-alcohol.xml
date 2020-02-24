@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Programas de atención >> Abordaje integral de la enfermedad alcohólica"
+         description="Prevención de Adicciones"
+         keywords="Conductas adictivas, descontrol, hábito, patología, toxicomanías,  Ayuntamiento de Zaragoza, Programas de atención, Prevención de Adicciones, Abordaje integral de la enfermedad alcohólica"/>
+      <style>
+         titulo-seccion {
+         line-height: 66px;
+         font-size: 42px;
+         }
+         .fnd-blanco {
+         background-color: #ffffff;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .fnd-gris-claro {
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin-bottom: -40px;
+         }
+         .titulo-org h2,
+         .procesos h2{
+         color: #e83437;
+         font-size: 42px;
+         padding-bottom: 20px;
+         }
+         .titulo-org h2 small,
+         .titulo-org h2 span{
+         color: #000000;
+         }
+         .panel-heading a:after {
+         float: left;
+         color: white;
+         background-color: #000;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 20px;
+         margin-right: 10px;
+         }
+         .panel-heading a.collapsed:after {
+         content: "\f105";
+         }
+         .panel-default>.panel-heading {
+         background-color: #fff;
+         border: 0;
+         }
+         .panel {
+         border: 0;
+         webkit-box-shadow: 0 0 0;
+         box-shadow: 0 0 0;
+         }
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         border: 0;
+         }
+         .panel-body {
+         padding-left: 50px;
+         }
+         .panel-title>a {
+         color: #E81B16;
+         }
+         .panel-title>a:hover,
+         .panel-title>a:focus,
+         .panel-title>a:active {
+         text-decoration: none;
+         }
+         ul.submenu {
+         margin: 0;
+         }
+         .btn-back.pull-left {
+         padding: .25em .5em;
+         background: #E81B16;
+         border-radius: .5em;
+         }
+         .second-bar {
+         background: #E6E6E6;
+         border-radius: .5em;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin-bottom: 2em;
+         }
+         ul.submenu li {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: .5em;
+         }
+         .offset-target:before {
+         content: '';
+         display: block;
+         height: 67px;
+         /* fixed header height*/
+         margin: -67px 0 0;
+         /* negative fixed header height */
+         }
+         .section-title {
+         background: #E6E6E6;
+         border-radius: .5em .5em 0 0;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin: 0;
+         }
+         .section-content {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: 0 0 .5em .5em;
+         margin-bottom: 1em;
+         }
+         .card{
+         margin-left:5em;
+         }
+         .imagen{
+         display:block;
+         margin: auto;
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Abordaje integral de la enfermedad alcohólica</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <div class="row">
+               	<div class="col-md-6 card">
+               		<h3 class="section-title offset-target">Abordaje integral de la enfermedad alcohólica</h3>
+               		<p>La enfermedad alcohólica es una <strong>patología sistémica multiórganica</strong>, con repercusiones en el entorno familiar, laboral, social... del paciente. Ello exige, por lo tanto, una intervención de un <strong>equipo multidisciplinar y coordinado</strong>, que intente mejorar y reestructurar las principales áreas afectadas en el transcurso del largo proceso de instauración de la enfermedad alcohólica.</p>
+               		
+               	</div>
+               	<div class="col-md-4">
+               	<img alt="" class="imagen" src="/cont/vistas/portal/derechos-sociales/adicciones/img/jarrones.jpg"/>
+               	</div>
+               	<div class="col-md-10 card">
+               		<h3 class="section-title offset-target">Fases del tratamiento</h3>
+               		<p>Pueden diferenciarse varias fases:</p>
+               <ul>
+                  <li><strong>Contacto con el Centro (Acogida)</strong></li>
+                  <li><strong>Diagnóstico y valoración del paciente</strong> en los tres niveles, orgánico (médico), psicológico y social </li>
+                  <li>
+                     <strong>Tratamiento:</strong> cuya meta final es la recuperación y rehabilitación del paciente. Incluye: 
+                     <ul class="letra">
+                        <li><strong>Desintoxicación:</strong> su objetivo es cesar el consumo de alcohol, evitando el síndrome de abstinencia alcohólica. Mayoritariamente se realiza en el propio centro, siendo subsidiarios de ingreso hospitalario sólo algunos casos. </li>
+                        <li><strong>Estabilización:</strong> período de tratamiento en el cual el paciente se encuentra abstinente tras la desintoxicación. </li>
+                        <li><strong>Mantenimiento:</strong> abarca un periodo largo de tiempo en el cual el paciente se mantiene en abstinencia. El abordaje en esta fase es fundamentalmente psicosocial.</li>
+                     </ul>
+                  </li>
+               </ul>
+               <p>El tratamiento es individual en las primeras fases y se complementa con el abordaje familiar y grupal.  Los grupos son conducidos por un profesional.</p>
+               <p>Existen grupos terapéuticos de alcohólicos adultos (más de 35 años)  y jóvenes (de 18 a 35 años). Cada uno de ellos tiene sus propias características y objetivos.</p>
+               <p>El CMAPA cuenta, además, con Grupos de revisión mensual de alcohol, organizados por pacientes alcohólicos dados de alta con el apoyo del equipo terapéutico.</p>
+               		
+               	</div>
+               </div>
+
+                           </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+
+

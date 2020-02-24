@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida"/>
+    <link rel="stylesheet" href="https://www.zaragoza.es/contenidos/usic/plano/leaflet.css" />
+    <style type="text/css">
+        html, body, #photo {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style><script type="text/javascript">
+document.oncontextmenu = function(){return false;}
+</script>
+</head>
+
+
+<body>
+
+    <sede:content>
+         <div id="photo"></div>
+    <script src="https://www.zaragoza.es/contenidos/usic/plano/leaflet.js"></script>
+    <script type="text/javascript" src="https://www.zaragoza.es/contenidos/usic/plano/L.TileLayer.Zoomify.js"></script>  
+    <script type="text/javascript">
+
+        var map = L.map('photo').setView(new L.LatLng(0,0), 0);
+
+        L.tileLayer.zoomify('https://www.zaragoza.es/contenidos/usic/plano/AMZ_4-2_0275/', { 
+            width: 35654, 
+            height: 22525,
+            tolerance: 0.8,
+            attribution: '&#169; Archivo Municipal de Zaragoza'
+        }).addTo(map);
+
+    </script>
+ 
+    </sede:content>
+ 
+</body>
+
+</html>

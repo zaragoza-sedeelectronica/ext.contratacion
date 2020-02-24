@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+ 
+<head>
+
+    <meta charset="utf-8" />
+    <sede:meta title="Calidad" 
+               description= "El portal Deporte tiene como objetivo proporcionar informacion sobre todo tipo de instalaciones deportivas de la ciudad, normativa vigente y subvenciones relacionada sobre deporte, las federaciones y asociaciones deportivas existentes...Facilita realizar reserva de instalaciones, trámites y conocer las actividades y cursos que se realizan en la ciudad. Conozca los datos económicos y presupuestarios destinados a deporte en la ciudad y el balance de las piscinas de verano. Los compromisos de calidad se encuentran recogidos en las cartas de servicios y en la certificación ambiental obtenida por los centros deportivos de los barrios rurales. A través del servicio, tu opinión importa, el ciudadano puede enviar sus sugerencias y observaciones." 
+			 keywords="ayuntamiento, ciudad, Zaragoza, España, estructura institucional, organización administrativa, Servicio de Instalaciones Deportivas, instalaciones deportivas, fitness, legislación local, balnearios urbanos, piscinas de verano, piscinas cubiertas, campos de fútbol, formalidades administrativas, relación administración-administrado, administración electrónica, reservas, actividades, ayudas, carta de servicios, Centros Deportivos Municipales Rurales, certificación de calidad, estadística, presupuesto, gasto presupuestario, asociaciones">
+    </sede:meta>
+	
+	
+	
+	
+ 	
+	
+    <style type="text/css">
+        ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="https://www.zaragoza.es/sede/portal/deporte/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Deporte</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">¿Quiénes Somos?</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+				  
+				   <li><a href="normativa">Normativa</a></li>
+                    <li><a href="calidad">Calidad</a></li>
+					<li><a href="organizacion"> ¿Quiénes Somos?</a></li>   
+					<li><a href="/sede/portal/deporte/servicio/organigrama/61584"> Organigrama</a></li>   
+                  
+                </ul>
+            </div>
+        </nav>
+        <h2>Calidad</h2>
+		
+		
+		
+		
+		  <ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+            <li role="tab">
+                <a aria-controls="piscinas" data-toggle="tab" href="#piscinas" role="tab">
+				
+		 
+				<span class="fa fa-star" aria-hidden="true"></span> Piscinas Cubiertas</a>
+            </li>
+			
+			 
+
+            <li role="tab">
+                <a aria-controls="rurales" data-toggle="tab" href="#rurales" role="tab"><span class="fa fa-star" aria-hidden="true"></span>     C.D.M. Rurales</a>
+            </li>
+            <li role="tab">
+                <a aria-controls="ambiental" data-toggle="tab" href="#ambiental" role="tab"><span class="fa fa-star" aria-hidden="true"></span> 
+    Certificación Ambiental</a>
+            </li>
+          
+            
+        </ul>
+        <div sede:class="tab-content">
+		
+		
+		
+		
+		     <div class="tab-title" aria-expanded="false" data-target="#piscinas" data-toggle="collapse"> Piscinas Cubiertas</div>
+			 
+			 
+			 
+            <div id="piscinas" role="tabpanel" sede:class="tab-pane active">
+      
+		
+		
+		
+		
+		
+		
+		
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row no-gutter step-box fnd-sectores">
+                    <div class="col-md-3 padding-a1em">
+                        <h3 class="nomargin">Presentación</h3>
+                    </div>
+                    <div class="col-md-9 padding-a1em fnd-gris-claro">
+ 
+ 
+<div><img class="imgizq pull-left margin-r05em" src="/cont/paginas/gestionmunicipal/calidad/pisc/img/portada.jpg" alt="" height="199" width="195"/></div>
+<p> Los servicios que el Ayuntamiento de Zaragoza presta a los ciudadanos afrontan el reto permanente de la modernización y de la calidad. La Exposición Internacional de 2008 es el impulso definitivo para que nuestra ciudad acomenta los grandes proyectos que la situarán entre las más importantes de Europa. Zaragoza quiere ser una ciudad moderna y abierta, una referencia en dinamismo y calidad de vida.</p><p>Desde 2003, éste es uno de los pilares en los que se basa la gestión del actual equipo de Gobierno. Es un objetivo igualmente asumido por todos los empleados de este Ayuntamiento. Trabajamos para la ciudad y para los ciudadanos para que Zaragoza adquiera el peso específico y la proyección que merece.</p><p>Las Cartas de Servicios se inscriben dentro de ese amplio horizonte de mejora, de calidad y de futuro. Através de ellas informamos con detalle de los servicios municipales que están a disposición de los ciudadanos, a TU disposición, y de los comprommisos que este Ayuntamiento ha adquirido con todos ellos a la hora de prestarlos, un compromiso contigo. </p> 
+</div>
+
+   <div class="linea"></div>
+                    <div class="col-md-3 padding-a1em">
+                        <h3 class="nomargin">Servicios</h3>
+                    </div>
+                    <div class="col-md-9 padding-a1em fnd-gris-claro">
+
+ 
+<p>Las Piscinas Cubiertas Municipales son Instalaciones Deportivas Municipales cuya misión es promover las prácticas fisico recreativas en el medio acuático en su sentido más amplio.</p><h3>Actividades acuáticas, ¿por qué no?</h3><p>Ofrecemos espacios y servicios acuáticos a los zaragozanos, poniendo a su disposición 5 piscinas cubiertas municipales: </p><ul><li>Para uso libre y actividades de recreación</li><li>Para uso organizado dentro de las actividades promovidas por el Ayuntamiento de Zaragoza, por entidades deportivas sociales</li></ul><p>&nbsp;</p><p>Gestionamos el mantenimiento y la seguridad estas piscinas municipales</p><p>Disponemos de personal especializado que facilita a los usuarios todos los medios necesarios para que las actividades puedan desarrollarse en optimas condiciones.</p><p>Colaboramos con asociaciones, entidades ciudadanas y otros servicios del Ayuntamiento para fomentar la consecución de la integración social en el uso de las instalaciones</p><p>Ofertamos servicios complementarios a los deportivos en estas piscinas municipales, tales como: </p><ul><li>Juegos Acuáticos</li><li>Cafetería (según <acronym title="Centro Deportivo Municipal">C.D.M</acronym>)</li><li>Servicios Auxiliares</li><li>Otros espacios deportivos</li><li>Venta de gorros y otros complementos</li><li>Servicios de Balneario Urbano (según <acronym title="Centro Deportivo Municipal">C.D.M</acronym>)</li></ul>
+</div> 
+   <div class="linea"></div>
+                    <div class="col-md-3 padding-a1em">
+                        <h3 class="nomargin">Compromisos</h3>
+                    </div>
+                    <div class="col-md-9 padding-a1em fnd-gris-claro">
+ 
+ 
+<h4>En buenas manos</h4><h4>Información y Comunicación</h4><p>Ofrecer un canal de comunicación permanente a los ciudadanos, atendiendo a los escritos de quejas y sugerencias en un plazo de 15 días, mediante un procedimento específico de quejas y sugerencias en los propios documentos.</p><p>Poner a disposición de los ciudadanos información actualizada sobre actividades, horarios y condiciones de uso del conjunto de instalaciones y actividades deportivas municipales.</p><h4>Accesibilidad</h4><p>Disponer de vestuarios adaptados  y descendedores para personas con movilidad reducida que no puedan desenvolverse automáticamente.</p><p>Estas personas, así como las que tengan o acrediten una minusvalía psíquica, podrán utilizar los servicios con un acompañante o cuidador, sin abono adicional de tasa para éste último. Los perros guía de invidentes serán admitidos.</p><h4>Limpieza, higiene y confort</h4><p>Mantener en condiciones óptimas de limpieza y desinfección las zonas más sensibles (Zonas húmedas), realizando diariamente 1 limpieza en profundidad y 3 revisiones de la limpieza de vestuarios y servicios higiénicos.</p><p>Asegurar las condiciones higiénico-sanitarias físicas y químicas del agua mediante un sistema de control automatizado y, al menos, 5 controles manuales.</p><p>Mantener las temperaturas de los diferentes vasos, espacios auxiliares y agua caliente sanitaria en estas piscinas con los siguiente valores de referencia (cuando no se produzcan anomalías en los sistemas técnicos): </p><ul><li>Vaso de 25 m.: entre 26º y 28ºC</li><li>Vaso de 18 m. : entre 28º y 29ºC</li><li>Jacuzzis recreativos CDM Palafox y Alberto Maestro : entre 30º y 33º C.</li><li>Temperatura ambiente: 2º por encima de la temperatura del vaso de la superficie</li><li>Temperatura ambiente en vestuarios: consigna 25º-26ºC</li><li>Temperatura de agua caliente en duchas: de 33º a 35ºC</li></ul><h4>Seguridad</h4><p>En el recinto de acceso existirá información sobre la relación de compuestos utilizados en el tratamiento químico de los vasos.</p><p>Contar en cada centro deportivo con un plan de emergencia actualizado para garantizar una respuesta rápida y organizada ante accidentes.</p>
+
+
+</div>
+ 
+                   
+                </div> </div>   
+            </div>   </div>   
+			
+			
+			
+			
+			
+			
+			
+			 
+			 
+			 
+			 
+			 
+		
+		
+		
+			
+		
+		 
+
+<div aria-expanded="false" class="tab-title" data-target="#rurales" data-toggle="collapse">Centros Deportivos Rurales</div>
+
+<div id="rurales" role="tabpanel" sede:class="tab-pane active">
+<div class="row">
+<div class="col-xs-12 col-sm-12">
+<div class="row no-gutter step-box fnd-sectores">
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin"> Presentación</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<div><img alt="" class="imgizq pull-left margin-r05em" height="199" src="/cont/paginas/gestionmunicipal/calidad/dep/img/portada.jpg" width="195" /></div>
+
+<p>Los servicios que el Ayuntamiento de Zaragoza presta a los ciudadanos afrontan el reto permanente de la modernización y de la calidad. La Exposición Internacional de 2008 es el impulso definitivo para que nuestra ciudad acomenta los grandes proyectos que la situarán entre las más importantes de Europa. Zaragoza quiere ser una ciudad moderna y abierta, una referencia en dinamismo y calidad de vida.</p>
+
+<p>Desde 2003, éste es uno de los pilares en los que se basa la gestión del actual equipo de Gobierno. Es un objetivo igualmente asumido por todos los empleados de este Ayuntamiento. Trabajamos para la ciudad y para los ciudadanos para que Zaragoza adquiera el peso específico y la proyección que merece.</p>
+
+<p>Las Cartas de Servicios se inscriben dentro de ese amplio horizonte de mejora, de calidad y de futuro. Através de ellas informamos con detalle de los servicios municipales que están a disposición de los ciudadanos, a TU disposición, y de los comprommisos que este Ayuntamiento ha adquirido con todos ellos a la hora de prestarlos, un compromiso contigo.</p>
+
+<p><a href="/contenidos/deporte/ISO_br_marzo09.pdf" class="pdf">Más Información</a></p>
+</div>
+
+<div class="linea">&nbsp;</div>
+
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin">Servicios</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<p>Los Centros Deportivos Rurales son un Servicio Público dependiente del Ayuntamiento de Zaragoza, cuya finalidad es facilitar las prácticas físico recreativas de los ciudadanos, poniendo a su disposición espacios deportivos y servicios complementarios, de acuerdo con sus demandas y necesidades. Estos centros tienen un carácter social, prestando servicios cercanos y accesibles, que mejoran la calidad de vida y contribuyen a la convivencia social y la educación cívica.</p>
+
+<h3>Tus espacios deportivos</h3>
+
+<ul>
+	<li>En los pabellones deportivos de los Barrios Rurales:
+	<ul>
+		<li>Ponemos a disposición de centros educativos, clubes deportivos, federaciones, empresas, asociaciones y entidades ciudadanas, las instalaciones y espacios deportivos para la práctica y desarrollo de la competición deportiva, la educación física, así como otras actividades socioculturales y recreativas. El personal de estas instalaciones facilita a usuarios y espectadores todos los medios necesarios para que las actividades puedan desarrollarse en óptimas condiciones.</li>
+		<li>Organizamos actividades físico recreativas impartidas por monitores especializados y, destinadas a los más pequeños durante las vacaciones escolares, para contribuir a su educación integral a través de los juegos y la diversión.</li>
+		<li>Colaboramos con asociaciones y entidades ciudadanas para fomentar el deporte y ocio activo en el barrio.</li>
+		<li>Ofrecemos a los ciudadanos información sobre las actividades mencionadas, constituyéndonos como centro de referencia del deporte en el barrio.</li>
+	</ul>
+	</li>
+	<li>En las piscinas municipales de los Barrios Rurales:
+	<ul>
+		<li>Ofrecemos unas instalaciones acogedoras y tranquilas en un entorno natural y con un ambiente familiar, en las que los ciudadanos pueden disfrutar en verano además del baño, de parques infantiles, zonas recreativas, espacios deportivos, paseos gratuitos en bicicleta, así como de zonas de descanso y de restauración.</li>
+		<li>Organizamos el Programa "Piscinea": un conjunto de actividades destinadas a dinamizar las piscinas municipales entre las que destacan los Cursos de Natación, el Punto de Ocio, las Fiestas Actuáticas, las Rutas en Bicicleta y la Jornada de Puertas Abiertas. Con este programa queremos lograr que las piscinas no sean sólo sinónimo de sol y agua, sino que brinden nuevas alternativas de ocio.</li>
+		<li>Además, fuera de la temporada de verano, los ciudadanos pueden hacer uso de las pistas al aire libre para la práctica del deporte.</li>
+	</ul>
+	</li>
+</ul>
+</div>
+
+<div class="linea">&nbsp;</div>
+
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin">Compromisos</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<h3>Cuidamos tu centro deportivo</h3>
+
+<ul>
+	<li>Ofrecer a los ciudadanos un canal de comunicación permanente, por medio de las hojas de sugerencias y reclamaciones y el buzón de sugerencias disponibles en todas nuestras instalaciones, atendiéndolas y contestándolas en un plazo máximo de 15 días y estableciendo los mecanismos de mejora oportunos.</li>
+	<li>Garantizar que tanto la gestión como el mantenimiento de las instalaciones deportivas estén orientadas al respeto y cuidado del medio ambiente a través de un Sistema de Gestión Ambiental basado en la norma ISO 14.000.</li>
+	<li>Velar por la seguridad y asistencia sanitaria de los usuarios de las piscinas y pabellones municipales, a través de un personal que dispone de los conocimientos y formación en primeros auxilios y mediante la existencia de un plan de emergencia para responder a las posibles situaciones de riesgo, realizando simulacros periódicos en cada piscina y en cada pabellón.</li>
+	<li>Facilitar el acceso a las piscinas e instalaciones deportivas de los Barrios Rurales a determinados colectivos y asociaciones de interés social reconocido.</li>
+	<li>Ceder gratuitamente, durante la campaña de verano, las pistas polideportivas exteriores que no hayan sido reservadas.</li>
+	<li>Cuidar la depuración del agua de las piscinas municipales, midiendo los parámetros que informan sobre la calidad del agua, poniéndolos de manifiesto en paneles visibles y expuestos al público, garantizando parámetros de acuerdo con la normativa vigente.</li>
+	<li>Realizar un uso eficiente del agua de las piscinas y pabellones municipales inscritos entre las entidades comprometidas con el agua en la ciudad ZH2O</li>
+	<li>Velar por la limpieza e higienización minuciosa de los aseos de las piscinas, registrando como mínimo dos revisiones diarias y exponiéndolas mediante paneles visibles en las entradas de los mismos.</li>
+	<li>Incrementar un 5% anual el grado de accesibilidad de nuestras instalaciones para discapacitados y personas con movilidad reducida.</li>
+</ul>
+</div> 
+
+</div>
+</div>
+</div>
+</div>
+
+<div aria-expanded="false" class="tab-title" data-target="#ambiental" data-toggle="collapse">Certificación Ambiental</div>
+
+<div id="ambiental" role="tabpanel" sede:class="tab-pane active">
+<div class="row">
+<div class="col-xs-12 col-sm-12">
+<div class="row no-gutter step-box fnd-sectores">
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin">Presentación</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<div><img alt="" class="imgizq pull-left margin-r05em" height="199" src="/cont/paginas/gestionmunicipal/calidad/img/aenormedamb.jpg" width="195" /></div>
+
+<p>Las instalaciones deportivas de los barrios rurales de Zaragoza se convierten año tras año en el escenario de la actividad social y recreativa de los vecinos, siendo las piscinas al aire libre, durante los meses de verano, el espacio más utilizado por éstos.</p>
+
+<p>Año tras año los <strong>estándares de calidad</strong> en la gestión y en el mantenimiento de las instalaciones van aumentando y adaptándose a las <strong>nuevas tendencias,</strong> buscando la eficiencia y la calidad continua como máximos referentes en nuestro trabajo diario.</p>
+
+<p><em>La organización de la Expo en el 2008 en nuestra ciudad fue una excusa perfecta para adaptar nuestras estrategias de futuro en el marco del desarrollo sostenible y en el respeto por el medio ambiente. Gracias a las posibilidades de nuestras instalaciones, tenemos la <strong>obligación de ofrecer el disfrute del agua de las piscinas con criterios de calidad, pero en armonía con el medio ambiente que las rodea.</strong></em></p>
+
+<p>La ISO 14.001:2004 es la <strong>norma de referencia internacional</strong> reconocida como sistema de gestión medioambiental, basada en el <strong>principio de mejora continua,</strong> teniendo como finalidad identificar, verificar y controlar los aspectos medioambientales de cualquier organismo.</p>
+
+<p>Los Centros Deportivos de los Barrios Rurales comenzaron con este proyecto en 2005 y obtuvieron, tras dos años de trabajo, la Los Centros Deportivos de los Barrios Rurales comenzaron con este proyecto en 2005 y obtuvieron, tras dos años de trabajo, la <strong>certificación en dicha norma con fecha 17-5-2007 a través de AENOR.</strong> Desde esa fecha, año a año, se ha ido renovando la certificación, con auditorías externas, demostrando que los Centros Deportivos son objeto de las evaluaciones y controles establecidos en el sistema de certificación y que AENOR ha obtenido la adecuada confianza en su conformidad con la <strong>Norma UNE-EN ISO 14001.</strong></p>
+
+<p>Tras 4 años de certificación del sistema, podemos valorar como positivo el logro, tanto por los <strong>beneficios ambientales</strong> generados (expuestos en otro apartado), como por los <strong>beneficios organizativos</strong> obtenidos, gracias a la <strong>implicación del personal municipal</strong> y a la <strong>motivación generada</strong> por el reto planteado.</p>
+
+<p>El camino iniciado ha contagiado a otras instalaciones deportivas en la preservación del medio ambiente, tanto en la ciudad de Zaragoza, como en otras ciudades españolas, convirtiéndonos en una <strong>referencia de gestión medioambiental.</strong></p>
+</div>
+
+<div class="linea">&nbsp;</div>
+
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin">Significado</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<p>Significa que existe un <strong>COMPROMISO</strong> de nuestra organización con el medio ambiente no sólo evitando los impactos negativos que la gestión y el mantenimiento de las instalaciones deportivas pueden provocar en el medio ambiente, sino constituyéndose en referencia dentro del entorno en el que están situadas como punto de información y difusión sobre temas medioambientales.</p>
+
+<p>Pero también significa:</p>
+
+<p>Que se ha formulado una <strong>POLÍTICA AMBIENTAL</strong>, que expresa la filosofía de la organización en relación con el respeto ambiental, la mejora continua, el desarrollo sostenible y, especialmente, con el cumplimiento de la legislación en materia de medio ambiente. Este apartado es el primero a realizar, ya que se trata de una declaración de intenciones de la organización, y tiene que estar firmado y apoyado por el máximo responsable del servicio, en este caso el Teniente de Alcalde del Área de Participación Ciudadana, en julio de 2006.</p>
+
+<p>Significa que se han identificado y evaluado los <strong>IMPACTOS</strong> que los centros deportivos producen sobre el entorno, asociando objetivos de minimización y mecanismos de control de los mismos. Algunos de los <strong>aspectos ambientales</strong> más importantes que generan IMPACTOS en el medio ambiente han sido los siguientes:</p>
+
+<p><strong>RESIDUOS PELIGROSOS</strong></p>
+
+<ul>
+	<li><strong>RAEE</strong></li>
+	<li><strong>Envases contaminados</strong></li>
+	<li><strong>Absorbentes contaminados</strong></li>
+	<li>Disolventes</li>
+	<li>Aerosoles</li>
+	<li><strong>Productos Caducados</strong></li>
+	<li><strong>Residuos biosanitarios Clase III</strong></li>
+	<li>Residuos peligrosos de Incendios</li>
+	<li>Sepiolita contaminada</li>
+</ul>
+
+<p><strong>RESIDUOS NO PELIGROSOS</strong></p>
+
+<ul>
+	<li>Materia Orgánica</li>
+	<li>Restos de poda y césped.</li>
+	<li>Papel y Cartón</li>
+	<li>Envases, latas, bricks</li>
+	<li>Maderas y palets usados</li>
+	<li>Chatarras metálicas</li>
+	<li>Residuos de obra</li>
+	<li>Cartuchos toner</li>
+	<li>Aceites vegetales usados</li>
+	<li>Enseres en desuso</li>
+	<li>Residuos higiene femenina</li>
+	<li>Residuos biosanitarios Clase II</li>
+	<li>Residuos no peligrosos de Incendios</li>
+</ul>
+
+<p><strong>EMISIONES ATMOSFÉRICAS</strong></p>
+
+<ul>
+	<li>Calderas y Grupos electrógenos con consumo de combustibles</li>
+	<li>Cocinas de los bares</li>
+	<li>Máquinas de mantenimiento</li>
+	<li>Vehículos de servicio</li>
+	<li>Barbacoas</li>
+	<li>Legionella</li>
+	<li>Incendio</li>
+	<li>Emisión accidental de sustancias peligrosas</li>
+</ul>
+
+<p><strong>VERTIDOS</strong></p>
+
+<ul>
+	<li>Agua Sanitaria</li>
+	<li><strong>Agua residual depuradora</strong></li>
+	<li>Riego</li>
+	<li>Pérdidas vasos piscinas</li>
+	<li>Incendio</li>
+	<li>Vertido accidental de sustancias peligrosas</li>
+</ul>
+
+<p><strong>RUIDOS</strong></p>
+
+<ul>
+	<li>Ruido máquinas de depuradora</li>
+	<li>Ruidos, voces propias del deporte y recreación</li>
+	<li>Ruido maquinaria jardinería</li>
+	<li>Música verbenas y actos festivos, programados en los Barrios Rurales</li>
+</ul>
+
+<p><strong>CONTAMINACIÓN DE SUELOS</strong></p>
+
+<ul>
+	<li><strong>Tratamientos fitosanitarios</strong></li>
+	<li>Derrame accidental de sustancias peligrosas</li>
+</ul>
+
+<p><strong>CONSUMO DE RECURSOS NATURALES Y MATERIAS PRIMAS</strong></p>
+
+<ul>
+	<li>Gasóleo, gasolina</li>
+	<li>Gas ciudad/ Gas natural</li>
+	<li><strong>Electricidad</strong></li>
+	<li><strong>Agua de red</strong></li>
+	<li>Agua de pozo</li>
+	<li>Energías Alternativas</li>
+	<li>Recirculación de agua</li>
+	<li>Madera/Carbón vegetal</li>
+	<li><strong>Productos Químicos</strong></li>
+</ul>
+
+<p>Identificar los aspectos ambientales es uno de los esfuerzos iniciales más importantes llevados a cabo por la organización, debido a que son muchos y se trata de resumir y agruparlos para que sea más sencillo su tratamiento posterior.</p>
+
+<p>Estos aspectos ambientales han sido evaluados inicialmente mediante <strong>unas tablas de valoración</strong> contenidas en el procedimiento específico. <strong>Cada año</strong> vuelven a ser evaluados y se extraen los que son <strong>significativos</strong>, intentando habilitar un documento de control para minimizarlos.</p>
+
+<p>&nbsp;</p>
+
+<p>Significa que se han identificado y evaluado los <strong>REQUISITOS LEGALES</strong> que son de aplicación, dando cumplimiento riguroso a todos ellos, garantizando, además, la actualización legislativa de forma periódica. Hay que tener en cuenta que el campo ambiental ha tenido un crecimiento normativo exponencial en los últimos años y que continúa con un dinamismo importante.</p>
+
+<p>La revisión legal se realiza anualmente y es innumerable la cantidad de normativa que constantemente se genera con motivos ambientales. En el segundo procedimiento del sistema de gestión ambiental aparece la revisión legal con la evaluación periódica de los aspectos legales que afectan a la gestión y al mantenimiento de las instalaciones deportivas y la forma en que se da cumplimiento a dichos requerimientos legales.</p>
+
+<p>Que se han identificado y evaluado los <strong>REQUISITOS LEGALES</strong> que son de aplicación, dando cumplimiento riguroso a todos ellos, garantizando, además, la actualización legislativa de forma periódica. Hay que tener en cuenta que el campo ambiental ha tenido un crecimiento normativo exponencial en los últimos años y que continúa con un dinamismo importante.</p>
+
+<p>Que se han elaborado los <strong>PROCEDIMIENTOS</strong> y las <strong>INSTRUCCIONES</strong> adecuadas (se ha descrito ?cómo hacer las cosas?) en todos los ámbitos de gestión con repercusión ambiental, especialmente el mantenimiento de las instalaciones (gestión de residuos, contaminación atmosférica, vertidos, tratamiento de aguas, control de consumos, aplicación de fitosanitarios, etc.). Pero también se ha descrito la manera de actuar en caso de desviaciones de la norma, accidentes ambientales y revisiones del sistema (por la dirección o en caso de auditorías internas). Los procedimientos han sido los siguientes:</p>
+
+<ul>
+	<li>Aspectos ambientales.</li>
+	<li>Requisitos legales y otros requisitos.</li>
+	<li>Competencia, formación y toma de conciencia.</li>
+	<li>Control de la documentación y los registros.</li>
+	<li>Control operacional (residuos, atmósfera, consumos y proveedores).</li>
+	<li>Preparación y respuesta ante emergencias.</li>
+	<li>Seguimiento y medición.</li>
+	<li>No conformidad, acción correctiva y acción preventiva.</li>
+	<li>Auditoría interna.</li>
+	<li>Revisión por la dirección, objetivos, metas y programa.</li>
+</ul>
+
+<p>Que se han establecido unos <strong>OBJETIVOS AMBIENTALES</strong> que tiendan a mejorar el desempeño de la organización. Concretamente, para 2007 se han formulado 9 objetivos que inciden sobre residuos, desarrollo sostenible, consumos o concienciación ambiental, entre otros.</p>
+
+<p>Que se están <strong>REGISTRANDO</strong> todos los datos relevantes en materia ambiental, de manera que dispongamos de información adecuada para comprobar si los objetivos se cumplen, conforme a la normativa, a la vez que nos ayuda a la hora de tomar decisiones futuras.</p>
+
+<p>Que se ha planificado una rigurosa <strong>FORMACIÓN </strong>en materia de Medio Ambiente para todos los trabajadores de los centros deportivos (tanto personal propio, como personal de empresas de servicios), con cursos generales sobre la norma <strong>ISO</strong>, la gestión de residuos y la cumplimentación de registros ambientales. Además en todos los centros deportivos existen Manuales de Buenas Prácticas Ambientales.</p>
+
+<p>Que se ha <strong>SENSIBILIZADO </strong>a nuestros <strong>USUARIOS </strong>con actividades y talleres de respeto ambiental para niños y adultos, así como cartelería atractiva, y dotación de contenedores de recogida selectiva (para que los usuarios colaboren con el sistema) y a los <strong>PROVEEDORES </strong>que tanto sus servicios, como sus suministros tendrán que reunir unas condiciones ambientales marcadas previamente a través de cláusulas específicas.</p>
+
+<p>Después de implantar el sistema de gestión ambiental y teniendo en cuenta la cantidad de usuarios que utilizan de forma diaria las instalaciones deportivas, éstas pueden convertirse en un <strong>ejemplo de respeto al medio ambiente</strong> y pueden empujar a muchas personas a aplicar medidas de respeto ambiental en sus organizaciones deportivas (clubes o asociaciones) o en su entorno doméstico.</p>
+
+<p>La disposición de contenedores de recogida selectiva, así como la exposición de los datos ambientales, los certificados de la norma, la política ambiental, los carteles de implicación ambiental, etc, suponen un punto fuerte para una instalación deportiva, viéndose el esfuerzo reforzado por la actitud de los usuarios.</p>
+</div>
+
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin">Compromisos</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<p>Se adjunta la <strong>Política Ambiental</strong> aprobada por el Servicio de Distritos:</p>
+
+<ul>
+	<li>El objetivo básico de las instalaciones deportivas de los barrios rurales es el de ofrecer un servicio de calidad, respetando el entorno en el que se encuentran ubicadas y minimizando los impactos producidos en el medio ambiente a través de la gestión y el mantenimiento diarios.<br />
+	Para conseguir este objetivo, nuestra Política Ambiental se basa en los siguientes puntos:</li>
+	<li><strong>1. CUMPLIMIENTO DE LA LEGISLACIÓN.</strong><br />
+	Garantizar que la <strong>gestión y el mantenimiento</strong> de las instalaciones deportivas se realicen con arreglo a la legislación y normativa vigentes, y a otros requisitos aplicables a sus aspectos ambientales, adaptando progresivamente nuestras infraestructuras y recursos a la <strong>nueva normativa ambiental,</strong> y manteniendo una conducta de permanente actualización a la misma.</li>
+	<li><strong>2. PREVENCIÓN DE LA CONTAMINACIÓN.</strong><br />
+	Garantizar la prevención de la contaminación mediante la <strong>actualización y revisión</strong> de la gestión y el mantenimiento, evaluando los aspectos y riesgos ambientales, minimizando las <strong>emisiones</strong> y los <strong>vertidos,</strong> y gestionando nuestros <strong>residuos</strong> de forma coherente con el Medio Ambiente.</li>
+	<li><strong>DESARROLLO SOSTENIBLE.</strong><br />
+	Proteger el Medio Ambiente mediante la utilización sostenible de los recursos naturales y el uso eficiente de la <strong>energía,</strong> fomentando la prácticas de reducción, reutilización y reciclado de residuos, e integrando la variable ambiental en la evaluación y selección de los proveedores, contratistas y adjudicatarios, así como en la planificación de nuevos proyectos, actividades y servicios.</li>
+	<li><strong>MEJORA CONTINUA.</strong><br />
+	Aplicar la <strong>metodología</strong> y los procedimientos de los sistemas de calidad basados en la Norma ISO, <strong>planificando</strong> nuestras acciones, <strong>midiendo</strong> los resultados y planteando nuevas alternativas para mejorar, adaptando nuestra gestión a la realidad del entorno en el que nos movemos, y fomentando el uso de nuevas tecnologías y procesos, minimizando los impactos ambientales cuando ello sea posible.</li>
+	<li><strong>FORMACIÓN E IMPLICACIÓN.</strong><br />
+	<strong>Comunicar</strong> la Política Ambiental, <strong>informar</strong> sobre los principios y procedimientos del Sistema de Gestión Ambiental, elaborar e impartir un <strong>plan de formación</strong> específico facilitando la participación de los trabajadores en la correcta gestión del sistema, promover la minimización de los impactos mediante la implementación de <strong>buenas prácticas ambientales</strong> por parte del personal.</li>
+	<li><strong>COMUNICACIÓN Y SENSIBILIZACIÓN.</strong><br />
+	Comunicar a todo el personal, tanto propio como contratado, los <strong>compromisos adquiridos</strong> por el servicio, transmitiéndoles la importancia de su colaboración en los mismos, y comprometer a nuestros usuarios mediante la organización de actividades de sensibilización ambiental, y la dotación de contenedores de recogida selectiva para la gestión de sus propios residuos.</li>
+</ul>
+
+<p>Política Ambiental supone la definición de los <strong>puntos estratégicos</strong> del sistema de gestión, y debe ser informada a los trabajadores y expuesta los usuarios que acceden a las instalaciones deportivas.</p>
+
+<p>Desde el Servicio de Distritos se optó por huir de la exposición completa de la Política Ambiental de las instalaciones, ya que resultaría <strong>ilegible y poco atractiva.</strong> Por eso se optó por colocar los <strong>6 puntos</strong> más importantes de la misma en <strong>3 tipos de carteles</strong> relacionados con los deportes de natación, tenis y fútbol, con el lema <strong>AQUÍ JUGAMOS LIMPIO CON EL MEDIO AMBIENTE,</strong> terminando con la frase: Con tu ayuda todo será más fácil.</p>
+</div>
+
+<div class="linea">&nbsp;</div>
+
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin">Datos Obtenidos</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<p>Innegablemente la implantación de un sistema de gestión redunda en una mejora de los procesos, pero si además los datos posteriores son buenos, el sistema habrá demostrado tener éxito.<br />
+Resumiremos algunos de los DATOS OBTENIDOS tras los primeros años de implantación del sistema:</p>
+
+<p><strong>Datos año 2008</strong></p>
+
+<ul>
+	<li>Reducción de 12 millones de litros de Agua (65.846 m3)</li>
+	<li>Mantenimiento del consumo Eléctrico (903.337 Kwh)</li>
+	<li>Disminución consumo de Combustibles (un 2,78 %)</li>
+	<li>Disminución consumo de Productos Químicos (un 9,60%)</li>
+	<li>Aumento gestión de Resid. No Peligrosos (un 34,96 %):
+	<ul>
+		<li>1.733 kg de papel.</li>
+		<li>2.283 kg de envases.</li>
+		<li>234 litros de aceite vegetal de los bares</li>
+	</ul>
+	</li>
+	<li>Disminución producción de Res. Peligrosos (un 52,48 %):
+	<ul>
+		<li>266 kg de envases contaminados.</li>
+		<li>40 kg de absorbentes contaminados.</li>
+		<li>20 kg de aerosoles.</li>
+		<li>107 kg de productos caducados.</li>
+		<li>37 kg de RAEE.</li>
+	</ul>
+	</li>
+</ul>
+
+<p><strong>Datos año 2009</strong></p>
+
+<ul>
+	<li>Reducción de 3 millones y medio de litros (62.271 m3)</li>
+	<li>Aumento del consumo Eléctrico (1.022.083 Kwh)</li>
+	<li>Disminución consumo de Combustibles (un 6,74 %)</li>
+	<li>Aumento consumo de Productos Químicos (un 40 %)</li>
+	<li>Aumento gestión de Resid. No Peligrosos (un 34,96 %):
+	<ul>
+		<li>1.925 kg de papel.</li>
+		<li>3.574 kg de envases.</li>
+		<li>355 litros de aceite vegetal de los bares</li>
+	</ul>
+	</li>
+	<li>Aumento producción de Res. Peligrosos (un 79,79 %):
+	<ul>
+		<li>542 kg de envases contaminados.</li>
+		<li>60 kg de absorbentes contaminados.</li>
+		<li>20 kg de aerosoles.</li>
+		<li>175 kg de productos caducados.</li>
+		<li>23 kg de RAEE.</li>
+	</ul>
+	</li>
+</ul>
+</div>
+
+<div class="linea">&nbsp;</div>
+
+<div class="col-md-3 padding-a1em">
+<h3 class="nomargin">Entidades</h3>
+</div>
+
+<div class="col-md-9 padding-a1em fnd-gris-claro">
+<p>Desde el principio del proceso, allá por 2005, hemos contado con el apoyo técnico y la financiación del Servicio de Modernización y Desarrollo Organizativo, la Agenda 21 Local de Zaragoza y la Sociedad Expo Zaragoza 2008. Nuestro profundo agradecimiento y felicitación a todas las personas comprometidas que nos han ayudado.</p>
+
+<p>Los Centros Deportivos de los Barrios Rurales han pasado a formar parte del selecto "Club de encuentros con la Agenda 21" de la ciudad de Zaragoza, por ser entidad certificada y comprometida con el medio ambiente de la ciudad, y cada centro deportivo individualmente está inscrito a través de la firma del responsable como "Entidad Ahorradora de Agua" dentro de los 100.000 compromisos de ahorro de agua promovidos por la Sociedad Expo 2008, en colaboración con el Ayuntamiento de Zaragoza.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+</div>
+     
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

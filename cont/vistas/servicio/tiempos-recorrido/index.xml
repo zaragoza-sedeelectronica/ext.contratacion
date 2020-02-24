@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es" xmlns:sede="http://www.zaragoza.es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Tiempos de recorrido" description="Existen 19 Paneles Informativos en los principales accesos de la ciudad con información sobre tiempos estimados de recorridos prefijados" keywords="tiempos,recorrido,movilidad,trafico" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+    label {
+        font-weight: bold !important
+    }
+    
+    .cluster {
+        background: #2d84c8;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+        font-weight: 700;
+        border: 1px solid #2d84c8;
+        font-family: monospace;
+    }
+    
+    .cluster:before {
+        content: ' ';
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+        top: 1px;
+        left: 1px;
+        right: 1px;
+        bottom: 1px;
+        border: 1px solid white;
+    }
+    
+    .digits-1 {
+        font-size: 14px;
+        height: 28px;
+        width: 28px;
+        line-height: 28px;
+        margin-top: -14px;
+        margin-left: -14px;
+    }
+    
+    .digits-2 {
+        font-size: 16px;
+        height: 34px;
+        width: 34px;
+        line-height: 35px;
+        margin-top: -17px;
+        margin-left: -17px;
+    }
+    
+    .digits-2:before {
+        border-width: 2px;
+    }
+    
+    .digits-3 {
+        font-size: 18px;
+        height: 48px;
+        width: 47px;
+        line-height: 47px;
+        border-width: 3px;
+        margin-top: -24px;
+        margin-left: -24px;
+    }
+    
+    .digits-3:before {
+        border-width: 3px;
+    }
+    
+    .digits-4 {
+        font-size: 18px;
+        height: 58px;
+        width: 58px;
+        line-height: 57px;
+        border-width: 4px;
+        margin-top: -29px;
+        margin-left: -29px;
+    }
+    
+    .digits-4:before {
+        border-width: 4px;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Tiempos de recorrido</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <p role="alert" class="alert alert-info">Existen <strong>19 Paneles Informativos</strong> en los principales accesos de la ciudad con información sobre tiempos estimados de recorridos prefijados</p>
+            </div>
+            <div class="col-md-8">
+                <img src="https://www.zaragoza.es/cont/paginas/viapublica/movilidad/img/panel.jpg" alt="Imagen de panel informativo"/>
+            </div>
+        </div>
+        <div id="mensaje" role="alert" class="alert hide pull-right"></div>
+        
+        <div id="mapa-leaflet" style="height: 40em"></div>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-FixedMarkerClusterGroup.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    var query = '/sede/servicio/tiempos-recorrido.geojson?srsname=wgs84&rows=4000';
+    var popup;
+    var markers;
+
+    consultar();
+    
+    function consultar() {
+    	$('#mensaje').removeClass('hide');
+	    $('#mensaje').html('Ejecutando consulta');
+	    $('#mensaje').removeClass('alert-error');
+	    $('#mensaje').addClass('alert-info');
+        
+
+        $.getJSON(query, function(data) {
+        	$('#mensaje').addClass('hide')
+            if (data.features.length > 0) {
+                var geojson = L.geoJson(data, {
+                    pointToLayer: function(feature, latlng) {
+                        var icono = data.properties.icon;
+                        var texto = '<strong>' + feature.properties.title +  '</strong>'
+                            + feature.properties.description;
+                        return L.marker(latlng, {
+                            icon: L.icon({
+                                iconUrl: icono,
+                                iconSize: [22, 20],
+                                iconAnchor: [22, 20],
+                                popupAnchor: [-10, -20]
+                            })
+                        }).bindPopup(texto);
+                    }
+                });
+
+                if (markers) {
+                    map.removeLayer(markers);
+                }
+
+                map.fitBounds(geojson.getBounds());
+                map.addLayer(geojson);
+            } else {
+                $('#mensaje').html('La consulta no ha devuelto resultados');
+                $('#mensaje').removeClass('hide');
+                $('#mensaje').removeClass('alert-info');
+                $('#mensaje').addClass('alert-error');
+                if (markers) {
+                    map.removeLayer(markers);
+                }
+            }
+        });
+    }
+
+    function generarEnlaces(consulta) {
+	    $('#download').remove();
+	    $('<p id="download">Descargar: <a href="' + consulta + '">GeoJSON</a> | '
+	        + '<a href="' + consulta.replace('.geojson', '.json') + '">JSON</a> | '
+	        + '<a href="' + consulta.replace('.geojson', '.xml') + '">XML</a> | '
+	        + '<a href="' + consulta.replace('.geojson', '.csv') + '">CSV</a></p>'
+	        ).insertAfter("#mapa-leaflet");
+	}
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

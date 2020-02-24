@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Organismos Autónomos: Instituto Municipal del Agua"
+                   description="Organizacion Municipal. Sociedades Municipales" author=""
+                   last-modified="Fri Apr 17 00:00:00 CET 2018"
+                   keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, estructura administrativa, sociedades municipales, organismos administrativos, relación administración-administrado"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        Sociedades Municipales
+                    </small>
+                    <span>|</span>
+                    Instituto Municipal del Agua
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h3>Objeto</h3>
+                    <div class="clearfix margin-b1em">
+
+                        <p>El Instituto Municipal del Agua asume el ejercicio instrumental de las competencias
+                            municipales del ciclo integral del agua, cuyas fases son: captación, transporte,
+                            tratamiento, depósitos reguladores, conducción, distribución, riegos e incendios,
+                            alcantarillado y depuración.
+                        </p>
+                        <p>
+                            <strong>2.</strong>
+                            Para la consecución de su fin general, el Instituto desarrollará las funciones y servicios
+                            siguientes:
+                        </p>
+                        <ol class="letra">
+                            <li>Estudio permanente de las necesidades de la ciudad y su entorno metropolitano.</li>
+                            <li>Propuesta al Pleno de los programas y planes generales en relación a la nueva
+                                implantación, ampliación o mejora de los servicios, y aportación de nuevos caudales.
+                            </li>
+                            <li>Colaboración con otras administraciones públicas competentes en la materia.</li>
+                            <li>Subrogación en los derechos y obligaciones resultantes de las concesiones
+                                administrativas municipales, si así lo acuerda el Ayuntamiento.
+                            </li>
+                            <li>Inspección y disciplina de las empresas gestoras de los diferentes servicios del ciclo
+                                integral del agua.
+                            </li>
+                            <li>Propuestas de gestión directa o indirecta de los servicios, así como su participación en
+                                las empresas mixtas que se constituyan.
+                            </li>
+                            <li>Tramitación técnica de los expedientes de adjudicación de los contratos de gestión
+                                indirecta de los servicios.
+                            </li>
+                            <li>Información y participación ciudadana</li>
+                        </ol>
+                    </div>
+                    <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist"
+                        style="display:none;">
+                        <li role="presentation">
+                            <a href="#consejo" aria-controls="que" role="tab" data-toggle="tab">Consejo</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#estatutos" aria-controls="que" role="tab" data-toggle="tab">Estatutos</a>
+                        </li>
+                    </ul>
+
+
+                    <div sede:class="tab-content" id="Facetados">
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#consejo" aria-expanded="false">
+                            Consejo
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="consejo">
+
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <h3>Consejo Rector</h3>
+                                    <dl>
+                                        <dt>
+                                            <strong>Presidente</strong>
+                                        </dt>
+                                        <dd><a shape="rect" href="/ciudad/organizacion/pedro-santisteve.htm">D.Pedro
+                                            Santisteve Roche</a>.
+                                        </dd>
+
+                                        <dt>
+                                            <strong>Vicepresidenta</strong>
+                                        </dt>
+                                        <dd><a shape="rect" href="/ciudad/organizacion/teresa-artigas.htm">D&#170;
+                                            Teresa Ana Artigas Sanz</a>.
+                                        </dd>
+
+                                        <dt>
+                                            <strong>Vocales</strong>
+                                        </dt>
+                                        <ul>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/enrique-collados.htm">D. Luis
+                                                    Enrique Collados Mateo
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/cavero-moreno.htm">D&#170;
+                                                    Patricia Mar&#237;a Cavero Moreno
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/mjesus-martinez.htm">D&#170;
+                                                    Mar&#237;a Jes&#250;s Martinez del Campo
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/sebastian-contin.htm">D.
+                                                    Sebastian Contín Trillo-Figueroa
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/pablo-munoz.htm">D. Pablo Mu&#241;oz
+                                                    San P&#237;o
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/sainz-varanda.htm">Dª. Marta
+                                                    Aparicio Sainz de Varanda
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/dolores-campos.htm">Dª.
+                                                    Dolores Campos Palacio
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a shape="rect" href="/ciudad/organizacion/alberto-casanal.htm">D.
+                                                    Alberto Casa&#241;al Pina
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </dl>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#estatutos" aria-expanded="false">
+                            Estatutos
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="estatutos">
+                            <!--<sede:normativa id="99"/>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+
+    </body>
+
+</html>

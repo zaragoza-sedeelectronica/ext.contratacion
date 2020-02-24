@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Credenciales" description="Edición de usuarios" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2><a href="/opencityext/servicio/credenciales/group/">Grupos de usuarios</a></h2>
+        <form th:if="${registro.statusCode.value()} == 200" th:action="@{/servicio/credenciales/group/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+            <th:block th:include="fragmentos/control-fields" />
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Actualizar Datos</span></legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="code">Código <span class="fa fa-asterisk" /></label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{code}" size="100" required="true" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="title">Nombre <span class="fa fa-asterisk" /></label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{title}" size="100" required="true" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="descripcion">Descripci&oacute;n</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" type="text" th:field="*{descripcion}" size="100" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="visible">Visible <span class="fa fa-asterisk" /></label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{visible}" size="100" required="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" th:if="*{id}">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="">Usuarios asociados</label>
+                                <div class="col-sm-8">
+                                    <select name="gczUsuarios" class="select-registros form-control" multiple="multiple" tabindex="-1" aria-hidden="true">
+                                        <option th:each="doc, row: *{gczUsuarios}" th:value="${doc.id}" th:text="${doc.login}" selected="selected" />
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                    <h4 th:if="${dato.gczPerfils.size() > 0}">Perfiles en servicios</h4>
+                    <dl class="dl-horizontal">
+                        <th:block th:each="perf: ${dato.gczPerfils}">
+                            <dt>
+                                <a th:href="@{/servicio/credenciales/service/{servicio}/edit(servicio=${perf.gczServicio.id})}" th:text="${perf.gczServicio.id}"></a>
+                            </dt>
+                            <dd>
+                                <a th:href="@{/servicio/credenciales/service/{servicio}/profile/{id}/edit(servicio=${perf.gczServicio.id},id=${perf.id})}" th:text="${perf.code}"></a>
+                            </dd>
+                        </th:block>
+                    </dl>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+
+    $(".select-registros").select2({
+        tags: true,
+        ajax: {
+            url: '/opencityext/servicio/credenciales/user',
+            dataType: 'json',
+            type: "GET",
+            quietMillis: 50,
+            data: function(term) {
+                return {
+                    fl: 'id,login,nombre,apellido1',
+                    q: 'login==' + term.term + '*'
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: $.map(data.result, function(item) {
+                        return {
+                            text: item.login + ' ' + item.nombre + ' ' + item.apellido1,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        },
+        minimumInputLength: 3
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

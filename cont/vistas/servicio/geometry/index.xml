@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Puntos" keywords="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, risp,aplicacion,opendata" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Punto</h2>
+        <div class="well">Sistema de referencia:  <th:block th:text="${registro.body.type}"/>. Coordenadas: <th:block th:text="${registro.body.coordinates[0]}"/> <th:block th:text="${registro.body.coordinates[1]}"/></div>
+        <th:block th:utext="${registro.body.getRdf()}"></th:block>
+        <div id="mapa-leaflet" style="height: 30em"></div>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    var latitude = $(document).find("[property='latitude']").attr("content");
+    var longitude = $(document).find("[property='longitude']").attr("content");
+    if (latitude && longitude) {
+        var marker = L.marker([latitude, longitude]);
+        pois.push(marker);
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());   
+    }
+    /*]]>*/
+    </script>
+</body>
+
+</html>

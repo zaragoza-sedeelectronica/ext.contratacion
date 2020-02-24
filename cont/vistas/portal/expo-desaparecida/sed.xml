@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida >> Sed" description="En el décimo aniversario de la Expo 2008 Agua y Desarrollo Sostenible presentamos un recorrido virtual por aquellas arquitecturas e instalaciones de carácter efímero, creadas  para el marco de los 93 días de la muestra y que ya 
+no se conservan" author="Ayuntamiento de Zaragoza. Archivo Municipal" keywords="expo, 2008, cultura, ocio, medio ambiente, Agua y Desarrollo Sostenible, environment, Water and Sustainable Development"/>       <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.css"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+        .cluster {
+            background: #2d84c8;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #2d84c8;
+            font-family: monospace;
+        }
+
+        .cluster:before {
+            content: ' ';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            border: 1px solid white;
+        }
+
+        .digits-1 {
+            font-size: 1.4em;
+            height: 28px;
+            width: 28px;
+            line-height: 28px;
+            margin-top: -14px;
+            margin-left: -14px;
+        }
+
+        .digits-2 {
+            font-size: 1.6em;
+            height: 34px;
+            width: 34px;
+            line-height: 35px;
+            margin-top: -17px;
+            margin-left: -17px;
+        }
+
+        .digits-2:before {
+            border-width: 2px;
+        }
+
+        .digits-3 {
+            font-size: 1.8em;
+            height: 48px;
+            width: 47px;
+            line-height: 47px;
+            border-width: 3px;
+            margin-top: -24px;
+            margin-left: -24px;
+        }
+
+        .digits-3:before {
+            border-width: 3px;
+        }
+
+        .digits-4 {
+            font-size: 1.8em;
+            height: 58px;
+            width: 58px;
+            line-height: 57px;
+            border-width: 4px;
+            margin-top: -29px;
+            margin-left: -29px;
+        }
+
+        .digits-4:before {
+            border-width: 4px;
+        }
+
+        .list-noticia a {
+            color: #202020;
+        }
+
+        .list-noticia li {
+            border-bottom: 1px solid #E6E6E6;
+            /*fnd-gris-claro*/
+            margin-bottom: .5em;
+            padding-bottom: .5em;
+        }
+
+        @media (min-width: 768px) {
+            .list-aviso li {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content>
+        <p>
+          <img alt=" " class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/sed/cabecera-sed.gif" />
+        </p>
+        <div class="row">
+            <div class="col-md-12 card">
+ 
+                    <h2>
+         La Expo desaparecida > Plaza Sed
+            </h2>
+                    <hr class="sm" /><div class="text-justify">
+                   
+<p>Este pabellón fue diseñado por el arquitecto Enric Ruiz-Geli en forma de <strong>cúpula</strong> con 1000 m<sup>2</sup>  de superficie que reproduce el <strong>tejido microscópico de la sal</strong>. Para su construcción se utilizaron materiales reutilizables y reciclables, un esqueleto metálico que soportaba un recubrimiento de 82 'cojines' con tres capas de ETFE, a modo de bóveda hinchable. Además contaba con un sistema de riego de agua con sal que, en principio, aportaba un plus bioclimático ya que conseguía mantener el ambiente del edificio sin necesidad de uso del aire acondicionado. 
+</p><p>
+Todo este <strong>diseño</strong> arquitectónico se unía al <strong>expositivo</strong>, coordinado por el urbanista Pietro Laureano, organizado en <strong>cinco espacios </strong> bajo los siguientes lemas:</p>
+  <ul>   <li> 
+Tenemos sed</li>   <li> 
+La sed es conocimiento</li>   <li>
+Simbolismo y rituales de la sed</li>   <li>
+La fuerza innovadora del pasado</li>   <li>
+Una nueva visión de la sed: la sed es necesaria</li></ul><p>En ellos se recalcaba la <strong>dicotomía del término sed</strong>, como problema y como recurso. El visitante recordaba cómo las grandes civilizaciones se han asentado junto al agua e identificaba cómo la evolución de la humanidad tiene mucho que ver con la saciedad de la sed: Los movimientos migratorios en busca del agua y los avances de la ciencia y de la técnica en torno a la captación, almacenamiento y transporte del agua.
+</p><p>
+Este ha sido el único edificio de las plazas temáticas que ha conocido una segunda vida, como pabellón multiusos, ya que se instaló en Valladolid en 2011 donde se conoce como 'Cúpula del Milenio'</p> 
+               <div class="linea"></div></div><h3 class="color-destacados">Más Información</h3>         
+  <ul class="list-unstyled">      
+  <li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="http://www.zaragoza.es/nuba/app/results/ahis?pa=1&amp;sr=1&amp;q=SED&amp;st=.1.6.100.30891.1171249"> Fotografías Sed  </a></li>
+   <li><span class="fa fa-info-circle" aria-hidden="true"></span><a href="http://www.zaragoza.es/nuba/app/results/ahis?vm=nv&amp;ob=os:1&amp;pa=1&amp;p=306&amp;st=.1.6.100.30891.1171249&amp;i=1174823"> Fotografías Expo 2008</a></li>
+
+   <li><span class="fa fa-info-circle" aria-hidden="true"></span><a href="https://bit.ly/2s62QaR"> Bibliografía</a></li>
+ 
+           </ul>
+         
+            </div>
+        </div>
+			  
+			  
+			  
+			   <div class="row">
+            <div class="col-md-12 card">
+			
+			
+			
+			 
+ 
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h3>
+                    <hr class="sm color-destacados" /> 
+					
+										   <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0670191-07-alzados.jpg">
+               <img alt="Expo 2008"  class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0670191-07-alzados.gif"/> </a></div>
+
+ <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0670191&amp;p=0&amp;i=1034498"> Exp: 0670191-2007. Alzados Sección </a></p>
+
+					
+					
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143827.jpg">
+               <img alt="Expo 2008" class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143827.gif"/> </a></div>
+				 
+				 
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143827&amp;p=0&amp;i=1171454"> Sign: 0143827</a></p>		
+            
+				
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143828.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143828.gif"/>   </a></div>
+				 
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143828&amp;p=0&amp;i=1171455"> Sign: 0143828</a></p>	
+           
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143831.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143831.gif"/> </a></div>
+            
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143831&amp;p=0&amp;i=1171458"> Sign: 0143831</a></p>	
+
+
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143832.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143832.gif"/></a></div>
+                
+				
+				
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143832&amp;p=0&amp;i=1171459"> Sign: 0143832</a></p>	
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143833.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143833.gif"/></a></div>
+                
+								  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143833&amp;p=0&amp;i=1171460"> Sign: 0143833</a></p>	
+
+				
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143835.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143835.gif"/>  </a></div>
+               
+				
+								  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143835&amp;p=0&amp;i=1171462"> Sign: 0143835</a></p>	              
+
+ 
+  <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143839.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143839.gif"/>     </a></div>
+                 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143839&amp;p=0&amp;i=1171466
+"> Sign: 0143839</a></p>	              
+
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143843.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143843.gif"/>    </a></div>
+                <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143843&amp;p=0&amp;i=1171470"> Sign: 0143843</a></p>	
+				
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143846.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143846.gif"/>   </a></div>
+              <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143846&amp;p=0&amp;i=1171473"> Sign: 0143846</a></p>	
+
+
+				 <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143847.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143847.gif"/>   </a></div>
+             
+			     <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143847&amp;p=0&amp;i=1171474"> Sign: 0143847</a></p>	
+			 
+			 
+			  <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143849.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143849.gif"/>  </a></div>
+             
+				    <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143849&amp;p=0&amp;i=1171476
+
+"> Sign: 0143849</a></p>	
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0143916.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0143916.gif"/>    </a></div>
+              <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143916&amp;p=0&amp;i=1171543"> Sign: 0143916</a></p>
+
+
+
+
+
+
+
+			   <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0144915.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0144915.gif"/>    </a></div>
+         <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0144915&amp;p=0&amp;i=1172542"> Sign: 0144915</a></p>
+		
+					   <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/proyecto/0145021.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/proyecto/0145021.gif"/>    </a></div>
+    <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145021&amp;p=0&amp;i=1172648"> Sign: 0145021</a></p>
+
+		
+
+
+
+                </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+ <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/durante/0143918.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/durante/0143918.gif"/> </a></div>
+                <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143918&amp;p=0&amp;i=1171545"> Sign: 0143918</a></p>
+     
+      
+	  
+	  
+	   <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/durante/0143919.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/durante/0143919.gif"/> </a></div>
+                 
+                   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143919&amp;p=0&amp;i=1171546"> Sign: 0143919</a></p>
+
+				
+				
+				
+					   <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/durante/0145031.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/durante/0145031.gif"/> </a></div>
+                                 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145031&amp;p=0&amp;i=1172658"> Sign: 0145031</a></p>
+
+			  
+
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/sed/gran/durante/0145155.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/sed/peq/durante/0145155.gif"/> </a></div>
+                                                <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145155&amp;p=0&amp;i=1172782"> Sign: 0145155</a></p>
+
+		
+		
+		
+		    </div>  </div>
+    
+                </div>  </div>
+ 
+ 
+ 			 
+ 
+ 
+    </sede:content>
+ 
+</body>
+
+</html>

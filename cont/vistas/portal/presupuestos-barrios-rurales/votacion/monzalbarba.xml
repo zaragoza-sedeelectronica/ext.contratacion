@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Votación Monzalbarba. Presupuestos Participativos 2018" author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Wed Sep 19 00:00:00 CEST 2018" keywords="ayuntamiento, ciudad, Zaragoza, Espana, presupuestos, presupuestos participativos, administracion electronica, participacion, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment, budget participatifs, Parcitipatory budgeting" />
+    <style type="text/css">
+        @media print{
+            header {
+                display:none;
+            }
+            .navbar-portal {
+                display: none;
+            }
+            .buttons {
+                display: none;
+            }
+            h3 {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                margin: 0 important!;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-md-12">
+                <img class="col-md-3 pull-left margin-t1em margin-l1em" src="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/img/zgz.png" height="50" width="190" />
+                <img class="col-md-8 margin-t1em pull-right margin-r1em margin-b1em" src="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/img/cabecera-bbrr-2018-papeleta2.jpg" height="90" width="415" />                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-justify buttons">
+                <input type="button" class="btn btn-primary pull-right" onclick="window.print();return false;" value="Imprimir"></input>
+                <a href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/monzalbarba.pdf"><input type="button" class="btn btn-primary pull-right margin-r1em" value="Descargar papeleta"></input></a>
+            </div>
+        </div>
+          
+        <div class="row col-md-12">
+            <div class="table-responsive text-center">
+                <table class="table table-bordered margin-t1em fnd-gris-claro">
+                    <tr>
+                        <th class="col-md-3 text-center" id="barrio"><h3> <strong>MONZALBARBA</strong>  </h3></th>
+                        <th class="col-md-3 text-center" id="presupuesto"><h3><strong>Presupuesto<br/> 62.240 €</strong></h3></th>
+
+                    </tr>
+                </table>
+            </div>
+            <h3><strong>Cómo votar:</strong></h3>
+            <p>No procede la votación porque el coste total de las propuestas ratificadas por el pleno de la junta (62.600 €) coincide aproximadamente con el presupuesto asignado al barrio.<br/>
+                    Las propuestas ratificadas por el pleno de la junta vecinal que se ejecutarán con el presupuesto asignado al barrio son las siguientes:</p>
+                                  
+            <div class="table-responsive">
+                <table class="table table-condensed table-bordered margin-t1em">
+                    <tr>
+                        <th class="col-md-1 text-center fnd-gris-claro" id="id">	ID	</th>
+                        <th class="col-md-8 text-center fnd-gris-claro" id="propuesta">	PROPUESTA	</th>
+                        <th class="col-md-3 text-center fnd-gris-claro" id="cuantia">	CUANTÍA	</th>
+
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>	3444	</strong></td>			
+                        <td headers="propuesta">Retranqueo de biondas y asfaltado de zonas de arcenes en subida y bajada del puente autopista del camino de la estación</td>		
+                        <td class="text-center" headers="cuantia">	30.000 €	</td>
+
+                    </tr>                    
+                    <tr>
+                        <td class="text-center" headers="id"><strong>	3450	</strong></td>			
+                        <td headers="propuesta">Megafonia del Barrio</td>		
+                        <td class="text-center" headers="cuantia">	12.000 €	</td>
+
+                    </tr>
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3475    </strong></td>          
+                        <td headers="propuesta">Alumbrado de zona del CDM Monzalbarba y Geriatrico en camino La Mejana</td>        
+                        <td class="text-center" headers="cuantia">  17.000 €    </td>
+
+                    </tr>                    
+                    <tr>
+                        <td class="text-center" headers="id"><strong>   3477    </strong></td>          
+                        <td headers="propuesta">Colocación de Iluminación zona de lectura de la Biblioteca de Monzalbarba</td>       
+                        <td class="text-center" headers="cuantia">  3.600 €    </td>
+
+                    </tr>
+                   
+                    <!--/*<tr>
+                        <td class="text-center" headers="id"><strong>   3499    </strong></td>          
+                        <td headers="propuesta">Reforma de los accesos al CDM Monzalbarba</td>        
+                        <td class="text-center" headers="cuantia">  26.400 €    </td>
+
+                    </tr>*/-->
+                </table>
+            </div>                  
+        </div>
+       
+    </sede:content>
+</body>
+
+</html>

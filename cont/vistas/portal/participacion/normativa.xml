@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+     <sede:meta title="Normativa sobre Participación y Colaboración. Gobierno Abierto" 
+               description="Acceso en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, a la normativa en materia de participación y colaboración para el ejercicio de sus derechos. Conozca el reglamento de Órganos Territoriales y Participación Ciudadana, las instrucciones para la habilitación de la Consulta Pública y el procedimiento de Promoción y Celebración de Encuestas Ciudadanas." 
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, normativa, legislación local, órgano consultivo, encuesta ciudadana, consulta pública,
+city, council, Saragossa, electronic site, local government, gobierno abierto, relación administración-administrado, social participation, regulations, local legislation, advisory board, públic survey, public consultation"
+                
+                />
+    
+    <style type="text/css">
+
+    
+    .ribbon-wrapper_ {
+		margin-top: 73px;
+}
+
+            .redes-sociales {
+			margin-top: 3px;
+			margin-right: 0px;				
+            font-size: 42px;
+			position: relative;
+            }            
+
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        
+
+
+        
+        
+        <div class="container-fluid margin-b1em">
+                            <div class="pull-right redes-sociales">
+                                <a href="https://www.facebook.com/ZGZopencity/"><span class="fab fa-facebook-square"></span></a>
+                                <a href="https://twitter.com/ZGZopencity"><span class="fab fa-twitter-square"></span></a>
+                            </div>				
+            <h2 id="what">Normativa</h2>
+            <hr class="sm"/>
+            <ul><li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/109">Reglamento de Órganos Territoriales y Participación Ciudadana</a></li>	
+<li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/8943">Propuesta de acuerdo por el que se aprueban las Instrucciones para habilitar la Consulta Pública previa en el proceso de elaboración de proyectos normativos a través de la plataforma de Gobierno Abierto</a></li>
+<li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/8944">Instrucciones para habilitar la Consulta Pública previa en el proceso de elaboración de proyectos normativos a través de la plataforma de Gobierno Abierto</a></li>
+<li><a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/5823">Decreto: Instrucción sobre procedimiento de Promoción y Celebración de Encuestas Ciudadanas</a></li></ul>
+            </div>           
+				
+    </sede:content>
+     <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

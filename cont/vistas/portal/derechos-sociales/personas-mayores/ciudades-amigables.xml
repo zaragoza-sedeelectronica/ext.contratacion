@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Ciudades Amigables" 
+               description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece recursos de información sobre el proceso de integración del municipio en la red de Ciudades Amigables y plan de acción para los próximos años" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service" />
+    <style type="text/css">
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/derechos-sociales/personas-mayores/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Personas Mayores</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Tu Ciudad</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="comercio-amigable">Comercios Amigables</a></li>
+                    <li><a href="ciudades-amigables">Ciudades Amigables</a></li>
+                    <li><a href="rutas-amigables">Rutas Amigables</a></li>
+                    <li><a href="parques">Parques</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h2>Ciudades Amigables</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-9">
+                    <h3>Plan de Acción 2014-2017</h3>
+                    <p>Con fecha <strong>27 de marzo de 2009</strong>, el Ayuntamiento Pleno aprobó por unanimidad la integración de Zaragoza en la Red de Ciudades Amigables con las Personas Mayores de la Organización Mundial de la Salud.</p>
+                    <p>En Marzo de 2011 se formaliza la <strong>entrada en la Red</strong>, siendo Zaragoza la segunda ciudad española en integrarse.</p>
+                    <p>Conforme a los compromisos adquiridos con el ingreso a la Red se inició la primera fase de trabajo consistente en elaborar un <strong>diagnóstico participativo </strong> mediante el análisis de las diferentes áreas de investigación establecidas en el Protocolo de Vancouver y con la metodología establecida en el mismo. </p>
+                    <p>De esta forma se definieron los mecanismos y ámbitos de participación de los mayores en el proceso de diagnóstico, así como de otros colectivos, profesionales, comercios... relacionados con los mayores, con el fin de elaborar un diagnóstico que permitiera en primer lugar medir la amigabilidad de la ciudad con los mayores, en segundo lugar implicar a los participantes en el proceso de análisis y propuestas de mejora en cuanto a programas, servicios y características de la ciudad para los mayores y por último generar una serie de propuestas que permitieran configurar un plan de actuación adecuado a las necesidades y demandas de las personas mayores de la ciudad El desarrollo de la primera fase de actuación generó el documento de diagnóstico de la ciudad, que no solo evaluaba la amigabilidad de la misma, sino que analizaba en cada una de las áreas definidas en el Protocolo de Vancouver las fortalezas y debilidades en opinión de los mayores, además de proponer acciones de mejora.</p>
+                    <p>Esta información permitió la elaboración de <strong>25 propuestas</strong> con diferentes niveles de concreción, que junto con la metodología propuesta en el propio documento, son el resumen de la opinión de los mayores a la vez que el punto de partida para la elaboración del presente Plan de Acción, Este Plan representa uno de los compromisos adquiridos por el Ayuntamiento de Zaragoza al inciorporarse a la <strong>Red de Ciudades Amigables con las Personas Mayores</strong>, un Plan que deberá desarrollarse durante un periodo de tres años, para su posterior evaluación.</p>
+                    <p>En definitiva se trata de un <strong>Plan que recoje, organiza, y define los proyectos prioritarios a llevar a cabo en los proximos tres años</strong>, para dar respuesta a las demanadas y necesidades planteadas por los mayores, o lo que es lo mismo un plan que mejore las condiciones de la ciudad para mejorar calidad de vida de los mayores en la ciudad, un Plan de Amigabilidad para la Personas Mayores.</p>
+                </div>
+                <div class="col-md-3">
+                    <img alt="" class="img-responsive" src="/cont/vistas/portal/derechos-sociales/personas-mayores/img/planaccion1417.jpg" />
+                    <p><a class="pdf" href="https://www.zaragoza.es/contenidos/sectores/mayores/plan-accion-1417.pdf"><strong>Documento Completo</strong></a></p>
+                    <div><strong>Conoce la <a href="http://www.ciudadesamigables.imserso.es/imserso_01/ciudades_amigables/index.htm" title="Se va a abrir enlace externo">Red de Ciudades Amigables a través del Imserso</a></strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-9">
+                    <h3> Proceso de Integraci&#243;n en la Red</h3>
+                    <p> La<strong> Red de Ciudades Amigables </strong>con las Personas Mayores es un proyecto promovido por la <strong>Organizaci&#243;n Mundial de la Salud</strong>, en el marco del programa de <em>Envejecimiento y Ciclo de Vida.</em></p>
+                    <p> El proyecto parte de dos aspectos de nuestra sociedad actual, por un lado el progresivo <em>envejecimiento de la poblaci&#243;n mundial y por otro el proceso de urbanizaci&#243;n</em>. </p>
+                    <p> Se trata de un proyecto que aborda los aspectos que afectan a la vida de cualquier ciudad, como son los sociales, sanitarios, econ&#243;micos, urban&#237;sticos y espaciales, de accesibilidad, vivienda, transporte, espacios al aire libre, seguridad, empleo, comunicaci&#243;n, acceso a la informaci&#243;n, inclusi&#243;n social y respeto a los derechos de los ciudadanos. Todo ello con la participaci&#243;n activa de las personas mayores, teniendo en cuenta sus necesidades, percepciones y opiniones. </p>
+                    <p> El pleno municipal de marzo de 2009 aprob&#243;, por unanimidad, el integrarse en la<strong> Red de Ciudades Amigables</strong> para Personas Mayores. </p>
+                    <p> En los meses de<strong> octubre a diciembre de 2010 </strong>se llev&#243; a cabo una evaluaci&#243;n de la ciudad de Zaragoza mediante una investigaci&#243;n cualitativa, conforme al protocolo de ingreso en la Red. </p>
+                    <p> En enero de 2011 se formaliza la incorporaci&#243;n de Zaragoza a la Red de Ciudades Amigables para Personas Mayores, siendo en ese momento la <strong>segunda ciudad espa&#241;ola</strong>, despu&#233;s de San Sebasti&#225;n, que se incorporaba a la Red </p>
+                    <p> El avance del estudio realizado se present&#243; el pasado 3 de marzo en un acto presidido por el<em> Excmo. Sr. Alcalde de la Ciudad</em> y que cont&#243; con la presencia del <em>Dr. John Beard</em>, <em>Director de  Envejecimiento y calidad de vida de la OMS </em></p>
+                    <p> Dentro de las conclusiones de este avance, se&#241;alar que las personas mayores que han participado en las entrevistas coinciden en que Zaragoza es una ciudad <strong>amigable</strong>, y no s&#243;lo con las personas mayores, sino en el sentido general de la palabra, calific&#225;ndola como una ciudad <em>c&#243;moda</em>. </p>
+                    <p> Actualmente se ha publicado el estudio completo de evaluaci&#243;n, en el que destacan una serie de <strong>25 propuestas</strong> de cara a impulsar las actuaciones que hagan de Zaragoza una ciudad m&#225;s amigable con las personas mayores.</p>
+                </div>
+                <div class="col-md-3">
+                    <img alt="" class="img-responsive" src="/cont/vistas/portal/derechos-sociales/personas-mayores/img/ciudadamigable.jpg" />
+                    <p><a class="pdf" href="/contenidos/sectores/mayores/ciudadamigable.pdf"><strong>Documento Completo</strong></a></p>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

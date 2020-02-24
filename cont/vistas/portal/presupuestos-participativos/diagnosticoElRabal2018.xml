@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Autodiagnóstico para el Distrito de El Rabal" description="Autodiagnóstico para el Foro del Distrito del Actur" author="Ayuntamiento de Zaragoza" last-modified=" Mon Jau 23 10:00:00 CET 2016 " audience="" keywords="gobierno abierto, presupuestos participativos, autodiagnostico">
+
+    </sede:meta>
+    <style type="text/css">
+    .fnd-turismo {
+        background: #d68100;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #31708f;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+   
+	<br/>
+        <div class="full-screen-box">
+            <h2 class="nomargin"><strong>El Rabal</strong>: Diagnóstico y catálogo de reclamaciones históricas</h2>
+            <hr class="sm" />
+            <div class="row">
+                <div class="col-md-1">
+                    <h3>Nº</h3><hr class="sm" />
+                </div>
+                <div class="col-md-3">
+                    <h3>Título</h3><hr class="sm" />
+                </div>
+                <div class="col-md-4">
+                    <h3>Descripción</h3><hr class="sm" />
+                </div>
+                <div class="col-md-2">
+                    <h3>Ubicación</h3><hr class="sm" />
+                </div>
+                <div class="col-md-2">
+                    <h3>Beneficiarios/as</h3><hr class="sm" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>1</strong></p>
+                </div>
+                <div class="col-md-3">
+                    <p><strong>Renovaciones de colegios del distrito: aseos, patios, ventanas, eficiencia energética</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Muchos colegios del distrito fueron construidos hace varias décadas. En algunos de ellos el estado de la instalaciones sanitarias, de los cerramientos y aislamientos, de los patios… están en un estado precario e incluso peligroso. Colegios como el Zalfonada, Tío Jorge, Cándido Domingo, Eugenio López y López, Hilarión Gimeno... necesitan actuaciones urgentes</p>
+                </div>
+                <div class="col-md-2">
+                    <p>En varios colegios del distrito de El Rabal</p>
+                </div>
+                <div  class="col-md-2">
+                    <p>Los alumnos del distrito</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>2</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Mejora de la eficiencia energética en las instalaciones vecinales de El Picarral</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Edificio cedido de propiedad municipal que necesita actualización en su sistema de aislamiento, calefacción, luz..</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Camino de Juslibol 36</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Los vecinos de El Picarral</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>3</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Zona deportiva al aire libre para mayores y jóvenes en El Picarral</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Aparatos para la tercera edad así como un gimnasio al aire libre </p>
+                </div>
+                <div class="col-md-2">
+                    <p>Solar C/Alberto Casañal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Los vecinos de El Picarral</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>4</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Asfaltado de camino de tierra paralelo al parque de Macanaz entre la calle García Arista con Paseo la Ribera y el Puente de Santiago.</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Zona en precario que precisa de actuación urgente</p>
+                </div>
+                <div class="col-md-2">
+                    <p>C/García Arista hacia Paseo de La Ribera</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Todos los transeúntes de la zona</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>5</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Construcción de un paso de peatones con o sin semáforo, según determine movilidad en la calle San Juan de la Peña, frente al número 12, entre calle Almadieros del Roncal y Calle Peña Oroel.  </strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>No existe ningún paso de peatones entre Peña Oroel y Valle de Zuriza, y es muy demandado por los vecinos.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>San Juan de la Peña 12</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos y transeúntes</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>6</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Aceras Ronda Hispanidad. Reestructuración de la acera, carril-bici, zona supuestamente ajardinada y zona de aparcamiento ente Ronda Hispanidad y Calle Isla de Mallorca. Entre Avda. de Cataluña y Calle Isla Formentera.</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Se realizó con motivo de la Expo una acera con arbolado, a la que luego se le añadió un carril-bici, sin aumentar su superficie, dejando una zona de 1,40 metros de anchura para los peatones en la que se incluyen alcorques, farolas y semáforos, y un doble carril-bici.</p>
+<p>A continuación viene una supuesta zona ajardinada, y la calzada  con una zona de aparcamiento en batería antes del carril.</p>
+<p>Proponemos el traslado  del carril-bici a la zona ajardinada y la realización de una nueva zona de jardines ocupando parte de la zona de cazada.
+</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Ronda Hispanidad y Calle Isla de Mallorca. Entre Avda. de Cataluña y Calle Isla Formentera.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos y transeúntes</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>7</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Reforma de las zonas ajardinadas, platabandas y alcorques del Barrio de La Jota</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>La situación de estas zonas precisa de actuación urgente, especialmente en<ul><li>Avda. de la Jota.</li><li>Calle José Oto, entre Pascuala Perie y Marques de la cadena.</li><li>Calle Felisa Galé</li><li>Calle María Virto.</li><li>Calle Pascuala Perie.</li><li>Calle molino de las Armas, entre Pascuala Perie y Marques de la cadena.</li><li>Plaza de la Albada, jardín entre la iglesia y el nº 3 Calle María Pilar Heras Dopereiro.</li><li>Con la creación de una zona de paso y otra ajardinada entre ambos edificios.</li></ul>
+</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Barrio de La Jota</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Los vecinos de La Jota</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>8</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Movilidad. Rotonda Avda. Puente del Pilar – Calle Muel.</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Se trata de un proyecto de remodelación y saneamiento de la zona mediante la creación de una rotonda en el final de la Calle Muel con Avenida Puente del Pilar cuyo propósito serviría para mejorar la movilidad en el barrio y a su vez suprimir el giro a izquierdas existen actualmente en el Puente del Pilar con el Paseo de la Ribera en sentido Balcón de San Lázaro. Ya hay una propuesta redactada en infraestructuras y estamos a la espera de dotación presupuestaria para su ejecución.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Calle Muel</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Todos los zaragozanos</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>9</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Adecuar la Accesibilidad de la escalera metálica de Cecilio Navarro.</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Garantizar la accesibilidad de todos los vecinos que desde Cecilio Navarro acceden a la Avenida Puente del Pilar, actualmente no esta garantizada con la escalera existente. Dicha escalera al ser metálica los días con mucha humedad (lluvia o niebla) produce continuos problemas por la falta de adherencia de sus peldaños. Además no permite su uso en caso de portar carros bebe o carros de compra y dificulta su transito a las personas que empiezan a tener problemas de movilidad.</p>
+
+<p>Esta escalera que se instaló a mediados de los 80 es otra de las reivindicaciones que no entendemos porqué nunca se ha acometido.
+"</p>
+                </div>
+                <div class="col-md-2">
+                    <p>C/Cecilio Navarro</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de Barrio Jesús</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>10</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Parque de Vadorrey: Es preciso reponer material de gravilla autonivelante en los caminos, actualmente encharcado por efecto de la lluvia o el riego de los aspersores que desciende de los parterres más altos.</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Superficie de los parterres con numerosas calvas y superficie sobreelevada a causa de no pasar el escariador y no retirar los restos vegetales de los cortes. Insistimos en la necesidad de que se resiembre con trébol, ya que esta planta necesita menos agua, impide en parte la evaporación por su tipo de hoja, no se agosta en verano, y es mucho más resistente que la actual “Grama” a las heladas.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Parque de Vadorrey</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de Vadorrey y La Jota</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>11</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Parque de Oriente: 55.350 m2. Parque inconcluso, solo la mitad puede recibir el nombre de parque, la otra mitad de la superficie se encuentra abandonada, en la misma se encuentra la PLAZA DEL TIEMPO, con el Reloj Solar más grande del mundo. Está pendiente de terminarse el parque astronómico proyectado por el ingeniero diseñador del proyecto con un proyecto aprobado incluida partida presupuestaria. </strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>5 peticiones parciales:<ul><li>Solicitamos replantación con trébol.</li><li>Solicitamos se proceda a cerrar la única cicatriz urbanística del sector con arreglo al proyecto original poniendo en valor un monumento de referencia MUNDIAL sin terminar.</li><li>Preciso rediseñar caminos y salidas coincidentes con los pasos de peatones sobre las calzadas.
+</li><li>Solicitamos se repongan las faltas y se retiren los tocones de árboles cortados hace 4 años.</li><li>Solicitamos se cubran con planos inclinados de acuerdo con el diseño para evitar una situación de degradación muy importante.</li></ul>
+</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Parque de Oriente</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de Vadorrey y La Jota</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>12</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Ampliación Piscinas Municipales de La Jota</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Realización del nuevo cerramiento para la ampliación de las piscinas del CDM La Jota. La piscina se abrió en 1994.</p>
+<p>Aforos: 3 Laminas de agua. 2 persona por cada 3 metros cuadrados
+625 + 312,5 + 55 = 992,5 / 3= 330,8 x 2 =661 personas
+</p><p>Césped 1200 m2  calculando unos espacios personales para tomas el sol, incluyendo zonas de paso de 2x2 metros (4metros cuadrados)  solo podrían estar 300 personas en la piscina. Esto permitiría ganar, directamente, una porción de césped ya existente en el Parque de Oriente.</p>
+<p>La piscina de la jota  no cumple la proporción que debe de haber entre la superficie total  de las laminas de agua y la superficie de césped (3 usuarios por cada 2 metros cuadrados de agua).</p>
+<p>Hasta el año 2012 la piscina de la Jota se veía obligada a cerrar por “aforo completo” al menos 2 días a la semana durante la temporada de verano, y a cumplir a rajatabla el acceso de menores acompañados de adultos.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Piscinas de La Jota</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Todos los usuarios</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>13</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Juegos inclusivos y adaptados en todo el distrito</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>En todos los parques infantiles del distrito, solicitamos la instalación de al menos un juego adaptado a niños con necesidades especiales. En aquellos donde el espacio no lo permita, solicitamos la reposición de uno por otro. Los juegos sobrantes, en caso de haberlos, podrían instalarse en algún punto del distrito con carencias de zonas infantiles. </p>
+                </div>
+                <div class="col-md-2">
+                    <p>Distrito de El Rabal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Niños con necesidades especiales</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>14</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Circuito para andarines y runners</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Señalización de circuitos para andarines que recorran el distrito, con fuentes y aseos en puntos seleccionados.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Distrito de El Rabal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de El Rabal</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>15</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Equipamientos urgentes Centros Cívicos</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Ninguno de los Centro Cívicos de el distrito: Tío Borde, Estación del Norte y Distrito 14 disponen de equipamientos audiovisuales suficientes para atender las demandas de los colectivos que realizan actividades en ellos a diario. Se necesitan cañones de proyección, equipos de música portátiles así como reponer el tablado del salón de actos del CC Estación del Norte de manera urgente.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Centros Cívicos de El Rabal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Usuarios Centro Cívicos </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>16</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Cuadros eléctricos actividades al aire libre</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Instalación de cuadros eléctricos elevados en todos los barrios de el distrito de El Rabal. En puntos seleccionados tradicionalmente por las AAVV y los CC para la realización de actividades lúdicas y culturales al aire libre.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Distrito de El Rabal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de El Rabal</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>17</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Valla Parque del Tío Jorge</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>La valla que colinda entre el Centro Cívico Tío Jorge y el parque Tío Jorge está en un estado grave que pone en peligro a los niños y jóvenes que juegan y transitan por la zona </p>
+                </div>
+                <div class="col-md-2">
+                    <p>Esquina Centro Cívico Tío Jorge con parque</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de la zona</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>18</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Instalación paneles informativos Bus Urbano</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>En todas las paradas de bus del distrito</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Distrito de El Rabal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de El Rabal</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>19</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Adecuación parterres, bordillos, alcorques, pasos de peatones, aceras, rebajes</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>El distrito completo necesita un mantenimiento continuado de sus calles. En especial en algunas zonas como la calle trasera de Peña Oroel, sin nombre, que necesita limpieza y asfaltado completo. También especial hincapié en zonas de El Picarral como Violeta Parra.</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Distrito de El Rabal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de El Rabal</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div  class="col-md-1">
+                    <p><strong>20</strong></p>
+                </div>
+                <div  class="col-md-3">
+                    <p><strong>Adecuación de solares municipales para su uso como aparcamiento en precario </strong></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Limpieza y adecuación de todos los solares municipales del distrito para su uso como aparcamiento en precario por parte de los vecinos, debido a la falta de aparcamiento en los barrios más antiguos. </p>
+                </div>
+                <div class="col-md-2">
+                    <p>Distrito de El Rabal</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Vecinos de El Rabal</p>
+                </div>
+            </div>
+</div>
+
+        <div role="alert" class="alert alert-info">Descarga el <a href="/contenidos/presupuestos-participativos/diagnosticoElRabal2018.pdf" class="pdf">documento de diagnóstico y reclamaciones históricas</a> de la Mesa de Presupuestos Participativos.</div>   
+
+            
+       
+        
+        
+    </sede:content>
+</body>
+
+</html>

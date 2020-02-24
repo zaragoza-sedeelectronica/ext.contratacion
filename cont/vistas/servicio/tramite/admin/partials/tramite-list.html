@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <nav class="navbar navbar-default" ng-show="permisos.DET">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand hidden-desktop">Filtros</span>
+                </div>
+                <div class="collapse navbar-collapse" id="buscadoresTarget">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="number" class="form-control" ng-model="qsearch.id" placeholder="Por id..." style="width:80px">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="qsearch.title" placeholder="Buscar por nombre...">
+                        </div>
+                        <div class="form-group">
+                        	<select class="form-control input-sm" id="publicado" name="publicado" ng-model="qsearch.visible">
+                            	<option value="" selected>Publicado</option>
+                            	<option value="S">Si</option>
+                            	<option value="N">No</option>
+                        	</select>
+                    	</div>
+                        <div class="form-group">
+                        	<select class="form-control input-sm" id="top" name="top" ng-model="qsearch.top">
+                            	<option value="" selected>Frecuente</option>
+                            	<option value="true">Si</option>
+                            	<option value="false">No</option>
+                        	</select>
+                    	</div>
+                        <div class="form-group">
+                        	<select class="form-control input-sm" id="qsearchMateria" name="qsearchMAteria" ng-model="qsearch.materia" ng-options="materia.id as materia.title for materia in materiasProcedimiento track by materia.id" style="width:200px">
+                            	<option value="" selected>Materia...</option>
+                        	</select>
+                    	</div>
+                        <button type="submit" class="btn btn-default" ng-click="buscar(qsearch)">Filtrar</button>
+                    </form>
+
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <div infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="2" ng-show="permisos.DET && registros.length > 0">
+        N&uacute;mero de resultados: {{totalCount}}
+            <table class="table table-bordered table-hover table-striped table-btn">
+                <thead>
+                    <tr>
+                        <th th-orden order="'id'" by="order" reverse="reverse">ID</th>
+                        <th th-orden order="'title'" by="order" reverse="reverse">NOMBRE</th>
+                        <th th-orden order="'plazoInicio'" by="order" reverse="reverse" width="100">Inicio</th>
+                        <th th-orden order="'plazoFin'" by="order" reverse="reverse" width="100">Fin</th>
+                        <th><span class="fas fa-laptop" aria-hidden="true" title="En línea"></span></th>
+                        <th><span class="fas fa-key" aria-hidden="true" title="Con certificado"></span></th>
+                        <th><span class="fas fa-building" aria-hidden="true" title="Por presencial"></span></th>
+                        <th><span class="fas fa-envelope" aria-hidden="true" title="Por correo"></span></th>
+                        <th><span class="fas fa-phone" aria-hidden="true" title="Por teléfono"></span></th>
+
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros | orderBy:order:reverse">
+                        <td data-title="ID" ><a href="#/edit/{{ registro.id }}">{{registro.id}}</a> <span ng-show="registro.preferential==1" class="fa fa-star" aria-hidden="true" title="Prioritario"></span></td>
+                        <td data-title="title"><a href="#/edit/{{ registro.id }}">{{registro.title}}</a></td>
+                        
+                        <td data-title="plazoInicio">{{registro.plazoInicio | date:'dd-MM-yyyy'}}</td>
+                        <td data-title="plazoFin">{{registro.plazoFin | date:'dd-MM-yyyy'}}</td>
+                        <td data-title="enLinea"><span ng-show="registro.enLinea" class="fa fa-check" aria-hidden="true"></span></td>
+                        <td data-title="certificado"><span ng-show="registro.certificado" class="fa fa-check" aria-hidden="true"></span></td>
+                        <td data-title="presencial"><span ng-show="registro.presencial" class="fa fa-check" aria-hidden="true"></span></td>
+                        <td data-title="correo"><span ng-show="registro.correo" class="fa fa-check" aria-hidden="true"></span></td>
+                        <td data-title="telefono"><span ng-show="registro.telefono" class="fa fa-check" aria-hidden="true"></span></td>
+                        <td data-title="Operaciones">
+                            <modal-borrar></modal-borrar>
+                            <boton-visibilidad></boton-visibilidad>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div role="alert" class="alert alert-warning spinner-tabla" ng-show="busy"><span class="spinner"></span>Espera por favor, se estan cargando los datos.</div>
+            
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Bienes embargados" keywords="sede,web,monumento" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <h2><span th:text="*{tipoText}"></span> <small class="badge" sede:rdf="*{get('startDate','EEEE dd MMMM yyyy HH:mm')}"></small></h2>
+            <dl class="dl-horizontal">
+                <dt>Límite presentación de ofertas</dt>
+                <dd sede:rdf="*{get('offerDate', 'EEEE dd MMMM yyyy HH:mm')}"></dd>
+                <dt>Presidente</dt>
+                <dd th:text="*{presidente}"></dd>
+                <dt>Vocal 1</dt>
+                <dd th:text="*{vocal1}"></dd>
+                <dt>Vocal 2</dt>
+                <dd th:text="*{vocal2}"></dd>
+                <dt>Secretario</dt>
+                <dd th:text="*{secretario}"></dd>
+            </dl>
+            <h2>Extracto de Condiciones Generales</h2>
+            <div th:utext="*{condiciones}"></div>
+            <h2>Lotes</h2>
+            <ul class="list-unstyled">
+                <li th:each="lote: *{lotes}" sede:rdf="${lote.lote.voc()}" th:attr="about=${lote.lote.uri}">
+                    <th:block th:include="servicio/bienes-embargados/admin/lote-list(lotedetail=${lote.lote}, actodetail=${dato})" />
+                </li>
+            </ul>
+            <div th:utext="*{exposicionPublico}"></div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

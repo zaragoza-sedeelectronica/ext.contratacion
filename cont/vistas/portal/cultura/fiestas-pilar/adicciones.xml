@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presentación. Fiestas del Pilar 2017" description="Campaña contra el alcohol en las Fiestas del Pilar 2017" author="Ayuntamiento de Zaragoza" keywords="Ayuntamiento, Zaragoza, España, Fiestas del Pilar, Ciudad, cultura, turismo, actividades, espacios, octubre" />
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143; /* h2 line-height == a line-height*/
+    }
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    .section-content-alt {
+        border-radius: .5em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav class="clearfix">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/presentacion">Presentación</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/ofrenda-flores">Ofrenda de Flores</a></li>
+                <!--/* <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/medallas-ciudad">Medallas de la Ciudad</a></li> */-->
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/servicio/noticia/225900">Medallas de la Ciudad</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/gigantes-cabezudos">Gigantes y Cabezudos</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/cultura/fiestas-pilar/accesibilidad">Accesibilidad</a></li>
+                <li class="col-xs-6 col-sm-2">
+                    <ul class="list-inline nomargin navbar-right text-center padding-t05em">
+                        <li>
+                            <a itemprop="sameAs" href="https://twitter.com/FiestasPilarOfi">
+                                <span class="fab fa-2x fa-twitter-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.facebook.com/FiestasdelPilar.Oficial">
+                                <span class="fab fa-2x fa-facebook-square text-color" aria-hidden="true"></span>
+                                <span class="oculto">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.instagram.com/fiestaspilaroficial">
+                                <span class="fab fa-2x fa-instagram text-color" aria-hidden="true"></span>
+                                <span class="oculto">Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="sameAs" href="https://www.youtube.com/playlist?list=PLfj57q5hJUJSMcymtKeGfcAIVaZESfgLf">
+                                <span class="fab fa-youtube fa-2x text-color" aria-hidden="true"></span>
+                                <span class="oculto">Youtube</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!--/* <h3 class="color-ayto offset-target" id="presentacion">Presentación</h3> */-->
+        <div class="row section-content section-content-alt">
+            <div class="col-md-12">
+                <h3>
+                QUE EL ALCOHOL NO TUMBE TUS PILARES 
+                </h3>            <div class="col-md-6">
+ 
+<p>Desde el <strong>Centro Municipal de Atención y Prevención de Adicciones</strong> te recuerdan que puedes pasártelo igual de bien sin consumir alcohol:</p>
+
+<p>
+<em>
+Ya que sabemos que el consumo de alcohol supone un gran riesgo para que
+la fiesta acabe mal... y tan mal como cuando alguien acaba desplomado y
+no puede ni levantarse. </em></p></div>
+
+<div class="col-md-6"><a href="/contenidos/fiestaspilar/folleto-adicciones.pdf" class="pdf">Folleto Campaña</a><img src="/cont/paginas/fiestaspilar/img/adicciones.jpg" alt=""/>
+</div>                
+            </div>
+        </div>
+        
+    </sede:content>
+</body>
+
+</html>

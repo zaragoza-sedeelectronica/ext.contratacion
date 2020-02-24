@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Acto Bienes embargados" keywords="sede,web,monumento" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/js/jquery-ui-1.11.3.min.css" />
+    <script src="https://cdn.ckeditor.com/4.5.10/standard-all/ckeditor.js"></script>
+
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/bienes-embargados/admin/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+            <th:block th:if="${registro.body.visible} == 'N'">
+                <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./unlock}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"> Publicar</span> </a>
+            </th:block>
+            <th:block th:if="${registro.body.visible} == 'S'">
+                <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./lock}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> Ocultar</a>
+            </th:block>
+            <a title="Lotes" th:if="${registro.body.id} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DOC')}" th:href="@{./lotes}" class="btn btn-info btn-xs"><span class="fa fa-gift"></span> Lotes</a>
+            <a title="Licitadores" th:if="${registro.body.id} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DOC')}" th:href="@{./licitadores}" class="btn btn-info btn-xs"><span class="fa fa-users"></span> Licitadores</a>
+            <a title="Borrador de acta" th:if="${registro.body.id} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DOC')}" th:href="@{./borrador-acta}" class="btn btn-info btn-xs"><span class="fa fa-eraser"></span> Borrador Acta</a>
+            <a title="Acta" th:if="${registro.body.id} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DOC')}" th:href="@{./acta}" class="btn btn-success btn-xs"><span class="fa fa-file"></span> Acta</a>
+            <th:block th:include="fragmentos/control-fields" />
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Acto de <th:block th:text="*{tipo}"></th:block></span></legend>
+                    <div class="form-group">
+                        <input type="hidden" name="tipo" th:value="*{tipo}" />
+                        <label class="col-sm-1 control-label" for="startDate">Fecha</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" th:field="*{startDate}" size="100" placeholder="dd-mm-yyyy hh:mm" />
+                        </div>
+                        <label class="col-sm-1 control-label" for="offerDate">Presentación Ofertas</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" th:field="*{offerDate}" size="100" placeholder="dd-mm-yyyy hh:mm" />
+                        </div>
+                        <label class="col-sm-1 control-label" for="lugar">Lugar</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" th:field="*{lugar}" size="100" />
+                        </div>
+                    </div>
+                    <p>&nbsp;</p>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="presidente">Presidente</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" th:field="*{presidente}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="secretario">Secretario</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" th:field="*{secretario}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="vocal1">Vocal 1</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" th:field="*{vocal1}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="vocal2">Vocal 2</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" th:field="*{vocal2}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="condiciones">Condiciones</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" th:field="*{condiciones}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exposicionPublico">Exposición al público</label>
+                        <div class="col-sm-5">
+                            <textarea class="form-control" th:field="*{exposicionPublico}" />
+                        </div>
+                        <label th:if="*{id}" class="col-sm-2 control-label" for="proximaVentaDirecta">Próxima Venta Directa</label>
+                        <div class="col-sm-3" th:if="*{id}">
+                            <input class="form-control" type="text" th:field="*{proximaVentaDirecta}" size="100" placeholder="dd-mm-yyyy" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                    <th:block th:if="*{id} == null">
+                        <p>&nbsp;</p>
+                        <h3>Lotes</h3>
+                        <!--/* CREANDO */-->
+                        <th:block th:each="lote, stat: ${lotes}">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <input class="form-control" type="checkbox" name="lot" th:value="${lote.id}" checked="checked" />
+                                    <input class="form-control" type="text" th:name="'lote[' + ${lote.id} + '].numero'" th:value="${stat.index + 1}" />
+                                </div>
+                                <div class="col-md-11">
+                                    <th:block th:include="servicio/bienes-embargados/admin/lote-list(lotedetail=${lote})" />
+                                </div>
+                            </div>
+                        </th:block>
+                    </th:block>
+                    <th:block th:if="*{id} != null">
+                        <!--/* MODIFICANDO */-->
+                        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                            <li role="presentation" class="active"><a href="#lotes-asociados" aria-controls="#lotes-asociados" role="tab" data-toggle="tab">Lotes asociados</a></li>
+                            <li role="presentation"><a href="#lotes-disponibles" aria-controls="#lotes-disponibles" role="tab" data-toggle="tab">Lotes disponibles</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div sede:class="tab-content">
+                            <h2 data-toggle="collapse" data-target="#lotes-asociados" aria-expanded="false">Lotes asociados</h2>
+                            <div role="tabpanel" sede:class="tab-pane active" id="lotes-asociados">
+                                <th:block th:if="${dato.lotes}" th:each="lote,stat: ${dato.lotes}">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <a title="Retirar del acto" th:if="not ${lote.lote.notificacionAcuerdoEnajenacion}" th:href="@{/servicio/bienes-embargados/admin/{id}/lote/{id_lote}/lock(id=*{id}, id_lote=${lote.lote.id})}"><span class="fa fa-minus-circle"></span> </a>
+                                            <a title="Retirar del acto" th:if="${lote.lote.notificacionAcuerdoEnajenacion}" th:href="@{/servicio/bienes-embargados/admin/{id}/lote/{id_lote}/lock(id=*{id}, id_lote=${lote.lote.id})}"><span class="fa fa-minus-circle text-success"></span> </a>
+                                            <strong th:text="'Lote ' + ${lote.numero}"></strong>
+                                            <span class="label label-warning" th:if="${lote.desiertoPrimera}">Desierto en 1ª</span>
+                                            <span class="label label-info" th:text="${lote.estadoText}" />
+                                        </div>
+                                        <div class="col-md-11">
+                                            <th:block th:include="servicio/bienes-embargados/admin/lote-list(lotedetail=${lote.lote}, actodetail=${dato})" />
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </div>
+                            <h2 data-toggle="collapse" data-target="#lotes-disponibles" aria-expanded="false">Lotes disponibles</h2>
+                            <div role="tabpanel" sede:class="tab-pane active" id="lotes-disponibles">
+                                <th:block th:each="lote: ${lotes}">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <a title="Incluir en el acto" th:href="@{/servicio/bienes-embargados/admin/{id}/lote/{id_lote}/unlock(id=*{id}, id_lote=${lote.id})}"><span class="fa fa-plus-circle"></span> </a>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <th:block th:include="servicio/bienes-embargados/admin/lote-list(lotedetail=${lote}, actodetail=${dato})" />
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+                    </th:block>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+
+    CKEDITOR.replace('condiciones', {
+        height: 260,
+        removePlugins: 'htmlwriter',
+        allowedContent: true,
+        entities: false
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

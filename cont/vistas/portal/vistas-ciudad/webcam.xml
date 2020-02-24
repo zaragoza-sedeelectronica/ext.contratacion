@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Cámara web" keywords="sede,web,webcam,virtual,fotografías,visita"/>
+    <script src="https://www.zaragoza.es/cont/plantillas/js/aldaba.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <sede:content>
+    <div th:fragment="webcams" class="row">
+  		<h2 class="padding-l05em">Webcam Municipales</h2>
+        <div class="col-md-6">
+			<h3>Plaza del Pilar</h3>
+			<img width="270" src="http://webcam.abaco-digital.es/pilar/image.jpg" id="myCam"  alt="Plaza del Pilar"/>
+			<a href="webcam-pilar" class="btn btn-success">Ampliar Visión<span class="oculto"> del Pilar</span></a>
+		</div>
+		
+		<div class="col-md-6">
+			<h3>Río Ebro y Puente de Santiago</h3>
+			<img width="270" src="http://webcam.abaco-digital.es/zuda/image.jpg" id="myCam2"  alt="Río Ebro"/>
+			<a href="webcam-zuda" class="btn btn-success">Ampliar Visión<span class="oculto"> del Río Ebro</span></a>
+		</div>
+	</div>
+
+
+    </sede:content>
+</body>
+
+</html>

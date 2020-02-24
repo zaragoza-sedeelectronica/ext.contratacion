@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Administración de credenciales" description="monumentos" author="Ayuntamiento de Zaragoza" keywords="sede,web,turismo,monumentos" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2><a href="/opencityext/servicio/credenciales/user/">Usuarios</a></h2>
+        <form method="get" action="" th:object="${dato}">
+            <label for="login">
+                <span class="sr-only">Login</span>
+                <input type="text" class="form-control" th:field="*{login}" placeholder="login" />
+            </label>
+            <label for="correoElectronico">
+                <span class="sr-only">Correo</span>
+                <input type="text" class="form-control" th:field="*{correoElectronico}" placeholder="correo" />
+            </label>
+            <label for="apellido1">
+                <span class="sr-only">Primer apellido</span>
+                <input type="text" class="form-control" th:field="*{apellido1}" placeholder="primer apellido" />
+            </label>
+            <label for="apellido2">
+                <span class="sr-only">Segundo apellido</span>
+                <input type="text" class="form-control" th:field="*{apellido2}" placeholder="segundo apellido" />
+            </label>
+            <input type="submit" value="Consultar" class="btn btn-primary" />
+        </form>
+        <ul class="row list-unstyled">
+            <th:block th:each="doc: ${resultado.body.result}" th:if="${doc}">
+                <li class="card nomargin">
+                    <a title="Ver permisos" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}" th:href="@{{id}/profile(id=${doc.id})}" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> </a>
+                    <a title="Enviar contraseña" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="@{{id}/newpass(id=${doc.id})}" class="btn btn-warning btn-xs" onclick="return confirm('Desea generar una nueva contraseña para el usuario?')"><span class="fa fa-envelope"></span> </a>
+                    <th:block th:if="${doc.visible} == 'N' or ${doc.estado} != 'B' or ${doc.bloqueado} != 'N'">
+                        <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id}/unlock(id=${doc.id})}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+                    </th:block>
+                    <th:block th:if="${doc.visible} == 'S' and ${doc.estado} == 'B' and ${doc.bloqueado} == 'N'">
+                        <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id}/lock(id=${doc.id})}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+                    </th:block>
+                    <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DEL')}" th:href="@{{id}/delete(id=${doc.id})}" onclick="return confirm('Desea eliminar el elemento?')" class="btn btn-danger btn-xs pull-right"><span class="fas fa-trash-alt"></span> </a>
+                    <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="@{{id}/edit(id=${doc.id})}"><strong th:text="${doc.login}" /></a>
+                    (
+                    <th:block th:utext="${doc.correoElectronico}" />)
+                </li>
+            </th:block>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+    <span th:each="mat : *{materia}" sede:rdf="${mat.voc()}" th:attr="about=${mat.uri}">
+<span sede:rdf="${mat.get('title')}" class="label label-success"/>
+</span>
+    <span th:if="*{rango}" class="label label-warning" sede:rdf="*{rango.voc()}" th:attr="about=*{rango.uri}">
+<span sede:rdf="*{rango.get('title')}"/>
+</span>
+    <div th:if="*{aprobacionInicial}" sede:rdf="*{aprobacionInicial.voc()}" th:attr="about=*{aprobacionInicial.uri}">
+        <strong>Aprobaci&oacute;n inicial:</strong>
+        <span sede:rdf="*{aprobacionInicial.get('title')}" />
+        <span sede:rdf="*{aprobacionInicial.get('fecha')}" />
+    </div>
+    <div th:if="*{publicacion}" sede:rdf="*{publicacion.voc()}" th:attr="about=*{publicacion.uri}">
+        <strong>Publicado:</strong>
+        <span sede:rdf="*{publicacion.get('title')}" />
+        <span sede:rdf="*{publicacion.get('fecha')}" />
+        <span sede:rdf="*{publicacion.get('numero')}" />
+    </div>
+    <div th:if="*{aprobacionFinal}" sede:rdf="*{aprobacionFinal.voc()}" th:attr="about=*{aprobacionFinal.uri}">
+        <strong>Aprobaci&oacute;n definitiva:</strong>
+        <span sede:rdf="*{aprobacionFinal.get('title')}" />
+        <span sede:rdf="*{aprobacionFinal.get('fecha')}" />
+    </div>
+    <div th:if="*{publicacionFinal}" sede:rdf="*{publicacionFinal.voc()}" th:attr="about=*{publicacionFinal.uri}">
+        <strong>Publicado:</strong>
+        <span sede:rdf="*{publicacionFinal.get('title')}" />
+        <span sede:rdf="*{publicacionFinal.get('fecha')}" />
+        <span sede:rdf="*{publicacionFinal.get('numero')}" />
+    </div>
+    <th:block th:if="not *{#lists.isEmpty(modificaciones)}">
+        <h4>Modificaciones</h4>
+        <ul>
+            <li th:each="modificacion : *{#lists.sort(modificaciones)}">
+                <div><strong sede:rdf="${modificacion.get('description')}" /></div>
+                <div>Aprobada
+                    <th:block th:if="${modificacion.organo}">
+                        por <span sede:rdf="${modificacion.get('organo')}" />
+                    </th:block>
+                    <th:block th:if="${modificacion.aprobacion}">
+                        el <span sede:rdf="${modificacion.get('aprobacion')}" />
+                    </th:block>
+                </div>
+                <div>Publicada
+                    <th:block th:if="${modificacion.boletin}">
+                        en <span sede:rdf="${modificacion.get('boletin')}" />
+                    </th:block>
+                    <th:block th:if="${modificacion.publicacion}">
+                        el <span sede:rdf="${modificacion.get('publicacion')}" />
+                    </th:block>
+                </div>
+            </li>
+        </ul>
+    </th:block>
+    <div role="alert" class="alert alert-info" sede:rdf="*{get('description')}" />
+    <div role="alert" class="alert alert-success" sede:rdf="*{get('comment')}" />
+
+    <div property="rdfs:comment" th:utext="*{#utils.levelDownH(text)}" />
+    <th:block th:if="not *{#lists.isEmpty(anexos)}">
+        <h4>Anexos</h4>
+        <ul>
+            <li th:each="anexo : *{anexos}">
+                <a th:href="${anexo.link}"><span sede:rdf="${anexo.get('title')}" /></a>
+            </li>
+        </ul>
+    </th:block>
+</div>

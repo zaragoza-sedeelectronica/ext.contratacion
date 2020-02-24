@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Criterios Urbanísticos" keywords="sede,web,ayuntamiento,zaragoza,españa,ciudad,council,ubanismo,criterios" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Información-Normativa &raquo; 
+            <th:block th:if="not ${param.tipo}">Criterios</th:block>
+            <th:block th:if="${param.tipo} and ${param.tipo[0] == '9'}">Instrucciones</th:block></h2>
+        <table class="table table-striped table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th>Asunto</th>
+                    <th>Normas afectadas</th>
+                    <th>Fecha de aprobación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="registro, i : ${resultado.body.result}">
+                    <td>
+                        <a sede:rdf="*{registro.get('title')}" th:href="*{registro.id}"></a>
+                    </td>
+                    <td sede:rdf="*{registro.get('afectadoPor')}"></td>
+                    <td sede:rdf="*{registro.get('approvalDate')}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<div class="row">
+
+    <div class="col-md-12">
+
+        <button class="btn btn-default" ng-click="guardar()" ng-show="permisos.MOD">
+            <span class="fa fa-check" aria-hidden="true"></span>
+            <span class="hidden-phone"> Guardar</span>
+        </button>
+        <!-- <button class="btn btn-default" ng-click="copiar()" ng-show="permisos.NEW">
+            <i class="glyphicon glyphicon-pencil"></i>
+            <span class="hidden-phone">Copiar</span>
+        </button>-->
+
+    </div>
+</div>
+
+<div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+
+<br/>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <fieldset>
+            <legend>Datos del registro</legend>
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Calle:</label>
+                    <div class="col-sm-6">
+                        <!-- <autocompletado modelo="registro.emplazamiento" uri="/api/recurso/urbanismo-infraestructuras/registro-licencias/portal" filtro="title_ext"></autocompletado>
+                        -->
+                        <portalero modelo="registro.emplazamiento" uri="/api/recurso/urbanismo-infraestructuras/registro-licencias/portal" filtro="title" numero="*"></portalero>
+                        
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="registro.emplazamiento">IAE ({{registro.iae.id.seccion}}{{registro.iae.id.agrupacion}}{{registro.iae.id.licencia}}):</label>
+                    <div class="col-sm-6">
+                    	<autocompletadoiae modelo="registro.iae" uri="/api/recurso/urbanismo-infraestructuras/registro-licencias/iae" filtro="title"></autocompletadoiae>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Comentarios:</label>
+                    <div class="col-sm-6">
+                        {{registro.comments}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Creacion:</label>
+                    <div class="col-sm-6">
+                        {{registro.creationDate | date:'dd-MM-yyyy HH:mm'}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Baja:</label>
+                    <div class="col-sm-6">
+                        {{registro.fechaBaja | date:'dd-MM-yyyy HH:mm'}}
+                    </div>
+                </div>
+                <div class="row">
+	            <div class="col-md-6">
+	            	<h2>Datos normalizados</h2>
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Referencia Catastral:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.referenciaCatastral}}
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Referencia Municipal:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.referenciaMunicipal}}
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Poligono:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.poligono}}
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.emplazamiento">Zona saturada:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.zonaSaturada}}
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6">
+	            	<h2>Datos NO normalizados</h2>
+	            	<div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.nonormalizado.title">Calle:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.nonormalizado.tipoVia}} {{registro.nonormalizado.title}} {{registro.nonormalizado.numero}}
+	                    </div>
+	                </div>	
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.nonormalizado.referenciaCatastral">Referencia catastral</label>
+	                    <div class="col-sm-6">
+	                        {{registro.nonormalizado.referenciaCatastral}}
+	                    </div>
+	                </div>	
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.nonormalizado.comments">Observaciones:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.nonormalizado.comments}}
+	                    </div>
+	                </div>	
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.nonormalizado.emplazamiento">Motivo Alta:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.nonormalizado.motivoAlta}}
+	                    </div>
+	                </div>	
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.nonormalizado.creationDate">Creacion:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.nonormalizado.creationDate | date:'dd-MM-yyyy HH:mm'}}
+	                    </div>
+	                </div>	
+	                <div class="form-group">
+	                    <label class="col-sm-2 control-label" for="registro.nonormalizado.fechaNormalizado">Fecha normalizado:</label>
+	                    <div class="col-sm-6">
+	                        {{registro.nonormalizado.fechaNormalizado | date:'dd-MM-yyyy HH:mm'}}
+	                    </div>
+	                </div>	
+	            </div>
+	            </div>
+                
+	            
+	            	
+	            
+                <table class="table table-striped table-condensed">
+                <caption>Licencias</caption>
+                <tr><th>ID</th><th>Tipo</th><th>Titular</th><th>NIF</th><th>Comentario</th><th>Alta</th><th>Resolucion</th><th>Baja</th></tr>
+                <tr ng-repeat="licencia in registro.licencias">
+                <td>{{licencia.id.expediente}}-{{licencia.id.anyo}}</td>
+                <td>{{licencia.tipo.id}} {{licencia.tipo.title}}</td>
+                <td>{{licencia.titular}}</td>
+                <td>{{licencia.nif}}</td>
+                <td>{{licencia.comment}}</td>
+                <td>{{licencia.resolucion | date:'dd-MM-yyyy HH:mm'}}</td>
+                <td>{{licencia.creationDate | date:'dd-MM-yyyy HH:mm'}}</td>
+                <td>{{licencia.fechaBaja | date:'dd-MM-yyyy HH:mm'}}</td>
+                </tr>
+                </table>
+            </div>
+
+        </fieldset>
+
+    </div>
+
+</div>

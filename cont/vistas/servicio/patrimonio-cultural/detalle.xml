@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Bien Mueble'" author="Ayuntamiento de Zaragoza" keywords="sede,web,bien mueble" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <h2 sede:rdf="*{get('title')}"></h2>
+
+            <!--/*<th:block th:each="materia : *{materia}">
+                <span class="label label-success" th:attr="resource=@{http://www.zaragoza.es/sede/servicio/patrimonio-cultural/{id}(id=${registro.body.id})}, property='dcat:theme', content=${materia.uri}" th:text="${materia.title}"></span>
+            </th:block>*/-->
+            <p sede:rdf="*{get('description')}"></p>
+
+            <dl class="dl-horizontal row">
+             <div class="col-sm-8">
+                <dt th:if="*{author}">Autor</dt>
+                <dd sede:rdf="*{get('author')}"></dd>
+                <dt th:if="*{igb}">IGB</dt>
+                <dd sede:rdf="*{get('igb')}"></dd>
+                <dt th:if="*{kind}">Materia (T&eacute;cnica)</dt>
+                <dd th:text="*{kind}+' ('+*{tecnica}+' )'"></dd>
+                <dt th:if="*{price}">Importe compra (euros)</dt>
+                <dd sede:rdf="*{get('price')}"> </dd>
+                <!--/*   <dt th:if="*{value}">Valor (euros)</dt>
+                  <dd sede:rdf="*{get('value')}"> </dd>*/-->
+                <dt th:if="*{height} or *{width} or *{length} or *{diameter}">Dimensiones: </dt><dd>
+                    <th:block th:if="*{height}">
+                        <th:block sede:rdf="*{get('height')}"/><em>(Altura)</em> x
+                    </th:block>
+                    <th:block th:if="*{length}">
+                        <th:block sede:rdf="*{get('length')}"/><em>(Anchura)</em>
+                    </th:block>
+                    <th:block th:if="*{width}">
+                        <th:block th:text=" x" th:if="*{get('width')}"/>
+                        <th:block sede:rdf="*{get('width')}"/><em>(Largo)</em>
+                    </th:block>
+                    <th:block th:if="*{diameter}">
+                        <th:block th:text=" x" th:if="*{width} or *{length}"/>
+                        <th:block sede:rdf="*{get('diameter')}"/><em>(Diametro)</em>
+                    </th:block>
+                    cm<br/>
+                </dd>
+                <dt th:if="*{comments}">Comentarios</dt>
+                <dd sede:rdf="*{get('comments')}"></dd>
+              <!--/*  <dt th:if="*{assessment}">Valoraci&oacute;n (euros)</dt>
+                <dd sede:rdf="*{get('assessment')}"> </dd>*/-->
+                 <dt th:if="*{source}">Fuente Ingreso</dt>
+                 <dd sede:rdf="*{get('source')}"></dd>
+                <dt th:if="*{entryForm}">Forma ingreso</dt>
+                <dd sede:rdf="*{get('entryForm')}"></dd>
+                <dt th:if="*{lastUpdated}">Fecha Ingreso</dt>
+                <dd sede:rdf="*{get('lastUpdated')}"></dd>
+                </div>
+                <th:block th:if="*{image}">
+
+                    <div class="col-sm-4"><img th:src="'http://www.zaragoza.es/contenidos/cultura/patrimonio/'+*{image}" alt=""/></div>
+
+
+                </th:block>
+                <!--/* <dt th:if="*{creationDate}">Ejecuci&oacute;n</dt>
+             <dd sede:rdf="*{get('creationDate')}"></dd>*/-->
+            </dl>
+            <!--/* <table th:if="*{exposition.size() > 0}" class="table table-striped table-condensed">
+              <caption>Exposiciones</caption>
+              <tr><th>Nombre</th><th>Inicio</th><th>Fin</th><th>Lugar</th><th>Organizador</th><th>Productor</th></tr>
+              <tr th:each="expo : *{exposition}">
+                  <td><span sede:rdf="${expo.get('title')}"/></td>
+                  <td><span sede:rdf="${expo.get('startDate')}"/></td>
+                  <td><span sede:rdf="${expo.get('endDate')}"/></td>
+                  <td><span sede:rdf="${expo.get('place')}"/></td>
+                  <td><span sede:rdf="${expo.get('organization')}"/></td>
+                  <td><span sede:rdf="${expo.get('production')}"/></td>
+              </tr>
+          </table>*/-->
+        </div>
+    </sede:content>
+</body>
+
+</html>

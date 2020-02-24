@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta 
+        title="Pedro Navarro López (PP)" 
+        description="Organización Municipal, Pleno Municipal, Curriculum Vitae de Pedro Navarro López (PP)" author="Ayuntamiento de Zaragoza" 
+        last-modified="Thu Oct 06 00:00:00 CEST 2016" 
+        keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Pedro Navarro López, PP">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <article class="row col-md-12">
+            
+            <!-- Versión móvil -->
+            <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                <h2 class="margin-l05em">Pedro Navarro López <abbr title="Partido Popular">(PP)</abbr></h2>
+                <div class="col-md-4 col-xs-12 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PP_Pedro_Navarro.jpg" alt="Pedro Navarro López" />
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-PEDRO-NAVARRO-LOPEZ.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_POPULAR/PEDRO_NAVARRO_LOPEZ.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-PEDRO-NAVARRO-LOPEZ.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_POPULAR/PEDRO_NAVARRO_LOPEZ.pdf'} 
+                        } 
+                    }" />
+                </div>
+
+                <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePersonal" aria-expanded="false" aria-controls="collapsePersonal">
+                                INFORMACIÓN PERSONAL
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPersonal">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <strong>Nacimiento:</strong> Zaragoza, 16 de junio de 1977. </li><br/>
+                                <li> Casado y con tres hijos. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAcademica" aria-expanded="false" aria-controls="collapseAcademica">
+                              FORMACIÓN ACADÉMICA
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAcademica">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Licenciado en Derecho por la Universidad de Zaragoza. Abogado colegiado sin ejercicio. </li><br/>
+                                <li> Consultor especializado en Financiación a la I+D+i e Internacionalización. </li><br/>
+                                <li> Curso de Especialización en Gestión Pública PLGP-IESE. </li><br/>
+                                <li> Máster en Logística ZLC-MIT. </li><br/>
+                                <li> DGP Harvard Kennedy School of Government. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPolitica">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePolitica" aria-expanded="false" aria-controls="collapsePolitica">
+                              EXPERIENCIA POLÍTICA
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePolitica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPolitica">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Diputado en las Cortes de Aragón 2007-2011. Portavoz de Ciencia, Tecnología y Universidad. </li><br/>
+                                <li> Presidente Nuevas Generaciones de Aragón (2005-2009). </li><br/>
+                                <li> Miembro del Comité Ejecutivo Regional desde 2005. </li><br/>
+                                <li> Portavoz adjunto del Grupo Municipal y portavoz de Urbanismo (2011-2015). </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseContacto" aria-expanded="false" aria-controls="collapseContacto">
+                                CONTACTO
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingContacto">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <span class="far fa-envelope margin-t1em"></span>
+                                    <a href="mailto:pnavarrol@zaragoza.es" shape="rect">pnavarrol@zaragoza.es</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- Versión desktop -->
+            <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                <div class="col-md-4 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PP_Pedro_Navarro.jpg" alt="Pedro Navarro López" />
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-PEDRO-NAVARRO-LOPEZ.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_POPULAR/PEDRO_NAVARRO_LOPEZ.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-PEDRO-NAVARRO-LOPEZ.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_POPULAR/PEDRO_NAVARRO_LOPEZ.pdf'} 
+                        } 
+                    }" />
+                </div>
+                <h2 class="margin-b1em">Pedro Navarro López <abbr title="Partido Popular">(PP)</abbr></h2>
+
+                <div class="card col-md-8">
+                    <h3>INFORMACIÓN PERSONAL</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> <strong>Nacimiento:</strong> Zaragoza, 16 de junio de 1977. </li><br/>
+                        <li> Casado y con tres hijos. </li>
+                    </ul>  
+                </div>  
+
+                <div class="card col-md-8">
+                    <h3>  FORMACIÓN ACADÉMICA</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> Licenciado en Derecho por la Universidad de Zaragoza. Abogado colegiado sin ejercicio. </li><br/>
+                        <li> Consultor especializado en Financiación a la I+D+i e Internacionalización. </li><br/>
+                        <li> Curso de Especialización en Gestión Pública PLGP-IESE. </li><br/>
+                        <li> Máster en Logística ZLC-MIT. </li><br/>
+                        <li> DGP Harvard Kennedy School of Government. </li>
+                    </ul>  
+                </div>
+                    
+                <div class="card col-md-8">    
+                    <h3>EXPERIENCIA POLÍTICA</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> Diputado en las Cortes de Aragón 2007-2011. Portavoz de Ciencia, Tecnología y Universidad. </li><br/>
+                        <li> Presidente Nuevas Generaciones de Aragón (2005-2009). </li><br/>
+                        <li> Miembro del Comité Ejecutivo Regional desde 2005. </li><br/>
+                        <li> Portavoz adjunto del Grupo Municipal y portavoz de Urbanismo (2011-2015). </li>
+                    </ul>
+                </div>
+
+                <div class="card col-md-8">    
+                    <h3>CONTACTO</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li class="col-md-12 margin-b1em"> <span class="far fa-envelope"></span>
+                            <a href="mailto:pnavarrol@zaragoza.es" shape="rect">pnavarrol@zaragoza.es</a></li>
+                    </ul>
+                </div>
+            
+            </div>
+
+        </article>
+
+        <aside class="row col-md-12 margin-a1em">
+            <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;src=trjnqinsca9lojg943a9a8mtk4%40group.calendar.google.com&amp;ctz=Europe/Madrid" style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no"><a href="https://calendar.google.com/calendar/embed?src=trjnqinsca9lojg943a9a8mtk4%40group.calendar.google.com&amp;ctz=Europe/Madrid">Acceso al calendario</a></iframe>
+        </aside>
+    </sede:content>
+</body>
+
+</html>

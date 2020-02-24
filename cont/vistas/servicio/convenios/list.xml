@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Convenios" keywords="sede,web,convenio"></sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <div th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}" class="pull-right">
+            <a href="./new" class="btn btn-primary">Nuevo registro</a>
+        </div>
+        <ul class="row list-unstyled">
+            <li class="col-xs-12 col-sm-4 col-md-4 col-lg-4" th:each="doc: ${resultado.body.result}" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}">
+                <div class="card">
+                    <div class="text-center" style="min-height:3em">
+                        <strong sede:rdf="${doc.get('organization')}" />
+                        <a title="Editar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="@{{id}/edit(id=${doc.id})}" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> </a>
+                    </div>
+                    <hr/>
+                    <div><span class="fas fa-euro-sign"></span> Importe: <span sede:rdf="${doc.get('importe')}"/></div>
+                    <div><span class="fas fa-calendar-alt"></span> Ejercicio: <span sede:rdf="${doc.get('ejercicio')}"/></div>
+                    <div>Modalidad: <span sede:rdf="${doc.get('modalidad')}"/></div>
+                    <div>Linea Estratégica: <span sede:rdf="${doc.get('lineaEstrategica')}"/></div>
+                    <div th:if="${doc.entidad}">Servicio: <span sede:rdf="${doc.entidad.get('title')}"/></div>
+                </div>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

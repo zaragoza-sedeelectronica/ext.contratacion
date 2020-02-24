@@ -1,0 +1,14 @@
+<ul class="list-unstyled listado-preguntas" th:if="${listado.size() > 0}">
+    <li th:each="p, i : ${listado}" class="padding-t1em">
+        <p class="text-primary destacado faq-title" data-toggle="collapse" th:attr="data-target='#answer-' + ${i.index}" tabindex="0">
+            <span class="far fa-hand-point-right rotate" aria-hidden="true"></span>
+            <th:block th:text="*{p.title}"></th:block>
+            <span th:each="tema : *{p.category}" th:text="${tema.title}" class="label label-success margin-r05em"></span>
+        </p>
+        <div th:id="'answer-' + ${i.index}" class="margin-l1em collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" th:utext="*{p.answer}"></div>
+        <hr class="sm" />
+    </li>
+</ul>
+<div th:unless="${listado.size() > 0}" role="alert" class="alert alert-warning">
+    No existen preguntas frecuentes
+</div>

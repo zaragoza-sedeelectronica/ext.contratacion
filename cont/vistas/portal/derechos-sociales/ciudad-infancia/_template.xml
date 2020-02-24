@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="sectores">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <h1><a href="/sede/portal/derechos-sociales/ciudad-infancia/">Programa <abbr title="Ciudad Amiga de la Infancia y la Adolescencia">CAIA</abbr></a></h1>
+                    <sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/sectores/', 'text':'Para la Gente'},{'link':'/ciudad/sectores/social/', 'text':'Derechos Sociales'}]" />
+               
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <!--/* <div class="overlay" style="display: none;"></div> */-->
+        <!--/* Menu lateral de portal */-->
+        <!--/* <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">*/-->
+        <div class="container-fluid">
+            <nav class="nav-main">
+                <ul class="list-unstyled row no-gutter text-center" id="menu">
+                    <li class="col-xs-6 col-sm-2"><span class="fa fa-info-circle" aria-hidden="true"></span> <a class="elemento" href="que-es">Qué es</a></li>
+                    <li class="col-xs-6 col-sm-2 active"><span class="fa fa-cog" aria-hidden="true"></span> <a class="elemento" href="programas">Programas</a></li>
+                    <li class="col-xs-6 col-sm-2"><span class="far fa-comment-alt" aria-hidden="true"></span> <a class="elemento" href="requisitos">Requisitos</a></li>
+                    <li class="col-xs-6 col-sm-2"><span class="fas fa-file-alt" aria-hidden="true"></span> <a class="elemento" href="procedimiento">Procedimiento</a></li>
+                    <!--/*<li class="col-xs-6 col-sm-2"><span class="fa fa-question-circle" aria-hidden="true"></span> <a class="elemento" href="agenda">Agenda</a></li>*/-->
+                    <li class="col-xs-6 col-sm-2"><span class="far fa-check-circle" aria-hidden="true"></span> <a class="elemento" href="recursos">Recursos</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!--/* </nav> */-->
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

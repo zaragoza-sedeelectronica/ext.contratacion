@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta 
+        title="María Dolores Ranera Gómez (PSOE)" 
+        description="Organización Municipal, Pleno Municipal, Curriculum Vitae de María Dolores Ranera Gómez (PSOE)" 
+        author="Ayuntamiento de Zaragoza" 
+        last-modified="Wed Oct 19 00:00:00 CEST 2016" 
+        keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, María Dolores Ranera Gómez, (PSOE)">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <article class="row col-md-12">
+            
+            <!-- Versión móvil -->
+            <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                <h2 class="margin-b1em">María Dolores Ranera Gómez <abbr title="Partido Socialista Obrero Español">(PSOE)</abbr></h2>
+                <div class="col-md-4 col-xs-12 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PSOE_Lola_Ranera" alt="María Dolores Ranera Gómez"/>
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-MARIA-DOLORES-RANERA-GOMEZ.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_GRUPO_SOCIALISTA/MARIA_DOLORES_RANERA_GOMEZ.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-MARIA-DOLORES-RANERA-G%C3%93MEZ.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_GRUPO_SOCIALISTA/MARIA_DOLORES_RANERA_GOMEZ.pdf'} 
+                        } 
+                    }" />
+                </div>
+
+                <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePersonal" aria-expanded="false" aria-controls="collapsePersonal">
+                                INFORMACIÓN PERSONAL
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPersonal">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <strong>Nacimiento:</strong> Zaragoza, el 24 Julio de 1970. </li><br/>
+                                <li> Casada y con dos hijos. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAcademica" aria-expanded="false" aria-controls="collapseAcademica">
+                              FORMACIÓN ACADÉMICA
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAcademica">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Licenciada en Ciencias del Trabajo y diplomada en Graduado Social por la Universidad de Zaragoza. </li><br/> 
+                                <li> Posgrado de Especialización en Técnicas de Participación Ciudadana de la Escuela de Estudios Sociales de la Universidad de Zaragoza. </li><br/>
+                                <li> Educadora Social por el Colegio de Educadores Sociales de Galicia. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPolitica">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePolitica" aria-expanded="false" aria-controls="collapsePolitica">
+                              EXPERIENCIA POLÍTICA
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePolitica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPolitica">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Desde diciembre de 2011, es Concejala de Régimen Interior y Concejala Delegada de Zaragoza Activa, Fomento y Turismo. </li><br/>
+                                <li> En abril de 2012, nombrada Consejera de Participación Ciudadana y Régimen Interior, y Quinto Teniente de Alcalde, y Concejala Delegada de Zaragoza Activa, Fomento y Turismo. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseContacto" aria-expanded="false" aria-controls="collapseContacto">
+                                CONTACTO
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingContacto">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <span class="far fa-envelope margin-t1em"></span>
+                                    <a href="mailto:lolaranera@zaragoza.es" shape="rect">lolaranera@zaragoza.es</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- Versión desktop -->
+            <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                <div class="col-md-4 col-xs-12 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PSOE_Lola_Ranera" alt="María Dolores Ranera Gómez"/>
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-MARIA-DOLORES-RANERA-GOMEZ.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_GRUPO_SOCIALISTA/MARIA_DOLORES_RANERA_GOMEZ.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-MARIA-DOLORES-RANERA-G%C3%93MEZ.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_GRUPO_SOCIALISTA/MARIA_DOLORES_RANERA_GOMEZ.pdf'} 
+                        } 
+                    }" />
+                </div>
+                
+                <h2 class="margin-b1em">María Dolores Ranera Gómez <abbr title="Partido Socialista Obrero Español">(PSOE)</abbr></h2>
+
+                <div class="card col-md-8">
+                    <h3>INFORMACIÓN PERSONAL</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> <strong>Nacimiento:</strong> Zaragoza, el 24 Julio de 1970. </li><br/>
+                        <li> Casada y con dos hijos. </li>
+                    </ul>  
+                </div>  
+                
+                <div class="card col-md-8">
+                    <h3> FORMACIÓN ACADÉMICA </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> Licenciada en Ciencias del Trabajo y diplomada en Graduado Social por la Universidad de Zaragoza. </li><br/> 
+                        <li> Posgrado de Especialización en Técnicas de Participación Ciudadana de la Escuela de Estudios Sociales de la Universidad de Zaragoza. </li><br/>
+                        <li> Educadora Social por el Colegio de Educadores Sociales de Galicia. </li>
+                    </ul>
+                </div>
+
+                <div class="card col-md-8">
+                    <h3> EXPERIENCIA POLÍTICA </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> Desde diciembre de 2011, es Concejala de Régimen Interior y Concejala Delegada de Zaragoza Activa, Fomento y Turismo. </li><br/>
+                        <li> En abril de 2012, nombrada Consejera de Participación Ciudadana y Régimen Interior, y Quinto Teniente de Alcalde, y Concejala Delegada de Zaragoza Activa, Fomento y Turismo. </li>
+                    </ul>
+                </div>
+                
+                <div class="card col-md-8">    
+                    <h3> CONTACTO </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l05em">
+                        <li class="col-md-12 margin-b1em"> <span class="far fa-envelope"></span>
+                            <a href="mailto:lolaranera@zaragoza.es" shape="rect">lolaranera@zaragoza.es</a></li>
+                    </ul>
+                </div>
+            
+            </div>
+
+        </article>
+    </sede:content>
+</body>
+
+</html>

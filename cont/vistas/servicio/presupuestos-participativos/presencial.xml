@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Usuarios" keywords="sede,web,edicto,tablón" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Fase 4: Difusión y votación - Modalidad Presencial</h2>
+        <form method="get" action="" class="card">
+            <h3>Consultar Usuario/Usuaria</h3>
+            <hr class="sm" />
+            <label for="nif">
+                <span class="sr-only">NIF</span>
+                <input type="text" name="nif" id="nif" class="form-control" th:value="${param.nif} ? ${param.nif[0]} : ''" placeholder="NIF" />
+            </label>
+            <label for="birthYear">
+                <span class="sr-only">Año nacimiento</span>
+                <input type="text" name="birthYear" id="birthYear" class="form-control" th:value="${param.birthYear} ? ${param.birthYear[0]} : ''" placeholder="Año nacimiento" />
+            </label>
+            <input type="submit" value="Consultar" class="btn btn-primary" />
+        </form>
+        <th:block th:include="fragmentos/error" />
+        <div role="alert" class="alert alert-danger" th:if="${votacionOnLine == 'S'}">El NIF está participando en la votación por internet por lo que <strong>no puede</strong> participar de forma presencial</div>
+        <th:block th:if="${btnGenerar}">
+            <a th:href="@{presencial/codigo-pdf(id=${idVotacionPresencial})}" target="_blank" class="btn btn-primary btn-large">Generar justificante</a>   
+        </th:block>     
+        <div role="alert" class="alert alert-success" th:if="${votacionOnLine == 'N'}">
+            El nif <strong>NO</strong> está participando en la votación por internet por lo que <strong>puede</strong> participar de forma presencial.
+            <div th:if="${idVotacionPresencial} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DOC')}">
+                La papeleta se generó el
+                <th:block th:text="${#dates.format(fechaVotacionPresencial, 'dd MMMM yyyy HH:mm')}" />
+                <br/>
+                <!--/*<a th:href="@{presencial/pdf(id=${idVotacionPresencial})}" target="_blank" class="btn btn-warning btn-large">Regenerar documento</a>
+                <a th:href="@{presencial/anular(id=${idVotacionPresencial})}" class="btn btn-danger btn-large" onclick="return confirm('Realmente desea anular la votación?')">Anular votación</a>*/-->
+            </div>
+            <div th:if="${idVotacionPresencial}">
+                El nif tiene asociado como número de registro el <strong th:text="${idVotacionPresencial}"/> desde el
+                <th:block th:text="${#dates.format(fechaVotacionPresencial, 'dd MMMM yyyy HH:mm')}" />
+
+                <a th:href="@{presencial/codigo-pdf(id=${idVotacionPresencial})}" target="_blank" class="btn btn-primary btn-large">Generar justificante</a>
+            </div>
+            <div th:if="not ${idVotacionPresencial} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DOC')}">
+                <!--/*<th:block th:if="${userJunta}">
+                    <a th:href="@{presencial/pdf(nif=${param.nif[0]}, junta=${userJunta})}" target="_blank" class="btn btn-primary btn-large">Generar documento</a>
+                </th:block>*/-->
+                <th:block th:if="not ${userJunta}">
+                    No se puede generar el documento al no poder obtener la junta asociada al nif.
+                </th:block>
+            </div>
+            <div th:if="not ${idVotacionPresencial} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}">
+                <th:block th:if="${userJunta} and (${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta} == ${userJunta})">
+                    <a th:href="@{presencial/generar(nif=${param.nif[0]}, junta=${userJunta})}" class="btn btn-primary btn-large">Generar número registro</a>
+                </th:block>
+                 <th:block th:if="${userJunta} and ${session.sess_risp.usuario.propiedades.junta} != ${userJunta}">
+                    La persona pertenece a la junta <strong th:text="${userJunta}"></strong> por lo que no puede participar en <strong th:text="${session.sess_risp.usuario.propiedades.junta}"></strong>
+                </th:block>
+                <th:block th:if="not ${userJunta}">
+                    <p>No se puede generar el documento al no poder obtener la junta asociada al nif.</p>
+                    <th:block th:if="${mensaje.status == 200} and ${session.sess_risp.usuario.propiedades.junta} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')}">
+                        Tras comprobar que la persona lleva tiempo en <strong th:text="${session.sess_risp.usuario.propiedades.junta}"/> puede
+                        <a th:href="@{presencial/generar(nif=${param.nif[0]}, junta=${session.sess_risp.usuario.propiedades.junta})}" class="btn btn-primary btn-large">Generar número registro</a> asociado a <strong th:text="${session.sess_risp.usuario.propiedades.junta}"/>
+                    </th:block>
+                    <!--/*<p>Si lo desea, <strong>tras comprobar la junta a la que pertenece la persona</strong>, puede generar el número de registro documento de forma manual a través de los siguientes enlaces</p>
+                    <ul>
+                        <li th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta == 'JV de la Cartuja Baja'}"><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='JV de la Cartuja Baja')}">JV de la Cartuja Baja</a></li>
+                        <li th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta == 'JV de Peñaflor'}"><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='JV de Peñaflor')}">JV de Peñaflor</a></li>
+                        <li th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta == 'JV de San Juan de Mozarrifar'}"><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='JV de San Juan de Mozarrifar')}">JV de San Juan de Mozarrifar</a></li>
+                        
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta ACTUR-Rey Fernando')}">Junta ACTUR-Rey Fernando</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Casablanca')}">Junta Casablanca</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Casco Historico')}">Junta Casco Histórico</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Centro')}">Junta Centro</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta de el Rabal')}">Junta de el Rabal</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Delicias')}">Junta Delicias</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta La Almozara')}">Junta La Almozara</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Las Fuentes')}">Junta Las Fuentes</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Miralbueno')}">Junta Miralbueno</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Oliver-Valdefierro')}">Junta Oliver-Valdefierro</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta San Jose')}">Junta San José</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Santa Isabel')}">Junta Santa Isabel</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Torrero-La Paz')}">Junta Torrero-La Paz</a></li>
+                        <li><a th:href="@{presencial/generar(nif=${param.nif[0]}, junta='Junta Universidad')}">Junta Universidad</a></li>
+                    </ul>*/-->
+                </th:block>
+            </div>
+        </div>
+        <th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}">
+            <div class="row">
+                <!--/* <div class="col-md-4">
+                    <form method="get" action="gasto-virtual-presencial-ciudad" class="card">
+                        <h3>Introducir votación ciudad en la Plataforma para su recuento</h3>
+                        <hr class="sm" />
+                        <label for="num_reg">
+                            <span class="sr-only">Número registro</span>
+                            <input type="text" name="num_reg" id="num_reg" class="form-control" th:value="${param.num_reg} ? ${param.num_reg[0]} : ''" placeholder="Número registro" />
+                        </label>
+                        <input type="submit" value="Enviar" class="btn btn-primary" />
+                    </form>
+                </div> */-->
+                <div class="col-md-4">
+                    <form method="get" action="gasto-virtual-presencial-distrito" class="card">
+                        <h3>Introducir votación distrito/barrio en la Plataforma para su recuento</h3>
+                        <hr class="sm" />
+                        <label for="num_reg">
+                            <span class="sr-only">Número registro</span>
+                            <input type="text" name="num_reg" id="num_reg" class="form-control" th:value="${param.num_reg} ? ${param.num_reg[0]} : ''" placeholder="Número registro" />
+                        </label>
+                        <input type="submit" value="Enviar" class="btn btn-primary" />
+                    </form>
+                </div>
+            </div>
+        </th:block>
+        <h3>Generar papeleta por junta</h3>
+        <ul class="row no-gutter" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta}">
+            <!--/*<li class="col-xs-6 col-sm-4 col-md-3" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta == 'JV de la Cartuja Baja'}">
+                <a href="./pdf?junta=JV de la Cartuja Baja">JV de la Cartuja Baja</a>
+            </li>
+            <li class="col-xs-6 col-sm-4 col-md-3" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta == 'JV de Peñaflor'}">
+                <a href="./pdf?junta=JV de Peñaflor">JV de Peñaflor</a>
+            </li>
+            <li class="col-xs-6 col-sm-4 col-md-3" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'ADMIN')} or ${session.sess_risp.usuario.propiedades.junta == 'JV de San Juan de Mozarrifar'}">
+                <a href="./pdf?junta=JV de San Juan de Mozarrifar">JV de San Juan de Mozarrifar</a>
+            </li>*/-->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta ACTUR-Rey Fernando">ACTUR-Rey Fernando</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Casablanca">Casablanca</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Casco Historico">Casco Histórico</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Centro">Centro</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta de el Rabal">El Rabal</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Delicias">Delicias</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta La Almozara">La Almozara</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Las Fuentes">Las Fuentes</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Miralbueno">Miralbueno</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Oliver-Valdefierro">Oliver-Valdefierro</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta San Jose">San José</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Santa Isabel">Santa Isabel</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Torrero-La Paz">Torrero-La Paz</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Universidad">Universidad</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Alfocea">Alfocea</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Casetas">Casetas</a>
+            </li> -->
+           <!--  <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Garrapinillos">Garrapinillos</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Juslibol-El Zorongo">Juslibol-El Zorongo</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de la Cartuja Baja">Cartuja Baja</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Montañana">Montañana</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Monzalbarba">Monzalbarba</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Movera">Movera</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Peñaflor">Peñaflor</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de San Gregorio">San Gregorio</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de San Juan de Mozarrifar">San Juan de Mozarrifar</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Torrecilla de Valmadrid">Torrecilla de Valmadrid</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de la Venta del Olivar">Venta del Olivar</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=JV de Villarrapa">Villarrapa</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Ciudad">Ciudad</a>
+            </li> -->
+            <!-- <li class="col-xs-6 col-sm-4 col-md-3">
+                <a href="./pdf?junta=Junta Distrito Sur">Distrito Sur</a>
+            </li> -->
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/alfocea.pdf">Alfocea</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/casetas.pdf">Casetas</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/cartuja.pdf">Cartuja Baja</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/garrapinillos.pdf">Garrapinillos</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/juslibol.pdf">Juslibol-El Zorongo</a>
+</li> 
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/montanana.pdf">Montañana</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/monzalbarba.pdf">Monzalbarba</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/movera.pdf">Movera</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/penaflor.pdf">Peñaflor</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/san-gregorio.pdf">San Gregorio</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/sanjuan.pdf">San Juan de Mozarrifar</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/torrecilla.pdf">Torrecilla de Valmadrid</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/venta-olivar.pdf">Venta del Olivar</a>
+</li>
+<li class="col-xs-6 col-sm-4 col-md-3">
+    <a target="_blank" href="/cont/vistas/portal/presupuestos-barrios-rurales/votacion/PDF/villarrapa.pdf">Villarrapa</a>
+</li>
+        </ul>  
+    </sede:content>
+</body>
+
+</html>

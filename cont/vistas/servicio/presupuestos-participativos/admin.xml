@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Panel de administración de Presupuestos participativos" keywords="sede,web,turismo,presupuestos participativos" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type="text/css"/>
+</head>
+
+<body>
+    <sede:content>
+        <ul class="list-inline">
+            <li><a href="/sede/servicio/admin-user" class="btn btn-primary" target="_blank"><span class="fa fa-user" aria-hidden="true"></span> Comprobar datos de los ciudadanos/as</a></li>
+            <!--/*<li><a href="/sede/servicio/presupuestos-participativos/new-private" class="btn btn-primary" target="_blank"><span class="fa fa-puzzle-piece" aria-hidden="true"></span> Crear propuesta presencial</a></li>*/-->
+            <li><a href="/sede/servicio/presupuestos-participativos/admin-valoracion" class="btn btn-primary"><span class="fa fa-puzzle-piece" aria-hidden="true"></span> Estado de Valoraciones</a></li>
+            <li><a href="/sede/servicio/presupuestos-participativos/edicion/2" class="btn btn-primary" target="_blank"><span class="fa fa-list" aria-hidden="true"></span> Listado público de propuestas</a></li>
+            <li class="pull-right"><a href="/sede/servicio/presupuestos-participativos/edicion/2/xls" class="btn btn-success"><span class="fa fa-file-excel-o" aria-hidden="true"></span> Descargar Excel</a></li>
+        </ul>
+        <hr class="sm"/>
+        <form method="get" action="/sede/servicio/presupuestos-participativos/admin/" class="form-horizontal margin-t2em">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="fnd-gris-claro padding-a05em" style="border:1px solid #BFBCBC">
+                        <div class="form-group nomargin">
+                            <div class="col-xs-10">
+                                <label class="control-label oculto" for="titleContains">Título de la propuesta</label>
+                                <input class="form-control margin-t05em" type="text" name="titleContains" id="titleContains" placeholder="Consulte por el titulo de la propuesta" />
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="submit" value="Consultar" class="btn btn-search" style="background:none;">
+                                    <span class="fa fa-2x fa-search"></span>
+                                    <span class="sr-only">Búsqueda</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr class="sm"/>
+        <a href="/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;valoraciones.viable=false" class="btn btn-warning btn-xs">Propuestas no viables (valoración)</a>
+        <ul class="row no-gutter">
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Actur')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Actur' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">ACTUR-Rey Fernando</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta ACTUR-Rey Fernando']}" /></li>
+            <li class="col-md-3"><a th:classappend="(${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'casablanca')}) ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Casablanca' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Casablanca</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Casablanca']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Casco')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Casco' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Casco Histórico</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Casco Historico']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Centro')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Centro' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Centro</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Centro']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Rabal')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Rabal' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">El Rabal</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta de el Rabal']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Delicias')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Delicias' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Delicias</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Delicias']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Almozara')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Almozara' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">La Almozara</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta La Almozara']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Fuentes')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Fuentes' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Las Fuentes</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Las Fuentes']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Miralbueno')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Miralbueno' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Miralbueno</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Miralbueno']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Oliver')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Oliver' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Oliver-Valdefierro</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Oliver-Valdefierro']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Jos')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Jos' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">San José</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta San Jose']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Isabel')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Isabel' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Santa Isabel</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Santa Isabel']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Torrero')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Torrero' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Torrero-La Paz</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Torrero-La Paz']}" /></li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Universidad')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Universidad' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Universidad</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Universidad']}" /> </li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Sur')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Sur' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Distrito Sur</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Junta Distrito Sur']}" /> </li>
+            <li class="col-md-3"><a th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Ciudad')} ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;juntaContains=Ciudad' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Ciudad</a> <span th:if="${rows} == null" class="badge" th:text="${propuestasPorJunta.body['Ciudad']}" /></li>
+        </ul>
+        <hr class="sm"/>
+        <ul class="row no-gutter">
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Educación y juventud' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Educación y juventud' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Educación y juventud</a> <span class="badge" th:text="${propuestasPorCategoria.body['Educación y juventud']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Movilidad' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Movilidad' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Movilidad</a> <span class="badge" th:text="${propuestasPorCategoria.body['Movilidad']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Accesibilidad' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Accesibilidad' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Accesibilidad</a> <span class="badge" th:text="${propuestasPorCategoria.body['Accesibilidad']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Cultura' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Cultura' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Cultura</a> <span class="badge" th:text="${propuestasPorCategoria.body['Cultura']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Deporte' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Deporte' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Deporte</a> <span class="badge" th:text="${propuestasPorCategoria.body['Deporte']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Vía pública' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Vía pública' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Vía pública</a> <span class="badge" th:text="${propuestasPorCategoria.body['Vía pública']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Medio ambiente' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Medio ambiente' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Medio ambiente</a> <span class="badge" th:text="${propuestasPorCategoria.body['Medio ambiente']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Instalaciones y equipamiento' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Instalaciones y equipamiento' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Instalaciones y equipamiento</a> <span class="badge" th:text="${propuestasPorCategoria.body['Instalaciones y equipamiento']}"></span>
+            </li>
+            <li class="col-md-3"><a th:classappend="${param['tema.title']} and ${param['tema.title'][0]} == 'Derechos sociales' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;tema.title=Derechos sociales' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Derechos sociales</a> <span class="badge" th:text="${propuestasPorCategoria.body['Derechos sociales']}"></span>
+            </li>
+        </ul>
+        <ul class="row no-gutter">
+            <li class="col-md-3"><a th:classappend="${param['status']} and ${param['status'][0]} == 'S' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;status=S&amp;visible=S' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Pasa a apoyos y priorización</a></li>
+            <li class="col-md-3"><a th:classappend="${param['visible']} and ${param['visible'][0]} == 'N' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;visible=N' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Improcedentes</a></li>
+            <li class="col-md-3"><a th:classappend="${param['status']} and ${param['status'][0]} == 'N' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;status=N&amp;visible=S' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Retiradas del debate</a></li>
+            <li class="col-md-3"><a th:classappend="${param['status']} and ${param['status'][0]} == 'R' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;status=R&amp;visible=S' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Retiradas por el creador</a></li>
+            <li class="col-md-3"><a th:classappend="${param['status']} and ${param['status'][0]} == 'U' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;status=U&amp;visible=S' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Priorizada por la ciudadanía</a></li>
+            <li class="col-md-3"><a th:classappend="${param['status']} and ${param['status'][0]} == 'F' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;status=F&amp;visible=S' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Priorizada por la mesa</a></li>
+            <!--/* <li class="col-md-3"><a th:classappend="${param['status']} and ${param['status'][0]} == 'P' ? 'destacado': ''" th:href="'/sede/servicio/presupuestos-participativos/admin/?rows=500&amp;status=P&amp;visible=S' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]} : '') + (${param.juntaContains} ? '&amp;juntaContains=' + ${param.juntaContains[0]}: '') + (${param['valoraciones.viable']} ? '&amp;valoraciones.viable=false' : '')">Pendientes de reformulación</a></li> */-->
+        </ul>
+        <hr/>
+        <!--/* <div class="table-responsive"> */-->
+            <table class="table table-striped table-consended table-bordered table-hover">
+                <caption>
+                    Número de propuestas<th:block th:if="${param.juntaContains}" th:text="' en ' + ${param.juntaContains[0]}"></th:block><th:block th:if="${param['valoraciones.viable']}" th:text="' con valoración no viable'"></th:block>: 
+                    <th:block th:text="${resultado.body.totalCount}"></th:block>
+                    <a th:if="${param.juntaContains}" href="/sede/servicio/presupuestos-participativos/admin" class="btn btn-primary btn-xs pull-right"><span class="fas fa-trash-alt" aria-hidden="true"></span> Limpiar filtro</a>
+                </caption>
+                <thead>
+                    <tr>
+                        <td class="col-xs-1">ID</td>
+                        <td class="col-xs-2">PROPUESTA</td>
+                        <!--/* <td class="col-xs-2">DESCRIPCIÓN</td> */-->
+                        <td class="col-xs-2">JUNTA</td>
+                        <td class="col-xs-2">CIUDADANO/A</td>
+                        <td class="col-xs-1">FECHA CREACIÓN</td>
+                        <!--/* <td class="col-xs-2">COSTE</td> */-->
+                        <td class="col-xs-2">APOYOS</td>
+                        <td class="col-xs-2">ESTADO</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="registro : ${resultado.body.result}">
+                        <td th:text="${registro.id}"></td>
+                        <td><a th:href="'/sede/servicio/presupuestos-participativos/' + ${registro.id}" th:text="${registro.title}"></a></td>
+                        <!--/* <td>
+                            <th:block th:text="${#strings.abbreviate(registro.description, 150)}"></th:block>
+                        </td> */-->
+                        <td>
+                            <th:block th:text="${registro.junta}"></th:block>
+                        </td>
+                        <td>
+                            <div th:utext="${registro.usuarioAlta}"></div>
+                            <a class="inline" th:href="'mailto:' + ${registro.usuarioPub}">
+                                <!--/* <span class="fa fa-at" aria-hidden="true"></span> */-->
+                                <th:block th:text="${registro.usuarioPub}"></th:block>
+                            </a>
+                        </td>
+                        <td>
+                            <th:block th:text="${#calendars.format(registro.creationDate,'dd-MM-yyyy HH:mm')}"></th:block>
+                        </td>
+                        <!--/* <td>
+                            <span th:if="${registro.coste}" th:text="${#numbers.formatDecimal(registro.coste,0,'POINT',2,'COMMA')} + ' €'"></span>
+                        </td> */-->
+                        <td>
+                            <span th:if="${registro.votosAFavor}" th:text="${registro.votosAFavor}"></span>
+                        </td>
+                        <td>
+                            <th:block th:text="${registro.statusText}" />
+                            <div class="text-primary break-word" th:if="${registro.motivoResumen}" th:utext="${registro.motivoResumen}"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--/* </div> */-->
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('.table').DataTable({
+            'responsive': true,
+            'paging': false,
+            'bInfo': false,
+            'order': [
+                [5, 'desc']
+            ],
+            'language': {
+                'sSearch': 'Buscar en los resultados:'
+            }
+        });
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

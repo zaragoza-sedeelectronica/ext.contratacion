@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+     <meta charset="utf-8" />
+    <sede:meta title="Museo del Teatro de Caesaraugusta" description="El Portal del Museo del Teatro proporciona acceso a las actividades, servicios del Museo. Información sobre las diferentes salas municipales de exposiciones en la ciudad. Conozca los premios y concursos y actividades didácticas que se desarrollan en el Museo" author="Ayuntamiento de Zaragoza. Servicio de Cultura. Museos y Exposiciones" keywords="ayuntamiento, ciudad, Zaragoza, España, museos, historia, ruta de caesaraugusta, programa Herity, reconocimientos, arte contemporáneo, manifestaciones culturales, salas de exposiciones, Museo del Teatro,  premios, concursos,  relación administración-administrado,  actividades didácticas,  administración local, administración electrónica, publicaciones, direcciones de Internet, servicio de quejas y sugerencias, council, city, Saragossa, Spain, caesaraugusta route, museum, history, roman theatre, roman forum, roman spa, river port,  caesaraugusta route, Herity programme, recognition, contemporary art, Zaragoza History Centre, fire brigade, fire museum, cultural events, exhibition halls, Morlanes Palace, Montemuzo Palace, Fortea Tower, prizes, contests, citizen-authority relations, didactic activities, administrative formalities, electronic government, local government, publications, Internet address, complaints and suggestions service"/>
+ 
+    <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js"></script>
+    <style type="text/css">
+    
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content><div>
+	<img alt="" class="img-responsive full-width margin-b1em" src="http://www.zaragoza.es/cont/vistas/portal/museos/img/cabecera2.png"/>
+</div>
+
+	
+	<h2>Social</h2>
+ 
+			
+			 <div class="row"> 
+			 <div class="col-md-12">
+			 	 
+
+				 
+				        <div class="col-sm-6">    
+		 <h3 class="fase nomargin padding-a05em color-destacados">Galería de Imágenes</h3>	<hr class="sm"></hr>
+	 <div class="tarjeta">
+		<a href="https://www.flickr.com/photos/zaragoza_es/sets/72157644723896483">
+                   <img src="/cont/vistas/portal/museos/img/flickr-teatro.gif" alt="" class="img-responsive" />
+				 </a> </div> </div>
+				 
+				 
+         <div class="col-sm-6">         <h3 class="fase nomargin padding-a05em color-destacados">  Vídeos	        </h3>
+		 <hr class="sm"></hr>
+		 <div class="fnd-gris-claro">
+   
+           <sede:video lista="610"></sede:video> </div> 
+                 
+       </div>            
+                </div>  </div> <div class="row"> 
+			 <div class="col-md-12"><h3>Folletos</h3></div></div>
+        
+  
+     
+    </sede:content>
+</body>
+
+</html>

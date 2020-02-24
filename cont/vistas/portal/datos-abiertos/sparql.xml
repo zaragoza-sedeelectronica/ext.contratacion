@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Ayuda punto SPARQL" description="En la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, Datos Abiertos de Zaragoza publica desde 2008 información pública del Ayuntamiento de Zaragoza en formatos abiertos para favorecer su reutilización. Servicios: Catálogo de conjunto de datos basado en DCAT y normas técnicas de interoperabilidad (NTI), SPARQL y API Zaragoza. Reconocimientos: Nivel 5 estrellas por el Open Data - Linked Data (2010), Premio Buenas Prácticas y Premio Categoría Usabilidad a IDEZar en EUROGI/eSDI-Net (2011), Mejor iniciativa pública Open Data por OKFN (2014) y Premio ASEDIE (2014)" author="Ayuntamiento de Zaragoza" keywords="ciudad, Zaragoza, sede electrónica, gobierno abierto, ayuntamiento, administración local, relación administración-administrado, datos abiertos, derecho a reutilizar información, gobierno y sector público, catálogo de datos, DCAT, W3C, Norma Técnica de Interoperabilidad, NTI, SPARQL, API Zaragoza, IDEZar,urbanismo, transporte, medio ambiente, sociedad y bienestar, economía, hacienda, cultura y ocio, ciencia y tecnología, demografía, turismo, deporte, seguridad, comercio, educación, empleo, salud, legislación y justicia, city, Saragossa, e-government, open government, open gov, council, local government, citizen-authority relations, open data, right to reuse information, RISP, government and public sector, urbanism, transport, natural environment, society and welfare, economics, tax office, culture and spare time, science and technology, demography, tourism, sports, security, commerce, education, employment, health, regulations and justice" />
+    <!-- <link href="//cdn.jsdelivr.net/yasqe/2.11.10/yasqe.min.css" rel="stylesheet" type="text/css"/> -->
+    <style type="text/css">
+        body {
+            padding-top: 57px;
+        }
+        li.L0, li.L1, li.L2, li.L3,
+        li.L5, li.L6, li.L7, li.L8 {
+          list-style-type: decimal !important;
+        }
+        pre {
+            position: relative;
+        }
+        pre .btn-copy {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            z-index: 10;
+            display: block;
+            padding: 5px 8px;
+            cursor: pointer;
+            background-color: #FFF;
+            border: 1px solid #E1E1E8;
+            border-radius: 0px 4px;
+        }
+        pre .btn-copy:hover {
+            color: white;
+            background: red;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        <div class="fnd-gris-claro">
+            <div class="container-fluid text-center padding-a2em lead margin-auto margin-b1em">
+                <h2>SPARQL</h2> SPARQL es el acrónimo de Protocolo Simple y Lenguaje de Consulta de RDF. SPARQL es una tecnología que permite hacer consultas sobre información expresada en RDF, usando distintas fuentes de datos y permite obtener también los resultados en formato RDF para poder reutilizarlos en las aplicaciones.
+                <br/>
+                <a class="btn btn-primary btn-large" href="https://www.zaragoza.es/sede/portal/datos-abiertos/servicio/sparql">Acceso al Punto SPARQL</a>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="apicontent">
+                <div class="fnd-gris-claro padding margin-b2em">
+                    <p><strong>Tabla de Contenido</strong></p>
+                    <div id="toc" />
+                </div>
+                <h3>Primeros pasos</h3>
+                <h4>Listado de grafos</h4>
+                <p>El <a href="servicio/sparql">punto SPARQL</a> está dividido en grafos de forma que en un grafo existen las tripletas relaciondadas con un conjunto de datos determinado. Podemos conocer los diferentes grafos existentes ejecutando la siguiente consulta SPARQL</p>
+                <p>
+                    <pre class="prettyprint linenums language-js">SELECT DISTINCT ?uri WHERE { GRAPH ?uri {?s a ?t} }</pre>
+                    <!-- <div id="yasqe">SELECT DISTINCT ?uri WHERE { GRAPH ?uri {?s a ?t} }</div> -->
+                </p>
+                <table class="table table-condensed table-bordered table-striped">
+                    <caption>Resultado de la consulta</caption>
+                    <tr>
+                        <th>Grafo</th>
+                        <th>Contenido</th>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/turismo/restaurante/</td>
+                        <td>Restaurantes</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/turismo/monumento/</td>
+                        <td>Monumentos</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/cultura-ocio/evento-zaragoza/</td>
+                        <td>Agenda de actividades</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/empleo/oferta/</td>
+                        <td>Oferta de empleo</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/urbanismo-infraestructuras/equipamiento/urbano/</td>
+                        <td>Paradas de taxi, aparcamientos ...</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/urbanismo-infraestructuras/equipamiento/recurso/</td>
+                        <td>Equipamientos/Recursos de la ciudad</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/sector-publico/subvencion/</td>
+                        <td>Subvenciones</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/sector-publico/contrato</td>
+                        <td>Perfil del contratante</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/dataset/catalogo/</td>
+                        <td>Catálogo de datos abiertos</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/medio-ambiente/calidad-aire/</td>
+                        <td>Calidad del aire</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/urbanismo-infraestructuras/callejero/</td>
+                        <td>Callejero, portalero e información semántica asociada</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/turismo/edificio-historico/</td>
+                        <td>Catálogo de edificios históricos</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/turismo/alojamiento/</td>
+                        <td>Alojamientos de la ciudad</td>
+                    </tr>
+                    <tr>
+                        <td>https://www.zaragoza.es/sector-publico/organismo/</td>
+                        <td>Estructura organizativa del ayuntamiento</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">...</td>
+                    </tr>
+                </table>
+                <h4>Objetos de un grafo</h4>
+                <p>Dentro de cada uno de los grafos están los diferentes objetos asociados. Para ver los objetos que existen dentro de un grafo podemos ejecutar la siguiente consulta. Indicando el grafo sobre el que queremos realizar la consulta.</p>
+                <div>
+                    <span class="graph-iri">Graph IRI: <strong>https://www.zaragoza.es/urbanismo-infraestructuras/equipamiento/recurso/</strong></span>
+                    <pre>select distinct ?uri where {[] a ?uri}</pre>
+                </div>
+                <p>Resultado:</p>
+                <ul>
+                    <li>https://www.zaragoza.es/api/kos/cultura-ocio/ludotecas</li>
+                    <li>https://www.zaragoza.es/api/kos/deporte/campos-de-futbol</li>
+                    <li>https://www.zaragoza.es/api/kos/salud/farmacias</li>
+                    <li>https://www.zaragoza.es/api/kos/cultura-ocio/museos</li>
+                    <li>...</li>
+                </ul>
+                <h4>Propiedades de un objeto</h4>
+                <p>Supongamos que queremos trabajar con los museos (<code>https://www.zaragoza.es/api/kos/cultura-ocio/museos</code>), en primer lugar tenemos que conocer las propiedades que puede tener el objeto, para lo cual ejecutaremos la siguiente consulta.</p>
+                <p><pre>select distinct ?uri 
+where  {
+    ?uriCont a <strong>&lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;</strong>;
+    ?uri ?obj.
+}</pre>
+                </p>
+                <table class="table table-condensed table-bordered table-striped">
+                    <caption>Resultado y significado</caption>
+                    <tr>
+                        <th>Propiedad</th>
+                        <th>Significado</th>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</td>
+                        <td>Tipo</td>
+                    </tr>
+                    <tr>
+                        <td>http://purl.org/dc/terms/modified</td>
+                        <td>Fecha de modificación</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2000/01/rdf-schema#label</td>
+                        <td>Nombre del recurso</td>
+                    </tr>
+                    <tr>
+                        <td>http://schema.org/name</td>
+                        <td>Nombre del recurso</td>
+                    </tr>
+                    <tr>
+                        <td>http://purl.org/dc/terms/title</td>
+                        <td>Nombre del recurso</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.geonames.org/ontology#name</td>
+                        <td>Nombre del recurso</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2000/01/rdf-schema#comment</td>
+                        <td>Descripción</td>
+                    </tr>
+                    <tr>
+                        <td>http://purl.org/dc/terms/description</td>
+                        <td>Descripción</td>
+                    </tr>
+                    <tr>
+                        <td>http://schema.org/description</td>
+                        <td>Descripción</td>
+                    </tr>
+                    <tr>
+                        <td>http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#accesibilidad</td>
+                        <td>Información de accesibilidad</td>
+                    </tr>
+                    <tr>
+                        <td>http://schema.org/price</td>
+                        <td>Precio</td>
+                    </tr>
+                    <tr>
+                        <td>http://purl.org/dc/terms/identifier</td>
+                        <td>Identificador</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2006/vcard/ns#email</td>
+                        <td>Correo electrónico</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2006/vcard/ns#street-adr</td>
+                        <td>Dirección</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2006/vcard/ns#url</td>
+                        <td>Sitio web</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2004/02/skos/core#Concept</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2006/vcard/ns#photo</td>
+                        <td>Imagen del recurso</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2006/vcard/ns#tel</td>
+                        <td>Teléfono</td>
+                    </tr>
+                    <tr>
+                        <td>http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#gradoAccesibilidad</td>
+                        <td>Grado de accesibilidad</td>
+                    </tr>
+                    <tr>
+                        <td>http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#servicios</td>
+                        <td>Servicios</td>
+                    </tr>
+                    <tr>
+                        <td>http://schema.org/typicalAgeRange</td>
+                        <td>Población destinataria</td>
+                    </tr>
+                    <tr>
+                        <td>http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#institucion</td>
+                        <td>Institución</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2003/01/geo/wgs84_pos#geometry</td>
+                        <td>Coordenadas</td>
+                    </tr>
+                    <tr>
+                        <td>http://www.w3.org/2006/vcard/ns#category</td>
+                        <td>Tipo de equipamiento</td>
+                    </tr>
+                    <tr>
+                        <td>http://purl.org/goodrelations/v1#hasOpeningHoursSpecification</td>
+                        <td>Horario</td>
+                    </tr>
+                </table>
+                <p role="alert" class="alert alert-info">En el listado anterior aparecen repetidas propiedades para facilitar el trabajo con varios vocabularios</p>
+                <h4>Contar el número de registros de un tipo determinado.</h4>
+                <p>Para contar el número de registros de un tipo ejecutaríamos la siguiente consulta:</p>
+                <p><pre>select COUNT(?Concepto) AS ?numero Where{ ?Concepto a &lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;. }</pre></p>
+                <h3>Ejemplo de listado</h3>
+                <p>Una vez hemos visto las propiedades, nos planteamos, por ejemplo, obtener un listado de museos con las propiedades, <code>uri del recurso, nombre, horario y el tipo</code>, para lo que ejecutaríamos la siguiente consulta.
+                </p>
+                <p>
+                    <pre>select distinct ?uriCont ?nombre ?horario ?tipo
+where  {
+    ?uriCont a &lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;;
+        &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; ?nombre;
+        &lt;http://purl.org/goodrelations/v1#hasOpeningHoursSpecification&gt; ?horario;
+        &lt;http://www.w3.org/2006/vcard/ns#category&gt; ?tipo.
+}</pre>
+                </p>
+                <p>En el campo tipo nos aparece su URI pero queremos el nombre del tipo, para saber qué información está almacenada sobre una uri, podemos ejecutar</p>
+                <p><pre>describe <strong>&lt;http://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/equipamiento/subtema/144&gt;</strong></pre>
+                </p>
+                <p>En el resultado vemos que el nombre del tipo está en la propiedad rdfs:label por lo que la consulta la modificaríamos de la siguiente forma</p>
+                <p>
+                    <pre>select distinct ?uriCont ?nombre ?horario ?tipo
+where  {
+    ?uriCont a &lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;;
+        &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; ?nombre;
+        &lt;http://purl.org/goodrelations/v1#hasOpeningHoursSpecification&gt; ?horario;
+        &lt;http://www.w3.org/2006/vcard/ns#category&gt;<strong>/rdfs:label</strong> ?tipo.
+}</pre>
+                </p>
+                <p>Observando los resultados vemos que aparecen registros repetidos porque un recurso puede tener varios tipos, por lo que vamos a concatenar los diferentes tipos en una sola columna.</p>
+                <p>
+                    <pre>select distinct ?uriCont ?nombre ?horario <strong>(group_concat(distinct ?tipo;separator=","))</strong> as ?tipo
+where  {
+    ?uriCont a &lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;;
+        &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; ?nombre;
+        &lt;http://purl.org/goodrelations/v1#hasOpeningHoursSpecification&gt; ?horario;
+        &lt;http://www.w3.org/2006/vcard/ns#category&gt;/rdfs:label ?tipo.
+}</pre>
+                </p>
+                <p>A la consulta anterior vamos a añadir las coordenadas del recurso.</p>
+                <p>
+                    <pre>select distinct ?uriCont ?nombre ?horario (group_concat(distinct ?tipo;separator=",")) as ?tipo <strong>?coordenadas</strong>
+where  {
+    ?uriCont a &lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;;
+        &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; ?nombre;
+        &lt;http://purl.org/goodrelations/v1#hasOpeningHoursSpecification&gt; ?horario;
+        &lt;http://www.w3.org/2006/vcard/ns#category&gt;/rdfs:label ?tipo;
+        <strong>&lt;http://www.w3.org/2003/01/geo/wgs84_pos#geometry&gt; ?coordenadas.</strong>
+
+}</pre>
+                </p>
+                <p>Nos vuelven a salir recursos repetidos porque las coordenadas están en 3 sistemas de referencia, utm30n, etre89 y wgs84, en el ejemplo vamos a utilizar el sistema wgs84, recuperando la latitud y la longitud, con OPTIONAL para recuperar los recursos aunque no estén localizados .</p>
+                <p>
+                    <pre>select distinct ?uriCont ?nombre ?horario (group_concat(distinct ?tipo;separator=",")) as ?tipo <strong>?latitud ?longitud</strong>
+where  {
+    ?uriCont a &lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;;
+        &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; ?nombre;
+        &lt;http://purl.org/goodrelations/v1#hasOpeningHoursSpecification&gt; ?horario;
+        &lt;http://www.w3.org/2006/vcard/ns#category&gt;/rdfs:label ?tipo.
+    <strong>optional {
+        ?uriCont &lt;http://www.w3.org/2003/01/geo/wgs84_pos#geometry&gt; ?coordenadas. 
+            ?coordenadas &lt;http://www.w3.org/2003/01/geo/wgs84_pos#lat&gt; ?latitud;
+            &lt;http://www.w3.org/2003/01/geo/wgs84_pos#long&gt; ?longitud.
+    } </strong>
+}</pre>
+                </p>
+                <p>La consulta anterior la vamos a simplificar utilizando prefijos, el prefijo rdfs no se tiene que declarar porque es uno de los reconocidos por defecto.</p>
+                <p>
+                    <pre><strong>PREFIX cultura: &lt;http://www.zaragoza.es/api/kos/cultura-ocio/&gt;
+PREFIX gr:&lt;http://purl.org/goodrelations/v1#&gt;
+PREFIX v:&lt;http://www.w3.org/2006/vcard/ns#&gt;
+PREFIX geo:&lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;</strong>
+select distinct ?uriCont ?nombre ?horario (group_concat(distinct ?tipo;separator=",")) as ?tipo ?latitud ?longitud
+where  {
+    ?uriCont a <strong>cultura:museos</strong>;
+        <strong>rdfs:label</strong> ?nombre;
+        <strong>gr:hasOpeningHoursSpecification</strong> ?horario;
+        <strong>v:category</strong>/rdfs:label ?tipo.
+    optional {
+        ?uriCont <strong>geo:geometry</strong> ?coordenadas. 
+            ?coordenadas <strong>geo:lat</strong> ?latitud;
+            <strong>geo:long</strong> ?longitud.
+    }
+}</pre>
+                </p>
+                <p>Podemos indicar que nos devuelva el valor sin el tipo de dato de la siguiente forma:</p>
+                <p>
+                    <pre>PREFIX cultura: &lt;http://www.zaragoza.es/api/kos/cultura-ocio/&gt;
+PREFIX gr:&lt;http://purl.org/goodrelations/v1#&gt;
+PREFIX v:&lt;http://www.w3.org/2006/vcard/ns#&gt;
+PREFIX geo:&lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;
+select distinct ?uriCont <strong>str(?nombre) as ?nombre str(?horario) as ?horario</strong> (group_concat(distinct ?tipo;separator=",")) as ?tipo ?latitud ?longitud
+where  {
+    ?uriCont a cultura:museos;
+        rdfs:label ?nombre;
+        gr:hasOpeningHoursSpecification ?horario;
+        v:category/rdfs:label ?tipo.
+    optional {
+        ?uriCont geo:geometry ?coordenadas. 
+            ?coordenadas geo:lat ?latitud;
+            geo:long ?longitud.
+    }
+}</pre>
+                </p>
+                <h3>Ejemplo de detalle</h3>
+                <p>Podemos ver todas las propiedades de un recurso en concreto utilizando la siguiente consulta:</p>
+                <p><pre>select * 
+where {  
+    <strong>&lt;http://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/equipamiento/recurso/2174&gt;</strong> ?prop ?value. 
+}</pre></p>
+                <p>Lo que ocurre es que existirán propiedades que no aparezcan en todos los recursos del mismo tipo por lo que es preferible conocer las propiedades que puede tener ese tipo de recurso, para lo cual ejecutaremos la misma consulta del apartado anterior, obteniendo el mismo resultado.</p>
+                <p><pre>select distinct ?uri 
+where  {
+    ?uriCont a &lt;http://www.zaragoza.es/api/kos/cultura-ocio/museos&gt;;
+        ?uri ?obj.
+}</pre>
+                </p>
+                <p>Con las propiedades obtenidas preparamos la consulta para obtener los datos del recurso <code>2174</code>
+                </p>
+                <p><pre>PREFIX cultura: &lt;http://www.zaragoza.es/api/kos/cultura-ocio/&gt;
+PREFIX v: &lt;http://www.w3.org/2006/vcard/ns#&gt;
+PREFIX tur:&lt;http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#&gt;
+PREFIX gr:&lt;http://purl.org/goodrelations/v1#&gt;
+PREFIX s:&lt;http://schema.org&gt;
+
+SELECT ?uriCont ?nombre ?description ?infoAccesibilidad ?precio ?email ?direccion ?photo ?web ?tel ?gradoAccesibilidad ?servicios ?poblacion ?institucion ?coordenadas ?tipo ?horario ?lastUpdated
+WHERE {
+    ?uriCont a cultura:museos.
+    ?uriCont dcterms:identifier <strong>"2174"</strong>.
+    ?uriCont rdfs:label ?nombre.
+    ?uriCont rdfs:comment ?description.
+    ?uriCont tur:accesibilidad ?infoAccesibilidad.
+    ?uriCont s:price ?precio.
+    ?uriCont v:email ?email.
+    ?uriCont v:street-adr ?direccion.
+    ?uriCont v:photo ?photo.
+    ?uriCont v:url ?web.
+    ?uriCont v:tel ?tel.
+    ?uriCont tur:gradoAccesibilidad ?gradoAccesibilidad.
+    ?uriCont tur:servicios ?servicios.
+    ?uriCont s:typicalAgeRange ?poblacion.
+    ?uriCont tur:institucion ?institucion.
+    ?uriCont geo:geometry ?coordenadas.
+    ?uriCont v:category ?tipo.
+    ?uriCont gr:hasOpeningHoursSpecification ?horario.
+    ?uriCont dcterms:modified ?lastUpdated.
+}</pre>
+                </p>
+                <p>Al ejecutar la consulta no nos devuelve ningún resultado por lo que añadimos <code>optional</code> a los campos:</p>
+                <p>
+                    <pre>PREFIX cultura: &lt;http://www.zaragoza.es/api/kos/cultura-ocio/&gt;
+PREFIX v: &lt;http://www.w3.org/2006/vcard/ns#&gt;
+PREFIX tur:&lt;http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#&gt;
+PREFIX gr:&lt;http://purl.org/goodrelations/v1#&gt;
+PREFIX s:&lt;http://schema.org&gt;
+
+SELECT ?uriCont ?nombre ?description ?infoAccesibilidad ?precio ?email ?direccion ?photo ?web ?tel ?gradoAccesibilidad ?servicios ?poblacion ?institucion ?coordenadas ?tipo ?horario ?lastUpdated
+WHERE {
+    ?uriCont a cultura:museos.
+    ?uriCont dcterms:identifier "2174".
+    ?uriCont rdfs:label ?nombre.
+    <strong>optional{</strong>?uriCont rdfs:comment ?description.<strong>}</strong>
+    <strong>optional{</strong>?uriCont tur:accesibilidad ?infoAccesibilidad.<strong>}</strong>
+    <strong>optional{</strong>?uriCont s:price ?precio.<strong>}</strong>
+    <strong>optional{</strong>?uriCont v:email ?email.<strong>}</strong>
+    <strong>optional{</strong>?uriCont v:street-adr ?direccion.<strong>}</strong>
+    <strong>optional{</strong>?uriCont v:photo ?photo.<strong>}</strong>
+    <strong>optional{</strong>?uriCont v:url ?web.<strong>}</strong>
+    <strong>optional{</strong>?uriCont v:tel ?tel.<strong>}</strong>
+    <strong>optional{</strong>?uriCont tur:gradoAccesibilidad ?gradoAccesibilidad.<strong>}</strong>
+    <strong>optional{</strong>?uriCont tur:servicios ?servicios.<strong>}</strong>
+    <strong>optional{</strong>?uriCont s:typicalAgeRange ?poblacion.<strong>}</strong>
+    <strong>optional{</strong>?uriCont tur:institucion ?institucion.<strong>}</strong>
+    <strong>optional{</strong>?uriCont geo:geometry ?coordenadas.<strong>}</strong>
+    <strong>optional{</strong>?uriCont v:category ?tipo.<strong>}</strong>
+    <strong>optional{</strong>?uriCont gr:hasOpeningHoursSpecification ?horario.<strong>}</strong>
+    <strong>optional{</strong>?uriCont dcterms:modified ?lastUpdated.<strong>}</strong>
+}</pre>
+                </p>
+                <p>Ahora vemos que nos aparecen muchos registros repetidos, tanto por los diferentes tipos como por las coordenadas en diferentes sistemas de referencia</p>
+                <p>
+                    <pre>PREFIX cultura: &lt;http://www.zaragoza.es/api/kos/cultura-ocio/&gt;
+PREFIX v: &lt;http://www.w3.org/2006/vcard/ns#&gt;
+PREFIX tur:&lt;http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#&gt;
+PREFIX gr:&lt;http://purl.org/goodrelations/v1#&gt;
+PREFIX s:&lt;http://schema.org&gt;
+
+SELECT ?uriCont ?nombre ?description ?infoAccesibilidad ?precio ?email ?direccion ?photo ?web ?tel ?gradoAccesibilidad ?servicios ?poblacion ?institucion <strong>?latitud ?longitud</strong> <strong>(group_concat(distinct ?tipo;separator=",")) as ?tipo</strong> ?horario ?lastUpdated
+WHERE {
+    ?uriCont a cultura:museos.
+    ?uriCont dcterms:identifier "2174".
+    ?uriCont rdfs:label ?nombre.
+    optional{?uriCont rdfs:comment ?description.}
+    optional{?uriCont tur:accesibilidad ?infoAccesibilidad.}
+    optional{?uriCont s:price ?precio.}
+    optional{?uriCont v:email ?email.}
+    optional{?uriCont v:street-adr ?direccion.}
+    optional{?uriCont v:photo ?photo.}
+    optional{?uriCont v:url ?web.}
+    optional{?uriCont v:tel ?tel.}
+    optional{?uriCont tur:gradoAccesibilidad ?gradoAccesibilidad.}
+    optional{?uriCont tur:servicios ?servicios.}
+    optional{?uriCont s:typicalAgeRange ?poblacion.}
+    optional{?uriCont tur:institucion ?institucion.}
+    <strong>optional {
+        ?uriCont geo:geometry ?coordenadas. 
+            ?coordenadas geo:lat ?latitud;
+            geo:long ?longitud.
+    } </strong>
+    optional{?uriCont v:category ?tipo.}
+    optional{?uriCont gr:hasOpeningHoursSpecification ?horario.}
+    optional{?uriCont dcterms:modified ?lastUpdated.}
+}</pre>
+                </p>
+                <p>Ahora ya podemos obtener los datos del registro sin duplicados. En algunos elementos en vez del valor nos aparece su uri, por lo que tenemos que obtener los valores de esos campos.</p>
+                <p><pre>PREFIX cultura: &lt;http://www.zaragoza.es/api/kos/cultura-ocio/&gt;
+PREFIX v: &lt;http://www.w3.org/2006/vcard/ns#&gt;
+PREFIX tur:&lt;http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#&gt;
+PREFIX gr:&lt;http://purl.org/goodrelations/v1#&gt;
+PREFIX s:&lt;http://schema.org&gt;
+
+SELECT ?uriCont ?nombre ?description ?infoAccesibilidad ?precio ?email ?direccion ?photo ?web ?tel ?gradoAccesibilidad ?servicios ?poblacion ?institucion ?latitud ?longitud (group_concat(distinct ?tipo;separator=",")) as ?tipo ?horario ?lastUpdated
+WHERE {
+    ?uriCont a cultura:museos.
+    ?uriCont dcterms:identifier "2174".
+    ?uriCont rdfs:label ?nombre.
+    optional{?uriCont rdfs:comment ?description.}
+    optional{?uriCont tur:accesibilidad ?infoAccesibilidad.}
+    optional{?uriCont s:price ?precio.}
+    optional{?uriCont v:email ?email.}
+    optional{?uriCont v:street-adr ?direccion.}
+    optional{?uriCont v:photo ?photo.}
+    optional{?uriCont v:url ?web.}
+    optional{?uriCont v:tel<strong>/v:Tel</strong> ?tel.}
+    optional{?uriCont tur:gradoAccesibilidad ?gradoAccesibilidad.}
+    optional{?uriCont tur:servicios ?servicios.}
+    optional{?uriCont s:typicalAgeRange<strong>/rdfs:label</strong> ?poblacion.}
+    optional{?uriCont tur:institucion ?institucion.}
+    optional {
+        ?uriCont geo:geometry ?coordenadas. 
+            ?coordenadas geo:lat ?latitud;
+            geo:long ?longitud.
+    } 
+    optional{?uriCont v:category<strong>/rdfs:label</strong> ?tipo.}
+    optional{?uriCont gr:hasOpeningHoursSpecification ?horario.}
+    optional{?uriCont dcterms:modified ?lastUpdated.}
+}</pre>
+                </p>
+                <h3>Formatos de respuesta</h3>
+                <p>Hasta ahora al no haber seleccionado el formato veíamos los resultados en formato HTML, pero podemos indicar otros formatos como son:</p>
+                <dl class="ficha dl-horizontal">
+                    <dt>HTML</dt>
+                    <dd>text/html</dd>
+                    <dt>Spreadsheet</dt>
+                    <dd>application/vnd.ms-excel</dd>
+                    <dt>XML</dt>
+                    <dd>application/sparql-results+xml</dd>
+                    <dt>JSON</dt>
+                    <dd>application/sparql-results+json</dd>
+                    <dt>Javascript</dt>
+                    <dd>application/javascript</dd>
+                    <dt>NTriples</dt>
+                    <dd>text/plain</dd>
+                    <dt>RDF/XML</dt>
+                    <dd>application/rdf+xml</dd>
+                    <dt>CSV</dt>
+                    <dd>text/csv</dd>
+                    <dt>TSV</dt>
+                    <dd>text/tab-separated-values</dd>
+                </dl>
+                <p>La url resultante de la ejecución es la que podemos utilizar desde las aplicaciones, y tendrá la siguiente sintaxis:</p>
+                <pre>http://datos.zaragoza.es/sparql?default-graph-uri=' + encodeURIComponent(<strong>grafo</strong>) + '&amp;query=' + encodeURIComponent(<strong>querySPARQL</strong>) + '&amp;format=' + encodeURIComponent(<strong>formato</strong>) + '&amp;timeout=0</pre>
+                <h3>Listado de prefijos precargados en el punto SPARQL</h3>
+                <table class="table table-striped table-bordered table-condensed">
+                    <tr>
+                        <td>dbpedia</td>
+                        <td>http://dbpedia.org/resource/</td>
+                    </tr>
+                    <tr>
+                        <td>dbpprop</td>
+                        <td>http://dbpedia.org/property/</td>
+                    </tr>
+                    <tr>
+                        <td>dc</td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                    </tr>
+                    <tr>
+                        <td>dcterms</td>
+                        <td>http://purl.org/dc/terms/</td>
+                    </tr>
+                    <tr>
+                        <td>fn</td>
+                        <td>http://www.w3.org/2005/xpath-functions/#</td>
+                    </tr>
+                    <tr>
+                        <td>foaf</td>
+                        <td>http://xmlns.com/foaf/0.1/</td>
+                    </tr>
+                    <tr>
+                        <td>geo</td>
+                        <td>http://www.w3.org/2003/01/geo/wgs84_pos#</td>
+                    </tr>
+                    <tr>
+                        <td>gr</td>
+                        <td>http://purl.org/goodrelations/v1#</td>
+                    </tr>
+                    <tr>
+                        <td>ldp</td>
+                        <td>http://www.w3.org/ns/ldp#</td>
+                    </tr>
+                    <tr>
+                        <td>ogcgml</td>
+                        <td>http://www.opengis.net/ont/gml#</td>
+                    </tr>
+                    <tr>
+                        <td>ogcgs</td>
+                        <td>http://www.opengis.net/ont/geosparql#</td>
+                    </tr>
+                </table>
+                <h3>Enlaces de interés</h3>
+                <ul>
+                    <li><a href="http://zaragoza-sedeelectronica.github.io/sparql/queries/">Consultas al punto SPARQL de Zaragoza: ejemplos</a>
+                    </li>
+                    <li><a href="http://www.w3.org/2009/sparql/wiki/Main_Page" lang="en">W3C: SPARQL Working Group</a>
+                    </li>
+                    <li><a href="http://www.w3.org/TR/2013/REC-sparql11-query-20130321/" lang="en">W3C: SPARQL 1.1 Query Language. W3C Recommendation 21 March 2013</a>
+                    </li>
+                    <li><a href="http://www.w3.org/wiki/SparqlEndpoints">W3C: Listado de puntos SPARQL</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+    <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+    <script src="//www.zaragoza.es/cont/plantillas/js/toc.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+        $(document).ready(function() {
+            $('#toc').TableOfContentsBehavior('div.apicontent', 'ul');
+
+
+            $('pre').each(function(index, element){
+                console.log('entra')
+                $(this).append('<span type="button" class="btn-copy">Copiar</span>');
+            });
+            $('.btn-copy').click(function(){
+                var query = $(this).parent().clone().children().remove().end().text();
+                var graphIri;
+                if($(this).parent().prev('span.graph-iri').length > 0){
+                    graphIri = $(this).parent().prev('span.graph-iri').text();
+                    graphIri = graphIri.replace('Graph IRI: ', '');
+                };
+                window.open('http://datos.zaragoza.es/sparql?query=' + query + (graphIri !== undefined ? '&default-graph-uri=' + graphIri : ''), '_blank');
+            });
+
+        });
+    /*]]>*/
+    </script>
+    <!-- <script src="//cdn.jsdelivr.net/yasqe/2.11.10/yasqe.bundled.min.js"></script> -->
+    <!-- <script>
+        //http://yasqe.yasgui.org/doc/
+        YASQE.defaults.sparql.showQueryButton = true;
+        YASQE.defaults.sparql.endpoint = "http://datos.zaragoza.es/sparql";
+        var yasqe = YASQE(document.getElementById("yasqe"));
+        //console.log(yasque);
+    </script> -->
+</body>
+
+</html>

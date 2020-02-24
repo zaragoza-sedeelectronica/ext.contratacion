@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Conjuntos de datos reutilizados. Datos Abiertos de Zaragoza" keywords="sede,web,risp,uri,reutilizador" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <h2>Conjuntos de datos utilizados</h2>
+        <div role="alert" class="alert alert-info">
+            En este listado aparecen todos los conjuntos de datos utlizados por los reutilizadores. En caso de tener que realizar algún cambio importante en ellos, tendremos en cuenta el uso que se está haciendo de los mismos para notificarlo con suficiente antelación para que los reutilizadores puedan adaptar sus aplicaciones.
+        </div>
+        <div class="clearfix margin-b05em">
+            <div class="pull-right"><a href="./new" class="btn btn-success"><span class="far fa-plus-square" aria-hidden="true"></span> Añadir registro</a></div>
+            <div>Número de registros: <th:block th:text="${resultado.body.totalCount}" /></div>
+        </div>
+        <dl th:each="registro : ${resultado.body.result}">
+            <dt class="card nomargin">
+                <span class="badge" th:text="${registro.dificultadModificar}"></span>
+                <a th:href="${registro.uri}" th:text="${registro.uri}"></a>
+            </dt>
+            <dd class="card">
+                <div class="pull-right">
+                    <a th:if="${registro.usuarioAlta} == ${session.sess_risp.usuario.login}" th:href="@{{id}/edit(id=${registro.id})}" class="btn btn-primary btn-sm">
+                        <span class="far fa-edit" aria-hidden="true"></span> Modificar
+                    </a>
+                    <a th:if="${registro.usuarioAlta} == ${session.sess_risp.usuario.login}" th:href="@{{id}/remove(id=${registro.id})}" class="btn btn-primary btn-sm">
+                        <span class="far fa-trash-alt" aria-hidden="true"></span> Eliminar
+                    </a>
+                </div>
+                <th:block th:utext="${registro.description}"></th:block>
+            </dd>
+        </dl>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

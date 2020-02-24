@@ -1,0 +1,9 @@
+<label>
+    <input type="radio" th:field="*{userType}" value="org.sede.servicio.acceso.entity.GczUsuario" /> Gestor
+</label>
+<label>
+    <input type="radio" th:field="*{userType}" value="org.sede.servicio.acceso.entity.Ciudadano" /> Persona
+</label>
+<label>
+    <input type="radio" th:field="*{userType}" value="org.sede.servicio.acceso.entity.GczGrupoUsuario"/> Grupo de gestores
+</label>

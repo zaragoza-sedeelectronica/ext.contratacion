@@ -1,0 +1,71 @@
+<h3>Banco de Actividades > Informe Solicitudes Concedidas</h3>
+
+<button class="btn btn-primary btn-sm" ng-click="listarSolicitudes()" ng-show="permisos.DET">
+    <span class="fa fa-list" aria-hidden="true"></span>
+    <span class="hidden-xs">Listado solicitudes</span>
+</button>
+    
+<button class="btn btn-primary btn-sm" ng-click="formularioInforme()" ng-show="permisos.DET">
+    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+    <span class="hidden-xs">Informe solicitudes</span>
+</button>
+
+<hr/>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <nav class="navbar navbar-default" ng-show="permisos.DET">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand hidden-desktop">Filtros</span>
+                </div>
+                <div class="collapse navbar-collapse" id="buscadoresTarget">
+                    <form id="requestReportForm" class="navbar-form navbar-left" action="solicitud/informe-xls" role="search">
+                        <div class="form-group">
+                            <autocompletado modelo="qsearch.entidad" uri="/sede/servicio/cultura/evento/admin/banco/entidad/list" filtro="title" retorno="id" campos="id,title" placeholder="Buscar por entidad..."></autocompletado>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="qsearch.nombreSolicitante" placeholder="Buscar por solicitante...">
+                        </div>
+	                    <div class="input-group">
+	                        <input name="fromDate" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fromDate"
+	                        		placeholder="Fecha solicitud desde..."
+	                        		is-open="datepickers.fechaDesde" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+	                        <span class="input-group-btn">
+	                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'fechaDesde')">
+	                                <span class="glyphicon glyphicon-calendar"></span>
+	                            </button>
+	                        </span>
+	                    </div>
+	                    <div class="input-group">
+	                        <input name="toDate" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="toDate"
+	                        		placeholder="Fecha solicitud hasta..."
+	                        		is-open="datepickers.fechaHasta" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+	                        <span class="input-group-btn">
+	                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'fechaHasta')">
+	                                <span class="glyphicon glyphicon-calendar"></span>
+	                            </button>
+	                        </span>
+	                    </div>
+                        <input type="hidden" id="report-query" name="q" />
+                        <input type="hidden" id="report-query" name="rows" value="10000" />
+                        <button type="submit" class="btn btn-default" ng-click="buscar(qsearch)">Filtrar</button>
+                        <button type="button" class="btn btn-default" ng-click="limpiarFiltros()" title="Limpiar filtros">
+                        	<span class="fas fa-trash-alt" aria-hidden="true"></span>
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
+        </nav> 
+
+    </div> 
+</div>
+

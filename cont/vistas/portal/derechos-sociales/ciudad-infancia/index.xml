@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Zaragoza, ciudad amiga de la infancia y adolescencia (CAIA). Derechos Sociales" 
+               description="Zaragoza es desde 2018 Ciudad Amiga de la Infancia y la Adolescencia (CAIA), sello otorgado por Unicef en reconocimiento de su apuesta por la participación infantil en las decisiones de gobierno, políticas municipales y coordinación entre las instituciones de ámbito infantil y juvenil. En el portal Derechos Sociales, espacio de la sede electrónica del Ayuntamiento de Zaragoza, dispone de información y documentación sobre los requisitos, procedimientos y programas para conseguir este reconocimiento."  
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, participación social, niño, joven, protección de la infancia y de la juventud, derechos de los niños, Unicef, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, child, young person, children's rights"
+               >
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css"></link>
+
+    </sede:meta>
+    <style type="text/css">
+    .inline-header {
+        display: inline-block;
+        vertical-align: baseline;
+        line-height: 100%;
+    }
+
+    .fase-collapse.collapsed {
+        cursor: pointer;
+        background: none;
+    }
+
+    .fase-collapse:focus {
+        background: #fff;
+    }
+
+    .fase-collapse {
+        cursor: pointer;
+
+        border: 1px solid #ccc;
+        border-radius: .5em;
+        margin: 0;
+        font-size: 1.5em;
+    }
+
+    .fase-collapse .fase-title {
+        font-size: 1.10em;		
+		color: #084B8A !important;
+        padding: .5em;
+        margin-bottom: 0;
+        border-radius: .5em .5em 0 0;
+    }
+    .fase-collapse .fase-subtitle {
+        font-size: .75em;
+        margin: 0.5em;
+		color: #6E6E6E !important;
+    }
+
+
+
+h3 {
+  margin-top: 0.75em !important;
+  font-size: 1.6em !important;   /* 2em = 2 x 10px = 20px */
+  color: #084B8A !important;
+}
+
+.title {
+  margin-top: 0.75em !important;
+  font-size: 0.75em !important;   /* 2em = 2 x 10px = 20px */
+  color: #084B8A !important;
+}
+
+
+.requisito {
+  margin-bottom: 0.75em !important;
+  font-size: 1.25em !important;   /* 2em = 2 x 10px = 20px */
+  color: #6E6E6E !important;
+}
+
+h4 {
+  margin-bottom: 0.75em !important;
+  font-size: 1.30em !important;   /* 2em = 2 x 10px = 20px */
+  color: #084B8A !important;
+}
+
+.anexos {
+	height: 250px;
+
+}
+
+
+</style>
+</head>
+
+<body>
+    <sede:content>
+
+	 	<div class="text-center">
+            <img class="img-responsive img-rounded" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/01_cabecera-ciudades2.jpg" alt="" />
+        </div>        <div><p></p></div>
+
+        <div class="row margin-b05em">
+            <div class="col-md-12">
+                 <div class="img-rounded padding-a1em margin-b1em" style="background-color: rgba(0, 0, 0, .1);">
+                        <h2 class="nomargin">Zaragoza, ciudad amiga de la infancia y adolescencia</h2>
+                    <hr class="sm" />
+                    <ul class="row list-unstyled">
+                        <li class="col-sm-6">                    
+                    <p>El <strong>Programa Ciudad Amiga de la Infancia y adolescencia</strong> (CAIA) fue creado por UNICEF España en 2001, con el propósito de promover la aplicación de la Convención sobre los Derechos del Niño (CDN) en pueblos y ciudades de la geografía española. </p>
+
+<p>El <strong>5 de diciembre de 2017</strong>, el Ayuntamiento aprobó por unanimidad en Pleno iniciar el proceso de adhesión. 
+</p>
+                    <div class="well"><p><strong>Unicef ha concedido a Zaragoza el título de Ciudad amiga de la Infancia y la Adolescencia</strong>. El acto de entrega del galardón tuvo lugar en <strong>Oviedo, el 27 de noviembre de 2018</strong>. </p>
+                    <h3>Noticias</h3>
+                    <span class="fas fa-hand-point-right"></span> 27/11/2018. <a href="http://www.zaragoza.es/ciudad/noticias/detalle_Noticia?id=228269">Zaragoza recibe el reconocimiento de Ciudad Amiga de la Infancia que otorga UNICEF</a><br/>
+                    <span class="fas fa-hand-point-right"></span> 26/10/2018. <a href="http://www.zaragoza.es/ciudad/noticias/detalle_Noticia?id=228108">Zaragoza recibe el sello de Ciudad Amiga de la Infancia y la Adolescencia que otorga UNICEF</a>
+
+                    </div>
+</li>
+<li class="col-sm-6">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe title="Presupuestos Participativos. Propuestas primera edición" class="embed-responsive-item" src="https://www.youtube.com/embed/ZHziLmCapmU" allowfullscreen="allowfullscreen">
+                            <p>Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/ZHziLmCapmU">Enlace al vídeo en youtube.com</a></p>
+                        </iframe>
+                    </div>	
+</li>
+</ul>
+		</div>
+</div>
+
+            <div class="col-md-12">
+                 <div class="card img-rounded padding-a1em">
+						<!--/*<img class="img-responsive pull-left" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/logo-unicef.png" alt="" />*/-->						 
+                    <h2 class="nomargin">¿Qué es?</h2>
+                    <hr class="sm" />
+                    <ul class="row list-unstyled">
+                        <li class="col-sm-6">
+						<img class="img-responsive pull-left padding-a05em" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/logo-unicef.png" alt="" />	
+<p>El sello Ciudad Amiga de la Infancia y Adolescencia (CAIA) es un distintivo con el que Unicef acredita el modelo de gestión de Gobiernos Locales en el ámbito de las políticas locales de Infancia y Adolescencia.  Esta gestión se demuestra por el cumplimiento de una serie de requisitos que deben poner en relieve una manera de trabajar participativa,  planificada, coordinada y continua en el tiempo.
+</p><p>El programa CAIA incentiva la creación de Planes Locales de Infancia y Adolescencia, promueve la participación ciudadana de niños, niñas y adolescentes en la vida del municipio, impulsa aquellas políticas municipales que favorezcan el desarrollo de los derechos de la infancia y adolescencia, dinamiza a la ciudadanía para que colabore en los procesos
+</p>
+		</li>
+                        <li class="col-sm-6">
+<p> generados y promueve la coordinación institucional, así como el trabajo en red de los distintos municipios que forman esta iniciativa.</p>
+<p>El Programa CAIA cuenta con cuatro enfoques:</p>
+<ol><li>
+<strong>Trabajo en RED</strong> entre Gobiernos Locales, otras instituciones públicas y organizaciones sociales.</li><li>
+<strong>Participación</strong>de la infancia en las decisiones del Gobierno Local.</li><li>
+<strong>Equidad</strong>: protección de la infancia con mayor riesgo.</li><li>
+<strong>Agenda 2030</strong>: incorporación de los objetivos de Desarrollo Sostenible adoptados en 2015 por la Asamblea de Naciones Unidas.</li></ol> 
+<p>El sello tiene vigencia durante cuatro años tras los cuales el Gobierno Local puede  optar a su renovación.</p>	
+		</li></ul>
+		                    <hr class="sm" />
+<span class="far fa-hand-point-right"></span> Portal de Unicef sobre el programa: <a href="http://ciudadesamigas.org" target="_blank">http://ciudadesamigas.org/</a>
+	
+</div>
+</div>
+</div>
+
+
+        <div class="img-rounded padding-b1em">
+		
+			<h2>Documentación relativa a los requisitos para obtener el reconocimiento</h2>
+                    <hr class="sm" />	
+		
+        <div id="accordion">
+            <ul class="row list-unstyled">
+				
+                <li class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="fase-collapse" data-toggle="collapse" data-target="#fase3" tabindex="0">
+                        <div class="row no-gutter">
+                            <div class="col-xs-12 text-center">
+                                <h2 class="fase-title">Memoria de Servicios y Actuaciones</h2>
+                            </div>
+                          
+                            <div class="col-xs-12 text-center">
+                               
+                                <img class="img-responsive margin-auto" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-recursos-03c.jpg" alt="" />
+                                <hr class="sm hidden-xs"/>
+                                <div class="fase-subtitle">
+                                <p class="btn btn-info btn-sm">VER DOCUMENTO Y ANEXOS</p> 									
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>				
+				
+                <li class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="fase-collapse" data-toggle="collapse" data-target="#fase1" tabindex="0">
+                        <div class="row no-gutter">
+                            <div class="col-xs-12 text-center">
+                                <h2 class="fase-title">Diagnóstico de la realidad de la infancia y adolescencia</h2>
+                            </div>
+                          
+                            <div class="col-xs-12 text-center">
+                               
+                                <img class="img-responsive margin-auto" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-recursos-01c.jpg" alt="" />
+                                <hr class="sm hidden-xs"/>
+                                <div class="fase-subtitle">
+                                <p class="btn btn-info btn-sm">VER DOCUMENTO Y ANEXOS</p>                                
+<!--/*<p><strong>Requisito</strong>. Haber realizado un diagnóstico de la realidad de la infancia y adolescencia de la localidad.</p>*/-->                  
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+
+                
+                <li class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="fase-collapse" data-toggle="collapse" data-target="#fase2" tabindex="0">
+                        <div class="row no-gutter">
+                            <div class="col-xs-12 text-center">
+                                <h2 class="fase-title">Plan Local de infancia y adolescencia</h2>
+                            </div>
+                          
+                            <div class="col-xs-12 text-center">
+                               
+                                <img class="img-responsive margin-auto" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-recursos-02c.jpg" alt="" />
+                                <hr class="sm hidden-xs"/>
+                                <div class="fase-subtitle">
+                                <p class="btn btn-info btn-sm">VER DOCUMENTO Y ANEXOS</p> 									
+<!--/*<p><strong>Requisito</strong>. Elaborar un Plan Local de Infancia y Adolescencia basada en el diagnóstico previo (es orientativo y no compromete).</p>*/-->                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                                                                                            
+                </ul>
+
+            <div class="row">
+                <div id="fase1" class="col-md-12 collapse in">
+                 <div class="nomargin">
+						<a class="pull-right margin-t0em" href="/contenidos/derechosociales/ciudad-infancia/10-diagnostico-infancia-adolescencia-zaragoza-na.pdf" target="_blank"><span class="btn btn-primary btn-sm">VER DOCUMENTO</span></a>	 
+					 
+<h3>Diagnóstico de la realidad de la infancia y adolescencia</h3>
+                    <hr class="sm" />
+<!--/*<p class="requisito"><strong>Requisito</strong>: Haber realizado un diagnóstico de la realidad de la infancia y adolescencia de la localidad.</p>*/-->                  
+<p>El documento <a href="/contenidos/derechosociales/ciudad-infancia/10-diagnostico-infancia-adolescencia-zaragoza-na.pdf" class="pdf" target="_blank">Diagnóstico de la infancia y adolescencia en la ciudad de Zaragoza</a> describe la situación de la infancia y adolescencia de la ciudad desde dos enfoques complementarios:</p>
+<ul><li>Un diagnóstico cuantitativo.</li><li>
+Un diagnóstico cualitativo de las <strong>percepciones</strong> sobre la situación de la infancia y adolescencia, sus <strong>necesidades</strong>
+expresadas y sus <strong>propuestas</strong> para la ciudad. <!--/* que proviene de dos fuentes: los niños, niñas y adolescentes que
+han participado en los procesos de elaboración del <strong>Plan de lucha contra la pobreza infantil</strong> y el <strong>4 Plan Joven de
+Zaragoza</strong>; la segunda los profesionales y prescriptores sociales de entidades e instituciones que trabajan para la
+infancia y adolescencia.*/--></li></ul> 
+
+
+                    <h4>Anexos</h4>
+                    <hr class="sm" />                    
+<div class="row">
+<div class="col-md-12">
+<ul class="list-unstyled inline-block">
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-1-1.jpg" alt="" />
+<p><a href="https://www.zaragoza.es/contenidos/sectores/social/diagnostico-infancia.pdf" class="pdf" target="_blank">Estudio Diagnóstico de las entidades que trabajan para mejorar la vida de los niños y niñas y sus redes de colaboración</a>.</p>
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-1-2.jpg" alt="" />
+<p><a href="/contenidos/derechosociales/ciudad-infancia/12-pobreza-infantil-estereotipos-prejuicios-rumores-na.pdf" class="pdf" target="_blank">Pobreza Infantil. Estereotipos, prejuicios, rumores y discriminación.</a>.</p>
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-1-3b.jpg" alt="" />
+<p><a href="/contenidos/derechosociales/ciudad-infancia/13-estudio-diagnostico-rumores-pobreza-2017-na.pdf" class="pdf" target="_blank">Estudio-Diagnóstico sobre estereotipos, prejuicios, rumores y discriminación en población infantil.</a>.</p>
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-1-4.jpg" alt="" />
+<p><a href="mapas">Mapas geo-referenciados de la población infantil y adolescente en Zaragoza</a>.</p>
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-1-5.jpg" alt="" />
+<p><a href="/contenidos/derechosociales/ciudad-infancia/15-intervencion-ctl-pobreza-Infantil-na" class="pdf" target="_blank">Intervención en CTL. Recogida de información sobre Pobreza Infantil.</a>.</p>
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-1-6.jpg" alt="" />
+<a href="https://www.zaragoza.es/sede/portal/sectores/juventud/planjoven/#fases" target="_blank">Actas de sesiones de trabajo realizadas con jóvenes para 4º Plan Joven</a><br/><em>Enlace al portal del 4º Plan Joven</em>
+</li>
+</ul>                    
+</div>
+</div>
+
+
+</div>
+</div>
+                 
+           
+                <div id="fase2" class="col-md-12 collapse in">
+                 <div class="nomargin">
+						<a class="pull-right margin-t0em" href="/contenidos/derechosociales/ciudad-infancia/20-PLIAZ-plan-local-infancia-adolescencia-na.pdf" target="_blank"><span class="btn btn-primary btn-sm">VER DOCUMENTO</span></a>	 					 
+						<h3>Plan Local de Infancia y Adolescencia</h3>
+						<hr class="sm" />
+<!--/*<p class="requisito"><strong>Requisito</strong>: Elaborar un Plan Local de Infancia y Adolescencia basada en el diagnóstico previo, que contemple un presupuesto previsto que se espera ejecutar en los cuatro siguientes años al Reconocimiento (es orientativo y no compromete).</p>*/-->
+<p>El <a href="/contenidos/derechosociales/ciudad-infancia/20-PLIAZ-plan-local-infancia-adolescencia-na.pdf" class="pdf" target="_blank">Plan Local de Infancia y Adolescencia de Zaragoza 2018-2021 [PLIAZ]</a> se ha elaborado específicamente para la candidatura CAIA de UNICEF, vista como una oportunidad de mejora de los
+conceptos vertebradores y del modelo de planificación y organización seguidos hasta el presente dentro del Ayuntamiento
+de Zaragoza. </p>
+
+                    <h4>Anexos</h4>
+                    <hr class="sm" />                    
+<div class="row">
+<div class="col-md-12">
+<ul class="list-unstyled inline-block">
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-2-1.jpg" alt="" />
+<p><a href="/contenidos/sectores/social/plan-pobreza-general-doc2.pdf" class="pdf" target="_blank">Plan municipal de Lucha contra la Pobreza Infantil</a>.</p>
+</li>
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-1-6.jpg" alt="" />
+<a href="https://www.zaragoza.es/contenidos/sectores/jovenes/borrador-plan-joven.pdf" class="pdf" target="_blank">4º Plan Joven (borrador)</a>.
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-2-3.jpg" alt="" />
+Documento <a href="/contenidos/derechosociales/ciudad-infancia/23-propuesta-participacion-infantil-juvenil-bezindalla-na.pdf" class="pdf" target="_blank">"Propuesta para articular la Participación Infantil y Adolescente en la Ciudad de Zaragoza"</a>.
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-2-4.jpg" alt="" />
+<a href="/contenidos/derechosociales/ciudad-infancia/24-Requisitos-Procedimiento-ZgzAmigaInfancia.odt" target="_blank">Documento divulgativo de la candidatura a UNICEF Ciudades Amigas de la Infancia y Adolescencia (CAIA)</a>. <em>Documento de texto odt.</em>
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-2-5b.jpg" alt="" />
+<a href="/contenidos/derechosociales/ciudad-infancia/25-presentacion-candidatura-CAIA.pptx" target="_blank">Presentación de la candidatura de Zaragoza al sello UNICEF</a>. <em>Power Point</em>
+</li>
+
+<li class="anexos card col-md-2 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-2-6.jpg" alt="" />
+<a href="http://www.zaragoza.es/ciudad/normativa/detalle_Normativa?id=7364" target="_blank">Reglamento del Consejo de Niños y Niñas</a>.
+</li>
+
+</ul>
+</div>
+</div>
+                 </div>
+                </div>
+                                
+                
+                <div id="fase3" class="col-md-12 collapse in">
+                 <div class="nomargin">
+						<a class="pull-right margin-t0em" href="/contenidos/derechosociales/ciudad-infancia/30-memoria-servicios-actuaciones-infancia-adolescencia-na.pdf" target="_blank"><span class="btn btn-primary btn-sm">VER DOCUMENTO</span></a>	 					 
+						<h3>Memoria de Servicios y Actuaciones a favor de la infancia y la adolescencia</h3>
+						<hr class="sm" />
+<!--/*<p class="requisito"><strong>Requisito</strong>: Elaborar una memoria de actividades que recoja y explique los puntos anteriores (1, 2, 3 y 4) y el presupuesto ejecutado en infancia y adolescencia los 12 meses anteriores a la solicitud del Reconocimiento.</p>*/-->
+<p>La ciudad de Zaragoza reúne una serie de características propias a la hora de concretar en una memoria la actuación
+del Ayuntamiento hacia la infancia y la adolescencia de la ciudad: su carácter de gran población, la iniciativa municipal y los servicios de los que es titular interactúan en la práctica con un tejido
+social muy rico, diverso y participativo.</p>
+<p>Por estos factores anteriores, la <a href="/contenidos/derechosociales/ciudad-infancia/30-memoria-servicios-actuaciones-infancia-adolescencia-na.pdf" class="pdf" target="_blank">Memoria de Servicios y Actuaciones a favor de la infancia y la adolescencia</a> que se presenta debe entenderse como una síntesis limitada de todo el conjunto de actuaciones y servicios para y con la infancia y adolescencia de la ciudad que en la realidad se dan.</p>					
+
+                    <h4>Anexos</h4>
+                    <hr class="sm" />
+<div class="row">
+<div class="col-md-12">
+<ul class="list-unstyled inline-block">
+<li class="anexos card col-md-4 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-3-1.jpg" alt="" />
+<p><a href="/contenidos/derechosociales/ciudad-infancia/31-presentacion-memoria-servicios-actuaciones.odp">Presentación de la Memoria de servicios y actuaciones a favor de la infancia y adolescencia en la ciudad de Zaragoza</a>. <em>Presentación en formato odp</em>.</p>
+</li>
+
+<li class="anexos card col-md-4 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-3-2.jpg" alt="" />
+<p>Mesa de coordinación interdepartamental para la infancia y adolescencia.<br/><a href="/contenidos/derechosociales/ciudad-infancia/32-participantes-mesa-interdepartamental.odt" target="_blank">Listado de unidades u órganos gestores municipales integrantes</a>. <em>Documento de texto odt.</em></p>
+</li> 
+
+<li class="anexos card col-md-4 col-sm-6 col-xs-12 text-center">
+<img class="img-responsive center-block" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/img-anexo-3-3.jpg" alt="" />
+<p><a href="/contenidos/derechosociales/ciudad-infancia/33-presupuesto-partidas-ciudad-infancia-na.pdf" class="pdf" target="_blank">Presupuesto municipal para la infancia y adolescencia por partidas económicas</a>.</p>
+</li>                     
+</ul>
+</div>
+</div>                    
+                    
+                     
+</div>                    
+                </div>
+                            
+               
+                
+                
+            </div>                
+                
+                
+                </div>
+
+        </div>
+
+
+        <div class="row margin-b1em">
+
+            <div class="col-md-6">
+                 <div class="card img-rounded padding-a1em">
+                    <h2 class="nomargin">Requisitos</h2>
+                    <hr class="sm color-success" />
+<p>Los <strong>requisitos</strong> que se deberán cumplir para obtener el Sello de Reconocimiento CAI son los siguientes:</p>
+<ol class="list-unstyled padding-l2em"><li><span class="fa fa-check-circle text-success fa-lg"></span> Haber realizado un <strong>diagnóstico de la realidad de la infancia y adolescencia</strong> de la localidad. <a href="/contenidos/derechosociales/ciudad-infancia/10-diagnostico-infancia-adolescencia-zaragoza-na.pdf" class="pdf label label-success" target="_blank">Ver documento</a></li><li>
+<span class="fa fa-check-circle text-success fa-lg"></span> Elaborar un <strong>Plan Local de Infancia y Adolescencia</strong> basado en el diagnóstico previo, que contemple un presupuesto previsto que se espera ejecutar en los cuatro siguientes años al Reconocimiento (es orientativo y no compromete). <a href="/contenidos/derechosociales/ciudad-infancia/20-PLIAZ-plan-local-infancia-adolescencia-na.pdf" class="label label-success pdf" target="_blank">Ver documento</a></li><li>
+<span class="fa fa-check-circle text-success fa-lg"></span> Promover, apoyar y reconocer un órgano de participación infantil que esté en funcionamiento al menos desde el año 2017.</li><li>
+<span class="fa fa-check-circle text-success fa-lg"></span> Contar con un mecanismo de coordinación interna entre diferentes concejalías, con la finalidad de transversalizar el programa y estructurar la documentación a presentar.</li><li>
+<span class="fa fa-check-circle text-success fa-lg"></span> Elaborar una <strong>memoria de actividades</strong> que recoja y explique los puntos anteriores (1, 2, 3 y 4) y el presupuesto ejecutado en infancia y adolescencia los 12 meses anteriores a la solicitud del Reconocimiento. <a href="/contenidos/derechosociales/ciudad-infancia/30-memoria-servicios-actuaciones-infancia-adolescencia-na.pdf" class="pdf label label-success" target="_blank">Ver documento</a></li><li>
+<span class="fa fa-check-circle text-success fa-lg"></span> Poner a disposición de la ciudadanía toda la documentación generada en la web del Ayuntamiento (antes del 15 de junio de 2018).</li></ol>
+
+                    <hr class="sm" />
+                    <div class="text-left">
+                    <a href="recursos" class="btn btn-info btn-sm">ACCEDER A TODOS LOS RECURSOS</a>
+</div>
+</div>
+</div>
+
+            <div class="col-md-6">
+                 <div class="card img-rounded padding-a1em">
+                    <h2 class="nomargin">Contexto Municipal</h2>
+                    <hr class="sm" />
+<p>Las actuaciones más relevantes a tener en cuenta como base sobre la que fundamentar el inicio del proceso CAI por la ciudad de Zaragoza a nivel local son:</p>
+<ul>
+<li>El Consejo de Ciudad es la organización de participación sectorial de ámbito municipal por excelencia.</li><li>
+Desde 2004 viene desarrollándose el proyecto Pleno Infantil Municipal que desarrolla actuaciones pedagógicas en los centros educativos de la ciudad, tendentes a potenciar actitudes de participación democrática en la ciudadanía más joven.</li><li>
+El 30 de noviembre de 2012 se aprobó la creación del Consejo Municipal de Niños y Niñas. Se trata del órgano de participación infantil del que se dota el Ayto. de Zaragoza, si bien no se reúne desde enero de 2015. </li><li>
+Existe una Propuesta de Reglamento del Consejo Municipal de Niños y Niñas con aprobación inicial el 17 de noviembre de 2014.</li><li>
+Zaragoza Ciudad Educadora. Zaragoza es, desde el año 2003, una de las 168 Ciudades de la Red Española de Ciudades Educadoras (RECE) y pertenece a la Comisión de Seguimiento en el bienio 2016-2018.</li><li>
+Consejo Escolar Municipal. Órgano de consulta, asesoramiento y participación de los sectores afectados en la programación de la enseñanza no universitaria en la ciudad. Regido por el Reglamento del Consejo Escolar Municipal de Zaragoza (BOPZ nº 237 de 14.10.2004).</li><li>
+Plan contra la Pobreza Infantil. Aprobado por unanimidad en el pleno del Ayuntamiento el 22 del 12 de 2017. </li><li>
+4º Plan Joven de Zaragoza en pleno proceso de elaboración</li><li>
+El Proyecto Camino Escolar, cuyo objetivo es promover la movilidad  sostenible y la autonomía de los niños y niñas.</li>
+</ul>
+
+</div>
+</div>
+
+
+
+
+
+        <!--/*<div class="row margin-b1em">
+            <div class="col-md-4">
+                 <div class="img-rounded padding-a1em">
+                    <h2 class="nomargin">Actualidad <small class="margin-t05em pull-right"><a href="/sede/portal/presupuestos-participativos/servicio/noticia/list?fq=temas_smultiple%3A(&quot;Presupuestos Participativos&quot;)">Más noticias</a></small></h2>
+                    <hr class="sm" />
+                    <sede:noticia clase="col-xs-12" listado="s" imagen="s" espacio="1" usuario="1" texto="" tema="Acción Social" numero="2" resumen="" fecha="" carpeta="/sede/portal/derechos-sociales/"></sede:noticia>
+
+</div>
+</div>
+
+            <div class="col-md-8">
+                 <div class="card img-rounded padding-a1em">
+                    <h2 class="nomargin">Procedimiento</h2>
+                    <hr class="sm" />
+<img class="img-responsive full-width img-rounded" src="/cont/vistas/portal/derechos-sociales/ciudad-infancia/img/infografia_procedimiento_b.png" alt="" />
+
+</div>
+</div>
+</div>*/-->
+
+
+
+
+</div>
+
+    </sede:content>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+
+        // Collapsamos manualmente las fases (dentro de pestaña Fases)
+        $('div[id^="fase"].collapse').collapse();
+        // Esperamos 500ms para que termine el evento 'hidden.bs.collapse' y mostramos fase 1 desplegada
+        setTimeout(function() {
+            $('#fase1').collapse('hide');
+        }, 500);
+
+        // Función para simular data-parent sin panels
+        $('#accordion').on('show.bs.collapse', function(e) {
+            var actives = $('#accordion').find('.in, .collapsing');
+            actives.each(function(index, element) {
+                $(element).collapse('hide');
+            });
+        });
+
+        // En vista móvil se carga el contenido de las fases justo debajo de cada imagen de fase
+        if ($('div[id^="fase"][id$=-xs]').is(':visible')) {
+            var fases = $('div[id^="fase"][id$=-xs]');
+            for (var i = 1; i <= fases.length; i++) {
+                $("#fase" + i).insertAfter(fases[i - 1]);
+            };
+        };
+
+        $('[data-toggle="popover"]').popover();
+        $('#myModal').on('shown.bs.modal', function() {
+            $('#myInput').focus();
+        });
+
+    });
+    /*]]>*/
+    </script>       
+</body>
+
+</html>

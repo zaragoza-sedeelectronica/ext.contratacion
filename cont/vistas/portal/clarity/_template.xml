@@ -1,0 +1,157 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="sectores">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+    
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar">
+            
+            <div class="container-fluid">
+            <nav><ul vocab="http://rdf.data-vocabulary.org/" class="breadcrumb destacado margin-b1em"><li><span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://clarity-csa.eu/" target="_blank"> Clarity Project</a></span></li><li><span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://clarity-csa.eu/portfolio-classic-3cols" target="_blank"> Marketplace</a></span></li><li><span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://clarity.codefor.nl/" target="_blank"> Case studies</a></span></li><li><span lang="es" xml:lang="es"><a href="/sede/portal/clarity/es/">Versión español</a></span></li></ul></nav>
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/clarity/logo" />
+                 
+                  <div class="pull-left portal-header ">
+                
+                    <div class=""><h1><a href="https://www.zaragoza.es/sede/portal/clarity/">                            <img class="cabecera img-responsive margin-auto" src="/cont/paginas/clarity/img/logo_blueprint_pacifico.png" alt="Clarity Project Blueprint" /></a></h1></div>
+
+                   
+                </div>
+                <th:block th:include="fragmentos/clarity/cabecera" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <nav class="container-fluid margin-b1em">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2">
+                    <a class="elemento" href="/sede/portal/clarity/recommendations">
+                        Recommendations
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-2">
+                    <a class="elemento" href="/sede/portal/clarity/summary">
+                        Summary
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-1 dropdown">
+                    <a class="elemento dropdown-toggle" id="healthDropdownLink" href="/sede/portal/clarity/health">
+                        Health
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="healthDropdownLink">
+                        <a href="/sede/portal/clarity/health#Factsheet">Factsheet</a>
+                        <a href="/sede/portal/clarity/health#blue">Blueprint</a>
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=14">Marketplace</a>
+                    </div>
+                </li>
+                <li class="col-xs-6 col-sm-2 dropdown">
+                    <a class="elemento dropdown-toggle" id="localGovermentDropdownLink" href="/sede/portal/clarity/local-government">
+                        Local Government
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="localGovermentDropdownLink">
+                       <a href="/sede/portal/clarity/local-government#Factsheet">Factsheet</a><br/>
+                        <a href="/sede/portal/clarity/local-government#blue">Blueprint</a><br/>
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=11">Marketplace</a>
+                    </div>
+                </li>
+                <li class="col-xs-6 col-sm-3 dropdown">
+                    <a class="elemento dropdown-toggle" id="smallBusinessDropdownLink" href="/sede/portal/clarity/small-business">
+                        Small Business and Self-employed
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="smallBusinessDropdownLink">
+                       <a href="/sede/portal/clarity/small-business#Factsheet">Factsheet</a><br/>
+                        <a href="/sede/portal/clarity/small-business#blue">Blueprint</a><br/>
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=50">Marketplace</a>
+                    </div>
+                </li>
+              <!--/*  <li class="col-xs-6 col-sm-2 dropdown">
+                    <a class="elemento dropdown-toggle" id="disabilityBusinessDropdownLink" href="/sede/portal/clarity/disability">
+                        Disability
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="disabilityBusinessDropdownLink">
+                            <a href="/sede/portal/clarity/disability#Factsheet">Factsheet</a><br/>
+                        <a href="/sede/portal/clarity/disability#blue">Blueprint</a><br/>
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=90">Marketplace</a>
+                    </div>
+                </li>*/-->
+            </ul>
+            <!--/* <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/clarity/recommendations">Recommendations</a></li>
+                   <li class="col-xs-6 col-sm-2">
+                
+                <a class="elemento" href="/sede/portal/clarity/summary">Summary</a></li>
+                <li class="col-xs-6 col-sm-1"><a class="elemento" href="/sede/portal/clarity/health"> Health</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/clarity/local-government">Local Government</a></li>
+                <li class="col-xs-6 col-sm-3"><a class="elemento" href="/sede/portal/clarity/small-business">Small Business and Self-employed</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/clarity/disability">Disability</a></li> 
+            </ul> */-->
+        </nav>
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <!--/* <div class="overlay" style="display: none;"></div> */-->
+        <!--/* Menu lateral de portal */-->
+        <!--/* <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class=""><a href="/sede/portal/sectores/personas-mayores/servicio/equipamiento/category/92">Red de Centros</a></li>
+                <li class=""><a href="/ciudad/sectores/mayores/listado_Tema?dirigido=17">Servicios</a></li>
+                <li class=""><span>Cursos</span>
+                    <ul class="nav">
+                        <li class=""><a href="objetivos">Objetivos</a></li>
+                        <li class=""><a href="comunicacion">Programas</a></li>
+                        <li class=""><a href="grupos-actividad">Grupos de Actividad</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="ciudades-amigables">Ciudades Amigables</a></li>
+                <li class=""><a href="parques">Parques de Mayores </a></li>
+                <li class=""><a href="comedor-mayores">Comedor de Mayores</a></li>
+             
+            
+                <li class=""><a href="http://zaragozaciudad.net/blogdelmayor/" title="Se va a abrir enlace externo">Blog del Mayor</a></li>
+                <li class=""><a href="https://www.zaragoza.es/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">Ayúdanos a Mejorar</a></li>
+            </ul>
+        </nav> */-->
+    </th:block>
+    <th:block th:fragment="footer">
+    <footer class="fnd-gris-claro margin-t3em" vocab="http://schema.org/" typeof="Organization">
+    <div class="container">
+        <div class="row padding-v05em">
+            <div class="col-xs-12 col-sm-12">
+             <p>   "Clarity - Blueprint" is a part of the Clarity Open eGovernment Services project.</p>
+              <p>The CLARITY project is a two-year project, funded by the European Commission under the Horizon 2020 framework. Grant Agreement number: 693881</p>
+               <p>"Clarity - Blueprint" is available as an open source website, maintained by zaragoza.es on <a href="https://github.com/zaragoza-sedeelectronica/clarity">zaragoza_es.github</a></p>.
+            </div>
+           
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-30945968-1', {
+    'cookieDomain' : 'zaragoza.es',
+    'allowLinker' : true
+});
+ga('send', 'pageview');
+</script>
+        <!--/*   <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />*/-->
+    </th:block>
+</body>
+
+</html>

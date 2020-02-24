@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+    <link rel="stylesheet" href="/cont/assets/css/contratacion-publica.css"/>
+    <style type="text/css">
+        .fa-satellite-dish:before {
+        content: "\f7c0";
+        }
+    </style>
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo"/>
+                <div class="pull-left portal-header">
+                    <sede:breadcrumb title="Contratación Pública" link="/opencityext/servicio/contratacion-publica/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <div class="overlay" style="display: none;"></div>
+        <!--/* Menu lateral de portal */-->
+            <nav class="container-fluid" role="navigation">
+               <!-- <ul class="list-unstyled row no-gutter text-center" id="menu">
+                    <li class="col-xs-6 col-sm-2"><a class="elemento" href="/opencityext/servicio/contratacion-publica/">Buscador</a></li>
+                    <li class="col-xs-6 col-sm-2"><a class="elemento" href="/opencityext/servicio/contratacion-publica/indicadores/?anyo=2018&amp;idPortal=1">Indicadores</a></li>
+                    <li class="col-xs-6 col-sm-2"><a class="elemento" href="/opencityext/portal/contratacion-publica/servicio/tramite/?query=Acreditaciones">Registro de Contratistas</a></li>
+                    <li class="col-xs-6 col-sm-2"><a class="elemento" href="/opencityext/servicio/contratacion-publica/mesa-contratacion/">Mesa de contratación</a></li>
+                </ul>-->
+                <div class="row navCapa">
+                    <div class="col-xs-12 col-sm-2 text-center border-left-2">
+                        <a href="/opencityext/servicio/contratacion-publica/">
+                            <i class="fas fa-search iconsFormat"></i>
+                            <h2 class="tituloNav">Buscador</h2>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 text-center border-left-2">
+                        <span th:with="anyo=(${#dates.format(#dates.createNow(), 'yyyy')}-1)">
+                        <a th:href="|/opencityext/servicio/contratacion-publica/indicadores/?idPortal=1&amp;anyo=${anyo}|">
+                            <i class="fas fa-chart-pie iconsFormat"></i>
+                            <h2 class="tituloNav">Indicadores</h2>
+                        </a>
+                        </span>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 text-center border-left-2">
+                        <!-- <a href="/opencityext/portal/contratacion-publica/servicio/tramite/?query=Acreditaciones"> -->
+                        <a href="//www.zaragoza.es/sede/portal/contratacion-publica/servicio/tramite/?query=Acreditaciones">                        
+                            <i class="fas fa-file-signature iconsFormat"></i>
+                            <h2 class="tituloNav">Registro de Contratistas</h2>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 text-center border-left-2">
+                        <a href="/opencityext/servicio/contratacion-publica/mesa-contratacion/">
+                            <i class="fas fa-gavel iconsFormat"></i>
+                            <h2 class="tituloNav">Mesa de Contratación</h2>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 text-center border-left-2">
+                        <!-- <a href="/opencityext/portal/contratacion-publica/servicio/tramite/29103"> -->
+                        <a href="//www.zaragoza.es/sede/portal/contratacion-publica/servicio/tramite/29103">
+                            <i class="fab fa-wpforms iconsFormat"></i>
+                            <h2 class="tituloNav">Cláusulas Sociales de Género</h2>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 text-center border-left-2">
+                        <!-- <a href="/opencityext/portal/contratacion-publica/obscontratacion"> -->
+                        <a href="//www.zaragoza.es/sede/portal/contratacion-publica/obscontratacion">
+
+                            <i class="fas fa-binoculars iconsFormat"></i>
+                            <h2 class="tituloNav">Observatorio de Contratación</h2>
+                        </a>
+                    </div>
+                </div>
+                <th:block th:include="fragmentos/readspeaker"></th:block>
+            </nav>        
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

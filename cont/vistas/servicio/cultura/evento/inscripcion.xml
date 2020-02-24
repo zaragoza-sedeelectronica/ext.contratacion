@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <sede:meta title="Inscripción actividad" keywords="sede,web" />
+    </head>
+
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error" />
+
+            <th:block th:if="${acto != null} and !${session.sess_ciudadano}">
+                <div role="alert" class="alert alert-danger">
+                    Debe <a th:href="${#utils.getLinkLoginUsuario(#httpServletRequest)}" class="text-primary">iniciar sesión</a> para acceder al formulario.
+                </div>
+            </th:block>
+            <th:block th:if="${acto != null and acto.registration == null}">
+                <div role="alert" class="alert alert-danger">
+                    Esta actividad no requiere inscripción.
+                </div>
+            </th:block>
+            <th:block th:if="${acto != null and acto.status == 'C'}">
+                <div role="alert" class="alert alert-danger">
+                    Esta actividad ha sido cancelada
+                </div>
+            </th:block>
+            <form th:if="${acto != null and acto.registration != null and session.sess_ciudadano != null and acto.status != 'C'}" th:action="@{/servicio/cultura/evento/inscripcion/save}" th:object="${dato}" method="post">
+                <th:block th:if="!${#strings.contains(acto.registration.url, 'zaragoza.es')}">
+                    La inscripción para esta actividad se realiza en: <a th:href="${acto.registration.url}" th:text="${acto.registration.url}"></a>
+                </th:block>
+                <th:block th:if="${#strings.contains(acto.registration.url, 'zaragoza.es')}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="fieldset">
+                                <fieldset>
+                                    <legend><span>Datos para la inscripción</span></legend>
+
+                                    <div class="row margin-b2em">
+                                        <th:block id="usu" name="usu" th:value="${usuario}"/>
+                                        
+                                        <div class="fnd-gris-claro padding-a1em">
+                                            <strong>Información del usuario/a</strong>
+                                            <ul>
+                                                <li><strong>Nombre: </strong><span th:text="${session.sess_ciudadano.name}"/> </li>
+                                                <li><strong>Email: </strong><span th:text="${session.sess_ciudadano.email}"/></li>
+                                                <th:block th:if="*{inscripcionUsuario}">
+                                                    <li th:if="*{inscripcionUsuario.perfil.fechaNacimiento}"><strong>Fecha de nacimiento: </strong><span sede:rdf="*{inscripcionUsuario.perfil.get('fechaNacimiento')}"/></li>
+                                                    <li th:if="*{inscripcionUsuario.perfil.genero}"><strong>Género: </strong>
+                                                        <span th:if="*{inscripcionUsuario.perfil.genero == 'M'}">Hombre</span>
+                                                        <span th:if="*{inscripcionUsuario.perfil.genero == 'F'}">Mujer</span>
+                                                        <span th:if="*{inscripcionUsuario.perfil.genero == 'O'}">Otro</span>
+                                                    </li>
+                                                    <li th:if="*{inscripcionUsuario.perfil.necesidadesEspeciales}"><strong>Necesidades Especiales: </strong><span th:text="*{inscripcionUsuario.perfil.necesidadesEspeciales}"/></li>
+                                                </th:block>
+                                            </ul>
+                                        </div>
+                                    
+                                    </div>
+                                    
+                                    <th:block th:if="not *{inscripcionUsuario.perfil.fechaNacimiento} or not *{inscripcionUsuario.perfil.genero}">
+                                        <div class="row">
+                                            <div class="col-md-6 form-group" th:if="not *{inscripcionUsuario.perfil.fechaNacimiento}">
+                                                <label for="fechaNacimiento">
+                                                    <span class="control-label obligatorio">Fecha de Nacimiento:</span><span class="oculto"> (campo obligatorio)</span>
+                                                </label>
+                                                <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" value="" size="10" maxlength="30" placeholder="Formato: dd/mm/aaaa" class="form-control" th:field="*{inscripcionUsuario.perfil.fechaNacimiento}" data-date-format="dd/mm/yyyy" data-date-language="es" data-provide="datepicker" />
+                                            </div>
+                                            <div class="col-md-6 form-group" th:if="not *{inscripcionUsuario.perfil.genero}">
+                                                <label for="genero">
+                                                    <span class="control-label obligatorio">Género:</span><span class="oculto"> (campo obligatorio)</span>
+                                                </label>
+                                                <div>
+                                                    <select th:field="*{inscripcionUsuario.perfil.genero}" class="form-control">
+                                                        <option value=""></option>
+                                                        <option value="M">Hombre</option>
+                                                        <option value="F">Mujer</option>
+                                                        <option value="O">Otro</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 form-group" th:if="not *{inscripcionUsuario.perfil.necesidadesEspeciales}">
+                                                <label for="necesidadesEspeciales">
+                                                    <span class="control-label">Necesidades Especiales:</span>
+                                                </label>
+                                                <div>
+                                                    <textarea th:field="*{inscripcionUsuario.perfil.necesidadesEspeciales}" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </th:block>
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <label class="control-label" for="medioConocido">Medio por el que conoce la actividad: <span class="oculto"> (campo obligatorio)</span></label>
+                                            <select th:field="*{medioConocido}" class="form-control" required="required">
+                                                <option value=""></option>
+                                                <option value="Difusión 12 LUNAS (folletos, carteles, bus)">Difusión 12 LUNAS (folletos, carteles, bus)</option>
+                                                <option value="Boletín CIPAJ">Boletín CIPAJ</option>
+                                                <option value="Amigos">Amigos</option>
+                                                <option value="Familia">Familia</option>
+                                                <option value="Redes Sociales">Redes Sociales</option>
+                                                <option value="Web Municipal">Web Municipal</option>
+                                                <option value="Mediadores Juveniles">Mediadores Juveniles</option>
+                                                <option value="Otros">Otros</option>
+                                            </select>
+                                        </div>
+                                    </div>                                    
+                                    <p><input class="form-check-input" type="checkbox" value="true" id="lopd" name="lopd" required="required"/>
+                                    <label class="form-check-label" for="lopd"> Protección de datos. </label> Autorizo al Ayuntamiento de Zaragoza al tratamiento informático de sus datos, así como la inclusión y exposición pública de mi nombre en el listado de admitidos a cursos.</p>
+
+                                    <p><input class="form-check-input" type="checkbox" value="true" id="cesionImagenes" name="cesionImagenes"/>
+                                    <label class="form-check-label" for="cesionImagenes">Fotos y vídeos</label>. Autorizo a que el Ayuntamiento de Zaragoza utilice y publique las fotos y vídeos realizados en esta actividad, así como la publicación en sus redes sociales, folletos informativos relacionados con las actividades del Ayuntamiento de Zaragoza y para el archivo fotográfico del mismo.</p>
+                                    
+
+                                    <div class="form-group pull-right">
+                                        <input type="submit" name="submit" value="Inscribir" class="boton btn btn-lg btn-primary margin-t3em" />
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="fieldset">
+                                <fieldset>
+                                    <legend><span>Datos de la Actividad</span></legend>
+                                    
+                                    <div class="row margin-b3em">
+                                        <input class="form-control" type="hidden" th:field="*{codActo}" size="6" name="programa_id" id="programa_id" />
+                                        <div class="fnd-gris-claro padding-a1em">
+                                            <strong>Información de la actividad</strong>
+
+                                            <ul>
+                                                <li><strong th:text="${acto.title}"/></li>
+                                                <li th:if="${acto.registration.title}"><strong>Lugar: </strong><span th:text="${acto.registration.title}"/></li>
+                                                
+                                                <th:block th:each="lug : ${acto.subEvent}">
+                                                    <li th:if="${lug.startDate}"><strong>Duración: </strong><span th:text="${lug.startDate} + ' - ' + ${lug.endDate}"/></li>
+
+                                                    <th:block th:each="horario : ${lug.openingHours}">
+                                                        <li><strong>Horario: </strong><span th:text="${horario.dayOfWeek} + ' ' + ${horario.startTime} + ' - ' + ${horario.endTime}"/></li>
+                                                    </th:block>
+                                                </th:block>
+                                                <li th:if="${acto.registration} and ${acto.registration.description}"><strong>Requisitos: </strong><span th:utext="${acto.registration.description}"/></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </form>
+        </sede:content>
+        <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+        <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/sede/js/inscripciones.js"></script>
+        <script type="text/javascript">
+        /*<![CDATA[*/
+            $('#fecha_nacimiento').datepicker({
+                orientation: "bottom auto"
+            });
+        /*]]>*/
+        </script>
+    </body>
+
+</html>

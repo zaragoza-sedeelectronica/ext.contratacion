@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Ingresos de urbanismo" description="Transparencia " author="" last-modified="Tue Mar 25 00:00:00 CET 2014" keywords="ayuntamiento, ciudad, Zaragoza, España, infraestructuras, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Días cotizados, de baja y absentismo 2016</h2>
+        <div class="container-fluid">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed table-bordered">
+                    <caption>Partidas relacionadas con inversión en infraestructuras</caption>
+                    <tr>
+                        <th>GRUPO</th>
+                        <th>EMPLEADOS GRUPO</th>
+                        <th> % empleados por grupo</th>
+                        <th>DIAS COTIZACION</th>
+                        <th>DIAS_BAJA</th>
+                        <th>% absentismo laboral</th>
+                    </tr>
+                    <tr>
+                        <td>A1</td>
+                        <td>308</td>
+                        <td>6,07</td>
+                        <td>106.942</td>
+                        <td>1.940</td>
+                        <td>1,81</td>
+                    </tr>
+                    <tr>
+                        <td>A2</td>
+                        <td>520</td>
+                        <td>10,25</td>
+                        <td>179.366</td>
+                        <td>5.125</td>
+                        <td>2,86</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>2.526</td>
+                        <td>49,81</td>
+                        <td>902.187</td>
+                        <td>41.668</td>
+                        <td>4,62</td>
+                    </tr>
+                    <tr>
+                        <td>C2</td>
+                        <td>1.294</td>
+                        <td>25,52</td>
+                        <td>441.174</td>
+                        <td>25.091</td>
+                        <td>5,69</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>423</td>
+                        <td>8,34</td>
+                        <td>144.787</td>
+                        <td>7.583</td>
+                        <td>5,24</td>
+                    </tr>
+                    <tr class="destacado">
+                        <td>Total</td>
+                        <td>5.071</td>
+                        <td>100,00</td>
+                        <td>1.774.456</td>
+                        <td>81.407</td>
+                        <td>4,59</td>
+                    </tr>
+                </table>
+                <h3>Leyenda</h3>
+                <ul>
+                    <li>% de absentismo laboral = días de baja /días de cotización * 100 </li>
+                    <li>Días de cotización: son los días teóricos de presencia </li>
+                    <li>Días de baja: días de ausencia por baja </li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

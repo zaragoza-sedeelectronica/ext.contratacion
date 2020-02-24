@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Juntas municipales y vecinales" keywords="sede,web,junta,municipal,vecinal" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Juntas Municipales</h2>
+        <ul class="row list-unstyled">
+            <li class="col-sm-3 margin-b1em" th:each="doc : ${resultado.body.result}" th:if="${#strings.contains(doc.title, 'Junta Municipal')}">
+                <a th:href="@{{id}(id=${doc.id})}">
+                    <img class="img-responsive" th:src="'/cont/vistas/portal/participacion/img/distrito/' + ${#utils.stripAccents(#strings.toLowerCase(#strings.replace(doc.title,' ','-')))} + '.png'" alt=""/>
+                    <th:block th:text="${doc.title}"></th:block>
+                </a>
+            </li>
+        </ul>
+        <h2>Juntas Vecinales</h2>
+        <ul class="row list-unstyled">
+            <li class="col-sm-3 margin-b1em" th:each="doc : ${resultado.body.result}" th:if="${#strings.contains(doc.title, 'Junta Vecinal')}">
+                <a th:href="@{{id}(id=${doc.id})}">
+                    <img class="img-responsive" th:src="'/cont/vistas/portal/participacion/img/distrito/' + ${#utils.stripAccents(#strings.toLowerCase(#strings.replace(doc.title,' ','-')))} + '.png'" alt=""/>
+                    <th:block th:text="${doc.title}"></th:block>
+                </a>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

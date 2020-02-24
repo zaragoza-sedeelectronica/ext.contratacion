@@ -1,0 +1,109 @@
+<div class="inform repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-default" ng-click="guardar()" ng-show="permisos.MOD">
+            <span class="fa fa-check" aria-hidden="true"></span>
+            <span class="hidden-xs"> Guardar</span>
+        </button>
+        <boton-copiar ng-show="permisos.NEW"></boton-copiar>
+        <modal-borrar ng-show="permisos.DEL"></modal-borrar>
+    </div>
+</div>
+<hr/>
+<fieldset>
+    <legend>Datos del registro</legend>
+
+    <div class="row">
+                <div class="col-md-12 form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="btn-group" uib-dropdown>
+                                <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle>
+                                    <span class="fa fa-info-circle" aria-hidden="true"></span> Control
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" style="padding: 5px; min-width: 300px;">
+                                    <li ng-hide="location === '/new'"><strong>ID: </strong>{{ registro.id }}</li>
+                                    <li role="separator" class="divider"></li>
+                                    <li ng-hide="location === '/new'"><strong>Fecha de alta: </strong>{{registro.creationDate | date:'dd-MM-yyyy'}}</li>
+                                    <li ng-hide="location === '/new'"><strong>Fecha de modificación: </strong>{{registro.lastUpdated | date:'dd-MM-yyyy'}}</li>
+                                    <li ng-hide="location === '/new'"><strong>Fecha de publicación: </strong>{{registro.pubDate | date:'dd-MM-yyyy'}}</li>
+                                    <li><strong>Usuario de alta: </strong>{{registro.usuarioAlta}}</li>
+                                    <li><strong>Usuario de modificación: </strong>{{registro.usuarioMod}}</li>
+                                    <li><strong>Usuario de publicación: </strong>{{registro.usuarioPub}}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-default" ng-click="cargarFicha(registro.id);" ng-disabled="location === '/new'">
+                                <span class="fa fa-globe" aria-hidden="true"></span> 
+                                Ver noticia
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+    <div class="row">
+        <div class="col-md-8 form-horizontal">
+            <div class="form-group">
+                <label for="dateCreated" class="col-sm-2 control-label">Fecha: </label>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <input type="text" name="dateCreated" id="dateCreated" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="registro.dateCreated" is-open="datepickers.dateCreated" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" my-date/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'dateCreated')">
+                                <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+                <label for="expirationDate" class="col-sm-2 control-label">Fecha de caducidad: </label>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <input type="text" name="expirationDate" id="expirationDate" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="registro.expirationDate" is-open="datepickers.expirationDate" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" my-date/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'expirationDate')">
+                                <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">Titulo:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="title" id="title" ng-model="registro.title" value="{{ registro.title }}" ng-disabled="!permisos.MOD" />
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control" name="id" type="text" ng-model="registro.id" value="{{ registro.id }}" disabled/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="programacion">Resumen:</label>
+                <div class="col-sm-10">
+                    <textarea ck-editor-new id="descripcion" name="descripcion" ng-model="registro.summary" ng-disabled="!permisos.MOD">{{ registro.summary }}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="programacion">Cuerpo:</label>
+                <div class="col-sm-10">
+                    <textarea ck-editor-new id="descripcion" name="descripcion" ng-model="registro.description" ng-disabled="!permisos.MOD">{{ registro.description }}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="category">Temática:</label>
+                <div class="col-sm-10">
+                    <ui-select multiple ng-model="pobDestino.selected" style="width:400px;" on-select="onSelectPobDestino($item, $model)" on-remove="onRemovePobDestino($item, $model)">
+                        <ui-select-match class="ui-select-match" placeholder="Sector de población: Mujeres, Jóvenes...">
+                            {{$item.title}}
+                        </ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="sector.title as sector in poblacion | filter: $select.search">
+                            <div ng-bind-html="sector.title | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

@@ -1,0 +1,167 @@
+<!-- <div class="row no-gutter bloque-tramites margin-b1em" th:if="${title}">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <h2><a href="/ciudad/encasa/buscar_Tramite">Trámites y Servicios</a></h2>
+    </div>
+</div>
+<ul class="row no-gutter list-unstyled bloque-tramites text-center"> -->
+    <!-- /* <li class="col-xs-6 col-sm-4 col-md-2">
+                <div class="lead media-heading">
+                    <a href="/ciudad/encasa/buscar_Tramite?&amp;certificado_b=true">
+                        <span class="azi azi-certificadoe center-block"></span>
+                        <div>Con Certificado Electrónico</div>
+                    </a>
+                </div>
+            </li> */-->
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 23}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/23">
+                <!-- <span class="azi azi-agua center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/agua.png" alt=""/>
+                <div>Agua</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 21}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/21">
+                <!-- <span class="azi azi-participacion center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/asociacionYparticipacionCiudadana.png" alt=""/>
+                <div>Asociación y Participación</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 22}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/22">
+                <!-- <span class="azi azi-apersonales center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/asuntosPersonales.png" alt=""/>
+                <div>Asuntos Personales</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 121}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/121">
+                <!-- <span class="azi azi-dsociales center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/serviciosSociales.png" alt=""/>
+                <div>Derechos Sociales</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 162}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/162">
+                <!-- <span class="azi azi-ayudas center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/ayudasEconomicasYsubvenciones.png" alt=""/>
+                <div>Ayudas y Subvenciones</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 81}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/81">
+                <!-- <span class="azi azi-deporte center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/deporte.png" alt=""/>
+                <div>Deporte</div><br/>
+            </a>
+        </div>
+    </li>
+<!-- </ul>
+<ul class="row no-gutter list-unstyled bloque-tramites text-center"> -->
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 41}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/41">
+                <!-- <span class="azi azi-educacion center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/educacionCulturaYocio.png" alt=""/>
+                <div>Educación y Cultura</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 82}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/82">
+                <!-- <span class="azi azi-medioambiente center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/medioAmbiente.png" alt=""/>
+                <div>Medio Ambiente y Salud Pública</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 101}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/101">
+                <!-- <span class="azi azi-seguridad center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/proteccionYSeguridadCiudadana.png" alt=""/>
+                <div>Protección y Seguridad Ciudadana</div>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 142}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/142">
+                <!-- <span class="azi azi-viapublica center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/viaPublica.png" alt=""/>
+                <div>Tráfico y Vía Pública</div><br/>
+            </a>
+        </div>
+    </li>
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 143}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/143">
+                <!-- <span class="azi azi-tributos center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/tributos.png" alt=""/>
+                <div>Tributos</div>
+            </a>
+        </div>
+    </li>
+    <!--/* <li class="col-xs-6 col-sm-4 col-md-2">
+                <div class="lead media-heading">
+                    <a href="/sede/servicio/tramite/tipo/141">
+                        <span class="azi azi-trafico center-block"></span>
+                        <div>Tráfico y Transportes</div>
+                    </a>
+                </div>
+            </li> */-->
+    <li class="col-xs-6 col-sm-4 col-md-2" th:unless="${mostrarSolo} and ${id != 144}">
+        <div class="lead media-heading">
+            <a href="/sede/servicio/tramite/tipo/144">
+                <!-- <span class="azi azi-urbanismo center-block"></span> -->
+                <img class="img-responsive margin-auto" src="/cont/paginas/bs/img/home/tramites/urbanismo.png" alt=""/>
+                <div>Urbanismo</div>
+            </a>
+        </div>
+    </li>
+<!-- </ul> -->
+<!--/* <ul class="row no-gutter list-unstyled bloque-tramites text-center">
+            <li class="col-xs-6 col-sm-4 col-md-2">
+                <div class="lead media-heading">
+                    <a href="/sede/servicio/tramite/tipo/147">
+                        <span class="azi azi-vivienda center-block"></span>
+                        <div>Vivienda</div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-xs-6 col-sm-4 col-md-2">
+                <div class="lead media-heading">
+                    <a href="/sede/servicio/tramite/tipo/261">
+                        <span class="azi azi-salud center-block"></span>
+                        <div>Salud Pública</div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-xs-6 col-sm-4 col-md-2">
+                <div class="lead media-heading">
+                    <a href="/sede/servicio/tramite/tipo/221">
+                        <span class="azi azi-consumo center-block"></span>
+                        <div>Consumo</div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-xs-6 col-sm-4 col-md-2">
+                <div class="lead media-heading">
+                    <a href="/sede/servicio/tramite/tipo/241">
+                        <span class="azi azi-datos center-block"></span>
+                        <div>Protección y Modificación de Datos</div>
+                    </a>
+                </div>
+            </li>
+        </ul> */-->

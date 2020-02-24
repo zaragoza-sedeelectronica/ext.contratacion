@@ -1,0 +1,237 @@
+<div class="modal-header">
+	<h3 class="modal-title">Editar perfil</h3>
+</div>
+<div class="modal-body">
+	<form class="form-horizontal">
+		
+		<div><label><input type="checkbox" ng-model="registro.user.perfil.visible" ng-true-value="'S'" ng-false-value="'N'"/>
+  			<span class="help-inline"> Visible para el resto de la Comunidad.</span></label>
+  		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-sm-3 control-label" for="name">Nombre:</label>
+					<div class="col-sm-9">
+						<input class="form-control" type="text" name="name" id="name"
+							ng-model="registro.user.name" value="{{ registro.user.name }}" />
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-sm-4 control-label" for="screen_name">Pseudónimo:</label>
+					<div class="col-sm-8">
+						<input class="form-control" type="text" name="screen_name"
+							id="screen_name" ng-model="registro.user.screen_name"
+							value="{{ registro.user.screen_name }}" />
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-sm-4 control-label" for="name">NIF/NIE:</label>
+					<div class="col-sm-8">
+						<input class="form-control" type="text"
+							name="documentoIdentificativo" id="documentoIdentificativo"
+							ng-model="registro.user.documentoIdentificativo"
+							value="{{ registro.user.documentoIdentificativo }}" />
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row">
+			<div class="form-group col-sm-4">
+				<label class="col-sm-3 control-label" for="name">Fecha nacimiento:</label>
+				<div class="col-sm-9">
+					<input type="text" id="fInicioInscrip" name="fechaNacimiento" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="registro.user.perfil.fechaNacimiento" is-open="datepickers.fechaNacimiento" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" my-date/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event,'fechaNacimiento')">
+                            <span class="fas fa-calendar-alt" aria-hidden="true"></span>
+                        </button>
+                    </span>
+				</div>
+			</div>
+			<div class="form-group col-sm-4">
+				<label class="col-sm-4 control-label" for="genero">G&#233;nero:</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="genero"
+						ng-model="registro.user.perfil.genero">
+						<option value=""></option>
+						<option value="F">Mujer</option>
+						<option value="M">Hombre</option>
+						<option value="O">Otro</option>
+					</select>
+				</div>
+			</div>
+		
+			<div class="form-group col-sm-4">
+				<label class="col-sm-4 control-label" for="pais">Pa&#237;s
+					de origen:</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="pais"
+						ng-model="registro.user.perfil.pais">
+						<option value=""></option>
+						<option value="E">España</option>
+						<option value="UE">Unión Europea</option>
+						<option value="O">Otros</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-sm-6">
+				<label class="col-sm-4 control-label" for="distrito">Barrio en el que
+					vive:</label>
+				<div class="col-sm-8">
+					<select id="distrito" class="form-control"
+						ng-model="registro.user.juntaUser">
+						<option value=""></option>
+						<option value="ACTUR-Rey Fernando">ACTUR-Rey Fernando</option>
+						<option value="Casablanca">Casablanca</option>
+						<option value="Casco Histórico">Casco Histórico</option>
+						<option value="Centro">Centro</option>
+						<option value="El Rabal">El Rabal</option>
+						<option value="Delicias">Delicias</option>
+						<option value="La Almozara">La Almozara</option>
+						<option value="Las Fuentes">Las Fuentes</option>
+						<option value="Miralbueno">Miralbueno</option>
+						<option value="Oliver-Valdefierro">Oliver-Valdefierro</option>
+						<option value="San José">San José</option>
+						<option value="Santa Isabel">Santa Isabel</option>
+						<option value="Torrero-La Paz">Torrero-La Paz</option>
+						<option value="Universidad">Universidad</option>
+						<option value="Alfocea">Alfocea</option>
+						<option value="Casetas">Casetas</option>
+						<option value="Garrapinillos">Garrapinillos</option>
+						<option value="Juslibol-El Zorongo">Juslibol-El Zorongo</option>
+						<option value="Cartuja Baja">Cartuja Baja</option>
+						<option value="Venta del Olivar">Venta del Olivar</option>
+						<option value="Montañana">Montañana</option>
+						<option value="Monzalbarba">Monzalbarba</option>
+						<option value="Movera">Movera</option>
+						<option value="Peñaflor">Peñaflor</option>
+						<option value="San Gregorio">San Gregorio</option>
+						<option value="San Juan de Mozarrifar">San Juan de
+							Mozarrifar</option>
+						<option value="Torrecilla de Valmadrid">Torrecilla de
+							Valmadrid</option>
+						<option value="Villarrapa">Villarrapa</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group col-sm-6">
+				<label class="col-sm-4 control-label" for="estudiosActuales">Estudios
+					que está cursando:</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="estudiosActuales"
+						ng-model="registro.user.perfil.estudiosActuales">
+						<option value=""></option>
+						<option value="ESO">Educación Secundaria Obligatoria
+							(ESO)</option>
+						<option value="FPGM">FP Básica</option>
+						<option value="SOCL">Centros Sociolaborales</option>
+						<option value="OTR">Otros</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-sm-4">
+				<label class="col-sm-4 control-label" for="pais">Vive independiente:</label>
+				<div class="col-sm-5">
+					<select class="form-control" id="pais"
+						ng-model="registro.user.perfil.independiente">
+						<option value=""></option>
+						<option value="S">Sí</option>
+						<option value="N">No</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-sm-4">
+				<label class="col-sm-4 control-label" for="ocupacion">Ocupación:</label>
+				<div class="col-sm-5">
+					<select class="form-control" id="ocupacion"
+						ng-model="registro.user.perfil.ocupacion" multiple="multiple">
+						<option value="EST">Estudiante</option>
+						<option value="EMP">Trabajador/a por cuenta ajena</option>
+						<option value="AUT">Autónomo/a</option>
+						<option value="DES">Desempleado/a</option>
+						<option value="OTR">Otra</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-sm-4 control-label" for="necesidadesEspeciales">Necesidades especiales:</label>
+					<div class="col-sm-8">
+						<textarea class="form-control" type="text" name="necesidadesEspeciales"
+							id="screen_name" ng-model="registro.user.perfil.necesidadesEspeciales">
+							{{ registro.user.necesidadesEspeciales }}
+						</textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-sm-4">
+				<label class="col-sm-4 control-label" for="temas">Temas:</label>
+				<div class="col-sm-5">
+					<ui-select multiple ng-model="temasAct.selected" style="width:200px" on-select="onSelectTemas($item, $model)" on-remove="onRemoveTemas($item, $model)">
+                        <ui-select-match class="ui-select-match" placeholder="Temas">
+                            {{$item.title}}
+                        </ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="tema.id as tema in temas | filter: $select.search">
+                            <div ng-bind-html="tema.title | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+				</div>
+			</div>
+			<div class="form-group col-sm-4">
+				<label class="col-sm-4 control-label" for="formato">Formato:</label>
+				<div class="col-sm-5">
+					<select class="form-control" id="formato"
+						ng-model="registro.user.perfil.formato" multiple="multiple">
+	<option value="Conferencias">Conferencias</option>
+    <option value="Congresos y Jornadas">Congresos y Jornadas</option>
+    <option value="Exposiciones">Exposiciones</option>
+    <option value="Visitas Guiadas">Visitas Guiadas</option>
+    <option value="Campamentos y colonias">Campamentos y colonias</option>
+    <option value="Colonias urbanas">Colonias urbanas</option>
+    <option value="Campos de voluntariado">Campos de voluntariado</option>
+    <option value="Cursos y talleres">Cursos y talleres</option>
+    <option value="Excursiones y viajes">Excursiones y viajes</option>
+    <option value="Exhibición, proyección, competición">Exhibición, proyección, competición</option>
+    <option value="Ferias">Ferias</option>
+    <option value="Fiestas">Fiestas</option>
+    <option value="Festivales">Festivales</option>
+    <option value="Universidades de verano">Universidades de verano</option>
+    <option value="Otras">Otras</option>
+				</select>
+				</div>
+			</div>
+			<div class="form-group col-sm-4">
+				<label class="col-sm-4 control-label" for="valores">Valores:</label>
+				<div class="col-sm-5">
+					<ui-select multiple ng-model="valoresAct.selected" style="width:200px" on-select="onSelectValores($item, $model)" on-remove="onRemoveValores($item, $model)">
+					    <ui-select-match class="ui-select-match" placeholder="Valores que promulga el acto">
+					    	{{$item.title}}
+					    </ui-select-match>
+					    <ui-select-choices class="ui-select-choices" repeat="valor.id as valor in valores | filter: $select.search">
+					    	<div ng-bind-html="valor.title | highlight: $select.search"></div>
+					    </ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary"
+		ng-click="confirmarModal()">Aceptar</button>
+	<button type="button" class="btn btn-warning"
+		ng-click="cancelarModal()">Cancelar</button>
+</div>

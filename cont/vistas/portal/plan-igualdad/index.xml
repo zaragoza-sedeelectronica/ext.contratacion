@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    
+    <sede:meta title="Igualdad de Género" description="portal dedicado a las políticas de Igualdad del Ayuntamiento de Zaragoza" author="Ayuntamiento de Zaragoza" keywords="igualdad, plan de igualdad, participación, gender gap, participation, Oficina de Transversalidad, Servicio de Igualdad, trámites y servicios, equipamientos, avisos destacados, Zaragoza, rocedures and services, equipment, prominent notices, Saragossa"></sede:meta>    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    @media(max-width: 768px) {
+        ul.submenu li {
+            width: 100%;
+        }
+    }
+
+    .offset-target:before {
+        content: ";
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    /* Elementos de listado con icono fa */
+    .section-content ul { list-style-type: none; }
+    .section-content li:before {    
+        font-family: 'Font Awesome\ 5 Free';
+        content: '\f0a9';
+        margin: 0 0.2em 0 -1.2em;
+    }
+    /* Oculta fecha premios en plazo */
+    .date {display: none;} 
+    </style>
+</head>
+
+<body>
+    <sede:content>
+	
+	
+	  <div class="row">  <div class="col-md-12"> 
+	
+
+ 
+  <div class="col-md-6">        <h2 class="nomargin color-destacados">Destacados</h2>               <hr class="sm color-destacados" />
+  <sede:aviso clase="col-md-6 col-xs-12" imagen="si" nresultados="12" portal="Igualdad" resumen="si"> </sede:aviso>
+				 
+			</div>
+ 
+  <div class="col-md-6"> 
+   <div class="card">
+                    <h2 class="nomargin color-noticias">Noticias</h2>
+                    <hr class="sm color-noticias" />
+				                    <sede:noticia listado="s" espacio="" usuario="" texto="" tema="Acciones de Igualdad" numero="4" resumen="" fecha="" carpeta="/sede/portal/plan-igualdad/"></sede:noticia>
+                </div>
+				 
+				
+
+				 
+			</div>
+		 
+		 
+				
+</div></div>
+	 <div class="row"> 
+	  <div class="col-md-12">   <h2>Planes de Igualdad</h2>               <hr class="sm color-noticias" />
+	  
+	  
+	  
+	   <div class="col-md-6">
+
+	<h3>Plan de Igualdad para las empleadas y empleados del Ayuntamiento de Zaragoza (2016-2019) </h3> 	  
+	<div class="pull-right"><img src="/cont/vistas/portal/plan-igualdad/img/plan-municipal.jpg"/></div>
+	<p>La Ley de Igualdad, en su <strong>artículo 45.2</strong>, establece que las empresas de más de doscientos cincuenta trabajadores deberán elaborar un Plan de Igualdad que será objeto de negociación con la representación sindical</p>
+	
+ 	
+	<p>En el caso del Ayuntamiento de Zaragoza, los artículos 68 y 76 del <strong>Pacto Convenio 2008- 2011</strong> recogieron el compromiso de constituir una Mesa Técnica para la Igualdad con el cometido de elaborar un Plan de Igualdad para el Ayuntamiento de Zaragoza y hacer un seguimiento de la puesta en marcha e impacto del mismo. 
+	</p><p>
+	Posteriormente, los artículos 64 y 74 del <strong>Pacto-Convenio 2012-2015</strong> determinan que <em> la Corporación y los sindicatos firmantes se comprometen a elevar a la aprobación del órgano competente, en el mes de junio de 2012, el Plan de Igualdad del Ayuntamiento de Zaragoza.</em>
+ </p>
+ 
+ 
+ <p>De este modo, una vez elaborado el Informe de Diagnóstico Final de la plantilla municipal, presentadas las propuestas de acciones para el desarrollo del Plan de Igualdad, por la representación sindical, así como finalizadas las sesiones de trabajo y negociación de la Mesa Técnica para la Igualdad, se presenta para su aprobación un conjunto de medidas dirigidas a las empleadas y empleados del Ayuntamiento de Zaragoza con el firme propósito no sólo de alcanzar en el Ayuntamiento como empresa la igualdad de trato y de oportunidades entre mujeres y hombres sino de contribuir en nuestra ciudad a la desaparición de la discriminación por razón de sexo.</p>
+	
+	
+	<p>
+	 <span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/plan-igualdad/plan-ayuntamiento">Enlace al Plan</a></p>
+			</div> <div class="col-md-6">	
+			
+			  <h3>II Plan de Igualdad para la Ciudadanía<br/>(2018-2021)</h3>
+			  
+			  <div class="pull-right"><img width="200" src="/cont/vistas/portal/plan-igualdad/img/plan-ciudadania.jpg"/></div>
+			  
+			  <p>  El <strong>II Plan de Igualdad 2018-
+2021</strong> tiene como finalidad
+<strong>planificar los objetivos,
+medidas, actuaciones y
+recursos necesarios</strong>  para
+contribuir a promover
+una<strong>  igualdad real entre
+mujeres y hombres</strong> , a todos
+los niveles y en todos los
+ámbitos de la vida municipal
+y local.</p><p>En la concepción del Plan no se ha partido de cero, ya que es justo reconocer la larga trayectoria de las medidas que en materia de igualdad viene desarrollando el Ayuntamiento de Zaragoza desde hace años. Por ello, para reforzar la idea de continuidad, se ha considerado conveniente mantener aquellas actuaciones y programas del I Plan ya iniciadas y que han demostrado ser eficaces. Pero, igualmente, el Plan quiere suponer un revulsivo a las actuaciones municipales en este ámbito, dando un importante salto cualitativo a través de la incorporación de <strong>nuevas líneas de trabajo (LGTTBIQ, Hombres, Vivienda y Espacio Urbano) y la ampliación de la atención a la violencia de género a la diversidad de violencias machistas</strong>. Todas estas medidas incorporadas tienen su justificación en la gran importancia que han alcanzado, tanto como resultado en la fase diagnóstica llevada a cabo, como de las propuestas vertidas por la ciudadanía en los diferentes espacios de participación que se han establecido al efecto.
+</p><p>
+Algunas de estas líneas, dada su novedad, han requerido de un desarrollo específico muy exhaustivo, con el ánimo de marcar lo más detalladamente posible los caminos de trabajo que se quieren abrir desde la administración municipal en los próximos años.</p>
+<p> <span class="far fa-hand-point-right" aria-hidden="true"></span><a href="https://www.zaragoza.es/sede/portal/plan-igualdad/plan-ciudadania#plan2">Enlace al Plan</a></p>
+
+
+</div></div></div>
+
+ </sede:content>
+</body>
+
+</html>

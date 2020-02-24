@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="sectores">
+
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <h1><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/plan-igualdad/">II Plan de Igualdad de Zaragoza</a></h1>
+                    <!--/*<sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'},{'link':'/ciudad/igualdad/', 'text':'Igualdad'}]" />*/-->
+                    <sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/sectores/', 'text':'Para la Gente'},{'link':'/ciudad/sectores/social/', 'text':'Derechos Sociales'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

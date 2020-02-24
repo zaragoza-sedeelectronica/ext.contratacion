@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="localhost" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Editar pregunta - Gestión de Formularios, Votaciones y Encuestas Ciudadanas" keywords="sede,web" />
+    <link rel="stylesheet" type="text/css" href="/cont/assets/bower_components/angular-ui-select/dist/select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/cont/assets/bower_components/leaflet/dist/leaflet.css"/>
+    <style type="text/css">
+        tr.noasignada{background-color:#D69999}/*rojo*/
+        tr.cerrada{background-color:#B8D699}/*verde*/
+        tr.pendiente,tr.pendientepor{background-color:#D6D699}/*amarillo*/
+        tr.resuelta,tr.realizadapor{background-color:#B8D699}/*verde*/
+        tr.borrada{background-color:#FFF}
+        tr.derivadaa{background-color:#99B8D6}/*azul*/
+        tr.rechazada,tr.rechazadapor{background-color:#FFF}
+        tr.archivada{background-color:#FFF}
+
+        .btn-street-view{
+            position: relative;
+            top: 45px;
+            right: 8%;
+            float: right;
+            z-index: 20;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .panorama-street-view{
+            position: absolute;
+            right: 0;
+            width:300px;
+            height:300px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+	<sede:content>
+	      <div class="container-fluid">
+	      
+		      <div class="row">
+	
+	                    <div class="col-md-12">
+	
+	                        
+	                        <a class="btn btn-primary btn-sm pull-right" href="#ayuda" target="_blank">
+	                        <span class="glyphicon glyphicon-question-sign"></span>
+	                        <span class="hidden-xs"> Ayuda</span>
+	                        </a>
+	                        <modal-localizacion title="Mapa"></modal-localizacion>
+	                        <sham-spinner text="Ejecutando petición..." class="pull-right"></sham-spinner>
+	                    </div>
+	          </div>
+
+	        <div class="row">
+	        	<h3>Editar datos pregunta</h3>
+	        	<hr></hr>
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label">Título (*): </label>
+                    <div class="col-sm-3">
+                        <input type="text" ng-model="queryForm.id" class="form-control" placeholder="Introduzca Título"/>
+                    </div>
+                </div>                
+	        </div>
+	        <br></br>
+	        <div class="row">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label">Descripción (*):</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="4" name="" ng-model="" placeholder="Añadir descripción general del formulario"></textarea>
+                    </div>                    
+                </div>                
+	        </div>
+	        <br></br>
+	       	<div class="row">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label">Longitud máxima:</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="queryForm.anonymous" ng-model=""  class="form-control" placeholder="Introduzca longitud máxima campo"/>
+                    </div>
+                    <label class="col-sm-2 control-label" >Alias:</label>
+                    <div class="col-sm-3">
+                        <input type="text" ng-model="queryForm.email" class="form-control" placeholder="Introduzca alias"/>
+                    </div>
+                </div>                
+	        </div>
+	        <br></br>
+	        <div class="row">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label">Validador:</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="queryForm.anonymous" class="form-control" ng-model="queryForm.anonymous" placeholder="Introduzca validador"/>
+                    </div>
+                    <label class="col-sm-2 control-label" >Placeholder:</label>
+                    <div class="col-sm-3">
+                        <input type="text" ng-model="queryForm.email" class="form-control" placeholder="Introduzca texto placeholder"/>
+                    </div>
+                </div>                
+	        </div>	        
+	        <br></br>
+	        <div class="row">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label">Obligatoria:</label>
+                    <div class="col-sm-1">
+                        <input type="checkbox" ng-model="queryForm.css" class="form-control"/>
+                    </div>
+                    <label class="col-sm-4 control-label" >Elemento búsqueda:</label>
+                    <div class="col-sm-1">
+                        <input type="checkbox" ng-model="queryForm.css" class="form-control" />
+                    </div>
+                </div>                
+	        </div>
+	        <br></br>
+	        <div class="row">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label">Imagen:</label>
+                    <div class="col-sm-3">
+                        <input type="text" ng-model="queryForm.css" class="form-control" placeholder="URL Imagen"/>
+                    </div>
+                </div>
+            </div>
+            <br></br>
+	        <div class="row">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label" align="right">Vídeo:</label>
+                    <div class="col-sm-3">
+                        <input type="text" ng-model="queryForm.css" class="form-control" placeholder="URL vídeo"/>
+                    </div>
+                </div>                
+	        </div>
+	        <br></br>
+	        <div class="row">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label" align="right">Tipo respuesta:</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" id="selectID" onChange="changeSeleccion();">							 
+							  <option value="1">Checkbox</option>
+							  <option value="2">Checkbox múltiple</option>
+							  <option value="3">CIF</option>
+							  <option value="3">Date</option>
+							  <option value="3">Email</option>
+							  <option value="3">IBAN</option>
+							  <option value="3">NIF</option>
+							  <option value="3">NIFCIF</option>
+							  <option value="3">Radio</option>
+							  <option value="2">Select</option>
+							  <option value="3">Teléfono</option>
+							  <option value="3">Text</option>
+							  <option value="3">TextArea</option>
+							  <option value="3">URL</option>
+						</select>
+                    </div>
+                </div>                
+	        </div>
+	        <br></br>
+	        <div class="row" id="option-values" style="display: none">	        	
+	        	<div class="form-group" align="right">
+                    <label class="col-sm-2 control-label" align="right">Posibles valores (uno en cada línea):</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control" rows="4" name="" ng-model="" placeholder="Añadir descripción general del formulario"></textarea>
+                    </div>
+                </div>                
+	        </div>	        
+	        <br></br>
+	        <div class="row">
+	        	<div class="col-md-12" align="right">
+                	<button class="btn btn-default" type="button" ng-click="buscar(queryForm.id)" onclick="location.href='edit-section';">Volver</button>
+                	<button class="btn btn-primary" type="button" ng-click="queryForm={}">Guardar Cambios</button>
+                </div>
+	        </div>
+	        <br></br>
+	        
+	   </div>
+	</sede:content>
+<!--/* Libs AngularJS & Javascript */-->
+    <script src="/cont/assets/bower_components/cryptojslib/rollups/hmac-sha1.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular/angular.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/lodash/dist/lodash.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/restangular/dist/restangular.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-sham-spinner/angular-sham-spinner.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-ui-select/dist/select.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/leaflet/dist/leaflet.js" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCaSVfol2p4F2GNWiiWQj2t4wGAEolsd6c"></script>
+    <script src="/cont/assets/bower_components/leaflet-plugins/layer/tile/Google.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/proj4leaflet/lib/proj4-compressed.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/proj4leaflet/src/proj4leaflet.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/checklist-model/checklist-model.js" type="text/javascript"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+
+    <!--/* Ficheros AngularJS propios de la sección */-->
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/app.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/services.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/controllers.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/filters.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/directives.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/directives.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/utilsTicketing.js" charset="UTF-8"></script>
+	<script>
+		function myFunction() {
+		  var x = document.getElementById("myDIV");
+		  if (x.style.display === "none") {
+		    x.style.display = "block";
+		  } else {
+		    x.style.display = "none";
+		  }
+		}
+		function changeSeleccion(){
+		 var s = document.getElementById("selectID");
+		 var x = document.getElementById("option-values");
+		 if (s.value==2){		 
+		  if (x.style.display === "none") {
+		    x.style.display = "block";
+		  }
+		 } else {
+		    x.style.display = "none";
+		 } 
+		}
+	</script>
+</body>
+
+</html>

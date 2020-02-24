@@ -1,0 +1,146 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es"><head>
+    <meta charset="utf-8" />
+ <sede:meta title="Presupuesto. Cooperación al Desarrollo" 
+            description="La ciudad mantiene desde 1982 una política municipal de cooperación al desarrollo en solidaridad con los más desfavorecidos y las minoría étnicas. Recursos de información en el portal Derechos Sociales, espacio de la sede electrónica del Ayuntamiento de Zaragoza: partidas presupuestarias e informes de ejecución presupuestaria destinadas a cooperación y desarrollo" 
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, voluntariado social, política de cooperación, subvención, ayuda humanitaria, ayuda a los refugiados, América Latina, África, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, voluntary work, cooperation policy, subsidy, humanitarian aid, aid to refugees, Latin América, complaints and suggestions service"
+            />
+	 
+    <style type="text/css">
+    
+
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content><nav>
+	<div class="second-bar clearfix">
+		<div class="hidden-xs">
+			<a class="btn-back pull-left" href="/sede/portal/derechos-sociales/cooperacion-desarrollo/"><span class="fa fa-inverse fa-2x fa-chevron-left"
+aria-hidden="true"></span><span class="oculto">Volver a Cooperación al Desarrollo</span> </a>
+			<p class="lead destacado margin-l05em margin-b0em pull-left">
+				Presupuesto
+			</p>
+		</div>
+
+		<ul class="list-inline navbar-right submenu">
+			<li>
+				<a href="planificacion">Planificación</a>
+			</li>
+			<li>
+				<a href="presupuesto">Presupuestos</a>
+			</li>
+			<li>
+				<a href="subvenciones">Subvenciones</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<h2>
+	Presupuesto
+</h2>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="col-md-9">
+			<p>
+				El <strong>presupuesto anual del Ayuntamiento de Zaragoza recoge partidas</strong> destinadas a la Cooperación al Desarrollo entre las que cabe distinguir las <strong>nominativas</strong> que subvencionan, <strong>mediante adjudicación directa</strong>, proyectos relacionados con actividades de la Federación Aragonesa de Solidaridad (FAS), el Programa “vacaciones en Paz” que permite la acogida de niños y niñas saharauis durante el verano en la Ciudad de Zaragoza o las del Hermanamiento con la Ciudad de León en Nicaragua, entre otras.
+			</p>
+
+			<p>
+				Esta <strong>adjudicación directa</strong>, regulada mediante Convenios, <strong>ronda el 5% del total de los fondos</strong> presupuestados. El resto, hasta <strong>un 95%, se ejecuta otorgando subvenciones por el procedimiento de concurrencia competitiva mediante la Convocatoria Pública</strong> que anualmente aprueba el Gobierno de Zaragoza y a la que <strong>pueden presentarse</strong>, en general: <strong>Organizaciones No Gubernamentales (ONG), Administraciones Locales de países en desarrollo, entidades que representan en España a Agencias o Programas de Naciones Unidas e Instituciones vinculadas a la formación y educación para el desarrollo.</strong>
+			</p>
+
+			<p>
+				Tanto las <strong>Bases Reguladoras</strong> de estas Subvenciones como la Convocatoria Pública para su <strong>adjudicación permiten detraer fondos y adjudicarlos directamente</strong> en determinadas circunstancias: <strong>emergencias</strong> provocadas por desastres naturales o crisis humanitarias como las sufridas por población refugiada-desplazada entre otras.
+			</p>
+
+			<p>
+				Una vez adjudicadas las subvenciones directas y resuelta la Convocatoria de las de concurrencia competitiva, se da <strong>cuenta de los datos a: la Base de Datos de Subvenciones Municipales</strong>, a la Base Nacional de Subvenciones, a la <strong>Comisión de Seguimiento del Plan Estratégico de Subvenciones de este Ayuntamiento</strong> y, por último, se emite <strong>informe a la FAS (Coordinadora de ONGD)</strong>, dando cuenta además del grado de cumplimiento de los objetivos marcados bién en el Pacto contra la Pobreza y, en la actualidad, al Pacto por la Cooperación en el marco de los Objetivos del Desarrollo Sostenible.
+			</p>
+
+			<p>
+				Encontrarán a continuación el <strong>cuadro de partidas del presupuesto en curso así como informes relativos a la ejecución presupuestaria de ejercicios anteriores</strong> en lo que se recogen datos tales como: grado de ejecución, porcentaje destinado en relación al Presupuesto consolidado de la entidad, importes asignados por los distintos procedimientos de adjudicación, proyectos presentados y los subvencionados, la distribución para proyectos y programas de cooperación al desarrollo, Ayuda Humanitaria-Emergencias y Educación para el Desarrollo (EpD) entre otros extremos.
+			</p>
+		</div>
+
+		<div class="col-md-3">
+			<img alt="" class="img-responsive" src="/cont/vistas/portal/derechos-sociales/cooperacion-desarrollo/img/presupuesto.jpg"/>
+			<h3 class="margin-v05em color-ayto">
+				Más Información
+			</h3>
+
+			<ul class="list-unstyled">
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+					<a class="pdf" href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/presupuesto-cooperacion.pdf">Presupuesto Cooperación</a>
+				</li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+					<a href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/ejecucion-presupuestaria16.ods">Ejecución Presupuestaria 2016</a>
+				</li>
+				<li>
+					<a href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/ejecucion-presupuestaria15.ods">Ejecución Presupuestaria 2015</a>
+				</li>
+				 
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+					<a class="pdf" href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/ejecucion-presupuestaria-2014.pdf">Ejecución Presupuestaria 2014</a>
+				</li>
+				<li><span class="far fa-dot-circle" aria-hidden="true"></span> 
+					<a class="pdf" href="https://www.zaragoza.es/contenidos/derechosociales/cooperacion/ejecucion-presupuestaria-2013.pdf">Ejecución Presupuestaria 2013</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</sede:content>
+</body>
+
+</html>

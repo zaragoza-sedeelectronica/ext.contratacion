@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Oficina Plan Integral Casco Histórico" description="El portal de la Oficina Plan Integral Casco Histórico pretende dar a conocer las diversas actividades, noticias y servicios que ofrece la Oficina Plan Integral Casco Histórico Ayuntamiento de Zaragoza." author="" last-modified="" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España,  desarrollo sostenible, acción humanitaria, proyectos, cooperación, formalidades administrativas, administración electrónica, relación administración-administrado, Organización Mundial de la Salud, Red de Ciudades Amigables, participación social, comedores, zonas verdes, actividades, cursos, bodas de oro, voluntariado social, informática,  blog, servicio de quejas y sugerencias, council, city, Saragossa, Spain,  community facilities, activities,  voluntary work, computer systems, complaints and suggestions service, sustainable development,humanitarian action,humanitarian  emergency" />
+    <style type="text/css">
+    
+		  @media (min-width: 768px) {
+        .botones {
+            position: absolute;
+            bottom: 10px;
+            right: 40px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+	
+	<div> <img class="img-responsive full-width" alt="" src="/cont/vistas/portal/pich/img/cabecera-pich.png"/></div>
+	<div class="linea"></div>
+		<div class="row">  
+		
+		  <div class="col-md-12">
+		
+		  
+		 <sede:equipamiento id="7845" ocultos="mapa,tabs"></sede:equipamiento> </div></div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="titulo-dest color-ciudad">Destacados</h2>
+                            <hr class="sm" />
+                            <sede:aviso clase="col-xs-12 col-sm-6" nresultados="6" portal="PICH"> </sede:aviso> 
+							
+							                  
+                        </div> 
+                        
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		   
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h2 class="titulo-dest color-ciudad">Servicios</h2>
+                    <hr class="sm" />
+                    <ul class="list-unstyled row no-gutter text-center" role="menu">
+                        <li class="col-xs-6 col-sm-3">
+                            <span class="fa fa-2x fa-cubes" aria-hidden="true"></span>
+                            <a href="http://www.zaragoza.es/sede/portal/pich/servicio/tramite/?query=casco+historico">
+                                <h3 class="margin-v05em" style="font-size: 1em;">Trámites</h3>
+                            </a>
+                        </li>
+                        <li class="col-xs-6 col-sm-3">
+                            <span class="fa fa-2x fa-bullhorn" aria-hidden="true"></span>
+                            <a href="https://www.zaragoza.es/sede/servicio/premios-concursos/?materia.id=8&amp;historico=true">
+                                <h3 class="margin-v05em" style="font-size: 1em;">Convocatorias</h3>
+                            </a>
+                        </li>
+                        
+                        <li class="col-xs-6 col-sm-3">
+                            <span class="fa fa-2x fa-book text-color" aria-hidden="true"></span>
+                            <a href="https://www.zaragoza.es/sede/servicio/publicacion-municipal/list?authorContains=pich">
+                                <h3 class="margin-v05em" style="font-size: 1em;">Publicaciones</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>			
+        </div>
+
+ <div class="row">
+            <div class="col-md-12"> <h2 class="titulo-dest color-ciudad">Vídeos</h2>
+                    <hr class="sm" /> <sede:video clase-video="col-xs-2" numero="6" lista="510"></sede:video> </div></div>  
+    </sede:content>
+</body>
+</html>

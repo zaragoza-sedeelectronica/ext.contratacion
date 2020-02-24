@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos Participativos 2018" description="Portal de los Presupuestos Participativos 2018 del Ayuntamiento de Zaragoza" author="Ayuntamiento de Zaragoza. Gobierno Abierto" last-modified="Mon Mon 5 00:00:00 CEST 2018" keywords="ayuntamiento, ciudad, Zaragoza, Espana, presupuestos, presupuestos participativos, administracion electronica, participacion, participacion social, gobierno abierto, council, city, Saragossa, Spain, electronic government, citizen-authority relations, social participation, open goverment, budget participatifs, Parcitipatory budgeting" />
+    <link rel="manifest" href="//www.zaragoza.es/cont/vistas/portal/presupuestos-participativos/manifest.json"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css"></link>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+    <script type="text/javascript">
+    ocultarArbolCapas = true;
+    var i = 0;
+    treeOrderDataList = ["actualidad"];
+    var dataActualidad = "{title: 'Juntas',claseIcono:'atencionCiudadana',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/contenidos/juntas.json'},{title: 'Foros',claseIcono:'agenda',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/actividades/list.geojson?programa.titleContains=Gobierno Abierto. Presupuestos Participativos'}";
+    </script>
+    <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/mapa/js/homeMapa.js"></script>
+    <style type="text/css">
+    .inline-header {
+        display: inline-block;
+        vertical-align: baseline;
+        line-height: 100%;
+    }
+
+
+    @media (max-width: 480px) {
+        header.navbar-portal .portal-header {
+            width: 100px;
+        }
+        h1 {
+            font-size: 22px;
+        }
+    }
+
+    #mapa {
+        box-shadow: none;
+        margin: 0 !important;
+    }
+
+    #mapahome {
+        height: 230px;
+    }
+
+    .static-popover {
+        display: block !important;
+        max-width: 100%;
+        margin: 0;
+        z-index: 10;
+        position: relative;
+        /* extra */
+    }
+
+    .modal-contenido {
+        max-height: 500px;
+        overflow-y: auto;
+        background-color: #fff;
+        max-width: 750px;
+        padding: 10px 10px;
+        margin: 20% auto;
+        position: relative;
+    }
+
+    .modal {
+        background-color: rgba(0, 0, 0, .5);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 1s;
+    }
+
+    #haztupropuesta:target {
+        opacity: 1;
+        pointer-events: auto;
+        display: inline;
+    }
+
+
+    .list-aviso p {
+        font-size: 1.5em;
+        margin-top: 2em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="img-rounded margin-b1em">
+            <div class="row no-gutter">
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                    <img class="img-responsive full-width" src="https://www.zaragoza.es/cont/vistas/portal/presupuestos-participativos/img/cabecera-3-edicionc.jpg" alt="" />
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 text-left">
+                    <div class="fnd-gris-medio padding-a05em">
+                        <h2 class="nomargin inline-header" style="font-size: 1.50em;">Valoración técnica de las propuestas de distrito y de ciudad <br/><small class="text-muted nomargin" style="color: #ffffff !important;"><span class="glyphicon glyphicon-time"></span> 15 de abril a 1 de junio</small></h2>
+                    </div>
+                    <div class="padding-a1em">
+		
+<div class="text-left margin-b05em">
+
+<a th:if="${#utils.hasta('26-03-2018')}" class="btn btn-primary btn-md" href="/sede/servicio/presupuestos-participativos/edicion/2">APOYA TUS PROPUESTAS FAVORITAS</a></div>
+
+<p>En esta fase, la <strong>Comisión de Valoración Técnica</strong> se
+ encarga de informar sobre la viabilidad técnica y económica de las
+  propuestas.</p>
+
+<ul class="list-unstyled">
+	<li><span class="fa fa-hand-o-right" aria-hidden="true"></span> <a href="/sede/portal/presupuestos-participativos/agenda-mesas">Resultados de las sesiones de priorización</a></li>
+	<li><span class="fa fa-hand-o-right" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/edicion/2">Propuestas más apoyadas y priorizadas</a></li>
+	</ul>
+				<hr class="sm text-primary" />
+<p>Estar registrado en la <strong>Plataforma de Gobierno Abierto</strong> permite participar en el proceso. <strong>Activa la recepción de correos electrónicos</strong> para recibir comunicaciones referidas al proceso y estar al tanto del progreso del mismo.</p>
+<div><a href="https://www.zaragoza.es/sede/servicio/zona-personal" class="btn btn-primary btn-md">Registro / Acceso a zona personal</a>
+		</div>				
+				<hr class="sm text-primary" />				
+				
+				
+				
+				
+				<!--/*<p>Ya están en marcha los <stong>Presupuestos Participativos</stong> en los barrios rurales de la ciudad.</p> 
+    <div class="text-center margin-b05em">
+    <a class="btn btn-primary btn-sm" href="/sede/portal/presupuestos-barrios-rurales/">PRESUPUESTOS PARTICIPATIVOS EN BARRIOS RURALES</a>
+    </div>
+<p>Terminada la <strong>valoración técnica</strong>, se publicarán en la Plataforma 
+de Gobierno Abierto todas las propuestas viables y no viables de cada distrito con sus respectivos informes técnicos.</p>*/-->
+
+<!--/*
+<p>El periodo de apoyos ha finalizado. Gracias a todos por vuestra participación.
+Las 10 propuestas de ciudad y las 10 propuestas más apoyadas en cada distrito pasan directamente a la siguiente fase.</p>
+<ul class="list-unstyled">
+	<li><span class="fa fa-hand-o-right" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/presupuestos-participativos/servicio/noticia/226972">Ver Nota de Prensa</a></li>
+	<li><span class="fa fa-hand-o-right" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/edicion/2">Consulta las propuestas más apoyadas</a></li>
+	</ul>
+	
+<p>Al listado de 10 propuestas más apoyadas, se sumarán otras 10 que serán priorizadas por los vecinos y vecinas de cada distrito en una <strong>sesión especial de la Mesa de Presupuestos participativos</strong>. Como resultado, cada distrito contará con un listado de 20 propuestas que pasarán a la fase de estudio de viabilidad técnica.
+<div class="text-center"><a class="btn btn-primary btn-md" href="https://www.zaragoza.es/sede/portal/presupuestos-participativos/agenda-mesas">Consulta la agenda de las mesas</a></div>
+</p>	
+	
+<p>También puedes realizar apoyos presenciales días <strong> 22, 23, 26 de marzo </strong> en horario de 8:30 a 13,00 h. en las
+<em>Juntas Municipales</em> (para las propuestas de Distrito y de Ciudad) y <em>Vecinales</em> (para las
+propuestas de Ciudad). </p><ul class="list-unstyled"><li><span class="fa fa-hand-o-right" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/presupuestos-participativos/servicio/noticia/226940">Ver Nota de Prensa</a></li></ul>
+
+
+<ul><li>Cada persona puede apoyar tantas propuestas como considere. Una propuesta sólo podrá ser apoyada una vez por la misma persona.</li>
+<li><a href="/sede/portal/presupuestos-participativos/espacios" class="destacado">Espacios municipales</a> para que la ciudadanía pueda realizar sus apoyos.</li></ul>
+<h3>Documentación</h3>
+<ul>
+<li><a href="/contenidos/presupuestos-participativos/Fase2c_Como_Apoyar_propuestas_b.jpg" target="_blank">Cómo apoyar propuestas</a>. <em>Formato .jpg</em></li>
+<li><a href="/contenidos/presupuestos-participativos/Guia_Como_RRSS.pdf" class="pdf">Cómo difundir tu propuesta en las Redes Sociales</a>.<span class="oculto">(Documento en formato pdf)</span></li>
+</ul>
+Posteriormente, los vecinos y vecinas priorizarán en cada distrito 10 propuestas en una sesión especial de la Mesa de Presupuestos participativos.</p>
+
+                        <p class="text-left">Durante estos días, el personal técnico municipal, en colaboración con las personas que han realizado las propuestas y las Mesas de los Presupuestos Participativos, realizará un filtrado de las propuestas recibidas, recordando que estas deberán respetar los Derechos Fundamentales, cumplir los requisitos competenciales o presupuestarios marcados, ser suficientemente concretas y no estar duplicadas. En las bases del proceso se definen unos <a href="https://www.zaragoza.es/sede/portal/presupuestos-participativos/filtrado#filtrado">criterios para realizar el filtrado</a> y el <a href="https://www.zaragoza.es/sede/portal/presupuestos-participativos/filtrado#procedimiento">procedimiento para la redacción final de las propuestas</a>.</p>
+<p class="text-left">Las propuestas que superen el filtrado podrán pasar a la recaudación de apoyos.
+                        </p>
+                        <div class="text-center margin-b05em"><a class="btn btn-primary btn-sm" href="/sede/servicio/presupuestos-participativos/edicion/2">LISTA DE PROPUESTAS RECIBIDAS</a></div>*/-->
+
+
+                       <!--/*<div class="text-center margin-b05em">
+<a class="btn btn-primary btn-sm" href="/sede/portal/presupuestos-participativos/documentacion#catalogos2018">CATÁLOGO DE RECLAMACIONES HISTÓRICAS</a></div>
+                        <div class="text-center margin-b05em">
+                            <a class="btn btn-primary btn-sm" href="/sede/servicio/presupuestos-participativos/new">CREA TU PROPUESTA</a>
+                            <a class="btn btn-primary btn-sm" href="/sede/servicio/presupuestos-participativos/edicion/2">LISTADO DE PROPUESTAS</a>
+                        </div>*/-->
+                        <div role="alert" class="alert alert-info margin-v5em">
+                            <a class="destacado" href="/ciudadania/gobierno-abierto/presupuestos-participativos/enlace/enlinea/preguntaPresupuestosParticipativos.xhtm">
+                                ¿No encuentras la información que buscas o tienes algun problema en el proceso?
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-b1em">
+            <div class="col-md-6">
+                <div class="fnd-gris-claro img-rounded padding-a1em">
+                    <h2 class="nomargin">Fase 3: Valoración Técnica y ratificación de las propuestas de <strong>distrito y de ciudad</strong></h2>
+                    <hr class="sm" />
+                    <ul class="row list-unstyled">
+                        <li class="col-sm-6">
+                            <h3 class="nomargin">Valoración técnica </h3><br/>
+                            La <span class="color-ayto">Comisión de Valoración Técnica</span> se encargará de informar sobre la viabilidad técnica y económica de las propuestas priorizadas y les asignará un presupuesto.
+
+                        </li>
+                        <li class="col-sm-6">
+                            <h3 class="nomargin"><br/></h3><br/>
+                            Terminada la valoración técnica, se publicarán en la <span class="color-ayto">Plataforma de Gobierno Abierto</span> todas las propuestas viables y no viables de cada distrito con sus respectivos informes técnicos.
+
+                            <div class="small" style="color: rgb(49, 112, 143);">
+                                del 16 de abril
+                                <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"></span> al 1 de junio
+                            </div><br/>
+                        </li>
+
+                        <li class="col-sm-6">
+                            <h3 class="nomargin">Ratificación</h3><br/>
+Las propuestas viables de cada distrito/barrio rural serán ratificadas por la correspondiente Junta.<br/>
+
+                            <div class="small" style="color: rgb(49, 112, 143);">
+                                del 4 de junio
+                                <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"></span> al 15 de junio
+                            </div><br/>
+                        </li>
+                        <li class="col-sm-6">
+                            <h3 class="nomargin"><br/></h3><br/>
+Las propuestas de ciudad serán ratificadas por la <span class="color-ayto">Comisión de Seguimiento</span> de Presupuestos Participativos.                            
+                        </li>
+
+                    </ul>
+
+                   <hr class="sm" />
+                    <ul class="row list-unstyled">
+                        <!--/*<li class="col-sm-6"><span class="fa fa-dot-circle-o" aria-hidden="true"></span> <a href="/sede/servicio/zona-personal/">Haz tu propuesta</a></li>*/-->
+			 <li class="col-sm-6"><span class="fa fa-dot-circle-o" aria-hidden="true"></span> <a href="/sede/servicio/presupuestos-participativos/edicion/2">Propuestas</a> más apoyadas y priorizadas.</li>
+                        <li class="col-sm-6"><span class="fa fa-dot-circle-o" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/presupuestos-participativos/servicio/tramite/pregunta-frecuente/6285">Requisitos</a> de participación.</li>
+                        <li class="col-sm-6"><span class="fa fa-dot-circle-o" aria-hidden="true"></span> ¿Tienes <a href="/ciudadania/gobierno-abierto/presupuestos-participativos/enlace/enlinea/preguntaPresupuestosParticipativos.xhtm">dudas o sugerencias</a>?</li>
+                        <li class="col-sm-6"><span class="fa fa-dot-circle-o" aria-hidden="true"></span> <a href="/sede/portal/presupuestos-participativos/preguntas-frecuentes">Preguntas Frecuentes</a></li>
+                    </ul>
+                    <div id="haztupropuesta" class="modal">
+                        <div class="modal-contenido">
+                            <div class="padding-a1em text-left">
+                                <h3 class="nomargin">Haz tu propuesta</h3>
+                                <hr class="sm" />
+                                <p>A partir del 12 de febrero podrás acceder a la <strong>Plataforma de Gobierno Abierto</strong> para realizar tus propuestas. Si lo prefieres, también podrás hacerlo de manera presencial, acudiendo a tu Junta Municipal o Vecinal.</p>
+                                <p>Recuerda que pueden participar todas las personas empadronadas en la ciudad de Zaragoza, mayores de 14 años. Podrás realizar propuestas que mejoren tu ciudad o propuestas destinadas al distrito/barrio rural en el que se está empadronado/a. </p>
+                                <div class="modal-footer"><a href="#" class="btn btn-default">Cerrar</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+				
+			                <div class="fnd-gris-claro img-rounded clearfix padding-a1em margin-b1em">
+                    <h2 class="nomargin inline-header">Presupuestos Participativos en Barrios Rurales</h2>
+                    <hr class="sm" />
+                    
+		<p>Entre el 17 y el 24 se pueden presentar <strong>presentar propuestas en los barrios rurales de Zaragoza</strong></p>
+<div><a href="https://www.zaragoza.es/sede/servicio/zona-personal" class="btn btn-primary btn-sm">REALIZA TU PROPUESTA</a></div>
+<div><a href="https://www.zaragoza.es/sede/servicio/zona-personal" class="btn btn-primary btn-sm">BARRIOS RURALES</a></div>
+		</div>
+                    <hr class="sm" />			
+
+                <!--/*<div class="fnd-gris-claro img-rounded clearfix padding-a1em margin-b1em">
+                    <h2 class="nomargin inline-header">Las ventajas de estar registrado</h2>
+                    <hr class="sm" />
+		<p>Estar registrado en la <strong>Plataforma de Gobierno Abierto</strong> permite participar en el proceso: presentar propuestas, votarlas una vez que han recibido la viabilidad, etc. Recomendamos <strong>activar la recepción de correos electrónicos</strong> para recibir comunicaciones referidas al proceso y estar al tanto del progreso del mismo.</p>
+<div><a href="https://www.zaragoza.es/sede/servicio/zona-personal" class="btn btn-primary btn-md">Registro / Acceso a zona personal</a></div>
+		</div>*/-->
+
+
+                <div class="fnd-gris-claro img-rounded clearfix padding-a1em margin-b1em">
+                    <!--/*<h2 class="nomargin inline-header">Participación</h2> <span class="lead">por Juntas municipales/vecinales</span>*/-->
+                    <h2 class="nomargin inline-header">Conoce dónde está tu Junta</h2>
+                    <hr class="sm" />
+                    <p>
+                        <a href="/sede/portal/presupuestos-participativos/servicio/equipamiento/category/90">Juntas Municipales</a> donde puedes presentar tus propuestas.
+                        <br/>
+                        <!--/*<strong>Conoce tu distrito.</strong>*/-->
+                    </p>
+                    <div id="mapa">
+                        <div class="separador" id="facadeStatus"></div>
+                        <script type="text/javascript">
+                        var ifrm = document.createElement("iframe");
+                        ifrm.setAttribute("name", "mapahome");
+                        ifrm.setAttribute("id", "mapahome");
+                        ifrm.setAttribute("scrolling", "no");
+                        ifrm.setAttribute("src", "//www.zaragoza.es/IDEZar_visorPortada/index.html");
+                        ifrm.setAttribute("frameBorder", "0");
+                        ifrm.style.width.value = "100%";
+                        document.getElementById("mapa").appendChild(ifrm);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card img-rounded text-left">
+                    <h2 class="titulo-test">Agenda</h2>
+                    <hr class="sm" />
+                    <sede:aviso clase="col-xs-12" portal="Presupuestos Participativos" imagen="si" resumen="si" nresultados="4"> </sede:aviso>
+                    <br/><h3>Valoración Técnica</h3>
+                    <ul class="text-left list-unstyled">
+	<li><span class="fa fa-hand-o-right" aria-hidden="true"></span> <a href="/sede/portal/presupuestos-participativos/agenda-mesas">Resultados de las sesiones de priorización</a></li>
+	<li><span class="fa fa-hand-o-right" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/edicion/2">Propuestas más apoyadas y priorizadas</a></li>
+                    </ul>
+                    <!--/*<ul>
+                        <li><a href="/sede/portal/presupuestos-participativos/servicio/cultura/evento/182746">Presentación a entidades vecinales</a></li>
+                        <li><a href="/ciudad/actividades/listado_Agenda?programa=presupuestos&amp;query=reunion">Reuniones</a></li>
+                        <li><a href="/ciudad/actividades/listado_Agenda?programa=presupuestos&amp;query=mesas">Constitución de las Mesas</a></li>
+                        <li><a href="/sede/portal/presupuestos-participativos/agenda-mesas">Mesas de Presupuestos Participativos</a>
+                        <ul>
+							<li><a href="/sede/portal/presupuestos-participativos/agenda-mesas#diagnostico">Sesión especial de diagnóstico y catálogo de reclamaciones históricas</a></li>
+                        </ul>
+                        </li>						
+                    </ul>*/-->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card img-rounded text-justify">
+                    <h2 class="titulo-test">Actualidad <small class="margin-t05em pull-right"><a href="/sede/portal/presupuestos-participativos/servicio/noticia/list?fq=temas_smultiple%3A(&quot;Presupuestos Participativos&quot;)">Más noticias</a></small></h2>
+                    <hr class="sm" />
+                    <sede:noticia clase="col-xs-12" listado="s" imagen="s" espacio="1" usuario="1" texto="" tema="Presupuestos Participativos" numero="2" resumen="" fecha="" carpeta="/sede/portal/presupuestos-participativos/"></sede:noticia>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card img-rounded text-justify">
+                    <h2>Formación</h2>
+                    <hr class="sm" />
+                    <p>Las acciones formativas se dirigen a mediadores sociales, entidades ciudadanas y ciudadanía en general, con especial atención a colectivos prioritarios; jóvenes, mayores,...</p>
+                    <p>Los contenidos de las sesiones formativas,se centrarán en el conocimiento de las fases del proceso, en cómo hacer propuestas de actuaciones y en cómo utilizar la Plataforma de Gobierno Abierto de la sede electrónica municipal.</p>
+                    <p>Dentro del Programa de Actividades Educativas 2017-2018 existe una <a href="/sede/portal/presupuestos-participativos/servicio/cultura/evento/177853">actividad dirigida a los centros escolares.</a> </p>
+                    <p class="text-left">Además, trabajamos con la Oficina del Mayor y con el Servicio de Juventud en la realización de sesiones formación específicas. Las entidades ciudadanas pueden solicitar una sesión formativa a través del correo electrónico: <a href="mailto:presupuestosparticipativos@zaragoza.es">presupuestosparticipativos@zaragoza.es</a>.</p>
+                    <p class="bg-warning"><strong>Consulta las <a href="/sede/portal/presupuestos-participativos/agenda-reuniones">sesiones formativas</a> programadas.</strong></p>
+                </div>
+                <div class="card img-rounded">
+                    <h2>
+                        Vídeos 
+                        <!-- <small class="margin-t05em pull-right"><a href="#">Más vídeos</a></small> -->
+                    </h2>
+                    <hr class="sm" />
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/BMnTk2AG73g" frameborder="0" allowfullscreen="allowfullscreen">
+                            Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/BMnTk2AG73g">Enlace al vídeo en youtube.com</a>
+                        </iframe>
+                    </div>
+                    <a href="/sede/portal/presupuestos-participativos/servicio/video/category/770">Ver más vídeos</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 fnd-gris-claro img-rounded">
+                <h2 class="inline-header">Presupuestos Participativos 2017</h2> <span class="lead">¡Merece la pena!  <a class="btn btn-primary btn-xs" href="/sede/servicio/presupuestos-participativos/edicion/1/obras/"><strong>Obras en ejecución</strong></a>  <a class="btn btn-primary btn-xs" href="/sede/servicio/presupuestos-participativos/edicion/1/"><strong>Todas las propuestas realizadas en 2017</strong></a></span>
+                <hr class="sm" />
+                <!--/* <p>En la primera edición de este proyecto de participación ciudadana se recogieron XXXX propuestas ciudadanas y se ejecutaron tras un intenso debate y valoración entre el Ayuntamiento y la Ciudadanía, XXXX propuestas de obras, infraestructuras y equipamientos para nuestros barrios.</p> */-->
+                <sede:propuesta fragment="/fragmentos/presupuestos-participativos/list" numero="12" visible="S" historico="S"></sede:propuesta>
+                <!--                <ul class="list-unstyled">
+                    <li><span class="fa fa-hand-o-right" aria-hidden="true"></span> Consulta el <a class="destacado" href="/sede/servicio/presupuestos-participativos/edicion/1/obras/">resto de obras que se van a ejecutar</a>.</li>
+                    <li><span class="fa fa-hand-o-right" aria-hidden="true"></span> Consulta todas las propuestas realizadas por la ciudadanía en la <a class="destacado" href="/sede/servicio/presupuestos-participativos/edicion/1">edición 2017</a>.</li>
+                </ul>-->
+            </div>
+        </div>
+    </sede:content>
+
+
+</body>
+
+</html>

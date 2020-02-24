@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<th:block th:if="not ${param.test}" th:include="servicio/equipamiento/detalle" />
+<th:block th:if="${param.test}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Equipamiento de la ciudad'" keywords="ayuntamiento, ciudad, Zaragoza, Espana, equipamiento, actividades, eventos, council, city, Saragossa, Spain, equipment, activities, events" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+    body {padding-top: 57px !important;}
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px; /* fixed header height*/
+        margin: -67px 0 0; /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+
+
+    #mapa-leaflet {
+        height: 25em;
+        position: relative;
+        margin-bottom: 1em;
+        width: 92%;
+    }
+
+    .main-menu {
+        position:relative;
+    }
+
+    .main-menu-nav{
+    	margin-top:1em;
+    	padding:1em;
+        position: absolute;
+        width: 100%;
+        
+    }
+    .main-menu-nav a{
+    	font-weight:bold;
+    	padding:1em;
+        color: #757575;
+    }
+    .main-menu-nav li{
+    	padding:1em;
+        background-color: #FFF;
+    }
+    </style>
+</head>
+<body>
+    <sede:content container="false">
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <div class="container-fluid">
+                <h2 class="text-right"><span class="small">Museos Municipales</span> | <span class="color-ayto" th:text="*{title}"></span> | </h2>
+            </div>
+            <div class="main-menu">
+                <nav class="main-menu-nav" th:if="${!currentDevice.isMobile()}">
+                    <ul class="list-unstyled row no-gutter text-center tabs" role="tablist">
+                        <li class="col-xs-12 col-sm-offset-1 col-sm-1" role="presentation">
+                            <a href="#visita" aria-controls="visita" role="tab" data-toggle="tab">VISITA</a>
+                        </li>
+                        <li class="col-xs-12 col-sm-2" role="presentation">
+                            <a href="#museo" aria-controls="museo" role="tab" data-toggle="tab">MUSEO</a>
+                        </li>
+                        <li class="col-xs-12 col-sm-2" role="presentation">
+                            <a href="#contenido" aria-controls="contenido" role="tab" data-toggle="tab">CONTENIDO</a>
+                        </li>
+                        <li class="col-xs-12 col-sm-2" role="presentation">
+                            <a href="#actividades" aria-controls="actividades" role="tab" data-toggle="tab">ACTIVIDADES</a>
+                        </li>
+                        <li class="col-xs-12 col-sm-2" role="presentation">
+                            <a href="#profesional" aria-controls="profesional" role="tab" data-toggle="tab">PROFESIONAL</a>
+                        </li>
+                        <li class="col-xs-12 col-sm-2" role="presentation">
+                            <a href="#social" aria-controls="social" role="tab" data-toggle="tab">SOCIAL</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <img th:if="*{imagenPortada}" class="img-responsive margin-auto" th:src="*{imagenPortada}" alt="" />  
+                <div th:unless="*{imagenPortada}">
+                    <th:block th:if="*{geometry}" th:utext="*{geometry.getRdf()}"></th:block>
+                    <div class="img-responsive margin-auto" th:if="*{geometry}" id="mapa-leaflet"></div>
+                </div>
+            </div>
+                
+            <div class="row">            
+                <div class="col-xs-12">
+                    <div sede:class="tab-content" class="clearfix">
+                        <!--/* VISITA */-->
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#visita" aria-expanded="false">
+                            VISITA
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="visita" class="col-md-12">
+                            <div class="card">
+
+
+<!-- <div class="row">
+    <div class="col-md-3">
+        <h4 class="text-center color-destacados">GENERAL</h4>
+        <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-museot.png"/></div>
+    </div>
+    <div class="col-md-3">
+        <h4 class="text-center color-destacados">REDUCIDA</h4>
+        <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-tres.png"/></div>
+        <div class="fnd-gris-claro">
+            <ul>
+                <li>
+                    Grupos</li>
+                <li>
+                    Carné de estudiante</li>
+                <li>
+                    Carné joven</li>
+                <li>
+                    Carné de familia numerosa </li>
+                <li>
+                    Título de familia monoparental</li>
+                <li>
+                    Persona con discapacidad del 33% al 49%</li>
+                <li>
+                    Billete de bus turístico</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h4 class="text-center color-destacados">ESCOLAR</h4>
+        <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticketuno.png"/></div>
+        <div class="fnd-gris-claro">
+            <ul>
+                <li> Grupos formativos</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h4 class="text-center color-destacados">GRATUITA</h4>
+        <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-gratuita.png"/></div>
+        <div class="card">
+            <ul>
+                <li>Personas menores de 8 años</li>
+                <li>Personas con discapacidad igual o superior al 50%</li>
+                <li>Desempleados</li>
+                <li>Profesorado de centros educativos y formativos de enseñanzas regladas</li>
+                <li>Responsable de grupo o guía profesional en el ejercicio de su profesión</li>
+                <li>Periodistas en el ejercicio de su profesión</li>
+                <li>Miembros del ICOM e ICOMOS</li>
+                <li>Miembros de la Asociación de Críticos de Arte</li>
+                <li>Personas mayores de 65 años</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>RUTA CAESARAUGUSTA</h3>
+        <hr class="sm"/>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-siete.png"/></div>
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-museot.png"/></div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-cinco.png"/></div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-dos.png"/></div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-gratuita.png"/></div>
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-museot.png"/></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>ABONOS MUNICIPALES</h3>
+        <hr class="sm"/>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-nueve.png"/></div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-seis.png"/></div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-dos.png"/></div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center"><img src="/cont/vistas/portal/museos/img/ticket-gratuita.png"/></div>
+        </div>
+        <p>(*)Precios regulados en la <strong> Ordenanza Fiscal 27-III </strong> </p>
+    </div>
+</div> -->
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_localizacion.png" alt=""/> Localización y Horarios</h3>
+                                <div class="section-content">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <th:block th:if="*{geometry}" th:utext="*{geometry.getRdf()}"></th:block>
+                                            <div class="margin-auto" th:if="*{geometry}" id="mapa-leaflet" style="height: 15em;"></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small">
+                                                <li th:if="*{calle}" class="direccion">
+                                                    <span class="fa fa-home"></span> <strong>Dirección:</strong>
+                                                    <span th:text="*{calle}" />
+                                                </li>
+                                                <th:block th:if="*{tel}">
+                                                    <li th:if="*{tel.tel}" class="tel">
+                                                        <span class="fa fa-phone"></span> <strong>Teléfono:</strong>
+                                                        <th:block th:if="${currentDevice.isMobile()} == true">
+                                                            <a th:href="'tel:' + *{tel.tel}"><span sede:rdf="*{tel.get('tel')}" /></a>
+                                                        </th:block>
+                                                        <th:block th:if="${currentDevice.isMobile()} != true">
+                                                            <span sede:rdf="*{tel.get('tel')}" />
+                                                        </th:block>
+                                                    </li>
+                                                    <li th:if="*{tel.fax}" class="fax">
+                                                        <span class="fa fa-fax"></span> <strong>Fax:</strong>
+                                                        <span sede:rdf="*{tel.get('fax')}" />
+                                                    </li>
+                                                </th:block>
+                                                <li th:if="*{email}" class="email">
+                                                    <span class="fa fa-at"></span> <strong>Correo electrónico:</strong>
+                                                    <a sede:rdf="*{prop('email')}" th:href="'mailto:' + *{email}" th:text="*{email}" />
+                                                </li>
+                                                <li th:if="*{horario}" class="horario">
+                                                    <span class="far fa-clock"></span> <strong>Horario: </strong>
+                                                    <div sede:rdf="*{get('horario')}" />
+                                                </li>
+                                                <li th:if="*{url}" class="url"> 
+                                                    <span class="fa fa-link"></span> <strong>Página Web:</strong>
+                                                    <a class="break-word" th:href="*{url}" sede:rdf="*{get('url')}" />
+                                                </li>
+                                                <li th:if="*{geometry}" class="geo"><span><span class="fas fa-map-marker-alt" aria-hidden="true"></span> <a th:href="'https://www.zaragoza.es/sede/portal/idezar/mapa/comoMoverse/?nd=' + *{calle} + '&amp;xd=' + *{geometry.coordinates[0]} + '&amp;yd=' + *{geometry.coordinates[1]}">Cómo llegar</a> en transporte público</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_entradaLibre.png" alt=""/> Entrada Libre</h3>
+                                <div class="section-content">
+                                    <sede:aviso fragment="fragmentos/aviso/thumbnails-no-title" clase="col-xs-12 col-sm-4 col-md-3" portal="${avisos}" imagen="si" resumen="si" nresultados="12"> </sede:aviso>  
+                                </div>
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_accesibilidad.png" alt=""/> Accesibilidad</h3>
+                                <div class="section-content">
+                                    <p th:if="*{accesibilidad}" sede:rdf="*{get('accesibilidad')}"></p>
+                                </div>
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_tarifas.png" alt=""/> Tarifas</h3>
+                                <div class="section-content">
+                                    <p sede:rdf="*{get('precio')}"></p>
+                                </div>
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_reservas.png" alt=""/> Reservas <span class="destacado color-ayto"></span></h3>
+                                <div class="section-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-sm-1"><img src="/cont/paginas/img/museos/icono_reservasTELEFONO.png" alt=""/></div>
+                                            <div class="col-sm-3">
+                                                <strong th:if="*{tel.tel}">TELÉFONO<br/> <span class="color-destacados">
+                                                        <th:block th:if="${currentDevice.isMobile()} == true">
+                                                            <a th:href="'tel:' + *{tel.tel}"><span sede:rdf="*{tel.get('tel')}" /></a>
+                                                        </th:block>
+                                                        <th:block th:if="${currentDevice.isMobile()} != true">
+                                                            <span sede:rdf="*{tel.get('tel')}" />
+                                                        </th:block>
+                                                </span></strong>
+                                            </div>
+                                            <div class="col-sm-1"><img src="/cont/paginas/img/museos/icono_reservasONLINE.png" alt=""/></div>
+                                            <div class="col-sm-3">
+                                                <strong>ONLINE<br/> <span class="color-destacados"><a href="https://www.zaragoza.es/aytocasa/enlinea/reserva.jsp">Reserva</a></span></strong>
+                                            </div>
+                                            <div class="col-sm-1"><img src="/cont/paginas/img/museos/icono_reservasEMAIL.png" alt=""/></div>
+                                            <div class="col-sm-3">
+                                                <strong>CORREO ELECTRÓNICO<br/> <span class="color-destacados"><a sede:rdf="*{prop('email')}" th:href="'mailto:' + *{email}" th:text="*{email}" /></span></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_servicios.png" alt=""/> Servicios</h3>
+                                <div class="section-content">
+                                    <th:block th:if="*{servicios}" th:utext="*{servicios}"></th:block>
+                                </div>
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_buenasPracticas.png" alt=""/> Buenas practicas</h3>
+                                <div class="section-content">
+                                   <ul class="row list-unstyled">
+                                      <li class="col-md-4">
+                                        <img src="/cont/paginas/img/museos/icono_buenasPracticasENTRADA.png" alt="" class="pull-left margin-r1em"/>
+                                        <p><strong>Entrada</strong></p>
+                                        <p> Por favor,<strong> conserve la entrada</strong> durante toda la visita</p>
+                                        <hr/>
+                                        <img src="/cont/paginas/img/museos/icono_buenasPracticasTAQUILLAS.png" alt="" class="pull-left margin-r1em"/>
+                                        <p><strong>Taquillas</strong></p>
+                                        <p>
+                                              El Museo dispone de <strong>taquillas para depositar los bolsos, paraguas y mochilas, y equipajes, </strong> con los que no se puede entrar en las salas expositivas.
+                                           </p>
+                                           <p>
+                                              En todo caso, el Museo se reserva el derecho a decidir qué objetos se deben depositar en las taquillas. 
+                                           </p>
+                                        <hr/>
+                                        <img src="/cont/paginas/img/museos/icono_buenasPracticasNOTOQUE.png" alt="" class="pull-left margin-r1em"/>
+                                        <p><strong>Restos arqueológicos y piezas expuestas</strong></p>
+                                        <p>
+                                              Los restos arqueológicos son extremadamente frágiles y su conservación delicada y costosa. Ayúdenos, por favor, a su mantenimiento. Evite la caída de papeles u objetos en el yacimiento arqueológico.
+                                           </p>
+                                           <p>
+                                              Por favor, <strong>no toque las piezas expuestas</strong>, pues son muy frágiles y podrían deteriorarse, ni los elementos museográficos (maquetas, escenografías, etc.), salvo que se indique lo contrario. Contribuiremos así al buen mantenimiento del Museo.
+                                           </p>
+                                        <hr/>
+                                      </li>
+                                      
+                                      
+                                      <li class="col-md-4">
+                                        <img src="/cont/paginas/img/museos/icono_buenasPracticasMOVIL.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Teléfono móvil</strong></p>
+                                            <p>
+                                                  Rogamos que <strong>silencie el teléfono móvil</strong>, para respetar al resto de visitantes.
+                                               </p>
+                                            <hr/>
+                                            <img src="/cont/paginas/img/museos/icono_buenasPracticasFLASH.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Fotografías y grabaciones</strong></p>
+                                            <p>
+                                                  Pueden realizarse fotografías o tomas videográficas en formato doméstico, no profesional,<strong> sin flash o trípode para no dañar las piezas expuestas</strong>.
+                                               </p>
+                                               <p>
+                                                  Si las imágenes se destinan, profesionalmente, a edición pública, es necesaria una autorización previa, que se puede solicitar en los siguientes correos electrónicos: jefecultura@zaragoza.es o museosmunicipales@zaragoza.es.
+                                               </p>
+                                            <hr/>
+                                            <img src="/cont/paginas/img/museos/icono_buenasPracticasMENORES.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Visita con menores</strong></p>
+                                            <p>
+                                                  Los <strong>menores de 14 años</strong> han de visitar el Museo en compañía de una persona adulta.
+                                               </p>
+                                               <p>
+                                                  Rogamos que acompañen, en todo momento, a las niñas y niños, evitando gritos y carreras, para conseguir una óptima visita.
+                                               </p>
+                                            <hr/>
+                                         
+                                      </li>
+                                      
+                                      
+                                      <li class="col-md-4">
+
+                                        <img src="/cont/paginas/img/museos/icono_buenasPracticasGRUPOS.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Visita de grupos </strong></p>
+                                            <p>
+                                                  Los <strong>acompañantes de los grupos son responsables</strong> de todas las personas que lo integran.
+                                               </p>
+                                            <hr/>
+
+                                        <img src="/cont/paginas/img/museos/icono_buenasPracticasANIMALES.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Acceso con animales</strong></p>
+                                            <p>
+                                                  No se puede entrar con <strong>animales al museo</strong>, salvo perros guía y asistentes caninos para enfermedades.
+                                               </p>
+                                            <hr/>
+                                         <img src="/cont/paginas/img/museos/icono_buenasPracticasCOMIDA.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Comer y beber</strong></p>
+                                            <p>
+                                                  No está permitido <strong>introducir   comida y bebida</strong>, ni consumirla, en las salas del Museo ni en la zona de los restos arqueológicos.
+                                               </p>
+                                            <hr/>
+                                            <img src="/cont/paginas/img/museos/icono_buenasPracticasHUMOS.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Espacio libre de humos</strong></p>
+                                            <p>
+                                                  El Museo es un <strong>espacio libre de humos</strong>, incluyendo la zona de restos arqueológicos y la terraza.
+                                               </p>
+                                            <hr/>
+                                            <img src="/cont/paginas/img/museos/icono_buenasPracticasCIERRE.png" alt="" class="pull-left margin-r1em"/>
+                                            <p><strong>Cierre del Museo</strong></p>
+                                            <p>
+                                                  El Museo cancela el <strong>acceso 30 minutos antes del cierre</strong> del Museo.
+                                               </p>
+                                            <hr/>
+                                      </li>
+                                      
+                                      
+                                   </ul>
+                                </div>
+
+                                <h3 class="section-title offset-target"><img src="/cont/paginas/img/museos/icono_tienda.png" alt=""/> Tienda <span class="destacado color-ayto">(PENDIENTE BBDD/SERVICIO NUEVO)</span></h3>
+                                <div class="section-content">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <a href="#carteles">Carteles <img src="/cont/paginas/img/museos/icono_tiendaCARTELES.png" alt=""/></a>
+                                        </li>
+                                        <li>
+                                            <a href="#papeleria">Papeleria <img src="/cont/paginas/img/museos/icono_tiendaPAPELERIA.png" alt=""/></a>
+                                        </li>
+                                        <li>
+                                            <a href="#imanes">Imanes <img src="/cont/paginas/img/museos/icono_tiendaIMANES.png" alt=""/></a>
+                                        </li>
+                                        <li>
+                                            <a href="#ceramica">Cerámica <img src="/cont/paginas/img/museos/icono_tiendaOTROS.png" alt=""/></a>
+                                        </li>
+                                        <li>
+                                            <a href="#publicaciones">Publicaciones <img src="/cont/paginas/img/museos/icono_tiendaPUBLICACIONES.png" alt=""/></a>
+                                        </li>
+                                        <li>
+                                            <a href="#audiovisuales">Audiovisuales <img src="/cont/paginas/img/museos/icono_tiendaAUDIOVISUALES.png" alt=""/></a>
+                                        </li>
+                                        <li>
+                                            <a href="#otros">Otros <img src="/cont/paginas/img/museos/icono_tiendaOTROS.png" alt=""/></a>
+                                        </li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div>
+                                                <a href="http://www.zaragoza.es/cont/paginas/museos/es/foro/img/cartelruta.pdf">
+                                                <img class="img-rounded" alt="Cartel Ruta de Caesaraugusta" src="http://www.zaragoza.es/cont/paginas/museos/es/foro/img/cartelruta.jpg"/>
+                                             </a></div>
+                                            <div class="linea"></div>
+                                            <h4 class="color-destacados"> 
+                                               Ruta de 
+                                             <em>Caesaraugusta</em>
+                                          </h4>
+                                            <hr class="sm border-color-destacados"/>
+                                            <ul class="list-unstyled">
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Producto:</strong> Imagen de la recreación virtual de la ciudad de
+                                                    <em>Caesaraugusta</em> a mediados del siglo II.
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Medidas:</strong> 48 x 68 cm
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Precio:</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <a href="http://www.zaragoza.es/cont/paginas/museos/es/foro/img/cartelforo.pdf">
+                                                <img class="img-rounded" alt="Cartel Museo del Foro de Caesaraugusta" src="http://www.zaragoza.es/cont/paginas/museos/es/foro/img/cartelforo.jpg"/>
+                                             </a>
+                                            </div>
+                                            <div class="linea"></div>
+                                            <h4 class="color-destacados"> 
+                                               Museo del Foro de
+                                             <em>Caesaraugusta</em>
+                                          </h4>
+                                            <hr class="sm border-color-destacados"/>
+                                            <ul class="list-unstyled">
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Producto:</strong> Detalle de la recreación virtual de la plaza del foro de
+                                                    <em>Caesaraugusta.</em>
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Medidas:</strong> 48 x 68 cm
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Precio:</strong> 2,5 euros
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <a href="http://www.zaragoza.es/cont/paginas/museos/es/foro/img/cartelpuerto.pdf">
+                                                <img class="img-rounded" alt="Cartel Museo del Puerto fluvial de Caesaraugusta" src="http://www.zaragoza.es/cont/paginas/museos/es/foro/img/cartelpuerto.jpg"/>
+                                             </a>
+                                            </div>
+                                            <div class="linea"></div>
+                                            <h4 class="color-destacados"> 
+                                               Museo del Puerto fluvial de
+                                             <em>Caesaraugusta</em>
+                                          </h4>
+                                            <hr class="sm border-color-destacados"/>
+                                            <ul class="list-unstyled">
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Producto:</strong> Ilustración hipotética de actividad en el puerto fluvial de
+                                                    <em>Caesaraugusta.</em>
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Medidas:</strong> 48 x 68 cm
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Precio:</strong> 2,5 euros
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <a href="/contenidos/museos/cartel-termas.pdf" shape="rect">
+                                                <img class="img-rounded" alt="Cartel Museo del Teatro de Caesaraugusta" src="http://www.zaragoza.es/cont/paginas/museos/es/foro/img/carteltermas.jpg"/>
+                                             </a>
+                                            </div>
+                                            <div class="linea"></div>
+                                            <h4 class="color-destacados"> 
+                                               Museo de las Termas de
+                                             <em>Caesaraugusta</em>
+                                          </h4>
+                                            <hr class="sm border-color-destacados"/>
+                                            <ul class="list-unstyled">
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Producto:</strong> Vista del interior de las termas públicas de
+                                                    <em>Caesaraugusta.</em>
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Medidas:</strong> 48 x 68 cm
+                                                </li>
+                                                <li><span class="far fa-dot-circle" aria-hidden="true"></span>
+                                                    <strong>Precio:</strong> 2,5 euros
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--/* MUSEO */-->
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#museo" aria-expanded="false">
+                            MUSEO
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="museo" class="col-md-12">
+                            <div class="card">
+                                <p sede:rdf="*{get('historia')}"></p>
+                            </div>
+                        </div>
+
+                        <!--/* CONTENIDO */-->
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#contenido" aria-expanded="false">
+                            CONTENIDO
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="contenido" class="col-md-12">
+                            <div class="card">
+                                <p sede:rdf="*{get('description')}"></p>
+                            </div>
+                        </div>
+
+                        <!--/* CONTENIDO */-->
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#actividades" aria-expanded="false">
+                            ACTIVIDADES
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="actividades" class="col-md-12">
+                            <div class="card">
+                                <ul th:if="(*{Events} and *{not #lists.isEmpty(Events.result)}) or (*{nearEvents} and *{not #lists.isEmpty(nearEvents.result)})" class="list-unstyled clearfix">
+                                    <li th:each="evt : *{Events.result}" vocab="http://schema.org/">
+                                        <!--/* // FIXME: category 43,980,1000,1001 (Casas de Juventud y PIEEs) envía a la ficha de agenda del CIPAJ. */-->
+                                        <a th:href="*{not category.?[id == 43 || id == 980 || id == 1000 || id == 1001].isEmpty()} ? '/sede/servicio/actividades/juvenil/' + ${evt.id} : '/sede/servicio/cultura/evento/' + ${evt.id}">
+                                            <div class="thumbnail overlay row no-gutter col-xs-12 col-sm-6 col-md-3 margin-b1em">
+                                                <div class="col-xs-3 col-sm-12 col-md-12">
+                                                    <img th:if="${evt.image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${evt.image}" alt="Imagen del evento" />
+                                                    <!--/* Imagen asociada al programa (Prioridad +) */-->
+                                                    <img th:if="${evt.program}" th:unless="${evt.image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${evt.program.image}" alt="Imagen del programa" />
+                                                    <!--/* Imagen asociada a la temática 
+                                                                                 */-->
+                                                    <img th:if="${not #lists.isEmpty(evt.category)}" th:unless="${evt.image} or ${evt.program}" class="img-responsive center-block margin-b05em" width="320" height="480" th:src="${evt.category[0].image}" alt="Imagen del tema" />
+                                                    <!--/* Imagen Genérica act CIPAJ (category 43,980,1000,1001) */-->
+                                                    <img th:if="not ${evt.image} and *{not category.?[id == 43 || id == 980 || id == 1000 || id == 1001].isEmpty()}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" src="//www.zaragoza.es/cont/paginas/actividades/imagen/ClaraBlasco_Monito.gif" alt="Imagen del evento" />
+                                                </div>
+                                                <div class="caption col-xs-9 col-sm-12 col-md-12">
+                                                    <p th:if="${#strings.length(evt.title) > 27}" th:text="${#strings.substring(evt.title,0,27)} + '...'" property="name"></p>
+                                                    <p th:unless="${#strings.length(evt.title) > 27}" th:text="${evt.title}" property="name"></p>
+                                                    <th:block th:if="${!evt.subEvent[0].openingHours.isEmpty()} and ${evt.subEvent[0].openingHours.size() > 1}">
+                                                        <p>Varios horarios</p>
+                                                    </th:block>
+                                                    <th:block th:if="${!evt.subEvent[0].openingHours.isEmpty()} and ${evt.subEvent[0].openingHours.size() == 1}">
+                                                        <p th:text="${evt.subEvent[0].openingHours[0].dayOfWeek} + ' ' + ${evt.subEvent[0].openingHours[0].startTime}"></p>
+                                                    </th:block>
+                                                    <ul class="list-inline margin-b1em">
+                                                        <li class="nopadding" th:each="materia : ${evt.category}">
+                                                            <a class="label label-success" th:href="'/sede/servicio/cultura/evento?fq=temas_smultiple%3A(&quot;'+${#utils.toUnicode(materia.title)}+'&quot;)'">
+                                                                <th:block th:text="${materia.title}" property="name" />
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div th:if="*{nearEvents} and *{not #lists.isEmpty(nearEvents.result)}" class="margin-t2em">
+                                    <h3 class="nomargin">OTRAS ACTIVIDADES CERCANAS</h3>
+                                    <ul class="list-group margin-t05em" id="act-cercanas">
+                                        <li th:each="evt : *{nearEvents.result}" th:if="${evt.geometry.coordinates[0]} != ${registro.body.geometry.coordinates[0]} and ${evt.geometry.coordinates[1]} != ${registro.body.geometry.coordinates[1]}" class="list-group-item">
+                                            <img th:if="${evt.image}" th:src="${evt.image}" width="30em;" height="30em;" class="margin-r05em" alt="Imagen del evento" />
+                                            <img th:if="${evt.program}" th:unless="${evt.image}" th:src="${evt.program.image}" width="30em;" height="30em;" class="margin-r05em" alt="Imagen del programa" />
+                                            <img th:if="${not #lists.isEmpty(evt.category)}" th:unless="${evt.image} or ${evt.program}" th:src="${evt.category[0].image}" width="30em;" height="30em;" class="margin-r05em" alt="Imagen del tema" />
+                                            <a property="sameAs" th:href="'/sede/servicio/cultura/evento/' + ${evt.id}">
+                                                                            <span th:text="${evt.title}" property="name"/>
+                                                                        </a>
+                                            <th:block th:if="${registro.body.geometry} and ${evt.geometry}" th:text="${#utils.distance(registro.body.geometry, evt.geometry)}" style="font-weight:bold" />
+                                            <th:block class="nopadding" th:each="tema : ${evt.category}">
+                                                <a th:if="*{not #lists.isEmpty(category)}" th:href="'/sede/servicio/cultura/evento/?fq=temas_smultiple%3A(&quot;'+${#utils.toUnicode(tema.title)}+'&quot;)'" th:text="${tema.title}" class="label label-success margin-r05em"></a>
+                                            </th:block>
+                                            <th:block th:if="${evt.geometry}" th:utext="${evt.geometry.getRdf()}"></th:block>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--/* CONTENIDO */-->
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#profesional" aria-expanded="false">
+                            PROFESIONAL
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="profesional" class="col-md-12">
+                            <div class="card">
+                                profesional
+                            </div>
+                        </div>
+
+                        <!--/* SOCIAL */-->
+                        <h2 class="tab-title" data-toggle="collapse" data-target="#social" aria-expanded="false">
+                            SOCIAL
+                        </h2>
+                        <div role="tabpanel" sede:class="tab-pane active" id="social" class="col-md-12">
+                            <div class="card">
+                                <th:block th:if="*{#strings.contains(urlGaleria,'flickr.com')}">
+                                    <a data-flickr-embed="true" th:href="*{urlGaleria}" th:title="*{title}">
+                                        <img src="https://farm3.staticflickr.com/2448/3631383175_5aaf827d5d_z.jpg" width="640" height="426" th:alt="*{title}" />
+                                    </a>
+                                    <script async="async" src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+                                </th:block>
+                                <!-- <th:block th:unless="*{#strings.indexOf(urlGaleria, 'flickr.com') > 0}"> -->
+                                    <!-- <a th:href="*{urlGaleria}">Ir a galería</a> -->
+                                <!-- </th:block> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       </div>
+
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    var latitude = $(document).find("[property='latitude']").attr("content");
+    var longitude = $(document).find("[property='longitude']").attr("content");
+    if (latitude && longitude) {
+        var marker = L.marker([latitude, longitude]);
+        pois.push(marker);
+    }
+    $("#cen li").each(function() {
+        var icon = '//www.zaragoza.es/contenidos/iconos/participacionCiudadana.png';
+        var latitude = $(this).find("[property='latitude']").attr("content");
+        var longitude = $(this).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            var marker = L.marker([latitude, longitude], {
+                icon: L.icon({
+                    iconUrl: icon,
+                    iconSize: [22, 20],
+                    iconAnchor: [22, 20],
+                    popupAnchor: [-10, -20]
+                })
+            }).bindPopup($(this).html());
+            pois.push(marker);
+
+        }
+    });
+
+    $("#act-entidad li, #act-cercanas li").each(function() {
+        var icon = '//www.zaragoza.es/contenidos/iconos/agenda.png';
+        var latitude = $(this).find("[property='latitude']").attr("content");
+        var longitude = $(this).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            var marker = L.marker([latitude, longitude], {
+                icon: L.icon({
+                    iconUrl: icon,
+                    iconSize: [22, 20],
+                    iconAnchor: [22, 20],
+                    popupAnchor: [-10, -20]
+                })
+            }).bindPopup($(this).html());
+            pois.push(marker);
+
+        }
+    });
+    var group = L.featureGroup(pois).addTo(map);
+    map.setView(new L.LatLng(latitude, longitude), 5);
+    /*]]>*/
+    </script>
+</body>
+
+</html>
+</th:block>

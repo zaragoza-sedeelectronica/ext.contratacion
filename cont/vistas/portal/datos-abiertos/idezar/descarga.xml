@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Descarga. Herramientas. Infraestructura de Datos Espaciales de Zaragoza" description="Información relativa a la Infraestructura de Datos Espaciales (IDE)" author="Ayuntamiento de Zaragoza" subject="" keywords="ayuntamiento, ciudad, Zaragoza, España, vocabularios, conjuntos de datos, datos abiertos, administración local, gobierno abierto" last-modified="28-05-2018" audience="Ciudadanía" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Herramientas</h2>
+        <ul class="nav nav-pills">
+            <li>
+                <a href="./visualizacion">Visualización</a>
+            </li>
+            <li>
+                <a href="./metadatos">Catálogo de Metadatos</a>
+            </li>
+            <li class="active">
+                <a href="#">Descarga</a>
+            </li>
+        </ul>
+        <p>
+            La
+            <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2007:108:0001:0014:ES:PDF" title="Enlace Exterior" class="external-link pdf">Directiva Inspire</a>
+            <em>(Infrastructure for Spatial Information in Europe)</em> establece que las organizaciones responsables de la información geográfica de cada uno de los temas enumerados en sus anexos deben publicar los datos a través de
+            <strong>servicios de descarga</strong> . Estos servicios de descarga permiten descargar copias de conjuntos de datos espaciales o partes de ellos y además pueden ofrecer la posibilidad de edición de estos conjuntos de datos (
+            <a href="http://www.idee.es/datos" title="Enlace Exterior" class="external-link">www.idee.es/datos</a> ).
+        </p>
+        <p>
+            El Ayuntamiento de Zaragoza, según lo establecido por la Directiva INSPIRE, publica sus datos geográficos relacionados con los temas de INSPIRE a través de un servicio Web implementado conforme a la
+            <a href="http://inspire.jrc.ec.europa.eu/documents/Network_Services/Technical_Guidance_Download_Services_v3.1.pdf" title="Enlace Exterior" class="external-link pdf">
+Guía Técnica para la implementación de los servicios de descarga de la Directiva INSPIRE
+</a> (versión 3.1), y por tanto conforme a WFS versión 2.0 del Open Geospatial Consortium (OGC), siguiendo el modelo de datos definido para dicho reglamento para cada una de las temáticas definidas por INSPIRE.
+        </p>
+        <p>
+            El
+            <strong>servicio WFS</strong> ofrece acceso de lectura a datos vectoriales utilizando GML como protocolo subyacente para realizar consultas espaciales, recuperar los datos y manipular la geometría de los mismos.
+        </p>
+        <p>
+            Este servicio es accesible a través de
+            <a href="http://idezar.zaragoza.es/inspire-node/services/wfs" title="Enlace Exterior" class="external-link">
+http://idezar.zaragoza.es/inspire-node/services/wfs
+</a>
+        </p>
+        <p>
+            En la actualidad a través de dicho servicio se publican los datos geográficos de referencia de direcciones según el modelo de datos de direcciones establecido por INSPIRE.
+        </p>
+        <p>
+            En
+            <a href="http://idezar.zaragoza.es/inspire-node/console/client/client.xhtml" title="Enlace Exterior" class="external-link">
+http://idezar.zaragoza.es/inspire-node/console/client/client.xhtml
+</a> ofrecemos una demo que permite ejecutar peticiones sobre el servicio.
+        </p>
+        <h3>Ejemplos de peticiones soportadas</h3>
+        <h4>Petición de capabilities del servicio</h4>
+<pre class="prettyprint notranslate">
+http://idezar.zaragoza.es/inspire-node/services/wfs?Service=WFS&amp;version=2.0.0&amp;Request=GetCapabilities
+</pre>
+        <h4>Listado de códigos postales</h4>
+<pre class="prettyprint notranslate">
+&lt;wfs:GetFeature xmlns:wfs="http://www.opengis.net/wfs/2.0"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:fes="http://www.opengis.net/fes/2.0"
+    xmlns:gml="http://www.opengis.net/gml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd"
+    xmlns:ad="urn:x-inspire:specification:gmlas:Addresses:3.0" service="WFS"
+    version="2.0.0" outputFormat="text/xml; subtype=gml/3.2.1"&gt;
+        &lt;wfs:Query typeNames="ad:PostalDescriptor"&gt;
+        &lt;/wfs:Query&gt;
+&lt;/wfs:GetFeature&gt;
+</pre>
+        <h4>Direcciones contenidas un determinado Bounding Box geográfico</h4>
+<pre class="prettyprint notranslate">
+&lt;wfs:GetFeature xmlns:wfs="http://www.opengis.net/wfs/2.0"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:fes="http://www.opengis.net/fes/2.0"
+    xmlns:gml="http://www.opengis.net/gml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd"
+    xmlns:ad="urn:x-inspire:specification:gmlas:Addresses:3.0" service="WFS"
+    version="2.0.0" outputFormat="text/xml; subtype=gml/3.2.1"&gt;
+        &lt;wfs:Query typeNames="ad:Address" srsName="EPSG:25830"&gt;
+            &lt;fes:Filter xmlns="http://www.opengis.net/ogc"&gt;
+                &lt;fes:BBOX&gt;
+                    &lt;fes:ValueReference&gt;ad:position/ad:geometry&lt;/fes:ValueReference&gt;
+                    &lt;gml:Envelope srsName="EPSG:25830"&gt;
+                        &lt;gml:coordinates cs="," decimal="." ts=" "&gt;
+                            685152.491677489,4610011.45855448 686820.62560828,4620805.11631808
+                        &lt;/gml:coordinates&gt;
+                    &lt;/gml:Envelope>
+                &lt;/fes:BBOX>
+            &lt;/fes:Filter> 
+        &lt;/wfs:Query>
+&lt;/wfs:GetFeature>
+</pre>
+    </sede:content>
+</body>
+
+</html>

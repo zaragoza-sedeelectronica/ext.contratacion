@@ -1,0 +1,11 @@
+<strong>
+	<a th:if="${item.url}" th:href="'http://' + ${item.url}" property="url"><span sede:rdf="${item.get('title')}"/></a>
+	<span th:if="not ${item.url}" sede:rdf="${item.get('title')}"/>
+</strong>
+<div><span class="fa fa-home" title="Dirección" aria-hidden="true"/> <span property="address"> <th:block th:text="${item.address}"/> <th:block th:text="${item.postalCode}"/></span></div>
+<div>
+	<th:block th:if="${item.phone}"><span class="fa fa-phone" title="Teléfono" aria-hidden="true"/> <span sede:rdf="${item.get('phone')}"/></th:block>
+	<th:block th:if="${item.fax}"><span class="fa fa-fax" title="Fax" aria-hidden="true"/> <span sede:rdf="${item.get('fax')}"/></th:block>
+</div>
+<div><a th:href="'mailto:' + ${item.email}" property="email" th:text="${item.email}" /></div>
+<span th:if="${not #lists.isEmpty(item.type)}" th:each="cat, i : ${item.type}" th:unless="${i.index >= 8}" class="label label-success" th:text="${cat.title}" ></span>

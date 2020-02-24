@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Programas educativos >> No solo palabras"
+         description="Programa de Prevención a las Adicciones a través del Teatro"
+         keywords="Prevencón Adicciones, teatro, jovenes, drogas, juventud, programa educativo, CMAPA"/>
+      <style>
+         titulo-seccion {
+         line-height: 66px;
+         font-size: 42px;
+         }
+         .fnd-blanco {
+         background-color: #ffffff;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .fnd-gris-claro {
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin-bottom: -40px;
+         }
+         .titulo-org h2,
+         .procesos h2{
+         color: #e83437;
+         font-size: 42px;
+         padding-bottom: 20px;
+         }
+         .titulo-org h2 small,
+         .titulo-org h2 span{
+         color: #000000;
+         }
+         .panel-heading a:after {
+         float: left;
+         color: white;
+         background-color: #000;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 20px;
+         margin-right: 10px;
+         }
+         .panel-heading a.collapsed:after {
+         content: "\f105";
+         }
+         .panel-default>.panel-heading {
+         background-color: #fff;
+         border: 0;
+         }
+         .panel {
+         border: 0;
+         webkit-box-shadow: 0 0 0;
+         box-shadow: 0 0 0;
+         }
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         border: 0;
+         }
+         .panel-body {
+         padding-left: 50px;
+         }
+         .panel-title>a {
+         color: #E81B16;
+         }
+         .panel-title>a:hover,
+         .panel-title>a:focus,
+         .panel-title>a:active {
+         text-decoration: none;
+         }
+         .offset-target:before {
+         content: '';
+         display: block;
+         height: 67px;
+         /* fixed header height*/
+         margin: -67px 0 0;
+         /* negative fixed header height */
+         }
+         .section-title {
+         background: #E6E6E6;
+         border-radius: .5em .5em 0 0;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin: 0;
+         }
+         .section-content {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: 0 0 .5em .5em;
+         margin-bottom: 1em;
+         }
+         .card{
+         margin-left:1em;
+         }
+         .imagen{
+         display:block;
+         margin:auto;
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">No solo palabras: Programa de prevención a las adicciones a través del teatro</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <div class="row">
+               <div class="col-md-5 card">
+               <h3 class="section-title offset-target">No solo palabras: Programa de prevención a las adicciones a través del teatro</h3>
+               <p>Programa de prevención de adicciones que, partiendo del teatro, combina la participación de los alumnos en horario extraescolar (donde se va a llevar a cabo el taller de teatro <em>&quot;No sólo palabras&quot;)</em> con  la intervención preventiva  en aula. Se propone fomentar estilos de<strong> vida saludables</strong> y promover la <strong>prevención del consumo de drogas</strong> y otras conductas adictivas y de riesgo entre los <strong>adolescentes</strong>.</p>
+               <h4><br/> &quot;No sólo palabras&quot; incluye varias fases o momentos diferenciadas:</h4>
+               <ul>
+                  <li><strong>Fase de creación: </strong>en la que se prepara un guión teatral con el alumnado participante en el taller de teatro. Está a cargo de un profesional especializado en artes escénicas y se realiza a largo de quince sesiones de dos horas. participan un máximo de quince alumnos de un mismo centro educativo, junto con un monitor de teatro.</li>
+                  <li><strong>Actividad previa: </strong>la lleva a cabo el tutor en el aula y en ella participa el grupo clase. Trata de motivar e introducir al alumnado en la temática de la obra.</li>
+                  <li><strong>Representación</strong>: se representa la obra de teatro en el salón de actos del centro. Asisten los alumnos y profesores de primer ciclo de la ESO del centro.</li>
+                  <li><strong>Actividad posterior:</strong> la realiza el tutor en el aula. En ella se abordan y analizan algunos de los contenidos incluidos en la obra.</li>
+                  <li><strong>Representación final:</strong> Se propone representación final de todos los grupos de teatro de los diferentes IES que han participado. En ella, cada grupo  representa una escena de su obra ante el publico general.</li>
+               </ul>
+               </div>
+               <div class="col-md-3">
+               <img alt="" class="imagen" src="/cont/vistas/portal/derechos-sociales/adicciones/img/nosolopalabras-2015g.jpg"/>
+               </div>
+               <div class="col-md-3 card">
+               <h3 class="section-title offset-target">Información general</h3>
+               <h4>Contenido:</h4>
+               <ul>
+                  <li>El contenido de la obra lo elabora cada grupo con referencias explícitas a las adicciones en general,  con especial énfasis en alcohol y tabaco.</li>
+                  <li><a class="pdf" href="http://zaragoza.es/contenidos/sectores/adicciones/monografico-programa-teatro-14-15.pdf">Resumen del programa</a></li>
+               </ul>
+               <h4>Destinatarios:</h4>
+               <ul>
+                  <li>Va dirigido al  <strong>alumnado de secundaria</strong> que realizan el<em> Taller de teatro ?No sólo palabras?</em>, en su centro educativo y en horario extraescolar, así como al alumnado del mismo nivel educativo que van a ser espectadores activos de la obra de teatro.</li>
+                  <h4>Inscripción</h4>
+                  <p><a href="http://www.zaragoza.es/ciudad/enlinea/inscr-nosolopalabras.xhtml">Formulario en línea</a></p>
+               </ul>
+               <h4>Observaciones:</h4>
+               <ul>
+                  <li>Se trata de un Programa coordinado con <em>ACUPAMA</em>. <br/>     </li>
+                  <li>Con la colaboración  de obra social <em>&quot;La Caixa&quot;</em></li>
+               </ul>
+               </div>
+               </div>
+               
+               
+               
+               
+              
+               
+               
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

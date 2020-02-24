@@ -1,0 +1,51 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <p class="alert alert-danger">PENDIENTE: <br/>select con categorías para el padre, <br/>select con grupos <br/>guardar los cambios en la variable de sesión</p>
+        <div infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="0" ng-show="permisos.DET">
+ 			<button type="button" class="btn btn-default" ng-click="gestion()">
+				<span class="glyphicon glyphicon-plus"></span>A&ntilde;adir Categor&iacute;a 
+			</button>
+            <table class="table table-bordered table-hover table-btn">
+                <thead>
+                    <tr>
+                    	<!-- <th th-orden order="'service_code'" by="order" reverse="reverse">ID</th> -->
+                    	<th th-orden order="'service_name'" by="order" reverse="reverse">NOMBRE</th>
+                        <!-- <th th-orden order="'group_code'" by="order" reverse="reverse">ID GRUPO</th> -->
+                        <th th-orden order="'group_name'" by="order" reverse="reverse">NOMBRE GRUPO</th>
+                        <!-- <th th-orden order="'agency_responsible_code'" by="order" reverse="reverse">ID USUARIO</th> -->
+                        <th th-orden order="'agency_responsible'" by="order" reverse="reverse">USUARIO</th>
+                        <th th-orden order="'service_parent_code'" by="order" reverse="reverse">ID PADRE</th>
+                        <th th-orden order="'service_level'" by="order" reverse="reverse">Nivel</th>
+                        <th th-orden order="'autoassign'" by="order" reverse="reverse">Auto Asignar</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros track by $index">
+                    
+                        <!-- <td data-title="service_code" >
+                            <a href="#/edit/{{ registro.service_code }}">{{registro.group_code}}</a>
+                        </td>-->
+                        <td data-title="service_name">{{registro.service_name}}</td>
+                        <!-- <td data-title="group_code">{{registro.group_code}}</td>-->
+                        <td data-title="group_name">{{registro.group_name}}</td>
+                        <!-- <td data-title="agency_responsible_code">{{registro.agency_responsible_code}}</td>-->
+                        <td data-title="agency_responsible">{{registro.agency_responsible}}</td>
+                        <td data-title="service_parent_code">{{registro.service_parent_code}}</td>
+                        <td data-title="service_level">{{registro.service_level}}</td>
+                        <td data-title="autoassign">{{registro.autoassign}}</td>
+                        <td>
+							<button type="button" class="btn btn-default" ng-click="gestion($index)">
+							<span class="glyphicon glyphicon-edit"></span>
+							</button>
+						</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>

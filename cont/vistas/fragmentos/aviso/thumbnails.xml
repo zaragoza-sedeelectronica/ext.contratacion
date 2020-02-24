@@ -1,0 +1,13 @@
+<h3 th:if="${titulo}" th:text="${titulo}"></h3>
+<ul class="list-unstyled list-aviso clearfix">
+    <li th:class="(${clase} != null ? ${clase} : 'col-xs-12 col-sm-6')" th:each="doc: ${listado}">
+        <a th:href="${doc.link}" class="clearfix">
+            <img th:if="${doc.image}" th:src="'//www.zaragoza.es' + ${doc.image}" alt="" class="img-responsive img-rounded"/>
+            <p class="nomargin">
+                <th:block th:text="${doc.title}"></th:block>
+                <!--/* <span style="color:#fff;" class="small" th:text="${#calendars.format(doc.pubDate,'dd MMMM yyyy')}"></span> */-->
+            </p>
+        </a>
+        <div th:if="${doc.description}" th:utext="${doc.description}"></div>
+    </li>
+</ul>

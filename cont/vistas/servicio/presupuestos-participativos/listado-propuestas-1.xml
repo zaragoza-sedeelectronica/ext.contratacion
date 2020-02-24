@@ -1,0 +1,172 @@
+<ul class="row list-unstyled">
+    <li class="col-md-12 clearfix margin-b1em" th:each="registro : ${listado.body.result}">
+        <div class="col-md-8">
+            <div class="card clearfix">
+                <h3>
+                    <th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}" class="pull-right">
+                        Id: <strong th:text="${registro.id}"/>
+                        <strong th:if="${registro.visible} == 'N'">
+                            BORRADA
+                        </strong>
+                    </th:block>
+                    <a th:href="'/sede/servicio/presupuestos-participativos/' + ${registro.id}" sede:rdf="${registro.get('title')}"></a>
+                </h3>
+                <p>
+                    Realizado por <strong th:text="${registro.usuarioAlta}"></strong> 
+                    <th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}" class="pull-right">
+                        (<strong th:text="${registro.usuarioPub}"/>)
+                    </th:block>
+                    
+                    <span th:if="${registro.menor18}" class="label label-success">menor de 18 años</span>
+                    el <span class="text-info"><th:block th:text="${#calendars.format(registro.creationDate,'EEEE dd MMMM HH:mm')}"></th:block> h.</span>
+                    
+                    <th:block th:if="${registro.representacion}">
+                        en representación de <strong sede:rdf="${registro.get('representacion')}"></strong>.
+                    </th:block>
+                </p>
+                <p>Propuesta para <strong><span th:text="${registro.soloNombreJunta}"></span></strong> </p>
+                <hr class="nomargin" />
+                <div class="margin-a1em" sede:rdf="${registro.prop('description')}" th:text="${#strings.abbreviate(registro.description, 150)}"></div>
+                <div class="pull-right">
+                    <span class="fa fa-check-circle text-success" title="Apoyos Recibidos" aria-hidden="true"></span> Apoyos Recibidos: <span th:text="${registro.votosAFavor} == null ? '0' : ${registro.votosAFavor}"></span>
+                    <span class="sr-only">Apoyos Recibidos</span>
+                    <br/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12 text-center" th:if="${#utils.desde('17-01-2017')}">
+            <div class="visible-panel popover static-popover" th:classappend="${currentDevice.isMobile()} ? 'bottom' : 'right'">
+                <div class="arrow"></div>
+                <div class="popover-title text-center">
+                    <h4><strong class="text-primary">ESTADO</strong> de la PROPUESTA</h4>
+                </div>
+                <div class="popover-content text-center clearfix">
+                    <div th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/presupuestos-participativos/edicion/1/obras') > 0} ? 'hidden' : 'visible'" class="text-center" th:if="${registro.valoracionTecnica}">
+                        <strong>Motivo: </strong>
+                        <th:block th:text="${registro.valoracionTecnica}"></th:block>
+                    </div>
+                    <div class="text-center" th:if="${registro.motivo}">
+                        <strong>Viabilidad / Informes: </strong>
+                        <br/>
+                        <th:block th:utext="${registro.motivo}"></th:block>
+                    </div>
+                    <div class="text-center" th:if="${registro.coste}">
+                        <strong>Coste: </strong>
+                        <span th:text="${#numbers.formatDecimal(registro.coste,0,'POINT',2,'COMMA')} + ' €'"></span>
+                    </div>
+                    <th:block th:if="${registro.status} == 'S'">
+                        <div role="alert" class="alert alert-success">
+                            Esta propuesta ha sido aceptada por la Comisión Técnica.
+                        </div>
+                    </th:block>
+                    <th:block th:if="${registro.status} == 'N'">
+                        <div role="alert" class="alert alert-danger">
+                            Esta propuesta ha sido retirada del debate.
+                        </div>
+                    </th:block>
+                    <th:block th:if="${registro.status} == 'C'">
+                        <div role="alert" class="alert alert-danger">
+                            Esta propuesta ha sido rechazada por la Comisión Técnica.
+                        </div>
+                    </th:block>
+                    <th:block th:if="${registro.status} == 'R'">
+                        <div role="alert" class="alert alert-danger">
+                            Esta propuesta ha sido retirada por su creador.
+                        </div>
+                    </th:block>
+                    <th:block th:if="${registro.status} == 'E'">
+                        <div role="alert" class="alert alert-success">
+                            Esta propuesta ha sido seleccionada para su ejecución.
+                            <br/>
+                            <th:block th:if="${registro.estadoObra}">
+                                <strong>Estado de la obra: </strong>
+                                <th:block th:text="${registro.estadoObra}"></th:block>
+                                <br/>
+                                <strong>Fecha: </strong>
+                                <th:block th:text="${registro.fechaObra}"></th:block>
+                            </th:block>
+                            <!--/* Solo lo mostramos en el detalle */-->
+                            <!--/* <th:block th:if="${registro.motivoResumen}">
+                                <br/>
+                                <strong>Descripción informe técnico: </strong>
+                                <th:block th:text="${registro.motivoResumen}"></th:block>
+                            </th:block> */-->
+                        </div>
+                    </th:block>
+                    <th:block th:if="${registro.status} == 'X'">
+                        <div role="alert" class="alert alert-success">
+                            Esta propuesta ha sido seleccionada para su ejecución.
+                            <br/>
+                            <th:block th:if="${registro.estadoObra}">
+                                <strong>Estado de la obra: </strong>
+                                <th:block th:text="${registro.estadoObra}"></th:block>
+                                <br/>
+                                <strong>Fecha: </strong>
+                                <th:block th:text="${registro.fechaObra}"></th:block>
+                            </th:block>
+                            <!--/* Solo lo mostramos en el detalle */-->
+                            <!--/* <th:block th:if="${registro.motivoResumen}">
+                                <br/>
+                                <strong>Descripción informe técnico: </strong>
+                                <th:block th:text="${registro.motivoResumen}"></th:block>
+                            </th:block> */-->
+                        </div>
+                    </th:block>
+                    <th:block th:if="${registro.status} == 'T'">
+                        <div role="alert" class="alert alert-success">
+                            Esta propuesta ha sido seleccionada para su ejecución.
+                            <br/>
+                            <th:block th:if="${registro.estadoObra}">
+                                <strong>Estado de la obra: </strong>
+                                <th:block th:text="${registro.estadoObra}"></th:block>
+                                <br/>
+                                <strong>Fecha: </strong>
+                                <th:block th:text="${registro.fechaObra}"></th:block>
+                            </th:block>
+                            <!--/* Solo lo mostramos en el detalle */-->
+                            <!--/* <th:block th:if="${registro.motivoResumen}">
+                                <br/>
+                                <strong>Descripción informe técnico: </strong>
+                                <th:block th:text="${registro.motivoResumen}"></th:block>
+                            </th:block> */-->
+                        </div>
+                    </th:block>
+                    <th:block th:if="not *{status}">
+                        <div role="alert" class="alert alert-info">
+                            Esta propuesta ha estado en debate.
+                        </div>
+                    </th:block>    
+                </div>
+            </div>
+        </div>
+    </li>
+
+    <!--/* PUESTA A MANO DADO QUE LA PROPUESTA 10 y 11 TIENEN EL MISMO NÚMERO DE APOYOS */-->
+    <li class="col-md-12 clearfix margin-b1em" th:if="${param.rows != null and param.rows[0] == '10'} and ${param.juntaContains != null and param.juntaContains[0] == 'Centro'}">
+        <div class="col-md-8">
+            <div class="card clearfix">
+                <h3><a href="186">Centro Cultural Juvenil</a></h3>
+                <p>Realizado por <strong>Maribel</strong> el <span class="text-info">miércoles 14 diciembre 11:35 h.</span></p>
+                <p>Propuesta para <strong><span>Centro</span></strong> </p>
+                <hr class="nomargin"/>
+                <div class="margin-a1em">Acondicionar como Centro Juvenil el espacio del antiguo Conservatorio de Música (calificado con uso de equipamiento cultural en el PGOU y actualmen...</div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12 text-center">
+            <div class="visible-panel popover static-popover right">
+                <div class="arrow"></div>
+                <div class="popover-title text-center">
+                    <h4><strong class="text-primary">ESTADO</strong> de la PROPUESTA</h4>
+                </div>
+                <div class="popover-content text-center clearfix">
+                    <div class="pull-right">
+                        <span class="fa fa-check-circle text-success" title="Apoyos Recibidos" aria-hidden="true"></span> Apoyos Recibidos: <span>9</span>
+                        <span class="sr-only">Apoyos Recibidos</span>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+
+</ul>

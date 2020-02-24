@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Plan Municipal de Lucha contra la Pobreza Infantil" description="Plan estratégico para la lucha contra la pobreza infantil en el Ayuntamiento de Zaragoza" publisher="Ayuntamiento de Zaragoza" contributor="Ayuntamiento de Zaragoza" author="Ayuntamiento de Zaragoza" date-issued="22-05-2017" date-modified="14-02-2018" keywords="Plan Municipal de Lucha contra la pobreza infantil, social, planes estrategicos, Ayuntamiento de Zaragoza, derechos sociales, políticas sociales, social rights, child poverty, fight plan" language="es" audiende="infancia, ciudadania">
+    </sede:meta>
+    <style type="text/css">
+    .fase {
+        background-color: #202020;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    body {
+        padding-top: 57px;
+    }
+    
+    @media (min-width: 768px) {
+        .btn-participa {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div style="position:relative;" class="text-center">
+            <img class="img-responsive" src="//zaragoza.es/cont/paginas/sectores/social/img/cabecera-pobreza-infantil.jpg" alt="" />
+            <!-- <a class="btn btn-primary btn-lg btn-participa" href="https://www.zaragoza.es/sede/servicio/formulario/61">¡ENVÍA TUS PROPUESTAS!</a> -->
+        </div>
+      
+        <hr class="sm" />
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+            <li role="presentation" class="active"><a href="#inicio" aria-controls="que" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> ¿QUÉ ES?</a></li>
+            <li role="presentation"><a href="#que" aria-controls="que" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> LÍNEAS ESTRATEGICAS</a></li>
+            <li role="presentation"><a href="#marco" aria-controls="marco" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> MARCO JURÍDICO</a></li>
+            <li role="presentation"><a href="#fases" aria-controls="fases" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> FASES</a></li>
+            <li role="presentation"><a href="#aportaciones" aria-controls="aportaciones" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> APORTACIONES</a></li>
+            <li role="presentation"><a href="#documentacion" aria-controls="documentacion" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> DOCUMENTACIÓN</a></li>
+        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#inicio" aria-expanded="false"> Inicio </h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="inicio">
+                <div class="well well-sm fnd-sectores">
+                    <div class="pull-right"><img alt="" src="/cont/paginas/sectores/social/img/icono-pobreza-aragon.png" /></div>
+                    <p>
+                        En la actualidad uno de cada tres niños en nuestro país está en riesgo de pobreza y exclusión social. En Aragón, 26% de los niños y niñas viven en situación de pobreza y exclusión y casi un 12% lo hacen en situación de pobreza severa.
+                    </p>
+                    <p>
+                        La <strong>infancia</strong> es el grupo que más está sufriendo las consecuencias de la crisis económica y de los recortes. Es por ello, que la lucha contra la pobreza infantil, en sus diferentes dimensiones, intentando sobre todo romper el ciclo de su transmisión de padres a hijos, debe ser uno de los objetivos prioritarios de las políticas sociales públicas.
+                    </p>
+                    <p>
+                        Es necesario limitar y combatir la repercusión negativa que los recortes presupuestarios han tenido en los grupos más vulnerables, así como poner en práctica políticas sociales y económicas de carácter inclusivo que tengan en cuenta la crisis de los cuidados y de sostenibilidad de la vida y aspiren a lograr el buen vivir de la ciudadanía, en concreto de los niños, niñas y adolescentes de nuestra ciudad.
+                    </p>
+                    <p>
+                        El <strong>Área de derechos Sociales del Ayuntamiento de Zaragoza</strong>, dentro de sus competencias, comparte este objetivo fundamental. Por eso, a partir del acuerdo unánime del Pleno del Ayuntamiento de la ciudad, ha trabajado en la elaboración de este Plan que aquí presentamos, dirigido a abordar las situaciones de pobreza infantil desde una perspectiva integral y normalizadora.
+                    </p>
+                    <div class="pull-right"><img alt="" src="/cont/paginas/sectores/social/img/icono-pobreza-severa.png" /></div>
+                    <p>
+                        Este <strong>Plan de Lucha contra la Pobreza Infantil</strong> no debe constituir un fin en sí mismo, sino que deber ser un medio o herramienta que nos sirva para mejorar las condiciones de vida de la ciudadanía más vulnerable, que nos permita garantizar el acceso a recursos e idear formas de vivir más equitativas. Porque las políticas públicas deben poner el cuidado de la vida de todas las personas, pero sobre todo de las más vulnerables, en el centro de su quehacer cotidiano, con el fin de debilitar la desigualdad social existente y de empezar a hablar de corresponsabilidad del sostenimiento de la vida por el conjunto social. La pobreza no es un problema que cada cual deba resolver de manera individual, al contrario, es un problema social que debe ser abordado colectivamente.</p>
+                    <p>
+                        En consecuencia, queremos que este plan sirva para implementar políticas o medidas:</p>
+                    <ul class="list-unstyled">
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> Que <strong>ayuden en la redistribución</strong> de la responsabilidad del cuidado de la vida de una manera más equilibrada, que ésta no recaiga exclusivamente en los hogares, sino que ponga en valor el peso importantísimo que el sector público debe tener en la misma.</li>
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> Que <strong> frenen la precarización </strong>de la vida de las personas y especialmente de la infancia.</li>
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> Que <strong>ayuden a revertir</strong> las estructuras que producen y reproducen las <strong>desigualdades sociales, la pobreza y la exclusión.</strong>
+                        </li>
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> Que sean <strong>de carácter universal</strong>, que todas las personas puedan acceder a ellas, y que reconozcan la diversidad y la singularidad de las personas y grupos.</li>
+                        <li><span class="far fa-dot-circle" aria-hidden="true"></span> Que <strong>ayuden a disolver las estructuras simbólicas</strong> que el inconsciente colectivo asocia con la pobreza.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#que" aria-expanded="false"> ¿Qué es?</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="que">
+                <h3> 
+				<img alt="" src="/cont/paginas/sectores/social/img/icono-pobreza-infantil.png" />4 LÍNEAS ESTRATÉGICAS</h3>
+                <div class="col-md-12">
+                    <div class="col-sm-6">
+                        <a href="https://www.zaragoza.es/sede/portal/sectores/social/plan-pobreza-infantil/corresponsabilidad">
+                            <img alt="Línea 1" src="/cont/paginas/sectores/social/img/icono-linea1.png" /> <strong>  Corresponsabilidad  y Transversalidad</strong> </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="https://www.zaragoza.es/sede/portal/sectores/social/plan-pobreza-infantil/vida-familias"> <img alt="Línea 2" src="/cont/paginas/sectores/social/img/icono-linea2.png" /> <strong> Mejorar la vida
+de las familias</strong> </a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-sm-6">
+                        <a href="https://www.zaragoza.es/sede/portal/sectores/social/plan-pobreza-infantil/reconocimiento-social"> <img alt="Línea 3" src="/cont/paginas/sectores/social/img/icono-linea3.png" /> <strong> Los niños y niñas, sujetos de derechos y reconocimiento social</strong></a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="https://www.zaragoza.es/sede/portal/sectores/social/plan-pobreza-infantil/sociedad-civil"> <img alt="Línea 4" src="/cont/paginas/sectores/social/img/icono-linea4.png" /> <strong>Compromiso activo
+de la sociedad civil</strong> </a>
+                    </div>
+                </div>
+                <h3><img alt="" src="/cont/paginas/sectores/social/img/icono-pobreza-infantil2.png" />10 ACTUACIONES</h3>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info"><strong>1. Convenio Colaboración con el Gobierno de Aragón</strong> para coordinación y trabajo técnico, <strong>Comisión de la Infancia dentro del Consejo Sectorial</strong> de Acción Social y <strong>Mesas de Infancia en los barrios</strong> para establecer relaciones, compartir recursos y diseñar actuaciones conjuntas.</li>
+                    <li class="list-group-item list-group-item-info">2. Asegurar presupuestariamente las <strong>Ayudas de Urgencia</strong>. Establecer ayudas y becas para <strong>recursos terapéuticos</strong>, actividades de <strong>apoyo educativo</strong>, actividades <strong>extraescolares, culturales y deportivas</strong>...</li>
+                    <li class="list-group-item list-group-item-info">3. Creación de <strong>Espacios Familiares Comunitarios</strong> donde poder solicitar una orientación, discutir una dificultad, compartir pautas de crianza...Estos espacios dispondrán de <strong>Escuelas de Habilidades Marentales y Parentales</strong>.</li>
+                    <li class="list-group-item list-group-item-info">4. Modificar los <strong>baremos de acceso a las Escuelas Infantiles Municipales</strong> y el sistema de becas para facilitar el acceso a las familias con menos recursos.</li>
+                    <li class="list-group-item list-group-item-info">5. Red de iniciativas comunitarias para el <strong>apoyo y refuerzo escolares</strong> para prevenir el fracaso y el abandono escolar temprano. Favorecer la articulación de estas y otras <strong>iniciativas de autogestión comunitaria</strong>, que complementen la labor pública.</li>
+                    <li class="list-group-item list-group-item-info"> 6. Creación de <strong>Proyectos Integrados de Atención a la Infancia</strong> que integren las actuaciones de los Centros Municipales de Tiempo Libre, los programas de Educación de Calle y el Proyecto de Integración de Espacios Escoalres (PIEEs) de primaria. </li>
+                    <li class="list-group-item list-group-item-info">7. Se promoverán la <strong>salud mental, la salud sexual y reproductiva</strong>, de los y las adolescentes en coordinación con los <strong>Centros Municipales de Servicios Sociales</strong>. </li>
+                    <li class="list-group-item list-group-item-info">8. Incorporar Zaragoza a la red de <strong>Ciudades Amigas de la Infancia</strong> y promover la participación a través de <strong>Comisicones de Participación de la Infancia y Adolescencia</strong> en los distritos. </li>
+                    <li class="list-group-item list-group-item-info">9. Realizar un <strong>mapa de las entiddades sociales</strong> que trabajan en el ámbito de la infancia que <strong>ponga en valor </strong> y permita ordenar sus accciones dcon la finalidad de mejorar la vida de las familias y reducir la pobreza. </li>
+                    <li class="list-group-item list-group-item-info">10. Potenciar la <strong>formación para profesionales</strong> y el diseño de <strong>metodologías de intervención</strong> frente a la pobreza infantil. </li>
+                </ul>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#marco" aria-expanded="false"> Marco Jurídico</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="marco">
+                <div class="pull-right"><img alt="" src="/cont/paginas/sectores/social/img/marco-juridico.jpg" /></div>
+                <h3>Ámbito Europeo</h3>
+                <p> <span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="http://www.lamoncloa.gob.es/espana/eh15/politicasocial/documents/recomendacion_de_la_Comision_Europea.pdf" class="pdf" title="Se va a abrir enlace externo"> Invertir en la infancia: romper el ciclo de la desigualdad.</a>.
+                    <br/> Recomendación de la Comisión Europea. 20 de febrero de 2013.</p>
+                <p><span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="http://www.europarl.europa.eu/sides/getdoc.do?pubref=-//EP//tEXt+rEPort+A8-2015-0310+0+doC+XmL+V0//ES" title="Se va a abrir enlace externo">Informe Reducción  de desigualdades 
+respecto a la pobreza infantil.</a>
+                    <br/> Comisión de Empleo y Asuntos Sociales del Parlamento Europeo. 23 de octubre de 2015 </p>
+                <h3>Ámbito Estatal</h3>
+                <p><span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="https://www.msssi.gob.es/ssi/familiasInfancia/inclusionSocial/docs/PlanNacionalAccionInclusionSocial_2013_2016.pdf" title="Se va a abrir enlace externo">Plan Nacional de Acción para la Inclusión Social 2013-2016. </a>
+                    <br/>Consejo de Ministros. 13 de diciembre de 2013.
+                </p>
+                <h3>Ámbito Autónomico y Municipal</h3>
+                <p><span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="http://www.aragon.es/estaticos/GobiernoAragon/Temas/Infancia/Documentos/PlanInfancia_Aragon.pdf" class="pdf" title="Se va a abrir enlace externo">Plan Integral de Infancia y Adolescencia de Aragón 2010-2014</a></p>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#fases" aria-expanded="false"> Fases</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="fases">
+                <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase</span>   Diseño y Puesta en Marcha </h3>
+                            <!-- <h3 class="titulo nomargin"> <small><span class="far fa-dot-circle" aria-hidden="true"></span> Fase</small> Previa</h3> -->
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info"> Febrero - Junio 2016</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase1" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span> </div>
+                    <div id="fase1" class="ampliar collapse in">
+                        <p>El primer borrador fue constituido por un grupo dinamizador o equipo matriz, que estuvo formado por 10 profesionales del Área de Derechos Sociales del Ayuntamiento de Zaragoza. </p>
+                    </div>
+                </div>
+                <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase </span> Diagnóstico y Recogida de Propuestas</h3>
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info">Abril-Junio 2016  </span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase2" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span></div>
+                    <div id="fase2" class="ampliar collapse in">
+					
+					<h4>2.1	 Estudio documental </h4>
+<h4>2.2	 Estudio sociodemográfico </h4>
+<h4>2.3	 Elaboración de un mapa de actores</h4>
+ 
+					
+					
+                        <h4>2.4. REALIZACIÓN DE ENTREVISTAS SEMIESTRUCTURADAS. Periodo: Abril-Mayo 2016 </h4>
+                        <p>
+                            Realización de <a href="https://www.zaragoza.es/sede/portal/sectores/social/plan-pobreza-infantil/entrevista"><strong>entrevistas semiestructuradas</strong></a> a 25 informantes clave de las siguientes entidades e instituciones:
+                        </p>
+                        <ul>
+                            <li>
+                                Fundación Secretariado Gitano</li>
+                            <li>
+                                ADCARA</li>
+                            <li>
+                                Asociación Sawa O Pagnya (A.S.O.C.)</li>
+                            <li>
+                                Cáritas Zaragoza</li>
+                            <li>
+                                Federación de Asociaciones de Padres y Madres de Alumnos (FAPAR)</li>
+                            <li>
+                                Fundación ADUNARE </li>
+                            <li>
+                                CEIP Sainz de Varanda</li>
+                            <li>
+                                Gusantina</li>
+                            <li>
+                                Asociación As Purnas </li>
+                            <li>
+                                Asociación de Promoción Gitana de Zaragoza</li>
+                            <li>
+                                PRIDES </li>
+                            <li>
+                                CEIP La Jota </li>
+                            <li>
+                                Casa de Juventud Almozara</li>
+                            <li>
+                                Asociación de Vecinos de La Jota- ArrabalVV LAL JOTA-ARRABAL </li>
+                            <li>
+                                Colegio Carmen y San José </li>
+                            <li>
+                                Centro de Salud Mental Infanto-Juvenil ACTUR </li>
+                            <li>
+                                Centro de Salud San Pablo</li>
+                            <li>
+                                Hijas de la Caridad</li>
+                            <li>
+                                Colegio Teresianas</li>
+                            <li>
+                                A. VV. Tío Jorge – Arrabal</li>
+                            <li>
+                                Facultad Ciencias de la Salud</li>
+                            <li>
+                                Servicio Especializado de Menores</li>
+                        </ul>
+                        <h4>2.5 Consulta a grupos de población infantil y adolescente en Centros Municipales de Tiempo Libre Periodo: Mayo – Junio 2016</h4>
+                        <p>
+                           Participaron 104 niños y niñas divididos en grupos de edad (6-10 y 11-14 años).
+                        </p>
+                    </div>
+                </div>
+				
+				
+				
+				 <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase </span>  Prospección y Programación </h3>
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info">29 de Marzo 2017  </span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase3" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span></div>
+                    <div id="fase3" class="ampliar collapse in">
+				<p>
+				
+				El objeto de esta fase fue definir un escenario de futuro deseable y realizable; concretar y definir las líneas estratégicas del Plan, sus objetivos y las actuaciones concretas. 
+				</p>
+				<p>Se elaboró el <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-infantil.pdf" class="pdf">Documento 0</a> que incluía el diagnóstico y el diseño de las líneas estratégicas: fundamentación, objetivos y actuaciones. 
+				</p>
+				
+				
+				
+               
+                        </div>
+                    </div>
+              
+				
+				
+				 <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase </span>  Validación</h3>
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info">Abril - Noviembre  </span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase4" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span></div>
+                    <div id="fase4" class="ampliar collapse in">
+				<p>En esta fase, el Documento 0 del Plan se devolvió a las entidades sociales y a los partidos políticos, para enriquecerlo con sus propuestas. 
+				Tras incorporar las aportaciones, se ha elaborado el <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-infantil-doc1.pdf" class="pdf">Documento 1</a> . 
+</p>
+
+<p>
+A continuación éste fue validado e informado técnica y competencialmente por los servicios gestores del Ayuntamiento de Zaragoza, responsables del desempeño de las diferentes actuaciones. </p>
+				
+				 
+				
+				
+				
+				
+               
+                        </div>
+                    </div>
+				
+				
+				 
+				 
+				 
+				  <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase </span>  Aprobación</h3>
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info">22 de Diciembre 2017  </span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase5" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span></div>
+                    <div id="fase5" class="ampliar collapse in">
+					
+					
+					
+							<p> 
+El resultado de todo este proceso participativo son 155 actuaciones, de las cuales 42 son nuevas, 63 son reformuladas y 50 son de continuidad.  Todas ellas se han incluido en el actual <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-general-doc2.pdf" class="pdf">Documento definitivo</a> del Plan de Lucha contra la Pobreza Infantil, que se acompaña de un <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-general-doc2res.pdf" class="pdf">Resumen Ejecutivo</a>. 
+</p><p>
+
+El Plan de Lucha contra la Pobreza Infantil se aprobó por la Comisión de Derechos Sociales y posteriormente por el pleno del Ayuntamiento., el 22 de diciembre de 2017.
+</p> 
+				
+				
+				
+				
+                
+                    </div>     </div>
+					
+					
+					
+					  <div class="fnd-gris-claro padding-a2em margin-b1em">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="titulo nomargin"> <span class="text-gray-small fnd-gris-claro"><span class="far fa-dot-circle" aria-hidden="true"></span> Fase </span>  Temporalización</h3>
+                        </div>
+                        <div class="col-md-3 text-right padding-v05em">
+                            <span class="fas fa-calendar-alt"></span> <span class="text-info"> 2017  </span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #bbb;"></div>
+                    <div class="text-center masinfo margin-t05em" data-toggle="collapse" data-target="#fase6" tabindex="0"><span class="fa fa-info-circle"></span> Más información <span class="fa fa-chevron-down"></span></div>
+                    <div id="fase6" class="ampliar collapse in">
+				<p> 
+El Plan de lucha contra la Pobreza Infantil tendrá una duración de 2+3 años. La primera evaluación se realizará a finales del 2018, desde la cual se propondrá –por mayoría– el presupuesto y  cronograma para los años 2019 al 2021.
+</p>
+				
+				 
+				
+				
+				
+				
+               
+                        
+                    </div>
+				
+          
+            </div></div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#aportaciones" aria-expanded="false"> Aportaciones</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="aportaciones">
+                <h3>Aportaciones recibidas por entidades </h3>
+                <ul>
+                    <!--<li><a href="https://www.zaragoza.es/contenidos/sectores/social/aportacion-caritas-pobreza.pdf" class="pdf">Cáritas</a></li>-->
+                    <li><a href="https://www.zaragoza.es/contenidos/sectores/social/aportacion-ozanam-pobreza.pdf" class="pdf">Fundación Federico Ozanam</a></li>
+                    <li><a href="https://www.zaragoza.es/contenidos/sectores/social/aportacion-iass-pobreza.pdf" class="pdf">Instituto Aragonés de Servicios Sociales</a></li>
+                    <li><a href="https://www.zaragoza.es/contenidos/sectores/social/aportacion-red-aragonesa-pobreza.pdf" class="pdf">Red Aragonesa de entidades sociales para la inclusión</a></li>
+                    <li><a href="https://www.zaragoza.es/contenidos/sectores/social/aportacion-ugt-pobreza.pdf" class="pdf">Unión General de Trabajadores</a></li>
+                </ul>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#documentacion" aria-expanded="false"> Documentación</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="documentacion">
+                <div class="pull-right"><img alt="" src="/cont/paginas/sectores/social/img/contraportada-pobreza.jpg" /></div>
+                <ul>
+				
+
+								  <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="https://www.zaragoza.es/contenidos/sectores/social/diagnostico-infancia.pdf" class="pdf">				Estudio Diagnóstico diferenciado por distritos    </a>  </li>
+				
+				  <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-general-doc2.pdf" class="pdf">Documento Definitivo</a>  </li>
+				
+				
+				  <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-general-doc2res.pdf" class="pdf">Resumen Ejecutivo</a>  </li>
+				
+				                    <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-infantil.pdf" class="pdf">Documento 0</a>  </li>
+						                    <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="https://www.zaragoza.es/contenidos/sectores/social/plan-pobreza-infantil-doc1.pdf" class="pdf">Documento 1</a>   </li>
+						                  
+				
+				
+				
+				
+                    <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="/contenidos/sectores/social/guia-pobreza-infantil.pdf" class="pdf">Guía Informativa </a></li>
+                    <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="/contenidos/sectores/social/plan-pobreza-infantil.pdf" class="pdf"> Borrador </a></li>
+                    <li> <span class="far fa-edit" aria-hidden="true"></span>
+                        <a href="https://www.zaragoza.es/sede/portal/sectores/social/plan-pobreza-infantil/entrevista">Entrevista sobre la Pobreza Infantil.</a> Realización de entrevistas a diferentes entidades durante la Fase de Diagnóstico y Recogida de Propuestas.</li>
+                </ul>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

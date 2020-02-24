@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Artistas y creador@s'" author="Ayuntamiento de Zaragoza" keywords="sede,web" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+        <th:block th:include="servicio/agencia-viaje/detail-fragment(item=${registro.body})"></th:block>
+        </div>
+    </sede:content>
+</body>
+
+</html>

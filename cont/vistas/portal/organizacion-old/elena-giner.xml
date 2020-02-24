@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta 
+        title="Elena Giner Monge (ZEC)" 
+        description="Organización Municipal, Pleno Municipal, Curriculum Vitae de  Elena Giner  (ZEC)" 
+        author="Ayuntamiento de Zaragoza" 
+        last-modified="Tue Oct 11 00:00:00 CEST 2016" 
+        keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Elena Giner Monge, ZEC">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <article class="row col-md-12">
+            
+            <!-- Versión móvil -->
+            <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                <h2 class="margin-l05em">Elena Giner Monge <abbr title="Zaragoza en Común"></abbr></h2>
+                <div class="col-md-4 col-xs-12 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="//www.zaragoza.es/cont/paginas/organizacion/img/concejales/Zec_Elena_Giner.jpg" alt="Elena Giner Monge" />
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-ELENA-GINER-MONGE.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_%20ZARAGOZA_EN_COMUN/ELENA_GINER_MONGE.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-ELENA-%20GINER-MONGE.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_%20ZARAGOZA_EN_COMUN/ELENA_GINER_MONGE.pdf'} 
+                        } 
+                    }" />
+                </div>
+
+                <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePersonal" aria-expanded="false" aria-controls="collapsePersonal">
+                                INFORMACIÓN PERSONAL
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPersonal">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <strong>Nacimiento:</strong> Zaragoza, en el año 1977. </li><br/>
+                                <li> Madre desde 2014. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAcademica" aria-expanded="false" aria-controls="collapseAcademica">
+                                FORMACIÓN ACADÉMICA
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAcademica">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Licenciada en Sociología por la Universidad Pública de Navarra </li><br/>
+                                <li> Especializada en Migraciones y Relaciones Intercomunitarias y en Mediación Social (Master en la Universidad Autónoma de Madrid y Diploma de Estudios Avanzados en la Universidad Paris 7 - Denis Diderot). </li><br/>
+                                <li> Curso de Gestión de procesos participativos en el ámbito local: los presupuestos participativos (Universidad Complutense de Madrid) en 2015. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProfesional" aria-expanded="false" aria-controls="collapseProfesional">
+                                    EXPERIENCIA PROFESIONAL
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProfesional">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Experiencia profesional de 15 años, en su mayoría en entidades sociales: mediación social (Fuenlabrada, barrio Oliver y Casco Histórico de Zaragoza); elaboración de materiales didácticos, protocolos de actuación interinstitucional y planificación estratégica en el ámbito de la protección a la infancia (a nivel de Aragón); diversas investigaciones sobre inmigración, infancia y vivienda. </li>
+                                <li> Experiencia social y militante en la defensa de los derechos de las personas migrantes, movimiento vecinal, centros sociales comunitarios, educación de adultos y tiempo libre. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseContacto" aria-expanded="false" aria-controls="collapseContacto">
+                                CONTACTO
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingContacto">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <span class="far fa-envelope margin-t1em"></span>
+                                    <a href="mailto:eginer@zaragoza.es" shape="rect">eginer@zaragoza.es</a>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Versión desktop -->
+            <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                <div class="col-md-4 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="//www.zaragoza.es/cont/paginas/organizacion/img/concejales/Zec_Elena_Giner.jpg" alt="Elena Giner Monge" />
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-ELENA-GINER-MONGE.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_%20ZARAGOZA_EN_COMUN/ELENA_GINER_MONGE.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-ELENA-%20GINER-MONGE.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_%20ZARAGOZA_EN_COMUN/ELENA_GINER_MONGE.pdf'} 
+                        } 
+                    }" />
+                </div>
+                <h2 class="margin-l05em margin-b1em">Elena Giner Monge <abbr title="Zaragoza en Común"></abbr></h2>
+
+                <div class="card col-md-8">
+                    <h3>INFORMACIÓN PERSONAL</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> <strong>Nacimiento:</strong> Zaragoza, en el año 1977. </li><br/>
+                        <li> Madre desde 2014. </li>
+                    </ul>  
+                </div> 
+
+                <div class="card col-md-8">
+                    <h3>  FORMACIÓN ACADÉMICA </h3>
+                    <hr/>                    
+                    <ul class="panel-body list-unstyled margin-l05em">
+                        <li> Licenciada en Sociología por la Universidad Pública de Navarra </li><br/>
+                        <li> Especializada en Migraciones y Relaciones Intercomunitarias y en Mediación Social (Master en la Universidad Autónoma de Madrid y Diploma de Estudios Avanzados en la Universidad Paris 7 - Denis Diderot). </li><br/>
+                        <li> Curso de Gestión de procesos participativos en el ámbito local: los presupuestos participativos (Universidad Complutense de Madrid) en 2015. </li>
+                    </ul>
+                </div>
+                
+                <div class="card col-md-8">
+                    <h3>EXPERIENCIA PROFESIONAL</h3>
+                    <hr/>
+                    <ul class="panel-body list-unstyled margin-l05em">
+                        <li> Experiencia profesional de 15 años, en su mayoría en entidades sociales: mediación social (Fuenlabrada, barrio Oliver y Casco Histórico de Zaragoza); elaboración de materiales didácticos, protocolos de actuación interinstitucional y planificación estratégica en el ámbito de la protección a la infancia (a nivel de Aragón); diversas investigaciones sobre inmigración, infancia y vivienda. </li><br/>
+                        <li> Experiencia social y militante en la defensa de los derechos de las personas migrantes, movimiento vecinal, centros sociales comunitarios, educación de adultos y tiempo libre. </li>
+                    </ul>
+                </div>
+                
+                <div class="card col-md-8">    
+                    <h3> CONTACTO </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l05em">
+                        <li class="col-md-12 margin-b1em"> <span class="far fa-envelope"></span>
+                            <a href="mailto:eginer@zaragoza.es" shape="rect">eginer@zaragoza.es</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+
+        </article>
+
+        <aside class="row col-md-12 margin-t2em">
+            <div class="noticia_agenda col-md-12 margin-auto">
+                <iframe src="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=1nlfq97699ea1662f35vd28c5k%40group.calendar.google.com&amp;ctz=Europe/Madrid" style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no"><a href="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=1nlfq97699ea1662f35vd28c5k%40group.calendar.google.com&amp;ctz=Europe/Madrid">Acceso a calendario</a></iframe>
+            </div>
+        </aside>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Gobierno Abierto. Participar y Colaborar. Consejo Consultivo de Cultura" description="Consejo de la Ciudad de Zaragoza, Área de Participación Ciudadana" author="Ayuntamiento de Zaragoza" keywords="ayuntamiento, ciudad, Zaragoza, España, gobierno abierto, consejo de la ciudad, participación social, relación administración-administrado"/>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="/portal/cultura/fragmentos/consejo(mostrarTitulo='S')"></th:block>
+    </sede:content>
+</body>
+
+</html>

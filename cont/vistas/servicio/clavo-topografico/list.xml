@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Clavos Topográficos" keywords="sede,web,ciudad,topografia,clavos,urbanismo" autor="Servicio de información geografica Gerencia Urbanismo.Ayuntamiento de zaragoza" />
+</head>
+<body>
+    <sede:content>
+        <h2>Clavos topográficos</h2>
+        <div class="col-md-12" style="clear:both;">
+            <p class="nomargin destacado text-right">
+                Descargar:
+                <a href="https://www.zaragoza.es/sede/servicio/catalogo/247">Datos Abiertos</a>
+            </p>
+            <ul class="list-inline pull-right">
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/clavo-topografico/list.kml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        KML
+                    </a>                                |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/clavo-topografico/list.geojson?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        GEOJSON
+                    </a>                                |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/clavo-topografico/list.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        JSON
+                    </a>                                |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/clavo-topografico/list.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        XML
+                    </a>
+                    |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/clavo-topografico/list.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        CSV
+                    </a>
+                </li>
+            </ul>
+        </div><!--<ul class="row list-unstyled resultado">
+<th:block th:utext="${resultado.body.getEnlacesReutilizacion(#httpServletRequest,'csv','kml','json')}" />
+<li><a href="/sede/portal/datos-abiertos/servicio/catalogo/247"> Más información </a></li>
+</ul>-->
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-condensed table-striped">
+                    <caption>Resultados</caption>
+                    <tr>
+                        <th>Emplazamiento</th>
+                        <th>Número</th>
+                    </tr>
+                    <tr th:each="doc: ${resultado.body.result}">
+                        <td><a th:href="${doc.id}" th:text="${doc.Emplazamiento}"/> <th:block th:text="${doc.Emplazamiento_alt}"/></td>
+                        <td><th:block th:text="${doc.poligono}"/> <th:block th:text="${doc.numero}"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+        <th:block th:include="servicio/clavo-topografico/footer" />
+    </sede:content>
+</body>
+
+</html>

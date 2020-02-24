@@ -1,0 +1,58 @@
+<!--/* <footer th:classappend="${currentDevice.isNormal()} ? navbar-fixed-bottom : ''" class="fnd-gris-claro margin-t3em" vocab="http://schema.org/" typeof="Organization"> */-->
+<footer class="fnd-gris-claro margin-t3em" vocab="http://schema.org/" typeof="Organization">
+    <div class="container">
+        <div class="row padding-v05em">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-md-push-4">
+                <nav>
+                    <ul class="list-inline row margin-a0em navbar-right text-center">
+                        <li><a href="/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">Su opinión importa</a></li>
+                        <li><a href="/opencityext/portal/accesibilidad">Accesibilidad</a></li>
+                        <li><a href="//www.w3c.es/Consorcio/miembro/listado_es">Miembro W3C</a></li>
+                        <li><a href="/opencityext/portal/aviso-legal">Aviso Legal</a></li>
+                        <li><a href="/opencityext/portal/politica-privacidad">Política de privacidad</a></li>
+                        <!--/*
+                        <li><a href="http://validator.w3.org/check/referer"><abbr title="Extensible Hypertext Markup Language">XHTML</abbr> 1.0</a></li>
+                        <li>
+                        <a href="http://jigsaw.w3.org/css-validator/check/referer"><abbr title="Cascading Style Sheet">CSS</abbr> 2.0</a></li> 
+                        */-->
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-md-pull-8 text-center">
+                <a class="navbar-left" href="/opencityext/portal/copy">
+                    <strong>&copy; Ayuntamiento de Zaragoza. <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span></strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Yandex.Metrika counter--> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter33078943 = new Ya.Metrika({ id:33078943, clickmap:true, trackLinks:true, accurateTrackBounce:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script> <!--/Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-30945968-1', {
+    'cookieDomain' : 'zaragoza.es',
+    'allowLinker' : true
+});
+ga('send', 'pageview');
+</script>
+
+<!--/* <img src="//www.zaragoza.es/cont/paginas/bs/img/aytoLogo.png" alt="Logo Abreviado Ayuntamiento de Zaragoza" title="Logotipo Abreviado Ayuntamiento de Zaragoza"/>*/-->
+<!--/* <address>
+    <ul class="list-unstyled padding-l3em">
+        <li><strong>Ayuntamiento de Zaragoza</strong></li>
+        <li>Casa Consistorial: Plaza del Pilar nº18</li>
+        <li>Edificio Seminario: Vía Hispanidad nº20 50071</li>
+        <li><abbr title="Teléfono">Tel:</abbr> 976 721100, 010 (976721234)</li>
+        <li><a property="email" href="mailto:webmunicipal@zaragoza.es">webmunicipal@zaragoza.es</a></li>
+    </ul>
+</address>*/-->

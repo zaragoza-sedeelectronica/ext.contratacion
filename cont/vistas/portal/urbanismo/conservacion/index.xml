@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Urbanismo. Conservación de Infraestructuras" description="Conservación de Infraestructuras" author="" last-modified="Mon Feb 16 00:00:00 GMT+01:00 2018" keywords="ayuntamiento, ciudad, Zaragoza, España, urbanismo, conservacion infraestructuras"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+ <style type="text/css">
+ul.submenu {
+    margin: 0;
+}
+.offset-target:before {
+    content: "";
+    display: block;
+    height: 67px;
+    margin: -67px 0 0;
+}
+.section-title {
+    background: none repeat scroll 0 0 #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 0.5em 0.5em 0 0;
+    margin: 0;
+    padding: 0.5em;
+}
+.section-content {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    border-radius: 0 0 0.5em 0.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+}
+.hidden-xs a{
+    color: #008A00;
+}
+.second-bar {
+    background: none repeat scroll 0 0 #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+}
+ul.submenu li {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+</style>
+</head>
+
+<body>
+    <sede:content>
+    	
+        
+
+
+    
+    	<div class="row">
+          <div class="col-md-12">
+                    
+             <h3 id="inicio"><span class="fas fa-map-marker-alt"></span> Centro Operativo de Infraestructuras</h3>   
+             <sede:equipamiento id="20540" ocultos="nombre,tabs"></sede:equipamiento>
+        
+             </div> 
+    	
+    	<div class="col-md12">
+    	<div class="clearfix"></div>
+        <div class="hidden-xs pull-right">
+                    <a href="#inicio" class="pull-left" title="Ir a inicio">
+                        <span aria-hidden="true" class="fa fa-2x fa-chevron-circle-up"></span>
+                        <span class="oculto">Volver a Conservación</span>
+                    </a>
+                   
+                </div>
+    	<h3 class="section-title offset-target" id="Presentacion">Presentación  </h3>
+    	<div class="section-content">
+    	<p>El Servicio de Conservación de Infraestructuras pertenece al Departamento de Conservación y Explotación de Infraestructuras, que a su vez está  incluido en la       estructura del Area de Urbanismo y Sostenibilidad del  Ayuntamiento de Zaragoza.</p>
+<p>Este Servicio está integrado por un grupo organizado de personas cuya misión es el mantenimiento, conservación y reparación de la red de abastecimiento de agua y del viario público municipal, especialmente de los pavimentos y puentes municipales. </p>
+ <p>
+Todos estos trabajos son planificados, ejecutados y supervisados con un claro objetivo, prestar unos servicios de calidad a los ciudadanos de Zaragoza, especialmente en la restitución del suministro de agua potable y en la disposición de una red viaria con espacios tanto peatonales como destinados al tráfico rodado mantenidos en unas adecuadas condiciones de seguridad, accesibilidad, funcionalidad, comodidad y durabilidad.</p>
+<p>
+Se conserva una red de <strong> más de 1.200 Km de tuberías de abastecimiento de agua</strong>, una red de viales municipales con más de <strong>12.000.000 m<sup>2</sup> de pavimentos</strong> y un patrimonio de más de<strong> 120 puentes y pasarelas</strong>.</p>  
+<p>Se dispone de medios propios y contratos externos de conservación que facilitan tanto el suministro de materiales para las reparaciones de las Brigadas municipales como la prestación de servicios de reparación:</p>
+<table summary="Presupuestos de conservación de Infraestructuras"  class="table table-striped table-condensed table-bordered">
+<caption>Desglose de Presupuestos de Conservación</caption>
+<tr><th>Concepto</th><th> Cuantía</th></tr>
+<tr><td>Servicio de conservación del viario público municipal</td><td>(aproximadamente 2.500.000 €/año)</td></tr>
+<tr><td>Servicio de reparación de firmes asfálticos</td><td>(aprox. 500.000 €/año)</td></tr>
+<tr><td>Suministro de hormigón para reparaciones de Brigadas</td><td> (aprox. 60.000 €/año)</td></tr>
+<tr><td>Servicio de transporte de compresores para reparaciones de Brigadas </td><td> (120.000 €/año)</td></tr>
+<tr><td>Servicio de conservación de barandillas</td><td> (aprox. 90.000 €/año)</td></tr>
+<tr><td>Servicio de suministro de tierras para reparaciones de Brigadas</td><td> (aprox. 200.000 €/año)</td></tr>
+<tr><td>Servicio de alquiler de maquinaria para reparaciones de Brigadas</td><td> (aprox. 100.000 €/año)</td></tr>
+<tr><td>Servicio de reparación de tuberías de hormigón armado </td><td>(aprox. 60.000 €/año)</td></tr>
+<tr><td>Servicio de conservación de puentes municipales</td><td> (aprox. 250.000 €/año)</td></tr>
+<tr><td>Operación asfalto (aprox. 300.000 €/año)</td></tr></table>
+<p>La ciudad de Zaragoza exige los índices más altos de calidad en los servicios relacionados con el agua y la vialidad y para ello es preciso contar con un Servicio con medios propios equilibrados, eficaces y adaptados a unas necesidades cambiantes de cada día.</p>
+<p>Son muchas las intervenciones diarias a las que el Servicio de Conservación de Infraestructuras da asistencia asumiendo nuevos desafíos (sostenibilidad, durabilidad, transparencia, etc.)</p>
+</div>
+<div class="second-bar clearfix">
+                <div>
+                  
+                    <h3 id="conservacion" class="lead  margin-l05em margin-b0em pull-left">Conservación</h3>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                    <li><a href="#pavimentos">Pavimentos</a></li>
+                    <li><a href="#abastecimiento">Abastecimiento</a></li>
+                    <li><a href="#puentes">Puentes</a></li>
+                    <li><a href="#barandillas">Barandillas</a></li>
+                </ul>
+            </div>
+<div class="hidden-xs pull-right">
+                    <a href="#inicio" class="pull-left" title="Ir a inicio">
+                        <span aria-hidden="true" class="fa fa-2x fa-chevron-circle-up"></span>
+                        <span class="oculto">Volver a Conservación</span>
+                    </a>
+                   
+                </div>
+<h4 class="section-title offset-target" id="pavimentos">Pavimentos</h4>
+<div class="section-content">
+<p>Zaragoza dispone de una amplia red viaria pavimentada para permitir una movilidad tanto peatonal como rodada en condiciones seguras, funcionales, accesibles y cómodas, y primando sobre cualquier otro aspecto la seguridad de los usuarios.</p>
+<p>Los espacios públicos urbanizados son conservados cumpliendo las condiciones básicas de accesibilidad y no discriminación de las personas con discapacidad. Las actuaciones de mantenimiento permiten garantizar un pavimento duro, estable, antideslizante en seco y en mojado, sin piezas ni elementos sueltos y sin resaltes.</p>
+<p>Los trabajos típicos que se realizan dentro de la conservación de pavimentos son los siguientes:</p>
+<ul><li>Reposición de pavimentos afectados por roturas de tuberías </li>
+<li>Reparación de hundimientos en calzada</li>
+<li>Reparación de paños con baldosas que han desaparecido</li>
+<li>Reparación de baches en firmes asfálticos</li>
+<li>Reparación de paños con baldosas que generan resaltos </li>
+<li>Reparación de paños con baldosas rotas y movidas</li>
+<li>Reparación de paños con adoquines movidos y hundidos</li>
+<li>Supresión de barreras urbanísticas</li>
+<li>Reparación de paños con baldosas sobreelevadas</li>
+<li>Rehabilitación superficial de zonas cuarteadas mediante el fresado y asfaltado de calzadas</li>
+<li>Reposición de hitos rotos existentes</li></ul>
+<p>También se realizan trabajos de inspección de las actuaciones realizadas por las empresas de servicios o de construcción en la vía pública con el objetivo de evitar daños a los pavimentos de los viales municipales o de su correcta reparación en caso de producirse.</p>
+<p>Dentro de una visión global del proceso de urbanización de viales municipales destinados a un uso ciudadano en perfectas condiciones de seguridad, accesibilidad, comodidad y durabilidad, se realizan informes técnicos de los planes parciales y proyectos de urbanización con viales de futura recepción municipal, así como de inspecciones técnicas durante el desarrollo de las obras de urbanización, con el último objetivo de que la concepción y ejecución de la urbanización faciliten la calidad de vida de los ciudadanos. </p>
+</div>
+<div class="hidden-xs pull-right">
+                    <a href="#inicio" class="pull-left" title="Ir a inicio">
+                        <span aria-hidden="true" class="fa fa-2x fa-chevron-circle-up"></span>
+                        <span class="oculto">Volver a Conservación</span>
+                    </a>
+                   
+                </div>
+<h4 class="section-title offset-target" id="abastecimiento">Abastecimiento</h4>
+<div class="section-content">
+<p>Zaragoza dispone de una amplia red mallada de abastecimiento de agua formada por 1.230 km de tuberías y 12.400 válvulas. </p>
+<p>Las tuberías principales tienen una amplia gama de diámetros (desde Ø 80 mm a 1.500 mm) y materiales (fundición gris, fibrocemento, hormigón armado, PVC, polietileno y fundición dúctil). </p>
+<p>Las tuberías de fundición gris tienen una antigüedad del orden de 80 años, las de fibrocemento de 60-40 años, las de hormigón armado de 50 años, las de PVC de 40 años y las fundición dúctil de 30 años hasta recién colocadas.</p>
+<p>Aproximadamente el 60% de las tuberías es de fundición dúctil, el 25% de fibrocemento y el resto de hormigón armado, PVC, fundición gris y polietileno.</p>
+<p>Cada año se suelen producir entre 150 y 200 roturas en tuberías generales de abastecimiento de las cuales el 60% son roturas en tuberías de fibrocemento. </p>
+<p>La red de abastecimiento de agua se conserva reparando los elementos deteriorados (tuberías, válvulas, hidrantes, salidas de agua, etc.) en un plazo razonable garantizando la restitución del suministro de agua en las debidas condiciones de caudal, presión y calidad. </p>
+<p>Los trabajos típicos que se realizan dentro de la conservación de la red de abastecimiento de agua son los siguientes:</p>
+<ul><li>Reparación de roturas de tuberías de agua con usuarios afectados</li>
+<li>Reparación de salidas de agua con usuarios afectados (desconociendo en un primer momento si la rotura está en una tubería o en una toma de agua)</li>
+<li>Reparación de roturas de tuberías de agua sin usuarios afectados</li>
+<li>Sustitución de válvulas para reducir los afectados ante futuros cortes de agua</li>
+<li>Reposición o adaptación de tapas de arquetas de abastecimiento de agua</li>
+<li>Reparación o sustitución de bocas de riego</li>
+<li>Reparación o sustitución de hidrantes</li>
+<li>Reparación o sustitución de ventosas</li></ul>
+<p>También se realizan trabajos de inspección de las actuaciones realizadas por las empresas de servicios o de construcción en la vía pública con el objetivo de evitar daños a la red de abastecimiento de agua potable  o de su correcta reparación en caso de producirse.</p>
+<p>Dentro de una visión global del proceso de urbanización se realizan informes técnicos de los planes parciales y proyectos de urbanización con red de abastecimiento de agua de futura recepción municipal, así como de inspecciones técnicas durante el desarrollo de las obras de urbanización, con el último objetivo de que la concepción y ejecución de la red de abastecimiento permita un correcto suministro de agua potable en cantidad, presión, calidad y coste adecuados. </p>
+</div>
+<div class="hidden-xs pull-right">
+                    <a href="#inicio" class="pull-left" title="Ir a inicio">
+                        <span aria-hidden="true" class="fa fa-2x fa-chevron-circle-up"></span>
+                        <span class="oculto">Volver a Conservación</span>
+                    </a>
+                   
+                </div>
+<h4 class="section-title offset-target" id="puentes">Puentes</h4>
+<div class="section-content">
+<p>Zaragoza dispone de un rico y variado patrimonio en puentes y pasarelas dada su existencia en un entorno marcado por una gran río como es el Ebro y dos afluentes, el río Gallego en su margen izquierda y el río Huerva es la derecha, a lo que hay que añadir la singular obra del siglo XVIII del Canal Imperial de Aragón.</p>
+<p>Zaragoza dispone de 120 puentes y pasarelas de una variada tipología y geometría. Desde el año 2009 se realizan periódicas inspecciones principales en los puentes municipales y los deterioros observados se reparan con el objetivo de garantizar su seguridad estructural, funcionalidad y durabilidad.</p>
+<p>Los trabajos típicos que se realizan dentro de la conservación de los puentes y pasarelas municipales  son los siguientes:</p>
+<ul><li>Sustitución de juntas de dilatación deterioradas</li>
+<li>Protección con escollera en cimentaciones</li>
+<li>Reposición de paneles acristalados en protecciones peatonales</li>
+<li>Mejora de los sistemas de drenaje de los tableros de los puentes</li>
+<li>Reparación de desconchones de hormigón por oxidación de la armadura</li>
+<li>Aplicación de pintura de protección frente a la corrosión de elementos metálicos</li>
+<li>Aplicación de pinturas anticarbonatación</li>
+<li>Limpieza de vegetación en paramentos de sillería</li>
+<li>Reparación o sustitución de vallados peatonales</li>
+<li>Reparación de fisuras</li></ul>
+</div>
+<div class="hidden-xs pull-right">
+                    <a href="#inicio" class="pull-left" title="Ir a inicio">
+                        <span aria-hidden="true" class="fa fa-2x fa-chevron-circle-up"></span>
+                        <span class="oculto">Volver a Conservación</span>
+                    </a>
+                   
+                </div>
+<h4 class="section-title offset-target" id="barandilla">Barandillas</h4>
+<div class="section-content">
+<p>Determinadas infraestructuras disponen de elementos de protección del peatonal (barandillas metálicas) frente a importantes desniveles, especialmente en puentes, pasarelas, muros, taludes, etc.</p>
+<p>El Servicio de Conservación de Infraestructuras mantiene las barandillas situadas en la vía pública municipal exceptuando las barandillas metálicas tipo escocés y las barandillas de madera.</p>
+<p>Los trabajos típicos que se realizan dentro de la conservación de las barandillas municipales son los siguientes:</p>
+<ul><li>Pintado de tramos de barandillas oxidados</li>
+<li>Reposición de elementos metálicos desintegrados por corrosión</li>
+<li>Sustitución de tramos de barandillas</li>
+<li>Colocación de pasamanos</li>
+<li>Recrecido de tramos de barandillas</li>
+<li>Sustitución de elementos por otros de mayor durabilidad</li>
+<li>Reforma de barandillas</li></ul>
+</div>
+<div class="hidden-xs pull-right">
+                    <a href="#inicio" class="pull-left" title="Ir a inicio">
+                        <span aria-hidden="true" class="fa fa-2x fa-chevron-circle-up"></span>
+                        <span class="oculto">Volver a Conservación</span>
+                    </a>
+                   
+                </div>
+<h3 class="section-title offset-target" id="Normativa">Normativa</h3>
+<div class="section-content">
+<ul><li>Ordenanza de supresión de barreras arquitectónicas y urbanísticas del municipio de Zaragoza</li>
+<li>Ordenanza municipal para la ecoeficiencia y la calidad de la gestión integral del agua</li>
+<li>Ordenanza fiscal 24.28  -  Tasa por la prestación de servicios de obras particulares realizadas por el Servicio de Conservación de Infraestructuras </li>
+<li>Ordenanza fiscal 24.25  -  Tasa por la prestación de servicios vinculados al abastecimiento de agua </li>
+<li>Orden VIV/561/2010, de 1 de febrero, por la que se desarrolla el documento técnico básico de condiciones básicas de accesibilidad y no discriminación para el acceso y utilización de los espacios públicos urbanizados </li></ul>
+ </div>   	
+    	</div>
+    	
+    	
+    	</div>
+    
+
+
+
+
+ 
+        
+        <!--/* Poner como destacados la información de arriba<div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h2>Destacados</h2>
+                            <sede:aviso portal="Potabilizadora"  />
+                        </div>
+</div></div>*/-->
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    var latitude = $(document).find("[property='latitude']").attr("content");
+    var longitude = $(document).find("[property='longitude']").attr("content");
+    if (latitude && longitude) {
+        var marker = L.marker([latitude, longitude]);
+        pois.push(marker);
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());   
+    }
+    /*]]>*/
+    </script>
+</body>
+
+</html>

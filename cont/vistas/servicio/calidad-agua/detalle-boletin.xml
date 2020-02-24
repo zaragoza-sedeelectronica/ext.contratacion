@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Boletín de resultados del Autocontrol de la Calidad del Agua del Municipio de Zaragoza" author="Ayuntamiento de Zaragoza" keywords="sede,web,agua,calidad,resultado,boletín" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <p>El muestreo y análisis se ha realizado por el Instituto Municipal de Salud Pública del Ayuntamiento de Zaragoza, siguiendo el Real Decreto 140/03 por el que se establecen los criterios sanitarios de la calidad del agua de consumo humano.</p>
+            <ul class="list-unstyled">
+                <li><strong>Fecha:</strong> <span sede:rdf="*{get('creationDate')}"/></li>
+                <li><strong>Punto de muestreo:</strong> <a th:href="'../' + *{plant.id}"><span sede:rdf="*{plant.get('title')}"/></a></li>
+                <li><strong>Calificación:</strong> <span sede:rdf="*{get('result')}"/></li>
+                <li><strong>Código:</strong> <span sede:rdf="*{get('id')}"/></li>
+            </ul>
+            <th:block th:utext="${registro.body.getResultTable()}"/>
+        </div>
+    </sede:content>
+</body>
+
+</html>

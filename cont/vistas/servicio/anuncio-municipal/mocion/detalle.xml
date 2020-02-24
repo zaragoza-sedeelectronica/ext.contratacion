@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Moción" keywords="sede,web,edicto,tablón, mociones" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+        <h2>Moción: <span sede:rdf="*{get ('numExpediente')}" /></h2>
+       
+        <span th:if="*{numOrden}">
+                Moción nº <span sede:rdf="*{get ('numOrden')}" /> en el
+         </span>
+
+        <th:block th:if="*{attachment.fehaciente}">
+            <a th:href="'/sede/portal/transparencia/servicio/fehaciente/' + @{{id}(id=*{attachment.fehaciente.id})}"> <th:block th:text="*{attachment.title}"/> <img src="//www.zaragoza.es/cont/paginas/img/sello.gif" alt="Publicación con sello de tiempo"/></a>
+        </th:block>
+        <th:block th:if="not *{attachment.fehaciente}">
+             <th:block th:if="*{attachment.description}">
+                <a th:href="'../attachment/' + @{{id}(id=*{attachment.id})}" th:text="*{attachment.title}"/>
+            </th:block>
+            <th:block th:if="not *{attachment.description}">
+                Moción en el <span th:text="*{attachment.title}"/>
+            </th:block>
+        </th:block>
+              del <span th:text="*{#dates.format(attachment.startDate,'dd-MM-yyyy HH:mm')}"/> presentada por <span sede:rdf="*{get ('grupo')}" /><br/>
+        <th:block th:if="*{fichero}">
+            <ul><li><a class="pdf" th:href="'/cont/paginas/organizacion/plenos/mociones/' + *{fichero}">Acceso a la descripción de la moción en PDF</a></li></ul>
+        </th:block>
+
+       
+         <th:block th:if="*{estado}">
+            Estado de la Mocion: <span sede:rdf="*{get ('estado')}" />
+        </th:block><br/>
+        <p><strong><span sede:rdf="*{get('title')}" /></strong></p>
+         <span sede:rdf="*{get ('textoInicial')}" />
+         <th:block th:if="${textoDefinitivo}">
+            <h3>Texto Definitivo</h3>
+            <span sede:rdf="*{get ('textoDefinitivo')}" />
+         </th:block>
+        </div>
+    </sede:content>
+    
+</body>
+
+</html>

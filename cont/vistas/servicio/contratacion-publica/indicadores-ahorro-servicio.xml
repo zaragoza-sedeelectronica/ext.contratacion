@@ -1,0 +1,56 @@
+<div class="row">
+    <header class="title"><h2>Indicadores Ahorro</h2></header>
+    <div class="col-lg-6 col-md-6 col-xs-12">
+        <div id="container8" style="height: 100%"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-xs-12">
+        <select id="ivaAhorro" name="ivaAhorro">
+          <option value="1" selected ="Selected">Sin I.V.A</option>
+          <option value="2">Con I.V.A</option>
+        </select>
+        <div id="container9" style="height: 100%"></div>
+    </div>
+</div>
+<span th:each="item, iterStat:${indicadores_Ayutamiento.body.indicadorAhorroServicio.result}" th:if="${iterStat.index} lt 10">
+    <span th:each="c:${item}">
+        <span th:if="${c.title!=null}">
+            <input type="hidden" th:id="${'IndicadorAhorro'+c.title}" th:value="${c.title}"/>
+            <input type="hidden" th:id="${'IndicadorAhorro'+c.title}" th:value="${c.ahorro}"/>
+            <input type="hidden" th:id="${'IndicadorAhorro'+c.title}" th:value="${c.importeContrato}"/>
+            <input type="hidden" th:id="${'IndicadorAhorro'+c.title}" th:value="${c.importeOferta}"/>
+            <input type="hidden" th:id="${'IndicadorAhorro'+c.title}"  th:value="${c.anyo}"/>
+            <span th:with="anyo=${c.anyo}"></span>
+        </span>
+    </span>
+</span>
+<div class="clearfix"></div>
+<div class="col-lg-12 col-md-9 col-xs-12">
+        <header>
+            <h2>Listado de Contrato con Mayor Bajada entre importe de Licitacion e importe de adjudicacion   <span th:text="${indicadores_Ayutamiento.body.anyo}"></span></h2>
+        </header>
+        <div class="table-responsive">
+        <table id="tableAhorro" class="table table-hovertable-bordered" summary="Listado de Servicios por cuantia y Nº de Contratos">
+
+        <thead>
+            <tr>
+                <th scope="col">Nombre Contrato</th>
+                <th scope="col">Importe Contrato (€)</th>
+                <th scope="col">Importe Oferta (€)</th>
+                <th scope="col">% Ahorro</th>
+            </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="item:${indicadores_Ayutamiento.body.indicadorAhorroServicio.result}" >
+            <tr th:each="c:${item}">
+                <span th:if="${c.id!=null}">
+                    <td scope="row"><a th:href="${'/opencityext/servicio/contratacion-publica/'+c.id}" th:text="${c.title}"></a></td>
+                    <td scope="row" th:text="${#numbers.formatDecimal(c.importeContrato, 0, 'POINT', 2, 'COMMA')}+' €'"/>
+                    <td scope="row" th:text="${c.importeOferta!=null ? #numbers.formatDecimal(c.importeOferta,0,'POINT', 2, 'COMMA') + ' €':'0 €'}"/>
+                    <td scope="row" th:text="${#numbers.formatDecimal(c.ahorro, 0, 'POINT', 2, 'COMMA')}"/>
+                </span>
+            </tr>
+        </th:block>
+        </tbody>
+        </table>
+        </div>
+</div>

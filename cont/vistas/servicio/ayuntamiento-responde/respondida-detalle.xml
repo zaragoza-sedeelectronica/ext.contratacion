@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Pregunta. Ayuntamiento Responde'" keywords="sede,web,publicación,municipal" />
+    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
+</head>
+
+<body>
+    <sede:content>
+        <style>
+            .static-popover { display: block !important; }
+        </style>
+
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <p class="alert alert-info">Esta pregunta está <strong>Seleccionada</strong>.</p>
+
+            <h3>Pregunta</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="well well-sm fnd-gris-claro">
+                            <h4 style="color:red" sede:rdf="*{get('title')}">
+                                <img class="nodeco margin-r1em" alt="Pregunta Ciudadana" title="Pregunta Ciudadana" src="/cont/paginas/gobierno-abierto/img/pregciud-p.png"/></h4>
+                        </div>
+                        <p>Realizada por <span th:utext="*{usuarioAlta} == null ? 'Ayuntamiento de Zaragoza' : *{usuarioAlta}"></span> el <span sede:rdf="*{get('creationDate','EEEE dd MMMM yyyy')}"></span>, dirigida a
+                            <em><th:block th:text="*{to}"></th:block></em>.
+                        </p>
+
+                        <th:block th:if="*{description}">
+                            <div sede:rdf="*{get('description')}"></div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Respuesta de la Corporación</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <h4>Respondida el <span sede:rdf="*{get('selected')}"></span></h4>
+                        <br/>
+                        <th:block th:if="*{answer}">
+                            <div sede:rdf="*{get('answer')}"></div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" th:if="${registro.statusCode.value()} == 200">
+            <div class="col-md-12">
+                <h3>Comentarios</h3>
+            <div class="col-md-12 alert alert-danger" th:if="not ${session.sess_ciudadano}">
+                Debe <a th:href="${#utils.getLinkLoginUsuario(#httpServletRequest)}">Acceder</a>
+                acceder para poder realizar comentarios
+            </div>
+            <div th:if="${session.sess_ciudadano}">
+                <button data-toggle="collapse" data-target="#form-comment" id="new-comment" class="btn btn-success" aria-expanded="true" aria-controls="collapse-comment">Nuevo Comentario</button>
+            
+                <div class="collapse in" id="form-comment">
+                    <form th:action="@{/servicio/ayuntamiento-responde/{id}/addcomentario(id=${registro.body.id})}" th:object="${dato}" method="post" class="form-horizontal card">
+                        <fieldset>
+                            <div>Usuario: <strong th:text="${session.sess_ciudadano.name}"></strong></div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-2 control-label">Comentario</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" placeholder="Comentario" required="required" name="comentario"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-2 col-sm-10 nopadding margin-b1em">
+                                <th:block th:include="fragmentos/recaptcha" />
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Enviar comentario</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div th:if="${#lists.isEmpty(comentario.result)}" role="alert" class="col-md-12 alert alert-info">
+                No existen comentarios
+            </div>
+            <div th:if="${not #lists.isEmpty(comentario.result)}">
+                <ul class="list-unstyled">
+                    <li class="card margin-b1em" th:each="comment : ${comentario.result}">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <span><strong th:text="${comment.username}"/> <em>dijo:</em></span>
+                                <div th:utext="${comment.comment}" />
+                            </div>
+
+                            <div class="col-md-3 text-center">
+                                <span th:text="${#calendars.format(comment.creationDate,'dd MMMM yyyy HH:mm')}" class="label label-info pull-right" />
+                                Votos Recibidos:
+                                <div>
+                                    <strong th:text="${comment.votosAFavor} == null ? '0' : ${comment.votosAFavor}"></strong>
+                                    <a th:if="${session.sess_ciudadano}" th:href="@{{comentario}/comentario/{id}/a-favor(id=${comment.id}, comentario=${comment.preguntaId})}">
+                                        <span class="fa fa-arrow-up" style="color:green" aria-hidden="true"></span> <span class="sr-only">votos a favor</span>
+                                    </a>
+                                    <th:block  th:if="not ${session.sess_ciudadano}">
+                                        <span class="fa fa-arrow-up" style="color:green" aria-hidden="true"></span> <span class="sr-only">votos a favor</span> <th:block th:if="not ${session.sess_ciudadano}">(identifíquese para poder votar al comentario)</th:block>
+                                    </th:block>
+                                </div>
+                                <div>
+                                    <strong th:text="${comment.votosEnContra} == null ? '0' : ${comment.votosEnContra}"></strong>
+
+                                    <a th:if="${session.sess_ciudadano}" th:href="@{{comentario}/comentario/{id}/en-contra(id=${comment.id}, comentario=${comment.preguntaId})}">
+                                        <span class="fa fa-arrow-down" style="color:red" aria-hidden="true"></span> <span class="sr-only">votos en contra</span>
+                                    </a>
+                                    <th:block  th:if="not ${session.sess_ciudadano}">
+                                        <span class="fa fa-arrow-down" style="color:red" aria-hidden="true"></span> <span class="sr-only">votos en contra</span> <th:block th:if="not ${session.sess_ciudadano}">(identifíquese para poder votar al comentario)</th:block>
+                                    </th:block>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Personal Eventual 2015-2016"
+                   description="Asesores de Alcaldía, Comunicación, Grupos Municipales" author=""
+                   last-modified="Mon Dec 21 00:00:00 CET 2015" keywords=""/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <!-- <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Personal Eventual
+                </h2>
+            </div> -->
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <div class="pull-right">
+                        <a href="/sede/portal/organizacion/biografias-personal-eventual" class="btn btn-info btn-lg">
+                            Biografías
+                        </a>
+                    </div>
+                    <h3>ALCADÍA y GOBIERNO MUNICIPAL</h3>
+                    <dl class="row">
+                        <dt class="col-sm-5">Don Raúl Royo Fraguas</dt>
+                        <dd class="col-sm-7">Asesor de Alcaldía y Gobierno Municipal.</dd>
+                        <dt class="col-sm-5">Doña Margarita Deyá Martín</dt>
+                        <dd class="col-sm-7">Asesora de Alcaldía y Gobierno Municipal.</dd>
+                        <dt class="col-sm-5">Don Alberto Lorente García</dt>
+                        <dd class="col-sm-7">Asesor de Alcaldía y Gobierno Municipal.</dd>
+                        <dt class="col-sm-5">Don Jesús Ignacio Domínguez Sanz</dt>
+                        <dd class="col-sm-7">Asesor de Alcaldía y Gobierno Municipal.</dd>
+                        <dt class="col-sm-5">Don Jesús Medrano Casanova</dt>
+                        <dd class="col-sm-7">Asesor de Alcaldía y Gobierno Municipal</dd>
+                        <dt class="col-sm-5">Don Javier Gimeno Martínez</dt>
+                        <dd class="col-sm-7">Asesor de Alcaldía y Gobierno Municipales</dd>
+                        <dt class="col-sm-5">Don José Ignacio Martínez Castelló</dt>
+                        <dd class="col-sm-7">Asesor de Alcaldía y Gobierno Municipal</dd>
+                        <dt class="col-sm-5">Don Luis Alejandro Mangrane Cuevas</dt>
+                        <dd class="col-sm-7">Asesor de Alcaldía y Gobierno Municipal</dd>
+                    </dl>
+                    <h3>COMUNICACIÓN</h3>
+                    <dl class="row">
+                        <dt class="col-sm-5">Doña Marina Fortuño Cebamanos</dt>
+                        <dd class="col-sm-7">Técnica de Comunicación</dd>
+                        <dt class="col-sm-5">Doña María del Mar Cabrera Ezquerra</dt>
+                        <dd class="col-sm-7">Técnica de Comunicación</dd>
+                        <dt class="col-sm-5">Doña Blanca Enfedaque Losantos</dt>
+                        <dd class="col-sm-7">Técnica de Comunicación</dd>
+                        <dt class="col-sm-5">Doña Irene Alconchel Ciria,</dt>
+                        <dd class="col-sm-7">Técnica de Comunicación</dd>
+                        <dt class="col-sm-5">
+                            <a href="/contenidos/organizacion/personal-eventual/DecNombGordon.pdf">D. Juan Antonio
+                                Gordón Suárez
+                            </a>
+                        </dt>
+                        <dd class="col-sm-7">Técnico de Comunicación</dd>
+                    </dl>
+                    <h3>GRUPOS MUNICIPALES</h3>
+                    <p>
+                        <strong>Grupo Municipal Popular:</strong>
+                    </p>
+                    <dl class="row">
+                        <dt class="col-sm-5">Don Francisco Javier Alonso Lacruz</dt>
+                        <dd class="col-sm-7">Asesor Técnico del Grupo Municipal del Partido Popular.</dd>
+                        <dt class="col-sm-5">Don Miguel Ania Rodríguez</dt>
+                        <dd class="col-sm-7">Asesor Técnico del Grupo Municipal del Partido Popular.</dd>
+                        <dt class="col-sm-5">Don Carlos Mutilva Villanova</dt>
+                        <dd class="col-sm-7">Asesor Técnico del Grupo Municipal del Partido Popular.</dd>
+                        <dt class="col-sm-5">Don Pedro Manuel Jato del Real</dt>
+                        <dd class="col-sm-7">Asesor del Grupo Municipal del Partido Popular.</dd>
+                        <dt class="col-sm-5">Doña Encarnación Gómez Palomar</dt>
+                        <dd class="col-sm-7">Asesora del Grupo Municipal del Partido Popular</dd>
+                        <dt class="col-sm-5">Don Luis Grasa Lahera</dt>
+                        <dd class="col-sm-7">Asesor del Grupo Municipal del Partido Popular</dd>
+                        <dt class="col-sm-5">Doña Francisca Hernández Gutiérrez</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal del Partido Popular.</dd>
+                        <dt class="col-sm-5">Doña Marta Pallás Buey</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal del Partido Popular.</dd>
+                    </dl>
+                    <p>
+                        <strong>Grupo Municipal  Zaragoza en Común:</strong>
+                    </p>
+                    <dl class="row">
+                        <dt class="col-sm-5">Don José Antonio Pérez Gónzalez,</dt>
+                        <dd class="col-sm-7">Asesor Técnico del Grupo Municipal de Zaragoza en Común.</dd>
+                        <dt class="col-sm-5">Don Guillermo Lázaro Alsina,</dt>
+                        <dd class="col-sm-7">Asesor del Grupo Municipal de Zaragoza en Común.</dd>
+                        <dt class="col-sm-5">Doña María Pilar Viñuales Burillo</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal de Zaragoza en Común.</dd>
+                        <dt class="col-sm-5">Doña Paula Moreno Cuartero</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal de Zaragoza en Común</dd>
+                    </dl>
+                    <p> 
+                        <strong>Grupo Municipal Partido Socialista Obrero Español
+                            <br/>
+                        </strong>
+                    </p>
+                    <dl class="row">
+                        <dt class="col-sm-5">Doña Rosario Pérez Garbayo</dt>
+                        <dd class="col-sm-7">Asesora Técnica del Grupo Municipal del Partido Socialista Obrero
+                            Español.
+                        </dd>
+                        <dt class="col-sm-5">Don Horario Royo Rospir,</dt>
+                        <dd class="col-sm-7">Asesor del Grupo Municipal del Partido Socialista Obrero Español</dd>
+                        <dt class="col-sm-5">Don Eduardo Lahoz Gámez</dt>
+                        <dd class="col-sm-7">Asesor del Grupo Municipal del Partido Socialista Obrero Español</dd>
+                        <dt class="col-sm-5">Don Arturo Paniza Galindo</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal del Partido Socialista Obrero Español.
+                        </dd>
+                        <dt class="col-sm-5">Don Francisco Javier Latorre Rubio</dt>
+                        <dd class="col-sm-7">Administrativo del Grupo Municipal del Partido Socialista Obrero Español.
+                        </dd>
+                        <dt class="col-sm-5">Doña María Pilar Martínez López</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal del Partido Socialista Obrero Español.
+                        </dd>
+                    </dl>
+                    <p>
+                        <strong>Grupo Municipal de Ciudadanos-Partido de la Ciudadanía:</strong>
+                    </p>
+                    <dl class="row">
+                        <dt class="col-sm-5">Don Francisco Javier Puy Garcés</dt>
+                        <dd class="col-sm-7">Asesor Técnico del Grupo Municipal de Ciudadanos-Partido de la
+                            Ciudadanía.
+                        </dd>
+                        <dt class="col-sm-5">Doña Leticia Contreras Alegre</dt>
+                        <dd class="col-sm-7">Asesora del Grupo Municipal de Ciudadanos-Partido de la Ciudadanía.</dd>
+                        <dt class="col-sm-5">Don Emilio Cesar Mera Gallego</dt>
+                        <dd class="col-sm-7">Asesor del Grupo Municipal de Ciudadanos-Partido de la Ciudadanía</dd>
+                        <dt class="col-sm-5">Doña Susana Garrido Alcober,</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal Ciudadanos-Partido de la Ciudadanía</dd>
+                    </dl>
+                    <p>
+                        <strong>Grupo Municipal de Chunta Aragonesista:</strong>
+                    </p>
+                    <dl class="row">
+                        <dt class="col-sm-5">Doña María Carmen Alloza Rama</dt>
+                        <dd class="col-sm-7">Técnica Medio del Grupo Municipal de Chunta Aragonesista.</dd>
+                        <dt class="col-sm-5">Doña Ruth Pina Jiménez</dt>
+                        <dd class="col-sm-7">Administrativa del Grupo Municipal de Chunta Aragonesista</dd>
+                        <dt class="col-sm-5">Don Choaquín Bernal Cupido</dt>
+                        <dd class="col-sm-7">Administrativo del Grupo Municipal de Chunta Aragonesista</dd>
+                        <dt class="col-sm-5">Don Guillermo Corral Comeras</dt>
+                        <dd class="col-sm-7">Administrativo del Grupo Municipal de Chunta Aragonesista</dd>
+                    </dl>
+
+                    <h3>NORMATIVA RELACIONADA</h3>
+                    <p>
+                        <a href="/sede/portal/organizacion/servicio/normativa/6943">Decreto de nombramientos en los
+                            puestos de la Plantilla de Personal Eventual del Ayuntamiento de Zaragoza
+                        </a>
+                    </p>
+                    <ul>
+                        <li>Aprobación definitiva por Ayuntamiento Pleno el 28.09.2015</li>
+                        <li>Publicado en BOPZ de 10.10.2015</li>
+                    </ul>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

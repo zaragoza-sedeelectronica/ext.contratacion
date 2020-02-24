@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos Participativos 2018" description="A través de los Presupuestos Participativos la ciudadanía decide cómo gestionar una parte del presupuesto municipal.  Información en la plataforma Gobierno Abierto en la sede electrónica del Ayuntamiento de Zaragoza para participar en el proceso y realizar un seguimiento de la ejecución de las propuestas seleccionadas en la ciudad y barrios rurales." last-modified="Thu Jan 3 00:00:00 CEST 2019" keywords="ciudad, Zaragoza, sede electrónica, gobierno abierto, ayuntamiento, administración local, relación administración-administrado, participación ciudadana,  presupuesto participativo, ejecución del presupuesto, gobierno y servicio público, barrio, barrio rural, city, Saragossa, e-government, open government, open gov, council, local government, citizen-authority relations, public participation, participatory budgeting, implementation of the budget, government and public service, neighborhood, district" />
+    <link rel="manifest" href="//www.zaragoza.es/cont/vistas/portal/presupuestos-participativos/manifest.json" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css"></link>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+    <script type="text/javascript">
+    ocultarArbolCapas = true;
+    var i = 0;
+    treeOrderDataList = ["actualidad"];
+    var dataActualidad = "{title: 'Juntas',claseIcono:'atencionCiudadana',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/contenidos/juntas.json'},{title: 'Foros',claseIcono:'agenda',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/actividades/list.geojson?programa.titleContains=Gobierno Abierto. Presupuestos Participativos'}";
+    </script>
+    <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/mapa/js/homeMapa.js"></script>
+    <style type="text/css">
+    .inline-header {
+        display: inline-block;
+        vertical-align: baseline;
+        line-height: 100%;
+    }
+
+
+    @media (max-width: 480px) {
+        header.navbar-portal .portal-header {
+            width: 100px;
+        }
+    }
+
+    #mapa {
+        box-shadow: none;
+        margin: 0 !important;
+    }
+
+    #mapahome {
+        height: 230px;
+    }
+
+    .static-popover {
+        display: block !important;
+        max-width: 100%;
+        margin: 0;
+        z-index: 10;
+        position: relative;
+        /* extra */
+    }
+
+/*
+    .modal-contenido {
+        max-height: 500px;
+        overflow-y: auto;
+        background-color: #fff;
+        max-width: 750px;
+        padding: 10px 10px;
+        margin: 20% auto;
+        position: relative;
+    }
+
+    .modal {
+        background-color: rgba(0, 0, 0, .5);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 1s;
+    }
+
+    #criteriosfiltrado:target {
+        opacity: 1;
+        pointer-events: auto;
+        display: inline;
+        background: darken(steelblue, 10%);
+    }
+
+    #haztupropuesta:target {
+        opacity: 1;
+        pointer-events: auto;
+        display: inline;
+        background: darken(steelblue, 10%);
+    }
+
+    #procedimiento:target {
+        opacity: 1;
+        pointer-events: auto;
+        display: inline;
+        background: darken(steelblue, 10%);
+    }
+
+    #priorizacion:target {
+        opacity: 1;
+        pointer-events: auto;
+        display: inline;
+        background: darken(steelblue, 10%);
+    }
+
+    #procedimientomesa:target {
+        opacity: 1;
+        pointer-events: auto;
+        display: inline;
+        background: darken(steelblue, 10%);
+    }
+*/
+
+
+    .list-aviso p {
+        font-size: 1.5em;
+        margin-top: 2em;
+    }
+
+    .h3rurales {
+        font-size: 1.28em;
+        margin-top: 0.25em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="img-rounded margin-b1em">
+            <div class="row no-gutter">				
+				
+               <div class="col-xs-12 col-sm-6 col-md-8">
+                    <img class="img-responsive full-width" src="https://www.zaragoza.es/cont/vistas/portal/presupuestos-participativos/img/cabecera-3-edicion2019.png" alt="" />
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 text-left">
+                    <div class="fnd-gris-claro padding-a05em">
+                        <h2 class="nomargin inline-header text-left" style="font-size: 1.75em;"><strong>Fase 5</strong>: Ejecución de las propuestas en distritos urbanos<!--/*<small class="text-primary nomargin"><br/><span class="glyphicon glyphicon-time"></span> 24 de septiembre a 3 de octubre</small>*/--></h2>
+                    </div>
+                    <div class="padding-a05em">
+<p>Corresponde a los servicios, sociedades y organismos autónomos municipales la <strong>ejecución</strong> de las propuestas más votadas por la ciudadanía.</p>
+<ul class="list-unstyled list-inline margin-t05em margin-b05em">
+<li><a href="http://www.zaragoza.es/sede/portal/presupuestos-participativos/servicio/presupuestos-participativos/edicion/2/obras" class="btn btn-primary btn-sm margin-b1em">EJECUCIÓN DE LAS OBRAS EN DISTRITOS</a></li>
+<!--/*<li><a href="http://www.zaragoza.es/sede/servicio/presupuestos-participativos/edicion/2/obras/?tipo=barrio" class="btn btn-primary btn-sm">EJECUCIÓN DE LAS OBRAS EN BBRR</a></li>*/-->
+</ul>   
+                    <!--/*<div class="well padding-a05em">
+                    <h3 class="margin-t0em">Sesión de Evaluación de Presupuestos Participativos</h3>
+                    <strong>6 de febrero de 2019 a las 17 horas en Etopia: Centro de Arte y Tecnología (Avenida Ciudad de Soria, 8).</strong>
+<ul class="list-unstyled list-inline margin-b05em margin-t05em">
+<li><a href="https://www.zaragoza.es/sede/servicio/formulario/381" class="btn btn-primary btn-sm" target="_blank">INSCRIPCIÓN</a></li>	
+<li><a href="https://www.zaragoza.es/sede/portal/participacion/catedra/participacion/agenda" class="btn btn-info btn-sm" target="_blank">MÁS INFORMACIÓN</a></li>
+</ul>
+                    </div>*/-->
+<!--/*<ul class="list-unstyled list-inline text-center">
+<li><a href="http://www.zaragoza.es/sede/portal/presupuestos-participativos/resultados" class="btn btn-success btn-sm">RESULTADOS VOTACIÓN EN DISTRITOS URBANOS</a></li>
+</ul>
+<p>A las propuestas resultantes de la votación se añadirán las acordadas por las <strong>Juntas Municipales</strong> y sus respectivas <strong>Mesas</strong> para la <strong>gestión del Remanente</strong>.</p>
+<ul class="list-unstyled list-inline text-center">
+<li><a href="#" data-toggle="modal" data-target="#ProcedimientoRemanente" class="btn btn-info btn-sm">VER PROCEDIMIENTO</a></li>
+<li><a href="http://www.zaragoza.es/sede/portal/presupuestos-participativos/documentacion#catalogos2018" class="btn btn-info btn-sm">VER ACUERDOS</a></li>
+</ul>
+                    <hr class="sm" />
+
+<ul class="list-unstyled list-inline text-center margin-t1em margin-b1em">
+<li><a href="http://www.zaragoza.es/sede/portal/presupuestos-participativos/servicio/presupuestos-participativos/edicion/2/obras" class="btn btn-primary btn-sm">ESTADO DE EJECUCIÓN DE LAS OBRAS</a></li>
+</ul>*/-->
+						
+				<!--/*MODAL Procedimiento de gestión de los remanentes*/-->
+                <div class="modal fade" id="ProcedimientoRemanente" tabindex="-1" role="dialog" aria-labelledby="ProcedimientoRemanenteLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="ProcedimientoRemanenteLabel">Procedimiento de gestión de los remanentes</h4>
+                            </div>
+                            <div class="modal-body">
+<ol>
+	<li>La propuestas votadas por la ciudadanía se ordenan por número de votos hasta alcanzar el presupuesto asignado a cada distrito sin sobrepasarlo.  </li>
+<li>El dinero sobrante, debido a que no es posible la inclusión de ninguna propuesta por orden de votación, se denominará Remanente.
+El Remanente es la diferencia entre el presupuesto asignado a cada distrito y el importe total de las propuestas a ejecutar. 
+</li><li>El destino del remanente se establecerá  por la Junta Municipal a propuesta de la Mesa de Presupuestos Participativos.
+</li><li>La propuesta realizada por la Mesa de Presupuestos Participativos deberá respetar las propuestas realizadas, en orden de votos. En ningún caso, con posterioridad a la ratificación de las propuestas, las Juntas de Distrito podrán eliminar ninguna de las propuestas votadas por la ciudadanía, ni alterar el orden de las mismas a no ser que esté debidamente justificado por cuestiones técnicas o de interés general para el distrito. El remanente sólo podrá destinarse a propuestas registradas en el portal de gobierno abierto.
+</li><li>La Junta Municipal convocará un Pleno ordinario o extraordinario para la aprobación de la propuesta de ejecución del Remanente.
+</li><li>La convocatoria del Pleno se realizará con el procedimiento habitual por la Junta y la documentación sobre la propuesta estará a disposición de sus miembros en la sede administrativa de la Junta, todo ello en los términos establecidos en el Reglamento de Órganos Territoriales y Participación Ciudadana.
+</li><li>La propuesta a ejecutar será aprobada por mayoría simple. El secretario levantará acta de la votación.
+</li><li>La persona que ejerza las funciones de Secretaría del Pleno de la Junta Municipal se encargará de remitir el Acta de Acuerdo a la Oficina Técnica de Participación, Transparencia y Gobierno Abierto para su publicación en la Plataforma de Gobierno Abierto, así como deberán hacer llegar notificación del acuerdo al Secretario/a de la Mesa de Presupuestos Participativos para su conocimiento.
+ </li><li>La Oficina Técnica de Participación, Transparencia y Gobierno Abierto iniciará las gestiones necesarias para la ejecución de las propuestas destinadas a cubrir el remanente mediante la comunicación a los servicios encargados de la ejecución.
+</li></ol>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                        <div role="alert" class="alert alert-info margin-v5em">
+                            <a class="destacado" href="/ciudadania/gobierno-abierto/presupuestos-participativos/enlace/enlinea/preguntaPresupuestosParticipativos.xhtm">
+                                ¿No encuentras la información que buscas o tienes algun problema en el proceso?
+                            </a>
+                        </div>
+					</div>					
+					
+
+                </div>
+            </div>
+        </div>
+        
+
+				
+            <!--/*<div class="col-md-12 fnd-gris-claro img-rounded padding-a1em margin-b1em margin-t0em">
+
+					<h2 class="nomargin inline-header">Presupuestos Participativos 2018-2019</h2>
+                    <hr class="sm" />					
+					<p>Ver todas las propuestas realizadas por la ciudadanía en esta edición de presupuestos participativos en distritos y en barrios rurales.</p>
+					<ul class="list-unstyled list-inline text-left">
+<li><a href="http://www.zaragoza.es/sede/servicio/presupuestos-participativos/edicion/2" class="btn btn-info btn-sm">PROPUESTAS 2018</a></li>
+</ul>
+                    <h2 class="inline-header margin-b0em">Barrios Rurales</h2>
+                    <hr class="sm" />
+
+<ul class="list-unstyled list-inline margin-b2em">
+
+<li><a href="http://www.zaragoza.es/sede/portal/presupuestos-barrios-rurales/" class="btn btn-info btn-sm" target="_blank">PORTAL BARRIOS RURALES</a></li>
+<li><a href="http://www.zaragoza.es/sede/portal/presupuestos-barrios-rurales/resultado" class="btn btn-primary btn-sm" target="_blank">RESULTADOS DE LA VOTACIÓN</a></li>
+</ul>
+                    <hr class="sm" />
+                    
+                        <p>Estar registrado en la <strong>Plataforma de Gobierno Abierto</strong> permite participar en el proceso. <strong>Activa la recepción de correos electrónicos</strong> para recibir comunicaciones referidas al proceso.</p>
+                        <a href="https://www.zaragoza.es/sede/servicio/zona-personal" class="btn btn-primary btn-md text-center">Registro / Acceso a zona personal</a>
+
+
+
+                       <hr class="sm" />
+
+
+                    <ul class="row list-unstyled margin-b0em">
+
+                        <li class="col-sm-6"><span class="far fa-dot-circle" aria-hidden="true"></span> ¿Tienes <a href="/ciudadania/gobierno-abierto/presupuestos-participativos/enlace/enlinea/preguntaPresupuestosParticipativos.xhtm">dudas o sugerencias</a>?</li>
+                        <li class="col-sm-6"><span class="far fa-dot-circle" aria-hidden="true"></span> <a href="/sede/portal/presupuestos-participativos/preguntas-frecuentes">Preguntas Frecuentes</a></li>
+
+                    </ul>
+                                            
+</div>*/-->
+
+
+        
+        
+        
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card img-rounded text-justify">
+                    <h2 class="titulo-test">Actualidad <small class="margin-t05em pull-right"><a href="/sede/portal/presupuestos-participativos/servicio/noticia/list?fq=temas_smultiple%3A(&quot;Presupuestos Participativos&quot;)">Más noticias</a></small></h2>
+                    <hr class="sm" />
+                    <sede:noticia clase="col-xs-12" listado="s" imagen="s" espacio="1" usuario="1" texto="" tema="Presupuestos Participativos" numero="2" resumen="" fecha="" carpeta="/sede/portal/presupuestos-participativos/"></sede:noticia>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card img-rounded text-justify">
+                    <div class="fnd-gris-claro img-rounded clearfix padding-a1em margin-b1em">
+                        <!--/*<h2 class="nomargin inline-header">Participación</h2> <span class="lead">por Juntas municipales/vecinales</span>*/-->
+                        <h2 class="nomargin inline-header">Conoce dónde está tu Junta</h2>
+                        <hr class="sm" />
+                        <p>
+                            Accede a los datos de <a href="/sede/portal/presupuestos-participativos/servicio/equipamiento/category/90">Juntas Municipales</a> o <a href="/sede/portal/presupuestos-participativos/servicio/equipamiento/category/91">Juntas Vecinales</a>.
+                            <br/>
+                            <!--/*<strong>Conoce tu distrito.</strong>*/-->
+                        </p>
+                        <div id="mapa">
+                            <div class="separador" id="facadeStatus"></div>
+                            <script type="text/javascript">
+                            var ifrm = document.createElement("iframe");
+                            ifrm.setAttribute("name", "mapahome");
+                            ifrm.setAttribute("id", "mapahome");
+                            ifrm.setAttribute("title", "Mapa de distritos y barrios rurales");
+                            ifrm.setAttribute("src", "//www.zaragoza.es/IDEZar_visorPortada/index.html");
+
+                            ifrm.style.width.value = "100%";
+                            document.getElementById("mapa").appendChild(ifrm);
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card img-rounded">
+                    <h2>
+                        Vídeos 
+                        <!-- <small class="margin-t05em pull-right"><a href="#">Más vídeos</a></small> -->
+                    </h2>
+                    <hr class="sm" />
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe title="Presupuestos Participativos. Propuestas primera edición" class="embed-responsive-item" src="https://www.youtube.com/embed/BMnTk2AG73g" allowfullscreen="allowfullscreen">
+                            <p>Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/BMnTk2AG73g">Enlace al vídeo en youtube.com</a></p>
+                        </iframe>
+                    </div>
+                    <a href="/sede/portal/presupuestos-participativos/servicio/video/category/770">Ver más vídeos</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 fnd-gris-claro img-rounded">
+                <h2 class="inline-header">Presupuestos Participativos 2017</h2> <span class="lead">¡Merece la pena! <a class="btn btn-primary btn-xs" href="/sede/portal/presupuestos-participativos/mapa-estado-obras"><strong><span aria-hidden="true" class="fa fa-map"></span> Mapa de Obras</strong></a> <a class="btn btn-primary btn-xs" href="/sede/servicio/presupuestos-participativos/edicion/1/obras/"><strong>Obras en ejecución</strong></a>  <a class="btn btn-primary btn-xs" href="/sede/servicio/presupuestos-participativos/edicion/1/"><strong>Todas las propuestas realizadas en 2017</strong></a></span>
+                <hr class="sm" />
+                <!--/* <p>En la primera edición de este proyecto de participación ciudadana se recogieron XXXX propuestas ciudadanas y se ejecutaron tras un intenso debate y valoración entre el Ayuntamiento y la Ciudadanía, XXXX propuestas de obras, infraestructuras y equipamientos para nuestros barrios.</p> */-->
+                <sede:propuesta fragment="/fragmentos/presupuestos-participativos/list" numero="12" visible="S" historico="S"></sede:propuesta>
+                <!--                <ul class="list-unstyled">
+                    <li><span class="fa fa-hand-o-right" aria-hidden="true"></span> Consulta el <a class="destacado" href="/sede/servicio/presupuestos-participativos/edicion/1/obras/">resto de obras que se van a ejecutar</a>.</li>
+                    <li><span class="fa fa-hand-o-right" aria-hidden="true"></span> Consulta todas las propuestas realizadas por la ciudadanía en la <a class="destacado" href="/sede/servicio/presupuestos-participativos/edicion/1">edición 2017</a>.</li>
+                </ul>-->
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+
+        // Collapsamos manualmente las fases (dentro de pestaña Fases)
+        $('div[id^="fase"].collapse').collapse();
+        // Esperamos 500ms para que termine el evento 'hidden.bs.collapse' y mostramos fase 1 desplegada
+        setTimeout(function() {
+            $('#fase4').collapse('show');
+        }, 500);
+
+        // Función para simular data-parent sin panels
+        $('#accordion').on('show.bs.collapse', function(e) {
+            var actives = $('#accordion').find('.in, .collapsing');
+            actives.each(function(index, element) {
+                $(element).collapse('hide');
+            });
+        });
+
+        // En vista móvil se carga el contenido de las fases justo debajo de cada imagen de fase
+        if ($('div[id^="fase"][id$=-xs]').is(':visible')) {
+            var fases = $('div[id^="fase"][id$=-xs]');
+            for (var i = 1; i <= fases.length; i++) {
+                $("#fase" + i).insertAfter(fases[i - 1]);
+            };
+        };
+
+        $('[data-toggle="popover"]').popover();
+        $('#myModal').on('shown.bs.modal', function() {
+            $('#myInput').focus();
+        });
+
+    });
+    /*]]>*/
+    </script>    
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Programas educativos >> Conectad@ a ti.Teatro preventivo"
+         description="Prevención de Adicciones"
+         keywords="Prevencón Adicciones, teatro, jovenes, drogas, juventud, programa educativo, CMAPA"/>
+      <script>
+         /*<![CDATA[*/
+         ocultarArbolCapas = false;
+         var i = 0;
+         var dataActualidad = "{title: 'Centros que han participado en el programa',claseIcono:'educacion',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/sede/servicio/mapa-colaborativo/607.geojson'}";
+         treeOrderDataList = ["actualidad"];
+         /*]]>*/
+      </script>
+      <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js"></script>
+      <style>
+         titulo-seccion {
+         line-height: 66px;
+         font-size: 42px;
+         }
+         .fnd-blanco {
+         background-color: #ffffff;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .fnd-gris-claro {
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin-bottom: -40px;
+         }
+         .titulo-org h2,
+         .procesos h2{
+         color: #e83437;
+         font-size: 42px;
+         padding-bottom: 20px;
+         }
+         .titulo-org h2 small,
+         .titulo-org h2 span{
+         color: #000000;
+         }
+         .panel-heading a:after {
+         float: left;
+         color: white;
+         background-color: #000;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 20px;
+         margin-right: 10px;
+         }
+         .panel-heading a.collapsed:after {
+         content: "\f105";
+         }
+         .panel-default>.panel-heading {
+         background-color: #fff;
+         border: 0;
+         }
+         .panel {
+         border: 0;
+         webkit-box-shadow: 0 0 0;
+         box-shadow: 0 0 0;
+         }
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         border: 0;
+         }
+         .panel-body {
+         padding-left: 50px;
+         }
+         .panel-title>a {
+         color: #E81B16;
+         }
+         .panel-title>a:hover,
+         .panel-title>a:focus,
+         .panel-title>a:active {
+         text-decoration: none;
+         }
+.offset-target:before {
+         content: '';
+         display: block;
+         height: 67px;
+         /* fixed header height*/
+         margin: -67px 0 0;
+         /* negative fixed header height */
+         }
+         .section-title {
+         background: #E6E6E6;
+         border-radius: .5em .5em 0 0;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin: 0;
+         }
+         .section-content {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: 0 0 .5em .5em;
+         margin-bottom: 1em;
+         }
+         .card{
+         margin-left:5em;
+         }
+         .imagen{
+         	display:block;
+         	margin:auto;
+         	
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Programas educativos</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <div class="row">
+               <div class="col-md-6 card">
+               <h3 class="section-title offset-target">Conectad@ a ti. Teatro preventivo</h3>
+               <p>Programa de prevención de las nuevas tecnologías a través del teatro, que combina la participación activa y creativa del alumnado de un teatro fórum.</p>
+               <p>Es un programa de refuerzo para el alumnado que ha llevado a cabo el programa de prevención de las tecnologías ON OFF en cursos anteriores.</p>
+               <p>La puesta en escena y la realización de la actividad en el teatro, la lleva a cabo el Grupo PSIARE (Psicología, Artes y Educación).</p>
+               </div>
+               <div class="col-md-4 card">
+				<h3 class="section-title offset-target">Contenidos</h3>
+               <p>Situaciones relacionadas con:</p>
+               <ul>
+                  <li>Uso, abuso y mal uso de las nuevas tecnologías
+                  </li>
+                  <li>Autoestima e identidad dentro y fuera de la red
+                  </li>
+                  <li>Las relaciones positivas: comunicación verbal y no verbal
+                  </li>
+                  <li>Habilidades de relación online y offline</li>
+               </ul>
+               </div>
+               </div>
+               <div class="row">
+               <div class="col-md-6 card">
+               <h3 class="section-title offset-target">Información general</h3>
+               <h4>Poblacion destinataria</h4>
+               <p>Alumnado de 4º de la ESO que durante el curso anterior han realizado en aula el programa municipal de prevención del uso de las tecnologías ON OFF</p>
+               
+               <h4>Metodología</h4>
+               <p>El desarrollo de la obra constará de 4 partes: </p>
+               <ul>
+                  <li>Acogida y dinámicas de activación: ejercicios que predisponen a la activación física, mental y social propiciando un ambiente participativo.</li>
+                  <li>Dinámicas de implicación respecto al tema a tratar y reflexión sobre la misma.</li>
+                  <li>Teatro Foro.</li>
+                  <li>Reflexión e intercambio de opiniones.</li>
+               </ul>
+               <h4>Evaluación</h4>
+               <p>Por parte del profesorado y el alumnado</p>
+               </div>
+               <div class="col-md-4"><img alt="" class="imagen" src="/cont/vistas/portal/derechos-sociales/adicciones/img/teatropreventivo.jpg"/></div>
+               </div>
+               
+                              
+               <h4>Centros que han participado en el programa (2017-2018)</h4>
+               <div id="mapa">
+                  <div class="separador" id="facadeStatus">&nbsp;</div>
+                  <script type="text/javascript">
+                     /*<![CDATA[*/
+                     var ifrm = document.createElement("iframe");
+                     ifrm.setAttribute("name", "mapahome");
+                     ifrm.setAttribute("id", "mapahome");
+                     ifrm.setAttribute("title", "La Ciudad al Instante");
+                     ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                     ifrm.style.width.value = "100%";
+                     document.getElementById("mapa").appendChild(ifrm);
+                     /*]]>*/
+                  </script>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

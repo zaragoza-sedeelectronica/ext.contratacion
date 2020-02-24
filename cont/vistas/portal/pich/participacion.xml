@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+   <head>
+      <meta charset="utf-8" />
+      <sede:meta title="PICH: Participación" description="El portal de la Oficina del Plan Integral del Casco Histórico ofrece recursos sobre los proyectos que desarrollan en áreas como deportes, cultura, derechos sociales, solares urbanos, medio ambiente, limpieza, comercio, turismo y participación además de ofrecer información sobre sus actividades." category="" subject="" author="" last-modified="2018-09-13" audience="" keywords="ayuntamiento, ciudad, Zaragoza, España, Oficina Plan Integral Casco histórico, participación, solares urbanos, formalidades administrativas, administración electrónica, relación administración-administrado, participación social, actividades, concursos, servicio de quejas y sugerencias, council, city, Saragossa, Spain, administrative formalities, electronic government, citizen-authority relations, participation, urbanism, culture, social rights, environment, social participation, green area, activities, contest, complaints and suggestions service" priority="" robots=""></sede:meta>
+   </head>
+   <style>
+      titulo-seccion {
+      line-height: 66px;
+      font-size: 42px;
+      }
+      .fnd-blanco {
+      background-color: #ffffff;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      .fnd-gris-claro {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: -40px;
+      }
+      .titulo-org h2,
+      .procesos h2{
+      color: #e83437;
+      font-size: 42px;
+      padding-bottom: 20px;
+      }
+      .titulo-org h2 small,
+      .titulo-org h2 span{
+      color: #000000;
+      }
+      .panel-heading a:after {
+      float: left;
+      color: white;
+      background-color: #000;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      margin-right: 10px;
+      }
+      .panel-heading a.collapsed:after {
+      content: "\f105";
+      }
+      .panel-default>.panel-heading {
+      background-color: #fff;
+      border: 0;
+      }
+      .panel {
+      border: 0;
+      webkit-box-shadow: 0 0 0;
+      box-shadow: 0 0 0;
+      }
+      .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border: 0;
+      }
+      .panel-body {
+      padding-left: 50px;
+      }
+      .panel-title>a {
+      color: #E81B16;
+      }
+      .panel-title>a:hover,
+      .panel-title>a:focus,
+      .panel-title>a:active {
+      text-decoration: none;
+      }
+   </style>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Comisiones</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <nav>
+                  <div class="second-bar clearfix">
+                     <div class="hidden-xs">
+                        <a class="btn-back pull-left" href="https://www.zaragoza.es/sede/portal/pich/"><span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span> <span class="oculto">Volver a PICH</span> </a>
+                        <p class="lead destacado margin-l05em margin-b0em pull-left">
+                           Participación
+                        </p>
+                     </div>
+                     <ul class="list-inline navbar-right submenu">
+                        <li>
+                           <a href="participacion">Comisiones</a>
+                        </li>
+                        <li>
+                           <a href="comisiones-plan">Plan 2013-2020 </a>
+                        </li>
+                        <li>
+                           <a href="comisiones-consejo">Consejo Sectorial</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+               <div>
+                  <img src="/cont/vistas/portal/pich/img/comisiones-pich.png"/>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              Música
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              La <strong>Cultura </strong>junto a la Educación son alimentos para que las sociedades puedan desarrollarse y avanzar. Fomentar y potenciar estos derechos universales es, y debe seguir siendo, responsabilidad pública.
+                           </p>
+                           <p>
+                              El<strong> Plan Integral del Casco Histórico</strong> siguiendo este principio recoge como una de las líneas de actuación la <strong>Dinamización Sociocultural del Casco Histórico</strong> (El Gancho, La Madalena y El Rabal Viejo)
+                           </p>
+                           <p>
+                              Una cultura que se adapte a los momentos de crisis económica actual, con un marcado carácter social, cercana y asequible a todos y todas, que muestre la riqueza intercultural del Casco Histórico, que ponga en valor el potencial artístico y cultural del Barrio y que se aleje de grandes eventos, son los objetivos que marcan los diferentes Programas, Proyectos y Actuaciones Culturales del Plan Integral del Casco Histórico
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              Deportes
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              El <strong>deporte </strong>interfiere plenamente en la vida cotidiana, influye en los procesos de socialización, determina una buena parte del tiempo libre y constituye un punto de referencia clave para los procesos de identificación social de la persona. El deporte, como actividad sociocultural e instrumento integrador y socializador, permite el enriquecimiento del individuo en el seno de la sociedad. También tiene efectos en la convivencia, en la percepción de la violencia, y sirve de medio para fomentar determinados valores sociales y personales. Participar, divertirse, sentirse bien con uno mismo, juego limpio, deportividad, respeto a las normas, son parte del objetivo de estas actividades. Así mismo, el deporte es un instrumento y una alternativa para fomentar la integración intercultural, y vehículo para mejorar la convivencia en el Barrio.
+                           </p>
+                           <p>
+                              Los Programas y Actividades Deportivas se llevan a cabo con la participación de las diferentes <em>Entidades Sociales y Vecinales, Centros Educativos, Casas de Juventud, Centros de Tiempo Libre y Ludotecas, PIEEs, Clubs Deportivos, etc, coordinados desde la Comisión de Deportes del Plan Integral y la Oficina del PICH</em>. Con esta Comisión, como con el resto de las Comisiones Intersectoriales, se pretende que todos/as los/as vecinos y vecinas se impliquen en la realización de este tipo de acciones, a la vez que sirve de foro para reivindicar las posibles deficiencias en servicios deportivos en el Barrio.
+                           </p>
+                           <p>
+                              Siguiendo las propuestas recogidas en el Plan Integral del Casco Histórico 2013-2020 Línea Estratégica 1 <em>Participación, Convivencia y Cohesión Social</em>, la acción 1.14&nbsp; <em>Impulso y apoyo a Proyectos Preventivos de educación para la Salud Comunitaria y de Prevención de Adicciones</em>. <em>Talleres de cocina, Alimentación Saludable, Ejercicio Físico y Paseos Cardiosaludables</em> y la acción 1.16 <em>Mantenimiento de Promoción del Deporte en el Casco Histórico</em>, durante el año 2017 se han realizado las siguientes actuaciones:
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              Medio Ambiente, Limpieza y Salud Comunitaria
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              Comisión formada por diferentes entidades sociales (Amediar, AFDA,...) y por centros municipales (CDAMA, CMSS, Centros de Salud de San Pablo, …). Su objetivo fundamental es impulsar las lineas estratégicas del Plan Integral en las lineas de salud, medio ambiente y limpieza.
+                           </p>
+                           <p>
+                              Así mismo, y en linea a los objetivos perseguidos en esta comisión, se está colaborado y en el proyecto <em>Semáforo del barrio</em> organizadas por el Consejo de Salud (Accion 1.15 del Pan Integral del Casco Histórico 2013-2020).
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <p>
+                  &nbsp;
+               </p>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              &nbsp; Participación Infantil y Juvenil
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              Conscientes de la importancia de intervención en este ámbito, este grupo de trabajo cuenta con representantes de diferentes sectores relacionados como son los PIEE (Carmen y San José , Tenerias, Santo Domingo), CTL Cadeneta, Gusantina,.... Se presentan iniciativas tanto sociales, como culturales, cuyo destinatario son los niños y jóvenes (Programa Literario, Colonias, programa de navidad,...).
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              Intervención Socioeducativa
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              El Plan Integral del Casco Histórico incide en todas aquellas acciones de marcado carácter social que quedan recogidas en la Línea Estratégica 1 <em>Participación, Convivencia y Cohesión Social</em> (Plan Integral del Casco Histórico 2013-2020). Los Programas y Proyectos de carácter social tienen como finalidad favorecer el bienestar y la calidad de vida de los/as vecinos y vecinas del Barrio, fundamentalmente de aquellas personas más vulnerables, incidiendo en los más jóvenes (formación, empleo, ocio y tiempo libre). Desde la oficina del PICH se apuesta por el desarrollo de acciones orientadas hacia la disminución del desempleo, mejora de la formación, potenciación de la vida sociocultural en el barrio, aumentando el movimiento y diversidad de personas en el Casco Histórico. También son objetivos de estas actuaciones la dinamización económica, el aumento de la cohesión social y el nivel de convivencia de su población multicultural. Esta diversidad cultural dota de características propias al Casco Histórico, generando demandas específicas en el plano convivencial, mediación vecinal, salud pública, entre otros.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="linea">
+                  &nbsp;
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                     <div class="row no-gutter step-box fnd-sectores">
+                        <div class="col-md-3 padding-a1em">
+                           <h3 class="nomargin">
+                              Economía, Comercio y Turismo
+                           </h3>
+                        </div>
+                        <div class="col-md-9 padding-a1em">
+                           <p>
+                              El Plan Integral del Casco Histórico sigue apostando por el apoyo al Comercio del Barrio, en toda su extensión, fundamentalmente en La Magdalena, El Gancho y El Rabal Viejo.
+                           </p>
+                           <p>
+                              Hay que destacar que el territorio PICH no presenta un desarrollo comercial homogéneo, existen calles y áreas degradadas, junto a otras que han experimentado un mayor desarrollo y concentración.
+                           </p>
+                           <p>
+                              La finalidad de la revitalización esta zona comercial no es sólo cubrir las necesidades de sus habitantes, sino lograr que el barrio sea un centro de atracción comercial para el resto de vecinos y vecinas de la Ciudad, y ser un medio de empleo (autoempleo) fundamentalmente para jóvenes y mujeres, colectivos con mayor dificultad para acceder al mercado laboral.
+                           </p>
+                           <p>
+                              Así mismo, dentro del ámbito cultural y de turístico, el Casco Histórico destaca por la multitud de espacios de valor artístico y patrimonial, y las numerosas actividades e iniciativas culturales que se desarrollan en ellos. Esta oferta cultural y de ocio repercute en la actividad comercial, constituyendo un polo de atracción para la zona. De esta idea parte el esfuerzo que se esta realizando por mejorar y dinamizar el comercio de proximidad, y de forma especial el Mercado Central y el Mercado San Vicente de Paúl.
+                           </p>
+                           <p>
+                              El apoyar por lo tanto los comercios ya existentes y potenciar la apertura de nuevos con el fin de dinamizar determinadas calles del Barrio, son una de las líneas de actuación del Plan Integral del Casco Histórico: Línea 5 <em>Comercio y Turismo</em>. Entre las lineas de actuación en que se han realizado este año en este ámbito, destacar los programas de dinamización y fomento del comercio y la actualización del censo de locales comerciales, entre otras.
+                           </p>
+                           <p>
+                              En dicha linea se establecen como <strong>objetivos</strong>:
+                           </p>
+                           <ul>
+                              <li>
+                                 Fomentar la identidad del Casco Histórico como zona comercial próxima, accesible, de amplia y variada oferta, mejorando la imagen comercial del mismo.
+                              </li>
+                              <li>
+                                 Articular políticas integrales de apoyo al emprendimiento, así como promover la coordinación entre diferentes entidades, organismos y servicios públicos.
+                              </li>
+                              <li>
+                                 Impulsar la identificación del casco histórico como territorio socialmente responsable.
+                              </li>
+                              <li>
+                                 Impulsar y dinamizar equipamientos y espacios comerciales existentes en Casco Histórico, mediante el desarrollo de actividades de contenido cultural y/o socioeducativas.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

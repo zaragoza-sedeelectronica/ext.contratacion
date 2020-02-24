@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Sede Electrónica Ayuntamiento de Zaragoza" description="Quiénes somos. Premios y reconocimientos. Calidad y Datos Abiertos" author="Ayuntamiento de Zaragoza" keywords="sede electrónica, ayuntamiento, Zaragoza, premios, reconocimientos, calidad, datos abiertos">
+    </sede:meta>
+    <style class="text/css">
+    .tabs {
+        border-bottom: 2px solid #E81B16;
+        font-weight: bold;
+    }
+    
+    .tabs a {
+        display: block;
+        padding: 10px 15px;
+    }
+    
+    .tabs li.active a {
+        background: #E81B16;
+        color: white;
+    }
+    
+    .tabs li.active a:hover,
+    .tabs li.active a:focus {
+        background: #E81B16;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Sede Electrónica</h2>
+        <hr class="sm"/>
+        <ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+            <li role="presentation">
+                <a aria-controls="somos" data-toggle="tab" href="#somos" role="tab">Quiénes somos</a>
+            </li>
+            <li role="presentation">
+                <a aria-controls="premios" data-toggle="tab" href="#premios" role="tab">Premios y reconocimientos</a>
+            </li>
+            <li role="presentation">
+                <a aria-controls="calidad" data-toggle="tab" href="#calidad" role="tab">Calidad</a>
+            </li>
+            <li role="presentation">
+                <a aria-controls="datos" data-toggle="tab" href="#datos" role="tab">Datos Abiertos</a>
+            </li>
+              <li role="presentation">
+                <a aria-controls="memorias" data-toggle="tab" href="#memorias" role="tab">Memorias</a>
+            </li>
+        </ul>
+        <div sede:class="tab-content">
+            <h2 class="tab-title" aria-expanded="false" data-target="#somos" data-toggle="collapse">Quiénes somos</h2>
+            <div id="somos" role="tabpanel" sede:class="tab-pane active">
+                <!-- <div class="img-ficha"><img src="/cont/paginas/sectores/tecnologia/img/sede_electronica.jpg" alt="" /></div> -->
+                <p>La Sede Electrónica del Ayuntamiento de Zaragoza, <a href="https://www.zaragoza.es">www.zaragoza.es</a> operativa desde 1994.</p>
+                <p>Se regula en la Ordenanza de Administración Electrónica del Ayuntamiento de Zaragoza (Título II) (2010): "Se crea la sede electrónica del Ayuntamiento de Zaragoza, como conjunto sistematizado de información y operatorias accesibles a través de protocolos web, disponible en la dirección de Internet: www.zaragoza.es."</p>
+                <p>Se ha convertido en un canal importante de servicios de Administración Electrónica para cualquier persona física, jurídica y entes sin personalidad que se relacionen, o sean susceptibles de relacionarse con las Administraciones Públicas.</p>
+                <p>Su evolución viene marcada tanto por la evolución de las <strong>Tecnologías de la Información y Comunicación</strong> como por la mayor versatilidad de los <strong>servicios móviles</strong>, el incremento de servicios demandados por <strong>la ciudadanía</strong> y, en particular, por el papel clave que la administración debe tener, bajo nuestro punto de vista, en el desarrollo de la <strong>Sociedad del Conocimiento</strong></p>
+                <p><strong>Desde 1997</strong>, esta Sede tiene entre sus objetivos facilitar el acceso al mayor número de personas, independientemente de sus características personales y de la plataforma tecnológica elegida, que debe ser <strong>accesible</strong>, útil y fácil de usar. Se trata de garantizar la <strong>igualdad de oportunidades de las ciudadanas y ciudadanos</strong>, y ofrecer a través de un punto de acceso único los nuevos servicios y productos digitales (administración electrónica) para que ningún colectivo social quede excluido, procurando una adecuada prestación de los servicios públicos a través de <strong>cualquier dispositivo:</strong> ordenador, móviles, tabletas...,</p>
+                <p><strong>Desde 2006</strong>, el Ayuntamiento de Zaragoza, a través de la Web Municipal, es <strong>miembro del Consorcio World Wide Web (W3C)</strong>.</p>
+                <p>El Consorcio W3C es una comunidad internacional donde las organizaciones miembro, personal a tiempo completo y el público en general trabajan conjuntamente para desarrollar estándares Web. Liderado por el inventor de la Web Tim Berners-Lee y el Director Ejecutivo (CEO) Jeffrey Jaffe, la misión del W3C es guiar la Web hacia su máximo potencial. Su principal actividad es desarrollar protocolos y directrices que aseguren el crecimiento de la Web a largo plazo. Los estándares del W3C definen las partes claves que hacen que la World Wide Web funcione.</p>
+                <p>La información facilitada a través de la Sede, debe ser integral, actualizada, fiable y presentarse en un formato sencillo y acorde con su naturaleza y el perfil del usuario al que va dirigida, sin presentar obstáculos técnicos y al menor coste de tiempo.</p>
+                <p>Por lo tanto, es muy importante la implantación de una <strong>política de accesibilidad y de adaptación de contenidos</strong> en el diseño y desarrollo de una Sede Electrónica, tener como objetivo la actualización de contenidos y potenciar la Red Ciudadana que se crea entorno a los nuevos servicios web, las llamadas <strong>redes sociales</strong>.</p>
+            </div>
+            <h2 class="tab-title" aria-expanded="false" data-target="#premios" data-toggle="collapse">Premios y reconocimientos</h2>
+            <div id="premios" role="tabpanel" sede:class="tab-pane active">
+                <h3>Premios</h3>
+                <h4>2004: Premio e-Mobility (2004)</h4>
+                <p>La Web Municipal recibe el premio "e-mobility" en la SIMO TCI por su proyecto "Zaragoza Ciudad Móvil", como "la institución u organismo público que ha desarrollado o contribuido al desarrollo de una o varias aplicaciones móviles y/o inalámbricas que han ayudado a mejorar las condiciones de vida de los ciudadanos".</p>
+                <p><a href="http://fundacion.vodafone.es/fundacion/es/proyectos-sociales/jornadas-y-seminarios/historico/e-mobility-2004/" title="Enlace exterior">Más Información<span class="oculto">sobre el premio e-mobility 2004 </span></a></p>
+                <h4>2006: Premio de Accesibilidad TAW</h4>
+                <p>El portal municipal obtuvo en la II Edición de Premios TAW, premio de accesibilidad TAW a la Web Pública de Rango Local más accesible.</p>
+                <p>El premio TAW es uno de los premios de mayor prestigio en el ámbito de la accesibilidad, ya que es concedido por expertos en este ámbito.</p>
+                <p>TAW son las siglas del Test de Accesibilidad Web, una herramienta desarrollada por la Unidad de Accesibilidad Web de la Fundación CTIC y que es referente en castellano para analizar el grado de accesibilidad de las páginas web.</p>
+                <p>A lo largo de estos últimos años, conscientes de la importancia de ofrecer servicios de calidad para todos los grupos sociales sin exclusiones, La Web Municipal ha trabajado por cumplir los estándares de la W3C siguiendo sus requisitos de usabilidad y accesibilidad.</p>
+                <p>Por ello, este premio TAW reconoce el esfuerzo continuado de su equipo, y premia su filosofía de trabajo.</p>
+                <p><a href="https://www.zaragoza.es/ciudad/servicios/taw2.htm">Más Información <span class="oculto">sobre el Premio TAW</span></a></p>
+                <h4>2007: Planifica tu Visita</h4>
+                <p>Mediante una ontología se ha definido un modelo de datos que permite integrar de forma coherente la información disponible en las diferentes bases de datos y los servicios web de IDEZar, la infraestructura de datos espaciales del Ayuntamiento de Zaragoza.</p>
+                <p>A través de una serie de adaptadores los datos se transforman al formato RDF y se combinan en un modelo semántico.</p>
+                <p>Aplicación elegida como Buena Práctica por el W3C</p>
+                <h4>Más Información</h4>
+                <ul>
+                    <li><a href="https://www.zaragoza.es/turruta/Turruta/index_Ruta">Sobre el Servicio</a></li>
+                    <li><a href="https://www.zaragoza.es/ciudad/risp/detalle_Risp?id=8">Conjunto de datos</a></li>
+                    <li><a href="https://www.zaragoza.es/ciudad/risp/enlace/turismo/es/que-visitar/ontologia.htm">Ontología</a></li>
+                </ul>
+                <h4>2007: Información Polínica diaria</h4>
+                <p>Premio otorgado por la revista Trámite Parlamentario y Municipal por el servicio de información puntual y diario a través del teléfono móvil que ofrece a los ciudadanos cada mañana datos sobre el nivel polínico de la planta a la que es alérgico. </p>
+                <p>Esta revista premia cada año las mejores iniciativas políticas. En esta quinta edición se ha valorado especialmente que las iniciativas sean novedosas, imitables por otras instituciones y marcadas por el beneficio y el compromiso social y, al mismo tiempo, busquen claramente la mejora del bienestar del ciudadano o el progreso de las instituciones económicas y sociales en el área objeto de cada premio. </p>
+                <p>El premio al Ayuntamiento ha sido otorgado en el ámbito de la sanidad al considerar la iniciativa municipal como un beneficio directo a la calidad de vida de los ciudadanos.</p>
+                <a href="https://www.zaragoza.es/ciudad/noticias/detalle_Noticia?id=25718">Más Información <span class="oculto">sobre el premio de información polínica</span></a>
+                <h4>2010: OPEN DATA- LINKED DATA >> RISP Y Datos.zaragoza.es . Nivel 5 Estrellas.</h4>
+                <p>Este proyecto se considera como uno de los pioneros en todo el mundo en la utilización de las tecnologías Linked Data para representar y exponer los datos públicos en formatos abierto, pudiéndose considerar como uno de los pocos que alcanzan el máximo nivel en el baremo propuesto por Sir Tim Berners-Lee -Director del W3C- en la clasificación del estado de estas iniciativas a nivel mundial. </p>
+                <p>La Web del Ayuntamiento de Zaragoza posee la máxima puntuación en este concepto: 5 Estrellas, Linked Data.</p>
+                <a href="https://www.zaragoza.es/ciudad/risp/">Más Información: datos.zaragoza.es</a>
+                <p><strong>Sólo 4 lugares en el mundo</strong>, hasta el momento, alcanzan esta categoría: United Kingdom; US Federal Government, Asturias y Zaragoza.</p>
+                <a href="http://datos.fundacionctic.org/sandbox/catalog/faceted/" title="Enlace exterior">Más Información: Fundación CTIC</a>
+                <h4>2011: Premio a las Mejores Prácticas de Administraciones Públicas en materia de Protección de Datos </h4>
+                <p>En la VI Edición del Premio a las Mejores Prácticas de Administraciones Públicas en materia de Protección de Datos, concesión del Primer premio al proyecto presentado por el Ayuntamiento de Zaragoza, sobre "Política de Protección de Datos de carácter personal en la Web del Ayuntamiento de Zaragoza".
+                    <br/> Concedido por la Agencia de Protección de Datos de la Comunidad de Madrid.</p>
+                <p>El 2º premio se concedió a INTECO (Instituto Nacional de Tecnologías de la Comunicación).</p>
+                <h4>2011: Premio Buenas Prácticas EUROGI/ESDI-NET 2011 </h4>
+                <p>IDEZar, ha sido premiada en la categoría de Usabilidad (facilidad de uso y alcance) en los EUROGI/eSDI-Net Awards 2011, cuyo objetivo es reconocer y poner en valor las buenas prácticas en Infraestructuras de Datos Espaciales.</p>
+                <p>Estos premios son promovidos por <a href="http://eurogi.org/" title="Enlace Exterior">EUROGI</a>, entidad que agrupa todas las instituciones geográficas europeas y cuya misión es maximizar la disponibilidad,eficiencia y explotación de la información geográfica en toda Europa.</p>
+                <a href="http://www.geoslab.com/es/noticias/noticias/164-idezar-eurogi-2011" title="Enlace Exterior">Más Información<span class="oculto">sobre el premio EUROGI</span></a>
+                <h4>2014: Premio por su iniciativa de Gobierno Abierto como "mejor proyecto en Participación Ciudadana y Gobiernos Abiertos en Administración pública" dentro del IV Congreso nacional de Interoperabilidad y Seguridad (CNIS)</h4>, (Madrid - 21.02.2014)
+                <a href="https://www.zaragoza.es/ciudad/noticias/detalle_Noticia?id=220392">Más Información <span class="oculto">sobre el premio de cnis</span></a>
+                <h4>2014: Premio OKFN (24.02.2014)</h4>
+                <p>Conocimiento Abierto, Open Data y Transparencia.
+                    <br/> En la Categoría: Mejor iniciativa pública open data con implicación de la ciudadanía Proyecto presentado por la Web Municipal: "Plataforma de Gobierno Abierto del Ayuntamiento de Zaragoza"
+                    <a href="http://premio.okfn.es/plataforma-de-gobierno-abierto-del-ayuntamiento-de-zaragoza/" title="Enlace Exterior">Más Información <span class="oculto">sobre la candidatura en la okfn</span></a></p>
+                <h4>2014: Primer Premio ASEDIE (Asociación Multisectorial de la Información)</h4>
+                <p>Por su "creciente impulso en la apertura de datos, su compromiso y esfuerzo en los proyectos, la web de acceso claro, fácil e intuitivo, la inexistencias de restricciones indebidas, los datos desagregados en formato reutilizables y la actualización periódica de los datos"</p>
+                <a href="detalle_Noticia?id=221326">Noticia relacionada</a>
+                <div class="linea"></div>
+                <h3> Reconocimientos</h3>
+                <h4>2001- 2007: Radiografías del Ciberp@is (El País)</h4>
+                <p>En las Radiografías que anualmente realizaba el CiberP@is sobre las Webs Municipales españolas, la Web del Ayuntamiento de Zaragoza mantuvo liderazgo no bajando del 4º lugar como se puede apreciar en el siguiente cuadro comparativo, y junto con Barcelona fueron los únicos Ayuntamientos que repitieron 1º puesto.</p>
+                <p>Las páginas oficiales que fueron objeto de estudio fueron ampliándose a lo largo de los años. En la I Radiografía (2011) se analizaron las webs de las 52 capitales españolas, y en la VII Radiografía (2007), el estudio se amplió a todos los ayuntamientos españoles con más de 50.000 habitantes, y capitales de provincia con menor población a la indicada. En total 138 localidades.</p>
+                <table class="table table-striped table-condensed table-bordered">
+                    <caption>Tabla comparativa de los TOP 10 >> Radiografías del Ciberp@is 2001- 2007</caption>
+                    <tr>
+                        <th></th>
+                        <th>(2001)</th>
+                        <th>(2002)</th>
+                        <th>(2003)</th>
+                        <th>(2004)</th>
+                        <th>(2005)</th>
+                        <th>(2006)</th>
+                        <th>(2007)</th>
+                    </tr>
+                    <tr>
+                        <td>1º </td>
+                        <td>Barcelona</td>
+                        <td>Terrasa</td>
+                        <td>Madrid</td>
+                        <td>Barcelona</td>
+                        <td>Zaragoza</td>
+                        <td>Zaragoza</td>
+                        <td rowspan="2">Barcelona <br/>Zaragoza</td>
+                    </tr>
+                    <tr>
+                        <td>2º </td>
+                        <td>Valencia</td>
+                        <td>Barcelona</td>
+                        <td>Zaragoza</td>
+                        <td>Alcobendas</td>
+                        <td>Lleida</td>
+                        <td>Barcelona</td>
+              
+                    </tr>
+                    <tr>
+                        <td>3º</td>
+                        <td>Zaragoza</td>
+                        <td>Bilbao</td>
+                        <td>Sabadell</td>
+                        <td>Bilbao</td>
+                        <td>Bilbao</td>
+                        <td>Castellón</td>
+                        <td>Gijón</td>
+                    </tr>
+                    <tr>
+                        <td>4º </td>
+                        <td>P. Mallorca</td>
+                        <td>Zaragoza</td>
+                        <td>Girona</td>
+                        <td>Zaragoza</td>
+                        <td>Sabadell</td>
+                        <td>L'Hospitalet</td>
+                        <td>Vigo</td>
+                    </tr>
+                    <tr>
+                        <td>5º</td>
+                        <td>Madrid</td>
+                        <td>Sabadell</td>
+                        <td>Mataró</td>
+                        <td>Girona</td>
+                        <td>Córdoba</td>
+                        <td>Gijón</td>
+                        <td>Sabadell</td>
+                    </tr>
+                    <tr>
+                        <td>6º</td>
+                        <td>Bilbao</td>
+                        <td>Mataró</td>
+                        <td>Gijón</td>
+                        <td>Mataró</td>
+                        <td>Barcelona</td>
+                        <td>Girona</td>
+                        <td>Castellón</td>
+                    </tr>
+                    <tr>
+                        <td>7º</td>
+                        <td>Logroño</td>
+                        <td>Girona</td>
+                        <td>Terrasa</td>
+                        <td>Valladolid</td>
+                        <td>Gijón</td>
+                        <td>Vitoria</td>
+                    </tr>
+                    <tr>
+                        <td>8º </td>
+                        <td>Palencia</td>
+                        <td>Valencia</td>
+                        <td>Barcelona</td>
+                        <td>San Sebastián</td>
+                        <td>Madrid</td>
+                        <td>S. Compostela</td>
+                        <td>Lleida</td>
+                    </tr>
+                    <tr>
+                        <td>9º</td>
+                        <td>Málaga</td>
+                        <td>Gijón</td>
+                        <td>Valladolid</td>
+                        <td>A Coruña</td>
+                        <td>Alicante</td>
+                        <td>Madrid</td>
+                        <td>Valencia</td>
+                    </tr>
+                    <tr>
+                        <td>10º</td>
+                        <td>Girona</td>
+                        <td>Cartegena</td>
+                        <td>Vitoria</td>
+                        <td>Lleida</td>
+                        <td>L'Hospitalet</td>
+                        <td>Sabadell</td>
+                        <td>Girona</td>
+                    </tr>
+                </table>
+                <h4>2007: OCU</h4>
+                <p>
+                    Artículo sobre las webs municipales realizado por la Organización de Consumidores y Usuarios en su publicación: Dinero y Derechos nº 101 Julio 2007, recoge una prueba práctica en 20 webs municipales para comprobar los servicios que ofrecen al ciudadano.
+                    <br/> En este informe el Portal de Medio Ambiente recibe la calificación de "muy buena en información y usabilidad" colocándose en un 2º puesto en la valoración global.</p>
+                <h4>2008: Diario Expansión</h4>
+                <p>Accésit de los premios medioambientales que convoca Garrigues Medioambiente junto con el diario Expansión</p>
+                <h4>2008: revista "Computer Hoy"</h4>
+                <p>Segunda Web más valorada según un estudio realizado por la revista "Computer Hoy" ( nº 265, diciembre 2008). En dicho estudio se recoge la valoración de los usuarios de esta revista.</p>
+                <h4>2009: Estudio 'Visibilidad en las ciudades en la Web 2.0' desarrollado por Javier Celaya perteneciente al grupo BPMO. </h4>
+                <p>La Web de Zaragoza se encuentra entre las cuatro ciudades españolas con mayor visibilidad en la web.</p>
+                <h4>2010: Open Data</h4>
+                <h4>Informe La Sociedad de la Información en España, 2010</h4>
+                <p>Colección Fundación Telefónica. En dicho informe, en el apartado de Open Data se recoge lo siguiente:</p>
+                <p>"La administración local pionera en abrir sus datos fue el Ayuntamiento de Zaragoza, con sus Datos de Zaragoza. El catálogo incluye cientos de conjuntos datos en formato abierto y una decena en formato semántico: puntos de interés turístico, organigrama, trámites y servicios, direcciones de Zaragoza y ofertas de empleo, entre otros."</p>
+                <a href="http://e-libros.fundacion.telefonica.com/sie10/aplicacion_sie.html" title="Enlace Exterior">Más Información <span class="oculto">sobre informe 2010 Sociedad de la información</span></a>
+                <h4>2011: Revista Carta Local(nº 232, ene. 2011) </h4>
+                <p>Editada por la Federación Española de Municipios y Provincias, en un estudio realizado por el Observatorio de Accesibilidad de sitios Web, sobre una muestra de 70 páginas y portales, colocan a la Web del Ayuntamiento de Zaragoza "próxima a la excelencia, con una calificación de 9,07 puntos, siendo la media de las webs analizadas de 6,5. </p>
+                <a href="http://www.femp.es/files/842-240-fichero/Carta%20Local%20nº%20232,%20enero%202011.pdf" class="pdf">Más Información <span class="oculto">Documento en formato pdf</span></a>
+                <h4>2011: Claves 2011. Infotecnologías, Sociedad y Empresa.</h4>
+                <h4>Win-Win Consultores</h4>
+                <p>Esta publicación sintetiza un trabajo de análisis que se basa en la identificación de un pequeño conjunto de herramientas, conceptos y claves para la actuación en el ámbito de la Sociedad en Red. En el mismo se abordan conceptos como el de "Gobierno Abierto", Open Data y la reutilización de la información en poder del sector publico, entre otras cosas.</p>
+                <p>En el apartado "Reutilización de la información del sector público (ISP) Condiciones de reutilización (tarifas y licencias)", se menciona:</p>
+                <p>"Todos los conjuntos de datos que ofrece el Ayuntamiento de Zaragoza se publican bajo los términos de licencia-tipo de reutilización al amparo de lo dispuesto en los artículos 4, 8 y 9 de la Ley 37/2007, de 16 de diciembre de reutilización de la información del sector público."</p>
+            </div>
+            <h2 class="tab-title" aria-expanded="false" data-target="#calidad" data-toggle="collapse">Calidad</h2>
+            <div id="calidad" role="tabpanel" sede:class="tab-pane active">
+                <h3>2003: Carta de Servicios</h3>
+                <p>Desde el 2003 dentro de la Política de Calidad del Ayuntamiento de Zaragoza, la Web Municipal pone a disposición de la ciudadanía su Carta de Servicios, informando de los servicios que se prestan a través de zaraoza.es, y de los compromisos que el ayuntamiento ha adquirido a la hora de prestarlos. </p>
+                <a href="https://www.zaragoza.es/ciudad/gestionmunicipal/calidad/web/default.htm">Consulte Carta de Servicios</a>
+                <h3>2007: Certificación AENOR</h3>
+                <p>La accesibilidad de www.zaragoza.es está certificada por AENOR desde 2007 en el que se le concedió la <a href="http://www.aenor.es/aenor/certificacion/resp_social/accesibilidad_tic.asp" title="Enlace exterior">Certificación de Accesibilidad TIC</a> según Norma UNE 139803 Requisitos de accesibilidad para contenidos Web con Nivel de accesibilidad AA. Y desde entonces todos los años la Unidad de Gestión de la Web ha superado la auditoría, renovando así la certificación.</p>
+                <p>El tener un Sistema de Gestión de Accesibilidad certificado, conlleva una serie de ventajas en la gestión de la Sede Electrónica: simplificación del desarrollo, ahorro de costes, mejora de la indexación, mejora del acceso en general, facilita la adaptación de contenidos a los diferentes dispositivos y aumento de usabilidad. 2010 :Lengua de Signos El Ayuntamiento de Zaragoza y la Fundación ASZA (Agrupación de personas sordas de Zaragoza y Aragón) adoptó los contenidos fundamentales de la Web Municipal a la lengua de signos.</p>
+                <p>Un avance que hace que Zaragoza.es sea accesible a todos los colectivos sociales, en especial, a aquellos con alguna discapacidad sensorial.</p>
+            </div>
+            <h2 class="tab-title" aria-expanded="false" data-target="#datos" data-toggle="collapse">Datos abiertos</h2>
+            <div id="datos" role="tabpanel" sede:class="tab-pane active">
+                <p>La <strong>Web Sem&#225;ntica</strong> utiliza esencialmente <a shape="rect" title="Se va a abrir enlace externo" href="http://www.w3.org/RDF/">RDF</a>,<a shape="rect" title="Se va a abrir enlace externo" href="http://www.w3c.org/sparql/"> SPARQL</a>, y <a shape="rect" title="Se va a abrir enlace externo" href="http://www.w3.org/2004/OWL/">OWL</a>, mecanismos que ayudan a convertir la Web en una <strong>infraestructura global</strong> en la que es posible compartir, y reutilizar datos y documentos entre diferentes tipos de usuarios.</p>
+                <p>La informaci&#243;n generada desde las instancias p&#250;blicas, con la potencialidad que le otorga el desarrollo de la sociedad de informaci&#243;n, posee un gran inter&#233;s para las empresas a la hora de en sus &#225;mbitos de actuaci&#243;n, contribuir al crecimiento econ&#243;mico y la creaci&#243;n de empleo, y para los ciudadanos como elemento de transparencia y gu&#237;a para la participaci&#243;n democr&#225;tica. </p>
+                <p> Bas&#225;ndose en esto, el 16 de noviembre se decret&#243; la <strong>Ley 37/2007 sobre reutilizaci&#243;n de la informaci&#243;n del sector p&#250;blico</strong>, que pretende promover la puesta a disposici&#243;n de los documentos de inter&#233;s p&#250;blico a trav&#233;s de medios electr&#243;nicos. De esta forma, es importante que los datos municipales que sean susceptibles de ser publicados queden a disposici&#243;n del p&#250;blico en formato electr&#243;nico para as&#237; poder sacar un mayor rendimiento a toda la informaci&#243;n y fomentar la participaci&#243;n democr&#225;tica. </p>
+                <p> El Ayuntamiento de Zaragoza, a trav&#233;s de su<strong> iniciativa de datos abiertos  (datos.zaragoza.es) </strong>se suma a esta corriente que fomenta la reutilizaci&#243;n de informaci&#243;n del sector p&#250;blico. Este proyecto se considera como uno de los pioneros en todo el mundo en la utilizaci&#243;n de las<strong> tecnolog&#237;as Linked Data</strong> para representar y exponer los datos p&#250;blicos en formatos abierto, pudi&#233;ndose considerar como uno de los pocos que alcanzan el <em>m&#225;ximo nivel</em> en el baremo propuesto por <strong>Sir Tim Berners-Lee -Director del W3C- </strong>en la clasificaci&#243;n del estado de estas iniciativas a nivel mundial. </p>
+                <p><strong>Datos Abiertos Zaragoza</strong> es una iniciativa del Ayuntamiento de Zaragoza para el fomento de la reutilización de la información publicada en su web por parte de la ciudadanía, las empresas y otros organismos, lo que ofrece un aumento de la transparencia de la administración, el incremento de la participación ciudadana y la posibilidad de crecimiento económico en distintos sectores.</p>
+                <div class="text-center"><a class="btn btn-primary" href="http://datos.zaragoza.es">Portal de Datos Abiertos del Ayuntamiento de Zaragoza</a>
+                    <br/><span class="destacado text-info">Fecha Inicio: 2007</span></div>
+                <h3 class="linea_superior">Otros servicios a la Ciudadan&#237;a</h3>
+                <ul>
+                    <li> <a shape="rect" href="http://consultadatos.zaragoza.es/"> Consulta Ciudadana </a>. Dinos qu&#233; datos quieres y c&#243;mo.</li>
+                    <li><a shape="rect" href="https://www.zaragoza.es/sede/portal/datos-abiertos/servicio/catalogo/"> Cat&#225;logo de Datos Abiertos del Ayuntamiento de Zaragoza (desde 2010)</a> Estado del Cat&#225;logo (5) Linked Data. </li>
+                    <li> <a shape="rect" href="https://www.zaragoza.es/sede/portal/datos-abiertos/servicio/sparql">SPARQL</a> </li>
+                    <li> <a shape="rect" href="https://www.zaragoza.es/turruta/Turruta/index_Ruta">Planifica tu Visita: Un Visitante, una Ruta</a> (CRUZAR) (2007)</li>
+                    <li> Servicios <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/tecnologia/sede/listado_Risp?mime=application%2Frss%2Bxml">RSS</a> </li>
+                    <li> Servicios <a shape="rect" href="https://www.zaragoza.es/ciudad/sectores/tecnologia/sede/listado_Risp?mime=text%2Fxml%2Bgeorss">GEORSS</a></li>
+                </ul>
+                <h3>Reconocimientos</h3>
+                <p> <strong>Planifica tu Visita</strong> (Aplicaci&#243;n desarrollada en 2007)
+                    <br/> </p>
+                <p>Mediante una <a shape="rect" href="https://www.zaragoza.es/ciudad/risp/enlace/turismo/es/que-visitar/ontologia.htm">ontolog&#237;a</a> se ha definido un modelo de datos que permite integrar de forma coherente la informaci&#243;n disponible en las diferentes bases de datos y los servicios web de <span>IDEZar</span>, la <em>infraestructura de datos espaciales del Ayuntamiento de Zaragoza</em>. A trav&#233;s de una serie de adaptadores los datos se transforman al <strong>formato RDF </strong>y se combinan en un modelo sem&#225;ntico.
+                    <br/> </p>
+                <p>Es una aplicaci&#243;n elegida como
+                    <a shape="rect" title="Se va a abrir enlace externo" href="http://www.w3.org/2001/sw/sweo/public/UseCases/"> </a><strong><a shape="rect" title="Se va a abrir enlace externo" href="http://www.w3.org/2001/sw/sweo/public/UseCases/">Buena Pr&#225;ctica</a> por el W3C</strong></p>
+                <p> <strong>RISP Y Datos.zaragoza.es</strong> (2011)
+                    <br/> </p>
+                <p>Este proyecto se considera como uno de los <strong>pioneros </strong>en todo el mundo en la utilizaci&#243;n de las <strong>tecnolog&#237;as Linked Data</strong> para representar y exponer los datos p&#250;blicos en formatos abierto, pudi&#233;ndose considerar como uno de los pocos que alcanzan el m&#225;ximo nivel en el baremo propuesto por <strong>Sir Tim Berners-Lee -Director del W3C- </strong>en la clasificaci&#243;n del estado de estas iniciativas a nivel mundial. <strong><a shape="rect" href="https://www.w3.org/DesignIssues/LinkedData.html">5 Estrellas, Linked Data</a>.</strong></p>
+            </div>
+             <h2 class="tab-title" aria-expanded="false" data-target="#calidad" data-toggle="collapse">Calidad</h2>
+            <div id="calidad" role="tabpanel" sede:class="tab-pane active">
+                <h3>2003: Carta de Servicios</h3>
+                <p>Desde el 2003 dentro de la Política de Calidad del Ayuntamiento de Zaragoza, la Web Municipal pone a disposición de la ciudadanía su Carta de Servicios, informando de los servicios que se prestan a través de zaraoza.es, y de los compromisos que el ayuntamiento ha adquirido a la hora de prestarlos. </p>
+                <a href="https://www.zaragoza.es/ciudad/gestionmunicipal/calidad/web/default.htm">Consulte Carta de Servicios</a>
+                <h3>2007: Certificación AENOR</h3>
+                <p>La accesibilidad de www.zaragoza.es está certificada por AENOR desde 2007 en el que se le concedió la <a href="http://www.aenor.es/aenor/certificacion/resp_social/accesibilidad_tic.asp" title="Enlace exterior">Certificación de Accesibilidad TIC</a> según Norma UNE 139803 Requisitos de accesibilidad para contenidos Web con Nivel de accesibilidad AA. Y desde entonces todos los años la Unidad de Gestión de la Web ha superado la auditoría, renovando así la certificación.</p>
+                <p>El tener un Sistema de Gestión de Accesibilidad certificado, conlleva una serie de ventajas en la gestión de la Sede Electrónica: simplificación del desarrollo, ahorro de costes, mejora de la indexación, mejora del acceso en general, facilita la adaptación de contenidos a los diferentes dispositivos y aumento de usabilidad. 2010 :Lengua de Signos El Ayuntamiento de Zaragoza y la Fundación ASZA (Agrupación de personas sordas de Zaragoza y Aragón) adoptó los contenidos fundamentales de la Web Municipal a la lengua de signos.</p>
+                <p>Un avance que hace que Zaragoza.es sea accesible a todos los colectivos sociales, en especial, a aquellos con alguna discapacidad sensorial.</p>
+            </div>
+            <h2 class="tab-title" aria-expanded="false" data-target="#memorias" data-toggle="collapse">Memorias de Gestión</h2>
+            <div id="memorias" role="tabpanel" sede:class="tab-pane active">
+<ul><li><a href="/sede/servicio/publicacion-municipal/11394/">2016</a></li><li><a href="/sede/servicio/publicacion-municipal/11395/">2015</a></li></ul>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

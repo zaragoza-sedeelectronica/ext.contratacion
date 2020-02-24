@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Vocabularios. Datos Abiertos" 
+               description="Recursos de información en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza: ontologías y vocabularios de representación de datos abiertos "
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, datos abiertos, derecho a reutilizar información, sector público, catálogo de datos, conjunto de datos, DCAT, Norma Técnica de Interoperabilidad, NTI, SPARQL, API Zaragoza, IDEZar, urbanismo, infraestructuras, transportes, medio ambiente, sociedad y bienestar, economía, hacienda local, cultura, ocio, ciencia y tecnología, demografía, turismo, deporte, seguridad pública, comercio, educación, empleo, salud, legislación local, justicia, city, council, Saragossa, electronic site, local government,open government, citizen-authority relation, open data, right to reuse information, public sector, dataset, RISP, technical interoperability standards, town planning, infrastructure, transport, environment, society and welfare, economics, local authority finances, culture, leisure, science and technology, demography, tourism, sports, public safety, trade, education, employment, health, local legislation, justice"/>
+    <style>
+        @media (min-width: 768px) { 
+            .card{
+                min-height: 24em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Vocabularios Disponibles</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <h3>Vocabularios genéricos</h3>
+                    <hr class="sm"/>
+                    <ul>
+                        <li>
+                            <a href="http://schema.org/">schema</a>
+                        </li>
+                        <li>
+                            <a href="http://www.w3.org/TR/REC-rdf-syntax/">rdf</a>
+                        </li>
+                        <li>
+                            <a href="http://www.w3.org/TR/rdf-schema/">rdfs</a>
+                        </li>
+                        <li>
+                            <a href="http://www.w3.org/TR/owl-guide/">owl</a>
+                        </li>
+                        <li>
+                            <a href="http://www.w3.org/TR/xmlschema-0/">xsd</a>
+                        </li>
+                        <li>
+                            <a href="http://geonames.org/ontology#">geonames</a>
+                        </li>
+                        <li>
+                            <a href="http://www.w3.org/2004/02/skos/core#">skos</a>
+                        </li>
+                        <li>
+                            <a href="http://purl.org/dc/elements/1.1/">dc</a>
+                        </li>
+                        <li>
+                            <a href="http://purl.org/dc/terms/">dcterms</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <h3>Vocabularios específicos</h3>
+                    <hr class="sm"/>
+                    <ul>
+                        <li>
+                            <a href="./vocabularios/agenda">Agenda</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/alojamientos">Alojamientos</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/subvenciones">Subvenciones</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/calidad-aire">Calidad del aire</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/contsem">Perfil de Contratante</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/monumentos">Monumentos</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/callejero">Callejero Semántico</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/dcat">Catálogo de conjuntos de datos</a>
+                        </li>
+                        <li>
+                            <a href="http://www.w3.org/TR/vocab-org/">Estructura de un Organismo Público</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/empleo-publico">Oferta de Empleo Público</a>
+                        </li>
+                        <li>
+                            <a href="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio/index-en.html">Localización</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/tramites-servicios">Trámites y Servicios</a>
+                        </li>
+                          <li>
+                            <a href="./vocabularios/equipamientos">Equipamientos</a>
+                        </li><li>
+                            <a href="./vocabularios/aparcamientos">Aparcamientos</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/lugares">Lugares de interés turístico</a>
+                        </li>
+                        <li>
+                            <a href="./vocabularios/cruzar">Un Visitante, una ruta</a>
+                            <!--/* <a href="https://www.zaragoza.es/ciudad/risp/enlace/turismo/es/que-visitar/ontologia.htm">Un Visitante, una ruta</a> */-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

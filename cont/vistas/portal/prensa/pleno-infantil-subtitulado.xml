@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="XV edición del Pleno Infantil Municipal" description="Pleno: concejales por orden de elección, 2018" author="" last-modified="Fri Oct 16 00:00:00 CEST 2015" keywords="ayuntamiento, ciudad, administración local, Pleno Municipal, concejales, estructura institucional, relación administración-administrado"/>
+</head>
+
+<body>
+    <sede:content>
+        <h2>XV Pleno Infantil Municipal </h2>
+        <div class="alert alert-info"><a href="pleno-infantil">Acceso a Video sin Subtitulado</a></div>
+      
+        <div class="row">
+          
+        <!--    <div class="col-md-12 embed-responsive embed-responsive-16by9">
+                <iframe src="https://jornadasfeministaszaragoza.nirestream.com/external/1373/percent" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>-->
+      <div class="embed-responsive embed-responsive-16by9"> 
+	
+ <script type="text/javascript">
+	try {
+		if((typeof navigator.plugins == "undefined" || navigator.plugins.length == 0) ? !!(new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) : navigator.plugins["Shockwave Flash"]) {
+			document.write('<iframe src="https://zaragozatv.nirestream.com/external/1431/legacy" allowfullscreen="" width="100%" height="100%" frameborder="0"><a href="/ciudad/organizacion/plenos/activ-plenarias.htm">Sesiones Plenarias</a></iframe>');
+
+		} else {
+			document.write('<iframe src="https://zaragozatv.nirestream.com/external/1431/percent" allowfullscreen="" width="100%" height="100%" frameborder="0"><a href="/ciudad/organizacion/plenos/activ-plenarias.htm">Sesiones Plenarias</a></iframe>');
+		}
+	} catch (e) {
+	console.log(e);
+			document.write('<iframe src="https://zaragozatv.nirestream.com/external/1431/percent" allowfullscreen="" width="100%" height="100%" frameborder="0"><a href="/ciudad/organizacion/plenos/activ-plenarias.htm">Sesiones Plenarias</a></iframe>');
+	} 
+	</script>
+
+</div>
+</div>
+    </sede:content>
+</body>
+
+</html>

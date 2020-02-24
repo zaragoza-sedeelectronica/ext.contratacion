@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Banco de Actividades. Confirmación de solicitud de realización de Actividad" description="Catálogo del Banco de Actividades Juveniles" author="Unidad de gestión de la web municipal" keywords="actos, concierto, actividades, cursos" />
+    <style type="text/css">
+        /* ELIMINAR DE main.css */
+
+        body {
+            padding-top: 67px;
+        }
+
+        @media (max-width: 767px) {
+            .thumbnail.overlay {
+                background-color: #FFF;
+            }
+        }
+
+        .card-description {
+            background: #EEE;
+            border-left: 3px solid #006b87;
+        }
+
+        #event-detail .panel-default>.panel-heading {
+            font-weight: bold;
+            color: #FFF;
+            background: #006b87;
+        }
+
+        #event-detail .panel-heading a:after {
+            color: #FFF;
+        }
+
+        #event-detail .panel {
+            border-color: #0e3944;
+        }
+
+        .profile-content h3 {
+            margin: 15px 0 10px 0!important;
+        }
+
+        .stats {
+            width: 100%;
+            margin: 30px auto;
+            text-align: center;
+            display: table;
+        }
+
+        .stats .statis {
+            display: table-cell;
+            width: 25%;
+            vertical-align: top;
+        }
+
+        .ibox-content {
+            background-color: #FFFFFF;
+            color: inherit;
+            padding: 0px 20px 20px 20px;
+        }
+
+        .feed-activity-list .feed-element {
+            border-bottom: 1px solid #E7EAEC;
+        }
+
+        .feed-element {
+            padding: 15px 0 15px 0;
+        }
+
+        .feed-element img.img-circle,
+        .dropdown-messages-box img.img-circle {
+            width: 38px;
+            height: 38px;
+        }
+
+        .feed-element &gt;
+        .pull-left {
+            margin-right: 10px;
+        }
+
+        .feed-element .well {
+            border: 1px solid #E7EAEC;
+            box-shadow: none;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            padding: 10px 20px;
+            font-size: 11px;
+            line-height: 16px;
+        }
+
+        .img-circle {
+            border-radius: 50%;
+        }
+
+        .text-navy {
+            color: #1AB394;
+        }
+
+        .feed-element .actions {
+            margin-top: 10px;
+        }
+
+        .feed-photo {
+            height: 180px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .list-block {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .list-activity {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-md-12">
+                <th:block th:include="fragmentos/error" />
+                <div>
+					<p>
+						Por favor, ponte en contacto con el equipo del Banco de Actividades del Servicio de Juventud
+						del Ayuntamiento de Zaragoza para conocer el estado de la solicitud.
+					</p>
+				</div>
+             </div>
+             <br/>
+             <div class="col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-4">
+                 <a class="btn btn-primary" th:href="@{/servicio/actividades/juvenil/banco/}">Volver al Banco de Actividades</a>
+             </div>
+             <br/>
+        </div>
+        <th:block th:include="servicio/actividades/juvenil/banco/footer-banco" />
+    </sede:content>
+</body>
+
+</html>

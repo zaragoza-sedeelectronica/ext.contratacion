@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Calidad. Cartas de Servicios"
+                description="Información relativa a los cartas de servicio del Ayuntamiento de Zaragoza."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, servicios públicos, cartas de servicios, relación administración-administrado">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Cartas de Servicio
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <main id="main">
+                        <h2>Presentación</h2>
+                        <h3>¿QUÉ ES UNA CARTA DE SERVICIOS?</h3>
+                        <p>Una Carta de Servicios es un documento por el que una unidad del Ayuntamiento de Zaragoza
+                            informa a los ciudadanos sobre:
+                        </p>
+                        <ul>
+                            <li>Los servicios que presta y la forma de prestarlos.</li>
+                            <li>Los compromisos de calidad que asume para proporcionar un mejor servicio.</li>
+                        </ul>
+                        <p>
+                            <strong>Criterios de Actualización:</strong>
+                            Las Cartas de Servicios serán evaluadas y revisadas anualmente, mediante grupos de trabajo
+                            que tendrán en cuenta las opiniones presentadas por los ciudadanos.
+                        </p>
+                        <h3>¿A QUIÉN VA DIRIGIDA?</h3>
+                        <p>El Ayuntamiento de Zaragoza es una institución que presta servicio a los ciudadanos, por lo
+                            que su gestión se orienta a la satisfacción de sus necesidades y expectativas.
+                            <br/>
+                            <br/>
+                            Por este motivo, las Cartas de Servicios se dirigen a los usuarios de los servicios.
+                        </p>
+                        <h3>¿CUÁLES SON LOS OBJETIVOS DE LAS CARTAS DE SERVICIOS?</h3>
+                        <p>La finalidad de la Carta de Servicios es:</p>
+                        <ul>
+                            <li>Acercar el Ayuntamiento a los ciudadanos.</li>
+                            <li>Informar a los ciudadanos sobre los servicios prestados por las unidades municipales.
+                            </li>
+                            <li>Expresar el esfuerzo del Ayuntamiento por la mejora de los servicios municipales.</li>
+                            <li>Establecer un nivel adecuado de calidad de los servicios y controlar su mantenimiento.
+                            </li>
+                            <li>Posibilitar que los ciudadanos opinen sobre el funcionamiento de los servicios
+                                municipales.
+                            </li>
+                        </ul>
+                        <h3>¿CUÁLES SON LOS CONTENIDOS DE LAS CARTAS DE SERVICIOS?</h3>
+                        <ul>
+                            <li>El nombre y cometidos de la unidad que la emite.</li>
+                            <li>Los servicios prestados por esa unidad.</li>
+                            <li>Los compromisos de calidad asumidos.</li>
+                            <li>Información sobre la forma de participación de los usuarios.</li>
+                            <li>Direcciones y teléfonos de la unidad.</li>
+                            <li>Horario</li>
+                        </ul>
+                    </main>
+                </div>
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <main>
+                        <h2>Relación de Cartas de Servicio</h2>
+                        <ul>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/ag21/default.htm">Agenda 21 Local</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/ciudadano.htm">Atención al Ciudadano</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/cenciv/">Centros Cívicos</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/may/default.htm">Centros de Convivencia para
+                                    Mayores
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/deporte.htm">Deporte</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/cem/">Estadística y Padrón</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/formacion.htm">Formación y Educación</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/hacienda.htm">Hacienda</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/juventud.htm">Juventud</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/mus/">Museos</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/mujer/">Mujer</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/servicios.htm">Servicios Públicos</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/sociales.htm">Servicios Sociales</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/urb/default.htm">Urbanismo</a>
+                            </li>
+                            <li>
+                                <a href="/ciudad/gestionmunicipal/calidad/web/default.htm">Web Municipal</a>
+                            </li>
+                        </ul>
+                    </main>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

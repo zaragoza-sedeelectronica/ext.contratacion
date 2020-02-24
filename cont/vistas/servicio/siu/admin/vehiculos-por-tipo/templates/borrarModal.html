@@ -1,0 +1,31 @@
+<div id="modalRegistroBorrar">
+    <div class="modal-header">
+        <h3>Eliminar registro</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <fieldset class="form-horizontal">
+                 <div class="form-group" ng-repeat="registro in registros">
+                    <div class="col-sm-2">
+                        <input class="form-control" id="delId" name="delId" type="text" ng-model="registro.id" value="{{ registro.id }}" disabled/>
+                    </div>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="delType" name="delType" ng-model="registro.tipo_vehiculo" value="{{ registro.tipo_vehiculo }}" disabled/>
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="number" id="delYear" name="delYear" ng-model="registro.anyo" value="{{ registro.anyo }}" disabled/>
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="number" id="delMonth" name="delMonth" ng-model="registro.mes" value="{{ registro.mes }}" disabled/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <h4>Esta a punto de borrar los registros seleccionados.</h4>
+        <p>¿Desea continuar?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="borrar()">Borrar</button>
+        <button type="button" class="btn btn-warning" ng-click="cancelar()">Cancelar</button> 
+    </div>
+</div>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es" th:object="${registro.body}" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Banco de Actividades'" description="Catálogo del Banco de Actividades Juveniles" author="Unidad de gestión de la web municipal" keywords="actos, concierto, actividades, cursos" />
+   
+    <style type="text/css">
+        /* ELIMINAR DE main.css */
+
+        body {
+            padding-top: 67px;
+        }
+
+        @media (max-width: 767px) {
+            .thumbnail.overlay {
+                background-color: #FFF;
+            }
+        }
+
+        .card-description {
+            background: #EEE;
+            border-left: 3px solid #006b87;
+        }
+
+        #event-detail .panel-default>.panel-heading {
+            font-weight: bold;
+            color: #FFF;
+            background: #006b87;
+        }
+
+        #event-detail .panel-heading a:after {
+            color: #FFF;
+        }
+
+        #event-detail .panel {
+            border-color: #0e3944;
+        }
+
+        .profile-content h3 {
+            margin: 15px 0 10px 0!important;
+        }
+
+        .stats {
+            width: 100%;
+            margin: 30px auto;
+            text-align: center;
+            display: table;
+        }
+
+        .stats .statis {
+            display: table-cell;
+            width: 25%;
+            vertical-align: top;
+        }
+
+        .ibox-content {
+            background-color: #FFFFFF;
+            color: inherit;
+            padding: 0px 20px 20px 20px;
+        }
+
+        .feed-activity-list .feed-element {
+            border-bottom: 1px solid #E7EAEC;
+        }
+
+        .feed-element {
+            padding: 15px 0 15px 0;
+        }
+
+        .feed-element img.img-circle,
+        .dropdown-messages-box img.img-circle {
+            width: 38px;
+            height: 38px;
+        }
+
+        .feed-element &gt;
+        .pull-left {
+            margin-right: 10px;
+        }
+
+        .feed-element .well {
+            border: 1px solid #E7EAEC;
+            box-shadow: none;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            padding: 10px 20px;
+            font-size: 11px;
+            line-height: 16px;
+        }
+
+        .img-circle {
+            border-radius: 50%;
+        }
+
+        .text-navy {
+            color: #1AB394;
+        }
+
+        .feed-element .actions {
+            margin-top: 10px;
+        }
+
+        .feed-photo {
+            height: 180px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .list-block {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .list-activity {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-md-9 col-md-push-3" id="event-detail">
+                <th:block th:include="fragmentos/error" />
+                <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" th:attr="about=${registro.body.uri}" vocab="http://schema.org/" typeof="Event">
+                    <!--/* Título */-->
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h2 th:text="${registro.body.title}" property="name"></h2>
+                            <!--/* Ámbitos */-->
+                            <ul class="list-inline margin-b1em">
+                                <li class="nopadding" th:if="*{scope}">
+                                    <a th:href="'/sede/servicio/actividades/juvenil/banco/query?fq=scope%3A(&quot;'+*{#utils.toUnicode(scope.title)}+'&quot;)'" th:text="*{scope.title}" class="label label-primary margin-r05em"></a>
+                                    <a th:text="*{durationType}" class="label label-warning margin-r05em"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2" th:if="*{fundingPercentage}AND(*{fundingPercentage}>0)">
+                            <h2><a th:href="@{/servicio/actividades/juvenil/banco/{id}/solicitar(id=${registro.body.id})}" class="btn btn-warning btn-sm pull-right"><span class="far fa-calendar-check" aria-hidden="true"></span> Solicitar</a></h2>
+                        </div>
+                    </div>
+                    <div class="row" th:if="*{fundingPercentage}AND(*{fundingPercentage}>0)">
+                        <div class="col-md-9 alert alert-warning btn-sm" role="alert" style="color: #db0808;" >
+                            <strong>Antes de pulsar</strong> el botón de solicitar tienes que haber hablado con la entidad que imparte la actividad y tener claros todos los detalles de la solicitud
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-push-9 text-center">
+                            <!--/* Imagen asociada a la actividad (Prioridad ++) */-->
+                            <img th:if="*{image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="*{image}" alt="" />
+                        </div>
+                        <div class="col-md-9 col-md-pull-3">
+                            <!--/* Descripción */-->
+                            <div class="card card-description margin-b05em" th:if="*{description}" property="description" th:utext="*{description}"></div>
+                            <!--/* PANELES */-->
+                            <div class="panel-group" id="event-accordion" role="tablist" aria-multiselectable="true">
+                                <!--/* Información de la actividad */-->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="organizer-title">
+                                        <h3 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#activity-type" aria-expanded="true" aria-controls="activity-type" class="btn-block">
+                                                <span class="fa fa-info-circle" aria-hidden="true"></span> Información de la actividad
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="activity-type" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" role="tabpanel" aria-labelledby="activity-type-title">
+                                        <div class="panel-body">
+                                            <div>
+                                                <!--/* Tipo de actividad */-->
+                                                <div>
+                                                    <th:block th:if="*{totalHours}">
+                                                        <strong>Total horas: </strong><th:block th:text="*{totalHours} + ' h. '"></th:block>
+                                                    </th:block>
+                                                    <th:block th:if="*{maxSessions}">
+                                                        <strong>Máx. sesiones: </strong><th:block th:text="*{maxSessions} + '. '"></th:block>
+                                                    </th:block>
+                                                </div>
+                                                <!--/* Calendario y horario */-->
+                                                <div>
+                                                    <div th:if="*{months}">
+                                                        <th:block>
+                                                            <strong>Meses: </strong>
+                                                            <!--th:block th:text="*{months} + '.'"></th:block-->
+                                                            <th:block th:text="*{getMonthsText()} + '.'"></th:block>
+                                                        </th:block>
+                                                    </div>
+                                                    <div>
+                                                        <th:block th:if="*{normalizedTime}">
+                                                            <strong>Horario normalizado (lunes a sábado hasta las 22h).</strong>
+                                                        </th:block>
+                                                    </div>
+                                                    <div>
+                                                        <th:block th:if="*{nightTime}">
+                                                            <strong>Horario nocturno (viernes y sábados a partir de las 22h).</strong>
+                                                        </th:block>
+                                                    </div>
+                                                    <div>
+                                                        <th:block th:if="*{holidayTime}">
+                                                            <strong>Horario festivo (festivos a cualquier hora).</strong>
+                                                        </th:block>
+                                                    </div>
+                                                </div>
+                                                <!--/* Requisitos */-->
+                                                <div>
+                                                    <div th:if="*{minParticipants}OR*{maxParticipants}">
+                                                        <th:block>
+                                                            <strong>Número de participantes requerido:</strong>
+                                                        </th:block>
+                                                        <span th:if="*{minParticipants}AND*{maxParticipants}">
+                                                            <th:block>
+                                                                entre <th:block th:text="*{minParticipants}"></th:block>
+                                                            </th:block>
+                                                            <th:block>
+                                                                y <th:block th:text="*{maxParticipants} + '.'"></th:block>
+                                                            </th:block>
+                                                        </span>
+                                                        <span th:if="*{minParticipants}AND!*{maxParticipants}">
+                                                            <th:block>
+                                                                mínimo <th:block th:text="*{minParticipants} + '.'"></th:block>
+                                                            </th:block>
+                                                        </span>
+                                                        <span th:if="!*{minParticipants}AND*{maxParticipants}">
+                                                            <th:block>
+                                                                máximo <th:block th:text="*{maxParticipants} + '.'"></th:block>
+                                                            </th:block>
+                                                        </span>
+                                                    </div>
+                                                    <div th:if="*{minAge}OR*{maxAge}">
+                                                        <th:block>
+                                                            <strong>Edades:</strong>
+                                                        </th:block>
+                                                        <span th:if="*{minAge}AND*{maxAge}">
+                                                            <th:block>
+                                                                entre <th:block th:text="*{minAge}"></th:block>
+                                                            </th:block>
+                                                            <th:block>
+                                                                y <th:block th:text="*{maxAge} + ' años.'"></th:block>
+                                                            </th:block>
+                                                        </span>
+                                                        <span th:if="*{minAge}AND!*{maxAge}">
+                                                            <th:block>
+                                                                mínimo <th:block th:text="*{minAge} + ' años.'"></th:block>
+                                                            </th:block>
+                                                        </span>
+                                                        <span th:if="!*{minAge}AND*{maxAge}">
+                                                            <th:block>
+                                                                máximo <th:block th:text="*{maxAge} + ' años.'"></th:block>
+                                                            </th:block>
+                                                        </span>
+                                                    </div>
+                                                    <!--div th:if="*{accessible}">
+                                                        <strong>Sin barreras.</strong>
+                                                    </div-->
+                                                    <div th:if="*{infrastructureNeeded}AND*{infrastructureDescription}">
+                                                        <strong>Infraestructura necesaria: </strong>
+                                                        <th:block th:utext="*{infrastructureDescription}"></th:block>
+                                                    </div>
+                                                </div>
+                                                <!--/* Coste */-->
+                                                <div>
+                                                    <div>
+                                                        <th:block th:if="*{hourPrice}">
+                                                            <strong>Precio/hora: </strong><th:block th:utext="*{hourPrice} + ' &amp;euro;/h '"></th:block>
+	                                                        <th:block th:if="*{entity.vatPercentage} AND *{entity.vatPercentage > 0}"
+	                                                        	th:utext="' + ' + *{entity.vatPercentage} + '% de IVA. (' + *{#numbers.formatDecimal((hourPrice * ((entity.vatPercentage + 100)/100)),0,2,'POINT')} + ' &amp;euro;/h IVA incluido)'">
+                                                        	</th:block>
+                                                        </th:block>
+                                                        <th:block th:if="*{totalPrice}">
+                                                            <strong>Precio total: </strong><th:block th:utext="*{totalPrice} + ' &amp;euro; '"></th:block>
+	                                                        <th:block th:if="*{entity.vatPercentage} AND *{entity.vatPercentage > 0}"
+	                                                        	th:utext="' + ' + *{entity.vatPercentage} + '% de IVA. (' + *{#numbers.formatDecimal((totalPrice * ((entity.vatPercentage + 100)/100)),0,2,'POINT')} + ' &amp;euro; IVA incluido)'"></th:block>
+                                                        </th:block>
+                                                        <th:block th:if="*{participantPrice}">
+                                                            <strong>Precio por participante: </strong><th:block th:utext="*{participantPrice} + ' &amp;euro;/participante'"></th:block>
+	                                                        <th:block th:if="*{entity.vatPercentage} AND *{entity.vatPercentage > 0}"
+	                                                        	th:utext="' + ' + *{entity.vatPercentage} + '% de IVA. (' + *{#numbers.formatDecimal((participantPrice * ((entity.vatPercentage + 100)/100)),0,2,'POINT')} + ' &amp;euro; IVA incluido)'"></th:block>
+                                                        </th:block>
+                                                        <th:block th:if="!*{entity.vatPercentage} OR *{entity.vatPercentage == 0}">(Actividad exenta de IVA)</th:block>
+                                                    </div>
+                                                    <div th:if="*{materialPrice}">
+                                                        <th:block>
+                                                            <strong>Material fungible: </strong><th:block th:utext="*{materialPrice} + ' &amp;euro;. '"></th:block>
+                                                        </th:block>
+                                                    </div>
+                                                    <div>
+                                                        <th:block th:if="*{fundingPercentage}AND(*{fundingPercentage}>0)">
+                                                            Este precio se verá reducido en un <span th:text="*{fundingPercentage}"></span>% si cumple las siguientes <a role="button" data-toggle="collapse" href="#funding-conditions" aria-expanded="true" aria-controls="funding-conditions">condiciones</a>.
+                                                        </th:block>
+                                                        <th:block th:if="!*{fundingPercentage}OR(*{fundingPercentage}==0)">
+                                                            Precio sin posibilidad de reducción.
+                                                        </th:block>
+                                                        <div id="funding-conditions" class="panel-collapse collapse" role="tabpanel" aria-labelledby="activity-type-title">
+                                                            <ul>
+                                                                <li>La actividad tiene que ser abierta a la participación de la juventud de Zaragoza.</li>
+                                                                <li>La actividad tiene que incluirse en la Agenda juvenil (enlace).</li>
+                                                                <li>En los materiales de difusión de la actividad debe incluirse el logo del Servicio de Juventud.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--/* Entidad ofertante */-->
+                                <div class="panel panel-default" th:if="*{entity}">
+                                    <div class="panel-heading" role="tab" id="entity-title">
+                                        <h3 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#entity" aria-expanded="true" aria-controls="entity" class="btn-block">
+                                                <span class="fa fa-address-card-o" aria-hidden="true"></span> Entidad ofertante
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="entity" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" role="tabpanel" aria-labelledby="organizer-title">
+                                        <div class="panel-body">
+                                            <!--/* Entidad ofertante */-->
+                                            <div>
+                                                <a class="destacado" href="#/" th:text="*{entity.title} + '. '" property="name"></a>
+                                                <th:block th:if="*{entity.addressStreet}" th:text="*{entity.addressStreet} + '. '"></th:block>
+                                                <th:block th:if="*{entity.telephone}" th:text="'Tel. ' + *{entity.telephone}" ></th:block>
+                                                <br/>
+                                                <a th:if="*{entity.email}" th:href="'mailto:' + *{entity.email}" th:text="*{entity.email}"></a>
+                                                <th:block th:if="*{entity.email} and *{entity.url}" th:text="' - '"></th:block>
+                                                <a th:if="*{entity.url}" th:href="*{entity.url}" th:text="*{entity.url}"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/* ./panel-group */-->
+                        </div>
+					</div>
+                </div>
+            </div>
+            <!-- // ToDo - Implementar interfaz definitivo de banco/resultadoFacetas -->
+            <sede:solr q="*:*" rows="0" start="0" fragment="servicio/actividades/juvenil/banco/resultadoFacetas" class="org.sede.servicio.actividades.entity.BancoActividad" facetas="entity_s,ambito_s,duracion_s" facetSort="index"/>
+        </div>
+        <th:block th:include="servicio/actividades/juvenil/banco/footer-banco" />
+    </sede:content>
+</body>
+
+</html>

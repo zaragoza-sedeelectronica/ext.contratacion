@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Casa de las Culturas" description="El portal de la Casa de las Culturas ofrece recursos de información dirigidos a inmigrantes y minorias étnicas: trámites y servicios, cursos-talleres, parques de mayores de la ciudad, Red de Ciudades Amigables, Servicio de Comedores para mayores, bodas de oro, etc. Conozca Red de Centros de Convivencia para Mayores y los proyectos de voluntarios existentes para la dinamización de aulas y para parques. Acceso al Blog del Mayor. A través de ayúdanos a mejorar, el ciudadano podrá expresar todas las quejas y sugerencias que tenga." author="" keywords="ayuntamiento, ciudad, Zaragoza, España, Centros de Convivencia, equipamientos colectivos,formalidades administrativas, administración electrónica, relación administración-administrado, Organización Mundial de la Salud, Red de Ciudades Amigables, participación social, comedores, zonas verdes, actividades, cursos, bodas de oro, voluntariado social, informática,  blog, servicio de quejas y sugerencias, council, city, Saragossa, Spain, elderly day care centres, community facilities, administrative formalities, electronic government, citizen-authority relations, World Health Organisation, Global Network of Age-Friendly Cities, social participation, canteen's services, green area, activities, courses, golden wedding anniversary, voluntary work, computer systems, complaints and suggestions service">
+    </sede:meta>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+	  body {
+        padding-top: 57px;
+     }
+	        .fase {
+            background-color: #202020;
+            color: #fff;
+            font-weight: bold;
+        }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+   .fnd-turismo {
+        background: #d68100;
+    }
+
+    .full-screen-box {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 2px;
+        padding: 20px;
+        margin-bottom: 14px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    }
+
+    .full-screen-box {
+        border-left: 3px solid #55a7b3;
+    } 
+    .fa {
+        vertical-align: middle;
+    }
+
+    @media (min-width: 768px) {
+        .list-aviso>li {
+            min-height: 16em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+     <!-- 
+ <div>
+      
+ 
+				 <img class="img-responsive full-width" src="/cont/vistas/portal/derechos-sociales/casa-culturas/img/cabecera-casaculturas.gif"/>
+                 </div>-->
+				 	
+                 
+                  
+    	     	 <div class="row">
+            <div class="col-md-12">
+			
+			<div class="col-md-6"> 
+				        <h2 class="color-agenda">Destacados</h2>
+                    <hr class="sm" />
+                    <sede:aviso portal="Casa Culturas" nresultados="4" clase="col-xs-12 col-sm-6"> </sede:aviso> 
+					</div>
+				 <div class="col-sm-6">  
+                   
+  
+                            <h2 class="titulo-dest color-agenda"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Hoy</h2>
+                            <sede:calendario-agenda listado="S" carpeta="/sede/portal/bibliotecas-municipales/servicio/cultura/evento/calendar" portal="13"></sede:calendario-agenda>
+                       
+                </div>
+       
+       
+					 
+					
+ 
+
+                 
+                </div>
+          
+       
+        </div> 
+ 
+
+				
+				
+				 
+				
+				 
+				
+				
+        <div class="linea"></div>
+		
+		
+		 <div class="row">
+	<div class="col-md-12"> 
+	
+	
+	
+	
+	
+	<h3 class="color-agenda">Te Ofrecemos</h3>                     <hr class="sm" />
+		<div class="row">
+			 
+			<div class="col-xs-6 col-sm-2 text-center"><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicios#atencion">
+				<img width="150" src="/cont/vistas/portal/derechos-sociales/casa-culturas/img/icono-atencion-asesoramiento.png"/></a>
+				 
+				 </div>
+
+			<div class="col-xs-6 col-sm-2 text-center"><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicios#interculturalidad">
+				<img width="150"  src="/cont/vistas/portal/derechos-sociales/casa-culturas/img/icono-interculturalidad.png"/></a>
+				
+				 </div>
+
+			<div class="col-xs-6 col-sm-2 text-center"><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicios#infancia">
+				<img width="150"  src="/cont/vistas/portal/derechos-sociales/casa-culturas/img/icono-infancia.png"/></a>
+				
+				 
+				 </div>
+			 
+			<div class="col-xs-6 col-sm-2 text-center"><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicios#diversidad">
+				<img width="150"  src="/cont/vistas/portal/derechos-sociales/casa-culturas/img/icono-diversidad.png"/></a>
+				 
+				 </div>
+
+			<div class="col-xs-6 col-sm-2 text-center"><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicios#asociacionismo">
+				<img width="150"  src="/cont/vistas/portal/derechos-sociales/casa-culturas/img/icono-asociacionismo.png"/></a>
+				 </div>
+
+			<div class="col-xs-6 col-sm-2 text-center"><a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicios#servicios">
+				<img width="150"  src="/cont/vistas/portal/derechos-sociales/casa-culturas/img/icono-servicios.png"/></a>
+				 </div>
+		</div>
+	</div>
+</div>
+
+	 <div class="linea"></div> 
+    	     
+		
+	   <div class="row">
+            <div class="col-md-12">
+                             
+			
+			
+			
+	 
+            
+       
+					
+					
+					 			<div class="col-md-6"> 
+				
+				 <h3 class="color-agenda">
+               De Interés
+                    </h3>
+              
+			       
+                    <hr class="sm" />
+                    <ul class="list-unstyled row no-gutter text-center" role="menu">
+                       
+                        <li class="col-xs-12">
+                            <span class="fa fa-2x fa-cubes" aria-hidden="true"></span>
+                            <a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicio/tramite/dirigido/20">
+                                <h3 class="margin-v05em text-center">Trámites
+                    </h3></a>
+                        </li>
+                        <li class="col-xs-12">
+                            <span class="fa fa-2x fa-bullhorn" aria-hidden="true"></span>
+                            <a href="https://www.zaragoza.es/sede/portal/derechos-sociales/casa-culturas/servicio/premios-concursos/?materia.id=14&amp;historico=true">
+                                <h3 class="margin-v05em text-center">
+                        Convocatorias  
+                    </h3></a>
+                        </li>
+                    
+                    </ul>
+				
+				  </div>  <div class="col-md-6"> 
+                
+				
+			    <sede:equipamiento id="489" ocultos="imagen,mapa,tabs"></sede:equipamiento>
+             </div>			
+				  
+				    </div>  
+				  
+				  
+				  </div>	
+                
+           
+ 
+        
+    </sede:content>
+   
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Conjuntos de datos reutilizados. Datos Abiertos de Zaragoza" keywords="sede,web,risp,uri,reutilizador" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Conjuntos de datos utilizados</h2> 
+        <div class="pull-right"><a href="./new" class="btn btn-primary">Añadir registro</a></div>
+        <p>N&uacute;mero de registros: <th:block th:text="${resultado.body.totalCount}" /></p>
+        <dl th:each="registro : ${resultado.body.result}">
+            <dt class="card nomargin">
+                <th:block th:text="${registro.uri}" />
+            </dt>
+            <dd class="card">
+                <div class="pull-right">
+                    <a th:href="@{{id}/edit(id=${registro.id})}" class="btn btn-info">Modificar</a>
+                    <!--/*<button class="btn btn-warning">Eliminar</button>*/-->
+                </div>
+                <th:block th:utext="${registro.description}" />
+                <th:block th:text="${registro.dificultadModificar}" />
+            </dd>
+        </dl>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

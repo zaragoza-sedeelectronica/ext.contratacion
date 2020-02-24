@@ -1,0 +1,44 @@
+<div class="thumbnail nopadding" th:object="${registro}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+    <img th:if="*{imagen}" sede:rdf="*{prop('imagen')}" th:src="*{imagen}" th:class="${currentDevice.isMobile() ? 'img-responsive margin-auto' : 'full-width'}" alt="" />
+    <div class="caption fnd-gris-claro">
+        <ul class="list-unstyled small">
+            <li th:if="*{calle}" class="direccion">
+                <span class="fa fa-home"></span> <strong>Dirección:</strong>
+                <span th:text="*{calle}" />
+            </li>
+            <th:block th:if="*{tel}">
+                <li th:if="*{tel.tel}" class="tel">
+                    <span class="fa fa-phone"></span> <strong>Teléfono:</strong>
+                    <th:block th:if="${currentDevice.isMobile()} == true">
+                        <a th:href="'tel:' + *{tel.tel}"><span sede:rdf="*{tel.get('tel')}" /></a>
+                    </th:block>
+                    <th:block th:if="${currentDevice.isMobile()} != true">
+                        <span sede:rdf="*{tel.get('tel')}" />
+                    </th:block>
+                </li>
+                <li th:if="*{tel.fax}" class="fax">
+                    <span class="fa fa-fax"></span> <strong>Fax:</strong>
+                    <span sede:rdf="*{tel.get('fax')}" />
+                </li>
+            </th:block>
+            <li th:if="*{email}" class="email">
+                <span class="fa fa-at"></span> <strong>Correo electrónico:</strong>
+                <a sede:rdf="*{prop('email')}" th:href="'mailto:' + *{email}" th:text="*{email}" />
+            </li>
+            <li th:if="*{horario}" class="horario">
+                <span class="far fa-clock"></span> <strong>Horario: </strong>
+                <div sede:rdf="*{get('horario')}" />
+            </li>
+            <li th:if="*{url}" class="url"> 
+                <span class="fa fa-link"></span> <strong>Página Web:</strong>
+                <a class="break-word" th:href="*{url}" sede:rdf="*{get('url')}" />
+            </li>
+            <li th:if="*{geometry}" class="geo"><span><span class="fas fa-map-marker-alt" aria-hidden="true"></span> <a th:href="'http://idezar.zaragoza.es/visorComoMoverse/?nd=' + *{calle} + '&amp;xd=' + *{geometry.coordinates[0]} + '&amp;yd=' + *{geometry.coordinates[1]}">Cómo llegar</a> en transporte público</span></li>
+        </ul>
+        <div>
+            <th:block th:if="*{geometry}" th:utext="*{geometry.getRdf()}"></th:block>
+            <div class="margin-auto" th:if="*{geometry}" id="mapa-leaflet" style="height: 15em;"></div>
+        </div>
+    </div>
+    <th:block th:include="/fragmentos/share-button(title='Compartir', uri=*{uri}, text=*{title})"></th:block>
+</div>

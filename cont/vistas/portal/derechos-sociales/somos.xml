@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Derechos Sociales" 
+               description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece recursos de información sobre la red de Comercios Amigables: comercios de proximidad con atención personalizada para la tercera edad." 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service">
+    </sede:meta>
+    <style type="text/css">
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        
+ 
+        <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="/sede/portal/derechos-sociales/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Derechos Sociales</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Quiénes Somos</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+                  
+                    <li><a href="somos">Presentación</a></li>
+					  <li><a href="https://www.zaragoza.es/sede/servicio/organigrama/61672">Organigrama</a></li>
+                    <li><a href="http://www.zaragoza.es/sede/portal/derechos-sociales/servicio/normativa/materia/10">Normativa</a></li>
+       
+                </ul>
+            </div>
+        </nav>
+        <h2>Quiénes Somos</h2>
+
+
+<p>El Área de Derechos Sociales del Ayuntamiento de Zaragoza...</p>
+
+
+ 
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('#jornadas .collapse').collapse();
+
+        var query = '/sede/servicio/cultura/evento/hoy.geojson?srsname=wgs84';
+        var popup;
+        var markers;
+        $.getJSON(query, function(data) {
+            $('#mensaje').addClass('hide')
+            if (data.features.length > 0) {
+                var geojson = L.geoJson(data, {
+                    pointToLayer: function(feature, latlng) {
+                        var icono = data.properties.icon;
+                        var texto = '<a href="' + feature.properties.alt + '"><strong>' + feature.properties.title + '</strong></a><br/>' + feature.properties.subEvent[0].location.title;
+                        return L.marker(latlng, {
+                            icon: L.icon({
+                                iconUrl: icono,
+                                iconSize: [22, 20],
+                                iconAnchor: [22, 20],
+                                popupAnchor: [-10, -20]
+                            })
+                        }).bindPopup(texto);
+                    }
+                });
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+                map.fitBounds(geojson.getBounds());
+                map.addLayer(geojson);
+            } else {
+                $('#mensaje').html('La consulta no ha devuelto resultados');
+                $('#mensaje').removeClass('hide').addClass('alert-danger');
+                if (markers) {
+                    map.removeLayer(markers);
+                };
+            };
+        });
+
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

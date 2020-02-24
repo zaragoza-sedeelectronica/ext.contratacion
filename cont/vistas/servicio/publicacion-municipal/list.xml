@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="(${pageTitle} ? ${pageTitle} + '. ': '') + 'Catálogo de publicaciones municipales'" author="Ayuntamiento de Zaragoza" keywords="sede,web,cultura,catalogo,publicaciones" />
+  <meta name="robots" content="noindex, follow"/>
+    <style type="text/css">
+        h2 {
+            font-size: 1.25em;
+        }
+        .card {
+            position: relative;
+            padding-bottom: 60px;
+        }
+        @media (max-width: 768px) {
+            li .card {
+                min-height: 20em;
+            }
+        .resultado li:nth-child(2n) {
+        float: right !important;
+        }
+        .resultado li:nth-child(2n+1) {
+        float: left !important;
+        clear: both;
+        }
+        }
+        @media (max-width: 425px) {
+        li .card {
+        min-height: 20em;
+        }
+        .resultado li:nth-child(n) {
+        float: left !important;
+        }
+        .resultado li:nth-child(n+1) {
+        float: left !important;
+        clear: both;
+        }
+        }
+        .resultado li:nth-child(3n) {
+        float: right !important;
+        }
+        .resultado li:nth-child(3n+1) {
+        float: left !important;
+        clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="col-md-4 clearfix" style="float:right;">
+            <p class="nomargin destacado text-right">
+                Descargar:
+                <a href="https://www.zaragoza.es/sede/servicio/catalogo/1681">Datos Abiertos</a>
+            </p>
+            <ul class="list-inline pull-right">
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/publicaciones/list.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        JSON
+                    </a>                                |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/publicaciones/list.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        XML
+                    </a>
+                    |
+                </li>
+                <li class="nopadding">
+                    <a th:href="'/sede/servicio/publicaciones/list.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                        CSV
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <h2 th:text="${pageTitle}"></h2>
+        <ul class="row list-unstyled resultado">
+            <li th:each="doc: ${resultado.body.result}" class="col-xs-12 col-sm-6 col-md-4">
+                <th:block th:include="servicio/publicacion-municipal/card" />
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

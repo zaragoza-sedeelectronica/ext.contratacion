@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Propuesta. Presupuestos participativos'" keywords="sede,web,publicación,municipal,presupuestos,participativos" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <style style="text/css">
+        .static-popover {
+            display: block !important;
+            max-width: 100%;
+            margin: 0;
+            z-index: 10;
+        }
+
+        .encabezado-propuesta {
+            color: white;
+            background-color: red;
+            padding: .25em .5em;
+            margin: .5em 0 !important;
+            border-radius: 5px;
+        }
+
+        .card-form {
+            background-color: #D8D8D8;
+            border-radius: 5px
+        }
+
+        h2 {
+            font-size: 1.5em !important;
+            margin: .5em 0 !important;
+        }
+
+        h3 {
+            font-size: 1em !important;
+            margin: .5em 0 !important;
+        }
+
+        .visible-panel {
+            position: relative;
+        }
+
+        .visible-panel:hover .hidden-panel {
+            display: block;
+        }
+
+        .hidden-panel {
+            background: rgba(240, 240, 240, 0.9);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            display: none;
+            padding-top: 4em;
+            line-height: 2em;
+        }
+
+        .edicion {
+            border-left: 2px solid #FFF;
+            padding-left: .25em;
+            font-weight: bold;
+        }
+
+        @media print {
+            a, .sm, .compartir, .popover .arrow {
+                display: none;
+            }
+            .visible-panel {
+                border: 0;
+                text-align: left;
+                padding-left: 1.5em;
+            }
+            .text-center {
+                text-align: left;
+            }
+            .popover-title {
+                border-bottom: 0;
+            }
+
+            .popover .popover-content .alert {
+                border: 0;
+                padding: 35px 0 0 0;
+            }
+            .card {
+                margin-bottom: 0;
+            }
+            #ogob .navbar-portal {
+                content: url('//www.zaragoza.es/cont/vistas/portal/presupuestos-participativos/img/cabecera-sec-fase1_conLogo.jpg');;
+            }
+        }
+        </style>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200 and (${registro.body.visible} == 'S' or ${session.sess_risp})" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <a href="/sede/portal/presupuestos-participativos/servicio/presupuestos-participativos/edicion/1/obras" class="text-muted col-md-12 margin-b05em">
+                <span class="fa fa-angle-left"></span> Volver
+            </a>
+            <div th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" class="row">
+                <button data-target="#form-edit" data-toggle="collapse" class="btn btn-warning pull-right">Modificar</button>
+                <div id="form-edit" class="collapse">
+                    <form class="form-horizontal" method="post" th:action="@{/servicio/presupuestos-participativos/{id}{user}/save(id=*{id},user = ${session.sess_ciudadano} and ${session.sess_ciudadano.id} ? '/u':'')}" enctype="multipart/form-data">
+                        <div class="fieldset col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="title">Título</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="title" name="title" th:value="*{title}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="representacion">Representando a</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="representacion" name="representacion" th:value="*{representacion}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="description">Descripción</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" type="text" id="description" name="description" th:text="*{description}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="objetivos">Objetivos</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" type="text" id="objetivos" name="objetivos" th:text="*{objetivos}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="beneficiarios">Beneficiarios</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" type="text" id="beneficiarios" name="beneficiarios" th:text="*{beneficiarios}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="observaciones">Observaciones</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" type="text" id="observaciones" name="observaciones" th:text="*{observaciones}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-md-2 control-label" for="img">Imagen</label>
+                                <div class="col-sm-9 col-md-10">
+                                    <input class="form-control" type="text" th:field="*{image}" size="100" />
+                                    <input type="file" name="img" /> <span class="help-block">Formato admitido: jpg, png. Horizontal. Las imágenes se escalan automáticamente a 960x720</span>
+                                </div>
+                            </div>
+                            <th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="tema">Tema</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="tema.id" id="tema.id">
+                                            <option value=""></option>
+                                            <option th:each="doc: ${tema}" th:value="${doc.id}" th:text="${doc.title}" th:selected="*{tema} and ${doc.id}==*{tema.id}" />
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="top">Visible</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="visible" name="visible">
+                                            <option value="S" th:selected="*{visible} == 'S'">Visible</option>
+                                            <option value="N" th:selected="*{visible} == 'N'">Improcedente</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-2 control-label" for="top">Estado</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="">No valorado</option>
+                                            <option value="R" th:selected="*{status} == 'R'">Retirada por el creador</option>
+                                            <option value="C" th:selected="*{status} == 'C'">Rechazada por la comisión</option>
+                                            <option value="S" th:selected="*{status} == 'S'">Aceptada por la comisión (20 por junta)</option>
+                                            <option value="N" th:selected="*{status} == 'N'">Rechazada por Oficina Transparencia</option>
+                                            <option value="F" th:selected="*{status} == 'F'">Priorizada por la mesa (10 por foro)</option>
+                                            <option value="U" th:selected="*{status} == 'U'">Priorizada por la ciudadanía</option>
+                                            <option value="E" th:selected="*{status} == 'E'">Seleccionada para ejecutar</option>
+                                            <option value="X" th:selected="*{status} == 'X'">En ejecución</option>
+                                            <option value="T" th:selected="*{status} == 'T'">Terminada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="valoracionTecnica">Valoracion técnica</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" type="text" id="valoracionTecnica" name="valoracionTecnica" th:text="*{valoracionTecnica}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="motivo">Viabilidad / Informes</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" type="text" id="motivo" name="motivo" th:text="*{motivo}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="motivoResumen">Resumen breve de viabilidad</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" type="text" id="motivoResumen" name="motivoResumen" th:text="*{motivoResumen}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="coste">Coste</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" id="coste" name="coste" th:value="*{coste}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="estadoObra">Estado obra</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" id="estadoObra" name="estadoObra" th:value="*{estadoObra}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="fechaObra">Fecha obra</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="text" id="fechaObra" name="fechaObra" th:value="*{fechaObra}" />
+                                    </div>
+                                    <label class="col-sm-2 control-label" for="fechaObra">Fecha Fin obra</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="text" id="fechaObra" name="fechaFinObra" th:value="*{fechaFinObra}" />
+                                    </div>
+                                </div>
+                            </th:block>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="lugar">
+                                        <span class="control-label">Selecciona la calle:</span>
+                                    </label>
+                                    <input type="text" name="lugar" id="lugar" th:value="*{lugar}" autocomplete="off" placeholder="Buscar calle" class="form-control" />
+                                    <label for="calle_id" class="control-label col-xs-12 col-md-2 oculto">Calle:</label>
+                                    <input type="hidden" name="srsname" id="srsname" value="wgs84" />
+                                    <input type="hidden" name="x" id="x" th:value="*{x}" />
+                                    <input type="hidden" name="y" id="y" th:value="*{y}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <a class="margin-t2em" href="javascript:colocarMarker(41.65774642566255,-0.8830220349937529);">Coloque la ubicación manualmente si no ha sido encontrada</a>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mapas">
+                                    <th:block th:if="*{id} and *{geometry}" th:utext="*{geometry.getRdf()}"></th:block>
+                                    <div id="mapa-leaflet" style="height: 30em"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card clearfix">
+                        <h2 class="encabezado-propuesta"><strong><span class="fa fa-puzzle-piece" aria-hidden="true"> </span> <th:block th:text="*{title}"></th:block></strong> 
+                        <div class="text-right margin-t05em"><span class="edicion">EDICIÓN 2017</span></div>
+                        </h2>
+                        <div class="col-md-12">
+                            <p>Realizada por <strong th:text="*{usuarioAlta}"></strong> el <span class="text-info"><th:block sede:rdf="*{get('creationDate','EEEE dd MMMM yyyy HH:mm')}"></th:block> h.</span>
+                                <th:block th:if="*{representacion}">
+                                    en representación de <strong sede:rdf="*{get('representacion')}"></strong>
+                                </th:block>
+                            </p>
+                            <p>Propuesta para <strong th:text="*{soloNombreJunta}"></strong></p>
+                        </div>
+                        <hr/>
+                        <div class="col-md-12 margin-l1em">
+                            <th:block th:if="*{description}">
+                                <h3 class="text-primary text-uppercase"><strong>Descripción</strong></h3>
+                                <div sede:rdf="*{get('description')}"></div>
+                            </th:block>
+                            <br/>
+                            <th:block th:if="*{objetivos}">
+                                <h3 class="text-primary text-uppercase"><strong>Objetivos</strong> </h3>
+                                <div sede:rdf="*{get('objetivos')}"></div>
+                            </th:block>
+                            <br/>
+                            <th:block th:if="*{beneficiarios}">
+                                <h3 class="text-primary text-uppercase"><strong>Beneficiarios</strong></h3>
+                                <div sede:rdf="*{get('beneficiarios')}"></div>
+                            </th:block>
+                            <br/>
+                            <th:block th:if="*{lugar}">
+                                <h3 class="text-primary text-uppercase"><strong>Lugar</strong></h3>
+                                <div sede:rdf="*{get('lugar')}"></div>
+                            </th:block>
+                            <br/>
+                            <th:block th:if="*{observaciones}">
+                                <h3 class="text-primary text-uppercase"><strong>Observaciones</strong></h3>
+                                <div sede:rdf="*{get('observaciones')}"></div>
+                            </th:block>
+                        </div>
+                        <div class="pull-right">
+                            <span class="fa fa-check-circle text-success" title="Apoyos Recibidos" aria-hidden="true"></span> Apoyos Recibidos: <span th:text="*{votosAFavor} == null ? '0' : *{votosAFavor}"></span>
+                            <span class="sr-only">Apoyos Recibidos</span>
+                            <br/>
+                        </div>
+                        <br/>
+                    </div>
+                    <!-- <div class="ribbon-wrapper">
+                        <div class="ribbon-info lead">Edición 2017</div>
+                    </div> -->
+                </div>
+                <div class="col-md-4 col-xs-12 text-center" th:if="${#utils.hasta('16-01-2017')}">
+                                    
+                    <div class="visible-panel popover static-popover" th:classappend="${currentDevice.isMobile()} ? 'bottom' : 'right'">
+                        <div class="arrow"></div>
+                        <!--/* Se muestra título de popover si la sesión no está iniciada y la propuesta no está rechazada */-->
+                        <div class="popover-title text-center" th:if="not ${session.sess_ciudadano} and *{aceptada} == null">
+                            <h4><strong class="text-primary">APOYAR</strong> esta PROPUESTA</h4>
+                        </div>
+                        <!--/* Se muestra título de popover si la sesión está iniciada y la propuesta no está rechazada */-->
+                        <div class="popover-title text-center" th:if="${session.sess_ciudadano} and ${session.sess_ciudadano.juntaActual} == *{junta} and *{aceptada} == null">
+                            <h4 th:if="${votadoPropuesta}==false"><strong class="text-primary">APOYAR</strong> esta PROPUESTA</h4>
+                            <h4 th:if="${votadoPropuesta}==true"><strong class="text-primary">RETIRAR APOYO</strong> de esta PROPUESTA</h4>
+                        </div>
+                        <div class="popover-content text-center">
+                            <!--/* Si la propuesta ha sido aceptada/rechazada muestra advertencia con el motivo */-->
+                            <th:block th:if="*{aceptada} == 'S'">
+                                <div role="alert" class="alert alert-success">
+                                    Esta propuesta ha sido aceptada por la Comisión Técnica.
+                                    <br/>
+                                    <th:block th:if="*{valoracionTecnica}">
+                                        <strong>Motivo: </strong>
+                                        <th:block th:text="*{valoracionTecnica}"></th:block>
+                                    </th:block>
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{aceptada} == 'N'">
+                                <div role="alert" class="alert alert-danger">
+                                    Esta propuesta ha sido retirada del debate.
+                                    <br/>
+                                    <th:block th:if="*{valoracionTecnica}">
+                                        <strong>Motivo: </strong>
+                                        <th:block th:text="*{valoracionTecnica}"></th:block>
+                                    </th:block>
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{aceptada} == 'C'">
+                                <div role="alert" class="alert alert-danger">
+                                    Esta propuesta ha sido rechazada por la Comisión Técnica.
+                                    <br/>
+                                    <th:block th:if="*{valoracionTecnica}">
+                                        <strong>Motivo: </strong>
+                                        <th:block th:text="*{valoracionTecnica}"></th:block>
+                                    </th:block>
+                                </div>
+                            </th:block>
+                            <!--/* Si la sesión está iniciada y la propuesta pertenece a la junta del usuario, permite votar */-->
+                            <th:block th:if="${session.sess_ciudadano} and ${session.sess_ciudadano.juntaActual} == *{junta}">
+                                <a th:href="@{{id}/a-favor(id=*{id})}"><span th:if="${votadoPropuesta}==false" class="fa fa-check-circle fa-5x text-success" title="Apoyar esta Propuesta" aria-hidden="true"></span> </a>
+                                <span th:if="${votadoPropuesta}==false" class="sr-only">Apoyar esta propuesta</span>
+                                <a th:href="@{{id}/en-contra(id=*{id})}"><span th:if="${votadoPropuesta}==true" class="fas fa-times fa-5x text-primary" title="Retirar apoyo de esta propuesta" aria-hidden="true"></span> </a>
+                                <span th:if="${votadoPropuesta}==true" class="sr-only">Retirar apoyo de esta propuesta</span>
+                                <span class="sr-only">apoyos recibidos</span>
+                            </th:block>
+                            <!--/* Si la sesión está iniciada y la propuesta NO pertenece a la junta del usuario, NO permite votar y muestra advertencia. En caso de estar rechazada oculta este mensaje en favor del motivo del rechazo */-->
+                            <th:block th:if="${session.sess_ciudadano} and ${session.sess_ciudadano.juntaActual} != *{junta} and *{aceptada} == null" th:href="@{{id}/a-favor(id=*{id})}">
+                                <div role="alert" class="alert alert-danger margin-t05em">Sólo puede apoyar propuestas pertenecientes a su distrito.</div>
+                            </th:block>
+                            <!--/* Si la sesión no está iniciada, al pasar el ratón por la zona muestra mensaje para loguear */-->
+                            <th:block th:if="not ${session.sess_ciudadano}">
+                                <!--/* Si la propuesta está rechazada no mostramos el icono de apoyo */-->
+                                <span th:if="*{aceptada} == null" class="fa fa-check-circle fa-5x text-success" title="Apoyos Recibidos" aria-hidden="true"></span>
+                                <span th:if="*{aceptada} == null" class="sr-only">Apoyos recibidos</span>
+                                <div th:if="!${session.sess_ciudadano}" class="hidden-panel">
+                                    <strong> Necesitas <a th:href="${#utils.getLinkLoginUsuario(#httpServletRequest)}" class="text-primary">iniciar sesión</a> o <a href="/sede/acceso/" class="text-primary">registrarte</a> para participar. </strong>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                    <div class="margin-t1em">
+                        <strong>COMPARTIR</strong>
+                        <ul class="list-inline">
+                            <li>
+                                <a itemprop="sameAs" title="Comparte esta propuesta en Facebook" target="_blank" th:href="'http://www.facebook.com/sharer.php?u=http://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id} + '&amp;t=Presupuestos Participativos, propuesta: ' + *{title}">
+                                    <span class="fab fa-facebook-square fa-4x" title="Compartir en Facebook"></span>
+                                    <span class="sr-only">Compartir propuesta en facebook</span>
+                                    <span class="oculto">Compartir<br/>en Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a itemprop="sameAs" title="Comparte esta propuesta en Twitter" target="_blank" th:href="'https://twitter.com/intent/tweet?text=Presupuestos Participativos, propuesta: ' + *{title} + '&amp;url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id}">
+                                    <span class="fab fa-twitter-square fa-4x " title="Compartir en Twitter"></span>
+                                    <span class="sr-only">Compartir propuesta en Twitter</span>
+                                    <span class="oculto">Compartir en Twitter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a itemprop="sameAs" title="Comparte esta propuesta en Google+" target="_blank" th:href="'https://plus.google.com/share?url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id}">
+                                    <span class="fab fa-google-plus-square fa-4x " title="Compartir en Google+"></span>
+                                    <span class="sr-only">Compartir propuesta en Google+</span>
+                                    <span class="oculto">Compartir en Google+</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center" th:if="${#utils.desde('17-01-2017')}">
+                <img th:if="*{image}" th:src="*{image}" alt="" class="img-responsive img-rounded" />
+                    <th:block th:if="!*{image}">
+                        <img th:if="*{tema} and *{tema.image}" th:src="*{tema.image}" alt="" class="img-responsive img-rounded margin-b1em" />
+                        <img th:if="!*{tema} or (*{tema} and !*{tema.image})" src="https://www.zaragoza.es/cont/vistas/portal/presupuestos-participativos/img/cabecera-600x600.jpg" alt="" class="img-responsive img-rounded margin-b1em" />
+                    </th:block>
+                    <div class="visible-panel popover static-popover" th:classappend="${currentDevice.isMobile()} ? 'bottom' : 'right'">
+                        <div class="arrow"></div>
+                        <div class="popover-title text-center">
+                            <h3><strong class="text-primary">ESTADO</strong> de la PROPUESTA</h3>
+                        </div>
+                        <div class="popover-content clearfix">
+                            <div class="text-center" th:if="*{valoracionTecnica}" th:unless="*{status} != 'E' or *{status} != 'X' or *{status} != 'T'">
+                                <strong>Motivo: </strong>
+                                <th:block th:text="*{valoracionTecnica}"></th:block>
+                            </div>
+                            <div class="text-center" th:if="*{motivo}">
+                                <strong>Viabilidad / Informes: </strong>
+                                <br/>
+                                <th:block th:utext="*{motivo}"></th:block>
+                            </div>
+                            <div class="text-center" th:if="*{coste}">
+                                <strong>Coste: </strong>
+                                <span th:text="*{#numbers.formatDecimal(coste,0,'POINT',2,'COMMA')} + ' €'"></span>
+                            </div>
+                            <th:block th:if="*{status} == 'S'">
+                                <div role="alert" class="alert alert-success">
+                                    Esta propuesta ha sido aceptada por la Comisión Técnica.
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{status} == 'N'">
+                                <div role="alert" class="alert alert-danger">
+                                    Esta propuesta ha sido retirada del debate.
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{status} == 'C'">
+                                <div role="alert" class="alert alert-danger">
+                                    Esta propuesta ha sido rechazada por la Comisión Técnica.
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{status} == 'R'">
+                                <div role="alert" class="alert alert-danger">
+                                    Esta propuesta ha sido retirada por su creador.
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{status} == 'E'">
+                                <div role="alert" class="alert alert-success">
+                                    Esta propuesta ha sido seleccionada para su ejecución.
+                                    <br/>
+                                    <th:block th:if="*{estadoObra}">
+                                        <strong>Estado de la obra: </strong>
+                                        <th:block th:text="*{estadoObra}"></th:block>
+                                        <br/>
+                                        <strong>Fecha: </strong>
+                                        <th:block th:text="*{fechaObra}"></th:block>
+                                        <strong th:if="*{fechaFinObra}">Fecha fin: </strong>
+                                        <th:block th:text="*{fechaFinObra}"></th:block>
+                                    </th:block>
+                                    <th:block th:if="*{motivoResumen}">
+                                        <br/>
+                                        <strong>Descripción informe técnico: </strong>
+                                        <th:block th:utext="*{motivoResumen}"></th:block>
+                                    </th:block>
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{status} == 'X'">
+                                <div role="alert" class="alert alert-success">
+                                    Esta propuesta ha sido seleccionada para su ejecución.
+                                    <br/>
+                                    <th:block th:if="*{estadoObra}">
+                                        <strong>Estado de la obra: </strong>
+                                        <th:block th:text="*{estadoObra}"></th:block>
+                                        <br/>
+                                        <strong>Fecha: </strong>
+                                        <th:block th:text="*{fechaObra}"></th:block>
+                                        <strong th:if="*{fechaFinObra}">Fecha fin: </strong>
+                                        <th:block th:text="*{fechaFinObra}"></th:block>
+                                    </th:block>
+                                    <th:block th:if="*{motivoResumen}">
+                                        <br/>
+                                        <strong>Descripción informe técnico: </strong>
+                                        <th:block th:utext="*{motivoResumen}"></th:block>
+                                    </th:block>
+                                </div>
+                            </th:block>
+                            <th:block th:if="*{status} == 'T'">
+                                <div role="alert" class="alert alert-success">
+                                    Esta propuesta ha sido seleccionada para su ejecución.
+                                    <br/>
+                                    <th:block th:if="*{estadoObra}">
+                                        <strong>Estado de la obra: </strong>
+                                        <th:block th:text="*{estadoObra}"></th:block>
+                                        <br/>
+                                        <strong>Fecha: </strong>
+                                        <th:block th:text="*{fechaObra}"></th:block>
+                                        <strong th:if="*{fechaFinObra}">Fecha fin: </strong>
+                                        <th:block th:text="*{fechaFinObra}"></th:block>
+                                    </th:block>
+                                    <th:block th:if="*{motivoResumen}">
+                                        <br/>
+                                        <strong>Descripción informe técnico: </strong>
+                                        <th:block th:utext="*{motivoResumen}"></th:block>
+                                    </th:block>
+                                </div>
+                            </th:block>
+                            <th:block th:if="not *{status}">
+                                <div role="alert" class="alert alert-info">
+                                    Esta propuesta ha estado en debate.
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                    <div class="margin-t1em compartir">
+                        <strong>COMPARTIR</strong>
+                        <ul class="list-inline">
+                            <li>
+                                <a itemprop="sameAs" title="Comparte esta propuesta en Facebook" target="_blank" th:href="'http://www.facebook.com/sharer.php?u=http://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id} + '&amp;t=Presupuestos Participativos, propuesta: ' + *{title}">
+                                    <span class="fab fa-facebook-square fa-4x" title="Compartir en Facebook"></span>
+                                    <span class="sr-only">Compartir propuesta en facebook</span>
+                                    <span class="oculto">Compartir<br/>en Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a itemprop="sameAs" title="Comparte esta propuesta en Twitter" target="_blank" th:href="'https://twitter.com/intent/tweet?text=Presupuestos Participativos, propuesta: ' + *{title} + '&amp;url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id}">
+                                    <span class="fab fa-twitter-square fa-4x" title="Compartir en Twitter"></span>
+                                    <span class="sr-only">Compartir propuesta en Twitter</span>
+                                    <span class="oculto">Compartir en Twitter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a itemprop="sameAs" title="Comparte esta propuesta en Google+" target="_blank" th:href="'https://plus.google.com/share?url=https://www.zaragoza.es/sede/servicio/presupuestos-participativos/' + *{id}">
+                                    <span class="fab fa-google-plus-square fa-4x " title="Compartir en Google+"></span>
+                                    <span class="sr-only">Compartir propuesta en Google+</span>
+                                    <span class="oculto">Compartir en Google+</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var marker;
+    var pois = [];
+    var addressDataset = new Bloodhound({
+        datumTokenizer: function(countries) {
+            return Bloodhound.tokenizers.whitespace(result.value);
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/sede/servicio/portalero/list',
+            replace: function() {
+                var consulta = $('#lugar').val();
+                var q = '/sede/servicio/portalero/list?rows=10&fl=id,calle.title,numero,geometry&srsname=wgs84&calle.titleContains=';
+                if (consulta.indexOf(',') > 0) {
+                    var dat = consulta.split(',');
+                    q = q + encodeURIComponent(dat[0]) + '&numero=' + encodeURIComponent(dat[1].trim());
+                } else {
+                    q = q + encodeURIComponent(consulta);
+                }
+                return q;
+            },
+            filter: function(response) {
+                return response.result;
+            },
+            wildcard: '%QUERY'
+        }
+    });
+    $('#lugar').typeahead(null, {
+        name: 'address',
+        // display: 'item.title',
+        displayKey: function(results) {
+            return results.calle.title.replace(',', ' ') + ', ' + results.numero;
+        },
+        source: addressDataset
+    });
+    $('#lugar').bind('typeahead:select', function(ev, item) {
+        $('#x').val(item.geometry.coordinates[0]);
+        $('#y').val(item.geometry.coordinates[1]);
+        colocarMarker(item.geometry.coordinates[1], item.geometry.coordinates[0]);
+    });
+
+    function colocarMarker(latitude, longitude) {
+        console.log(latitude + ':' + longitude)
+        if (marker) {
+            map.removeLayer(marker);
+            pois = [];
+        }
+        marker = L.marker([latitude, longitude], { draggable: true });
+        marker.on('dragend', function(e) {
+            $('#x').val(marker.getLatLng().lng);
+            $('#y').val(marker.getLatLng().lat);
+        });
+        pois.push(marker);
+        group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+        $('#x').val(longitude);
+        $('#y').val(latitude);
+        console.log('Se ha colocado marker:' + marker.toGeoJSON());
+    }
+    mapa();
+
+    function mapa() {
+        console.log('Cargamos mapa al cargar página');
+        latitude = $(document).find("[property='latitude']").attr("content");
+        longitude = $(document).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            colocarMarker(latitude, longitude);
+        }
+    }
+    /*]]>*/
+    </script>
+</body>
+
+</html>

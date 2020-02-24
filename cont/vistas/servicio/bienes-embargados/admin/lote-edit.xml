@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Lotes. Bienes embargados" keywords="sede,web,monumento" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/js/jquery-ui-1.11.3.min.css" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <th:block th:include="fragmentos/control-fields" />
+        <div class="fieldset">
+            <fieldset>
+                <form th:action="@{/servicio/bienes-embargados/admin/lote/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post" class="form-horizontal">
+                    <legend><span>Lote</span> <small th:if="${actolote}" class="label label-success" th:text="${actolote.numero}" /> <small class="label label-info"><th:block th:text="*{visibleText}" /> <th:block th:if="*{prorroga}" th:text="'Prórroga ' + *{prorroga}"/></small>
+                        <a th:if="*{visible} == 'V'" title="Generar documento" th:href="@{./documentacion}" class="btn btn-danger btn-xs"><span class="fa fa-bookmark"></span> Generar documentación</a>
+                        <th:block th:if="${registro.body.visible} == 'N'">
+                            <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./unlock}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+                        </th:block>
+                        <th:block th:if="${registro.body.visible} == 'S'">
+                            <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./lock}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+                        </th:block>
+                        <th:block th:if="${registro.body.prorroga} == '5' and ${registro.body.visible} != 'P'">
+                            <a title="Vencido plazo" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{./vencido-plazo}" class="btn btn-warning btn-xs" onclick="return confirm('Marcar como que ha vencido su plazo?')"><span class="far fa-clock"></span> Vencido plazo</a>
+                        </th:block>
+                        <a th:if="${actolote} and ${registro.body.visible}=='S' and ${actolote.acto.tipo} == 'venta'" th:href="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/adjudicar-ayto(id_acto=${actolote.acto.id},id_lote=${registro.body.id})}" class="btn btn-xs btn-danger" onclick="return confirm('Desea adjudicar el lote al Ayuntamiento?')">Adjudicar al Ayuntamiento</a>
+                        <a th:if="${actolote} and ${actolote.acto.tipo} == 'subasta' and not ${actolote.desiertoPrimera} and ${registro.body.visible}=='S'" th:href="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/desierto-primera(id_acto=${actolote.acto.id},id_lote=${registro.body.id})}" class="btn btn-xs btn-danger" onclick="return confirm('Desea marcar el lote como desierto en primera licitación?')">Desierto en 1ª Licitación</a>
+                        <a th:if="${actolote} and ${actolote.acto.proximaVentaDirecta} and ${registro.body.visible}=='S'" th:href="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/no-adjudicar(id_acto=${actolote.acto.id},id_lote=${registro.body.id})}" class="btn btn-xs btn-danger" onclick="return confirm('Desea que el lote pase a venta directa o a la siguiente prórroga?')">
+                            <th:block th:if="${actolote} and ${actolote.acto.tipo} == 'subasta'">Desierto en 2ª Licitación</th:block>
+                            <th:block th:if="${actolote} and ${actolote.acto.tipo} == 'venta'">Pasar a siguiente prórroga</th:block>
+                        </a>
+                        <small role="alert" class="alert alert-danger" th:if="${actolote} and not ${actolote.acto.proximaVentaDirecta}">Cumplimente el campo de próxima venta directa</small>
+                        <th:block th:if="${actolote}">
+                            <input type="hidden" name="acto" th:value="${actolote.acto.id}" />
+                            <a class="pull-right" th:href="@{/servicio/bienes-embargados/admin/{id}/edit(id=${actolote.acto.id})}"><small>Volver a <th:block th:text="${actolote.acto.tipoText}"/> <th:block sede:rdf="${actolote.acto.get('startDate')}"/></small></a>
+                        </th:block>
+                    </legend>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" for="description">Descripci&oacute;n</label>
+                        <div class="col-sm-11">
+                            <input class="form-control" type="text" th:field="*{description}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" for="valoracion">Valoraci&oacute;n</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{valoracion}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="cargas">Cargas</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{cargas}" size="100" />
+                        </div>
+                        <label class="col-sm-3 control-label" for="tramo">Tramo</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{tramo}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group" th:if="*{valoracion}">
+                        <div class="col-sm-6"><strong>Tipo primera licitación </strong>
+                            <th:block th:text="*{tipoLicitacion1}" />
+                            <th:block th:if="not ${actolote} or ${actolote.acto.tipo} == 'subasta'">
+                                , depósito
+                                <th:block th:text="*{depositoLicitacion1}" />
+                            </th:block>
+                            <th:block th:if="not ${actolote} or ${actolote.acto.tipo} == 'venta'">
+                                , depósito venta directa
+                                <th:block th:text="*{depositoVentaDirecta}" />
+                            </th:block>
+                        </div>
+                        <div class="col-sm-6" th:if="not ${actolote} or ${actolote.acto.tipo} == 'subasta'"><strong>Tipo segunda licitación</strong>
+                            <th:block th:text="*{tipoLicitacion2}" />, depósito
+                            <th:block th:text="*{depositoLicitacion2}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" for="nifDeudor">Nif Deudor</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{nifDeudor}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="nombreDeudor">Nombre Deudor <span class="fa fa-asterisk" /></label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" th:field="*{nombreDeudor}" size="100" required="true" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="importeDeuda">Importe Deuda</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{importeDeuda}" size="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" for="expediente">Expediente</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{expediente}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="notificacion">Notificaci&oacute;n</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{notificacion}" size="100" placeholder="dd-mm-yyyy" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" for="acuerdoEnajenacion">Acuerdo Enajenaci&oacute;n</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{acuerdoEnajenacion}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="notificacionAcuerdoEnajenacion">Notificaci&oacute;n Acuerdo Enajenaci&oacute;n</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{notificacionAcuerdoEnajenacion}" size="100" placeholder="dd-mm-yyyy" />
+                        </div>
+                        <div th:if="*{vencidoPlazo}" th:class="*{#utils.desde(vencidoPlazo)} ? 'has-error' : ''">
+                            <label class="col-sm-2 control-label" for="notificacionAcuerdoEnajenacion">Plazo Vencido</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" th:field="*{vencidoPlazo}" size="100" placeholder="dd-mm-yyyy" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+                <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                    <li role="presentation" class="active"><a href="#datos" aria-controls="#datos" role="tab" data-toggle="tab">Datos</a></li>
+                    <li role="presentation" th:if="not ${actolote}"><a href="#actos" aria-controls="#actos" role="tab" data-toggle="tab">Actos</a></li>
+                    <li role="presentation"><a href="#depositos" aria-controls="#depositos" role="tab" data-toggle="tab">Depósitos</a></li>
+                </ul>
+                <div sede:class="tab-content">
+                    <h2 data-toggle="collapse" data-target="#datos" aria-expanded="false">Datos</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="datos">
+                        <a title="Crear bien" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}" th:href="@{/servicio/bienes-embargados/admin/lote/{id}/bien/new(id=*{id})}" class="btn btn-primary btn-xs pull-right"><span class="fa fa-edit"></span> Crear bien</a>
+                        <p th:text="*{type}" />
+                        <th:block th:if="${dato.bienes.size() == 1}">
+                            <th:block th:include="servicio/bienes-embargados/bien(bien=${dato.bienes[0]})" />
+                        </th:block>
+                        <th:block th:if="${dato.bienes.size() > 1}">
+                            <ul class="list-unstyled">
+                                <li th:each="biendet: ${dato.bienes}">
+                                    <th:block th:include="servicio/bienes-embargados/bien(bien=${biendet})" />
+                                </li>
+                            </ul>
+                        </th:block>
+                    </div>
+                    <h2 th:if="not ${actolote}" data-toggle="collapse" data-target="#actos" aria-expanded="false">Actos</h2>
+                    <div th:if="not ${actolote}" role="tabpanel" sede:class="tab-pane active" id="actos">
+                        <table class="table table-condensed table-striped">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Acto</th>
+                                <th>Estado</th>
+                            </tr>
+                            <tr th:each="acto : ${dato.actos}">
+                                <td>
+                                    <a th:href="@{/servicio/bienes-embargados/admin/{id}/edit(id=${acto.acto.id})}"><span sede:rdf="${acto.acto.get('startDate')}" /></a>
+                                </td>
+                                <td><span th:text="${acto.acto.tipoText}" /></td>
+                                <td><span class="label label-info" th:text="${acto.estadoText}" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <h2 data-toggle="collapse" data-target="#depositos" aria-expanded="false">Depósitos</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="depositos">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearOferta">
+                            Crear Persona
+                        </button>
+                        <div class="modal fade" id="crearOferta" tabindex="-1" role="dialog" aria-labelledby="crearOfertaLabel">
+                            <div class="modal-dialog" role="document">
+                                <form id="creacionTercero">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="crearOfertaLabel">Crear Persona</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div id="mensajeRespuesta"></div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="nifTercero">Nif</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="nifTercero" id="nifTercero" value="" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="nameTercero">Nombre</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="nameTercero" id="nameTercero" value="" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="addressTercero">Dirección</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="addressTercero" id="addressTercero" value="" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="phoneTercero">Teléfono</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="phoneTercero" id="phoneTercero" value="" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="emailTercero">Correo</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="emailTercero" id="emailTercero" value="" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" onclick="enviar()" class="btn btn-primary">Crear Persona</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <script type="text/javascript">
+                                function enviar() {
+                                    $('#mensajeRespuesta').removeClass('alert alert-info alert-danger');
+                                    var body = "{" + "\"nif\":\"" + $('#nifTercero').val() + "\"," + "\"name\":\"" + $('#nameTercero').val() + "\"," + "\"address\":\"" + $('#addressTercero').val() + "\"," + "\"phone\":\"" + $('#phoneTercero').val() + "\"," + "\"email\":\"" + $('#emailTercero').val() + "\"" + "}";
+                                    jQuery.ajax({
+                                        url: '/sede/servicio/bienes-embargados/admin/tercero',
+                                        type: "POST",
+                                        data: body,
+                                        dataType: "json",
+                                        accept: "application/json",
+                                        contentType: "application/json",
+                                        mimeType: 'application/json',
+                                        success: function(res) {
+                                            if (res.status) {
+                                                $('#mensajeRespuesta').addClass("alert alert-danger");
+                                                $('#mensajeRespuesta').text(res.mensaje);
+                                            } else {
+                                                $('#mensajeRespuesta').addClass('alert alert-info');
+                                                $('#mensajeRespuesta').text('Registro creado correctamente');
+                                            }
+
+                                        },
+                                        error: function(res) {
+                                            $('#mensajeRespuesta').addClass("alert alert-danger");
+                                            $('#mensajeRespuesta').text(res.mensaje);
+                                        }
+                                    });
+
+                                }
+                                </script>
+                            </div>
+                        </div>
+                        <table class="table table-condensed table-striped">
+                            <tr>
+                                <th th:if="not ${actolote}">Acto</th>
+                                <th>Fecha</th>
+                                <th>Código</th>
+                                <th>Licitador</th>
+                                <th>Representante</th>
+                                <th>Depósito</th>
+                                <th>Número depósito</th>
+                                <th>Destino depósito</th>
+                                <th>Oferta</th>
+                                <th th:if="${registro.body.visible}=='S'"></th>
+                            </tr>
+                            <tr th:each="oferta : ${dato.ofertas}" class="list-unstyled" th:if="(not ${actolote}) or (${actolote.acto.id} == ${oferta.acto.id})">
+                                <td th:if="not ${actolote}">
+                                    Acto <span th:text="${oferta.acto.tipo}" /> del día: <span th:text="${#calendars.format(oferta.acto.startDate,'dd MMMM yyyy')}" /></td>
+                                <td><span sede:rdf="${oferta.get('creationDate','dd-MM-yyyy HH:mm')}" /></td>
+                                <td><span th:text="${oferta.code}" /></td>
+                                <td>
+                                    <span th:if="${oferta.adjudicada} == 'S'" class="fa fa-trophy" />
+                                    <div th:if="${oferta.adjudicada} == '2'">
+                                        Segunda mejor oferta:
+                                    </div>
+                                    <span th:text="${oferta.tercero.nif}" /> <span th:text="${oferta.tercero.name}" />
+                                    <div th:if="${oferta.adjudicada} == 'S'">
+                                        Importe adjudicación: <strong th:text="${oferta.importe}" /> en <span th:text="${oferta.tipoLicitacion}" /> Licitación
+                                    </div>
+                                    <div th:if="${oferta.adjudicada} == '2'">
+                                        Importe: <strong th:text="${oferta.importe}" /> en <span th:text="${oferta.tipoLicitacion}" /> Licitación
+                                    </div>
+                                </td>
+                                <td>
+                                    <th:block th:if="${oferta.representante} and ${oferta.id.idRepresentante} != 0">
+                                        <span th:text="${oferta.representante.nif}" /> <span th:text="${oferta.representante.name}" />
+                                    </th:block>
+                                </td>
+                                <td>
+                                    <strong th:text="${oferta.deposito}" />
+                                    <span th:if="${oferta.acto.tipo} == 'subasta' and not ${dato.depositoValidoSubasta(oferta.deposito)}" class="fa fa-exclamation-circle text-danger"></span>
+                                    <span th:if="${oferta.acto.tipo} == 'venta' and not ${dato.depositoValidoVenta(oferta.deposito)}" class="fa fa-exclamation-circle text-danger"></span>
+                                </td>
+                                <td><strong th:text="${oferta.numeroDeposito}" /></td>
+                                <td><strong th:text="${oferta.destinoDeposito}" /></td>
+                                <td>
+                                    <strong th:text="${oferta.importe}" />
+                                    <strong th:text="${oferta.tipoLicitacion}" />
+                                    <div th:if="${oferta.valid}">Válida hasta <span sede:rdf="${oferta.get('valid','dd-MM-yyyy')}" /></div>
+                                </td>
+                                <td th:if="${actolote} and ${registro.body.visible}=='S'">
+                                    <a th:href="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/oferta/{id_tercero}/delete(id_acto=${actolote.acto.id},id_lote=${registro.body.id}, id_tercero=${oferta.tercero.id})}" class="btn btn-danger" onclick="return confirm('Desea eliminar la oferta?')"><span class="fas fa-trash-alt" /></a>
+                                    <button title="crear oferta" th:if="not ${oferta.importe}" type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#crearOfertaImporte' + ${oferta.tercero.id}">
+                                        <span class="fas fa-euro-sign" />
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" th:attr="id='crearOfertaImporte' + ${oferta.tercero.id},aria-labelledby='crearOfertaImporteLabel' + ${oferta.tercero.id}" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <form method="post" th:action="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/oferta/{id_tercero}/save(id_acto=${actolote.acto.id},id_lote=${registro.body.id}, id_tercero=${oferta.tercero.id})}" class="form-horizontal">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" th:attr="aria-labelledby='crearOfertaImporteLabel' + ${oferta.tercero.id}">Crear oferta</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label" for="importe">Importe</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="text" name="importe" size="100" />
+                                                            </div>
+                                                            <th:block th:if="${actolote.acto.tipo} == 'subasta'">
+                                                                <label class="col-sm-4 control-label" for="nifDeudor">Tipo</label>
+                                                                <div class="col-sm-8">
+                                                                    <select name="tipo" class="form-control">
+                                                                        <option value="1">Primera licitación</option>
+                                                                        <option value="2">Segunda licitación</option>
+                                                                    </select>
+                                                                </div>
+                                                            </th:block>
+                                                            <th:block th:if="${actolote.acto.tipo} == 'venta'">
+                                                                <label class="col-sm-4 control-label" for="validahasta">Válida hasta</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" type="text" name="valid" size="100" placeholder="dd-mm-yyyy" />
+                                                                </div>
+                                                            </th:block>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Crear</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <button title="editar" th:if="not ${oferta.importe}" type="button" class="btn btn-warning" data-toggle="modal" th:attr="data-target='#editarOferta' + ${oferta.tercero.id}">
+                                        <span class="fa fa-edit" />
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" th:attr="id='editarOferta' + ${oferta.tercero.id},aria-labelledby='editarOfertaLabel' + ${oferta.tercero.id}" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <form method="post" th:action="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/oferta/{id_tercero}/update(id_acto=${actolote.acto.id},id_lote=${registro.body.id}, id_tercero=${oferta.tercero.id})}" class="form-horizontal">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" th:attr="aria-labelledby='editarOfertaLabel' + ${oferta.tercero.id}">Editar oferta</h4>
+                                                    </div>
+                                                    <input type="hidden" name="idLicitador" th:value="${oferta.tercero.id}" />
+                                                    <input th:if="${oferta.id.idRepresentante} != 0" type="hidden" name="idRepresentante" th:value="${oferta.id.idRepresentante}" />
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label" for="importe">Depósito</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="text" name="deposito" th:value="${oferta.deposito}" size="100" />
+                                                            </div>
+                                                            <label class="col-sm-4 control-label" for="numeroDeposito">numeroDeposito</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="text" name="numeroDeposito" th:value="${oferta.numeroDeposito}" size="100" />
+                                                            </div>
+                                                            <label class="col-sm-4 control-label" for="numeroDeposito">Destino depósito</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="text" name="destinoDeposito" th:value="${oferta.destinoDeposito}" size="100" />
+                                                            </div>
+                                                            <label class="col-sm-4 control-label" for="numeroDeposito">Fecha alta</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="text" name="creationDate" th:value="${#calendars.format(oferta.creationDate,'dd-MM-yyyy HH:mm')}" size="100" />
+                                                            </div>
+                                                            <label class="col-sm-4 control-label" for="numeroDeposito">Código</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="text" name="code" th:value="${oferta.code}" size="100" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <a th:if="${oferta.importe}" th:href="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/oferta/{id_tercero}/adjudicar(id_acto=${actolote.acto.id},id_lote=${registro.body.id}, id_tercero=${oferta.tercero.id})}" class="btn btn-success" onclick="return confirm('Desea adjudicar el lote al tercero?')"><span class="fa fa-trophy" /></a>
+                                    <a title="Segunda Mejor oferta" th:if="${oferta.importe}" th:href="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/oferta/{id_tercero}/segunda-mejor-oferta(id_acto=${actolote.acto.id},id_lote=${registro.body.id}, id_tercero=${oferta.tercero.id})}" class="btn btn-warning" onclick="return confirm('Desea marcar como mejor segunda oferta?')"><span class="fa fa-trophy" /></a>
+                                </td>
+                            </tr>
+                            <tr th:if="${actolote} and ${registro.body.visible}=='S'">
+                                <form method="post" th:action="@{/servicio/bienes-embargados/admin/{id_acto}/lote/{id_lote}/deposito/save(id_acto=${actolote.acto.id},id_lote=${registro.body.id})}">
+                                    <td>
+                                        <input class="form-control" type="text" name="creationDate" id="creationDate" placeholder="dd-mm-yyyy HH:mi" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" name="code" id="code" />
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="idTercero" id="idTercero" />
+                                        <input class="form-control" type="text" name="tercero" id="tercero" placeholder="Introduzca el nif del licitador y seleccione de la lista" />
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="idRepresentante" id="idRepresentante" />
+                                        <input class="form-control" type="text" name="representante" id="representante" placeholder="Introduzca el nif del representante y seleccione de la lista" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" name="deposito" id="deposito" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" name="numeroDeposito" id="numeroDeposito" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" name="destinoDeposito" id="destinoDeposito" />
+                                    </td>
+                                    <td>
+                                        <input type="submit" class="btn btn-success" value="Crear" />
+                                    </td>
+                                </form>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/js/jquery-ui-1.11.3.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+
+    $("#tercero").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "/sede/servicio/bienes-embargados/admin/tercero",
+                dataType: "json",
+                data: {
+                    fl: 'id,name',
+                    nif: request.term + '*'
+                },
+                success: function(data) {
+                    $("#idTercero").val('');
+                    if (data.totalCount === 0) {
+                        alert("No se ha encontrado ninguna persona");
+                    } else {
+                        var array = data.error ? [] : $.map(data.result, function(m) {
+                            return {
+                                value: m.name,
+                                id: m.id
+                            };
+                        });
+                        response(array);
+                    }
+
+                }
+            });
+        },
+        minLength: 3,
+        select: function(event, ui) {
+            $("#idTercero").val(ui.item.id);
+        },
+        open: function() {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function() {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+    $("#representante").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "/sede/servicio/bienes-embargados/admin/tercero",
+                dataType: "json",
+                data: {
+                    fl: 'id,name',
+                    nif: request.term + '*'
+                },
+                success: function(data) {
+                    $("#idRepresentante").val('');
+                    if (data.totalCount === 0) {
+                        alert("No se ha encontrado ninguna persona");
+                    } else {
+                        var array = data.error ? [] : $.map(data.result, function(m) {
+                            return {
+                                value: m.name,
+                                id: m.id
+                            };
+                        });
+                        response(array);
+                    }
+                }
+            });
+        },
+        minLength: 3,
+        select: function(event, ui) {
+            $("#idRepresentante").val(ui.item.id);
+        },
+        open: function() {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function() {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

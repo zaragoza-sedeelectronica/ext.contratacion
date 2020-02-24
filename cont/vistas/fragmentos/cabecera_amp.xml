@@ -1,0 +1,12 @@
+<header>
+	<div class="container-fluid">
+		<a class="logo pull-left" href="//www.zaragoza.es" title="Ir a la página principal de la Sede Electrónica del Ayuntamiento de Zaragoza">
+	    	<amp-img width="56" height="50" src="//www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto_old.png" alt="Logotipo Abreviado Ayuntamiento de Zaragoza" />
+	    </a>
+	    <form class="pull-right" id="gs" method="get" action="/opencityext/servicio/buscador/" target="_top">
+		    <label for="input-search-desktop" class="oculto">Buscador</label>
+		    <input id="input-search-desktop" type="text" name="query" size="15" maxlength="256" placeholder="Buscar" />
+	        <button type="submit">Buscar</button>
+	    </form>
+	</div>
+</header>

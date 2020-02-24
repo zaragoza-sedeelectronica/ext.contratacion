@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Convenios" description="Edición de datos de convenio" author="Ayuntamiento de Zaragoza" keywords="sede,web"></sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <div th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'NEW')}" class="pull-right">
+            <a href="../new" class="btn btn-primary">Nuevo registro</a>
+        </div>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/convenios/{id}/save(id=${registro.body.id})}" th:object="${dato}" method="post">
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Actualizar Datos</span></legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="importe">Importe</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{importe}" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="organization">Organización</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{organization}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="modalidad">Modalidad</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" th:field="*{modalidad}">
+                                <option value="">Seleccione</option>
+                                <option value="NOMINATIVA">NOMINATIVA</option>
+                                <option value="CONCURRENCIA">CONCURRENCIA</option>
+                                <option value="CONCURRENCIA COMPETITIVA">CONCURRENCIA COMPETITIVA</option>
+                            </select>
+                        </div>
+                        <label class="col-sm-2 control-label" for="ejercicio">Ejercicio</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{ejercicio}" size="100" />
+                        </div>
+                        <label class="col-sm-2 control-label" for="lineaEstrategica">Línea Estratégica</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" th:field="*{lineaEstrategica}">
+                                <option value="Acción Social">Acción Social</option>
+                                <option value="Asociacionismo y Participación">Asociacionismo y Participación</option>
+                                <option value="Cooperación al Desarrollo">Cooperación al Desarrollo</option>
+                                <option value="Corresponsabilidad Urbanística">Corresponsabilidad Urbanística</option>
+                                <option value="Dinamización Cultural y Educación">Dinamización Cultural y Educación</option>
+                                <option value="Fomento Económico y Social">Fomento Económico y Social</option>
+                                <option value="Medio Ambiente y Sostenibilidad">Medio Ambiente y Sostenibilidad</option>
+                                <option value="Promoción del Deporte">Promoción del Deporte</option>
+                            </select>
+                        </div>
+                        <label class="col-sm-2 control-label" for="dureza_f">Entidad</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" th:field="*{entidad.id}" size="10" placeholder="SEA" />
+                        </div>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" th:field="*{entidad.title}" size="10" placeholder="Nombre" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+</body>
+
+</html>

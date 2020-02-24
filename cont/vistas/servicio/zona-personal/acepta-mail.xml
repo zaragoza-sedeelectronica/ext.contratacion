@@ -1,0 +1,6 @@
+<th:block th:if="${session.sess_ciudadano}">
+	<div role="alert" class="alert alert-warning" th:if="not ${session.sess_ciudadano.aceptaMail} or ${session.sess_ciudadano.aceptaMail=='N'}">
+		No tiene habilitada la recepción de correos electrónicos, para poder ponernos en contacto contigo debes
+		<a href="/opencityext/acceso/allow-mail" class="btn btn-primary">Activar recepción de correos</a>
+	</div>
+</th:block>

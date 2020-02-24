@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Presupuestos participativos" keywords="sede,web,turismo,monumentos" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type="text/css"></link>
+    <style>
+    ul.tags li {
+        font-size: 14px;
+        margin-bottom: .5em;
+    }
+    
+    .label-primary.active {
+        background-color: #b91612;
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>  
+        <h2>
+            Informes sobre la viabilidad de las propuestas realizados por los servicios municipales 
+            <a class="btn btn-xs btn-primary navbar-right margin-t05em" href="./seleccionadas-gasto-virtual?rows=100" th:if="${param.juntaContains} and ${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}">Ver propuestas de todas las juntas</a>
+        </h2>
+        <th:block th:include="fragmentos/error" />
+        <!--/* Si no se tienen permisos DET no se muestra el selector */-->
+        <th:block th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DET')}">
+            <ul class="row no-gutter list-unstyled tags well well-sm">
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Actur')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Actur' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">ACTUR-Rey Fernando</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="(${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'casablanca')}) ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Casablanca' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Casablanca</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Casco')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Casco' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Casco Histórico</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Centro')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Centro' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Centro</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Rabal')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Rabal' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">El Rabal</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Delicias')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Delicias' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Delicias</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Almozara')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Almozara' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">La Almozara</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Fuentes')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Fuentes' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Las Fuentes</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Miralbueno')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Miralbueno' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Miralbueno</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Oliver')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Oliver' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Oliver-Valdefierro</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Jos')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Jos' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">San José</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Isabel')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Isabel' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Santa Isabel</a></li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Torrero')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Torrero' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Torrero-La Paz</a> </li>
+                <li class="col-xs-6 col-sm-4 col-md-3"><a class="label label-primary" th:classappend="${param.juntaContains} and ${#strings.containsIgnoreCase(param.juntaContains[0],'Universidad')} ? 'active': ''" th:href="'./seleccionadas-gasto-virtual?rows=100&amp;juntaContains=Universidad' + (${param.titleContains} ? '&amp;titleContains=' + ${param.titleContains[0]}:'')">Universidad</a></li>
+            </ul>
+        </th:block>
+
+        <!--/* Si no se tienen permisos DET solo se muestra Junta Las Fuentes */-->
+        <!--/* th:if="${not #lists.contains(attr_peticion.permisosEnSeccion, 'DET')} ? (${junta.key} == 'Junta Las Fuentes' or ${junta.key} == 'Junta Miralbueno' or ${junta.key} == 'Junta San José' or ${junta.key} == 'Junta Casco Histórico' or ${junta.key} == 'Junta Torrero-La Paz' or ${junta.key} == 'Junta El Rabal' or ${junta.key} == 'Junta Casablanca' or ${junta.key} == 'Junta Santa Isabel' or ${junta.key} == 'Junta Casco Histórico' or ${junta.key} == 'Junta Universidad') : true"*/-->
+        <!--/* Se deja todo en abierto*/-->
+        <div class="margin-b2em" th:each="junta : ${resultado}">
+
+            <h3 class="nomargin"><th:block th:text="${junta.key}"></th:block> <small th:text="${junta.value.size()} + ' propuestas'"></small></h3>
+            <hr class="nomargin margin-b1em" />
+            <div class="table-responsive">
+                <table class="table table-striped table-consended table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td class="col-xs-1">ID</td>
+                            <td class="col-xs-5">PROPUESTA</td>
+                            <!-- <td class="col-xs-2">COSTE</td> -->
+                            <td class="col-xs-4">DOCUMENTACIÓN</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="registro : ${junta.value}">
+                            <td th:text="${registro.id}"></td>
+                            <td>
+                                <a th:href="@{{id}(id=${registro.id})}" sede:rdf="${registro.get('title')}"></a>
+                            </td>
+                            <!-- <td>
+                                <th:block th:if="${registro.coste}" th:text="${#numbers.formatInteger(registro.coste,3,'POINT')} + ' €'"></th:block>
+                            </td> -->
+                            <td th:utext="${registro.motivo}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <!-- <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"></script> -->
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('.table').DataTable({
+            'paging': false,
+            'bInfo': false,
+            'order': [
+                //[3, 'desc']
+                [2, 'desc']
+            ],
+            'language': {
+                'sSearch': 'Buscar:'
+            }
+        });
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

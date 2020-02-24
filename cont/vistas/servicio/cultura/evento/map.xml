@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Equipamiento de la ciudad'" keywords="zaragoza,equipamiento" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" th:attr="about=*{uri}">
+            <h2 sede:rdf="*{get('title')}" />
+            <div id="mapa-leaflet" style="height: 30em"></div>
+            <hr/>
+            <div th:if="${events.body.totalCount == 0}" role="alert" class="alert alert-info">No se encontraron actividades con la categoría seleccionada.</div>
+            <ul th:if="${events.body.totalCount > 0}" class="row list-unstyled margin-t05em">
+                <th:block th:each="registro : ${events.body.result}">
+                    <li class="col-xs-12 col-sm-6 col-md-4" th:classappend="${registro.geometry} ? geo : nogeo" sede:rdf="${registro.voc()}" th:attr="about=${registro.uri}">
+                        <div class="card" style="min-height:12em;">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 text-center">
+                                    <img th:if="${registro.image}" class="img-responsive" width="320" height="480" th:src="${registro.image}" alt="" property="image" />
+                                    <img th:if="${not #lists.isEmpty(registro.temas)}" th:unless="${registro.image}" class="img-responsive" width="67" height="100" th:src="${registro.temas[0].image}" alt="" property="image"/>
+                                </div>
+                                <div class="col-xs-9 col-sm-9 col-md-9">
+                                    <h3>
+                                        <a th:href="'../' + @{{id}(id=${registro.id})}" sede:rdf="${registro.get('title')}"></a>
+                                    </h3>
+                                    <hr/>
+                                    <th:block th:if="${registro.geometry}" th:utext="${registro.geometry.getRdf()}"></th:block>
+                                    <ul th:if="${registro.subEvent}">
+                                        <li th:each="subEvent : ${registro.subEvent}">
+                                            <a th:href="'/sede/servicio/equipamiento/' + ${#strings.arraySplit(subEvent.lugar.id, '-')[1]}" th:text="${subEvent.lugar.title}"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    $("li[typeOf]").each(function() {
+
+        var icon = '//www.zaragoza.es/contenidos/iconos/agenda.png';
+        var latitude = $(this).find("[property='latitude']").attr("content");
+        var longitude = $(this).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            var marker = L.marker([latitude, longitude], {
+                icon: L.icon({
+                    iconUrl: icon,
+                    iconSize: [22, 20],
+                    iconAnchor: [22, 20],
+                    popupAnchor: [-10, -20]
+                })
+            }).bindPopup($(this).html());
+            pois.push(marker);
+
+        }
+    });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, errorPosition);
+    } else {
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    }
+
+    function showPosition(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        //var latitude = 41.652020560953645;
+        //var longitude = -0.9845429715135259;
+        if (latitude < 41.998914010914405 && latitude > 41.429966005785936 && longitude < -0.5080683157393229 && longitude > -1.443420883267586) {
+            var user = L.marker([latitude, longitude]);
+            pois.push(user);
+            var group = L.featureGroup(pois).addTo(map);
+            map.setView(new L.LatLng(latitude, longitude), 3);
+            //map.fitBounds(group.getBounds());
+
+            var locationArray = $("li.geo");
+            locationArray.sort(function(a, b) {
+                var latA = $(a).find("[property='latitude']").attr("content");
+                var latB = $(b).find("[property='latitude']").attr("content");
+                var longA = $(a).find("[property='longitude']").attr("content");
+                var longB = $(b).find("[property='longitude']").attr("content");
+                var dist = distance(latA, longA, latitude, longitude) - distance(latB, longB, latitude, longitude);
+                return dist;
+            });
+            var parent = $("li.geo").first().parent();
+            $("li.geo").remove();
+            for (var i = locationArray.length; i >= 0; i--) {
+                parent.prepend(locationArray[i]);
+            }
+
+        } else {
+            //alert('Coordenadas no ubicadas en Zaragoza')
+            var group = L.featureGroup(pois).addTo(map);
+            map.fitBounds(group.getBounds());
+        }
+    }
+
+    function errorPosition(error) {
+        console.log("ERRORRRRRRR");
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    }
+
+
+    function distance(lat1, lon1, lat2, lon2) {
+        var p = 0.017453292519943295; // Math.PI / 180
+        var c = Math.cos;
+        var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+            c(lat1 * p) * c(lat2 * p) *
+            (1 - c((lon2 - lon1) * p)) / 2;
+
+        return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+    }
+    /*]]>*/
+    </script>
+</body>
+
+</html>

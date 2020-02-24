@@ -1,0 +1,50 @@
+<p th:unless="${resultado}" class="alert alert-info">
+	Introduzca algún criterio de búsqueda
+</p>
+<th:block th:if="${resultado}">
+	<p th:unless="${not #lists.isEmpty(resultado.body.result)}" class="alert alert-info">
+		La consulta no ha devuelto ningún resultado
+	</p>
+	<div class="row" th:if="${not #lists.isEmpty(resultado.body.result)}">
+		<div class="col-md-7">
+		    <ul class="list-unstyled" id="qys">
+		        <li class="card" th:each="registro : ${resultado.body.result}" sede:rdf="${registro.voc()}" th:attr="about=${registro.uri}">
+		            <strong sede:rdf="${registro.get('title')}"></strong>
+		            <a class="label label-info" th:href="'?service_code='+${registro.service_code}">
+		                <th:block sede:rdf="${registro.get('service_name')}" />
+		            </a>
+		            <a th:if="${registro.catSip}" class="label label-danger" th:href="'?id_cat_sip='+${registro.catSip.id}">
+		                <th:block th:text="${registro.catSip.title}" />
+		            </a>
+		            
+		            <th:block th:switch="${registro.status}">
+		                <span th:case="'open'" property="Status" content="open" class="label label-warning">Pendiente</span>
+		                <span th:case="'closed'" property="Status" content="closed" class="label label-success">Cerrada</span>
+		            </th:block>
+		            <span sede:rdf="${registro.get('requested_datetime')}"></span>
+		            <div><pre sede:rdf="${registro.get('description')}" class="shorten"></pre></div>
+		            <div th:if="!${#strings.isEmpty(registro.service_notice)}"><span class="label label-danger">Respuesta</span> <span sede:rdf="${registro.get('updated_datetime')}"></span><pre sede:rdf="${registro.get('service_notice')}" class="shorten"></pre></div>
+		            <meta property="xcoordinate" th:attr="content=${registro.x}"/><meta property="ycoordinate" th:attr="content=${registro.y}"/>
+		        </li>
+		    </ul>
+		</div>
+		<div class="col-md-5">
+			<div id="mapa" style="width: 100%">
+                <script type="text/javascript">
+                    var ifrm = document.createElement("iframe");
+                    ifrm.setAttribute("name", "mapahome");
+                    ifrm.setAttribute("id", "mapahome");
+                    ifrm.setAttribute("title", "La Ciudad al Instante");
+                    ifrm.setAttribute("overflow", "scroll");
+                    ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                   // ifrm.setAttribute("frameBorder", "0");
+                    ifrm.style.width.value = "100%";
+                    document.getElementById("mapa").appendChild(ifrm);
+                </script>
+            </div>
+		</div>
+	</div>
+    <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+
+
+</th:block>

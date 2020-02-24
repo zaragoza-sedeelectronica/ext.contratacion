@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Zaragoza Empleo" description="El portal Zaragoza Empleo ofrece recursos de información dirigidos a la tercera edad: trámites y servicios, cursos-talleres, parques de mayores de la ciudad, Red de Ciudades Amigables, Servicio de Comedores para mayores, bodas de oro, etc. Conozca Red de Centros de Convivencia para Mayores y los proyectos de voluntarios existentes para la dinamización de aulas y para parques. Acceso al Blog del Mayor. A través de ayúdanos a mejorar, el ciudadano podrá expresar todas las quejas y sugerencias que tenga." subject="ayuntamiento, ciudad, Zaragoza, España, Centros de Convivencia, equipamientos colectivos,formalidades administrativas, administración electrónica, relación administración-administrado, Organización Mundial de la Salud, Red de Ciudades Amigables, participación social, comedores, zonas verdes, actividades, cursos, bodas de oro, voluntariado social, informática,  blog, servicio de quejas y sugerencias, council, city, Saragossa, Spain, elderly day care centres, community facilities, administrative formalities, electronic government, citizen-authority relations, World Health Organisation, Global Network of Age-Friendly Cities, social participation, canteen's services, green area, activities, courses, golden wedding anniversary, voluntary work, computer systems, complaints and suggestions service" publisher="Ayuntamiento de Zaragoza" contributor="Ayuntamiento de Zaragoza" author="Ayuntamiento de Zaragoza" date-issued="21-02-2018" language="es" audience="personas mayores, elderly people, citizenship, ciudadania">
+    </sede:meta>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style type="text/css">
+    .fa {
+        vertical-align: middle;
+    }
+
+    @media (min-width: 768px) {
+        .list-aviso>li {
+            min-height: 16em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <img class="img-responsive full-width margin-b1em" src="/cont/vistas/portal/empleo/img/cabecera-empleo.jpg" alt="" />
+		  
+		 
+        
+		
+		 <div class="row">
+            <div class="col-md-12">  
+			   
+			 <div class="col-md-3">    
+			 <img src="/cont/vistas/portal/empleo/img/faqs.jpg"/>  
+			 </div> 
+			
+			  <div class="col-md-3">
+			 <img src="/cont/vistas/portal/empleo/img/bolsa-empleo.jpg"/> </div> 
+			 <div class="col-md-3">    
+			 <img src="/cont/vistas/portal/empleo/img/faqs.jpg"/>  
+			 </div>
+			 
+			  <div class="col-md-3">
+			 <img src="/cont/vistas/portal/empleo/img/bolsa-empleo.jpg"/> </div> 
+			  </div></div>
+		
+		
+		<div class="clearfix"></div>
+		
+		
+		<div class="row">
+            <div class="col-md-12">  
+                <div class="card clearfix">
+				<div class="col-md-6">
+                    <h2>Destacados</h2>
+                    <hr class="sm" />
+                    <sede:aviso portal="Empleo" nresultados="6" clase="col-xs-12 col-sm-6 col-md-4"> </sede:aviso>
+         </div>
+		 <div class="col-md-4">
+                
+				                                    <sede:calendario-agenda carpeta="/sede/servicio/cultura/evento/calendar/"></sede:calendario-agenda>
+
+				 
+        
+		
+		
+		 </div>
+		 
+		 </div></div></div>
+		 <div class="row">
+            <div class="col-md-12">   <div class="card clearfix">
+                
+		
+ 
+		 
+		 
+		 
+								
+								
+								
+								
+								
+	 
+            <div class="col-md-4">
+      
+					
+					   <h2>Zaragoza Emplea</h2>
+         
+							 <hr class="sm" />  
+							
+							
+							  <a href="https://www.zaragoza.es/ciudad/sectores/activa/"> <img src="/cont/vistas/portal/empleo/img/zac.jpg"/>  </a>
+				<a href="http://www.zaragozadinamica.es/"> <img src="/cont/vistas/portal/empleo/img/dinamica.jpg"/>  </a></div>
+				 <div class="col-md-4">         <div class="clearfix">  </div>
+		<a href="https://www.zaragoza.es/ciudad/etopia/"> <img src="/cont/vistas/portal/empleo/img/etopia.jpg"/>  </a>
+		<a href="http://www.ciemzaragoza.es/"> <img src="/cont/vistas/portal/empleo/img/ciem.jpg"/>  </a>
+							
+					        </div>
+							
+							
+							 <div class="col-md-4">
+         
+                    <h2>Servicios</h2>
+                    <hr class="sm" />
+					
+					
+					<ul class="list-unstyled row no-gutter text-center" role="menu">
+				 
+				<li class="col-xs-12"> 
+				  <span class="fa fa-2x fa-life-ring" aria-hidden="true"></span>
+				
+				<a href="https://www.zaragoza.es/sede/portal/empleo/servicio/tramite/2760">
+					<h3 class="margin-v05em text-center">
+						Trámites  
+					</h3></a>
+				</li>
+				<li class="col-xs-12">
+				<span class="fa fa-2x fa-archive" aria-hidden="true"></span>
+										<a href="https://www.zaragoza.es/sede/portal/empleo/servicio/publicacion-municipal/list?titleContains=&amp;year=&amp;author=empleo&amp;isbn=&amp;coleccion.id=&amp;tipo.id=">  
+<h3 class="margin-v05em text-center">Subvenciones
+					</h3></a>
+				</li>
+			</ul>
+							   
+            </div>
+               
+                         
+            </div>                     
+                    </div>       
+              
+        </div>
+     
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>
+			Red de Centros
+		</h2>
+
+		<hr class="sm"/>
+		<div class="card clearfix">
+			<ul class="list-unstyled nomargin clearfix" role="menu">
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/500"> </a>
+
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/4907"><img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/sectores/activa/img/zgz_act.jpg"/> </a>
+
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/sectores/personas-mayores/servicio/equipamiento/4907">Zaragoza Activa Azucarera</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/4907"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/4907"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5405">  </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5405">
+						<img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/centros/img/activaarmas.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5405">Las 
+								Armas</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5405"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5405"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5125"><!--/* <a href="/ciudad/museos/es/puerto/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5125">
+						<img alt="" width="200" height="175" class="img-responsive img-rounded" src="/cont/paginas/img/avisos/aviso_ciem.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5125">CIEM</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5125"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5125"> </a>
+				</li>
+				<li class="col-xs-6 col-sm-3 margin-b1em">
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5105"><!--/* <a href="/ciudad/museos/es/puerto/"> */--> </a>
+					<div class="img-container">
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5105">
+						<img alt="" width="200" height="175" class="img-responsive img-rounded" src="https://www.zaragoza.es/cont/paginas/sectores/tecnologia/img/etopia.jpg"/> </a>
+						<div class="overlay">
+							<div class="text">
+								<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5105">eTOPIA</a>
+							</div>
+						</div>
+						<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5105"> </a>
+					</div>
+					<a href="/sede/portal/derechos-sociales/servicio/equipamiento/5105"> </a>
+				</li>
+				 
+			</ul>
+			<a class="btn btn-xs btn-primary pull-right" href="/sede/portal/derechos-sociales/servicio/equipamiento/category/105">Ver más </a>
+		</div>
+	</div>
+</div>   <div class="card clearfix">
+            <h2>Actualidad</h2>
+            <hr class="sm" />
+            <sede:noticia listado="s" imagen="s" usuario="" fecha="" espacio="1" numero="4" tema="Empleo" carpeta="/sede/portal/sectores/personas-mayores/" fragment="/fragmentos/cultura/custom-list-noticia2"></sede:noticia>
+            <a class="btn btn-xs btn-primary pull-right" href="/sede/portal/cultura/fiestas-pilar/servicio/noticia/list?fq=temas_smultiple%3A(&quot;Personas Mayores&quot;)">Ver más noticias</a>
+        </div>
+       
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    var latitude = $(document).find("[property='latitude']").attr("content");
+    var longitude = $(document).find("[property='longitude']").attr("content");
+    if (latitude && longitude) {
+        var marker = L.marker([latitude, longitude]);
+        pois.push(marker);
+    };
+    $(".listado-equipamiento li").each(function() {
+        $(this).find('a').html($(this).find('a').text().replace('Centro de Convivencia para Mayores', '<abbr title="Centro de Convivencia para Mayores">CCM</abbr>'));
+
+        var icon = '//www.zaragoza.es/contenidos/iconos/participacionCiudadana.png';
+        var latitude = $(this).find("[property='latitude']").attr("content");
+        var longitude = $(this).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            var marker = L.marker([latitude, longitude], {
+                icon: L.icon({
+                    iconUrl: icon,
+                    iconSize: [22, 20],
+                    iconAnchor: [22, 20],
+                    popupAnchor: [-10, -20]
+                })
+            }).bindPopup($(this).html());
+            pois.push(marker);
+        };
+    });
+    var group = L.featureGroup(pois).addTo(map);
+    map.setView(new L.LatLng(latitude, longitude), 5);
+    /*]]>*/
+    </script>
+</body>
+
+</html>

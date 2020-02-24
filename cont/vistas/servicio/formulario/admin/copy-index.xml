@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Quejas y Sugerencias" keywords="sede,web" />
+    <link rel="stylesheet" type="text/css" href="/cont/assets/bower_components/angular-ui-select/dist/select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/cont/assets/bower_components/leaflet/dist/leaflet.css"/>
+    <style type="text/css">
+        tr.noasignada{background-color:#D69999}/*rojo*/
+        tr.cerrada{background-color:#B8D699}/*verde*/
+        tr.pendiente,tr.pendientepor{background-color:#D6D699}/*amarillo*/
+        tr.resuelta,tr.realizadapor{background-color:#B8D699}/*verde*/
+        tr.borrada{background-color:#FFF}
+        tr.derivadaa{background-color:#99B8D6}/*azul*/
+        tr.rechazada,tr.rechazadapor{background-color:#FFF}
+        tr.archivada{background-color:#FFF}
+
+        .btn-street-view{
+            position: relative;
+            top: 45px;
+            right: 8%;
+            float: right;
+            z-index: 20;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .panorama-street-view{
+            position: absolute;
+            right: 0;
+            width:300px;
+            height:300px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div ng-app="app" ng-controller="MainCtrl">
+            
+            <cabecera servicio="TICKETING" seccion="REQUESTS"></cabecera>
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <button class="btn btn-primary btn-sm" ng-click="crear()" ng-show="permisos.NEW">
+                            <span class="fas fa-pencil-alt" aria-hidden="true"></span>
+                            <span class="hidden-xs"> Nuevo registro</span>
+                        </button>
+
+                        <button class="btn btn-primary btn-sm" ng-click="listar()" ng-show="permisos.DET">
+                            <span class="fa fa-list" aria-hidden="true"></span>
+                            <span class="hidden-xs"> Listado</span>
+                        </button>
+
+                        <modal-busqueda-ticketing ng-show="permisos.DET"></modal-busqueda-ticketing>
+                        <modal-estadistica ng-show="permisos.ESTADISTICA"></modal-estadistica>
+                        
+                        <button class="btn btn-primary btn-sm" ng-click="category()" ng-show="permisos.CATEGORY">
+                            <span class="fa fa-tags" aria-hidden="true"></span>
+                            <span class="hidden-xs"> Categorías</span>
+                        </button>
+                        
+                        <button class="btn btn-primary btn-sm" ng-click="group()" ng-show="permisos.CATEGORY">
+                            <span class="fa fa-bookmark" aria-hidden="true"></span>
+                            <span class="hidden-xs"> Servicios</span>
+                        </button>
+
+                        <a class="btn btn-primary btn-sm pull-right" href="#ayuda" target="_blank">
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                        <span class="hidden-xs"> Ayuda</span>
+                        </a>
+                        <modal-localizacion title="Mapa"></modal-localizacion>
+                        <sham-spinner text="Ejecutando petición..." class="pull-right"></sham-spinner>
+                        
+                    </div>
+
+                </div>
+  
+                <hr/>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-view=""></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </sede:content>
+    <!--/* Libs AngularJS & Javascript */-->
+    <script src="/cont/assets/bower_components/cryptojslib/rollups/hmac-sha1.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular/angular.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/lodash/dist/lodash.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/restangular/dist/restangular.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-sham-spinner/angular-sham-spinner.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-ui-select/dist/select.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/leaflet/dist/leaflet.js" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCaSVfol2p4F2GNWiiWQj2t4wGAEolsd6c"></script>
+    <script src="/cont/assets/bower_components/leaflet-plugins/layer/tile/Google.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/proj4leaflet/lib/proj4-compressed.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/proj4leaflet/src/proj4leaflet.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js" type="text/javascript"></script>
+    <script src="/cont/assets/bower_components/checklist-model/checklist-model.js" type="text/javascript"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+
+    <!--/* Ficheros AngularJS propios de la sección */-->
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/app.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/services.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/controllers.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/filters.js"></script>
+    <script src="/cont/vistas/servicio/catalogo/admin/js/directives.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/directives.js"></script>
+    <script src="/cont/vistas/servicio/quejas-sugerencias/admin/js/utilsTicketing.js" charset="UTF-8"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+        var usuario = [[${session.sess_risp.usuario}]];
+        var servicios = [[${session.sess_risp.servicios}]];
+        sessionStorage.setItem('datosUsuario', JSON.stringify(usuario));
+        sessionStorage.setItem('serviciosUsuario', JSON.stringify(servicios));
+    /*]]>*/
+    </script>
+</body>
+
+</html>

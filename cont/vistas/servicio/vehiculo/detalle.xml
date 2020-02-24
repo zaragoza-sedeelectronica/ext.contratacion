@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? (${registro.body.marca} + '. ' + ${registro.body.modelo}) : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Vehículo'" keywords="sede,web,vehículo" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <div class="card">
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-6 col-md-6 col-lg-8">
+                            <strong sede:rdf="*{get('marca')}" /> - <strong sede:rdf="*{get('modelo')}" /> (<span sede:rdf="*{tipo.get('title')}" />)
+                            <!--/*<div th:if="not *{#lists.isEmpty(kilometraje)}">
+                                Contador de Kil&oacute;metros por año
+                                <ul th:each="km:*{kilometraje}">
+                                    <li><span sede:rdf="${km.get('year')}" />: <span th:text="${#numbers.formatInteger(km.km,3,'POINT')}" sede:rdf="${km.voc('km')}" /> Kil&oacute;metros</li>
+                                </ul>
+                            </div>*/-->
+                        </div>
+                        <div class="col-xs-4 col-sm-6 col-md-6 col-lg-4">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="label label-info">
+                                    <span sede:rdf="*{get('servicio')}" />
+                                </li>
+                                <li class="label label-success">Estado: <span sede:rdf="*{get('estado')}" /></li>
+                                <li class="label label-default">&uacute;ltimo a&ntilde;o: <span th:text="*{#numbers.formatInteger(kms,3,'POINT')}" sede:rdf="*{voc('kms')}" /> kms
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

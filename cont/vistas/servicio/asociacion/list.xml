@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Registro de asociaciones" author="autor" keywords="sede,web" />
+    <meta name="robots" content="noindex, follow"/>
+    <style type="text/css">
+        .card {
+            position: relative;
+            padding-top: 1.5em;
+        }
+        @media (min-width: 768px) {
+            .card {
+                min-height: 10em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Listado de Asociaciones</h2>
+        <ul class="row list-unstyled">
+            <li th:each="doc : ${resultado.body.result}" class="card col-xs-12 col-sm-6 col-md-4" sede:rdf="${doc.voc()}" th:attr="about=${doc.uri}">
+                <strong th:text="${doc.title}"></strong>
+                <ul class="list-unstyled">
+                <li th:if="${doc.address}" class="direccion">
+                    <span class="fa fa-home" title="Dirección"></span>
+                    <span th:text="${doc.address}" />
+                </li>
+                <li th:if="${doc.phone}" class="tel">
+                    <span class="fa fa-phone" title="Teléfono"></span>
+                    <!-- <strong>Teléfono:</strong> -->
+                    <th:block th:if="${currentDevice.isMobile()} == true">
+                        <a th:href="'tel:' + ${doc.phone}"><span sede:rdf="${doc.get('phone')}" /></a>
+                    </th:block>
+                    <th:block th:if="${currentDevice.isMobile()} != true">
+                        <span sede:rdf="${doc.get('phone')}" />
+                    </th:block>
+                </li>
+                <li th:if="${doc.mail}" class="email">
+                    <span class="fa fa-at" title="Correo electrónico"></span>
+                    <a class="small" sede:rdf="${doc.prop('mail')}" th:href="'mailto:' + ${doc.mail}" th:text="${doc.mail}" />
+                </li>
+            </ul>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

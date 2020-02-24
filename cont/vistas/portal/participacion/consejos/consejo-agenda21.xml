@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+           <sede:meta title="Consejo Sectorial Agenda 21 Local"            
+  			description="El Consejo Sectorial de Acción Social, antes de 1999 conocido como Consejo Local de Acción Social, es un órgano de participación de carácter consultivo y ámbito municipal. Facilita la participación de la ciudadanía y canaliza la información de las entidades asociativas, vecinales, colectivos, servicios municipales y otras administraciones colaborando en la planificación, desarrollo, evaluación y rendición de cuentas de las políticas de carácter social de la ciudad dirigidas a los grupos de población más desfavorecidos. En la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, dispone de recursos de información y documentación: reglamento, organización y composición del Pleno, agenda, orden del día y actas de las reuniones."  
+             keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, legislación local, órgano consultivo, Consejo de la Ciudad, Consejo Sectorial, Agenda 21 Local, calidad del medio ambiente,  contaminación acústica, gestión del agua, biodiversidad, city, council, Saragossa, electronic site, local government open government, citizen-authority relation,social participation, local legislation, advisory board,  City Council, Sectoral Council, quality of the environment, adaptation to climate change, acoustic pollution, water management, biodiversity"
+              >
+    </sede:meta>
+        <style>
+            body {
+            padding-top: 57px;
+            }
+
+            .titulo-procesos h2,
+            .procesos h2 {
+            color: #e83437 !important;
+            font-size: 42px !important;
+            }
+
+            .titulo-procesos h2 small,
+            .titulo-procesos h2 span,
+            .procesos h2 small,
+            .procesos h2 span {
+            color: #000000;
+            }
+
+            .ancho {
+            padding: 30px 0;
+            width: 100%;
+            }
+
+            .radius {
+            border-radius: 10px;
+            }
+
+            .ancho .fnd-blanco {
+            margin-bottom: 20px;
+            }
+
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: -15px;
+            font-size: 28px;
+            }
+
+            .menu-consejos li.active a {
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            .margin-t3em {
+            margin-top: 0 !important;
+            padding-top: 3em !important;
+            }
+
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+
+            .cuadrado ul li div {
+            background-color: #e9e9e9;
+            border-radius: 10px;
+            padding-top: 10px;
+            padding-bottom: 60px;
+            margin-10px;
+            }
+
+            .cuadrado ul li div a {
+            margin-top: 5px;
+            color: #000000;
+            font-size: 20px;
+            }
+            .cuadrado ul li div img {
+            margin: 0px auto;
+            }
+
+            .fondo-dibujo {
+            background-image: url('/cont/vistas/portal/participacion/img/imagCabecera_ConsejoCiudad.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 200px;
+            }
+            
+            .subtitulo {
+            color: #E81B16;
+            }
+            
+            .subtitulo span {
+            color: #000000;
+            }
+            
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn tr {
+
+            }
+
+            .tabla-bn td,
+            .tabla-bn th{
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }            
+            
+            .redes-sociales {
+            margin-top: -13px;
+            font-size: 65px;
+            text-align: right;
+            }
+
+            @media (min-width: 768px) and (max-width: 1016px) {
+            .redes-sociales {
+            font-size: 44px;
+            }
+            }
+            
+            .comisiones21 {
+				font-size: 1.60em;
+			}                                        
+            
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container text-left margin-auto nomargin titulo-procesos fondo-dibujo">
+                <h2 class="text-right">
+                    <small>Participación</small>
+                    <span>|</span>
+                    Consejos Sectoriales
+                </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src=""
+                             class="img-responsive" alt=""/>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="container fnd-gris-claro ancho">
+                <div class="container-fluid">
+                    <div class="clearfix fnd-gris-claro">						
+                    <ul class="nav menu fnd-blanco radius col-sm-10 menu-consejos" role="tablist">
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/"
+                               style="border-radius: 10px 0 0 10px; border-right: solid 2px #000000;">Consejo de la
+                                Ciudad
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 active text-center">
+                            <a href="/sede/portal/participacion/consejos/consejos-sectoriales"
+                               style="border-radius: 0; border-right: solid 2px #000000;">Consejos
+                                Sectoriales
+                            </a>
+                        </li>
+                        <li role="presentation" class="col-sm-4 text-center">
+                            <a href="/sede/portal/participacion/consejos/grupos-trabajo"
+                               style="border-radius: 0 10px 10px 0;">Grupos de Trabajo
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="col-sm-2 redes-sociales">
+                        <a href="https://www.facebook.com/ZGZopencity/">
+                            <span class="fab fa-facebook-square"></span>
+                        </a>
+                        <a href="https://twitter.com/ZGZopencity">
+                            <span class="fab fa-twitter-square"></span>
+                        </a>
+                    </div>                      
+                </div>
+                <div class="container-fluid fnd-blanco radius">
+					<div class="col-md-12">				
+					<h2>Consejo Sectorial
+                    <strong>Agenda 21 Local</strong>
+                    </h2>
+					<p style="margin-bottom: 30px;">El Consejo Sectorial Agenda 21 Local es un órgano de participación, de naturaleza consultiva, informativa y asesora. Su finalidad y objetivos es la de facilitar la participación de los ciudadanos y canalizar la información de las entidades asociativas en los asuntos municipales relativos al medio ambiente.</p>             
+
+
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#agenda" aria-controls="agenda" role="tab" data-toggle="tab">
+                                    <span class="fa fa-calendar fa-lg"></span>
+                                    Agenda
+                                </a>
+                            </li>							
+                            <li role="presentation">
+                                <a href="#queson" aria-controls="queson" role="tab" data-toggle="tab">
+                                    <span class="fa fa-info-circle fa-lg"></span>
+                                    ¿Qué es?
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#composicion" aria-controls="composicion" role="tab" data-toggle="tab">
+                                    <span class="fa fa-address-card fa-lg"></span>
+                                    Composición
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#doc" aria-controls="doc" role="tab" data-toggle="tab">
+                                    <span class="far fa-file-alt fa-lg"></span>
+                                    Documentación
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#comisiones" aria-controls="comisiones" role="tab" data-toggle="tab">
+                                    <span class="fas fa-users fa-lg"></span>
+                                    Comisiones 21
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+							
+<div role="tabpanel" class="tab-pane active" id="agenda">
+		<div class="row">
+			<h3>Última convocatoria</h3>
+			<hr class="sm"/>
+
+
+
+<table summary="Actividades plenarias" class="table table-responsive tabla-bn">
+    <thead>
+    <tr>
+        <th class="col-md-3">Fecha</th>
+        <th class="col-md-3">Acuerdos</th>
+        <th class="col-md-6">Anexos y documentación</th>
+    </tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesión del pleno: 5.02.2019</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" href="/contenidos/medioambiente/agenda21/acta-agenda21-05febr-19.pdf" class="pdf" target="_blank">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td>
+	<ul class="list-unstyled">
+		<li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/CSA21L05_02_2019RetornoECAZ3_0.pdf" target="_blank">Anexo I. Sesión de retorno ECAZ 3.0 <span class="oculto">Documento PDF</span></a> 
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-II-Informe-CalidadAire-2018.pdf" target="_blank">Anexo II. Informe provisional calidad del aire 2018 <span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-III-Protocolo-NO2.pdf" target="_blank">Anexo III. Protocolo NO2<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-IV-Indicadores-2017.pdf" target="_blank">Anexo IV. Indicadores 2017<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-V-Universidad-Zaragoza.pdf" target="_blank">Anexo V. Universidad de Zaragoza<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-VI-Presentación-OMPCAZ.pdf" target="_blank">Anexo VI. Presentación OMPCAZ<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-VII-Articulado-anexos-OMPCAZ.pdf" target="_blank">Anexo VII. Articulado y anexos OMPCAZ<span class="oculto">Documento PDF</span></a>
+	</li></ul></td>
+	</tr>
+	</tbody>
+	</table>			
+	
+		</div>
+</div>							
+                            <div role="tabpanel" class="tab-pane" id="queson">
+		<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-9">				
+	<p>El <strong>Consejo Sectorial de Medio Ambiente</strong> pasa a denominarse <strong>Consejo Sectorial de la Agenda 21 Local </strong>por el acuedo del Consejo Sectorial de 2 de junio de 2004.</p>
+	</div>
+ 	<div class="linea">&nbsp;</div>	
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Antecedentes</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">		
+		<p>El Ayuntamiento había aprobado previamente por el Acuerdo del Pleno del Excmo. Ayuntamiento de Zaragoza, en sesión celebrada el 27 de septiembre de 1996 (B. O. P. de 24 de octubre de 1996) el Reglamento Marco de los Consejos Sectoriales de Zaragoza. En el Título I, art. 2 de este reglamento, se definen los Consejos Sectoriales de Zaragoza como órganos de participación, de naturaleza consultiva, informativa y asesora en el ámbito Municipal. La finalidad y objetivo de los Consejos Sectoriales es la de facilitar la participación de los ciudadanos y canalizar la información de las entidades asociativas en los asuntos Municipales.</p>
+		<p>En sesión celebrada el 30 de julio de 1998, se aprobó por Acuerdo Pleno del Excmo. Ayuntamiento, la constitución del Consejo Sectorial de Medio Ambiente.</p>
+		</div>		
+	<div class="linea">&nbsp;</div>	 
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Funciones</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">							
+					
+		<p>Las funciones del Consejo Sectorial de la Agenda 21 Local son las siguientes:</p>
+		<ul><li>Presentar iniciativas, sugerencias y propuestas para ser debatidas en las Comisiones Informativas Municipales.</li>
+		<li>Proponer conjuntamente soluciones a problemas del sector de actividad a que se refiera el correspondiente Consejo Sectorial.</li>
+		<li>Colaborar en los estudios y elaboración de Programas, Proyectos y Disposiciones Generales.</li>
+		<li>Asesorar la elaboración del programa de actuación y el presupuesto del Área correspondiente.</li>
+		<li>Informar al Ayuntamiento</li>
+		<li>Seguimiento y Evaluación del Plan de Acción Agenda 21 Local.</li>
+		<li>Aportar ideas al proceso de implantación de la Agenda 21 Local.</li>
+		</ul>
+		</div>
+		
+<div class="linea">&nbsp;</div>
+
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Comisiones 21</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">	
+		<p>Las Comisiones 21 son los lugares de trabajo y encuentro de los diferentes agentes sociales que pertenezcan al mismo sector y que, de manera voluntaria, quieran participar en los procesos de Agenda 21 Local.</p>
+		<p>Las Comisiones 21 se constituirán para el estudio, discusión, análisis y propuestas de temas específicos que, una vez finalizados los trabajos y las propuestas correspondientes, la misma se disolverá (p. ej. Mesa del Ruido).</p>
+		<p>La composición de las mismas será de carácter mixto en la que participarán los representantes y técnicos municipales, los correspondientes a otras Instituciones así como los agentes locales implicados en sectores específicos y en función de la temática a tratar.</p>
+		<p>Los resultados de los trabajos de dichas Comisiones se darán a conocer en el Consejo Sectorial.</p> 
+</div>					
+</div>		
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="composicion">
+		<div class="row">
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Presidencia</h3>			
+		</div>
+		<div class="col-md-9 margin-t1em">
+			<ul>
+				<li>Presidente: Excmo. Sr. D.Pedro Santiesteve Roche, Alcalde</li>
+				<li>Vicepresidente: D. Pablo Muñoz San Pío, Consejero de Urbanismo y Sostenibilidad</li>
+				<li>Vicepresidenta:&nbsp;D.ª Teresa Artigas Sanz, Concejala Delegada de Medio Ambiente y Movilidad</li>
+				</ul>
+		</div>
+		<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">		
+		<h3 class="margin-t05em">Secretaría Técnica</h3>			
+		</div>
+		<div class="col-md-9 margin-t1em">
+						<ul><li>
+D. Miguel Ángel Abadía Iguacén, Coordinador General del Área de
+Urbanismo y Sostenibilidad</li><li>
+D. Jesús Giménez Pérez, Jefe de Departamento de Ecología Urbana</li><li>
+Dª. Carmen Cebrián Fernández, Directora de la Agencia de Medio
+Ambiente y Sostenibilidad</li><li>
+D. Enrique Asensio García, Jefe del Departamento de Servicios Públicos</li><li>
+D. Ramiro Pardo Berges, Jefe deServicio Mercados</li><li>
+D. Aurelio Abad Gutiérrez, Coordinador Gral. de Servicios Públicos y
+Movilidad</li><li>
+D.ª Mª Luisa Campillos Apesteguía, Jefa Sección de Información y
+Educación Ambiental. Agencia de Medio Ambiente y Sostenibilidad</li><li>
+D.ª M.ª Luisa Lou Yago; Jefa de Servicio de Distritos</li><li>
+D.ª Nieves López Marqués, Jefa de Sección de Prevención Ambiental.
+Agencia de Medio Ambiente y Sostenibilidad</li><li>
+D. Julio López Blázquez, Jefe Oficina del Espacio Urbano y Gestión
+de Residuos</li><li>
+D. Santiago Rubio Ruiz, Jefe de Servicio de Movilidad Urbana</li><li>
+D. Iván Andrés Martínez, Coordinador General del Área de Alcaldía</li><li>
+D. Luis Manso de Zúñiga González, Jefe de la Unidad de Conservación
+del Medio Natural. Agencia de Medio Ambiente y Sostenibilidad</li><li>
+D. Pablo Híjar Bayarte, Concejal Delegado de Vivienda y Deporte</li><li>
+Dª Maria José Marco Bes, Gerente de Zaragoza Dinámica</li><li>
+D. Francisco José Pardo Pérez, Coordinador General del Área de
+Participación, Transparencia y Gobierno Abierto</li><li>
+D. José Ramón Entralgo Layunta, Director de Conservación y
+Explotación de Infraestructuras</li><li>
+D. Ramón Betrán Abadía, Director de Servicios de Planificación y
+Diseño de la Movilidad Urbana</li>
+						</ul>
+		</div>
+		
+		<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">		
+		<h3 class="margin-t05em">Secretaría</h3>			
+		</div>
+		<div class="col-md-9 margin-t1em">
+			<ul>
+				<li>D. Luis Jiménez Abad, Secretario General</li>
+				<li>Dª. Astrid García Graells, Secretaria Consejo</li>		
+				<li>D. Rafael Fernández de Alarcón Herrero, Consejero Delegado</li>							 
+					 </ul>
+		</div>		
+
+		<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">		
+		<h3 class="margin-t05em">Entidades municipales invitadas</h3>			
+		</div>
+		<div class="col-md-9 margin-t1em">
+<ul><li>Zaragoza Deporte Municipal, S. A.: D. José Antonio Martin Espíldora</li>
+					 <li>ZGZ Arroba Expo Desarrollo, S.A.: D. Alberto Ípas Ornat</li>
+					 <!--/*<li>
+					 Ecociudad Zaragoza,S.L.</li><li>
+					Sociedad Municipal Zaragoza Vivienda, S.L.U.</li><li>
+				Sociedad Estatal de Correos y Telégrafos, S. A.</li><li>
+				FCC, S.A.</li>*/-->
+					 </ul>			
+			</div>
+			
+		<div class="linea">&nbsp;</div>		
+		<div class="col-md-3">		
+		<h3 class="margin-t05em">Vocales</h3>			
+		</div>
+		<div class="col-md-9 margin-t1em">									
+<ol><li>AGENCIA ESTATAL DE METEOROLOG&#205;A - DELEGACI&#211;N TERRITORIAL EN ARAG&#211;N</li><li>ARAGA-ASOCIACI&#211;N REGIONAL DE AGRICULTORES Y GANADEROS DE ARAG&#211;N</li><li>ASOCIACI&#211;N AMIGOS DE LA TIERRA</li><li>ASOCIACI&#211;N ARAGONESA DE AUDITORES MEDIOAMBIENTALES</li><li>ASOCIACI&#211;N CONVIVIUM INSULA BARATARIA SLOW FOOD DE ZARAGOZA</li><li>ASOCIACI&#211;N DE CONSUMIDORES TORRE RAMONA</li><li>ASOCIACI&#211;N DE CONSUMIDORES Y AMAS DE CASA CESARAUGUSTA</li><li>ASOCIACI&#211;N DEL FONDO NATURAL</li><li>ASOCIACI&#211;N NATURALISTA DE ARAG&#211;N (ANSAR)</li><li>AYUNTAMIENTO DE ZARAGOZA-OBSERVATORIO DE LA BICICLETA</li><li>C.O. DE ABOGADOS</li><li>C.O. DE APAREJADORES Y ARQUITECTOS T&#201;CNICOS</li><li>C.O. DE ARQUITECTOS</li><li>C.O. DE FARMAC&#201;UTICOS</li><li>C.O. DE FILOSOF&#205;A Y LETRAS Y CIENCIAS</li><li>C.O. DE F&#205;SICOS DE ARAG&#211;N</li><li>C.O. DE GE&#211;LOGOS DE ARAG&#211;N</li><li>C.O. DE INGENIEROS AGR&#211;NOMOS DE ARAG&#211;N, NAVARRA Y PA&#205;S VASCO</li><li>C.O. DE INGENIEROS DE CAMINOS, CANALES Y PUERTOS DE ARAG&#211;N</li><li>C.O. DE INGENIEROS DE MONTES DE ARAG&#211;N</li><li>C.O. DE INGENIEROS T&#201;CNICOS AGR&#205;COLAS</li><li>C.O. DE INGENIEROS T&#201;CNICOS FORESTALES</li><li>C.O. DE INGENIEROS T&#201;CNICOS INDUSTRIALES DE ARAG&#211;N</li><li>C.O. DE INGENIEROS T&#201;CNICOS OBRAS P&#218;BLICAS</li><li>C.O. DE QU&#205;MICOS DE ARAG&#211;N</li><li>C.O. DE TRABAJADORES SOCIALES DE ARAG&#211;N</li><li>C.O.DE BI&#211;LOGOS</li><li>C.O.DE INGENIEROS INDUSTRIALES DE ARAG&#211;N Y LA RIOJA</li><li>CENTRO DE ADIESTRAMIENTO SAN GREGORIO</li><li>CENTRO DE ESTUDIOS RURALES Y DE AGRICULTURA INTERNACIONAL DE ARAG&#211;N (CERAI)</li><li>CEPYME-CONFEDERACI&#211;N DE LA PEQUE&#209;A Y MEDIANA EMPRESA DE ZARAGOZA</li><li>Cluster Urbano para el Uso Eficiente del Agua (ZINNAE)</li><li>COAGRET- EBRO VIVO</li><li>COLEGIO TERRITORIAL DE ADMINISTRADORES DE FINCAS DE ARAG&#211;N</li><li>COMANDANCIA GUARDIA CIVIL-SERVICIO PROTECCI&#211;N A LA NATURALEZA</li><li>COMISIONES OBRERAS ARAG&#211;N (MEDIO AMBIENTE)</li><li>CONFEDERACI&#211;N DE EMPRESARIOS DE ZARAGOZA</li><li>CONFEDERACI&#211;N HIDROGR&#193;FICA DEL EBRO</li><li>CONSEJO ARAGON&#201;S DE C&#193;MARAS DE COMERCIO E INDUSTRIA</li><li>CONSEJO ARAGON&#201;S DE PERSONAS MAYORES</li><li>CONSEJO DE PROTECCI&#211;N DE LA NATURALEZA DE ARAG&#211;N</li><li>DELEGACI&#211;N DEL GOBIERNO EN LA COMUNIDAD AUT&#211;NOMA DE ARAG&#211;N ( &#193;rea de Fomento)</li><li>DIPUTACI&#211;N PROVINCIAL DE ZARAGOZA</li><li>ECOCIUDAD ZARAGOZA, SAU</li><li>ECOLOGISTAS EN ACCI&#211;N</li><li>FCC, S.A.</li><li>FEDERACI&#211;N ARAGONESA DE SOLIDARIDAD</li><li>FEDERACI&#211;N DE ASOCIACIONES DE BARRIOS DE ZARAGOZA</li><li>FUNDACI&#211;N CIRCE</li><li>FUNDACI&#211;N ECOLOG&#205;A Y DESARROLLO</li><li>FUNDACI&#211;N NUEVA CULTURA DEL AGUA</li><li>FUNDACI&#211;N SAN VALERO</li><li>GOBIERNO DE ARAG&#211;N - DEPARTAMENTO DE DESARROLLO RURAL Y SOSTENIBILIDAD</li><li>GOBIERNO DE ARAG&#211;N - SERVICIO DE PLANIFICACI&#211;N</li><li>GRUPO DE GOBIERNO ZARAGOZA EN COM&#218;N</li><li>GRUPO MUNICIPAL CIUDADANOS</li><li>GRUPO MUNICIPAL C.H.A. (AYUNTAMIENTO DE ZARAGOZA)</li><li>GRUPO MUNICIPAL P.P. (AYUNTAMIENTO DE ZARAGOZA)</li><li>GRUPO MUNICIPAL P.S.O.E. (AYUNTAMIENTO DE ZARAGOZA)</li><li>INSTITUTO AGRON&#211;MICO MEDITERR&#193;NEO DE ZARAGOZA (IMAZ)</li><li>JUNTA MUNICIPAL ACTUR-REY FERNANDO</li><li>JUNTA MUNICIPAL CASABLANCA</li><li>JUNTA MUNICIPAL CASCO HIST&#211;RICO</li><li>JUNTA MUNICIPAL CENTRO</li><li>JUNTA MUNICIPAL DE MIRALBUENO</li><li>JUNTA MUNICIPAL DELICIAS</li><li>JUNTA MUNICIPAL EL RABAL</li><li>JUNTA MUNICIPAL LA ALMOZARA</li><li>JUNTA MUNICIPAL LAS FUENTES</li><li>JUNTA MUNICIPAL OLIVER-VALDEFIERRO</li><li>JUNTA MUNICIPAL SAN JOS&#201;</li><li>JUNTA MUNICIPAL SANTA ISABEL</li><li>JUNTA MUNICIPAL TORRERO</li><li>JUNTA MUNICIPAL UNIVERSIDAD</li><li>JUNTA VECINAL ALFOCEA</li><li>JUNTA VECINAL CASETAS</li><li>JUNTA VECINAL GARRAPINILLOS</li><li>JUNTA VECINAL JUSLIBOL</li><li>JUNTA VECINAL LA CARTUJA BAJA</li><li>JUNTA VECINAL MONTA&#209;ANA</li><li>JUNTA VECINAL MONZALBARBA</li><li>JUNTA VECINAL MOVERA</li><li>JUNTA VECINAL PE&#209;AFLOR</li><li>JUNTA VECINAL SAN GREGORIO</li><li>JUNTA VECINAL SAN JUAN MOZARRIFAR</li><li>JUNTA VECINAL TORRECILLA DE VALMADRID</li><li>JUNTA VECINAL VENTA DEL OLIVAR</li><li>JUNTA VECINAL VILLARRAPA</li><li>POLIC&#205;A LOCAL</li><li>SOCIEDAD ESPA&#209;OLA DE ORNITOLOG&#205;A/SEO-BIRD LIFE</li><li>SOCIEDAD ESTATAL CORREOS Y TEL&#201;GRAFOS, S. A.</li><li>SOCIEDAD MUNICIPAL ZARAGOZA VIVIENDA, S.L.U.</li><li>UAGA (UNI&#211;N DE AGRICULTORES Y GANADEROS DE ARAG&#211;N )</li><li>UGT ARAG&#211;N-UNI&#211;N REGIONAL (&#193;rea Institucional)</li><li>UNI&#211;N VECINAL CESARAUGUSTA</li><li>UNI&#211;N CONSUMIDORES ARAG&#211;N (UCA)</li><li>UNIVERSIDAD DE ZARAGOZA - RECTORADO</li><li>URBANOS DE ZARAGOZA 2013</li><li>WWWF/ADENA Espa&#241;a</li><li>ZARAGOZA DEPORTE MUNICIPAL, S. A.</li><li>ZGZ ARROBA EXPO DESARROLLO, S.A.</li></ol>
+</div>
+</div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="doc">
+		<div class="row">
+		<div class="col-md-12">
+		<h3 class="margin-t05em">Acuerdos de Constitución</h3>			
+		<hr class="sm" />	
+
+<ul>
+<li>30.07.1998 - <a href="/contenidos/medioambiente/agenda21/Acuerdo-Consejo-Medio-Ambiente-ac.pdf" class="pdf">Acuerdo de Constitución del Consejo Sectorial del Medio Ambiente</a></li>
+<li>11.08.2004 - <a href="/contenidos/medioambiente/agenda21/Acuerdo-Comisiones-21-ac.pdf" class="pdf">Acuerdo de Constitución de las Comisiones 21</a></li>
+</ul>
+<br/>
+		</div>
+
+		<div class="col-md-12">
+		<h3 class="margin-t05em">Actas del Consejo Sectorial</h3>
+		<hr class="sm" />			
+
+     	<div class="padding-t05em">
+<table summary="Actividades plenarias" class="table table-responsive tabla-bn">
+    <thead>
+    <tr>
+        <th class="col-md-3">Fecha</th>
+        <th class="col-md-3">Acuerdos</th>
+        <th class="col-md-6">Anexos y documentación</th>
+    </tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesión del pleno: 5.02.2019</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" href="/contenidos/medioambiente/agenda21/acta-agenda21-05febr-19.pdf" class="pdf" target="_blank">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td>
+	<ul class="list-unstyled">
+		<li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/CSA21L05_02_2019RetornoECAZ3_0.pdf" target="_blank">Anexo I. Sesión de retorno ECAZ 3.0 <span class="oculto">Documento PDF</span></a> 
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-II-Informe-CalidadAire-2018.pdf" target="_blank">Anexo II. Informe provisional calidad del aire 2018 <span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-III-Protocolo-NO2.pdf" target="_blank">Anexo III. Protocolo NO2<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-IV-Indicadores-2017.pdf" target="_blank">Anexo IV. Indicadores 2017<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-V-Universidad-Zaragoza.pdf" target="_blank">Anexo V. Universidad de Zaragoza<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-VI-Presentación-OMPCAZ.pdf" target="_blank">Anexo VI. Presentación OMPCAZ<span class="oculto">Documento PDF</span></a>
+	</li><li><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/20190205-Anexo-VII-Articulado-anexos-OMPCAZ.pdf" target="_blank">Anexo VII. Articulado y anexos OMPCAZ<span class="oculto">Documento PDF</span></a>
+	</li></ul></td>
+	</tr>
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 29.05.2018</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" href="/contenidos/medioambiente/agenda21/acta-agenda21-29mayo-18.pdf" class="pdf">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td>
+	<ul class="list-unstyled">
+		<li><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/agenda21/AI-ISCIII-Salud-Linares.pdf" shape="rect">Anexo I. Impacto de la Contaminación Química y las Temperaturas Extremas.</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="/contenidos/medioambiente/agenda21/AII-AMAS-IE2015-Cebrian.pdf" shape="rect">Anexo II. Inventario de emisiones 2015</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="/contenidos/medioambiente/agenda21/AIII-AMAS-Aire-Lopez.pdf" shape="rect">Anexo III. Informe Calidad del Aire 2017</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="/contenidos/medioambiente/agenda21/AIV-AMAS-ProtNO2-DeLuis.pdf" shape="rect">Anexo IV. Protocolo de actuación frente a alta contaminación por NO2</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="/contenidos/medioambiente/agenda21/AV-CIRCE-ECAZ-Ortego.pdf" shape="rect">Anexo V. ECAZ 3.0. Proceso de elaboración</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/agenda21/AVI-AMAS-EA-Campillos-DelaOsa.pdf" shape="rect">Anexo VI. ECAZ 3.0. Comunicación, sensibilización ambiental y participación</a>
+	</li></ul></td>	
+	</tr>
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 15.06.2017</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" href="/contenidos/medioambiente/agenda21/acta_agenda21_junio2017.pdf" class="pdf">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 10.02.2016</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" href="/contenidos/medioambiente/agenda21/ActasConsejoSectorial0216.pdf" class="pdf">Acta de la sesión</a></td>
+	<td>
+	<ul class="list-unstyled">
+		<li><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/agenda21/Acta-100216-AnexoI.pdf" shape="rect">Anexo I. Estrategia Cambio Climático y Calidad del Aire (Ev. preliminar)</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/agenda21/Acta-100216-AnexoII.pdf" shape="rect">Anexo II. Unidad de Conservación del Medio Natural.</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/agenda21/Acta-100216-AnexoIII.pdf" shape="rect">Anexo III. Huertas LIFE Km.0</a>
+		</li><li><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/agenda21/Acta-100216-AnexoIV.pdf" shape="rect">Anexo IV. Programa de Educación Ambiental Curso 2014-2015</a>
+		</li><li><i class="fas fa-images"></i> <a href="http://www.zaragoza.es/contenidos/medioambiente/agenda21/Consejo-Local21.jpg" shape="rect">Fotograf&#237;a</a>
+	</li></ul></td>
+	</tr>
+	
+	<tr>
+	<td><span class="fa fa-play-circle"></span>	Sesi&#243;n del pleno: 11.11.2013 </td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ActasConsejoSectorial1113.pdf">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+		
+	<tr>
+	<td><span class="fa fa-play-circle"></span>	Sesi&#243;n del pleno: 17.04.2013 </td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ActaConsejoSectorial0713.pdf">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 14.04.2011</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ActaConsejoSectorial0611.pdf">Acta de la sesión<span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+	
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 16.06.2010</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/contenidos/medioambiente/ActaConsejoSectorialAg21160610.pdf">Acta de la sesión<span class="oculto"> Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+	
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 10.09.2007</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/Consejosectorial0907.pdf">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+	
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 08.05.2007</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ActaConsejoSectorial0507.pdf">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 20.12.2005</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ActaConsejoSectorial201205.pdf">Acta de la sesión<span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 07.07.2005</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/cont/paginas/medioambiente/agenda21/pdf/acta1.pdf">Acta de la sesión<span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 02.06.2004</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" class="pdf" href="/cont/paginas/medioambiente/agenda21/pdf/acta2.pdf">Acta de la sesión <span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 01.07.2002</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="/contenidos/medioambiente/agenda21/ActaConsejoSectorial0702.pdf" shape="rect">Acta de la sesión<span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesi&#243;n del pleno: 04.04.2001</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a shape="rect" href="/contenidos/medioambiente/agenda21/ActaConsejoSectorial0413.pdf" class="pdf">Acta de la sesión<span class="oculto">Documento PDF</span></a></td>
+	<td></td>
+	</tr>
+	
+	</tbody>
+	</table>
+	</div>
+
+		</div>
+</div>
+
+
+
+
+ 
+                            </div>
+                           <div role="tabpanel" class="tab-pane" id="comisiones">
+		<div class="row">
+			
+
+
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Comisiones 21</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">	
+		<p>Las Comisiones 21 son los lugares de trabajo y encuentro de los diferentes agentes sociales que pertenezcan al mismo sector y que, de manera voluntaria, quieran participar en los procesos de Agenda 21 Local.</p>
+		<p>Las Comisiones 21 se constituirán para el estudio, discusión, análisis y propuestas de temas específicos que, una vez finalizados los trabajos y las propuestas correspondientes, la misma se disolverá (p. ej. Mesa del Ruido).</p>
+		<p>La composición de las mismas será de carácter mixto en la que participarán los representantes y técnicos municipales, los correspondientes a otras Instituciones así como los agentes locales implicados en sectores específicos y en función de la temática a tratar.</p>
+		<p>Los resultados de los trabajos de dichas Comisiones se darán a conocer en el Consejo Sectorial.</p> 
+</div>
+<div class="linea color-ayto">&nbsp;</div>							
+		<div class="col-md-3">
+		<h4 class="margin-t05em comisiones21">Soberanía alimentaria</h4>		
+		</div>
+		<div class="col-md-9">
+			<div class="table-responsive">
+<table summary="Actividades plenarias" class="table table-responsive tabla-bn">
+    <thead>
+    <tr>
+        <th class="col-md-3">Fecha</th>
+        <th class="col-md-3">Acuerdos</th>
+        <th class="col-md-6">Anexos y documentación</th>
+    </tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesión nº 5: 26/03/2018</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="http://www.zaragoza.es/contenidos/medioambiente/huertas/Acta5-26-03-2017.pdf">Acta de la sesión</a></td>		
+	<td><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/huertas/Acta5-26-03-2017A1.pdf">Anexo I</a> - <a shape="rect" href="http://www.zaragoza.es/contenidos/medioambiente/huertas/Acta5-26-03-2017A2.pdf">Anexo II</a> - <a shape="rect" href="http://www.zaragoza.es/contenidos/medioambiente/huertas/Acta5-26-03-2017A3.pdf">Anexo III</a></td>
+	</tr>
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesión nº 4: 27.04.2017</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="http://www.zaragoza.es/contenidos/medioambiente/huertas/Acta4-27-04-2017.pdf">Acta de la sesión</a></td>		
+	<td><span class="far fa-file-pdf fa-lg"></span> <a href="http://www.zaragoza.es/contenidos/medioambiente/huertas/InformeResultados_27042017.pdf">Informe Resultados</a></td>
+	</tr>	
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesión nº 3: 20.07.2016</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="http://www.zaragoza.es/contenidos/medioambiente/huertas/Acta3-20-07-2016.pdf">Acta de la sesión</a></td>		
+	<td></td>
+	</tr>	
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesión nº 2: 27.10.2015</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="http://www.zaragoza.es/contenidos/medioambiente/huertas/reunionseguimiento271015.pdf">Acta de la sesión</a></td>		
+	<td></td>
+	</tr>	
+
+	<tr>
+	<td><span class="fa fa-play-circle"></span> Sesión nº 1: 19.03.2015</td>
+	<td><span class="far fa-file-pdf fa-lg"></span> <a class="pdf" href="http://www.zaragoza.es/contenidos/medioambiente/life/acta_lifehuerta_2014-03-19.pdf">Acta de la sesión</a></td>		
+	<td></td>
+	</tr>
+	
+	</tbody>
+	</table>		
+	</div>		
+						
+	
+		</div>
+		<div class="linea">&nbsp;</div>	
+		<div class="col-md-3">
+		<h4 class="margin-t05em comisiones21">Biodiversidad</h4>		
+		</div>
+		<div class="col-md-9 margin-t1em">
+					<ul>
+						<li><a href="/contenidos/medioambiente/agenda21/acta12-biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 12 (16/12/2014) <span class="oculto">Documento PDF </span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/ACTA_2014_03_26_LIFE_NATURALEZA_CONSTITUCION.pdf" class="pdf" shape="rect">Acta n&#186; 11 (26/03/2014) <span class="oculto">Documento PDF </span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/acta10-biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 10 (16/11/2012)  <span class="oculto">Documento PDF </span></a>  -   <a href="/contenidos/medioambiente/agenda21/acta10-anexo1.pdf" class="pdf" shape="rect"> Anexo 1 <span class="oculto">Documento PDF (tama&#241;o 3,5 MB)</span></a> - <a href="/contenidos/medioambiente/agenda21/acta10-anexo2.pdf" class="pdf" shape="rect">Anexo 2 <span class="oculto">Documento PDF (tama&#241;o 3,2 MB)</span></a> - <a href="/contenidos/medioambiente/agenda21/acta10-anexo3.pdf" class="pdf" shape="rect">Anexo 3 <span class="oculto">Documento PDF (tama&#241;o 1,7 MB)</span></a> - <em>(Aprobada 26/03/2014)</em></li><li><a href="/contenidos/medioambiente/agenda21/acta9_biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 9 (14/06/2012) <span class="oculto">Documento PDF </span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/acta8_biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 8 (19/03/12) <span class="oculto">Documento PDF </span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/Acta7bis_biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 7 Bis (20/09/11) <span class="oculto">Documento PDF </span></a> - <a href="/contenidos/medioambiente/agenda21/AportacionANSAR.pdf" class="pdf" shape="rect">Anexo 1 <span class="oculto">Documento PDF (tama&#241;o 1,5 MB)</span></a> - <a href="/contenidos/medioambiente/agenda21/AportacionCHE.pdf" class="pdf" shape="rect">Anexo 2 <span class="oculto">Documento PDF (tama&#241;o 1,9 MB)</span></a> - <a href="/contenidos/medioambiente/agenda21/29092011_plantas_acuaticas.pdf" class="pdf" shape="rect">Anexo 3 <span class="oculto">Documento PDF (tama&#241;o 2,8 MB)</span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/Acta7biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 7 (20/09/11) <span class="oculto">Documento PDF (Tama&#241;o 1 Mb) -&#160;</span></a> - <a href="/contenidos/medioambiente/agenda21/ComisionBiodiversidad_20092011.pdf" class="pdf" shape="rect">Anexo <span class="oculto">Documento PDF (tama&#241;o 4,4 MB)</span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/actan6biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 6 (12/04/11) <span class="oculto">Documento PDF</span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/actan5Biodiversidaddef.pdf" class="pdf" shape="rect">Acta n&#186; 5 (11/06/10) <span class="oculto">Documento PDF</span>&#160; </a> - <a href="/contenidos/medioambiente/agenda21/anexoII_acta5.pdf" shape="rect" class="pdf">Anexo<span class="oculto">Documento PDF (Tama&#241;o 2 MB)</span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/actan4biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 4 (28/05/09)<span class="oculto">Documento PDF</span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/actan3_biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 3 (30/03/06)<span class="oculto">Documento PDF</span></a></li>
+						<li><a href="/contenidos/medioambiente/agenda21/actan2_biodiversidad.pdf" class="pdf" shape="rect">Acta n&#186; 2 (24/05/05)<span class="oculto">Documento PDF</span></a></li>
+						<li><a shape="rect" href="/cont/paginas/medioambiente/agenda21/pdf/4.1. acta Biodiversidaddoc.pdf" class="pdf">Acta n&#186; 1 (15/12/04) <span class="oculto">Documento PDF</span></a> - <em>(Aprobada 24/05/2005)</em></li>
+						</ul>				
+		</div>		
+
+		<div class="linea">&nbsp;</div>	
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Cambio Climático</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">
+<ul>
+	<li><a href="/contenidos/medioambiente/agenda21/acta8-cambioclimatico.pdf" class="pdf" shape="rect">Acta n&#186; 8 (22/10/12)<span class="oculto">Documento PDF</span></a> - <a href="/contenidos/medioambiente/agenda21/acta8-anexo1.pdf" shape="rect">Anexo I <span class="oculto">Documento PDF Tama&#241;o 3,15 Mb</span></a> - <a href="/contenidos/medioambiente/agenda21/acta8-anexo2y3.pdf" shape="rect">Anexo II y III<span class="oculto">Documento PDF Tama&#241;o 2,95 MB</span></a> - <em>(Aprobada el 12/02/2015)</em></li><li><a href="/contenidos/medioambiente/agenda21/Acta7CAMBIOCLIMATICO18_10_2011.pdf" class="pdf" shape="rect">Acta n&#186; 7 (18/10/11)<span class="oculto">Documento PDF</span></a> -  <a href="/contenidos/medioambiente/Evolucioncontaminacion.pdf" shape="rect">Anexo I <span class="oculto">Documento PDF Tama&#241;o 14 Mb</span></a> - <a href="/contenidos/medioambiente/agenda21/anexIIPresentacion.pdf" shape="rect">Anexo II <span class="oculto">Documento PDF Tama&#241;o 2,5 Mb</span></a> - <a href="/contenidos/medioambiente/agenda21/anexIII.zip" title="Documento en formato zip" shape="rect">Anexo III</a> - <em>(Aprobada 22/10 /2012)</em></li>
+	<li><a href="/contenidos/medioambiente/agenda21/acta6cambioclimatico.pdf" class="pdf" shape="rect">Acta n&#186; 6 (16/12/09)<span class="oculto">Documento PDF</span></a></li>
+	<li><a href="/contenidos/medioambiente/agenda21/cambioclimatico_18_12_08.pdf" class="pdf" shape="rect">Acta n&#186; 5 (18/12/08)<span class="oculto">Documento PDF</span></a> - <a href="/contenidos/medioambiente/agenda21/ANEXO 1_ ACTA5CAMBIO CLIMATICO.pdf" class="pdf" shape="rect">Anexo 1<span class="oculto">Documento PDF</span></a></li>
+	<li><a href="/contenidos/medioambiente/agenda21/acta4cambio_climatico_21-11-06.pdf" class="pdf" shape="rect">Acta n&#186; 4 (21/11/06)<span class="oculto">Documento PDF</span></a></li>
+	<li><a href="/contenidos/medioambiente/agenda21/acta3cambioclimatico.pdf" class="pdf" shape="rect">Acta n&#186; 3 (28/06/10)<span class="oculto">Documento PDF</span></a></li>
+	<li><a shape="rect" href="actaagua2.htm">Acta n&#186; 2 (28/06/06)<span class="oculto">Documento PDF</span></a></li>
+	<li><a shape="rect" class="pdf" href="/cont/paginas//medioambiente/agenda21/pdf/acta 2.1.cambio climatico.pdf">Acta n&#186; 1 (14/12/04)<span class="oculto">Documento PDF</span></a></li>
+</ul>				
+		</div>
+		
+		<div class="linea">&nbsp;</div>	
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Ciclo Integral del Agua</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">		
+<ul>
+<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/Actaconjunta.pdf">Acta n&#186;6 (01/06/10) <span class="oculto">Documento PDF</span></a> <em>(Pendiente de aprobaci&#243;n)</em></li>
+<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ComisionAgua_17_12_08.pdf">Acta n&#186;5 (17/12/08) <span class="oculto">Documento PDF</span></a></li>
+<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/acta120207tot.pdf">Acta n&#186;4 (12/02/07)<span class="oculto">Documento PDF</span></a></li><li><a shape="rect" class="pdf" href="/cont/paginas/medioambiente/agenda21/pdf/acta4.pdf">Acta n&#186;3 (20/11/06)<span class="oculto">Documento PDF</span></a></li>
+<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/Acta2ciclointegraldelagua.pdf">Acta n&#186;2 (23/05/05)<span class="oculto">Documento PDF</span></a></li>
+<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/Acta1ciclointegraldelagua1.pdf">Acta n&#186;1 (13/12/04)<span class="oculto">Documento PDF</span></a></li>
+</ul>			
+		</div>
+
+		<div class="linea">&nbsp;</div>	
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Ordenanzas Municipales</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">				
+<ul>
+	<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ACTA2-RUIDO-ORDENANZAS-220415.pdf">Acta n&#186; 6 (22/04/15) <span class="oculto">Documento PDF</span></a> <em>- (Pendiente de aprobaci&#243;n)</em></li>
+	<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/Actaconjunta.pdf">Acta n&#186; 5 (01/06/10) <span class="oculto">Documento PDF</span></a></li>
+	<li><a shape="rect" class="pdf" href="/cont/paginas/medioambiente/agenda21/pdf/acta4.pdf">Acta n&#186; 4 (20/11/06)<span class="oculto">Documento PDF</span></a></li>
+	<li><a shape="rect" href="actaagua2.htm">Acta n&#186; 3 (28/06/06)<span class="oculto">Documento PDF</span></a></li>
+	<li><a shape="rect" href="/contenidos/medioambiente/agenda21/Acta_2_ordenanzas_30-6-05.pdf" class="pdf">Acta n&#186; 2 (30/05/05)<span class="oculto">Documento PDF</span></a></li>
+	<li><a shape="rect" class="pdf" href="/cont/paginas//medioambiente/agenda21/pdf/Acta 5.1. Ordenanzas1.DEFINITIVA.pdf">Acta n&#186; 1 (14/12/04) <span class="oculto">Documento Pdf</span></a></li>
+	</ul>						
+		</div>		
+
+		<div class="linea">&nbsp;</div>	
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Ruido</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">
+		<ul>
+		<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/ACTA2-RUIDO-ORDENANZAS-220415.pdf">Acta n&#186; 3 (22/04/15) <span class="oculto">Documento PDF</span></a> <em>- (Pendiente de aprobaci&#243;n)</em></li>
+		<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/actan2_ruido_8032011.pdf">Acta n&#186; 2 (08/03/11) <span class="oculto">Documento PDF</span></a> - <a shape="rect" href="/contenidos/medioambiente/agenda21/actuacionesaena.pdf" class="pdf">Anexo<span class="oculto">Documento PDF (Tama&#241;o 3,4 MB) - </span></a></li>
+		<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/Actan1ComisionRuido_18_12_08.pdf">Acta n&#186; 1 (18/12/08) <span class="oculto">Documento PDF</span></a></li>
+		</ul>	
+</div>
+
+		<div class="linea">&nbsp;</div>	
+		<div class="col-md-3">
+		<h3 class="margin-t05em">Tasas Municipales</h3>		
+		</div>
+		<div class="col-md-9 margin-t1em">
+<ul>
+	<li><a shape="rect" class="pdf" href="/contenidos/medioambiente/agenda21/acta120207tot.pdf">Acta n&#186; 3 (12/02/07) <span class="oculto">Documento PDF</span></a> <em>- (Pendiente de aprobaci&#243;n)</em></li>
+	<li><a shape="rect" class="pdf" href="/cont/paginas/medioambiente/agenda21/pdf/acta2ac.pdf">Acta n&#186; 2 (26/05/05) <span class="oculto">Documento PDF</span></a></li>
+	<li><a shape="rect" class="pdf" href="/cont/paginas//medioambiente/agenda21/pdf/3.1.TASAS AMBIENTALES.pdf">Acta n&#186; 1 (14/12/04) <span class="oculto">Documento Pdf</span></a></li>
+	</ul>
+</div>
+
+
+</div>
+
+
+							</div>                            
+                            
+                        </div>
+</div>
+
+                </div>
+
+                <div class="container-fluid fnd-blanco radius">
+                    <div class="col-sm-12">
+                        <h2 class="text-right">
+                            Consejos Sectoriales
+                            <strong>Activos</strong>
+                        </h2>
+                        <nav class="cuadrado">
+                            <ul class="list-inline nav-inf clearfix text-center">
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoAgenda21.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-agenda21">Agenda 21 Local</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoAccionSocial.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-accionsocial">Acción Social</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoCultura.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-cultura">Cultura</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoSeguimientoPICH.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-pich">Seguimiento del PICH</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoUrbanismoMovilidad.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-urbanismo">Urbanismo y Movilidad</a>
+                                    </div>
+                                </li>
+                                <li class="col-xs-6 col-sm-3 col-md-2">
+                                    <div>
+                                        <img src="/cont/vistas/portal/participacion/img/icono_ConsejoIgualdad.jpg"
+                                             class="img-rounded img-responsive" alt=""/>
+                                        <a class="col-xs-12" href="consejo-igualdad">Igualdad</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+</div>            
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

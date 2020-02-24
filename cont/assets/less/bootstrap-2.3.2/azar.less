@@ -1,0 +1,348 @@
+@import "variables.less";
+@import "utilities.less";
+
+// Azar (Estilos propios)
+// Utilizados en las páginas indice y en las de contenido
+// --------------------------------------------------
+
+// Media Query para prevenir el ensanchamiento excesivo de los bloques en grandes resoluciones.
+@media (min-width: 1366px) {
+	#rscont, .rscont, .intranet-p .contenedor{max-width:1366px; margin:0 auto;}
+	.material-p #rscont, .material-p .rscont {max-width: none; margin: 0;}
+}
+
+// Encabezados
+.ogob-p h1{color:@colorOgob !important;}
+.ayto-p h1, .intranet-p h1{color:@colorAyto !important;}
+.ciudad-p h1{color:@colorCiudad !important;}
+.cultura-p h1{color:@colorCultura !important;}
+.gente-p h1{color:@colorGente !important;}
+.medioambiente-p h1{color:@colorMedioAmbiente !important;}
+.servicios-p h1{color:@colorServicios !important;}
+.turismo-p h1{color:@colorTurismoGranate !important;}
+.pilar-p h1{color:@colorCultura !important;}
+
+body.indice{
+	h1{margin:0 0 .5em 0;}
+	h3{color: @colorAyto !important;}
+}
+
+body.contenido{
+	&.ogob-p h3, &.ogob-p h3 a{color:@colorOgob;}
+	&.ayto-p h3, &.ayto-p h3 a{color:@colorAyto;}
+	&.ciudad-p h3, &.ciudad-p h3 a{color:@colorCiudad;}
+	&.pilar-p h3, &.pilar-p h3 a{color:@colorCultura;}
+	&.cultura-p h3, &.cultura-p h3 a{color:@colorCultura;}
+	&.gente-p h3, &.gente-p h3 a{color:@colorGente;}
+	&.medioambiente-p h3, &.medioambiente-p h3 a{color:@colorMedioAmbiente;}
+	&.servicios-p h3, &.servicios-p h3 a{color:@colorServicios;}
+	&.intranet-p h3, &.intranet-p h3 a{color:@colorAyto;}
+	&.turismo-p h2, &.turismo-p h2 a, 
+	&.turismo-p h3, &.turismo-p h3 a{color:@colorTurismoGranate;}
+	h2{border-bottom: 1px dotted @textColor;}
+}
+
+//body.etopia-p {background-color:#fff !important;}
+
+// Banner (flash) + AytoLogo
+.banner {position: absolute; width: 100%; z-index: -1000;}
+body.indice .banner{clear: both; height: 19.5em;}
+body.contenido .banner{clear: both; height: 14.5em;}
+
+.home-p .banner{background:@colorOgob;} // No hay navegacion principal
+.ogob-p .banner{background:@colorOgob;}
+.ayto-p .banner, .intranet-p .banner{background:@colorAyto;}
+.ciudad-p .banner{background:@colorCiudad;}
+.cultura-p .banner{background:@colorCultura;}
+.pilar-p .banner{background:@colorPilar;}
+.gente-p .banner{background:@colorGente;}
+.medioambiente-p .banner{background:@colorMedioAmbiente;}
+.servicios-p .banner{background:@colorServicios;}
+//.turismo-p .banner{background:@colorTurismo;} // No se utiliza
+.etopia-p .banner{background:#fff;}
+.ayto-logo{position: absolute; top: -3.1em; left: -3em;}
+
+// Read Speaker
+.indice #cajars{.oculto} //position: absolute; right: 0em; top: 21.5em;
+.contenido #cajars .rsbtn{z-index:10;}
+.home-p.contenido #cajars{top: 15em; right: 0em;}
+
+// Cabecera Fondo y sombra. Indices/contenidos
+.cabecera{background-color:#fff; position: relative; padding: .5em 1em; box-shadow: 0 1px 4px #999999; -moz-box-shadow: 0 1px 4px #999999; -webkit-box-shadow: 0 1px 4px #999999;}
+.cabecera:after{content: ""; position: absolute; z-index: -1; -webkit-box-shadow:0 5px 40px #999999; box-shadow:0 5px 40px #999999;bottom:0px;left:10%;right:10%;width:80%;height:50%;-moz-border-radius:100%;border-radius:100%;}
+
+// Navegación Cabecera
+.cabecera .navegacion2 ul{list-style-type: none; margin:0;}
+.cabecera .navegacion2 ul li a{color:@textColor;}
+.cabecera .navegacion2 ul li>div {border-bottom: dotted 1px @colorGrisMedio;}
+
+// Noticias Cabecera
+.noticias-imagen{position:relative;}
+.noticias-imagen img{max-height: 243px; max-width:243px;}
+.noticias-listado{margin:0;padding:0;max-height: 17em;overflow-y: auto;}
+.noticias-listado li{background:url(/cont/paginas/bs/img/b_neg.gif) no-repeat left 5%;padding-left:.5em;}
+.noticias-titulo{margin:0; font-size: 13px; padding: 0 .5em; color: #FFF;}
+
+// ---------- Columnas páginas índice ----------
+
+// Columna 1 - Destacados
+.destacados dt{margin:0; padding:0; color: @colorAyto; text-transform: uppercase;}
+.destacados dd{padding: 0;}
+.destacados dl ul{margin-left:1.5em;}
+
+// Columna 2
+
+// Ciudad/Medioambiente/Cultura/Gente - bloques imagenes 
+.bloque25{width:24%; margin:0 .5%; float:left;}
+.bloque50{width:49%; margin:0 .5%; float:left;}
+.bloque75{width:72%; margin:0 .5%; float:left;} // TODO: ï¿½Deberï¿½a ser bloque33? revisar uso
+@media (max-width: 979px) {
+	.atencion [class*="bloque"]{width:100%;margin:0;float:none;}
+}
+
+.tramites .contenedor-tramites{background: @colorGrisClaro; margin-bottom: 1em;}
+.tramites .listado-tramites {margin: 0; padding: 0; width: 100%; white-space: nowrap; overflow-x: auto;}
+.tramites .listado-tramites li[class*="span"] {display: inline-block; float: none;}
+.tramites .listado-tramites .tramite{width: 4.5em; margin: 0em .10em .5em;}
+.tramites .listado-tramites .tramite a{text-decoration: none;}
+.tramites .listado-tramites .tramite a > img{width:100%;}
+.tramites .listado-tramites .tramite p{font-size:85%;}
+
+// ---------------------------------------------
+
+// ---| Ayuntamiento | ---
+.atencion td, .atencion p{font-size: 85%;}
+.atencion .atelefonica{border: 1px solid @colorAyto;}
+
+// ---| Ciudad | ---
+
+// ---| Cultura | ---}
+.agenda-actividades img, .guia-ocio img{height:12em; width:100%;}
+.agenda-actividades span, .guia-ocio span{display: block;}
+.guia-ocio .aviso_tit{font-size: 75%; height: 2em; overflow: hidden; word-wrap: break-word; text-overflow: ellipsis;}
+.agenda-actividades .aviso_res, .guia-ocio .aviso_res{font-size: 85%; height: 4.1em; padding-top: 2px; line-height: 15px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+
+// ---| Sectores | ---
+.comentarios ul{overflow-y:auto; height:14em;}
+.comentarios ul li.clearfix{padding:.15em;}
+.comentarios ul img{width: 40px; height: 50px; margin-right:.5em;}
+.propuestas .cuerpo{max-height: 7em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;}
+
+// ---------------------------------------------
+
+img.noheightnovert{vertical-align:bottom;height:auto}
+.img-ficha{float:right; margin: 0 0 1em 1em;} // En vista (max-width: 767px) cambia a float:center;
+.plano, .plano_clavos, .plano_idezar, .plano_inc {width: 100%; height: 50em;}
+//.no-encabezado{height:0;margin:0;}
+
+// Ejemplo: http://victor.zaragoza.es:8888/ciudad/encasa/detalle_GuiaRecurso?id=2521&refresh=t
+.enlace-largo{-webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-wrap: break-word; word-break:break-all;}
+
+// Paginación listados
+div.paginas{margin-bottom:3em;clear:both;} // estaba a 1em (mirar si dejar a 1em aumentando el margin-top del footer/social)
+div.paginas .btn.active, div.filtro-fechas .btn.active{background-color:@black !important;}
+
+.acceso-djvu{width:10em;padding:2em;padding-left:4em;background-image:url(/cont/paginas/usic/img/panoramica.gif);background-repeat:no-repeat;background-position:center left;}
+
+.collapsibleList li{list-style-image:none;list-style-type:circle;list-style-position:inside;cursor:auto;margin:0 !important;padding:0 !important;}
+li.collapsibleListOpen{list-style-image:url('/cont/paginas/img/button-open.png');cursor:pointer;}
+li.collapsibleListClosed{list-style-image:url('/cont/paginas/img/button-closed.png');cursor:pointer;}
+li.collapsibleListClosed ul{display:none;}
+.collapsibleList ul {padding-left: 20px;}
+
+
+.titulo-top, .titulo-bottom, .titulo-blanco {
+	color: #fff;
+	display: block;
+	text-align: center;
+	font-weight: bold;
+}
+
+// Aï¿½adido tras revisiï¿½n de Marï¿½a: Pï¿½ginas ï¿½ndice
+//label{min-height: 22px !important;} // modificado en forms.less
+input:not([type="submit"]){min-height: 22px !important; padding: 0 10px !important;
+// Con box-sizing, equiparamos el tamaï¿½o del input (alto) al resto de elementos de formulario.
+// Soluciï¿½n a la diferencia de tamaï¿½os si se usa span* o input-* o nada.
+//-webkit-box-sizing: border-box;
+//-moz-box-sizing: border-box;
+//box-sizing: border-box;
+}
+input[type="submit"][class*="span"]{
+	min-height: 22px !important;
+	padding: 0 10px !important;
+	&.btn-mini{min-height: 20px !important;}
+}
+select{min-height: 22px !important; height: 22px !important; padding: 0 6px !important;}
+select[multiple] {height: auto !important;} // Reset de altura para select multiple
+// Si aplicamos sï¿½lo un tamaï¿½o a los botones, eliminar todo el cï¿½digo referente a los btn-small, btn-mini ...
+//.btn{min-height: 19px !important; padding: 0 10px !important;}
+//a.btn, span.btn{min-height: 19px !important;} // No he conseguido encontrar la razon para tener que aplicar estilo especifico
+// ---> lineas comentadas, implementaciï¿½n ï¿½ptima de height y padding en buttons.less (evita excesivo uso de !important)
+.radio, .checkbox {padding-left: 20px !important;}
+.radio input[type="radio"], .checkbox input[type="checkbox"]{margin-top:0px !important;}
+
+
+// Revisar Solucion multiples bloques en un mismo .row-fluid
+//.row-fluid .span12 + li { margin-left : 0px; }
+//.row-fluid .span6:nth-child(2n + 3) { margin-left : 0px; }
+//.row-fluid .span4:nth-child(3n + 4) { margin-left : 0px; }
+//.row-fluid .span3:nth-child(4n + 5) { margin-left : 0px; }
+
+
+
+// Noticia destacada (en grande) tipo /fiestaspilar/ o /home/
+.noticia-principal{
+	position: relative;
+	.titular{
+		position: absolute;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, .7);
+		width: 100%;
+		margin-bottom: -1px;
+		h2,h3,p{
+			margin: .25em;
+			color: @white !important;
+		}
+	}
+}
+
+//scroll-horizontal (efecto similar a los trámites en las páginas índice)
+ul.scroll-horizontal {
+	list-style-type: none;
+	margin: 0 0 1em;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+ul.scroll-horizontal li {
+	display: inline-block;
+	margin: .5em .5em .5em 0;
+}
+
+// <div id="mapa"> <iframe id="mapahome">...</iframe> </div>
+.span12#mapa{margin-bottom: 4.5em !important;}
+#mapahome{
+	height: 480px;
+	width: 100%;
+	border: 0;
+	overflow: hidden !important;
+}
+#mapahome #container{overflow: hidden !important;}
+
+.addres {background: @colorGrisClaro}
+
+// Large desktop
+@media (min-width: 1200px) {
+	// Utilizado desde los formularios enlinea
+	.nomenu .contenedor{margin:0 auto;width:80%}
+}
+
+// Portrait tablet to landscape and desktop
+@media (min-width: 768px) and (max-width: 979px) {
+	.noticias-listado{max-height:13.5em;}
+	// Utilizado desde los formularios enlinea
+	.nomenu .contenedor{margin:0 auto;width:80%}
+	// /ciudad/fiestaspilar/default.xml
+	.calendario-pilar table.calendario{font-size: 80%;}
+}
+
+// Landscape phone to portrait tablet
+@media (max-width: 767px) { 
+	
+	// REVISAR DIMENSIONES EN VISTA MOVIL
+	.ayto-logo{width: 18%; top: -2.3em; left: -1.4em;}
+    .cabecera .navegacion2 {margin-bottom: 1em;}
+	// Solución para inputs dentro de .row-fluid .controls-row, (aï¿½ade un erroneo margin-left: 2.5%)
+    .row-fluid .controls-row [class*="span"]+[class*="span"] {
+        margin-left: 0; 
+        margin-bottom: .5em;
+    }
+	.img-ficha{float:none;text-align:center; margin: 0 0 1em;}
+    .mobile-inline-block{display:inline-block;}
+    .youtube{width:100%;}
+}
+
+//--|Gobierno Abierto|--
+.escaparate{border-radius: 20px;}
+.ogtit{color: #CC3333 !important; min-height: 45px;}
+.column1ogob{border-radius: 0 0 0 20px}
+.column2ogob{border-radius: 0 20px 0 0}
+.column3ogob{border-radius: 20px}
+.destog {
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    height: 10em;
+    padding: 0.5em 1em 0;
+}
+ul.propmun, ul.ciud {background-image: url("/cont/paginas/gobierno-abierto/img/propmun-g.png");}
+ul.propciud {background-image: url("/cont/paginas/gobierno-abierto/img/propciud-g.png");}
+ul.propmun, ul.propciud, ul.ciud {
+    background-repeat: no-repeat;
+    margin-left: 0;
+    padding-left: 6em;
+}
+.destacados-ogob ul.agenda-list li{background-color: @black;}  
+.menu-ogob a{color: @black;}
+
+//.propuestas h2{ 
+//	background-color: #CC3333 !important;
+//    border: medium none !important;
+//    color: #FFFFFF !important;}
+    
+.espaciosimg, .transparenciaimg, .participacionimg, .datosimg{background-position: bottom;background-repeat: no-repeat;}
+.espaciosimg{background-image: url("/cont/paginas/gobierno-abierto/img/imag_espaciosParticipacion2.jpg");}
+.transparenciaimg{background-image: url("/cont/paginas/gobierno-abierto/img/imag_transparencia2.jpg");}
+.participacionimg{background-image: url("/cont/paginas/gobierno-abierto/img/imag_ciudadania2.jpg");}
+.datosimg{background-image: url("/cont/paginas/gobierno-abierto/img/imag_datosAbiertos.jpg");}
+
+.absoluta{position:absolute;bottom:0} //
+
+// Landscape phones and down
+@media (max-width: 480px) {
+	.ayto-logo{top: -1.6em;}
+	
+//	.indice .contenedor{top: -17.1em;}
+//	.contenido .contenedor{top: -13.5em;}
+}
+.licitadores span{height: 8em;
+  width: 8em;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%; 
+  color:#fff;
+  padding:0.5em;
+  
+  background: @colorAyto}
+  .licitadores{margin-bottom:10px}
+
+
+div.help h3{
+    background: url("/cont/paginas/enlinea/img/help_32.gif") no-repeat scroll 5px 50% #fff;
+    padding: 3px 0 3px 45px !important;
+    height: 2em;
+}
+
+
+.visible-panel{
+	position: relative;
+	padding: 1em;
+	overflow: hidden;
+	//background: rgb(38, 174, 238);
+}
+.hidden-panel{
+	//background: rgba(22, 99, 135, 0.9);
+	background: rgba(240, 240, 240, 0.9);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	display:none;
+	padding-top: 1em;
+	line-height: 2em;
+}
+.visible-panel:hover .hidden-panel{
+	display: block;
+}

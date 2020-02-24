@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es" th:object="${registro.body}" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="${titulo} + '. Entidad. Agenda Zaragoza'" keywords="actos, concierto, actividades, cursos" />
+
+    <th:block th:if="${registro.statusCode.value()} == 200">
+        <meta property="og:url" th:content="*{uri}" />
+        <meta property="og:title" th:content="${titulo}" />
+    </th:block>
+    <style type="text/css">
+        @media (max-width: 768px) {
+            .list-actividades li{
+                min-height: 26em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}">
+            <h2 th:text="*{title}" property="name"></h2>
+            <div class="caption fnd-gris-claro">
+                <ul class="list-unstyled small">
+                    <li th:if="*{streetAddress}" class="direccion">
+                        <span class="fa fa-home"></span> <strong>Dirección:</strong>
+                        <span th:text="*{streetAddress}" />
+                    </li>
+                    <th:block th:if="*{telephone}">
+                        <li th:if="*{telephone}" class="tel">
+                            <span class="fa fa-phone"></span> <strong>Teléfono:</strong>
+                            <th:block th:if="${currentDevice.isMobile()} == true">
+                                <a th:href="'tel:' + *{telephone}"><span sede:rdf="*{get('telephone')}" /></a>
+                            </th:block>
+                            <th:block th:if="${currentDevice.isMobile()} != true">
+                                <span sede:rdf="*{get('telephone')}" />
+                            </th:block>
+                        </li>
+                        <li th:if="*{faxNumber}" class="fax">
+                            <span class="fa fa-fax"></span> <strong>Fax:</strong>
+                            <span sede:rdf="*{get('faxNumber')}" />
+                        </li>
+                    </th:block>
+                    <li th:if="*{email}" class="email">
+                        <span class="fa fa-at"></span> <strong>Correo electrónico:</strong>
+                        <a sede:rdf="*{prop('email')}" th:href="'mailto:' + *{email}" th:text="*{email}" />
+                    </li>
+                    <li th:if="*{openingHours}" class="horario">
+                        <span class="far fa-clock"></span> <strong>Horario: </strong>
+                        <div sede:rdf="*{get('openingHours')}" />
+                    </li>
+                    <li th:if="*{url}" class="url"> 
+                        <span class="fa fa-link"></span> <strong>Página Web:</strong>
+                        <a class="break-word" th:href="*{url}" sede:rdf="*{get('url')}" />
+                    </li>
+                </ul>
+            </div>
+            <th:block th:include="fragmentos/cultura/evento/tabla(titulo=null,listado=*{events})"></th:block>
+        </div>
+    </sede:content>
+</body>
+
+</html>

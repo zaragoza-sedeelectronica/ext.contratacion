@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Transparencia Municipal. Convenios,Encargos y Acuerdos Sociedad Zaragoza Vivienda" description="Transparencia " author="" last-modified="Tue Feb 6 00:00:00 CET 2019" keywords="ayuntamiento, ciudad, Zaragoza, España, administración electrónica, administración local, formalidades administrativas, servicios públicos, relación administración-administrado" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Convenios, Encargos y Acuerdos Sociedad Zaragoza Vivienda 2018/2017</h2>
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+                    <li role="presentation" class="active"><a href="#convenios" aria-controls="que" role="tab" data-toggle="tab"> Convenios</a></li>
+                    <li role="presentation"><a href="#encargos" aria-controls="que" role="tab" data-toggle="tab"> Encargos</a></li>
+                    <li role="presentation"><a href="#acuerdos" aria-controls="que" role="tab" data-toggle="tab"> Acuerdos</a></li>
+                </ul>
+                <div sede:class="tab-content">
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#convenios" aria-expanded="false">Convenios</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="convenios">
+                        <th:block th:fragment="convenios">
+                           <h3><span aria-hidden="true" class="far fa-file-alt"></span> Descarga 2018 </h3>
+                            <ul>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/convenios-zvivienda18.xls">Excel</a></li>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/convenios-zvivienda18.csv">CSV</a></li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table summary="Convenios" class="table table-striped table-condensed table-bordered">
+                                   <caption>2018</caption>
+                                    <tr>
+                                        <th><strong>Nº de Registro</strong></th>
+                                        <th><strong>Titular</strong></th>
+                                        <th><strong>Objeto</strong></th>
+                                        <th><strong>Fecha Firma</strong></th>
+                                        <th><strong>Vigencia</strong></th>
+                                        <th><strong>Importe Compromiso</strong></th>
+                                        <th><strong>Compromiso Zgz Vivienda</strong></th>
+                                    </tr>
+                                    <tr>
+                                        <td> 2018/1</td><td>UNIVERSIDAD DE ZARAGOZA</td><td>Proyecto "Paneles exposición, elaboración, traducción, maquetación e impresión del Libro: Regeneración urbana, propuestas para el barrio de Las Fuentes".</td><td>	01/02/2018</td>	<td>30/10/2018</td><td>	9.727,25 </td><td>9.727,25 </td></tr>
+<tr><td>2018/2</td><td>FUNDACIÓN DOWN (addenda)</td><td>	Adjudicar 2 viviendas más a los usuarios de la fundación.</td><td>06/06/2018</td><td>06/06/2022</td><td>	NO</td><td>NO</td></tr>
+<tr><td>2018/3</td><td>ASOCIACIÓN A IXENA</td><td>Programa de intervención social, ofrecer apoyo técnico y asesoramiento a la asociación y poner a disposición los locales de CEDIS.</td><td>18/06/2018</td><td>1/01/2018 a 31/12/2021</td><td>14.900</td><td>14.900</td></tr>
+<tr><td>2018/4</td><td>ASOCIACIÓN OS MESACHES</td><td>Programa de intervención social, ofrecer apoyo técnico y asesoramiento a la asociación y poner a disposición los locales de CEDIS.</td><td>18/06/2018</td><td>01/01/2018 a 31/12/2021</td><td>14.900</td><td>14.900</td></tr>
+<tr><td>2018/5</td><td>AYUNTAMIENTO DE ZARAGOZA</td><td>Programa “Zaragoza Ciudad Acogedora”  2 viviendas</td><td>01/07/2018</td><td>01/07/2022</td><td>268,76 Barrioverde<br/> 262,50 Armas</td><td>NO</td></tr>
+<tr><td>2018/6</td><td>AYUNTAMIENTO DE ZARAGOZA</td><td>Servicio de Igualdad Programa de alojamiento y mujer</td><td>14/09/2018</td><td>13/09/2022</td><td>19.436,40 </td><td>NO</td></tr>
+<tr><td>2018/7</td><td>UNIVERSIDAD DE ZARAGOZA</td><td>Acuerdo de colaboración para el desarrollo de Plataforma Web  para la gestión de usuarios y datos de Zaragoza Vivienda , para la generación de informes y apoyo a los procesos de trabajo.</td><td>19/09/2018</td><td>31/12/2019</td><td>25.000</td><td>25.000</td></tr>
+<tr>
+<td>2018/8</td><td>2A. VIA. ACOMPAÑAMIENTO TERAPÉUTICO, SOCIEDAD COOPERATIVA DE INICIATIVA SOCIAL</td><td>Programa para coordinar y promover acciones conjuntas para la inclusión social de personas con enfermedad mental grave en riesgo de exclusión social a través de acciones relacionadas con la vivienda y el alojamiento.</td><td>01/12/2018</td><td>30/11/2019</td><td>NO</td><td>NO</td></tr>
+<tr><td>2018/9</td><td>FUNDACIÓN API-ACAM</td><td>Programa de alojamiento temporal a personas víctimas de explotación sexual.</td><td>	01/12/2018</td><td>30/11/2019</td><td>NO</td><td>NO</td></tr>
+<tr><td>2018/10</td><td>Fundación de Atención a la Discapacidad Intelectual en Aragón "SER MAS"</td><td>Programa para coordinar y promover acciones conjuntas para la inclusión social de personas con enfermedad mental grave en riesgo de exclusión social a través de acciones relacionadas con la vivienda y el alojamiento.</td><td>01/12/2018</td><td>30/11/2019</td><td>NO</td><td>NO</td></tr>
+<tr><td>2018/11</td><td>ACCEM</td><td>El objetivo es ayudar a las personas refugiadas que lleguen a Zaragoza y brindarles el apoyo que puedan necesitar para su futura integración en nuestra ciudad, siendo para ello un aspecto fundamental disponer de una vivienda adecuada.</td><td>01/12/2018</td><td>30/11/2019</td><td>NO</td><td>NO</td></tr>
+<tr><td>2018/12</td><td>Fundación para la Atención Integral del Menor  (FAIM)</td><td>El objeto es coordinar y promover acciones conjuntas tendentes al fomento de la inclusión social de jóvenes en proceso de emancipación a través de acciones relacionadas con la vivienda y el alojamiento.</td><td>01/12/2018</td><td>30/11/2019</td><td>NO</td><td>NO</td></tr>
+<tr><td>2018/13</td><td>Asociación Tutelar Asistencial de Discapacitados Intelectuales (ATADES),</td><td>El objeto es coordinar y promover acciones conjuntas tendentes al fomento de la inclusión social de personas en dificultad a través de acciones relacionadas con la vivienda y el alojamiento.</td><td>01/12/2018</td><td>30/11/2019</td><td>NO</td><td>NO</td></tr>
+<tr><td>2018/14</td><td>Fundación Rey Ardid</td><td>El objeto es coordinar y promover acciones conjuntas tendentes al fomento de la inserción social de personas con discapacidad por trastorno mental a través de acciones relacionadas con la vivienda y el alojamiento.</td><td>01/12/2018</td><td>30/11/2019</td><td>NO</td><td>NO</td></tr>
+
+                                </table>
+                            </div>
+                            <h3><span aria-hidden="true" class="far fa-file-alt"></span> Descarga 2017 </h3>
+                            <ul>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/convenios-zvivienda.xls">Excel</a></li>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/convenios-zvivienda.csv">CSV</a></li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table summary="Convenios" class="table table-striped table-condensed table-bordered">
+                                   <caption>2017</caption>
+                                    <tr>
+                                        <th><strong>Nº de Registro</strong></th>
+                                        <th><strong>Titular</strong></th>
+                                        <th><strong>Objeto</strong></th>
+                                        <th><strong>Fecha Firma</strong></th>
+                                        <th><strong>Vigencia</strong></th>
+                                        <th><strong>Importe Compromiso</strong></th>
+                                        <th><strong>Compromiso Zgz Vivienda</strong></th>
+                                    </tr>
+                                    <tr>
+                                        <td> 2017/1</td>
+                                        <td>AZIENDA CASA EMILIA ROMAGNA (ACER) 20</td>
+                                        <td>Desarollar el proyecto HEROLITE incluído en el programa europeo LIFE</td>
+                                        <td>23/01/2017</td>
+                                        <td>11 meses</td>
+                                        <td>16700.00</td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/2</td>
+                                        <td>CONVENIO DE COLABORACIÓN CON EL REAL E ILUSTRE COLEGIO DE ABOGADOS DE ZARAGOZA (REICAZ) 21</td>
+                                        <td>Programa de Mediación Deuda Hipotecaria y Mediación en arrendamiento de vivienda</td>
+                                        <td>01/03/2017. Efectos desde 01/01/2017</td>
+                                        <td>31/12/2017</td>
+                                        <td>50000.00</td>
+                                        <td>50000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/3</td>
+                                        <td>CONVENIO DE COLABORACIÓN CON COLEGIO TRABAJO SOCIAL Y ASISTENTES SOCIALES CTTSS 22</td>
+                                        <td>Programa de Mediación Deuda Hipotecaria y Mediación en arrendamiento de vivienda</td>
+                                        <td> 02/03/2017 Efectos 01/01/2017</td>
+                                        <td>31/12/2017</td>
+                                        <td>50000.00</td>
+                                        <td>50000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/4</td>
+                                        <td>CONVENIO ASOCIACION DOMINGO DOMINGUEZ-ZARAGOZA CULTURAL- ZVIVIENDA- MERCADO DE LAS ARMAS 23</td>
+                                        <td>Gestionar Mercado de las Armas 2º domingo de cada mes</td>
+                                        <td>25/4/2017</td>
+                                        <td>31/12/2017</td>
+                                        <td>409.50</td>
+                                        <td>409.50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/5</td>
+                                        <td>ACUERDO (CONVENIO) CON UNIVERSIDAD DE ZARAGOZA </td>
+                                        <td>Colaboración en el proyecto Paneles exposición, elaboración, traducción, maquetación e impresión del libro Regeneración Urbana . Propuestas para el barrio de San José.</td>
+                                        <td>02/05/2017</td>
+                                        <td>30/10/2017</td>
+                                        <td>11769.97</td>
+                                        <td>11769.97</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/6</td>
+                                        <td>SOCIEDAD MUNICIPAL ZARAGOZA CULTURAL SA</td>
+                                        <td>Convenio Circo Social en Solar Armas 79-85</td>
+                                        <td>05/06/2017</td>
+                                        <td>04/06/2018</td>
+                                        <td>3000.00</td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/07</td>
+                                        <td>AYUNTAMIENTO DE ZARAGOZA.- AREA DE ECONOMIA Y CULTURA</td>
+                                        <td>Convenio para alquiler de locales a Zaragoza Vivienda</td>
+                                        <td>15/7/2017 Efectos 1/01/2017</td>
+                                        <td>31/12/2020</td>
+                                        <td>1150213.59 </td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/8</td>
+                                        <td>GOBIERNO DE ARAGON Y AYTO a través de ZARAGOZA VIVIENDA</td>
+                                        <td>Gestión del programa de asesoramiento y mediación en deuda hipotecaria y en deuda de alquiler</td>
+                                        <td>19/10/2017 Efectos desde el 1 de enero de 2017</td>
+                                        <td>31/12/2017</td>
+                                        <td>DGA aportará 125000 a contar desde el 1 de enero de 2017</td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/9</td>
+                                        <td>CONVENIO DE COLABORACIÓN GOBIERNO DE ARAGÓN Y AYTO ZARAGOZA A TRAVÉS DE ZV EN EL PROGRAMA DE MOVILIZACIÓN DE VIVIENDA VACÍA 15</td>
+                                        <td>Ampliar la oferta municipal de viviendas en alquiler social mediante incentivos a propietarios de vivienda vacía</td>
+                                        <td>12/12/2017</td>
+                                        <td>31/12/2017</td>
+                                        <td>36775.00</td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/10</td>
+                                        <td>CRUZ ROJA ESPAÑOLA</td>
+                                        <td>Ofrecer alojamiento a personas refugiadas que llegan a Zaragoza.Tres viviendas</td>
+                                        <td>01/05/2017</td>
+                                        <td>12 meses prorrogable por otros 12</td>
+                                        <td></td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/11</td>
+                                        <td>AFADACER</td>
+                                        <td>Cesión local en alquiler</td>
+                                        <td>1-10-2017</td>
+                                        <td>12 meses prorrogable por otros 12</td>
+                                        <td>3356.04</td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017/12</td>
+                                        <td>FUNDACIÓN APIP-ACAM</td>
+                                        <td>Ofrecer alojamiento a los refugiados. Cesión de viviendas en régimen de alquiler </td>
+                                        <td>01/12/17</td>
+                                        <td>12 meses prorrogable por otros 12</td>
+                                        <td></td>
+                                        <td>NO</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+                    <h2 class="tab-title" data-toggle="collapse" data-target="#encargos" aria-expanded="false">Encargos</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="encargos">
+                        <th:block th:fragment="encargos">
+                            <h3><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                            <ul>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/encargos-zvivienda.xls">Excel</a></li>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/encargos-zvivienda.csv">CSV</a></li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table summary="Lineas asignadas a servicios" class="table table-striped table-condensed table-bordered">
+                                    <tr>
+                                        <th><strong>OBJETO</strong></th>
+                                        <th><strong>DATOS    ENCARGO</strong></th>
+                                        <th><strong>FECHA    ENCARGO</strong></th>
+                                    </tr>
+<tr><td>AYUDAS DIRECTAS AL ALQUILER</td><td>
+Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU, para la gestión de las ayudas directas al alquiler para el ejercicio 2018, conforme a los criterios establecidos en las bases reguladoras aprobadas</td><td>31/10/2018</td></tr>
+<tr><td>ACONDICIONAMIENTO LOCAL PARQUE GOYA II</td><td>
+Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU de la realización de cuantas actividades de carácter material, técnico o de servicios sean precisas para el acondicionamiento del local sito en Parque Goya II para destinarlo a Centro Comunitario</td>
+<td>27/11/2018</td></tr>
+<tr><td>GESTIÓN DE ALOJAMIENTOS CON SERVICIOS COMUNES</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU para la realización de cuantas actividades de carácter material, técnico o de servicios sean precisas para la gestión de alojamientos con servicios comunes en la calle Antonio Leyva, nº 92</td>
+<td>27/11/2018</td></tr>
+<tr><td>PROYECTOS COMUNITARIOS</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU para la realización de cuantas actividades de carácter material, técnico o de servicios sean precisas para la gestión de proyectos de participación vecinal con los arrendatarios de viviendas gestionadas por Zaragoza Vivienda, Proyectos Comunitarios</td>
+<td>27/11/2018</td></tr>
+<tr><td>FOMENTO A LA REHABILITACIÓN EN ZONAS DELIMITADAS</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU de la gestión de ayudas destinadas a la rehabilitación en zonas delimitadas conforme al procedimiento de concesión establecido en la normativa reguladora de subvenciones que deberá ser aprobado por el Consejo de Administración de la Sociedad Municipal</td>
+<td>27/11/2018</td></tr>
+<tr><td>REHABILITACIÓN PARQUE PÚBLICO DE VIVIENDA SOCIAL</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU de la realización de cuantas actividades de carácter material, técnico o de servicios sean precisas para la ejecución de las obras de Rehabilitación del parque público de vivienda social.</td>
+<td>27/11/2018</td></tr>
+<tr><td>PROMOCIÓN DE VIVIENDAS SOCIALES EN ALQUILER</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU de la realización de cuantas actividades de carácter material, técnico o de servicios sean precisas para continuar con la promoción de viviendas sociales en alquiler</td>
+<td>27/11/2018</td></tr>
+<tr><td>OBRAS PARQUE TORRE RAMONA</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU de la realización de cuantas actividades de carácter material, técnico o de servicios sean precisas para la ejecución de las obras de rehabilitación del Eje Central del Parque Torre Ramona (Zona 1 del Plan Director).</td><td>27/11/2018</td></tr>
+<tr><td>AYUDAS ADAPTACIÓN COMUNIDADES VEHÍCULOS ELÉCTRICOS</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU de la gestión de ayudas destinadas a comunidades de propietarios para su adaptación a vehículos eléctricos</td><td>27/11/2018</td></tr>
+<tr><td>PLAN DE VIVIENDA JOVEN. CESIÓN DE SUELO</td>
+<td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU de la gestión del Plan de Vivienda Joven a través de cesión de suelo de titularidad municipal y de Zaragoza Vivienda a sociedades cooperativas y entidades sin ánimo de lucro para la promoción de viviendas destinadas preferentemente a jóvenes.</td><td>27/11/2018</td></tr>
+
+
+
+                                    
+
+
+                                    <tr>
+                                        <td>PROYECTO LOCALES VIVOS</td>
+                                        <td>Encargo para la ejecución del Proyecto “Locales vivos” por la Sociedad Municipal Zaragoza Vivienda, SLU.</td>
+                                        <td>12/01/2018</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HARINERA SAN JOSÉ</td>
+                                        <td>Recepción de las obras de acondicionamiento parcial de la 1ª y 2ª planta de la Harinera de San José, ejecutadas por Zaragoza Vivienda.</td>
+                                        <td>28/12/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PLAN DE CHOQUE CONTRA LA POBREZA ENERGÉTICA</td>
+                                        <td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU, la continuación de las propuestas del Plan de choque contra la pobreza energética, iniciado en el año 2016.</td>
+                                        <td>27/10/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PROYECTO AZOTEAS VERDES</td>
+                                        <td>Encargar a la Sociedad Municipal Zaragoza Vivienda, SLU, la ejecución del proyecto de azoteas verdes.</td>
+                                        <td>10/12/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CONVENIO COLABORACIÓN ENTRE EL GOBIERNO DE ARAGÓN Y EL AYUNTAMIENTO DE ZARAGOZA</td>
+                                        <td>Aprobación del convenio de colaboración entre el Gobierno de Aragón y el Ayuntamiento de Zaragoza, a través de la Sociedad Municipal Zaragoza Vivienda, SLU, para la colaboración en el Programa de Captación y Movilización de vivienda vacía.</td>
+                                        <td>10/12/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PROMOCIÓN VIVIENDAS SOCIALES MUNICIPALES</td>
+                                        <td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU, la promoción de viviendas sociales municipales en alquiler en suelos propiedad de la misma, procediendo, previa adaptación de los proyectos a la normativa vigente, a la posterior ejecución de las obras.</td>
+                                        <td>06/10/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CONVENIO COLABORACIÓN ADMINISTRACIÓN AUTONÓMICA</td>
+                                        <td>Aprobar convenio de colaboración entre la Diputación General de Aragón y la Sociedad Municipal Zaragoza Vivienda SLU., para la gestión del Programa de Asesoramiento y Mediación en Deuda Hipotecaria y en Deuda de Alquiler</td>
+                                        <td>08/09/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GESTIÓN DE VIVIENDA PÚBLICA Y PROGRAMAS SOCIALES</td>
+                                        <td>Encargo a la Sociedad Municipal Zaragoza Vivienda SLU., la gestión&nbsp; de vivienda pública y programas sociales, Centro de Dinamización Social Margen Izquierda (CEDIS)&nbsp; y Centro Comunitario Oliver</td>
+                                        <td>07/07/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RENUNCIA DERECHO REVERSIÓN PARCELA AYUNTAMIENTO DE ZARAGOZA</td>
+                                        <td>Renunciar al derecho de reversión que ostenta el Ayuntamiento de Zaragoza respecto a la parcela ubicada en la calle María de Aragón s/n colindante a la calle Fray Luis Urbano 92, cedida gratuitamente a la Sociedad Municipal Zaragoza Vivienda SLU., mediante acuerdo de Gobierno de Zaragoza de 9-12-2008, al entender cumplimentadas las condiciones establecidas relativas al destino del inmueble a los fines sociales de dicha Sociedad Municipal.</td>
+                                        <td>07/07/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GESTIÓN AYUDAS REHABILITACIÓN</td>
+                                        <td>Encargo a la Sociedad Municipal Zaragoza Vivienda SLU., la gestión de ayudas destinadas a la rehabilitación para el ejercicio 2017, conforme al procedimiento de concesión establecido en la normativa reguladora de subvenciones, que deberá ser aprobado por el Consejo de administración de la Sociedad Municipal.</td>
+                                        <td>26/05/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OBRAS DE ACONDICIONAMIENTO </td>
+                                        <td>Encargo a la Sociedad Municipal Zaragoza Vivienda, SLU.,&nbsp; la ejecución de las obras de acondicionamiento de las plantas 1ª y 2ª de la antigua Fábrica de Harinas, situada en Avda. San José 201-203 de Zaragoza, por importe de 678.996,87 (IVA no incluido), en los términos&nbsp; del procedimiento de contratación aprobado por el Consejo de Administración de la Sociedad Municipal el 2 de marzo de 2017</td>
+                                        <td>18/05/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GESTIÓN AYUDAS DIRECTAS AL ALQUILER</td>
+                                        <td>Aprobar las bases reguladoras para la concesión de ayudas directas al alquiler para el ejercicio 2017. destinadas a arrendatarios de viviendas sociales gestionadas por la Sociedad Municipal Zaragoza Vivienda SLU,.Encargar a la Sociedad Municipal la gestión de ayudas directas al alquiler para el ejercicio de 2017 conforme al procedimiento de concesión aprobado. </td>
+                                        <td>12/05/2017</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--/*responsive*/-->
+                        </th:block>
+                    </div>
+                    <!--/*tabpanel*/-->
+<h2 class="tab-title" data-toggle="collapse" data-target="#acuerdos" aria-expanded="false">Acuerdos</h2>
+                    <div role="tabpanel" sede:class="tab-pane active" id="acuerdos">
+                        <th:block th:fragment="acuerdos">
+                            <h3><span aria-hidden="true" class="far fa-file-alt"></span> Descarga</h3>
+                            <ul>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/acuerdos-zvivienda.xls">Excel</a></li>
+                                <li><a href="/contenidos/gobierno-abierto/transparencia/acuerdos-zvivienda.csv">CSV</a></li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table summary="Lineas asignadas a servicios" class="table table-striped table-condensed table-bordered">
+                                    <tr>
+                                        <th><strong>OBJETO</strong></th>
+                                        <th><strong>DATOS    ACUERDO</strong></th>
+                                        <th><strong>FECHA    ACUERDO</strong></th>
+                                    </tr>
+<tr><td>CONVENIO COLABORACIÓN PROGRAMA CAPTACIÓN Y MOVILIZACIÓN VIVIENDA VACÍA</td>
+<td>Acuerdo de aprobación del convenio de colaboración entre el Gobierno de Aragón y el Ayuntamiento de Zaragoza, a través de la Sociedad Municipal Zaragoza Vivienda SLU. para la colaboración en el Programa de capatación y movilización de vivienda vacía</td>
+<td>15/11/2018</td></tr>
+<tr><td>CONVENIO PROGRAMA DE ASESORAMIENTO Y MEDIACIÓN EN DEUDA HIPOTECARIA Y EN DEUDA DE ALQUILER</td>
+<td>Acuerdo de aprobación del convenio de colaboración entre la Diputación General de Aragón y el Ayuntamiento de Zaragoza, a través de la Sociedad Municipal Zaragoza Vivienda, SLU, para la gestión del programa de asesoramiento y mediación en deuda hipotecaria y en deuda de alquiler</td>
+<td>21/09/2018</td></tr>
+<tr><td>PROTOCOLO DE COORDINACIÓN PARA EL ACCESO EXTRAORDINARIO A VIVIENDA MUNICIPAL DE ALQUILER</td>
+<td>Acuerdo de aprobación del Protocolo entre la Sociedad Municipal Zaragoza Vivienda, SLU y el Excmo. Ayuntamiento de Zaragoza, a través del Área de Derechos Sociales, para el acceso extraordinario a vivienda municipal de alquiler</td>
+<td>26/07/2018</td></tr>
+<tr><td>PROGRAMA CAPTACIÓN Y MOVILIZACIÓN DE VIVIENDA VACÍA</td>
+<td>Acuerdo de aprobación de la propuesta de mejora de las condiciones del programa de captación y movilización de vivienda vacía</td>
+<td>13/07/2018</td></tr>
+<tr><td>PLAN DE INVERSIONES DE EFICIENCIA ENERGÉTICA EN VIVIENDA SOCIAL 2018-2023 (BEI)</td>
+<td>Acuerdo del Plan de Inversiones de eficiencia energética en vivienda social 2018-2023 BEI para la Sociedad Municipal Zaragoza Vivienda, SLU</td>
+<td>31/05/2018</td></tr>
+<tr><td>PROGRAMA MUNICIPAL ANTE LA OCUPACIÓN EN ZARAGOZA</td>
+<td>Acuerdo del Programa Municipal ante la ocupación en Zaragoza para el acceso a la vivienda de familias zaragozanas en situación de especial vulnerabilidad</td>
+<td>25/05/2018</td></tr>
+
+</table>
+</div>
+</th:block>
+</div>               
+ </div>
+                <!--/*tabcontent*/-->
+            </div>
+            <!--/*col12*/-->
+        </div>
+        <!--/*container*/-->
+    </sede:content>
+</body>
+
+</html>

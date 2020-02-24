@@ -1,0 +1,5 @@
+<th:block th:utext="${#utils.getCalendar(dayBox, folder, queryParams, 'startDate', days.body.result, month, year, #httpServletRequest)}" />
+<!--/* ${eventsList} está definido si en la etiqueta <sede:calendario-agenda/> se ha definido el param listado="s" */-->
+<th:block th:if="${eventsList}">
+	<th:block th:include="fragmentos/cultura/evento/calendar-list(calendarEvents=${eventsList.result})"></th:block>
+</th:block>

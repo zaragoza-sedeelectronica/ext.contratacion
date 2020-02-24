@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error',description=${registro.statusCode.value()} == 200 ? ${registro.body.description} : '',image=${registro.statusCode.value()} == 200 ? ('http:' + ${registro.body.image}) : ''" lang="es" th:object="${registro.body}" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="${titulo} + '. Agenda Zaragoza'"  description="${description}" summary_large_image="${image}" keywords="actos, concierto, actividades, cursos" />
+    <link th:if="${registro.statusCode.value() == 200}" rel="canonical" th:href="'https://www.zaragoza.es/sede/servicio/cultura/evento/' + ${registro.body.id}" />
+    <meta th:if="${registro.statusCode.value() == 200}" name="googlebot" th:attr="content='unavailable_after:' + ${#utils.getFechaRFC850(registro.body.endDate)}"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    
+    <style type="text/css">
+    .card-description {
+        border-left: 3px solid #D01715;
+    }
+
+    .panel-default>.panel-heading {
+        font-weight: bold;
+        color: #FFF;
+        background: #D01715;
+    }
+
+    .panel-heading a:after {
+        color: #FFF;
+    }
+
+    .panel {
+        border-color: #a21210;
+    }
+
+    .list-block {
+        max-height: 250px;
+        overflow-y: auto;
+    }
+
+    .list-activity {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .listado-recomendadas .card {
+        position: relative;
+        padding-bottom: 60px;
+        min-height: 15em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200">
+            <div th:object="${registro.body}" th:attr="about=${registro.body.uri}" vocab="http://schema.org/" typeof="Event">
+                <h2 th:text="*{title}" property="name"></h2>
+                <ul class="list-inline margin-b1em">
+                    <li class="nopadding" th:if="*{program}">
+                        <a th:href="'/sede/servicio/cultura/evento?fq=programa_smultiple%3A(&quot;'+*{#utils.toUnicode(program.title)}+'&quot;)'" th:text="*{program.title}" class="label label-warning margin-r05em"></a>
+                    </li>
+                    <li class="nopadding" th:each="sector : *{population}">
+                        <a th:if="*{not #lists.isEmpty(population)}" th:href="'/sede/servicio/cultura/evento?fq=dirigidoa_smultiple%3A(&quot;'+${#utils.toUnicode(sector.title)}+'&quot;)'" th:text="${sector.title}" class="label label-info margin-r05em"></a>
+                    </li>
+                    <li class="nopadding" th:each="tema : *{category}">
+                        <a th:if="*{not #lists.isEmpty(category)}" th:href="'/sede/servicio/cultura/evento?fq=temas_smultiple%3A(&quot;'+${#utils.toUnicode(tema.title)}+'&quot;)'" th:text="${tema.title}" class="label label-success margin-r05em"></a>
+                    </li>
+                    <li class="nopadding" th:if="*{type}">
+                        <a th:href="'/sede/servicio/cultura/evento?fq=formatoActividad_smultiple%3A(&quot;'+*{#utils.toUnicode(type)}+'&quot;)'" th:text="*{type}" class="label label-default margin-r05em"></a>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-md-3 col-md-push-9 clearfix">
+                        <!--/* Imagen asociada a la actividad (Prioridad ++) */-->
+                        <img th:if="*{image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="*{image}" alt="" />
+                        <!--/* Imagen asociada al programa (Prioridad +) */-->
+                        <img th:if="*{program} and *{program.image}" th:unless="*{image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="*{program.image}" alt="" />
+                        <!--/* Imagen asociada a la temática */-->
+                        <img th:if="*{not #lists.isEmpty(category)}" th:unless="*{image} or (*{program} and *{program.image})" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="*{category[0].image}" alt="" />
+                        <div class="well well-sm small" th:if="*{twitter} or *{facebook}">
+                            <strong>Más información en:</strong>
+                            <ul class="list-unstyled">
+                                <li th:if="*{twitter}"><span class="fab fa-twitter"></span> <a class="break-word" th:href="*{twitter}" th:text="*{twitter}"></a></li>
+                                <li th:if="*{facebook}"><span class="fab fa-facebook-f"></span> <a class="break-word" th:href="*{facebook}" th:text="*{facebook}"></a></li>
+                            </ul>
+                        </div>
+                        <ul class="list-unstyled" th:if="*{attachment}">
+                            <li th:if="*{attachment.document}">
+                                <a th:if="*{attachment.document}" th:href="*{attachment.document}" class="btn btn-primary btn-sm btn-block">
+                                <span class="far fa-file-pdf" aria-hidden="true"></span> 
+                                <th:block th:if="*{attachment.documentTitle}" th:text="*{attachment.documentTitle}"></th:block>
+                                <th:block th:unless="*{attachment.documentTitle}" th:text="'Folleto informativo'"></th:block>
+                            </a>
+                            </li>
+                            <li th:if="*{attachment.audio}">
+                                <span class="far fa-file-audio" aria-hidden="true"></span> <a th:href="*{attachment.audio}" th:text="'Escuchar el audio'" />
+                            </li>
+                            <li th:if="*{attachment.video}">
+                                <!--/* <span class="far fa-file-video" aria-hidden="true"></span> Video */-->
+                                <th:block th:utext="*{attachment.video}" />
+                            </li>
+                        </ul>
+                        <div th:if="*{accessible}"><span class="fa fa-wheelchair" aria-hidden="true"></span> Actividad sin barreras</div>
+                        <th:block th:include="/fragmentos/share-button(title='Compartir', uri=*{uri}, text=*{title})"></th:block>
+                        <div class="clearfix margin-b05em"></div>
+                        <!--/* <div class="clearfix margin-b1em"></div> */-->
+                        <!--/* <th:block th:if="${currentDevice.isNormal()}">
+                        <p><strong><span class="fa fa-qrcode"></span> Llévate la actividad a tu móvil</strong></p>
+                        <img class="qr" th:title="'QrCode de la actividad' + *{title}" th:alt="'QrCode de la actividad' + *{title}" th:src="'http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;choe=UTF-8&amp;chld=H&amp;chl=//www.zaragoza.es/sede/servicio/actividades/' + *{id}" />
+                    </th:block> */-->
+                    </div>
+                    <div class="col-md-9 col-md-pull-3">
+                        <!--/* Panel description tablet y escritorio */-->
+                        <div th:if="*{description} and ${currentDevice.isMobile()} == false" class="card card-description" property="description" th:utext="*{description}"></div>
+                        <div class="panel-group" id="event-accordion" role="tablist" aria-multiselectable="true">
+                            <!--/* Panel description solo el móvil (collapse) */-->
+                            <div class="panel panel-default" th:if="*{description} and ${currentDevice.isMobile()} == true">
+                                <div class="panel-heading" role="tab" id="description-title">
+                                    <h3 class="panel-title">
+                                    <a role="button" data-toggle="collapse" href="#description" aria-expanded="true" aria-controls="description" class="btn-block">
+                                        <span class="far fa-file-alt"></span> Descripción
+                                    </a>
+                                </h3>
+                                </div>
+                                <div id="description" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" role="tabpanel" aria-labelledby="description-title">
+                                    <div class="panel-body" property="description" th:utext="*{description}"></div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" th:if="*{not #lists.isEmpty(subEvent)}">
+                                <div class="panel-heading" role="tab" id="subevents-title">
+                                    <h3 class="panel-title">
+                                    <a role="button" data-toggle="collapse" href="#subevents" aria-expanded="true" aria-controls="subevents" class="btn-block">
+                                        <span class="far fa-building"></span> Lugares de realización
+                                    </a>
+                                </h3>
+                                </div>
+                                <!--/* <div id="subevents" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" role="tabpanel" aria-labelledby="subevents-title"> */-->
+                                <!--/* Bloque no colapsado en móvil */-->
+                                <div id="subevents" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="subevents-title">
+                                    <table class="table">
+                                        <tr>
+                                            <th><span class="fas fa-map-marker-alt fa-lg"></span> Dónde</th>
+                                            <th><span class="fas fa-calendar-alt fa-lg"></span> Cuándo</th>
+                                            <th th:if="*{!price.isEmpty()}"><span class="fas fa-euro-sign fa-lg"></span> Precio</th>
+                                        </tr>
+                                        <tr th:each="se, i : *{subEvent}">
+                                            <td property="location" typeof="Place">
+                                                <!-- <a property="url" th:href="'/sede/portal/cultura/servicio/equipamiento/' + ${#strings.arraySplit(se.location.id, '-')[1]}"> -->
+                                                <a th:unless="${#strings.equals(se.location.title, 'Fuera de Zaragoza')}" property="url" th:href="'/sede/portal/cultura/servicio/equipamiento/' + ${se.location.id}">
+                                                    <span property="name" th:text="${se.location.title}"/>
+                                                </a>
+                                                <span th:if="${#strings.equals(se.location.title, 'Fuera de Zaragoza')}" property="name" th:text="*{location}" />
+                                                <br/>
+                                                <span th:if="${se.space}" th:text="${se.space.title}"></span>
+                                                <p><em property="address" th:text="${se.location.streetAddress}"></em></p>
+                                                <p th:if="${se.comment}" th:utext="${se.comment}"></p>
+                                            </td>
+                                            <td th:if="*{permanent} == true">
+                                                Actividad permanente
+                                            </td>
+                                            <td th:unless="*{permanent} == true">
+                                                <th:block th:if="${se.startDate}" th:text="${#strings.equals(se.startDate, se.endDate)} ? 'El' : 'Del '"></th:block>
+                                                <span th:if="${se.startDate}" th:class="${#strings.equals(se.startDate, se.endDate)} ? 'oculto' : ''" th:text="${#calendars.format(se.startDate,'dd-MM-yyyy')}" property="startDate" />
+                                                <th:block th:if="${se.startDate}" th:text="${#strings.equals(se.startDate, se.endDate)} ? '' : ' al '"></th:block>
+                                                <span th:if="${se.endDate}" th:text="${#calendars.format(se.endDate,'dd-MM-yyyy')}" property="endDate" />
+                                                <div th:if="${se.openingHours}" th:utext="${#utils.tratarHorarios(se.openingHours)}"></div>
+                                                <!--/* <div th:if="${se.openingHours}" th:each="horario, i : ${se.openingHours}">
+                                                <th:block th:text="${horario.dayOfWeek}"></th:block>
+                                                <th:block th:if="${#strings.equals(horario.endTime, '00:00')} and ${horario.startTime}">
+                                                    a las <th:block property="startTime" th:text="${horario.startTime}"></th:block> h.
+                                                </th:block>
+                                                <th:block th:unless="${#strings.equals(horario.endTime, '00:00')}">
+                                                    de
+                                                    <th:block property="startTime" th:text="${horario.startTime}"></th:block>
+                                                    a
+                                                    <th:block property="endTime" th:text="${horario.endTime}"></th:block>
+                                                    h.
+                                                </th:block>
+                                            </div> */-->
+                                            </td>
+                                            <td th:if="*{!price.isEmpty()}">
+                                                <div th:each="p, i : *{price}" property="offers" typeof="Offer">
+                                                    <th:block th:text="${p.fareGroup}"></th:block>
+                                                    <!--/* Si la actividad es gratuita no mostramos precio */-->
+                                                    <th:block th:unless="${p.fareGroup} == 'Gratuita'" th:text="' - ' + ${p.hasCurrencyValue} + ' €'"></th:block>
+                                                    <meta property="price" th:attr="content=${p.hasCurrencyValue}"/>
+                                                    <meta property="priceCurrency" th:attr="content=${p.hasCurrency}"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" th:if="*{registration}">
+                                <div class="panel-heading" role="tab" id="registration-title">
+                                    <h3 class="panel-title">
+                                    <a role="button" data-toggle="collapse" href="#registration" aria-expanded="true" aria-controls="registration" class="btn-block">
+                                        <span class="far fa-edit"></span> Inscripción
+                                    </a>
+                                </h3>
+                                </div>
+                                <div id="registration" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" role="tabpanel" aria-labelledby="registration-title">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="list-unstyled">
+                                                    <li th:if="*{registration.title}" th:text="*{registration.title}"></li>
+                                                    <li th:if="*{registration.streetAddress}">
+                                                        <span class="fa fa-address" aria-hidden="true"></span>
+                                                        <th:block th:text="*{registration.streetAddress}"></th:block>
+                                                    </li>
+                                                    <li th:if="*{registration.telephone}">
+                                                        <strong>Teléfono: </strong>
+                                                        <span class="fa fa-telephone" aria-hidden="true"></span>
+                                                        <th:block th:text="*{registration.telephone}"></th:block>
+                                                    </li>
+                                                    <li th:if="*{registration.email}">
+                                                        <strong>Email: </strong>
+                                                        <a th:href="'mailto:' + *{registration.email}" th:text="*{registration.email}"></a>
+                                                    </li>
+                                                    <li th:if="*{registration.url}">
+                                                        <!--/* Si la url NO ES inscripción del ayto ({id}/inscripcion) */-->
+                                                        <a th:if="*{registration.url}" th:unless="*{#strings.contains(registration.url, id + '/inscripcion')}" th:href="*{registration.url}" th:text="'Inscripción en: ' + *{registration.url}"></a>
+                                                        <!--/* Si la url ES iscripción del ayto ({id}/inscripcion). y NO EXISTE sesión del ciudadano/a */-->
+                                                        <th:block th:if="not ${session.sess_ciudadano} and *{registration.url} and *{#strings.contains(registration.url, id + '/inscripcion')}">
+                                                            <a th:if="*{#strings.contains(registration.url, 'zaragoza.es')}" th:href="@{/servicio/cultura/evento/{id}/inscripcion(id=${registro.body.id})}" class="text-primary">Inscripción</a>
+                                                        </th:block>  
+                                                        <!--/* Si la url ES inscripción del ayto ({id}/inscripcion). y EXISTE sesión del ciudadano/a */-->
+                                                        <th:block th:if="${session.sess_ciudadano} and *{registration.url} and *{#strings.contains(registration.url, id + '/inscripcion')}">
+                                                            <!--/* El ciudadano/a SI está inscrito en la inscripción del ayto */-->
+                                                            <th:block th:if="${esInscrito}">
+                                                                <div role="alert" class="alert alert-info" th:if="${datoInscripcion.estadoInscripcion == 'Inscrito'}">Estás <strong>inscrito/a</strong> en la actividad <a th:href="@{/servicio/cultura/evento/{id}/anular-inscripcion(id=${registro.body.id})}" onclick="return confirm('Desea anular su inscipción a la actividad?')">Anular Inscripción</a></div>
+                                                                <div role="alert" class="alert alert-info" th:if="${datoInscripcion.estadoInscripcion == 'Preinscrito'}">Estás <strong>preinscrito/a</strong> en la actividad <a th:href="@{/servicio/cultura/evento/{id}/anular-inscripcion(id=${registro.body.id})}" onclick="return confirm('Desea anular su inscipción a la actividad?')">Anular Inscripción</a></div>
+                                                                <div role="alert" class="alert alert-info" th:if="${datoInscripcion.estadoInscripcion == 'En Reserva'}">Estás <strong>en reserva</strong> en la actividad <a th:href="@{/servicio/cultura/evento/{id}/anular-inscripcion(id=${registro.body.id})}" onclick="return confirm('Desea anular su inscipción a la actividad?')">Anular Inscripción</a></div>
+                                                                <div role="alert" class="alert alert-warning" th:if="${datoInscripcion.estadoInscripcion == 'Anulada'}">Has anulado tu inscripción a la actividad</div>
+                                                                <div role="alert" class="alert alert-warning" th:if="${datoInscripcion.estadoInscripcion == 'Cancelada'}">La actividad ha sido cancelada</div>
+                                                            </th:block>
+                                                            <!--/* El ciudadano/a NO está inscrito en la inscripción del ayto */-->
+                                                            <th:block th:if="not ${esInscrito}">
+                                                                <a th:if="*{#strings.contains(registration.url, id + '/inscripcion')}" th:href="@{/servicio/cultura/evento/{id}/inscripcion(id=${registro.body.id})}" class="text-primary">Inscripción</a>
+                                                                <!-- <a th:unless="*{#strings.contains(registration.url, id + '/inscripcion')}" th:href="*{registration.url}" th:text="'Inscripción en: ' + *{registration.url}"></a> -->
+                                                            </th:block>
+                                                        </th:block>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="list-unstyled">
+                                                    <li th:if="*{registration.description}" th:utext="*{registration.description}"></li>
+                                                    <li>
+                                                        <th:block th:if="*{registration.startDate}" th:text="*{#strings.equals(registration.startDate, registration.endDate)} ? 'El' : 'Del '"></th:block>
+                                                        <span th:if="*{registration.startDate}" th:class="*{#strings.equals(registration.startDate, registration.endDate)} ? 'oculto' : ''" th:text="*{#calendars.format(registration.startDate,'dd-MM-yyyy')}" property="startDate" />
+                                                        <th:block th:if="*{registration.startDate}" th:text="*{#strings.equals(registration.startDate, registration.endDate)} ? '' : ' al '"></th:block>
+                                                        <span th:if="*{registration.endDate}" th:text="*{#calendars.format(registration.endDate,'dd-MM-yyyy')}" property="endDate" />
+                                                    </li>
+                                                    <li th:if="*{registration.openingHours}">
+                                                        <span class="fa fa-time" aria-hidden="true"></span>
+                                                        <th:block th:utext="*{registration.openingHours}"></th:block>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <meta th:if="not *{url}" property="url" th:attr="content=*{uri}"/> -->
+                            <div class="panel panel-default" th:if="*{not #lists.isEmpty(organizer)} or *{priceComment} or *{url} or (*{program} and *{program.description})">
+                                <div class="panel-heading" role="tab" id="additional-info-title">
+                                    <h3 class="panel-title">
+                                    <a role="button" data-toggle="collapse" href="#additional-info" aria-expanded="true" aria-controls="additional-info" class="btn-block">
+                                        <span class="fa fa-info"></span> Más información
+                                    </a>
+                                </h3>
+                                </div>
+                                <div id="additional-info" class="panel-collapse collapse" th:classappend="${currentDevice.isMobile()} ? '' : in" role="tabpanel" aria-labelledby="additional-info-title">
+                                    <div class="panel-body">
+                                        <p th:if="*{url}">
+                                            <strong><span class="fa fa-globe fa-lg"></span> Web: </strong>
+                                            <a th:text="*{url}" property="url" th:href="*{url}"></a>
+                                        </p>
+                                        <div th:if="*{priceComment}" th:utext="*{priceComment}"></div>
+                                        <strong th:if="*{not #lists.isEmpty(organizer)}"><span class="fa fa-users"></span> Organiza: </strong>
+                                        <ul th:if="*{not #lists.isEmpty(organizer)}" sede:rdf="*{prop('organizer')}" th:each="org, i : *{organizer}">
+                                            <li property="organizer" typeof="Organization">
+                                                <a href="#/" th:id="'organizer-title-' + ${i.index}" class="popover-toggle"><span property="name" th:text="${org.title}"></span></a>
+                                                <div th:id="'organizer-data-' + ${i.index}">
+                                                    <ul class="list-unstyled">
+                                                        <li th:if="${org.streetAddress}"><strong>Dirección: </strong>
+                                                            <span property="address" th:attr="content=${org.streetAddress}" th:text="${org.streetAddress}" />
+                                                        </li>
+                                                        <li th:if="${org.telephone}"><strong>Teléfono: </strong>
+                                                            <span property="telephone" th:attr="content=${org.telephone}" th:text="${org.telephone}" />
+                                                        </li>
+                                                        <li th:if="${org.email}"><strong>Email: </strong>
+                                                            <span th:attr="content=${org.email}" property="email" th:text="${org.email}" />
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="card-description padding-l05em" th:if="*{program} and *{program.description}">
+                                            <!--/* <a th:if="*{program}" th:href="'list?program.id=' + *{program.id}" th:text="*{program.title}" class="label label-warning margin-r05em"></a> */-->
+                                            <span th:utext="*{program.description}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/* ./panel-group */-->
+                        <div th:if="*{geometry}" th:utext="*{geometry.getRdf('false')}"></div>
+                        <div th:if="*{geometry}" id="mapa-leaflet" style="height: 30em"></div>
+                    </div>
+                </div>
+                <th:block th:include="fragmentos/comentario/list(action='/servicio/cultura/evento/')" />
+            </div>
+            <th:block th:if="${recomendacion.size() > 0}">
+                <h2>Actividades recomendadas</h2>
+                <ul class="row list-unstyled listado-recomendadas">
+                    <li th:each="doc : ${recomendacion}" class="col-xs-12 col-sm-6 col-md-3">
+                        <th:block th:include="fragmentos/cultura/evento/card(act=${doc})"></th:block>
+                    </li>
+                </ul>
+            </th:block>
+        </div>
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    var latitude = $(document).find("[property='latitude']").attr("content");
+    var longitude = $(document).find("[property='longitude']").attr("content");
+    if (latitude && longitude) {
+        var marker = L.marker([latitude, longitude]);
+        pois.push(marker);
+    };
+    $("ul.listado-recomendadas li").each(function() {
+        var icon = 'https://www.zaragoza.es/contenidos/iconos/agenda.png';
+        var latitude = $(this).find("[property='latitude']").attr("content");
+        var longitude = $(this).find("[property='longitude']").attr("content");
+        if (latitude && longitude) {
+            var marker = L.marker([latitude, longitude], {
+                icon: L.icon({
+                    iconUrl: icon,
+                    iconSize: [22, 20],
+                    iconAnchor: [22, 20],
+                    popupAnchor: [-10, -20]
+                })
+            }).bindPopup($(this).html());
+            pois.push(marker);
+        };
+    });
+    if ((latitude && longitude) || $("ul#act-recomendadas li").size() > 0) {
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    };
+
+    $('a[id*="organizer-title"]').each(function(index) {
+        $('#organizer-data-' + index).hide();
+        $(this).popover({
+            html: true,
+            content: function() {
+                return $('#organizer-data-' + index).html();
+            }
+        });
+    });
+
+    $(document).on('click', function(e) {
+        $('[data-toggle="popover"],[data-original-title]').each(function() {
+            //the 'is' for buttons that trigger popups
+            //the 'has' for icons within a button that triggers a popup
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                (($(this).popover('hide').data('bs.popover') || {}).inState || {}).click = false // fix for BS 3.3.6
+            };
+        });
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

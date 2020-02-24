@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <sede:meta title="Perido Medio Pago Proveedores" keywords="sede,web,Pago,Proveedores,ayuntamiento,zaragoza,contratación" />
+    </head>
+
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error" />
+            <div th:if="${resultado.statusCode.value()} == 200" th:object="${resultado.body}" vocab="http://schema.org/">
+                <header class="header">
+                    <h2 class="title" >Indicadores</h2>
+                </header>
+                <div class="second-bar clearfix">
+                    <div class="second-bar clearfix">
+                        <div class="col-md-6 clearfix">
+                        </div>
+                        <div class="col-md-6 clearfix">
+                            <p class="nomargin destacado text-right">
+                                Descargar:
+                                <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
+                            </p>
+                            <ul class="list-inline pull-right">
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/periodopagoproveedores/indicadores.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        JSON
+                                    </a>                                |
+                                </li>
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/periodopagoproveedores/indicadores.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        XML
+                                    </a>
+                                    |
+                                </li>
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/periodopagoproveedores/indicadores.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        CSV
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-bar clearfix">
+                    <div th:if="${resultado.body.result != null}">
+                        <div id="datosGrafico" th:each="datos:${resultado.body.result}" >
+                            <div th:each="items:${datos.datosIndicador}">
+                                <input  th:value="${datos.anyo+':'+datos.mes+':'+items}" th:id="${datos.anyo+':'+datos.mes}" type="hidden"></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 ">
+                        <div id="chart_div"></div>
+                        <div class="col-md-12">
+                            <p class="">
+                                *Grafica realizada con los datos Usando <a class="external-link" href="https://www.boe.es/buscar/doc.php?id=BOE-A-2014-8132" data-toggle="tooltip" title="Se desarrolla la metodología de cálculo del periodo medio de pago a proveedores de las Administraciones Públicas.">Real Decreto 635/2014</a>, de 25 de julio.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="chart_div1"></div>
+                        <div class="col-md-12">
+                            <p class="">
+                                *Grafica realizada con los datos usando <a class="external-link" href=" https://www.boe.es/diario_boe/txt.php?id=BOE-A-2017-15364" data-toggle="tooltip" title="Se desarrolla la metodología de cálculo del periodo medio de pago a proveedores de las Administraciones Públicas.">Real Decreto 1040/2017</a>, de 22 de diciembre.
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </sede:content>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"/>
+        <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/sede/js/typeahead.bundle.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/less/bootstrap-slider-master/dist/bootstrap-slider.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+        $(document).ready(function() {
+         $('[data-toggle="tooltip"]').tooltip({
+        placement : 'top'
+        });
+
+         $('#table-entidad').DataTable({
+            "language": {
+                "decimal": ",",
+                "thousands": ".",
+                "lengthMenu": "Ver _MENU_ registros por pagina",
+                "zeroRecords": "No hay registros",
+                "info": "Viendo  _PAGE_ de _PAGES_",
+                "infoEmpty": "No registros Disponibles",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "searchMenu":"Buscar",
+                "loadingRecords": "Cargando...",
+                "processing":     "Procesando...",
+                "search":         "Buscar:",
+                "paginate": {
+                  "first":      "Primera",
+                  "last":       "Ultima",
+                  "next":       "Siguiente",
+                  "previous":   "Anterior"
+                  },
+            },
+            "aaSorting": [[ 3, "desc"],[ 1, "asc"],[ 0, "desc"]],
+           "columnDefs": [
+              {
+                "targets": [1,2],
+                "render": function (data) {
+                  return data;
+                }
+               }
+             ],
+         });
+         });
+        /*]]>*/
+        </script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    window.onload = function () {
+         datosAntes=[];
+         datosDespues=[];
+        var fecha = new Date();
+        var anyoActual = fecha.getFullYear();
+        var mesActual=fecha.getMonth();
+         for(var anyo=2014;anyo <= 2018;anyo++){
+            for(var mes=0;mes<12;mes++){
+                if(anyo==2018){
+                    if(!(mes > 2)){
+                        var item=$("#datosGrafico input[id='"+anyo+":"+(mes+1)+"']");
+                    }
+                }else{
+                      var item=$("#datosGrafico input[id='"+anyo+":"+(mes+1)+"']");
+                }
+                console.log(item);
+                if(item.length>0){
+                    datosAntes.push(item);
+                }
+            }
+        }
+
+        for(var anyo=2018;anyo <= anyoActual;anyo++){
+            for(var mes=0;mes<12;mes++) {
+                if(!(anyo==2018 && mes < 2)){
+                    var item=$("#datosGrafico input[id='"+anyo+":"+(mes+1)+"']");
+                    if(item.length>0){
+                        datosDespues.push(item);
+                    }
+                 }
+            }
+        }
+        if(datosAntes.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart1);
+        }
+        if(datosDespues.length>0){
+         google.charts.load('current', {'packages':['corechart'],'language': 'es'});
+         google.charts.setOnLoadCallback(drawChart);
+         }
+    }
+    function drawChart() {
+      totales=[[new Date(2018,2,1),0,0,0,0,0,0,0,0,0]];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Mes/año');
+        data.addColumn('number', 'Ayuntamiento de Zaragoza');
+        data.addColumn('number', 'Inst. Municipal del Agua');
+        data.addColumn('number', 'P. M. Artes Escénicas y de la Imagen');
+        data.addColumn('number', 'P. M. Turismo');
+        data.addColumn('number', 'P. M. Educación y Bibliotecas');
+        data.addColumn('number', 'Inst. M. Empleo y Fomento Empresarial');
+        data.addColumn('number', 'S. M. Zaragoza Cultural, S.A.');
+        data.addColumn('number', 'Zaragoza Deporte Municipal, S.A.');
+        data.addColumn('number', 'ZGZ Arroba Desarrollo Expo, S.A.');
+
+      for (var i=0;i < datosDespues.length;i++){
+            fecha=datosDespues[i][0].id.split(":");
+            cadena=String(fecha[1]+"/"+fecha[0]);
+            meses=[];
+            meses.push(new Date(fecha[0],fecha[1]-1,(fecha[1]==4 || fecha[1]==6 || fecha[1]==9 || fecha[1]==11)?30:(fecha[1]==2)?28:31));
+            for(var j=0;j<datosDespues[i].length;j++){
+             var datosInicial=datosDespues[i][j].defaultValue;
+             datosFinal=datosInicial.split(":");
+             meses.push(parseFloat(datosFinal[2]));
+            }
+            if(meses.length >1){
+                totales.push(meses);
+            }
+      }
+      data.addRows(totales);
+      var options = {
+          legend:'top',
+          title: 'Evolución Pago medio Proveedores por Entidad',
+
+          width: 1000,
+          height:400,
+          hAxis: {
+            gridlines: {count: 30},
+
+          },
+          vAxis: {
+            gridlines: {color: 'none'},
+            minValue: 0
+          }
+      };
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div1'));
+       chart.draw(data, options);
+    }
+    function drawChart1(){
+        totales=[[new Date(2014,8,1),0,0,0,0,0,0,0,0,0,0]];
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Mes/año');
+        data.addColumn('number', 'Ayuntamiento de Zaragoza');
+        data.addColumn('number', 'Inst. Municipal del Agua');
+        data.addColumn('number', 'P. M. Artes Escénicas y de la Imagen');
+        data.addColumn('number', 'P. M. Turismo');
+        data.addColumn('number', 'P. M. Educación y Bibliotecas');
+        data.addColumn('number', 'Inst. M. Empleo y Fomento Empresarial');
+        data.addColumn('number', 'S. M. Zaragoza Cultural, S.A.');
+        data.addColumn('number', 'Zaragoza Deporte Municipal, S.A.');
+        data.addColumn('number', 'Audiorama Zaragoza, S.A.');
+        data.addColumn('number', 'ZGZ Arroba Desarrollo Expo, S.A.');
+        for (var i=0;i < datosAntes.length;i++){
+			 console.log("logitud"+datosAntes[i].length);
+			 console.log("logitud"+datosAntes[i]);
+            fecha=datosAntes[i][0].id.split(":");
+            cadena=String(fecha[1]+"/"+fecha[0]);
+            meses=[];
+            meses.push(new Date(fecha[0],fecha[1]-1,(fecha[1]==4 || fecha[1]==6 || fecha[1]==9 || fecha[1]==11)?30:(fecha[1]==2)?28:31));
+
+            for(var j=0;j<datosAntes[i].length;j++){
+                var datosInicial=datosAntes[i][j].defaultValue;
+                datosFinal=datosInicial.split(":");
+                meses.push(parseFloat(datosFinal[2]));
+                if(datosAntes[i].length==9 && j==7){
+				meses.push(0);
+			    }
+            }
+            if(meses.length >1){
+                totales.push(meses);
+            }
+        }
+        console.log(totales);
+        data.addRows(totales);
+         var options = {
+          title: 'Evolución Pago medio Proveedores por Entidad',
+
+          width: 1000,
+          height: 400,
+          hAxis: {
+            gridlines: {count: 30},
+
+          },
+          vAxis: {
+            gridlines: {color: 'none'},
+            minValue: 0
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+       chart.draw(data, options);
+    }
+        /*]]>*/
+        </script>
+    </body>
+</html>

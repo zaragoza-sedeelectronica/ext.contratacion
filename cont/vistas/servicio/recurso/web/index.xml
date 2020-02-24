@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Recurso"/>
+</head>
+
+<body>
+    <sede:content>
+        <p class="card">Número de resultados: <strong th:text="${resultado.totalCount}"/></p>
+
+        <ul class="row list-unstyled">
+            <li th:each="doc : ${resultado.result}" class="col-md-12 clearfix margin-b1em">
+                <th:block th:text="${doc.title}"/>
+            </li>
+        </ul>
+
+        <th:block th:utext="${resultado.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

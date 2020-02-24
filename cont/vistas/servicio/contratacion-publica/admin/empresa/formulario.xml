@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Contrato"/>
+</head>
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <form th:if="${registro.statusCode.value()} == 200" th:action="@{/servicio/contratacion-publica/admin/empresa/{id}/save(id=${registro.body.idEmpresa})}" th:object="${dato}" method="post">
+            <div class="fieldset">
+                <fieldset>
+                    <legend><span>Actualizar Datos</span></legend>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label" for="nombre">Nombre</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" th:field="*{nombre}" size="100" />
+                                </div>
+	                            <label class="col-sm-1 control-label" for="autonomo">Autonomo</label>
+				                <div class="col-sm-1">
+		                            <select th:field="*{autonomo}" class="form-control" name="autonomo" id="autonomo">
+		                            	<option value=""></option>
+										<option value="N">No</option>
+										<option value="S">Sí</option>
+									</select>
+								</div>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="col-sm-1 control-label" for="nif">NIF</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" th:field="*{nif}" size="100" />
+                            </div>
+                            
+                            <label class="col-sm-2 control-label" for="libreBorme">Libre Borme</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" th:field="*{libreBorme}" size="100" />
+                            </div>
+                            <label class="col-sm-1 control-label" for="nacionalidad">Nacionalidad</label>
+			                <div class="col-sm-2">
+	                            <select th:field="*{nacionalidad}" class="form-control" name="nacionalidad" id="nacionalidad">
+	                            	<option value=""></option>
+									<option value="es">Española</option>
+								</select>
+							</div>
+                        </div>
+                    </div>
+                    <label class="col-sm-1 control-label" for="ute">UTE</label>
+                    <div class="col-sm-1">
+                        <select th:field="*{ute}" class="form-control" name="ute" id="ute">
+                        	<option value=""></option>
+							<option value="N">No</option>
+							<option value="S">Sí</option>
+						</select>
+					</div> 
+					<th:block th:if="*{ute=='S'}">
+	                    <a href="./ute/new" class="btn btn-primary">Asociar empresa a la ute</a>
+	                    <div role="alert" class="alert alert-info" th:if="${#lists.isEmpty(registro.body.empresasEnUte)}">No existen empresas asociadas a la UTE</div>
+	                    <table th:if="${not #lists.isEmpty(registro.body.empresasEnUte)}" class="table">
+	                    	<caption>Empresas en la UTE</caption>
+	                    	<tr>
+	                    		<th></th>
+	                    		<th>Nombre</th>
+	                    		<th>Participación</th>
+	                    	</tr>
+	                        <tr th:each="doc: ${registro.body.empresasEnUte}">
+	                            <td><a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DEL')}" th:href="@{ute/{id_ute}/delete(id_ute=${doc.empresa.idEmpresa})}" onclick="return confirm('Desea eliminar el elemento?')" class="btn btn-danger btn-xs pull-right"><span class="fas fa-trash-alt"></span> </a></td>
+	                        	<td><th:block th:text="${doc.empresa.nombre}"/></td>
+	                        	<td><th:block th:text="${doc.participacion}"/></td>
+	                        </tr>
+	                    </table>
+	                </th:block>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" name="submit" value="Guardar" class="boton btn btn-primary" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </sede:content>
+</body>
+
+</html>

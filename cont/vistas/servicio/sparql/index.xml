@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Punto SPARQL" keywords="ciudad, Zaragoza, sede electrónica, gobierno abierto, ayuntamiento, administración local, relación administración-administrado, datos abiertos, derecho a reutilizar información, gobierno y sector público, catálogo de datos, DCAT, W3C, Norma Técnica de Interoperabilidad, NTI, SPARQL, API Zaragoza, IDEZar,urbanismo, transporte, medio ambiente, sociedad y bienestar, economía, hacienda, cultura y ocio, ciencia y tecnología, demografía, turismo, deporte, seguridad, comercio, educación, empleo, salud, legislación y justicia, city, Saragossa, e-government, open government, open gov, council, local government, citizen-authority relations, open data, right to reuse information, RISP, government and public sector, town planning, transport, natural environment, society and welfare, economics, tax office, culture and spare time, science and technology, demography, tourism, sports, security, commerce, education, employment, health, regulations and justice"
+/>
+</head>
+
+<body>
+    <sede:content>
+        <form action="http://datos.zaragoza.es/sparql" class="form-horizontal" method="get">
+            <fieldset>
+                <legend><h2>Punto SPARQL</h2></legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="default-graph-uri">Grafo</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="default-graph-uri" name="default-graph-uri">
+                                    <option value=""></option>
+                                    <option th:each="registro : ${grafo}" th:text="${registro}" th:value="${registro}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="query">Consulta</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" cols="80" id="query" name="query" rows="18">select distinct ?Concept where {[] a ?Concept} LIMIT 100</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="format">Formato</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="format" name="format" onchange="format_change(this)">
+                                    <option value="auto">Auto</option>
+                                    <option selected="selected" value="text/html">HTML</option>
+                                    <option value="application/vnd.ms-excel">Spreadsheet</option>
+                                    <option value="application/sparql-results+xml">XML</option>
+                                    <option value="application/sparql-results+json">JSON</option>
+                                    <option value="application/javascript">Javascript</option>
+                                    <option value="text/plain">NTriples</option>
+                                    <option value="application/rdf+xml">RDF/XML</option>
+                                    <option value="text/csv">CSV</option>
+                                    <option value="text/tab-separated-values">TSV</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="timeout">Tiempo de espera en la ejecución</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="timeout" name="timeout" type="text" value="0" /> milisegundos <span class="info"><span>(valores menores que 1000 son ignorados)</span> </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="debug">Comprobación estricta de variables vacías</label>
+                            <div class="col-sm-8">
+                                <input checked="checked" class="form-control" id="debug" name="debug" type="checkbox" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input class="btn btn-primary" type="submit" value="Ejecutar consulta" />
+                                <input class="btn btn-cancel" type="reset" value="Reset" />
+
+                            </div>
+
+                        </div>
+                        <div  role="alert" class="alert alert-info">
+                            <ul>
+                                <li>
+                                    <a href="/sede/portal/datos-abiertos/vocabularios">Vocabularios disponibles</a>
+                                </li>
+                                <li>
+                                    <a href="/sede/portal/datos-abiertos/sparql">Ayuda</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div role="alert" class="alert alert-info">
+            Temporamente también existe el siguiente Punto Sparql <a href="https://www.zaragoza.es/datosabiertos/sparql">https://www.zaragoza.es/datosabiertos/sparql</a> ante cualquier duda puede ponerse en <a href="mailto:datosabiertos@zaragoza.es">contacto con nosotros</a>.
+        </div>
+    </sede:content>
+</body>
+
+</html>

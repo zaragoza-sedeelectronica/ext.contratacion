@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Fiestas del Pilar 2018" description="Página oficial de las Fiestas del Pilar 2018. Del sábado 6 de octubre al domingo 14 de octubre de 2018" category="Fiestas del Pilar" author="Ayuntamiento de Zaragoza" keywords="Ayuntamiento, Zaragoza, España, Fiestas del Pilar, Ciudad, cultura, turismo, actividades, espacios, octubre" last-updated="22-06-2018" audience="Ciudadanía" />
+
+</head>
+
+<body>
+    <sede:content>
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form action="/sede/servicio/cultura/evento" method="get" enctype="application/x-www-form-urlencoded">
+                                <label for="nombre">Buscar una <span class="text-primary">ACTIVIDAD</span></label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" id="nombre" name="query" class="form-control" placeholder="Introduce un título..." />
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default" title="Buscar Actividad">
+                                            <span class="fa fa-search" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr class="sm" />
+                            <h3 class="margin-v05em"><span class="fa fa-child" aria-hidden="true"></span> Programa descargable</h3>
+                            <ul class="list-inline text-center">
+                                <li class="border-solid-left"><a href="https://www.zaragoza.es/cont/paginas/actividades/documento/programa_2018_baja.pdf" class="pdf">COMPLETO</a></li>
+                                <li class="border-solid-left"><a href="https://www.zaragoza.es/contenidos/fiestaspilar/programa_pilar18_aragones.pdf" class="pdf">ARAGONÉS</a></li>
+                                <li class="border-solid-left"><a href="https://www.zaragoza.es/contenidos/fiestaspilar/PROGRAMA_INFANTIL_2018_new.PDF" class="pdf">INFANTIL</a></li>
+                                <li class="border-solid-left"><a href="https://www.zaragoza.es/contenidos/fiestaspilar/Pilar_barrios_2018.pdf" class="pdf"> BARRIOS</a></li>
+                            </ul>
+                            
+                           
+                            <hr class="sm" />
+                            <h3 class="margin-v05em"><span class="fa fa-tags" aria-hidden="true"></span> Por temática</h3>
+                            <ul class="list-inline text-center">
+                                <li>
+                                    <a href="/sede/servicio/cultura/evento?fq=temas_smultiple:(%22Cine+no+comercial%22) AND programa_smultiple%3A(%22Fiestas+del+Pilar%22)" title="Cine no comercial">
+                                        <span class="fa fa-film fa-2x" aria-hidden="true"></span>
+                                        <span class="sr-only">Cine no comercial</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/cultura/evento?fq=temas_smultiple:(%22Deportes%22)AND programa_smultiple%3A(%22Fiestas+del+Pilar%22)" title="Deportes">
+                                        <span class="far fa-futbol fa-2x" aria-hidden="true"></span>
+                                        <span class="sr-only">Deportes</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/cultura/evento?fq=temas_smultiple:(%22Exposiciones%22)AND programa_smultiple%3A(%22Fiestas+del+Pilar%22)" title="Exposiciones">
+                                        <span class="far fa-image fa-2x" aria-hidden="true"></span>
+                                        <span class="sr-only">Exposiciones</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/cultura/evento?fq=temas_smultiple:(%22M\u00fasica%22)AND programa_smultiple%3A(%22Fiestas+del+Pilar%22)" title="Música">
+                                        <span class="fa fa-music fa-2x" aria-hidden="true"></span>
+                                        <span class="sr-only">Música</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/cultura/evento?fq=temas_smultiple:(%22Teatro+y+Artes+Esc%5Cu00e9nicas%22)AND programa_smultiple%3A(%22Fiestas+del+Pilar%22)" title="Teatro">
+                                        <span class="fa fa-university fa-2x" aria-hidden="true"></span>
+                                        <span class="sr-only">Teatro</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/cultura/evento?fq=temas_smultiple:(%22Medio+Ambiente%22)AND programa_smultiple%3A(%22Fiestas+del+Pilar%22)" title="Medio Ambiente">
+                                        <span class="fa fa-tree fa-2x" aria-hidden="true"></span>
+                                        <span class="sr-only">Medio Ambiente</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/cultura/evento?fq=temas_smultiple:(%22Gastronom\u00eda%22)AND programa_smultiple%3A(%22Fiestas+del+Pilar%22)" title="Gastronomía">
+                                        <span class="fas fa-utensils fa-2x" aria-hidden="true"></span>
+                                        <span class="sr-only">Gastronomía</span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                           
+                            
+                            <!--/* <p>Si eres un profesional de un espacio o sala de Zaragoza y quieres incluir tus actividades, <a href="mailto:peticiones-web@zaragoza.es">ponte en contacto</a>.</p> */-->
+                        </div>
+                        <div class="col-md-8">
+                            <div class="clearfix">
+                                <h2 class="titulo-test pull-left"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Hoy en Zaragoza</h2>
+                              
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- <h2 class="titulo-test"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Calendario</h2> -->
+                                    <sede:calendario-agenda carpeta="/sede/servicio/cultura/evento/calendar/"></sede:calendario-agenda>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- <h2 class="titulo-test"><span class="fa fa-list" aria-hidden="true"></span> Hoy en Zaragoza</h2> -->
+                          <!--          <th:block th:include="fragmentos/cultura/evento/calendar-list(calendarEvents=${resultado.body.todayEvents})"></th:block>-->
+                          <div class="calendar-list overflow-y nomargin">
+                          <sede:agenda titulo="Actividades" numero="30" programa="Fiestas del Pilar" fragment="fragmentos/cultura/evento/listado" />
+                          </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Espacios</h3>
+                    <sede:equipamiento tab="actividades" carpeta="/sede/portal/cultura/fiestas-pilar/servicio/equipamiento/" fq="subtemas_smultiple:&quot;Espacios destacados Fiestas del Pilar&quot;"/>
+                </div>
+            </div>
+        </div>          
+    </sede:content>
+</body>
+
+</html>

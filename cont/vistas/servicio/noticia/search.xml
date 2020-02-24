@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Noticias" keywords="sede,web" />
+    <meta name="robots" content="noindex, follow"/>
+    <style type="text/css">
+        h2 {
+            font-size: 1.50em;
+        }
+        .card {
+            position: relative;
+            padding-bottom: 60px;
+        }
+        @media (min-width: 768px) {
+            li .card {
+                min-height: 23em;
+            }
+        }
+        
+         .resultado li:nth-child(3n) {
+        float: right !important;
+        }
+        
+        .resultado li:nth-child(3n+1) {
+        float: left !important;
+        clear: both;
+        }
+        
+		.etiqueta {
+			margin-bottom: 1em !important;
+		}
+		
+		.compartir {
+			float: left !important;
+			padding-left: 0.5em;
+		}          
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <sede:content>
+        <h2>Búsqueda de noticias por día</h2>
+        <div class="row">
+            <div class="col-md-9">
+        
+                <ul class="row list-unstyled">
+                    <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4" th:each="registro: ${resultado.body.result}">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 text-center" th:if="${registro.image.size() > 0}">
+                                    <img class="img-responsive" th:src="'//www.zaragoza.es' + ${registro.image[0].src}" th:alt="${registro.image[0].title}" />
+                                </div>
+                                <div th:class="${registro.image.size() > 0} ? 'col-xs-9 col-sm-9 col-md-9' : 'col-xs-12 col-sm-12 col-md-12'">
+                                    <a th:href="${registro.uri}">
+                                        <h3 class="media-heading" th:utext="${registro.title}"></h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr class="sm" />
+                                    <em th:if="${registro.dateCreated}" sede:rdf="${registro.get('dateCreated')}"></em>
+                                    <span th:if="${registro.summary}" th:text="${#strings.abbreviate(#utils.htmlToTxt(registro.summary),100)}" />
+                                    <a th:if="${registro.summary} and ${#strings.length(registro.summary) > 100}" th:href="${registro.uri}">+ Seguir leyendo...</a>
+                                    <br/>
+                                    <th:block th:if="${registro.video.size() > 0}">
+                                        <a th:href="${registro.video[0].link}">
+                                            <span class="fab fa-youtube" aria-hidden="true"></span> Ver vídeo de la noticia
+                                        </a>
+                                    </th:block>
+                                </div>
+                            </div>
+                            <div class="col-md-12 card-footer">
+                            <div class="col-md-12 col-sx-12 etiqueta">								
+                                <a th:if="${not #lists.isEmpty(registro.category)}" th:each="cat, i : ${registro.category}" th:unless="${i.index >= 2}" class="label label-success" th:text="${cat.title}" sede:rdf="${cat.prop()}" th:href="'/sede/servicio/noticia/list?fq=temas_smultiple%3A(%22'+${#utils.toUnicode(cat.title)}+'%22)'"></a>
+                            </div>
+                            <div class="col-md-12 col-sx-12 compartir">
+                                <th:block th:include="/fragmentos/share-button(uri=${registro.uri}, text=${registro.title})"></th:block>
+							</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <th:block th:utext="${#utils.getCalendar(false, '/sede/servicio/noticia/search', null, 'startDate', days.body.result, month, year, #httpServletRequest)}" />
+            <p class="btn btn-sm btn-default"><a href="/sede/servicio/noticia/">VOLVER AL PORTAL DE NOTICIAS</a></p>
+            </div>
+        </div>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+    
+</body>
+
+</html>

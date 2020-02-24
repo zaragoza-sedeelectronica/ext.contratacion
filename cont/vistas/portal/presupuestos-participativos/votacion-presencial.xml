@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Votacion Presencial" description="Cómo realizar la votación presencial" author="Ayuntamiento de Zaragoza" last-modified=" Mon Jau 23 10:00:00 CET 2016 " audience="" keywords="gobierno abierto, presupuestos participativos, votacion presencial fase 4" />
+</head>
+
+<body>
+    <sede:content>
+       <div role="alert" class="alert alert-info">Se inicia el periodo de votación (<strong>del 20 de junio y al 10 de julio ambos inclusive</strong>) para propuestas de todos los distritos urbanos. La votación en barrios rurales y propuestas de ciudad se realizará en septiembre</div>
+        <h2>Cómo votar presencialmente</h2>
+        <div role="alert" class="alert alert-info">Puede votar presencialmente en cualquiera de las Juntas de Distrito de Zaragoza, aunque no sea en la que estás empadronado. </div>
+        <div role="alert" class="alert alert-info">El <strong>recuento de votos presenciales</strong> tendrá lugar el día 10 de julio a las 13:30 en cada Junta de Distrito. Consulta las <a href="/contenidos/presupuestos-participativos/Instrucciones-votos-presenciales-2018.pdf" class="pdf">Instrucciones para el recuento y digitalización de votos presenciales</a>.</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h2>Lugar y horarios</h2>
+                    <hr />
+                    <ul>
+                        <li><strong>Oficinas de las Juntas de Distritos </strong> <a class="label label-primary" href="/sede/portal/presupuestos-participativos/servicio/equipamiento/category/90">Localización </a>
+                            <ul>
+                                <li>Mañanas: 8:30h- 13:30h</li>
+                                <li>Tardes los días 26 de junio y 5 de julio: de 17:30 a 20:30h</li>
+                            </ul>
+                           
+                        </li>
+                        <li><strong>Plaza del Pilar: Oficina Servicio de Distritos</strong> <a class="label label-primary" href="/sede/portal/presupuestos-participativos/servicio/organigrama/20298">Localización </a>
+                            <ul>
+                                <li>Mañanas: 8:30h- 13:30h</li>
+                                <li>Tardes los días 26 de junio y 5 de julio: de 17:30 a 20:30h</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Urna itinerante</strong> <!--/*<a class="label label-primary" href="/sede/portal/presupuestos-participativos/servicio/organigrama/20298">Localización </a>*/-->
+                            <ul>
+                                <li>27 de Junio: De 17 a 20 h. Unión Vecinal Cesaraugusta. C/ Gutiérrez Mellado 17 50009 Zaragoza <em>(Entrada por Andador de los Hudies, 12)</em>.</li>
+                                <li>29 de Junio:  De 10 a 13 h y de 17 a 18 h Centro Cívico Valdefierro. Pza. de la Inmaculada, 3.</li>
+								<li>3 y 4 de Julio: De 10:30 a 13:30 h  <strong>Federación de Asociaciones de Barrios de Zaragoza</strong>. San Vicente de Paúl, 26</li>
+								<li>6 de julio: de 10:00 a 12:00 y de 17:00 a 19:00 h en <strong>La Ciclería</strong>. Calle Gavín 6, esquina calle Palafox</li>
+								<li>9 de julio: de 09:30 a 12:30 h en <strong>Ayuntamiento Edificio Seminario</strong> (Vía Hispanidad, 20). </li>
+                            </ul>
+                        </li>
+                        <li><strong>Urna itinerante en Piscinas Municipales</strong> <!--/*<a class="label label-primary" href="/sede/portal/presupuestos-participativos/servicio/organigrama/20298">Localización </a>*/-->
+                            <ul>
+                                <li>9 y 10 de julio en las piscinas municipales de Actur, Delicias, Gran Via, La Granja y Alberto Maestro, en horario de 12 a 13:30 h</li>
+                            </ul>
+                        </li>                                                     
+                    </ul>
+                    <h2 class="margin-v1em"> Pasos a seguir</h2>
+                    <hr/>
+                    <ul>
+                        <li>
+                            <h2> 1 .- Conseguir la papeleta </h2>
+                            <ul class="list-unstyled row no-gutter">
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta ACTUR-Rey Fernando">ACTUR-Rey Fernando</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Casablanca">Casablanca</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Casco Historico">Casco Histórico</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Centro">Centro</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta de el Rabal">El Rabal</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Delicias">Delicias</a>
+                                </li>
+                                  <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Distrito Sur">Distrito Sur</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta La Almozara">La Almozara</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Las Fuentes">Las Fuentes</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Miralbueno">Miralbueno</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Oliver-Valdefierro">Oliver-Valdefierro</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta San Jose">San José</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Santa Isabel">Santa Isabel</a>
+                                </li>
+                                <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Torrero-La Paz">Torrero-La Paz</a>
+                                </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3 margin-b05em">
+                                    <a class="label label-primary" href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/pdf?junta=Junta Universidad">Universidad</a>
+                                </li>
+                            </ul>
+                            <p class="card">o en las <a href="/sede/portal/presupuestos-participativos/servicio/equipamiento/category/90">Juntas de Distrito</a> y <a href="/sede/portal/presupuestos-participativos/servicio/organigrama/20298">Servicio de Distritos (Pza del Pilar)</a>.</p>
+                        </li>
+                        <li>
+                            <h2>2.- Cumplimentar la papeleta.</h2>
+                            <h3 class="margin-v1em">Papeleta</h3>
+                            <hr/>
+                            <p>Sólo tendrá que cumplimentar la papeleta en la que únicamente aparecerá las propuestas del distrito en que está empadronado.</p>
+                            <p>En la parte superior de la papeleta hay un espacio para el número de registro que lo cumplimentará la Oficina donde realice la votación</p>
+                            <p>Se ha introducido este número de registro único por papeleta para grantizar la certificación del voto, trazabilidad y transparencia del proceso. </p>
+                            <p>El código permitirá identificar cada papeleta depositada como única y también el anonimato en el recuento. </p>
+                            <div><img src="/cont/paginas/img/sede/presupuestos-participativos/papeleta.png" alt="" /></div>
+                            <h3 class="margin-v1em">Instrucciones para cumplimentar la papeleta</h3>
+                            <ol>
+                                <li>Dispone de un espacio en cada registro de la tabla para establecer un número de prioridad según tus preferencias.</li>
+                                <li> Se debe cumplimentar rellenando del 1 al número máximo de propuestas (o hasta el número de propuestas que sea de su preferencia), donde el 1 corresponde a la primera opción y así sucesivamente.</li>
+                                <li>Para que el voto cuente, tendrá que realizar un gasto superior al 51 % del presupuesto asociado a tu distrito.</li>
+                                <li>Si las propuestas elegidas superan el presupuesto asociado a su distrito, no se tendrán en cuenta, siguiendo su priorización, aquellas que superen el presupuesto.</li>
+                                <li>Las opciones llevan la cuantía presupuestada, lo que permite que pueda ir calculando la suma total de sus opciones.</li>
+                                <li>Si te equivocas, tacha la opción que no quieras con una cruz y elige la nueva.</li>
+                                <li>Las papeletas rotas o ininteligibles serán consideradas nulas.</li>
+                                <li>Si un ciudadano/a ha votado a través de www.zaragoza.es/presupuestosparticipativos/ no podrá ya participar de forma presencial.</li>
+                                <li>Diríjase, con la papeleta y su documento de identificación (DNI, NIE o Pasaporte), a su Junta de Distrito o al Ayuntamiento (Plaza del Pilar) para realizar la votación.</li>
+                                <li>Una vez que la papeleta, sellada y con el código asignado, haya sido depositada en la urna, ya no podrá volver a participar en este proceso.</li>
+                            </ol>
+                            <h3 class="margin-v1em">Cuándo una papeleta es nula</h3>
+                            <ul>
+                                <li>Cuando <strong>la suma de las propuestas seleccionadas no alcancen el 51% </strong>del presupuesto de la Junta.</li>
+                                <li>Las papeletas <strong>rotas o ininteligibles</strong> serán nulas. </li>
+                                <li>Cuando aparezcan <strong>dos o más papeletas con el mismo código</strong> se anularán todas las papeletas de ese código.</li>
+                                <li>Cuando sean <strong>diferentes al modelo oficial</strong>, así como aquellas en las que se hubiera introducido cualquier leyenda o expresión o producido cualquier alteración de carácter voluntario o intencionado.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h2>3.- Dirigirse a la Junta Municipal o Servicio de Distritos (Pza del Pilar)</h2>
+                            <ol>
+                                <li> Facilitar al funcionario/a su DNI, NIE o pasaporte que conste en el padrón al día 7 de junio de 2018.</li>
+                                <li>Se comprobará su empadronamiento, edad y su distrito.</li>
+                                <li>Se generará un código, se anotará en la papeleta, y se sellará.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h2>4.- Introducir la papeleta en la urna.</h2> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

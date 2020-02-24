@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Abastecimiento de agua. Procedencia y calidad del agua de entrada a la Potabilizadora" keywords="sede,web,agua,potabilizadora" />
+</head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<script type="text/javascript" th:utext="'var datos = ' + ${resultado.body.respuesta} + ';'">
+</script>
+<script type="text/javascript" th:inline="text">
+	  google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(datos);
+        var options = {
+          legend: 'none',
+          series: {
+            0: { color: '#e2431e' },
+          }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+<body>
+    <sede:content>
+        <h2>Volumen</h2>
+     	<div id="chart_div" style="width: 900px; height: 500px;"></div>
+    </sede:content>
+</body>
+
+</html>

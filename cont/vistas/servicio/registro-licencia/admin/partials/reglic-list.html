@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-md-12">
+        <nav class="navbar navbar-default" ng-show="permisos.DET">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand hidden-desktop">Filtros</span>
+                </div>
+                <div class="collapse navbar-collapse" id="buscadoresTarget">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <label>Direcci&oacute;n: </label>
+                            <portalero modelo="query_portal" uri="/api/recurso/urbanismo-infraestructuras/registro-licencias/portal" filtro="title" numero="*"></portalero>
+                        </div>
+                        <div class="form-group">
+                            <label>IAE: </label>
+                            <autocompletadoiae modelo="query_iae" uri="/api/recurso/urbanismo-infraestructuras/registro-licencias/iae" filtro="title"></autocompletadoiae>
+                        </div>
+                        <div class="form-group">
+                            <label>Expediente: </label>
+                            <input type="text" class="form-control" ng-model="query_expediente" />
+                        </div>
+                        <div class="form-group">
+                            <label>Normalizado: </label>
+                            <select class="form-control" data-ng-model="query_normalizado" ng-options="obj.id as obj.text for obj in estadonormalizado">
+                                <option value="">Propiedad</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-default" type="button" ng-click="buscar()">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <div infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="0" ng-show="permisos.DET">
+            <table class="table table-bordered table-hover table-striped table-btn">
+                <thead>
+                    <tr>
+                        <!-- <th class="col-md-2">Operaciones</th>-->
+                        <th th-orden order="'id'" by="order" reverse="reverse">ID</th>
+                        <th th-orden order="'linkedResource.id'" by="order" reverse="reverse">Calle</th>
+                        <th th-orden order="'iae'" by="order" reverse="reverse">IAE</th>
+                        <th class="col-md-3" th-orden order="'Refcatastral'" by="order" reverse="reverse">Ref. Catastral</th>
+                        <th th-orden order="'matchedResourceName'" by="order" reverse="reverse">Ref. Municipal</th>
+                        <th th-orden order="'numlicencias'" by="order" reverse="reverse">Numero Licencias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros | orderBy:order:reverse">
+                        <!-- <td>
+                            <button class="btn btn-default btn-xs" ng-click="guardar($index)" ng-show="permisos.PUB" title="Guardar"><span class="glyphicon glyphicon-ok"></span></button>
+                            <button class="btn btn-default btn-xs" ng-click="preferido($index)" ng-show="permisos.PUB" title="Preferido"><span class="glyphicon glyphicon-star-empty"></span></button>
+                            <button class="btn btn-default btn-xs" ng-click="validar($index)" ng-show="permisos.PUB" title="Validar"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            <button class="btn btn-default btn-xs" ng-click="rechazar($index)" ng-show="permisos.PUB" title="Rechazar"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                            <button class="btn btn-default btn-xs" ng-click="borrar($index)" ng-show="permisos.PUB" title="Borrar"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>-->
+                        <td data-title="ID">
+                            <span class="glyphicon glyphicon-exclamation-sign" ng-show="registro.normalizado == 'N'"></span> <a href="#/edit/{{ registro.id }}">{{registro.id}}</a>
+                        </td>
+                        <td data-title="calle">
+                            <a href="#/edit/{{ registro.id }}">
+                                <span ng-if="registro.emplazamiento">{{registro.emplazamiento}}</span>
+                                <span ng-if="!registro.emplazamiento">{{registro.nonormalizado.title}} {{registro.nonormalizado.numero}} (no normalizado)</span>    
+                            </a>
+                        </td>
+                        <td data-title="iae">
+                            {{registro.iae.title}} ({{registro.iae.id.seccion}}{{registro.iae.id.agrupacion}}{{registro.iae.id.licencia}})
+                        </td>
+                        <td data-title="Refcatastral">{{registro.referenciaCatastral}}</td>
+                        <td data-title="refmunicipal">{{registro.referenciaMunicipal}}</td>
+                        <td data-title="numLicencias">{{registro.licencias.length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div role="alert" class="alert alert-warning spinner-tabla" ng-show="busy"><span class="spinner"></span>Espera por favor, se estan cargando los registros.</div>
+        </div>
+    </div>
+</div>

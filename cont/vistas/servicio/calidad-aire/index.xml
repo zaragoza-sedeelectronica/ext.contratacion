@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Calidad del Aire" keywords="sede,web,información,aire,calidad" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Calidad del aire </h2>
+
+        <ul class="row list-unstyled">
+            <li th:each="doc: ${resultado.body.result}" class="col-md-4">
+                <div class="card" style="min-height:10em;">
+                    <div class="row">
+                        
+                        <strong><span class="fa fa-leaf" style="color:red"></span> <a th:href="${doc.estacion}" th:text="${doc.magnitud}"/></strong>
+                            <div>
+                                Estación: <span class="fa fa-flag" th:text="' ' + ${doc.estacion}"></span> 
+                                Valor: <span class="fa fa-flag" th:text="' ' + ${doc.value}"></span> 
+                            </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </sede:content>
+</body>
+
+</html>

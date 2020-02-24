@@ -1,0 +1,40 @@
+<table
+	class="table table-striped table-bordered table-condensed table-btn">
+	<thead>
+		<th class="col-md-7"
+			ng-repeat="atrib in atributos"
+			ng-if="atrib.title !=='undefined' && atrib.title !=='' && atrib.title">
+			{{atrib.title}}</th>
+		<th>Operaciones</th>
+		<!-- He perdido lo de ordenar -->
+	</thead>
+	<tbody>
+		<tr ng-repeat="registro in registros | orderBy:order:reverse">
+			<td ng-repeat="atrib in atributos"
+				ng-if="atrib.title !=='undefined' && atrib.title !=='' && atrib.title"
+				data-title={{atrib.title}}>
+				{{buscarPropiedad(registro, atrib.data)}}
+			</td>
+			<td data-title="Operaciones" class="text-center">
+				<button class="btn btn-default" ng-click="eliminarRegistro($index)">
+					<span class="glyphicon glyphicon-minus"></span>
+					<span class="hidden-xs">Borrar</span>
+				</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<autocompletado modelo="regTempToAdd"
+					uri={{path}} filtro="title" />
+			</td>
+			<td class="text-center">
+				<button class="btn btn-default"
+					ng-click="anadirRegistro(regTempToAdd)"
+					ng-disabled="!regTempToAdd.id">
+					<span class="glyphicon glyphicon-plus"></span> <span
+						class="hidden-xs">Añadir</span>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

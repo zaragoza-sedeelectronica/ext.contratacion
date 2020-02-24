@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Mapa'" keywords="sede,web,mapa,risp" />
+    <link href="https://www.zaragoza.es/cont/plantillas/mapa/css/claro.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="https://www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="https://www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <th:block th:utext="${registro.body.layersScript}"/>                       
+    <script type="text/javascript" src="https://www.zaragoza.es/cont/plantillas/mapa/js/homeMapa.js"> </script>
+</head>
+
+<body>
+    <sede:content container="false">
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}">
+            <h2 th:text="${registro.body.title}"/>
+            <div th:utext="${registro.body.description}"/>
+            <div class="separador" id="facadeStatus"></div>
+            <input type="hidden" name="centrar_x" id="centrar_x" th:value="${registro.body.x}"/>
+            <input type="hidden" name="centrar_y" id="centrar_y" value="${registro.body.y}"/>
+
+            <div id="eti"></div>
+            <div id="mapa">
+                <div class="separador" id="facadeStatus">&nbsp;</div>
+                <script type="text/javascript">
+                    /*<![CDATA[*/
+                    var ifrm = document.createElement("iframe");
+                    ifrm.setAttribute("name", "mapahome");
+                    ifrm.setAttribute("id", "mapahome");
+                    ifrm.setAttribute("title", "La Ciudad al Instante");
+                    ifrm.setAttribute("scrolling", "no");
+                    ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                    ifrm.setAttribute("frameBorder", "0");
+                    ifrm.style.width.value = "100%";
+                    document.getElementById("mapa").appendChild(ifrm);
+                    /*]]>*/
+                </script>
+            </div>
+        </div>
+        <script type="text/javascript">
+            initializeInterface();
+        </script>
+        <div class="margin-b2em">&nbsp;</div>
+    </sede:content>
+</body>
+
+</html>

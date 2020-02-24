@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida >> Plaza Agua Extrema" description="En el décimo aniversario de la Expo 2008 Agua y Desarrollo Sostenible presentamos un recorrido virtual por aquellas arquitecturas e instalaciones de carácter efímero, creadas  para el marco de los 93 días de la muestra y que ya 
+no se conservan" author="Ayuntamiento de Zaragoza. Archivo Municipal" keywords="expo, 2008, cultura, ocio, medio ambiente, Agua y Desarrollo Sostenible, environment, Water and Sustainable Development"/>      <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.css"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+        .cluster {
+            background: #2d84c8;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #2d84c8;
+            font-family: monospace;
+        }
+
+        .cluster:before {
+            content: ' ';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            border: 1px solid white;
+        }
+
+        .digits-1 {
+            font-size: 1.4em;
+            height: 28px;
+            width: 28px;
+            line-height: 28px;
+            margin-top: -14px;
+            margin-left: -14px;
+        }
+
+        .digits-2 {
+            font-size: 1.6em;
+            height: 34px;
+            width: 34px;
+            line-height: 35px;
+            margin-top: -17px;
+            margin-left: -17px;
+        }
+
+        .digits-2:before {
+            border-width: 2px;
+        }
+
+        .digits-3 {
+            font-size: 1.8em;
+            height: 48px;
+            width: 47px;
+            line-height: 47px;
+            border-width: 3px;
+            margin-top: -24px;
+            margin-left: -24px;
+        }
+
+        .digits-3:before {
+            border-width: 3px;
+        }
+
+        .digits-4 {
+            font-size: 1.8em;
+            height: 58px;
+            width: 58px;
+            line-height: 57px;
+            border-width: 4px;
+            margin-top: -29px;
+            margin-left: -29px;
+        }
+
+        .digits-4:before {
+            border-width: 4px;
+        }
+
+        .list-noticia a {
+            color: #202020;
+        }
+
+        .list-noticia li {
+            border-bottom: 1px solid #E6E6E6;
+            /*fnd-gris-claro*/
+            margin-bottom: .5em;
+            padding-bottom: .5em;
+        }
+
+        @media (min-width: 768px) {
+            .list-aviso li {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content>
+        <p>
+          <img alt=" " class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/agua-extrema/cabecera-agua-extrema.gif" />
+        </p>
+        <div class="row">
+            <div class="col-md-12 card">
+ 
+                    <h2>
+         La Expo desaparecida > Plaza Agua Extrema
+            </h2>
+                    <hr class="sm" /><div class="text-justify">
+                    <p>
+                     
+
+La Plaza o edificio Agua Extrema de planta circular y 800 metros cuadrados de superficie escenificaba en sí mismo el <strong>momento previo a la ruptura de una ola</strong>. Los paneles triangulares azules de la fachada proporcionaban un ambiente interior que recordaba las profundidades marinas.
+</p><p>
+El concepto expositivo fue coordinado por el catedrático de Geografía Física, Javier Martín Vide y  evolucionaba desde la tranquilidad del fluir del agua al cambio abrupto que suponen algunas de sus manifestaciones extremas: ciclones, tsunamis, diluvios, inundaciones o sequías. Pretendía el conocimiento y reflexión de distintas ideas:</p>
+
+<ul><li>
+  La dualidad del  hombre como agente manipulador del agua y frágil víctima de la misma.
+</li><li>Los riesgos del cambio climático.
+</li><li>La necesidad de una ordenación sostenible del territorio.
+</li><li> Los avances en los nuevos sistemas de teledetección, espaciales y terrestres, que ayudan a la prevención y a la correcta gestión de catástrofes.
+</li></ul><p>
+Agua extrema se articulaba en torno a <strong>dos espacios, uno reflexivo,</strong> circular y con distintas proyecciones que albergaba en su núcleo <strong>el segundo</strong>, de los más valorados por el público de la muestra: el <strong>espacio sensorial</strong>, con un <strong>simulador de situaciones extremas</strong> (tsunami, huracán y gota fría) de 7 minutos de duración en una platea con capacidad para 150 personas.
+</p></div>
+
+
+ <div class="linea"></div><h3 class="color-destacados">Más Información</h3>         
+  <ul class="list-unstyled">     
+  
+  
+   <li><span class="fa fa-info-circle" aria-hidden="true"></span>
+
+ <a href="http://www.zaragoza.es/nuba/app/results/ahis?pa=1&amp;sr=1&amp;q=agua+extrema&amp;st=.1.6.100.30891.1171249">
+
+Fotografías Agua Extrema</a> 
+</li>
+
+ <li><span class="fa fa-info-circle" aria-hidden="true"></span>
+ <a href="http://www.zaragoza.es/nuba/app/results/ahis?vm=nv&amp;ob=os:1&amp;pa=1&amp;p=306&amp;st=.1.6.100.30891.1171249&amp;i=1174823">
+
+Fotografías Expo 2008</a> 
+</li>
+
+ <li><span class="fa fa-info-circle" aria-hidden="true"></span><a href="https://bit.ly/2s62QaR">
+
+Bibliografía</a> 
+</li>
+
+ 
+</ul>
+           
+         
+            </div>
+        </div>
+			  
+			  
+			  
+			   <div class="row">
+            <div class="col-md-12 card">
+			
+			
+			
+			 
+ 
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h3>
+                    <hr class="sm color-destacados" />  <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/proyecto/0472444-07-vistas-generales.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/proyecto/0472444-07-vistas-generales.gif"/> </a></div>
+               
+				<p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=re:1&amp;q=0472444&amp;p=0&amp;i=1034492">Exp: 0472444-2007. Vistas Generales</a></p>	
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/proyecto/0144913.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/proyecto/0144913.gif"/> </a></div>
+              
+	 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0144913&amp;p=0&amp;i=1172540"> Sign: 0144913</a></p>		
+
+
+
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/proyecto/0144931.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/proyecto/0144931.gif"/> </a></div>
+            
+	 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0144931&amp;p=0&amp;i=1172558"> Sign: 0144931</a></p>		
+	 
+	 
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/proyecto/0145098.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/proyecto/0145098.gif"/> </a></div>
+              
+				<p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145098&amp;p=0&amp;i=1172725">Sign: 0145098</a></p>		
+	 
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/proyecto/0145099.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/proyecto/0145099.gif"/></a></div>
+                
+								<p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145099&amp;p=0&amp;i=1172726
+">Sign: 0145099</a></p>		
+
+				
+					
+				
+ 
+ 
+				
+				
+				 
+                </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+ <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0143893.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0143893.gif"/> </a></div>
+                 
+      
+	  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143893&amp;p=0&amp;i=1171520
+
+">Sign: 0143893</a></p>		
+	  
+	   <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0143894.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0143894.gif"/> </a></div>
+                 
+   
+				<p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143894&amp;p=0&amp;i=1171521
+
+">Sign: 0143894</a></p>		
+				
+				
+					   <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0143895.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0143895.gif"/> </a></div>
+           <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143895&amp;p=0&amp;i=1171522">Sign: 0143895</a></p>		   
+			  
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0143896.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0143896.gif"/> </a></div>
+                 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143896&amp;p=0&amp;i=1171523
+
+
+">Sign: 0143896</a></p>		
+   			  
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0143897.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0143897.gif"/> </a></div>
+				
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143897&amp;p=0&amp;i=1171524
+
+
+
+">Sign: 0143897</a></p>		
+				
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0143902.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0143902.gif"/> </a></div>
+				
+								  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0143902&amp;p=0&amp;i=1171529
+
+
+
+
+">Sign: 0143902</a></p>	
+														    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0145067.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0145067.gif"/> </a></div>
+	   		  
+			  
+			    <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145067&amp;p=0&amp;i=1172694
+
+
+
+
+">Sign: 0145067</a></p>	
+			  
+			  
+			  
+		  														    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0145155.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0145155.gif"/> </a></div>
+		      <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145155&amp;p=0&amp;i=1172782
+
+
+
+
+
+">Sign: 0145155</a></p>	
+		
+				  														    <div><a href="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/gran/durante/0145157.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema/peq/durante/0145157.gif"/> </a></div>
+		
+		  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=re:1&amp;q=0145157&amp;p=0&amp;i=1172784
+
+
+
+
+
+">Sign: 0145157</a></p>	
+		
+		
+		
+		    </div>  </div>
+    
+                </div>  </div>
+ 
+ 
+ 			 
+ 
+ 
+    </sede:content>
+ 
+</body>
+
+</html>

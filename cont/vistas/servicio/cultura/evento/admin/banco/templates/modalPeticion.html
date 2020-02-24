@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title">Envíar petición a peticiones-web@zaragoza.es</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <strong>Actividad: <span class="label label-primary">{{registro.id}}</span> {{registro.title}}</strong>
+            </div>
+            <!-- <label for="comentario">Horario (texto):</label> -->
+            <textarea ck-editor-new id="comentario" name="comentario" ng-model="comentario">{{ comentario }}</textarea>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="enviarPeticion()">Enviar</button>
+    <button type="button" class="btn btn-warning" ng-click="cancelarModal()">Cancelar</button>
+</div>

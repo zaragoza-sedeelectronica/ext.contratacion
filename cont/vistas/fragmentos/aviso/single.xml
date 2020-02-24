@@ -1,0 +1,9 @@
+<h3 th:if="${titulo}" th:text="${titulo}"></h3>
+<a th:if="${listado.size() > 0}" th:href="${listado[0].link}" class="clearfix">
+	<img th:if="${listado[0].image}" th:src="'//www.zaragoza.es' + ${listado[0].image}" alt="" class="img-responsive img-rounded"/>
+	<p class="lead margin-b05em" th:text="${listado[0].title}"></p>
+</a>
+<div th:if="${listado.size() > 0}" th:utext="${listado[0].description}"></div>
+<div th:unless="${listado.size() > 0}" role="alert" class="alert alert-warning">
+	Información no disponible en este momento
+</div>

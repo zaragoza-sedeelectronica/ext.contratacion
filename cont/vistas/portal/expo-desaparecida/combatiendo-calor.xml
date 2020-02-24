@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida. Combatiendo el Calor" description="En el décimo aniversario de la Expo 2008 Agua y Desarrollo Sostenible presentamos un recorrido virtual por aquellas arquitecturas e instalaciones de carácter efímero, creadas  para el marco de los 93 días de la muestra y que ya 
+no se conservan" author="Ayuntamiento de Zaragoza. Archivo Municipal" keywords="expo, 2008, cultura, ocio, medio ambiente, Agua y Desarrollo Sostenible, environment, Water and Sustainable Development"/>      
+
+<link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.css"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+        .cluster {
+            background: #2d84c8;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #2d84c8;
+            font-family: monospace;
+        }
+
+        .cluster:before {
+            content: ' ';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            border: 1px solid white;
+        }
+
+        .digits-1 {
+            font-size: 1.4em;
+            height: 28px;
+            width: 28px;
+            line-height: 28px;
+            margin-top: -14px;
+            margin-left: -14px;
+        }
+
+        .digits-2 {
+            font-size: 1.6em;
+            height: 34px;
+            width: 34px;
+            line-height: 35px;
+            margin-top: -17px;
+            margin-left: -17px;
+        }
+
+        .digits-2:before {
+            border-width: 2px;
+        }
+
+        .digits-3 {
+            font-size: 1.8em;
+            height: 48px;
+            width: 47px;
+            line-height: 47px;
+            border-width: 3px;
+            margin-top: -24px;
+            margin-left: -24px;
+        }
+
+        .digits-3:before {
+            border-width: 3px;
+        }
+
+        .digits-4 {
+            font-size: 1.8em;
+            height: 58px;
+            width: 58px;
+            line-height: 57px;
+            border-width: 4px;
+            margin-top: -29px;
+            margin-left: -29px;
+        }
+
+        .digits-4:before {
+            border-width: 4px;
+        }
+
+        .list-noticia a {
+            color: #202020;
+        }
+
+        .list-noticia li {
+            border-bottom: 1px solid #E6E6E6;
+            /*fnd-gris-claro*/
+            margin-bottom: .5em;
+            padding-bottom: .5em;
+        }
+
+        @media (min-width: 768px) {
+            .list-aviso li {
+                min-height: 18em;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <sede:content>
+        <p>
+          <img alt=" " class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/cabecera-calor.gif" />
+        </p>
+        <div class="row">
+            <div class="col-md-12 card">
+ 
+                    <h2>
+        Combatiendo el Calor
+            </h2>
+                    <hr class="sm" /><div class="text-justify">
+                 <p>La <strong>climatología estival</strong> zaragozana puede ser muy <strong>dura</strong>, para facilitar la visita se tuvieron en cuenta la instalación de distintos elementos como nebulizadores, fuentes y láminas de agua que ayudaron a la gente a soportar las colas de acceso a los pabellones o el calor.
+</p><p>
+El agua como protagonista de la muestra aparecía y amenizaba la visita: el Ebro y su eterno fluir, las  cascadas de la zona de los restaurantes o del entorno del Acuario, el Splash de la Torre del Agua... Muy exitosa fue la intervención artística del danés Jeppe Hein, titulada 'Appearing rooms', laberinto acuático con distintas secuencias de chorros de hasta 2 metros de altura para que el visitante pudiera interactuar ¡y refrescarse! </p><p>
+
+De los elementos que ya no podemos encontrar en el recinto Expo, destacaremos dos: la cubierta textil y las pérgolas, con ellos se intentó rebajar entre 3 y 4 grados las elevadas temperaturas del estío urbano.</p><p>
+
+La <strong>cubierta textil </strong> resguardaba al visitante mientras paseaba entre los edificios Ronda y Ebro, los que albergaban los pabellones de los países participantes. A 17 metros de altura, ocupaba una superficie de 400 x 24 metros distribuidos en 13 módulos, el aspecto final semejaba un río fluyendo y proyectando una sombra de 5200 m<sup>2</sup> 
+ sobre la avenida principal de la Expo. El diseño de la tensoestructura fue realizado por Félix Escrig y José Sánchez y ejecutado por IASO,SA. Para el diseño artístico se contó con Isidro Ferrer que conjugó un poema del escritor zaragozano Grassa Toro con una decoración abstracta de enredaderas. </p><p>
+
+Las <strong>pérgolas</strong> se situaban en dos zonas: cerca del acceso por la Puerta del Ebro (más de 2300 m<sup>2</sup>) y como elemento de unión entre varias plazas temáticas del frente fluvial (otros 7500 m<sup>2</sup>). Se configuraron como una retícula de malla de acero, en cada cuadrado de 2 x 2 metros se colocaba un círculo textil de 1,6 metros de diámetro de color azul o amarillo. Además estas estructuras soportaban una red de nebulizadores de agua. El diseño correspondió a Batlle y Roig y la ejecución, a Arenas &amp; Asociados.</p> 
+         </div>   <div class="linea"></div><h3 class="color-destacados">Más Información</h3>         
+  <ul class="list-unstyled">     
+  
+    <li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="http://www.zaragoza.es/nuba/app/results/ahis?vm=nv&amp;ob=os:1&amp;pa=1&amp;p=306&amp;st=.1.6.100.30891.1171249&amp;i=1174823">Fotografías Expo 2008</a></li>
+
+ <li><span class="fa fa-info-circle" aria-hidden="true"></span> <a href="https://bit.ly/2s62QaR">Bibliografía</a></li>
+ 
+           </ul>
+         
+            </div>
+        </div>
+			  
+			  
+			  
+			   <div class="row">
+            <div class="col-md-12 card">
+			
+			
+ <div id="pergolas"></div>
+ 
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="nomargin color-agenda">
+             Pérgolas
+            </h3>
+			
+			  <h4 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h4>
+                    <hr class="sm color-destacados" /> 
+					
+					 <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0841347-07-estructura.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0841347-07-estructura.gif"/>  </a></div>
+				 
+				 
+				 
+				 
+				     <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0841347&amp;p=0&amp;i=1034549
+">  Exp: 0841347-2007. 
+				 
+				 Estructura</a></p> 
+            
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0841347-07-seccion.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0841347-07-seccion.gif"/> </a></div>
+              
+				 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0841347&amp;p=0&amp;i=1034549
+">  Exp: 0841347-2007. Sección</a></p> 
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0841347-07-situacion.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0841347-07-situacion.gif"/></a></div>
+                
+								 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0841347&amp;p=0&amp;i=1034549">  Exp: 0841347-2007. Situación</a></p> 
+				 
+				 
+				
+ 
+					
+					
+					
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0145073.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0145073.gif"/> </a></div>
+  		     <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145073&amp;p=0&amp;i=1172700">  Sign: 0145073</a></p> 
+            
+				
+				  
+                </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+					
+					
+					
+					
+					
+					
+ <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0143880.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0143880.gif"/> </a></div>
+                 
+ <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0143880&amp;p=0&amp;i=1171507">  Sign: 0143880</a></p> 
+
+	  
+	  
+	   <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0144876.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0144876.gif"/> </a></div>
+                 
+   
+  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0144876&amp;p=0&amp;i=1172503"> Sign: 0144876</a></p> 
+				
+				
+					   <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0145069.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0145069.gif"/></a></div>
+              
+			  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145069&amp;p=0&amp;i=1172696">  Sign: 0145069</a></p> 
+			    
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0145074.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0145074.gif"/> </a></div>
+               
+   			 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145074&amp;p=0&amp;i=1172701">  Sign: 0145074</a></p>
+			   
+			    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0145076.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0145076.gif"/> </a></div>
+				
+				   			 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145076&amp;p=0&amp;i=1172703">Sign: 0145076</a></p>
+
+				
+		    </div>  </div>
+			
+			
+			
+			    </div>  </div>
+			
+			
+			
+						   <div class="row">
+            <div class="col-md-12 card">
+			
+			
+ 
+ 
+           
+            <div class="col-md-6">
+                <div class="card"><div id="cubierta"></div>
+                    <h3 class="nomargin color-agenda">
+             Cubierta Textil
+            </h3>
+			
+			  <h4 class="nomargin color-agenda">
+             Proyecto y Construcción 
+            </h4>
+                    <hr class="sm color-destacados" /> 
+					
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0841396-07-planta.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0841396-07-planta.gif"/> </a></div>
+              
+								   			 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0841396&amp;p=0&amp;i=1034550">Exp: 0841396-2007. Planta</a></p>
+
+				
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0841396-07-perspectiva.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0841396-07-perspectiva.gif"/></a></div>
+                
+								   			 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0841396&amp;p=0&amp;i=1034550">Exp: 0841396-2007. Perspectiva</a></p>
+
+				 
+				 
+				  <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0841396-07-seccion.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0841396-07-seccion.gif"/></a></div>
+								   			 <p><a href="http://www.zaragoza.es/nuba/app/item/urba?vm=nv&amp;ob=os:1&amp;q=0841396&amp;p=0&amp;i=1034550">Exp: 0841396-2007. Sección</a></p>
+
+				
+ 
+                 <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0145085.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0145085.gif"/> </a></div>
+              				   			 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145085&amp;p=0&amp;i=1172712">Sign: 0145085</a></p>
+
+				
+				   <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/proyecto/0145086.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/proyecto/0145086.gif"/> </a></div>
+            
+								  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145086&amp;p=0&amp;i=1172713">Sign: 0145086</a></p>
+
+                </div>
+                   
+                 
+                </div>
+     
+           <div class="col-md-6">
+                <div class="card">
+                    <h3 class="titulo-test color-destacados">
+                Durante la Expo
+            </h3>
+                    <hr class="sm color-destacados" />
+					
+  
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0143816.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0143816.gif"/> </a></div>
+  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0143816&amp;p=0&amp;i=1171443">Sign: 0143816</a></p>
+		
+								
+							    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0144398.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0144398.gif"/> </a></div>
+				 <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0144398&amp;p=0&amp;i=1172025">Sign: 0144398</a></p>
+											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0144942.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0144942.gif"/> </a></div>
+				
+           <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0144942&amp;p=0&amp;i=1172569">Sign: 0144942</a></p>
+		  
+		  											    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0145187.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0145187.gif"/> </a></div>
+				  <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0145187&amp;p=0&amp;i=1172814">Sign: 0145187</a></p>
+				 
+				    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0146267.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0146267.gif"/> </a></div>
+		  
+		   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0146267&amp;p=0&amp;i=1173894">Sign: 0146267</a></p>
+		  				    <div><a href="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/gran/durante/0146729.jpg">
+               <img alt="Expo 2008"  class="img-responsive" src="/cont/vistas/portal/expo-desaparecida/img/combatiendo-calor/peq/durante/0146729.gif"/> </a></div>
+		   <p><a href="http://www.zaragoza.es/nuba/app/item/ahis?vm=nv&amp;ob=os:1&amp;q=0146729&amp;p=0&amp;i=1174356">Sign: 0146729</a></p>
+		  
+		    </div>  </div>
+			
+			
+			
+			
+			
+			
+    
+                </div>  </div>
+ 
+ 
+ 			 
+ 
+ 
+    </sede:content>
+ 
+</body>
+
+</html>

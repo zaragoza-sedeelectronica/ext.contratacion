@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Perido Medio Pago Proveedores" keywords="sede,web,Pago,Proveedores,ayuntamiento,zaragoza,contratación" />
+    <style>
+        .slider {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        }
+        .slider.slider-horizontal {
+        width: 210px;
+        height: 20px;
+        }
+        .slider.slider-horizontal .slider-track {
+        height: 10px;
+        width: 100%;
+        margin-top: -5px;
+        top: 50%;
+        left: 0;
+        }
+        .slider.slider-horizontal .slider-selection,
+        .slider.slider-horizontal .slider-track-low,
+        .slider.slider-horizontal .slider-track-high {
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        }
+        .slider.slider-horizontal .slider-tick,
+        .slider.slider-horizontal .slider-handle {
+        margin-left: -10px;
+        }
+        .slider.slider-horizontal .slider-tick.triangle,
+        .slider.slider-horizontal .slider-handle.triangle {
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        border-width: 0 10px 10px 10px;
+        width: 0;
+        height: 0;
+        border-bottom-color: #2e6da4;
+        margin-top: 0;
+        }
+        .slider.slider-horizontal .slider-tick-container {
+        white-space: nowrap;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        }
+        .slider.slider-horizontal .slider-tick-label-container {
+        white-space: nowrap;
+        margin-top: 20px;
+        }
+        .slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
+        padding-top: 4px;
+        display: inline-block;
+        text-align: center;
+        }
+        .slider.slider-horizontal .tooltip {
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        }
+        .slider.slider-horizontal.slider-rtl .slider-track {
+        left: initial;
+        right: 0;
+        }
+        .slider.slider-horizontal.slider-rtl .slider-tick,
+        .slider.slider-horizontal.slider-rtl .slider-handle {
+        margin-left: initial;
+        margin-right: -10px;
+        }
+        .slider.slider-horizontal.slider-rtl .slider-tick-container {
+        left: initial;
+        right: 0;
+        }
+        .slider.slider-horizontal.slider-rtl .tooltip {
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+        }
+        .slider.slider-vertical {
+        height: 210px;
+        width: 20px;
+        }
+        .slider.slider-vertical .slider-track {
+        width: 10px;
+        height: 100%;
+        left: 25%;
+        top: 0;
+        }
+        .slider.slider-vertical .slider-selection {
+        width: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        }
+        .slider.slider-vertical .slider-track-low,
+        .slider.slider-vertical .slider-track-high {
+        width: 100%;
+        left: 0;
+        right: 0;
+        }
+        .slider.slider-vertical .slider-tick,
+        .slider.slider-vertical .slider-handle {
+        margin-top: -10px;
+        }
+        .slider.slider-vertical .slider-tick.triangle,
+        .slider.slider-vertical .slider-handle.triangle {
+        border-width: 10px 0 10px 10px;
+        width: 1px;
+        height: 1px;
+        border-left-color: #2e6da4;
+        border-right-color: #2e6da4;
+        margin-left: 0;
+        margin-right: 0;
+        }
+        .slider.slider-vertical .slider-tick-label-container {
+        white-space: nowrap;
+        }
+        .slider.slider-vertical .slider-tick-label-container .slider-tick-label {
+        padding-left: 4px;
+        }
+        .slider.slider-vertical .tooltip {
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        }
+        .slider.slider-vertical.slider-rtl .slider-track {
+        left: initial;
+        right: 25%;
+        }
+        .slider.slider-vertical.slider-rtl .slider-selection {
+        left: initial;
+        right: 0;
+        }
+        .slider.slider-vertical.slider-rtl .slider-tick.triangle,
+        .slider.slider-vertical.slider-rtl .slider-handle.triangle {
+        border-width: 10px 10px 10px 0;
+        }
+        .slider.slider-vertical.slider-rtl .slider-tick-label-container .slider-tick-label {
+        padding-left: initial;
+        padding-right: 4px;
+        }
+        .slider.slider-disabled .slider-handle {
+        background-image: -webkit-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
+        background-image: -o-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
+        background-image: linear-gradient(to bottom, #dfdfdf 0%, #bebebe 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdfdfdf', endColorstr='#ffbebebe', GradientType=0);
+        }
+        .slider.slider-disabled .slider-track {
+        background-image: -webkit-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
+        background-image: -o-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
+        background-image: linear-gradient(to bottom, #e5e5e5 0%, #e9e9e9 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe5e5e5', endColorstr='#ffe9e9e9', GradientType=0);
+        cursor: not-allowed;
+        }
+        .slider input {
+        display: none;
+        }
+        .slider .tooltip {
+        pointer-events: none;
+        }
+        .slider .tooltip.top {
+        margin-top: -36px;
+        }
+        .slider .tooltip-inner {
+        white-space: nowrap;
+        max-width: none;
+        }
+        .slider .hide {
+        display: none;
+        }
+        .slider-track {
+        position: absolute;
+        cursor: pointer;
+        background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #f9f9f9 100%);
+        background-image: -o-linear-gradient(top, #f5f5f5 0%, #f9f9f9 100%);
+        background-image: linear-gradient(to bottom, #f5f5f5 0%, #f9f9f9 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        }
+        .slider-selection {
+        position: absolute;
+        background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: -o-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff5f5f5', GradientType=0);
+        -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 4px;
+        }
+        .slider-selection.tick-slider-selection {
+
+        }
+        .slider-track-low,
+        .slider-track-high {
+        position: absolute;
+        background: transparent;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 4px;
+        }
+        .slider-handle {
+        position: absolute;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background-color: #E81B16;
+        background-image: -webkit-linear-gradient(top, #E81B16 0%, #E81B16 100%);
+        background-image: -o-linear-gradient(top, #E81B16 0%, #E81B16 100%);
+        background-image: linear-gradient(to bottom, #E81B16 0%, #E81B16 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
+        filter: none;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+        border: 0px solid transparent;
+        }
+        .slider-handle:hover {
+        cursor: pointer;
+        }
+        .slider-handle.round {
+        border-radius: 50%;
+        }
+        .slider-handle.triangle {
+        background: transparent none;
+        }
+        .slider-handle.custom {
+        background: transparent none;
+        }
+        .slider-handle.custom::before {
+        line-height: 20px;
+        font-size: 20px;
+        content: '\2605';
+        color: #726204;
+        }
+        .slider-tick {
+        position: absolute;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: -o-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+        background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff5f5f5', GradientType=0);
+        -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        filter: none;
+        opacity: 0.8;
+        border: 0px solid transparent;
+        }
+        .slider-tick.round {
+        border-radius: 50%;
+        }
+        .slider-tick.triangle {
+        background: transparent none;
+        }
+        .slider-tick.custom {
+        background: transparent none;
+        }
+        .slider-tick.custom::before {
+        line-height: 20px;
+        font-size: 20px;
+        content: '\2605';
+        color: #726204;
+        }
+        .slider-tick.in-selection {
+
+        }
+    </style>
+</head>
+
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error" />
+            <div th:if="${resultado.statusCode.value()} == 200" th:object="${resultado.body}" vocab="http://schema.org/">
+                <header class="header">
+                    <h2 class="title" th:text="${entidad.title+' '+entidad.ejercicio}"></h2>
+                </header>
+               <div class="second-bar clearfix">
+                    <div class="panel panel-default col-md-12">
+                    </div>
+                    <div id="datosGrafico" th:if="${resultado.body.result != null}">
+                        <th:block th:each="datos:${resultado.body.result}" >
+                                <input th:if="${datos.ejercicio != 2018}" th:value="${datos.peridoMedioPagoEntidad}" th:id="${'normal'+datos.monthName}" type="hidden"></input>
+                                <input th:if="${datos.ejercicio == 2018 and datos.mes le 3}" th:value="${datos.peridoMedioPagoEntidad}" th:id="${'excepcion1'+datos.monthName}" type="hidden"></input>
+                                <input th:if="${datos.ejercicio == 2018 and datos.mes gt 3}" th:value="${datos.peridoMedioPagoEntidad}" th:id="${'excepcion2'+datos.monthName}" type="hidden"></input>
+                        </th:block>
+                    </div>
+                   <div th:if="${entidad.ejercicio==2018}">
+                       <div class="col-md-6">
+                           <div id="chart_div"></div>
+                           <div class="col-md-12" th:if="${entidad.ejercicio == 2018}">
+                               <p class="">
+                                   *Grafica realizada con los datos Usando <a class="external-link" href="https://www.boe.es/buscar/doc.php?id=BOE-A-2014-8132" data-toggle="tooltip" title="Se desarrolla la metodología de cálculo del periodo medio de pago a proveedores de las Administraciones Públicas.">Real Decreto 635/2014</a>, de 25 de julio.
+                               </p>
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <div id="chart_div1"></div>
+                           <div class="col-md-12" th:if="${entidad.ejercicio == 2018}">
+                               <p class="">
+                                   *Grafica realizada con los datos usando <a class="external-link" href=" https://www.boe.es/diario_boe/txt.php?id=BOE-A-2017-15364" data-toggle="tooltip" title="Se desarrolla la metodología de cálculo del periodo medio de pago a proveedores de las Administraciones Públicas.">Real Decreto 1040/2017</a>, de 22 de diciembre.
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div th:unless="${entidad.ejercicio==2018}">
+                       <div class="col-md-12">
+                           <div id="chart_div"></div>
+                           <div class="col-md-12">
+                               <p class="">
+                                   *Grafica realizada con los datos usando <a class="external-link" href=" https://www.boe.es/diario_boe/txt.php?id=BOE-A-2017-15364" data-toggle="tooltip" title="Se desarrolla la metodología de cálculo del periodo medio de pago a proveedores de las Administraciones Públicas.">Real Decreto 1040/2017</a>, de 22 de diciembre.
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+                <div class="second-bar clearfix">
+                    <div class="form-group">
+                        <form id="buscadorYearProveedor" method="get" >
+                            <div class="panel panel-default">
+                                <div class="clearfix padding-a1em">
+                                    <div class="form-group col-md-4">
+                                            <label for="anyo" class="control-label col-md-3"> Año:</label>
+                                            <input id="anyo" name="ejercicio" type="text" />
+                                    </div>
+                                    <input  class="btn btn-primary" type="submit" value="Consultar"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="second-bar clearfix">
+                        <div class="col-md-6 clearfix">
+                        </div>
+                        <div class="col-md-6 clearfix">
+                            <p class="nomargin destacado text-right">
+                                Descargar:
+                                <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
+                            </p>
+                            <ul class="list-inline pull-right">
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/periodopagoproveedores/entidad/'+${entidad.codEntidad}+'.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        JSON
+                                    </a>                                |
+                                </li>
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/periodopagoproveedores/entidad/'+${entidad.codEntidad}+'.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        XML
+                                    </a>                                    |
+                                </li>
+                                <li class="nopadding">
+                                    <a th:href="'/sede/servicio/periodopagoproveedores/entidad/'+${entidad.codEntidad}+'.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                        CSV
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 clearfix" >
+                            <table id="table-entidad" class="table-responsive table-hover table-condensed table-bordered">
+                                <caption class="">DETALLE POR ENTIDAD</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código de Entidad</th>
+                                        <th scope="col">Entidad</th>
+                                        <th scope="col">Ratio de Operaciones Pagadas </th>
+                                        <th scope="col">Ratio de Operaciones Pendientes de Pago </th>
+                                        <th scope="col">Periodo Medio de Pago Mensual </th>
+                                        <th scope="col">Ejercicio </th>
+                                        <th scope="col">Mes </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item:${resultado.body.result}" >
+                                        <td><a th:href="'/sede/servicio/periodopagoproveedores/entidad/'+${item.codEntidad}" th:text="${item.codEntidad}">02-50-297-AA-000</a></td><td th:text="${item.title}">Zaragoza</td><td style="padd+ing-left:5px;" th:text="${(item.ratioOpePagadas ge 0)?item.ratioOpePagadas+' días':'('+(-item.ratioOpePagadas)+') días'}">30,59 días</td><td th:text="${(item.ratioOpeNoPagadas ge 0)?item.ratioOpeNoPagadas+' días':'('+(-item.ratioOpeNoPagadas)+') días'}">24,57 días</td><td th:text="${(item.peridoMedioPagoEntidad ge 0)?item.peridoMedioPagoEntidad+' días' :'('+(-item.peridoMedioPagoEntidad) +') días'}">28,68 días</td><td th:text="${item.ejercicio}">28,68 días</td><td th:text="${item.monthName}">28,68 días</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="alert alert-info">* Cuando el dato se refleja entre paréntesis se refiere a un importe negativo, representativo bien de una mayor celeridad, en término medio, en el pago por parte de la Entidad en relación al periodo máximo previsto legalmente con carácter general para dar conformidad a la factura, o bien a que las operaciones pendientes de pago de la Entidad se encuentran, en término medio, en un momento anterior a dicho periodo máximo.</div>
+                        <div class="linea"></div>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"/>
+        <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/sede/js/typeahead.bundle.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/less/bootstrap-slider-master/dist/bootstrap-slider.min.js"></script>
+        <script src="https://www.zaragoza.es/cont/assets/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+        $(document).ready(function() {
+         $('[data-toggle="tooltip"]').tooltip({
+        placement : 'top'
+        });
+        var d = new Date();
+        actual= d.getFullYear();
+        var slider = new Slider("#anyo", {
+            ticks: [actual-4,actual-3,actual-2,actual-1,actual],
+            ticks_labels: [actual-4,actual-3,actual-2,actual-1,actual],
+            ticks_snap_bounds: 20
+        });
+         $('#table-entidad').DataTable({
+            "language": {
+                "decimal": ",",
+                "thousands": ".",
+                "lengthMenu": "Ver _MENU_ registros por pagina",
+                "zeroRecords": "No hay registros",
+                "info": "Viendo  _PAGE_ de _PAGES_",
+                "infoEmpty": "No registros Disponibles",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "searchMenu":"Buscar",
+                "loadingRecords": "Cargando...",
+                "processing":     "Procesando...",
+                "search":         "Buscar:",
+                "paginate": {
+                  "first":      "Primera",
+                  "last":       "Ultima",
+                  "next":       "Siguiente",
+                  "previous":   "Anterior"
+                  },
+            },
+            "aaSorting": [[ 0, "desc"],[ 1, "asc"],[ 0, "desc"]],
+           "columnDefs": [
+              {
+                "targets": [1,2],
+                "render": function (data) {
+                  return data;
+                }
+               }
+             ],
+         });
+         });
+        /*]]>*/
+        </script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    window.onload = function () {
+        anyos1=$("#datosGrafico input[id^='excepcion1']");
+        anyos2=$("#datosGrafico input[id^='excepcion2']");
+        anyos=$("#datosGrafico input[id^='normal']");
+        if(anyos2.length>0){
+             google.charts.load('current', {'packages':['line']});
+             google.charts.setOnLoadCallback(drawChart2);
+        }
+        if(anyos1.length>0){
+
+             google.charts.load('current', {'packages':['line']});
+             google.charts.setOnLoadCallback(drawChart1);
+        }
+        if(anyos.length>0){
+             google.charts.load('current', {'packages':['line']});
+             google.charts.setOnLoadCallback(drawChart);
+        }
+    }
+    function drawChart() {
+        arrayDatos= [['Mes','Periodo Medio de pago a Proveedores'],["",0]];
+       if(anyos.length>0){
+           for (var i=0;i < anyos.length;i++){
+            var datos=(anyos[i].defaultValue);
+            arrayDatos.push([anyos[i].id.slice(6), parseFloat(datos)]);
+            }
+       }
+       var data = google.visualization.arrayToDataTable(arrayDatos);
+       var options = {
+         chart: {
+             title: 'Periodo Medio de Pago por mes',
+             legend: 'Periodo Medio de Pago',
+         },
+         bars: 'vertical',
+         height: 350,
+         colors: '#1b9e77'
+       };
+        var chart = new google.charts.Line(document.getElementById('chart_div'));
+        chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+    function drawChart1() {
+          arrayDatos= [['Mes','Periodo Medio de pago a Proveedores'],["",0]];
+        if(anyos1.length>0){
+           for (var i=0;i < anyos1.length;i++){
+            var datos1=(anyos1[i].defaultValue);
+            arrayDatos.push([anyos1[i].id.slice(10), parseFloat(datos1)]);
+           }
+        }
+        var data = google.visualization.arrayToDataTable(arrayDatos);
+        var options = {
+            chart: {
+                title: 'Periodo Medio de Pago por mes',
+                legend: 'Periodo Medio de Pago',
+            },
+            bars: 'vertical',
+            height: 350,
+            colors: '#1b9e77'
+       };
+        var chart = new google.charts.Line(document.getElementById('chart_div'));
+        chart.draw(data, google.charts.Line.convertOptions(options));
+       }
+        function drawChart2() {
+        arrayDatos2= [['Mes','Periodo Medio de pago a Proveedores'],["",0]];
+        for (var i=0;i < anyos2.length;i++){
+            var datos2=(anyos2[i].defaultValue);
+            arrayDatos2.push([anyos2[i].id.slice(10),parseFloat(datos2)]);
+         }
+        var data = google.visualization.arrayToDataTable(arrayDatos2);
+        var options = {
+            chart: {
+                title: 'Periodo Medio de Pago por mes',
+                legend: 'Periodo Medio de Pago',
+            },
+            bars: 'vertical',
+            height: 350,
+            colors: ['#1c69d5','#ff2222']
+        };
+        var chart = new google.charts.Line(document.getElementById('chart_div1'));
+        chart.draw(data, google.charts.Line.convertOptions(options));
+        }
+
+        /*]]>*/
+        </script>
+    </body>
+</html>

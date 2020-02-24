@@ -1,0 +1,26 @@
+<div class="dropdown">
+    <button id="bienes" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info col-md-12 col-xs-12 margin-b05em">
+        <span class="far fa-building"></span> Declaración de Bienes
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="bienes">
+        <li class="margin-b05em" th:each="bien : ${bienes}">
+            <a th:href="${bien.url}">
+                <span class="far fa-file-pdf"></span> Declaración de Bienes <th:block th:text="${bien.year}"></th:block>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+    <button id="actividades" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-success col-md-12 col-xs-12 margin-b05em">
+        <span class="fa fa-briefcase"></span> Declaración de Actividades
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="actividades">
+        <li th:each="actividad : ${actividades}">
+            <a th:href="${actividad.url}"> <span  />
+            	<span class="far fa-file-pdf"></span> Declaración de Actividades <th:block th:text="${actividad.year}"></th:block>
+            </a>
+        </li>
+    </ul>
+</div>

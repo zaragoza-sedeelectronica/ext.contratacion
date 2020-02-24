@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Sociedades Municipales. Zaragoza Desarrollo expo" description="Organizacion Municipal. Sociedades Municipales" author="" last-modified="Fri Apr 17 00:00:00 CET 2018" keywords="ayuntamiento, ciudad, Zaragoza, España, administración local, estructura administrativa, sociedades municipales, organismos administrativos, relación administración-administrado"/>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Sociedades Municipales > Ecociudad Zaragoza, SAU<a href="/ciudad/saneamiento/" class="btn btn-info">Sitio Web</a></h2>
+        <h3>Objeto</h3>
+                <div class="clearfix margin-b1em">
+<p>La sociedad, como medio propio del Excmo. Ayuntamiento de Zaragoza, tiene por objeto:</p>
+<ul class="letra">
+<li>Gestionar y ejecutar cualesquiera actuaciones o servicios de infraestructura urbanística de Zaragoza.</li>
+<li>Gestionar y ejecutar la construcción de equipamientos necesarios para la acción anterior.</li>
+<li>La realización de todas las actividades relativas a la planificación, programación, proyecto e investigación, formación, asesoramiento, construcción, explotación, mantenimiento y gestión de los recursos y servicios hídricos correspondientes a la evacuación, vertido, alcantarillado, saneamiento, depuración, eliminación y reciclaje de residuos líquidos y fangos pudiendo establecer y desarrollar cuantas industrias y negocios sean instrumentales, complementarios o accesorios de las actividades relacionadas.</li>
+<li>La ejecución y/o dirección de cualquier trabajo que sea preciso para el mantenimiento, reposición, mejora, instalación o lectura de contadores de agua domiciliarios hasta alcanzar el mejor estado de la técnica.</li>
+<li>La realización de cuantos trabajos, proyectos y estudios técnicos y económicos sean precisos para la prestación de los servicios indicados en los apartados precedentes, incluyendo el cobro de cuotas de urbanización y la gestión de la facturación y el cobro de las tarifas por prestación del servicio y demás conceptos de gestión conjunta con el saneamiento.</li></ul>
+                </div>
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+        <li role="presentation"><a href="#consejo" aria-controls="que" role="tab" data-toggle="tab"> Consejo</a></li>
+        <li role="presentation"><a href="#estatutos" aria-controls="que" role="tab" data-toggle="tab"> Estatutos</a></li>
+        <li role="presentation"><a href="#plantilla" aria-controls="que" role="tab" data-toggle="tab">Plantilla</a></li>
+        <li role="presentation"><a href="#organigrama" aria-controls="que" role="tab" data-toggle="tab">Organigrama</a></li>
+        <li role="presentation"><a href="#presupuestos" aria-controls="que" role="tab" data-toggle="tab">Presupuestos</a></li>
+        <li role="presentation"><a href="#convenios" aria-controls="que" role="tab" data-toggle="tab">Convenios</a></li>
+        <li role="presentation"><a href="#cuentas" aria-controls="que" role="tab" data-toggle="tab">Cuentas abiertas</a></li>
+        
+        </ul>
+        
+               
+        <div sede:class="tab-content" id="Facetados">
+                <h2 class="tab-title" data-toggle="collapse" data-target="#consejo" aria-expanded="false">Consejo</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="consejo">
+          <a href="/sede/servicio/agenda-institucional/?titleContains=ecociudad&amp;type=Consejo+Administración+de+Sociedades+Municipales" class="btn btn-danger pull-right">Órdenes del día y actas</a>
+             <div class="row-fluid">
+<div class="span6">
+
+
+
+<dl>
+  <dt>Presidente</dt>
+  <dd><a shape="rect" href="/ciudad/organizacion/pedro-santisteve.htm">D. Pedro Santisteve Roche</a></dd>
+  <dt>Vicepresidente:</dt>
+  <dd><a shape="rect" href="/ciudad/organizacion/alberto-cubero.htm">D. Alberto Cubero Serrano</a></dd>
+  
+  <dt>Consejeros/as:</dt>
+  <dd>
+  <ul>
+<li><a shape="rect" href="/ciudad/organizacion/teresa-artigas.htm">Dª. Teresa Ana Artigas Sanz</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/pedro-navarro.htm">D. Pedro Navarro López</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/maria-navarro.htm">Dª María Navarro Viscasillas</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/enrique-collados.htm">D. Luis Enrique Collados Mateo</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/cavero-moreno.htm">Dª Patricia María Cavero Moreno</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/dolores-ranera.htm">Dª. María Dolores Ranera Gómez</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/roberto-fernandez.htm">D. Roberto Fernández García</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/alberto-casanal.htm">D. Alberto Casañal Pina</a></li>
+<li><a shape="rect" href="/ciudad/organizacion/carmelo-asensio.htm">D. Carmelo Javier Asensio Bueno</a></li>
+  </ul>
+ </dd>
+ <dt>Secretario</dt>
+ <dd>D. Luis Gimenez Abad</dd>
+  <dt>Vicesecretario</dt>
+ <dd>D. Luis Vela Blasco</dd>
+ 
+ </dl>
+
+</div>
+
+</div>
+            </div>
+                 <h2 class="tab-title" data-toggle="collapse" data-target="#estatutos" aria-expanded="false">Estatutos</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="estatutos">
+                    <sede:normativa id="5443"/>
+            </div>
+                     <h2 class="tab-title" data-toggle="collapse" data-target="#presupuestos" aria-expanded="false">Presupuestos</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="presupuestos">
+                <div class="pull-right tarjeta"><a class="external-link" href="http://www.rendiciondecuentas.es/es/consultadeentidadesycuentas/buscarCuentas/consultarCuenta.html?dd=true&amp;idEntidadPpal=8108&amp;idEntidad=68225&amp;idTipoEntidad=O&amp;idModelo=3&amp;ejercicio=2017&amp;nifEntidad=P5030301E" title="enlace Externo">Cuenta General 2017</a></div>
+<h3>Resumen del Presupuesto 2018</h3>
+<div th:replace="portal/transparencia/Presupuestos_Entidades_autonomas :: ecociudad"/>
+            </div>
+         
+               <h2 class="tab-title" data-toggle="collapse" data-target="#plantilla" aria-expanded="false">Plantilla</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="plantilla">
+     
+           <p>La sociedad municipal Ecociudad Zaragoza S.A.U. ha venido rigiéndose por sucesivos convenios en función de la actividad que ha venido desarrollando. En tal sentido, durante el período que tenía encomendadas las labores de urbanización del sector 89/4 del PGOUZ (Valdespartera), la sociedad se regía por el Convenio colectivo del sector de Industrias de la Construcción y Obras Públicas. Asumidas de forma efectiva las tareas de gestión del servicio de saneamiento y depuración de aguas de la ciudad de Zaragoza, la sociedad pasó a regirse por el Convenio colectivo del sector de saneamiento público, limpieza viaria, riegos, recogida, tratamiento y eliminación de residuos, limpieza y conservación de alcantarillado.</p>
+<p>Con fecha 21 de diciembre de 2015, el Consejo de Administración de Ecociudad Zaragoza SAU aprobó por unanimidad aplicar al personal laboral de la sociedad Ecociudad Zaragoza el conjunto de normas y derechos recogidos en el Convenio de aplicación al personal laboral del Excmo. Ayuntamiento de Zaragoza 2012-2015 y en el que, en su caso, se apruebe una vez finalice la vigencia del mismo. 
+La plantilla de la sociedad es:</p>
+<ul><li><a href="bioecociudad" title="Acceso a Curriculum">DIRECTOR GERENTE</a>.</li><li>DIRECTOR ECONÓMICO Y DE RR HH.</li><li>DIRECTOR TÉCNICO.</li><li>TÉCNICO JURÍDICO.</li><li>INGENIERO RED DE SANEAMIENTO.</li><li>INGENIERO CENTRO DE URBANISMO SOSTENIBLE.</li><li>INGENIERO INSTALACIONES DEPURACIÓN.</li><li>DELINEANTE. </li><li>
+SECRETARIO DE DIRECCIÓN.</li><li>OFICIAL.</li><li>ADMINISTRATIVO.</li><li>ADMINISTRATIVO.</li></ul>
+            </div>
+      
+                 <h2 class="tab-title" data-toggle="collapse" data-target="#organigrama" aria-expanded="false">Organigrama</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="organigrama">
+                
+               <p>La estructura de la sociedad actual está pendiente de revisión en función de las nuevas tareas que el Consejo de Administración de la sociedad asuma en el marco de sus competencias</p>
+      <div id="chart_div"></div>
+      <noscript>
+     <ul><li>Gerente
+	<ul><li>Direccion Economica y de Recursos Humanos
+	<ul><li>Unidad Juridica</li>
+	<li>Unidad Administracion</li></ul>
+	</li>
+	<li>Direccion Tecnica
+	<ul><li>Unidad Depuracion</li>
+	<li>Unidad Alcantarillado</li>
+	<li>Unidad Cus</li></ul></li></ul></li>
+        </ul>
+      </noscript>
+        </div>
+              <h2 class="tab-title" data-toggle="collapse" data-target="#convenios" aria-expanded="false">Convenios</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="convenios">
+                <a href="/sede/servicio/convenios/list?entidad.id=60343" class="btn btn-danger">Acceso a Convenios 2018</a>
+                </div>
+                <div role="tabpanel" sede:class="tab-pane active" id="cuentas">
+                
+              <a href="https://www.zaragoza.es/sede/servicio/cuenta-bancaria/?titularContains=ecociudad" class="btn btn-danger"> Acceso a Cuentas abiertas</a>
+                </div>
+        </div>
+   
+    </sede:content>
+   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="/cont/plantillas/graficas/js/jerarquiaexpo.js"></script> 
+</body>
+
+</html>

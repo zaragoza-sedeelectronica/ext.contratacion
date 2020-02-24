@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta 
+        title="Roberto Fernández García (PSOE)" 
+        description="Organización Municipal, Pleno Municipal, Curriculum Vitae de Roberto Fernández (PSOE)" 
+        author="Ayuntamiento de Zaragoza" 
+        last-modified="Wed Oct 19 00:00:00 CEST 2016" 
+        keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Roberto Fernández García, PSOE">
+    </sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <article class="row col-md-12">
+            
+            <!-- Versión móvil -->
+            <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                <h2 class="margin-b1em">Roberto Fernández García <abbr title="Partido Socialista Obrero Español">(PSOE)</abbr></h2>
+                <div class="col-md-4 col-xs-12 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PSOE_Roberto_Fernandez" alt="Roberto Fernández García"/>
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-ROBERTO-FERNANDEZ-GARCIA.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_GRUPO_SOCIALISTA/ROBERTO_FERNANDEZ_GARCIA.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-ROBERTO-FERNANDEZ-GARCIA.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_GRUPO_SOCIALISTA/ROBERTO_FERNANDEZ_GARCIA.pdf'} 
+                        } 
+                    }" />
+                </div>
+
+                <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePersonal" aria-expanded="false" aria-controls="collapsePersonal">
+                                INFORMACIÓN PERSONAL
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPersonal">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <strong>Nacimiento:</strong> Zaragoza, el 21 de Julio de 1959. </li><br/>
+                                <li> Soltero. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProfesional" aria-expanded="false" aria-controls="collapseProfesional">
+                              EXPERIENCIA PROFESIONAL
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProfesional">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> Funcionario de carrera del Ayuntamiento de Zaragoza, lo que le ha llevado a estar al frente del Centro Cultural de Valdefierro. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingPolitica">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePolitica" aria-expanded="false" aria-controls="collapsePolitica">
+                              EXPERIENCIA POLÍTICA
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapsePolitica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPolitica">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> En el Ayuntamiento de Zaragoza ha desempeñado diferentes cargos de libre designación, Secretario del Grupo Municipal Socialista; en la Alcaldía ha sido Coordinador del Gabinete, Jefe de Asuntos Políticos e Institucionales, Responsable de Participación Ciudadana y Jefe de la Secretaría Particular de ese mismo órgano. </li><br/>
+                                <li> Concejal electo de la IX Corporación Democrática (2011-2015). </li><br/>
+                                <li> En abril de 2012, nombrado Consejero de Acción Social y Deportes, y Sexto Teniente de Alcalde. </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseContacto" aria-expanded="false" aria-controls="collapseContacto">
+                                CONTACTO
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingContacto">
+                            <ul class="panel-body list-unstyled margin-l05em">
+                                <li> <span class="far fa-envelope margin-t1em"></span>
+                                    <a href="mailto:rfernandezg@zaragoza.es" shape="rect">rfernandezg@zaragoza.es</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- Versión desktop -->
+            <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                <div class="col-md-4 col-xs-12 text-center pull-right">
+                    <img class="margin-auto img-responsive margin-b1em" src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PSOE_Roberto_Fernandez" alt="Roberto Fernández García"/>
+                    <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-ROBERTO-FERNANDEZ-GARCIA.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_GRUPO_SOCIALISTA/ROBERTO_FERNANDEZ_GARCIA.pdf'} 
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-ROBERTO-FERNANDEZ-GARCIA.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_GRUPO_SOCIALISTA/ROBERTO_FERNANDEZ_GARCIA.pdf'} 
+                        } 
+                    }" />
+                </div>
+                
+                <h2 class="margin-b1em">Roberto Fernández García <abbr title="Partido Socialista Obrero Español">(PSOE)</abbr></h2>
+
+                <div class="card col-md-8">
+                    <h3>INFORMACIÓN PERSONAL</h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> <strong>Nacimiento:</strong> Zaragoza, el 21 de Julio de 1959. </li><br/>
+                        <li> Soltero. </li>
+                    </ul>  
+                </div>  
+                
+                <div class="card col-md-8">
+                    <h3> EXPERIENCIA PROFESIONAL </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> Funcionario de carrera del Ayuntamiento de Zaragoza, lo que le ha llevado a estar al frente del Centro Cultural de Valdefierro. </li>
+                    </ul>
+                </div>
+
+                <div class="card col-md-8">
+                    <h3> EXPERIENCIA POLÍTICA </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l1em">
+                        <li> En el Ayuntamiento de Zaragoza ha desempeñado diferentes cargos de libre designación, Secretario del Grupo Municipal Socialista; en la Alcaldía ha sido Coordinador del Gabinete, Jefe de Asuntos Políticos e Institucionales, Responsable de Participación Ciudadana y Jefe de la Secretaría Particular de ese mismo órgano. </li><br/>
+                        <li> Concejal electo de la IX Corporación Democrática (2011-2015). </li><br/>
+                        <li> En abril de 2012, nombrado Consejero de Acción Social y Deportes, y Sexto Teniente de Alcalde. </li>
+                    </ul>
+                </div>
+                
+                <div class="card col-md-8">    
+                    <h3> CONTACTO </h3>
+                    <hr/>
+                    <ul class="list-unstyled margin-l05em">
+                        <li class="col-md-12 margin-b1em"> <span class="far fa-envelope"></span>
+                            <a href="mailto:rfernandezg@zaragoza.es" shape="rect">rfernandezg@zaragoza.es</a></li>
+                    </ul>
+                </div>
+            
+            </div>
+
+        </article>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Reyes Campillo Castells (PP)"
+                description="Curriculum Vitae de Reyes Campillo Castells (PP). Concejal portavoz de Acción Social (2011-2015)."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Thu Oct 06 00:00:00 CEST 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Reyes Campillo Castells, PP">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        <abbr title="Partido Popular">PP</abbr>
+                    </small>
+                    <span>|</span>
+                    Reyes Campillo Castells
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <article class="row col-md-12">
+
+                        <!-- Versión móvil -->
+                        <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                            <div class="col-md-4 col-xs-12 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PP_Reyes_Campillo.jpg"
+                                     alt="Reyes Campillo Castells"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                     bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-MARIA-DE-LOS-REYES-CAMPILLO-CASTELLS.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2017_Bienes_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Bienes_Campillo.pdf'}
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-MARIA-DE-LOS-REYES-CAMPILLO-CASTELLS.pdf'}, 
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'},
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2017_Actividades_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'},
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Actividades_Campillo.pdf'}
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPersonal">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePersonal" aria-expanded="false"
+                                               aria-controls="collapsePersonal">
+                                                INFORMACIÓN PERSONAL
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapsePersonal" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPersonal">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <strong>Nacimiento:</strong>
+                                                Zaragoza, 14 enero de 1960.
+                                            </li>
+                                            <br/>
+                                            <li>Tiene dos hijos.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseAcademica" aria-expanded="false"
+                                               aria-controls="collapseAcademica">
+                                                FORMACIÓN ACADÉMICA
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingAcademica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Arquitecto técnico por la Universidad Politécnica de Barcelona. Máster
+                                                en Gestión Urbanística.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseProfesional"
+                                               aria-expanded="false" aria-controls="collapseProfesional">
+                                                EXPERIENCIA PROFESIONAL
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingProfesional">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Profesora del Máster de Urbanismo de la facultad de Derecho de
+                                                Zaragoza.
+                                            </li>
+                                            <br/>
+                                            <li>Funcionaria de Urbanismo, Planeamiento y Gestión del Ayuntamiento de
+                                                Zaragoza. Miembro de la Oficina del Desarrollo Urbanístico de la Expo,
+                                                actualmente Oficina Jurídico Técnica de Grandes Proyectos, Cultura,
+                                                Participación Ciudadana y Medio Ambiente.
+                                            </li>
+                                            <br/>
+                                            <li>Voluntaria en la obra social del Carmen en acogida para personas en
+                                                exclusión social, inmigrantes, desempleados y familias sin recursos.
+                                            </li>
+                                            <br/>
+                                            <li>Secretaria del Área de Vivienda del Comité Ejecutivo Regional desde
+                                                2012.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPolitica">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePolitica" aria-expanded="false"
+                                               aria-controls="collapsePolitica">
+                                                EXPERIENCIA POLÍTICA
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapsePolitica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPolitica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Concejal portavoz de Acción Social (2011-2015).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseContacto" aria-expanded="false"
+                                               aria-controls="collapseContacto">
+                                                CONTACTO
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingContacto">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <span class="far fa-envelope margin-t1em"></span>
+                                                <a href="mailto:rcampillo@zaragoza.es" shape="rect">
+                                                    rcampillo@zaragoza.es
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Versión desktop -->
+                        <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                            <div class="col-md-4 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="https://www.zaragoza.es/cont/paginas/organizacion/img/concejales/PP_Reyes_Campillo.jpg"
+                                     alt="Reyes Campillo Castells"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                     bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-MARIA-DE-LOS-REYES-CAMPILLO-CASTELLS.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2017_Bienes_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Bienes_Campillo.pdf'}
+                        }
+                    },
+                    actividades=${
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-MARIA-DE-LOS-REYES-CAMPILLO-CASTELLS.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'},
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2017_Actividades_PARTIDO_POPULAR/MARIA_REYES_CAMPILLO_CASTELLS.pdf'},
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/POPULAR/Actividades_Campillo.pdf'}
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>INFORMACIÓN PERSONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>
+                                        <strong>Nacimiento:</strong>
+                                        Zaragoza, 14 enero de 1960.
+                                    </li>
+                                    <br/>
+                                    <li>Tiene dos hijos.</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>FORMACIÓN ACADÉMICA</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Arquitecto técnico por la Universidad Politécnica de Barcelona. Máster en
+                                        Gestión Urbanística.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA PROFESIONAL</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Profesora del Máster de Urbanismo de la facultad de Derecho de Zaragoza.</li>
+                                    <br/>
+                                    <li>Funcionaria de Urbanismo, Planeamiento y Gestión del Ayuntamiento de Zaragoza.
+                                        Miembro de la Oficina del Desarrollo Urbanístico de la Expo, actualmente Oficina
+                                        Jurídico Técnica de Grandes Proyectos, Cultura, Participación Ciudadana y Medio
+                                        Ambiente.
+                                    </li>
+                                    <br/>
+                                    <li>Voluntaria en la obra social del Carmen en acogida para personas en exclusión
+                                        social, inmigrantes, desempleados y familias sin recursos.
+                                    </li>
+                                    <br/>
+                                    <li>Secretaria del Área de Vivienda del Comité Ejecutivo Regional desde 2012.</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA POLÍTICA</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li>Concejal portavoz de Acción Social (2011-2015).</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>CONTACTO</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l1em">
+                                    <li class="col-md-12 margin-b1em">
+                                        <span class="far fa-envelope"></span>
+                                        <a href="mailto:rcampillo@zaragoza.es" shape="rect">rcampillo@zaragoza.es</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <aside class="row col-md-12 margin-a1em">
+                        <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;src=gr1mfn5nod4s0r1ls9af1qnho0%40group.calendar.google.com&amp;ctz=Europe/Madrid"
+                                style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no">
+                            <a href="https://calendar.google.com/calendar/embed?src=gr1mfn5nod4s0r1ls9af1qnho0%40group.calendar.google.com&amp;ctz=Europe/Madrid">
+                                Acceso al calendario
+                            </a>
+                        </iframe>
+                    </aside>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

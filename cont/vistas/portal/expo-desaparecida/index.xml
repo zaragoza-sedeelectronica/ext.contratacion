@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="La Expo Desaparecida" description="En el décimo aniversario de la Expo 2008 Agua y Desarrollo Sostenible 
+presentamos un recorrido virtual por aquellas arquitecturas e instalaciones de 
+carácter efímero, creadas  para el marco de los 93 días de la muestra y que ya 
+no se conservan" author="Ayuntamiento de Zaragoza. Archivo Municipal" keywords="expo, 2008, cultura, ocio, medio ambiente, Agua y Desarrollo Sostenible, environment, Water and Sustainable Development"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+    <style>
+    .cluster {
+        background: #2d84c8;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+        font-weight: 700;
+        border: 1px solid #2d84c8;
+        font-family: monospace;
+    }
+
+    .cluster:before {
+        content: ' ';
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+        top: 1px;
+        left: 1px;
+        right: 1px;
+        bottom: 1px;
+        border: 1px solid white;
+    }
+
+    .digits-1 {
+        font-size: 1.4em;
+        height: 28px;
+        width: 28px;
+        line-height: 28px;
+        margin-top: -14px;
+        margin-left: -14px;
+    }
+
+    .digits-2 {
+        font-size: 1.6em;
+        height: 34px;
+        width: 34px;
+        line-height: 35px;
+        margin-top: -17px;
+        margin-left: -17px;
+    }
+
+    .digits-2:before {
+        border-width: 2px;
+    }
+
+    .digits-3 {
+        font-size: 1.8em;
+        height: 48px;
+        width: 47px;
+        line-height: 47px;
+        border-width: 3px;
+        margin-top: -24px;
+        margin-left: -24px;
+    }
+
+    .digits-3:before {
+        border-width: 3px;
+    }
+
+    .digits-4 {
+        font-size: 1.8em;
+        height: 58px;
+        width: 58px;
+        line-height: 57px;
+        border-width: 4px;
+        margin-top: -29px;
+        margin-left: -29px;
+    }
+
+    .digits-4:before {
+        border-width: 4px;
+    }
+
+    .list-noticia a {
+        color: #202020;
+    }
+
+    .list-noticia li {
+        border-bottom: 1px solid #E6E6E6;
+        /*fnd-gris-claro*/
+        margin-bottom: .5em;
+        padding-bottom: .5em;
+    }
+
+    @media (min-width: 768px) {
+        .list-aviso li {
+            min-height: 18em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <p>
+            <img alt="" class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/cabecera-expo-general.gif" />
+        </p>
+        <div class="row">
+            <div class="col-md-12 card">
+                <h2>
+         La Expo Desaparecida  
+            </h2>
+                <hr class="sm" />
+                <div class="text-justify">
+                    <p>Cuando el <strong>16 de diciembre de 2004</strong> la ciudad de Zaragoza salió vencedora de la triada compuesta con Trieste y Tesalónica para la celebración de la Expo 2008, se abrió una periodo de tres años y medio de preparación a contrarreloj. El desafío era grande y también motivador. Con la colaboración de la Administración General del Estado, Gobierno de Aragón y Ayuntamiento, se trabajó en la plasmación del proyecto en los terrenos del meandro de Ranillas. </p>
+                    <p>
+                        El <strong>14 de junio de 2008, ahora hace 10 años</strong>, se inauguró la muestra, los fuegos artificiales de la ceremonia acompañaban la ilusión y las expectativas de todos los zaragozanos. Fueron 93 jornadas para la historia, de visitas de personalidades políticas y culturales, de trabajo de cooperación y entendimiento entre entidades de muy diversa índole, de compromiso por el agua y por el medio ambiente. Zaragoza y sus acogedoras gentes ejercían de anfitrionas de la muestra, enseñando que un proyecto de ese calado era posible y se había hecho realidad y apostando porque su finalidad última, su legado, Agua y Desarrollo Sostenible, permaneciera y se continuara en el tiempo. </p>
+                    <p>
+                        De la mano de la Expo se materializaron varias actuaciones esperadas por la ciudad, grandes infraestructuras que llegaron para quedarse como el puente del Tercer Milenio, la pasarela del voluntariado, el cierre de los cinturones viarios o la adecuación de las riberas, pero el núcleo de la Expo desapareció, tal y como estaba pensado: los pabellones se readecuaron para su nueva utilidad como parque empresarial, las plazas temáticas se desmontaron, desaparecieron las tiendas, las pérgolas, el Iceberg en medio del Ebro... <strong>Hoy en día hay un conjunto de instalaciones que sólo permanecen ya en el imaginario</strong>, y en las fotos, de los zaragozanos que vivimos la Expo. Sobre todas estas cosas versa la siguiente exposición virtual. </p>
+                    <p>
+                        A continuación presentamos un plano del recinto Expo. En color se han resaltado aquellas partes que ya no existen o que ya no se configuran como entonces; puede Ud. pinchar sobre ellas para recordar su significado y evocar su recuerdo. De igual forma, debajo del plano, encontrará un listado con los nombres de esas actuaciones, que igualmente permite la navegación virtual por ellas.</p>
+                    <p>
+                        Toda esta exposición se sustenta en los fondos documentales conservados por el <strong>Archivo Municipal de Zaragoza</strong>, los contenidos se han estructurado en dos apartados: 'Proyecto y construcción' y 'Durante la Expo', de tal manera que en el primero se aportan planos e imágenes del diseño así como fotos anteriores a la inauguración, durante la edificación. En el segundo apartado se incluye una selección de fotos tomadas a lo largo de la celebración de la muestra. Como colofón, se incluye un enlace a la bibliografía disponible en la Biblioteca Municipal así como otro enlace al fondo de fotografías que se conservan en el Archivo para que si lo desea, pueda navegar, curiosear o investigar con el buscador. </p>
+                    <p>
+                        Le dejamos con la exposición, <em>esperamos que la disfrute...</em></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 card">
+                <h3 class="nomargin margin-b05em color-destacados">Mapa </h3>
+                <div class="info alert alert-info">En color se han resaltado aquellas partes que ya no existen o que ya no se configuran como entonces.<br/>Puede usted pinchar sobre ellas para recordar su significado y evocar su recuerdo. </div>
+                <hr class="sm" />
+                <div align="center">
+                    <img src="https://www.zaragoza.es/cont/vistas/portal/expo-desaparecida/img/mapa-general.jpg" width="722" height="570" usemap="#Map"  class="img-responsive" alt=""/>
+                    <map name="Map">
+                        <area shape="poly" coords="18,540,43,503,65,523,46,557" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/accesos#puente" alt="Accesos >> Entrada Pabellón Puente" title="Accesos >> Entrada Pabellón Puente" />
+                        <area shape="poly" coords="663,502,656,482,673,476,679,496,667,502" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/accesos#ebro" alt="Accesos >> Puerta del Ebro" title="Accesos >> Puerta del Ebro" />
+                        <area shape="poly" coords="178,27,186,0,229,10,222,39" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/accesos#agua" alt="Accesos >> Entrada Torre del Agua" title="Accesos >>  Entrada Torre del Agua" />
+                        <area shape="poly" coords="675,469,667,450,653,441,645,433,637,421,626,416,613,397,600,403,587,415,591,430,597,447,606,459,615,462,619,472,629,481,639,485,650,485,674,467" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/combatiendo-calor#pergolas" alt="Combatiendo el Calor >> Pérgolas" title="Combatiendo el Calor >> Pérgolas" />
+                        <area shape="poly" coords="283,190,284,184,280,178,278,174,283,172,305,173,322,173,332,167,351,167,364,169,381,170,396,170,418,171,433,165,442,165,450,171,466,171,480,171,497,171,500,167,512,163,530,171,543,171,553,172,556,174,557,191,554,195,517,192,487,190,451,190,431,188,407,187,385,187,363,187,348,186,310,186,296,186,291,187,281,187" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/combatiendo-calor#cubierta" alt="Combatiendo el Calor >> Cubierta Textil" title="Combatiendo el Calor >> Cubierta Textil" />
+                        <area shape="poly" coords="386,316,387,304,382,297,374,296,367,297,359,303,357,308,357,316,364,320,373,323,380,320" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/faro" alt="Faro >> Pabellón de Iniciativas Ciudadanas" title="Faro >> Pabellón de Iniciativas Ciudadanas" />
+                        <area shape="poly" coords="507,316,509,304,504,294,493,290,481,292,474,299,469,305,469,309,472,318,480,324,488,327,497,326,504,320" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/oikos" alt="Oikos, Agua y Energía" title="Oikos, Agua y Energía" />
+                        <area shape="poly" coords="414,308,421,302,426,294,422,288,417,282,405,283,400,284,397,289,396,298,398,302,406,308" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/sed" alt="Sed" title="Sed" />
+                        <area shape="poly" coords="490,360,494,350,489,342,483,335,475,335,464,337,459,344,458,348,461,354,461,358,463,363,473,364,478,364,484,363" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/plaza-ciudades-agua" alt="Plaza Ciudades del Agua" title="Plaza Ciudades del Agua" />
+                        <area shape="poly" coords="570,387,572,377,569,369,562,364,554,363,548,363,538,368,534,373,529,378,533,391,539,399,553,398,560,397,568,393,570,386" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/plaza-agua-compartida" alt="Plaza Agua Compartida" title="Agua Compartida" />
+                        <area shape="poly" coords="361,277,361,269,353,265,348,260,342,261,333,267,327,271,325,282,326,284,332,290,341,291,346,291,355,291,359,288,363,281" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/plaza-agua-extrema" alt="Plaza Agua Extrema" title="Agua Extrema" />
+                        <area shape="poly" coords="136,298,142,290,141,281,142,271,134,261,126,258,118,259,111,260,99,268,94,272,93,280,94,289,99,296,111,297,122,300,134,300" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/inspiraciones-acuaticas" alt="Inspiraciones Acuáticas >> Hombre Vertiente" title="Inspiraciones Acuáticas >> Hombre Vertiente" />
+                        <area shape="poly" coords="628,483,624,478,618,471,615,466,608,461,604,462,607,467,612,474,613,479,619,481,625,483" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/expo-ebro#banco" alt="La Expo y el Ebro >> Banco Ecogeográfico" title="La Expo y el Ebro >> Banco Ecogeográfico" />
+                        <area shape="poly" coords="424,352,429,346,439,346,451,348,459,359,464,363,471,364,479,363,485,364,494,373,500,388,513,401,516,403,533,402,544,411,557,419,564,430,579,436,589,446,599,452,604,460,600,467,552,441,541,429,518,413,500,407,488,397,473,384,451,370,438,360,422,353" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/expo-ebro#embarcadero" alt="La Expo y el Ebro >> Frente Fluvial y Embarcadero" title="La Expo y el Ebro >> Frente Fluvial y Embarcadero" />
+                        <area shape="poly" coords="524,488,532,475,534,460,528,446,519,437,503,433,497,433,474,433,464,433,457,434,451,440,447,446,445,459,447,469,454,475,461,478,470,480,484,482,492,486,493,490,510,490" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/expo-ebro#iceberg" alt="La Expo y el Ebro >> Iceberg" title="La Expo y el Ebro >> Iceberg" />
+                        <area shape="poly" coords="488,236,490,223,487,205,488,196,477,189,469,189,463,196,459,211,460,227,460,234,466,239,473,244,483,242,486,237" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#ebro" alt="Pabellones y otras Construcciones" title="Pabellones y otras Construcciones >> Ebro" />
+                        <area shape="poly" coords="317,220,315,217,304,209,297,202,290,193,284,191,277,193,271,202,267,204,274,217,283,231,292,239,304,241,311,241,315,236,316,224,315,220" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#ebro" alt="Pabellones y otras Construcciones" title="Pabellones y otras Construcciones >>  Ebro" />
+                        <area shape="poly" coords="434,259,452,256,452,245,452,241,439,227,425,218,409,201,402,196,387,197,382,198,376,209,386,225,403,235,415,251,426,256,433,259,443,259" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#ebro" alt="Pabellones y otras Construcciones" title="Pabellones y otras Construcciones >>  Ebro" />
+                        <area shape="poly" coords="355,238,346,231,338,223,329,212,324,207,329,196,335,195,344,193,351,195,362,207,371,215,373,222,373,231,369,236,362,240,357,239" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#ebro" alt="Pabellones y otras Construcciones" title="Pabellones y otras Construcciones >> Ebro" />
+                        <area shape="poly" coords="563,224,543,234,536,248,531,257,519,264,506,264,494,253,496,245,506,234,522,220,535,210,552,201,558,195,568,199,569,206,569,216,566,221,563,223" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#ebro" alt="Pabellones y otras Construcciones >> Ebro"/>
+                        <area shape="poly" coords="630,370,653,386,664,371,660,341,660,312,653,285,647,271,649,239,646,228,628,228,587,217,567,207,564,227,585,242,603,246,614,262,616,278,624,309,623,336,624,354,629,370" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#actur" alt="Pabellones y otras Construcciones >> Actur" title="Pabellones y otras Construcciones >>  Actur"/>
+                        <area shape="poly" coords="291,172,269,175,243,177,234,172,227,172,220,162,213,152,218,138,226,137,233,138,254,144,281,143,304,140,326,140,340,144,358,139,381,137,392,137,410,141,431,143,444,142,446,140,470,140,477,144,501,139,517,136,533,141,555,143,579,143,593,143,594,154,591,171,579,178,576,182,568,183,562,177,562,174,540,171,522,171,513,164,501,168,483,170,450,172,443,164,432,165,422,170,391,170,372,167,351,167,328,166,321,170,313,171,294,172" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#ronda" alt="Pabellones y Otras Construcciones >> Ronda" title="Pabellones y Otras Construcciones >> Ronda"/>
+                        <area shape="poly" coords="241,221,240,218,236,218,235,226,237,226,239,225" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#tiendas" alt="Pabellones y otras Construcciones >> Tiendas y Quioscos" title="Pabellones y otras Construcciones >> Tiendas y Quioscos" />
+                        <area shape="poly" coords="399,250,397,245,391,244,391,250,395,253,397,252" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#tiendas" alt="Pabellones y otras Construcciones >> Tiendas y Quioscos" title="Pabellones y otras Construcciones >> Tiendas y Quioscos" />
+                        <area shape="poly" coords="624,380,621,383,621,388,630,387,630,382" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#tiendas" alt="Pabellones y otras Construcciones >> Tiendas y Quioscos" title="Pabellones y otras Construcciones >> Tiendas y Quioscos" />
+                        <area shape="poly" coords="597,201,587,201,590,206,593,208,595,208,596,204" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#tiendas" alt="Pabellones y otras Construcciones >> Tiendas y Quioscos" title="Pabellones y otras Construcciones >> Tiendas y Quioscos" />
+                        <area shape="poly" coords="597,315,594,309,590,309,590,314,591,318,593,318,596,316" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones#tiendas" alt="Pabellones y otras Construcciones >> Tiendas y Quioscos" title="Pabellones y otras Construcciones >> Tiendas y Quioscos" />
+                     <area shape="poly" coords="267,302,269,298,279,298,296,303,309,310,325,313,341,320,363,326,380,331,394,334,399,339,409,342,418,347,427,349,436,355,446,361,462,368,471,379,482,385,494,393,510,394,520,403,535,411,541,422,557,431,569,432,577,438,587,445,600,451,601,459,599,466,579,452,557,439,542,432,526,422,515,414,504,406,488,398,480,389,473,384,461,380,446,372,434,363,423,357,406,350,384,346,367,336,346,327,321,318,298,314,289,314,285,313,275,308,268,303" href="https://www.zaragoza.es/sede/portal/expo-desaparecida/expo-ebro#banco" alt="La Expo y el Ebro >> Banco Ecogeográfico" title="La Expo y el Ebro >> Banco Ecogeográfico" />
+ </map>
+   <area shape="poly" coords="539,366,538,361,522,366,516,366,510,355,519,346,521,333,508,320,492,330,467,321,460,305,448,314,433,311,425,298,415,308,399,308,391,302,384,307,383,319,377,322,378,330,390,330,406,338,419,344,422,347,431,341,447,342,456,348,463,340,473,334,486,338,492,352,491,363,495,375,507,391,523,398,536,398,531,388,532,380,534,373,535,364"  href="https://www.zaragoza.es/sede/portal/expo-desaparecida/combatiendo-calor#pergolas" alt="Combatiendo el Calor >> Pérgolas" title="Combatiendo el Calor >> Pérgolas" />
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 card">
+                <h3 class="nomargin margin-b05em color-destacados">  Espacios</h3>
+                <ul class="list-unstyled nomargin clearfix" role="menu">
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/urb-planos-generales">
+                            <!--/* <a href="/ciudad/museos/es/puerto/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/urbanizacion-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Urbanización</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/accesos">
+                            <!--/* <a href="/ciudad/museos/es/teatro/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/accesos-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Accesos</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/pabellones">
+                            <!--/* <a href="/ciudad/museos/es/puerto/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/pabellones-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Pabellones y Otros</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/combatiendo-calor">
+                            <!--/* <a href="/ciudad/museos/es/termas/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/calor-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Combatiendo el Calor</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/expo-ebro">
+                            <!--/* <a href="/ciudad/museos/es/teatro/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/expo-ebro-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">La Expo y el Ebro</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/inspiraciones-acuaticas">
+                            <!--/* <a href="/ciudad/museos/es/puerto/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/acuaticas-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Inspiraciones Acuáticas</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled nomargin clearfix" role="menu">
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/plaza-agua-extrema">
+                            <!--/* <a href="/ciudad/museos/es/puerto/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/agua-extrema-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text"> Agua Extrema</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/faro">
+                            <!--/* <a href="/ciudad/museos/es/foro/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/faro-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Faro </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/sed">
+                            <!--/* <a href="/ciudad/museos/es/puerto/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/sed-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Sed</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/oikos">
+                            <!--/* <a href="/ciudad/museos/es/puerto/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/oikos-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text">Oikos</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/plaza-ciudades-agua">
+                            <!--/* <a href="/ciudad/museos/es/termas/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/ciudades-agua-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text"> Ciudades del Agua</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-xs-6 col-sm-2 margin-b1em">
+                        <a href="https://www.zaragoza.es/sede/portal/expo-desaparecida/plaza-agua-compartida">
+                            <!--/* <a href="/ciudad/museos/es/foro/"> */-->
+                            <div class="img-container">
+                                <img class="img-responsive img-rounded" src="/cont/vistas/portal/expo-desaparecida/img/agua-compartida-primera.gif" alt="" />
+                                <div class="overlay">
+                                    <div class="text"> Agua Compartida </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 card">
+                <h3 class="nomargin margin-b05em color-destacados">  Más Información</h3>
+                <div class="col-md-6">
+                    <div class="pull-left"> <img src="/cont/vistas/portal/expo-desaparecida/img/folleto-primera.gif" alt="" />
+                    </div>
+                    <p class="color-destacados-agenda"><strong>¿Recuerdas la Expo 2008?</strong>
+                          <br/>Aquí tienes un folleto para refrescarte la memoria.</p>
+                    <p> <span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="/cont/vistas/portal/expo-desaparecida/pdf/folleto-expo08.pdf" class="pdf">Folleto Expo 2008</a>(Sign: <a href="https://bit.ly/2skdmvR">F 151/12</a>)</p>
+                </div>
+                <div class="col-md-6">  <div class="linea"></div><div class="pull-right"> <img src="/cont/vistas/portal/expo-desaparecida/img/fluvi-primera.png" alt="" />
+                    </div></div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+ <div class="row" th:each="blockIndex: ${#numbers.sequence(0, #lists.size(seccion.question) - 1, seccion.columns)}">
+    <div th:if="not ${readonly} and not ${detail}" 
+        th:each="index: ${#numbers.sequence(blockIndex, blockIndex + (seccion.columns - 1))}" th:remove="tag" th:with="pregunta=${index lt #lists.size(seccion.question) ? seccion.question.get(index) : null}">
+        <div th:class="'col-sm-' + (12/${seccion.columns})" th:if="${pregunta}">
+            <th:block th:if="${pregunta.type == 'hidden'}">
+                <input type="hidden" th:attr="id='pregunta_' + ${pregunta.id}, name='pregunta_' + ${pregunta.id}, required=${pregunta.required}, placeholder=${pregunta.placeholder}" th:value="${pregunta.respuesta}" />
+            </th:block>
+            <th:block th:if="${pregunta.type == 'textarea'}">
+                <label class="control-label" th:attr="for='pregunta_' + ${pregunta.id}" th:classappend="${pregunta.updated == true} ? text-warning">
+                    <span th:if="${pregunta.required}" class="fa fa-asterisk" th:attr="id='required_pregunta_' + ${pregunta.id}"/>
+                    <th:block th:text="${pregunta.title}" />
+                </label>
+                <th:block th:utext="${pregunta.description}" />
+                <div>
+                    <textarea class="form-control" size="100" th:attr="name='pregunta_' + ${pregunta.id}, required=${pregunta.required}" th:text="${pregunta.respuesta}"></textarea>
+                </div>
+            </th:block>
+            <div class="form-group" th:if="${pregunta.type == 'select'}" th:classappend="${pregunta.error} ? has-error">
+                <label class="col-md-4" th:attr="for='pregunta_' + ${pregunta.id}" th:classappend="${pregunta.updated == true} ? text-warning">
+                    <span th:if="${pregunta.required}" class="fa fa-asterisk" th:attr="id='required_pregunta_' + ${pregunta.id}"/>
+                    <th:block th:text="${pregunta.title}" />
+                </label>
+                
+                <div class="col-md-8">
+                    <select th:attr="id='pregunta_' + ${pregunta.id},name='pregunta_' + ${pregunta.id}, required=${pregunta.required}" class="form-control">
+                        <option value="">Seleccione</option>
+                        <option th:each="opt:${pregunta.option}" th:value="${opt.title}" th:text="${opt.title}" th:selected="${opt.title} == ${pregunta.respuesta}"></option>
+                    </select>
+                    <th:block th:if="${pregunta.option.size() == 0}">
+                        <input type="hidden" th:attr="id='hid_pregunta_' + ${pregunta.id},name='hid_pregunta_' + ${pregunta.id}" th:value="${pregunta.respuesta}"/>
+                    </th:block>
+                    <span class="help-block" th:utext="${pregunta.description}"></span>
+                </div>
+            </div>
+            <div class="form-group" th:if="${pregunta.type == 'date'} or ${pregunta.type == 'tel'} or ${pregunta.type == 'email'} or ${pregunta.type == 'url'}" th:classappend="${pregunta.error} ? has-error">
+                <label class="col-md-4" th:attr="for='pregunta_' + ${pregunta.id}" th:classappend="${pregunta.updated == true} ? text-warning">
+                    <span th:if="${pregunta.required}" class="fa fa-asterisk" th:attr="id='required_pregunta_' + ${pregunta.id}"/>
+                    <th:block th:text="${pregunta.title}" />
+                </label>
+                <div class="col-md-8">
+                    <input class="form-control" th:attr="type=${pregunta.type},id='pregunta_' + ${pregunta.id}, name='pregunta_' + ${pregunta.id}, required=${pregunta.required}, placeholder=${pregunta.placeholder}" th:value="${pregunta.respuesta}" />
+                    <span class="help-block" th:utext="${pregunta.description}"></span>
+                </div>
+            </div>
+            <div class="form-group" th:if="${pregunta.type == 'text'} or ${pregunta.type == 'iban'} or ${pregunta.type == 'nifcif'} or ${pregunta.type == 'nif'} or ${pregunta.type == 'nifnie'} or ${pregunta.type == 'cif'}" th:classappend="${pregunta.error} ? has-error">
+                <label class="col-md-4" th:attr="for='pregunta_' + ${pregunta.id}" th:classappend="${pregunta.updated == true} ? text-warning">
+                    <span th:if="${pregunta.required}" class="fa fa-asterisk" th:attr="id='required_pregunta_' + ${pregunta.id}"/>
+                    <th:block th:text="${pregunta.title}" />
+                </label>
+                
+                <div class="col-md-8">
+                    <input class="form-control" type="text" th:attr="id='pregunta_' + ${pregunta.id}, name='pregunta_' + ${pregunta.id}, required=${pregunta.required}, placeholder=${pregunta.placeholder}" th:value="${pregunta.respuesta}" />
+                    <span class="help-block" th:utext="${pregunta.description}"></span>
+                </div>
+            </div>
+            <div class="form-group" th:if="${pregunta.type == 'checkbox'}" th:classappend="${pregunta.error} ? has-error">
+                  <div class="checkbox">
+                    <label th:classappend="${pregunta.updated == true} ? text-warning">
+                      <input type="checkbox" value="Si" th:attr="id='pregunta_' + ${pregunta.id}, name='pregunta_' + ${pregunta.id}" th:checked="${pregunta.respuesta == 'Si'}"/> <th:block th:utext="${pregunta.title}"/> 
+                      <p class="help-block" th:utext="${pregunta.description}"/>
+                    </label>
+                  </div>
+            </div>
+            <div class="form-group" th:if="${pregunta.type == 'checkboxmultiple'}" th:classappend="${pregunta.error} ? has-error">
+                <label class="col-md-4" th:attr="for='pregunta_' + ${pregunta.id}" th:classappend="${pregunta.updated == true} ? text-warning">
+                    <span th:if="${pregunta.required}" class="fa fa-asterisk" th:attr="id='required_pregunta_' + ${pregunta.id}"/>
+                    <th:block th:text="${pregunta.title}" />
+                </label>
+                <th:block th:utext="${pregunta.description}" />
+                <div class="col-md-8 checkbox">
+                    <label th:each="opt:${pregunta.option}" class="clearfix">
+                        <input type="checkbox"  th:attr="name='pregunta_' + ${pregunta.id}"  th:value="${opt.title}" th:text="${opt.title}" th:checked="${pregunta.respuesta} and ${#strings.contains(pregunta.respuesta,opt.title)}"/>
+                    </label>
+                </div>
+            </div>
+           <div class="form-group" th:if="${pregunta.type == 'radio'}" th:classappend="${pregunta.error} ? has-error">
+                <label class="col-md-4" th:attr="for='pregunta_' + ${pregunta.id}" th:classappend="${pregunta.updated == true} ? text-warning">
+                    <span th:if="${pregunta.required}" class="fa fa-asterisk" th:attr="id='required_pregunta_' + ${pregunta.id}"/>
+                    <th:block th:text="${pregunta.title}" />
+                </label>
+                <th:block th:utext="${pregunta.description}" />
+                <div class="col-md-8 radio">
+                    <label th:each="opt:${pregunta.option}" class="clearfix">
+                        <input type="radio"  th:attr="name='pregunta_' + ${pregunta.id}"  th:value="${opt.title}" th:text="${opt.title}" th:checked="${opt.title} == ${pregunta.respuesta}"/>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dl th:if="${readonly} or (${dato.publicAnswer} and *{code})">
+    <!--/* al confirmar */-->
+<th:block th:each="pregunta : ${seccion.question}">
+    <dt th:text="${pregunta.title}"></dt>
+    <dd><pre th:text="${!#strings.isEmpty(pregunta.respuesta)} ? ${pregunta.respuesta} : '(Vacío)'"/></dd>
+</th:block>
+</dl>
+<dl th:if="${detail}">
+    <!--/* al verlo */-->
+<th:block th:each="pregunta : ${seccion.question}" th:if="${pregunta.visible=='S'} or ${mostrarOcultos}">
+    <dt th:text="${pregunta.title}" th:class="${pregunta.updated == true} ? text-warning"></dt>
+    <dd><pre th:text="${!#strings.isEmpty(pregunta.respuesta)} ? ${pregunta.respuesta} : '(Vacío)'"/></dd>
+</th:block>
+</dl>
+
+

@@ -1,0 +1,23 @@
+<div class="card" style="min-height:9em;">
+    <h3><a title="Editar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'MOD')}" th:href="@{{id}/edit(id=${doc.id})}" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> </a> 
+    <th:block th:if="${doc.visible} == 'N'">
+        <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id}/unlock(id=${doc.id})}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+    </th:block>
+    <th:block th:if="${doc.visible} == 'S'">
+        <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id}/lock(id=${doc.id})}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+    </th:block>
+
+    <a th:href="${doc.id}" sede:rdf="${doc.get('title')}"/></h3>
+    <a th:href="@{''(materia.id = ${doc.materia.id}, historico='true')}" sede:rdf="${doc.materia.get('title')}" class="label label-success margin-r05em"></a>
+    <!--/* <a th:if="${doc.organization}" th:href="@{''(organization.id = ${doc.organization.id}, historico='true')}" sede:rdf="${doc.organization.get('title')}" class="label label-default margin-r05em"></a> */-->
+    <div><span class="fas fa-calendar-alt"></span> <strong>Plazo de presentación:</strong> <span th:text="${#utils.tratarFechas(doc.startDate, doc.endDate)}"></span></div>
+</div>
+<div class="ribbon-wrapper" th:if="${#utils.esFuturo(execInfo.now, doc.endDate)} and not ${doc.decision}">
+    <div class="ribbon-info">en plazo</div>
+</div>
+<div class="ribbon-wrapper" th:if="${#utils.esFuturo(doc.expirationDate, execInfo.now)}">
+    <div class="ribbon-warning">finalizado</div>
+</div>
+<div class="ribbon-wrapper" th:if="${doc.decision} and not ${#utils.esFuturo(doc.expirationDate, execInfo.now)}">
+    <div class="ribbon-primary">resuelto</div>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Edictos'" keywords="sede,web,edicto" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" typeof="Demand" vocab="https://schema.org/" th:attr="about=*{uri}">
+            <h2 property="name" th:utext="*{title}" />
+            <hr class="sm" />
+            <div>
+                <span class="label label-default" property="additionalType" th:text="*{tipo.title}" />
+                <span class="pull-right"><a th:if="*{document}" th:href="*{document}" th:text="'Documento'" class="pdf" /></span>
+            </div>
+            Periodo de publicación: desde el <span class="text-info" property="validFrom" sede:rdf="*{get('publicationDate')}" />
+            <a th:if="*{link}" th:href="*{link.url}" class="pull-right btn btn-success">Más información <span class="sr-only"> sobre <th:block th:text="*{title}"></th:block></span></a>
+            <th:block th:if="*{expirationDate}">hasta el <span class="text-info" property="validThrough" sede:rdf="*{get('expirationDate')}" /></th:block>
+            <pre property="description" th:utext="*{description}" />
+            <div><strong property="itemCondition" th:utext="*{author}" /></div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

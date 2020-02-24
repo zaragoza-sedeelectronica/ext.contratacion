@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+ 
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Grupos de Actividad" 
+               description="Espacio de la sede electrónica del Ayuntamiento de Zaragoza, diseñado en colaboración con las personas mayores que ofrece información sobre grupos de actividad: personas de la tercera edad con intereses comunes que cuentan apoyo técnico de los centros de convivencia para desarrollar sus objetivos" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, derechos sociales, gobierno abierto, tercera edad, envejecimiento activo, derechos sociales, participación social, Red de ciudades amigables, Red de Comercios amigables, Rutas amigables, curso, taller, deporte,  zona verde, actividad, centro de convivencia para mayores, comedores para mayores, equipamiento sociocultural, publicación, guía, teleasistencia, servicio de quejas y sugerencias, city, council, Saragossa, electronic site, local government, social rights, open government, social participation, elderly person, active ageing, Age-Friendly Cities, Age-Friendly Commerce, Age-friendly Routes, course, workshop, sports, green area, elderly day care centre, sociocultural facilities, publication, guide, telecare, complaints and suggestion service">
+    </sede:meta>
+    <style type="text/css">
+    
+    ul.submenu {
+        margin: 0;
+    }
+
+    .btn-back.pull-left {
+        padding: .25em .5em;
+        background: #E81B16;
+        border-radius: .5em;
+    }
+
+    .second-bar {
+        background: #E6E6E6;
+        border-radius: .5em;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+    }
+
+    ul.submenu li {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .offset-target:before {
+        content: '';
+        display: block;
+        height: 67px;
+        /* fixed header height*/
+        margin: -67px 0 0;
+        /* negative fixed header height */
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <nav>
+            <div class="second-bar clearfix">
+                <div class="hidden-xs">
+                    <a class="btn-back pull-left" href="https://www.zaragoza.es/sede/portal/derechos-sociales/personas-mayores/">
+                        <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                        <span class="oculto">Volver a Personas Mayores</span>
+                    </a>
+                    <p class="lead destacado margin-l05em margin-b0em pull-left">Grupos de Actividad</p>
+                </div>
+                <ul class="list-inline navbar-right submenu">
+				  <li><a href="grupos-actividad"> Grupos de Actividad</a></li>   
+                    <li><a href="objetivos">Cursos y Talleres</a></li>
+                    <li><a href="comunicacion">Áreas</a></li>
+                  
+                </ul>
+            </div>
+        </nav>
+        <h2>Grupos de Actividad</h2>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row no-gutter step-box fnd-sectores">
+                    <div class="col-md-3 padding-a1em">
+                        <h3 class="nomargin">Presentaci&#243;n</h3>
+                    </div>
+                    <div class="col-md-9 padding-a1em fnd-gris-claro">
+                         <p>Desde el <strong>Ayuntamiento de Zaragoza</strong> se ofrecen recursos y actividades orientados a mantener activas a las personas mayores dentro de un amplio abanico de posibilidades que pretenden fomentar el envejecimiento activo, como forma de prevenci&#243;n y mantenimiento de las capacidades f&#237;sicas, ps&#237;quicas y sociales Una de las actividades que mayor inter&#233;s despierta en los mayores son los <strong>Grupos de Actividad</strong>, que se forman y desarrollan en los Centros de Convivencia municipales y constituyen un espacio de actividad, relaci&#243;n social, aprendizaje y desarrollo de habilidades y capacidades.</p>
+                        <p> Son grupos formados por mayores cuyos intereses y motivaciones giran en torno a un objetivo y actividad com&#250;n, con autonom&#237;a de organizaci&#243;n y actividad, contando con apoyo t&#233;cnico de los Centros de Convivencia.</p>
+                        <p> En la actualidad existen <strong>82 grupos de actividad</strong> en <strong>21 centros de mayores</strong> que abarcan diferentes &#225;mbitos de actuaci&#243;n: l&#250;dico, cultural, deportivo, art&#237;stico...
+                            <br/> </p>
+                        <p>Durante el a&#241;o realizan su actividad habitual en los centros y organizan exposiciones, torneos, actuaciones...de las que disfrutan tanto los socios del centro como de otros centros, participan en actividades solidarias que se realizan la ciudad, etc.
+                            <br/> </p>
+                        <p>Una labor tan importante como la que realizan y que representa un alto nivel de participaci&#243;n y autonom&#237;a por parte de los mayores, debe contar con un mayor conocimiento y reconocimiento por parte de los ciudadanos, por ello el Ayuntamiento de Zaragoza quiere colaborar en la difusi&#243;n de estos grupos.</p>
+                        <!--/*<img src="/cont/paginas/sectores/mayores/img/grupos_actividad.jpg" alt="Grupos Actividad"/>*/-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+			<div class="fnd-gris-claro">
+                <h3 class="color-ciudad"> Actividades por Centros de Convivencia</h3>
+            </div> 
+				
+				  <div class="col-sm-3">
+                     <ul class="list-unstyled">
+                    
+					  <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/500"> La Almozara</a>
+                        <div class="sangrado">Escuela de
+canto de jota, rondalla Francisco Peirona, senderismo, arte, teatro y
+petanca.</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/503" > Casablanca <em>Isaac Valero</em></a>
+                        <div class="sangrado">Grupo musical Casablanca, petanca</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/501" > Casco Hist&#243;rico</a>
+                        <div class="sangrado">Senderismo, rondalla, teatro...</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/505" > Ciudad Jard&#237;n     </a>
+                        <div class="sangrado">Coral Cierzo</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/506" > Delicias<br />    </a>
+                        <div class="sangrado">Senderismo, rondalla, amigos del inglés
+y amigos del teatro.</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/2807" > Estaci&#243;n del Norte <em>Jos&#233; Mar&#237;a Castro y Calvo</em>    </a>
+                        <div class="sangrado">Escuela de jota, petanca, rondalla, teatro (asoc. Arredol), senderismo, variedades del and&#233;n, bailes en línea Estación, tertulia literaria, bolillos,
+labores textiles, Mayores viviendo con ganas (grupo de amistad y
+conversación)</div>
+                    </li>  
+					 <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/756" > Francisco de Goya<br />    </a>
+                        <div class="sangrado">Grupo de belenes, grupo de fotograf&#237;a, grupos de senderismo (I, II, III) grupo de variedades, grupo de canciones</div>
+                    </li></ul></div>
+					
+					  <div class="col-sm-3">
+					       <ul class="list-unstyled">
+                 
+                  
+ 
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/508" > La Jota<br />    </a>
+                        <div class="sangrado">Petanca, rondalla Amigos de la Jota.</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/523" > La Paz</a>
+                        <div class="sangrado">Boletin informativo, labores textiles, modelismo ferroviario, puzzles</div>
+                    </li>                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/511" > Miralbueno </a>
+                        <div class="sangrado">Grupo de m&#250;sica popular, senderismo</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/512" > Monta&#241;ana</a>
+                        <div class="sangrado">  Petanca, repujado y esmaltes, fotografía analógica,
+senderismo , rondalla y canto Montañana, baile abierto,  Baile en linea,
+ Descubrir Zaragoza</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/514" > Movera<br />    </a>
+                        <div class="sangrado">Petanca</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/515" > Oliver    </a>
+                        <div class="sangrado">Bailes en l&#237;nea</div>
+                    </li><li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/510" > Pedro La&#237;n Entralgo    </a>
+                        <div class="sangrado">Sevillanas (Alegr&#237;as del Lain), teatro (asocs Leido y La corrala de La&#237;n), ajedrez, billar, jardiner&#237;a, petanca, rondalla (R&#237;o Huerva), variedades de Pedro La&#237;n, grupo de amistad</div>
+                    </li>
+                  </ul></div>
+					
+					  <div class="col-sm-3">
+					       <ul class="list-unstyled">
+						     <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/516" > Pe&#241;aflor    </a>
+                        <div class="sangrado">Senderismo</div>
+                    </li>
+
+                     <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/3865"> Rey Fernando - (Actur)    </a>
+                        <div class="sangrado"> Andarines Grupo <em> Maxi</em>, Andarines Grupo <em>Light </em>, Bicicleta, Rondalla, Arte, Coro, Variedades, Ajedrez.
+
+  </div>
+                    </li>    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/517"> R&#237;o Ebro-Edificio Jos&#233; Mart&#237;    </a>
+                        <div class="sangrado">Senderismo</div>
+                    </li> <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/518" > Salvador Allende    </a>
+                        <div class="sangrado"> Acordeón, ajedrez, billar, coral Salvador Allende, Baile en Línea, Sevillanas, cuentacuentos, petanca, ping-pong, Grupo laudístico, Grupo Folclórico de Jotas, Teatro La Farsa, Teatro El Vagón de la Comedia, Teatro Leído, Variedades, Senderismo. </div>
+                    </li>
+                  </ul></div>
+					
+					  <div class="col-sm-3">
+					       <ul class="list-unstyled">
+                   
+                  <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/520" > San Jos&#233;   </a>
+                        <div class="sangrado">Ajedrez,  Rondalla, Senderismo y Talla</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/521" > San Juan de Mozarrifar   </a>
+                        <div class="sangrado">Puzzles</div>
+                    </li>
+                   
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/522" > Santa Isabel   </a>
+                        <div class="sangrado">Pintura <em>Amigos de los Pinceles</em>, 
+  Baile en Linea <em>de Rosa</em>,   Rancheras <em>Dúo Relámpago</em>, Voces de Jota <em>Simplemente Amigos</em>, Rondalla de Jota <em>Mayores de Santa Isabel</em>, Teatro Leído <em>La Tertulia</em>, Labores Textiles , Petanca , Hoyetes , Senderistas</div>
+                    </li>
+					
+					
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/845" > Terminillo   </a>
+                        <div class="sangrado">Senderismo  , Tertulia  , Rondalla  , Petanca   , Teatro Leído.</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/755" > Torrero   </a>
+                        <div class="sangrado">Amigas del ganchillo, Tertulia cultural sobre Aragón, Petanca,  Teatro Torrero  Mayor, Senderismo, Talla, <em>Amigos del Acordeón</em>, Rondalla <em>Torrero Mayor</em>.
+						
+						
+						 
+						</div>
+                    </li>
+                    <li><span class="far fa-dot-circle" aria-hidden="true"></span><a href="/sede/servicio/equipamiento/524" > Valdefierro   </a>
+                        <div class="sangrado">Petanca,rondalla <em>Volver a empezar</em>, andarines
+Valdefierro, sevillanas <em>Ole, ole Valdefierro</em>, sevillanas <em>Sentimiento
+Andaluz Valdefierro</em>, tuna de la experiencia, canto rociero <em>Aromas de
+rocío de Valdefierro</em>.</div>
+                    </li>
+                </ul></div> 
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

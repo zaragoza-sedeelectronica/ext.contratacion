@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="sectores">
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+	#sectores .navbar-portal {
+        background: #006b87 url(/cont/assets/img/navbar-portal/cabeceraAzul_DerechosSociales2.jpg) no-repeat center !important;
+    }
+
+    
+    </style>
+</th:block>
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">               
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">                   
+                    <sede:breadcrumb  title="Adicciones" link="/sede/portal/derechos-sociales/adicciones/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/sede/portal/derechos-sociales/', 'text':'Para la gente'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />               
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">        
+        <nav class="container-fluid">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/derechos-sociales/adicciones/actuaciones">¿Quiénes somos?</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/derechos-sociales/adicciones/ambitos">Prevención</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/derechos-sociales/adicciones/caracteristicas">Atención</a></li>
+				<li class="col-xs-6 col-sm-2"> <a class="elemento" href="/sede/portal/derechos-sociales/adicciones/servicio/tramite/?query=adicciones">Servicios</a></li>
+                <li class="col-xs-6 col-sm-2"> <a class="elemento" href="/sede/portal/derechos-sociales/adicciones/servicio/publicacion-municipal/list?titleContains=&amp;year=&amp;isbn=&amp;authorContains=&amp;coleccion.id=&amp;tipo.id=92">Publicaciones</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/derechos-sociales/adicciones/webs">De interés</a></li>
+                <!--/* <li class="padding-t05em">
+                    <button class="btn btn-sm btn-primary" type="button" id="minusBtn"><span class="fa fa-minus" aria-hidden="true"></span></button>
+                    <button class="btn btn-sm btn-primary" type="button" id="resetBtn">Reiniciar zoom</button>
+                    <button class="btn btn-sm btn-primary" type="button" id="plusBtn"><span class="fa fa-plus" aria-hidden="true"></span></button>
+                </li> */-->
+            </ul>
+            <th:block th:include="fragmentos/readspeaker"></th:block> 
+        </nav>
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

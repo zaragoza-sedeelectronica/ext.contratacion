@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <nav class="navbar navbar-default" ng-show="permisos.DET">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buscadoresTarget">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand hidden-desktop">Filtros</span>
+                </div>
+                <div class="collapse navbar-collapse" id="buscadoresTarget">
+                    <form class="navbar-form navbar-left" role="search">
+                    	<div class="form-group">
+                            <input type="text" ng-model="query.id" class="form-control" placeholder="por id..." size="5">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" ng-model="query.title" class="form-control" placeholder="por nombre...">
+                        </div>
+                        <div class="form-group">
+                        	Formato: <select class="form-control" ng-model="query.formato.mediaType" ng-options="obj.id as obj.text for obj in mediaType" style="width:10em"></select>
+                        </div>
+                        <div class="form-group">
+                            Materia: <select class="form-control" ng-model="query.materia.id" ng-options="obj.id as obj.title for obj in materia" style="width:15em"></select>
+                        </div>
+                        <button type="submit" class="btn btn-default" ng-click="buscar()">Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="repeat-item alert alert-{{alert.type}}" ng-repeat="alert in allInfos()" close="remove(alert)">{{alert.msg}}</div>
+        <!-- <div infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="2" ng-show="permisos.DET"> -->
+			<p>N&uacute;mero resultados: {{totalCount}}</p>
+            <table class="table table-bordered table-hover table-striped table-btn">
+                <thead>
+                    <tr>
+                        <th class="col-xs-1" th-orden order="'id'" by="order" reverse="reverse">ID</th>
+                        <th class="col-xs-5" th-orden order="'title'" by="order" reverse="reverse">NOMBRE</th>
+                        <th class="col-xs-4">Materias y Formatos</th>
+                        <th class="col-xs-2">Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros | orderBy:order:reverse">
+                        <td data-title="ID" ><a href="#/edit/{{ registro.id }}">{{registro.id}}</a></td>
+                        <td data-title="Nombre"><a href="#/edit/{{ registro.id }}">{{registro.title}}</a></td>
+                        <td>
+                        <span>{{registro.materiaPrimaria.title}} - </span>
+                        <span ng-repeat="materia in registro.materia">{{materia.title}} - </span>
+                        <br/><span ng-repeat="formato in registro.formato">{{formato.mediaType}} - </span>
+                        
+                        </td>
+                        <td data-title="Operaciones">
+                            <modal-borrar></modal-borrar>
+                            <boton-visibilidad></boton-visibilidad>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div role="alert" class="alert alert-warning spinner-tabla" ng-show="busy"><span class="spinner"></span>Espera por favor, se estan cargando los datos.</div>
+
+        <!-- </div> -->
+
+    </div>
+</div>

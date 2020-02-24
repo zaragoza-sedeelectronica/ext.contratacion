@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+<link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+<script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+<script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+<script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+<th:block th:object="${registro}">
+    <div sede:rdf="*{voc()}" th:attr="about=*{uri}">
+        <!--/* <h3 th:if="*{unidadSuperior}">
+            <a th:href="@{{id}(id=*{unidadSuperior})}" sede:rdf="*{prop('unidadSuperior')}"><span sede:rdf="*{get('nombreUnidadSuperior')}"/></a> &raquo;
+            <span sede:rdf="*{get('title')}"/>
+        </h3> */-->
+        <!--/* <p th:if="*{headOf}">Responsable: <strong sede:rdf="*{get('headOf')}" /></p> */-->
+        <div class="row">
+            <div class="col-md-6">
+                <span th:if="*{address}" sede:rdf="*{address.get('address')}"></span>
+                <th:block th:if="*{address.postal_code}">C.P. <span sede:rdf="*{address.get('postal_code')}"></span></th:block>
+                <th:block th:if="*{phone}">Tel&eacute;fono <span sede:rdf="*{get('phone')}"></span></th:block>
+                <th:block th:if="*{email}">Correo <a sede:rdf="*{prop('email')}" th:href="'mailto:' + *{email}" th:text="*{email}" /></th:block>
+                <!--/* <pre th:if="*{purpose}" th:text="*{purpose}"></pre> */-->
+            </div>
+            <div class="col-md-6" th:if="*{address.geometry}">
+                <th:block th:if="*{address.geometry}" th:utext="*{address.geometry.getRdf()}"></th:block>
+                <div id="mapa-leaflet" style="height: 30em"></div>
+            </div>
+        </div>
+        <!--/* <th:block th:if="${not #lists.isEmpty(resultadoHijos)}">
+            <h4>Estructuras adscritas</h4>
+            <ul class="row list-unstyled">
+                <li th:each="doc: ${resultadoHijos}" class="col-xs-12 col-sm-6 col-md-4" th:attr="property='org:unitOf', content=*{uri},about=${doc.uri}">
+                    <div class="card">
+                        <a th:href="${doc.uri}"><span sede:rdf="${doc.get('title')}" /></a>
+                        <address>
+                            <span th:if="${doc.address}" sede:rdf="${doc.address.get('address')}"></span>
+                            <th:block th:if="${doc.address.postal_code}">C.P. <span sede:rdf="${doc.address.get('postal_code')}"></span></th:block>
+                            <br/>
+                            <th:block th:if="${doc.phone}">Tel&eacute;fono: <span sede:rdf="${doc.get('phone')}"></span></th:block>
+                            <br/>
+                            <th:block th:if="${doc.email}">Correo: <a sede:rdf="${doc.prop('email')}" th:href="'mailto:' + ${doc.email}" th:text="${doc.email}" /></th:block>
+                        </address>
+                    </div>
+                </li>
+            </ul>
+        </th:block> */-->
+    </div>
+</th:block>
+<script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+<script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+<script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+<script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+var pois = [];
+var latitude = document.querySelector('[property=latitude]').content;
+var longitude = document.querySelector('[property=longitude]').content;
+if (latitude && longitude) {
+    var marker = L.marker([latitude, longitude]);
+    pois.push(marker);
+    var group = L.featureGroup(pois).addTo(map);
+    map.fitBounds(group.getBounds());
+    // map.setView(new L.LatLng(latitude, longitude), 5);
+}    
+/*]]>*/
+</script>

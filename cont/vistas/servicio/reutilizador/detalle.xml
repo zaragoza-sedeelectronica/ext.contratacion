@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Conjuntos de datos reutilizados. Datos Abiertos de Zaragoza" keywords="sede,web,risp,uri,reutilizador" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${session.sess_risp.usuario.administrador} == 'S'">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a role="button" data-toggle="collapse" href="#collapse-gestion" aria-expanded="false" class="btn-block">
+                            <span class="fa fa-chevron-circle-right rotate" aria-hidden="true"></span> Gestión de la Sede Electrónica <strong>(SEDE)</strong>
+                        </a>
+                    </h3>
+                </div>
+                <div id="collapse-gestion" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-gestion">
+                    <div class="panel-body">
+                        <div role="alert" class="alert alert-info nomargin">
+                            <strong>Nota:</strong> Solo se muestran los servicios de gestión que funcionan a través de la aplicación <strong>SEDE</strong>.
+                            <br/>
+                            <ul class="nomargin">
+                                <li>Si quieres acceder al sistema de gestión clásico <a href="https://www.zaragoza.es/gcz">accede a GCZ</a>.</li>
+                                <li>Acceso al <a href="http://intranet.red.zaragoza.es/">portal corporativo</a>.</li>
+                                <li>Acceso a la <a href="https://www.zaragoza.es">Sede Electrónica</a>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item" th:if="${#utils.tienePermiso(attr_peticion.getCredenciales(), 'AGENDA', 'ACTO', 'DET')}"><a tabindex="-1" href="/sede/servicio/cultura/evento/admin/">Agenda</a></li>
+                        <li class="list-group-item" th:if="${#utils.tienePermiso(attr_peticion.getCredenciales(), 'AYTOCASA', 'CONVOCATORIA', 'MOD')}"><a href="/sede/servicio/premios-concursos/">Premios y concursos</a></li>
+                        <li class="list-group-item" th:if="${#utils.tienePermiso(attr_peticion.getCredenciales(), 'OPENDATA', 'TRANSPARENCIA', 'MOD')}"><a href="/sede/servicio/transparencia/">Catálogo de transparencia</a></li>
+                        <li class="list-group-item" th:if="${#utils.tienePermiso(attr_peticion.getCredenciales(), 'CATALOGOPUBLICACIONES', 'PUBLICACIONES', 'MOD')}"><a href="/sede/servicio/publicacion-municipal/">Catálogo de publicaciones</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <form th:action="@{/servicio/reutilizador/update}" th:object="${dato}" method="post" class="form-horizontal card">
+                    <fieldset>
+                        <legend><span>Actualizar Datos</span></legend>
+                        <div class="form-group">
+                            <label for="nombre" class="col-sm-3 control-label">Login</label>
+                            <div class="col-sm-9">
+                                <h3 class="nomargin"><span class="label label-primary" th:text="*{login}"></span></h3>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre" class="col-sm-3 control-label">Nombre</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:field="*{nombre}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido1" class="col-sm-3 control-label">Primer apellido</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:field="*{apellido1}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido2" class="col-sm-3 control-label">Segundo apellido</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:field="*{apellido2}" size="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="web" class="col-sm-3 control-label">Sitio web</label>
+                            <div class="col-sm-9">
+                                <input type="url" class="form-control" th:field="*{web}" placeholder="web" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">Correo electrónico</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" th:field="*{email}" placeholder="Email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary">Modificar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <form th:action="@{/servicio/reutilizador/change-password}" method="post" class="form-horizontal card">
+                    <fieldset>
+                        <legend><span>Cambiar contrase&ntilde;a</span></legend>
+                        <div class="form-group">
+                            <label for="pass" class="col-sm-3 control-label">Contrase&ntilde;a</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" name="pass" id="pass" placeholder="Contraseña" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass_rep" class="col-sm-3 control-label">Repetir Contrase&ntilde;a</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" name="pass_rep" id="pass_rep" placeholder="Repetir contraseña" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary">Modificar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="card">
+                    <h3 class="nomargin">Clave privada:</h3>
+                    <hr class="sm" />
+                    <pre th:text="${registro.body.secretKey}" />
+                    <button type="submit" class="btn btn-primary" onclick="regenerarpk()">Regenerar clave privada</button>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <h2 class="nomargin">Permisos asociados</h2>
+                    <hr class="sm" />
+                    <label class="oculto" for="arbol-permisos-searchbox">Buscar permiso asociado:</label>
+                    <input type="text" id="arbol-permisos-searchbox" value="" class="form-control" placeholder="Buscar servicio..." />
+                    <div id="arbol-permisos">
+                        <ul>
+                            <li th:attr="data-jstree='{&quot;icon&quot;:&quot;fa fa-chevron-circle-right text-primary&quot;}'" th:each="serv: ${permisos.body}">
+                                <span th:text="${serv.nombre}"></span>
+                                <ul>
+                                    <li th:attr="data-jstree='{&quot;icon&quot;:&quot;far fa-caret-square-right text-warning&quot;}'" th:each="secc: ${serv.secciones}">
+                                        <span th:text="${secc.nombre}"></span>
+                                        <ul>
+                                            <li th:attr="data-jstree='{&quot;icon&quot;:&quot;far fa-dot-circle&quot;}'" th:each="p : ${secc.permisos}">
+                                                <span th:unless="${p} == 'ADMIN' or ${p} == 'PUB'" class="label label-default" th:text="${p}" />
+                                                <span th:if="${p} == 'ADMIN'" class="label label-primary" th:text="${p}" />
+                                                <span th:if="${p} == 'PUB'" class="label label-warning" th:text="${p}" />
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    $('#main.collapse').collapse();
+
+    function regenerarpk() {
+        if (confirm('¿Desea actualizar su clave privada?')) {
+            document.location.href = "/sede/servicio/reutilizador/regenerar-pk";
+        };
+    };
+
+    $(function() {
+        $("#arbol-permisos").jstree({
+            "plugins": ["search", "sort"]
+        });
+        var to = false;
+        $('#arbol-permisos-searchbox').keyup(function() {
+            if (to) {
+                clearTimeout(to);
+            };
+            to = setTimeout(function() {
+                var v = $('#arbol-permisos-searchbox').val();
+                $('#arbol-permisos').jstree(true).search(v);
+            }, 250);
+        });
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

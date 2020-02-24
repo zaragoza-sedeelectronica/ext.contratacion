@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Aplicaciones desarrolladas'" keywords="sede,web" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <h2 sede:rdf="*{get('title')}"></h2>
+            <div class="row">
+                
+                <div class="col-sm-9">
+                    <div sede:rdf="*{get('description')}" />
+                    <th:block th:if="*{requiredFeatures}">
+                        <h3>Requisitos</h3>
+                        <div sede:rdf="*{get('requiredFeatures')}" />
+                    </th:block>
+                    <ul class="row list-unstyled">
+                        <li th:if="*{!#strings.isEmpty(link)}" class="col-xs-6 col-sm-3 col-md-2">
+                            <a th:href="*{link}"><img src="//www.zaragoza.es/contenidos/iconos/aplicaciones/webmini.jpg" th:alt="'Aplicación ' + *{title} +' disponible a través de la Web'" /></a><br/>
+                            <th:block th:utext="*{#utils.getQr(link, '')}"/>
+                        </li>
+                        <li th:if="*{!#strings.isEmpty(downloadAndroid)}" class="col-xs-6 col-sm-3 col-md-2">
+                            <a th:href="*{downloadAndroid}"><img src="//www.zaragoza.es/contenidos/iconos/aplicaciones/androidmini.jpg" th:alt="'Aplicación ' + *{title} +' disponible en Google Play'" /></a><br/>
+                            <th:block th:utext="*{#utils.getQr(downloadAndroid, '')}"/>
+                        </li>
+                        <li th:if="*{!#strings.isEmpty(downloadIOS)}" class="col-xs-6 col-sm-3 col-md-2">
+                            <a th:href="*{downloadIOS}"><img src="//www.zaragoza.es/contenidos/iconos/aplicaciones/applemini.jpg" th:alt="'Aplicación ' + *{title} +' disponible en Apple Store'" /></a><br/>
+                            <th:block th:utext="*{#utils.getQr(downloadIOS, '')}"/>
+                        </li>
+                        <li th:if="*{!#strings.isEmpty(downloadWindows)}" class="col-xs-6 col-sm-3 col-md-2">
+                            <a th:href="*{downloadWindows}"><img src="//www.zaragoza.es/contenidos/iconos/aplicaciones/windowsmini.jpg" th:alt="'Aplicación ' + *{title} +' disponible en Windows Phone'" /></a><br/>
+                            <th:block th:utext="*{#utils.getQr(downloadWindows, '')}"/>
+                        </li>
+                        <li th:if="*{!#strings.isEmpty(downloadBlackberry)}" class="col-xs-6 col-sm-3 col-md-2">
+                            <a th:href="*{downloadBlackberry}"><img src="/contenidos/iconos/aplicaciones/blackberrymini.jpg" th:alt="'Aplicación ' + *{title} +' disponible en Blackberry App World'" /></a><br/>
+                            <th:block th:utext="*{#utils.getQr(downloadBlackberry, '')}"/>
+                        </li>
+                    </ul>
+                    <th:block th:if="*{author}">
+                        <h3>Autor</h3>
+                        <p>
+                            <th:block th:if="not *{authorLink}">
+                                <span sede:rdf="*{get('author')}"/>
+                            </th:block>
+                            <th:block th:if="*{authorLink}">
+                                <a th:href="*{authorLink}" sede:rdf="*{get('author')}"/>
+                            </th:block>
+                        </p>
+                    </th:block>
+                </div>
+                <div class="col-sm-3">
+                    <img sede:rdf="*{prop('image')}" th:src="*{image}" class="img-responsive center-block" alt=""/>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

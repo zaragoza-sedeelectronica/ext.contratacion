@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Pedro Santisteve (ZEC)"
+                description="Curriculum Vitae de Pedro Santisteve (ZEC). 2014-2015 Imparte la asignatura de Derecho y Ética en el nuevo plan de Estudios de Grado a los alumnos de 4º de grado. Módulo de formación en el Máster de la Abogacía. 2000-2014 Profesor Asociado del Departamento de Derecho Público de la Facultad de Derecho, desarrolla como labor docente el Programa de la Asignatura TEORIA DEL DERECHO, dirigido a los Alumnos de 1º de Derecho conforme al Plan de Estudios entonces vigente. 2012-2013 Imparte docencia en el DIPLOMA DE ESPECIALIZACION EN JUSTICIA RESTAURATIVA Y GESTION DE LA CONVIVENCIA. 1993-2000 Profesor Asociado del Departamento de Derecho Público de la Facultad de Derecho desarrolla como labor docente la parte del Programa de la Asignatura de Derecho Natural dirigido a los alumnos de dos grupos de 1º de Derecho que lleva por título Crítica del Derecho, así como un Seminario de prácticas de la misma asignatura a un grupo de 1º de Derecho. 1992-1993 En calidad de Profesor Asociado del Área de Filosofía del Derecho, Moral y Política, adscrita al Departamento de Derecho Público de la Facultad de Derecho y durante dicho curso académico desarrolla el seminario de prácticas: Metodología y Argumentación Jurídica dirigido a los alumnos de 5º Curso. 1991-1992 Desarrollo del mismo Seminario citado anteriormente a los alumnos de 5º Curso de la Facultad de Derecho, en la asignatura de Filosofía del Derecho."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Tue Oct 11 00:00:00 CEST 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza, Pedro Santisteve, ZEC">
+        </sede:meta>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+            @media (min-width: 768px) {
+            .nav-tabs>li {
+            border-right: solid 2px #000000;
+            margin-bottom: 10px;
+            width: 16.6%;
+            }
+            }
+
+            @media (max-width: 768px) {
+            .nav-tabs>li {
+            width: 100%;
+            border-bottom: solid 2px #000000;
+            padding: 5px;
+            }
+            }
+
+            .nav-tabs>li:last-child {
+            border-right: 0;
+            }
+
+            .nav-tabs>li>a {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            }
+
+            .nav-tabs {
+            border-bottom: solid 2px;
+            }
+
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,
+            .tab-content {
+            color: #000000;
+            border: 0 !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        <abbr title="Zaragoza en Común">ZEC</abbr>
+                    </small>
+                    <span>|</span>
+                    Pedro Santisteve Roche
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <article class="row col-md-12">
+
+                        <!-- Versión móvil -->
+                        <div class="card col-xs-12 col-sm-12 hidden-md hidden-lg">
+                            <div class="col-md-4 col-xs-12 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="http://www.zaragoza.es/cont/paginas/organizacion/img/concejales/Zec_Pedro_Santisteve.jpg"
+                                     alt="Pedro Santisteve Roche"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-PEDRO-SANTISTEVE-ROCHE.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_ZARAGOZA_EN_COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2017_Bienes_PARTIDO_ZARAGOZA_EN_COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/ZGZCOMUN/Bienes_Santisteve.pdf'}
+                        } 
+                    },
+                    actividades=${ 
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-PEDRO-SANTISTEVE-ROCHE.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_ZARAGOZA_EN_%20COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2017_Actividades_ZARAGOZA_EN_COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/ZGZCOMUN/Actividades_Santisteve%20.pdf'}
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="panel-group col-xs-12 margin-t1em" id="accordion" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingAcademica">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseAcademica" aria-expanded="false"
+                                               aria-controls="collapseAcademica">
+                                                FORMACIÓN ACADÉMICA
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseAcademica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingAcademica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>2008-2010 Curso de Conflictos, Liderazgo y Cambio Organizacional,
+                                                Programa Superior, organizado por el Centro de Formación de la Cámara de
+                                                Comercio e Industria de Zaragoza en colaboración con la Fundación
+                                                Findhorne. 2006.- Iª Promoción del Curso de formación de Mediadores
+                                                impartido por el REICAZ.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingProfesional">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseProfesional"
+                                               aria-expanded="false" aria-controls="collapseProfesional">
+                                                EXPERIENCIA PROFESIONAL
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseProfesional" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingProfesional">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>Trabaja como Abogado con despacho profesional propio, integrado dentro
+                                                del grupo SENDA abogados/asesores. Especialista en Derecho Penal;
+                                                experto en Derecho Penitenciario.
+                                            </li>
+
+                                            <li>1985-2011 Realiza, de modo habitual, actuaciones jurídicas ante el
+                                                Juzgado de Vigilancia Penitenciaria con sede en esta Ciudad, en defensa
+                                                de los derechos de la personas sometidas a penas de privación de
+                                                libertad.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingPolitica">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapsePolitica" aria-expanded="false"
+                                               aria-controls="collapsePolitica">
+                                                EXPERIENCIA DOCENTE
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapsePolitica" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingPolitica">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>2014-2015 Imparte la asignatura de Derecho y Ética en el nuevo plan de
+                                                Estudios de Grado a los alumnos de 4º de grado. Módulo de formación en
+                                                el Máster de la Abogacía.
+                                            </li>
+
+                                            <li>2000-2014 Profesor Asociado del Departamento de Derecho Público de la
+                                                Facultad de Derecho, desarrolla como labor docente el Programa de la
+                                                Asignatura TEORIA DEL DERECHO, dirigido a los Alumnos de 1º de Derecho
+                                                conforme al Plan de Estudios entonces vigente.
+                                            </li>
+
+                                            <li>2012-2013 Imparte docencia en el DIPLOMA DE ESPECIALIZACION EN JUSTICIA
+                                                RESTAURATIVA Y GESTION DE LA CONVIVENCIA.
+                                            </li>
+
+                                            <li>1993-2000 Profesor Asociado del Departamento de Derecho Público de la
+                                                Facultad de Derecho desarrolla como labor docente la parte del Programa
+                                                de la Asignatura de Derecho Natural dirigido a los alumnos de dos grupos
+                                                de 1º de Derecho que lleva por título Crítica del Derecho, así como un
+                                                Seminario de prácticas de la misma asignatura a un grupo de 1º de
+                                                Derecho.
+                                            </li>
+
+                                            <li>1992-1993 En calidad de Profesor Asociado del Área de Filosofía del
+                                                Derecho, Moral y Política, adscrita al Departamento de Derecho Público
+                                                de la Facultad de Derecho y durante dicho curso académico desarrolla el
+                                                seminario de prácticas: Metodología y Argumentación Jurídica dirigido a
+                                                los alumnos de 5º Curso.
+                                            </li>
+
+                                            <li>1991-1992 Desarrollo del mismo Seminario citado anteriormente a los
+                                                alumnos de 5º Curso de la Facultad de Derecho, en la asignatura de
+                                                Filosofía del Derecho.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading padding-a1em" role="tab" id="headingContacto">
+                                        <h3 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseContacto" aria-expanded="false"
+                                               aria-controls="collapseContacto">
+                                                CONTACTO
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseContacto" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingContacto">
+                                        <ul class="panel-body list-unstyled margin-l05em">
+                                            <li>
+                                                <span class="far fa-envelope margin-t1em"></span>
+                                                <a href="mailto:acubero@zaragoza.es" shape="rect">acubero@zaragoza.es
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Versión desktop -->
+                        <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+
+                            <div class="col-md-4 text-center pull-right">
+                                <img class="margin-auto img-responsive margin-b1em"
+                                     src="http://www.zaragoza.es/cont/paginas/organizacion/img/concejales/Zec_Pedro_Santiesteve.jpg"
+                                     alt="Pedro Santisteve Roche"/>
+                                <th:block th:include="portal/organizacion/fragment-bienes" th:with="
+                    bienes=${ 
+                        { 
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/bienes-PEDRO-SANTISTEVE-ROCHE.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2016_Bienes_PARTIDO_ZARAGOZA_EN_COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/bienes/2017_Bienes_PARTIDO_ZARAGOZA_EN_COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/ZGZCOMUN/Bienes_Santisteve.pdf'}
+                        }
+                    },
+                    actividades=${
+                        {
+                            {year:'2015', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/activ-PEDRO-SANTISTEVE-ROCHE.pdf'},
+                            {year:'2016', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2016_Actividades_ZARAGOZA_EN_%20COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2017', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/actividades/2017_Actividades_ZARAGOZA_EN_COMUN/PEDRO_SANTISTEVE_ROCHE.pdf'} ,
+                            {year:'2018', url: 'http://www.zaragoza.es/contenidos/organizacion/declaraciones/2018/ZGZCOMUN/Actividades_Santisteve%20.pdf'}
+                        } 
+                    }"/>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>FORMACIÓN ACADÉMICA</h3>
+                                <hr/>
+                                <ul class="">
+                                    <li>2008-2010 Curso de Conflictos, Liderazgo y Cambio Organizacional, Programa
+                                        Superior, organizado por el Centro de Formación de la Cámara de Comercio e
+                                        Industria de Zaragoza en colaboración con la Fundación Findhorne. 2006.- Iª
+                                        Promoción del Curso de formación de Mediadores impartido por el REICAZ.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA PROFESIONAL</h3>
+                                <hr/>
+                                <div class="margin-l1em">
+                                    <ul class="">
+                                        <li>Trabaja como Abogado con despacho profesional propio, integrado dentro del
+                                            grupo SENDA abogados/asesores. Especialista en Derecho Penal; experto en
+                                            Derecho Penitenciario.
+                                        </li>
+
+                                        <li>1985-2011 Realiza, de modo habitual, actuaciones jurídicas ante el Juzgado
+                                            de Vigilancia Penitenciaria con sede en esta Ciudad, en defensa de los
+                                            derechos de la personas sometidas a penas de privación de libertad.
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>EXPERIENCIA DOCENTE</h3>
+                                <hr/>
+                                <div class="margin-l1em">
+                                    <ul class="">
+                                        <li>2014-2015 Imparte la asignatura de Derecho y Ética en el nuevo plan de
+                                            Estudios de Grado a los alumnos de 4º de grado. Módulo de formación en el
+                                            Máster de la Abogacía.
+                                        </li>
+
+                                        <li>2000-2014 Profesor Asociado del Departamento de Derecho Público de la
+                                            Facultad de Derecho, desarrolla como labor docente el Programa de la
+                                            Asignatura TEORIA DEL DERECHO, dirigido a los Alumnos de 1º de Derecho
+                                            conforme al Plan de Estudios entonces vigente.
+                                        </li>
+
+                                        <li>2012-2013 Imparte docencia en el DIPLOMA DE ESPECIALIZACION EN JUSTICIA
+                                            RESTAURATIVA Y GESTION DE LA CONVIVENCIA.
+                                        </li>
+
+                                        <li>1993-2000 Profesor Asociado del Departamento de Derecho Público de la
+                                            Facultad de Derecho desarrolla como labor docente la parte del Programa de
+                                            la Asignatura de Derecho Natural dirigido a los alumnos de dos grupos de 1º
+                                            de Derecho que lleva por título Crítica del Derecho, así como un Seminario
+                                            de prácticas de la misma asignatura a un grupo de 1º de Derecho.
+                                        </li>
+
+                                        <li>1992-1993 En calidad de Profesor Asociado del Área de Filosofía del Derecho,
+                                            Moral y Política, adscrita al Departamento de Derecho Público de la Facultad
+                                            de Derecho y durante dicho curso académico desarrolla el seminario de
+                                            prácticas: Metodología y Argumentación Jurídica dirigido a los alumnos de 5º
+                                            Curso.
+                                        </li>
+
+                                        <li>1991-1992 Desarrollo del mismo Seminario citado anteriormente a los alumnos
+                                            de 5º Curso de la Facultad de Derecho, en la asignatura de Filosofía del
+                                            Derecho.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card col-md-8">
+                                <h3>CONTACTO</h3>
+                                <hr/>
+                                <ul class="list-unstyled margin-l05em">
+                                    <li class="col-md-12 margin-b1em">
+                                        <span class="far fa-envelope"></span>
+                                        <a href="mailto:psantisteve@zaragoza.es" shape="rect">psantisteve@zaragoza.es
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#agenda" aria-controls="agenda" role="tab" data-toggle="tab">
+                                Agenda Institucional
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#aytoresp" aria-controls="aytoresp" role="tab" data-toggle="tab">
+                                Ayuntamiento Responde
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="agenda">
+                            <h3>
+                                Agenda institucional
+                            </h3>
+
+
+                            <iframe src="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=dmc24rsjhnt7daf8ao5pq41jbo%40group.calendar.google.com&amp;ctz=Europe/Madrid"
+                                    style=" border-width:0; width:100%; height:30em" frameborder="0" scrolling="no">
+                                <a href="https://www.google.com/calendar/embed?mode=AGENDA&amp;src=dmc24rsjhnt7daf8ao5pq41jbo%40group.calendar.google.com&amp;ctz=Europe/Madrid">
+                                    Acceso al calendario
+                                </a>
+                            </iframe>
+
+                        </div>
+                        <div class="tab-pane" id="aytoresp">
+                            <h3>
+                                Ayuntamiento responde
+                            </h3>
+
+                            <div class="row-fluid">
+                                <div class="col-sm-1">
+                                    <img class="margin-r1em" alt=""
+                                         src="/cont/paginas/organizacion/img/aytoresp-desdebarrios/iconoPQ_pregunta2.png"/>
+                                </div>
+                                <div class="col-sm-10">
+                                    <strong>Formula una
+                                        <a href="/sede/servicio/ayuntamiento-responde/formulario?dirigidoa=Alcald%EDa">
+                                            pregunta
+                                        </a>
+                                        a Pedro Santisteve
+                                    </strong>
+                                    <br/>(La pregunta más apoyada durante el mes, será contestada)
+                                </div>
+                            </div>
+                            <div class="margin-a1em linea">&nbsp;</div>
+                            <p class="">
+                                <img src="/cont/paginas/bs/img/alerts/mensajeInformacion.png" alt=""/>
+                                El
+                                <abbr title="Excelentísimo">Excmo.</abbr>
+                                Alcalde
+                                <strong>Pedro Santisteve</strong>
+                                responde a las preguntas realizadas por la ciudadanía:
+                            </p>
+                            <sede:aytoresponde to="Alcaldia"></sede:aytoresponde>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

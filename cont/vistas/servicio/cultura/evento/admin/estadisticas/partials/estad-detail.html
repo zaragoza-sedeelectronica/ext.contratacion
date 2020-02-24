@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-12">
+        <fieldset>
+            <legend>{{ registro.acto.title }}</legend>
+            <div class="row">
+                <div class="form-group">
+        			Número de inscritos: <strong>{{ registro.inscritos }}</strong>
+                </div>
+                <div class="form-group">
+        			Número de asistentes: <strong>{{ registro.asistentes }}</strong>
+                </div>
+                <div class="form-group">
+        			Número de finalizados: <strong>{{ registro.finalizados }}</strong>
+                </div>
+                
+                <div class="form-group">
+        			Número de cuestionarios rellenados: <strong>{{ registro.cuestionarios }}</strong>
+                </div>
+                
+                <div class="form-group">
+                	Valoración general: <strong>{{ registro.mediaValoracionGeneral | number : 2 }}</strong>
+                </div>
+                
+                <div class="form-group">
+                	Valoración del profesorado: <strong>{{ registro.mediaPropNum1 | number : 2 }}</strong>
+                </div>
+                
+                <div class="form-group">
+                	Valoración de los recursos materiales: <strong>{{ registro.mediaPropNum2 | number : 2 }}</strong>
+                </div>
+                
+                <div class="form-group">
+                	¿Recomendarías la actividad? <strong>{{ registro.numPropBool1 }} de {{ registro.cuestionarios }}</strong>
+                </div>
+                
+                <p>Comentarios</p>
+                <ul ng-repeat="comentario in registro.comentarios">
+                	<li>'{{ comentario }}'</li>
+                </ul>
+
+                <p style="padding-top:15px;">Valoración actividad</p>
+                <div>
+					<div style="display: inline-block; *display: inline; zoom: 1; vertical-align: top;">
+						<div ng-style="registro.valoracion >= 2 ? {'opacity':'0.25'} : {}">
+							<img style="width: 50px; height: 50px;" src="/cont/vistas/servicio/cultura/evento/images/event-score-poor.png" />
+						</div>
+					</div>
+					<div style="display: inline-block; *display: inline; zoom: 1; vertical-align: top; padding-left: 5px;">
+						<div ng-style="(registro.valoracion < 2) || (registro.valoracion >= 3) ? {'opacity':'0.25'} : {}">
+							<img style="width: 50px; height: 50px;" src="/cont/vistas/servicio/cultura/evento/images/event-score-fair.png"/>
+						</div>
+					</div>
+					<div style="display: inline-block; *display: inline; zoom: 1; vertical-align: top; padding-left: 5px;">
+						<div ng-style="(registro.valoracion < 3) || (registro.valoracion >= 4) ? {'opacity':'0.25'} : {}">
+							<img style="width: 50px; height: 50px;" src="/cont/vistas/servicio/cultura/evento/images/event-score-good.png" />
+						</div>
+					</div>
+					<div style="display: inline-block; *display: inline; zoom: 1; vertical-align: top; padding-left: 5px;">
+						<div ng-style="registro.valoracion < 4 ? {'opacity':'0.25'} : {}">
+							<img style="width: 50px; height: 50px;" src="/cont/vistas/servicio/cultura/evento/images/event-score-great.png" />
+						</div>
+					</div>
+					<div style="padding-bottom:15px;">
+						<b style="font-size: 18px">{{ registro.valoracion | number : 2 }}</b>
+						<b style="font-size: 16px"> / 5</b>
+					</div>
+				</div>
+                
+            </div>
+        </fieldset>
+    </div>
+</div>

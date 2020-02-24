@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Agenda Juvenil" description="El Portal Agenda Juvenil difunde las diferentes actividades relacionadas con los jóvenes que se pueden realizar en Zaragoza a tiempo real y localizadas en un mapa de la ciudad. También puede insertar actividades o enviar algún comentario sobre las mismas." subject="Ayuntamiento, Zaragoza, España, Ciudad, Council, Zaragoza, Spain, City, Ciencia y Tecnología, Comercio, Cultura y Ocio, Demografía, Deporte, Educación, Empleo, Juventud" keywords="ayuntamiento, ciudad, Zaragoza, España, CIPAJ, servicios, difusión de la información, direcciones de Internet, formalidades administrativas, administración electrónica, carnés juveniles, actividades, publicaciones, anuncios públicos, agenda, noticias, carta de servicios, memorias de actividad, documentación, premios, concursos, ayudas, subvenciones, red ciudadana, asociaciones, entidades locales, antenas, Unión Europea, consulta de informacion, plano, RSS,  council, city, Saragossa, Spain, services, dissemination of information, Internet adress, administrative formalities, youth cards, activities, publications, displays, agenda, news, costumer charter, annual reports, documentation, prizes, contests, state aid, economic support, citizen network, associations, local authorities, antenna, European Union, consultation of information, travel, vocational guidance, psycology, sexuality, legal adviser, geographical movility, plan" audience="Ciudadanía">
+    </sede:meta>
+    <!--    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+        ocultarArbolCapas = false;
+        var i = 0;
+        var dataActualidad = "{title:'Actividades', claseIcono:'agenda',clase:'visible', id:'" + i + "', url: '//www.zaragoza.es/sede/servicio/cultura/evento/hoy.geojson'}, {title:'Arte Público', claseIcono:'arte2', clase:'oculto', id:'" + (++i) + "', url:'//www.zaragoza.es/sede/servicio/arte-publico.geojson'}, {title:'Edificios Histórico Artísticos', claseIcono:'culturaYocio', clase:'oculto', id: '" + (++i) + "', url:'//www.zaragoza.es/sede/servicio/edificio-historico.geojson'}, {title:'Monumentos', claseIcono:'arte', clase:'oculto', id:'" + (++i) + "', url:'//www.zaragoza.es/sede/servicio/monumento.geojson'}";
+    /*]]>*/
+    </script>
+    <script type="text/javascript" src="//www.zaragoza.es/js/homeMapa.js"></script> -->
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+    .alto {height:12em; margin .5em}
+    .titulo-test {
+        margin: 0 0 .5em !important;
+    }
+
+    .bloque-agenda .programa {
+        background: none;
+        color: inherit;
+    }
+
+    .bloque-agenda .programa a {
+        color: #E81B16;
+    }
+
+    .thumbnail.overlay {
+        border: none;
+    }
+
+    @media (min-width: 768px) {
+        .thumbnail.overlay img {
+            min-height: 18em;
+        }
+        .thumbnail.overlay .caption {
+            max-height: 6.8em;
+            min-height: 6.8em;
+            padding: .5em !important;
+        }
+        .thumbnail.overlay .caption p {
+            margin: 0;
+        }
+    }
+
+    .img-container {
+        position: relative;
+    }
+
+    .img-container .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-color: #fff;
+        /*#008a00;*/
+        overflow: hidden;
+        /*width: 75%;*/
+        width: 100%;
+        height: 25%;
+        transition: .5s ease;
+        /*border-radius: 6px 6px 0 0;*/
+    }
+    /*.img-container:hover .overlay {
+        height: 25%;
+    }*/
+
+    .img-container .text {
+        white-space: nowrap;
+        color: #202020;
+        /*#8958a9;*/
+        /*#fff;*/
+        /*font-size: 14px;*/
+        /*font-size: 12px;*/
+        font-size: .85em;
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    .list-noticia a {
+        color: #202020;
+    }
+
+    .list-noticia li {
+        border-bottom: 1px solid #E6E6E6;
+        /*fnd-gris-claro*/
+        margin-bottom: .5em;
+        padding-bottom: .5em;
+    }
+
+    ul#menu {
+        /*border-bottom: 2px solid #E81B16;*/
+        border: 1px solid #CCC;
+        font-weight: bold;
+        margin-bottom: 1em;
+        border-radius: 0 0 .5em .5em;
+    }
+    /*ul#menu .elemento:first-child:before {
+        content:'';
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          top: 0;
+          left: 0;          
+          background: #CCC;
+    }*/
+
+    ul#menu .elemento {
+        display: block;
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.42857143;
+        /* h2 line-height == a line-height*/
+    }
+
+    ul#menu h2 {
+        background: #E81B16;
+        color: white;
+    }
+
+    #calendar {
+        margin-bottom: 0;
+    }
+
+    .nav-bottom {
+        background: #E81B16;
+    }
+    
+    .nav-bottom ul li {
+        padding: .5em 0em .5em 1em;
+        /*margin: .5em 0em .5em;*/
+    }
+    
+    .nav-bottom ul li a {
+        border-left: 1px solid #fff;
+        color: #fff;
+        padding: .5em;
+    }
+
+    .nav-bottom ul li a:hover {
+        background: #B50000;
+    }
+
+
+    .caption {
+        color: #202020;
+        font-weight: bold !important;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <div class="col-md-6 col-md-push-3">
+                <div class="card">
+                    <h2 class="titulo-test">Actividades destacadas</h2>
+                    <div th:if="${resultado.body.featuredEventsAlt.size() == 0}" role="alert" class="alert alert-info">No existen actos destacados</div>
+                    <ul th:if="${resultado.body.featuredEventsAlt.size() != 0}" class="row no-gutter list-unstyled nomargin">
+                        <li th:each="a, i : ${resultado.body.featuredEventsAlt}" class="col-xs-12 col-sm-6 nomargin alto" th:unless="${i.index >= 6}">
+                            <!--/* Título */-->
+                            <div class="row no-gutter">
+                                <div class="col-xs-4">
+                                    <!--/* Imagen asociada a la actividad (Prioridad ++) */-->
+                                    <img th:if="${a.image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${a.image}" alt="" />
+                                    <!--/* Imagen asociada al programa (Prioridad +) */-->
+                                    <img th:if="${a.program} and ${a.program.image}" th:unless="${a.image}" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${a.program.image}" alt="" />
+                                    <!--/* Imagen asociada a la temática */-->
+                                    <img th:if="${not #lists.isEmpty(a.category)}" th:unless="${a.image} or (${a.program} and ${a.program.image})" class="img-responsive center-block margin-b05em" width="320" height="480" property="image" th:src="${a.category[0].image}" alt="" />
+                                </div>
+                                <div class="col-xs-8">
+                                    <h3 class="margin-l05em">
+                                        <a th:href="'/sede/servicio/actividades/juvenil/' + ${a.id}" th:text="${a.title}" property="name" />
+                                        <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'VAL')}" th:href="'/sede/servicio/cultura/evento/admin/acto/#/edit/' + ${a.id}" class="btn btn-warning btn-xs" target="_blank"><span class="fa fa-edit"></span></a>  
+                                        <!--/* <a th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'DEL')}" th:href="@{{id}/delete(id=${a.id})}" onclick="return confirm('Desea eliminar el elemento?')" class="btn btn-danger btn-xs pull-right"><span class="fas fa-trash-alt"></span></a> */-->
+                                    </h3>
+                                    <p class="text-info margin-l05em" th:text="${#utils.tratarFechas(a.startDate, a.endDate)}"/>
+                                </div>
+                            </div>
+                            <!--/* Ribbon "Actividad inscripción en plazo" */-->
+                            <div class="ribbon-wrapper" th:if="${a.registration} and ${a.registration.url} and ${#strings.indexOf(a.registration.url, '/evento/' + a.id + '/inscripcion')} > 0 and ${#utils.enPlazo(a.registration.startDate, a.registration.endDate)}">
+                                <div class="ribbon-warning">Inscripción</div>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-md-push-3">
+                <div class="card">
+                    <sede:calendario-agenda carpeta="/sede/servicio/actividades/juvenil/calendar/" usuario="2"></sede:calendario-agenda>
+                
+                    <th:block th:include="fragmentos/cultura/evento/calendar-list(calendarEvents=${resultado.body.todayEvents})"></th:block>
+                                
+                </div>
+            </div>
+            <sede:solr q="*:* AND diasHastaFinalizacion_i:[0 TO 10000] AND portal_smultiple:2 AND fechaFinal_dt:[NOW-1DAY TO *] AND -(fechaFinalInscripcion_dt:[* TO NOW-1DAY] AND fechaFinalInscripcion_dt:[* TO *])" rows="0" start="0" fragment="servicio/actividades/juvenil/resultadoFacetas" class="org.sede.servicio.actividades.entity.Acto" facetas="temas_smultiple,formatoActividad_smultiple,distrito_smultiple,programa_smultiple,rangoEdad_smultiple" facetSort="index"/>
+        </div>
+        <!--/*
+        <h3>Temas</h3>
+        <ul class="list-group row">
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=87"><span class="fa fa-anchor" aria-hidden="true"></span> Actividades vacacionales</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=25"><span class="far fa-futbol" aria-hidden="true"></span> Deportes</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=17"><span class="fas fa-university" aria-hidden="true"></span> Teatro y Artes escénicas</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=24"><span class="fa fa-suitcase" aria-hidden="true"></span> Formación ocupacional</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=86"><span class="fas fa-utensils" aria-hidden="true"></span> Gastronomía</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=27"><span class="fa fa-leaf" aria-hidden="true"></span> Medio Ambiente y naturaleza</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=16"><span class="fa fa-music" aria-hidden="true"></span> Música</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=84"><span class="fa fa-laptop" aria-hidden="true"></span> Tecnología</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=88"><span class="fa fa-camera-retro" aria-hidden="true"></span> Turismo</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=89"><span class="fa fa-language" aria-hidden="true"></span> Idiomas</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=90"><span class="fa fa-film" aria-hidden="true"></span> Imagen (cine, fotografía, audiovisual...)</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=91"><span class="fa fa-user" aria-hidden="true"></span> Desarrollo personal</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=92"><span class="fa fa-paint-brush" aria-hidden="true"></span> Artes plásticas</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?category.id=26"><span class="fa fa-hashtag" aria-hidden="true"></span> Otros</a></li>
+        </ul>
+
+
+
+        <h3>Formatos</h3>
+
+        <ul class="list-group row">
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Campamentos y colonias"><span class="fa fa-paw" aria-hidden="true"></span> Campamentos y colonias</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Campos de trabajo"><span class="fa fa-location-arrow" aria-hidden="true"></span> Campos de trabajo</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Cursos y Talleres"><span class="fa fa-bookmark" aria-hidden="true"></span> Cursos y Talleres</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Excursiones y viajes"><span class="fa fa-map" aria-hidden="true"></span> Excursiones y viajes</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Conferencias"><span class="fa fa-microphone" aria-hidden="true"></span> Conferencias </a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Exhibición, proyección, competición"><span class="fa fa-trophy" aria-hidden="true"></span> Competición y Exhibición</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Exposiciones"><span class="far fa-image" aria-hidden="true"></span> Exposiciones</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Ferias"><span class="fa fa-briefcase" aria-hidden="true"></span> Ferias</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Fiestas"><span class="fas fa-calendar-alt" aria-hidden="true"></span> Fiestas</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Festivales"><span class="fas fa-ticket-alt" aria-hidden="true"></span> Festivales</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Visitas Guiadas"><span class="fa fa-camera-retro" aria-hidden="true"></span> Visitas Guiadas</a></li>
+            <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a href="/sede/servicio/actividades/juvenil/evento/list?type=Otras"><span class="fa fa-hashtag" aria-hidden="true"></span> Otras</a></li>
+        </ul>
+    */-->
+    <th:block th:include="servicio/actividades/juvenil/footer-juventud" />
+    </sede:content>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+
+        // Función para simular data-parent sin panels
+        $('#accordion').on('show.bs.collapse', function(e) {
+            var actives = $('#accordion').find('.in, .collapsing');
+            actives.each(function(index, element) {
+                $(element).collapse('hide');
+            });
+        });
+
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

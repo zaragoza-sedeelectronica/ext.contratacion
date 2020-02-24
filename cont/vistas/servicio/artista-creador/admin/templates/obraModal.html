@@ -1,0 +1,168 @@
+<div id="modalObra">
+	<div 
+		ng-model="modo"
+		ng-switch on = "modo"
+		class="modal-header"
+	>
+		<h3 ng-switch-when="add" > A&ntilde;adir Obra</h3>
+		<h3 ng-switch-when="edit" > Editar Obra </h3>
+		<h3 ng-switch-when="delete" > Borrar Obra </h3>
+	</div>
+	
+	<div class="modal-body">
+<!-- 	Elegir entre añadir obra existente o crearla nueva -->
+		<form novalidate>
+			<fieldset class="form-horizontal" ng-show="modo=='add'">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="anadirObra">
+						Añadir Obra
+					</label>
+					<div class="col-md-4">
+						<div class="radio" >
+							<label for="anadirObra-0"> <input type="radio"
+								name="anadirObra" id="anadirObra-0" value="nueva" ng-model="anadirObra" checked="checked">
+								Nueva
+							</label>
+						</div>
+						<div class="radio">
+							<label for="anadirObra-1"> <input type="radio"
+								name="anadirObra" id="anadirObra-1" value="existente" ng-model="anadirObra">
+								Existente
+							</label>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+
+<!-- 			Añadir obra existente -->
+		<form ng-show="anadirObra == 'existente'">
+			<fieldset class="form-horizontal" >
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="dato.title">Nombre:</label>
+					<div class="col-sm-8">
+						<autocompletado modelo="dato"
+							uri="/api/recurso/cultura-ocio/artista-creador/artista/obra"
+							filtro="title" />
+					</div>
+					<div class="col-sm-2">
+						<input class="form-control" name="id" type="text"
+							ng-model="dato.id" value="{{ dato.id }}" disabled />
+					</div>
+				</div>
+			</fieldset>
+		</form>	
+		
+<!-- 			Añadir obra nueva -->
+		<form novalidate name="formObra" ng-show="anadirObra == 'nueva' || modo=='edit'">
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-4 control-label" for="title">Nombre</label>  
+					<div class="col-sm-8">
+						<input 
+							id="title" name="title" type="text"
+							ng-model="dato.title"
+							placeholder="Nombre de la obra"
+							class="form-control input-md"
+							required="">
+					</div>
+				</div>
+						
+				<div class="form-group">
+					<label class="col-sm-4 control-label">URI</label>  
+					<div class="col-sm-8">
+						<fg-select-uri-in-modal 
+							ng-model = "dato.uri"
+							por = 'dato.title'
+							modo = "work"					
+						></fg-select-uri-in-modal>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-4 control-label" for="agno">Año</label>  
+					<div class="col-sm-8">
+						<input 
+							id="agno" name="agno" type="text"
+							ng-model="dato.year"
+							placeholder="Año de la obra"
+							class="form-control input-md"
+							ng-pattern="agnoVal" >
+						<div ng-show="formObra.$submitted || formObra.agno.$touched">
+							<div ng-show="formObra.agno.$invalid">Introduzca un año de 4 dígitos</div>
+					    </div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-4 control-label" for="description">Descripción</label>  
+					<div class="col-sm-8">
+						<input 
+							id="description" name="description" type="text"
+							ng-model="dato.description"
+							placeholder="Descripción de la obra..."
+							class="form-control input-md">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<tabla1n 
+							id="categorias" name="categorias"
+							para="dato.categories"
+							path = "/api/recurso/cultura-ocio/artista-creador/artista/categoria"
+							atributos='[	{data:"id"},
+											{data:"title",					title: "Categoría"},
+											{data:"parentCategory.title",	title: "Dentro de" }		]'
+					/>
+				</div>
+			</fieldset>
+		</form>	
+		
+<!-- 		Eliminar obra -->
+		<form>
+			<fieldset class="form-horizontal" ng-show="modo=='delete'">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="eliminarObra">
+						Eliminar "{{dato.title}}"
+					</label>
+					<div class="col-md-4">
+						<div class="radio" >
+							<label for="eliminarObra-0"> 
+								<input type="radio" name="eliminarObra" id="eliminarObra-0" value="deArtista" ng-model="eliminarObra" checked="checked">
+									Del listado de obras de "{{registro.title}}"
+							</label>
+						</div>
+						<div class="radio">
+							<label for="eliminarObra-1"> 
+								<input type="radio" name="eliminarObra" id="eliminarObra-1" value="completamente" ng-model="eliminarObra">
+									Completamente
+							</label>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+<!-- 			<pre ng-model="registro"> -->
+<!-- 				{{registro | json}} -->
+<!-- 			</pre> -->	
+	</div>
+	
+<!-- 	Footer para añadir o editar -->
+	<div class="modal-footer" ng-if = "modo=='edit' || modo=='add'" >
+		<button class="btn btn-primary" ng-click="save()" ng-disabled="formObra.$invalid">Guardar</button>
+		<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	</div>
+	
+<!-- 	Footer para borrar -->
+	<div class="modal-footer"  ng-if = "modo=='delete'">
+		<div ng-if = "eliminarObra">
+			<h4>Está a punto de borrar <span ng-if="eliminarObra == 'completamente'"> completamente </span> el registro seleccionado.</h4>
+      		<p>¿Desea continuar?</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" ng-if = "eliminarObra" ng-click="borrar()">Borrar</button>
+			<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button> 
+	    </div>
+	</div>
+	
+</div>

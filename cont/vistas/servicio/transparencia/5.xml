@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-2 block-1 col-md-offset-1 text-center">
+        <a href="/ciudad/urbanismo/planeamiento/pgouz/index.htm">
+            <h4 class="margin-a0em">
+    			<!-- <span class="far fa-building fa-4x"/> -->
+                <img src="//www.zaragoza.es/cont/paginas/bs/img/transparencia/indicador_PGOU.svg" alt=""/>
+    			<br/>
+    			<span class="padding-t05em center-block">Plan General de Ordenación Urbana</span>
+    		</h4>
+        </a>
+    </div>
+    <div class="col-md-2 block-2 text-center">
+        <a href="/ciudad/urbanismo/licencias/solares-idezar.htm">
+            <h4 class="margin-a0em">
+    			<!-- <span class="far fa-map fa-4x"/> -->
+                <img src="//www.zaragoza.es/cont/paginas/bs/img/transparencia/indicador_registroSolares.svg" alt=""/>
+    			<span class="padding-t05em center-block">Registro de Solares</span>
+    		</h4>
+            <hr class="sm"/>
+            <span class="num-solares" th:text="${totalSolares}"/>
+            <br/> solares
+        </a>
+    </div>
+    <div class="col-md-2 block-3 text-center">
+        <a href="/ciudad/urbanismo/licencias/">
+            <h4 class="margin-a0em">
+    			<!-- <span class="fa fa-coffee fa-4x"/> -->
+                <img src="//www.zaragoza.es/cont/paginas/bs/img/transparencia/indicador_registroLicencias.svg" alt=""/>
+    			<br/>
+    			<span class="padding-t05em center-block">Registro de Licencias</span>
+    		</h4>
+            <hr class="sm"/>
+            <span class="num-licencias" th:text="${totalLicencia}"/>
+            <br/> licencias
+        </a>
+    </div>
+    <div class="col-md-2 block-4 text-center">
+        <a href="/ciudad/medioambiente/agenda21/expdtes.htm">
+            <h4 class="margin-a0em">
+    			<!-- <span class="fa fa-tree fa-4x"/> -->
+                <img src="//www.zaragoza.es/cont/paginas/bs/img/transparencia/indicador_medioAmbiente.svg" alt=""/>
+    			<br/>
+    			<span class="padding-t05em center-block">Medio<br/>Ambiente</span>
+    		</h4>
+            <hr class="sm"/>
+            <span class="num-expedientes">473</span>
+            <br/> 
+            Expedientes tramitados
+        </a>
+    </div>
+    <div class="col-md-2 block-5 text-center">
+        <a href="/ciudad/medioambiente/atmosfera/redconta/alertas_CalidadAire">
+            <h4 class="margin-a0em">
+    			<!-- <span class="far fa-bell fa-4x"/> -->
+                <img src="//www.zaragoza.es/cont/paginas/bs/img/transparencia/indicador_alertaMedioAmbientales.svg" alt=""/>
+    			<br/>
+    			<span class="padding-v1em center-block">Alertas Medio Ambientales</span>
+			</h4>
+        </a>
+    </div>
+</div>

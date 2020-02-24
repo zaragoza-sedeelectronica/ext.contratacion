@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="Mariano Blasco Lamuela (PSOE) . Alcalde de Garrapinillos"
+                description="Nació en 1954. Realizó los estudios primarios en un colegio público de Garrapinillos, para seguir el bachiller superior y COU en un colegio de Zaragoza. Ha realizado distintos cursos de Capacitación Profesional relacionados con el Transporte de Mercancías. Es empresario del transporte y ha formado parte de diferentes Comisiones y Consejos relacionados con las actividades de Garrapinillos (Comisión de Festejos, Asociación de Vecinos San Lorenzo, Consejo Escolar, Asociación de Padres del Colegio Público G.A. Bécquer, Club Deportivo Garrapinillos, entre otras). Ha sido Alcalde del barrio de Garrapinillos de 1999 al 2011, asi como vocal de la Junta Vecinal de dicho barrio desde 2011 a 2015. "
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Wed Oct 19 00:00:00 CET 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza,  Mariano Blasco Lamuela (PSOE), Garrapinillos , Barrios rurales"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>Alcalde de Garrapinillos</small>
+                    <span>|</span>
+                    Mariano Blasco Lamuela
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <div class="pull-right">
+                        <img src="/cont/paginas/organizacion/img/alcaldes-barrio/blasco-lamuela.jpg"
+                             alt="Mariano Blasco Lamuela"/>
+                    </div>
+                    <p>Nació en 1954. Realizó los estudios primarios en un colegio público de Garrapinillos, para seguir
+                        el bachiller superior y COU en un colegio de Zaragoza. Ha realizado distintos cursos de
+                        Capacitación Profesional relacionados con el Transporte de Mercancías. Es empresario del
+                        transporte y ha formado parte de diferentes Comisiones y Consejos relacionados con las
+                        actividades de Garrapinillos (Comisión de Festejos, Asociación de Vecinos San Lorenzo, Consejo
+                        Escolar, Asociación de Padres del Colegio Público G.A. Bécquer, Club Deportivo Garrapinillos,
+                        entre otras).
+                    </p>
+                    <p>Ha sido Alcalde del barrio de Garrapinillos de 1999 al 2011, asi como vocal de la Junta Vecinal
+                        de dicho barrio desde 2011 a 2015.
+                    </p>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Programas educativos >> Taller de información y sensibilización a colectivos en riesgo (TIS)"
+         description="Prevención de Adicciones"
+         keywords="Ayuntamiento de Zaragoza, Prevención de Adicciones, Programas Educativos, Taller de información y sensibilización a colectivos en riesgo (TIS), CMAPA, Plan Municipal de Drogas, adicciones Zaragoza, Plan Municipal de Drogodependencias, drogodependencias Zaragoza, Droga, drogadicto, drogado, estupefaciente, toxicómanos, adicto, intoxicación, abuso, dependencia, desintoxicación, drogodependencia, droga legal, droga ilegal, alcohol, tabaco, cánnabis, marihuana, hachís, porro, canuto, coca, cocaína, crack, heroína, éxtasis, anfetaminas, alucinógenos, setas alucinógenas, inhalables, speed, setas mágicas, ketamina, salvia, metanfetaminas, spice, nexus, esteroides anabolizantes, mefedrona, peperazina, legal highs, research chemicals, ghb, éxtasis líquido, hipnóticos, opiáceos, morfina, ansiolíticos, tranquilizantes, pastis, nicotina, xantinas, cafeína, teofilina, teobromina, LSD, ácido, tripi, pegamentos, colas, disolventes volátiles, Eva, Adán, drogas de síntesis, MDMA, MDA, metadona , Recomendación, consejos, sugerencia, orientar, anticipar, informar, formar, indicar, advertir, alertar, advertir, aconsejar, previsión, previsor, prever, evitar, protegerse, preocupar, dudar, gestión de riesgos"/>
+         <script>
+         /*<![CDATA[*/
+         ocultarArbolCapas = false;
+         var i = 0;
+    var dataActualidad = "{title: 'Centros que han participado en el programa',claseIcono:'educacion',clase:'visible',id: '" + i + "',url: '//www.zaragoza.es/sede/servicio/mapa-colaborativo/610.geojson'}";         treeOrderDataList = ["actualidad"];
+         /*]]>*/
+      </script>
+      <script type="text/javascript" src="/cont/vistas/servicio/visores/js/homeMapa.js"></script>
+
+      <style>
+         titulo-seccion {
+         line-height: 66px;
+         font-size: 42px;
+         }
+         .fnd-blanco {
+         background-color: #ffffff;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .fnd-gris-claro {
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin-bottom: -40px;
+         }
+         .titulo-org h2,
+         .procesos h2{
+         color: #e83437;
+         font-size: 42px;
+         padding-bottom: 20px;
+         }
+         .titulo-org h2 small,
+         .titulo-org h2 span{
+         color: #000000;
+         }
+         .panel-heading a:after {
+         float: left;
+         color: white;
+         background-color: #000;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 20px;
+         margin-right: 10px;
+         }
+         .panel-heading a.collapsed:after {
+         content: "\f105";
+         }
+         .panel-default>.panel-heading {
+         background-color: #fff;
+         border: 0;
+         }
+         .panel {
+         border: 0;
+         webkit-box-shadow: 0 0 0;
+         box-shadow: 0 0 0;
+         }
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         border: 0;
+         }
+         .panel-body {
+         padding-left: 50px;
+         }
+         .panel-title>a {
+         color: #E81B16;
+         }
+         .panel-title>a:hover,
+         .panel-title>a:focus,
+         .panel-title>a:active {
+         text-decoration: none;
+         }
+         .offset-target:before {
+         content: '';
+         display: block;
+         height: 67px;
+         /* fixed header height*/
+         margin: -67px 0 0;
+         /* negative fixed header height */
+         }
+         .section-title {
+         background: #E6E6E6;
+         border-radius: .5em .5em 0 0;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin: 0;
+         }
+         .section-content {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: 0 0 .5em .5em;
+         margin-bottom: 1em;
+         }
+         .card{
+         margin-left:5em;
+         }
+         .imagen{
+         display:block;
+         margin-left:5em;
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+            <h2 class="text-right titulo-seccion">Taller de información y sensibilización a colectivos en riesgo (TIS)</h2>
+         </div>
+         <div class="fnd-gris-claro">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <div class="row">
+               <div class="col-md-6 card">
+               <h3 class="section-title offset-target">Taller de información y sensibilización a colectivos en riesgo (TIS)</h3>
+               <p>Taller que, realizado en el propio CMAPA y dirigido a colectivos en riesgo, pretende facilitar el <strong>acceso a información especializada</strong> sobre drogas y adicciones, haciendo especial hincapié en aquella que el grupo demande de forma explícita o implícita. </p>
+               <p>Se trata de una única sesión de alrededor de dos horas, que realiza un técnico del CMAPA que incluye dinámicas de trabajo individual y grupal.</p>
+               <h4>Poblacion destinataria:</h4>
+               <ul>
+                  <li>Alumnado de UIEE, PCPI y otras modalidades formativo-laborales. Dirigido especialmente a aquellos con características especiales o en situación de riesgo.</li>
+               </ul>
+               <h4>Contenidos:</h4>
+               <ul class="letra">
+                  <li>Actividad previa a la visita al CMAPA, a realizar por el profesor/tutor en el aula, con el objeto de preparar a los alumnos e incrementar su interés y participación en la actividad.</li>
+                  <li>
+                     Realización del Taller:
+                     <ul>
+                        <li>Conocer los servicios que ofrece el CMAPA.</li>
+                        <li>Entender cómo y por qué puede generarse una adicción</li>
+                        <li>Dar respuesta a las inquietudes y dudas personales en .relación a cualquier tipo de adicción. </li>
+                     </ul>
+                  </li>
+               </ul>
+               <h4>Materiales: </h4>
+               <ul>
+                  <li><a class="pdf" href="http://www.zaragoza.es/contenidos/sectores/adicciones/resumen-tis.pdf">Resumen del programa</a></li>
+               </ul>
+               </div>
+               <div class="col-md-4">
+               <img alt="" class="imagen" src="/cont/vistas/portal/derechos-sociales/adicciones/img/tisg.gif"/>
+               </div>
+               </div>
+            
+               
+               
+               
+               <h4>Centros que han participado en el programa (2017-2018)</h4>
+               <div id="mapa">
+                  <div class="separador" id="facadeStatus">&nbsp;</div>
+                  <script type="text/javascript">
+                     /*<![CDATA[*/
+                     var ifrm = document.createElement("iframe");
+                     ifrm.setAttribute("name", "mapahome");
+                     ifrm.setAttribute("id", "mapahome");
+                     ifrm.setAttribute("title", "La Ciudad al Instante");
+                     ifrm.setAttribute("src", "/cont/vistas/servicio/visores/portada/index.html");
+                     ifrm.style.width.value = "100%";
+                     document.getElementById("mapa").appendChild(ifrm);
+                     /*]]>*/
+                  </script>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

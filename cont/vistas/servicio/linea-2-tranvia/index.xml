@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Proceso Participativo Línea 2 del tranvía" keywords="ciudad, Zaragoza, sede electrónica, gobierno abierto, ayuntamiento, administración local, relación administración-administrado, participación ciudadana, movilidad urbana, transporte público, tranvía, city, Saragossa, e-government, open government, open gov, council, local government, citizen-authority relations, public participation, public transport,tramway" description="Procesos de Participación y Colaboración en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, es un sitio donde la ciudadanía puede participar y colaborar en el diseño de la línea 2 del Tranvía de Zaragoza"/>
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/css/claro.css" type="text/css"/>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/dwr/engine.js"></script>
+    <script type="text/javascript" src="//www.zaragoza.es/geocoderIDEZar/javascript/GUI.js"></script>
+    <script type="text/javascript">
+    ocultarArbolCapas = false;
+    var i = 0;
+    treeOrderDataList = ["actualidad"];
+    var dataActualidad = "{title: '1. Avda Madrid - C/ Conde Aranda',claseIcono:'alternativa_1_tranvia',clase:'oculto',id: '" + i + "',url: '//www.zaragoza.es/trafico/tranvia_linea2_alternativa1.json'}\
+,{title: '2. Avda Madrid - Pº Mª Agustín',claseIcono:'alternativa_2_tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/tranvia_linea2_alternativa2.json'}\
+,{title: '3. Avda Navarra - Pº Mª Agustín',claseIcono:'alternativa_3_tranvia',clase:'visible',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/tranvia_linea2_alternativa3.json'}\
+,{title: '4. Avda Navarra - C/ Conde Aranda',claseIcono:'alternativa_4_tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/tranvia_linea2_alternativa4.json'}";
+    </script>
+    <script type="text/javascript" src="//www.zaragoza.es/cont/plantillas/mapa/js/homeMapa.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:utext="'var datos = ' + ${datos.body.respuesta} + ';'">
+    </script>
+    <script type="text/javascript" th:inline="text">
+    google.charts.load("current", {
+        packages: ["corechart"]
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable(datos);
+        var options = {
+            bar: {
+                groupWidth: "60%"
+            },
+            legend: {
+                position: "none"
+            },
+            series: {
+                0: {
+                    color: ''
+                },
+            }
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    };
+    </script>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <th:block th:if="${param.test}">
+            <th:block th:if="${param.presencial}" th:text="${param.presencial[0]}" />
+            <th:block th:text="${param.presencial[0]=='qtyjs-daesfg-mmend'}" />
+        </th:block>
+        <h2>Proceso Participativo Línea 2 del tranvía</h2>
+        <div id="mapa">
+            <div class="separador" id="facadeStatus"></div>
+            <script type="text/javascript">
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("name", "mapahome");
+            ifrm.setAttribute("id", "mapahome");
+            ifrm.setAttribute("title", "Línea 2 del Tranvía");
+            ifrm.setAttribute("scrolling", "no");
+            ifrm.setAttribute("src", "//www.zaragoza.es/IDEZar_visorPortada/index.html?treeheader=http://www.zaragoza.es/cont/paginas/bs/img/logozaragoza.jpg");
+            ifrm.setAttribute("frameBorder", "0");
+            ifrm.style.width.value = "100%";
+            document.getElementById("mapa").appendChild(ifrm);
+            </script>
+        </div>
+        <div id="contint"></div>
+        <!--/* <div role="alert" class="alert alert-info" th:if="${#utils.hasta('19-12-2016')}">
+                <h4>
+                    Votación Línea 2 del Tranvía
+                    <small>Puedes partipar en la votación del trazado del tranvía en este espacio. Siendo el 5 la puntuación más alta.</small>
+                    <a th:if="not ${session.sess_ciudadano} and not ${param.presencial}" style="width:20em" class="btn btn-primary pull-right" th:href="${#utils.getLinkLoginUsuario(#httpServletRequest)}">Votar</a>
+                </h4>
+                <div th:if="${session.sess_ciudadano} and ${session.sess_ciudadano.empadronado!='Si'}" role="alert" class="alert alert-danger">
+                    Sólo pueden participar las personas empadronadas en Zaragoza
+                </div>
+            </div>
+            <div role="alert" class="alert alert-info" th:if="${#utils.desde('20-12-2016')}">
+                Ha finalizado el proceso de participación
+            </div>
+            <div class="row" th:if="${#utils.hasta('19-12-2016')}">
+                <div class="col-md-12">
+                    <form method="get" th:action="${session.sess_ciudadano} ? 'votar' : 'votar-presencial'" th:if="(${param.presencial} and ${param.presencial[0]=='qtyjs-daesfg-mmend'}) or (${session.sess_ciudadano} and ${session.sess_ciudadano.empadronado!='No'})">
+                        <div class="row card" th:if="${param.presencial} and ${param.presencial[0]=='qtyjs-daesfg-mmend'}">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input type="hidden" name="presencial" th:value="${param.presencial[0]}" />
+                                    <label class="col-sm-2 control-label" for="nif"><span class="fa fa-asterisk" /> NIF</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="text" name="nif" id="nif" size="20" required="true" />
+                                    </div>
+                                    <label class="col-sm-2 control-label" for="birthYear"><span class="fa fa-asterisk" /> Año nacimiento</label>
+                                    <div class="col-sm-2">
+                                        <input class="form-control" type="text" name="birthYear" id="birthYear" size="10" required="true" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card margin-b05em">
+                                    <fieldset>
+                                        <legend>1. Avda Madrid -
+                                            <br/>C/ Conde Aranda</legend>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion1" id="opcion11" value="1" checked="checked" /> 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion1" id="opcion12" value="2" /> 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion1" id="opcion13" value="3" /> 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion1" id="opcion14" value="4" /> 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion1" id="opcion15" value="5" /> 5
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card margin-b05em">
+                                    <fieldset>
+                                        <legend>2. Avda Madrid -
+                                            <br/>Pº Mª Agustín</legend>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion2" id="opcion11" value="1" checked="checked" /> 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion2" id="opcion22" value="2" /> 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion2" id="opcion23" value="3" /> 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion2" id="opcion24" value="4" /> 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion2" id="opcion25" value="5" /> 5
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card margin-b05em">
+                                    <fieldset>
+                                        <legend>3. Avda Navarra -
+                                            <br/>Pº Mª Agustín</legend>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion3" id="opcion31" value="1" checked="checked" /> 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion3" id="opcion32" value="2" /> 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion3" id="opcion33" value="3" /> 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion3" id="opcion34" value="4" /> 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion3" id="opcion35" value="5" /> 5
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card margin-b05em">
+                                    <fieldset>
+                                        <legend>4. Avda Navarra -
+                                            <br/>C/ Conde Aranda</legend>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion4" id="opcion41" value="1" checked="checked" /> 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion4" id="opcion42" value="2" /> 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion4" id="opcion43" value="3" /> 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion4" id="opcion44" value="4" /> 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="opcion4" id="opcion45" value="5" /> 5
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary margin-b2em" value="Enviar votación" />
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="fnd-gris-claro margin-b1em padding">
+                        El Ayuntamiento de Zaragoza ha puesto en marcha un proceso participativo, que culminará con una encuesta, para definir cuál es el trazado para la Línea 2 del Tranvía preferido por los zaragozanos y zaragozanas. En este portal web se ofrece toda la información sobre las cuatro alternativas, así como todos los datos sobre costes, obras complementarias, puntuación técnica de cada trazado, etc.
+                        <br/> Os invitamos a estudiar cada una de las opciones y opinar en consecuencia, en la votación on line y presencial que tendrá lugar del 12 al 19 de diciembre. Entre todas y todos podemos diseñar la movilidad que queremos para el futuro.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <img src="//www.zaragoza.es/cont/paginas/img/sede/linea-2-tranvia/tranvia-zaragoza.jpg" alt="" width="270" />
+                </div>
+            </div>*/-->
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist" style="display:none;">
+            <li role="presentation" class="active"><a href="#eval" aria-controls="eval" role="tab" data-toggle="tab"><span class="fa fa-star" aria-hidden="true"></span> Estudio Viabilidad</a></li>
+            <li role="presentation"><a href="#info" aria-controls="info" role="tab" data-toggle="tab"> Resultados Votación</a></li>
+            <li role="presentation"><a href="#alter" aria-controls="alter" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Alternativas</a></li>
+            <li role="presentation"><a href="#doc" aria-controls="doc" role="tab" data-toggle="tab"><span class="far fa-file-alt" aria-hidden="true"></span> Documentación</a></li>
+            <li role="presentation"><a href="#ante" aria-controls="ante" role="tab" data-toggle="tab"><span class="fa fa-info" aria-hidden="true"></span> Antecendentes</a></li>
+            <!--/* <li role="presentation"><a href="#agenda" aria-controls="agenda" role="tab" data-toggle="tab"><span class="fa fa-info" aria-hidden="true"></span> Agenda</a></li>*/-->
+        </ul>
+        <div sede:class="tab-content">
+        <h2 class="tab-title" data-toggle="collapse" data-target="#eval" aria-expanded="false"> Estudio Viabilidad</h2>
+        <div role="tabpanel" sede:class="tab-pane active" id="eval">
+        <div class="row">
+        <div class="col-md-12">
+           <h3>Indice</h3>
+            <ul>
+            <li>TOMO I
+                <ul>
+                    <li><a href="/contenidos/tranvia/linea2/TOMO1MemoriaTranvia_L2.pdf" class="pdf">Memoria<span class="oculto">(Documento en formato pdf Tamaño 3,2 Mb)</span></a></li>
+                    <li><a href="/contenidos/tranvia/linea2/TOMO1Planos_Tranvia_L2.pdf" class="pdf">Planos<span class="oculto">(Documento en formato pdf Tamaño 85,3 Mb)</span></a></li>
+                </ul>
+            </li>
+            <li><a href="/contenidos/tranvia/linea2/TOMOII.pdf" class="pdf">TOMO II: Apéndice nº1. Estudio de Alternativas (I) Memoria, Anexo I. Estudio de Demanda <span class="oculto">(Documento en formato pdf Tamaño 14,2 Mb)</span></a></li>
+            <li><a href="/contenidos/tranvia/linea2/TOMOIII_Tranvia_L2.pdf" class="pdf">TOMO III: Apéndice nº1. Estudio de Alternativas (II) Anexo II. Estimación costes de Construcción <span class="oculto">(Documento en formato pdf Tamaño 5,6 Mb)</span></a></li>
+            <li><a href="/contenidos/tranvia/linea2/TOMOIV_Tranvia_L2.pdf" class="pdf">TOMO IV <span class="oculto">(Documento en formato pdf Tamaño 16,3 Mb)</span></a>
+                <ul>
+                    <li>Apéndice nº1. Estudio de Alternativas (III) Anexo III. Análisis de la Operación</li>
+                    <li>Anexo IV. Análisis Ambiental</li>
+                    <li>Anexo V. Integración Urbana</li>
+                    <li>Anexo VI. Rentabilidad Económica y Financiera</li>
+                    <li>Anexo VII. Matriz Multicriterio</li>
+                </ul>
+            </li>
+            <li><a href="/contenidos/tranvia/linea2/TOMOV_Tranvia_L2-2.pdf" class="pdf">TOMO V: Apéndice nº1. Estudio de Alternativas (IV) Planos <span class="oculto">(Documento en formato pdf Tamaño 634,3 Mb)</span></a></li>
+            <li><a href="/contenidos/tranvia/linea2/TOMOVI_Tranvia_L2.pdf" class="pdf">TOMO VI <span class="oculto">(Documento en formato pdf Tamaño 2 Mb)</span></a>
+            <ul><li>Apéndice nº2. Adenda nº1. Análisis multicriterio de alternativas con prolongación a Valdefierro</li>
+            <li>Apéndice nº3. Adenda nº2. Proceso participativo y selección de alternativa</li>
+            <li>Apéndice nº4. Análisis Ambiental</li></ul></li>
+            <li><a href="/contenidos/tranvia/linea2/TOMOVII_Tranvia_L2.pdf" class="pdf">TOMO VII: Apéndice nº5. Estudio de Seguridad y Salud <span class="oculto">(Documento en formato pdf Tamaño 7,2 Mb)</span></a></li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#info" aria-expanded="false"> Resultados Votación</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="info">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--*/ <h3>¿Cuándo?</h3>
+                            <hr class="sm" />
+                            <p>Del <strong>12 al 19 de diciembre</strong></p>
+                            <h3>¿Quién?</h3>
+                            <hr class="sm" />
+                            <p>Los empadronados en Zaragoza mayores de 14 años</p>
+                            <h3>¿Cómo?</h3>
+                            <hr class="sm" />
+                            <ol>
+                                <li><strong>Telemáticamente</strong> Desde esta página, requiere estar registrado en la Plataforma de Gobierno Abierto. <a class="destacado" th:href="${#utils.getLinkLoginUsuario(#httpServletRequest)}">Como crear una cuenta de usuario/a</a>.</li>
+                                <li><strong>Presencialmente:</strong> En los Centros Cívicos y otros espacios habilitados.
+                                    <table class="table table-condensed table-bordered margin-t1em">
+                                    <tr class="fnd-gris-claro">
+                                            <th>EQUIPAMIENTO</th>
+                                            <th> HORARIO </th>
+                                            <th> ESPACIO </th>
+                                        </tr>
+                                        <tr>
+                                            <td> CC CASABLANCA C/Viñedo Viejo, 1 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Hall Centro Cívico </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC RIO EBRO (Actur) Ed. José Martí C/ Alberto Duce, 2 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Hall Centro Cívico </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC SAN JOSÉ Pza.Mayor, 2 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Hall Centro Cívico </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC ALMOZARA Avda. Puerta Sancho, 30 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Aula Informática </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC MIRALBUENO Pza. La Rosa s/n </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Aula Informática </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC VALDEFIERRO Pza. de la Inmaculada, 3 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Aula Informática </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC UNIVERSIDAD C/Violante de Hungría, 4 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Hall Centro Cívico </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC TORRERO C/Monzón, 3 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Hall Centro Cívico </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC ESQUINAS (Delicias) Vía Univérsitas, 30-32 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Hall Centro Cívico </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC Salvador Allende (Las Fuentes) C/Florentino Ballesteros, 8 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h </td>
+                                            <td> Sala Biblioteca </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC SANTA ISABEL C/ del Baile, 6 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h</td>
+                                            <td> AuIa Informática </td>
+                                        </tr>
+                                        <tr>
+                                            <td> CC ESTACIÓN DEL NORTE (El Rabal) C/Perdiguera, 7 </td>
+                                            <td> DÍA 15  11:45 a 14h y de 17 a 20h DÍA 16 de 10 a 14h y de 17 a 20h DÍA 17 de 10 a 14h </td>
+                                            <td> AuIa Informática </td>
+                                        </tr>
+                                        <tr>
+                                            <td> C. Mayores Fco. de Goya (Centro) Pº Hernán Cortés, 31-33</td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h Sabado no disponible</td>
+                                            <td> AuIa Informática </td>
+                                        </tr>
+                                        <tr>
+                                            <td> C. Mayores Oliver C/ Teodora Lamadrid, 70</td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h DIA 17 de 10 a 14h</td>
+                                            <td> AuIa Informática </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Casco Histórico. Ciber-espacio Morlanes.  Pza. San Carlos, 4 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h Sabado no disponible </td>
+                                            <td> Ciber-espacio </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Ayuntamiento  (Casa Consistorial) Pza. del Pilar, 18</td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h Sabado no disponible</td>
+                                            <td> Hall </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Ayuntamiento (Seminario) Vía Hispanidad, 20 </td>
+                                            <td> DÍA 15 Y 16 de 10 a 14h y de 17 a 20h Sabado no disponible </td>
+                                            <td> Hall </td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ol>
+                            <p>La encuesta consistirá en la valoración de 1 a 5 de cada uno de los 4 trazados</p>*/-->
+                        <h3>Resultado</h3>
+                        <hr class="sm" />
+                        <div class="table-responsive">
+                            <table class="table table-condensed table-bordered margin-t1em">
+                                <tr class="fnd-gris-claro">
+                                    <th>Alternativa</th>
+                                    <th>Puntuación Ténica</th>
+                                    <th>Puntuación Votación</th>
+                                    <th>Peso Participación Ciudadana</th>
+                                    <th>Peso Estudio Técnico</th>
+                                    <th>Puntuación Total</th>
+                                </tr>
+                                <tr>
+                                    <td>Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+                                    <td>51</td>
+                                    <td>14740</td>
+                                    <td>11,40</td>
+                                    <td>35,7</td>
+                                    <td>47,1</td>
+                                </tr>
+                                <tr>
+                                    <td>Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+                                    <td>64,8</td>
+                                    <td>15060</td>
+                                    <td>11,81</td>
+                                    <td>45,36</td>
+                                    <td>57,17</td>
+                                </tr>
+                                <tr>
+                                    <td>Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+                                    <td>61,7</td>
+                                    <td>17370</td>
+                                    <td>14,78</td>
+                                    <td>43,19</td>
+                                    <td>57,97</td>
+                                </tr>
+                                <tr>
+                                    <td>Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+                                    <td>49</td>
+                                    <td>15363</td>
+                                    <td>12,20</td>
+                                    <td>34,3</td>
+                                    <td>46,50</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <h3>Información relacionada</h3>
+                        <hr class="sm" />
+                        <ul>
+                            <li><a href="/cont/paginas/noticias/presentacinencuestatranvia.pdf" class="pdf">Presentación de resultados<span class="oculto">(Documento en formato pdf)</span></a></li>
+                            <li><a href="/ciudad/noticias/detalle_Noticia?id=224590">Nota de prensa</a></li>
+                        </ul>
+                        <h3>Peso en la decisión</h3>
+                        <hr class="sm" />
+                        <p>La decisión de qué alternativa de trazado escoger se tomará en base a una matriz multicriterio en la que se valorarán criterios económicos y técnicos para establecer la viabiliad del proyecto de trazado de la L2.</p>
+                        <p>Hay establecidos 5 criterios:</p>
+                        <ol>
+                            <li>Económicos y socioeconómicos (<strong>28 %</strong>)</li>
+                            <li>Funcionales (<strong>21 %</strong>)</li>
+                            <li>Integración (<strong>10,5%</strong>)</li>
+                            <li>Medioambientales (<strong>10,5 %</strong>)</li>
+                            <li>Decisión ciudadana (<strong>30 %</strong>)</li>
+                        </ol>
+                        <p>La decisión de qué alternativa de trazado escoger se tomará en base a una matriz multicriterio en la que se valorarán criterios económicos y técnicos para establecer la viabilidad del proyecto de trazado de la L2, establecidos por el equipo técnico que elaboró el anteproyecto. Sin embargo, se ha decidido que el peso específico de la decisión ciudadana tuviera un plus de puntos más, siendo el factor que más porcentaje tiene (30%) dos puntos por encima de los criterios económicos y socioeconómicos (28%), los funcionales (21%), los medioambientales (10,5%) o la integración (10,5%).</p>
+                        <h4> Valoración Técnica de las alternativas</h4>
+                        <p>La valoración ciudadana de cada trazado propuesto se incorporará a la valoración final con arreglo a la siguiente fórmula:</p>
+                        <p>Pt * 0.7 + 25(Pv/N – 1) * 0.3</p>
+                        <p><strong>Nota:</strong></p>
+                        <ul>
+                            <li><span id="uno">Pt:</span> Representa los puntos obtenidos por ese trazado en la valoración técnica tal como aparece en el Estudio de Viabilidad y Alternativas</li>
+                            <li>Pv: Representa el total de puntos obtenidos en la encuesta ciudadana</li>
+                            <li>N: Número total de personas participantes en dicha encuesta</li>
+                        </ul>
+                        <div class="table-responsive">
+                            <table class="table table-condensed table-bordered margin-t1em">
+                                <thead>
+	                                <tr class="fnd-gris-claro">
+	                                    <th id="alternativa" rowspan="2">ALTERNATIVA</th>
+	                                    <th id="total" rowspan="2">TOTAL</th>
+	                                    <th colspan="4" class="text-center">ASPECTOS</th>
+	                                </tr>
+	                                <tr class="fnd-gris-claro">
+	                                    <th id="eco">Económicos y Socioeconómicos</th>
+	                                    <th id="func">Funcionales</th>
+	                                    <th id="integr">Integración</th>
+	                                    <th id="medioamb">Medioambientales</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr>
+	                                    <td headers="alternativa">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+	                                    <td headers="total">51 puntos</td>
+	                                    <td headers="eco">15,8</td>
+	                                    <td headers="func">17,0</td>
+	                                    <td headers="integr">9,5</td>
+	                                    <td headers="medioamb">8,6</td>
+	                                </tr>
+	                                <tr>
+	                                    <td headers="alternativa">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+	                                    <td headers="total">64,8 puntos</td>
+	                                    <td headers="eco">21,6</td>
+	                                    <td headers="func">21,8</td>
+	                                    <td headers="integr">11,4</td>
+	                                    <td headers="medioamb">10,0</td>
+	                                </tr>
+	                                <tr>
+	                                    <td headers="alternativa">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+	                                    <td headers="total">61,7 puntos</td>
+	                                    <td headers="eco">22,6</td>
+	                                    <td headers="func">20,8</td>
+	                                    <td headers="integr">10,1</td>
+	                                    <td headers="medioamb">8,2</td>
+	                                </tr>
+	                                <tr>
+	                                    <td headers="alternativa">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+	                                    <td headers="total">49,0 puntos</td>
+	                                    <td headers="eco">17,9</td>
+	                                    <td headers="func">16,2</td>
+	                                    <td headers="integr">8,2</td>
+	                                    <td headers="medioamb">6,7</td>
+	                                </tr>
+	                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#alter" aria-expanded="false">Alternativas</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="alter">
+                <h3 id="alternativas">Alternativas</h3>
+                <hr class="sm" />
+                <p>Para la segunda línea del tranvía, se plantean cuatro alternativas a estudio:</p>
+                <!--/* <div class="row">
+                        <div class=" col-md-3 ">
+                            <h4 id="opcion1">Alternativa 1A</h4>
+                            <div class="media card">
+                                <p>Extensión desde la glorieta de Los Enlaces por Ctra. de Madrid (N-IIa) hasta su intersección con Ronda Ibón de Plan + Los Enlaces - Avda. Madrid - c/ Conde Aranda - c/ Coso - Pza. España - c/ Coso - Plaza San Miguel - c/ Espartero - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal</p>
+                                <dl class="dl-horizontal">
+                                    <dt>Común:</dt>
+                                    <dd>3,92 km</dd>
+                                    <dt>Ramal 1:</dt>
+                                    <dd>2,70 km</dd>
+                                    <dt>Ramal 2:</dt>
+                                    <dd>1,94 km</dd>
+                                    <dt>Extensión:</dt>
+                                    <dd>1,99 km</dd>
+                                    <dt>Total</dt>
+                                    <dd>10,55 km</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class=" col-md-3 ">
+                            <h4 id="opcion2">Alternativa 2A</h4>
+                            <div class="media card">
+                                <p>Extensión desde la glorieta de Los Enlaces por Ctra. de Madrid (N-IIa) hasta su intersección con Ronda Ibón de Plan + Los Enlaces - Avda. Madrid - c/ Escrivá de Balaguer - Pº María Agustín - Pº Pamplona - Pº Constitución - Pº de la Mina - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal)</p>
+                                <dl class="dl-horizontal">
+                                    <dt>Común:</dt>
+                                    <dd>4,18 km</dd>
+                                    <dt>Ramal 1:</dt>
+                                    <dd>2,70 km</dd>
+                                    <dt>Ramal 2:</dt>
+                                    <dd>1,94 km</dd>
+                                    <dt>Extensión:</dt>
+                                    <dd>1,99 km</dd>
+                                    <dt>Total:</dt>
+                                    <dd>10,81 km</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class=" col-md-3 ">
+                            <h4 id="opcion3">Alternativa 3A</h4>
+                            <div class="media card">
+                                <p>Los Enlaces - Avda. Madrid - c/Rioja - Avda. Navarra - c/ Escrivá de Balaguer - Pº María Agustín - Pº Pamplona - Pº Constitución - Pº de la Mina - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal)</p>
+                                <dl class="dl-horizontal">
+                                    <dt>Común:</dt>
+                                    <dd>4,44 km</dd>
+                                    <dt>Ramal 1:</dt>
+                                    <dd>2,70 km</dd>
+                                    <dt>Ramal 2:</dt>
+                                    <dd>1,94 km</dd>
+                                    <dt>Extensión:</dt>
+                                    <dd>1,99 km</dd>
+                                    <dt>Total:</dt>
+                                    <dd>11,07 km</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class=" col-md-3">
+                            <h4 id="opcion4">Alternativa 4A</h4>
+                            <div class="media card">
+                                <p>Extensión desde la glorieta de Los Enlaces por Ctra. de Madrid (N-IIa) hasta su intersección con Ronda Ibón de Plan+ Los Enlaces - Avda. Madrid - c/Rioja - Avda. Navarra - Avda. Madrid - c/ Conde Aranda - c/ Coso - Pza. España - c/ Coso - Plaza San Miguel - c/ Espartero - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal)</p>
+                                <dl class="dl-horizontal">
+                                    <dt>Común:</dt>
+                                    <dd>4,18 km</dd>
+                                    <dt>Ramal 1:</dt>
+                                    <dd>2,70 km</dd>
+                                    <dt>Ramal 2:</dt>
+                                    <dd>1,94 km</dd>
+                                    <dt>Extensión:</dt>
+                                    <dd>1,99 km </dd>
+                                    <dt>Total:</dt>
+                                    <dd>10,81 km</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                    </div>*/-->
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+                        <tr class="fnd-gris-claro">
+                            <th>Alternativas</th>
+                            <th>Itinerario</th>
+                            <th>Coste de Inversión</th>
+                            <th>Demanda (Viajeros/año)</th>
+                        </tr>
+                        <tr>
+                            <td>Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+                            <td>Extensión desde la glorieta de Los Enlaces por Ctra. de Madrid (N-IIa) hasta su intersección con Ronda Ibón de Plan + Los Enlaces - Avda. Madrid - c/ Conde Aranda - c/ Coso - Pza. España - c/ Coso - Plaza San Miguel - c/ Espartero - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal)</td>
+                            <td>198,60 M €</td>
+                            <td>16.855.143</td>
+                        </tr>
+                        <tr>
+                            <td>Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+                            <td>Extensión desde la glorieta de Los Enlaces por Ctra. de Madrid (N-IIa) hasta su intersección con Ronda Ibón de Plan + Los Enlaces - Avda. Madrid - c/ Escrivá de Balaguer - Pº María Agustín - Pº Pamplona - Pº Constitución - Pº de la Mina - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal)</td>
+                            <td>197,34 M €</td>
+                            <td>18.938.238</td>
+                        </tr>
+                        <tr>
+                            <td>Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+                            <td>Los Enlaces - Avda. Madrid - c/Rioja - Avda. Navarra - c/ Escrivá de Balaguer - Pº María Agustín - Pº Pamplona - Pº Constitución - Pº de la Mina - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal)</td>
+                            <td>200,5 M €</td>
+                            <td>19.610.312</td>
+                        </tr>
+                        <tr>
+                            <td>Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+                            <td>Extensión desde la glorieta de Los Enlaces por Ctra. de Madrid (N-IIa) hasta su intersección con Ronda Ibón de Plan+ Los Enlaces - Avda. Madrid - c/Rioja - Avda. Navarra - Avda. Madrid - c/ Conde Aranda - c/ Coso - Pza. España - c/ Coso - Plaza San Miguel - c/ Espartero - c/Miguel Servet + ramal 1 (c/ Compromiso de Caspe - c/Rodrigo Rebolledo) + ramal 2 (Avda. San José - Pº del Canal)</td>
+                            <td>200,84 M €</td>
+                            <td>17.652.496</td>
+                        </tr>
+                    </table>
+                </div>
+                <h3 id="Valoracion"> Valoración Técnica</h3>
+                <hr class="sm" />
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+                    	<thead>
+	                        <tr class="fnd-gris-claro">
+	                            <th id="alternativa2" rowspan="2">ALTERNATIVA</th>
+	                            <th id="total2" rowspan="2">TOTAL</th>
+	                            <th colspan="4" class="text-center">ASPECTOS</th>
+	                        </tr>
+	                        <tr class="fnd-gris-claro">
+	                            <th id="eco2">Económicos y Socioeconómicos</th>
+	                            <th id="func2">Funcionales</th>
+	                            <th id="integr2">Integración</th>
+	                            <th id="medioamb2">Medioambientales</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <tr>
+	                            <td headers="alternativa2">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+	                            <td headers="total2">51 puntos</td>
+	                            <td headers="eco2">15,8</td>
+	                            <td headers="func2">17,0</td>
+	                            <td headers="integr2">9,5</td>
+	                            <td headers="medioamb2">8,6</td>
+	                        </tr>
+	                        <tr>
+	                            <td headers="alternativa2">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+	                            <td headers="total2">64,8 puntos</td>
+	                            <td headers="eco2">21,6</td>
+	                            <td headers="func2">21,8</td>
+	                            <td headers="integr2">11,4</td>
+	                            <td headers="medioamb2">10,0</td>
+	                        </tr>
+	                        <tr>
+	                            <td headers="alternativa2">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+	                            <td headers="total2">61,7 puntos</td>
+	                            <td headers="eco2">22,6</td>
+	                            <td headers="func2">20,8</td>
+	                            <td headers="integr2">10,1</td>
+	                            <td headers="medioamb2">8,2</td>
+	                        </tr>
+	                        <tr>
+	                            <td headers="alternativa2">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+	                            <td headers="total2">49,0 puntos</td>
+	                            <td headers="eco2">17,9</td>
+	                            <td headers="func2">16,2</td>
+	                            <td headers="integr2">8,2</td>
+	                            <td headers="medioamb2">6,7</td>
+	                        </tr>
+	                    </tbody>
+                    </table>
+                </div>
+                <h3 id="demanda">Demanda</h3>
+                <hr class="sm" />
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+                        <tr class="fnd-gris-claro">
+                            <th id="alternativa3" rowspan="2">Alternativa</th>
+                            <th colspan="4" class="text-center">DEMANDA AÑO 4 (trayectos/año)</th>
+                            <th colspan="2">VIAJEROS TTE. PÚBLICO</th>
+                        </tr>
+                        <tr class="fnd-gris-claro">
+                            <th id="bus">BUS</th>
+                            <th id="privado">PRIVADO</th>
+                            <th id="l1">TRANVÍA L1</th>
+                            <th id="l2">TRANVÍA L2</th>
+                            <th id="viajeros">VIAJEROS/AÑO</th>
+                            <th id="variacion">Variación</th>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa3">Actual</td>
+                            <td headers="bus">89.231.924</td>
+                            <td headers="privado">271.216.778</td>
+                            <td headers="l1">26.848.118</td>
+                            <td headers="l2">0</td>
+                            <td headers="viajeros">107.156.849</td>
+                            <td headers="variacion"></td>
+                        </tr>
+                        <tr>
+                            <th id="altTraz" colspan="7">Alternativas trazado</th>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+                            <td headers="bus">76.945.419</td>
+                            <td headers="privado">266.192.950</td>
+                            <td headers="l1">29.458.464</td>
+                            <td headers="l2">16.855.143</td>
+                            <td headers="viajeros">107.648.056</td>
+                            <td headers="variacion">0,5%</td>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+                            <td headers="bus">73.475.819</td>
+                            <td headers="privado">263.987.994</td>
+                            <td headers="l1">30.848.997</td>
+                            <td headers="l2">18.938.238</td>
+                            <td headers="viajeros">110.130.715</td>
+                            <td headers="variacion">2,8%</td>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+                            <td headers="bus">73.468.226</td>
+                            <td headers="privado">263.430.794</td>
+                            <td headers="l1">30.120.169</td>
+                            <td headers="l2">19.610.312</td>
+                            <td headers="viajeros">110.503.163</td>
+                            <td headers="variacion">3,1%</td>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+                            <td headers="bus">76.875.890</td>
+                            <td headers="privado">265.754.657</td>
+                            <td headers="l1">28.630.390</td>
+                            <td headers="l2">17.652.496</td>
+                            <td headers="viajeros">108.271.775</td>
+                            <td headers="variacion">1,0%</td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="alert" class="alert alert-info">El <strong>número de viajeros en transporte público</strong> se obtiene tras descontar los trasbordos a la suma de trayectos en los distintos modos. </div>
+                <h3 id="recorridos">Recorridos</h3>
+                <hr class="sm" />
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+                        <tr class="fnd-gris-claro">
+                            <th id="alternativa4" rowspan="2">Alternativa</th>
+                            <th colspan="4" class="text-center">RECORRIDOS (km/año)</th>
+                        </tr>
+                        <tr class="fnd-gris-claro">
+                            <th id="bus2">BUS</th>
+                            <th id="privado2">PRIVADO</th>
+                            <th id="l12">TRANVÍA L1</th>
+                            <th id="l22">TRANVÍA L2</th>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa4">Actual</td>
+                            <td headers="bus2">18.464.753</td>
+                            <td headers="privado2">896.751.439</td>
+                            <td headers="l12">1.337.213</td>
+                            <td headers="l22">-</td>
+                        </tr>
+                        <tr>
+                            <th id="altTraz2" colspan="5">Alternativas trazado</th>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz2">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+                            <td headers="bus2">15.194.531</td>
+                            <td headers="privado2">887.671.523</td>
+                            <td headers="l12">1.337.213</td>
+                            <td headers="l22">981.015</td>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz2">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+                            <td headers="bus2">15.031.913</td>
+                            <td headers="privado2">884.678.566</td>
+                            <td headers="l12">1.337.213</td>
+                            <td headers="l22">1.006.306</td>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz2">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+                            <td headers="bus2">15.017.215</td>
+                            <td headers="privado2">887.100.842</td>
+                            <td headers="l12">1.337.213</td>
+                            <td headers="l22">1.041.018</td>
+                        </tr>
+                        <tr>
+                            <td headers="altTraz2">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+                            <td headers="bus2">15.180.842</td>
+                            <td headers="privado2">890.312.127</td>
+                            <td headers="l12">1.337.213</td>
+                            <td headers="l22">1.015.727</td>
+                        </tr>
+                    </table>
+                </div>
+                <h3 id="Construccion">Construcción</h3>
+                <hr class="sm" />
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+                        <tr class="fnd-gris-claro">
+                            <th id="alternativa5" rowspan="2">Alternativa</th>
+                            <th colspan="3" class="text-center">Coste Inversión</th>
+                        </tr>
+                        <tr class="fnd-gris-claro">
+                            <th id="total3">Total coste de inversión (sin IVA)</th>
+                            <th id="explot">Línea en explotación (km)</th>
+                            <th id="invers">Inversión/km (M euros/km)</th>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa5">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+                            <td headers="total3">198.599.166,81 euros </td>
+                            <td headers="explot">10,55</td>
+                            <td headers="invers">18,82</td>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa5">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+                            <td headers="total3">197.337.802,07 euros</td>
+                            <td headers="explot">10,81</td>
+                            <td headers="invers">18,26</td>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa5">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+                            <td headers="total3">200.503.201,91 euros</td>
+                            <td headers="explot">11,07</td>
+                            <td headers="invers">18,11</td>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa5">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+                            <td headers="total3">200.837.579,62 euros</td>
+                            <td headers="explot">10,81</td>
+                            <td headers="invers">18,58</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered margin-t1em">
+                        <tr class="fnd-gris-claro">
+                            <th id="alternativa6" rowspan="3">Alternativa</th>
+                            <th colspan="11" class="text-center">Actuaciones incluidas</th>
+                        </tr>
+                        <tr class="fnd-gris-claro">
+                            <th id="cocheras" rowspan="2">Cocheras</th>
+                            <th id="ext" rowspan="2">Ramal extensión</th>
+                            <th id="aparc" rowspan="2">Aparcamientos disuasorios</th>
+                            <th colspan="7">Obras complementarias</th>
+                        </tr>
+                        <tr class="fnd-gris-claro">
+                            <th id="fleta">Tenor Fleta</th>
+                            <th id="portillo">
+                                <abbr title="Entorno">Ent.</abbr>
+                                <abbr title="Estación"> Est.</abbr> Portillo</th>
+                            <th id="miguel">Pza. San Miguel</th>
+                            <th id="salamero">Pza. Salamero</th>
+                            <th id="augusto">Cesar Augusto</th>
+                            <th id="huerva">Cubrimiento Huerva</th>
+                            <th id="ciclista">Continuidad Ciclista</th>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa6">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+                            <td headers="cocheras">2</td>
+                            <td headers="ext">Sí</td>
+                            <td headers="aparc">2</td>
+                            <td headers="fleta"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="portillo"></td>
+                            <td headers="miguel"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="salamero"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="augusto"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="huerva"></td>
+                            <td headers="ciclista"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa6">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+                            <td headers="cocheras">1</td>
+                            <td headers="ext">Sí</td>
+                            <td headers="aparc">2</td>
+                            <td headers="fleta"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="portillo"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="miguel"></td>
+                            <td headers="salamero"></td>
+                            <td headers="augusto"></td>
+                            <td headers="huerva"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="ciclista"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa6">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+                            <td headers="cocheras">1</td>
+                            <td headers="ext">Sí</td>
+                            <td headers="aparc">2</td>
+                            <td headers="fleta"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="portillo"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="miguel"></td>
+                            <td headers="salamero"></td>
+                            <td headers="augusto"></td>
+                            <td headers="huerva"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="ciclista"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                        </tr>
+                        <tr>
+                            <td headers="alternativa6">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+                            <td headers="cocheras">2</td>
+                            <td headers="ext">Sí</td>
+                            <td headers="aparc">2</td>
+                            <td headers="fleta"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="portillo"></td>
+                            <td headers="miguel"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="salamero"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="augusto"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                            <td headers="huerva"></td>
+                            <td headers="ciclista"><img alt="Si" src="/cont/paginas/img/ok.gif" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <!--/*<table class="table table-condensed table-bordered margin-t1em">
+                        <tr class="fnd-gris-claro"><th rowspan="2">Alternativa</th><th colspan="15">Estimación coste de construcción (Millones de euros, antes de IVA)</th></tr>
+                        <tr class="fnd-gris-claro"><th>Superestructura - Obra Civil tranvía</th><th>Energía - Electrificación</th><th>Sistemas - comunicación</th><th>
+                            Paradas</th><th>Talleres y cocheras</th><th>Total Coste Construcción</th></tr>
+                        <tr><td>Alternativa 1. Avda Madrid - C/ Conde Aranda</td><td>28,29</td><td>12,01</td><td>19,20</td><td>6,17</td><td>29,97</td><td>150,50</td></tr>
+                        <tr><td>Alternativa 2. Avda Madrid - Pº Mª Agustín</td><td>25,85</td><td>11,04</td><td>18,00</td><td>6,17</td><td>26,18</td><td>149,86</td></tr>
+                        <tr><td>Alternativa 3. Avda Navarra - Pº Mª Agustín</td><td>26,85</td><td>11,78</td><td>18,62</td><td>6,43</td><td>26,18</td><td>152,94</td></tr>
+                        <tr><td>Alternativa 4. Avda Navarra - C/ Conde Aranda</td><td>29,02</td><td>12,16</td><td>19,82</td><td>6,43</td><td>29,97</td><td>152,68</td></tr>
+                        <tr class="fnd-turismo"><td>Promedio</td><td>27,50</td><td>11,75</td><td>18,91</td><td>6,30</td><td>28,07</td><td>149,12</td></tr>
+                        </table>
+
+                    <table class="table table-condensed table-bordered margin-t1em">
+                        <tr class="fnd-gris-claro"><th rowspan="2">Alternativa</th><th colspan="15">Estimación coste de construcción (Millones de euros, antes de IVA)</th></tr>
+                        <tr class="fnd-gris-claro"><th>Aparcamientos disuasorios</th><th>Urbanización</th><th>Estructuras</th><th>Servicios afectados</th><th>Obras Complementarias</th><th>Medio Ambiente</th><th>Seguridad y Salud</th><th>Situaciones Provisionales</th><th>Control de Calidad</th><th>Total Coste Construcción</th></tr>
+                        <tr><td>Alternativa 1. Avda Madrid - C/ Conde Aranda</td><td>1,07</td><td>11,87</td><td>1,07</td><td>26,65</td><td>3,14</td><td>5,58</td><td>2,79</td><td>1,30</td><td>1,39</td><td>150,50</td></tr>
+                        <tr><td>Alternativa 2. Avda Madrid - Pº Mª Agustín</td><td>1,07</td><td>11,96</td><td>4,43</td><td>30,61</td><td>3,33</td><td>5,55</td><td>2,77</td><td>1,51</td><td>1,39</td><td>149,86</td></tr>
+                        <tr><td>Alternativa 3. Avda Navarra - Pº Mª Agustín</td><td>1,07</td><td>13,13</td><td>4,43</td><td>29,75</td><td>3,33</td><td>5,66</td><td>2,83</td><td>1,47</td><td>1,42</td><td>152,94</td></tr>
+                        <tr><td>Alternativa 4. Avda Navarra - C/ Conde Aranda</td><td>1,07</td><td>13,04</td><td>1,07</td><td>25,80</td><td>3,14</td><td>5,66</td><td>2,83</td><td>1,26</td><td>1,42</td><td>152,68</td></tr>
+                        <tr class="fnd-turismo"><td>Promedio</td><td>1,07</td><td>12,50</td><td>2,75</td><td>28,20</td><td>3,23</td><td>5,61</td><td>2,81</td><td>1,39</td><td>1,40</td><td>149,12</td></tr>
+                       </table>
+                    <div role="alert" class="alert alert-info"><strong>Total Coste Construcción</strong> incluye los conceptos: Superestructura - Obra Civil tranvía, Energía - Electrificación, Sistemas - comunicación, Paradas,Talleres y cocheras,Aparcamientos disuasorios,Urbanización,Estructuras,Servicios afectados,Obras Complementarias,Medio Ambiente,Seguridad y Salud,Situaciones Provisionales,Control de Calidad</div>*/-->
+                <div class="table-responsive">
+                    <table class="table  table-condensed table-bordered margin-t1em">
+                    	<thead>
+	                        <tr class="fnd-gris-claro">
+	                            <th id="alternativa7" rowspan="2">Alternativa</th>
+	                            <th colspan="5" class="text-center">Estimación de coste de inversión (sin IVA)</th>
+	                        </tr>
+	                        <tr class="fnd-gris-claro">
+	                            <th id="constr">Coste de construcción</th>
+	                            <th id="obras">Dirección de las obras</th>
+	                            <th id="material">Adquisición de material móvil</th>
+	                            <th id="exprop">Expropiaciones</th>
+	                            <th id="total4">Total coste de inversión</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <tr>
+	                            <td headers="alternativa7">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+	                            <td headers="constr">150.498.312,38 € </td>
+	                            <td headers="obras"> 4.063.454,43 € </td>
+	                            <td headers="material"> 37.050.000,00 € </td>
+	                            <td headers="exprop"> 6.987.400,00 € </td>
+	                            <td headers="total4"> 198.599.166,81 € </td>
+	                        </tr>
+	                        <tr>
+	                            <td headers="alternativa7">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+	                            <td headers="constr"> 149.861.735,22 € </td>
+	                            <td headers="obras"> 4.046.266,85 € </td>
+	                            <td headers="material"> 37.050.000,00 € </td>
+	                            <td headers="exprop"> 6.379.800,00 € </td>
+	                            <td headers="total4"> 197.337.802,07 € </td>
+	                        </tr>
+	                        <tr>
+	                            <td headers="alternativa7">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+	                            <td headers="constr"> 152.943.916,18 € </td>
+	                            <td headers="obras"> 4.129.485,74 € </td>
+	                            <td headers="material"> 37.050.000,00 € </td>
+	                            <td headers="exprop">6.379.800,00 € </td>
+	                            <td headers="total4"> 200.503.201,91 € </td>
+	                        </tr>
+	                        <tr>
+	                            <td headers="alternativa7">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+	                            <td headers="constr"> 152.677.876,94 € </td>
+	                            <td headers="obras"> 4.122.302,68 € </td>
+	                            <td headers="material"> 37.050.000,00 € </td>
+	                            <td headers="exprop"> 6.987.400,00 € </td>
+	                            <td headers="total4"> 200.837.579,62 € </td>
+	                        </tr>
+	                    </tbody>
+                    </table>
+                </div>
+                <h3 id="explotacion"> Explotación</h3>
+                <hr class="sm" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-condensed table-bordered margin-t1em">
+                                <caption>EXPLOTACIÓN EN "Y"</caption>
+                                <tr class="fnd-gris-claro">
+                                    <th>Horario</th>
+                                    <th>Tramo común</th>
+                                    <th>Ramales</th>
+                                </tr>
+                                <tr>
+                                    <td>Hora punta</td>
+                                    <td>5 min </td>
+                                    <td>10 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Hora media</td>
+                                    <td>6 min</td>
+                                    <td>12 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Hora valle</td>
+                                    <td>7,5 min</td>
+                                    <td>15 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Hora extra-valle</td>
+                                    <td>10 min</td>
+                                    <td>20 min</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-condensed table-bordered margin-t1em">
+                                <thead>
+	                                <tr class="fnd-gris-claro">
+	                                    <th id="alternativa8" rowspan="2">Alternativa</th>
+	                                    <th>TOTAL COSTE EXPLOTACIÓN</th>
+	                                    <th>RECORRIDO ANUAL</th>
+	                                    <th>COSTE POR KM</th>
+	                                </tr>
+	                                <tr class="fnd-gris-claro">
+	                                    <th id="eur">€/año</th>
+	                                    <th id="km">km/año</th>
+	                                    <th id="eurKm">€/km</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr>
+	                                    <td headers="alternativa8">Alternativa 1. Avda Madrid - C/ Conde Aranda</td>
+	                                    <td headers="eur">9.825.333,23 €</td>
+	                                    <td headers="km">981.015</td>
+	                                    <td headers="eurKm">10,02 €</td>
+	                                </tr>
+	                                <tr>
+	                                    <td headers="alternativa8">Alternativa 2. Avda Madrid - Pº Mª Agustín</td>
+	                                    <td headers="eur">9.682.705,65 €</td>
+	                                    <td headers="km">1.006.306</td>
+	                                    <td headers="eurKm">9,62 €</td>
+	                                </tr>
+	                                <tr>
+	                                    <td headers="alternativa8">Alternativa 3. Avda Navarra - Pº Mª Agustín</td>
+	                                    <td headers="eur">9.816.346,97 €</td>
+	                                    <td headers="km">1.041.018</td>
+	                                    <td headers="eurKm">9,43 €</td>
+	                                </tr>
+	                                <tr>
+	                                    <td headers="alternativa8">Alternativa 4. Avda Navarra - C/ Conde Aranda</td>
+	                                    <td headers="eur">9.958.974,55 €</td>
+	                                    <td headers="km">1.015.727</td>
+	                                    <td headers="eurKm">9,80 €</td>
+	                                </tr>
+	                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div role="alert" class="alert alert-info"><strong>Total Coste Explotación</strong> incluye: Personal, Operaciones mantenimiento, Energía, Otros CD, Asistencia Técnica, Costes indirectos</div>
+                </div>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#doc" aria-expanded="false">Documentación</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="doc">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="lead">
+                            <li><a href="/contenidos/tranvia/FM1854-PRESENTACION-ANALISIS-ALTERNATIVAS_A_16_11_03_ed02_web.pdf" class="pdf">Resumen del Proyecto <span class="oculto">(Documento en formato pdf Tamaño 745 kb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/folleto-tranvia.pdf" class="pdf">Folleto informativo <span class="oculto">(Documento en formato pdf Tamaño 2,1 MB)</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Análisis de Alternativas</h3>
+                        <hr class="sm" />
+                        <ul>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_Memoria_ed02.pdf" class="pdf">Memoria <span class="oculto">(Documento en formato pdf Tamaño 9,8 Mb)</span> </a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_An_I_Demanda.pdf" class="pdf">Estudio de demanda <span class="oculto">(Documento en formato pdf Tamaño 6,6 Mb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_An_II_EstimacionCoste.pdf" class="pdf">Estimación Costes de Producción <span class="oculto">(Documento en formato pdf Tamaño 5,4 Mb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_An_III_Operacion.pdf" class="pdf">Análisis de la Operación <span class="oculto">(Documento en formato pdf Tamaño 1,6 Mb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_An_IV_AnalisisAmbiental.pdf" class="pdf">Análisis Ambiental<span class="oculto">(Documento en formato pdf Tamaño 12,3 Mb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_An_VII_Multicriterio.pdf" class="pdf">Matriz Multicriterio <span class="oculto">(Documento en formato pdf Tamaño 1,4 Mb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_An_V_Integracion.pdf" class="pdf">Integración Urbana <span class="oculto">(Documento en formato pdf Tamaño 400 Kb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_An_VI_Rentabilidad_eco_fin.pdf" class="pdf">Rentabilidad Económica y Financiera <span class="oculto">(Documento en formato pdf Tamaño 1,1 Mb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-161103_AN_ALT_Adenda_01" class="pdf">Adenda<span class="oculto">(Documento en formato pdf Tamaño 1 Mb)</span></a></li>
+                            <li><a href="/contenidos/tranvia/FM1854-B3-IN-160527_AN_ALT_Planos.pdf" class="pdf">Planos<span class="oculto">(Documento en formato pdf Tamaño 1 Mb)</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <h2 class="tab-title" data-toggle="collapse" data-target="#ante" aria-expanded="false">Antecedentes</h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="ante">
+                <h3>Plan de Movilidad Sostenible</h3>
+                <hr class="sm" />
+                <p>Como en otras muchas ciudades españolas y europeas, Zaragoza se plantea cambiar su modelo de movilidad hacia un sistema más sostenible.</p>
+                <p>En el año 2006 se elabora el <a href="/ciudad/movilidad/">Plan de Movilidad Sostenible de Zaragoza (Plan Intermodal de Transporte)</a>, vigente hasta la fecha. El plan propone la creación de una nueva red urbana con un moderno tranvía-metro ligero que permita atender los flujos más importantes de la demanda de la ciudad</p>
+                <p>En el Plan de Movilidad Sostenible se recomienda que, dada la configuración de la ciudad, se introduzca un nuevo eje Este-Oeste transversal que complemente y refuerce al ya existente Norte-Sur.</p>
+                <div class="linea separador">&#160;</div>
+                <h3>Línea 1</h3>
+                <hr class="sm" />
+                <p>En el año 2013 se pone en servicio la totalidad de la Línea 1 del Tranvía de Zaragoza que recorre la ciudad de Norte a Sur uniendo los barrios de Parque Goya y Valdespartera.</p>
+                <a title="Enlace Exterior" href="http://www.tranviasdezaragoza.es/">http://www.tranviasdezaragoza.es/</a>
+                <div class="linea separador">&#160;</div>
+                <h3 id="pre">Estudio Preliminar para la línea 2 del tranvía de Zaragoza (año 2013)</h3>
+                <hr class="sm" />
+                <p>A finales de junio de 2013, el equipo de Gobierno presentó un <a href="/ciudad/viapublica/movilidad/tranvia/linea2tranvia.htm">estudio preliminar de la Línea 2 del Tranvía de Zaragoza, Este-Oeste</a>.</p>
+                <p>Dicho borrador, elaborado por técnicos municipales, tenía como objetivo servir de orientación para realizar los posteriores y necesarios estudios de viabilidad, anteproyecto y proyecto de referencia del trazado completo de la hipotética futura línea.</p>
+                <p>En este estudio preliminar se ponía de relevancia el interés por buscar la mejor solución para dar un transporte público de calidad y capacidad, sostenible y accesible, a zonas muy populosas de Zaragoza, desde Delicias a Las Fuentes o San José, pasando por el Centro.</p>
+                <p>No obstante, el borrador dejaba abiertas las distintas opciones a analizar, en todos los ámbitos posibles, en un proyecto de ciudad de tal envergadura. Opciones que deberían tratarse, más adelante, en ese completo Estudio de Viabilidad, Anteproyecto y Proyecto al que se hacía referencia.</p>
+                <h3> Estudio 2015/2017</h3>
+                <hr class="sm" />
+                <h4>Concurso Público</h4>
+                <p>El Ayuntamiento de Zaragoza realizó un <a href="/ciudad/encasa/contrato_Avisos?id=1306">concurso público para la redacción del Estudio de viabilidad, anteproyecto, proyecto constructivo de referencia, documentación ambiental, plan de explotación y programa económico de una línea Este-Oeste en Zaragoza</a>. </p>
+                <p>El presupuesto base de la licitación era de 1.363.636,36 euros (I.V.A. excluido); 1.650.000,00 euros (I.V.A. incluido)</p>
+                <p>La oferta ganadora fue la presentada por la UTE formada por IDOM y TYPSA con una <strong>oferta económica de 883.130,58  euros (I.V.A. excluido), 1.068.588,00 euros  (I.V.A. incluido)</strong>.</p>
+                <p role="alert" class="alert alert-info">Los trabajos de asistencia técnica y consultoría a realizar tienen una <strong>duración de unos 2 años</strong> y comenzaron el 7 de abril de 2015.</p>
+                <p>Una vez cumplidos todos los plazos y requisitos administrativos que requiere una licitación de este tipo, y tras una serie de trabajos y preparativos previos, la UTE IDOM-TYPSA arranca en la primera semana de julio su labor pública en contacto con distintos colectivos ciudadanos. Estas acciones forman parte de las premisas establecidas en el concurso, según las cuales la<strong> PARTICIPACIÓN CIUDADANA</strong> será elemento imprescindible y determinante a la hora de elaborar el estudio y extraer sus conclusiones en el <strong>documento final</strong>, que deberá estar <strong>listo 25 meses después de la firma del contrato, es decir, en el primer semestre de 2017</strong>.</p>
+                <p>El proceso de Participación Ciudadana que ahora arranca servirá para conocer la opinión de los vecinos sobre las diferentes alternativas de trazado, contemplando las diferentes opiniones y aportaciones no sólo de los vecinos en general, sino también, cómo no, del movimiento vecinal y el tejido asociativo.</p>
+                <h4>Estudio de Viabilidad</h4>
+                <p>La fase actual de desarrollo de los trabajos corresponde a la denominada ESTUDIO DE VIABILIDAD, que incluye las siguientes tareas:</p>
+                <ul>
+                    <li><strong>Definición</strong> de posibles itinerarios de la línea 2 del tranvía de Zaragoza: análisis de alternativas de trazado y su integración urbana y medioambiental.</li>
+                    <li><strong>Evaluación y comparación</strong> de cada una de las alternativas desarrolladas mediante un análisis de rentabilidad económico-social y un análisis multicriterio que contemplará, al menos, los siguientes aspectos: demanda, costes de construcción y explotación, integración urbana, impactos ambientales, impactos sobre el resto de sistemas de transporte e impactos durante la fase de ejecución de las obras.</li>
+                    <li>En base a dicha evaluación y comparación se efectuará una <strong>propuesta de alternativa seleccionada</strong>.</li>
+                </ul>
+                <p role="alert" class="alert alert-info">El proceso culminará con la <strong>elaboración de un documento que será sometido a información pública</strong></p>
+                <h3 id="participacion">Participación Ciudadana</h3>
+                <hr class="sm" />
+                <h4>Resumen de las propuestas y sugerencias recibidas vía Web Municipal y correo</h4>
+                <h5>1. Introducción</h5>
+                <p>Los principales resultados del proceso de participación abierto tras las jornadas celebradas durante la primera semana del mes de julio, a las que asistieron representantes de diferentes colectivos ciudadanos y entidades sociales de Zaragoza. </p>
+                <p>Incluye las aportaciones recibidas a través del correo electrónico <a href="mailto:linea2tranvia@zaragoza.es">linea2tranvia@zaragoza.es</a>, el formulario abierto para la recepción de sugerencias en la web municipal y otras vías. </p>
+                <div role="alert" class="alert alert-info">A fecha 6 de septiembre de 2015 se han recibido 94 sugerencias a través del correo electrónico y la web municipal y 3 sugerencias a través de otros medios.</div> <img alt="Los resultados de las propuestas son: Tranvía no/otros medios (14%), recorridos (49%), comentarios generales sobre trazados (18%), participación ciudadana (6%), diseño y construcción (10%), otros temas (3%)." src="/cont/paginas/viapublica/movilidad/tranvia/img/resultados.jpg" class="img-ficha" />
+                <h5>2. Propuestas recibidas vía web municipal y correo electrónico municipal</h5>
+                <p>Se han recibido un total de 94 propuestas.</p>
+                <p>En una primera aproximación se han agrupado todos los correos por temas con el objetivo de facilitar el posterior proceso de respuesta y tratamiento de las mismas:</p>
+                <ul>
+                    <li>Tranvía no / otros medios frente a tranvía (13)</li>
+                    <li>Recorridos (46)</li>
+                    <li>Comentarios generales sobre trazados (17)</li>
+                    <li>Participación Ciudadana (6)</li>
+                    <li>Diseño y Construcción (9)</li>
+                    <li>Otros temas (3)</li>
+                </ul>
+                <h5>2.1. Tranvía No / Otros Medios frente a Tranvía (13)</h5>
+                <p>La negativa en torno a este tipo de transporte público se genera en torno a las siguientes cuestiones:</p>
+                <ul>
+                    <li>Coste económico</li>
+                    <li>Buscar alternativas</li>
+                    <li>Mejorar autobuses o cambiarlos por eléctricos</li>
+                    <li>Afecciones al tráfico y al comercio</li>
+                </ul>
+                <h5>2.2. Recorridos (46)</h5>
+                <p>En este apartado se han ordenado los correos recibidos por sugerencias y propuestas en torno a diferentes áreas de la ciudad:</p>
+                <ul>
+                    <li>Av. Madrid - Av. Navarra (9)</li>
+                    <li>Las Fuentes - San José (12)</li>
+                    <li>Miralbueno - Oliver - Valdefierro (14)</li>
+                    <li>Zona Estación Delicias (3) </li>
+                    <li>Torrero (4)</li>
+                    <li>Arcosur-Feria de Muestras (2)</li>
+                    <li>Santa Isabel (2)</li>
+                </ul>
+                <p>No se ha recibido ninguna propuesta o comentario centrado en la zona del Casco Histórico de la ciudad. </p>
+                <h5>2.1.1. Avenida de Madrid y Avenida de Navarra (9)</h5>
+                <p>Seis de los ocho ciudadanos que se refieren al paso del tranvía por la Avenida de Madrid o por la Avenida de Navarra proponen que sea por esta última. </p>
+                <p>Además hay preocupación por el tráfico de vehículos si éstos no pueden pasar por la Avenida de Madrid.</p>
+                <p>Una de las propuestas solicita consulta-votación popular sobre el trazado en Delicias</p>
+                <h5>2.1.2. Las Fuentes - San José (12)</h5>
+                <p>En este apartado, los participantes hacen llegar diferentes propuestas y recorridos por distintas calles de estos barrios, por lo que es necesario analizar detenidamente cada uno de ellos. A modo de resumen se pueden mencionar algunos:</p>
+                <ul>
+                    <li>- Miguel Servet / Cesáreo Alierta</li>
+                    <li>- Rodrigo Rebolledo / Compromiso de Caspe</li>
+                    <li>- Llegar a Honorio García Condoy</li>
+                    <li>- Camino de las Torres / Jorge Cocci</li>
+                    <li>- Recuperar el recorrido de la línea 30 y llevar así el tranvía por esas calles</li>
+                    <li>- Unión de líneas en Plaza de España conectando así Las Fuentes-Actur</li>
+                    <li>- Avenida San José</li>
+                    <li>- Príncipe Felipe</li>
+                </ul>
+                <h5>2.1.3. Miralbueno - Oliver - Valdefierro (14)</h5>
+                <p>Las propuestas recibidas solicitan que el tranvía llegue hasta estos barrios de Zaragoza. Además, incluyen referencias para la llegada hasta la zona de Alcampo, parkíngs disuarios, carril-bici...</p>
+                <h5>2.1.4. Zona Estación Delicias - Oeste (3)</h5>
+                <p>Los vecinos piden llegar a la Estación de Delicias, también estudiar la posibilidad de pasar por la calle Rioja, por Vía Hispanidad y por el Centro Comercial Augusta. </p>
+                <h5>2.1.5. Torrero (4)</h5>
+                <p>Proponen que se tenga en cuenta a este barrio y que llegue el tranvía. Dicen sentirse ignorados tanto para el carril-bici como por el hecho de que la flota de autobuses de la zona sea muy vieja.</p>
+                <p>Se plantea posible conexión con Cementerio de Torrero y Puerto Venecia.</p>
+                <h5>2.1.6. Arcosur - Feria de Muestras - Plaza (2)</h5>
+                <p>Reclaman la línea del tranvía a esta parte de la ciudad y llegar al aeropuerto. </p>
+                <h5>2.1.7. Santa Isabel (2)</h5>
+                <p>Solicitan que el tranvía llegue hasta este barrio y lamentan el aislamiento por la falta de autobuses.</p>
+                <h4>2.3. Comentarios sobre trazados (17)</h4>
+                <p>Este apartado hace referencia a diferentes propuestas generales con distintos recorridos. En muchos casos, los ciudadanos incluyen informes elaborados por ellos mismos donde detallan y argumentan sus peticiones. </p>
+                <p>Algunas referencias recogidas en este grupo:</p>
+                <ul>
+                    <li>Paso por el barrio de La Almozara y Echegaray Caballero</li>
+                    <li>Paseo del Canal</li>
+                    <li>San Miguel</li>
+                    <li>Paseo de Sagasta / Cuéllar</li>
+                    <li>Utilizar el túnel de la A68 </li>
+                    <li>Utilizar la línea de Cercanías</li>
+                    <li>Líneas adicionales</li>
+                </ul>
+                <h4>2.4. Participación Ciudadana (6)</h4>
+                <ul>
+                    <li>Debate ciudadano sobre la necesidad del tranvía </li>
+                    <li>Votación online desde ordenadores en Juntas de Distrito</li>
+                    <li>Junta de Cofradías solicita su participación en el proceso ciudadano</li>
+                    <li>Referéndum para saber si el ciudadano está de acuerdo con el proyecto</li>
+                    <li>Información previa</li>
+                </ul>
+                <h4>2.5. Diseño y Construcción (9)</h4>
+                <p>Se recogen aquellos correos electrónicos en los que los ciudadanos sugieren cuestiones relacionadas con una fase posterior del proyecto:</p>
+                <ul>
+                    <li>Materiales sencillos y económicos</li>
+                    <li>No talar árboles; incorporar más vegetación</li>
+                    <li>Evitar el uso del sistema ACR en Conde de Aranda</li>
+                    <li>Número de vagones y disposición de los asientos más adecuada</li>
+                    <li>Soterramiento de infraestructuras en Paseo de Pamplona y Paseo María Agustín</li>
+                    <li>Soterramiento en Avenida de Madrid o Conde Aranda</li>
+                    <li>Catenaria si/no</li>
+                    <li>Tranvía sobre plataforma</li>
+                    <li>Evitar diferencia de niveles, elementos fijos</li>
+                </ul>
+                <h4>2.6. Otros temas (3)</h4>
+                <p>Se agrupan en este apartado aquellos correos recibidos que abordan varios temas en un único envío o que no se podían encajar en el resto de apartados creados:</p>
+                <ul>
+                    <li>Tener en cuenta subvenciones para programas de infraestructuras ferroviarias</li>
+                    <li>Un ciudadano remite un cuestionario con varias preguntas:
+                        <ul>
+                            <li>Tranvía si/no</li>
+                            <li>Modificación líneas de autobús</li>
+                            <li>Ventajas y afecciones</li>
+                            <li>Datos comparativos trambus/tranvía</li>
+                            <li>Sesiones de participación ciudadana, algunas dudas</li>
+                        </ul>
+                    </li>
+                    <li>Pago de los ciudadanos si tienen que reforzar las fachadas dañadas por las obras.</li>
+                </ul>
+                <h4>I Jornadas informativas y participativas</h4>
+                <p>Entre el <strong>6 y el 8 de julio de 2015</strong> se realizaron <strong>5 sesiones</strong> a las que se invitó a representantes de <strong>124 entidades, de las que finalmente acudieron 60 (48%), además de 16 periodistas</strong> para la sesión específica con medios de comunicación:</p> <img alt="" src="/cont/paginas/viapublica/movilidad/tranvia/img/jornadas.jpg" />
+                <p>Tras la celebración de las jornadas, se han recibido las siguientes sugerencias:</p>
+                <h4>Federación de Empresarios de Hostelería de Zaragoza (HORECA)</h4>
+                <p>La Asociación remitió vía correo electrónico directo de la UTE Consultora un resumen de los argumentos expuestos en la 1&#170; Jornada celebrada, así como un informe referente a las afecciones del tranvía durante la ejecución de las obras de fase 2 de la línea 1.</p>
+                <h4>Asociación de Vecinos de Delicias Manuel Viola</h4>
+                <p>La Asociación de Vecinos Manuel Viola ha proporcionado al Equipo Municipal la presentación efectuada por Javier Peña Gonzalvo (Arquitecto Urbanista) en las Jornadas del Foro de la Movilidad Celebradas en junio de 2014, recogiendo diversas propuestas de trazados y soluciones de integración para la línea 2 del tranvía (y otras líneas adicionales).</p>
+                <h4>Asociación Provincial de Autotaxi</h4>
+                <p>En enero de 2015, la Asociación Provincial de Autotaxi remitió a la UTE Consultora una carta expresando diversas solicitudes de aspectos a tener en consideración en el estudio de línea 2, además de un estudio sobre el impacto de la nueva movilidad urbana presentado en la Jornada de Movilidad Urbana celebrada en noviembre de 2014.</p>
+                <p>En la 1&#170; Jornada de Divulgación celebrada el Consultor confirmó la recepción del documento, por lo que la Asociación no procedió a remitirlo de nuevo dentro del proceso de participación abierto.</p>
+                <p>La mayoría de las asociaciones a día de hoy todavía no tienen un posicionamiento claro en torno al proyecto. Con un objeto meramente analítico, y teniendo en cuenta de que este dato no es totalmente representativo y que las posiciones pueden cambiar conforme avance el estudio, el posicionamiento de partida de las entidades en torno a la Línea 2 del tranvía:</p>
+            </div>
+            <!-- <div class="row">
+                        <div class=" col-md-6">
+                            <div class="card">
+                                <h4><span class="fa fa-chart-bar" aria-hidden="true"></span> Resultados</h4>
+                                <hr class="sm"/>
+                                <div id="chart_div"></div>
+                            </div>
+                        </div>
+                    </div> -->
+            <!--/* <h2 class="tab-title" data-toggle="collapse" data-target="#agenda" aria-expanded="false">Agenda</h2>
+                <div role="tabpanel" sede:class="tab-pane active" id="agenda">
+                    <h3>1. Sesiones informativas realizadas</h3>
+                    <strong>Sesiones Informativas en Centros Cívicos</strong><em>(Información y debate en Horario de 19 a 21 horas)</em>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>11/11/16:</strong> Salón de Actos Centro Cívico Valdefierro </li>
+                                <li><strong>14/11/16:</strong> Salón de Actos Centro Cívico Oliver </li>
+                                <li><strong>15/11/16:</strong> Salón de Actos Centro de Historia </li>
+                                <li><strong>21/11/16:</strong> Salón de Actos Centro Cívico Salvador Allende </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>24/11/16:</strong> Sala de Cine o Rotonda del Centro Cívico Delicias </li>
+                                <li><strong>25/11/16:</strong> Salón de Actos Centro Convivencia de Mayores Pedro Laín Entralgo</li>
+                                <li><strong>29/11/16:</strong> Salón de Actos Centro Cívico Teodoro Sanchez Punter</li>
+                                <li><strong>01/12/16:</strong> Salón de Actos Centro Cívico Estación del Norte</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>*/-->
+        </div>
+    </sede:content>
+</body>
+
+</html>

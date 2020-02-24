@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="API Zaragoza. Datos abiertos" 
+              description="En la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, Datos Abiertos de Zaragoza publica desde 2008 información pública del Ayuntamiento de Zaragoza en formatos abiertos para favorecer su reutilización. Servicios: Catálogo de conjunto de datos basado en DCAT y normas técnicas de interoperabilidad (NTI), SPARQL y API Zaragoza. Reconocimientos: Nivel 5 estrellas por el Open Data - Linked Data (2010), Premio Buenas Prácticas y Premio Categoría Usabilidad a IDEZar en EUROGI/eSDI-Net (2011), Mejor iniciativa pública Open Data por OKFN (2014) y Premio ASEDIE (2014)." 
+              keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, datos abiertos, derecho a reutilizar información, sector público, catálogo de datos, conjunto de datos, DCAT, Norma Técnica de Interoperabilidad, NTI, SPARQL, API Zaragoza, IDEZar, urbanismo, infraestructuras, transportes, medio ambiente, sociedad y bienestar, economía, hacienda local, cultura, ocio, ciencia y tecnología, demografía, turismo, deporte, seguridad pública, comercio, educación, empleo, salud, legislación local, justicia, city, council, Saragossa, electronic site, local government,open government, citizen-authority relation, open data, right to reuse information, public sector, dataset, RISP, technical interoperability standards, town planning, infrastructure, transport, environment, society and welfare, economics, local authority finances, culture, leisure, science and technology, demography, tourism, sports, public safety, trade, education, employment, health, local legislation, justice"
+              
+ />
+    <style type="text/css">
+        body {
+            padding-top: 57px;
+        }
+        #div-catalogo{
+            overflow-y: auto;
+            height: 300px;
+        }
+        li.L0, li.L1, li.L2, li.L3,
+        li.L5, li.L6, li.L7, li.L8 {
+          list-style-type: decimal !important;
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content container="false">
+        
+    <div class="fnd-gris-claro">
+        <div class="container-fluid text-center padding-a2em lead margin-auto margin-b1em">
+            <h2>API REST Zaragoza (v2)</h2>
+            La API REST Zaragoza es un servicio pensado para reutilizadores que pone a su disposición los diferentes conjuntos de datos que publica el Ayuntamiento de Zaragoza. Ofrece diferentes formatos y operaciones para la consulta de los mismos. Incluye el API de Catálogo y el API de datos.
+            <br/>
+            <a class="btn btn-primary btn-large" href="https://www.zaragoza.es/docs-api_sede/">Acceso a la API REST</a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div role="alert" class="alert alert-info clearfix">
+            <p>La versión actual de la API REST del Ayuntamiento de Zaragoza es la <strong>versión 2</strong>. La anterior versión seguirá estando disponible pero no recibirá nuevas actualizaciones.</p>
+            <!-- <p>Consulta nuestra <a href="#">guía de migración a la versión 2</a>.</p> -->
+        </div>
+        <h3>Primeros pasos</h3>
+        <ul class="list-unstyled">
+            <li>
+                <span class="far fa-hand-point-right" aria-hidden="true"></span> Darse de alta en el servicio. Este alta es opcional pero tiene una serie de ventajas que se describen a continuación:
+                <ul>
+                    <li>Podrá dar de alta las urls que está utilizando para que nos podamos poner en contacto con usted antes de realizar modificaciones y conozcamos sus implicaciones.</li>
+                    <li>Dar de alta las aplicaciones que desarrolla utilizando nuestros datos. Aparecerán publicadas en el <a href="/sede/servicio/aplicacion/">Catálogo de aplicaciones</a>.</li>
+                    <li>Modificar sus datos de usuario/usuaria, así como obtener su <code>apikey</code> en caso de que la necesite haciendo click en <em>Modificar datos</em>.</li>
+                    <li>Recibir Novedades y nuevos conjuntos de datos públicados.</li>
+                </ul>
+                
+            </li>
+            <li><span class="far fa-hand-point-right" aria-hidden="true"></span> Consultar los diferentes <a href="/sede/portal/datos-abiertos/formatos">formatos</a> en los que publicamos los conjuntos de datos.</li>
+            <li><span class="far fa-hand-point-right" aria-hidden="true"></span> Acceder a nuestro <a href="/sede/portal/datos-abiertos/servicio/catalogo/">Catálogo de Datos Abiertos</a> y buscar el conjunto de datos que le interese.</li>
+            <li><span class="far fa-hand-point-right" aria-hidden="true"></span> <a href="/docs-api_sede">Acceder a la API REST</a> a través servicio interactivo <strong>Swagger</strong> y realice consultas de prueba de los diferentes conjuntos de datos directamente sobre la misma.</li>
+            <li><span class="far fa-hand-point-right" aria-hidden="true"></span> Consultar varios <a href="https://zaragoza-sedeelectronica.github.io/rest/queries/">ejemplos en nuestro Github</a>.</li>
+        </ul>
+
+        <h3>¿Qué es Swagger?</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <p><a href="http://swagger.io/">Swagger</a> es una herramienta web para describir, producir, consumir y visualizar servicios REST.
+                <br/>Su ventajas son la actualización de la documentación del sistema conforme se actualice el servicio, de modo que la documentación de los métodos, parámetros y modelo esté integrada en el código del servicio permitiendo que las APIs estén siempre sincronizadas. Y su facilidad de uso.</p>
+                <!--<p>Dicha especificación se compone de dos partes:</p>
+                <ul>
+                    <li>Resource Listing: devuelve un listado con todas las APIs a documentar/probar.</li>
+                    <li>API Declaration: devuelve la información relativa a un API, como sus operaciones o el modelo de datos.</li>
+                </ul>-->
+                <p>Con este servicio se pretende ofrecer interacción directa con nuestra API y los diferentes conjuntos de datos a través de una interfaz amigable.</p>    
+            </div>
+            <div class="col-md-4">
+                <img src="//www.zaragoza.es/cont/paginas/risp/img/api.jpg" alt="" class="img-responsive" />
+                
+            </div>
+        </div>
+        
+        <h3>Interacción y operaciones de la API REST Zaragoza</h3>
+        <p>Se puede consultar:</p>
+        <ul>
+            <li>
+                <strong>Descripci&#243;n</strong> sobre la operaci&#243;n.
+            </li>
+            <li>
+                <strong>Formatos</strong> de respuesta.
+            </li>
+            <li>
+                <strong>Parámetros</strong> a utilizar.
+            </li>
+            <li>
+                <strong>Códigos HTTP</strong> de respuesta.
+            </li>
+            <li>
+                <strong>Pruebas</strong> Se pueden ejecutar operaciones mostr&#225;ndose el resultado.
+            </li>
+        </ul>
+
+        <h4>Formatos de respuesta</h4>
+        <p id="formrespuesta">Los conjuntos de datos públicados en la API REST Zaragoza pueden obtenerse en diferentes <a href="/sede/portal/datos-abiertos/formatos">formatos</a>.</p>
+                <p>Si se accede a un recurso de la API a través del navegador y este tiene asociada una visualización en HTML se redirigirá a dicha visualización.</p>
+        <p>Hay dos opciones para indicar el tipo de respuesta que se desea:</p>
+        <ul>
+            <li>Mediante el parametro <em>'Accept'</em> en los headers de la petición:
+                <br/> Ejemplo: <code>Accept:application/rdf+xml</code></li>
+            <li>Indicando el formato mediante su extensión en la petición:
+                <br/> Ejemplo: <code>https://www.zaragoza.es/sede/servicio//turismo/restaurante.rdf</code></li>
+        </ul>
+        <table class="table table-striped table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th>Formato</th>
+                    <th>Header 'Accept'</th>
+                    <th>Extensión de formato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>JSON</td>
+                    <td>application/json</td>
+                    <td>.json</td>
+                </tr>
+                <tr>
+                    <td>GeoJSON</td>
+                    <td>application/geo+json</td>
+                    <td>.geojson</td>
+                </tr>
+                <tr>
+                    <td>XML</td>
+                    <td>application/xml</td>
+                    <td>.xml</td>
+                </tr>
+                <tr>
+                    <td>CSV</td>
+                    <td>text/csv</td>
+                    <td>.csv</td>
+                </tr>
+                <tr>
+                    <td>JSONLD</td>
+                    <td>application/ld+json</td>
+                    <td>.JSONLD</td>
+                </tr>
+                <tr>
+                    <td>RDF</td>
+                    <td>application/rdf+xml</td>
+                    <td>.rdf</td>
+                </tr>
+                <tr>
+                    <td>Turtle</td>
+                    <td>application/x-turtle</td>
+                    <td>.turtle</td>
+                </tr>
+                <tr>
+                    <td>N3</td>
+                    <td>application/rdf+n3</td>
+                    <td>.n3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Párametros API</h4>
+        <p>La API ofrece una serie de párametros para personalizar la petición obteniendo mejores resultados:</p>
+        <table class="table table-striped table-condensed table-bordered">
+            <thead>
+                <th>Parámetro</th>
+                <th>Descripción</th>
+            </thead>
+            <tr>
+                <td><code>fl</code></td>
+                <td>Listado de atributos separados por comas que se desea obtener en la respuesta.
+                    </td>
+            </tr>
+            <tr>
+                <td><code>srsname</code></td>
+                <td>Sistema de referencia preferido para obtener las coordenadas de geolocalización:
+                    <ul>
+                        <li><em>utm30</em> (por defecto)</li>
+                        <li><em>wsg84</em> (sistema utilizado por Google)</li>
+                        <li><em>etrs89</em></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><code>start</code></td>
+                <td>Posicion del primer registro que se obtendra a partir del total de registros <em>totalCount</em> de la petición.</td>
+            </tr>
+            <tr>
+                <td><code>rows</code></td>
+                <td>Número de filas/registros que se obtendrán de la petición.</td>
+            </tr>
+            <tr>
+                <td><code>sort</code></td>
+                <td>Ordenación ascendente <em>asc</em> o descentente <em>desc</em> de los registros obtenidos a partir del atributo dado previamente.</td>
+            </tr>
+            <tr>
+                <td><code>q</code></td>
+                <td>Consulta mediante <a href="http://tools.ietf.org/pdf/draft-nottingham-atompub-fiql-00.pdf">FIQL</a> para permitir filtros y condiciones en las consultas utilizando una sintaxis con URIs amigables.</td>
+            </tr>
+            <tr>
+                <td><code>point</code></td>
+                <td>Punto (coordenadas) a partir del cual se desea obtener los registros de forma circunferencial a dicho punto mediante una distancia dada. Por defecto 500 metros.</td>
+            </tr>
+            <tr>
+                <td><code>distance</code></td>
+                <td>Distancia (en metros) a la que se encuentran los resultados obtenidos a través de paramétro <code>point</code>. Por defecto 500 metros.</td>
+            </tr>
+        </table>
+        <h5>Ejemplo de petición con parámetros API</h5>
+        <p><strong>Consulta: </strong>Nombre y teléfono de los 5 restaurantes más cercanos a las coordenadas wsg84 de la Basílica de Ntra. Sra. del Pilar en un radio de 250 metros en formato json y ordenados de forma descendente por el nombre.</p>
+        <pre><span class="label label-primary">GET</span> <a href="https://www.zaragoza.es/sede/servicio/restaurante.json?fl=title,tel&amp;srsname=wgs84&amp;rows=5&amp;sort=title%20desc&amp;q=title==A*&amp;point=-0.878516,41.656772&amp;distance=250">https://www.zaragoza.es/sede/servicio/restaurante.json?fl=title,tel&amp;srsname=wgs84&amp;rows=5&amp;sort=title%20desc&amp;q=title==A*&amp;point=-0.878516,41.656772&amp;distance=250</a></pre>
+        <div role="alert" class="alert alert-info">
+            Puedes consultar otros ejemplos desde nuestro <a href="https://zaragoza-sedeelectronica.github.io/rest/queries/">repositorio de GitHub</a>.
+        </div>
+
+        <h4>Códigos HTTP de Respuesta</h4>
+        <table class="table table-striped table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th class="span2">HTTP Status Code</th>
+                    <th class="span10">Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center"><code>200</code></td>
+                    <td>Operación realizada correctamente</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><code>304</code></td>
+                    <td>Registro no modificado desde la última petición, soporte ETAG/If-None-Match y Last_Modified/If-Modified-Since</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><code>404</code></td>
+                    <td>En la respuesta se obtiene una descripción del error</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><code>400</code></td>
+                    <td>En la respuesta se obtiene una descripción del error</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><code>500</code></td>
+                    <td>Error en la petición</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>API de Catálogo de conjuntos de datos</h3>
+        <p>Acceso a la API de catálogo que describe los conjuntos de datos que configuran el mismo:</p>
+        <p><span class="label label-primary">GET</span> <a href="https://www.zaragoza.es/sede/servicio/catalogo/api.json">https://www.zaragoza.es/sede/servicio/catalogo/api.json</a></p>
+        <div id="div-catalogo"></div>
+
+        <h3>Ejemplos de peticiones</h3>
+        <p>Vistos los formatos soportados, los diferentes conjuntos de datos, códigos de respuesta y atributos normalizados pasamos a visualizar un par de ejemplos en los que se realiza una petición de listado de registros y otra del detalle de uno concreto con sus respuestas. En nuestro repositorio de github <a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/tree/master/api">zaragoza-sedeelectronica</a> se pueden encontrar ejemplos más complejos tanto de peticiones como de ejemplos HTML.</p>
+        <h4>Ejemplo de listado</h4>
+        <p><strong>Consulta: </strong>Listado de 100 monumentos con las propiedades: <code>title</code>, <code>horario</code> y <code>geometry</code> (coordenadas en utm30) en JSON y XML.</p>
+        <p><span class="label label-primary">GET</span> <a href="https://www.zaragoza.es/sede/servicio/monumento.json?rows=100&amp;fl=title,horario,geometry">https://www.zaragoza.es/sede/servicio/monumento.[json,xml]?rows=100&amp;fl=title,horario,geometry</a></p>
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist">
+            <li role="presentation">
+                <a href="#list-json" aria-controls="list-json" role="tab" data-toggle="tab"><abbr title="Lenguaje de Intercambio de Datos" class="risp-json">JSON</abbr></a>
+            </li>
+            <li role="presentation">
+                <a href="#list-xml" aria-controls="list-xml" role="tab" data-toggle="tab"><abbr title="Lenguaje de Marcado Extensible" class="risp-xml">XML</abbr></a>
+            </li>
+        </ul>
+        <div sede:class="tab-content">
+            <p class="tab-title" data-toggle="collapse" data-target="#list-json" aria-expanded="false"><abbr title="Lenguaje de Intercambio de Datos" class="risp-json">JSON</abbr></p>
+            <div role="tabpanel" sede:class="tab-pane active" id="list-json">
+<pre class="prettyprint linenums language-js">
+{
+    "totalCount": 175,
+    "start": 0,
+    "rows": 100,
+    "result": [{
+            "title": "Museo del Foro de Caesaraugusta",
+            "horario": "Cerrado hasta nuevo aviso. [...]",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [676934.75, 4613880.67]
+            }
+        }, {
+            "title": "Centro de Historias de Zaragoza. Antiguo Convento de San Agustín",
+            "horario": "Martes a sábado de 10 a 14h y 17 a 21h [...]",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [677408.53, 4613410.17]
+            }
+        },
+        ...
+    ]
+}
+</pre>
+            </div>
+            <p class="tab-title" data-toggle="collapse" data-target="#list-xml" aria-expanded="false"><abbr title="Lenguaje de Marcado Extensible" class="risp-xml">XML</abbr></p>
+            <div role="tabpanel" sede:class="tab-pane active" id="list-xml">
+<pre class="prettyprint linenums language-xml">
+&lt;resultado&gt;
+    &lt;totalCount&gt;175&lt;/totalCount&gt;
+    &lt;start&gt;0&lt;/start&gt;
+    &lt;rows&gt;100&lt;/rows&gt;
+    &lt;result&gt;
+        &lt;monumento&gt;
+            &lt;title&gt;Museo del Foro de Caesaraugusta&lt;/title&gt;
+            &lt;horario&gt;
+                Cerrado hasta nuevo aviso. [...]
+            &lt;/horario&gt;
+            &lt;geometry&gt;
+                &lt;type&gt;Point&lt;/type&gt;
+                &lt;coordinates&gt;676934.75,4613880.67&lt;/coordinates&gt;
+            &lt;/geometry&gt;
+        &lt;/monumento&gt;
+        &lt;monumento&gt;
+            &lt;title&gt;
+                Centro de Historias de Zaragoza. Antiguo Convento de San Agustín
+            &lt;/title&gt;
+            &lt;horario&gt;
+                Martes a sábado de 10 a 14h y 17 a 21h [...]
+            &lt;/horario&gt;
+            &lt;geometry&gt;
+                &lt;type&gt;Point&lt;/type&gt;
+                &lt;coordinates&gt;677408.53,4613410.17&lt;/coordinates&gt;
+            &lt;/geometry&gt;
+        &lt;/monumento&gt;
+    &lt;/result&gt;
+&lt;/resultado&gt;
+</pre>
+            </div>
+        </div>
+
+        <h4>Ejemplo de detalle</h4>
+        <p><strong>Consulta: </strong>Detalle del monumento con identificador 2: Museo del Foro de Caesaraugusta en JSON y XML</p>
+        <p><span class="label label-primary">GET</span> <a target="_blank" href="https://www.zaragoza.es/sede/servicio/monumento/2.json">https://www.zaragoza.es/sede/servicio/monumento/2.[json,xml]</a></p>
+        <ul th:if="${!currentDevice.isMobile()}" class="nav nav-tabs tabs" role="tablist">
+            <li role="presentation">
+                <a href="#det-json" aria-controls="det-json" role="tab" data-toggle="tab"><abbr title="Lenguaje de Intercambio de Datos" class="risp-json">JSON</abbr></a>
+            </li>
+            <li role="presentation">
+                <a href="#det-xml" aria-controls="det-xml" role="tab" data-toggle="tab"><abbr title="Lenguaje de Marcado Extensible" class="risp-xml">XML</abbr></a>
+            </li>
+        </ul>
+        <div sede:class="tab-content">
+            <p class="tab-title" data-toggle="collapse" data-target="#det-json" aria-expanded="false"><abbr title="Lenguaje de Intercambio de Datos" class="risp-json">JSON</abbr></p>
+            <div role="tabpanel" sede:class="tab-pane active" id="det-json">
+<pre class="prettyprint linenums language-js">
+{
+    "id": 2,
+    "title": "Museo del Foro de Caesaraugusta",
+    "description": "El Foro es el centro neurálgico de la vida en una ciudad romana: es el principal lugar de reunión donde se desarrolla la vida político-administrativa, económica y religiosa. El recinto forense se organiza a partir de un gran espacio abierto, rodeado de uno o varios pórticos circundantes, en torno al cual se distribuyen los edificios más significativos: la Curia, dedicada a usos políticos y administrativos; la Basílica, donde se resuelven asuntos jurídicos; y el Templo principal de la ciudad. Junto a ellos están las tabernas, locales dedicados a usos comerciales, y seguramente habría otros edificios relacionados con la administración (archivos, acuñación de moneda, etc.). Este conjunto monumental se completa con diversos elementos ornamentales (aras para sacrificios, estatuas honoríficas, arcos de triunfo, etc.) de los que en el caso de Caesaraugusta conocemos algunos a través de su representación en las monedas de la ciudad.",
+    "estilo": "romano",
+    "address": "Plaza de la Seo, 2",
+    "horario": "Cerrado hasta el domingo 15 de marzo.\r\n\r\nMartes a sábado de 10 a 14h y 17 a 21h\r\nDomingos 10 a 14.30h \r\nLunes cerrado\r\n\r\nMedia hora antes del cierre se interrumpe la entrada.",
+    ...
+}</pre>
+            </div>
+            <p class="tab-title" data-toggle="collapse" data-target="#det-xml" aria-expanded="false"><abbr title="Lenguaje de Marcado Extensible" class="risp-xml">XML</abbr></p>
+            <div role="tabpanel" sede:class="tab-pane active" id="det-xml">
+<pre class="prettyprint linenums language-xml">
+&lt;monumento&gt;
+    &lt;id&gt;2&lt;/id&gt;
+    &lt;title&gt;Museo del Foro de Caesaraugusta&lt;/title&gt;
+    &lt;description&gt;
+        El Foro es el centro neurálgico de la vida en una ciudad romana: es el principal lugar de reunión donde se desarrolla la vida político-administrativa, económica y religiosa. El recinto forense se organiza a partir de un gran espacio abierto, rodeado de uno o varios pórticos circundantes, en torno al cual se distribuyen los edificios más significativos: la Curia, dedicada a usos políticos y administrativos; la Basílica, donde se resuelven asuntos jurídicos; y el Templo principal de la ciudad. Junto a ellos están las tabernas, locales dedicados a usos comerciales, y seguramente habría otros edificios relacionados con la administración (archivos, acuñación de moneda, etc.). Este conjunto monumental se completa con diversos elementos ornamentales (aras para sacrificios, estatuas honoríficas, arcos de triunfo, etc.) de los que en el caso de Caesaraugusta conocemos algunos a través de su representación en las monedas de la ciudad.
+    &lt;/description&gt;
+    &lt;estilo&gt;romano&lt;/estilo&gt;
+    &lt;address&gt;Plaza de la Seo, 2&lt;/address&gt;
+    &lt;horario&gt;
+        Cerrado hasta nuevo aviso. Martes a sábado de 10 a 14h y 17 a 21h Domingos 10 a 14.30h Lunes cerrado Media hora antes del cierre se interrumpe la entrada.
+    &lt;/horario&gt;
+&lt;/monumento&gt;
+</pre>
+            </div>
+        </div>
+
+        <h3>Documentación adicional</h3>
+        <p>Para algunos conjuntos de datos se establece un documento de ayuda individual con el objetivo de detallar las operaciones y métodos que se encuentran disponibles:</p>
+        <ul>
+            <li><a href="/sede/portal/datos-abiertos/open311">API Quejas y Sugerencias</a></li>
+            <li><a href="/sede/portal/datos-abiertos/mapas-colaborativos">API Mapas Colaborativos</a></li>
+            <li><a href="/sede/portal/datos-abiertos/cita-previa">API Cita Previa</a></li>
+        </ul>
+
+        <h3>Enlaces de interés</h3>
+        <ul>
+            <li><a href="https://zaragoza-sedeelectronica.github.io/rest/queries/">Ejemplos de consultas en nuestro repositorio de GitHub</a></li>
+            <li><a href="http://rest.elkstein.org/">Learn REST: A Tutorial</a></li>
+            <li><a href="http://www.w3.org/TR/ws-arch/#relwwwrest">W3C Web Services Architecture</a></li>
+        </ul>
+    </div>
+    </sede:content>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+        /*$(document).ready(function() {
+            $('#toc').TableOfContentsBehavior('div.apicontent', 'ul');
+        });*/
+        $.get('https://www.zaragoza.es/sede/servicio/catalogo/api.json?refresh=s', function(data) {
+            var content = '<table id="tabla-catalogo" class="table table-striped table-condensed table-bordered table-fixed"><thead><tr><th class="">Nombre</th><th class="">Path</th></tr></thead><tbody>';
+            $.each(data, function(key, value) {
+                if(key == 'paths'){
+                    $.each(value, function(key, value) {
+                        var path = key;
+                        var desc = value.get.tags;
+                        content += '<tr><td>' + desc + '</td>' + '<td><a href="/sede' + path + '">' + path + '</a></td></tr>';
+                    });
+                };
+            });
+            $('#div-catalogo').append(content);
+        });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

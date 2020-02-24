@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Consulta Pública Reglamento de la Oficina Municipal contra el Fraude y la Corrupción" 
+               description="Consulta Pública es un proceso de participación y colaboración que permite recabar información de la ciudadanía previo a la aprobación del reglamento y ordenanzas municipales. Información en la plataforma Gobierno Abierto, espacio de la sede electrónica del Ayuntamiento de Zaragoza, sobre el Reglamento de la Oficina Municipal contra el Fraude y la Corrupción" 
+               keywords="ciudad, ayuntamiento, Zaragoza, sede electrónica, administración local, gobierno abierto, relación administración-administrado, participación social, consulta pública, reglamento municipal, lucha contra el fraude, lucha contra la corrupción, city, council, Saragossa, electronic site, local government, open government, citizen-authority relations, social participation, public consultation, local regulations, lucha contra el fraude, lucha contra la corrupción">
+    </sede:meta>
+    <style type="text/css">
+    body {
+        padding-top: 57px;
+    }
+
+    .textoTitulo1 {
+        font: 240% sans-serif;
+        margin-top: 20em;
+        margin-left: 2em;
+        background-color: #ccc;
+    }
+
+    .textoTituloNormal {
+        font: 160% sans-serif;
+        margin-top: 20em;
+        margin-left: 3em;
+    }
+
+
+    .cabecera {
+        margin-top: 2em;
+        border: 1px solid #CCC;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+        background-color: #f2f2f2;
+    }
+
+
+
+    h2 {
+
+        margin: 0 0 .5em;
+        padding: .5em;
+    }
+
+    .section-title {
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        border: 1px solid #CCC;
+        margin: 0;
+    }
+
+    .section-content {
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: .5em;
+        border-radius: 0 0 .5em .5em;
+        margin-bottom: 1em;
+    }
+
+    .section-content-alt {
+        border-radius: .5em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div class="row">
+            <!--<div class="col-sm-3 fnd-gris-claro">
+                    <img class="img-responsive" src="/cont/vistas/portal/consulta-publica/distrito-sur/img/DistritoSurA.jpg" alt="" />
+                </div>-->
+            <div class="fnd-gris-claro col-sm-12 cabecera">
+                <p class="text-right"><span class="textoTitulo1">Consulta Pública</span>
+                    <br/><span class="textoTituloNormal">Oficina Municipal contra el Fraude y la Corrupción</span>
+                </p>
+            </div>
+        </div>
+        <hr class="sm" />
+        <!--<div class="row">
+             <div class="pull-right">
+            <p class="col-md-12 pull-right">
+                <a href="#antecedentes" aria-controls="antecedentes" class="btn btn-primary"><strong>ANTECEDENTES</strong></a>
+                <a href="#documentacion" aria-controls="documentacion" class="btn btn-primary"><strong>DOCUMENTACIÓN</strong></a>
+                <a href="#participa" aria-controls="participa" class="btn btn-primary"><strong>¡PARTICIPA!</strong></a>
+            </p>
+        </div>
+            
+        </div>-->
+        <div>
+            <h2 class="section-title offset-target" id="antecedentes"> Antecedentes </h2>
+            <div class="section-content">
+                <p>Con el nombre de Oficina Municipal contra el Fraude y la Corrupción nace en el Ayuntamiento de Zaragoza una institución específicamente destinada a acoger en su seno y potenciar todas las medidas necesarias para evaluar el mapa de riesgos de la corrupción, así como prevenir e investigar los casos concretos de uso o destino ilícitos de fondos públicos, de aprovechamiento privado de informaciones derivadas de las funciones propias del personal al servicio del Ayuntamiento de Zaragoza, incompatibilidades o de conflictos de intereses que culminen en la prioridad de los privados sobre los públicos, situación frente a la que la ciudadanía ha dado ya muestras sobradas de hartazgo en los últimos años.</p>
+                <p>La finalidad de su creación invoca y promueve el consenso de todos los grupos políticos municipales, necesariamente comprometidos en la lucha contra el fraude y la corrupción por la que aboga la sociedad entera a la que sirven.</p>
+                <p>Todos los organismos de control que existen hasta la fecha son necesarios, pero se han evidenciado insuficientes en la lucha contra la corrupción. Así ocurre con las lntervenciones Generales o Delegadas, elTribunal de Cuentas o Cámaras de Cuentas autonómicas o estatal, Agencias Tributarias o similares. Solamente por detrás de la preocupación por el paro, casi la mitad de los encuestados por el Centro de lnvestigaciones Sociológicas sitúan como segundo de los grandes problemas que existen actualmente en España el fraude y la corrupción, lo que evidencia la magnitud del problema y la afección que provoca en la inquietud ciudadana. A su vez, las conductas delictivas relácionadas con la corrupción y finalmente sancionadas por los tribunales se han cometido casi en un 70 por 100 de los casos en la esfera de la Administración Local</p>
+                <p>Si necesita más información envíe un correo electrónico a jef-instrib@zaragoza.es</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 class="section-title offset-target" id="documentacion"> Documentación Específica</h2>
+                <div class="section-content">
+                    <ul class="row list-unstyled">
+                        <li class="col-sm-3"><span class="far fa-file-alt" aria-hidden="true"></span><a href="/contenidos/normativa/Rgto-Oficina-Fraude-Corrupcion-AcuerdoGobierno.pdf" class="pdf"><span > Acuerdo del Gobierno de Zaragoza<span class="oculto">(Documento en formato pdf)</span></span></a>
+                        </li>
+                        <li class="col-sm-3"><span class="far fa-file-alt" aria-hidden="true"></span><a href="/contenidos/normativa/Rgto-Oficina-Fraude-Corrupcion-AnuncioConsultaPublica.pdf" class="pdf"><span> Anuncio de la Consulta Pública<span class="oculto">(Documento en formato pdf)</span></span></a>
+                        </li>
+                        <li class="col-sm-3"><span class="far fa-file-alt" aria-hidden="true"></span><a href="/contenidos/normativa/Rgto-Oficina-Fraude-Corrupcion-Cuestiones.pdf" class="pdf"><span > Cuestiones planteadas<span class="oculto">(Documento en formato pdf)</span></span></a>
+                        </li>
+                        <li class="col-sm-3"><span class="far fa-file-alt" aria-hidden="true"></span><a href="/contenidos/normativa/Rgto-Oficina-Fraude-Corrupcion-Anteproyecto.pdf" class="pdf"><span > Texto de la norma<span class="oculto">(Documento en formato pdf)</span></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h2 class="section-title offset-target " id="información"> Información General</h2>
+                <div class="section-content">
+                    <ul class="row list-unstyled ">
+                        <li class="col-sm-6"><span class="far fa-handshake" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/8943">Acuerdo consulta pública</a></li>
+                        <li class="col-sm-6"><span class="far fa-file-alt" aria-hidden="true"></span> <a href="https://www.zaragoza.es/sede/portal/consulta-publica/servicio/normativa/8944">Instrucciones para habilitar la consulta pública</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <h2 class="section-title offset-target" id="participa"> ¡Participa!</h2>
+                <div class="section-content">
+                    <p>El Ayuntamiento de Zaragoza somete a consulta pública, <strong>hasta el  18 febrero de 2018</strong>, el Anteproyecto de Reglamento de la Oficina Municipal contra el Fraude y la Corrupción </p>
+                    <hr class="sm" />
+                    <ul class="row list-unstyled">
+                        <li class="col-sm-6 text-center destacado">Problemas que se prevé solucionar con la nueva norma
+                            <br/>
+                            <a href="https://www.zaragoza.es/sede/servicio/propuesta/597" class="btn btn-primary"><strong>Realizar aportaciones</strong></a>
+                        </li>
+                        <li class="col-sm-6 text-center destacado">Necesidad y oportunidad de su tramitación
+                            <br/>
+                            <a href="https://www.zaragoza.es/sede/servicio/propuesta/598" class="btn btn-primary"><strong>Realizar aportaciones</strong></a>
+                        </li>
+                        <li class="col-sm-6 text-center destacado">Objetivo de la norma
+                            <br/>
+                            <a href="https://www.zaragoza.es/sede/servicio/propuesta/599" class="btn btn-primary"><strong>Realizar aportaciones</strong></a>
+                        </li>
+                        <li class="col-sm-6 text-center destacado">Posibles soluciones alternativas, regulatorias y no regulatorias
+                            <br/>
+                            <a href="https://www.zaragoza.es/sede/servicio/propuesta/600" class="btn btn-primary"><strong>Realizar aportaciones</strong></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <h2 class="section-title offset-target" id="retorno"> Retorno</h2>
+            <div  class="section-content">
+               <div class="row">
+                <p class="col-sm-12">Una vez analizadas por el Grupo de Trabajo las aportaciones presentadas y la elaboración del informe de conclusiones sobre la Consulta Pública, tras los informes del Secretario del Pleno e Interventor General, se aprobará por el Gobierno de Zaragoza el proyecto de modificación que se someterá al Ayuntamiento Pleno para su aprobación inicial. Una vez aprobada inicialmente la reforma, se someterá a información pública y audiencia previa. Si hay reclamaciones se resolverán posteriormente y se elevará propuesta al Ayuntamiento Pleno de aprobación definitiva.</p>
+               </div> 
+            </div>-->
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

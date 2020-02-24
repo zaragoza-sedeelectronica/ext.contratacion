@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Programas y Ciclos destacados" description="Programas y Ciclos que se realizan en la ciudad" author="Ayuntamiento de Zaragoza" keywords="sede,web,actos, concierto, actividades, cursos" />
+    <style type="text/css">
+    @media (min-width: 768px) {
+        ul.list-programa>li {
+            min-height: 21em;
+        }
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2>Programas y Ciclos destacados</h2>
+        <ul class="row list-unstyled nomargin list-programa">
+            <li th:each="p : ${resultado.body.result}" class="col-xs-12 col-sm-3">
+                <!--/* <a th:href="'/sede/servicio/cultura/evento?query=program==(%22' + ${p.title} + '%22)'"> */-->
+                <a th:href="'/sede/servicio/cultura/evento/programa/' + ${p.id}">
+                    <div class="row no-gutter">
+                        <div class="col-xs-3 col-sm-12 col-md-12">
+                            <img th:if="*{p.imageAlt}" class="img-responsive" width="320" height="480" th:src="*{p.imageAlt}" alt="" property="image" />
+                            <img th:unless="${p.imageAlt}" class="img-responsive" width="320" height="480" sede:rdf="${p.prop('image')}" src="//www.zaragoza.es/cont/paginas/actividades/imagen/fiestasAlt.gif" alt="" />
+                        </div>
+                        <div class="caption col-xs-9 col-sm-12 col-md-12">
+                            <h3 th:text="${p.title}" property="name"></h3>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

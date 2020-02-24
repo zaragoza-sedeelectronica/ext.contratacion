@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Tablón municipal" keywords="sede,web,edicto,tablón" />
+    <style type="text/css">
+    .form-pleno {
+        border: 1px solid #BBB;
+        background: #E6E6E6;
+        border-radius: 0 0 .5em .5em;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+    .table-calendar {
+        margin-bottom: 0;
+    }
+    .calendario-pleno{
+        border: 1px solid #BBB;
+        /*background: #E6E6E6;*/
+        border-radius: 0 0 .5em .5em;
+        /*padding: 1em;*/
+        margin-bottom: 1em;
+    }
+
+    .lead {
+        border: 1px solid #BBB;
+        background: #E6E6E6;
+        border-radius: .5em .5em 0 0;
+        padding: .5em;
+        margin: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <h2 class="oculto">Tablón municipal</h2>
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <p class="lead">Consulta</p>
+                <form method="get" th:object="${dato}" class="form-horizontal form-pleno">
+                    <fieldset>
+                        <legend class="oculto">Consulta</legend>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="titleContains">Título</label>
+                            <div class="col-xs-9">
+                                <input class="form-control" type="text" name="titleContains" id="titleContains" th:value="${param.titleContains} ? ${param.titleContains[0]} : ''" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="type">Autor</label>
+                            <div class="col-xs-6">
+                                <select class="form-control" name="autor" id="autor">
+                                    <option value="">--</option>
+                                    <option th:each="autor : ${autores.body.result}" th:text="${autor}" th:value="${autor}" th:selected="${param.autor} ? (${#strings.equals(param.autor[0], autor)} ? true : false) : false"/>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="fecha">
+                                <span class="obligatorio">Fecha:</span><span class="oculto"> (campo obligatorio)</span>
+                            </label>
+                            <div class="col-xs-6">
+                                <input type="text" id="fecha" name="fecha" th:value="${param.fecha} ? ${param.fecha[0]} : ''" size="10" maxlength="30" placeholder="Formato: dd-mm-aaaa" class="form-control" data-date-format="dd-mm-yyyy" data-date-language="es" data-provide="datepicker" />
+                            </div>
+                        </div>
+                       
+                        <div class="text-right">
+                            <input type="submit" value="Consultar" class="boton btn btn-primary" />
+                        </div>
+                       
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-4 hidden-xs">
+                <p class="lead">Calendario</p>
+                <div class="calendario-pleno">
+                    <th:block th:utext="${#utils.getCalendar('fecha', days.body.result, month, year, #httpServletRequest)}" />
+                </div>
+            </div>
+        </div>
+        <ul class="row list-unstyled">
+            <li class="col-md-12" th:each="doc: ${resultado.body.result}" th:attr="about=${doc.uri}">
+                <div class="card">
+                    <h3 sede:rdf="${doc.get('title')}" />
+                    <hr class="sm" />
+                    <p>
+                    <span class="label label-info" sede:rdf="${doc.get('fecha', 'dd MMMM yyyy')}" />
+                    <pre th:if="${doc.noticia}" th:utext="${doc.noticia}" />
+                    <strong th:text="${doc.autor}" />
+                    </p>
+                    <ul th:if="${not #lists.isEmpty(doc.attachment)}">
+                        <li th:each="anex: ${doc.attachment}">
+                            <th:block th:if="${anex.fehaciente}">
+                                <a th:href="'/sede/portal/anuncio-municipal/servicio/fehaciente/' + @{{id}(id=${anex.fehaciente.id})}">
+                                    <th:block th:text="${anex.title}" /> <img src="//www.zaragoza.es/cont/paginas/img/sello.gif" alt="Publicación con sello de tiempo" /></a>
+                            </th:block>
+                            <th:block th:if="not ${anex.fehaciente}">
+                                <th:block th:if="not ${anex.type == 'Orden del dia s'}">
+                                    <a th:href="'attachment/' + @{{id}(id=${anex.id})}" th:text="${anex.title}" />
+                                </th:block>
+                                <th:block th:if="${anex.type == 'Orden del dia s'}">
+                                    <span th:text="${anex.title}"></span>
+                                </th:block>
+                            </th:block>
+                            <th:block th:if="${not #lists.isEmpty(anex.mociones)}">
+                                <ul class="list-unstyled" id="actividades">
+                                    <li><span class="far fa-hand-point-rightrotate" aria-hidden="true"></span> <span data-toggle="collapse" data-target="#mociones" aria-expanded="true"><a href="#">Mociones</a></span>
+                                        <ul class="collapse in" id="mociones">
+                                            <th:block th:each="moc: ${anex.mociones}">
+                                                <li th:class="${param.numExpediente != null} and moc!=null and ${moc.numExpediente} == ${param.numExpediente[0]} ? destacado">
+                                                    <a th:href="'mocion/' + @{{id}(id=${moc.id})}">
+                                                        <th:block th:text="${moc.numExpediente}" />
+                                                    </a> - Presentada por
+                                                    <th:block th:text="${moc.grupo}" />
+                                                </li>
+                                            </th:block>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </th:block>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('#mociones').collapse();
+
+        $("#actividades li").click(function(e) {
+            /*e.preventDefault();*/
+            $(this).children('.rotate').toggleClass("down");
+        });
+
+    });
+
+    /*]]>*/
+    </script>
+</body>
+
+</html>

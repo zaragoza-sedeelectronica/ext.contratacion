@@ -1,0 +1,18 @@
+<ul role="menu" class="row list-unstyled margin-t05em margin-r05em list-propuesta">
+    <li class="col-xs-12 col-sm-2 margin-b1em" th:each="propuesta : ${resultado.result}">
+        <div>
+            <img th:if="${propuesta.image}" class="img-responsive" width="480" height="320" th:src="${propuesta.image}" alt="" property="image" />
+            <img th:unless="${propuesta.image}" th:if="${propuesta.tema}" th:src="'/cont/vistas/portal/presupuestos-participativos/img/temas/' + ${propuesta.tema.image}" class="img-responsive img-rounded" alt="" />
+            <img th:unless="${propuesta.image} or ${propuesta.tema}" src="https://www.zaragoza.es/cont/paginas/centros/img/zona-plaza-pilar.jpg" class="img-responsive img-rounded" alt="" />
+        </div>
+        <a th:href="'/sede/portal/presupuestos-participativos/servicio/presupuestos-participativos/' + ${propuesta.id}" sede:rdf="${propuesta.get('title')}"></a>
+        <th:block th:if="${propuesta.geometry}" th:utext="${propuesta.geometry.getRdf()}"></th:block>
+    </li>
+</ul>
+<style type="text/css">
+    @media (min-width: 768px) {
+        ul.list-propuesta > li{
+            min-height: 16em;
+        }
+    }
+</style>

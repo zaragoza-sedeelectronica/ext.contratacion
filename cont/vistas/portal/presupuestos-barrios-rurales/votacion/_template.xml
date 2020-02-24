@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ogob">
+
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+</th:block>
+
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <!--/* <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle">MENU</span>
+                    <span class="hamb-bottom"></span>
+                </button> */-->
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <h1><a href="/sede/portal/presupuestos-barrios-rurales/">Presupuestos Participativos en barrios</a></h1>
+                    <sede:breadcrumb value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'}, {'link':'/ciudadania/gobierno-abierto/', 'text':'Gobierno Abierto'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera(login=true)" />
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <!--/* <div class="overlay" style="display: none;"></div> */-->
+        <!--/* Menu lateral de portal */-->
+        <!--/* <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">*/-->
+        <!--/*<div class="container-fluid">
+            <nav class="nav-main" role="navigation">
+                <ul class="list-unstyled row no-gutter text-center" id="menu">
+                    <li class="col-xs-6 col-sm-2"><span class="fa fa-info-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-barrios-rurales/que-son">Qué son</a></li>
+                    <li class="col-xs-6 col-sm-2 active"><span class="fa fa-cog" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-barrios-rurales/fases">Fases</a></li>
+                    <li class="col-xs-6 col-sm-2"><span class="far fa-comment-alt" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-barrios-rurales/mesas">Mesas</a></li>
+
+                    <li class="col-xs-6 col-sm-2"><span class="fas fa-file-alt" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/documentacion">Documentación</a></li>
+                    <li class="col-xs-6 col-sm-2"><span class="fa fa-question-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/preguntas-frecuentes">Preg. Frecuentes</a></li>
+                    <li class="col-xs-6 col-sm-2"><span class="far fa-check-circle" aria-hidden="true"></span> <a class="elemento" href="/sede/portal/presupuestos-participativos/servicio/presupuestos-participativos/edicion/1/obras">Ejecución 2017</a></li>
+                </ul>
+            </nav>
+        </div>*/-->
+        <!--/* </nav> */-->
+    </th:block>
+    <th:block th:fragment="footer">
+        <th:block th:include="fragmentos/pie" />
+        <th:block th:include="fragmentos/js" />
+    </th:block>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Órganos Consultivos y de Participación" description="" author="" last-modified="Thu Nov 13 00:00:00 CET 2014" keywords="participación, consejos sectoriales">
+    </sede:meta>
+    <style>
+    body {
+        padding-top: 57px;
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div style="position:relative;" class="text-center">
+        </div>
+        <hr class="sm" />
+        <div sede:class="tab-content">
+            <h2 class="tab-title" data-toggle="collapse" data-target="#inicio" aria-expanded="false"> Inicio </h2>
+            <div role="tabpanel" sede:class="tab-pane active" id="inicio">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="img-responsive margin-auto" alt="Consejo de la Ciudad" src="/cont/paginas/gobierno-abierto/img/consejo-general.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

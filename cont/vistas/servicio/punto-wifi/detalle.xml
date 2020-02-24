@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="${titulo} + '. Puntos Wifi'" keywords="sede,web,wifi,puntos" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/mapa/leaflet/MarkerCluster.Default.css" />
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.ajax.min.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error"></th:block>
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+            <h2 sede:rdf="*{get('title')}"></h2>
+            <span class="label" th:text="*{estado}" th:classappend="*{estado} == 'En servicio' ? 'label-success' : 'label-warning'"></span>
+            <p th:if="*{servicios}" th:utext="*{servicios}"></p>
+            <p th:if="*{cobertura}" th:utext="*{cobertura}"></p>
+            <th:block th:if="*{geometry}" th:utext="*{geometry.getRdf()}"></th:block>
+            <div th:if="*{geometry}" id="mapa-leaflet" style="height: 30em"></div>
+        </div>      
+    </sede:content>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/proj4leaflet.js"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/gsl-BaseLayerSelector.js" type="text/javascript"></script>
+    <script src="//www.zaragoza.es/cont/plantillas/mapa/leaflet/capas.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var pois = [];
+    var latitude = $(document).find("[property='latitude']").attr("content");
+    var longitude = $(document).find("[property='longitude']").attr("content");
+    if (latitude && longitude) {
+        var marker = L.marker([latitude, longitude]);
+        pois.push(marker);
+        var group = L.featureGroup(pois).addTo(map);
+        map.fitBounds(group.getBounds());
+    }
+    /*]]>*/
+    </script>
+</body>
+
+</html>

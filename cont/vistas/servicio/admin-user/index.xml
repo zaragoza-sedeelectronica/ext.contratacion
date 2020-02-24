@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Identificación de ciudadanía. Plataforma de Gobierno Abierto" description="Servicio de comprobación de datos personales de los ciudadanos y ciudadanas registrados en la Plataforma de Gobierno Abierto" author="Ayuntamiento de Zaragoza" keywords="sede,web,plataforma,gobierno abierto" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Usuarios</h2>
+        <form method="get" action="">
+            <label for="emailContains">
+                <span class="sr-only">Mail</span>
+                <input type="text" name="emailContains" id="emailContains" class="form-control" th:value="${param.emailContains} ? ${param.emailContains[0]} : ''" placeholder="correo electronico" />
+            </label>
+            <label for="nifContains">
+                <span class="sr-only">NIF</span>
+                <input type="text" name="nifContains" id="nifContains" class="form-control" th:value="${param.nifContains} ? ${param.nifContains[0]} : ''" placeholder="nif" />
+            </label>
+            <label for="birthYear">
+                <span class="sr-only">Año nacimiento</span>
+                <input type="text" name="birthYear" id="birthYear" class="form-control" th:value="${param.birthYear} ? ${param.birthYear[0]} : ''" placeholder="año nacimiento" />
+            </label>
+            <input type="submit" value="Consultar" class="btn btn-primary" />
+        </form>
+        <th:block th:include="fragmentos/error" />
+        <ul class="list-unstyled">
+            <li class="card" th:each="doc: ${resultado.body.result}">
+            	<span th:if="${doc.image}">
+                    <img th:src="${doc.image}" alt="" class="img-rounded" height="50"/>
+                </span>
+                <span class="badge" th:if="${doc.activado} == 0">
+                    No activado
+                </span>
+                <span class="badge" th:if="${doc.empadronado} != 'Si'">
+                    No empadronado
+                </span>
+                <th:block th:text="'ID: ' + ${doc.id}" />
+                <th:block th:if="${doc.name}">
+                    Nombre: <strong th:text="${doc.name}" />
+                    <th:block th:if="${doc.screen_name}">
+                        (<th:block th:text="${doc.screen_name}" />)
+                    </th:block>
+                </th:block>
+                <th:block th:text="${doc.email}" />
+                <th:block th:if="${doc.nif}">
+                    NIF: <strong th:text="${doc.nif}" />
+                </th:block>
+                <th:block th:if="${doc.birthYear}">
+                    Año de nacimiento:
+                    <th:block th:text="${doc.birthYear}" />
+                </th:block>
+                <th:block th:if="${doc.district}">
+                    Distrito:
+                    <th:block th:text="${doc.district}" />
+                </th:block>
+                <th:block th:if="${doc.section}">
+                    Sección:
+                    <th:block th:text="${doc.section}" />
+                </th:block>
+                <th:block th:if="${doc.junta}">
+                    Junta asociada: <strong th:text="${doc.junta}" />
+                </th:block>
+                <th:block th:if="${doc.fecha_nacimiento}">
+                    Fecha de nacimiento:
+                    <th:block th:text="${doc.fecha_nacimiento}" />
+                </th:block>
+                <th:block th:if="${doc.tarjetaCiudadana}">
+                    Tarjeta ciudadana:
+                    <th:block th:text="${doc.tarjetaCiudadana}" />
+                </th:block>
+                <th:block th:if="${doc.mobile}">
+                    Móvil: <strong th:text="${doc.mobile}" />
+                </th:block>
+                <div th:if="${doc.aceptaMail == false}" role="alert" class="alert alert-warning nomargin">
+                    Este usuario/a tiene <strong>desactivada</strong> la recepción de correos electrónicos.
+                </div>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

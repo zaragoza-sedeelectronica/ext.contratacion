@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Ámbito educativo. CMAPA"
+         description="Programas educativos para la Prevención de Adicciones"
+         keywords="ayuntamiento, ciudad, Zaragoza, España, servicios sociales, prevención de adicciones, Centro Municipal de Atención y Prevención de las Adicciones, difusión de información, toxicomania, tabaquismo, alcoholismo, hábito de compra, ludopatía, estupefacientes, programas de actuación, campaña de sensibilización, protección de la infancia"/>
+      <style>
+         titulo-seccion {
+		 line-height: 66px;
+		 font-size: 42px;
+         }
+
+         .fnd-blanco {
+	         background-color: #ffffff;
+	         padding-top: 20px;
+	         padding-bottom: 20px;
+         }
+
+         .fnd-gris-claro {
+	         padding-top: 20px;
+	         padding-bottom: 20px;
+	         margin-bottom: -40px;
+         }
+
+         .titulo-org h2, .procesos h2{
+         	color: #e83437;
+         	font-size: 42px;
+         	padding-bottom: 20px;
+         }
+
+         .titulo-org h2 small, .titulo-org h2 span{
+         	color: #000000;
+         }
+
+         .panel-heading a:after {
+		 float: left;
+		 color: white;
+		 background-color: #000;
+		 width: 20px;
+		 height: 20px;
+		 text-align: center;
+		 line-height: 20px;
+		 border-radius: 20px;
+		 margin-right: 10px;
+         }
+
+         .panel-heading a.collapsed:after {
+         	content: "\f105";
+         }
+
+         .panel-default>.panel-heading {
+		 background-color: #fff;
+		 border: 0;
+         }
+
+         .panel {
+		 border: 0;
+		 webkit-box-shadow: 0 0 0;
+		 box-shadow: 0 0 0;
+         }
+
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         	border: 0;
+         }
+
+         .panel-body {
+         	padding-left: 50px;
+         }
+
+         .panel-title>a {
+         	color: #E81B16;
+         }
+
+         .panel-title>a:hover, .panel-title>a:focus, .panel-title>a:active {
+         	text-decoration: none;
+         }
+
+         .col-md-6 img{
+		 float: left;
+		 padding-right: 2em;
+         }
+
+         hr{
+		 height:1px; 
+		 border:none; 
+		 color:#000; 
+		 background-color:#000; 
+		 width:60%; 
+		 text-align:center; 
+		 margin: 0 auto;
+         }
+
+         ul.submenu {
+         	margin: 0;
+         }
+
+         .btn-back.pull-left {
+		 padding: .25em .5em;
+		 background: #E81B16;
+		 border-radius: .5em;
+         }
+
+         .second-bar {
+		 background: #E6E6E6;
+		 border-radius: .5em;
+		 padding: .5em;
+		 border: 1px solid #CCC;
+		 margin-bottom: 2em;
+         }
+
+         ul.submenu li {
+		 border: 1px solid #CCC;
+		 background: #FFF;
+		 padding: .5em;
+		 border-radius: .5em;
+         }
+
+         .offset-target:before {
+		 content: '';
+		 display: block;
+		 height: 67px;
+		 /* fixed header height*/
+		 margin: -67px 0 0;
+		 /* negative fixed header height */
+         }
+
+         .section-title {
+		 background: #E6E6E6;
+		 border-radius: .5em .5em 0 0;
+		 padding: .5em;
+		 border: 1px solid #CCC;
+		 margin: 0;
+         }
+
+         .section-content {
+		 border: 1px solid #CCC;
+		 background: #FFF;
+		 padding: .5em;
+		 border-radius: 0 0 .5em .5em;
+		 margin-bottom: 1em;
+         }
+
+         .circular img {
+		 border-radius: 50%;
+		 padding-top: 1em;
+		 display:block;
+		 margin:auto;
+		 width: 125px;	 
+         }
+
+         h4 {
+         	font-size: 1.15em;
+         }
+
+         .otros {
+		 border-radius: 50%;
+		 padding-top: 1em;
+		 display:block;
+		 margin:auto;
+		 width: 100px;	 
+         }
+
+         .card{
+         	margin-left:5em;
+         }
+
+         ul.resultado>li:nth-child(4n){
+         	float:right;
+         }
+
+         ul.resultado>li:nth-child(4n+1){
+		 float:left;
+		 clear:both;
+         }
+
+         .panel-heading a:after {
+		 float: left;
+		 color: white;
+		 background-color: #000;
+		 width: 20px;
+		 height: 20px;
+		 text-align: center;
+		 line-height: 20px;
+		 border-radius: 20px;
+		 margin-right: 10px;
+         }
+
+         .panel-heading a.collapsed:after {
+         	content: "\f105";
+         }
+
+         .panel-default>.panel-heading {
+		 background-color: #fff;
+		 border: 0;
+         }
+
+         .panel {
+		 border: 0;
+		 webkit-box-shadow: 0 0 0;
+		 box-shadow: 0 0 0;
+         }
+
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         	border: 0;
+         }
+
+         .panel-body {
+         	padding-left: 50px;
+         }
+
+         .panel-title>a {
+         	color: #E81B16;
+         }
+
+         .panel-title>a:hover, .panel-title>a:focus, .panel-title>a:active {
+         	text-decoration: none;
+         }
+
+         .panel-title h4 {
+         	color: #E81B16;
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+         </div>
+         <div class="">
+            <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+               <div id="rscont" class="container-fluid">
+                  <nav>
+                     <div class="second-bar clearfix">
+                        <div class="hidden-xs">
+                           <a class="btn-back pull-left" href="/sede/portal/derechos-sociales/adicciones/">
+                           <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                           <span class="oculto">Volver a Adicciones</span>
+                           </a>
+                           <p class="lead destacado margin-l05em margin-b0em pull-left">Prevención</p>
+                           <ul class="list-inline navbar-right submenu">
+                              <li><a href="educativo"><strong>Ámbito educativo</strong></a></li>
+                              <li><a href="comunitario">Ámbito Comunitario</a></li>
+                              <li><a href="formacion">Formación</a></li>
+                              <li><a href="enfamilia">Prevención en la familia</a></li>
+                              <li><a href="ocioytlibre">Ámbito del ocio y tiempo libre</a></li>
+                              <li><a href="laboral">Ámbito laboral</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+               <div class="row">
+                  <div class="col-md-6 card">
+                     <h3 class="section-title offset-target">Ámbito educativo</h3>
+                     <p>El entorno más importante de prevención universal es<strong> la escuela</strong>. La escuela se convierte por su estructura y características en la institución idónea para adquirir valores, destrezas, habilidades y conocimientos que configuren <strong>estilos de vida saludables</strong> que les hagan más autónomos y resistentes a la presión al consumo de drogas y otras conductas de riesgo para su salud. En esta tarea debe implicarse a <strong>toda la comunidad escolar</strong>, alumnado, personal docente y no docente y padres. También es prioritario favorecer la implicación de la comunidad y la participación del tejido social en los programas y actuaciones preventivas que se desarrollan en el medio escolar.</p>
+                     <p>En la escuela se priorizan los programas de <strong>prevención universal</strong>, garantizando un acceso continuo y a largo plazo de grandes poblaciones de jóvenes. Así mismo, se interviene de manera específica con el alumnado de las enseñanzas no convencionales (PCPI, UIEE, Aula Taller...)</p>
+                     <p>En este ámbito el Ayuntamiento de Zaragoza tiene una dilatada experiencia y realiza desde hace ya varios años<strong> diversos programas</strong>, adaptados a las peculiaridades de cada etapa educativa, para los que dispone de distintos materiales de apoyo en función del programa, tanto para el profesorado como para el alumnado. </p>
+                  </div>
+                  <div class="col-md-3 card">
+                     <h3 class="section-title offset-target">Programas y actuaciones (Curso 2018 - 2019)</h3>
+                     <p>Distintos programas y  actuaciones articulan un trabajo educativo para las diferentes etapas del periodo educativo.</p>
+                     <ul>
+                        <li><a href="http://www.zaragoza.es/contenidos/sectores/cmapa/cuadro-programacion1819.pdf" class="pdf">FOLLETO DE PROGRAMAS DE PREVENCIÓN DE ADICCIONES 2018-19</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="row">
+                  <h2>Programas educativos (Curso 2018-2019)</h2>
+                  <div class="panel-group" id="accordion">
+                     <h3>Primaria</h3>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title">
+                              <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                 href="#collapse1">
+                              5º de Primaria
+                              </a>
+                           </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse">
+                           <div class="panel-body">
+                              <ul>
+                                 <li>
+                                    <strong><a href="trazo5">Trazo 5</a></strong>
+                                    <br/>
+                                    <p>Programa que trata de reforzar los factores de protección ante conductas adictivas, fomentando estilos de vida saludables a lo largo del proceso educativo en el medio escolar, con la  intención de limitar comportamientos de riesgo
+                                       <br/>
+                                       Dirigido al alumnado de <strong>5ºEPO</strong>.
+                                    </p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse2">
+                                 6 º de Primaria
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse2" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="trazo6">Trazo 6</a></strong>
+                                       <br/>
+                                       <p>Programa que trata de reforzar los factores de protección ante conductas adictivas, fomentando estilos de vida saludables a lo largo del proceso educativo en el medio escolar, con la intención de limitar comportamientos de riesgo
+                                          <br/>Dirigido al alumnado de <strong>6ºEPO</strong>.
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <h3>Secundaria</h3>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse3">
+                                 1º ESO
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse3" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="masquehablartabaco">Más que hablar de tabaco</a></strong>
+                                       <br/>
+                                       <p>
+                                          Programa que se propone, entre otros objetivos, aumentar las capacidades y habilidades personales para rechazar el consumo de drogas, especialmente del tabaco.<br/>
+                                          Dirigido al alumnado de <strong>1º de la ESO</strong>
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="primeros-sin-humo">Primeros sin humo</a></strong>
+                                       <br/>
+                                       <p>
+                                          Iniciativa educativa innovadora y transversal <strong>"PRIMEROS SIN HUMO"</strong>, dirigida a los alumnos de los centros de <strong>1º de la ESO</strong> de Zaragoza. Herramienta complementaria para formar y concienciar sobre los efectos nocivos del consumo de tabaco<br/>Actividad comunitaria de "Más que hablar de tabaco"
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="carrera-sin-humo">Carrera sin humo</a></strong>
+                                       <br/>
+                                       <p>
+                                          Propuesta que combina la participación en la <em>Carrera Sin Humo </em>que se realiza con motivo del <strong>Día Mundial Sin Tabaco</strong> con una serie de actividades a llevar a cabo en el <strong>aula desde Educación Física.</strong>
+                                          <br/>Dirigido al alumnado de <strong>12 a 18 años</strong>.     
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse4">
+                                 2º ESO
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse4" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="masquehablaralcohol">Más que hablar de alcohol</a></strong>
+                                       <br/>
+                                       <p>
+                                          Programa que se propone, entre otros objetivos, aumentar las capacidades y habilidades personales para rechazar el consumo de drogas, especialmente de alcohol.<br/>
+                                          Dirigido al alumnado de <strong>2º de la ESO</strong>
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="reto">Reto Hunteet</a></strong>
+                                       <br/>
+                                       <p>
+                                          Retos fotográficos a través de la App Hunteet, en la que los participantes deberán subir fotos que tengan que ver con la tarea encomendada, siempre relacionada con el alcohol.<br/>
+                                          Actividad comunitaria de "Más que hablar de alcohol"<br/>
+                                          Dirigido al alumnado de <strong>2º y 3º de la ESO</strong>								
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="carrera-sin-humo">Exposición de alcohol "¿Te lo tragas todo?</a></strong>
+                                       <br/>
+                                       <p>
+                                          Diseñada para trabajar con grupos de adolescentes <strong>de 13 a 15 años</strong> de edad, trata de analizar y desmontar tópicos y creencias erróneas frecuentes entre los adolescentes en relación al alcohol.<br/> 3ºESO que el curso anterior realizo el programa "Más que hablar de alcohol". Actividad de refuerzo   
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="carrera-sin-humo">Carrera sin humo</a></strong>
+                                       <br/>
+                                       <p>
+                                          Propuesta que combina la participación en la <em>Carrera Sin Humo </em>que se realiza con motivo del <strong>Día Mundial Sin Tabaco</strong> con una serie de actividades a llevar a cabo en el <strong>aula desde Educación Física.</strong>
+                                          <br/>Dirigido al alumnado de <strong>12 a 18 años</strong>.     
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse5">
+                                 3º ESO
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse5" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="onoff">On-Off</a></strong>
+                                       <br/>
+                                       <p>
+                                          Programa que trata de incrementar el potencial de salud de los escolares promoviendo un uso seguro y responsable de las nuevas tecnologías<br/>
+                                          Dirigido al alumnado de <strong>3º de la ESO</strong>
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="reto">Reto Hunteet</a></strong>
+                                       <br/>
+                                       <p>
+                                          Retos fotográficos a través de la App Hunteet, en la que los participantes deberán subir fotos que tengan que ver con la tarea encomendada, siempre relacionada con el alcohol.<br/>
+                                          Actividad comunitaria de "Más que hablar de alcohol"<br/>
+                                          Dirigido al alumnado de <strong>2º y 3º de la ESO</strong>								
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="carrera-sin-humo">Carrera sin humo</a></strong>
+                                       <br/>
+                                       <p>
+                                          Propuesta que combina la participación en la <em>Carrera Sin Humo </em>que se realiza con motivo del <strong>Día Mundial Sin Tabaco</strong> con una serie de actividades a llevar a cabo en el <strong>aula desde Educación Física.</strong>
+                                          <br/>Dirigido al alumnado de <strong>12 a 18 años</strong>.     
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse6">
+                                 4º ESO, Bachillerato, FP Básica, FP Grado Medio
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse6" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="teatropreventivo">Conectad@ a tí</a></strong>
+                                       <br/>
+                                       <p>
+                                          Programa de prevención de las nuevas tecnologías a través del <strong>teatro</strong>, que combina la participación activa y creativa del alumnado de un teatro fórum. Dirigido al alumnado que ha realizado el <strong>programa ON OFF en cursos anteriores</strong>.
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="topsecret">5 Top Secrets sobre el cánnabis</a></strong>
+                                       <br/>
+                                       <p>
+                                          Promueve la reflexión y el conocimiento acerca de las consecuencias derivadas del consumo de cánnabis en grupos de chicos y chicas de edades comprendidas entre los <strong>15-18 años</strong>.							
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="expo-cannabis">Exposición "5 Top Secrets sobre el cánnabis"</a></strong>
+                                       <br/>
+                                       <p>
+                                          A partir de siete rollers, aporta información objetiva, veraz y actual sobre el cánnabis. Va dirigida a chicos y chicas <strong>de 15-20 años</strong>, sean o no consumidores de cánnabis.     
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <strong><a href="carrera-sin-humo">Carrera sin humo</a></strong>
+                                       <br/>
+                                       <p>
+                                          Propuesta que combina la participación en la <em>Carrera Sin Humo </em>que se realiza con motivo del <strong>Día Mundial Sin Tabaco</strong> con una serie de actividades a llevar a cabo en el <strong>aula desde Educación Física.</strong>
+                                          <br/>Dirigido al alumnado de <strong>12 a 18 años</strong>.     
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <h3>Otros</h3>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse7">
+                                 Hostelería
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse7" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="dra">Dispensación Responsable de Alcohol</a></strong>
+                                       <br/>
+                                       <p>
+                                          Pensado para los profesionales de la <strong>restauración</strong>, profesores y estudiantes de escuelas de <strong>hostelería</strong>, proporciona herramientas que permitan prevenir problemas relacionados con el consumo de alcohol de los clientes.
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse8">
+                                 Aula Taller, PCI, Compensatoria, FPB, Formación Ocupacional…
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse8" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="tis">Taller de información y sensibilización a colectivos en riesgo</a></strong>
+                                       <br/>
+                                       <p>
+                                          Se dirige al alumnado con <strong>especiales factores de riesgo</strong>. Se trata de dar a conocer el CMAPA a la vez que se facilita información especializada sobre drogas y adicciones.
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
+                                    href="#collapse9">
+                                 Comunidad educativa (equipo directivo, personal docente, madres, padres, alumnado...)
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapse9" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul>
+                                    <li>
+                                       <strong><a href="con-sumo-riesgo">Con-sumo Riesgo</a></strong>
+                                       <br/>
+                                       <p>
+                                          Programa que pretende facilitar, a los centros educativos, las herramientas que les permitan desarrollar <strong>pautas de intervención</strong> ante conductas y situaciones de riesgo, relacionadas con las drogas.
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <h2>Programas educativos anteriores</h2>
+                  <ul>
+                     <li>
+                        <strong><a href="enredados">Enredad@s</a></strong>
+                        <br/>
+                        <p>
+                           Obra de teatro que povoca la reflexión sobre los riesgos y virtudes del "consumo de pantallas". Dirigida al alumnado de <strong>4º ESO, PCPI, 1º de Bachillerato y Ciclos formativos de grado medio.</strong>
+                        </p>
+                     </li>
+                     <li>
+                        <strong><a href="tudecides">Tú decides</a></strong>
+                        <br/>
+                        <p>
+                           Propone que el alumnado de <strong>2º ciclo de la ESO</strong> aprenda a tomar decisiones sobre el uso de drogas en conexión con el resto de problemáticas del adolescente.
+                        </p>
+                     </li>
+                     <li>
+                        <strong><a href="charrando">Charrando para decidir</a></strong>
+                        <br/>
+                        <p>
+                           Trata de potenciar hábitos y actitudes saludables como medio de prevenir el consumo de tabaco y de bebidas alcohólicas. Va dirigido a los chicos y chicas de <strong>1<sup>er</sup> ciclo de la ESO</strong>
+                        </p>
+                     </li>
+                     <li>
+                        <strong><a href="aventura-vida">La aventura de la vida</a></strong>
+                        <br/>
+                        <p>
+                           Tiene como objetivo la adquisición de habilidades para la vida, la promoción de estilos de vida saludables y la educación en valores y para la convivencia. El programa utiliza las historias protagonizadas por un grupo de personajes infantiles animando a niños y niñas a analizar y reflexionar sobre las propias experiencias en su entorno más próximo: la escuela, la familia y el barrio.
+							- Alumnado de 2º y 3º ciclo de Primaria
+                        </p>
+                     </li>
+                     <li>
+                        <strong><a href="gymkhana">Gymkhana de la salud</a></strong>
+                        <br/>
+                        <p>
+                           Actividad lúdica, dirigida a chicos y chicas&nbsp; de <strong>12 a 14 años</strong>, que incluye una serie de juegos&nbsp; relacionados con el hábito tabáquico.
+                        </p>
+                     </li>
+                     <li>
+                        <strong><a href="pisaraya">Pisa la Raya</a></strong>
+                        <br/>
+                        <p>
+                           Un grupo de <strong>jóvenes actores</strong> ponen en escena  diferentes situaciones en las que participan y se identifican los jóvenes. <br/> - <strong>Alumnado </strong>de 4º ESO, 1º de Bachillerato y Ciclos Formativos de Grado Medio
+                        </p>
+                     </li>
+                     <li>
+                        <strong><a href="nosolopalabras">No solo palabras</a></strong>
+                        <br/>
+                        <p>
+                           A partir de la creación y representación de una <strong>obra de teatro</strong>, se propone la reflexión de sus contenidos al <strong>alumnado de secundaria</strong>
+                        </p>
+                     </li>
+                     <li>
+                        <strong><a href="construye-tu-mundo">Construye tu mundo</a></strong>
+                        <br/>
+                        <p>
+                           El programa se propone <strong>reducir el consumo de alcohol, tabaco y drogas ilegales </strong>y retrasar la edad de inicio de dichas sustancias.   <br/> Incluye seis actividades y tres actividades complementarias para cada uno de los<strong> cursos de 3º 6º de EPO</strong>.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

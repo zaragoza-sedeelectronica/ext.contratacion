@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Saneamiento y Depuración: Ecociudad Zaragoza"
+                   description="Portal con información relativa al servicio de Saneamiento y Depuración de las Aguas residuales de Zaragoza, gestionado por la Sociedad Ecociudad Zaragoza: tarifas por el saneamiento y depuración de aguas, relación de depuradoras de la ciudad y enlaces de interés a otras páginas web. A través de Tu opinión importa, el ciudadano accede al servicio de quejas y sugerencias"
+                   keywords="ayuntamiento, ciudad, Zaragoza, España, saneamiento, tratamiento del agua, servicio público, Ecociudad Zaragoza, tarifas,  facturación, direcciones de Internet, relación administración-administrado, servicio de quejas y sugerencias, city, council, Saragossa, Spain, decontamination, water treatment, public service, rates, invoicing, Internet address, citizen-authority relations, complaints and suggestions service"
+        >
+        </sede:meta>
+        <style type="text/css">
+
+            .fnd-blanco {
+            background-color: #ffffff;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .fa {
+            vertical-align: middle;
+            }
+
+            @media (min-width: 768px) {
+            .list-aviso>li {
+            min-height: 16em;
+            }
+            .listado-equipamiento-solr li {
+            min-height: 25em;
+            }
+            }
+
+            .left-ribbon {
+            /*position: relative;*/
+            position: absolute;
+            bottom: 5px;
+            background: #EEE;
+            border: 1px solid #CCC;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+            padding: 10px 15px;
+            clear: both;
+            /*margin-left: -24px;*/
+            margin-left: -10px;
+            float: left;
+            }
+
+            .left-ribbon::before {
+            display: block;
+            width: 10px;
+            height: 0px;
+            position: absolute;
+            bottom: -10px;
+            left: -1px;
+            content: '';
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #757575;
+            }
+
+            .menu-consejos li {
+            padding: 0px;
+            }
+
+            .menu-consejos li a {
+            margin-right: 0px;
+            font-size: 28px;
+            }
+
+            .menu-consejos li.active a {
+            border: 0px;
+            color: #ffffff;
+            background: #000000;
+            }
+
+            .menu-consejos li.active a:hover{
+            border: 0px;
+            }
+
+            @media (max-width: 768px) {
+            .menu-consejos li a {
+            border-radius: 0 !important;
+            border: 0 !important;
+            }
+            }
+
+            h3 {
+            color: #D01715;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    Ecociudad
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+
+                <div class="container-fluid fnd-blanco radius">
+                    <h2 class="text-right">Saneamiento y Depuración</h2>
+                    <sede:equipamiento id="2116" ocultos="imagen,mapa,tabs"></sede:equipamiento>
+                    <div class="clearfix"></div>
+                    <h3>Presentación</h3>
+                    <p>El Gobierno de Zaragoza de 28 de diciembre de 2012 acordó conferir las facultades de gestión de
+                        los servicios de saneamiento y depuración de las aguas residuales de Zaragoza a la sociedad de
+                        capital público Ecociudad Zaragoza S.A.
+                    </p>
+                    <p>El carácter poliédrico del saneamiento incluye las tareas de conducción de aguas y la depuración
+                        de las mismas, lo que exige una visión globalizada que es realizada a través la empresa 100%
+                        municipal.
+                    </p>
+                    <p>La sociedad tiene como base los principios de la Unión Europea recogidos en su normativa de
+                        aguas: acción preventiva e incremento de los parámetros de control. En estas dos materias
+                        Ecociudad cuenta con una dilatada experiencia debido a la gestión que ha llevado a cabo en el
+                        barrio de Valdespartera
+                    </p>
+                    <h3>Objeto:</h3>
+                    <p>De conformidad con el artículo 2 de sus estatutos, la sociedad tiene por objeto:</p>
+
+                    <p>Gestionar y ejecutar cualesquiera actuaciones o servicios de infraestructura urbanística de
+                        Zaragoza.
+                    </p>
+                    <p>Gestionar y ejecutar la construcción de equipamientos necesarios para la acción anterior.</p>
+                    <p>La realización de todas las actividades relativas a la planificación, programación, proyecto e
+                        investigación, formación, asesoramiento, construcción, explotación, mantenimiento y gestión de
+                        los recursos y servicios hídricos en todas las fases del ciclo del agua correspondientes a la
+                        evacuación, vertido, alcantarillado, saneamiento, depuración, eliminación y reciclaje de
+                        residuos líquidos y fangos pudiendo establecer y desarrollar cuantas industrias y negocios sean
+                        instrumentales, complementarios o accesorios de las actividades relacionadas.
+                    </p>
+                    <p>La ejecución y/o dirección de cualquier trabajo que sea preciso para el mantenimiento,
+                        reposición, mejora, instalación o lectura de contadores de agua domiciliarios hasta alcanzar el
+                        mejor estado de la técnica.
+                    </p>
+                    <p>La realización de cuantos trabajos, proyectos y estudios técnicos y económicos sean precisos para
+                        la prestación de los servicios indicados en los apartados precedentes, incluyendo la gestión de
+                        la facturación y cobro de las tarifas por prestación del servicio.
+                    </p>
+                    <h3>Consejo de Administración</h3>
+                    <a href="/sede/portal/organizacion/ecociudad-zaragoza">Acceso</a>
+
+                    <h2 class="text-right">Destacamos</h2>
+
+                    <sede:aviso clase="col-xs-12 col-sm-3" nresultados="4" portal="Agua"></sede:aviso>
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+    $(function() {
+        $("#rscont .collapse").collapse();
+    });
+
+    // Navegación por teclado. Apertura de bloques mediante tecla enter
+    $(".masinfo").keypress(function(e) {
+        if (e.keyCode == 13) {
+            var id = $(this).attr('data-target');
+            console.log(id);
+            console.log($(id));
+            $(id).collapse('toggle');
+        }
+      });
+    /*]]>*/
+        </script>
+    </body>
+
+</html>

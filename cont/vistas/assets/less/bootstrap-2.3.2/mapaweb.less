@@ -1,0 +1,23 @@
+@import "variables.less";
+
+// Mapa Web
+// --------------------------------------------------
+
+.mapaweb{background: @colorMapaWeb;}
+
+.mapaweb-titulo{
+	text-transform: uppercase; padding: .1em 0;
+	
+	a{color: #fff; text-decoration: none;}
+	
+	&.ogob{background:@colorOgob;}
+	&.ayto{background:@colorAyto;}
+	&.ciudad{background:@colorCiudad;}
+	&.cultura{background:@colorCultura;}
+	&.gente{background:@colorGente;}
+	&.turismo{background:@colorTurismo;}
+}
+
+// Sólo si existe el .mapaweb (p. índice) se aplica estilo al footer
+// (así se fusiona el fondo hasta el final de la página)
+.mapaweb + .fnd-footer{background: @colorMapaWeb;}

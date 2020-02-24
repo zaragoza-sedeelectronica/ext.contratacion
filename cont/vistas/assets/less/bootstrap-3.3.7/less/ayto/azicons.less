@@ -1,0 +1,84 @@
+// https://draeton.github.io/stitches/
+.stitches-azi(@x: 0, @y: 0, @width: 0, @height: 0) {
+    background-position: @x @y;
+    width: @width;
+    height: @height;
+}
+
+.azi {
+    background-image: url("/cont/plantillas/sede/sprites/spritesheet.png");
+    background-repeat: no-repeat;
+    display: block;
+
+    &.azi-agua {
+        .stitches-azi(-5px, -5px, 129px, 129px);
+    }
+
+    &.azi-participacion {
+        .stitches-azi(-144px, -5px, 129px, 129px);
+    }
+
+    &.azi-apersonales {
+        .stitches-azi(-283px, -5px, 129px, 129px);
+    }
+
+    &.azi-ayudas {
+        .stitches-azi(-422px, -5px, 129px, 129px);
+    }
+
+    &.azi-certificadoe {
+        .stitches-azi(-5px, -144px, 129px, 129px);
+    }
+
+    &.azi-consumo {
+        .stitches-azi(-144px, -144px, 129px, 129px);
+    }
+
+    &.azi-deporte {
+        .stitches-azi(-283px, -144px, 129px, 129px);
+    }
+
+    &.azi-educacion {
+        .stitches-azi(-422px, -144px, 129px, 129px);
+    }
+
+    &.azi-medioambiente {
+        .stitches-azi(-5px, -283px, 129px, 129px);
+    }
+
+    &.azi-seguridad {
+        .stitches-azi(-144px, -283px, 129px, 129px);
+    }
+
+    &.azi-datos {
+        .stitches-azi(-283px, -283px, 129px, 129px);
+    }
+
+    &.azi-salud {
+        .stitches-azi(-422px, -283px, 129px, 129px);
+    }
+
+    &.azi-dsociales {
+        .stitches-azi(-5px, -422px, 129px, 129px);
+    }
+
+    &.azi-trafico {
+        .stitches-azi(-144px, -422px, 129px, 129px);
+    }
+
+    &.azi-tributos {
+        .stitches-azi(-283px, -422px, 129px, 129px);
+    }
+
+    &.azi-urbanismo {
+        .stitches-azi(-422px, -422px, 129px, 129px);
+    }
+
+    &.azi-viapublica {
+        .stitches-azi(-561px, -5px, 129px, 129px);
+    }
+
+    &.azi-vivienda {
+        .stitches-azi(-561px, -144px, 129px, 129px);
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Propuestas" keywords="sede,web,propuesta" />
+</head>
+
+<body>
+    <sede:content>
+        <h2>Propuestas</h2>
+        <a href="./new" class="btn btn-primary btn-large pull-right">
+            <span class="far fa-comment-alt" aria-hidden="true"></span> Haz tu propuesta
+            <th:block class="col-md-12 alert alert-danger" th:if="not ${session.sess_ciudadano}">
+                Sólo usuarios registrados
+            </th:block>
+        </a>
+        <dl>
+            <th:block th:each="registro : ${resultado.body.result}">
+                <dt>
+                    <div class="border-dotted-top fnd-gris-claro radius">
+                        <div class="padding-a05em">
+                            <h4><img src="https://www.zaragoza.es/cont/paginas/gobierno-abierto/img/pregciud-p.png" title="Pregunta Ciudadana" alt="Pregunta Ciudadana" class="nodeco margin-r1em"/>
+                                <a th:href="@{{id}(id=${registro.id})}" th:text="${registro.title}"></a> <small th:text="${registro.type}"></small></h4></div>
+                    </div>
+                </dt>
+                <dd class="shadow clearfix margin-b05em margin-l0em">
+                    <p class="pull-left">Realizada por
+                        <th:block th:text="${registro.usuarioAlta}"></th:block> el
+                        <th:block sede:rdf="${registro.get('creationDate')}"></th:block>
+                    </p>
+                    <p class="pull-right">Apoyos Recibidos: <span class="txtColor" th:text="${registro.votosAFavor} == null ? '0' : ${registro.votosAFavor}"></span>
+                        <span class="fa fa-arrow-up" style="color:green" aria-hidden="true"></span> <span class="sr-only">votos a favor</span> <span class="txtColor" th:text="${registro.votosEnContra} == null ? '0' : ${registro.votosEnContra}"></span>
+                        <span class="fa fa-arrow-down" style="color:red" aria-hidden="true"></span> <span class="sr-only">votos a favor</span> </p>
+                </dd>
+            </th:block>
+        </dl>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

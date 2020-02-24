@@ -1,0 +1,88 @@
+<div class="col-md-3 col-md-pull-9">
+    <th:block th:fragment="buscador-lateral">
+        <form method="get" action="/sede/servicio/actividades/juvenil/banco/query" class="well form-horizontal" accept-charset="utf-8">          
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label for="title" class="control-label">Buscar actividad</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Palabras clave" th:value="${param.title} ? ${param.title[0]} : ''"/>
+                </div>
+            </div>
+            
+            <input th:if="${param.fq}" type="hidden" name="fq" th:value="${param.fq[0]}" />
+            
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default" th:each="faceta, i: ${resultadoSolr.facetas}">
+                    <div class="panel-heading">
+                        <a class="accordion-toggle btn-block" role="button" aria-expanded="false" aria-controls="collapseinc" data-toggle="collapse" data-parent="#accordion" th:href="'#collapse-facet-' + ${i.index}">
+                            <span th:text="${faceta.etiqueta}">No Id!</span>
+                        </a>
+                    </div>
+                    <div th:id="'collapse-facet-' + ${i.index}" class="panel-collapse collapse in">
+                        <th:block th:utext="${faceta.getLista(#httpServletRequest, '/sede/servicio/actividades/juvenil/banco/query')}" />
+                    </div>
+                </div>
+            </div>
+<!--             <div class="form-group"> -->
+<!--                 <div class="col-sm-6"> -->
+<!--                     <label for="minAge" class="control-label">Edad mínima</label> -->
+<!--                     <input type="number" class="form-control" id="minAge" name="minAge" min="1" th:value="${param.minAge} ? ${param.minAge[0]} : '12'"/> -->
+<!--                 </div> -->
+<!--                 <div class="col-sm-6"> -->
+<!--                     <label for="maxAge" class="control-label">Edad máxima</label> -->
+<!--                     <input type="number" class="form-control" id="maxAge" name="maxAge" min="1" th:value="${param.maxAge} ? ${param.maxAge[0]} : '30'"/> -->
+<!--                 </div> -->
+<!--             </div> -->
+
+            <div class="form-group">
+            	<div class="col-md-12">
+                	<label class="control-label">Meses de realización</label>
+                </div>
+                <div class="col-sm-6 checkbox" th:with="meses = ${selectedMonths}"
+                	th:each="mes, i: ${ {'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'} }">
+                	<label th:with="numMes = ${i.index lt 9} ? '0'+${i.index + 1} : ${i.index + 1}">
+                		<input type="checkbox" name="months" th:value="${numMes}" th:checked="${param.months} ? ${#strings.contains(selectedMonths, numMes)}"/>
+                		<th:block th:text="${mes}"></th:block>
+               		</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="nightTime" name="nightTime" th:checked="${param.nightTime}"/>Horario nocturno
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="holidayTime" name="holidayTime" th:checked="${param.holidayTime}"/>Horario festivo
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="funded" name="funded" th:checked="${param.funded}"/>Posible coorganización con Servicio Juventud
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-1 col-xs-2">
+                  <a href="/sede/servicio/actividades/juvenil/banco/" class="btn btn-info" title="Limpiar filtros de búsqueda">Limpiar</a>
+                </div>
+                <div class="col-xs-offset-4 col-md-offset-3 col-xs-2">
+                  <input type="submit" value="Consultar" class="btn btn-primary"/>
+                </div>
+            </div>
+
+        </form>
+        
+    </th:block>
+</div>

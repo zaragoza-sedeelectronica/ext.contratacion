@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+   lang="es">
+   <head>
+      <meta charset="utf-8"/>
+      <sede:meta title="Atención a las adicciones: Programas. CMAPA"
+         description="Prevención de Adicciones: Programas de actuación"
+         keywords="ayuntamiento, ciudad, Zaragoza, España, prevención de adicciones, difusión de información, toxicomania, tabaquismo, alcoholismo, hábito de compra, ludopatía, estupefacientes, asistencia social, cuidado de la salud, programas de actuación, relación administración-administrado"/>
+      <style>
+         titulo-seccion {
+         line-height: 66px;
+         font-size: 42px;
+         }
+         .fnd-blanco {
+         background-color: #ffffff;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .fnd-gris-claro {
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin-bottom: -40px;
+         }
+         .titulo-org h2,
+         .procesos h2{
+         color: #e83437;
+         font-size: 42px;
+         padding-bottom: 20px;
+         }
+         .titulo-org h2 small,
+         .titulo-org h2 span{
+         color: #000000;
+         }
+         .panel-heading a:after {
+         float: left;
+         color: white;
+         background-color: #000;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 20px;
+         margin-right: 10px;
+         }
+         .panel-heading a.collapsed:after {
+         content: "\f105";
+         }
+         .panel-default>.panel-heading {
+         background-color: #fff;
+         border: 0;
+         }
+         .panel {
+         border: 0;
+         webkit-box-shadow: 0 0 0;
+         box-shadow: 0 0 0;
+         }
+         .panel-group .panel-heading+.panel-collapse>.panel-body {
+         border: 0;
+         }
+         .panel-body {
+         padding-left: 50px;
+         }
+         .panel-title>a {
+         color: #E81B16;
+         }
+         .panel-title>a:hover,
+         .panel-title>a:focus,
+         .panel-title>a:active {
+         text-decoration: none;
+         }
+         .imagen{
+         float: right;
+         padding-left: 2em;
+         margin-right:2em;
+         }
+         ul.submenu {
+         margin: 0;
+         }
+         .btn-back.pull-left {
+         padding: .25em .5em;
+         background: #E81B16;
+         border-radius: .5em;
+         }
+         .second-bar {
+         background: #E6E6E6;
+         border-radius: .5em;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin-bottom: 1em;
+         }
+         ul.submenu li {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: .5em;
+         }
+         .offset-target:before {
+         content: '';
+         display: block;
+         height: 67px;
+         /* fixed header height*/
+         margin: -67px 0 0;
+         /* negative fixed header height */
+         }
+         .section-title {
+         background: #E6E6E6;
+         border-radius: .5em .5em 0 0;
+         padding: .5em;
+         border: 1px solid #CCC;
+         margin: 0;
+         }
+         .section-content {
+         border: 1px solid #CCC;
+         background: #FFF;
+         padding: .5em;
+         border-radius: 0 0 .5em .5em;
+         margin-bottom: 1em;
+         }
+      </style>
+   </head>
+   <body>
+      <sede:content container="false">
+         <div class="container text-left margin-auto nomargin
+            titulo-org">
+         </div>
+         <div class="">
+            <div class="container-fluid margin-b2em margin-t2em
+               fnd-blanco radius">
+               <div id="rscont" class="container-fluid">
+                  <nav>
+                     <div class="second-bar clearfix">
+                        <div class="hidden-xs">
+                           <a class="btn-back pull-left" href="/sede/portal/derechos-sociales/adicciones/">
+                           <span class="fa fa-inverse fa-2x fa-chevron-left" aria-hidden="true"></span>
+                           <span class="oculto">Volver a Adicciones</span>
+                           </a>
+                           <p class="lead destacado margin-l05em margin-b0em pull-left">Atención</p>
+                        </div>
+                        <ul class="list-inline navbar-right submenu">
+                           <li><a href="drogas">Drogas</a></li>
+                           <li><a href="alcohol">Alcohol</a></li>
+                           <li><a href="at-tabaco">Tabaco</a></li>
+                           <li><a href="otras">Otras adicciones</a></li>
+                           <li><a href="at-familia">En familia</a></li>
+                           <li><a href="at-info">Información</a></li>
+                           <li><a href="caracteristicas">Objetivos y características</a></li>
+                        </ul>
+                     </div>
+                  </nav>
+               </div>
+               <h3>Programas de atención</h3>
+               <div class="row">
+                  <div class="col-xs-12">
+                     <div class="container-fluid margin-b2em margin-t2em
+                        fnd-blanco radius">
+                        
+                        <ul>
+                           <li><a href="dejaloycorre">Déjalo y Corre</a></li>
+                           <li><a href="abordaje-alcohol">Abordaje integral de la enfermedad alcohólica</a></li>
+                           <li><a href="adiccion-juego">Adicción al juego (IOCARI)</a> </li>
+                           <li><a href="ayto-sin-humo">Ayuntamiento sin humo</a></li>
+                           <li><a href="cannabis">Cannabis</a></li>
+                           <li><a href="cocaina">Cocaína</a></li>
+                           <li><a href="compras-compulsivas">Compras compulsivas</a></li>
+                           <li><a href="tabaco">Deshabituación tabáquica: Lo dejo</a></li>
+                           <li><a href="habitos-saludables">Hábitos saludables</a></li>
+                           <li><a href="heroina">Heroína</a></li>
+                           <li><a href="informacion-orientacion">Información y orientación</a></li>
+                           <li><a href="intervencion">Intervención individualizada con familias</a></li>
+                           <li><a href="padres">Padres</a></li>
+                           <li><a href="pasa"> Programa alternativo a sanciones administrativas por consumo o tenencia de drogas (P.A.S.A)</a></li>
+                           <li><a href="atiempo">Programa Comunitario de Adolescentes &quot;A  tiempo&quot;</a></li>
+                           <li><a href="rehabilitacion">Rehabilitación cognitiva</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </sede:content>
+   </body>
+</html>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="4 Plan Joven. Cultura" description="" author="" last-modified="Thu Nov 13 00:00:00 CET 2014" keywords="plan joven, programacion">
+    </sede:meta>
+    <style>
+    body {
+        padding-top: 57px;
+    }
+    
+    @media (min-width: 768px) {
+        .btn-participa {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div style="position:relative;" class="text-center">
+            <img class="img-responsive full-width" src="//zaragoza.es/cont/paginas/gobierno-abierto/img/4planjoven.jpg" alt="" />
+          
+        </div>
+        <hr class="sm" />
+        <div class="row">
+        <h2> Cultura</h2>
+        <div>
+            <img class="pull-left" alt="" src="//www.zaragoza.es/cont/vistas/portal/sectores/juventud/planjoven/img/icono-cultura.jpg" />
+            <p>
+                Entendemos la cultura como un ámbito amplio que refleja y construye la identidad, la expresión de la realidad, su cuestionamiento y su mirada. Por esto, debemos:</p>
+            <ul>
+                <li> Estudiar sobre el acceso de la juventud a la cultura.
+                </li>
+                <li>Suscitar qué políticas juveniles debemos promover para favorecer la creación cultural juvenil.</li>
+            </ul>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-8">
+            <h3>Documentación</h3>
+            <ul>
+                <li><a class="pdf" href="https://www.zaragoza.es/contenidos/sectores/jovenes/doca-ocio-cultura.pdf">Cultura</a></li>
+                <li>
+                    <a href="/contenidos/sectores/jovenes/Acta1reunion-GrupoCultura.pdf" class="pdf">Acta 1</a></li>
+                <li><a href="/contenidos/sectores/jovenes/Acta2reunion-GrupoCultura.pdf" class="pdf">Acta 2</a></li>
+            </ul>
+            </div>
+        
+        </div>
+        <sede:formulario id1="3" id2="4"/>
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $(".collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Plantilla Municipal Y RPT (Relación de Puestos de Trabajo)"
+                   description="Administración Municipal. Plantilla Municipal y RPT (Relación de Puestos de Trabajo)"
+                   author="" last-modified="Tue Febr 22 00:00:00 CEST 2018"
+                   keywords="ayuntamiento, ciudad, administración local, organización administrativa, plantilla municipal, relación administración-administrado"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+            .tabla-bn {
+            border-collapse: separate;
+            border-spacing: 0px 10px;
+            }
+
+            .tabla-bn td {
+            padding: 0 5px 5px 5px !important;
+            margin-bottom: 5px;
+            border-right: dotted 1px #000000;
+            border-top: 0px !important;
+            border-bottom: dotted 1px #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>
+                        Administración Municipal
+                    </small>
+                    <span>|</span>
+                    Plantilla Municipal y Relación de Puestos de Trabajo (RPT)
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <h3>Plantilla Municipal</h3>
+
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <ul>
+                                <li>Aprobada por el Ayuntamiento Pleno el 26.02.2018</li>
+                                <li>
+                                    Publicada en
+                                    <a href="https://www.zaragoza.es/contenidos/organizacion/laboral/plantilla-2018.pdf"
+                                       class="pdf">BOPZ nº 51 de 03.03.2018
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.zaragoza.es/contenidos/organizacion/laboral/BOPZ_Rectificacion_plantilla_2018.pdf"
+                                       class="pdf">Corrección de errores de Transcripción y aritméticos BOPZ nº 106 de
+                                        12.05.2018
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.zaragoza.es/contenidos/organizacion/laboral/BOP-Modificacion-Puntual-2018.pdf"
+                                       class="pdf">Modificación puntual de la Plantilla BOPZ nº 182 de 9.08.2018
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <!--<p><strong>Modificaciones Plantilla</strong></p>
+                                        <ul>        <li>Aprobada por el Ayuntamiento Pleno el 30.10.2017 y Publicada en <a href="http://bop.dpz.es/BOPZ/obtenerContenidoEdicto.do?idEdicto=554987&amp;numBop=259&amp;fechaPub=s%E1bado%2011%20de%20noviembre%20de%202017">BOPZ nº 259 de 11.11.2017</a></li>
+                                    <li>Aprobada por el Ayuntamiento Pleno el 26.06.2017 y Publicada en <a href="http://bop.dpz.es/BOPZ/obtenerContenidoEdicto.do?idEdicto=543900&amp;numBop=157&amp;fechaPub=martes%2011%20de%20julio%20de%202017">BOPZ nº 157 de 11.07.2017</a></li> </ul>-->
+                        </div>
+                        <div class="col-md-7">
+                            <div role="alert" class="alert alert-warning alert-info info">
+                                <img title="Datos Abiertos" alt="Disponible en Datos Abiertos"
+                                     src="/cont/paginas/risp/img/datosabiertos" class="pull-right dere"/>
+                                <h4>Conjunto de Datos en formato abierto</h4>
+                                <p>
+                                    Puede consultar la
+                                    <a href="servicio/catalogo/1160">Plantilla Municipal</a>
+                                    desde el Catálogo de datos abiertos
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="clearfix">Porcentajes</h4>
+                                <table class="table table-responsive tabla-bn">
+                                    <caption>PORCENTAJES PLANTILLA MUNICIPAL 2018* (FUNCIONARIOS, LABORALES,
+                                        EVENTUALES)
+                                    </caption>
+                                    <tr>
+                                        <td><strong>Plantilla 2018</strong></td>
+                                        <td><strong>Nº plazas</strong></td>
+                                        <td><strong>%</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Plantilla Funcionarias/os</td>
+                                        <td>5.666</td>
+                                        <td>98,20%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Plantilla Laboral</td>
+                                        <td>64</td>
+                                        <td>1,11%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Plantilla personal eventual</td>
+                                        <td>40</td>
+                                        <td>0,69%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>5.770</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                                <div role="alert" class="alert alert-info">* La plantilla está constituida por la
+                                    relación de plazas creadas y asignadas a cada una de las escalas, clases y
+                                    categorías en lo funcionarial, la relación de puestos de trabajo (plazas) según
+                                    grupos de clasificación en lo laboral, y por la relación de plazas de personal de
+                                    empleo eventual. Los datos que se muestran hacen referencia al total de plazas de
+                                    las plantillas,incluyendo tanto aquellas plazas que están ocupadas por personal
+                                    municipal como aquellas no ocupadas y que están vacantes.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <h3>Relación de Puestos de Trabajo (RPT)</h3>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="card">
+                                <p>
+                                    <strong>Consolidada</strong>
+                                </p>
+                                <ul>
+                                    <li>
+                                        <a href="/contenidos/organizacion/laboral/RPT-26072018.xls">RPT que refunde las
+                                            aprobadas por el Gobierno de Zaragoza el 26-07-2018.
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div role="alert" class="alert alert-warning alert-info info">
+                                <img title="Datos Abiertos" alt="Disponible en Datos Abiertos"
+                                     src="/cont/paginas/risp/img/datosabiertos" class="pull-right dere"/>
+                                <h4>Conjunto de Datos en formato abierto</h4>
+                                <p>
+                                    Puede consultar la
+                                    <a href="servicio/catalogo/1161">Relación de Puestos de Trabajo </a>
+                                    desde el Catálogo de datos abiertos
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <strong>Modificación de la RPT</strong>
+                    </p>
+
+
+                    <div class="card">
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 07.09.2018</li>
+                            <li>
+                                En información Pública del 14.09.2018 al 23.09.2018
+                            </li>
+                            <li>
+                                <a href="https://www.zaragoza.es/contenidos/organizacion/laboral/RPT10-2018-AMT2.pdf"
+                                   class="pdf">RPT 10/2018 Agencia Municipal Tributaria
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <div class="card">
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 26.07.2018</li>
+                            <li>
+                                <a href="https://www.zaragoza.es/contenidos/organizacion/laboral/RPT9-2018-SD.pdf"
+                                   class="pdf">RPT 9/2018 Servicio de Distritos
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 210, de 12.09.2018</li>
+
+                        </ul>
+                    </div>
+
+
+                    <div class="card">
+                        <ul>
+                            <li>Aprobada por el Ayuntamiento Pleno el 26.07.2018</li>
+                            <li>
+                                <a href="https://www.zaragoza.es/contenidos/organizacion/laboral/RPT-2018-SPP.pdf"
+                                   class="pdf">RPT 7/2018 Área de Servicios Públicos y Personal
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 210, de 12.09.2018</li>
+                            <li>Corrección error BOPZ 215, de 18.09.2018</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 25.05.2018</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT-6-2018-URB-SP.pdf" class="pdf">RPT 6/2018
+                                    Área de Urbanismo y Sostenibilidad y Servicios Públicos y Personal
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT-6-2018-GT.pdf" class="pdf">RPT 6/2018
+                                    Gestión Tributaria
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 156, de 10.07.2018</li>
+
+                        </ul>
+                    </div>
+
+
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 27.04.2018</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT3-2018.pdf" class="pdf">
+                                    RPT 3/2018 Área de Presidencia y Derechos Sociales
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº121, de 30.05.2018</li>
+
+                        </ul>
+                    </div>
+
+
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 27.04.2018</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT5-2018.pdf" class="pdf">
+                                    RPT 5/2018 Servicio de Contratación
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº121, de 30.05.2018</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 27.04.2018</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT4-2018.pdf" class="pdf">
+                                    RPT 4/2018 Oficina del Espacio Urbano y Gestión de Residuos
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº121, de 30.05.2018</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 13.04.2018</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT1-2018.pdf" class="pdf">
+                                    RPT 1/2018 Servicio contra Incendios, Salvamento y Protección Civil
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº110 de 17.05.2018</li>
+
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 09.02.2018</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT16-2017.pdf" class="pdf">
+                                    RPT 16/2017 Área de Servicios Públicos y Personal
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 57 de 12 de marzo de 2018</li>
+                            <li>Corrección de error material BOPZ nº 61 de 16 de marzo de 2018</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 12.01.2018</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT15-17.pdf" class="pdf">
+                                    RPT 15/2017 Área de Presidencia y Derechos Sociales
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 47 de 27 de febrero de 2018</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 28.12.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT12-2017.pdf" class="pdf">
+                                    RPT 12/2017 Área de Urbanismo y Sostenibilidad
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 23 de 30 de enero de 2018</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 28.12.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT10-2017.pdf" class="pdf">
+                                    RPT 10/2017 Cuerpo de Policía Local
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 19 de 24 de enero de 2018</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 01.12.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT11-2017.pdf" class="pdf">
+                                    RPT 11/2017 Servicio de Intervención.
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 295 de 27 de diciembre de 2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 06.10.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT9-2017.pdf" class="pdf">
+                                    RPT 9/2017 Servicio Contra Incendios, Salvamento y Protección Civil.
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº253 de 4 noviembre de 2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 22.09.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT_5-17.pdf" class="pdf">
+                                    RPT 5/2017 Servicio de Redes y Sistemas y de la Unidad de
+                                    Planes Integrales
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº245 de 25 octubre de 2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 22.09.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT_8-17.pdf" class="pdf">
+                                    RPT 8/2017 Oficina Técnica de Participación, Transparencia y
+                                    Gobierno Abierto
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº245 de 25 octubre de 2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 21.07.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT_7-17.pdf" class="pdf">
+                                    RPT 7/2017 Presidencia y Derechos Sociales
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOPZ nº 229 de 4 de octubre de 2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 26.05.2017 y aprobada la corrección de errores
+                                de dicha RPT el 09-06-2017
+                            </li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT6-17.pdf" class="pdf">
+                                    RPT 6/2017 del Área de Alcaldía
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOP nº 142 de 23.06.2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 26.05.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT4-17.pdf" class="pdf">
+                                    RPT 4/2017 del Área de Economía y Cultura
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOP nº 142 de 23.06.2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 24.03.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT-mod-Sociales-17.pdf" class="pdf">
+                                    RPT 3/2017 del Área de Presidencia y Derechos Sociales
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOP nº 92 de 25.04.2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 24.03.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT-mod-Cultura-17.pdf" class="pdf">
+                                    RPT 2/2017 de la Dirección General de Cultura
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOP nº 92 de 25.04.2017</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 03.03.2017</li>
+                            <li>
+                                <a href="/contenidos/organizacion/laboral/RPT1-2017-mod-contratacion.pdf" class="pdf">
+                                    RPT 1/2017 del Departamento de Contratación y Patrimonio.
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                            <li>Publicada en BOP nº 84 de 12.04.2017</li>
+
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 19.12.2016</li>
+                            <li>
+                                Publicada en el
+                                <a href="/contenidos/organizacion/laboral/RPT-BOP11-01-2017.pdf">BOPZ nº 7, de
+                                    11.01.2017
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Modificación de la Relación de Puestos de Trabajo</strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 28.09.2016</li>
+                            <li>
+                                Publicada en el
+                                <a href="/contenidos/organizacion/laboral/RPT-BOP-15-10-2016.pdf" class="pdf">
+                                    BOPZ nº 238, de 15.10.2016
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <strong>Adaptación de la Relación de Puestos de Trabajo a la
+                                estructura determinada por Decreto de Alcaldía de 30 de
+                                diciembre de 2015:
+                            </strong>
+                        </p>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 25.07.2016</li>
+                            <li>
+                                Publicada en el
+                                <a href="http://bop.dpz.es/BOPZ/obtenerContenidoEdicto.do?idEdicto=505259&amp;numBop=192&amp;fechaPub=lunes%2022%20de%20agosto%20de%202016">
+                                    BOPZ el 22.08.2016
+                                </a>
+                            </li>
+                            <li>Nota.- Únicamente se refleja el desarrollo de la RPT en las estructuras de nueva
+                                creación o que sufren modificación por cambio de denominación o competencias o por
+                                inclusión de puestos de trabajo procedentes de estructuras desaparecidas o que se
+                                consideran necesarios para la puesta en marcha de las nuevas.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <strong>Relación de puestos de trabajo de Policía y Servicio
+                            contra Incendios, de Salvamento y Protección Civil, y
+                            modificaciones y correcciones de errores a la RPT aprobada en
+                            29/07/2014:
+                        </strong>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 28.01.2015</li>
+                            <li>
+                                Publicada en
+                                <a href="/contenidos/organizacion/laboral/BOPZ-11022015-RPT-2015.pdf" class="pdf">
+                                    BOPZ el 11.02.2015
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <strong>Relación de puestos de trabajo general vigente (excepto
+                            Policía y Servicio contra Incendios de Salvamento y Protección
+                            Civil):
+                        </strong>
+                        <ul>
+                            <li>Aprobada por el Gobierno de Zaragoza el 29.07.2014</li>
+                            <li>
+                                Publicada en
+                                <a href="/contenidos/organizacion/laboral/RPT-19-08-2014.pdf" class="pdf">
+                                    BOPZ de 19.08.2014
+                                    <span class="oculto">(Documento en formato pdf)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Bienes embargados" keywords="sede,web,vehiculos,transparencia" />
+</head>
+
+<body>
+    <sede:content>
+        <h2 class="sr-only">Listado</h2>
+        
+        <form method="get" action="" th:object="${dato}">
+            <label for="expedienteContains">
+                <span class="sr-only">Desde</span>
+                <input type="text" name="startDateFrom" id="startDateFrom" class="form-control" th:value="${param.startDateFrom} ? ${param.startDateFrom[0]} : ''" placeholder="Desde"/>
+            </label>
+            <label for="expedienteContains">
+                <span class="sr-only">Hasta</span>
+                <input type="text" name="startDateTill" id="startDateTill" class="form-control" th:value="${param.startDateTill} ? ${param.startDateTill[0]} : ''" placeholder="Hasta"/>
+            </label>
+            
+
+            <input type="submit" value="Consultar" class="btn btn-primary" />
+        </form>
+        
+        <div class="row">
+            <div class="col-md-6" th:each="reg : ${resultado.body.result}" th:object="${reg}" sede:rdf="*{voc()}" th:attr="about=*{uri}">
+                <th:block th:include="servicio/bienes-embargados/acto-list(actodetail=${reg})" />
+            </div>
+        </div>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+</body>
+
+</html>

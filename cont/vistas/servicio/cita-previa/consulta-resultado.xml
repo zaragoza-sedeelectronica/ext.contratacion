@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Consulta y cancelación. Cita previa" keywords="sede,web,cita,previa,consulta,cancelación" />
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div role="alert" class="alert alert-info" th:if="*{#lists.isEmpty(resultado)}">No se han encontrado citas</div>
+        <div><a href="/sede/servicio/cita-previa/consulta">Volver</a></div>
+        <ul class="list-unstyled" th:if="not *{#lists.isEmpty(resultado)}">
+            <li th:each="doc:${resultado}" class="card col-xs-12 col-sm-6 col-md-6">
+                <div><strong><th:block th:text="${doc.nombre}"/> <th:block th:text="${doc.apellidos}"/> 
+                <th:block th:text="${doc.nif}"/></strong></div>
+                <div th:if="${doc.expediente}">expediente: <th:block th:text="${doc.expediente}"/></div>
+                <!--/*<div>servicio: <th:block th:text="${doc.servicio}"/></div>
+                <div>Localizador: <th:block th:text="${doc.localizador}"/></div>*/-->
+                <div><th:block th:text="${doc.tramite}"/>. <th:block th:text="${doc.asunto}"/></div>
+                
+                <div><span class="fas fa-calendar-alt" />
+                    <th:block sede:rdf="${doc.get('fecha','EEEE dd MMMM yyyy')}" />
+                    <th:block th:text="${doc.hora}" /></div>
+                <div><span class="fa fa-home" /> <th:block th:text="${doc.lugar}"/></div>
+                <div class="pull-right">
+                    <a th:href="@{/servicio/cita-previa/anular(fecha=${doc.fecha},hora=${doc.hora}, nif=${dato.nif}, expediente=${dato.expediente},nombre=${dato.nombre},apellidos=${dato.apellidos})}" class="btn btn-danger" onclick="return confirm('Desea anular la cita?')">Anular</a>
+                    <a th:href="@{/servicio/cita-previa/detalle(fecha=${doc.fecha},hora=${doc.hora}, nif=${dato.nif}, expediente=${dato.expediente},nombre=${dato.nombre},apellidos=${dato.apellidos})}" class="btn btn-info">Detalle</a>
+                </div>
+            </li>
+        </ul>
+    </sede:content>
+</body>
+
+</html>

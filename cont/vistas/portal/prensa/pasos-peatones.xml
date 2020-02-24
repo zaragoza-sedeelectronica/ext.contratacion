@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Campaña #RespetaLaCebra. Prensa" description="" author="" audience="" keywords="" />
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    ocultarArbolCapas = false;
+    var i = 0;
+    treeOrderDataList = ["movilidad"];
+
+    var dataMovilidad = "{title: 'Cortes de Tráfico',claseIcono:'cortesdetrafico',clase:'oculto',id: '" + i + "',url:'//www.zaragoza.es/sede/servicio/via-publica/incidencia.geojson?tipo.id=1&srsname=utm30n_etrs89'}\
+        ,{title: 'Afecciones Imp.',claseIcono:'afecciones',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/via-publica/incidencia.geojson?tipo.id=2&srsname=utm30n_etrs89'}\
+        ,{title: 'Paradas y tiempos Bus',claseIcono:'bus',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/transporte-urbano/poste-autobus.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estaciones Bizi',claseIcono:'estacionesBizi2',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/estacion-bicicleta.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'AparcaBicis, Bicebergs',claseIcono:'aparcabicis',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-bicicleta.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Carriles Bici',claseIcono:'carrilesBici',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/contenidos/bici/carriles_UTM30N_ETRS89.json'}\
+        ,{title: 'Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-publico.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Accesos Aparcamientos',claseIcono:'aparcamientos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-accesos.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estacionamiento...discapidad',claseIcono:'estmin',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-personas-discapacidad.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estacionamientos moto',claseIcono:'estacionamiento_motos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/aparcamiento-moto.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Estaciones de Servicio',claseIcono:'estacionServicio',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/estacion-servicio.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Paradas de Taxi',claseIcono:'paradasdeTaxi',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parada-taxi.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Parquímetros',claseIcono:'parquimetro_ESRO',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parquimetro.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Cercanías',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/paradas_cercanias_UTM30N_ETRS89.json'}\
+        ,{title: 'Tiempos de espera del tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/transporte-urbano/parada-tranvia.geojson?srsname=utm30n_etrs89'}\
+        ,{title: 'Recorrido del tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/estado/transporte/tranvia_UTM30N_ETRS89.json'}\
+        ,{title: 'Propuesta Linea 2 Tranvía',claseIcono:'tranvia',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/trafico/linea2_tranvia.json'}\
+        ,{title: 'Tiempos de Recorrido',claseIcono:'panelesInformativos',clase:'oculto',id: '" + (++i) + "',url: '//www.zaragoza.es/sede/servicio/tiempos-recorrido.geojson?srsname=utm30n_etrs89'}";
+    /*]]>*/
+    </script>
+    <script type="text/javascript" src="//www.zaragoza.es/js/homeMapa.js"></script>
+    <style type="text/css">
+    .list-noticia a {
+        color: #202020;
+    }
+    
+    .list-noticia li {
+        border-bottom: 1px solid #E6E6E6;
+        /*fnd-gris-claro*/
+        margin-bottom: .5em;
+        padding-bottom: .5em;
+    }
+    
+    @media (min-width: 768px) {
+        .list-aviso li {
+            min-height: 18em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <p>
+            <img alt="" class="img-responsive full-width" src="//www.zaragoza.es/cont/vistas/portal/prensa/img/banner-pasos-peatones.jpg" />
+        </p>
+        <div class="row">
+            <div class="col-md-12">
+			 <h2>Campaña #RespetaLaCebra</h2>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-8">
+                           
+                            <hr class="sm" />
+                            
+                          
+<p>Cruzar un paso de peatones no debería ser una actividad de riesgo. Los atropellos son la primera causa de muerte por accidente de tráfico en zonas urbanas en España. Por eso el Ayuntamiento de Zaragoza ha puesto en marcha la campaña <strong>#RespetaLaCebra</strong> para concienciar a los conductores y ciclistas de que deben extremar la precaución, <strong>frenar siempre</strong> que se aproximen a un paso y detenerse si alguien se dispone a cruzar; <strong>también en los pasos de cebra de los carriles bici.</strong> Además en las vías pacificadas y zonas 30 deben circular siempre a velocidad muy reducida.</p>
+
+<p>El Ayuntamiento de Zaragoza busca con esta iniciativa reducir la siniestralidad, la gravedad de los atropellos y por tanto de las lesiones. <strong><em>"El deporte extremo vive del riesgo. Los peatones, de tu precaución. En bici, en moto o en coche, extrema el cuidado. Respeta la cebra."</em></strong></p>
+                        </div>
+                        <div class="col-md-4">
+							<div class="embed-responsive embed-responsive-16by9">
+                        	  <iframe class="embed-responsive-item" title="Extreme Zebra Zaragoza " width="350" height="250" src="https://www.youtube.com/embed/MZNUHUJKRQ8" frameborder="0" >
+                        	    Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/MZNUHUJKRQ8">Enlace al vídeo en youtube.com</a></iframe>
+                        	</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <ul class="nav nav-tabs tabs" role="tablist" style="display:none;" th:if="${!currentDevice.isMobile()}">
+                <li role="presentation">
+                    <a aria-controls="que" data-toggle="tab" href="#que" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Zaragoza al Instante</a>
+                </li>
+            <!--    <li role="presentation">
+                    <a aria-controls="controles" data-toggle="tab" href="#controles" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Controles Policía Local</a>
+                </li>-->
+                <li role="presentation">
+                    <a aria-controls="recomendaciones" data-toggle="tab" href="#recomendaciones" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Recomendaciones</a>
+                </li>
+                <li role="presentation">
+                    <a aria-controls="acciones" data-toggle="tab" href="#acciones" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Acciones</a>
+                </li>
+                <li role="presentation">
+                    <a aria-controls="vias" data-toggle="tab" href="#vias" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Vías Pacificadas</a>
+                </li>
+                <li role="presentation">
+                    <a aria-controls="enlaces" data-toggle="tab" href="#enlaces" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Enlaces</a>
+                </li>
+				
+				<li role="presentation">
+                    <a aria-controls="enlaces" data-toggle="tab" href="#videos" role="tab"><span class="fa fa-star" aria-hidden="true"></span> Vídeos</a>
+                </li>
+				
+				
+            </ul>
+            <div sede:class="tab-content">
+                <h2 class="tab-title" aria-expanded="false" data-target="#que" data-toggle="collapse">Mapa Movilidad</h2>
+                <div id="que" role="tabpanel" sede:class="tab-pane active">
+                    <div class="well well-sm text-justify">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div id="mapa">
+                                    <div class="separador" id="facadeStatus">&nbsp;</div>
+                                    <script type="text/javascript">
+                                    /*<![CDATA[*/
+                                    var ifrm = document.createElement("iframe");
+                                    ifrm.setAttribute("name", "mapahome");
+                                    ifrm.setAttribute("id", "mapahome");
+                                    ifrm.setAttribute("title", "La Ciudad al Instante");
+                                    ifrm.setAttribute("scrolling", "no");
+                                    ifrm.setAttribute("src", "//www.zaragoza.es/IDEZar_visorPortada/index.html");
+                                    ifrm.setAttribute("frameBorder", "0");
+                                    ifrm.style.width.value = "100%";
+                                    document.getElementById("mapa").appendChild(ifrm);
+                                    /*]]>*/
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="alert" class="alert alert-info margin-t1em">
+                            <a shape="rect" href="https://www.zaragoza.es/ciudad/viapublica/movilidad/detalle_Risp?id=1500">
+                                <img title="Datos Abiertos" alt="Disponible en Datos Abiertos" class="pull-right" src="/cont/paginas/risp/img/datosabiertos.jpg" />
+                            </a>
+                            <h3>Conjunto de datos en formato abierto</h3>
+                            <p>
+                                Este servicio utiliza el conjunto de datos de <a shape="rect" href="https://www.zaragoza.es/ciudad/viapublica/movilidad/detalle_Risp?id=1500">Accidentes de tráfico</a> accesible desde el Catálogo de datos abiertos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--<h2 class="tab-title" aria-expanded="false" data-target="#controles" data-toggle="collapse">Controles Policía Local</h2>
+                <div id="controles" role="tabpanel" sede:class="tab-pane active">
+                    <div class="well well-sm text-justify">
+                       <p>La Policía Local de Zaragoza va a llevar a cabo controles en determinados puntos de la ciudad a lo largo de las próximas semanas con el objetivo de concienciar a los conductores y ciclistas de que deben extremar la precaución en el entorno de los pasos de peatones y respetar siempre la prioridad de los viandantes. Para ello se reforzará la presencia policial en los siguientes puntos:</p>
+<h3>SECTOR 1:</h3>
+<ul><li>Calle MARIA ZAMBRANO (Grancasa).
+</li><li>Calle PABLO NERUDA (Gabriel Celaya).
+</li><li>Calle LUIS LEGAZ LACAMBRA (Pedro Saputo u Octavio Paz).
+</li><li>Plaza de SAN GREGORIO (Sixto Celorrio).</li></ul>
+ 
+<h3>SECTOR 2:</h3>
+<ul><li>Paseo de SAGASTA (Paseo de las Damas).
+</li><li>Calle LEON XIII (Madre Vedruna).
+</li><li>Paseo de ECHEGARAY Y CABALLERO (Don Jaime I).
+</li><li>Calle SANTA INES (Santa Lucía o Cereros).</li></ul>
+ 
+<h3>SECTOR 3:</h3>
+<ul><li>Avenida de VALENCIA (Bretón y García Sánchez).
+</li><li>Calle ANDRÉS VICENTE (Escultor Palao).
+</li><li>Avenida de PABLO GARGALLO (Puerta de Sancho).
+</li><li>Calle BATALLA DE ALMANSA (Batalla de Arapiles).
+ </li></ul>
+<h3>SECTOR 4:</h3>
+<ul><li>Avenida de SAN JOSÉ (Cesáreo Alierta).
+</li><li>Calle ZARAGOZA LA VIEJA (Escultor Ramíerez o Camino de Miraflores).
+</li><li>Avenida de AMERICA (Martínez Vargas)
+</li><li>Calle ZAFIRO (Cuarta Avenida).
+ </li></ul>
+<h3>SECTOR 5:</h3>
+<ul><li>Vía UNIVERSITAS (Duquesa Villahermosa).
+</li><li>Calle SEVILLA (Gascón de Gotor o Paseo de Ruiseñores).
+</li><li>Calle EMBARCADERO (La via).
+</li><li>Calle ANTONIO LEYVA (Alfredo Nobel).</li></ul>
+                    </div>
+                </div>-->
+                <h2 class="tab-title" aria-expanded="false" data-target="#recomendaciones" data-toggle="collapse">Recomendaciones</h2>
+                <div id="recomendaciones" role="tabpanel" sede:class="tab-pane active">
+                    <div class="well well-sm text-justify">
+                        <h3>En bici, coche o moto:</h3>
+
+<p>Al acercarte a un paso peatonal, <strong>reduce siempre</strong> la velocidad.</p>
+
+<p>Si algún viandante se dispone a cruzar, <strong>detente completamente</strong>. No tienes la prioridad. Al frenar, <strong>no invadas el paso</strong> de peatones.</p>
+
+<p>En pasos peatonales con semáforo, cuando se ponga <strong>en ámbar detente</strong>. </p>
+
+<p>Con el semáforo en ámbar intermitente, <strong>frena y asegúrate</strong> de que ningún peatón está cruzando antes de continuar la marcha. Cédeles el paso y <strong>facilita</strong> que las personas mayores y con movilidad reducida <strong>puedan terminar de cruzar</strong> la calzada.</p>
+
+<p>En vías pacificadas circula siempre a <strong>velocidad muy reducida</strong>. Las zonas 30, zonas residenciales y zonas peatonales son de prioridad peatonal. Extrema la precaución y <strong>cede el paso</strong> a los viandantes. Si vas en bici, <strong>no realices maniobras que puedan ponerles en riesgo.</strong></p>
+
+<p>Cuando el carril bici coincida con una <strong>parada de autobús</strong> señalizada, <strong>cede el paso</strong> a las personas que <strong>vayan a subir o bajar de bus</strong> mientras éstas se encuentren entre el vehículo y la acera o  zona de refugio más próxima.</p>
+
+
+<h3>A pie:</h3>
+
+<p>A la hora de cruzar el paso de cebra, <strong>sitúate en la acera</strong>; nunca en la calzada. </p>
+
+<p>Mira a ambos lados. No pases hasta que los <strong>vehículos</strong> se hayan <strong>detenido totalmente</strong>.</p>
+
+<p>Intenta cruzar por la <strong>zona más alejada de la circulación</strong> de los coches.</p>
+
+<p><strong>Evita distracciones</strong>. No cruces mirando <strong>el móvil</strong>. Centra tu atención en la calzada.</p>
+
+<p>En los pasos de peatones con semáforo, <strong>si la luz comienza a parpadear no cruces</strong>. Espera a que se ponga verde.</p>
+
+<p><strong>No</strong> circules por el <strong>carril bici.</strong></p>
+                    </div>
+                </div>
+                <h2 class="tab-title" aria-expanded="false" data-target="#acciones" data-toggle="collapse">Acciones</h2>
+                <div id="acciones" role="tabpanel" sede:class="tab-pane active">
+                   <h3>Programa de Educación Vial</h3>
+
+<p>Esta iniciativa busca concienciar a niños y jóvenes en edad escolar sobre los riesgos del tráfico y la necesidad de conocer y cumplir las normas y utilizar elementos de seguridad para prevenir accidentes. El encargado de desarrollarlo es el departamento de Educación y Seguridad Vial de la Policía Local. El programa incluye también acciones formativas para adultos.</p>
+<p><strong><a href="https://www.zaragoza.es/ciudad/policia/detalle_Centro?id=46">ENLACE</a></strong></p> 
+
+<h3>Caminos Escolares</h3>
+
+<p>Son itinerarios seguros que pueden seguir los niños y niñas en su trayecto de ida y vuelta al centro educativo. Promueven la movilidad sostenible y la autonomía de los escolares. Con ellos se busca además que la ciudad se convierta de nuevo en un entorno seguro y acogedor, a la vez que se fomenta la educación en valores y medio ambiente.</p>
+
+<p><strong><a href="https://www.zaragoza.es/ciudad/caminoescolar/que.htm">ENLACE</a></strong></p> 
+
+<h3>La bibicleta en la escuela</h3>
+
+<p>Este programa educativo tiene como objetivo enseñar a los niños y niñas y jóvenes a circular en bicicleta de forma segura y responsable, utilizando las vías ciclistas y calzadas pacificadas.</p> <p>Favorece su autonomía y  la movilidad sostenible.</p>
+
+<p><strong><a href="http://labicienelcole.com/">ENLACE</a></strong></p> 
+
+<h3>Mejora de la visibilidad en el entorno de los pasos de peatones</h3>
+
+<p>Facilitar la visibilidad de los viandantes en el entorno de los pasos de peatones es un elemento clave para reducir los atropellos. El Ayuntamiento de Zaragoza ha desarrollado un programa piloto en el barrio de la Almozara que ha consistido en instalar estacionamientos para motos en las inmediaciones de pasos de cebra. De esta forma, todos los pasos peatonales del distrito cuentan ya con espacio de visibilidad. </p>
+
+<p><strong><a href="https://www.zaragoza.es/ciudad/noticias/detalle_Noticia?id=224706">ENLACE</a></strong></p> 
+                </div>
+				
+				<h2 class="tab-title" aria-expanded="false" data-target="#vias" data-toggle="collapse">Vías Pacificadas</h2>
+                <div id="vias" role="tabpanel" sede:class="tab-pane active">
+                    <p>Para un peatón o un ciclista, que un vehículo circule a 50 o a 30 km/h puede suponer la diferencia entre quitarle o no la vida. Para detener totalmente un vehículo que circula a 50 km/h hacen falta 28 metros. Sin embargo, a 30 km/h son suficientes 13,5 metros. Además, cuanto mayor es la velocidad más estrecho se hace el campo de visión del conductor. </p>
+
+<p>Zaragoza apuesta por la pacificación del tráfico a través de estas vías pacificadas y Zonas 30, en las que la velocidad permitida no puede exceder en ningún caso de 30 km/h. Están consideradas como vías pacificadas todas aquellas calzadas de la ciudad que disponen de un único carril de circulación. </p>
+
+<p>Las vías pacificadas NO son calles de prioridad peatonal. En cambio, sí lo son las Zonas 30, las Zonas Residenciales y las Zonas Peatonales, que disponen de una señalización y de una normativa específica. </p>
+
+<p><strong><a href="https://www.zaragoza.es/ciudad/viapublica/movilidad/bici/carrilvia.htm?tab=vias">ENLACE</a></strong></p> 
+
+<p><a href="https://www.zaragoza.es/cont/paginas/viapublica/movilidad/bici/img/mapaZaragozacalles30_2011_1.jpg">Mapa de vías pacificadas:</a></p>
+                </div>
+				
+				
+                <h2 class="tab-title" aria-expanded="false" data-target="#enlaces" data-toggle="collapse">Enlaces</h2>
+                <div id="enlaces" role="tabpanel" sede:class="tab-pane active">
+                    <ul><li><a href="https://www.fundacionmapfre.org/fundacion/en/images/siniestralidad-de-peatones-en-espana-ninos-adultos-mayores_tcm1070-222222.pdf" class="pdf"> Prioridades en España de la seguridad de los peatones. Fundación Mapfre</a>
+
+</li><li><a href="https://www.fundacionmapfre.org/fundacion/en/images/accidentalidad-peatonal_tcm1070-222217.pdf" class="pdf">Accidentalidad peatonal en núcleos urbanos. Fundación Mapfre</a>
+
+</li><li><a rel="Enlace Externo" title="Enlace externo" href="http://revista.dgt.es/es/reportajes/2016/11NOVIEMBRE/1108-Seguridad-peatonal.shtml#.WRrCjleEPlc">Seguridad Peatonal. DGT</a>
+
+</li><li><a rel="Enlace Externo" title="Enlace externo" href="http://www.dgt.es/PEVI/documentos/catalogo_recursos/didacticos/did_adultas/peatones.pdf" class="pdf">Los Peatones. DGT</a>
+
+</li><li><a href="http://prevencion.fremap.es/Buenas%20prcticas/ME.TRI.092.pdf" class="pdf"> Recomendaciones de Seguridad Vial para peatones. Fremap</a>
+
+</li><li><a href="http://acerapeatonal.blogspot.com.es/">Acera Peatonal</a>
+
+
+</li><li><a rel="Enlace Externo" title="Enlace externo" href="http://peatones-andando.blogspot.com.es/">Foro Andando</a>
+
+
+</li><li><a rel="Enlace Externo" title="Enlace externo" href="http://stopaccidentes.org/">Stop Accidentes</a>
+
+
+</li><li><a rel="Enlace Externo" title="Enlace externo" href="http://www.pontevedra.eu/movete/">Ayuntamiento de Pontevedra</a></li></ul>
+                </div>
+				
+				<h2 class="tab-title" aria-expanded="false" data-target="#enlaces" data-toggle="collapse">Vídeos</h2>
+                <div id="videos" role="tabpanel" sede:class="tab-pane active">
+					<div class="row">
+                        <div class="col-md-3">
+							<div class="embed-responsive embed-responsive-16by9">
+							    <iframe class="embed-responsive-item" title="Extreme Zebra Zaragoza " width="250" height="200" src="https://www.youtube.com/embed/MZNUHUJKRQ8" frameborder="0" >
+	                                Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/MZNUHUJKRQ8">Enlace al vídeo en youtube.com</a></iframe>
+							</div>
+					    </div>
+    					<div class="col-md-3">
+							<div class="embed-responsive embed-responsive-16by9">
+	    					    <iframe class="embed-responsive-item" title="Extreme Zebra Zaragoza " width="250" height="200" src="https://www.youtube.com/embed/EfMC98BEm80" frameborder="0" >
+    	                            Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/EfMC98BEm80">Enlace al vídeo en youtube.com</a></iframe>
+							</div>
+					    </div>
+						<div class="col-md-3">
+							<div class="embed-responsive embed-responsive-16by9">
+							    <iframe class="embed-responsive-item" title="Extreme Zebra Zaragoza " width="250" height="200" src="https://www.youtube.com/embed/kvVaMSEsUso" frameborder="0" >
+    	                            Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/kvVaMSEsUso">Enlace al vídeo en youtube.com</a></iframe>
+							</div>
+					    </div>
+						<div class="col-md-3">
+							<div class="embed-responsive embed-responsive-16by9">
+							    <iframe class="embed-responsive-item" title="Extreme Zebra Zaragoza " width="250" height="200" src="https://www.youtube.com/embed/q2c4Jr3qh38" frameborder="0" >
+    	                            Reproductor de vídeo no soportado. <a href="https://www.youtube.com/embed/q2c4Jr3qh38">Enlace al vídeo en youtube.com</a></iframe>
+							</div>
+					    </div>
+					</div>
+                </div>
+            </div>
+            
+        </div>
+    </sede:content>
+</body>
+
+</html>

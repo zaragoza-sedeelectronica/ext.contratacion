@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="4 Plan Joven. Vivienda" description="" author="" last-modified="Thu Nov 13 00:00:00 CET 2014" keywords="plan joven, programacion">
+    </sede:meta>
+    <style>
+    body {
+        padding-top: 57px;
+    }
+    
+    @media (min-width: 768px) {
+        .btn-participa {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <div style="position:relative;" class="text-center">
+            <img class="img-responsive full-width" src="//zaragoza.es/cont/paginas/gobierno-abierto/img/4planjoven.jpg" alt="" />
+            
+        </div>
+        <hr class="sm" />
+        <div class="row">
+            <h2> Vivienda</h2>
+            <div>
+                <img class="pull-left" alt="" src="https://www.zaragoza.es/cont/vistas/portal/sectores/juventud/planjoven/img/icono-vivienda.jpg" />
+                 <p>
+                                    Dentro del ámbito de la emancipación juvenil, la vivienda y su acceso a ella es un elemento básico en esta época de la vida.</p>
+                                <ul>
+                                    <li>
+                                        Analizar las actuaciones que tenemos a este nivel nos permitirá responder a necesidades cada vez más amplias.
+                                    </li>
+                                    <li> Valorar programas de vivienda compartida y otros que faciliten experiencias de emancipación y de modelos de vida innovadores.
+                                    </li>
+                                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Documentación</h3>
+				
+				<div class="row">
+				<div class="col-md-6">
+				<h4>1ª Fase</h4>
+				
+               <ul><li><a class="pdf" href="https://www.zaragoza.es/contenidos/sectores/jovenes/doca-vivienda.pdf"> Vivienda</a></li><li><a href="/contenidos/sectores/jovenes/Acta1reunion-Grupovivienda.pdf" class="pdf">Acta 1</a></li><li><a href="/contenidos/sectores/jovenes/Acta2reunion-Grupovievienda.pdf" class="pdf">Acta 2</a></li><li>
+                                     <a href="/contenidos/sectores/jovenes/Acta3reunion-Grupovivienda.pdf" class="pdf">Acta 3</a></li>
+                                    
+                                
+                                
+                                
+                                
+                                </ul>
+				</div>
+<div class="col-md-6">
+<h4>2ª Fase</h4>
+<ul><li><a href="/contenidos/sectores/jovenes/Acta4reunion-GrupoviviendaEx-2F.pdf" class="pdf">Acta 1 Grupo Expertos</a></li>
+<li><a href="/contenidos/sectores/jovenes/Acta4reunion-GrupoviviendaJov-2F.pdf" class="pdf">Acta 1 Grupo Jovenes</a></li></ul>
+				</div>
+            </div>
+			</div>
+           
+        </div>
+        <sede:formulario id1="13" id2="14" />
+    </sede:content>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function() {
+        $(".collapse").collapse();
+    });
+    /*]]>*/
+    </script>
+</body>
+
+</html>

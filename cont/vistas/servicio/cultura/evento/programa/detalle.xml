@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error',description=${registro.statusCode.value()} == 200 ? ${registro.body.description} : '',image=${registro.statusCode.value()} == 200 ? ('http:' + ${registro.body.image}) : ''" lang="es" th:object="${registro.body}" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Agenda Zaragoza'" description="${description}" summary_large_image="${image}"/>
+
+    <style type="text/css">
+        @media (max-width: 768px) {
+            .list-actividades li{
+                min-height: 26em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}">
+            <h2 th:text="*{title}" property="name"></h2>
+            <div class="card clearfix">
+                <div class="row">
+                    <div th:if="*{image}" class="col-sm-3">
+                        <img th:if="*{image}" class="img-responsive" width="320" height="480" th:src="*{image}" alt="" />            
+                    </div>
+
+<th:block th:if="${id} == 616 and ${#utils.desde('06-03-2019')} and ${#utils.hasta('07-03-2019')}">
+    <div th:if="!${session.sess_ciudadano}" class="col-sm-9 alert alert-info">
+    <strong> Necesitas <a th:href="${#utils.getLinkLoginUsuario(#httpServletRequest)}" class="text-primary">iniciar sesión</a> o <a href="/sede/acceso/" class="text-primary">registrarte</a> para poder hacer la matrícula a los cursos. </strong>
+    </div>
+    <div th:if="${session.sess_ciudadano}" class="col-sm-9 alert alert-info">
+        Hola <strong th:text="${session.sess_ciudadano.name}"/> accede al servicio de <a href="/sede/servicio/cultura/evento/inscripcion/user" class="btn btn-primary">matrícula a los cursos</a>.
+    </div>
+</th:block>
+
+
+
+
+                    <div th:if="*{description}" th:classappend="*{image} ? 'col-sm-9' : 'col-sm-12'">
+                        <div property="description" th:utext="*{description}"></div>        
+                    </div>
+                </div>
+            </div>
+            <!--/*<th:block th:include="fragmentos/cultura/evento/list(titulo=null,listado=*{events})"></th:block>*/-->
+            <th:block th:include="fragmentos/cultura/evento/tabla(titulo=null,listado=*{events})"></th:block>
+        </div>
+    </sede:content>
+</body>
+
+</html>

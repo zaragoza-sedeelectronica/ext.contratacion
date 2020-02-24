@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sede="http://www.zaragoza.es"
+      lang="es">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta
+                title="José María Lasaosa Labarta (ZEC). Alcalde de La Cartuja Baja"
+                description="Nació en 1968. Trabaja en el término municipal del Burgo de Ebro como operario de producción en una fábrica de papel. Durante los últimos 14 años colabora en varias asociaciones del barrio, en proyectos solidarios y en la Junta Vecinal. Ha participado en el proyecto del huerto del colegio, en el que se trabaja con los alumnos de 3º y 4º de primaria. Forma parte del grupo de música tradicionalGaiteros del Rabal, que quiere difundir y divulgar la música de plaza, colaborando igualmente con organizaciones solidarias y en diferentes eventos programados desde la Escuela Municipal de Música."
+                author="Ayuntamiento de Zaragoza"
+                last-modified="Wed Oct 19 00:00:00 CET 2016"
+                keywords="Organización, Municipal, Administración Pública; government; e-administración; organización administrativa, administración local, Gobierno de Zaragoza,  José María Lasaosa Labarta  , La Cartuja Baja, Barrios rurales"/>
+        <style>
+            .fnd-blanco {
+            background-color: #ffffff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+            .fnd-gris-claro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: -40px;
+            }
+
+            .titulo-org h2,
+            .procesos h2{
+            color: #e83437;
+            font-size: 42px;
+            padding-bottom: 20px;
+            }
+
+            .titulo-org h2 small,
+            .titulo-org h2 span{
+            color: #000000;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <sede:content container="false">
+            <div class="container-fluid text-left margin-auto nomargin titulo-org">
+                <h2 class="text-right">
+                    <small>Alcalde de La Cartuja Baja</small>
+                    <span>|</span>
+                    José María Lasaosa Labarta
+                </h2>
+            </div>
+            <div class="fnd-gris-claro">
+                <div class="container-fluid margin-b2em margin-t2em fnd-blanco radius">
+                    <div class="pull-right">
+                        <img src="/cont/paginas/organizacion/img/alcaldes-barrio/lasaosa-labarta.jpg"
+                             alt="José María Lasaosa Labarta"/>
+                    </div>
+                    <p>Nació en 1968.</p>
+                    <p>Trabaja en el término municipal del Burgo de Ebro como operario de producción en una fábrica de
+                        papel. Durante los últimos 14 años colabora en varias asociaciones del barrio, en proyectos
+                        solidarios y en la Junta Vecinal.
+                    </p>
+                    <p>Ha participado en el proyecto del huerto del colegio, en el que se trabaja con los alumnos de 3º
+                        y 4º de primaria. Forma parte del grupo de música tradicional<em>Gaiteros del Rabal</em>, que
+                        quiere difundir y divulgar la música de plaza, colaborando igualmente con organizaciones
+                        solidarias y en diferentes eventos programados desde la Escuela Municipal de Música.
+                    </p>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

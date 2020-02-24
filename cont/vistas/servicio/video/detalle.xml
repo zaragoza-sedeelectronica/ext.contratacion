@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" th:with="titulo=${registro.statusCode.value()} == 200 ? ${registro.body.title} : 'Página de error'">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title=" ${titulo} + '. Video'" keywords="sede,web"></sede:meta>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <div th:if="${registro.statusCode.value()} == 200" th:object="${registro.body}" sede:rdf="*{voc()}" th:attr="about=${registro.body.uri}">
+            <h2 sede:rdf="*{get('title')}" />
+            <div sede:rdf="*{get('description')}" />
+            <div th:if="*{duration}"> Duración <span sede:rdf="*{get('duration')}"/> </div>
+            <div class="text-center">
+                <iframe width="425" height="350" th:src="*{link}"></iframe>
+            </div>
+        </div>
+    </sede:content>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Artistas y creadores" author="Ayuntamiento de Zaragoza" keywords="sede,web,ciudad,artista,creador,arte,escénica,plástica" />
+</head>
+
+<body>
+    <sede:content>
+        <h2 class="color-ayto">Artistas y Creador@s</h2>
+        <hr class="sm color-ayto"/>
+        <nav role="navigation" class="fnd-gris-claro padding-a1em border-radius margin-b1em">
+            <form method="get" action="./list" class="form-horizontal">
+                <div class="form-group">
+                    <label for="titleContains" class="col-sm-2 control-label">Buscar por nombre: </label>
+                    <div class="col-sm-6">
+                        <input type="text" id="titleContains" name="titleContains" class="form-control" placeholder="Nombre" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-6">
+                        <input class="btn btn-primary" type="submit" value="Consultar" />
+                    </div>
+                </div>
+            </form>
+            <p class="margin-l2em destacado">Categorías:</p>
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2 margin-b05em"><a class="label label-primary" href="./list?category.id=1">Arquitectura</a></li>
+                <li class="col-xs-6 col-sm-2 margin-b05em"><a class="label label-primary" href="./list?category.id=8">Artes Escénicas</a></li>
+                <li class="col-xs-6 col-sm-2 margin-b05em"><a class="label label-primary" href="./list?category.id=10">Artes Plásticas</a></li>
+                <li class="col-xs-6 col-sm-2 margin-b05em"><a class="label label-primary" href="./list?category.id=7">Audiovisual</a></li>
+                <li class="col-xs-6 col-sm-2 margin-b05em"><a class="label label-primary" href="./list?category.id=6">Literatura</a></li>
+                <li class="col-xs-6 col-sm-2 margin-b05em"><a class="label label-primary" href="./list?category.id=5">Música</a></li>
+            </ul>
+        </nav>
+        <div role="alert" class="alert alert-info">Este directorio recoge sólo los datos de personas físicas. Los colectivos o grupos se recogen en el directorio de <a href="https://www.zaragoza.es/ciudad/cultura/observatorio/directorios/buscar_Centro?&amp;temas_smultiple=Cultura%20y%20Ocio&amp;titularidad_smultiple=Privado">empresas</a>
+            <br/>Para <strong>incluir nuevas referencias, modificar datos, o darse de baja</strong>, accede a este <a href="https://www.zaragoza.es/ciudad/enlinea/artistas.xhtm"><strong>Formulario</strong>  <span class="oculto"> de alta, baja, modificación</span></a>.
+            <br/>Gracias por tu colaboración
+        </div>
+    </sede:content>
+</body>
+
+</html>

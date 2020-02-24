@@ -1,0 +1,16 @@
+<th:block th:if="${not #lists.isEmpty(anexos)}">
+<h3>Adjuntos</h3>
+<ul>
+	<li th:each="anexo : ${anexos}">
+		<th:block sede:rdf="${anexo.get('creationDate', 'dd MMMM yyyy HH:mm')}"/> <a th:href="${anexo.uri}"><th:block th:utext="${anexo.description}"/></a>
+
+		<th:block th:if="${anexo.visible} == 'N'">
+        <a title="Publicar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id_prop}/action/{id}/unlock(id_prop=${anexo.propuestaId}, id=${anexo.id})}" class="btn btn-danger btn-xs" onclick="return confirm('Desea desbloquear el elemento?')"><span class="fa fa-unlock"></span> </a>
+    </th:block>
+    <th:block th:if="${anexo.visible} == 'S'">
+        <a title="Ocultar" th:if="${#lists.contains(attr_peticion.permisosEnSeccion, 'PUB')}" th:href="@{{id_prop}/action/{id}/lock(id_prop=${anexo.propuestaId}, id=${anexo.id})}" class="btn btn-warning btn-xs" onclick="return confirm('Desea bloquear el elemento?')"><span class="fa fa-lock"></span> </a>
+    </th:block>
+
+	</li>
+</ul>
+</th:block>
