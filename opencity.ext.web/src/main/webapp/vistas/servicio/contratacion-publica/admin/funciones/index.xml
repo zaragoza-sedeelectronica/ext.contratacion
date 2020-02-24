@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-4">
                 <h4> Carga Contratos</h4>
-                <a href="/cont/vistas/servicio/contratacion-publica/admin/excel/Licitación_Contratos_Modelo.xls"><span class="fa fa-file-excel" aria-hidden="true"></span> Modelo Carga Contratos</a>
+                <a href="/cont/vistas/servicio/contratacion-publica/admin/excel/Licitacion_Contratos_Modelo.xls"><span class="fa fa-file-excel" aria-hidden="true"></span> Modelo Carga Contratos</a>
                 <form th:action="@{/servicio/contratacion-publica/admin/contrato/carga}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
 
