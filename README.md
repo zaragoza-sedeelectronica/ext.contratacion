@@ -37,7 +37,7 @@ Por lo tanto, hay que configurar una única bases de datos para que el modulo fu
 
 * generar el usuario en Oracle
 * ejecutar los scripts de generación de las bases de datos
-* configurar las bases de datos en el proyecto opencity.ext.web
+* configurar la base de datos en el proyecto opencity.ext.web
 
 A continuación se detallan los pasos a seguir en cada uno de ellos.
 
@@ -70,6 +70,20 @@ El orden de ejecución es el siguiente:
 * 6.organigrama.sql
 	
 Una vez realizados estos pasos, ya estaría lista la base de datos en Oracle. 
+
+## Configurar la base de datos en el proyecto opencity.ext.web
+
+Los datos de conexión a la BBDD se define en `opencity.ext.web/src/main/resources/META-INF/context.xml` (es necesario copiar `opencity.ext.web/src/main/resources/META-INF/context.xmltemplate` como `opencity.ext.web/src/main/resources/META-INF/context.xml` para modificarlo):
+
+```
+<Resource name="jdbc/WebGeneralDS" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@localhost:1111/XXXX"
+              username="general" password="password" maxActive="20" maxIdle="10"
+              maxWait="-1"/>
+```
+
+Hay que indicar los valores de los campos `url` y `password`.
 
 # Clonar repositorio:
 
@@ -132,9 +146,7 @@ $ mvn clean install
 
 dentro de los proyectos `opencity.ext.organigrama` y `opencity.ext.contratacion` en este orden ya que `opencity.ext.contratacion` depende de `opencity.ext.organigrama` para su compilación.
 
-Una vez realizado el paso anterior, hay que configurar los ficheros de configuración que se utilizan en el proyecto para su correcta ejecucución.
-
-La ubicación de las vistas se define en `opencity.ext.web/src/main/resources/application.properties` (es necesario copiar `opencity.ext.web/src/main/resources/application.properties.template` como `opencity.ext.web/src/main/resources/application.properties` para modificarlo):
+Una vez realizado el paso anterior, hay que configurar la ubicación de las vistas del proyecto. Este configuración se define en `opencity.ext.web/src/main/resources/application.properties` (es necesario copiar `opencity.ext.web/src/main/resources/application.properties.template` como `opencity.ext.web/src/main/resources/application.properties` para modificarlo):
 
 ```
 thymeleaf.view=<path-opencity.ext.web>/src/main/webapp/vistas/
@@ -142,19 +154,15 @@ path.i18n=<path-opencity.ext.web>/src/main/webapp/i18n/messages
 datasource.prefix=java:/comp/env/
 ```
 
-Esta definición se puede realizar para cada uno de los entornos en `resources`, `resources-dev`, `resources-prod` y `resources-test`. Por defecto, sólo hay que realizarlo en la carpeta `resources` que es el entorno por defecto.
-
-Los datos de conexión a la BBDD se define en `opencity.ext.web/src/main/resources/META-INF/context.xml` (es necesario copiar `opencity.ext.web/src/main/resources/META-INF/context.xmltemplate` como `opencity.ext.web/src/main/resources/META-INF/context.xml` para modificarlo):
+Hay que sustituir el valor del campo "<path-opencity.ext.web>" por la localización completa del proyecto en el sistema de ficheros. Por ejemplo, si el proyecto está en "/home/contratacion/opencity.ext.web", el fichero tendría los siguientes valores:
 
 ```
-<Resource name="jdbc/WebGeneralDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1111/XXXX"
-              username="general" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
+thymeleaf.view=/home/contratacion/opencity.ext.web/src/main/webapp/vistas/
+path.i18n=/home/contratacion/opencity.ext.web/src/main/webapp/i18n/messages
+datasource.prefix=java:/comp/env/
 ```
 
-Hay que indicar los valores de los campos `url` y `password`.
+Esta definición se puede realizar para cada uno de los entornos diponibles modificando los ficheros en las carpetas `resources`, `resources-dev`, `resources-prod` y `resources-test` dentro del proyecto `opencity.ext.web`. Por defecto, sólo hay que realizarlo en la carpeta `resources`.
 
 # Configuración servidor
 
