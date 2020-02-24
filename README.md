@@ -31,18 +31,19 @@ Una vez instalado Eclipse, hay que instalar  maven integration for eclipse desde
 
 # Configurar la base de datos
 
-El sistema de contratación pública utiliza un usuario general para las bases de datos. Este ususario permite la gestión de los datos de usuarios de la plataforma y los datos de los mapas colaborativos.
+El sistema de contratación pública utiliza un usuario general para las bases de datos. Este ususario permite la gestión de los datos de usuarios de la plataforma y los datos de contratación pública.
 
 Por lo tanto, hay que configurar una única bases de datos para que el modulo funcione correctamente. Para eso hay que realizar los siguientes pasos:
+
 * generar el usuario en Oracle
 * ejecutar los scripts de generación de las bases de datos
 * configurar las bases de datos en el proyecto opencity.ext.web
 
 A continuación se detallan los pasos a seguir en cada uno de ellos.
 
-## Generar los usuarios en Oracle
+## Generar el usuario Oracle
 
-Como se indica en el apartado anterior, hay que generar un usuario para la base de datos. El usuario se debe generar en Oracle ya que el sistema de mapas colaborativos utiliza Oracle.
+Como se indica en el apartado anterior, hay que generar un usuario para la base de datos. El usuario se debe generar en Oracle ya que el sistema de contratación pública utiliza Oracle.
 
 Se aconseja que el nombre del usuario sea "general" ya que es el que se utiliza en el core de la aplicación. A continuación se muestran los comandos que deben utilizarse en la consola de SQL*Plus, si se utiliza dicha consola para realizar este paso.
 
@@ -77,7 +78,7 @@ A continuación debe clonarse en local este repositorio https://bitbucket.org/ma
 
 # Instalación de librerías en repositorio local:
 
-Existen librerías que no están disponibles en repositorios maven, son las que se encuentran en la carpeta [librerias](librerias/) y se deben instalar en el repositorio maven de local ejecutando lo siguiente.
+Existen librerías que no están disponibles en repositorios maven, son las que se encuentran en la carpeta [librerias](librerias/) y se deben instalar en el repositorio maven de local ejecutando los siguientes comandos:
 
 ```
 $ mvn install:install-file -DgroupId=org.zaragoza -DartifactId=opencity.ext.core -Dversion=0.0.1 -Dpackaging=jar -Dfile=librerias/opencity.ext.core-0.0.1.jar -DgeneratePom=true
@@ -123,7 +124,7 @@ $ mvn install:install-file -DgroupId=idezar -DartifactId=vecmath -Dversion=1.3.1
 
 # Configuración del módulo
 
-Lo primero sería realizar desde una línea de comandos la siguiente instrucción 
+Lo primero sería realizar, desde una línea de comandos, la siguiente instrucción:
 
 ```
 $ mvn clean install
@@ -157,10 +158,10 @@ Hay que indicar los valores de los campos `url` y `password`.
 
 # Configuración servidor
 
-Antes de poder realizar las pruebas, hay que configurar una serie de acceso. Por un lado:
+Antes de poder realizar las pruebas, hay que configurar una serie de accesos. Por un lado:
 
-* el acceso a la aplicación: por defecto, cuando se arranca el módulo, se lanza en localhost:8888/opencityext. Para un correcto funcionamiento, se recomienda que el acceso sea a través de localhost/opencityext
-* el acceso a la carpeta cont: esta carpeta se encuentra en el repositorio y debe ser accesible como localhost/cont, sin número de puerto, para una visualización correcta de las vistas.
+* el acceso a la aplicación: por defecto, cuando se arranca el módulo, se lanza en http://localhost:8888/opencityext. Para un correcto funcionamiento, se recomienda que el acceso sea a través de http://localhost/opencityext
+* el acceso a la carpeta cont: esta carpeta se encuentra en el repositorio y debe ser accesible como http://localhost/cont, sin número de puerto, para una visualización correcta de las vistas.
 
 A continuación se indica como se ha realizado durante las pruebas de manera ilustrativa.
 
@@ -198,6 +199,11 @@ $ mvn tomcat7:run
 Para probar que funciona correctamente acceder a:
 ```
 http://localhost/opencityext/servicio/contratacion-publica/
+```
+
+Existe una parte de administración del módulo a la que se puede acceder con el usuario "admin" y contraseña "prueba" a través del siguiente enlace:
+```
+http://localhost/opencityext/servicio/contratacion-publica/admin
 ```
 
 # Otras configuraciones
