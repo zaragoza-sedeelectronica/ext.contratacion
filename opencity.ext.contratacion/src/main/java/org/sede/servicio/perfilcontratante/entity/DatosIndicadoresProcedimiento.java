@@ -1,26 +1,21 @@
 package org.sede.servicio.perfilcontratante.entity;
 
-import java.math.BigDecimal;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.hibernate.annotations.DynamicUpdate;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 
 @XmlRootElement(name = "datosIndicadores")
 @Entity
 @Table(name = "VISTA_DATOS_PROCEDIMIENTO", schema = ConfigPerfilContratante.ESQUEMA)
 @XmlAccessorType(XmlAccessType.FIELD)
 @DynamicUpdate
-public class DatosIndicadoresProcedimiento extends EntidadBase {
+public class DatosIndicadoresProcedimiento extends EntidadBase implements java.io.Serializable {
    //region Atributte & Columns
     @Id
     @Column(name="ID_PROCEDIMIENTO",nullable = false,insertable=false,updatable = false)

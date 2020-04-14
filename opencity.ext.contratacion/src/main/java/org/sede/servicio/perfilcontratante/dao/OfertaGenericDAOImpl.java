@@ -19,7 +19,6 @@ import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.BooleanConverter;
 import org.sede.core.dao.BooleanSINOConverter;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Empresa;
 import org.sede.servicio.perfilcontratante.entity.Estado;
@@ -44,14 +43,14 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class OfertaGenericDAOImpl extends GenericDAOImpl<Oferta, BigDecimal> implements OfertaGenericDAO {
     private static final Logger logger = LoggerFactory.getLogger(OfertaGenericDAO.class);
     @Autowired
     public ContratoGenericDAO dao;
     @Autowired
     public EmpresaGenericDAO daoEmpresa;
-    @PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }
@@ -62,7 +61,7 @@ public class OfertaGenericDAOImpl extends GenericDAOImpl<Oferta, BigDecimal> imp
         return validator.validate(registro);
     }
     @SuppressWarnings("deprecation")
-//    @Override
+    @Override
     public List<Oferta> loadFromXls( InputStream pathXls) throws IOException {
         HSSFWorkbook wb = null;
         List<Oferta> ofertas=new ArrayList<Oferta>();

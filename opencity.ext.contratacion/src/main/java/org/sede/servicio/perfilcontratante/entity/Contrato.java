@@ -21,11 +21,9 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @XmlRootElement(name = "contrato")
 @Entity(name = "Contrato")
@@ -35,7 +33,7 @@ import java.util.Set;
 @PathId("/" + ContratoController.MAPPING)
 @Grafo(Contrato.GRAFO)
 @Rel
-public class Contrato extends EntidadBase {
+public class Contrato extends EntidadBase implements Serializable {
 	//region Atributtes & Columns
 	@Interno
 	public static final String GRAFO = "http://www.zaragoza.es/sector-publico/contrato";
@@ -125,7 +123,9 @@ public class Contrato extends EntidadBase {
 	@Column(name = "GCZ_FECHACAD", length = 7)
 	private Date expiration;
 
-	@Column(name = "GCZ_PUBLICADO") @Size(max = 1) @Permisos(Permisos.PUB) @InList({"S", "N"})
+	@Column(name = "GCZ_PUBLICADO")
+	@Size(max = 1) @Permisos(Permisos.PUB)
+	@InList({"S", "N"})
 	private String visible;
 
 	@Temporal(TemporalType.TIMESTAMP) @Column(name = "GCZ_FECHAALTA") @Permisos(Permisos.DET)
@@ -201,10 +201,10 @@ public class Contrato extends EntidadBase {
 	@JoinTable(name = "PERFIL_CONTRATO_TIENE_CPV", joinColumns = { @JoinColumn(name = "ID_CONTRATO", nullable = false) },
 			inverseJoinColumns = { @JoinColumn(name = "CPV", nullable = false)})
 	@Access(AccessType.FIELD)
-	@Fetch(FetchMode.JOIN)
+	@Permisos(Permisos.DET)
 	@BatchSize(size = 50)
 	@SoloEnEstaEntidad
-	private Set<Cpv> cpv;
+	private Set<Cpv> cpv=new HashSet<Cpv>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrato", cascade = { CascadeType.ALL })
 	@Permisos(Permisos.DET)
@@ -232,7 +232,13 @@ public class Contrato extends EntidadBase {
 	@Convert(converter = BooleanConverter.class)
 	private Boolean canon;
 
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_PADRE")
+	@SoloEnDetalle
+	@BatchSize(size = 200)
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Contrato padre;
+
 	@Transient 
 	private String url;
 	
@@ -247,6 +253,14 @@ public class Contrato extends EntidadBase {
 	}
 	//endregion
 	//region Setter & getter
+
+	public Contrato getPadre() {
+		return padre;
+	}
+
+	public void setPadre(Contrato padre) {
+		this.padre = padre;
+	}
 
 	public Boolean getCanon() {
 		return canon;
@@ -590,7 +604,7 @@ public class Contrato extends EntidadBase {
 				+ ", usuarioAlta=" + usuarioAlta + ", usuarioMod=" + usuarioMod + ", usuarioPub=" + usuarioPub
 //				+ ", anuncios=" + anuncios 
 				+ ", valorEstimado=" + valorEstimado
-				+ ", cpv=" + cpv 
+				//+ ", cpv=" + cpv
 				+ ", objeto=" + objeto 
 //				+ ", servicioGestor=" + servicioGestor
 				+ ", servicio=" + servicio

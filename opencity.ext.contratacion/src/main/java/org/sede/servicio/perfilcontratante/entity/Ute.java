@@ -1,20 +1,5 @@
 package org.sede.servicio.perfilcontratante.entity;
 
-import java.math.BigDecimal;
-
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -22,12 +7,18 @@ import org.sede.core.anotaciones.Interno;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
+
 @XmlRootElement(name = "ute")
 @Entity
 @Table(name = "PERFIL_UTE", schema = ConfigPerfilContratante.ESQUEMA)
 @XmlAccessorType(XmlAccessType.FIELD)
 @DynamicUpdate
-public class Ute extends EntidadBase{
+public class Ute extends EntidadBase implements java.io.Serializable{
 
     @EmbeddedId
     @Interno

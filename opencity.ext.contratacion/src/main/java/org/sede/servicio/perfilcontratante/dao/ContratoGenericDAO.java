@@ -1,5 +1,18 @@
 package org.sede.servicio.perfilcontratante.dao;
 
+import com.googlecode.genericdao.dao.jpa.GenericDAO;
+import com.googlecode.genericdao.search.SearchResult;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.sede.servicio.perfilcontratante.entity.Contrato;
+import org.sede.servicio.perfilcontratante.entity.ContratoHome;
+import org.sede.servicio.perfilcontratante.entity.Cpv;
+import org.springframework.http.ResponseEntity;
+import org.thymeleaf.context.ITemplateContext;
+import org.thymeleaf.model.IModel;
+import org.thymeleaf.model.IProcessableElementTag;
+import org.thymeleaf.processor.element.IElementTagStructureHandler;
+
+import javax.validation.ConstraintViolation;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -7,23 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import javax.validation.ConstraintViolation;
-
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.sede.servicio.perfilcontratante.entity.Contrato;
-import org.sede.servicio.perfilcontratante.entity.ContratoHome;
-import org.sede.servicio.perfilcontratante.entity.Cpv;
-import org.springframework.http.ResponseEntity;
-import org.thymeleaf.Arguments;
-import org.thymeleaf.dom.Node;
-import org.thymeleaf.processor.ProcessorResult;
-
-import com.googlecode.genericdao.dao.jpa.GenericDAO;
-import com.googlecode.genericdao.search.SearchResult;
-
 public interface ContratoGenericDAO extends GenericDAO<Contrato, BigDecimal> {
 	public ContratoHome getResultsForHome();
-	public ProcessorResult getForTag(Arguments arguments, Node node);
+	public IModel getForTag(ITemplateContext context, IProcessableElementTag tag, IElementTagStructureHandler structureHandler);
 	public HashMap<Integer,Integer> getContratosPorAnyo(String nif);
 	public List<BigDecimal> getServicioGestor(BigDecimal id);
 	public List<String> getOrganismoContratante();

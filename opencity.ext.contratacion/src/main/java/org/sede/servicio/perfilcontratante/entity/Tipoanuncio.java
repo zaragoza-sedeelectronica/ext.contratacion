@@ -1,20 +1,19 @@
 package org.sede.servicio.perfilcontratante.entity;
 
-import java.math.BigDecimal;
+import org.sede.core.dao.EntidadBase;
+import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.sede.core.dao.EntidadBase;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
+import java.math.BigDecimal;
 
 @XmlRootElement(name="type_ad")
 @Entity
 @Table(name = "PERFIL_TIPOANUNCIO", schema = ConfigPerfilContratante.ESQUEMA)
-public class Tipoanuncio extends EntidadBase {
+public class Tipoanuncio extends EntidadBase implements java.io.Serializable{
 	@Id
 	@Column(name = "ID_TIPOANUNCIO", unique = true, nullable = false, precision = 22, scale = 0)
 	private BigDecimal id;

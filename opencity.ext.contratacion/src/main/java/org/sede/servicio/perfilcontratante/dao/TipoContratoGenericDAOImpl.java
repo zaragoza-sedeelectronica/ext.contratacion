@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.sede.core.anotaciones.Esquema;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.Tipocontrato;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,10 +16,10 @@ import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 import com.googlecode.genericdao.search.Filter;
 import com.googlecode.genericdao.search.Search;
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class TipoContratoGenericDAOImpl extends GenericDAOImpl <Tipocontrato, BigDecimal> implements TipoContratoGenericDAO {
 	
-	@PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+	@PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
 	public void setEntityManager(EntityManager entityManager) {
 		this.setEm(entityManager);
 	}

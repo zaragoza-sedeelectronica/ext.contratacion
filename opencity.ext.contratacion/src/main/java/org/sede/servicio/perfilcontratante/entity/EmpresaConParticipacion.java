@@ -1,13 +1,12 @@
 package org.sede.servicio.perfilcontratante.entity;
 
-import java.math.BigDecimal;
-
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.sede.core.dao.EntidadBase;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
+
 @XmlRootElement(name = "empresa-en-ute")
-public class EmpresaConParticipacion extends EntidadBase{
+public class EmpresaConParticipacion extends EntidadBase implements java.io.Serializable{
 	
 	private Empresa empresa;
 	

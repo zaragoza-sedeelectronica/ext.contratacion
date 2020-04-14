@@ -18,13 +18,13 @@ public class ContractingProcess {
 	private DateTime datetime;
 	private List<Tag> tag;
 	private String initationtype;
-	private List<Organisation> parties ;
+	private List<Organisation> parties =new ArrayList<Organisation>();
 	private Organisation buyer;
 	private Planning planing;
 	private Tender tender;
-	private List<Award> awards;
+	private List<Award> awards=new ArrayList<Award>();
 	private String language;
-	private List<RelatedProcess> relatedprocesses;
+	private List<RelatedProcess> relatedprocesses=new ArrayList<RelatedProcess>();
 	//endregion
 	//region Getters & Setters
 	public String getId() {
@@ -140,9 +140,10 @@ public class ContractingProcess {
 		listaOrganizaciones.add(new Organisation(con.getEntity()));
 		if(con.getOrganoContratante()!=null)
 			listaOrganizaciones.add(new Organisation(con.getOrganoContratante()));
-		listaOrganizaciones.add(new Organisation(con.getServicio()));
+		if(con.getServicio()!=null)
+			listaOrganizaciones.add(new Organisation(con.getServicio()));
 		this.setParties(listaOrganizaciones);
-		this.setBuyer(new Organisation(con.getServicio()));
+		if(con.getServicio()!=null)this.setBuyer(new Organisation(con.getServicio()));
 		this.setPlaning(new Planning());
 		this.setTender(new Tender(con));
 		if(con.getOfertas().size()>0){
@@ -154,7 +155,9 @@ public class ContractingProcess {
 			this.setAwards(awards);
 		}
 		this.setLanguage("ES");
-		relatedProcess.add(new RelatedProcess(con.getId(),con.getTitle()));
+		if(con.getPadre()!=null) {
+			relatedProcess.add(new RelatedProcess(con.getPadre().getId(), con.getPadre().getTitle()));
+		}
 		this.setRelatedprocesses(relatedProcess);
 
 	}

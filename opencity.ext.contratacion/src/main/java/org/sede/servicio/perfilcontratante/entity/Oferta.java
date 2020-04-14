@@ -4,10 +4,7 @@ import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.sede.core.anotaciones.Interno;
-import org.sede.core.anotaciones.PathId;
-import org.sede.core.anotaciones.Permisos;
-import org.sede.core.anotaciones.Rel;
+import org.sede.core.anotaciones.*;
 import org.sede.core.dao.BooleanConverter;
 import org.sede.core.dao.EntidadBase;
 import org.sede.core.utils.ConvertDate;
@@ -32,7 +29,7 @@ import java.util.Set;
 @PathId("/" + ContratoController.MAPPING)
 @Rel
 @SequenceGenerator(name = "SECUENCIA_SEQ_PERFIL_OFERTA", sequenceName = "SEQ_PERFIL_OFERTA", allocationSize = 1)
-public class Oferta extends EntidadBase {
+public class Oferta extends EntidadBase implements java.io.Serializable{
     //region Atributtes
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SECUENCIA_SEQ_PERFIL_OFERTA")
     @Id
@@ -91,6 +88,7 @@ public class Oferta extends EntidadBase {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "ofertaUte")
     @NotFound(action= NotFoundAction.IGNORE)
     @BatchSize(size = 50)
+    @SoloEnEstaEntidad
     @Access(AccessType.FIELD)
     private Set<Ute> ute ;
 
@@ -100,7 +98,6 @@ public class Oferta extends EntidadBase {
             inverseJoinColumns = { @JoinColumn(name = "ID_LOTE", nullable = false)})
     @Access(AccessType.FIELD)
     @BatchSize(size = 50)
-    @OrderBy("lote.id asc")
     private Lote lote;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -241,7 +238,7 @@ public class Oferta extends EntidadBase {
                 + ", fechaAdjudicacion=" + fechaAdjudicacion + ", fechaFormalizacion=" + fechaFormalizacion
                 + ", importeSinIVA=" + importeSinIVA + ", ejecucion=" + ejecucion
                 + ", canon=" + canon + ", autonomo=" + autonomo+", Empresa="+empresa
-                +", ute= " + ute + ", ganador=" + ganador + ", importeConIVA=" + importeConIVA + ", IVA=" + iva+  ", AhorroVisible=" + ahorroVisible +"]";
+                +", ganador=" +ganador+", importeConIVA=" + importeConIVA + ", IVA=" + iva+  ", AhorroVisible=" + ahorroVisible +"]";
     }
     //endregion
 }

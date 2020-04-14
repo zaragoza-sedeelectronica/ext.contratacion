@@ -18,6 +18,7 @@ public class Item {
     private Double quantity;
     private Unit unit;
 
+
     //endregion
     //region Getters & Setters
 
@@ -63,15 +64,12 @@ public class Item {
 
     //endregion
     //region Constructors
-    public Item(Contrato con){
+    public Item(Cpv cpv, Contrato con){
         this.id=con.getId()+"-item";
         this.description=con.getTitle();
-        for (Cpv cpv:con.getCpv()) {
-            this.classification.add(new CpvOcds(cpv));
-
-        }
+        this.classification.add(new CpvOcds(cpv));
         this.quantity=0.0;
-        this.unit=new Unit(con);
+        //this.unit=new Unit(con);
     }
 
     //endregion

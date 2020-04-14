@@ -1,30 +1,26 @@
 package org.sede.servicio.perfilcontratante.dao;
 
 import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
-import com.googlecode.genericdao.search.SearchResult;
 import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.Cpv;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class CpvGenericDAOImpl extends GenericDAOImpl<Cpv,BigDecimal> implements CpvGenericDAO{
 
-    @PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }
@@ -33,7 +29,7 @@ public class CpvGenericDAOImpl extends GenericDAOImpl<Cpv,BigDecimal> implements
         Validator validator = factory.getValidator();
         return validator.validate(registro);
     }
-//    @Override
+   /* @Override
     public SearchResult<?> findCpv() {
         Query q = em().createQuery("from CpvTieneContrato where cpv.idCpv in (select DISTINCT cpv.idCpv from CpvTieneContrato) ", Cpv.class);
         @SuppressWarnings("unchecked")
@@ -44,5 +40,5 @@ public class CpvGenericDAOImpl extends GenericDAOImpl<Cpv,BigDecimal> implements
         resultado.setTotalCount(lista.size());
         resultado.setRows(lista.size());
         return resultado;
-    }
+    }*/
 }

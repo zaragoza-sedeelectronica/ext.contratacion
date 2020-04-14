@@ -1,22 +1,5 @@
 package org.sede.servicio.perfilcontratante.entity;
 
-import java.math.BigDecimal;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.hibernate.annotations.DynamicUpdate;
 import org.sede.core.anotaciones.Grafo;
 import org.sede.core.anotaciones.Interno;
@@ -25,6 +8,13 @@ import org.sede.core.anotaciones.Rel;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 
 @XmlRootElement(name = "lote")
 @Entity(name = "Lote")
@@ -35,7 +25,7 @@ import org.sede.servicio.perfilcontratante.ContratoController;
 @Grafo(Contrato.GRAFO)
 @Rel
 @SequenceGenerator(name = "SECUENCIA_SEQ_PERFIL_LOTE", sequenceName = "SEQ_PERFIL_LOTE", allocationSize = 1)
-public class Lote extends EntidadBase {
+public class Lote extends EntidadBase implements java.io.Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SECUENCIA_SEQ_PERFIL_LOTE")
     @Id
     @Column(name = "ID_LOTE", unique = true, nullable = false)

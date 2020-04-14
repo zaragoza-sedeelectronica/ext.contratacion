@@ -2,7 +2,9 @@ package org.sede.servicio.perfilcontratante.ocds;
 
 
 import org.sede.core.anotaciones.ResultsOnly;
+import org.sede.servicio.perfilcontratante.entity.Anuncio;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
+import org.sede.servicio.perfilcontratante.entity.Cpv;
 import org.sede.servicio.perfilcontratante.entity.Oferta;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,21 +25,21 @@ public class Contract {
     private String status;
     private Period period;
     private Value value;
-    private List<Item> items;
+    private List<Item> items=new ArrayList<Item>();
     private DateTime dateSigned;
-    private List<Document> documents;
+    private List<Document> documents=new ArrayList<Document>();
     private List<Milestone> milestones;
-    private List<RelatedProcess> relatedPracesses=new ArrayList<RelatedProcess>();
-    private List<Amendment> amendments;
+    private List<RelatedProcess> relatedProcesses=new ArrayList<RelatedProcess>();
+    private List<Amendment> amendments=new ArrayList<Amendment>();
     //endregion
     //region Getteres & Setters
 
     public List<RelatedProcess> getRelatedPracesses() {
-        return relatedPracesses;
+        return relatedProcesses;
     }
 
-    public void setRelatedPracesses(List<RelatedProcess> relatedPracesses) {
-        this.relatedPracesses = relatedPracesses;
+    public void setRelatedPracesses(List<RelatedProcess> relatedProcesses) {
+        this.relatedProcesses = relatedProcesses;
     }
 
     public String getId() {
@@ -184,18 +186,57 @@ public class Contract {
             if(ofer.getGanador()) {
                 this.setAward(new Award(ofer.getId()));
                 this.setTitle(con.getTitle());
-                this.setDescription("Contrato firmado entre "+con.getEntity().getTitle() + " y "+ofer.getEmpresa().getNombre());
+                this.setDescription("Contrato firmado entre " + con.getEntity().getTitle() + " y " + ofer.getEmpresa().getNombre());
                 this.setStatus(con);
-                this.setPeriod(new Period(ofer.getFechaFormalizacion(),sumarRestarDiasFecha(ofer.getFechaFormalizacion(),con.getDuracion().intValue())));
-                this.setValue(new Value(con.getCanon()?ofer.getImporteSinIVA().negate():ofer.getImporteSinIVA(),"EUR"));
-                this.setItems(items);
+                this.setPeriod(new Period(ofer.getFechaFormalizacion(), sumarRestarDiasFecha(ofer.getFechaFormalizacion(), con.getDuracion().intValue()),con.getDuracion().intValue()));
+                this.setValue(new Value(con.getCanon() ? ofer.getImporteSinIVA().negate() : ofer.getImporteSinIVA(), "EUR"));
+            }
+                for (Cpv cpv:con.getCpv()) {
+                    this.items.add(new Item(cpv,con));
+                }
                 this.setDateSigned(new DateTime(ofer.getFechaFormalizacion()));
+
+            for (Anuncio anun:con.getAnuncios()) {
+                documents.add(new Document(anun));
             }
             this.setDocuments(documents);
             this.setRelatedPracesses(relatedProcesses);
             this.setMilestones(milestones);
             this.setAmendments(amendments);
         }
+
+
+
+    }
+    public Contract(Contrato con, Oferta ofer){
+        List<Item>items=new ArrayList<Item>();
+        List<Document>documents=new ArrayList<Document>();
+        List<Amendment>amendments=new ArrayList<Amendment>();
+        List<Milestone>milestones=new ArrayList<Milestone>();
+        List<RelatedProcess>relatedProcesses=new ArrayList<RelatedProcess>();
+        this.setId("ocds-"+con.getId().toString()+"-contract");
+        if(ofer.getGanador()) {
+            this.setAward(new Award(ofer.getId()));
+            this.setTitle(con.getTitle());
+            this.setDescription("Contrato para el "+ofer.getLote().getDescription()+" firmado entre "+con.getEntity().getTitle() + " y "+ofer.getEmpresa().getNombre());
+            this.status=statusLote(ofer);
+            this.setPeriod(new Period(ofer.getFechaFormalizacion(),sumarRestarDiasFecha(ofer.getFechaFormalizacion(),con.getDuracion().intValue()),con.getDuracion().intValue()));
+            this.setValue(new Value(con.getCanon()?ofer.getImporteSinIVA().negate():ofer.getImporteSinIVA(),"EUR"));
+            for (Cpv cpv:con.getCpv()) {
+                this.items.add(new Item(cpv,con));
+            }
+
+            this.setDateSigned(new DateTime(ofer.getFechaFormalizacion()));
+        }
+        for (Anuncio anun:con.getAnuncios()) {
+            this.documents.add(new Document(anun));
+            if(anun.getType().getId().equals(new BigDecimal(31)) ||anun.getType().getId().equals(new BigDecimal(32))||anun.getType().getId().equals(new BigDecimal(33)))
+                this.amendments.add(new Amendment(anun));
+        }
+        if(con.getPadre()!=null) {
+            this.relatedProcesses.add(new RelatedProcess(con.getPadre()));
+        }
+        this.setMilestones(milestones);
 
 
 
@@ -207,6 +248,28 @@ public class Contract {
         calendar.setTime(fecha);
         calendar.add(Calendar.DAY_OF_YEAR, dias);
         return calendar.getTime();
+
+    }
+    public String statusLote(Oferta ofer){
+        String status;
+        switch(Integer.valueOf(ofer.getLote().getId().toString())){
+
+            case 1: status= "Pending";break;
+            case 5:
+            case 6:status=  "Active";break;
+            case 4:
+            case 7:
+            case 8:
+            case 10:
+            case 11:status=  "Cancelado";break;
+            default:status=  "Active";break;
+        }
+        if(ofer.getGanador()){
+            if(new Date().compareTo(sumarRestarDiasFecha(ofer.getFechaFormalizacion(),ofer.getContrato().getDuracion()==null?0:ofer.getContrato().getDuracion().intValue()))>0){
+                status= "Terminated";
+            }
+        }
+        return status;
 
     }
 }

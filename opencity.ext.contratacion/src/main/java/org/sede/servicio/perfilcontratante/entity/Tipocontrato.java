@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @XmlRootElement(name="type")
 @Entity
 @Table(name = "PERFIL_TIPOCONTRATO", schema = ConfigPerfilContratante.ESQUEMA)
-public class Tipocontrato extends EntidadBase {
+public class Tipocontrato extends EntidadBase implements java.io.Serializable{
 	@Id
 	@Column(name = "ID_TIPOCONTRATO", unique = true, nullable = false, precision = 22, scale = 0)
 	private BigDecimal id;

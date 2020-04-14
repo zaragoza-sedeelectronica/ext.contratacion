@@ -1,9 +1,7 @@
 package org.sede.servicio.perfilcontratante.ocds;
 
 import org.sede.core.anotaciones.ResultsOnly;
-import org.sede.servicio.perfilcontratante.entity.Anuncio;
-import org.sede.servicio.perfilcontratante.entity.Contrato;
-import org.sede.servicio.perfilcontratante.entity.Oferta;
+import org.sede.servicio.perfilcontratante.entity.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
@@ -44,6 +42,8 @@ public class Tender {
         private List <Document> documents = new ArrayList <Document> ();
         private List <Milestone> milestones = new ArrayList <Milestone> ();
         private List <Amendment> amendments = new ArrayList < Amendment > ();
+        private List<Lot> lots=new ArrayList<Lot>();
+
     //endregion
     //region Getters & Setters
     public String getId() {
@@ -314,6 +314,14 @@ public class Tender {
         this.amendments = amendments;
     }
 
+    public List<Lot> getLots() {
+        return lots;
+    }
+
+    public void setLots(List<Lot> lots) {
+        this.lots = lots;
+    }
+
     //endregion
     //region Constructors
     public Tender(BigDecimal id,String title) {
@@ -337,19 +345,26 @@ public class Tender {
             this.setProcuringEntity(new Organisation(con.getServicio()));
         }
         if(con.getCpv().size()>0) {
-            this.items.add(new Item(con));
+            for (Cpv cpv:con.getCpv()) {
+                this.items.add(new Item(cpv,con));
+            }
+
         }
         this.setValue(new Value(con.getValorEstimado(),"EUR"));
         if(!con.getCanon())
-            this.setMinValue(new Value(con.getImporteSinIVA(),"EUR"));
+            this.setMinValue(new Value(con.getImporteSinIVA()==null?new BigDecimal(0):con.getImporteSinIVA(),"EUR"));
         else
             this.setMinValue(new Value(con.getImporteSinIVA().negate(),"EUR"));
-        this.setProcurementMethod(con.getProcedimiento().getNombre());
+        if(con.getProcedimiento()!=null){
+            this.setProcurementMethod(con.getProcedimiento().getNombre());
+        }else{
+            this.setProcurementMethod("");
+        }
         this.setProcurementMethodDetails("");
         this.setProcurementMethodRationale("");
         this.setMainProcurementCategory(con.getType().getTitle());
-        this.setAdditionalProcurementCategories(new ArrayList<String>());
-        this.setAwardCriteria(con);
+       // this.setAdditionalProcurementCategories(new ArrayList<String>());
+        if(con.getProcedimiento()!=null){this.setAwardCriteria(con);}
         this.setAwardCriteriaDetails("");
         this.setSubmissionMethod(new ArrayList<String>());
         this.setSubmissionMethodDetails("");
@@ -395,6 +410,12 @@ public class Tender {
         }
 
         this.setMilestones(milestones);
+        for (Lote item:con.getLotes()) {
+            int i=1;
+            this.lots.add(new Lot(item,i));
+            i++;
+        }
+
 
     }
     public int diferenciaEnDias(Date fechaMayor, Date fechaMenor) {
@@ -439,6 +460,7 @@ public class Tender {
                 ", status='" + status + '\'' +
                 ", ProcuringEntity=" + ProcuringEntity +
                 ", items=" + items +
+                ", lots=" + lots +
                 ", value=" + value +
                 ", minValue=" + minValue +
                 ", procurementMethod='" + procurementMethod + '\'' +

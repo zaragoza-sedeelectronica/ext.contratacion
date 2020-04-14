@@ -1,20 +1,5 @@
 package org.sede.servicio.perfilcontratante.entity;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -25,6 +10,13 @@ import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
+import java.util.List;
+
 @XmlRootElement(name = "empresa")
 @Entity
 @Table(name = "PERFIL_EMPRESA", schema = ConfigPerfilContratante.ESQUEMA)
@@ -34,7 +26,7 @@ import org.sede.servicio.perfilcontratante.ContratoController;
 @Grafo(Contrato.GRAFO)
 @Rel
 @SequenceGenerator(name = "SECUENCIA_SEQ_PERFIL_EMPRESA", sequenceName = "SEQ_PERFIL_EMPRESA", allocationSize = 1)
-public class Empresa extends EntidadBase {
+public class Empresa extends EntidadBase implements java.io.Serializable{
     //region Atributtes & Columns
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SECUENCIA_SEQ_PERFIL_EMPRESA")
     @Id

@@ -1,10 +1,7 @@
 package org.sede.servicio.perfilcontratante.ocds;
 
 import org.sede.core.anotaciones.ResultsOnly;
-import org.sede.servicio.perfilcontratante.entity.Anuncio;
-import org.sede.servicio.perfilcontratante.entity.Contrato;
-import org.sede.servicio.perfilcontratante.entity.Lote;
-import org.sede.servicio.perfilcontratante.entity.Oferta;
+import org.sede.servicio.perfilcontratante.entity.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
@@ -26,6 +23,7 @@ public class Award {
         private Period contractPeriod;
         private List<Document> documents=new ArrayList<Document>();
         private List<Amendment> amendments=new ArrayList<Amendment>();
+        private List<String> relatedLots=new ArrayList<String>();
 
 
     //endregion
@@ -118,6 +116,14 @@ public class Award {
         this.amendments = amendments;
     }
 
+    public List<String> getRelatedLots() {
+        return relatedLots;
+    }
+
+    public void setRelatedLots(List<String> relatedLots) {
+        this.relatedLots = relatedLots;
+    }
+
     //endregion
     //region Contructors
     public Award(BigDecimal id) {
@@ -151,9 +157,11 @@ public class Award {
                     break;
             }
         }
-        this.items.add(new Item(ofer.getContrato()));
+        for(Cpv cpv:ofer.getContrato().getCpv()) {
+            this.items.add(new Item(cpv,ofer.getContrato()));
+        }
         if("10".equals(ofer.getContrato().getProcedimiento().getId().toString())){
-            this.contractPeriod=new Period(ofer.getFechaAdjudicacion(),Integer.valueOf(ofer.getContrato().getDuracion().toString()));
+            this.contractPeriod=new Period(ofer.getFechaAdjudicacion(),Integer.valueOf(ofer.getContrato().getDuracion()!=null?ofer.getContrato().getDuracion().toString():"0"));
         }else{
             if(ofer.getFechaFormalizacion()!=null){
                 this.contractPeriod=new Period(ofer.getFechaFormalizacion(),Integer.valueOf(ofer.getContrato().getDuracion().toString()));
@@ -161,7 +169,10 @@ public class Award {
                 this.contractPeriod=new Period(ofer.getFechaAdjudicacion(),Integer.valueOf(ofer.getContrato().getDuracion().toString()));
             }
         }
-
+        if(ofer.getContrato().getLotes().size()>0){
+            for(Lote lot:ofer.getContrato().getLotes())
+            this.relatedLots.add("lot-"+lot.getId());
+        }
 
     }
     public Award(Oferta ofer, Contrato contrato){

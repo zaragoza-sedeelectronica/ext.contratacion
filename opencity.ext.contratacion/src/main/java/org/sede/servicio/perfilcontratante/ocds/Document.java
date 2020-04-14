@@ -2,8 +2,12 @@ package org.sede.servicio.perfilcontratante.ocds;
 
 import org.sede.core.anotaciones.ResultsOnly;
 import org.sede.servicio.perfilcontratante.entity.Anuncio;
+import org.sede.servicio.perfilcontratante.entity.Lote;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @XmlRootElement(name = "DocumentOcds")
 @ResultsOnly(xmlroot = "DocumentOcds")
@@ -18,6 +22,7 @@ public class Document {
     private DateTime dateModified;
     private String format;
     private String language;
+    private List<String> relatedLots=new ArrayList<String>();
     //endregion
     //region Getters &Setters
 
@@ -93,12 +98,41 @@ public class Document {
         this.language = language;
     }
 
+    public List<String> getRelatedLots() {
+        return relatedLots;
+    }
+
+    public void setRelatedLots(List<String> relatedLots) {
+        this.relatedLots = relatedLots;
+    }
+
     //endregion
     //region Contructs
     public Document(){}
     public Document(Anuncio anun){
+        if(anun.getContrato().getLotes().size()>0){
+            List<String> lotes=new ArrayList<String>();
+            for (Lote item:anun.getContrato().getLotes()) {
+                this.relatedLots.add("lot-"+item.getId());
+            }
+
+        }
         this.id=anun.getId()+"";
         this.title=anun.getTitle();
+        if(anun.getSello()!=null) {
+            this.setUri(anun.getSelladoTiempo());
+        }else{
+            this.setUri(anun.getUri());
+        }
+        switch(Integer.valueOf(anun.getType().getId().toString())){
+            case 3:
+            case 4:
+            case 13:
+            case 8:this.format="PDF";break;
+            default:this.format="HTML";break;
+        }
+        this.language="ES";
+
     }
     //endregion
     //region Overrides
@@ -115,8 +149,10 @@ public class Document {
                 ", dateModified=" + dateModified +
                 ", format='" + format + '\'' +
                 ", language='" + language + '\'' +
+                ", relatedLots=" + relatedLots +
                 ']';
     }
+
 
     //endregion
 }

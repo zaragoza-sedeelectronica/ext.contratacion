@@ -49,7 +49,7 @@ import com.googlecode.genericdao.search.SearchResult;
 
 @Gcz(servicio="PERFILCONTRATANTE", seccion="CONTRATO")
 @Controller
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + EmpresaAdminController.MAPPING, method = RequestMethod.GET)
 public class EmpresaAdminController {
 	//region Atributtes

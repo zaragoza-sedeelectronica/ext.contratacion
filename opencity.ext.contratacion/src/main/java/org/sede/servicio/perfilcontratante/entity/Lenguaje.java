@@ -1,6 +1,10 @@
 package org.sede.servicio.perfilcontratante.entity;
 
-import java.math.BigDecimal;
+import org.hibernate.annotations.DynamicUpdate;
+import org.sede.core.anotaciones.PathId;
+import org.sede.core.dao.EntidadBase;
+import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
+import org.sede.servicio.perfilcontratante.ContratoController;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +13,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.annotations.DynamicUpdate;
-import org.sede.core.anotaciones.PathId;
-import org.sede.core.dao.EntidadBase;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
-import org.sede.servicio.perfilcontratante.ContratoController;
+import java.math.BigDecimal;
 
 @XmlRootElement(name = "lenguaje")
 @Entity
@@ -24,7 +23,7 @@ import org.sede.servicio.perfilcontratante.ContratoController;
 @PathId("/" + ContratoController.MAPPING + "/idioma")
 
 
-public class Lenguaje extends EntidadBase {
+public class Lenguaje extends EntidadBase implements java.io.Serializable{
 	//region Atributtes & Columns
 	@Id
 	@Column(name = "ID", unique = true, nullable = false, precision = 22, scale = 0)

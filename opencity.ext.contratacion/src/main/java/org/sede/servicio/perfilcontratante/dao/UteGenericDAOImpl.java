@@ -15,7 +15,6 @@ import javax.validation.ValidatorFactory;
 import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
 import org.sede.core.rest.Mensaje;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.Ute;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +25,9 @@ import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 import com.googlecode.genericdao.search.SearchResult;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class UteGenericDAOImpl extends GenericDAOImpl<Ute,BigDecimal> implements UteGenericDAO{
-    @PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }
@@ -38,7 +37,7 @@ public class UteGenericDAOImpl extends GenericDAOImpl<Ute,BigDecimal> implements
         return validator.validate(registro);
     }
 
-//    @Override
+    @Override
     public SearchResult<?> findUte() {
         Query q = em().createQuery("from Ute where id_ute in (select empresa.id from Oferta where tieneUte='S') ", Ute.class);
         @SuppressWarnings("unchecked")
@@ -50,7 +49,7 @@ public class UteGenericDAOImpl extends GenericDAOImpl<Ute,BigDecimal> implements
         resultado.setRows(lista.size());
         return resultado;
     }
-//	@Override
+	@Override
 	public ResponseEntity<?> asociarAEmpresa(BigDecimal idEmpresa, BigDecimal incluir, BigDecimal participacion) {
 		try {
 			Query insert = this.em().createNativeQuery("insert into PERFIL_UTE (ID_EMPRESA,ID_UTE,POR_PAR) values (?,?,?)");
@@ -67,7 +66,7 @@ public class UteGenericDAOImpl extends GenericDAOImpl<Ute,BigDecimal> implements
 		}
 		
 	}
-//	@Override
+	@Override
 	public ResponseEntity<?> eliminarAsociacion(BigDecimal idEmpresa, BigDecimal excluir) {
 		try {
 			Query insert = this.em().createNativeQuery("delete from PERFIL_UTE where ID_EMPRESA=? and ID_UTE=?");

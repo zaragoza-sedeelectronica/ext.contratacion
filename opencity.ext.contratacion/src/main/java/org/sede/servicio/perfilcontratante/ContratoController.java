@@ -38,7 +38,7 @@ import java.util.*;
 @Gcz(servicio="PERFILCONTRATANTE", seccion="CONTRATO")
 @Controller
 //@Description("Ayuntamiento: Contratación pública")
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + ContratoController.MAPPING, method = RequestMethod.GET)
 public class ContratoController {
 	//region Atributtes
@@ -347,7 +347,8 @@ public class ContratoController {
 			licitador.setLibreBorme(registro.getLibreBorme());
 			search.setExcludeFields("year");
 			search.setSort("fechaContrato desc");
-			licitador.setLicitados((SearchResult<?>) apiOfertasListar(search, id, null).getBody());
+			search.setRows(-1);
+			licitador.setLicitados((SearchResult<?>) apiOfertasListar(search, id, false).getBody());
 			licitador.setGanados((SearchResult<?>)  apiOfertasListar(search, id,true ).getBody());
 			HashMap<String,Integer> licitadosPorAnyo = new HashMap<String, Integer>();
 			HashMap<String,Integer> ganadosPorAnyo = new HashMap<String, Integer>();
@@ -422,14 +423,14 @@ public class ContratoController {
 		Map<String, String> contextProperties = new HashMap<String, String>();
 		contextProperties.put("search.date-format", ConvertDate.DATE_FORMAT);
 		search.setContextProperties(contextProperties);
+		if (search.getSearchExpression().isEmpty()) {
+			search.addCondition("status.id==0");
+		}
 		Search busqueda = search.getConditions(Contrato.class);
 		if(idEmpresa!=null){
 			busqueda.addFilterEqual("ofertas.empresa.idEmpresa",idEmpresa);
 		}
-		if (busqueda.getFilters().size()==1) {
-			search.addCondition("status.id==0");
-			busqueda.addFilterAnd(Filter.equal("status.id",0));
-		}
+		
 		SearchResult<Object> resultado=dao.searchAndCount(busqueda);
  			return ResponseEntity.ok(resultado);
 	}
@@ -515,10 +516,11 @@ public class ContratoController {
 		searchContratos.addFilterEqual("ofertas.ganador",true);
 		searchContratosCanon.addFilterEqual("ofertas.ganador",true);
 		searchExcluidos.addFilterEqual("ofertas.ganador",true);
-		searchContratos.addFilterEqual("ofertas.ahorroVisible",true);
-		searchContratosCanon.addFilterEqual("ofertas.ahorroVisible",true);
+
 		searchContratos.addFilterEqual("ofertas.canon",false);
 		searchContratosCanon.addFilterEqual("ofertas.canon",true);
+		searchContratos.setDistinct(true);
+		searchContratosCanon.setDistinct(true);
 		if(id.intValue()==1 && idServicio.intValue()!=0) {
 			Search busquedaLicitador=new Search(IndicadorLicitadorServicio.class);
 			busquedaLicitador.addFilterEqual("anyo",year);
@@ -534,7 +536,7 @@ public class ContratoController {
 			indicador.setIndicadorTipoServicio((SearchResult<IndicadoresTipoServicioGestor>)apiIndicadoreIndicadorTipoServicio(id,idServicio,year).getBody());
 		}else{
 			for ( Indicador item:indicadores.getResult()) {
-				item.setTotalGanados(daoIndicadores.consultaTotalGanados(item.getIdEmpresa(),year));
+				item.setTotalGanados(daoIndicadores.consultaTotalGanados(item.getIdEmpresa(),year,item.getIdPortal()));
 
 			}
 			indicador.setIndicadorLicitador(indicadores);

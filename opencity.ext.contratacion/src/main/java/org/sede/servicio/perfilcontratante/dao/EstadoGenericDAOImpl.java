@@ -3,7 +3,6 @@ package org.sede.servicio.perfilcontratante.dao;
 import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.Estado;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +16,9 @@ import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.PERFILCONTRATANTE)
 public class EstadoGenericDAOImpl extends GenericDAOImpl<Estado, Integer> implements EstadoGenericDAO {
-    @PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }

@@ -1,8 +1,13 @@
 package org.sede.servicio.perfilcontratante.dao;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Set;
+import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
+import com.googlecode.genericdao.search.SearchResult;
+import org.sede.core.anotaciones.Esquema;
+import org.sede.core.dao.JPAIgnoreTraversableResolver;
+import org.sede.servicio.perfilcontratante.entity.DatosIndicadoresProcedimiento;
+import org.sede.servicio.perfilcontratante.entity.IndicadoresProcedimiento;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,22 +16,14 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-
-import org.sede.core.anotaciones.Esquema;
-import org.sede.core.dao.JPAIgnoreTraversableResolver;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
-import org.sede.servicio.perfilcontratante.entity.DatosIndicadoresProcedimiento;
-import org.sede.servicio.perfilcontratante.entity.IndicadoresProcedimiento;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
-import com.googlecode.genericdao.search.SearchResult;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class IndicadorProcedimientoGenericDAOImpl extends GenericDAOImpl<IndicadoresProcedimiento,BigDecimal > implements IndicadorProcedimientoGenericDAO {
-    @PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }
@@ -37,7 +34,7 @@ public class IndicadorProcedimientoGenericDAOImpl extends GenericDAOImpl<Indicad
     }
 
 
-//    @Override
+    @Override
     public SearchResult<DatosIndicadoresProcedimiento> contratoMasParticipantes(BigDecimal idPortal, String anyo) {
         Query q = em().createQuery("from DatosIndicadoresProcedimiento where idPortal=? and anyo=? Order By total asc   " ,DatosIndicadoresProcedimiento.class).setParameter(1,idPortal).setParameter(2,anyo);
         @SuppressWarnings("unchecked")
@@ -51,9 +48,9 @@ public class IndicadorProcedimientoGenericDAOImpl extends GenericDAOImpl<Indicad
         return resultado;
     }
 
-//    @Override
+    @Override
     public SearchResult<BigDecimal> totaleContratoPorAnyoPortal(BigDecimal idPortal, String anyo) {
-        Query q =em().createNativeQuery(" SELECT COUNT(ID_CONTRATO) as TOTALCONTRATO from PERFIL_CONTRATO where ID_PORTAL=? and TO_CHAR(GCZ_FECHAALTA, 'yyyy')=?  GROUP BY ID_PORTAL,TO_CHAR(GCZ_FECHAALTA, 'yyyy')")
+        Query q =em().createNativeQuery(" SELECT COUNT(ID_CONTRATO) as TOTALCONTRATO from PERFIL_CONTRATO where ID_PORTAL=? and TO_CHAR(GCZ_FECHACONTRATO, 'yyyy')=?  GROUP BY ID_PORTAL,TO_CHAR(GCZ_FECHACONTRATO, 'yyyy')")
                 .setParameter(1,idPortal)
                 .setParameter(2,anyo);
         @SuppressWarnings("unchecked")

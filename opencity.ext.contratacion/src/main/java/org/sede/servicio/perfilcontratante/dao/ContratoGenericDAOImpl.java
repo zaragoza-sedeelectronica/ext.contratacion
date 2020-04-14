@@ -21,11 +21,11 @@ import org.apache.poi.ss.usermodel.*;
 import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
 import org.sede.core.rest.Mensaje;
+import org.sede.core.tag.SedeDialect;
 import org.sede.core.utils.ConvertDate;
 import org.sede.core.utils.Funciones;
 import org.sede.servicio.organigrama.dao.OrganigramaGenericDAO;
 import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.Utils;
 import org.sede.servicio.perfilcontratante.entity.*;
 import org.slf4j.Logger;
@@ -35,13 +35,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.thymeleaf.Arguments;
-import org.thymeleaf.Template;
-import org.thymeleaf.TemplateProcessingParameters;
-import org.thymeleaf.dom.Element;
-import org.thymeleaf.dom.Node;
-import org.thymeleaf.processor.ProcessorResult;
-import org.thymeleaf.spring4.context.SpringWebContext;
+import org.thymeleaf.context.ITemplateContext;
+import org.thymeleaf.model.IModel;
+import org.thymeleaf.model.IModelFactory;
+import org.thymeleaf.model.IProcessableElementTag;
+import org.thymeleaf.processor.element.IElementTagStructureHandler;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -59,7 +57,7 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal> implements ContratoGenericDAO {
 	private static final Logger logger = LoggerFactory.getLogger(ContratoGenericDAOImpl.class);
 	private static final Map<BigDecimal,String> expedienteEntidad=new HashMap<BigDecimal, String>(){
@@ -79,13 +77,13 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 	};
 	@Autowired
 	public TipoContratoGenericDAO daoTipoContrato;
-	@PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+	@PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
 	public void setEntityManager(EntityManager entityManager) {
 		this.setEm(entityManager);
 	}
 	
 	@SuppressWarnings("unchecked")
-//	@Override
+	@Override
 	public ContratoHome getResultsForHome() {
 		ContratoHome home = new ContratoHome();
 		Query qOpen = em().createQuery("FROM Contrato WHERE status = 0 and fecha_presentacion > sysdate order by creationDate desc", Contrato.class);
@@ -95,40 +93,39 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 		home.setLastModified(qLastModified.getResultList());
 		return home;
 	}
-	public ProcessorResult getForTag(Arguments arguments, Node node) {
+	public IModel getForTag(ITemplateContext context, IProcessableElementTag tag, IElementTagStructureHandler structureHandler) {
 		try {
-			Element nodo = ((Element)node);
-			String fragmento = nodo.getAttributeValue("fragment") == null ? "fragmentos/perfil-contratante/list" : nodo.getAttributeValue("fragment");
+			
+			String fragmento = tag.getAttributeValue("fragment") == null ? "fragmentos/perfil-contratante/list" : tag.getAttributeValue("fragment");
 			Search busqueda = new Search();
-			busqueda.addFilter(Filter.some("entity", Filter.equal("id", nodo.getAttributeValue("entidad"))));
+			busqueda.addFilter(Filter.some("entity", Filter.equal("id", tag.getAttributeValue("entidad"))));
 			//busqueda.addFilter(Filter.lessOrEqual("startDate", new Date()));
 			//busqueda.addFilter(Filter.greaterOrEqual("expirationDate", new Date()));
-			busqueda.setMaxResults(nodo.getAttributeValue("numero") == null ? 10 : Integer.parseInt(nodo.getAttributeValue("numero")));
+			busqueda.setMaxResults(tag.getAttributeValue("numero") == null ? 10 : Integer.parseInt(tag.getAttributeValue("numero")));
 			List<Sort> sorts = new ArrayList<Sort>();
 			sorts.add(new Sort("fecha_presentacion", true));
 			busqueda.setSorts(sorts);
 			List<Contrato> resultado = this.search(busqueda);
 			if (resultado.size() > 0) {
-				((SpringWebContext)arguments.getContext()).getVariables().put("titulo", nodo.getAttributeValue("titulo"));
+				structureHandler.setLocalVariable("titulo", tag.getAttributeValue("titulo"));
 			}
-			((SpringWebContext)arguments.getContext()).getVariables().put("listado", resultado);
-			Template template = arguments.getTemplateRepository().getTemplate(new TemplateProcessingParameters(
-					arguments.getConfiguration(), fragmento, arguments.getContext()));
-			node.getParent().insertBefore(node, template.getDocument());
-
-			node.getParent().removeChild(node);
-			return ProcessorResult.OK;
+			structureHandler.setLocalVariable("listado", resultado);
+			final IModelFactory modelFactory = context.getModelFactory();
+			
+			final IModel  model = modelFactory.createModel();
+			model.addModel(SedeDialect.computeFragment(context, fragmento).getTemplateModel());
+			return model;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return ProcessorResult.OK;
+			return context.getModelFactory().createModel();
 		}
 	}
-//	@Override
+	@Override
 	public HashMap<Integer,Integer> getContratosPorAnyo(String nif) {
 		HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
 		Query query = em().createQuery("select TO_CHAR(CONT.FECHA_PRESENTACION, 'yyyy'), COUNT(*) " +
-										"from PERFIL_CONTRATO CONT " +
-										"    inner join PERFIL_ADJUDICACION ADJ on CONT.ID_CONTRATO = ADJ.ID_CONTRATO " +
+										"from PERFILCONTRATANTE.PERFIL_CONTRATO CONT " +
+										"    inner join PERFILCONTRATANTE.PERFIL_ADJUDICACION ADJ on CONT.ID_CONTRATO = ADJ.ID_CONTRATO " +
 										"where ADJ.NIF_ADJU like " + nif +
 										" group by TO_CHAR(CONT.FECHA_PRESENTACION, 'yyyy')");
 //		query.setParameter("anyo",new Timestamp(start.getTime()));
@@ -145,14 +142,14 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 		return map;
 	}
 	@SuppressWarnings("unchecked")
-//	@Override
+	@Override
 	public List<BigDecimal> getServicioGestor(BigDecimal id) {
 		Query q= em().createNativeQuery("select DISTINCT SERVICIO_GESTOR from PERFIL_CONTRATO where ID_PORTAL=? and SERVICIO_GESTOR is not NUll").setParameter(1,id);
 		return q.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
-//	@Override
+	@Override
 	public List<String> getOrganismoContratante() {
 		Query q= em().createNativeQuery("select DISTINCT ORGANO_CONTRATACION from PERFIL_CONTRATO where ORGANO_CONTRATACION is not NUll");
 		return q.getResultList();
@@ -177,7 +174,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 		return propWeb.executeUpdate();
 
 	}
-//	@Override
+	@Override
 	public HSSFWorkbook generarExcelTribunalCuentas(SearchResult<Contrato> resultado) {
 		
 		HSSFWorkbook workbook = new HSSFWorkbook();
@@ -671,7 +668,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 		}
 		return workbook;
 	}
-//	@Override
+	@Override
 	public List<Contrato> getContratosCPV(Set<Cpv> cpv) {
 		StringBuilder b = new StringBuilder();
 		for (Cpv c : cpv) {
@@ -695,7 +692,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 		return listado;
 	}
 	@SuppressWarnings("deprecation")
-//	@Override
+	@Override
 	public List<Contrato> loadXls(InputStream flujo)throws IOException{
 		List<Contrato> contratos=new ArrayList<Contrato>();
 		/*EXPEDIENTE	NOMBRE	TIPOCONTRATO	FECHACADUCIDAD	CONT_MENOR	SERVICIO_GESTOR	ORGANO_CONTRATACION	DURACION	CPV	OBJETO	URGENTE	Canon	IMPORTE_CONIVA	IMPORTE_SINIVA	EnlaceInteres Plataforma*/
@@ -821,7 +818,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 							if(c==8 && !"".equals(cellValue) && !"BLANK".equals(cellValue)){
 								List<Cpv> listadoCpv=new ArrayList<Cpv>();
 								String[] cpvsExcel;
-								Set cpvs=new HashSet<Cpv>();
+								Set<Cpv> cpvs= new HashSet<Cpv>();
 								if(cellValue.contains(",")) {
 									cpvsExcel = cellValue.split(",");
 									for (int i=0;i<cpvsExcel.length;i++){
@@ -895,7 +892,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 	@Autowired
 	public OrganigramaGenericDAO daoOrganigrama;
 	
-//	@Override
+	@Override
 	public ResponseEntity updateFromVirtuoso() {
 		try {
 			

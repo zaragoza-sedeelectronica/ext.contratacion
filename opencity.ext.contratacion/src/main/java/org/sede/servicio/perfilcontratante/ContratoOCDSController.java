@@ -14,10 +14,7 @@ import org.sede.core.utils.ConvertDate;
 import org.sede.servicio.organigrama.dao.OrganigramaGenericDAO;
 import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
 import org.sede.servicio.perfilcontratante.dao.*;
-import org.sede.servicio.perfilcontratante.entity.Anuncio;
-import org.sede.servicio.perfilcontratante.entity.Contrato;
-import org.sede.servicio.perfilcontratante.entity.Empresa;
-import org.sede.servicio.perfilcontratante.entity.Oferta;
+import org.sede.servicio.perfilcontratante.entity.*;
 import org.sede.servicio.perfilcontratante.ocds.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -29,18 +26,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Query;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.Query;
-
 @Gcz(servicio="PERFILCONTRATANTE", seccion="CONTRATO")
 @Controller
-//@Description("Ayuntamiento: Contratación pública OCDS")
-@Transactional(ConfigPerfilContratante.TM)
+@Description("Ayuntamiento: Contratación pública OCDS")
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + ContratoOCDSController.MAPPING, method = RequestMethod.GET)
 public class ContratoOCDSController {
 	//region Atributtes
@@ -68,8 +64,9 @@ public class ContratoOCDSController {
 	@ResponseClass(ContractingProcess.class)
 	@RequestMapping(value = "/contracting-process", method = RequestMethod.GET, produces = {MimeTypes.JSON})
 	public @ResponseBody ResponseEntity<?> apiListadoLicitador(
-			@RequestParam(name = "before", required = true) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date before,
-			@RequestParam(name = "after", required = true) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after
+			@RequestParam(name = "before", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date before,
+			@RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows
 			) throws SearchParseException {
 		
 		Search busqueda = new Search(Contrato.class);
@@ -80,6 +77,7 @@ public class ContratoOCDSController {
 		busqueda.setFields(fields);
 		busqueda.addFilterGreaterThan("fechaContrato", before);
 		busqueda.addFilterLessOrEqual("fechaContrato", after);
+		busqueda.setMaxResults(rows);
 		List<Contrato> lista =  dao.search(busqueda);
 		List<ContractingProcess> resultado = new ArrayList<ContractingProcess>();
 		for (Contrato c : lista) {
@@ -252,9 +250,13 @@ public class ContratoOCDSController {
 	public @ResponseBody ResponseEntity<?> apiListadoOdcsContrato(
 			@RequestParam(name = "status",required = false) String status,
 			@RequestParam(name = "before", required = false ) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date before,
-			@RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after
+			@RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows
 	) throws SearchParseException {
 		try {
+			if(rows==null){
+				rows=50;
+			}
 			String estado = "";
 			if(!"".equals(status)) {
 				if ("pending".equals(status)) {
@@ -269,20 +271,23 @@ public class ContratoOCDSController {
 			}
 			
 			List<Contract> resultado = new ArrayList<Contract>();
-			Query query = dao.em().createNativeQuery("select P.Id_Contrato,P.Nombre as title,E.Nombre as empresa,entity.Nombre as entidad " 
+			Query query = dao.em().createNativeQuery("select * from (select P.Id_Contrato,P.Nombre as title,E.Nombre as empresa,entity.Nombre as entidad "
 					+ "from perfil_contrato p, perfil_oferta o, PERFIL_PORTAL entity, perfil_empresa e " 
 					+ "where o.Id_Empresa=e.Id_Empresa and o.Id_Contrato=p.Id_Contrato and p.Id_Portal=entity.Id_Portal " 
 					+ "and o.Ganador='S' " 
 					+ estado
 					+ (before != null ? " and p.GCZ_FECHACONTRATO >= ? " : "")
 					+ (after != null ? " and p.GCZ_FECHACONTRATO <= ? " : "")
-					+ "order by p.id_contrato");
+					+ "order by p.id_contrato ) where rownum <=?");
 			int k = 0;
 			if (before != null) {
 				query.setParameter(++k, before);
 			}
 			if (after != null) {
 				query.setParameter(++k, after);
+			}
+			if(rows!=null){
+				query.setParameter(++k,rows);
 			}
 			@SuppressWarnings("unchecked")
 			List<Object> list = query.getResultList();
@@ -311,7 +316,14 @@ public class ContratoOCDSController {
 			BigDecimal idParseado = new BigDecimal(array[1].toString());
 			Contrato contrato = dao.find(idParseado);
 			List<Contract> resultado = new ArrayList<Contract>();
-			resultado.add(new Contract(contrato));
+			if(contrato.getLotes().size()>0) {
+				for (Oferta ofer:contrato.getOfertas()) {
+					resultado.add(new Contract(contrato,ofer));
+				}
+
+			}else{
+				resultado.add(new Contract(contrato));
+			}
 			SearchResult<Contract> retorno = new SearchResult<Contract>();
 			retorno.setTotalCount(resultado.size());
 			retorno.setResult(resultado);
@@ -326,19 +338,15 @@ public class ContratoOCDSController {
 	@NoCache
 	@Description("Listado de Modificaciones de un Contrato")
 	@ResponseClass(Amendment.class)
-	@RequestMapping(value = "/contract/{idContrato}/amendment", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiDetalleOdcsContratoAmendment(@PathVariable String idContrato,
-		   @RequestParam(name = "id", required = false ) String id,
+	@RequestMapping(value = "/contract/{id}/amendment", method = RequestMethod.GET, produces = {MimeTypes.JSON})
+	public @ResponseBody ResponseEntity<?> apiDetalleOdcsContratoAmendment(@PathVariable String id,
 		   @RequestParam(name = "before", required = false ) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date before,
 		   @RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after) throws SearchParseException {
 		try {
-			String[] array = idContrato.split("-");
+			String[] array = id.split("-");
 			BigDecimal idParseado = new BigDecimal(array[1].toString());
 			Search busqueda=new Search(Anuncio.class);
 			busqueda.addFilterEqual("contrato.id",idParseado);
-			if(id!=null) {
-				busqueda.addFilterEqual("id",BigDecimal.valueOf(Double.valueOf(id)));
-			}
 			if(before!=null) {
 				busqueda.addFilterGreaterThan("pubDate",before);
 			}
@@ -384,7 +392,10 @@ public class ContratoOCDSController {
 			Contrato contrato = dao.find(idParseado);
 
 			List<Item> resultado = new ArrayList<Item>();
-			resultado.add(new Item(contrato));
+			for (Cpv cpv:contrato.getCpv() ) {
+				resultado.add(new Item(cpv,contrato));
+			}
+
 			SearchResult<Item> retorno = new SearchResult<Item>();
 			retorno.setTotalCount(resultado.size());
 			retorno.setResult(resultado);
@@ -402,13 +413,15 @@ public class ContratoOCDSController {
 	@Description("Listado de organizaciones")
 	@ResponseClass(Organisation.class)
 	@RequestMapping(value = "/organisation", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiListadoOdcsOganizations() throws SearchParseException {
+	public @ResponseBody ResponseEntity<?> apiListadoOdcsOganizations(
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows
+	) throws SearchParseException {
 		try {
 			List<Organisation> resultado=new ArrayList<Organisation>();
 			Search busquedaEmpresa=new SearchFiql().getConditions(Empresa.class);
-			busquedaEmpresa.setMaxResults(-1);
+			busquedaEmpresa.setMaxResults(rows);
 			Search busquedaOrganismo=new SearchFiql().getConditions(EstructuraOrganizativa.class);
-			busquedaOrganismo.setMaxResults(-1);
+			busquedaOrganismo.setMaxResults(rows);
 			SearchResult<Empresa>empresas= daoEmpresa.searchAndCount(busquedaEmpresa);
 			SearchResult<EstructuraOrganizativa> estructuras=daoOrganigrama.searchAndCount(busquedaOrganismo);
 			for (Empresa empresa:empresas.getResult()) {
@@ -432,47 +445,83 @@ public class ContratoOCDSController {
 	@Description("Detalle de organizacion")
 	@ResponseClass(Organisation.class)
 	@RequestMapping(value = "/organisation/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiDetalleOdcsOganizations(@PathVariable BigDecimal id) throws SearchParseException {
+	public @ResponseBody ResponseEntity<?> apiDetalleOdcsOganizations(@PathVariable String id) throws SearchParseException {
 		try {
-			Empresa empresa= daoEmpresa.find(id);
-			if(empresa!=null) {
-				return ResponseEntity.ok(new Organisation(empresa));
+			if(!id.contains("-")){
+				Empresa empresa= daoEmpresa.find(new BigDecimal(id));
+				Search busqueda=new SearchFiql().getConditions(Contrato.class);
+				busqueda.addFilterEqual("ofertas.empresa.idEmpresa",id);
+				SearchResult<Contrato>result=dao.searchAndCount(busqueda);
+				if(result!=null) {
+					return ResponseEntity.ok(new Organisation(empresa,result));
+
+				}else {
+					return ResponseEntity.ok(new Organisation(empresa));
+				}
+
+
 			}else{
-				EstructuraOrganizativa estructura=daoOrganigrama.find(id);
+				String[] array = id.toString().split("-");
+				BigDecimal idParseado = new BigDecimal(array[1]);
+				EstructuraOrganizativa estructura=daoOrganigrama.find(idParseado);
 				return ResponseEntity.ok(new Organisation(estructura));
 			}
-
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
 					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+							messageSource.getMessage(" Organizacion No encontrada",null, LocaleContextHolder.getLocale())));
 		}
 	}
 	@OpenData
 	@NoCache
 	@Description("Listado de licitaciones de una organizacion")
 	@ResponseClass(Organisation.class)
-	@RequestMapping(value = "/organisation/{id}/contracting-proces", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiDetalleOdcsOganizationsContracting(@PathVariable BigDecimal id) throws SearchParseException {
+	@RequestMapping(value = "/organisation/{id}/contracting-process", method = RequestMethod.GET, produces = {MimeTypes.JSON})
+	public @ResponseBody ResponseEntity<?> apiDetalleOdcsOganizationsContracting(
+			@PathVariable String id,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows) throws SearchParseException {
 		try {
 			List<Organisation> organizaciones=new ArrayList<Organisation>();
 			SearchResult<Organisation> result=new SearchResult<Organisation>();
 			Search busqueda2=new SearchFiql().getConditions(Contrato.class);
-			busqueda2.addFilterOr(new Filter("organoContratante.id",id),new Filter("servicio.id",id),new Filter("oferta.empresa.id",id));
-			SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
-			for (Contrato con:resultado.getResult() ) {
-				for (Oferta ofer:con.getOfertas()) {
-					if(id==ofer.getEmpresa().getIdEmpresa())
-						organizaciones.add(new Organisation(ofer.getEmpresa(),con));
+			busqueda2.setMaxResults(rows);
+			busqueda2.setDistinct(true);
+			BigDecimal idParseado=new BigDecimal("0");
+			if(!id.contains("-")){
+				idParseado=new BigDecimal(id);
+				busqueda2.addFilterEqual("ofertas.empresa.id",idParseado);
+				SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
+				for (Contrato con:resultado.getResult() ) {
+					for (Oferta ofer : con.getOfertas()) {
+						if (idParseado.equals(ofer.getEmpresa().getIdEmpresa()))
+							organizaciones.add(new Organisation(ofer.getEmpresa(), con));
+					}
 				}
-				if(con.getServicio().getId()==id){
+			}else {
+				String[] array = id.toString().split("-");
+				 idParseado = new BigDecimal(array[1]);
+				busqueda2.addFilterOr(new Filter("entity.id",idParseado),new Filter("organoContratante.id",idParseado),new Filter("servicio.id",idParseado));
+				SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
+				for (Contrato con:resultado.getResult() ) {
+					if (con.getEntity() != null) {
+						if(con.getEntity().getId().equals(idParseado)){
+							organizaciones.add(new Organisation(con.getEntity(),con));
 
-					organizaciones.add(new Organisation(con.getServicio(),con));
+						}
+					}
+					if (con.getServicio() != null) {
+						if(con.getServicio().getId().equals( idParseado)){
+							organizaciones.add(new Organisation(con.getServicio(),con));
 
-				}
-				if(con.getOrganoContratante().getId()==id){
-					organizaciones.add(new Organisation(con.getOrganoContratante(),con));
-				}
+						}
+					}
+					if(con.getOrganoContratante()!=null) {
+						if (con.getOrganoContratante().getId().equals(idParseado)) {
+							organizaciones.add(new Organisation(con.getOrganoContratante(), con));
+						}
+					}
+			}
+
 			}
 			result.setTotalCount(organizaciones.size());
 			result.setResult(organizaciones);
@@ -488,20 +537,36 @@ public class ContratoOCDSController {
 	}
 	@OpenData
 	@NoCache
-	@Description("Listado de de ganadores de una organizacion")
+	@Description("Listado de adjudicaciones ganadoras de una organización")
 	@ResponseClass(Award.class)
-	@RequestMapping(value = "/organisation/{id}/awards", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiDetalleOdcsOganizationsAward(@PathVariable BigDecimal id) throws SearchParseException {
+	@RequestMapping(value = "/organisation/{id}/award", method = RequestMethod.GET, produces = {MimeTypes.JSON})
+	public @ResponseBody ResponseEntity<?> apiDetalleOdcsOganizationsAward(
+			@PathVariable String id,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows
+			) throws SearchParseException {
+		BigDecimal idParseado=new BigDecimal("0");
+		List<Award> ganadores=new ArrayList<Award>();
+		SearchResult<Award> result=new SearchResult<Award>();
+		Search busqueda2=new SearchFiql().getConditions(Contrato.class);
+		busqueda2.setMaxResults(rows);
+		busqueda2.setDistinct(true);
 		try {
-			List<Award> ganadores=new ArrayList<Award>();
-			SearchResult<Award> result=new SearchResult<Award>();
-			Search busqueda2=new SearchFiql().getConditions(Contrato.class);
-			busqueda2.addFilterEqual("oferta.empresa.id",id);
-			busqueda2.addFilterEqual("oferta.ganador",true);
+			if(!id.contains("-")) {
+				idParseado = new BigDecimal(id);
+				busqueda2.addFilterEqual("ofertas.empresa.idEmpresa",idParseado);
+				busqueda2.addFilterEqual("ofertas.ganador",true);
+			}else {
+				String[] array = id.toString().split("-");
+				idParseado = new BigDecimal(array[1]);
+				busqueda2.addFilterOr(new Filter("entity.id",idParseado),new Filter("organoContratante.id",idParseado),new Filter("servicio.id",idParseado));
+				busqueda2.addFilterEqual("ofertas.ganador", true);
+			}
 			SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
 			for (Contrato con:resultado.getResult() ) {
 				for (Oferta ofer : con.getOfertas()) {
-					ganadores.add(new Award(ofer,con));
+					if(ofer.getGanador()) {
+						ganadores.add(new Award(ofer, con));
+					}
 				}
 			}
 			result.setTotalCount(ganadores.size());
@@ -525,12 +590,14 @@ public class ContratoOCDSController {
 	@RequestMapping(value = "/award", method = RequestMethod.GET, produces = {MimeTypes.JSON})
 	public @ResponseBody ResponseEntity<?> apiDetalleOdcsAward(
 			@RequestParam(name = "before", required = false ) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date before,
-			@RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after
+			@RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows
 	) throws SearchParseException {
 		try {
 			List<Award> ganadores=new ArrayList<Award>();
 			SearchResult<Award> result=new SearchResult<Award>();
 			Search busqueda2=new Search(Oferta.class);
+			busqueda2.setMaxResults(rows);
 			busqueda2.addFilterEqual("ganador",true);
 			if(before!=null){
 				busqueda2.addFilterGreaterOrEqual("fechaAdjudicacion",before);
@@ -558,13 +625,16 @@ public class ContratoOCDSController {
 	@Description("Detalle de adjudicación")
 	@ResponseClass(Award.class)
 	@RequestMapping(value = "/award/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiDetalleOdcsAward(@PathVariable String id) throws SearchParseException {
+	public @ResponseBody ResponseEntity<?> apiDetalleOdcsAward(
+			@PathVariable String id,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows) throws SearchParseException {
 		try {
 			String[] array = id.split("-");
 			List<Award> ganadores=new ArrayList<Award>();
 			SearchResult<Award> result=new SearchResult<Award>();
 			Search busqueda2=new Search(Oferta.class);
 			busqueda2.addFilterEqual("id",array[3]);
+			busqueda2.setMaxResults(rows);
 			SearchResult<Oferta> resultado=daoOferta.searchAndCount(busqueda2);
 			for (Oferta ofer:resultado.getResult() ) {
 				ganadores.add(new Award(ofer));
@@ -632,8 +702,9 @@ public class ContratoOCDSController {
 			busqueda2.addFilterEqual("id",array[3]);
 			SearchResult<Oferta> resultado=daoOferta.searchAndCount(busqueda2);
 			for (Oferta ofer:resultado.getResult() ) {
-				items.add(new Item(ofer.getContrato()));
-
+				for (Cpv cpv:ofer.getContrato().getCpv()) {
+					items.add(new Item(cpv,ofer.getContrato()));
+				}
 			}
 			result.setTotalCount(items.size());
 			result.setResult(items);
@@ -704,33 +775,43 @@ public class ContratoOCDSController {
 	//region Tender
 	@OpenData
 	@NoCache
-	@Description("Listado de licitadores")
+	@Description("Listado de licitaciones")
 	@ResponseClass(Tender.class)
 	@RequestMapping(value = "/tender", method = RequestMethod.GET, produces = {MimeTypes.JSON})
 	public @ResponseBody ResponseEntity<?> apiDListadoOdcsTender(
-			@RequestParam(name = "status", required = false )String status) throws SearchParseException {
+			@RequestParam(name = "status", required = false )String status,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows) throws SearchParseException {
 		try {
 			List<Tender> licitaciones=new ArrayList<Tender>();
 			SearchResult<Tender> result=new SearchResult<Tender>();
-			Search busqueda2=new Search(Contrato.class);
-			if(status!=null){
-				if("active".equals(status)){
-					busqueda2.addFilterEqual("status.id", BigDecimal.valueOf(0.0));
-				}
-				if("pending".equals(status)){
-					busqueda2.addFilterOr(new Filter("status.id", BigDecimal.valueOf(1.0)),new Filter("status.id", BigDecimal.valueOf(2.0)),new Filter("status.id", BigDecimal.valueOf(3.0)));
-				}
-				if("cancelled".equals(status)){
-					busqueda2.addFilterOr(new Filter("status.id", BigDecimal.valueOf(10.0)),new Filter("status.id", BigDecimal.valueOf(7.0)),new Filter("status.id", BigDecimal.valueOf(4.0)),new Filter("status.id", BigDecimal.valueOf(8.0)));
-				}
-				if("terminated".equals(status)){
-					busqueda2.addFilterEqual("status.id", BigDecimal.valueOf(6.0));
-				}
-
+			if(rows==null){
+				rows=50;
 			}
-			SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
-			for (Contrato contra:resultado.getResult() ) {
-				licitaciones.add(new Tender(contra.getId(),contra.getTitle()));
+			String estado = "";
+			if(!"".equals(status)) {
+				if ("pending".equals(status)) {
+					estado = "where  p.estado in (1,2,3) ";
+				} else if ("active".equals(status)) {
+					estado = "where  p.estado = 0";
+				} else if ("cancelled".equals(status)) {
+					estado = "where  p.estado in (4,7,8,10,11) ";
+				} else if ("terminated".equals(status)) {
+					estado = "where p.estado =6 ";
+				}
+			}
+
+			List<Contract> resultado = new ArrayList<Contract>();
+			Query query = dao.em().createNativeQuery(" select * from(select P.Id_Contrato,P.Nombre as title"
+					+ " from perfil_contrato p "
+					+ estado
+					+ "order by p.id_contrato) where rownum <=? ");
+			int k=0;
+			query.setParameter(++k,rows);
+			@SuppressWarnings("unchecked")
+			List<Object> list = query.getResultList();
+			for (Iterator<Object> iterador = list.iterator(); iterador.hasNext();) {
+				Object[] row = (Object[]) iterador.next();
+				licitaciones.add(new Tender((BigDecimal) row[0], (String) row[1]));
 			}
 			result.setTotalCount(licitaciones.size());
 			result.setResult(licitaciones);
@@ -745,7 +826,7 @@ public class ContratoOCDSController {
 	}
 	@OpenData
 	@NoCache
-	@Description("Detalle de licitadores")
+	@Description("Detalle de una licitación")
 	@ResponseClass(Tender.class)
 	@RequestMapping(value = "/tender/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON})
 	public @ResponseBody ResponseEntity<?> apiDetalleOdcsTender(@PathVariable String id) throws SearchParseException {
@@ -772,16 +853,19 @@ public class ContratoOCDSController {
 	}
 	@OpenData
 	@NoCache
-	@Description("Listado de ganadores de una licitacion a un contrato")
+	@Description("Procesos de contratación asociados a una licitación")
 	@ResponseClass(ContractingProcess.class)
 	@RequestMapping(value = "/tender/{id}/contracting-process", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiDetalleOdcsAwardContractingProcess(@PathVariable String id) throws SearchParseException {
+	public @ResponseBody ResponseEntity<?> apiDetalleOdcsAwardContractingProcess(
+			@PathVariable String id,
+			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows) throws SearchParseException {
 		try {
 			String[] array = id.split("-");
 			List<ContractingProcess> proceso=new ArrayList<ContractingProcess>();
 			SearchResult<ContractingProcess> result=new SearchResult<ContractingProcess>();
 			Search busqueda2=new Search(Contrato.class);
 			busqueda2.addFilterEqual("id",array[1]);
+			busqueda2.setMaxResults(rows);
 			SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
 			for (Contrato con :resultado.getResult() ) {
 				proceso.add(new ContractingProcess(con));
@@ -794,12 +878,12 @@ public class ContratoOCDSController {
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
 					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+							messageSource.getMessage("No valido",null, LocaleContextHolder.getLocale())));
 		}
 	}
 	@OpenData
 	@NoCache
-	@Description("Listado de item de un licitador")
+	@Description("Listado de item de una licitación")
 	@ResponseClass(Item.class)
 	@RequestMapping(value = "/tender/{id}/item", method = RequestMethod.GET, produces = {MimeTypes.JSON})
 	public @ResponseBody ResponseEntity<?> apiDetalleOdcsTenderItem(@PathVariable String id) throws SearchParseException {
@@ -808,7 +892,9 @@ public class ContratoOCDSController {
 			List<Item> items=new ArrayList<Item>();
 			SearchResult<Item> result=new SearchResult<Item>();
 			Contrato con=dao.find(BigDecimal.valueOf(Double.valueOf(array[1])));
-			items.add(new Item(con));
+			for (Cpv cpv:con.getCpv()) {
+				items.add(new Item(cpv,con));
+			}
 			result.setTotalCount(items.size());
 			result.setResult(items);
 			result.setStart(0);
@@ -823,10 +909,11 @@ public class ContratoOCDSController {
 
 	@OpenData
 	@NoCache
-	@Description("Listado de documentos de una licitador")
+	@Description("Listado de documentos de una licitación")
 	@ResponseClass(Document.class)
 	@RequestMapping(value = "/tender/{id}/document", method = RequestMethod.GET, produces = {MimeTypes.JSON})
-	public @ResponseBody ResponseEntity<?> apiDetalleOdcsTenderDocuments(@PathVariable String id) throws SearchParseException {
+	public @ResponseBody ResponseEntity<?> apiDetalleOdcsTenderDocuments(
+			@PathVariable String id) throws SearchParseException {
 		try {
 			String[] array = id.split("-");
 			List<Document> documents=new ArrayList<Document>();

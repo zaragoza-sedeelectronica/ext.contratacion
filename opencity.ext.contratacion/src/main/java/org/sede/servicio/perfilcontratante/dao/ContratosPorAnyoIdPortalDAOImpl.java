@@ -12,7 +12,6 @@ import javax.validation.ValidatorFactory;
 
 import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.ContratosPorAnyoIdPortal;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,12 +20,12 @@ import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class ContratosPorAnyoIdPortalDAOImpl extends GenericDAOImpl<ContratosPorAnyoIdPortal, BigDecimal> implements ContratosPorAnyoIdPortalDAO {
     
 
     //endregion
-    @PersistenceContext(unitName = ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName = Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }

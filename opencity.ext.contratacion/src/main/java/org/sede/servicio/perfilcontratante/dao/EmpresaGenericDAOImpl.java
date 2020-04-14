@@ -16,7 +16,6 @@ import javax.validation.ValidatorFactory;
 
 import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Empresa;
 import org.sede.servicio.perfilcontratante.entity.EmpresaConParticipacion;
@@ -27,10 +26,10 @@ import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 import com.googlecode.genericdao.search.SearchResult;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> implements EmpresaGenericDAO{
     //region Atributtes
-    @PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }
@@ -40,7 +39,7 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
         Validator validator = factory.getValidator();
         return validator.validate(registro);
     }
-//	@Override
+	@Override
 	public SearchResult<Empresa> findAdjudicadores() {
 		Query q = em().createQuery("from Empresa where id_empresa in (select empresa.id from Oferta where ganador='S') ", Empresa.class);
 		@SuppressWarnings("unchecked")
@@ -53,7 +52,7 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
 		return resultado;
 		
 	}
-//	@Override
+	@Override
 	public List<Contrato> findContratosAdjudicados(BigDecimal id) {
 		Query q = em().createQuery("from Contrato where id in (select contrato.id from Oferta where empresa.idEmpresa=? and ganador='S')", Contrato.class).setParameter(1, id);
 		@SuppressWarnings("unchecked")
@@ -61,7 +60,7 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
 		return lista;
 	}
 
-//	@Override
+	@Override
 	public SearchResult<Empresa> findEmpresaUte() {
 		Query q = em().createQuery("from Empresa where id_empresa in (select empresa.id from Oferta where tieneUte='S') ", Empresa.class);
 		@SuppressWarnings("unchecked")
@@ -74,7 +73,7 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
 		return resultado;
 	}
 
-//	@Override
+	@Override
 	public List<Empresa> findEmpresaUte(BigDecimal id) {
 		Query q = em().createQuery("from Empresa where id_empresa in (select empresa.idEmpresa from Ute where ofertaUte.empresa.id=?) ", Empresa.class).setParameter(1,id);
 		@SuppressWarnings("unchecked")
@@ -82,7 +81,7 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
 		return lista;
 	}
 
-//	@Override
+	@Override
 	public SearchResult<Empresa> findEmpresaPertneceUte(BigDecimal id) {
 		Query q = em().createNativeQuery("Select * from PERFIL_EMPRESA E where E.ID_EMPRESA in (select id_UTE from PERFIL_UTE U where U.ID_EMPRESA=?) ", Empresa.class).setParameter(1,id);
 		@SuppressWarnings("unchecked")
@@ -94,7 +93,7 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
 		resultado.setStart(0);
 		return resultado;
 	}
-//	@Override
+	@Override
 	public List<EmpresaConParticipacion> findEmpresaEnUte(BigDecimal id) {
 		Query q = em().createNativeQuery("select E.Id_Empresa,E.Nombre,U.Por_Par "
 				+ "from perfil_empresa e, perfil_ute u "

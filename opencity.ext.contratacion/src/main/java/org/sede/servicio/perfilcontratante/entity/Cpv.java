@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @XmlRootElement(name = "cpv")
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 @Table(name = "VISTA_CPV", schema = ConfigPerfilContratante.ESQUEMA)
 @XmlAccessorType(XmlAccessType.FIELD)
 @DynamicUpdate
-public class Cpv extends EntidadBase {
+public class Cpv extends EntidadBase implements Serializable {
     //region Atributtes & Columns
     @Id
     @Column(name = "ID",nullable = false)

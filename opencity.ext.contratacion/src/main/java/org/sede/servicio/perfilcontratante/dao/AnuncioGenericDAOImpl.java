@@ -33,7 +33,6 @@ import org.sede.core.rest.CheckeoParametros;
 import org.sede.core.rest.MimeTypes;
 import org.sede.core.utils.Funciones;
 import org.sede.core.utils.Propiedades;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.Utils;
 import org.sede.servicio.perfilcontratante.entity.Anuncio;
 import org.springframework.stereotype.Repository;
@@ -44,10 +43,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> implements AnuncioGenericDAO {
 	
-	@PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+	@PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
 	public void setEntityManager(EntityManager entityManager) {
 		this.setEm(entityManager);
 	}
@@ -68,7 +67,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 		return propWeb.executeUpdate();
 
 	}
-//	@Override
+	@Override
 	public Boolean contratoSellado(BigDecimal id) {
 		try {
 			Query q = em().createNativeQuery("select id_contrato from perfil_anuncio a, perfil_sello s where a.id_contrato = ? and a.id_anuncio = s.id_anuncio")
@@ -78,7 +77,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			return false;
 			}
 	}
-//	@Override
+	@Override
 	public void asociarAnexos(final Anuncio registro, final MultipartFile file) throws IOException {
 		em().unwrap(Session.class).doReturningWork(new ReturningWork<Integer>() {
 			public Integer execute(Connection connection) throws SQLException {
@@ -110,7 +109,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 		
 		
 	}
-//	@Override
+	@Override
 	public byte[] obtenerAnexos(final Anuncio registro) {
 		return em().unwrap(Session.class).doReturningWork(new ReturningWork<byte[]>() {
 			public byte[] execute(Connection connection) throws SQLException {
@@ -138,7 +137,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 		});
 		
 	}
-//	@Override
+	@Override
 	public boolean eliminar(BigDecimal id) {
 		// Borramos los sellos que tenga asociados
 		Query propWeb = this.em().createNativeQuery("delete from PERFIL_SELLO where id_anuncio=?");
@@ -187,7 +186,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 		}
 		
 	}
-//	@Override
+	@Override
 	public void almacenar(final Anuncio registro) throws IOException {
 		
 		if (Utils.necesitaSellado(registro)) {

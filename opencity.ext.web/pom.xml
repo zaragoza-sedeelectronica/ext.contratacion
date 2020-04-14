@@ -1,17 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.zaragoza</groupId>
-  <artifactId>opencity.ext.web</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <groupId>org.opencity</groupId>
+  <artifactId>ext.web.contratacion</artifactId>
+  <version>0.0.1</version>
   <packaging>war</packaging>
   <name>opencityext</name>
- 
   	<dependencies>
-
 		<dependency>
-			<groupId>org.zaragoza</groupId>
-			<artifactId>opencity.ext.contratacion</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.opencity</groupId>
+			<artifactId>ext.contratacion</artifactId>
+			<version>0.0.1</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.servlet</groupId>
@@ -21,8 +19,27 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>opencityext</finalName>
+		<finalName>${project.name}</finalName>
 		<plugins>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-remote-resources-plugin</artifactId>
+				<version>1.7.0</version>
+				<configuration>
+					<resourceBundles>
+						<resourceBundle>org.opencity:shared-resources:0.0.1</resourceBundle>
+					</resourceBundles>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>process</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -33,98 +50,13 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>prepare-package</phase>
-						<configuration>
-							<id>reemplazoFiles</id>
-							<tasks>
-								<echo
-									message="reemplazo de cadena en ficheros de hibernate para que funcionen en weblogic" />
-								<replace token="java:/comp/env/jdbc/" value="jdbc/"
-									dir="src/main/webapp/WEB-INF/spring">
-									<include name="**/*.xml" />
-								</replace>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>restaurarFiles</id>
-						<phase>install</phase>
-						<configuration>
-							<tasks>
-								<echo message="devolvemos los xml a su estado" />
-								<replace token="jdbc/" value="java:/comp/env/jdbc/"
-									dir="src/main/webapp/WEB-INF/spring">
-									<include name="**/*.xml" />
-								</replace>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<warName>${project.name}</warName>
-					<!-- Eliminamos para que funcione en weblogic -->
-					<packagingExcludes>WEB-INF/lib/xml-apis-1.3.02.jar,WEB-INF/lib/activation-1.1.jar,WEB-INF/lib/stax2-api-3.1.4.jar</packagingExcludes>
-					<webResources>
-						<resource>
-							<directory>src/main/resources-${entorno}</directory>
-							<includes>
-								<include>*.properties</include>
-							</includes>
-							<targetPath>WEB-INF/classes</targetPath>
-						</resource>
-						<resource>
-							<directory>src/main/resources-${entorno}</directory>
-							<excludes>
-								<exclude>log4j.xml</exclude>
-							</excludes>
-							<includes>
-								<include>*.xml</include>
-							</includes>
-							<targetPath>WEB-INF/spring</targetPath>
-						</resource>
-						<resource>
-							<directory>src/main/resources-${entorno}</directory>
-							<includes>
-								<include>log4j.xml</include>
-							</includes>
-							<targetPath>WEB-INF/classes</targetPath>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>install</id>
-						<phase>install</phase>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<path>/opencityext</path>
+					<path>/${project.name}</path>
 					<contextReloadable>false</contextReloadable>
-					<contextFile>${project.basedir}/src/main/resources/META-INF/context.xml</contextFile>
+					<contextFile>${project.build.directory}/maven-shared-archive-resources/META-INF/context.xml</contextFile>
 					<port>8888</port>
 				</configuration>
 			</plugin>
@@ -136,7 +68,7 @@
 				<configuration>
 					<webResources>
 						<webResource>
-							<directory>${basedir}/src/main/resources/META-INF</directory>
+							<directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
 							<includes>
 								<include>context.xml</include>
 							</includes>

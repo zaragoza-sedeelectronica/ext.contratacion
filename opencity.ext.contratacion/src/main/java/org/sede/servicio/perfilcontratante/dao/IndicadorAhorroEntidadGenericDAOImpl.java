@@ -12,7 +12,6 @@ import javax.validation.ValidatorFactory;
 
 import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
-import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.entity.IndicadorAhorro;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,10 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 
 @Repository
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 public class IndicadorAhorroEntidadGenericDAOImpl extends GenericDAOImpl<IndicadorAhorro,BigDecimal > implements IndicadorAhorroEntidadGenericDAO{
     //region Atributtes
-    @PersistenceContext(unitName=ConfigPerfilContratante.ESQUEMA)
+    @PersistenceContext(unitName=Esquema.PERFILCONTRATANTE)
     public void setEntityManager(EntityManager entityManager) {
         this.setEm(entityManager);
     }

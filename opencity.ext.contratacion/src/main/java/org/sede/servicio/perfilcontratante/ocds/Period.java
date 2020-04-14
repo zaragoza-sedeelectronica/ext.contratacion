@@ -55,17 +55,17 @@ public class Period {
             this.endDate = new DateTime(endDate);
         }
         public Period(Date startdate) {
+                this.startdate = new DateTime(startdate);
+            }
+        public Period(Date startdate,Integer days) {
             this.startdate = new DateTime(startdate);
+            this.endDate=new DateTime(DateUtils.addDays(startdate,days));
+            this.duarationInDays=days;
         }
-    public Period(Date startdate,Integer days) {
-        this.startdate = new DateTime(startdate);
-        this.endDate=new DateTime(DateUtils.addDays(startdate,days));
-        this.duarationInDays=days;
-    }
-    public Period(Date startdate, Date endDate,Integer days) {
-        this.startdate = new DateTime(startdate);
-        this.endDate = new DateTime(endDate);
-        this.duarationInDays=days;
-    }
+        public Period(Date startdate, Date endDate,Integer days) {
+            this.startdate = new DateTime(startdate);
+            this.endDate = new DateTime(endDate);
+            this.duarationInDays=days;
+        }
     //endregion
 }

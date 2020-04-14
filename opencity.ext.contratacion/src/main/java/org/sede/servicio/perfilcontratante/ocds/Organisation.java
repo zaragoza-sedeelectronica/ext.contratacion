@@ -1,12 +1,15 @@
 package org.sede.servicio.perfilcontratante.ocds;
 
+import com.googlecode.genericdao.search.SearchResult;
 import org.sede.core.anotaciones.ResultsOnly;
 import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Empresa;
 import org.sede.servicio.perfilcontratante.entity.EntidadContratante;
+import org.sede.servicio.perfilcontratante.entity.Oferta;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "OrganizationOcds")
@@ -18,7 +21,7 @@ public class Organisation {
     private String name;
     private Adress address;
     private ContactPoint contactPoint;
-    private List<Roles> roles;
+    private List<Roles> roles=new ArrayList<Roles>();
     private Details details;
     private DateTime dateTime;
 
@@ -88,6 +91,7 @@ public class Organisation {
     //endregion
     //region Contructors
     public Organisation(EstructuraOrganizativa item){
+        List<Roles> roles=new ArrayList<Roles>();
         this.setId("ocds-"+item.getId()+"-buyer");
         this.setName(item.getTitle());
         Adress address=new Adress();
@@ -100,10 +104,15 @@ public class Organisation {
                 address.setRegion("Aragon");
             this.setAddress(address);
         }
+        roles.add(new Roles("buyer"));
+        this.setRoles(roles);
     }
     public Organisation(EntidadContratante item){
+        List<Roles> roles=new ArrayList<Roles>();
         this.setId("ocds-"+item.getId()+"-buyer");
         this.setName(item.getTitle());
+        roles.add(new Roles("Procuring entity"));
+        this.setRoles(roles);
     }
     public Organisation(Empresa item, Boolean ganador){
         if(!ganador) {
@@ -114,20 +123,66 @@ public class Organisation {
         this.setName(item.getNombre());
     }
     public Organisation(Empresa item, Contrato con){
+        List<Roles> roles=new ArrayList<Roles>();
         this.setIdContractingprocess("ocds-" + con.getId() );
         this.setId("ocds-" + item.getIdEmpresa()+"-tender");
         this.setName(item.getNombre());
         this.setDateTime(new DateTime(con.getPubDate()));
+        for(Oferta ofer:con.getOfertas()){
+            if(ofer.getEmpresa().getIdEmpresa()==item.getIdEmpresa()) {
+                if (ofer.getGanador()) {
+
+                        roles.add(new Roles("Supplier"));
+                }else{
+
+                        roles.add(new Roles("Tenderer"));
+                }
+            }
+        }
+        this.setRoles(roles);
+    }
+    public Organisation(Empresa item, SearchResult<Contrato> con){
+        List<Roles> roles=new ArrayList<Roles>();
+        Boolean tender=false;
+        Boolean supplier=false;
+        this.setId("ocds-" + item.getIdEmpresa());
+        this.setName(item.getNombre());
+        for(Contrato contrato:con.getResult()) {
+            for (Oferta ofer : contrato.getOfertas()) {
+                if (ofer.getEmpresa().getIdEmpresa() == item.getIdEmpresa()) {
+                    if (ofer.getGanador() && !supplier) {
+                        roles.add(new Roles("Supplier"));
+                        supplier=true;
+                    } else if(!ofer.getGanador() && !tender){
+                        roles.add(new Roles("Tenderer"));
+                        tender=true;
+                    }
+                }
+            }
+        }
+        this.setRoles(roles);
     }
     public Organisation(EstructuraOrganizativa item, Contrato con){
+        List<Roles> roles=new ArrayList<Roles>();
         this.setIdContractingprocess("ocds-" + con.getId() );
         this.setId("ocds-" + item.getId()+"-buyer");
         this.setName(item.getTitle());
         this.setDateTime(new DateTime(con.getPubDate()));
+        roles.add(new Roles("Buyer"));
+        this.setRoles(roles);
     }
     public Organisation(Empresa item){
         this.setId(item.getIdEmpresa().toString());
         this.setName(item.getNombre().trim());
+    }
+    public Organisation(EntidadContratante item ,Contrato con){
+        List<Roles> roles=new ArrayList<Roles>();
+        this.setIdContractingprocess("ocds-" + con.getId() );
+        this.setId("ocds-"+item.getId()+"-buyer");
+        this.setName(item.getTitle());
+        this.setDateTime(new DateTime(con.getPubDate()));
+        roles.add(new Roles("Procuring entity"));
+        this.setRoles(roles);
     }
     //endregion
 }

@@ -45,7 +45,7 @@ import java.util.*;
 @Gcz(servicio="PERFILCONTRATANTE", seccion="CONTRATO")
 @Controller
 //@Description("Ayuntamiento: Perfil de contratante")
-@Transactional(ConfigPerfilContratante.TM)
+@Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + ContratoAdminController.MAPPING, method = RequestMethod.GET)
 public class ContratoAdminController {
 	//region Atributtes
@@ -56,11 +56,11 @@ public class ContratoAdminController {
 	private static final String MAPPING_ANUNCIO_FORM = MAPPING + "/anuncio";
 	private static final String MAPPING_OFERTA_FORM = MAPPING + "/oferta";
 	private static final String MAPPING_LOTE_FORM = MAPPING + "/lote";
-	private static final String MAPPING_FUNCIONALIDADES =MAPPING+"/funciones/" ;
+	private static final String MAPPING_FUNCIONALIDADES = MAPPING + "/funciones/";
 
 	@Autowired
 	private MessageSource messageSource;
-	
+
 	@Autowired
 	public ContratoGenericDAO dao;
 	@Autowired
@@ -80,134 +80,146 @@ public class ContratoAdminController {
 	@Autowired
 	private ContratoController contratoController;
 	@Autowired
-	private  CpvGenericDAO daoCpv;
+	private CpvGenericDAO daoCpv;
 
-	@OpenData
-	@Cache(Cache.DURACION_30MIN)
+
 	@ResponseClass(value = Contrato.class, entity = SearchResult.class)
 	@RequestMapping(method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
-	public @ResponseBody ResponseEntity<?> apiListar(@Fiql SearchFiql search) throws org.apache.cxf.jaxrs.ext.search.SearchParseException{
+	public
+	@ResponseBody
+	ResponseEntity<?> apiListar(@Fiql SearchFiql search) throws org.apache.cxf.jaxrs.ext.search.SearchParseException {
 		Search busqueda = search.getConditions(Contrato.class);
+		SearchResult<Contrato> resultado = null;
 		List<Sort> sorts = new ArrayList<Sort>();
-		BigDecimal entidad = Utils.obtenerEntidad(Funciones.getPeticion()); 
-		if (entidad != null) {
-			busqueda.addFilterEqual("servicioGestor", entidad);
+		BigDecimal portal = Utils.obtenerPortal(Funciones.getPeticion());
+		BigDecimal entidad = Utils.obtenerEntidad(Funciones.getPeticion());
+		if (portal != null ) {
+			busqueda.addFilterEqual("entity.id", portal);
 		}
-		
+		if(entidad!=null){
+			busqueda.addFilterEqual("servicio.id", entidad);
+		}
+
 		sorts.add(new Sort("creationDate", true));
 		busqueda.setSorts(sorts);
-		return ResponseEntity.ok(dao.searchAndCount(busqueda));
+		resultado = dao.searchAndCount(busqueda);
+		return ResponseEntity.ok(resultado);
 	}
 
-    @RequestMapping(method = RequestMethod.GET, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+	@RequestMapping(method = RequestMethod.GET, produces = {
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String redirect() {
 		return "redirect:" + SERVICIO + "/";
 	}
-    @Permisos(Permisos.DET)
+
+	@Permisos(Permisos.DET)
 	@RequestMapping(path = "/", method = RequestMethod.GET, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String home(Model model, @Fiql SearchFiql search) throws org.apache.cxf.jaxrs.ext.search.SearchParseException {
 
 		model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
 
 		return MAPPING + "/index";
 	}
+
 	@Permisos(Permisos.NEW)
-	@RequestMapping(path = "/oferta/carga",headers=("content-type=multipart/*"), method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
-	public String cargaOfertas( Model model,@RequestParam("file") MultipartFile file, RedirectAttributes attr) throws SearchParseException {
+	@RequestMapping(path = "/oferta/carga", headers = ("content-type=multipart/*"), method = RequestMethod.POST, produces = {
+			MediaType.TEXT_HTML_VALUE, "*/*"})
+	public String cargaOfertas(Model model, @RequestParam("file") MultipartFile file, RedirectAttributes attr) throws SearchParseException {
 		if (!file.isEmpty()) {
 			try {
 				String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'), file.getOriginalFilename().length());
 				if (extension.equals(".xls")) {
-					 List<Oferta> ofer=daoOferta.loadFromXls(file.getInputStream());
-					if(ofer!=null){
-						for (int i=0;i<ofer.size();i++) {
+					List<Oferta> ofer = daoOferta.loadFromXls(file.getInputStream());
+					if (ofer != null) {
+						for (int i = 0; i < ofer.size(); i++) {
 							Oferta item = ofer.get(i);
-							ResponseEntity<?> respuesta=apiCrearOferta(item.getContrato().getId(),item);
+							ResponseEntity<?> respuesta = apiCrearOferta(item.getContrato().getId(), item);
 							if (respuesta.getStatusCode().is2xxSuccessful()) {
 								model.addAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.OK.value(), "Ofertas creadas correctamente"));
 							}
 						}
-						SearchFiql search=new SearchFiql();
+						SearchFiql search = new SearchFiql();
 						model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
 
 						return "redirect:/" + MAPPING + "/";
-					}else {
+					} else {
 						model.addAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.BAD_REQUEST.value(), "Error en carga de ofertas."));
-						SearchFiql search=new SearchFiql();
+						SearchFiql search = new SearchFiql();
 						model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
 						return "redirect:/" + MAPPING + "/";
 					}
-				}
-				else {
+				} else {
 					model.addAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.BAD_REQUEST.value(), "Fichero no soportado."));
-					SearchFiql search=new SearchFiql();
+					SearchFiql search = new SearchFiql();
 					model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
 					return "redirect:/" + MAPPING + "/index";
 				}
 			} catch (IOException e) {
-					model.addAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.BAD_REQUEST.value(), "Error en la carga fichero."));
-					SearchFiql search=new SearchFiql();
-					model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
-					return "redirect:/"+MAPPING + "/index";
+				model.addAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.BAD_REQUEST.value(), "Error en la carga fichero."));
+				SearchFiql search = new SearchFiql();
+				model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
+				return "redirect:/" + MAPPING + "/index";
 			}
-		}else{
+		} else {
 			model.addAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.BAD_REQUEST.value(), "Fichero no soportado."));
-			SearchFiql search=new SearchFiql();
+			SearchFiql search = new SearchFiql();
 			model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
-			return "redirect:/"+MAPPING + "/index";
+			return "redirect:/" + MAPPING + "/index";
 		}
 
 	}
 
-	
-	@RequestMapping(method = RequestMethod.POST, consumes = { MimeTypes.JSON,
-			MimeTypes.XML }, produces = { MimeTypes.JSON, MimeTypes.XML })
+
+	@RequestMapping(method = RequestMethod.POST, consumes = {MimeTypes.JSON,
+			MimeTypes.XML}, produces = {MimeTypes.JSON, MimeTypes.XML})
 	@Permisos(Permisos.NEW)
 	@Description("Crear registro")
 	@ResponseClass(value = Contrato.class)
-	public @ResponseBody ResponseEntity<?> apiCrear(
+	public
+	@ResponseBody
+	ResponseEntity<?> apiCrear(
 			@RequestBody Contrato registro) {
 		Set<ConstraintViolation<Object>> errores = dao.validar(registro);
 		if (!errores.isEmpty()) {
 			return Funciones.generarMensajeError(errores);
 		}
 		registro.setVisible("S");
+		registro.setCreationDate(new Date());
 		registro.setFechaContrato(registro.getPubDate());
+		if("10".equals(registro.getProcedimiento().getId().toString())){
+			registro.setContratoMenor(true);
+		}else {
+			registro.setContratoMenor(false);
+		}
 		dao.save(registro);
 		return ResponseEntity.ok(registro);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = {
-			MimeTypes.JSON, MimeTypes.XML }, produces = { MimeTypes.JSON,
-			MimeTypes.XML })
+			MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON,
+			MimeTypes.XML})
 	@Permisos(Permisos.MOD)
 	@Description("Modificar registro")
 	@ResponseClass(value = Contrato.class)
-	public @ResponseBody ResponseEntity<?> apiModificar(@PathVariable BigDecimal id, @RequestBody Contrato registro) {
+	public
+	@ResponseBody
+	ResponseEntity<?> apiModificar(@PathVariable BigDecimal id, @RequestBody Contrato registro) {
 		ResponseEntity<?> resp = contratoController.apiDetalle(id);
 		if (resp.getStatusCode().is2xxSuccessful()) {
 			Contrato reg = (Contrato) resp.getBody();
-			BigDecimal entidad = Utils.obtenerEntidad(Funciones.getPeticion()); 
+			BigDecimal entidad = Utils.obtenerEntidad(Funciones.getPeticion());
 			if (entidad != null && !reg.getServicio().getId().equals(entidad)) {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Mensaje(HttpStatus.BAD_REQUEST.value(), "No puede editar el contrato"));
 			} else {
 				EntidadBase.combinar(reg, registro);
 				reg.setId(id);
+				reg.setUsuarioMod(Funciones.getPeticion().getClientId());
+				reg.setLastUpdated(new Date());
 				Set<ConstraintViolation<Object>> errores = dao.validar(registro);
 				if (!errores.isEmpty()) {
 					return Funciones.generarMensajeError(errores);
 				} else {
-					if (reg.getFechaAdjudicacion() == null) {
-						reg.setFechaContrato(reg.getPubDate());
-					}else {
-						if (reg.getFechaFormalizacion() == null )
-							reg.setFechaContrato(reg.getFechaAdjudicacion());
-						if (reg.getFechaFormalizacion() != null)
-							reg.setFechaContrato(reg.getFechaFormalizacion());
-					}
 					dao.save(reg);
 				}
 				return ResponseEntity.ok(reg);
@@ -217,12 +229,14 @@ public class ContratoAdminController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}/remove", method = RequestMethod.DELETE, produces = { MimeTypes.JSON,
-			MimeTypes.XML })
+	@RequestMapping(value = "/{id}/remove", method = RequestMethod.DELETE, produces = {MimeTypes.JSON,
+			MimeTypes.XML})
 	@Permisos(Permisos.DEL)
 	@Description("Eliminar registro")
 	@ResponseClass(value = Mensaje.class)
-	public @ResponseBody ResponseEntity<?> apiDelete(@PathVariable BigDecimal id) {
+	public
+	@ResponseBody
+	ResponseEntity<?> apiDelete(@PathVariable BigDecimal id) {
 		if (dao.removeById(id)) {
 			return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(),
 					"Registro eliminado"));
@@ -232,10 +246,9 @@ public class ContratoAdminController {
 	}
 
 
-
 	@Permisos(Permisos.NEW)
 	@RequestMapping(value = "/new", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String newForm(Contrato dato, BindingResult bindingResult,
 						  Model model) {
 		model.addAttribute(ModelAttr.DATO, dato);
@@ -246,13 +259,13 @@ public class ContratoAdminController {
 	@Permisos(Permisos.MOD)
 	@NoCache
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String edit(@PathVariable BigDecimal id, Contrato dato,
 					   BindingResult bindingResult, Model model) {
 		ResponseEntity<?> registro = contratoController.apiDetalle(id);
-		
-		BigDecimal entidad = Utils.obtenerEntidad(Funciones.getPeticion()); 
-		if (entidad != null && !entidad.equals(((Contrato)registro.getBody()).getServicio().getId())) {
+
+		BigDecimal entidad = Utils.obtenerEntidad(Funciones.getPeticion());
+		if (entidad != null && !entidad.equals(((Contrato) registro.getBody()).getServicio().getId())) {
 			model.addAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.BAD_REQUEST.value(), "No puede editar el contrato"));
 		} else {
 			model.addAttribute(Utils.CONTRATOSELLADO, daoAnuncio.contratoSellado(id));
@@ -261,25 +274,27 @@ public class ContratoAdminController {
 		}
 		return MAPPING_FORM;
 	}
+
 	@Permisos(Permisos.DET)
 	@RequestMapping(path = "/funciones/", method = RequestMethod.GET, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String homeFuncionalidades(Model model, @Fiql SearchFiql search) throws org.apache.cxf.jaxrs.ext.search.SearchParseException {
 
 		model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
 
 		return MAPPING_FUNCIONALIDADES + "index";
 	}
+
 	@Permisos(Permisos.NEW)
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String crear(Contrato dato, BindingResult bindingResult, Model model, RedirectAttributes attr) {
 		ResponseEntity<?> resultado = apiCrear(dato);
 		if (resultado.getStatusCode().is2xxSuccessful()) {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.OK.value(), "Registro creado correctamente"));
 			attr.addFlashAttribute(ModelAttr.REGISTRO, resultado);
 			attr.addFlashAttribute(ModelAttr.DATO, resultado.getBody());
-			return "redirect:/" + MAPPING + "/" + ((Contrato)resultado.getBody()).getId() + "/edit";
+			return "redirect:/" + MAPPING + "/" + ((Contrato) resultado.getBody()).getId() + "/edit";
 		} else {
 			model.addAttribute(ModelAttr.MENSAJE, resultado.getBody());
 			model.addAttribute(ModelAttr.REGISTRO, ResponseEntity.ok(dato));
@@ -288,7 +303,7 @@ public class ContratoAdminController {
 		return MAPPING_FORM;
 	}
 
-	
+
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Set.class, "cpv", new CustomCollectionEditor(Set.class) {
@@ -304,14 +319,14 @@ public class ContratoAdminController {
 			}
 		});
 	}
-	
+
 	@Permisos(Permisos.MOD)
 	@RequestMapping(value = "/{id}/save", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String modificar(@PathVariable BigDecimal id, Contrato dato,
 							BindingResult bindingResult, Model model, RedirectAttributes attr) {
-		if(dato.getOrganoContratante().getId()== null){
-			EstructuraOrganizativa organo=new EstructuraOrganizativa();
+		if (dato.getOrganoContratante().getId() == null) {
+			EstructuraOrganizativa organo = new EstructuraOrganizativa();
 			organo.setId(BigDecimal.valueOf(1));
 			dato.setOrganoContratante(organo);
 		}
@@ -333,7 +348,7 @@ public class ContratoAdminController {
 
 	@Permisos(Permisos.DEL)
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String eliminar(@PathVariable BigDecimal id, Model model, RedirectAttributes attr) {
 		ResponseEntity<?> resultado = apiDelete(id);
 		if (resultado.getStatusCode().is2xxSuccessful()) {
@@ -343,12 +358,12 @@ public class ContratoAdminController {
 		}
 		return "redirect:/" + MAPPING;
 	}
-	
+
 	@Permisos(Permisos.PUB)
 	@RequestMapping(value = "/{identifier}/lock", method = RequestMethod.GET, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String lock(@PathVariable BigDecimal identifier, Model model, RedirectAttributes attr) {
-		long resultado = dao.updateVisible(identifier, "N");		
+		long resultado = dao.updateVisible(identifier, "N");
 		if (resultado > 0) {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.OK.value(), "" + resultado + " Registro desbloqueado correctamente."));
 		} else {
@@ -356,11 +371,12 @@ public class ContratoAdminController {
 		}
 		return "redirect:/" + MAPPING + "/" + identifier + "/edit";
 	}
+
 	@Permisos(Permisos.PUB)
 	@RequestMapping(value = "/{identifier}/unlock", method = RequestMethod.GET, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String unlock(@PathVariable BigDecimal identifier, Model model, RedirectAttributes attr) {
-		long resultado = dao.updateVisible(identifier, "S");		
+		long resultado = dao.updateVisible(identifier, "S");
 		if (resultado > 0) {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(HttpStatus.OK.value(), "" + resultado + " Registro desbloqueado correctamente."));
 		} else {
@@ -368,14 +384,16 @@ public class ContratoAdminController {
 		}
 		return "redirect:/" + MAPPING + "/" + identifier + "/edit";
 	}
-	
+
 	@Permisos(Permisos.DET)
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(Anuncio.class)
 	@RequestMapping(value = "/{idContrato}/anuncio/{id}", method = RequestMethod.GET, produces = {
 			MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD,
-			MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3 })
-	public @ResponseBody ResponseEntity<?> apiDetalleAnuncio(
+			MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	public
+	@ResponseBody
+	ResponseEntity<?> apiDetalleAnuncio(
 			@PathVariable BigDecimal idContrato,
 			@PathVariable @TestValue("1") BigDecimal id) {
 		Anuncio registro = daoAnuncio.find(id);
@@ -387,13 +405,13 @@ public class ContratoAdminController {
 			return ResponseEntity.ok(registro);
 		}
 	}
-	
+
 	@Permisos(Permisos.NEW)
 	@RequestMapping(value = "/{idContrato}/anuncio/new", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String newFormAnuncio(@PathVariable BigDecimal idContrato, Anuncio dato,
-			BindingResult bindingResult, Model model) {
-		
+								 BindingResult bindingResult, Model model) {
+
 		Contrato l = dao.find(idContrato);
 		dato.setContrato(l);
 		model.addAttribute(ModelAttr.DATO, dato);
@@ -404,10 +422,10 @@ public class ContratoAdminController {
 	@Permisos(Permisos.MOD)
 	@NoCache
 	@RequestMapping(value = "/{idContrato}/anuncio/{id}/edit", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String editAnuncio(@PathVariable BigDecimal idContrato,
-			@PathVariable BigDecimal id, Anuncio dato,
-			BindingResult bindingResult, Model model) {
+							  @PathVariable BigDecimal id, Anuncio dato,
+							  BindingResult bindingResult, Model model) {
 		ResponseEntity<?> registro = apiDetalleAnuncio(idContrato, id);
 		model.addAttribute(ModelAttr.DATO, registro.getBody());
 		model.addAttribute(ModelAttr.REGISTRO, registro);
@@ -415,15 +433,17 @@ public class ContratoAdminController {
 	}
 
 	@RequestMapping(value = "/{idContrato}/anuncio", method = RequestMethod.POST, consumes = {
-			MimeTypes.JSON, MimeTypes.XML }, produces = { MimeTypes.JSON,
-			MimeTypes.XML })
+			MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON,
+			MimeTypes.XML})
 	@Permisos(Permisos.NEW)
 	@Description("Crear Anuncio")
 	@ResponseClass(value = Anuncio.class)
-	public @ResponseBody ResponseEntity<?> apiCrearAnuncio(
+	public
+	@ResponseBody
+	ResponseEntity<?> apiCrearAnuncio(
 			@PathVariable BigDecimal idContrato, @RequestBody Anuncio registro) throws IOException {
-		
-		
+
+
 		Set<ConstraintViolation<Object>> errores = daoAnuncio.validar(registro);
 		if (!errores.isEmpty()) {
 			return Funciones.generarMensajeError(errores);
@@ -433,18 +453,20 @@ public class ContratoAdminController {
 			registro.setPubDate(new Date());
 		}
 		daoAnuncio.almacenar(registro);
-		
-		
+
+
 		return ResponseEntity.ok(registro);
 	}
 
 	@RequestMapping(value = "/{idContrato}/anuncio/{id}", method = RequestMethod.PUT, consumes = {
-			MimeTypes.JSON, MimeTypes.XML }, produces = { MimeTypes.JSON,
-			MimeTypes.XML })
+			MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON,
+			MimeTypes.XML})
 	@Permisos(Permisos.MOD)
 	@Description("Modificar registro")
 	@ResponseClass(value = Anuncio.class)
-	public @ResponseBody ResponseEntity<?> apiModificarAnuncio(
+	public
+	@ResponseBody
+	ResponseEntity<?> apiModificarAnuncio(
 			@PathVariable BigDecimal idContrato, @PathVariable BigDecimal id,
 			@RequestBody Anuncio registro) throws IOException {
 		ResponseEntity<?> resp = apiDetalleAnuncio(idContrato, id);
@@ -466,13 +488,15 @@ public class ContratoAdminController {
 	}
 
 	@RequestMapping(value = "/{idContrato}/anuncio/{id}/remove", method = RequestMethod.DELETE, produces = {
-			MimeTypes.JSON, MimeTypes.XML })
+			MimeTypes.JSON, MimeTypes.XML})
 	@Permisos(Permisos.DEL)
 	@Description("Eliminar registro")
 	@ResponseClass(value = Mensaje.class)
-	public @ResponseBody ResponseEntity<?> apiDeleteAnuncio(
+	public
+	@ResponseBody
+	ResponseEntity<?> apiDeleteAnuncio(
 			@PathVariable BigDecimal idContrato, @PathVariable BigDecimal id) {
-		
+
 		if (daoAnuncio.eliminar(id)) {
 			return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(),
 					"Anuncio eliminado"));
@@ -484,11 +508,11 @@ public class ContratoAdminController {
 
 	@Permisos(Permisos.NEW)
 	@RequestMapping(value = "/{idContrato}/anuncio/save", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String crearAnuncio(@PathVariable BigDecimal idContrato,
-			Anuncio dato,
-			@RequestParam("file") MultipartFile files,
-			BindingResult bindingResult, Model model, RedirectAttributes attr) throws IOException {
+							   Anuncio dato,
+							   @RequestParam("file") MultipartFile files,
+							   BindingResult bindingResult, Model model, RedirectAttributes attr) throws IOException {
 
 		Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
 		dato.setContrato(contrato);
@@ -515,10 +539,10 @@ public class ContratoAdminController {
 
 	@Permisos(Permisos.MOD)
 	@RequestMapping(value = "/{idContrato}/anuncio/{id}/save", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String modificarAnuncio(@PathVariable BigDecimal idContrato,
-			@PathVariable BigDecimal id, Anuncio dato, @RequestParam("file") MultipartFile files,
-			BindingResult bindingResult, Model model, RedirectAttributes attr) throws IOException {
+								   @PathVariable BigDecimal id, Anuncio dato, @RequestParam("file") MultipartFile files,
+								   BindingResult bindingResult, Model model, RedirectAttributes attr) throws IOException {
 		Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
 		dato.setContrato(contrato);
 		if (dato.getPubDate() == null) {
@@ -540,9 +564,9 @@ public class ContratoAdminController {
 
 	@Permisos(Permisos.DEL)
 	@RequestMapping(value = "/{idContrato}/anuncio/{id}/delete", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String eliminarAnuncio(@PathVariable BigDecimal idContrato,
-			@PathVariable BigDecimal id, Model model, RedirectAttributes attr) {
+								  @PathVariable BigDecimal id, Model model, RedirectAttributes attr) {
 		ResponseEntity<?> resultado = apiDeleteAnuncio(idContrato, id);
 		if (resultado.getStatusCode().is2xxSuccessful()) {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
@@ -555,15 +579,15 @@ public class ContratoAdminController {
 
 	@Permisos(Permisos.PUB)
 	@RequestMapping(value = "/{idContrato}/anuncio/{identifier}/lock", method = RequestMethod.GET, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String lockAnuncio(@PathVariable BigDecimal idContrato,
-			@PathVariable BigDecimal identifier, Model model,
-			RedirectAttributes attr) {
+							  @PathVariable BigDecimal identifier, Model model,
+							  RedirectAttributes attr) {
 		long resultado = daoAnuncio.updateVisible(identifier, "N");
 		if (resultado > 0) {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
 					HttpStatus.OK.value(), "" + resultado
-							+ " Registro desbloqueado correctamente."));
+					+ " Registro desbloqueado correctamente."));
 		} else {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
 					HttpStatus.BAD_REQUEST.value(),
@@ -574,15 +598,15 @@ public class ContratoAdminController {
 
 	@Permisos(Permisos.PUB)
 	@RequestMapping(value = "/{idContrato}/anuncio/{identifier}/unlock", method = RequestMethod.GET, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String unlockAnuncio(@PathVariable BigDecimal idContrato,
-			@PathVariable BigDecimal identifier, Model model,
-			RedirectAttributes attr) {
+								@PathVariable BigDecimal identifier, Model model,
+								RedirectAttributes attr) {
 		long resultado = daoAnuncio.updateVisible(identifier, "S");
 		if (resultado > 0) {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
 					HttpStatus.OK.value(), "" + resultado
-							+ " Registro desbloqueado correctamente."));
+					+ " Registro desbloqueado correctamente."));
 		} else {
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
 					HttpStatus.BAD_REQUEST.value(),
@@ -590,15 +614,17 @@ public class ContratoAdminController {
 		}
 		return "redirect:/" + MAPPING + "/" + idContrato + "/edit#anuncios";
 	}
-	
-	
+
+
 	@Permisos(Permisos.DET)
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(Oferta.class)
 	@RequestMapping(value = "/{idContrato}/oferta/{id}", method = RequestMethod.GET, produces = {
 			MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD,
-			MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3 })
-	public @ResponseBody ResponseEntity<?> apiDetalleOferta(
+			MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	public
+	@ResponseBody
+	ResponseEntity<?> apiDetalleOferta(
 			@PathVariable BigDecimal idContrato,
 			@PathVariable @TestValue("1") BigDecimal id) {
 		Oferta registro = daoOferta.find(id);
@@ -610,13 +636,13 @@ public class ContratoAdminController {
 			return ResponseEntity.ok(registro);
 		}
 	}
-	
+
 	@Permisos(Permisos.NEW)
 	@RequestMapping(value = "/{idContrato}/oferta/new", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String newFormOferta(@PathVariable BigDecimal idContrato, Oferta dato,
-			BindingResult bindingResult, Model model) {
-		
+								BindingResult bindingResult, Model model) {
+
 		Contrato l = dao.find(idContrato);
 		dato.setContrato(l);
 		model.addAttribute(ModelAttr.DATO, dato);
@@ -627,10 +653,10 @@ public class ContratoAdminController {
 	@Permisos(Permisos.MOD)
 	@NoCache
 	@RequestMapping(value = "/{idContrato}/oferta/{id}/edit", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String editOferta(@PathVariable BigDecimal idContrato,
-			@PathVariable BigDecimal id, Oferta dato,
-			BindingResult bindingResult, Model model) {
+							 @PathVariable BigDecimal id, Oferta dato,
+							 BindingResult bindingResult, Model model) {
 		ResponseEntity<?> registro = apiDetalleOferta(idContrato, id);
 		model.addAttribute(ModelAttr.DATO, registro.getBody());
 		model.addAttribute(ModelAttr.REGISTRO, registro);
@@ -638,13 +664,28 @@ public class ContratoAdminController {
 	}
 
 	@RequestMapping(value = "/{idContrato}/oferta", method = RequestMethod.POST, consumes = {
-			MimeTypes.JSON, MimeTypes.XML }, produces = { MimeTypes.JSON,
-			MimeTypes.XML })
+			MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON,
+			MimeTypes.XML})
 	@Permisos(Permisos.NEW)
 	@Description("Crear Oferta")
 	@ResponseClass(value = Oferta.class)
-	public @ResponseBody ResponseEntity<?> apiCrearOferta(
+	public
+	@ResponseBody
+	ResponseEntity<?> apiCrearOferta(
 			@PathVariable BigDecimal idContrato, @RequestBody Oferta registro) {
+		Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
+		if (registro.getGanador() == true) {
+			Estado ganador = new Estado();
+			if (registro.getFechaFormalizacion() == null) {
+				ganador.setId(5);
+				contrato.setFechaContrato(registro.getFechaAdjudicacion());
+			} else {
+				ganador.setId(6);
+				contrato.setFechaContrato(registro.getFechaFormalizacion());
+			}
+			contrato.setStatus(ganador);
+		}
+		registro.setContrato(contrato);
 		Set<ConstraintViolation<Object>> errores = daoOferta.validar(registro);
 		if (!errores.isEmpty()) {
 			return Funciones.generarMensajeError(errores);
@@ -654,12 +695,14 @@ public class ContratoAdminController {
 	}
 
 	@RequestMapping(value = "/{idContrato}/oferta/{id}", method = RequestMethod.PUT, consumes = {
-			MimeTypes.JSON, MimeTypes.XML }, produces = { MimeTypes.JSON,
-			MimeTypes.XML })
+			MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON,
+			MimeTypes.XML})
 	@Permisos(Permisos.MOD)
 	@Description("Modificar registro")
 	@ResponseClass(value = Oferta.class)
-	public @ResponseBody ResponseEntity<?> apiModificarOferta(
+	public
+	@ResponseBody
+	ResponseEntity<?> apiModificarOferta(
 			@PathVariable BigDecimal idContrato, @PathVariable BigDecimal id,
 			@RequestBody Oferta registro) {
 		ResponseEntity<?> resp = apiDetalleOferta(idContrato, id);
@@ -667,6 +710,18 @@ public class ContratoAdminController {
 			Oferta reg = (Oferta) resp.getBody();
 			EntidadBase.combinar(reg, registro);
 			reg.setId(id);
+			if (registro.getGanador() == true) {
+				Estado ganador = new Estado();
+				if (registro.getFechaFormalizacion() == null) {
+					ganador.setId(5);
+					reg.getContrato().setFechaContrato(registro.getFechaAdjudicacion());
+				} else {
+					ganador.setId(6);
+					reg.getContrato().setFechaContrato(registro.getFechaFormalizacion());
+				}
+				reg.getContrato().setStatus(ganador);
+			}
+
 			Set<ConstraintViolation<Object>> errores = daoOferta.validar(registro);
 			if (!errores.isEmpty()) {
 				return Funciones.generarMensajeError(errores);
@@ -681,11 +736,13 @@ public class ContratoAdminController {
 	}
 
 	@RequestMapping(value = "/{idContrato}/oferta/{id}/remove", method = RequestMethod.DELETE, produces = {
-			MimeTypes.JSON, MimeTypes.XML })
+			MimeTypes.JSON, MimeTypes.XML})
 	@Permisos(Permisos.DEL)
 	@Description("Eliminar registro")
 	@ResponseClass(value = Mensaje.class)
-	public @ResponseBody ResponseEntity<?> apiDeleteOferta(
+	public
+	@ResponseBody
+	ResponseEntity<?> apiDeleteOferta(
 			@PathVariable BigDecimal idContrato, @PathVariable BigDecimal id) {
 		if (daoOferta.removeById(id)) {
 			return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(),
@@ -698,25 +755,15 @@ public class ContratoAdminController {
 
 	@Permisos(Permisos.NEW)
 	@RequestMapping(value = "/{idContrato}/oferta/save", method = RequestMethod.POST, produces = {
-			MediaType.TEXT_HTML_VALUE, "*/*" })
+			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String crearOferta(@PathVariable BigDecimal idContrato,
-			Oferta dato,
-			BindingResult bindingResult, Model model, RedirectAttributes attr) {
+							  Oferta dato,
+							  BindingResult bindingResult, Model model, RedirectAttributes attr) {
 
-		Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
-		if(dato.getGanador()==true){
-			Estado ganador=new Estado();
-			ganador.setId(5);
-			contrato.setStatus(ganador);
-			if(dato.getFechaFormalizacion()==null)
-				contrato.setFechaContrato(dato.getFechaAdjudicacion());
-			else
-				contrato.setFechaContrato(dato.getFechaFormalizacion());
-		}
-		dato.setContrato(contrato);
 		ResponseEntity<?> resultado = apiCrearOferta(idContrato, dato);
 		if (resultado.getStatusCode().is2xxSuccessful()) {
 			daoOferta.flush();
+			dao.flush();
 			attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
 					HttpStatus.OK.value(), "Registro creado correctamente"));
 			attr.addFlashAttribute(ModelAttr.REGISTRO, resultado);
@@ -995,7 +1042,7 @@ public class ContratoAdminController {
 	@NoCache
 	@ResponseClass(byte[].class)
 	@RequestMapping(value = "/tribunal-cuentas", method = RequestMethod.GET, produces = { MimeTypes.XLS })
-	@Transactional(ConfigPerfilContratante.TM)
+	@Transactional(Esquema.TMPARTICIPACION)
 	public @ResponseBody ResponseEntity<?> apiTribunalCuentas(@RequestParam(name="year", required = true) BigDecimal year) throws ParseException {
 		
 		Search busqueda = new Search(Contrato.class);
@@ -1020,7 +1067,7 @@ public class ContratoAdminController {
 	@NoCache
 	@ResponseClass(Mensaje.class)
 	@RequestMapping(value = "/check-virtuoso", method = RequestMethod.GET, produces = { MimeTypes.JSON })
-	@Transactional(ConfigPerfilContratante.TM)
+	@Transactional(Esquema.TMPARTICIPACION)
 	public @ResponseBody ResponseEntity<?> apiCheckContratosEnVirtuoso() throws ParseException {
 		return null;
 //		Contratos que no están en Virtuoso pero sí en BBDD
