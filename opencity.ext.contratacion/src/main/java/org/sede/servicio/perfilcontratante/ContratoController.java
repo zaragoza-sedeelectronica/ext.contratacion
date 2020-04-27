@@ -490,6 +490,9 @@ public class ContratoController {
 		SearchResult<Contrato> listadoContratosCanon;
 		SearchResult<Contrato> listadoContratosExcluidos;
 		indicador.setAnyo(year);
+		if(idServicio!=null) {
+			indicador.setServicioGestor(daoOrganigrama.find(idServicio));
+		}
 
 		EntidadContratante registro = daoEntidadContratante.find(id);
 		if (registro == null) {
@@ -1157,6 +1160,7 @@ public class ContratoController {
 		return ResponseEntity.ok(indicadores);
 	}
 	@HiddenForSwagger
+	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = IndicadoresTipoServicioGestor.class)
 	@RequestMapping(value="/indicadores/indicadortipocontratoServicio",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})

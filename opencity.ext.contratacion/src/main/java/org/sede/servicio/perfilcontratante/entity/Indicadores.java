@@ -7,6 +7,7 @@ import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.googlecode.genericdao.search.SearchResult;
+import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
 
 @XmlRootElement(name = "indicadores")
 @Embeddable
@@ -16,6 +17,8 @@ public class Indicadores extends EntidadContratante implements java.io.Serializa
 	private BigDecimal id;
 	@Transient
 	private String title;
+	@Transient
+	private EstructuraOrganizativa servicioGestor;
 	@Transient
 	private SearchResult<IndicadoresPorAnyoServicioGestor> indicadorServicio;
 	@Transient
@@ -54,6 +57,15 @@ public class Indicadores extends EntidadContratante implements java.io.Serializa
 	private SearchResult<Contrato> contratosExcluidos;
 	//endregion
 	//region getter and setter
+
+
+	public EstructuraOrganizativa getServicioGestor() {
+		return servicioGestor;
+	}
+
+	public void setServicioGestor(EstructuraOrganizativa servicioGestor) {
+		this.servicioGestor = servicioGestor;
+	}
 
 	public SearchResult<IndicadoresTipo> getIndicadorTipo() {
 		return indicadorTipo;
@@ -184,6 +196,7 @@ public class Indicadores extends EntidadContratante implements java.io.Serializa
 		final StringBuilder sb = new StringBuilder("Indicadores[");
 		sb.append("id=").append(id);
 		sb.append(", title='").append(title).append('\'');
+		sb.append(", Servicio='").append(servicioGestor).append('\'');
 		sb.append(", indicadorServicio=").append(indicadorServicio);
 		sb.append(", indicadorLicitador=").append(indicadorLicitador);
 		sb.append(", anyo='").append(anyo).append('\'');
