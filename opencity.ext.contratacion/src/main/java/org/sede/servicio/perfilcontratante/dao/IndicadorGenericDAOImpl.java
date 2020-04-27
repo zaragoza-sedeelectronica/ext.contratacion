@@ -47,7 +47,7 @@ public class IndicadorGenericDAOImpl extends GenericDAOImpl<Indicador,BigDecimal
                 " and  TO_CHAR(CONT.GCZ_FECHACONTRATO,'yyyy')=:YEAR")
                 .setParameter("IDEMPRESA",idEmpresa)
                 .setParameter("YEAR",year)
-                .setParameter("IDPORTAL",idPortal);
+                .setParameter("IDPORTAL",BigDecimal.valueOf(Double.valueOf(idPortal)));
 
         return (BigDecimal) q.getSingleResult();
 

@@ -1,9 +1,12 @@
 package org.sede.servicio.perfilcontratante.entity;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.sede.core.anotaciones.PathId;
 import org.sede.core.anotaciones.Rel;
 import org.sede.core.dao.EntidadBase;
+import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
 
@@ -16,13 +19,13 @@ import java.math.BigDecimal;
 
 @XmlRootElement(name = "indicadorAhorroServicioGestor")
 @Entity(name = "indicadorAhorroServicio")
-@Table(name = "VISTA_INDICADOR_AHORRO_SERV", schema = ConfigPerfilContratante.ESQUEMA)
+@Table(name = "VISTA_INDICADOR_AHORRO_SERGES", schema = ConfigPerfilContratante.ESQUEMA)
 @XmlAccessorType(XmlAccessType.FIELD)
 @PathId("/" + ContratoController.MAPPING+"/indicadores")
 @Rel
 public class IndicadorAhorroServicio extends EntidadBase implements java.io.Serializable {
     // region Atributtes
-    /**select  CONT1.ID_PORTAL,TO_CHAR(CONT1.GCZ_FECHAALTA,'yyyy') as ANYO,CONT1.ID_CONTRATO ,
+    /**select  CONT1.ID_PORTAL,CONT1.SERVICIO_GESTOR,TO_CHAR(CONT1.GCZ_FECHAALTA,'yyyy') as ANYO,CONT1.ID_CONTRATO ,
      SUM(O.IMPORTE_SINIVA) as IMPORTEOFERTA,CONT1.IMPORTE_SINIVA as IMPORTECONTRATO,
      (CONT1.IMPORTE_SINIVA-SUM(O.IMPORTE_SINIVA))  *100 /  CONT1.IMPORTE_SINIVA as AHORRO,CONT1.NOMBRE,CONT1.ID_PROCEDIMIENTO,CONT1.ID_TIPOCONTRATO,CONT1.SERVICIO_GESTOR
      from PERFIL_CONTRATO CONT1
@@ -47,8 +50,11 @@ public class IndicadorAhorroServicio extends EntidadBase implements java.io.Seri
     private BigDecimal ahorro;
     @Column(name="NOMBRE")
     private String title;
-    @Column(name="SERVICIO_GESTOR")
-    private BigDecimal servicioGestor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SERVICIO_GESTOR")
+    @NotFound(action = NotFoundAction.IGNORE)
+    @BatchSize(size = 200)
+    private EstructuraOrganizativa servicioGestor;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_TIPOCONTRATO")
     @BatchSize(size = 50)
@@ -59,8 +65,8 @@ public class IndicadorAhorroServicio extends EntidadBase implements java.io.Seri
     private Procedimiento procedimiento;
     //endregion
     //region Setters & Getters
-    public BigDecimal getServicioGestor() {return servicioGestor;}
-    public void setServicioGestor(BigDecimal servicioGestor) {this.servicioGestor = servicioGestor; }
+    public EstructuraOrganizativa getServicioGestor() {return servicioGestor;}
+    public void setServicioGestor(EstructuraOrganizativa servicioGestor) {this.servicioGestor = servicioGestor; }
 
     public String getTitle() {
         return title;

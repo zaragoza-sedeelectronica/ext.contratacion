@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlRootElement(name = "IndicadoresPorTipoServicioGestor")
 @Entity
-@Table(name = "VISTA_INDICADO_TIPO_SERGES", schema = ConfigPerfilContratante.ESQUEMA)
+@Table(name = "VISTA_INDICADOR_TIPO_SERGES", schema = ConfigPerfilContratante.ESQUEMA)
 @XmlAccessorType(XmlAccessType.FIELD)
 @DynamicUpdate
 public class IndicadoresTipoServicioGestor extends EntidadBase implements Serializable {

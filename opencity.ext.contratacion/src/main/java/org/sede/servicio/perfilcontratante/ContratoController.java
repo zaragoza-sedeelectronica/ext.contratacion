@@ -438,11 +438,13 @@ public class ContratoController {
 	@OpenData
 	@ResponseClass(value = DatosIndicadoresProcedimiento.class, entity = SearchResult.class)
 	@RequestMapping(value = "/indicadores/procedimiento", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
-	public @ResponseBody ResponseEntity<?> apiIndicadoresProceDimiento(@Fiql SearchFiql search,@RequestParam(name="idPortal",defaultValue = "1")BigDecimal idPortal,@RequestParam(name="anyo",defaultValue = "")String anyo,@RequestParam(name="idServicio")BigDecimal idServicio) throws Exception {
+	public @ResponseBody ResponseEntity<?> apiIndicadoresProceDimiento(@Fiql SearchFiql search,@RequestParam(name="idPortal",defaultValue = "1")BigDecimal idPortal,@RequestParam(name="anyo",defaultValue = "")String anyo,@RequestParam(name="idServicio",required=false)BigDecimal idServicio) throws Exception {
 		if(idPortal.intValue()==0)idPortal=new BigDecimal(1);
 		DatosIndicadoresProcedimiento indicador = new DatosIndicadoresProcedimiento();
 		search.setRows(-1);
-		if("".equals(anyo)){anyo="2018";}
+		if("".equals(anyo)){
+			anyo = "" + Calendar.getInstance().get(Calendar.YEAR);
+		}
 		EntidadContratante registro = daoEntidadContratante.find(idPortal);
 		if (registro == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Mensaje(HttpStatus.NOT_FOUND.value(), messageSource.getMessage("generic.notfound", null, LocaleContextHolder.getLocale())));
@@ -529,8 +531,8 @@ public class ContratoController {
 			indicador.setIndicadorProcedimientoServicio((SearchResult<IndicadoresProcedimientoServicioGestor>) resultadoIndicadorProcSer.getBody());
 			ResponseEntity<?> resultadoLicitadorServicio= apiIndicadoreLicitaorServicioGestor(search,idServicio,year);
 			indicador.setIndicadorLicitadorServicio((SearchResult<IndicadorLicitadorServicio>) resultadoLicitadorServicio.getBody());
-			searchContratosCanon.addFilterEqual("servicio",idServicio);
-			searchContratos.addFilterEqual("servicio",idServicio);
+			searchContratosCanon.addFilterEqual("servicio.id",idServicio);
+			searchContratos.addFilterEqual("servicio.id",idServicio);
 			listadoContratosCanon =dao.searchAndCount(searchContratosCanon);
 			listadoContratos =  dao.searchAndCount(searchContratos);
 			indicador.setIndicadorTipoServicio((SearchResult<IndicadoresTipoServicioGestor>)apiIndicadoreIndicadorTipoServicio(id,idServicio,year).getBody());
@@ -541,12 +543,12 @@ public class ContratoController {
 			}
 			indicador.setIndicadorLicitador(indicadores);
 			if(id.intValue()==1) {
-				SearchResult<IndicadoresPorAnyoServicioGestor> resultadoIndicadorAyto = ((SearchResult<IndicadoresPorAnyoServicioGestor>) apiIndicadoresServicioGestorAnyo(search, year, idServicio).getBody());
+				SearchResult<IndicadoresPorAnyoServicioGestor> resultadoIndicadorAyto = ((SearchResult<IndicadoresPorAnyoServicioGestor>) apiIndicadoresServicioGestorAnyo(search, year, null).getBody());
 				indicador.setIndicadorServicio(resultadoIndicadorAyto);
 			}
 			ResponseEntity<?> resultadoTipoContrato=apiIndicadoreIndicadorTipo(id,year);
 			indicador.setIndicadorTipo((SearchResult<IndicadoresTipo>)resultadoTipoContrato.getBody());
-			ResponseEntity<?> resultadoIndicadoresProcedimiento= apiIndicadoresProceDimiento(search,id,year,idServicio);
+			ResponseEntity<?> resultadoIndicadoresProcedimiento= apiIndicadoresProceDimiento(search,id,year,null);
 			indicador.setIndicadorProcedimiento((SearchResult<IndicadoresProcedimiento>) resultadoIndicadoresProcedimiento.getBody() );
 			listadoContratosCanon =dao.searchAndCount(searchContratosCanon);
 			listadoContratos =  dao.searchAndCount(searchContratos);
@@ -669,16 +671,16 @@ public class ContratoController {
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(IndicadoresPorAnyoServicioGestor.class)
 	@RequestMapping(value = "/indicadores/servicio", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
-	public @ResponseBody ResponseEntity<?> apiIndicadoresServicioGestorAnyo(@Fiql SearchFiql search,@RequestParam(name="year",required = true,defaultValue = "2018")String year,@RequestParam(name="idServicio")BigDecimal idServicio) throws SearchParseException {
+	public @ResponseBody ResponseEntity<?> apiIndicadoresServicioGestorAnyo(@Fiql SearchFiql search,@RequestParam(name="anyo",required = true)String year,@RequestParam(name="idServicio",required = false)BigDecimal idServicio) throws SearchParseException {
 		search.setRows(-1);
 		List<IndicadoresPorAnyoServicioGestor> resultado2=new ArrayList<IndicadoresPorAnyoServicioGestor>();
-		search.setExcludeFields("year");
+		search.setExcludeFields("year","idServicio","anyo");
 		Search busqueda=search.getConditions(IndicadoresPorAnyoServicioGestor.class);
 		busqueda.addFilterEqual("anyo",year);
 		List<Sort> sorts = new ArrayList<Sort>();
 		sorts.add(new Sort("total", true));
 		busqueda.setSorts(sorts);
-		if (idServicio.intValue() != 0) {
+		if (idServicio !=null) {
 		busqueda.addFilterEqual("idServicio",idServicio);
 		}
 		SearchResult<?> resultado = daoIndicadoresServicio.searchAndCount(busqueda);
@@ -1046,7 +1048,7 @@ public class ContratoController {
 	@Description("Indicadores Licitador por Servicio Gestor")
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
-	@ResponseClass(value = IndicadoresProcedimientoServicioGestor.class)
+	@ResponseClass(value = IndicadorLicitadorServicio.class)
 	@RequestMapping(value="/indicador/licitadorServicio",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiIndicadoreLicitaorServicioGestor(@Fiql SearchFiql search,@RequestParam(name="idServicio") BigDecimal idServicio,@RequestParam(name="anyo")String anyo) throws SearchParseException {
 		search.setRows(-1);
@@ -1094,6 +1096,7 @@ public class ContratoController {
 	}
 	//@Description("Indicadores Ahorro por Servicio Gestor")
 	@HiddenForSwagger
+	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = IndicadorAhorroServicio.class)
 	@RequestMapping(value="/indicador/indicadorAhorroServicio",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
@@ -1110,13 +1113,14 @@ public class ContratoController {
 		search.setExcludeFields("idServicio","idPortal","year");
 		Search busqueda=search.getConditions(IndicadorAhorroServicio.class);
 		busqueda.addSortDesc("ahorro",true);
-		busqueda.addFilterEqual("servicioGestor",idServicio);
+		busqueda.addFilterEqual("servicioGestor.id",idServicio);
 		busqueda.addFilterEqual("anyo",anyo);
 		SearchResult<IndicadorLicitadorServicio> indicadores=daoIndicadorAhorroServicio.searchAndCount(busqueda);
 		return ResponseEntity.ok(indicadores);
 	}
 	//@Description("Indicadores Ahorro por Servicio Gestor")
 	@HiddenForSwagger
+	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = IndicadoresTipo.class)
 	@RequestMapping(value="/indicadores/indicadortipocontrato",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})

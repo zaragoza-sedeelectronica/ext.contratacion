@@ -30,7 +30,7 @@ public class IndicadorLicitadorServicio extends EntidadBase {
     private BigDecimal totalsinIva;
     @Column(name="TOTALCONIVA", insertable = false,updatable = false,unique = false, nullable = false)
     private BigDecimal totalconIva;
-    @Column(name="TOTALGANADOS", insertable = false,updatable = false,unique = false, nullable = false)
+    @Column(name="TOTALLICITACIONES", insertable = false,updatable = false,unique = false, nullable = false)
     private BigDecimal totalGanados;
     @Column(name="ANYO", insertable = false,updatable = false,unique = false, nullable = false)
     private String anyo;
