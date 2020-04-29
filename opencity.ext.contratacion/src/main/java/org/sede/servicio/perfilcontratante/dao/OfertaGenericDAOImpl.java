@@ -1,23 +1,28 @@
 package org.sede.servicio.perfilcontratante.dao;
 
-import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
-
-
-import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
-import com.googlecode.genericdao.search.Search;
-import com.googlecode.genericdao.search.SearchResult;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.sede.core.anotaciones.Esquema;
-import org.sede.core.dao.BooleanConverter;
-import org.sede.core.dao.BooleanSINOConverter;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Empresa;
@@ -29,18 +34,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Query;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.math.BigDecimal;
-import java.util.*;
+import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
+import com.googlecode.genericdao.search.Search;
+import com.googlecode.genericdao.search.SearchResult;
 
 @Repository
 @Transactional(Esquema.TMPERFILCONTRATANTE)
@@ -90,12 +86,12 @@ public class OfertaGenericDAOImpl extends GenericDAOImpl<Oferta, BigDecimal> imp
                     if (r == 0) {
                         for (int c = 0; c < hssfRow.getLastCellNum(); c++) {
                             cellValue = hssfRow.getCell(c) == null ? "" :
-                                    (hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_STRING) ? hssfRow.getCell(c).getStringCellValue() :
-                                            (hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_NUMERIC) ? "" + hssfRow.getCell(c).getNumericCellValue() :
-                                                    (hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_BOOLEAN) ? "" + hssfRow.getCell(c).getBooleanCellValue() :
-                                                            (hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_BLANK) ? "BLANK" :
-                                                                    (hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_FORMULA) ? "FORMULA" :
-                                                                            (hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_ERROR) ? "ERROR" : "";
+                                    (hssfRow.getCell(c).getCellType() == CellType.STRING) ? hssfRow.getCell(c).getStringCellValue() :
+                                            (hssfRow.getCell(c).getCellType() == CellType.NUMERIC) ? "" + hssfRow.getCell(c).getNumericCellValue() :
+                                                    (hssfRow.getCell(c).getCellType() == CellType.BOOLEAN) ? "" + hssfRow.getCell(c).getBooleanCellValue() :
+                                                            (hssfRow.getCell(c).getCellType() == CellType.BLANK) ? "BLANK" :
+                                                                    (hssfRow.getCell(c).getCellType() == CellType.FORMULA) ? "FORMULA" :
+                                                                            (hssfRow.getCell(c).getCellType() == CellType.ERROR) ? "ERROR" : "";
                             if(!cellValue.equals("BLANK"))
                                 datos.put(cellValue.toString(),String.valueOf(c));
                         }

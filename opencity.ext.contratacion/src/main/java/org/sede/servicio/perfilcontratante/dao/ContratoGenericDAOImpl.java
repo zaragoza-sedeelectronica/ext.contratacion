@@ -722,12 +722,12 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 					if (r == 0) {
 						for(int c=0;c<hssfRow.getLastCellNum();c++){
 							cellValue = hssfRow.getCell(c) == null ? "" :
-									(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_STRING) ? hssfRow.getCell(c).getStringCellValue() :
-											(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_NUMERIC) ? "" + hssfRow.getCell(c).getNumericCellValue() :
-													(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_BOOLEAN) ? "" + hssfRow.getCell(c).getBooleanCellValue() :
-															(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_BLANK) ? "BLANK" :
-																	(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_FORMULA) ? "FORMULA" :
-																			(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_ERROR) ? "ERROR" : "";
+									(hssfRow.getCell(c).getCellType() == CellType.STRING) ? hssfRow.getCell(c).getStringCellValue() :
+											(hssfRow.getCell(c).getCellType() == CellType.NUMERIC) ? "" + hssfRow.getCell(c).getNumericCellValue() :
+													(hssfRow.getCell(c).getCellType() == CellType.BOOLEAN) ? "" + hssfRow.getCell(c).getBooleanCellValue() :
+															(hssfRow.getCell(c).getCellType() == CellType.BLANK) ? "BLANK" :
+																	(hssfRow.getCell(c).getCellType() == CellType.FORMULA) ? "FORMULA" :
+																			(hssfRow.getCell(c).getCellType() == CellType.ERROR) ? "ERROR" : "";
 							if(!cellValue.equals("")) {
 								datos.put(cellValue.toString(),"");
 							}
@@ -739,12 +739,12 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl <Contrato, BigDecimal
 						Contrato contrato = new Contrato();
 						for(int c=0;c<hssfRow.getLastCellNum();c++){
 							cellValue = hssfRow.getCell(c) == null ? "" :
-									(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_STRING) ? hssfRow.getCell(c).getStringCellValue() :
-											(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_NUMERIC) ? "" + hssfRow.getCell(c).getNumericCellValue() :
-													(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_BOOLEAN) ? "" + hssfRow.getCell(c).getBooleanCellValue() :
-															(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_BLANK) ? "BLANK" :
-																	(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_FORMULA) ? "FORMULA" :
-																			(hssfRow.getCell(c).getCellType() == Cell.CELL_TYPE_ERROR) ? "ERROR" : "";
+									(hssfRow.getCell(c).getCellType() == CellType.STRING) ? hssfRow.getCell(c).getStringCellValue() :
+											(hssfRow.getCell(c).getCellType() == CellType.NUMERIC) ? "" + hssfRow.getCell(c).getNumericCellValue() :
+													(hssfRow.getCell(c).getCellType() == CellType.BOOLEAN) ? "" + hssfRow.getCell(c).getBooleanCellValue() :
+															(hssfRow.getCell(c).getCellType() == CellType.BLANK) ? "BLANK" :
+																	(hssfRow.getCell(c).getCellType() == CellType.FORMULA) ? "FORMULA" :
+																			(hssfRow.getCell(c).getCellType() == CellType.ERROR) ? "ERROR" : "";
 
 							if(c==0){
 								EntidadContratante entity=new EntidadContratante();
