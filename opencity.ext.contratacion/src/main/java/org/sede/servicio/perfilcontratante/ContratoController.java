@@ -973,7 +973,7 @@ public class ContratoController {
 	@ResponseClass(value = Cpv.class)
 	@RequestMapping(value="/cpv",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiListadoCpv(@Fiql SearchFiql search) throws SearchParseException {
-		Funciones.getPeticion().setSelectedFields("idCpv,titulo");
+		Funciones.getPeticion().setSelectedFields("id,titulo");
 		return ResponseEntity.ok(daoCpv.searchAndCount(search.getConditions(Cpv.class)));
 	}
 	@Description("Listado Organos de Contratación ")

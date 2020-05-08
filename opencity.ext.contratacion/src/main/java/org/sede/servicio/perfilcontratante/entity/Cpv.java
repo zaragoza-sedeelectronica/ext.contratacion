@@ -1,6 +1,7 @@
 package org.sede.servicio.perfilcontratante.entity;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.sede.core.anotaciones.Permisos;
 import org.sede.core.dao.BooleanConverter;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
@@ -26,8 +27,9 @@ public class Cpv extends EntidadBase implements Serializable {
     private String titulo;
     
     @Column(name = "VISIBLE")
-    @Convert(converter = BooleanConverter.class)
-    private Boolean visible;
+    @Permisos(Permisos.DET)
+//    @Convert(converter = BooleanConverter.class)
+    private String visible;
     //endregion
     //region Setters & Getters
 
@@ -47,11 +49,11 @@ public class Cpv extends EntidadBase implements Serializable {
         this.titulo = titulo;
     }
 
-    public Boolean getVisible() {
+    public String getVisible() {
         return visible;
     }
 
-    public void setVisible(Boolean visible) {
+    public void setVisible(String visible) {
         this.visible = visible;
     }
 
