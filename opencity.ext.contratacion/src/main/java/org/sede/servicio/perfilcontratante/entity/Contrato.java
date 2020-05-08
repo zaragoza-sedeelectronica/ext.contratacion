@@ -201,7 +201,6 @@ public class Contrato extends EntidadBase implements Serializable {
 	@JoinTable(name = "PERFIL_CONTRATO_TIENE_CPV", joinColumns = { @JoinColumn(name = "ID_CONTRATO", nullable = false) },
 			inverseJoinColumns = { @JoinColumn(name = "CPV", nullable = false)})
 	@Access(AccessType.FIELD)
-	@Permisos(Permisos.DET)
 	@BatchSize(size = 50)
 	@SoloEnEstaEntidad
 	private Set<Cpv> cpv=new HashSet<Cpv>();
