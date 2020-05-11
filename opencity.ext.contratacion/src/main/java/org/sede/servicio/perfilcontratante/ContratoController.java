@@ -484,6 +484,7 @@ public class ContratoController {
 		search.setRows(-1);
 		Search busqueda=search.getConditions(Indicador.class);
 		Search searchContratos=new Search(Contrato.class);
+		searchContratos.addFilterNot(new Filter("type.id",6));
 		Search searchContratosCanon =new Search(Contrato.class);
 		Search searchExcluidos= new Search(Contrato.class);
 		SearchResult<Contrato> listadoContratos;
@@ -573,7 +574,7 @@ public class ContratoController {
 		}
 
 		for (Contrato contrato:listadoContratos.getResult()){
-			if (!contrato.getOfertas().isEmpty()) {
+			if (!contrato.getOfertas().isEmpty() ) {
 				for (Oferta offer : contrato.getOfertas()) {
 					if (offer.getGanador() != null && offer.getGanador()) {
 						cuantia += offer.getImporteSinIVA().doubleValue();

@@ -1,12 +1,4 @@
 package org.sede.servicio.perfilcontratante;
-import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 import org.sede.core.anotaciones.Description;
 import org.sede.core.anotaciones.Grafo;
 import org.sede.core.dao.VirtuosoDataManagement;
@@ -15,9 +7,14 @@ import org.sede.core.rest.Peticion;
 import org.sede.servicio.perfilcontratante.entity.Anuncio;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.*;
 
 public class Utils {
 	private Utils() {
