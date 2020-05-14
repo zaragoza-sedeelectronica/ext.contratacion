@@ -42,8 +42,7 @@ public class ContratoOCDSController {
 	//region Atributtes
 	private static final String SERVICIO = "contratacion-publica/ocds";
 	public static final String MAPPING = "servicio/" + SERVICIO;
-	@Autowired
-	private MessageSource messageSource;
+	
 	@Autowired
 	public ContratoGenericDAO dao;
 	@Autowired
@@ -102,8 +101,7 @@ public class ContratoOCDSController {
 			Contrato contrato =  dao.find(idParseado);
 			if (contrato == null) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-						new Mensaje(HttpStatus.NOT_FOUND.value(),
-								messageSource.getMessage(idParseado+" No existe",null, LocaleContextHolder.getLocale())));
+						new Mensaje(HttpStatus.NOT_FOUND.value(), idParseado + " No existe"));
 			}
 			List<ContractingProcess> resultado = new ArrayList<ContractingProcess>();
 			resultado.add(new ContractingProcess(contrato));
@@ -113,8 +111,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(retorno);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(id+" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -130,8 +127,7 @@ public class ContratoOCDSController {
 			Contrato contrato =  dao.find(idParseado);
 			if (contrato == null) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-						new Mensaje(HttpStatus.NOT_FOUND.value(),
-								messageSource.getMessage(idParseado+" No existe",null, LocaleContextHolder.getLocale())));
+						new Mensaje(HttpStatus.NOT_FOUND.value(), idParseado + " No existe"));
 			}
 			List<Contract> resultado = new ArrayList<Contract>();
 			for (Oferta ofer:contrato.getOfertas() ) {
@@ -146,8 +142,7 @@ public class ContratoOCDSController {
 
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(id+" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -174,8 +169,7 @@ public class ContratoOCDSController {
 			SearchResult<Contrato> contratos =  dao.searchAndCount(busqueda);
 			if (contratos == null) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-						new Mensaje(HttpStatus.NOT_FOUND.value(),
-								messageSource.getMessage(idParseado + " No existe", null, LocaleContextHolder.getLocale())));
+						new Mensaje(HttpStatus.NOT_FOUND.value(), idParseado + " No existe"));
 			}
 			for (Contrato contrato:contratos.getResult()) {
 				List<Award> resultado = new ArrayList<Award>();
@@ -190,8 +184,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(retorno);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(id+" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	//endregion
@@ -330,8 +323,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(retorno);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST.value(),
-							messageSource.getMessage(" No valido", null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -355,7 +347,7 @@ public class ContratoOCDSController {
 			}
 			List<Anuncio> anuncio = daoAnuncio.search(busqueda);
 			List<Amendment> resultado = new ArrayList<Amendment>();
-			List<Document> documentos=new ArrayList<Document>();
+
 			for (Anuncio anun:anuncio) {
 				switch (Integer.valueOf(anun.getType().getId().toString())) {
 					case 31:
@@ -376,8 +368,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(retorno);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST.value(),
-							messageSource.getMessage(" No valido", null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -402,8 +393,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(retorno);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST.value(),
-							messageSource.getMessage(" No valido", null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	//endregion
@@ -436,8 +426,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(retorno);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), "No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -468,8 +457,7 @@ public class ContratoOCDSController {
 			}
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" Organizacion No encontrada",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), "Organizacion No encontrada: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -531,8 +519,7 @@ public class ContratoOCDSController {
 
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -577,8 +564,7 @@ public class ContratoOCDSController {
 
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	//endregion
@@ -616,8 +602,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), "No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -646,8 +631,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -684,8 +668,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -713,8 +696,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -741,8 +723,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -767,8 +748,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	//endregion
@@ -800,7 +780,6 @@ public class ContratoOCDSController {
 				}
 			}
 
-			List<Contract> resultado = new ArrayList<Contract>();
 			Query query = dao.em().createNativeQuery(" select * from(select P.Id_Contrato,P.Nombre as title"
 					+ " from perfil_contrato p "
 					+ estado
@@ -820,8 +799,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), "No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -847,8 +825,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -877,8 +854,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage("No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 	@OpenData
@@ -902,8 +878,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 
@@ -929,8 +904,7 @@ public class ContratoOCDSController {
 			return ResponseEntity.ok(result);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-					new Mensaje(HttpStatus.BAD_REQUEST .value(),
-							messageSource.getMessage(" No valido",null, LocaleContextHolder.getLocale())));
+					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
 		}
 	}
 
