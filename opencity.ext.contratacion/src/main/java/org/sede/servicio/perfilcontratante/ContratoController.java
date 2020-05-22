@@ -103,7 +103,7 @@ public class ContratoController {
 	}
 	//endregion
 	//region Vistas
-	@RequestMapping(value = "/", method = RequestMethod.GET, produces = {
+	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String home(Model model, @Fiql SearchFiql search,@RequestParam(name="cpv",defaultValue = "",required = false)BigDecimal cpv,@RequestParam(name="licitador", required = false)BigDecimal idEmpresa) throws SearchParseException, ParseException {
 		HashMap<String,String> parametros = new HashMap<String,String>();
@@ -250,7 +250,7 @@ public class ContratoController {
 		model.addAttribute("parametros_busqueda", mapeoParametros);
 		return MAPPING + "/index";
 	}
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = {
+	@RequestMapping(value = "/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String detalle(Model model, @PathVariable BigDecimal id) {
 		ResponseEntity<?> resultado = apiDetalle(id);
@@ -261,50 +261,50 @@ public class ContratoController {
 		}
 		return MAPPING + "/detalle-contrato2";
 	}
-	@RequestMapping(value = "/licitador/{id}", method = RequestMethod.GET, produces = {
+	@RequestMapping(value = "/licitador/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String detalleEmpresa(Model model, @Fiql SearchFiql search, @PathVariable BigDecimal id) throws SearchParseException {
 		model.addAttribute(ModelAttr.RESULTADO,apiDetalleLicitador(id,search));
 		return MAPPING + "/detalle-licitador";
 	}
-	@RequestMapping(value="/servicio-gestor/{id}", method = RequestMethod.GET, produces = {
+	@RequestMapping(value="/servicio-gestor/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String detalleServicio(Model model, @Fiql SearchFiql search, @PathVariable BigDecimal id,@RequestParam(name="statusd.id",defaultValue ="0")BigDecimal estado,@RequestParam(name="year",defaultValue = "",required = false)String year) throws SearchParseException, ParseException {
 		model.addAttribute(ModelAttr.RESULTADO, apiDetalleServicioGestor(id, search, year));
 		return MAPPING + "/detalle-servicio";
 	}
-	@RequestMapping(value="/organismo-contratante/{id}", method = RequestMethod.GET, produces = {
+	@RequestMapping(value="/organismo-contratante/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String detalleOrganismoContratante(Model model, @Fiql SearchFiql search, @PathVariable BigDecimal id,@RequestParam(name="statusd.id",defaultValue ="0")BigDecimal estado,@RequestParam(name="year",defaultValue = "",required = false)String year) throws SearchParseException, ParseException {
 		model.addAttribute(ModelAttr.RESULTADO, apiDetalleOrganismoContratante(id, search, year));
 		return MAPPING + "/detalle-organismo";
 	}
-	@RequestMapping(value="/mesa-contratacion", method = RequestMethod.GET, produces = {
+	@RequestMapping(value="/mesa-contratacion", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String detalleMesaContratacion()  {
 		return MAPPING + "/mesa-contratacion";
 	}
-	@RequestMapping(value = "/anuncio/{idAnuncio}", method = RequestMethod.GET, produces = {
+	@RequestMapping(value = "/anuncio/{idAnuncio}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE,MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String detalleAnuncio(Model model, @Fiql SearchFiql search, @PathVariable BigDecimal idAnuncio) {
 		model.addAttribute("DetalleAnuncio",apiDetalleAnuncio(idAnuncio));
 		return MAPPING + "/detalle-anuncio";
 	}
-	@RequestMapping(value="/indicadores", method = RequestMethod.GET, produces = {MediaType.TEXT_HTML_VALUE,"*/*"})
+	@RequestMapping(value="/indicadores", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MediaType.TEXT_HTML_VALUE,"*/*"})
 	public String indicadoresDetalle(Model model,@Fiql SearchFiql search,@RequestParam(name="idPortal", defaultValue = "1", required = true)BigDecimal id,@RequestParam(name="anyo")String year,@RequestParam(name="idServicio",defaultValue = "0")BigDecimal idServicio) throws Exception {
 		search.setExcludeFields("idServicio");
 		search.getConditions(Indicador.class);
 		model.addAttribute("indicadores_Ayutamiento",apiIndicadoresAyuntamiento(search,id,year,idServicio));
 		return MAPPING + "/indicadores";
 	}
-	@RequestMapping(value="/listado-contrato", method = RequestMethod.GET, produces = {
+	@RequestMapping(value="/listado-contrato", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String listadoContratos(Model model, @Fiql SearchFiql search,@RequestParam(name="year",defaultValue = "",required = false)String year) throws Exception {
 		ResponseEntity<?>result=apiListadosContratos(search,null);
 		model.addAttribute(ModelAttr.RESULTADO,result);
 		return MAPPING + "/listado-contratos";
 	}
-	@RequestMapping(value = "/entidad/{id}", method = RequestMethod.GET, produces = {
+	@RequestMapping(value = "/entidad/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*"})
 	public String detalleEntidades(Model model, @Fiql SearchFiql search, @PathVariable BigDecimal id, @RequestParam(name = "year", defaultValue = "") String year, @RequestParam(name = "status.id", defaultValue = "0") BigDecimal estado) throws Exception {
 		model.addAttribute(ModelAttr.RESULTADO, apiDetalleEntidades(search, id, year, estado));
@@ -623,7 +623,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(Contrato.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value = "/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiDetalle(@PathVariable BigDecimal id) {
 		return apiDetalleContrato(id);
 	}
@@ -631,7 +631,7 @@ public class ContratoController {
 	@Description("Detalle de contrato")
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(Contrato.class)
-	@RequestMapping(value = "/contrato/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value = "/contrato/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiDetalleContrato(@PathVariable BigDecimal id) {
 		Contrato registro = dao.find(id);
 		if (registro == null) {
@@ -645,7 +645,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(ServicioGestor.class)
-	@RequestMapping(value = "/servicio-gestor/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value = "/servicio-gestor/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiDetalleServicioGestor(@PathVariable(value="id") BigDecimal id, @Fiql SearchFiql search, @RequestParam(name="year", required = false) String year) throws SearchParseException, ParseException {
 		String anyo=year;
 		if (StringUtils.isEmpty(year)) {
@@ -674,7 +674,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(IndicadoresPorAnyoServicioGestor.class)
-	@RequestMapping(value = "/indicadores/servicio", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value = "/indicadores/servicio", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiIndicadoresServicioGestorAnyo(@Fiql SearchFiql search,@RequestParam(name="anyo",required = true)String year,@RequestParam(name="idServicio",required = false)BigDecimal idServicio) throws SearchParseException {
 		search.setRows(-1);
 		List<IndicadoresPorAnyoServicioGestor> resultado2=new ArrayList<IndicadoresPorAnyoServicioGestor>();
@@ -711,7 +711,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = Cpv.class, entity = SearchResult.class)
-	@RequestMapping(value = "/cpv/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value = "/cpv/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public	@ResponseBody ResponseEntity<?> apiRelacionadosListar(@Fiql SearchFiql search, @PathVariable BigDecimal id) throws SearchParseException {
 		Search busqueda =search.getConditions(Cpv.class);
 		busqueda.addFilterEqual("id",id);
@@ -722,14 +722,14 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = EstructuraOrganizativa.class, entity = SearchResult.class)
-	@RequestMapping(value="/servicio-gestor", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value="/servicio-gestor", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiServiciosListar(@Fiql SearchFiql search) throws SearchParseException {
 		return ResponseEntity.ok(daoOrganigrama.searchAndCount(search.getConditions(EstructuraOrganizativa.class)));
 	}
 	@Description("Detalle de Anuncio")
 	@OpenData
 	@ResponseClass(Anuncio.class)
-	@RequestMapping(value = "/anuncio/{idAnuncio}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value = "/anuncio/{idAnuncio}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiDetalleAnuncio(@PathVariable BigDecimal idAnuncio) {
 		Anuncio anuncio = daoAnuncio.find(idAnuncio);
 		if (anuncio == null) {
@@ -742,7 +742,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = Oferta.class, entity = SearchResult.class)
-	@RequestMapping(value="/licitador/{id}/Empresa", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value="/licitador/{id}/Empresa", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiDetalleLicitador(@PathVariable(value = "id") BigDecimal id) {
 		Empresa registro = daoEmpresa.find(id);
 		if (registro == null) {
@@ -755,7 +755,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = Oferta.class, entity = SearchResult.class)
-	@RequestMapping(value="/licitador/{idLicitador}/licitaciones", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value="/licitador/{idLicitador}/licitaciones", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiOfertasListar(@Fiql SearchFiql search, @PathVariable(value = "idLicitador") BigDecimal idLicitador, @RequestParam(name = "ganador", required = false) Boolean ganador) throws SearchParseException {
 
 		if(!idLicitador.toString().isEmpty()) {
@@ -773,7 +773,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = Contrato.class, entity = SearchResult.class)
-	@RequestMapping(value="/servicioGestor/{id}/contratos-por-anyo", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value="/servicioGestor/{id}/contratos-por-anyo", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public SearchResult<Contrato> apiContratosByServicioListar(@Fiql SearchFiql search, @PathVariable(value="id") BigDecimal id,@RequestParam(name="year")String year) throws SearchParseException, ParseException {
 		search.setExcludeFields("year");
 		search.setSort("fechaContrato desc");
@@ -804,7 +804,7 @@ public class ContratoController {
 	@Permisos(Permisos.DET)
 	@Description("Listado de contratos por año y serviciogestor")
 	@ResponseClass(value = ContratosPorAnyoServicioGestor.class, entity = SearchResult.class)
-	@RequestMapping(value = "/servicioGestor/{id}/datos-licitacion-por-anyo", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV})
+	@RequestMapping(value = "/servicioGestor/{id}/datos-licitacion-por-anyo", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV})
 	public @ResponseBody ResponseEntity<?> apiContratosPorAnyoServicioGestor(@PathVariable BigDecimal id) {
 		Search busqueda= new Search(ContratosPorAnyoServicioGestor.class);
 		busqueda.addFilterEqual("id.servicio",id);
@@ -813,7 +813,7 @@ public class ContratoController {
 	@OpenData
 	@Description("Listado de empresas adjudicatarias")
 	@ResponseClass(value = Empresa.class, entity = SearchResult.class)
-	@RequestMapping(value = "/adjudicador", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV})
+	@RequestMapping(value = "/adjudicador", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV})
 	public @ResponseBody ResponseEntity<?> apiListadoAdjudicador() {
 		return ResponseEntity.ok(daoEmpresa.findAdjudicadores());
 	}
@@ -821,7 +821,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(Empresa.class)
-	@RequestMapping(value = "/adjudicador/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value = "/adjudicador/{id}", method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiDetalleAdjudicador(@PathVariable BigDecimal id) {
 		Empresa registro = daoEmpresa.find(id);
 		if (registro == null) {
@@ -842,7 +842,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = Empresa.class, entity = Ute.class)
-	@RequestMapping(value="/ute/{id}",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/ute/{id}",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiUteEmpresa(@PathVariable BigDecimal id) {
 		Empresa registro = daoEmpresa.find(id);
 		if (registro == null) {
@@ -856,13 +856,13 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = Empresa.class)
-	@RequestMapping(value="/ute",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/ute",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiUteEmpresaList() {
 		return ResponseEntity.ok(daoEmpresa.findEmpresaUte());
 	}
 	@HiddenForSwagger
 	@ResponseClass(value = Empresa.class)
-	@RequestMapping(value="/utes/{id}",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/utes/{id}",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiUteEmpresaList2(@RequestParam(name="id")BigDecimal id) {
 		return ResponseEntity.ok(daoEmpresa.findEmpresaPertneceUte(id));
 	}
@@ -870,7 +870,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = EntidadContratante.class)
-	@RequestMapping(value="/entidad",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/entidad",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiEntidadesListado() {
 		List<EntidadContratante> listado= daoEntidadContratante.findAll();
 		SearchResult<EntidadContratante> resultado=new SearchResult<EntidadContratante>();
@@ -884,7 +884,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = EntidadContratante.class, entity = SearchResult.class)
-	@RequestMapping(value="/entidad/{id}",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/entidad/{id}",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiDetalleEntidades( @Fiql SearchFiql search,@PathVariable BigDecimal id,@RequestParam(name="year",defaultValue = "")String year,@RequestParam(name="status.id",defaultValue = "0")BigDecimal estado) throws SearchParseException, ParseException {
 		String anyo=year;
 		if (StringUtils.isEmpty(year)) {
@@ -972,7 +972,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = Cpv.class)
-	@RequestMapping(value="/cpv",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/cpv",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiListadoCpv(@Fiql SearchFiql search) throws SearchParseException {
 		Funciones.getPeticion().setSelectedFields("id,titulo");
 		return ResponseEntity.ok(daoCpv.searchAndCount(search.getConditions(Cpv.class)));
@@ -981,7 +981,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = EstructuraOrganizativa.class)
-	@RequestMapping(value="/organo-contratacion",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/organo-contratacion",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiListadoOrgano(@Fiql SearchFiql search) {
 		List<String> resultado=dao.getOrganismoContratante();
 		List<EstructuraOrganizativa> lista=new ArrayList<EstructuraOrganizativa>();
@@ -1006,7 +1006,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(value = EstructuraOrganizativa.class)
-	@RequestMapping(value="/organo-contratacion/{id}",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	@RequestMapping(value="/organo-contratacion/{id}",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiDetalleOrgano(@PathVariable BigDecimal id) {
 		EstructuraOrganizativa organo= daoOrganigrama.find(id);
 		return ResponseEntity.ok(organo);
