@@ -473,7 +473,7 @@ public class ContratoController {
 	@OpenData
 	@ResponseClass(value = Indicadores.class, entity = SearchResult.class)
 	@RequestMapping(value = "/indicadores", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
-	public @ResponseBody ResponseEntity<?> 	apiIndicadoresAyuntamiento(@Fiql SearchFiql search,@RequestParam(name="idPortal",defaultValue = "1")BigDecimal id,@RequestParam(name="anyo")String year,@RequestParam(name="idServicio",defaultValue = "0")BigDecimal idServicio) throws Exception {
+	public @ResponseBody ResponseEntity<?> 	apiIndicadoresAyuntamiento(@Fiql SearchFiql search,@RequestParam(name="idPortal",defaultValue = "1")BigDecimal id,@RequestParam(name="anyo",required =false)String year,@RequestParam(name="idServicio",defaultValue = "0")BigDecimal idServicio) throws Exception {
 		Indicadores indicador = new Indicadores();
 		Double cuantia=0.0;
 		Double cuantiaCanon=0.0;
