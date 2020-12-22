@@ -30,8 +30,20 @@ public class ServicioGestor extends EstructuraOrganizativa implements java.io.Se
     private List<ContratosPorAnyoIdPortal> datosPortal;
 	@Transient
 	private String year;
+	@Transient
+	private String dir3;
 	//endregion
 	//region Getters & Setters
+
+	@Override
+	public String getDir3() {
+		return dir3;
+	}
+
+	@Override
+	public void setDir3(String dir3) {
+		this.dir3 = dir3;
+	}
 
 	public String getYear() {
 		return year;

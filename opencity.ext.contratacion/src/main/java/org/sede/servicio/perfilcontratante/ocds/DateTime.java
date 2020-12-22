@@ -1,6 +1,7 @@
 package org.sede.servicio.perfilcontratante.ocds;
 
 import org.sede.core.anotaciones.ResultsOnly;
+import org.sede.core.utils.ConvertDate;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
@@ -14,8 +15,8 @@ public class DateTime {
     //endregion
     //region Getters & Setters
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return ConvertDate.date2String(date,ConvertDate.ISO8601_FORMAT) ;
     }
 
     public void setDate(Date date) {
@@ -34,7 +35,7 @@ public class DateTime {
     //region Contructs
     public DateTime(Date date){
         this.setDate(date);
-        this.setTime(0);
+        ;
     }
 
 
@@ -43,9 +44,7 @@ public class DateTime {
 
     @Override
     public String toString() {
-        return "DateTime[" +
-                "date=" + date +
-                ", time=" + time +
+        return "Date["+ date +
                 ']';
     }
 

@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Identifier {
     //region Atributtes
     private String id;
-    private String legalname;
+    private String legalName;
     private String scheme;
     private String uri;
     //endregion
@@ -26,11 +26,11 @@ public class Identifier {
     }
 
     public String getLegalname() {
-        return legalname;
+        return legalName;
     }
 
-    public void setLegalname(String legalname) {
-        this.legalname = legalname;
+    public void setLegalname(String legalName) {
+        this.legalName = legalName;
     }
 
     public String getScheme() {

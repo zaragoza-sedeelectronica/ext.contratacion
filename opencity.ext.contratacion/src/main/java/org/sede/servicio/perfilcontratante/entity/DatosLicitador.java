@@ -4,10 +4,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,8 +31,18 @@ public class DatosLicitador extends EntidadBase implements Serializable{
     private BigDecimal totalSinIva;
     @Column(name="TOTALCONIVA",insertable = false,nullable = false,updatable = false)
     private BigDecimal totalConIva;
+    @Column(name="TOTALLICITACIONES")
+    private BigDecimal numContratos;
     //endregion
     //region Setters & Getters
+
+    public BigDecimal getNumContratos() {
+        return numContratos;
+    }
+
+    public void setNumContratos(BigDecimal numContratos) {
+        this.numContratos = numContratos;
+    }
 
     public String getAnyo() {
         return anyo;
@@ -80,16 +87,17 @@ public class DatosLicitador extends EntidadBase implements Serializable{
     //endregion
     //region Overrides
 
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("DatosLicitador [");
-        sb.append("anyo='").append(anyo).append('\'');
-        sb.append(", idEmpresa=").append(idEmpresa);
-        sb.append(", nombre='").append(nombre).append('\'');
-        sb.append(", totalSinIva=").append(totalSinIva);
-        sb.append(", totalConIva=").append(totalConIva);
-        sb.append(']');
-        return sb.toString();
+        return "DatosLicitador[" +
+                "anyo='" + anyo + '\'' +
+                ", idEmpresa=" + idEmpresa +
+                ", nombre='" + nombre + '\'' +
+                ", totalSinIva=" + totalSinIva +
+                ", totalConIva=" + totalConIva +
+                ", numContratos=" + numContratos +
+                ']';
     }
 
     @Override

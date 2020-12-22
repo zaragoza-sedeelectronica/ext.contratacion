@@ -27,14 +27,9 @@ public class Roles {
         this.rol=rol;
     }
     //endregion
-    //region Overrides
 
-    @Override
-    public String toString() {
-        return "Roles[" +
-                "rol='" + rol + '\'' +
-                ']';
-    }
 
-    //endregion
+
+
+
 }

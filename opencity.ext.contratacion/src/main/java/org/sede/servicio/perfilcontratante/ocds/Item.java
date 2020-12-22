@@ -14,13 +14,23 @@ public class Item {
     //region Atributtes
     private String id;
     private String description;
-    private List<CpvOcds> classification=new ArrayList<CpvOcds>(0);
+    private CpvOcds classification;
+    private List<CpvOcds> additionalClassifications=new ArrayList<CpvOcds>();
     private Double quantity;
     private Unit unit;
 
 
     //endregion
     //region Getters & Setters
+
+
+    public List<CpvOcds> getAdditionalClassifications() {
+        return additionalClassifications;
+    }
+
+    public void setAdditionalClassifications(List<CpvOcds> additionalClassifications) {
+        this.additionalClassifications = additionalClassifications;
+    }
 
     public String getId() {
         return id;
@@ -38,11 +48,11 @@ public class Item {
         this.description = description;
     }
 
-    public List<CpvOcds> getClassification() {
+    public CpvOcds getClassification() {
         return classification;
     }
 
-    public void setClassification(List<CpvOcds> classification) {
+    public void setClassification(CpvOcds classification) {
         this.classification = classification;
     }
 
@@ -67,9 +77,24 @@ public class Item {
     public Item(Cpv cpv, Contrato con){
         this.id=con.getId()+"-item";
         this.description=con.getTitle();
-        this.classification.add(new CpvOcds(cpv));
+        this.classification=new CpvOcds(cpv);
         this.quantity=0.0;
         //this.unit=new Unit(con);
+    }
+    public Item(Contrato con,Boolean additionalCpv){
+        int i=0;
+        for(Cpv cpv:con.getCpv()){
+            if(i==0){
+                this.id=con.getId()+"-item";
+                this.description=con.getTitle();
+                this.classification=new CpvOcds(cpv);
+                this.quantity=0.0;
+                i++;
+
+            }else{
+                this.getAdditionalClassifications().add(new CpvOcds(cpv));
+            }
+        }
     }
 
     //endregion

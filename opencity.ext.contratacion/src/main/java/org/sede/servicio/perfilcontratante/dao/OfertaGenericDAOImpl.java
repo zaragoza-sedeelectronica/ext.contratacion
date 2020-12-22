@@ -1,28 +1,28 @@
 package org.sede.servicio.perfilcontratante.dao;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
+
+
+import java.io.FileInputStream;
 import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.Iterator;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-
+import com.googlecode.genericdao.search.Search;
+import com.googlecode.genericdao.search.SearchResult;
+import org.apache.commons.io.IOUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.sede.core.anotaciones.Esquema;
+import org.sede.core.dao.BooleanConverter;
+import org.sede.core.dao.BooleanSINOConverter;
 import org.sede.core.dao.JPAIgnoreTraversableResolver;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Empresa;
@@ -34,9 +34,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
-import com.googlecode.genericdao.search.Search;
-import com.googlecode.genericdao.search.SearchResult;
+import javax.persistence.Query;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.util.*;
 
 @Repository
 @Transactional(Esquema.TMPERFILCONTRATANTE)
@@ -193,5 +202,25 @@ public class OfertaGenericDAOImpl extends GenericDAOImpl<Oferta, BigDecimal> imp
         }
 
         return ofertas;
+    }
+    @Override
+    public Contrato loadFromJson(String input) throws IOException {
+        JsonNode actualObjLote;
+        boolean lotesBolean=false;
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+        JsonNode actualObj = mapper.readTree(input);
+        System.out.println(actualObj.get("dcterms:identifier").asText());
+        Search busqueda=new Search();
+        busqueda.addFilterEqual("expediente",actualObj.get("dcterms:identifier").asText());
+        SearchResult<Contrato> contratos=dao.searchAndCount(busqueda);
+
+
+        return contratos.getResult().get(0);
+
+
+
+
     }
 }

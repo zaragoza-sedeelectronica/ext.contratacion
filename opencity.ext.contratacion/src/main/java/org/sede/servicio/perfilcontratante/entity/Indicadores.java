@@ -42,6 +42,8 @@ public class Indicadores extends EntidadContratante implements java.io.Serializa
 	@Transient
 	private SearchResult<Contrato> contratos;
 	@Transient
+	private SearchResult<IndicadorAjudicatario> indicadorAdjudicatarios;
+	@Transient
 	private BigDecimal cuantia;
 	@Transient
 	private Integer numEmpresas;
@@ -58,6 +60,14 @@ public class Indicadores extends EntidadContratante implements java.io.Serializa
 	//endregion
 	//region getter and setter
 
+
+	public SearchResult<IndicadorAjudicatario> getIndicadorAdjudicatarios() {
+		return indicadorAdjudicatarios;
+	}
+
+	public void setIndicadorAdjudicatarios(SearchResult<IndicadorAjudicatario> indicadorAdjudicatarios) {
+		this.indicadorAdjudicatarios = indicadorAdjudicatarios;
+	}
 
 	public EstructuraOrganizativa getServicioGestor() {
 		return servicioGestor;
@@ -199,6 +209,7 @@ public class Indicadores extends EntidadContratante implements java.io.Serializa
 		sb.append(", Servicio='").append(servicioGestor).append('\'');
 		sb.append(", indicadorServicio=").append(indicadorServicio);
 		sb.append(", indicadorLicitador=").append(indicadorLicitador);
+		sb.append(", indicadorAdjudicatario=").append(indicadorAdjudicatarios);
 		sb.append(", anyo='").append(anyo).append('\'');
 		sb.append(", indicadorTipo=").append(indicadorTipo);
 		sb.append(", indicadorTipoServicio=").append(indicadorTipoServicio);

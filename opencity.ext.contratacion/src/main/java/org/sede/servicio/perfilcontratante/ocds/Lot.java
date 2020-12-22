@@ -81,7 +81,7 @@ public class Lot {
     public Lot() {
     }
     public Lot(Lote lot,int i) {
-        this.id="lot-"+lot.getId();
+        this.id="lot-1xraxc-"+lot.getId();
         this.title="Lote "+i;
         this.description=lot.getDescription();
         this.value=new Value(lot.getImporteLicitacionSinIVA(),"EUR");

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Amendment {
     //region Atributtes
     private String id;
-    private DateTime dateTime;
+    private DateTime date;
     private String rationale ;
     private String description;
     private String amendsRelaseID;
@@ -28,12 +28,12 @@ public class Amendment {
         this.id = id;
     }
 
-    public DateTime getDateTime() {
-        return dateTime;
+    public DateTime getDate() {
+        return date;
     }
 
-    public void setDateTime(DateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(DateTime dateTime) {
+        this.date = dateTime;
     }
 
     public String getRationale() {
@@ -83,7 +83,7 @@ public class Amendment {
     public String toString() {
         return "Amendment{" +
                 "id=" + id +
-                ", dateTime=" + dateTime +
+                ", dateTime=" + date +
                 ", rationale='" + rationale + '\'' +
                 ", description='" + description + '\'' +
                 ", amendsRelaseID='" + amendsRelaseID + '\'' +
@@ -97,7 +97,7 @@ public class Amendment {
     public Amendment() {}
     public Amendment(Anuncio anuncio) {
         this.setId(anuncio.getId()+"amanment");
-        this.setDateTime(new DateTime(anuncio.getPubDate()));
+        this.setDate(new DateTime(anuncio.getPubDate()));
         this.setRationale(anuncio.getTitle());
         this.setDescription(anuncio.getDescription());
     }

@@ -1,22 +1,25 @@
 package org.sede.servicio.perfilcontratante.ocds;
 
 import org.sede.core.anotaciones.ResultsOnly;
+import org.sede.core.utils.ConvertDate;
 import org.sede.servicio.perfilcontratante.entity.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @XmlRootElement(name = "AwardOcds")
 @ResultsOnly(xmlroot = "AwardOcds")
 public class Award {
     //region Atributtes
+
         private String id;
         private String title;
         private String description;
         private String status;
-        private DateTime dateTime;
+        private Date date;
         private Value value;
         private List<Organisation> suppliers=new ArrayList<Organisation>();
         private List<Item> items=new ArrayList<Item>();
@@ -28,13 +31,16 @@ public class Award {
 
     //endregion
     //region Getters & Setters
+
     public String getId() {
-      return id;
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -60,12 +66,12 @@ public class Award {
         this.status = status;
     }
 
-    public DateTime getDateTime() {
-        return dateTime;
+    public String getDate() {
+        return ConvertDate.date2String(date,ConvertDate.ISO8601_FORMAT);
     }
 
-    public void setDateTime(DateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Value getValue() {
@@ -127,15 +133,16 @@ public class Award {
     //endregion
     //region Contructors
     public Award(BigDecimal id) {
-        this.setId("ocds-"+id+"-award");
+        this.setId(id+"-award");
     }
     public Award(Oferta ofer){
         List<Organisation> supliers=new ArrayList<Organisation>();
-        this.setId("ocds-"+ofer.getId()+"-award");
+
+        this.setId(ofer.getId()+"-award");
         this.setTitle("Award of contract to "+ofer.getContrato().getTitle());
         this.setDescription(ofer.getEmpresa().getNombre()+" has been awarded the contract "+ofer.getContrato().getTitle());
         this.setStatus(estado(ofer));
-        this.setDateTime(new DateTime(ofer.getFechaAdjudicacion()));
+        this.setDate(ofer.getFechaAdjudicacion());
         this.setValue(new Value(ofer.getImporteSinIVA(),"EUR"));
         supliers.add(new Organisation(ofer.getEmpresa(),true));
         this.setSuppliers(supliers);
@@ -152,19 +159,24 @@ public class Award {
                 case 33:
                     this.amendments.add(new Amendment(anun));
                     break;
-                default:
-                    this.amendments.add(new Amendment());
-                    break;
+
             }
         }
-        for(Cpv cpv:ofer.getContrato().getCpv()) {
-            this.items.add(new Item(cpv,ofer.getContrato()));
+        if(ofer.getContrato().getCpv().size()==1){
+            for(Cpv cpv:ofer.getContrato().getCpv()) {
+                this.items.add(new Item(cpv, ofer.getContrato()));
+            }
+        }else {
+
+                this.items.add(new Item( ofer.getContrato(),true));
+
+
         }
         if("10".equals(ofer.getContrato().getProcedimiento().getId().toString())){
             this.contractPeriod=new Period(ofer.getFechaAdjudicacion(),Integer.valueOf(ofer.getContrato().getDuracion()!=null?ofer.getContrato().getDuracion().toString():"0"));
         }else{
             if(ofer.getFechaFormalizacion()!=null){
-                this.contractPeriod=new Period(ofer.getFechaFormalizacion(),Integer.valueOf(ofer.getContrato().getDuracion().toString()));
+                this.contractPeriod=new Period(ofer.getFechaFormalizacion(),Integer.valueOf(ofer.getContrato().getDuracion()!=null?ofer.getContrato().getDuracion().toString():"0"));
             }else{
                 this.contractPeriod=new Period(ofer.getFechaAdjudicacion(),Integer.valueOf(ofer.getContrato().getDuracion().toString()));
             }
@@ -176,13 +188,13 @@ public class Award {
 
     }
     public Award(Oferta ofer, Contrato contrato){
-        this.setId("ocds-"+contrato.getId()+"-award-"+ofer.getId());
+        this.setId(ofer.getId()+"-award");
         this.setTitle("Award of contract to "+ofer.getContrato().getTitle());
         this.setDescription(ofer.getEmpresa().getNombre()+" has been awarded the contract "+contrato.getTitle());
        if(ofer.getFechaFormalizacion()!=null) {
-           this.setDateTime(new DateTime(ofer.getFechaFormalizacion()));
+           this.setDate(ofer.getFechaFormalizacion());
        }else {
-           this.setDateTime(new DateTime(ofer.getFechaAdjudicacion()));
+           this.setDate(ofer.getFechaAdjudicacion());
        }
     }
     private String estado(Oferta ofer) {
@@ -197,21 +209,21 @@ public class Award {
 
             }
             if(todoLotes)
-                return "Active";
+                return "active";
             else
-                return "Unsuccessful";
+                return "unsuccessful";
         }else{
         if(ofer.getContrato().getStatus().getId().equals(new Integer("6") ) || ofer.getContrato().getStatus().getId().equals(new Integer("5")))
-            return "Active";
+            return "active";
         if(ofer.getContrato().getStatus().getId().equals(new Integer("1")))
-            return "Pending";
+            return "pending";
         if(ofer.getContrato().getStatus().getId().equals(new Integer("10")))
-            return "Cancelled";
+            return "cancelled";
 
 
         }
 
-        return "Pending";
+        return "pending";
     }
     //endregion
 

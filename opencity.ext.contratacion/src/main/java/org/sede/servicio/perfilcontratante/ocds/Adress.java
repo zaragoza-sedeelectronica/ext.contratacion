@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @ResultsOnly(xmlroot = "AdressOcds")
 public class Adress {
         //region Atributtes
-        private String streetaddress;
+        private String streetAddress;
         private String locality;
         private String region;
-        private String postalcode;
-        private String countryname;
+        private String postalCode;
+        private String countryName;
 
         //endregion
         //region Getters & Setters
-        public String getStreetaddress() {
-            return streetaddress;
+        public String getStreetAddress() {
+            return streetAddress;
         }
 
         public String getLocality() {
@@ -28,15 +28,15 @@ public class Adress {
             return region;
         }
 
-        public String getPostalcode() {
-            return postalcode;
+        public String getPostalCode() {
+            return postalCode;
         }
 
-        public String getCountryname() {
-            return countryname;
+        public String getCountryName() {
+            return countryName;
         }
-        public void setStreetaddress(String streetaddress) {
-            this.streetaddress = streetaddress;
+        public void setStreetAddress(String streetaddress) {
+            this.streetAddress = streetaddress;
         }
 
         public void setLocality(String locality) {
@@ -47,12 +47,12 @@ public class Adress {
             this.region = region;
         }
 
-        public void setPostalcode(String postalcode) {
-            this.postalcode = postalcode;
+        public void setPostalCode(String postalcode) {
+            this.postalCode = postalcode;
         }
 
-        public void setCountryname(String countryname) {
-            this.countryname = countryname;
+        public void setCountryName(String countryname) {
+            this.countryName = countryname;
         }
     //endregion
     //region Contructors

@@ -2,6 +2,7 @@ package org.sede.servicio.perfilcontratante.ocds;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.sede.core.anotaciones.ResultsOnly;
+import org.sede.core.utils.ConvertDate;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
@@ -10,62 +11,66 @@ import java.util.Date;
 @ResultsOnly(xmlroot = "PeriodOcds")
 public class Period {
     //region Atributtes
-        private DateTime startdate;
-        private DateTime endDate;
-        private DateTime maxExtendedDate;
-        private int duarationInDays;
+        private Date startDate;
+        private Date endDate;
+        private Date maxExtentDate;
+        private int durationInDays;
     //endregion
     //region Getters & Setters
-        public DateTime getStartdate() {
-            return startdate;
+        public String getStartDate() {
+              return ConvertDate.date2String(startDate,ConvertDate.ISO8601_FORMAT);
         }
 
-        public void setStartdate(DateTime startdate) {
-            this.startdate = startdate;
+        public void setStartDate(Date startdate) {
+            this.startDate = startdate;
         }
 
-        public DateTime getEndDate() {
-            return endDate;
+        public String getEndDate() {
+            return ConvertDate.date2String(endDate,ConvertDate.ISO8601_FORMAT);
         }
 
-        public void setEndDate(DateTime endDate) {
+        public void setEndDate(Date endDate) {
             this.endDate = endDate;
         }
 
-    public DateTime getMaxExtendedDate() {
-        return maxExtendedDate;
+    public String getMaxExtentDate() {
+        return  ConvertDate.date2String(maxExtentDate,ConvertDate.ISO8601_FORMAT);
     }
 
-    public void setMaxExtendedDate(DateTime maxExtendedDate) {
-        this.maxExtendedDate = maxExtendedDate;
+    public void setMaxExtentDate(Date maxExtendedDate) {
+        this.maxExtentDate = maxExtendedDate;
     }
 
-    public int getDuarationInDays() {
-        return duarationInDays;
+    public int getDurationInDays() {
+        return durationInDays;
     }
 
-    public void setDuarationInDays(int duarationInDays) {
-        this.duarationInDays = duarationInDays;
+    public void setDurationInDays(int durationInDays) {
+        this.durationInDays = durationInDays;
     }
 
     //endregion
     //region Constructors
         public Period(Date startdate, Date endDate) {
-            this.startdate = new DateTime(startdate);
-            this.endDate = new DateTime(endDate);
+            this.startDate = startdate;
+            this.endDate = endDate;
+
+
         }
         public Period(Date startdate) {
-                this.startdate = new DateTime(startdate);
+                this.startDate = startdate;
             }
         public Period(Date startdate,Integer days) {
-            this.startdate = new DateTime(startdate);
-            this.endDate=new DateTime(DateUtils.addDays(startdate,days));
-            this.duarationInDays=days;
+            this.startDate = startdate;
+            this.endDate=DateUtils.addDays(startdate,days);
+            this.durationInDays=days;
+            this.maxExtentDate=this.endDate;
         }
         public Period(Date startdate, Date endDate,Integer days) {
-            this.startdate = new DateTime(startdate);
-            this.endDate = new DateTime(endDate);
-            this.duarationInDays=days;
+            this.startDate = startdate;
+            this.endDate =endDate;
+            this.durationInDays=days;
+            this.maxExtentDate=DateUtils.addDays(endDate,days);
         }
     //endregion
 }

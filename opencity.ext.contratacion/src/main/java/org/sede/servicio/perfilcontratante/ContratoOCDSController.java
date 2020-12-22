@@ -1,11 +1,10 @@
 package org.sede.servicio.perfilcontratante;
 
 
-import com.googlecode.genericdao.search.Field;
-import com.googlecode.genericdao.search.Filter;
-import com.googlecode.genericdao.search.Search;
-import com.googlecode.genericdao.search.SearchResult;
+import com.google.api.client.http.HttpRequest;
+import com.googlecode.genericdao.search.*;
 import org.apache.cxf.jaxrs.ext.search.SearchParseException;
+import org.jsoup.Connection;
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.SearchFiql;
 import org.sede.core.rest.Mensaje;
@@ -27,11 +26,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Query;
+import java.lang.Package;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.net.MalformedURLException;
+import java.text.ParseException;
+import java.util.*;
 
 @Gcz(servicio="PERFILCONTRATANTE", seccion="CONTRATO")
 @Controller
@@ -66,21 +65,38 @@ public class ContratoOCDSController {
 			@RequestParam(name = "before", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date before,
 			@RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after,
 			@RequestParam(name = "rows", required = false,defaultValue = "50")  Integer rows
-			) throws SearchParseException {
+			) throws SearchParseException, ParseException {
 		
 		Search busqueda = new Search(Contrato.class);
 		
 		List<Field> fields = new ArrayList<Field>();
 		fields.add(new Field("id"));
 		fields.add(new Field("title"));
-		busqueda.setFields(fields);
-		busqueda.addFilterGreaterThan("fechaContrato", before);
-		busqueda.addFilterLessOrEqual("fechaContrato", after);
+		fields.add(new Field("creationDate"));
+			busqueda.setFields(fields);
+		if(after==null) {
+			busqueda.addFilterGreaterThan("fechaContrato", ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT));
+		}else{
+			Date limite= ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT);
+			if(after.compareTo(limite)<0){
+				busqueda.addFilterGreaterThan("fechaContrato", ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT));
+			}
+		}
+		if(before!=null) {
+			Date limite= ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT);
+			if(before.compareTo(limite)<0){
+				busqueda.addFilterLessOrEqual("fechaContrato", ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT));
+			}else{
+				busqueda.addFilterLessOrEqual("fechaContrato", before);
+			}
+		}
+
 		busqueda.setMaxResults(rows);
+		busqueda.addSort("fechaContrato",true);
 		List<Contrato> lista =  dao.search(busqueda);
 		List<ContractingProcess> resultado = new ArrayList<ContractingProcess>();
 		for (Contrato c : lista) {
-			resultado.add(new ContractingProcess(c.getId()));
+			resultado.add(new ContractingProcess(c.getId(),c));
 		}
 		SearchResult<ContractingProcess> retorno = new SearchResult<ContractingProcess>();
 		retorno.setTotalCount(resultado.size());
@@ -91,24 +107,59 @@ public class ContratoOCDSController {
 	@OpenData
 	@NoCache
 	@Description("Detalle Contracting process")
-	@ResponseClass(ContractingProcess.class)
+	@ResponseClass(PackageOcds.class)
 	@RequestMapping(value = "/contracting-process/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON})
 	public @ResponseBody ResponseEntity<?> apiListadoLicitador(
 			@PathVariable String id) throws SearchParseException {
 		try {
+
+
 			String[] array = id.split("-");
-			BigDecimal idParseado = new BigDecimal(array[1].toString());
+			BigDecimal idParseado = new BigDecimal(array[2].toString());
 			Contrato contrato =  dao.find(idParseado);
+
 			if (contrato == null) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
 						new Mensaje(HttpStatus.NOT_FOUND.value(), idParseado + " No existe"));
 			}
+			PackageOcds pack=new PackageOcds();
+			pack.setUri("https://www.zaragoza.es/sede/"+MAPPING+id);
+			Publisher publisher = new Publisher();
+			publisher.setUid(contrato.getEntity().getIdSchema());
+			publisher.setName(contrato.getEntity().getTitle());
+			publisher.setScheme(contrato.getEntity().getSchema());
+			pack.setPublishedDate(ConvertDate.date2String(contrato.getPubDate(),ConvertDate.ISO8601_FORMAT));
+			publisher.setUri("https://www.zaragoza.es");
+			pack.setPublisher(publisher);
+			Records record=new Records();
+
 			List<ContractingProcess> resultado = new ArrayList<ContractingProcess>();
-			resultado.add(new ContractingProcess(contrato));
-			SearchResult<ContractingProcess> retorno = new SearchResult<ContractingProcess>();
-			retorno.setTotalCount(resultado.size());
-			retorno.setResult(resultado);
-			return ResponseEntity.ok(retorno);
+			List<Release> releases = new ArrayList<Release>();
+			if(contrato.getStatus().getId().equals(0)|| contrato.getStatus().getId().equals(1)){
+				releases.add(new Release(contrato,id));
+				resultado.add(new ContractingProcess(contrato,1));
+				//record.setCompiledRelease(resultado.get(0));
+			}else if(contrato.getStatus().getId().equals(5)) {
+				releases.add(new Release(contrato,id));
+				resultado.add(new ContractingProcess(contrato,2));
+				//record.setCompiledRelease(resultado.get(0));
+			}else if(contrato.getStatus().getId().equals(6)) {
+				releases.add(new Release(contrato,id));
+				resultado.add(new ContractingProcess(contrato,3));
+				//record.setCompiledRelease(resultado.get(0));
+			}
+			for (Release item:releases) {
+
+				pack.getPackages().add(item.getUrl());
+			}
+
+			record.setOcid(id);
+			record.setReleases(releases);
+			pack.setReleases(resultado);
+			//pack.setRecords(record);
+			pack.setVersion("1.1");
+
+			return ResponseEntity.ok(pack);
 		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
 					new Mensaje(HttpStatus.BAD_REQUEST .value(), id + " No valido: " + e.getMessage()));
@@ -123,7 +174,7 @@ public class ContratoOCDSController {
 			@PathVariable String id) throws SearchParseException {
 		try {
 			String[] array = id.split("-");
-			BigDecimal idParseado = new BigDecimal(array[1].toString());
+			BigDecimal idParseado = new BigDecimal(array[2].toString());
 			Contrato contrato =  dao.find(idParseado);
 			if (contrato == null) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
@@ -157,7 +208,7 @@ public class ContratoOCDSController {
 		try {
 			SearchResult<Award> retorno = new SearchResult<Award>();
 			String[] array = id.split("-");
-			BigDecimal idParseado = new BigDecimal(array[1].toString());
+			BigDecimal idParseado = new BigDecimal(array[2].toString());
 			Search busqueda =new SearchFiql().getConditions(Contrato.class);
 			busqueda.addFilterEqual("id",idParseado);
 			if(before!=null){
@@ -306,7 +357,7 @@ public class ContratoOCDSController {
 	public @ResponseBody ResponseEntity<?> apiDetalleOdcsContrato(@PathVariable String id) throws SearchParseException {
 		try {
 			String[] array = id.split("-");
-			BigDecimal idParseado = new BigDecimal(array[1].toString());
+			BigDecimal idParseado = new BigDecimal(array[2].toString());
 			Contrato contrato = dao.find(idParseado);
 			List<Contract> resultado = new ArrayList<Contract>();
 			if(contrato.getLotes().size()>0) {
@@ -336,7 +387,7 @@ public class ContratoOCDSController {
 		   @RequestParam(name = "after", required = false) @DateTimeFormat(pattern=ConvertDate.ISO8601_FORMAT) Date after) throws SearchParseException {
 		try {
 			String[] array = id.split("-");
-			BigDecimal idParseado = new BigDecimal(array[1].toString());
+			BigDecimal idParseado = new BigDecimal(array[2].toString());
 			Search busqueda=new Search(Anuncio.class);
 			busqueda.addFilterEqual("contrato.id",idParseado);
 			if(before!=null) {
@@ -379,12 +430,19 @@ public class ContratoOCDSController {
 	public @ResponseBody ResponseEntity<?> apiDetalleOdcsContratoItem(@PathVariable String id) throws SearchParseException {
 		try {
 			String[] array = id.split("-");
-			BigDecimal idParseado = new BigDecimal(array[1].toString());
+			BigDecimal idParseado = new BigDecimal(array[2].toString());
 			Contrato contrato = dao.find(idParseado);
 
 			List<Item> resultado = new ArrayList<Item>();
-			for (Cpv cpv:contrato.getCpv() ) {
-				resultado.add(new Item(cpv,contrato));
+			if(contrato.getCpv().size()==1){
+				for(Cpv cpv:contrato.getCpv()) {
+					resultado.add(new Item(cpv, contrato));
+				}
+			}else {
+
+				resultado.add(new Item( contrato,true));
+
+
 			}
 
 			SearchResult<Item> retorno = new SearchResult<Item>();
@@ -451,7 +509,7 @@ public class ContratoOCDSController {
 
 			}else{
 				String[] array = id.toString().split("-");
-				BigDecimal idParseado = new BigDecimal(array[1]);
+				BigDecimal idParseado = new BigDecimal(array[0]);
 				EstructuraOrganizativa estructura=daoOrganigrama.find(idParseado);
 				return ResponseEntity.ok(new Organisation(estructura));
 			}
@@ -487,7 +545,7 @@ public class ContratoOCDSController {
 				}
 			}else {
 				String[] array = id.toString().split("-");
-				 idParseado = new BigDecimal(array[1]);
+				 idParseado = new BigDecimal(array[2]);
 				busqueda2.addFilterOr(new Filter("entity.id",idParseado),new Filter("organoContratante.id",idParseado),new Filter("servicio.id",idParseado));
 				SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
 				for (Contrato con:resultado.getResult() ) {
@@ -544,7 +602,7 @@ public class ContratoOCDSController {
 				busqueda2.addFilterEqual("ofertas.ganador",true);
 			}else {
 				String[] array = id.toString().split("-");
-				idParseado = new BigDecimal(array[1]);
+				idParseado = new BigDecimal(array[2]);
 				busqueda2.addFilterOr(new Filter("entity.id",idParseado),new Filter("organoContratante.id",idParseado),new Filter("servicio.id",idParseado));
 				busqueda2.addFilterEqual("ofertas.ganador", true);
 			}
@@ -618,7 +676,7 @@ public class ContratoOCDSController {
 			List<Award> ganadores=new ArrayList<Award>();
 			SearchResult<Award> result=new SearchResult<Award>();
 			Search busqueda2=new Search(Oferta.class);
-			busqueda2.addFilterEqual("id",array[3]);
+			busqueda2.addFilterEqual("id",array[0]);
 			busqueda2.setMaxResults(rows);
 			SearchResult<Oferta> resultado=daoOferta.searchAndCount(busqueda2);
 			for (Oferta ofer:resultado.getResult() ) {
@@ -645,7 +703,7 @@ public class ContratoOCDSController {
 			List<Amendment> amendments=new ArrayList<Amendment>();
 			SearchResult<Amendment> result=new SearchResult<Amendment>();
 			Search busqueda2=new Search(Oferta.class);
-			busqueda2.addFilterEqual("id",array[3]);
+			busqueda2.addFilterEqual("id",array[0]);
 			SearchResult<Oferta> resultado=daoOferta.searchAndCount(busqueda2);
 			for (Oferta ofer:resultado.getResult() ) {
 				for (Anuncio anun:ofer.getContrato().getAnuncios() ) {
@@ -682,11 +740,18 @@ public class ContratoOCDSController {
 			List<Item> items=new ArrayList<Item>();
 			SearchResult<Item> result=new SearchResult<Item>();
 			Search busqueda2=new Search(Oferta.class);
-			busqueda2.addFilterEqual("id",array[3]);
+			busqueda2.addFilterEqual("id",array[0]);
 			SearchResult<Oferta> resultado=daoOferta.searchAndCount(busqueda2);
 			for (Oferta ofer:resultado.getResult() ) {
-				for (Cpv cpv:ofer.getContrato().getCpv()) {
-					items.add(new Item(cpv,ofer.getContrato()));
+				if(ofer.getContrato().getCpv().size()==1){
+					for(Cpv cpv:ofer.getContrato().getCpv()) {
+						items.add(new Item(cpv, ofer.getContrato()));
+					}
+				}else {
+
+					items.add(new Item( ofer.getContrato(),true));
+
+
 				}
 			}
 			result.setTotalCount(items.size());
@@ -710,7 +775,7 @@ public class ContratoOCDSController {
 			List<Organisation> ganadores=new ArrayList<Organisation>();
 			SearchResult<Organisation> result=new SearchResult<Organisation>();
 			Search busqueda2=new Search(Oferta.class);
-			busqueda2.addFilterEqual("id",array[3]);
+			busqueda2.addFilterEqual("id",array[0]);
 			SearchResult<Oferta> resultado=daoOferta.searchAndCount(busqueda2);
 			for (Oferta ofer:resultado.getResult() ) {
 				ganadores.add(new Organisation(ofer.getEmpresa(),ofer.getContrato()));
@@ -737,7 +802,7 @@ public class ContratoOCDSController {
 			List<Document> documents=new ArrayList<Document>();
 			SearchResult<Document> result=new SearchResult<Document>();
 
-			Oferta resultado=daoOferta.find(BigDecimal.valueOf(Double.valueOf(array[3])));
+			Oferta resultado=daoOferta.find(BigDecimal.valueOf(Double.valueOf(array[0])));
 			for (Anuncio anun:resultado.getContrato().getAnuncios()) {
 				documents.add(new Document(anun));
 			}
@@ -813,7 +878,7 @@ public class ContratoOCDSController {
 			List<Tender> licitacion=new ArrayList<Tender>();
 			SearchResult<Tender> result=new SearchResult<Tender>();
 			Search busqueda2=new Search(Contrato.class);
-			busqueda2.addFilterEqual("id",array[1]);
+			busqueda2.addFilterEqual("id",array[0]);
 			SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
 			for (Contrato con:resultado.getResult() ) {
 				licitacion.add(new Tender(con));
@@ -841,11 +906,11 @@ public class ContratoOCDSController {
 			List<ContractingProcess> proceso=new ArrayList<ContractingProcess>();
 			SearchResult<ContractingProcess> result=new SearchResult<ContractingProcess>();
 			Search busqueda2=new Search(Contrato.class);
-			busqueda2.addFilterEqual("id",array[1]);
+			busqueda2.addFilterEqual("id",array[0]);
 			busqueda2.setMaxResults(rows);
 			SearchResult<Contrato> resultado=dao.searchAndCount(busqueda2);
 			for (Contrato con :resultado.getResult() ) {
-				proceso.add(new ContractingProcess(con));
+				proceso.add(new ContractingProcess(con,1));
 			}
 			result.setTotalCount(proceso.size());
 			result.setResult(proceso);
@@ -867,9 +932,16 @@ public class ContratoOCDSController {
 			String[] array = id.split("-");
 			List<Item> items=new ArrayList<Item>();
 			SearchResult<Item> result=new SearchResult<Item>();
-			Contrato con=dao.find(BigDecimal.valueOf(Double.valueOf(array[1])));
-			for (Cpv cpv:con.getCpv()) {
-				items.add(new Item(cpv,con));
+			Contrato con=dao.find(BigDecimal.valueOf(Double.valueOf(array[0])));
+			if(con.getCpv().size()==1){
+				for(Cpv cpv:con.getCpv()) {
+					items.add(new Item(cpv, con));
+				}
+			}else {
+
+				items.add(new Item( con,true));
+
+
 			}
 			result.setTotalCount(items.size());
 			result.setResult(items);
@@ -893,7 +965,7 @@ public class ContratoOCDSController {
 			String[] array = id.split("-");
 			List<Document> documents=new ArrayList<Document>();
 			SearchResult<Document> result=new SearchResult<Document>();
-			Contrato resultado=dao.find(BigDecimal.valueOf(Double.valueOf(array[1])));
+			Contrato resultado=dao.find(BigDecimal.valueOf(Double.valueOf(array[0])));
 			for (Anuncio anun:resultado.getAnuncios()) {
 				documents.add(new Document(anun));
 			}

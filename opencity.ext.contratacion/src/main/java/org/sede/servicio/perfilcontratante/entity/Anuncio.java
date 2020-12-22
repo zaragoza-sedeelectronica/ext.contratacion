@@ -55,7 +55,7 @@ public class Anuncio extends EntidadBase {
 	private String uri;
 	
 	@Column(name = "TEXTO")
-	//@Lob
+	@Lob
 	private String description;
 
 	@Column(name = "NOMBRADJUNTO")

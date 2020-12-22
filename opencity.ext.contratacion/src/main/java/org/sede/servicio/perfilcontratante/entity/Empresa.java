@@ -45,6 +45,8 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
 
     @Column(name="NIF",nullable=false,unique=false)
     private  String nif;
+    @Column(name="OPENCORPORATE",nullable=false,unique=false)
+    private  String openCorporateUrl;
 
     @Transient
     private String nifEntidad;
@@ -66,6 +68,16 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     
     //endregion
     //region Getter and Setters
+
+
+    public String getOpenCorporateUrl() {
+        return openCorporateUrl;
+    }
+
+    public void setOpenCorporateUrl(String openCorporateUrl) {
+        this.openCorporateUrl = openCorporateUrl;
+    }
+
     public List<Empresa> getEmpresaUtes() {
         return empresaUtes;
     }
@@ -163,7 +175,8 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
                 + ute + ", nif="
                 + nif + ", autonomo="
                 + autonomo + ", nacionalidad="
-                + nacionalidad + "]";
+                +  nacionalidad+ ", Url Opencorporate="
+                +  openCorporateUrl+ "]";
     }
     //endregion
 }

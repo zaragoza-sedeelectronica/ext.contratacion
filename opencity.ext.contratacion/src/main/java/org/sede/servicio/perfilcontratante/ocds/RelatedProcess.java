@@ -74,10 +74,10 @@ public class RelatedProcess {
     public RelatedProcess(){}
     public RelatedProcess(Contrato con){
         List<String> relationShip=new ArrayList<String>();
-        this.setId("ocds-"+con.getId()+"-ContractingProcess");
+        this.setId("ocds-1xraxc-"+con.getId()+"-ContractingProcess");
         this.setTitle(con.getTitle());
         this.setIdentifier(con.getId().toString());
-        this.setScheme("ocid-"+con.getId());
+        this.setScheme("ocid-1xraxc-"+con.getId());
         if(con.getDerivadoAcuerdoMarco()) {
             relationShip.add("Framework agreement procedure first stage");
         }else{

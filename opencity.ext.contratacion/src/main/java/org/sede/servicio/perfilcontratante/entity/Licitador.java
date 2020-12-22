@@ -22,6 +22,8 @@ public class Licitador extends Empresa implements Serializable {
     @Transient
     private String libreBorme;
     @Transient
+    private String openCorporate;
+    @Transient
     private SearchResult<Empresa> utes;
     @Transient
     private SearchResult<Contrato> contrato;
@@ -41,6 +43,15 @@ public class Licitador extends Empresa implements Serializable {
     private BigDecimal totalConIva;
     //endregion
     //region Setters & Getters
+
+    public String getOpenCorporate() {
+        return openCorporate;
+    }
+
+    public void setOpenCorporate(String openCorporate) {
+        this.openCorporate = openCorporate;
+    }
+
     public BigDecimal getTotalSinIva() {
         return totalSinIva;
     }
@@ -142,12 +153,23 @@ public class Licitador extends Empresa implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Licitador [");
-        sb.append(", totalSinIva=").append(totalSinIva);
-        sb.append(", totalConIva=").append(totalConIva);
-        sb.append(']');
-        return sb.toString();
+        return "Licitador[" +
+                "idEmpresa=" + idEmpresa +
+                ", nombre='" + nombre + '\'' +
+                ", libreBorme='" + libreBorme + '\'' +
+                ", openCorporate='" + openCorporate + '\'' +
+                ", utes='" + utes + '\'' +
+                ", contrato=" + contrato +
+                ", licitadosPorAnyo=" + licitadosPorAnyo +
+                ", ganadosPorAnyo=" + ganadosPorAnyo +
+                ", licitados=" + licitados +
+                ", ganados=" + ganados +
+                ", datosLicitadorCuantia=" + datosLicitadorCuantia +
+                ", totalSinIva=" + totalSinIva +
+                ", totalConIva=" + totalConIva +
+                ']';
     }
+
     //endregion
 
 }

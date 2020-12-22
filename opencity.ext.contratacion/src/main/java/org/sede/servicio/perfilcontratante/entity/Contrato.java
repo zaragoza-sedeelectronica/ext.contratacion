@@ -1,5 +1,8 @@
 package org.sede.servicio.perfilcontratante.entity;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.annotations.*;
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.BooleanConverter;
@@ -9,6 +12,8 @@ import org.sede.core.utils.ConvertDate;
 import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
+import org.sede.servicio.perfilcontratante.dao.TipoContratoGenericDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -23,6 +28,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Period;
 import java.util.*;
 
 @XmlRootElement(name = "contrato")
@@ -37,7 +43,7 @@ public class Contrato extends EntidadBase implements Serializable {
 	//region Atributtes & Columns
 	@Interno
 	public static final String GRAFO = "http://www.zaragoza.es/sector-publico/contrato";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "XyzIdGenerator")
 	@GenericGenerator(name = "XyzIdGenerator", strategy = "org.sede.servicio.perfilcontratante.dao.ContratoIdGenerator")
@@ -101,12 +107,6 @@ public class Contrato extends EntidadBase implements Serializable {
 	@BatchSize(size = 50)
 	@SoloEnEstaEntidad
 	private EntidadContratante entity;
-
-//	@Column(name = "SERVICIO_GESTOR")
-//	private BigDecimal servicioGestor;
-
-//	@Column(name = "ORGANO_CONTRATACION")
-//	private BigDecimal organo;
 
 	@Column(name = "DURACION")
 	private BigDecimal duracion;
@@ -230,12 +230,18 @@ public class Contrato extends EntidadBase implements Serializable {
 	@Column(name = "CANON")
 	@Convert(converter = BooleanConverter.class)
 	private Boolean canon;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrato", cascade = { CascadeType.ALL })
+	@Permisos(Permisos.DET)
+	@BatchSize(size = 50)
+	@Access(AccessType.FIELD)
+	private Set<Criterio> criterios = new HashSet<Criterio>(0);
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_PADRE")
 	@SoloEnDetalle
 	@BatchSize(size = 200)
 	@NotFound(action = NotFoundAction.IGNORE)
+	@Interno
 	private Contrato padre;
 
 	@Transient 
@@ -252,6 +258,14 @@ public class Contrato extends EntidadBase implements Serializable {
 	}
 	//endregion
 	//region Setter & getter
+
+	public Set<Criterio> getCriterios() {
+		return criterios;
+	}
+
+	public void setCriterios(Set<Criterio> criterios) {
+		this.criterios = criterios;
+	}
 
 	public Contrato getPadre() {
 		return padre;
@@ -707,5 +721,8 @@ public class Contrato extends EntidadBase implements Serializable {
 		result = 31 * result + (periodoProrroga != null ? periodoProrroga.hashCode() : 0);
 		return result;
 	}
+	//endregion
+	//region Contructor
+
 	//endregion
 }

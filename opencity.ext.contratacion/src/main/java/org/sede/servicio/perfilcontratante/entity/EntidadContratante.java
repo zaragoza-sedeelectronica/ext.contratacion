@@ -72,6 +72,10 @@ public class EntidadContratante extends EntidadBase implements java.io.Serializa
 	@Size(max = 100)
 	@Permisos(Permisos.DET)
 	private String servicioGestorId;
+	@Column(name = "SCHEMA") @Size(max = 100)
+	private String schema;
+	@Column(name = "ID_SCHEMA") @Size(max = 100)
+	private String idSchema;
 	@Transient
 	private String anyo;
 	@Transient
@@ -94,6 +98,22 @@ public class EntidadContratante extends EntidadBase implements java.io.Serializa
 	//endregion
 	//region setter & getter
 
+
+	public String getSchema() {
+		return schema;
+	}
+
+	public void setSchema(String schema) {
+		this.schema = schema;
+	}
+
+	public String getIdSchema() {
+		return idSchema;
+	}
+
+	public void setIdSchema(String idSchema) {
+		this.idSchema = idSchema;
+	}
 
 	public String getServicioGestorId() {
 		return servicioGestorId;

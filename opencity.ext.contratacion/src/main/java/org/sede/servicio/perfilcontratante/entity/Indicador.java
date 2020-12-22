@@ -39,6 +39,7 @@ public class Indicador extends EntidadBase {
     private String idPortal;
     @Transient
     private BigDecimal totalGanados;
+
    //endregion Atributes
    //region setterand getter
 

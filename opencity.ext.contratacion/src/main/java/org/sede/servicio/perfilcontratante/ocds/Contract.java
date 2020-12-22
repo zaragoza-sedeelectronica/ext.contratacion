@@ -2,6 +2,7 @@ package org.sede.servicio.perfilcontratante.ocds;
 
 
 import org.sede.core.anotaciones.ResultsOnly;
+import org.sede.core.utils.ConvertDate;
 import org.sede.servicio.perfilcontratante.entity.Anuncio;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Cpv;
@@ -20,27 +21,19 @@ public class Contract {
     //region Atributtes
     private String id;
     private String title;
-    private Award award;
+    private String awardID;
     private String description;
     private String status;
     private Period period;
     private Value value;
     private List<Item> items=new ArrayList<Item>();
-    private DateTime dateSigned;
+    private String dateSigned;
     private List<Document> documents=new ArrayList<Document>();
     private List<Milestone> milestones;
     private List<RelatedProcess> relatedProcesses=new ArrayList<RelatedProcess>();
     private List<Amendment> amendments=new ArrayList<Amendment>();
     //endregion
     //region Getteres & Setters
-
-    public List<RelatedProcess> getRelatedPracesses() {
-        return relatedProcesses;
-    }
-
-    public void setRelatedPracesses(List<RelatedProcess> relatedProcesses) {
-        this.relatedProcesses = relatedProcesses;
-    }
 
     public String getId() {
         return id;
@@ -50,6 +43,16 @@ public class Contract {
         this.id = id;
     }
 
+    public List<RelatedProcess> getRelatedPracesses() {
+        return relatedProcesses;
+    }
+
+    public void setRelatedPracesses(List<RelatedProcess> relatedProcesses) {
+        this.relatedProcesses = relatedProcesses;
+    }
+
+
+
     public String getTitle() {
         return title;
     }
@@ -58,12 +61,12 @@ public class Contract {
         this.title = title;
     }
 
-    public Award getAward() {
-        return award;
+    public String getAwardID() {
+        return awardID;
     }
 
-    public void setAward(Award award) {
-        this.award = award;
+    public void setAwardID(String awardID) {
+        this.awardID = awardID;
     }
 
     public String getDescription() {
@@ -81,20 +84,20 @@ public class Contract {
     public void setStatus(Contrato con) {
         switch(con.getStatus().getId()){
 
-            case 1: this.status="Pending";break;
-            case 5:
-            case 6:this.status="Active";break;
+            case 1:
+            case 5:this.status="active";break;
+            case 6:this.status="terminated”";break;
             case 4:
             case 7:
             case 8:
             case 10:
-            case 11:this.status="Cancelado";break;
-            default:this.status="Active";break;
+            case 11:this.status="cancelled";break;
+            default:this.status="active";break;
         }
         for (Oferta ofer:con.getOfertas()) {
             if(ofer.getGanador()){
                 if(new Date().compareTo(sumarRestarDiasFecha(ofer.getFechaFormalizacion(),con.getDuracion()==null?0:con.getDuracion().intValue()))>0){
-                    this.status="Terminated";
+                    this.status="complete";
                 }
             }
         }
@@ -125,11 +128,11 @@ public class Contract {
         this.items = items;
     }
 
-    public DateTime getDateSigned() {
+    public String getDateSigned() {
         return dateSigned;
     }
 
-    public void setDateSigned(DateTime dateSigned) {
+    public void setDateSigned(String dateSigned) {
         this.dateSigned = dateSigned;
     }
 
@@ -160,17 +163,20 @@ public class Contract {
     //endregion
     //region Constructors
     public Contract(BigDecimal id, String title, String objeto){
-        this.setId("ocds-"+id.toString()+"-contract");
+
+        this.setId(id.toString()+"-contract");
         this.setTitle(title);
         this.setDescription("Contrato firmado ");
     }
     public Contract(BigDecimal id,String title,String empresa,String entidad){
-        this.setId("ocds-"+id.toString()+"-contract");
+
+        this.setId(id.toString()+"-contract");
         this.setTitle(title);
         this.setDescription("Contrato firmado entre "+entidad+" y "+empresa);
     }
     public Contract(BigDecimal id,String title,String empresa,String entidad,Contrato con){
-        this.setId("ocds-"+id.toString()+"-contract");
+
+        this.setId(id.toString()+"-contract");
         this.setTitle(title);
         this.setDescription("Contrato firmado entre "+entidad+" y "+empresa);
         this.setStatus(con);
@@ -181,20 +187,28 @@ public class Contract {
         List<Amendment>amendments=new ArrayList<Amendment>();
         List<Milestone>milestones=new ArrayList<Milestone>();
         List<RelatedProcess>relatedProcesses=new ArrayList<RelatedProcess>();
-        this.setId("ocds-"+con.getId().toString()+"-contract");
+
+        this.setId(con.getId().toString()+"-contract");
         for (Oferta ofer:con.getOfertas()) {
             if(ofer.getGanador()) {
-                this.setAward(new Award(ofer.getId()));
+                this.setAwardID(ofer.getId()+"-award");
                 this.setTitle(con.getTitle());
                 this.setDescription("Contrato firmado entre " + con.getEntity().getTitle() + " y " + ofer.getEmpresa().getNombre());
                 this.setStatus(con);
-                this.setPeriod(new Period(ofer.getFechaFormalizacion(), sumarRestarDiasFecha(ofer.getFechaFormalizacion(), con.getDuracion().intValue()),con.getDuracion().intValue()));
+                this.setPeriod(new Period(ofer.getFechaFormalizacion()==null?ofer.getFechaAdjudicacion():ofer.getFechaFormalizacion(), sumarRestarDiasFecha(ofer.getFechaFormalizacion(), con.getDuracion().intValue()),con.getDuracion().intValue()));
                 this.setValue(new Value(con.getCanon() ? ofer.getImporteSinIVA().negate() : ofer.getImporteSinIVA(), "EUR"));
             }
-                for (Cpv cpv:con.getCpv()) {
-                    this.items.add(new Item(cpv,con));
+            if(ofer.getContrato().getCpv().size()==1){
+                for(Cpv cpv:ofer.getContrato().getCpv()) {
+                    this.items.add(new Item(cpv, ofer.getContrato()));
                 }
-                this.setDateSigned(new DateTime(ofer.getFechaFormalizacion()));
+            }else {
+
+                this.items.add(new Item( ofer.getContrato(),true));
+
+
+            }
+                this.setDateSigned(ConvertDate.date2String(ofer.getFechaFormalizacion(),ConvertDate.ISO8601_FORMAT));
 
             for (Anuncio anun:con.getAnuncios()) {
                 documents.add(new Document(anun));
@@ -214,19 +228,27 @@ public class Contract {
         List<Amendment>amendments=new ArrayList<Amendment>();
         List<Milestone>milestones=new ArrayList<Milestone>();
         List<RelatedProcess>relatedProcesses=new ArrayList<RelatedProcess>();
-        this.setId("ocds-"+con.getId().toString()+"-contract");
+
+        this.setId(con.getId().toString()+"-contract");
         if(ofer.getGanador()) {
-            this.setAward(new Award(ofer.getId()));
+            this.setAwardID(ofer.getId()+"-award");
             this.setTitle(con.getTitle());
             this.setDescription("Contrato para el "+ofer.getLote().getDescription()+" firmado entre "+con.getEntity().getTitle() + " y "+ofer.getEmpresa().getNombre());
             this.status=statusLote(ofer);
             this.setPeriod(new Period(ofer.getFechaFormalizacion(),sumarRestarDiasFecha(ofer.getFechaFormalizacion(),con.getDuracion().intValue()),con.getDuracion().intValue()));
             this.setValue(new Value(con.getCanon()?ofer.getImporteSinIVA().negate():ofer.getImporteSinIVA(),"EUR"));
-            for (Cpv cpv:con.getCpv()) {
-                this.items.add(new Item(cpv,con));
+            if(ofer.getContrato().getCpv().size()==1){
+                for(Cpv cpv:ofer.getContrato().getCpv()) {
+                    this.items.add(new Item(cpv, ofer.getContrato()));
+                }
+            }else {
+
+                this.items.add(new Item( ofer.getContrato(),true));
+
+
             }
 
-            this.setDateSigned(new DateTime(ofer.getFechaFormalizacion()));
+            this.setDateSigned(ConvertDate.date2String(ofer.getFechaFormalizacion(),ConvertDate.ISO8601_FORMAT));
         }
         for (Anuncio anun:con.getAnuncios()) {
             this.documents.add(new Document(anun));
@@ -254,19 +276,19 @@ public class Contract {
         String status;
         switch(Integer.valueOf(ofer.getLote().getId().toString())){
 
-            case 1: status= "Pending";break;
+            case 1:
             case 5:
-            case 6:status=  "Active";break;
+            case 6:status= "active";break;
             case 4:
             case 7:
             case 8:
             case 10:
-            case 11:status=  "Cancelado";break;
-            default:status=  "Active";break;
+            case 11:status=  "cancelled";break;
+            default:status=  "active";break;
         }
         if(ofer.getGanador()){
             if(new Date().compareTo(sumarRestarDiasFecha(ofer.getFechaFormalizacion(),ofer.getContrato().getDuracion()==null?0:ofer.getContrato().getDuracion().intValue()))>0){
-                status= "Terminated";
+                status= "complete";
             }
         }
         return status;

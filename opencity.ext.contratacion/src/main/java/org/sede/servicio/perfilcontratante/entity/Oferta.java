@@ -111,8 +111,31 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
     private Boolean ahorroVisible;
     @Column(name="IVA")
     private BigDecimal iva;
+    @Transient
+    private String tituloContato;
+    @Transient
+    private BigDecimal idContrato;
+
+    //trasient id_contrato y title
     //endregion
     //region Setters & Getters
+
+
+    public String getTituloContato() {
+        return tituloContato;
+    }
+
+    public void setTituloContato(String tituloContato) {
+        this.tituloContato = tituloContato;
+    }
+
+    public BigDecimal getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(BigDecimal idContrato) {
+        this.idContrato = idContrato;
+    }
 
     public BigDecimal getIva() {
         return iva;

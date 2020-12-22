@@ -18,7 +18,7 @@ public class Tender {
         private String title;
         private String description;
         private String status;
-        private Organisation ProcuringEntity;
+        private Organisation procuringEntity;
         private List < Item > items = new ArrayList < Item > ();
         private Value value;
         private Value minValue;
@@ -79,35 +79,35 @@ public class Tender {
             case 0:
             case 1:
             case 2:
-                this.status="Active";
+                this.status="active";
                 break;
             case 10:
-                this.status="Cancelled";
+                this.status="cancelled";
                 break;
             case 3:
             case 5:
             case 6:
-                this.status="Completed";
+                this.status="complete";
                 break;
             case 7:
             case 4:
             case 8:
             case 11:
-                this.status="Unsuccessful";
+                this.status="unsuccessful";
                 break;
             default:
-                this.status="Withdrawn";
+                this.status="withdrawn";
                 break;
         }
 
     }
 
     public Organisation getProcuringEntity() {
-        return ProcuringEntity;
+        return procuringEntity;
     }
 
     public void setProcuringEntity(Organisation procuringEntity) {
-        ProcuringEntity = procuringEntity;
+        procuringEntity = procuringEntity;
     }
 
     public List<Item> getItems() {
@@ -162,8 +162,17 @@ public class Tender {
         return mainProcurementCategory;
     }
 
-    public void setMainProcurementCategory(String mainProcurementCategory) {
-        this.mainProcurementCategory = mainProcurementCategory;
+    public void setMainProcurementCategory(BigDecimal mainProcurementCategory) {
+        if(mainProcurementCategory.equals(new BigDecimal(2.0))||mainProcurementCategory.equals(new BigDecimal(8.0))) {
+            this.mainProcurementCategory = "services";
+        }
+        else if(mainProcurementCategory.equals(new BigDecimal(3.0))) {
+            this.mainProcurementCategory = "goods";
+        }else if(mainProcurementCategory.equals(new BigDecimal(1.0)) || mainProcurementCategory.equals(new BigDecimal(7.0))) {
+            this.mainProcurementCategory = "works";
+        }else {
+            this.mainProcurementCategory = "works";
+        }
     }
 
     public List<String> getAdditionalProcurementCategories() {
@@ -180,12 +189,12 @@ public class Tender {
 
     public void setAwardCriteria(Contrato con) {
         if(con.getProcedimiento().getId().intValue()==7){
-            this.awardCriteria="Quality only";
+            this.awardCriteria="qualityOnly";
         }else {
             if(!con.getCanon())
-                this.awardCriteria = "Price only";
+                this.awardCriteria = "priceOnly";
             else
-                this.awardCriteria="Rated criteria";
+                this.awardCriteria="ratedCriteria";
         }
     }
 
@@ -325,7 +334,7 @@ public class Tender {
     //endregion
     //region Constructors
     public Tender(BigDecimal id,String title) {
-        this.setId("ocds-"+id+"-tender");
+        this.setId(id+"-tender");
         this.setTitle(title);
         this.setDescription("Licitacion del contrato "+title);
     }
@@ -333,7 +342,7 @@ public class Tender {
         Boolean siEnquieres=false;
         List<Organisation> licitadores=new ArrayList<Organisation>();
         List<Milestone> milestones=new ArrayList<Milestone>();
-        this.setId("ocds-"+con.getId()+"-tender");
+        this.setId(con.getId()+"-tender");
         this.setTitle(con.getTitle());
         if(con.getObjeto()!=null) {
             this.setDescription(con.getObjeto());
@@ -344,10 +353,14 @@ public class Tender {
         if(con.getServicio()!=null) {
             this.setProcuringEntity(new Organisation(con.getServicio()));
         }
-        if(con.getCpv().size()>0) {
-            for (Cpv cpv:con.getCpv()) {
-                this.items.add(new Item(cpv,con));
+        if(con.getCpv().size()==1){
+            for(Cpv cpv:con.getCpv()) {
+                this.items.add(new Item(cpv, con));
             }
+        }else {
+
+            this.items.add(new Item( con,true));
+
 
         }
         this.setValue(new Value(con.getValorEstimado(),"EUR"));
@@ -356,20 +369,23 @@ public class Tender {
         else
             this.setMinValue(new Value(con.getImporteSinIVA().negate(),"EUR"));
         if(con.getProcedimiento()!=null){
-            this.setProcurementMethod(con.getProcedimiento().getNombre());
-        }else{
-            this.setProcurementMethod("");
+            switch(Integer.valueOf(con.getProcedimiento().getId().toString())){
+                case 1: case 5: case 8: case 10: case 12: this.setProcurementMethod("open");break;
+                case 13:  this.setProcurementMethod("selective");break;
+                case 2: case 7: case 3: this.setProcurementMethod("limited");break;
+                case 4:case 6: case 9: case 11: case 15:this.setProcurementMethod("direct");break;
+
+            }
+
         }
-        this.setProcurementMethodDetails("");
-        this.setProcurementMethodRationale("");
-        this.setMainProcurementCategory(con.getType().getTitle());
+       // this.setProcurementMethodDetails(con.);
+        //this.setProcurementMethodRationale("");
+        this.setMainProcurementCategory(con.getType().getId());
        // this.setAdditionalProcurementCategories(new ArrayList<String>());
         if(con.getProcedimiento()!=null){this.setAwardCriteria(con);}
-        this.setAwardCriteriaDetails("");
+        //this.setAwardCriteriaDetails("");
         this.setSubmissionMethod(new ArrayList<String>());
-        this.setSubmissionMethodDetails("");
-        this.setTenderPeriod(new Period(con.getPubDate(),con.getFechaPresentacion(),Integer.valueOf(diferenciaEnDias(con.getFechaPresentacion(),con.getPubDate()))));
-        this.setEnquiryPeriod(new Period(con.getPubDate(),con.getFechaPresentacion(),Integer.valueOf(diferenciaEnDias(con.getFechaPresentacion(),con.getPubDate()))));
+        //this.setSubmissionMethodDetails("");
         for(Anuncio item:con.getAnuncios()) {
             if(!siEnquieres)
                 if (item.getType().getId().equals(BigDecimal.valueOf(31.0)) || item.getType().getId().equals(BigDecimal.valueOf(32.0))||item.getType().getId().equals(BigDecimal.valueOf(32.0))) {
@@ -379,13 +395,26 @@ public class Tender {
                     this.hasEnquiries=false;
                 }
         }
-        this.setEligibilityCriteria("");
-        this.setAwardPeriod(new Period(con.getFechaPresentacion()));
-        if(con.getFechaAdjudicacion()!=null) {
-            this.setContractPeriod(new Period(con.getFechaAdjudicacion(), fechaFinContrato(con)));
+        //this.setEligibilityCriteria("");
+        if(con.getFechaPresentacion()!=null) {
+            this.setAwardPeriod(new Period(con.getFechaPresentacion(),con.getFechaPresentacion(),0));
+            this.setTenderPeriod(new Period(con.getPubDate(), con.getFechaPresentacion(), Integer.valueOf(diferenciaEnDias(con.getFechaPresentacion(), con.getPubDate()))));
+            this.setEnquiryPeriod(new Period(con.getPubDate(), con.getFechaPresentacion(), Integer.valueOf(diferenciaEnDias(con.getFechaPresentacion(), con.getPubDate()))));
+        }
+        if(con.getFechaAdjudicacion()!=null && con.getFechaPresentacion()!=null) {
+            if(con.getClausulaProrroga()) {
+                this.setContractPeriod(new Period(con.getFechaAdjudicacion(), fechaFinContrato(con),con.getPeriodoProrroga()));
+
+            }else{
+                this.setContractPeriod(new Period(con.getFechaAdjudicacion(), fechaFinContrato(con),0));
+            }
         }else{
             for (Oferta ofer:con.getOfertas()) {
-                this.setContractPeriod(new Period(ofer.getFechaFormalizacion(), fechaFinContrato(con)));
+                if(ofer.getFechaFormalizacion()!=null) {
+                    this.setContractPeriod(new Period(ofer.getFechaFormalizacion(), fechaFinContrato(con), 0));
+                }else{
+                    this.setContractPeriod(new Period(ofer.getFechaAdjudicacion(), fechaFinContrato(con), 0));
+                }
             }
 
         }
@@ -425,7 +454,7 @@ public class Tender {
     }
 
     private Date fechaFinContrato(Contrato con) {
-        if (con.getProcedimiento().getId().equals(new BigDecimal("10"))) {
+        if (con.getProcedimiento().getId().equals(new BigDecimal("10")) || con.getProcedimiento().getId().equals(new BigDecimal("15") )) {
             for (Oferta item : con.getOfertas()) {
                 if (item.getGanador()) {
                     Calendar calendar = Calendar.getInstance();
@@ -458,7 +487,7 @@ public class Tender {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
-                ", ProcuringEntity=" + ProcuringEntity +
+                ", procuringEntity=" + procuringEntity +
                 ", items=" + items +
                 ", lots=" + lots +
                 ", value=" + value +

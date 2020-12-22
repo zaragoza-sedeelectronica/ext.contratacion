@@ -17,7 +17,7 @@ public class Document {
     private String documentType;
     private String title;
     private String description;
-    private String uri;
+    private String url;
     private DateTime datePublished;
     private DateTime dateModified;
     private String format;
@@ -58,12 +58,12 @@ public class Document {
         this.description = description;
     }
 
-    public String getUri() {
-        return uri;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public DateTime getDatePublished() {
@@ -120,9 +120,11 @@ public class Document {
         this.id=anun.getId()+"";
         this.title=anun.getTitle();
         if(anun.getSello()!=null) {
-            this.setUri(anun.getSelladoTiempo());
+            this.setUrl("https://www.zaragoza.es/"+anun.getSelladoTiempo());
         }else{
-            this.setUri(anun.getUri());
+            if((anun.getUri()!=null)) {
+                this.setUrl("https://www.zaragoza.es/" + anun.getUri());
+            }
         }
         switch(Integer.valueOf(anun.getType().getId().toString())){
             case 3:
@@ -131,7 +133,7 @@ public class Document {
             case 8:this.format="PDF";break;
             default:this.format="HTML";break;
         }
-        this.language="ES";
+        this.language="es";
 
     }
     //endregion
@@ -144,7 +146,7 @@ public class Document {
                 ", documentType='" + documentType + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", uri='" + uri + '\'' +
+                ", uri='" + url + '\'' +
                 ", datePublished=" + datePublished +
                 ", dateModified=" + dateModified +
                 ", format='" + format + '\'' +

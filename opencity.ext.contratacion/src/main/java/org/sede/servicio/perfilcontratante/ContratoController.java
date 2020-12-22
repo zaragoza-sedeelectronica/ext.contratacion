@@ -7,6 +7,7 @@ import com.googlecode.genericdao.search.SearchResult;
 import com.googlecode.genericdao.search.Sort;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.cxf.jaxrs.ext.search.SearchParseException;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.SearchFiql;
 import org.sede.core.rest.Mensaje;
@@ -92,6 +93,8 @@ public class ContratoController {
 	private IndicadorAhorroServicioGenericDAO daoIndicadorAhorroServicio;
 	@Autowired
 	private IndicadorTipoGenericDAO daoIndicadorTipo;
+	@Autowired
+	private IndicadorAdjudicadorGenericDAO daoIndicadorAdjudicador;
 	@Autowired
 	private IndicadorTipoServicioGenericDAO daoIndicadorTipoServicio;
 	//endregion
@@ -333,7 +336,7 @@ public class ContratoController {
 	@OpenData
 	@Cache(Cache.DURACION_30MIN)
 	@ResponseClass(Licitador.class)
-	@RequestMapping(value = "/licitador/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+	@RequestMapping(value = "/licitador/{id}", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML,  MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiDetalleLicitador(@PathVariable(value="id") BigDecimal id, @Fiql SearchFiql search) throws SearchParseException {
 
 		Empresa registro = daoEmpresa.find(id);
@@ -345,6 +348,8 @@ public class ContratoController {
 			licitador.setIdEmpresa(registro.getIdEmpresa());
 			licitador.setNombre(registro.getNombre());
 			licitador.setLibreBorme(registro.getLibreBorme());
+			licitador.setNif(registro.getNif());
+			licitador.setOpenCorporate(registro.getOpenCorporateUrl());
 			search.setExcludeFields("year");
 			search.setSort("fechaContrato desc");
 			search.setRows(-1);
@@ -370,7 +375,7 @@ public class ContratoController {
 					}
 				}
 			}
-			if(!tieneUte) {
+			if(tieneUte) {
 				licitador.setUtes((SearchResult<Empresa>) apiUteEmpresaList2(id).getBody());
 			}
 			Double  totalSinIva=0.0;
@@ -426,10 +431,40 @@ public class ContratoController {
 		if (search.getSearchExpression().isEmpty()) {
 			search.addCondition("status.id==0");
 		}
+		boolean formalizado=false;
+		if(search.getSearchExpression().contains("status.id==6") && !search.getSearchExpression().contains("procedimiento.id")) {
+			String[] filtros = search.getSearchExpression().split(";");
+			for (String filtro : filtros) {
+				if ("status.id==6".equals(filtro)) {
+					formalizado = true;
+				}
+			}
+		}
 		Search busqueda = search.getConditions(Contrato.class);
+		busqueda.addSort("fechaContrato", true);
+
 		if(idEmpresa!=null){
 			busqueda.addFilterEqual("ofertas.empresa.idEmpresa",idEmpresa);
 		}
+		if(formalizado) {
+			for(Filter filtro:busqueda.getFilters()) {
+				if(filtro.getValue().getClass().getName().equals("java.util.ArrayList"))
+					for (Filter filtro2:(ArrayList<Filter>)filtro.getValue()){
+						if ("status".equals(filtro2.getProperty())){
+
+							filtro2.setProperty("status");
+							ArrayList<Filter> filtros=new ArrayList<Filter>(0);
+									filtros.add(Filter.equal("status.id", 6));
+									filtros.add(Filter.and(Filter.equal("procedimiento.id", 10), Filter.equal("status.id", 5)));
+							filtro2.setValue(filtros);
+							filtro2.setOperator(101);
+						}
+
+					}
+			}
+
+		}
+
 		
 		SearchResult<Object> resultado=dao.searchAndCount(busqueda);
  			return ResponseEntity.ok(resultado);
@@ -556,6 +591,7 @@ public class ContratoController {
 			indicador.setIndicadorProcedimiento((SearchResult<IndicadoresProcedimiento>) resultadoIndicadoresProcedimiento.getBody() );
 			listadoContratosCanon =dao.searchAndCount(searchContratosCanon);
 			listadoContratos =  dao.searchAndCount(searchContratos);
+
 		}
 		indicador.setContratos(listadoContratos);
 		for (Contrato contrato:listadoContratosCanon.getResult()) {
@@ -617,6 +653,8 @@ public class ContratoController {
 		indicador.setNumEmpresaCanon(empresasCanon.size());
 		indicador.setCuantia(BigDecimal.valueOf(cuantia));
 		indicador.setCuantiaCanon(BigDecimal.valueOf(cuantiaCanon));
+		ResponseEntity<?> resultadoIndicadoresAjudicatarios=apiIndicadoreIndicadorAdjudicatario(search,id,year);
+		indicador.setIndicadorAdjudicatarios((SearchResult<IndicadorAjudicatario>) resultadoIndicadoresAjudicatarios.getBody());
 			return ResponseEntity.ok(indicador);
 	}
 	@HiddenForSwagger
@@ -666,7 +704,12 @@ public class ContratoController {
 			busqueda.addFilterEqual("id.servicio",id);
 			SearchResult<ContratosPorAnyoServicioGestor> res = daoContratoAnyoServicio.searchAndCount(busqueda);
 			servicio.setDatos(res.getResult());
-			if(!StringUtils.isEmpty(year))servicio.setYear(year);
+			if(!StringUtils.isEmpty(year)){
+				servicio.setYear(year);
+			}else{
+				servicio.setYear(anyo);
+			}
+
 			return ResponseEntity.ok(servicio);
 		}
 	}
@@ -767,7 +810,13 @@ public class ContratoController {
 			search.setSort("fechaAdjudicacion desc");
 
 		}
-		return ResponseEntity.ok(daoOferta.searchAndCount(search.getConditions(Oferta.class)));
+		SearchResult<Oferta> resultado=daoOferta.searchAndCount(search.getConditions(Oferta.class));
+		for (Oferta ofer:resultado.getResult()) {
+			ofer.setIdContrato(ofer.getContrato().getId());
+			ofer.setTituloContato(ofer.getContrato().getTitle());
+
+		}
+		return ResponseEntity.ok(resultado);
 	}
 	@Description("Listado de contratos por servicio gestor y anyo")
 	@OpenData
@@ -858,6 +907,7 @@ public class ContratoController {
 	@ResponseClass(value = Empresa.class)
 	@RequestMapping(value="/ute",method = {RequestMethod.GET, RequestMethod.HEAD}, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
 	public @ResponseBody ResponseEntity<?> apiUteEmpresaList() {
+
 		return ResponseEntity.ok(daoEmpresa.findEmpresaUte());
 	}
 	@HiddenForSwagger
@@ -1098,6 +1148,24 @@ public class ContratoController {
 		SearchResult<IndicadorLicitadorServicio> indicadores=daoIndicadorAhorro.searchAndCount(busqueda);
 		return ResponseEntity.ok(indicadores);
 	}
+	@Description("Indicadores Ahorro por Entidad")
+	@OpenData
+	@Cache(Cache.DURACION_30MIN)
+	@ResponseClass(value = IndicadorAjudicatario.class)
+	@RequestMapping(value="/indicador/indicadorAdjudicatario",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+	public @ResponseBody ResponseEntity<?> apiIndicadoreIndicadorAdjudicatario(@Fiql SearchFiql search,@RequestParam(name="idPortal") BigDecimal idPortal,@RequestParam(name="anyo")String anyo) throws SearchParseException {
+		search.setRows(-1);
+		if("".equals(anyo)){
+			anyo = "" + Calendar.getInstance().get(Calendar.YEAR);
+		}
+		EntidadContratante registro = daoEntidadContratante.find(idPortal);
+		if (registro == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Mensaje(HttpStatus.NOT_FOUND.value(), messageSource.getMessage("generic.notfound", null, LocaleContextHolder.getLocale())));
+		}
+		Search busqueda=search.getConditions(IndicadorAjudicatario.class);
+		SearchResult<IndicadorAjudicatario> indicadores=daoIndicadorAdjudicador.searchAndCount(busqueda);
+		return ResponseEntity.ok(indicadores);
+	}
 	//@Description("Indicadores Ahorro por Servicio Gestor")
 	@HiddenForSwagger
 	@OpenData
@@ -1264,7 +1332,7 @@ public class ContratoController {
 		}
 		return dao.searchAndCount(busqueda);
 	}
-	//endregion
+
 	@Permisos(Permisos.DOC)
 	@NoCache
 	@ResponseClass(Mensaje.class)
@@ -1273,4 +1341,86 @@ public class ContratoController {
 		return dao.updateFromVirtuoso();
 
 	}
+	@OpenData
+	@Permisos(Permisos.DOC)
+	@NoCache
+	@ResponseClass(byte[].class)
+	@RequestMapping(value = "/licitador/xls/{id}", method = RequestMethod.GET, produces = { MimeTypes.XLS })
+	public @ResponseBody ResponseEntity<?> apiDetalleLicitadorXls(@PathVariable(value="id") BigDecimal id,@Fiql SearchFiql search )throws ParseException, SearchParseException  {
+
+
+		Licitador resultado=(Licitador) apiDetalleLicitador(id,search).getBody();
+		HSSFWorkbook workbook = dao.generarExcelLicitador(resultado);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.parseMediaType(MimeTypes.XLS));
+		headers.set("Content-Disposition",
+				"inline; filename=\"licitador"+resultado.getNombre()+".xls\"");
+		return new ResponseEntity<byte[]>(workbook.getBytes(), headers, HttpStatus.OK);
+	}
+	@OpenData
+	@HiddenForSwagger
+	@NoCache
+	@ResponseClass(byte[].class)
+	@RequestMapping(value = "/busqueda", method = RequestMethod.GET, produces = { MimeTypes.XLS })
+	@Transactional(Esquema.TMPARTICIPACION)
+	public @ResponseBody ResponseEntity<?> apiTribunalCuentas(@Fiql SearchFiql search,@RequestParam(name="cpv",required = false)BigDecimal cpv,@RequestParam(name="licitador",required = false)BigDecimal idEmpresa) throws ParseException, SearchParseException {
+
+		SearchResult<Contrato> resultado=(SearchResult<Contrato>) apiListadosContratos(search,idEmpresa).getBody();
+		HSSFWorkbook workbook = dao.generarExcelTribunalCuentas(resultado,true);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.parseMediaType(MimeTypes.XLS));
+		headers.set("Content-Disposition",
+				"inline; filename=\"busquedaAvanzada.xls\"");
+		return new ResponseEntity<byte[]>(workbook.getBytes(), headers, HttpStatus.OK);
+	}
+	@OpenData
+	@HiddenForSwagger
+	@NoCache
+	@ResponseClass(byte[].class)
+	@RequestMapping(value = "/servicio-gestor/xls/{id}", method = RequestMethod.GET, produces = { MimeTypes.XLS })
+	@Transactional(Esquema.TMPARTICIPACION)
+	public @ResponseBody ResponseEntity<?> apidetallelServicioGestorXls(@PathVariable(value="id") BigDecimal id,@Fiql SearchFiql search,@RequestParam(name="year", defaultValue ="", required = false) String year )throws ParseException, SearchParseException  {
+
+		ServicioGestor resultado=(ServicioGestor) apiDetalleServicioGestor(id,search,year).getBody();
+		HSSFWorkbook workbook = dao.generarExcelDatosAbiertos(resultado);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.parseMediaType(MimeTypes.XLS));
+		headers.set("Content-Disposition",
+				"inline; filename=\"Servicio Gestor "+resultado.getTitle()+".xls\"");
+		return new ResponseEntity<byte[]>(workbook.getBytes(), headers, HttpStatus.OK);
+	}
+	@OpenData
+	@HiddenForSwagger
+	@NoCache
+	@ResponseClass(byte[].class)
+	@RequestMapping(value = "/entidad/xls/{id}", method = RequestMethod.GET, produces = { MimeTypes.XLS })
+	@Transactional(Esquema.TMPARTICIPACION)
+	public @ResponseBody ResponseEntity<?> apidetalleEntidadXls(@PathVariable(value="id") BigDecimal id,@Fiql SearchFiql search,@RequestParam(name="year", defaultValue ="", required = false) String year,@RequestParam( name="status.id",defaultValue = "0")BigDecimal estado)throws ParseException, SearchParseException  {
+
+		EntidadContratante resultado=((SearchResult<EntidadContratante>)apiDetalleEntidades(search,id,year,estado).getBody()).getResult().get(0);
+		HSSFWorkbook workbook = dao.generarExcelDatosAbiertos(resultado);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.parseMediaType(MimeTypes.XLS));
+		headers.set("Content-Disposition",
+				"inline; filename=\"Entidad Contratante "+resultado.getTitle()+".xls\"");
+		return new ResponseEntity<byte[]>(workbook.getBytes(), headers, HttpStatus.OK);
+	}
+	@OpenData
+	@HiddenForSwagger
+	@NoCache
+	@ResponseClass(byte[].class)
+	@RequestMapping(value = "/organismo-contratante/xls/{id}", method = RequestMethod.GET, produces = { MimeTypes.XLS })
+	@Transactional(Esquema.TMPARTICIPACION)
+	public @ResponseBody ResponseEntity<?> apidetalleOrganismoXls(@PathVariable(value="id") BigDecimal id,@Fiql SearchFiql search,@RequestParam(name="year", defaultValue ="", required = false) String year )throws ParseException, SearchParseException  {
+
+		OrganismoContratante resultado=(OrganismoContratante) apiDetalleOrganismoContratante(id,search,year).getBody();
+		HSSFWorkbook workbook = dao.generarExcelDatosAbiertos(resultado);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.parseMediaType(MimeTypes.XLS));
+		headers.set("Content-Disposition",
+				"inline; filename=\"Organismo Contratante "+resultado.getTitle()+".xls\"");
+		return new ResponseEntity<byte[]>(workbook.getBytes(), headers, HttpStatus.OK);
+	}
+	//endregion
 }

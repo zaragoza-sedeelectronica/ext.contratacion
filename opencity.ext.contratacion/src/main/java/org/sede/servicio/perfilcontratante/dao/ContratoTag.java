@@ -19,7 +19,7 @@ public class ContratoTag  extends AbstractElementTagProcessor {
     
     public ContratoTag() {
         super(
-            TemplateMode.XML, // This processor will apply only to XML mode
+            TemplateMode.HTML, // This processor will apply only to XML mode
             "sede",     // Prefix to be applied to name for matching
             TAG_NAME,          // Tag name: match specifically this tag
             true,              // Apply dialect prefix to tag name

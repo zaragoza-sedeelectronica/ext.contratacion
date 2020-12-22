@@ -1,12 +1,14 @@
 package org.sede.servicio.perfilcontratante.ocds;
 
 import org.sede.core.anotaciones.ResultsOnly;
+import org.sede.core.utils.ConvertDate;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Oferta;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @XmlRootElement(name = "Contracting-process")
@@ -14,49 +16,68 @@ import java.util.List;
 public class ContractingProcess {
 
 	//region Atributes
+	private String ocid;
 	private String id;
-	private DateTime datetime;
-	private List<Tag> tag;
-	private String initationtype;
+	private String date;
+	private List<String> tag;
+	private String initiationType;
 	private List<Organisation> parties =new ArrayList<Organisation>();
 	private Organisation buyer;
-	private Planning planing;
+	private Planning planning;
 	private Tender tender;
 	private List<Award> awards=new ArrayList<Award>();
+	private List<Contract> contracts=new ArrayList<Contract>();
 	private String language;
 	private List<RelatedProcess> relatedprocesses=new ArrayList<RelatedProcess>();
 	//endregion
 	//region Getters & Setters
-	public String getId() {
-		return id;
+
+	public List<Contract> getContracts() {
+		return contracts;
+	}
+
+	public void setContracts(List<Contract> contracts) {
+		this.contracts = contracts;
+	}
+
+	public String getOcid() {
+		return ocid;
 	}
 
 	public void setId(String id) {
 		this.id = id;
 	}
 
-	public DateTime getDatetime() {
-		return datetime;
+	public String getId() {
+		return id;
 	}
 
-	public void setDatetime(DateTime datetime) {
-		this.datetime = datetime;
+	public void setOcid(String ocid) {
+		this.ocid = ocid;
 	}
 
-	public List<Tag> getTag() {
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String datetime) {
+		this.date = datetime;
+	}
+
+	public List<String>  getTag() {
 		return tag;
 	}
 
-	public void setTag(List<Tag> tag) {
+	public void setTag(List<String>  tag) {
 		this.tag = tag;
 	}
 
-	public String getInitationtype() {
-		return initationtype;
+	public String getInitiationType() {
+		return initiationType;
 	}
 
-	public void setInitationtype(String initationtype) {
-		this.initationtype = initationtype;
+	public void setInitiationType(String initiationType) {
+		this.initiationType = initiationType;
 	}
 
 	public List<Organisation> getParties() {
@@ -76,11 +97,11 @@ public class ContractingProcess {
 	}
 
 	public Planning getPlaning() {
-		return planing;
+		return planning;
 	}
 
 	public void setPlaning(Planning planing) {
-		this.planing = planing;
+		this.planning = planing;
 	}
 
 	public Tender getTender() {
@@ -117,24 +138,28 @@ public class ContractingProcess {
 
 	//endregion
 	//region Contructors
-	public ContractingProcess(BigDecimal id) {
-		this.setId("ocds-" + id + "-ContractingProcess");
+	public ContractingProcess(BigDecimal id,Contrato con) {
+		this.setOcid("ocds-1xraxc-" + id + "-ContractingProcess"+"-"+ ConvertDate.date2String(con.getCreationDate(),ConvertDate.ISO8601_FORMAT));
+		this.setId(id+ "-ContractingProcess");
 		
 	}
-	public  ContractingProcess(Contrato con){
-		this.setId("ocds-" + con.getId() + "-ContractingProcess");
+	public  ContractingProcess(Contrato con,int status){
+		this.setOcid("ocds-1xraxc-" + con.getId() + "-ContractingProcess");
+		this.setId(con.getId() + "-ContractingProcess"+"-"+ ConvertDate.date2String(con.getCreationDate(),ConvertDate.ISO8601_FORMAT));
 		List<Tag> relaseTag=new ArrayList<Tag>();
-		List<Award> awards=new ArrayList<Award>();
+
 		List<RelatedProcess> relatedProcess=new ArrayList<RelatedProcess>();
+		List<String> tag=new ArrayList<String>(0);
 		switch(con.getStatus().getId()){
-			case 0: relaseTag.add(new Tag("Licitación"));this.setTag(relaseTag);break;
-			case 1: relaseTag.add(new Tag("Pendiente adjudicar"));this.setTag(relaseTag);break;
-			case 5:relaseTag.add(new Tag("Adjudicado"));this.setTag(relaseTag);break;
-			case 6:relaseTag.add(new Tag("Formalizado"));this.setTag(relaseTag);break;
-			case 10: relaseTag.add(new Tag("Cancelado"));this.setTag(relaseTag);break;
+			case 0:  tag.add("tender");this.setTag(tag);break;
+			case 1: tag.add("tender");this.setTag(tag);break;
+			case 5:tag.add("award");this.setTag(tag);break;
+			case 6:tag.add("contract");this.setTag(tag);break;
+			case 10:tag.add("tenderCancellation");this.setTag(tag);break;
 		}
-		this.setDatetime(new DateTime(con.getPubDate()));
-		this.setInitationtype("Tender");
+
+		this.setDate(ConvertDate.date2String(con.getPubDate(),ConvertDate.ISO8601_FORMAT));
+		this.setInitiationType("tender");
 
 		List<Organisation> listaOrganizaciones=new ArrayList<Organisation>();
 		listaOrganizaciones.add(new Organisation(con.getEntity()));
@@ -144,17 +169,33 @@ public class ContractingProcess {
 			listaOrganizaciones.add(new Organisation(con.getServicio()));
 		this.setParties(listaOrganizaciones);
 		if(con.getServicio()!=null)this.setBuyer(new Organisation(con.getServicio()));
-		this.setPlaning(new Planning());
-		this.setTender(new Tender(con));
-		if(con.getOfertas().size()>0){
-			for (Oferta ofer:con.getOfertas()) {
-				if(ofer.getGanador()){
-					awards.add(new Award(ofer));
+		//this.setPlaning(new Planning());
+
+			this.setTender(new Tender(con));
+
+		if(status==2){
+			List<Award> awards=new ArrayList<Award>();
+			if(con.getOfertas()!=null) {
+				if (con.getOfertas().size() > 0) {
+					for (Oferta ofer : con.getOfertas()) {
+						if (ofer.getGanador()) {
+							awards.add(new Award(ofer));
+						}
+						else{
+							this.getParties().add(new Organisation(ofer.getEmpresa(),ofer.getContrato()));
+						}
+					}
+					this.setAwards(awards);
 				}
 			}
-			this.setAwards(awards);
 		}
-		this.setLanguage("ES");
+		if(status==3 || (con.getProcedimiento().getId().toString().equals("10") && con.getStatus().getId()==5)){
+			List<Contract> contrat=new ArrayList<Contract>();
+			contrat.add(new Contract(con));
+			this.setContracts(contrat);
+
+		}
+		this.setLanguage("es");
 		if(con.getPadre()!=null) {
 			relatedProcess.add(new RelatedProcess(con.getPadre().getId(), con.getPadre().getTitle()));
 		}
