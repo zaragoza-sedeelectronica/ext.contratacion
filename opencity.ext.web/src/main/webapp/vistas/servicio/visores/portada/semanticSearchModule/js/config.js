@@ -1,1 +1,0 @@
-var secureProtocol=(window.location.protocol=="https:");var DEPLOYMENT_LOCATION="semanticSearchModule/";var SEMANTIC_MAPPINGS_SERVICE_URL="//idezar.zaragoza.es/api/recurso/urbanismo-infraestructuras/mapeo-calle";var SEMANTIC_MAPPINGS_SERVICE_CLIENT_ID="idezar";var SEMANTIC_MAPPINGS_SERVICE_KEY="";
