@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <sede:meta title="Contratación Pública" keywords="sede,web,perfil,contratos,ayuntamiento,zaragoza,contratación" />  
+    <sede:meta title="Contratación Pública" last-modified="2020-12-15" description="Sercivio de visualización de contratación pública del Ayuntamiento de zaragoza" keywords="sede,web,pública,contratos,ayuntamiento,zaragoza,contratación"/>
 </head>
 <body>
   <sede:content>
@@ -14,28 +14,21 @@
     </div>        
        <div  th:info="*{visible=='S'}" class="row">
         <div class="col-md-12">
-          <p th:if="*{contratoMenor == 'S'}"><span class="label label-info">Contrato Menor</span></p>
+
+          <p th:if="*{procedimiento.id == 10}"><span class="label label-info">Contrato Menor</span></p>
           <div class="card card-description">
-            <th:block th:if="*{contratoMenor == 'S' and (status.id==3 or status.id==5)}">
               <div class="right-ribbon margin-b05em">
-                  <h3 class="nomargin text-info">
-                    <span  class="fa fa-trophy " title="Apoyos Recibidos" aria-hidden="true">
-                      <span th:text="*{status.title}">Adjudicación definitiva</span>
+                  <h3 class="nomargin text-info" >
+                    <span  th:if="*{status.id == 3 or status.id == 5 or status.id == 6}" class="fa fa-trophy " title="Apoyos Recibidos" aria-hidden="true"></span>
+                      <strong><span class="" th:text="*{status.title}">Adjudicación definitiva</span></strong>
                        <span th:text="*{status.title}" class="sr-only">Adjudicación definitiva</span>
-                    </span>
+
+                     <p class="text-info" th:if="*{status.id==0}" th:text="'Fecha de Presentacion: '+*{#dates.format(fechaPresentacion,'dd-MM-yyyy HH:mm')}"></p>
+
                   </h3>
               </div>
-            </th:block>
-            <th:block th:if="*{contratoMenor == false}">
-              <div th:if="*{status.id == 3 OR status.id == 6 }" class="right-ribbon margin-b05em">
-                  <h3 class="nomargin text-info">
-                    <span  class="fa fa-trophy " title="Apoyos Recibidos" aria-hidden="true">
-                      <span th:text="*{status.title}"></span>
-                      <span th:text="*{status.title}" class="sr-only"></span>  
-                    </span>
-                  </h3>
-              </div>
-            </th:block>                  
+
+
             <ul class="list-unstyled">
                 <li th:if="*{type}">
                   <strong>Tipo de contrato: </strong><span th:text="*{type.title}"/>
@@ -43,17 +36,17 @@
                 <li th:if="*{entity !=null}">
                     <strong>Entidad Contratante: </strong>
                     <span th:each="c:*{entity}">
-                        <a th:href="'/opencityext/servicio/contratacion-publica/entidad/'+${c.id}" th:text="${c.title}  "></a>
+                        <a th:href="'/sede/servicio/contratacion-publica/entidad/'+${c.id}" th:text="${c.title}  "></a>
                     </span>
                 </li>
                 <li th:if="*{organoContratante !=null}">
                     <strong>Organismo Contratante:</strong>
                     <span  th:each="c:*{organoContratante}" >
-                        <a th:href="'/opencityext/servicio/contratacion-publica/organismo-contratante/'+${c.id}" th:text="${c.title}  "></a>
+                        <a th:href="'/sede/servicio/contratacion-publica/organismo-contratante/'+${c.id}" th:text="${c.title}  "></a>
                     </span>
                 </li>
-                <li th:unless="*{servicio!=null}"><strong>Servicio Gestor: </strong><!--<a th:if="*{servicioGestor != null}" th:href="'/opencityext/servicio/contratacion-publica/servicio-gestor/'+*{servicioGestor}" th:text="${servicioGestor.title}"></a>-->
-                    <a  th:href="'/opencityext/servicio/contratacion-publica/entidad/'+*{entity.id}" th:text="*{entity.title}"></a>
+                <li th:if="*{entity.id==1}"><strong>Servicio Gestor: </strong><a th:if="*{servicio != null}" th:href="'/sede/servicio/contratacion-publica/servicio-gestor/'+*{servicio.id}" th:text="*{servicio.title}"></a>
+                    <!--<a  th:href="'/sede/servicio/contratacion-publica/entidad/'+*{entity.id}" th:text="*{entity.title}"></a>-->
                 </li>
                 <li th:if="*{fechaContrato}"><strong>Año: </strong><span th:text="*{#dates.format(fechaContrato,'yyyy')}"/></li>
                 <li th:unless="*{fechaContrato}"><strong>Año: </strong><span th:text="*{#dates.format(creationDate,'yyyy')}"/></li>
@@ -73,7 +66,7 @@
                 <li th:if="*{lotes.size()>0}">
                     <strong>Lotes</strong>
                     <ul th:each="lote : *{lotes}">
-                        <li>                           
+                        <li>
                             <ul>
 								<li th:if="${lote.description!=null}"> <span th:text="${lote.description}"></span></li>
                                <li><b>Importe de licitación(sin I.V.A.):</b> <span th:if="${lote.importeLicitacionSinIVA!=null}" th:text="${#numbers.formatDecimal(lote.importeLicitacionSinIVA,3,'POINT',2,'COMMA')}+ ' €'"></span></li>
@@ -84,8 +77,8 @@
                     </ul>
                 </li>
             </ul>
-            <div class="divCpvs" th:if="*{#arrays.isEmpty(cpv)==false}">
-                <div class="panel-heading" role="tab" id="relacionados-title">
+            <div class="divCpvs" th:if="*{#arrays.isEmpty(cpv)==false }">
+                <div class="panel-heading" role="tab" id="relacionados-title"  th:if="${#arrays.length(contratosCpv) gt 1}">
                     <h3 class="panel-title">
                          <a role="button" data-toggle="collapse" href="#relacionados" aria-expanded="true" aria-controls="relacionados" class="btn-block">
                             <span class="far fa-file-alt"></span> Contratos Relacionados
@@ -93,11 +86,11 @@
                     </h3>
                 </div>
                 <div class="relacionados collapse in" id="relacionados">
-                    <div th:if="*{cpv}">
+                    <div th:if="${#arrays.length(contratosCpv) gt 1}">
                         <h3>Contratos con mismo CPV:</h3>
                         <ul>
                         	<th:block th:each="contratos:${contratosCpv}">
-                                <li th:if="${contratos.id} != *{id}"><a th:text="${contratos.title}" th:href="'/opencityext/servicio/contratacion-publica/' + ${contratos.id}"></a></li>
+                                <li th:if="${contratos.id} != *{id}"><a th:text="${contratos.title}" th:href="'/sede/servicio/contratacion-publica/' + ${contratos.id}"></a></li>
                             </th:block>
                         </ul>
                     </div>
@@ -107,10 +100,10 @@
         <p class="nomargin destacado text-right">
                 Descargar: <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
         </p>
-        <ul class="list-inline pull-right">                        
-            <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/contrato/' + id  + '.json'}">JSON</a> | </li>
-            <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/contrato/' + id  + '.xml'}">XML</a> | </li>
-            <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/contrato/' + id  + '.csv'}">CSV</a></li>
+        <ul class="list-inline pull-right">
+            <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/contrato/' + id  + '.json'}">JSON</a> | </li>
+            <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/contrato/' + id  + '.xml'}">XML</a> | </li>
+            <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/contrato/' + id  + '.csv'}">CSV</a></li>
         </ul>
     </div>
         <div class="col-md-12">
@@ -123,8 +116,9 @@
                 </div>
                 <div class="timeline-body">
                   <th:block th:each="a:*{Anuncios}">
+
                   <div th:if="${a.type.id !=10 and a.type.id !=11 and a.type.id !=14}">
-                    <p th:if="${a.type.id==2 or a.type.id==5 or a.type.id==6 or a.type.id==1 }">
+                    <p th:if="${a.type.id==2 or a.type.id==5 or a.type.id==6 or a.type.id==1 or a.type.id==20 }">
                         <small class="text-muted"><i  class="glyphicon glyphicon-time" title="Fecha publicación"></i><span class="padding-l05em" th:text="${#dates.format(a.creationDate,'dd/MM/yyyy')}"></span></small>
                       <a th:text="${a.title}" th:href="${a.selladoTiempo}"></a>
                     </p>
@@ -132,7 +126,7 @@
                         <small class="text-muted"><i  class="glyphicon glyphicon-time" title="Fecha publicación"></i><span class="padding-l05em" th:text="${#dates.format(a.creationDate,'dd/MM/yyyy')}"></span></small>
                         <a th:text="${a.title}" th:href="${a.uri}"></a>
                     </p>
-                    <p th:if="${a.type.id==9 or a.type.id==12 or a.type.id==19}">
+                    <p th:if="${a.type.id==9 or a.type.id==12 or a.type.id==19 or a.type.id==21 or a.type.id gt 27}">
                      <small class="text-muted"><i  class="glyphicon glyphicon-time" title="Fecha publicación"></i><span class="padding-l05em" th:text="${#dates.format(a.creationDate,'dd/MM/yyyy')}"></span></small>
                      <a th:text="${a.title}" th:href="${'anuncio/'+a.id}"></a>
                     </p>
@@ -146,25 +140,41 @@
               <div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <h4 class="timeline-title">Adjudicación - Formalización</h4>                 
-                  <th:block th:each="c:*{Ofertas}">                  
-                  <p th:if="${c.ganador==true}">
-                     </p>
-                </th:block>
+                  <h4 class="timeline-title">Adjudicación - Formalización</h4>
                 </div>
-                <div class="timeline-body">
+                  <div class="timeline-body" th:if="*{!#arrays.isEmpty(lotes)}">
+                       <div th:each="lot:*{lotes}">
+                           <p th:if="${lot}"><strong th:text="${lot.description}"></strong></p>
+                      <ul class="container-fluid">
+                          <li th:each="ofer:*{ofertas}" th:if="${ofer.lote.id ==lot.id}">
+                              <th:block th:if="${ofer.ganador==true}" >
+                                  <p><i class="glyphicon glyphicon-time"></i>
+                                      <small class="text-muted" th:if="${ofer.fechaAdjudicacion!=null }" th:text="${#dates.format(ofer.fechaAdjudicacion,'dd/MM/yyyy')}"></small>
+                            <small class="text-muted" th:if="${ofer.fechaFormalizacion!= null }" th:text="'-'+${#dates.format(ofer.fechaFormalizacion,'dd/MM/yyyy')}"></small></p>
+                                      <span class="far fa-thumbs-up" title="Adjudicatario"></span>
+                              </th:block>
+                              <th:block th:each="e : ${ofer.Empresa}">
+                                  <a th:href="'/sede/servicio/contratacion-publica/licitador/'+${e.idEmpresa}"><span th:text="${e.nombre}"> Luis Daniel Ballesteros Jordán</span></a>
+                              </th:block>
+                              <p th:if="${ofer.importeSinIVA}"><strong>Importe: <span class="color-2" th:text="${#numbers.formatDecimal(ofer.importeSinIVA ,3, 'POINT', 2, 'COMMA')} + '€'"/><span th:if="${ofer.importeConIVA}" th:text="' (con IVA: ' + ${#numbers.formatDecimal(ofer.importeConIVA, 3, 'POINT', 2, 'COMMA')} + '€)'" /></strong></p>
+                          </li>
+                      </ul>
+                       </div>
+                  </div>
+                <div class="timeline-body" th:if="*{#arrays.isEmpty(lotes)}">
                     <ul class="container-fluid">
                         <li th:each="c:*{ofertas}">
                         <th:block th:if="${c.ganador==true}" >
                             <p><i class="glyphicon glyphicon-time"></i>
-                            <small class="text-muted" th:if="${c.fechaFormalizacion!= null and  c.fechaAdjudicacion!=null }" th:text="${#dates.format(c.fechaAdjudicacion,'dd/MM/yyyy')+'-'+#dates.format(c.fechaFormalizacion,'dd/MM/yyyy')}"> 11/07/2018 - 13/07/2018</small></p>
+                            <small class="text-muted" th:if="${c.fechaAdjudicacion!=null }" th:text="${#dates.format(c.fechaAdjudicacion,'dd/MM/yyyy')}"></small>
+                            <small class="text-muted" th:if="${c.fechaFormalizacion!= null }" th:text="'-'+${#dates.format(c.fechaFormalizacion,'dd/MM/yyyy')}"></small></p>
                             <th:block th:if="${c.lote !=null}" th:each="l :${c.lote}">
                             <p th:if="${l}"><strong th:text="${l.description}"></strong></p>
                         </th:block>
                         <span class="far fa-thumbs-up" title="Adjudicatario"></span>
                         </th:block>
                             <th:block th:each="e : ${c.Empresa}">
-                                <a th:href="'/opencityext/servicio/contratacion-publica/licitador/'+${e.idEmpresa}"><span th:text="${e.nombre}"> Luis Daniel Ballesteros Jordán</span></a>
+                                <a th:href="'/sede/servicio/contratacion-publica/licitador/'+${e.idEmpresa}"><span th:text="${e.nombre}"> Luis Daniel Ballesteros Jordán</span></a>
                             </th:block>
                             <p th:if="${c.importeSinIVA}"><strong>Importe: <span class="color-2" th:text="${#numbers.formatDecimal(c.importeSinIVA ,3, 'POINT', 2, 'COMMA')} + '€'"/><span th:if="${c.importeConIVA}" th:text="' (con IVA: ' + ${#numbers.formatDecimal(c.importeConIVA, 3, 'POINT', 2, 'COMMA')} + '€)'" /></strong></p>
                         </li>

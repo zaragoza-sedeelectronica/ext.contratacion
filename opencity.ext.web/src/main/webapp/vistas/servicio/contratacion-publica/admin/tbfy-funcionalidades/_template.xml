@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" estilo="ayto">
+
+<th:block th:fragment="cssjs">
+    <th:block th:include="fragmentos/cssjs" />
+    <th:block th:include="fragmentos/cssjs2" />
+</th:block>
+<body>
+    <th:block th:fragment="header">
+        <header class="navbar navbar-default navbar-fixed-top navbar-portal">
+            <div class="container-fluid">
+                <th:block th:include="fragmentos/logo" />
+                <div class="pull-left portal-header">
+                    <sede:breadcrumb title="Funcionalidades TBFY" link="/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'},{'link':'/sede/servicio/contratacion-publica/admin/', 'text':'Administración de contratos'}]" />
+                </div>
+                <th:block th:include="fragmentos/cabecera" />
+
+            </div>
+        </header>
+    </th:block>
+    <th:block th:fragment="menu">
+        <!--/* Capa blanca al desplegar menu lateral de portal*/-->
+        <div class="overlay" style="display: none;"></div> 
+          <!--/* Menu lateral de portal */-->
+        <th:block th:include="fragmentos/readspeaker"></th:block>
+        	<div class="row margin-t2em">
+        		<div class="col-sm-6">
+			        <form method="get" action="/sede/servicio/contratacion-publica/admin/empresa/" class="form-inline">
+				        <div class="form-group">
+				            <label for="titleContains" class="sr-only">Nombre</label>
+				            <input type="text" name="nombreContains" id="nombreContains" placeholder="Nombre" class="form-control"/>
+				        </div>
+				        <input type="submit" value="Consultar" class="btn btn-primary"/>
+                        <a href="/sede/servicio/contratacion-publica/admin/funciones/" class="btn btn-danger">Funcionalidades</a>
+                        <a href="/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/" class="btn btn-warning">Funcionalidades TBFY</a>
+			       	</form>
+			    </div>
+
+       	</div>
+
+
+
+    </th:block>
+
+    <th:block th:fragment="footer">
+        <div class="row fnd-gris-claro">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <p class=" " style="color: #D01715;">Contratacion pública es parte del proyecto <a href="https://www.zaragoza.es/sede/portal/theybuyforyou/" class="destacado" style="color:#8b0f0e;">They Buy For You.</a><br/>
+                    El Proyecto They Buy For You es un proyecto de tres años de duración financiado por la Comisión Europea bajo el marco Horizon 2020 Nº de
+                    Concesión: 780247</p>
+            </div>
+        </div>
+        <th:block th:include="fragmentos/piehome" />
+        <th:block th:include="fragmentos/js" />
+
+    </th:block>
+</body>
+
+</html>

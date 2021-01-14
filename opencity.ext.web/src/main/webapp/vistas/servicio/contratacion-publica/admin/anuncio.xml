@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <sede:meta title="Contratos. Anuncios"/>
-    <script src="https://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
+    <!--<script src="https://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>-->
+    <script src="/cont/paginas/oferta/js/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -40,12 +41,8 @@
                                     <option value="6">Adjudicación definitiva</option>
                                     <option value="7">Histórico</option>
                                     <option value="8">Acuerdos marco</option>
-                                    <option value="9">Otras informaciones</option>
-                                    <option value="10">Fecha límite de presentación</option>
-                                    <option value="11">Presupuesto</option>
-                                    <option value="12">Resumen</option>
+                                    <option value="9">Otras informaciones</option>  
                                     <option value="13">Mesa Contratación</option>
-                                    <option value="14">Licitadores</option>
                                     <option value="15">Publicación BOE</option>
                                     <option value="16">Publicación BOPZ</option>
                                     <option value="17">Publicación BOA</option>
@@ -85,7 +82,10 @@
                     <div class="form-group" th:if="not ${registro.body.sello}">
                         <div class="col-sm-offset-2 col-sm-10">
                             Cargar adjunto
-                            <input type="file" name="file"/> <br/>
+                            <input type="file"  name="file"/> 
+                            <p class="margin-t05em"><span class="h4 strong">Nombre del adjunto:</span><a target="_BLANK" th:href="*{uri}" th:text="*{fileName}"></a></p>
+                            
+                            
                         </div>
                     </div>
                     

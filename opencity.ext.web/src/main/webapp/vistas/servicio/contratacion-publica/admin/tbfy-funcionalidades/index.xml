@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:sede="http://www.zaragoza.es"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Contratación Pública"
+                   keywords="sede,web,perfil,contratos,ayuntamiento,zaragoza,contratación,theBuyForYou"/>
+
+    </head>
+    <body>
+        <sede:content>
+            <div class="row margin-v3em">
+                <div class="col-md-6">
+                    <a href="/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/similitud" class="btn btn-primary"><h4>Similitud de pliegos</h4></a>
+                    <p>Heramienta para la busqueda de pliegos en Licitación a traves de un texto y de un idioma</p>
+                </div>
+                <div class="col-md-6">
+                    <a href="/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/contratos" class="btn btn-primary"><h4>Busqueda de Contratos</h4></a>
+                    <p>Heramienta para la busqueda de Contratos search api o por cpv</p>
+                </div>
+                <div class="col-md-6">
+                    <a href="/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/licitadores?name=" class="btn btn-primary"><h4>Busqueda de Licitadores</h4></a>
+                    <p>Heramienta para la busqueda de licitadores</p>
+                </div>
+
+            </div>
+        </sede:content>
+        <script type="text/javascript"
+                src="https://www.zaragoza.es/cont/plantillas/sede/js/typeahead.bundle.js"></script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+              //Buscador Cpv
+        var cpvDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/contratacion-publica/cpv/?rows=10&q=titulo==*%QUERY*&fl=id,titulo',
+
+                filter: function(response) {
+                //console.log(response);
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#cpvSelect').typeahead(null, {
+            name: 'cpv',
+            limit: 15,
+            displayKey: 'titulo',
+            source: cpvDataset
+        });
+        $('#cpvSelect').bind('typeahead:select', function(ev, suggestion) {
+            //console.log('Selection: ' + JSON.stringify(suggestion));
+            var item = suggestion;
+            $('#cpv').val(item.id);
+            //table.draw();
+        });
+              /*]]>*/
+        </script>
+    </body>
+
+
+</html>

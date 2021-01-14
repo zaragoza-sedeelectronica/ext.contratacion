@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="col-md-3 clearfix" style="float:right">
+        <p class="nomargin destacado text-right">
+            Descargar:
+            <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
+        </p>
+        <ul class="list-inline pull-right">
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicador/indicadorAdjudicatario.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    JSON
+                </a>
+                |
+            </li>
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicador/indicadorAdjudicatario.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    XML
+                </a>
+                |
+            </li>
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicador/indicadorAdjudicatario.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    CSV
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <header class="title"><h2>Indicadores Adjudicatarios</h2></header>
+
+</div>
+
+<div class="clearfix"></div>
+<div class="col-lg-12 col-md-9 col-xs-12">
+        <header>
+            <h2>Listado de Adjudicatarios del Año   <span th:text="${indicadores_Ayutamiento.body.anyo}"></span></h2>
+        </header>
+        <div class="table-responsive">
+        <table id="tableAdjudicatarios" class="table table-hovertable-bordered" summary="Listado de Servicios por cuantia y Nº de Contratos">
+
+        <thead>
+            <tr>
+                <th scope="col">Nombre Empresa</th>
+                <th scope="col">Nombre Contrato</th>
+                <th scope="col">Importe Licitacion Sin Iva (€)</th>
+                <th scope="col">Importe Licitacion Con Iva (€)</th>
+                <th scope="col">Importe Adjudicación Sin Iva (€)</th>
+                <th scope="col">Importe Adjudicación Con Iva (€)</th>
+                <th scope="col">Procedimiento</th>
+                <th scope="col">Tipo de Contrato</th>
+                <th scope="col">Fecha Adjudicación</th>
+                <th scope="col">Fecha Formalizacion</th>
+            </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="item:${indicadores_Ayutamiento.body.indicadorAdjudicatarios.result}" >
+            <tr th:each="c:${item}">
+                <span th:if="${c.id!=null}">
+                    <td scope="row"><a th:href="${'/sede/servicio/contratacion-publica/licitador/'+c.idEmpresa}" th:text="${c.nombreEmpresa}"></a></td>
+                    <td scope="row"><a th:href="${'/sede/servicio/contratacion-publica/'+c.contrato}" th:text="${c.title}"></a></td>
+                    <td scope="row" th:text="${c.importeLicitacionSinIva == null ? '0.0' : #numbers.formatDecimal(c.importeLicitacionSinIva, 0, 'POINT', 2, 'COMMA')}+' €'"/>
+                    <td scope="row" th:text="${c.importeLicitacionConIva == null ? '0.0' :#numbers.formatDecimal(c.importeLicitacionConIva, 0, 'POINT', 2, 'COMMA')}+' €'"/>
+                    <td scope="row" th:text="${c.importeAdjuducacioSinIva == null ? '0.0' :#numbers.formatDecimal(c.importeAdjuducacioSinIva, 0, 'POINT', 2, 'COMMA')}+' €'"/>
+                    <td scope="row" th:text="${c.importeAdjuducacioConIva == null ? '0.0' :#numbers.formatDecimal(c.importeAdjuducacioConIva, 0, 'POINT', 2, 'COMMA')}+' €'"/>
+                    <td scope="row" th:text="${c.procedimiento}"/>
+                    <td scope="row" th:text="${c.type}"/>
+                    <td scope="row" th:text="${c.fechaAdjudicacion ==null ? '':#dates.format(c.fechaAdjudicacion,'dd/MM/yyyy')}"/>
+                    <td scope="row" th:text="${c.fechaFormalicacion ==null ? '':#dates.format(c.fechaFormalicacion,'dd/MM/yyyy')}"/>
+                </span>
+            </tr>
+        </th:block>
+        </tbody>
+        </table>
+        </div>
+</div>

@@ -39,6 +39,7 @@
 										<option value="12">SIN requisitos de solvencia profesional o económica, con presentación de memoria comercial y ofertas económicas.</option>
 										<option value="13">abierto, reservada a Empresas de Inserción</option>
 										<option value="14">Otros</option>
+										<option value="15">Emergencia</option>
                                     </select>
                                 </div>
                             </div>
@@ -234,7 +235,7 @@
 												</th:block>
 											</th:block>
 											<th:block th:if="${#maps.containsKey(session.sess_risp.usuario.propiedades,'contrato_entidad')}">
-												<input type="hidden" name="organo.id" th:value="${session.sess_risp.usuario.propiedades.contrato_entidad}"/>
+												<input type="hidden" name="organoContratante.id" th:value="${session.sess_risp.usuario.propiedades.contrato_entidad}"/>
 											</th:block>
 			                            </div>
 									</div>
@@ -258,7 +259,7 @@
 												</div>
 												<label class="col-sm-1 control-label" for="fechaContrato">Fecha Contrato</label>
 												<div class="col-sm-2">
-													<input class="form-control datetimepicker" type="text" th:field="*{fechaContrato}" />
+													<input class="form-control datetimepicker" required="required" type="text" th:field="*{fechaContrato}" />
 												</div>
 											</div>
 										</div>
@@ -307,11 +308,17 @@
 											</div>
 											<div class="form-group">
 												<label class="col-sm-1 control-label" for="canon">Canon</label>
-												<div class="col-sm-4">
+												<div class="col-sm-2">
 													<select th:field="*{canon}" class="form-control" name="canon" id="canon">
 														<option value="false">No</option>
 														<option value="true">Sí</option>
 													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label" for="numLicitadores">Numero Licitadores:</label>
+												<div class="col-sm-3">
+													<input class="form-control" type="text" th:field="*{numLicitadores}" size="100" />
 												</div>
 											</div>
 										</div>
@@ -398,7 +405,7 @@
         $(".select-cpv").select2({
             tags: true,
             ajax: {
-                url: '/opencityext/servicio/contratacion-publica/cpv',
+                url: '/sede/servicio/contratacion-publica/cpv',
                 dataType: 'json',
                 type: "GET",
                 quietMillis: 50,
@@ -424,7 +431,7 @@
         $(".select-gestor").select2({
             tags: true,
             ajax: {
-                url: '/opencityext/servicio/organigrama',
+                url: '/sede/servicio/organigrama',
                 dataType: 'json',
                 type: "GET",
                 quietMillis: 50,
@@ -450,7 +457,7 @@
          $(".select-organoContratante").select2({
             tags: true,
             ajax: {
-                url: '/opencityext/servicio/organigrama',
+                url: '/sede/servicio/organigrama',
                 dataType: 'json',
                 type: "GET",
                 quietMillis: 50,

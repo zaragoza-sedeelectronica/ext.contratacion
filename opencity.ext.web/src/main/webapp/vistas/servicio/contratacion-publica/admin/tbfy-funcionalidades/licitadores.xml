@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Contrato"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error"/>
+            <form th:action="@{/servicio/contratacion-publica/admin/tbfy-funcionalidades/licitadores}" method="get">
+                <div class="fieldset">
+                    <fieldset>
+                        <header>
+                            <h2>Busqueda de Licitadores</h2>
+                        </header>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label" for="name">Nombre Licitador</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" name="name" type="text"
+                                               placeholder="Introduce nombre del licitador" required="required"/>
+                                    </div>
+                                    <label class="col-sm-1 control-label" for="jurisdiction">Jurisdicción
+                                        <span class="oculto">(campo obligatorio)</span>
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <select name="jurisdiction" class="form-control" >
+                                            <option value="">Introduce jurisdicción</option>
+                                            <option value="es">Española</option>
+                                            <option value="gb">Inglaterra</option>
+                                            <option value="fr">Francia</option>
+                                            <option value="it">Italia</option>
+                                            <option value="pt">Portugal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label" for="description">Descripción</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" name="description" type="text"
+                                           placeholder="Introduce descripción" value=""/>
+                                </div>
+                                <label class="col-sm-1 control-label" for="title">Titulo de Adjudicacion</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" name="title" type="text"
+                                           placeholder="Introduce titulo" value=""/>
+
+
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label" for="currency">Importe de Oferta</label>
+                                    <div class="col-sm-3">
+                                        <input class="form-control" name="amount" type="number"
+                                               placeholder="Introduce importe" value=""/>
+                                    </div>
+                                    <label class="col-sm-1 control-label" for="status">Estado licitación</label>
+                                    <div class="col-sm-3">
+                                        <select name="status" class="form-control" >
+                                            <option value="">Introduce estado</option>
+                                            <option value="pending">Pendiente de Adjudicar</option>
+                                            <option value="active">Activo</option>
+                                            <option value="cancelled">Cancelado</option>
+                                            <option value="unsuccessful">Desierto</option>
+
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-1 control-label" for="currency">Tamaño</label>
+                                    <div class="col-sm-3">
+                                        <select name="size" class="form-control" required="required">
+                                            <option value="10">10</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="starDate" class="control-label col-md-2">Fecha de inicio</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control datepicker" type="text" name="startDate"
+                                               data-date-format="yyyy-mm-dd" data-date-language="es"
+                                               data-provide="datepicker"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="endDate" class="control-label col-md-2">Fecha fin</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control datepicker" type="text" name="endDate"
+                                               data-date-format="yyyy-mm-dd" data-date-language="es"
+                                               data-provide="datepicker"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group margin-t3em">
+                            <div class="col-sm-offset-1 col-sm-12">
+                                <input type="submit" name="submit" value="Buscar" class="boton btn btn-primary"/>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </div>
+            </form>
+            <div class="row" th:if="${resultado.body}">
+                <div class="col-md-12">
+                    <header>
+                        <h2>Resultados</h2>
+                    </header>
+                    <div class="table-responsive">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Organizacion</th>
+                                    <th>Adjudicacion</th>
+                                    <th>Licitacion</th>
+                                    <th>Jurisdiccion</th>
+                                    <th>Fecha de Adjudicación</th>
+                                    <!--<th>Fecha Inicio Adjudicación</th>
+                                    <th>Fecha Fin Adjudicación</th>-->
+                                    <th>Descripción Adjudicacion</th>
+                                    <th>Estado</th>
+                                    <th>Precio de adjudicación</th>
+                                    <th>Moneda</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item:${resultado.body.result}">
+                                    <td>
+                                        <a th:href="${item.organizationUrl}"
+                                           th:text="${item.supplier}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:href="${item.awardUrl}"
+                                           th:text="${(#strings.isEmpty(item.awardTitle) eq false) ? item.awardTitle:item.awardDescription} "></a>
+                                    </td>
+                                    <td th:if="${item.tenderdUrl}" >
+                                        <a th:href="'/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/detalle-licitacion/'+${#strings.replace(item.tenderdUrl,'http://data.tbfy.eu/tender/','')}"
+                                           th:text="${item.title} "></a>
+                                    </td>
+                                    <td th:unless="${item.tenderdUrl}" >
+                                        <p th:text="${item.title} "></p>
+                                    </td>
+                                    <td th:text="${item.jurisdiccion}"></td>
+                                    <td th:if="${item.awarDate}" th:text="${#dates.format(item.awarDate,'dd/MM/yyyy')}"></td>
+                                  <!--  <td th:text="${#dates.format(item.awarStartDate,'dd/MM/YYYY')}"></td>
+                                    <td th:text="${#dates.format(item.awarEndDate,'dd/MM/YYYY')}"></td>-->
+                                    <td th:text="${item.awardDescription}"></td>
+                                    <td th:text="${item.status}"></td>
+                                    <td th:text="${#numbers.formatDecimal(item.amount,3,'POINT',2,'COMMA')}"></td>
+                                    <td th:text="${item.currency}"></td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </sede:content>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/es.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+        <script type="text/javascript" th:inline="text">
+            /*<![CDATA[*/
+
+        $('.datetimepicker').datetimepicker({
+            format:'YYYY-MM-DD'
+        });
+
+        $(".select-cpv").select2({
+            tags: true,
+            ajax: {
+                url: '/sede/servicio/contratacion-publica/cpv',
+                dataType: 'json',
+                type: "GET",
+                quietMillis: 50,
+                data: function (term) {
+                    return {
+                        fl : 'id,titulo',
+                        q: 'titulo==' + term.term + '*'
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data.result, function (item) {
+                            return {
+                                text: item.id + ' ' + item.titulo,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+          },
+          minimumInputLength: 2
+        });
+
+          /*]]>*/
+        </script>
+    </body>
+
+</html>

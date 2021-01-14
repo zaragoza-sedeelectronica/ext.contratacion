@@ -14,7 +14,7 @@
                 </button> */-->
                 <th:block th:include="fragmentos/logo" />
                 <div class="pull-left portal-header">
-                    <sede:breadcrumb title="Administración Contratos" link="/opencityext/servicio/contratacion-publica/admin/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'}]" />
+                    <sede:breadcrumb title="Administración Contratos" link="/sede/servicio/contratacion-publica/admin/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'}]" />
                 </div>
                 <th:block th:include="fragmentos/cabecera" />
                 <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
@@ -27,7 +27,7 @@
           <!--/* Menu lateral de portal */-->       
         	<div class="row">
         		<div class="col-sm-12" style="padding-left: 50px;padding-bottom: 20px;padding-top: 20px;">
-			        <form method="get" action="/opencityext/servicio/contratacion-publica/admin/" class="form-inline">
+			        <form method="get" action="/sede/servicio/contratacion-publica/admin/" class="form-inline">
 				        <div class="form-group">
 				            <label for="titleContains" class="sr-only">Título</label>
 				            <input type="text" name="titleContains" id="titleContains" placeholder="Título" class="form-control"/>
@@ -39,12 +39,13 @@
 				        <input type="submit" value="Consultar" class="btn btn-primary"/>
 				        <input id="resetBtn" type="reset" value="Borrar" class="btn btn-info"/>
 
-                        <a href="/opencityext/servicio/contratacion-publica/admin/new" class="btn btn-success">Insertar</a>
-						<a href="/opencityext/servicio/contratacion-publica/admin/funciones/" class="btn btn-danger">Funcionalidades</a>
+                        <a href="/sede/servicio/contratacion-publica/admin/new" class="btn btn-success">Insertar</a>
+						<a href="/sede/servicio/contratacion-publica/admin/funciones/" class="btn btn-danger">Funcionalidades</a>
+						<a href="/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/" class="btn btn-warning">Funcionalidades TBFY</a>
 
 					<div style="float:right;padding-right:10px;">
 						<h4> Gestión Empresas</h4>
-                        <a href="/opencityext/servicio/contratacion-publica/admin/empresa/" class="btn btn-danger">Acceder</a>
+                        <a href="/sede/servicio/contratacion-publica/admin/empresa/" class="btn btn-danger">Acceder</a>
 					</div>
 
 			       	</form>
@@ -52,10 +53,21 @@
 
 			    </div>
        	</div>
+
+
     </th:block>
     <th:block th:fragment="footer">
+
         <th:block th:include="fragmentos/pie" />
         <th:block th:include="fragmentos/js" />
+        <div class="row fnd-gris-claro">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <p class=" " style="color: #D01715;">Contratacion pública es parte del proyecto <a href="https://www.zaragoza.es/sede/portal/theybuyforyou/" class="destacado" style="color:#8b0f0e;">They Buy For You.</a><br/>
+                    El Proyecto They Buy For You es un proyecto de tres años de duración financiado por la Comisión Europea bajo el marco Horizon 2020 Nº de
+                    Concesión: 780247</p>
+            </div>
+        </div>
+
     </th:block>
 </body>
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Contrato"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error"/>
+            <!--<div th:text="${resultado.body}"></div>-->
+            <div class="row" th:if="${resultado.body}" th:each="item:${resultado.body}">
+                <div class="col-md-12" >
+                   <header>
+                        <h2 class="text-left">Detalle de Similitud de Pliegos</h2>
+                        <h3 class="text-center" th:text="${item.title}+'('+${item.id}+')'"></h3>
+                    </header>
+                   <p  class="text-justify margin-v3em" th:text="${item.description}"></p>
+                </div>
+            </div>
+        </sede:content>
+    </body>
+
+</html>

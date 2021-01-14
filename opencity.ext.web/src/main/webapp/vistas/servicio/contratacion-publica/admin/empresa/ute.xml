@@ -48,7 +48,7 @@
         $(".select-empresa").select2({
             tags: true,
             ajax: {
-                url: '/opencityext/servicio/contratacion-publica/licitador',
+                url: '/sede/servicio/contratacion-publica/licitador',
                 dataType: 'json',
                 type: "GET",
                 quietMillis: 50,

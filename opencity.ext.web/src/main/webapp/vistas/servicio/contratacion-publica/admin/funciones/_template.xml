@@ -14,7 +14,7 @@
                 </button> */-->
                 <th:block th:include="fragmentos/logo" />
                 <div class="pull-left portal-header">
-                    <sede:breadcrumb title="Funcionalidades" link="/opencityext/servicio/contratacion-publica/admin/funciones/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'},{'link':'/opencityext/servicio/contratacion-publica/admin/', 'text':'Administración de contratos'}]" />
+                    <sede:breadcrumb title="Funcionalidades" link="/sede/servicio/contratacion-publica/admin/funciones/" value="[{'link':'https://www.zaragoza.es', 'text':'zaragoza.es'},{'link':'/ciudad/ayto/', 'text':'Ayuntamiento'},{'link':'/sede/servicio/contratacion-publica/admin/', 'text':'Administración de contratos'}]" />
                 </div>
                 <th:block th:include="fragmentos/cabecera" />
                 <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
@@ -27,14 +27,14 @@
           <!--/* Menu lateral de portal */-->       
         	<div class="row">
         		<div class="col-sm-6">
-			        <form method="get" action="/opencityext/servicio/contratacion-publica/admin/empresa/" class="form-inline">
+			        <form method="get" action="/sede/servicio/contratacion-publica/admin/empresa/" class="form-inline">
 				        <div class="form-group">
 				            <label for="titleContains" class="sr-only">Nombre</label>
 				            <input type="text" name="nombreContains" id="nombreContains" placeholder="Nombre" class="form-control"/>
 				        </div>
 				        <input type="submit" value="Consultar" class="btn btn-primary"/>
 
-                        <a href="/opencityext/servicio/contratacion-publica/admin/empresa/new" class="btn btn-success">Insertar</a>
+                        <a href="/sede/servicio/contratacion-publica/admin/empresa/new" class="btn btn-success">Insertar</a>
 			       	</form>
 			    </div>
        	</div>

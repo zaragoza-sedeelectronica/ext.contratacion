@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Contratos. Anuncios.Tramita"/>
+    <script src="https://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
+</head>
+
+<body>
+    <sede:content>
+        <th:block th:include="fragmentos/error" />
+        <form th:action="@{/servicio/contratacion-publica/admin/tramita}"  method="get" class="form-horizontal" >
+            <div class="form-group">
+                <label for="carpeta">Año</label>
+                <input type="text" name="carpeta" placeholder="Introduce el año"></input>
+            </div>
+            <input type="submit">Enviar</input>
+
+        </form>
+        <th:block th:if="${resultado!=null}" th:each="con:${resultado.result}">
+            <p>Contrato id---><span th:text="${con.id}"></span></p>
+            <p>Contrato title---><span th:text="${con.title}"></span></p>
+            <p>Contratooferta-------><th:block th:each="oferta:${con.ofertas}">
+                <span th:text="${oferta}"></span>
+            </th:block></p>
+        </th:block>
+    </sede:content>
+</body>
+
+</html>

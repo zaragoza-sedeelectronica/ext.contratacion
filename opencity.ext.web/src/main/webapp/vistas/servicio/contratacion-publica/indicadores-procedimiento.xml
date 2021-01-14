@@ -1,3 +1,30 @@
+<div class="container-fluid">
+    <div class="col-md-3 clearfix" style="float:right">
+        <p class="nomargin destacado text-right">
+            Descargar:
+            <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
+        </p>
+        <ul class="list-inline pull-right">
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicadores/procedimiento.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    JSON
+                </a>
+                |
+            </li>
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicadores/procedimiento.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    XML
+                </a>
+                |
+            </li>
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicadores/procedimiento.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    CSV
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="row">
     <header class="title"><h2>Indicadores por Tipo Procedimiento</h2></header>
     <div class="col-lg-6 col-md-6 col-xs-12">
@@ -41,7 +68,7 @@
           <th:block th:each="item:${indicadores_Ayutamiento.body.indicadorProcedimiento.result}" >
           <tr th:each="c:${item}">
             <span th:if="${c.tipoProcedimiento!=null}">
-                <td scope="col"><a th:href="@{/servicio/contratacion-publica/(entity.id=${indicadores_Ayutamiento.body.id},procedimiento.id=${c.tipoProcedimiento.id},year=${c.anyo})}" th:text="${c.tipoProcedimiento.nombre}"></a></td>
+                <td scope="col"><a th:href="@{/servicio/contratacion-publica/(entity.id=${indicadores_Ayutamiento.body.id},procedimiento.id=${c.tipoProcedimiento.id},fechaContratoFrom='01-01-'+${c.anyo},fechaContratoTill='31-12-'+${c.anyo})}" th:text="${c.tipoProcedimiento.nombre}"></a></td>
                 <td th:text="${#numbers.formatDecimal(c.totalSinIva, 0, 'POINT', 2, 'COMMA')}+' €'"/>
                 <td  th:text="${c.totalConIva!=null ? #numbers.formatDecimal(c.totalConIva,0,'POINT', 2, 'COMMA') + ' €':'0 €'}"/>
                 <td th:text="${#numbers.formatDecimal(c.total, 0, 'POINT', 2, 'COMMA')}"/>

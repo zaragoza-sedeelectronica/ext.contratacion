@@ -1,25 +1,25 @@
 <div class="card" style="min-height:8em;">
-    <h3><a th:href="${'/opencityext/servicio/contratacion-publica/'+doc.id}" sede:rdf="${doc.get('title')}"/></h3>
-    <span class="fas fa-calendar-alt" title="Fecha publicación"></span> <span  class="padding-l05em" th:text="${#dates.format(doc.creationDate, 'yyyy')}"></span>
+    <h3><a th:href="${'/sede/servicio/contratacion-publica/'+doc.id}" sede:rdf="${doc.get('title')}"/></h3>
+    <span class="fas fa-calendar-alt" title="Fecha publicación"></span> <span  class="padding-l05em" th:text="${#dates.format(doc.fechaContrato, 'yyyy')}"></span>
    <a th:if="${doc.type}" 
-    th:href="'/opencityext/servicio/contratacion-publica/?'+ ${#httpServletRequest.getQueryString() !=null ?   #strings.contains(#httpServletRequest.getQueryString(),'type.id')==true ?#strings.replace(#httpServletRequest.getQueryString(),'type.id=&amp;','type.id='+doc.type.id+'&amp;') :#httpServletRequest.getQueryString()+'&amp;type.id='+doc.type.id :'type.id='+doc.type.id}" sede:rdf="${doc.type.get('title')}"  class="label label-success margin-r05em"></a>- <span class="color-1" th:text="${doc.status.title}"></span>
+    th:href="'/sede/servicio/contratacion-publica/?'+ ${#httpServletRequest.getQueryString() !=null ?   #strings.contains(#httpServletRequest.getQueryString(),'type.id')==true ?#strings.replace(#httpServletRequest.getQueryString(),'type.id=&amp;','type.id='+doc.type.id+'&amp;') :#httpServletRequest.getQueryString()+'&amp;type.id='+doc.type.id :'type.id='+doc.type.id}" sede:rdf="${doc.type.get('title')}"  class="label label-success margin-r05em"></a>- <span class="color-1" th:text="${doc.status.title}"></span>
     <hr/>
   
     <p class="margin-t1em">
     	<strong>Entidad contratante: </strong>
-	    <a th:href="'/opencityext/servicio/contratacion-publica/entidad/'+${doc.entity.id}" th:text="${doc.entity.title}"></a>
+	    <a th:href="'/sede/servicio/contratacion-publica/entidad/'+${doc.entity.id}" th:text="${doc.entity.title}"></a>
     </p>
     <p class="margin-t1em" th:if="${doc.entity.id==1}" th:each="s:${doc.organoContratante}">
         <strong >Organismo Contratante: </strong>
-        <a  th:href="'/opencityext/servicio/contratacion-publica/organismo-contratante/'+${s.id}" th:text="${s.title}"></a>
+        <a  th:href="'/sede/servicio/contratacion-publica/organismo-contratante/'+${s.id}" th:text="${s.title}"></a>
     </p>
        <p class="margin-t1em" th:if="${doc.entity.id==1}" th:each="s:${doc.servicio}">       
         <strong >Servicio Gestor: </strong>
-        <a  th:href="'/opencityext/servicio/contratacion-publica/servicio-gestor/'+${s.id}" th:text="${s.title}"></a>
+        <a  th:href="'/sede/servicio/contratacion-publica/servicio-gestor/'+${s.id}" th:text="${s.title}"></a>
     </p>
 
     <p th:if="${doc.importeSinIVA}"><strong>Importe licitacion: <span class="color-2" th:text="${#numbers.formatDecimal(doc.importeSinIVA ,0, 'POINT', 2, 'COMMA')} + '€'"/><span th:if="${doc.importeConIVA}" th:text="' (con IVA: ' + ${#numbers.formatDecimal(doc.importeConIVA, 2, 'POINT', 2, 'COMMA')} + '€)'" /></strong></p>
-    <p><span class="fas fa-calendar-alt" title="Plazo de presentación"></span><strong class="padding-l1em">Plazo de presentación:</strong><span th:if="${doc.fechaPresentacion}" th:text="${#dates.format(doc.fechaPresentacion,'dd/MM/yyyy')}"></span> </p>
+    <p><span class="fas fa-calendar-alt" title="Plazo de presentación"></span><strong class="padding-l1em">Plazo de presentación:</strong><span th:if="${doc.fechaPresentacion}" th:text="${#dates.format(doc.fechaPresentacion,'dd/MM/yyyy HH:mm')}"></span> </p>
 </div>
 <div class="ribbon-wrapper" th:if="${doc.procedimiento != null and doc.procedimiento.id==10}">
     <div class="ribbon-info">Menor</div>

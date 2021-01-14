@@ -20,10 +20,10 @@
                         Descargar: <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
                     </p>
                     <ul class="list-inline pull-right">
-                        <!--/*<li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/servicio/' + id  + '.geojson?' + #httpServletRequest.getQueryString()}">GeoJSON</a> | </li>*/-->
-                        <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/cpv.json'}">JSON</a> | </li>
-                        <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/cpv.xml'}">XML</a> | </li>
-                        <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/cpv.csv'}">CSV</a></li>
+                        <!--/*<li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/servicio/' + id  + '.geojson?' + #httpServletRequest.getQueryString()}">GeoJSON</a> | </li>*/-->
+                        <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/cpv.json'}">JSON</a> | </li>
+                        <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/cpv.xml'}">XML</a> | </li>
+                        <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/cpv.csv'}">CSV</a></li>
                     </ul>
         </div>
         

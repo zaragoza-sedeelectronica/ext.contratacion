@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8"/>
+        <sede:meta title="Contrato"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <sede:content>
+            <th:block th:include="fragmentos/error"/>
+            <div class="row margin-t3em">
+                <div class="col-md-6">
+                    <form th:action="@{/servicio/contratacion-publica/admin/tbfy-funcionalidades/contratos}"
+                          method="get">
+                        <div class="fieldset">
+                            <fieldset>
+                            <legend>
+                                <span>Busqueda de Contratos</span>
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="hidden" name="cpv" value="false"/>
+                                        <label class="col-sm-2 control-label" for="name">Nombre</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="name"
+                                                   placeholder="Introduce texto"></input>
+                                        </div>
+                                        <label class="col-sm-2 control-label" for="lang">Idioma
+                                            <span class="oculto">(campo obligatorio)</span>
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <select name="lang" class="form-control" required="required">
+                                                <option value="es">Español</option>
+                                                <option value="en">Ingles</option>
+                                                <option value="fr">Frances</option>
+                                                <option value="it">Italiano</option>
+                                                <option value="pt">Portugues</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 margin-t1em">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="terms">Termino</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="terms"
+                                                   placeholder="Introduce termino"></input>
+                                        </div>
+                                        <label class="col-sm-2 control-label" for="currency">Tamaño</label>
+                                        <div class="col-sm-4">
+                                            <select name="size" class="form-control" required="required">
+                                                <option value="10">10</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
+                                        </div>
+
+                                </div>
+                            </div>
+                                <div class="col-md-12 margin-v1em">
+                                    <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="text">Texto</label>
+                                    <div class="col-sm-10">
+                                    <textarea class="form-control" rows="10" name="text" required=""></textarea>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                        <div class="form-group margin-v3em">
+                            <div class="col-sm-offset-1 col-sm-11">
+                                <input type="submit" name="submit" value="buscar"
+                                       class="boton btn btn-primary"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <fieldset>
+            <legend>
+                <span>Busqueda de contratos por Cpv</span>
+            </legend>
+            <form method="get" th:action="@{/servicio/contratacion-publica/admin/tbfy-funcionalidades/contratos}">
+                <div class="form-group">
+                    <input type="hidden" name="cpv" value="true"/>
+                    <label for="cpv" class="control-label col-md-3">CPV:</label>
+                    <div class="col-md-9">
+                        <input type="text" id="cpvSelect" value="" autocomplete="off"
+                               placeholder="Buscar CPV" class="form-control" title="Buscar CPV"/>
+                        <input type="hidden" id="cpv" name="cpv.id"/>
+                    </div>
+                </div>
+                <div class="col-md-12 margin-t1em">
+                    <button type="submit" value="Cargar" class="btn btn-primary">Buscar contratos</button>
+                </div>
+
+            </form>
+            </fieldset>
+
+        </div>
+    </div>
+    <div class="row" th:if="${cpv}">
+        <div class="col-md-12">
+            <header>
+                <h2>Resultados</h2>
+            </header>
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Título</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item:${resultado.body.result}">
+                            <td>
+                                <a th:href="'/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/detalle-licitacion/'+${item.id}"
+                                   th:text="${item.id}"></a>
+                            </td>
+                            <td th:text="${item.title}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row" th:unless="${cpv}">
+        <div class="col-md-12" th:if="${resultado.body}">
+            <header>
+                <h2>Resultados</h2>
+            </header>
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>title</th>
+                            <th>descripción</th>
+                            <th>Estado</th>
+                            <th>Organización</th>
+                            <th>Licitador</th>
+                            <th>Importe de licitación</th>
+                            <th>Moneda</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha fin</th>
+                            <th>Url Documento</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item:${resultado.body.result}">
+                            <td>
+                                <a th:href="'/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/detalle-licitacion/'+${#strings.replace(item.id,'http://data.tbfy.eu/tender/','')}"
+                                   th:text="${item.id} "></a>
+
+                            </td>
+                            <td th:text="${item.title}">
+
+                            </td>
+                            <td th:text="${item.description}">
+                            </td>
+                            <td th:text="${item.status}">
+                            </td>
+                            <td th:text="${item}"></td>
+                            <td> <a th:href="'/sede/servicio/contratacion-publica/admin/tbfy-funcionalidades/licitadores/?name='+${item.supplier}+'&amp;jurisdiction='+${item.jurisdiccion!=null ? item.jurisdiccion:'es'}+'&amp;description=&amp;title=&amp;amount=&amp;status=&amp;size=10&amp;startDate=&amp;endDate=&amp;submit=Buscar'" th:text="${item.supplier}"></a></td>
+                            <td th:text="${#numbers.formatDecimal(item.amount,3,'POINT',2,'COMMA')}"></td>
+                            <td th:text="${item.currency}"></td>
+                            <td  th:text="${item.starDate}? ${#dates.format(item.starDate,'dd/MM/YYYY')}:''"></td>
+                            <td  th:text="${item.endDate}? ${#dates.format(item.endDate,'dd/MM/YYYY')}:''"></td>
+                            <td th:if="${item.documentUrl}">
+                                <a th:href="${item.documentUrl}"
+                                   th:text="${item.documentUrl}"></a>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</sede:content>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/es.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script type="text/javascript"
+        src="https://www.zaragoza.es/cont/plantillas/sede/js/typeahead.bundle.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+              //Buscador Cpv
+        var cpvDataset = new Bloodhound({
+            datumTokenizer: function(countries) {
+                return Bloodhound.tokenizers.whitespace(result.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/sede/servicio/contratacion-publica/cpv/?rows=10&q=titulo==*%QUERY*&fl=id,titulo',
+
+                filter: function(response) {
+                //console.log(response);
+                    return response.result;
+                },
+                wildcard: '%QUERY',
+            }
+        });
+        $('#cpvSelect').typeahead({minLength: 4}, {
+            name: 'cpv',
+            limit: 15,
+            displayKey: 'titulo',
+            source: cpvDataset
+
+        });
+        $('#cpvSelect').bind('typeahead:select', function(ev, suggestion) {
+            //console.log('Selection: ' + JSON.stringify(suggestion));
+            var item = suggestion;
+            $('#cpv').val(item.id);
+            //table.draw();
+        });
+              /*]]>*/
+</script>
+<script type="text/javascript" th:inline="text">
+/*<![CDATA[*/
+
+        $('.datetimepicker').datetimepicker({
+            format:'DD-MM-YYYY HH:mm'
+        });
+
+        $(".select-cpv").select2({
+            tags: true,
+            ajax: {
+                url: '/sede/servicio/contratacion-publica/cpv',
+                dataType: 'json',
+                type: "GET",
+                quietMillis: 50,
+                data: function (term) {
+                    return {
+                        fl : 'id,titulo',
+                        q: 'titulo==' + term.term + '*'
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data.result, function (item) {
+                            return {
+                                text: item.id + ' ' + item.titulo,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+          },
+          minimumInputLength: 2
+        });
+        $(".select-gestor").select2({
+            tags: true,
+            ajax: {
+                url: '/sede/servicio/organigrama',
+                dataType: 'json',
+                type: "GET",
+                quietMillis: 50,
+                data: function (term) {
+                    return {
+                        fl : 'id,title',
+                        q: 'title==' + term.term + '*'
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data.result, function (item) {
+                            return {
+                                text: item.id + ' ' + item.title,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+          },
+          minimumInputLength: 2
+        });
+         $(".select-organoContratante").select2({
+            tags: true,
+            ajax: {
+                url: '/sede/servicio/organigrama',
+                dataType: 'json',
+                type: "GET",
+                quietMillis: 50,
+                data: function (term) {
+                    return {
+                        fl : 'id,title',
+                        q: 'title==' + term.term + '*'
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data.result, function (item) {
+                            return {
+                                text: item.id + ' ' + item.title,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+          },
+          minimumInputLength: 2
+        });
+        $('#iva').change(function(){
+        	sinIva=$('#importeSinIVA').val();
+        	console.log(sinIva);
+        	if(sinIva!=undefined){
+        		console.log((sinIva*$(this).val())/100);
+				valorIva=$('#importeSinIVA').val();
+				importeConiva=parseFloat(sinIva)+parseFloat(((sinIva*$(this).val())/100));
+        		$('#importeConIVA').val(importeConiva);
+        		}
+        })
+    /*]]>*/
+</script>
+        </body>
+
+        </html>

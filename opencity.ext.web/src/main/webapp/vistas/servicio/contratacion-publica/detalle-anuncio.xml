@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <sede:meta title="Contratación Pública" keywords="sede,web,perfil,contratos,ayuntamiento,zaragoza,contratación" />
+    <sede:meta title="Contratación Pública" last-modified="2020-12-15" description="Sercivio de visualización de contratación pública del Ayuntamiento de zaragoza" keywords="sede,web,pública,contratos,ayuntamiento,zaragoza,contratación"/>
+ />
     <style type="text/css">
         .panel-default>.panel-heading {
             font-weight: bold;
@@ -69,10 +70,10 @@
                 Descargar: <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
             </p>
             <ul class="list-inline pull-right">
-                <!--/*<li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/servicio/' + id  + '.geojson?' + #httpServletRequest.getQueryString()}">GeoJSON</a> | </li>*/-->
-                <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/anuncio/' + id  + '.json'}">JSON</a> | </li>
-                <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/anuncio/' + id  + '.xml'}">XML</a> | </li>
-                <li class="nopadding"><a th:href="${'/opencityext/servicio/contratacion-publica/anuncio/' + id  + '.csv'}">CSV</a></li>
+                <!--/*<li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/servicio/' + id  + '.geojson?' + #httpServletRequest.getQueryString()}">GeoJSON</a> | </li>*/-->
+                <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/anuncio/' + id  + '.json'}">JSON</a> | </li>
+                <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/anuncio/' + id  + '.xml'}">XML</a> | </li>
+                <li class="nopadding"><a th:href="${'/sede/servicio/contratacion-publica/anuncio/' + id  + '.csv'}">CSV</a></li>
             </ul>
         </div>
         <div class="col-md-12">

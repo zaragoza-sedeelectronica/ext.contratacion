@@ -1,3 +1,30 @@
+<div class="container-fluid">
+    <div class="col-md-3 clearfix" style="float:right">
+        <p class="nomargin destacado text-right">
+            Descargar:
+            <a href="https://www.zaragoza.es/sede/servicio/catalogo/147">Datos Abiertos</a>
+        </p>
+        <ul class="list-inline pull-right">
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicador/indicadorAhorro.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    JSON
+                </a>
+                |
+            </li>
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicador/indicadorAhorro.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    XML
+                </a>
+                |
+            </li>
+            <li class="nopadding">
+                <a th:href="'/sede/servicio/contratacion-publica/indicador/indicadorAhorro.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                    CSV
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="row">
     <header class="title"><h2>Indicadores Ahorro</h2></header>
     <div class="col-lg-6 col-md-6 col-xs-12">
@@ -43,7 +70,7 @@
         <th:block th:each="item:${indicadores_Ayutamiento.body.indicadorAhorro.result}" >
             <tr th:each="c:${item}">
                 <span th:if="${c.id!=null}">
-                    <td scope="row"><a th:href="${'/opencityext/servicio/contratacion-publica/'+c.id}" th:text="${c.title}"></a></td>
+                    <td scope="row"><a th:href="${'/sede/servicio/contratacion-publica/'+c.id}" th:text="${c.title}"></a></td>
                     <td scope="row" th:text="${#numbers.formatDecimal(c.importeContrato, 0, 'POINT', 2, 'COMMA')}+' €'"/>
                     <td scope="row" th:text="${c.importeOferta!=null ? #numbers.formatDecimal(c.importeOferta,0,'POINT', 2, 'COMMA') + ' €':'0 €'}"/>
                     <td scope="row" th:text="${#numbers.formatDecimal(c.ahorro, 0, 'POINT', 2, 'COMMA')}"/>

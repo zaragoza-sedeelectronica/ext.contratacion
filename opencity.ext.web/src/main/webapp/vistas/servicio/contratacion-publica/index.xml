@@ -3,15 +3,18 @@
       xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8"/>
-        <sede:meta title="Contratación Pública"
-                   keywords="sede,web,pública,contratos,ayuntamiento,zaragoza,contratación"/>
+    <sede:meta title="Contratación Pública" last-modified="2020-12-15" description="Sercivio de visualización de contratación pública del Ayuntamiento de zaragoza" keywords="sede,web,pública,contratos,ayuntamiento,zaragoza,contratación"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.1/css/bootstrap-slider.min.css"/>
         <style type="text/css">
+			.slider.slider-horizontal {
+				width: 100%!important;
+				height: 20px;
+			}
             .card{
-                border-radius:20px;
+            border-radius:20px;
             }
             .card h3{
-             padding-top:20px
+            padding-top:20px
             }
 
             @-moz-document url-prefix(){
@@ -22,7 +25,7 @@
             .list-unstyled{
             clear: both;
             }
-           
+
             .info{
             color:#006b87 !important
             }
@@ -98,7 +101,7 @@
             .resultado li:nth-child(2n+1) {
             float: left !important;
             clear: both;
-            }           
+            }
         </style>
     </head>
     <body>
@@ -107,12 +110,12 @@
             <div th:if="${resultado.statusCode.value()} == 200" th:object="${resultado.body}"
                  vocab="http://schema.org/">
                 <div class="second-bar clearfix">
-                    <div class="hidden-xs form-group">
+                    <div class=" form-group">
                         <div class="col-md-6">
                             <form method="get">
                                 <div class="input-group">
-                                <input type="text" id="title" name="titleContains"
-                                       placeholder="Funcionalidad de Búsqueda por titulo/objeto" class="form-control"/>
+                                    <input type="text" id="title" name="titleContains"
+                                           placeholder="Funcionalidad de Búsqueda por titulo/objeto" class="form-control"/>
                                     <span class="input-group-btn">
                                         <button type="submit" class="btn btn-search"><span class="glyphicon glyphicon-search"></span></button>
                                     </span>
@@ -140,24 +143,28 @@
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-top:15px;">
-                        <ul class="pull-right list-inline navbar-right submenu">
-                            <li>
-                                <a href="/opencityext/servicio/contratacion-publica/?status.id=0">En licitación</a>
-                            </li>
-                            <li>
-                                <a href="/opencityext/servicio/contratacion-publica/?type.id=1">Obras</a>
-                            </li>
-                            <li>
-                                <a href="/opencityext/servicio/contratacion-publica/?type.id=2">Servicios</a>
-                            </li>
-                            <li>
-                                <a href="/opencityext/servicio/contratacion-publica/?type.id=3">Suministros</a>
-                            </li>
-                            <li>
-                                <a data-toggle="collapse" href="#buscadorContratos" aria-expanded="false"
-                                   aria-controls="buscadorContratos">Búsqueda Avanzada</a>
-                            </li>
-                        </ul>
+                            <div class="pull-left">
+                                <a class="btn btn-primary" href="/sede/portal/contratacion-publica/informacion-publica">Información Pública</a>
+                                <a class="btn btn-primary" href="/sede/portal/contratacion-publica/consulta-mercado">Consulta de mercado</a>
+                            </div>
+                            <ul class="pull-right list-inline navbar-right submenu">
+                                <li>
+                                    <a href="/sede/servicio/contratacion-publica/?status.id=0">En licitación</a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/contratacion-publica/?type.id=1&amp;sort=fechaPresentacion desc">Obras</a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/contratacion-publica/?type.id=2&amp;sort=fechaPresentacion desc">Servicios</a>
+                                </li>
+                                <li>
+                                    <a href="/sede/servicio/contratacion-publica/?type.id=3&amp;sort=fechaPresentacion desc">Suministros</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="collapse" href="#buscadorContratos" aria-expanded="false"
+                                       aria-controls="buscadorContratos">Búsqueda Avanzada</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -295,6 +302,9 @@
                                                 <option value="3">Suministros</option>
                                                 <option value="4">Otros</option>
                                                 <option value="5">Privado</option>
+                                                <option value="6">Sujetos otras normas</option>
+                                                <option value="7">Concesión obras</option>
+                                                <option value="8">Concesión servicios</option>
                                             </select>
                                         </div>
                                     </div>
@@ -309,6 +319,7 @@
                                                 <option value="13">Abierto, reservada a Empresas de Inserción</option>
                                                 <option value="11">Basado en Acuerdo Marco</option>
                                                 <option value="4">Directo</option>
+                                                <option value="15">Emergencia</option>
                                                 <option value="6">Enajenación directa</option>
                                                 <option value="10">Menor</option>
                                                 <option value="7">Negociado sin publicidad</option>
@@ -328,15 +339,12 @@
                                             <input type="hidden" id="cpv" name="cpv.id"/>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-4" style="text-align: center;">
-                                        <input type="submit" id="enviar" value="Consultar"
-                                               class="btn btn-primary"></input>
-                                    </div>
+
                                     <div class="clearfix"></div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
                                         <div class="form-group col-md-4">
                                             <label for="rangoImporte">Importe:</label>
-                                            <div class="col-sm-9 col-md-10">
+                                            <div class="col-sm-8 col-md-8 pull-right">
                                                 <input type="radio" name="rangoImporte" value="true" aria-label="si"/>
                                                 Sin IVA
                                                 <br/>
@@ -344,23 +352,26 @@
                                                 Con IVA
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-9" disabled="disabled">
+                                        <div class="form-group col-md-12" disabled="disabled">
                                             <p class="margin-t1em">Seleccionar rango:</p>
                                             <p>
                                                 <span class="margin-r05em">100€</span>
                                                 <input id="rangoImporte" type="text" value=""
                                                        data-slider-id="rangoImporte" data-slider-min="100"
-                                                       data-slider-min-value="200" data-slider-max="60000000"
-                                                       data-slider-step="4" data-slider-value="[100,60000000]"
-                                                       data-slider-ticks-labels="['100€', '60000000€']"
+                                                       data-slider-min-value="200" data-slider-max="30000000"
+                                                       data-slider-step="1" data-slider-value="[100,30000000]"
+                                                       data-slider-ticks-labels="['100€', '30000000€']"
                                                        class="rangoImporte"/>
-                                                <span class="margin-l05em">60.000.000 €</span>
+                                                <span class="margin-l05em">30.000.000 €</span>
                                             </p>
                                             <input type="hidden" id="importeFrom" name="importeConIVAFrom"/>
                                             <input type="hidden" id="importeTill" name="importeConIVATill"/>
                                         </div>
                                     </div>
-
+                                    <div class="col-xs-12 col-md-12" style="text-align: center;">
+                                        <input type="submit" id="enviar" value="Consultar"
+                                               class="btn btn-primary"></input>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -389,7 +400,7 @@
                             <strong>Ordenar por :</strong>
                             <ul class="list-inline nopadding margin-a05em">
                                 <li style="margin:3px;" th:class="${#httpServletRequest.getQueryString()!=null? #strings.indexOf(#httpServletRequest.getQueryString(),'sort=fechaPresentacion')>=0?'label label-success':'label label-info':'label label-info'}">
-                                    <a th:href="'/opencityext/servicio/contratacion-publica/?' + ${#httpServletRequest.getQueryString()!=null ?
+                                    <a th:href="'/sede/servicio/contratacion-publica/?' + ${#httpServletRequest.getQueryString()!=null ?
                                     #strings.contains(#httpServletRequest.getQueryString(),'sort') == true ?
                                     #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort'))+'sort=fechaPresentacion asc': 'sort=fechaPresentacion asc':'sort=fechaPresentacion asc'}"
                                        th:class="${#httpServletRequest.getQueryString()!=null? #strings.indexOf(#httpServletRequest.getQueryString(),'sort=fechaPresentacion')>=0?'success':'':''}">
@@ -398,15 +409,15 @@
                                 </li>
 
                                 <li style="margin:3px;" th:class="${#httpServletRequest.getQueryString()!=null? #strings.indexOf(#httpServletRequest.getQueryString(),'sort=entity.title')>=0?'label label-success':'label label-info':'label label-info'}">
-                                  <a th:href="'/opencityext/servicio/contratacion-publica/?' + ${#httpServletRequest.getQueryString()!=null ? #strings.contains(#httpServletRequest.getQueryString(),'sort') == true ? #strings.contains(#httpServletRequest.getQueryString(),'sort=entity.title%20desc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=entity.title%20desc'))+'sort=entity.title asc':#strings.contains(#httpServletRequest.getQueryString(),'sort=entity.title%20asc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=entity.title%20asc'))+'sort=entity.title desc':#httpServletRequest.getQueryString()+'&amp;sort=entity.title desc':#httpServletRequest.getQueryString()+'&amp;sort=entity.title desc':'sort=entity.title desc'}"
+                                    <a th:href="'/sede/servicio/contratacion-publica/?' + ${#httpServletRequest.getQueryString()!=null ? #strings.contains(#httpServletRequest.getQueryString(),'sort') == true ? #strings.contains(#httpServletRequest.getQueryString(),'sort=entity.title%20desc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=entity.title%20desc'))+'sort=entity.title asc':#strings.contains(#httpServletRequest.getQueryString(),'sort=entity.title%20asc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=entity.title%20asc'))+'sort=entity.title desc':#httpServletRequest.getQueryString()+'&amp;sort=entity.title desc':#httpServletRequest.getQueryString()+'&amp;sort=entity.title desc':'sort=entity.title desc'}"
                                        th:class="${#httpServletRequest.getQueryString()!=null ?
                                        #strings.indexOf(#httpServletRequest.getQueryString(),'sort=entity.title')>=0?'success':'':''}"
-                                       >
+                                    >
                                         Entidad
                                     </a>
                                 </li>
                                 <li style="margin:3px;" th:class="${#httpServletRequest.getQueryString()!=null? #strings.indexOf(#httpServletRequest.getQueryString(),'sort=contratoMenor')>=0?'label label-success':'label label-info':'label label-info'}">
-                                    <a th:href="'/opencityext/servicio/contratacion-publica/?' + ${#httpServletRequest.getQueryString()!=null ? #strings.contains(#httpServletRequest.getQueryString(),'sort') == true ? #strings.contains(#httpServletRequest.getQueryString(),'sort=contratoMenor%20desc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=contratoMenor%20desc'))+'sort=contratoMenor asc':#strings.contains(#httpServletRequest.getQueryString(),'sort=contratoMenor%20asc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=contratoMenor%20asc'))+'sort=contratoMenor desc':#httpServletRequest.getQueryString()+'&amp;sort=contratoMenor desc':#httpServletRequest.getQueryString()+'&amp;sort=contratoMenor desc':'sort=contratoMenor desc'}"
+                                    <a th:href="'/sede/servicio/contratacion-publica/?' + ${#httpServletRequest.getQueryString()!=null ? #strings.contains(#httpServletRequest.getQueryString(),'sort') == true ? #strings.contains(#httpServletRequest.getQueryString(),'sort=contratoMenor%20desc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=contratoMenor%20desc'))+'sort=contratoMenor asc':#strings.contains(#httpServletRequest.getQueryString(),'sort=contratoMenor%20asc') == true ? #strings.substring(#httpServletRequest.getQueryString(),0,#strings.indexOf(#httpServletRequest.getQueryString(),'sort=contratoMenor%20asc'))+'sort=contratoMenor desc':#httpServletRequest.getQueryString()+'&amp;sort=contratoMenor desc':#httpServletRequest.getQueryString()+'&amp;sort=contratoMenor desc':'sort=contratoMenor desc'}"
                                        th:class="${#httpServletRequest.getQueryString()!=null  ?
                                        #strings.indexOf(#httpServletRequest.getQueryString(),'sort=contratoMenor')>=0?'success':'':''}">
                                         Mayor/Menor
@@ -422,26 +433,26 @@
                         </p>
                         <ul class="list-inline pull-right">
                             <li class="nopadding">
-                                <a th:href="'/opencityext/servicio/contratacion-publica.json?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                <a th:href="'/sede/servicio/contratacion-publica.json?rows='+${resultado.body.totalCount} +'&amp;' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
                                     JSON
                                 </a>                                |
                             </li>
                             <li class="nopadding">
-                                <a th:href="'/opencityext/servicio/contratacion-publica.xml?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
+                                <a th:href="'/sede/servicio/contratacion-publica.xml?rows='+${resultado.body.totalCount} +'&amp;' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
                                     XML
                                 </a>
                                 |
                             </li>
-                            <li class="nopadding">
-                                <a th:href="'/opencityext/servicio/contratacion-publica.csv?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()  :  ''}">
-                                    CSV
+                             <li class="nopadding">
+                                <a th:href="'/sede/servicio/contratacion-publica/busqueda.xls?' + ${#httpServletRequest.getQueryString() != null ? #httpServletRequest.getQueryString()+'&amp;rows=-1'  :  ''}">
+                                    XLS
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <ul class="row list-unstyled resultado">
                         <li class="col-xs-12 col-sm-12 col-md-6" th:each="doc: ${resultado.body.result}">
-                           <th:block th:if="${doc.status.id==3 or doc.status.id==6 or doc.status.id==5 }"
+                            <th:block th:if="${doc.status.id==3 or doc.status.id==6 or doc.status.id==5 }"
                                       th:include="servicio/contratacion-publica/detalle-listado-adjudicado"/>
                             <th:block th:unless="${doc.status.id==3 or doc.status.id==6 or doc.status.id==5 }"
                                       th:include="servicio/contratacion-publica/detalle-listado-noadjudicado"/>
@@ -506,7 +517,7 @@
         $('#entityEnlace').change(function (e) {
         e.preventDefault();
             var listValue = $(this).val();
-           $(location).attr('href','/opencityext/servicio/contratacion-publica/?status.id=0&entity.id='+listValue);
+           $(location).attr('href','/sede/servicio/contratacion-publica/entidad/'+listValue);
 
         });
 
@@ -526,7 +537,7 @@
             },
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
-                url: '/opencityext/servicio/contratacion-publica/servicio-gestor/?rows=10&q=title==%QUERY*&fl=id,title',
+                url: '/sede/servicio/contratacion-publica/servicio-gestor/?rows=10&q=title==%QUERY*&fl=id,title',
                 
                 filter: function(response) {
                 //console.log(response);
@@ -557,7 +568,7 @@
             },
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
-                url: '/opencityext/servicio/contratacion-publica/cpv/?rows=10&q=titulo==*%QUERY*&fl=id,titulo',
+                url: '/sede/servicio/contratacion-publica/cpv/?rows=10&q=titulo==*%QUERY*&fl=id,titulo',
 
                 filter: function(response) {
                 //console.log(response);
@@ -585,7 +596,7 @@
             },
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
-                url: '/opencityext/servicio/contratacion-publica/licitador/?rows=10&q=nombre==%QUERY*&fl=idEmpresa,nombre',
+                url: '/sede/servicio/contratacion-publica/licitador/?rows=10&q=nombre==%QUERY*&fl=idEmpresa,nombre',
 
                 filter: function(response) {
                 //console.log(response);
