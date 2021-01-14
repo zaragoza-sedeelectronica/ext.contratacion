@@ -19,7 +19,7 @@ public class PackageOcds {
             private List<String> packages=new ArrayList<String>(0);
             private List<String> extensions=new ArrayList<String>();
             private Records records;
-    private List<ContractingProcess> releases=new ArrayList<ContractingProcess>();
+            private List<ContractingProcess> releases=new ArrayList<ContractingProcess>();
 
         //endregion
         //region Getters & Setters
@@ -42,16 +42,14 @@ public class PackageOcds {
     }
 
     public String getPublicationPolicy() {
-        return "https://www.zaragoza.es/sede/servicio/catalogo/147";
+        return "https://www.zaragoza.es/contenidos/gobierno-abierto/transparencia/Politica_Publicacion_OCDS.pdf";
     }
 
     public void setPublicationPolicy(String publicationPolicy) {
         this.publicationPolicy = publicationPolicy;
     }
 
-    public void setExtensions(List<String> extensions) {
-        this.extensions = extensions;
-    }
+
 
     public String getUri() {
         return uri;
@@ -70,13 +68,14 @@ public class PackageOcds {
     }
 
     public List<String> getExtensions() {
-        extensions.add("https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/v1.1.5/extension.json");
+
         return extensions;
     }
-
-    public void setExtansions(List<String> extansions) {
-        this.extensions = extansions;
+    public void setExtensions(List<String> extensions) {
+        this.extensions = extensions;
     }
+
+
 
     public String getPublishedDate() {
         return publishedDate;

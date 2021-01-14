@@ -203,31 +203,30 @@ public class Indicadores extends EntidadContratante implements java.io.Serializa
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("Indicadores[");
-		sb.append("id=").append(id);
-		sb.append(", title='").append(title).append('\'');
-		sb.append(", Servicio='").append(servicioGestor).append('\'');
-		sb.append(", indicadorServicio=").append(indicadorServicio);
-		sb.append(", indicadorLicitador=").append(indicadorLicitador);
-		sb.append(", indicadorAdjudicatario=").append(indicadorAdjudicatarios);
-		sb.append(", anyo='").append(anyo).append('\'');
-		sb.append(", indicadorTipo=").append(indicadorTipo);
-		sb.append(", indicadorTipoServicio=").append(indicadorTipoServicio);
-		sb.append(", indicadorProcedimiento=").append(indicadorProcedimiento);
-		sb.append(", indicadorProcedimientoServicio=").append(indicadorProcedimientoServicio);
-		sb.append(", indicadorLicitadorServicio=").append(indicadorLicitadorServicio);
-		sb.append(", indicadorAhorro=").append(indicadorAhorro);
-		sb.append(", indicadorAhorroServicio=").append(indicadorAhorroServicio);
-		sb.append(", contratos=").append(contratos);
-		sb.append(", cuantia=").append(cuantia);
-		sb.append(", numEmpresas=").append(numEmpresas);
-		sb.append(", indicadorBurbuja=").append(indicadorBurbuja);
-		sb.append(", cuantiaCanon=").append(cuantiaCanon);
-		sb.append(", numEmpresaCanon=").append(numEmpresaCanon);
-		sb.append(", contratosCanon=").append(contratosCanon);
-		sb.append(", contratosExcluidos=").append(contratosExcluidos);
-		sb.append(']');
-		return sb.toString();
+		return "Indicadores[" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", servicioGestor=" + servicioGestor +
+				", indicadorServicio=" + indicadorServicio +
+				", indicadorLicitador=" + indicadorLicitador +
+				", anyo='" + anyo + '\'' +
+				", indicadorTipo=" + indicadorTipo +
+				", indicadorTipoServicio=" + indicadorTipoServicio +
+				", indicadorProcedimiento=" + indicadorProcedimiento +
+				", indicadorProcedimientoServicio=" + indicadorProcedimientoServicio +
+				", indicadorLicitadorServicio=" + indicadorLicitadorServicio +
+				", indicadorAhorro=" + indicadorAhorro +
+				", indicadorAhorroServicio=" + indicadorAhorroServicio +
+				", contratos=" + contratos +
+				", indicadorAdjudicatarios=" + indicadorAdjudicatarios +
+				", cuantia=" + cuantia +
+				", numEmpresas=" + numEmpresas +
+				", indicadorBurbuja=" + indicadorBurbuja +
+				", cuantiaCanon=" + cuantiaCanon +
+				", numEmpresaCanon=" + numEmpresaCanon +
+				", contratosCanon=" + contratosCanon +
+				", contratosExcluidos=" + contratosExcluidos +
+				']';
 	}
 
 	@Override

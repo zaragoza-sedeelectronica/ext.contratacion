@@ -63,9 +63,6 @@ public class UteTieneID implements java.io.Serializable  {
         }
         return true;
     }
-    /*@Override
-    public String toString() {
-        return "UteTieneID [idUte=" + idUte + ", idEmpresa=" + idEmpresa + "]";
-    }*/
+
     //endregion
 }

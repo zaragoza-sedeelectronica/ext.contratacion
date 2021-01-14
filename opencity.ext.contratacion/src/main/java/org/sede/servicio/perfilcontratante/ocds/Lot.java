@@ -54,15 +54,15 @@ public class Lot {
     public void setStatus(Lote lot) {
         switch(lot.getStatus().getId()){
 
-            case 1: this.status="Pending";break;
+            case 1: this.status="pending";break;
             case 5:
-            case 6:this.status="Active";break;
+            case 6:this.status="active";break;
             case 4:
             case 7:
             case 8:
             case 10:
-            case 11:this.status="Cancelado";break;
-            default:this.status="Active";break;
+            case 11:this.status="cancelled";break;
+            default:this.status="active";break;
         }
     }
 

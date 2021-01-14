@@ -25,16 +25,7 @@ import java.math.BigDecimal;
 @Rel
 public class IndicadorAhorroServicio extends EntidadBase implements java.io.Serializable {
     // region Atributtes
-    /**select  CONT1.ID_PORTAL,CONT1.SERVICIO_GESTOR,TO_CHAR(CONT1.GCZ_FECHAALTA,'yyyy') as ANYO,CONT1.ID_CONTRATO ,
-     SUM(O.IMPORTE_SINIVA) as IMPORTEOFERTA,CONT1.IMPORTE_SINIVA as IMPORTECONTRATO,
-     (CONT1.IMPORTE_SINIVA-SUM(O.IMPORTE_SINIVA))  *100 /  CONT1.IMPORTE_SINIVA as AHORRO,CONT1.NOMBRE,CONT1.ID_PROCEDIMIENTO,CONT1.ID_TIPOCONTRATO,CONT1.SERVICIO_GESTOR
-     from PERFIL_CONTRATO CONT1
-     right join PERFIL_OFERTA O
-     on O.ID_CONTRATO=CONT1.ID_CONTRATO
-     where CONT1.GCZ_PUBLICADO ='S' and  O.GANADOR='S' and  (O.CANON='NO' or O.CANON='N' or O.CANON='No') and CONT1.IMPORTE_SINIVA is not null and O.AHORRO_VISIBLE='S'
-     group by O.ID_CONTRATO,CONT1.ID_PORTAL,CONT1.ID_CONTRATO,CONT1.IMPORTE_SINIVA,TO_CHAR(CONT1.GCZ_FECHAALTA,'yyyy'),CONT1.NOMBRE,CONT1.ID_PROCEDIMIENTO,CONT1.ID_TIPOCONTRATO,CONT1.SERVICIO_GESTOR
-     order by ANYO desc ,AHORRO desc
-     **/
+
     @Column(name="ID_PORTAL",nullable =false,insertable = false,updatable = false)
     private BigDecimal idPortal;
     @Id

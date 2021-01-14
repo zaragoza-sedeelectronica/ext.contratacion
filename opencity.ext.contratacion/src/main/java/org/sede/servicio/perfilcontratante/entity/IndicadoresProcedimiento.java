@@ -229,25 +229,35 @@ public class IndicadoresProcedimiento extends EntidadBase implements Serializabl
     @Override
     public int hashCode() {
         int result = total.hashCode();
-       // result = 31 * result + totalConIva.hashCode();
-       // result = 31 * result + totalSinIva.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("IndicadoresProcedimiento{");
-        sb.append("idPortal=").append(idPortal);
-        sb.append(", total=").append(total);
-        sb.append(", totalConIva=").append(totalConIva);
-        sb.append(", totalSinIva=").append(totalSinIva);
-        sb.append(", anyo='").append(anyo).append('\'');
-        sb.append(", tipo='").append(tipo).append('\'');
-        sb.append(", entidad=").append(entidad);
-        sb.append(", contratos=").append(contratos);
-        sb.append(", resultado=").append(resultado);
-        sb.append('}');
-        return sb.toString();
+        return "IndicadoresProcedimiento[" +
+                "idPortal=" + idPortal +
+                ", total=" + total +
+                ", totalConIva=" + totalConIva +
+                ", totalSinIva=" + totalSinIva +
+                ", anyo='" + anyo + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", entidad=" + entidad +
+                ", contratos=" + contratos +
+                ", totalContratos=" + totalContratos +
+                ", porcientoMenor=" + porcientoMenor +
+                ", porcientoAbiertoSim=" + porcientoAbiertoSim +
+                ", porcientoVentaDirecta=" + porcientoVentaDirecta +
+                ", porcientoAbierto=" + porcientoAbierto +
+                ", porcientoRestringido=" + porcientoRestringido +
+                ", porcientoNegociadoSin=" + porcientoNegociadoSin +
+                ", porcientoDirecto=" + porcientoDirecto +
+                ", porcientoAbiertoConjuntamente=" + porcientoAbiertoConjuntamente +
+                ", porcientoEnajenacion=" + porcientoEnajenacion +
+                ", porcientoNegociadoSinPubliNiCon=" + porcientoNegociadoSinPubliNiCon +
+                ", porCiento=" + porCiento +
+                ", resultado=" + resultado +
+                ", tipoProcedimiento=" + tipoProcedimiento +
+                ']';
     }
 
     @Override

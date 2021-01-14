@@ -29,27 +29,7 @@ import java.util.Date;
 @Rel
 public class IndicadorAjudicatario extends EntidadBase implements java.io.Serializable {
     // region Atributtes
-    /**select o.id_ofer,O.ID_EMPRESA,e.nombre,CONT.ID_CONTRATO, CONT.NOMBRE, CONT.IMPORTE_SINIVA as IMPORTELICISINIVA, CONT.IMPORTE_CONIVA as IMPORTELICICONIVA, TO_CHAR(CONT.GCZ_FECHACONTRATO,'yyyy') as ANYO,(O.IMPORTE_SINIVA) as IMPORTEADJUSINIVA,(O.IMPORTE_CONIVA) as IMPORTEADJUCONIVA, O.FECHA_ADJ as FECHA_ADJ,p.nombre,O.FECHA_FORM as FECHA_FOR,t.nombre as tipo,pr.nombre as procedimiento,l.descripcion
-     from PERFILCONTRATANTE.PERFIL_CONTRATO CONT,PERFILCONTRATANTE.PERFIL_OFERTA O, PERFILCONTRATANTE.PERFIL_EMPRESA E, perfil_lote_tiene_oferta lo, perfil_lote l, perfil_portal p, perfil_tipocontrato t, perfil_procedimiento pr
-     where CONT.ID_CONTRATO = O.ID_CONTRATO and E.ID_EMPRESA=O.ID_EMPRESA and CONT.ID_TIPOCONTRATO!=6 and CONT.ESTADO in(3,5,6) and O.GANADOR='S' and o.id_ofer=lo.id_oferta(+) and l.id_lote(+)=lo.id_lote and cont.id_portal=p.id_portal and cont.id_tipocontrato= t.id_tipocontrato(+) and cont.id_procedimiento=pr.id_proc(+)
-     order by ANYO asc
-     id_ofer
-     ID_EMPRESA
-     EMPRESA
-     ID_CONTRATO
-     CONTRATO
-     IMPORTELICISINIVA
-     IMPORTELICICONIVA
-     ANYO
-     IMPORTEADJUSINIVA
-     IMPORTEADJUCONIVA
-     FECHA_ADJ
-     PORTAL
-     FECHA_FOR
-     TIPO
-     PROCEDIMIENTO
-     LOTE
-     **/
+
     @EmbeddedId
     @Interno
     @AttributeOverrides({

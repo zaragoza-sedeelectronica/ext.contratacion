@@ -82,11 +82,11 @@ public class Procedimiento extends EntidadBase {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Procedimiento[");
-        sb.append("id=").append(id);
-        sb.append(", nombre='").append(nombre).append('\'');
-        sb.append(']');
-        return sb.toString();
+        return "Procedimiento[" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ']';
     }
+
     //endregion
 }

@@ -25,11 +25,6 @@ import java.util.List;
 public class IndicadoresProcedimientoServicioGestor extends EntidadBase implements Serializable {
 
     //region Atributte Columns
-    /*@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="SERVICIO_GESTOR",referencedColumnName = "ID",insertable=false, updatable=false)
-    @NotFound(action=NotFoundAction.IGNORE)
-    @SoloEnEstaEntidad
-    private EstructuraOrganizativa servicio;*/
 
     @Column(name = "SERVICIO_GESTOR",insertable = false,updatable = false,nullable = false)
     @NotFound(action=NotFoundAction.IGNORE)
@@ -136,25 +131,25 @@ public class IndicadoresProcedimientoServicioGestor extends EntidadBase implemen
     @Override
     public int hashCode() {
         int result = total.hashCode();
-       // result = 31 * result + totalConIva.hashCode();
-       // result = 31 * result + totalSinIva.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("IndicadoresProcedimiento ServicioGestor[");
-        sb.append("Servicio Gestor=").append(idServicio);
-        sb.append(", total contratos=").append(total);
-        sb.append(", totalConIva=").append(totalConIva);
-        sb.append(", totalSinIva=").append(totalSinIva);
-        sb.append(", año='").append(anyo).append('\'');
-        sb.append(", tipo='").append(tipo).append('\'');
-        sb.append(", entidad=").append(entidad);
-        sb.append(", contratos=").append(contratos);
-        sb.append(", resultado=").append(resultado);
-        sb.append(']');
-        return sb.toString();
+        return "IndicadoresProcedimientoServicioGestor[" +
+                "idServicio=" + idServicio +
+                ", total=" + total +
+                ", totalConIva=" + totalConIva +
+                ", totalSinIva=" + totalSinIva +
+                ", anyo='" + anyo + '\'' +
+                ", tipo=" + tipo +
+                ", entidad=" + entidad +
+                ", contratos=" + contratos +
+                ", totalContratos=" + totalContratos +
+                ", porCiento=" + porCiento +
+                ", resultado=" + resultado +
+                ", tipoProcedimiento=" + tipoProcedimiento +
+                ']';
     }
 
     @Override

@@ -75,31 +75,5 @@ public class Ute extends EntidadBase implements java.io.Serializable{
                 + empresa +",% participacion="
                 + participacion + "]";
     }
-    /*
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + (ofertaUte != null ? ofertaUte.hashCode() : 0);
-        result = 31 * result + (empresa != null ? empresa.hashCode() : 0);
-        result = 31 * result + (participacion != null ? participacion.hashCode() : 0);
-        return result;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Ute ute = (Ute) o;
-
-        if (id != null ? !id.equals(ute.id) : ute.id != null) return false;
-        if (ofertaUte != null ? !ofertaUte.equals(ute.ofertaUte) : ute.ofertaUte != null) return false;
-        if (empresa != null ? !empresa.equals(ute.empresa) : ute.empresa != null) return false;
-        if (participacion != null ? !participacion.equals(ute.participacion) : ute.participacion!= null)
-            return false;
-        return true;
-
-    }
-
-*/
 }

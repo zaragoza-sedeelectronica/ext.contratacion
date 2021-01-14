@@ -7,12 +7,18 @@ import org.hibernate.annotations.*;
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.BooleanConverter;
 import org.sede.core.dao.EntidadBase;
+import org.sede.core.exception.InvalidImplementationException;
+import org.sede.core.rest.Formato;
 import org.sede.core.rest.Peticion;
+import org.sede.core.rest.view.TransformadorRss;
 import org.sede.core.utils.ConvertDate;
+import org.sede.core.utils.Funciones;
 import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
 import org.sede.servicio.perfilcontratante.dao.TipoContratoGenericDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,6 +44,7 @@ import java.util.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 @PathId("/" + ContratoController.MAPPING)
 @Grafo(Contrato.GRAFO)
+@Rss(title = "Licitaciones del Ayuntamiento de Zaragoza", description = "Contratos Publicos en Licitación del Ayuntamiento de Zaragoza y sus entidades dependientes", link = "https://www.zaragoza.es/sede/servicio/contratacion-publica.rss", pubDate = "Tue, 10 Jun 2003 04:00:00 GMT")
 @Rel
 public class Contrato extends EntidadBase implements Serializable {
 	//region Atributtes & Columns
@@ -244,13 +251,10 @@ public class Contrato extends EntidadBase implements Serializable {
 	@Interno
 	private Contrato padre;
 
-	@Transient 
+	@Transient
 	private String url;
-	
-	@Transient
-	private String fechaPresentacionYear;
-	@Transient
-	private List<String[]> resultadosPorAnyo;
+
+
 	//endregion
 	//region Constructor
 	public Contrato() {
@@ -311,18 +315,7 @@ public class Contrato extends EntidadBase implements Serializable {
 	public void setServicio(EstructuraOrganizativa servicio) {
 		this.servicio = servicio;
 	}
-//	public BigDecimal getServicioGestor() {
-//		return servicioGestor;
-//	}
-//	public void setServicioGestor(BigDecimal servicioGestor) {
-//		this.servicioGestor = servicioGestor;
-//	}
-	public List<String[]> getResultadosPorAnyo() {
-		return resultadosPorAnyo;
-	}
-	public void setResultadosPorAnyo(List<String[]> resultadosPorAnyo) {
-		this.resultadosPorAnyo = resultadosPorAnyo;
-	}
+
 	public static String obtenerEntidad(Peticion peticion) {
 		if (peticion.getCredenciales() != null && peticion.getCredenciales().getUsuario().getPropiedades() != null) {
 			return peticion.getCredenciales().getUsuario().getPropiedades().get("contrato_entidad") == null ? "1" : peticion.getCredenciales().getUsuario().getPropiedades().get("contrato_entidad");
@@ -337,12 +330,7 @@ public class Contrato extends EntidadBase implements Serializable {
 			return null;
 		}
 	}
-	public String getFechaPresentacionYear() {
-		return fechaPresentacionYear;
-	}
-	public void setFechaPresentacionYear(String fechaPresentacionYear) {
-		this.fechaPresentacionYear = fechaPresentacionYear;
-	}
+
 	public BigDecimal getId() {
 		return id;
 	}
@@ -507,12 +495,7 @@ public class Contrato extends EntidadBase implements Serializable {
 	public void setValorEstimado(BigDecimal valorEstimado) {
 		this.valorEstimado = valorEstimado;
 	}
-//	public BigDecimal getOrgano() {
-//		return organo;
-//	}
-//	public void setOrgano(BigDecimal organo) {
-//		this.organo = organo;
-//	}
+
 	public Set<Cpv> getCpv() {
 		return cpv;
 	}
@@ -605,23 +588,25 @@ public class Contrato extends EntidadBase implements Serializable {
 	@Override
 	public String toString() {
 		return "Contrato [id=" + id + ", title=" + title + ", expediente=" + expediente
-				//+ ", lotes=" + lotes
-				/*+ ", ofertas=" + ofertas */+ ", contratoMenor=" + contratoMenor + ", type="
-				+ type /*+ ", publicacion=" + publicacion*/ + ", fechaAdjudicacion=" + fechaAdjudicacion
-				+ ", fechaPresentacion=" + fechaPresentacion + ", fechaPresentacionYear=" + fechaPresentacionYear
-				/*+ ", entity=" + entity */+ ", status=" + status
-				+ ", url=" + url + ", expiration=" + expiration 
-//				+ ", organo=" + organo 
-				+ ", duracion=" + duracion + ", duracionReal=" + duracionReal
-				+ ", visible=" + visible + ", creationDate=" + creationDate + ", pubDate=" + pubDate
-				+ ", usuarioAlta=" + usuarioAlta + ", usuarioMod=" + usuarioMod + ", usuarioPub=" + usuarioPub
-//				+ ", anuncios=" + anuncios 
+				+ ", contratoMenor=" + contratoMenor
+				+ ", type="	+ type
+				+ ", fechaAdjudicacion=" + fechaAdjudicacion
+				+ ", fechaPresentacion=" + fechaPresentacion
+				+ ", status=" + status
+				+ ", url=" + url + ", expiration=" + expiration
+				+ ", duracion=" + duracion
+				+ ", duracionReal=" + duracionReal
+				+ ", visible=" + visible
+				+ ", creationDate=" + creationDate
+				+ ", pubDate=" + pubDate
+				+ ", usuarioAlta=" + usuarioAlta
+				+ ", usuarioMod=" + usuarioMod
+				+ ", usuarioPub=" + usuarioPub
 				+ ", valorEstimado=" + valorEstimado
-				//+ ", cpv=" + cpv
-				+ ", objeto=" + objeto 
-//				+ ", servicioGestor=" + servicioGestor
+				+ ", objeto=" + objeto
 				+ ", servicio=" + servicio
-				+ ", numLicitadores=" + numLicitadores + ", importeSinIVA=" + importeSinIVA
+				+ ", numLicitadores=" + numLicitadores
+				+ ", importeSinIVA=" + importeSinIVA
 				+ ", derivadoAcuerdoMarco=" + derivadoAcuerdoMarco
 				+ ", derivadoSistemaDinamico=" + derivadoSistemaDinamico
 				+ ", subastaElectronica=" + subastaElectronica
@@ -720,6 +705,23 @@ public class Contrato extends EntidadBase implements Serializable {
 		result = 31 * result + (clausulaProrroga != null ? clausulaProrroga.hashCode() : 0);
 		result = 31 * result + (periodoProrroga != null ? periodoProrroga.hashCode() : 0);
 		return result;
+	}
+
+	public StringBuilder toRss() throws InvalidImplementationException {
+
+		StringBuilder ical = new StringBuilder();
+		Funciones.getPeticion().establecerLastModified(this);
+		ical.append("<item>"
+			+ "<title>"+this.getTitle()+"</title>"
+			+ "<link>https://wwww.zaragoza.es/sede/servicio/contratacion-publica/"+this.getId()+ "</link>"
+			+ "<description><![CDATA["+  (this.getObjeto()==null ? this.getTitle():this.getObjeto())	+", Importe de licitación si I.V.A: "+this.getImporteSinIVA()+", Fecha de Presentación: "+ConvertDate.date2String(this.getFechaPresentacion(),ConvertDate.DATETIME_FORMAT)+ "]]></description>"
+			+ "<pubDate>"+ConvertDate.date2StringGmt(this.getPubDate())+"</pubDate>"
+			+ "<guid isPermaLink=\"true\">"
+			+ "https://wwww.zaragoza.es/sede/servicio/contratacion-publica/"+this.getId()
+			+ "</guid>"
+			+ "</item>");
+		return ical;
+
 	}
 	//endregion
 	//region Contructor

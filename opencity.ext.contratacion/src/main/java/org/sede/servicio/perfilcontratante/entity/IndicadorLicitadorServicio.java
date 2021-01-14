@@ -110,37 +110,33 @@ public class IndicadorLicitadorServicio extends EntidadBase {
     //endregion
    //region Override
 
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("IndicadorLicitadorServicio[");
-        sb.append("idEmpresa=").append(idEmpresa);
-        sb.append(", licitador='").append(licitador).append('\'');
-        sb.append(", totalsinIva=").append(totalsinIva);
-        sb.append(", totalconIva=").append(totalconIva);
-        sb.append(", totalicitadciones=").append(totalicitadciones);
-        sb.append(", anyo='").append(anyo).append('\'');
-        sb.append(", idServicio=").append(idServicio);
-        sb.append(", totalGanados=").append(totalGanados);
-        sb.append(']');
-        return sb.toString();
+        return "IndicadorLicitadorServicio[" +
+                "idEmpresa=" + idEmpresa +
+                ", licitador='" + licitador + '\'' +
+                ", totalsinIva=" + totalsinIva +
+                ", totalconIva=" + totalconIva +
+                ", totalGanados=" + totalGanados +
+                ", anyo='" + anyo + '\'' +
+                ", idServicio=" + idServicio +
+                ", totalicitadciones=" + totalicitadciones +
+                ']';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         IndicadorLicitadorServicio indicador = (IndicadorLicitadorServicio) o;
         if(idEmpresa != null ? !idEmpresa.equals(indicador.idEmpresa):indicador.idEmpresa!=null) return false;
         if (totalconIva!= null ? !totalconIva.equals(indicador.totalconIva) : indicador.totalconIva != null) return false;
         if (totalsinIva != null ? !totalconIva.equals(indicador.totalconIva) : indicador.totalconIva != null) return false;
         if (totalicitadciones != null ? !totalicitadciones.equals(indicador.totalicitadciones) : indicador.totalicitadciones != null) return false;
         if (licitador != null ? !licitador.equals(indicador.licitador) : indicador.licitador != null) return false;
-
         if( anyo != null ? anyo.equals(indicador.anyo) : indicador.anyo == null)return false;
-
         return false;
-
     }
 
     @Override

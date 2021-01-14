@@ -30,7 +30,8 @@ public class DatosIndicadoresProcedimiento extends EntidadBase implements java.i
     private String totalConIva ;
     @Column(name="ANYO",insertable = false)
     private String anyo ;
-    @Transient Procedimiento tipoProcedimiento;
+    @Transient
+    Procedimiento tipoProcedimiento;
     @Transient
     private BigDecimal porCiento;
 

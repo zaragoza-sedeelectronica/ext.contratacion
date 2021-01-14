@@ -71,8 +71,6 @@ public class ContratosPorAnyoIdPortal implements java.io.Serializable{
     @Override
     public int hashCode() {
         int result = total.hashCode();
-        //result = 31 * result + totalConIva.hashCode();
-        //result = 31 * result + totalSinIva.hashCode();
         return result;
     }
     @Override

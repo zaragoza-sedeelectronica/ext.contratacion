@@ -20,7 +20,7 @@ import java.util.List;
 public class Organisation {
     //region Atributtes
     public static final String DIRTRES="L01502973";
-    public static final String SCHEME="DIR3";
+    public static final String SCHEME="ES-DIR3";
     private String id;
     private String ocds;
     private Identifier identifier;
@@ -101,14 +101,19 @@ public class Organisation {
 
     //endregion
     //region Contructors
-    public Organisation(EstructuraOrganizativa item){
-        List<Roles> roles=new ArrayList<Roles>();
+    public Organisation(EstructuraOrganizativa item,boolean rol){
+
+        List<String> roles=new ArrayList<String>();
         this.setId(item.getId()+"-buyer");
         this.setName(item.getTitle());
+        if(rol) {
+            roles.add("buyer");
+            this.setRoles(roles);
+        }
     }
     public Organisation(EntidadContratante item){
         List<String> roles=new ArrayList<String>();
-        this.setId(item.getId()+"-"+this.SCHEME+"-"+this.DIRTRES);
+        this.setId(item.getId()+"-ES-"+item.getSchema()+"-"+item.getIdSchema());
         this.setName(item.getTitle());
         Identifier identifier = new Identifier();
         identifier.setId(item.getIdSchema());
@@ -116,16 +121,31 @@ public class Organisation {
         identifier.setScheme(item.getSchema());
         identifier.setUri("https://www.zaragoza.es");
         this.setIdentifier(identifier);
+
         roles.add("procuringEntity");
+        if(!item.getId().equals(new BigDecimal(1.0))) {
+            roles.add("buyer");
+        }
         this.setRoles(roles);
     }
-    public Organisation(Empresa item, Boolean ganador){
+    public Organisation(Empresa item, Boolean ganador,boolean rol,BigDecimal idOferta){
+        List<String> roles=new ArrayList<String>();
         if(!ganador) {
-            this.setId( item.getIdEmpresa() + "-"+item.getNombre());
+            this.setId( item.getIdEmpresa() + "-"+item.getNombre()+"-"+idOferta);
+            if(rol) {
+                roles.add("tenderer");
+                this.setRoles(roles);
+            }
         }else{
-            this.setId(item.getIdEmpresa() + "-award");
+            this.setId(item.getIdEmpresa() + "-award"+"-"+idOferta);
+            if(rol) {
+                roles.add("supplier");
+                this.setRoles(roles);
+            }
         }
         this.setName(item.getNombre());
+        this.setIdentifier(identifier);
+
     }
     public Organisation(Empresa item, Contrato con) {
         List<String> roles = new ArrayList<String>();
@@ -142,10 +162,10 @@ public class Organisation {
         for (Oferta ofer : con.getOfertas()) {
             if (ofer.getEmpresa().getIdEmpresa() == item.getIdEmpresa()) {
                 if (ofer.getGanador()) {
-                    roles.add("Supplier");
+                    roles.add("supplier");
                     this.setRoles(roles);
                 } else {
-                    roles.add("Tenderer");
+                    roles.add("tenderer");
                     this.setRoles(roles);
                 }
             }

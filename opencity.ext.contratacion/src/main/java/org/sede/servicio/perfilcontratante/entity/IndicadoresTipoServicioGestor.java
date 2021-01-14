@@ -136,28 +136,25 @@ public class IndicadoresTipoServicioGestor extends EntidadBase implements Serial
     @Override
     public int hashCode() {
         int result = total.hashCode();
-       // result = 31 * result + totalConIva.hashCode();
-       // result = 31 * result + totalSinIva.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("IndicadoresTipoServicioGestor[");
-        sb.append("idServicio=").append(idServicio);
-        sb.append(", total=").append(total);
-        sb.append(", totalConIva=").append(totalConIva);
-        sb.append(", totalSinIva=").append(totalSinIva);
-        sb.append(", anyo='").append(anyo).append('\'');
-        sb.append(", tipo=").append(tipo);
-        sb.append(", entidad=").append(entidad);
-        sb.append(", contratos=").append(contratos);
-        sb.append(", totalContratos=").append(totalContratos);
-        sb.append(", porCiento=").append(porCiento);
-        sb.append(", resultado=").append(resultado);
-        sb.append(", tipoContrato=").append(tipoContrato);
-        sb.append(']');
-        return sb.toString();
+        return "IndicadoresTipoServicioGestor[" +
+                "idServicio=" + idServicio +
+                ", total=" + total +
+                ", totalConIva=" + totalConIva +
+                ", totalSinIva=" + totalSinIva +
+                ", anyo='" + anyo + '\'' +
+                ", tipo=" + tipo +
+                ", entidad=" + entidad +
+                ", contratos=" + contratos +
+                ", totalContratos=" + totalContratos +
+                ", porCiento=" + porCiento +
+                ", resultado=" + resultado +
+                ", tipoContrato=" + tipoContrato +
+                ']';
     }
 
     @Override

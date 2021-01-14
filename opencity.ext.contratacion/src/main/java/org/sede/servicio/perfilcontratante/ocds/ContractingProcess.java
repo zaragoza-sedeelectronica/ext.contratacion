@@ -7,6 +7,7 @@ import org.sede.servicio.perfilcontratante.entity.Oferta;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ContractingProcess {
 	private List<Award> awards=new ArrayList<Award>();
 	private List<Contract> contracts=new ArrayList<Contract>();
 	private String language;
-	private List<RelatedProcess> relatedprocesses=new ArrayList<RelatedProcess>();
+	private List<RelatedProcess> relatedProces=new ArrayList<RelatedProcess>();
 	//endregion
 	//region Getters & Setters
 
@@ -128,24 +129,24 @@ public class ContractingProcess {
 		this.language = language;
 	}
 
-	public List<RelatedProcess> getRelatedprocesses() {
-		return relatedprocesses;
+	public List<RelatedProcess> getRelatedProces() {
+		return relatedProces;
 	}
 
-	public void setRelatedprocesses(List<RelatedProcess> relatedprocesses) {
-		this.relatedprocesses = relatedprocesses;
+	public void setRelatedprocesses(List<RelatedProcess> relatedProces) {
+		this.relatedProces = relatedProces;
 	}
 
 	//endregion
 	//region Contructors
 	public ContractingProcess(BigDecimal id,Contrato con) {
-		this.setOcid("ocds-1xraxc-" + id + "-ContractingProcess"+"-"+ ConvertDate.date2String(con.getCreationDate(),ConvertDate.ISO8601_FORMAT));
+		this.setOcid("ocds-1xraxc-" + id + "-ContractingProcess");
 		this.setId(id+ "-ContractingProcess");
 		
 	}
-	public  ContractingProcess(Contrato con,int status){
+	public  ContractingProcess(Contrato con,int status) throws ParseException {
 		this.setOcid("ocds-1xraxc-" + con.getId() + "-ContractingProcess");
-		this.setId(con.getId() + "-ContractingProcess"+"-"+ ConvertDate.date2String(con.getCreationDate(),ConvertDate.ISO8601_FORMAT));
+		this.setId(con.getId() + "-ContractingProcess");
 		List<Tag> relaseTag=new ArrayList<Tag>();
 
 		List<RelatedProcess> relatedProcess=new ArrayList<RelatedProcess>();
@@ -155,6 +156,8 @@ public class ContractingProcess {
 			case 1: tag.add("tender");this.setTag(tag);break;
 			case 5:tag.add("award");this.setTag(tag);break;
 			case 6:tag.add("contract");this.setTag(tag);break;
+			case 7:
+			case 11:
 			case 10:tag.add("tenderCancellation");this.setTag(tag);break;
 		}
 
@@ -163,13 +166,25 @@ public class ContractingProcess {
 
 		List<Organisation> listaOrganizaciones=new ArrayList<Organisation>();
 		listaOrganizaciones.add(new Organisation(con.getEntity()));
-		if(con.getOrganoContratante()!=null)
-			listaOrganizaciones.add(new Organisation(con.getOrganoContratante()));
-		if(con.getServicio()!=null)
-			listaOrganizaciones.add(new Organisation(con.getServicio()));
+		if(con.getEntity().getId().equals(new BigDecimal(1.0))) {
+			if (con.getOrganoContratante() != null)
+				listaOrganizaciones.add(new Organisation(con.getOrganoContratante(), true));
+			if (con.getServicio() != null)
+				listaOrganizaciones.add(new Organisation(con.getServicio(), true));
+		}
+		if(con.getOfertas().size()>0)
+		{
+			for (Oferta oferta:con.getOfertas()) {
+				if(oferta.getGanador()) {
+					listaOrganizaciones.add(new Organisation(oferta.getEmpresa(), true,true,oferta.getId()));
+				}else
+					listaOrganizaciones.add(new Organisation(oferta.getEmpresa(), false,true,oferta.getId()));
+			}
+		}
 		this.setParties(listaOrganizaciones);
-		if(con.getServicio()!=null)this.setBuyer(new Organisation(con.getServicio()));
-		//this.setPlaning(new Planning());
+		if(con.getServicio()!=null)
+		    this.setBuyer(new Organisation(con.getServicio(),false));
+
 
 			this.setTender(new Tender(con));
 
@@ -181,9 +196,7 @@ public class ContractingProcess {
 						if (ofer.getGanador()) {
 							awards.add(new Award(ofer));
 						}
-						else{
-							this.getParties().add(new Organisation(ofer.getEmpresa(),ofer.getContrato()));
-						}
+
 					}
 					this.setAwards(awards);
 				}

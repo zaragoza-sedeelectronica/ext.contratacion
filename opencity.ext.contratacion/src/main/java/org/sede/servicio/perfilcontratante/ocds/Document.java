@@ -1,6 +1,7 @@
 package org.sede.servicio.perfilcontratante.ocds;
 
 import org.sede.core.anotaciones.ResultsOnly;
+import org.sede.core.utils.ConvertDate;
 import org.sede.servicio.perfilcontratante.entity.Anuncio;
 import org.sede.servicio.perfilcontratante.entity.Lote;
 
@@ -18,8 +19,8 @@ public class Document {
     private String title;
     private String description;
     private String url;
-    private DateTime datePublished;
-    private DateTime dateModified;
+    private String datePublished;
+    private String dateModified;
     private String format;
     private String language;
     private List<String> relatedLots=new ArrayList<String>();
@@ -66,19 +67,19 @@ public class Document {
         this.url = url;
     }
 
-    public DateTime getDatePublished() {
+    public String getDatePublished() {
         return datePublished;
     }
 
-    public void setDatePublished(DateTime datePublished) {
+    public void setDatePublished(String datePublished) {
         this.datePublished = datePublished;
     }
 
-    public DateTime getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
-    public void setDateModified(DateTime dateModified) {
+    public void setDateModified(String dateModified) {
         this.dateModified = dateModified;
     }
 
@@ -118,20 +119,28 @@ public class Document {
 
         }
         this.id=anun.getId()+"";
+        if(anun.getType().equals(31)|| anun.getType().equals(31) || anun.getType().equals(31))
+            this.documentType="enquiryResponses";
+        else
+            this.documentType="notice";
+        this.description=anun.getType().getTitle();
+        this.datePublished=ConvertDate.date2String(anun.getPubDate(),ConvertDate.ISO8601_FORMAT);
+
         this.title=anun.getTitle();
         if(anun.getSello()!=null) {
-            this.setUrl("https://www.zaragoza.es/"+anun.getSelladoTiempo());
+            this.setUrl("https://www.zaragoza.es"+anun.getSelladoTiempo());
         }else{
             if((anun.getUri()!=null)) {
-                this.setUrl("https://www.zaragoza.es/" + anun.getUri());
+                this.setUrl("https://www.zaragoza.es" + anun.getUri());
+            }else{
+                this.setUrl("https://www.zaragoza.es/sede/servicio/contratacion-publica/anuncio/"+anun.getId());
             }
         }
         switch(Integer.valueOf(anun.getType().getId().toString())){
             case 3:
             case 4:
-            case 13:
-            case 8:this.format="PDF";break;
-            default:this.format="HTML";break;
+            case 8:this.format="application/pdf";break;
+            default:this.format="text/html";break;
         }
         this.language="es";
 

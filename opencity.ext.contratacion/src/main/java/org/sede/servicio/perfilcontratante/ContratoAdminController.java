@@ -58,7 +58,6 @@ import java.util.regex.Pattern;
 
 @Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
 @Controller
-//@Description("Ayuntamiento: Perfil de contratante")
 @Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + ContratoAdminController.MAPPING, method = RequestMethod.GET)
 public class ContratoAdminController {
@@ -97,6 +96,7 @@ public class ContratoAdminController {
     private CpvGenericDAO daoCpv;
     @Autowired
     private EmpresaGenericDAO daoEmpresa;
+    //endregion
 
 
     @ResponseClass(value = Contrato.class, entity = SearchResult.class)
@@ -115,7 +115,6 @@ public class ContratoAdminController {
         if (entidad != null) {
             busqueda.addFilterEqual("servicio.id", entidad);
         }
-
         sorts.add(new Sort("creationDate", true));
         busqueda.setSorts(sorts);
         resultado = dao.searchAndCount(busqueda);
@@ -132,9 +131,7 @@ public class ContratoAdminController {
     @RequestMapping(path = "/", method = RequestMethod.GET, produces = {
             MediaType.TEXT_HTML_VALUE, "*/*"})
     public String home(Model model, @Fiql SearchFiql search) throws org.apache.cxf.jaxrs.ext.search.SearchParseException {
-
         model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
-
         return MAPPING + "/index";
     }
 
@@ -146,7 +143,7 @@ public class ContratoAdminController {
         if (!carpeta.isEmpty()) {
 
             model.addAttribute(ModelAttr.RESULTADO, apiTramitaJson(carpeta));
-        }else {
+        } else {
 
             model.addAttribute(ModelAttr.RESULTADO, null);
         }
@@ -177,7 +174,7 @@ public class ContratoAdminController {
                 Search search = new Search(Contrato.class);
                 search.addFilterEqual("expediente", expediente);
                 Contrato con = dao.getResultsForExpediente(expediente);
-                Contrato conJson = parseadorContrato(actualObj,expediente,con.getId());
+                Contrato conJson = parseadorContrato(actualObj, expediente, con.getId());
                 /*EntidadBase.combinar(con,conJson);
                 Set<ConstraintViolation<Object>> errores = dao.validar(con);
                 if (!errores.isEmpty()) {
@@ -193,7 +190,8 @@ public class ContratoAdminController {
         }
         return resultado;
     }
-    public Contrato parseadorContrato(JsonNode json,String expediente,BigDecimal id) {
+
+    public Contrato parseadorContrato(JsonNode json, String expediente, BigDecimal id) {
 
         Contrato contrato = new Contrato();
         contrato.setId(id);
@@ -214,26 +212,26 @@ public class ContratoAdminController {
                 if (temporal.has("pproc:estimatedDuration")) {
                     try {
                         Integer plazoEjecucion = 0;
-                        if(!"".equals(temporal.get("pproc:estimatedDuration").asText()) && (temporal.get("pproc:estimatedDuration").asText()).length()>1 && (temporal.get("pproc:estimatedDuration").asText()).length()<10){
-                        Period period = Period.parse(temporal.get("pproc:estimatedDuration").asText());
+                        if (!"".equals(temporal.get("pproc:estimatedDuration").asText()) && (temporal.get("pproc:estimatedDuration").asText()).length() > 1 && (temporal.get("pproc:estimatedDuration").asText()).length() < 10) {
+                            Period period = Period.parse(temporal.get("pproc:estimatedDuration").asText());
 
-                        if (period.getYears() > 0) {
-                            plazoEjecucion = period.getYears() * 365;
-                        }
-                        if (period.getMonths() > 0) {
-                            if (plazoEjecucion > 0) {
-                                plazoEjecucion = plazoEjecucion + period.getMonths() * 30;
-                            } else {
-                                plazoEjecucion = period.getMonths() * 30;
+                            if (period.getYears() > 0) {
+                                plazoEjecucion = period.getYears() * 365;
                             }
-                        }
-                        if (period.getDays() > 0) {
-                            if (plazoEjecucion > 0) {
-                                plazoEjecucion = plazoEjecucion + period.getDays();
-                            } else {
-                                plazoEjecucion = period.getDays();
+                            if (period.getMonths() > 0) {
+                                if (plazoEjecucion > 0) {
+                                    plazoEjecucion = plazoEjecucion + period.getMonths() * 30;
+                                } else {
+                                    plazoEjecucion = period.getMonths() * 30;
+                                }
                             }
-                        }
+                            if (period.getDays() > 0) {
+                                if (plazoEjecucion > 0) {
+                                    plazoEjecucion = plazoEjecucion + period.getDays();
+                                } else {
+                                    plazoEjecucion = period.getDays();
+                                }
+                            }
                         }
                         contrato.setDuracion(BigDecimal.valueOf(Double.valueOf(plazoEjecucion)));
                     } catch (IllegalArgumentException e) {
@@ -627,15 +625,15 @@ public class ContratoAdminController {
                             if (valor.has("@type")) {
                                 JsonNode jsonNode1 = valor.get("@type");
                                 if (jsonNode1.isArray()) {
-                                     try {
-                                         Oferta ofertaGanadora= Utils.crearOferta(valor,true,daoEmpresa);
-                                         contrato.getOfertas().add(ofertaGanadora);
-                                     } catch (Exception e) {
-                                         logger.error(e.getMessage());
-                                     }
+                                    try {
+                                        Oferta ofertaGanadora = Utils.crearOferta(valor, true, daoEmpresa);
+                                        contrato.getOfertas().add(ofertaGanadora);
+                                    } catch (Exception e) {
+                                        logger.error(e.getMessage());
+                                    }
 
-                                }else{
-                                    Oferta oferta = Utils.crearOferta(valor, false,daoEmpresa);
+                                } else {
+                                    Oferta oferta = Utils.crearOferta(valor, false, daoEmpresa);
                                     contrato.getOfertas().add(oferta);
                                 }
 
@@ -1669,55 +1667,5 @@ public class ContratoAdminController {
     ResponseEntity<?> apiCheckContratosEnVirtuoso() throws ParseException {
         return null;
     }
-//		Contratos que no están en Virtuoso pero sí en BBDD
-//		List<Contrato> resultado=dao.findAll();
-//		StringBuilder mensaje = new StringBuilder();
-//		for (Contrato c : resultado) {
-//			if (StringUtils.isNotEmpty(c.getExpediente()) && !Utils.existeEnVirtuoso(c.getExpediente())) {
-//				mensaje.append(c.getExpediente() + "##");
-//			}
-//		}
-//		return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(), mensaje.toString()));
-
-    //		Contratos que están en Virtuoso pero no en BBDD
-//		StringBuilder mensaje = new StringBuilder();
-//		ObjectMapper mapper = new ObjectMapper();
-//		try {
-//			JsonNode actualObj = mapper.readTree(VirtuosoDataManagement.query(
-//					"SELECT ?x WHERE {?x ?y <http://contsem.unizar.es/def/sector-publico/pproc#Contract>. }", Contrato.class.getAnnotation(Grafo.class).value(), MimeTypes.SPARQL_JSON));
-//			ArrayNode lista = ((ArrayNode)actualObj.get("results").get("bindings"));
-//			for (int i = 0; i < lista.size(); i++) {
-//				String elem = lista.get(i).get("x").get("value").asText();
-//				System.out.println(elem);
-//				elem = elem.substring(elem.lastIndexOf("/") + 1, elem.length());
-//				System.out.println(elem);
-//				
-//				SearchFiql search = new SearchFiql();
-//				Search busqueda = search.getConditions(Contrato.class);
-//				busqueda.addFilterAnd(Filter.equal("expediente", elem));
-//				
-//				List<Contrato> resultado = dao.search(busqueda);
-//				if (resultado.isEmpty()) {
-//					mensaje.append(elem + "##");
-//				}
-//				
-//				
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(), mensaje.toString()));
-    @SuppressWarnings("Deprecation")
-    public static String normalizar(String text) {
-
-//		text = Normalizer.normalize(text, Normalizer.Form.NFD);
-//		text = text.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-//		return text;
-
-        String temp = sun.text.Normalizer.normalize(text, java.text.Normalizer.Form.NFD, 0);
-        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-        return pattern.matcher(temp).replaceAll("").replaceAll("&", "_").replaceAll(" ", "_").replaceAll("�", "_").replaceAll("�", "_");
-    }
-
 
 }

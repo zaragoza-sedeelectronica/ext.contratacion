@@ -72,6 +72,7 @@ public class Release {
                 for(Oferta ofer:con.getOfertas()){
                     if(ofer.getGanador()){
                         this.setDate(ConvertDate.date2String(ofer.getFechaFormalizacion(),ConvertDate.ISO8601_FORMAT));
+                        this.setUrl("/sede/servicio/contratacion-publica/ocds/contract/"+con.getId()+"-contract.json");
                     }
                 }
                 this.getTag().add("award");

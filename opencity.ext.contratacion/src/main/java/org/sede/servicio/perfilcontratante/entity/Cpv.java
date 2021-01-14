@@ -28,7 +28,6 @@ public class Cpv extends EntidadBase implements Serializable {
     
     @Column(name = "VISIBLE")
     @Permisos(Permisos.DET)
-//    @Convert(converter = BooleanConverter.class)
     private String visible;
     //endregion
     //region Setters & Getters

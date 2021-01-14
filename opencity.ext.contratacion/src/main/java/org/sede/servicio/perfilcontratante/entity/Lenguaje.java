@@ -68,11 +68,13 @@ public class Lenguaje extends EntidadBase implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("Lenguaje[");
-		sb.append(", codigo='").append(codigo).append('\'');
-		sb.append(']');
-		return sb.toString();
+		return "Lenguaje[" +
+				"id=" + id +
+				", codigo='" + codigo + '\'' +
+				", idioma='" + idioma + '\'' +
+				']';
 	}
+
 	//endregion
 
 }

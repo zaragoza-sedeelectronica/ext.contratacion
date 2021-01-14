@@ -101,8 +101,6 @@ public class IndicadoresPorAnyoServicioGestor  implements Serializable {
     @Override
     public int hashCode() {
         int result = total.hashCode();
-       // result = 31 * result + totalConIva.hashCode();
-       // result = 31 * result + totalSinIva.hashCode();
         return result;
     }
     @Override
@@ -118,16 +116,17 @@ public class IndicadoresPorAnyoServicioGestor  implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("IndicadoresPorAnyoServicioGestor[");
-        sb.append("idServicio=").append(idServicio);
-        sb.append(", total=").append(total);
-        sb.append(", totalConIva=").append(totalConIva);
-        sb.append(", totalSinIva=").append(totalSinIva);
-        sb.append(", anyo='").append(anyo).append('\'');
-        sb.append(", idPortal='").append(idPortal).append('\'');
-        sb.append(", entidad=").append(entidad);
-        sb.append(']');
-        return sb.toString();
+        return "IndicadoresPorAnyoServicioGestor[" +
+                "idServicio=" + idServicio +
+                ", total=" + total +
+                ", totalConIva=" + totalConIva +
+                ", totalSinIva=" + totalSinIva +
+                ", anyo='" + anyo + '\'' +
+                ", idPortal='" + idPortal + '\'' +
+                ", entidad=" + entidad +
+                ", totalLicitadores=" + totalLicitadores +
+                ']';
     }
+
     //endregion
 }

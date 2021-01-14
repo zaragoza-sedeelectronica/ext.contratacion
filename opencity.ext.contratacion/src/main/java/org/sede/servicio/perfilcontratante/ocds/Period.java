@@ -3,14 +3,18 @@ package org.sede.servicio.perfilcontratante.ocds;
 import org.apache.commons.lang3.time.DateUtils;
 import org.sede.core.anotaciones.ResultsOnly;
 import org.sede.core.utils.ConvertDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 
 @XmlRootElement(name = "PeriodOcds")
 @ResultsOnly(xmlroot = "PeriodOcds")
 public class Period {
     //region Atributtes
+
         private Date startDate;
         private Date endDate;
         private Date maxExtentDate;
@@ -52,22 +56,25 @@ public class Period {
     //endregion
     //region Constructors
         public Period(Date startdate, Date endDate) {
-            this.startDate = startdate;
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startdate);
+            this.startDate =calendar.getTime();
             this.endDate = endDate;
 
 
         }
-        public Period(Date startdate) {
-                this.startDate = startdate;
-            }
         public Period(Date startdate,Integer days) {
-            this.startDate = startdate;
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startdate);
+            this.startDate =calendar.getTime();
             this.endDate=DateUtils.addDays(startdate,days);
             this.durationInDays=days;
             this.maxExtentDate=this.endDate;
         }
-        public Period(Date startdate, Date endDate,Integer days) {
-            this.startDate = startdate;
+        public Period(Date startdate, Date endDate,Integer days)  {
+            Calendar calendar = Calendar.getInstance();
+           calendar.setTime(startdate);
+            this.startDate =calendar.getTime();
             this.endDate =endDate;
             this.durationInDays=days;
             this.maxExtentDate=DateUtils.addDays(endDate,days);

@@ -116,7 +116,7 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
     @Transient
     private BigDecimal idContrato;
 
-    //trasient id_contrato y title
+
     //endregion
     //region Setters & Getters
 

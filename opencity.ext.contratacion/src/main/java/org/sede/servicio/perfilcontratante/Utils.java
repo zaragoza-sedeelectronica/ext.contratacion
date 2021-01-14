@@ -125,12 +125,6 @@ public class Utils {
 		}
 	}
 
-	public static byte[] decodeFromString(String txtBase64) {
-		if (txtBase64.indexOf("data:") >= 0) {
-			txtBase64 = txtBase64.substring(txtBase64.indexOf(","), txtBase64.length());
-		}
-		return Base64.getDecoder().decode(txtBase64);
-	}
 
 	public static Oferta crearOferta(JsonNode objc, boolean ganador,EmpresaGenericDAO daoEmpresa) throws Exception {
 		Oferta oferta = new Oferta();

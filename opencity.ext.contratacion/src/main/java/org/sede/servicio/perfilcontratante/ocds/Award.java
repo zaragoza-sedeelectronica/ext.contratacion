@@ -144,7 +144,7 @@ public class Award {
         this.setStatus(estado(ofer));
         this.setDate(ofer.getFechaAdjudicacion());
         this.setValue(new Value(ofer.getImporteSinIVA(),"EUR"));
-        supliers.add(new Organisation(ofer.getEmpresa(),true));
+        supliers.add(new Organisation(ofer.getEmpresa(),true,false,ofer.getId()));
         this.setSuppliers(supliers);
         this.setDocuments(documents);
         for (Anuncio anun:ofer.getContrato().getAnuncios()) {
@@ -152,6 +152,7 @@ public class Award {
                 case 5:
                 case 6:
                 case 21:
+                case 19:
                     this.documents.add(new Document(anun));
                     break;
                 case 31:
@@ -167,8 +168,9 @@ public class Award {
                 this.items.add(new Item(cpv, ofer.getContrato()));
             }
         }else {
-
-                this.items.add(new Item( ofer.getContrato(),true));
+            if(ofer.getContrato().getCpv().size()!=0) {
+                this.items.add(new Item(ofer.getContrato(), true));
+            }
 
 
         }

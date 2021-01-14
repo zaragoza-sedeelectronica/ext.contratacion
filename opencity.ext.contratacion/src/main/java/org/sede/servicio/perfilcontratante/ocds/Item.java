@@ -75,7 +75,7 @@ public class Item {
     //endregion
     //region Constructors
     public Item(Cpv cpv, Contrato con){
-        this.id=con.getId()+"-item";
+        this.id=con.getId()+"-item-"+cpv.getId();
         this.description=con.getTitle();
         this.classification=new CpvOcds(cpv);
         this.quantity=0.0;
@@ -85,7 +85,7 @@ public class Item {
         int i=0;
         for(Cpv cpv:con.getCpv()){
             if(i==0){
-                this.id=con.getId()+"-item";
+                this.id=con.getId()+"-item"+cpv.getId();
                 this.description=con.getTitle();
                 this.classification=new CpvOcds(cpv);
                 this.quantity=0.0;
