@@ -92,4 +92,11 @@ public class Cpv extends EntidadBase implements Serializable {
 
 
     //endregion
+    //region Contructs
+    public Cpv(){}
+    public Cpv(String id){
+        this.id=BigDecimal.valueOf(Double.valueOf(id));
+    }
+
+    //endregion
 }

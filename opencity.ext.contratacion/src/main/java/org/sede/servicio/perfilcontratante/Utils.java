@@ -3,36 +3,51 @@ import com.googlecode.genericdao.search.Search;
 import com.googlecode.genericdao.search.SearchResult;
 import org.sede.core.anotaciones.Description;
 import org.sede.core.anotaciones.Grafo;
+import org.sede.core.anotaciones.Interno;
 import org.sede.core.dao.VirtuosoDataManagement;
 import org.sede.core.rest.MimeTypes;
 import org.sede.core.rest.Peticion;
 import org.sede.core.utils.Anonimizar;
 import org.sede.core.utils.ConvertDate;
+import org.sede.servicio.organigrama.dao.OrganigramaGenericDAO;
+import org.sede.servicio.perfilcontratante.dao.AnuncioGenericDAO;
 import org.sede.servicio.perfilcontratante.dao.EmpresaGenericDAO;
-import org.sede.servicio.perfilcontratante.entity.Anuncio;
-import org.sede.servicio.perfilcontratante.entity.Contrato;
+import org.sede.servicio.perfilcontratante.dao.TipoContratoGenericDAO;
+import org.sede.servicio.perfilcontratante.entity.*;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import org.sede.servicio.perfilcontratante.entity.Empresa;
-import org.sede.servicio.perfilcontratante.entity.Oferta;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
+import sun.text.Normalizer;
 
-
+import org.apache.commons.codec.binary.Base64;
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.regex.Pattern;
 
 
 public class Utils {
-
-	private Utils() {
-		super();
-	}
-
+	//region Contructors
+	private Utils() {}
+	//endregion
+	//region Atributtes
 	public static final String CONTRATOSELLADO = "contratoSellado";
+	public static final BigDecimal TIPO_ANUNCIO_LICITACION = new BigDecimal(2.0);
+	public static final BigDecimal TIPO_ANUNCIO_PLIEGOS_TECNICOS = new BigDecimal(3.0);
+	public static final BigDecimal TIPO_ANUNCIO_PLIEGOS_ADMINISTRATIVOS = new BigDecimal(4.0);
+	public static final BigDecimal TIPO_ANUNCIO_ADJUDICACION = new BigDecimal(6.0);
+	public static final BigDecimal TIPO_ANUNCIO_FECHA_PRESENTACION = new BigDecimal(10.0);
+	public static final BigDecimal TIPO_ANUNCIO_PRESUPUESTO = new BigDecimal(11.0);
+	public static final BigDecimal TIPO_ANUNCIO_OTRAS_INFORMACIONES = new BigDecimal(9.0);
+	public static final String PROPENTIDAD = "contrato_entidad";
+	public static final String PROPPORTAL = "contrato_portal";
+	//endregion
+	//region Methods
 
 	@Description("Ordenacion de Maps para visualizacion de datos de Licitados y ganados")
 	public static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap, final boolean order) {
@@ -53,7 +68,6 @@ public class Utils {
 		}
 		return sortedMap;
 	}
-
 	public static boolean necesitaSellado(Anuncio registro) {
 		boolean retorno = false;
 		if (registro.getType().getId().intValue() == 2
@@ -64,7 +78,18 @@ public class Utils {
 		}
 		return retorno;
 	}
+	public static byte[] decodeFromString(String txtBase64) {
+		if (txtBase64.indexOf("data:") >= 0) {
+			txtBase64 = txtBase64.substring(txtBase64.indexOf(","), txtBase64.length());
+		}
+		return Base64.decodeBase64(txtBase64);
+	}
+	public static String normalizar(String text) {
 
+		String temp = Normalizer.normalize(text, java.text.Normalizer.Form.NFC, 0);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("").replaceAll("&", "_").replaceAll(" ", "_").replaceAll("�", "_").replaceAll("�", "_");
+	}
 	public static String getSino(Boolean dat) {
 		if (dat == null) {
 			return "";
@@ -74,7 +99,6 @@ public class Utils {
 			return "No";
 		}
 	}
-
 	public static String getUrgente(String urgente) {
 		if (urgente == null) {
 			return "";
@@ -87,8 +111,6 @@ public class Utils {
 		}
 	}
 
-	public static final String PROPENTIDAD = "contrato_entidad";
-
 	public static BigDecimal obtenerEntidad(Peticion peticion) {
 		if (peticion.getCredenciales() != null && peticion.getCredenciales().getUsuario().getPropiedades() != null
 				&& peticion.getCredenciales().getUsuario().getPropiedades().containsKey(PROPENTIDAD)) {
@@ -98,8 +120,6 @@ public class Utils {
 		}
 	}
 
-	public static final String PROPPORTAL = "contrato_portal";
-
 	public static BigDecimal obtenerPortal(Peticion peticion) {
 		if (peticion.getCredenciales() != null && peticion.getCredenciales().getUsuario().getPropiedades() != null
 				&& peticion.getCredenciales().getUsuario().getPropiedades().containsKey(PROPPORTAL)) {
@@ -108,7 +128,6 @@ public class Utils {
 			return null;
 		}
 	}
-
 	public static boolean existeEnVirtuoso(String expediente) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -124,7 +143,6 @@ public class Utils {
 			return false;
 		}
 	}
-
 
 	public static Oferta crearOferta(JsonNode objc, boolean ganador,EmpresaGenericDAO daoEmpresa) throws Exception {
 		Oferta oferta = new Oferta();
@@ -176,10 +194,7 @@ public class Utils {
 						}
 					}
 				}
-
-
 					oferta.setEmpresa(licitador);
-
 				}
 				if (actualObj.has("pc:offeredPrice")) {
 					Iterator<JsonNode> iterator = actualObj.get("pc:offeredPrice").elements();
@@ -194,15 +209,11 @@ public class Utils {
 					}
 				}
 
-
-
 			return oferta;
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-
 	}
+
 }

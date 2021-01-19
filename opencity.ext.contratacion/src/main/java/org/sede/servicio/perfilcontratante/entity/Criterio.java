@@ -16,12 +16,16 @@ import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import org.hibernate.annotations.BatchSize;
+import org.sede.core.anotaciones.Grafo;
 import org.sede.core.anotaciones.Interno;
+import org.sede.core.anotaciones.Rel;
 
 @XmlRootElement(name = "criterio_awards")
 @Entity(name = "Criterios")
 @Table(name = "PERFIL_CRITERIOS", schema = "PERFILCONTRATANTE")
 @XmlAccessorType(XmlAccessType.FIELD)
+@Grafo(Contrato.GRAFO)
+@Rel
 @SequenceGenerator(name = "SECUENCIA_SEQ_PERFIL_CRITERIO", sequenceName = "SEQ_PERFIL_CRITERIO", allocationSize = 1)
 public class Criterio implements java.io.Serializable {
 
@@ -161,7 +165,7 @@ public class Criterio implements java.io.Serializable {
 	public String toString() {
 		return "Criterio [idCriterio=" + idCriterio + ", description="
 				+ description + ", title=" + title + ", tipo=" + tipo
-				+ ", contrato=" + contrato + "]";
+				+ "]";
 	}
 
 

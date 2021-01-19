@@ -238,7 +238,6 @@ public class Contrato extends EntidadBase implements Serializable {
 	@Convert(converter = BooleanConverter.class)
 	private Boolean canon;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrato", cascade = { CascadeType.ALL })
-	@Permisos(Permisos.DET)
 	@BatchSize(size = 50)
 	@Access(AccessType.FIELD)
 	private Set<Criterio> criterios = new HashSet<Criterio>(0);
@@ -621,6 +620,7 @@ public class Contrato extends EntidadBase implements Serializable {
 				+ ", importeConIVA=" + importeConIVA
 				+ ", IVA=" + iva
 				+ ", Fecha Contrato=" + fechaContrato
+				+ ", Citerios=" + criterios
 				+ ", OrganismoContratante=" + organoContratante +"]";
 	}
 

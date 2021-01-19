@@ -70,6 +70,7 @@ public class ContratoAdminController {
     private static final String MAPPING_ANUNCIO_FORM = MAPPING + "/anuncio";
     private static final String MAPPING_OFERTA_FORM = MAPPING + "/oferta";
     private static final String MAPPING_LOTE_FORM = MAPPING + "/lote";
+    private static final String MAPPING_CRITERIO_FORM = MAPPING + "/criterio";
     private static final String MAPPING_FUNCIONALIDADES = MAPPING + "/funciones/";
 
     @Autowired
@@ -96,6 +97,8 @@ public class ContratoAdminController {
     private CpvGenericDAO daoCpv;
     @Autowired
     private EmpresaGenericDAO daoEmpresa;
+    @Autowired
+    private CriteriosGenericDAO daoCriterio;
     //endregion
 
 
@@ -1667,5 +1670,176 @@ public class ContratoAdminController {
     ResponseEntity<?> apiCheckContratosEnVirtuoso() throws ParseException {
         return null;
     }
+
+    //region Criterios
+    @Permisos(Permisos.DET)
+    @Cache(Cache.DURACION_30MIN)
+    @ResponseClass(Criterio.class)
+    @RequestMapping(value = "/{idContrato}/criterio/{id}", method = RequestMethod.GET, produces = {
+            MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD,
+            MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+    public @ResponseBody
+    ResponseEntity<?> apiDetalleCriterio(
+            @PathVariable BigDecimal idContrato,
+            @PathVariable @TestValue("1") BigDecimal id) {
+        Criterio registro = daoCriterio.find(id);
+        if (registro == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                    new Mensaje(HttpStatus.NOT_FOUND.value(),
+                            messageSource.getMessage("generic.notfound", null, LocaleContextHolder.getLocale())));
+        } else {
+            return ResponseEntity.ok(registro);
+        }
+    }
+
+    @Permisos(Permisos.NEW)
+    @RequestMapping(value = "/{idContrato}/criterio/new", method = RequestMethod.POST, produces = {
+            MediaType.TEXT_HTML_VALUE, "*/*"})
+    public String newFormLote(@PathVariable BigDecimal idContrato, Criterio dato,
+                              BindingResult bindingResult, Model model) {
+
+        Contrato l = dao.find(idContrato);
+        dato.setContrato(l);
+        model.addAttribute(ModelAttr.DATO, dato);
+        model.addAttribute(ModelAttr.REGISTRO, ResponseEntity.ok(new Criterio()));
+        return MAPPING_CRITERIO_FORM;
+    }
+
+    @Permisos(Permisos.MOD)
+    @NoCache
+    @RequestMapping(value = "/{idContrato}/criterio/{id}/edit", method = RequestMethod.POST, produces = {
+            MediaType.TEXT_HTML_VALUE, "*/*"})
+    public String editCriterio(@PathVariable BigDecimal idContrato,
+                           @PathVariable BigDecimal id, Criterio dato,
+                           BindingResult bindingResult, Model model) {
+        ResponseEntity<?> registro = apiDetalleCriterio(idContrato, id);
+        model.addAttribute(ModelAttr.DATO, registro.getBody());
+        model.addAttribute(ModelAttr.REGISTRO, registro);
+        return MAPPING_CRITERIO_FORM;
+    }
+
+    @RequestMapping(value = "/{idContrato}/criterio", method = RequestMethod.POST, consumes = {
+            MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON,
+            MimeTypes.XML})
+    @Permisos(Permisos.NEW)
+    @Description("Crear Lote")
+    @ResponseClass(value = Criterio.class)
+    public @ResponseBody
+    ResponseEntity<?> apiCrearCriterio(
+            @PathVariable BigDecimal idContrato, @RequestBody Criterio registro) {
+        Set<ConstraintViolation<Object>> errores = daoCriterio.validar(registro);
+        if (!errores.isEmpty()) {
+            return Funciones.generarMensajeError(errores);
+        }
+        daoCriterio.save(registro);
+        return ResponseEntity.ok(registro);
+    }
+
+    @RequestMapping(value = "/{idContrato}/criterio/{id}", method = RequestMethod.PUT, consumes = {
+            MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON,
+            MimeTypes.XML})
+    @Permisos(Permisos.MOD)
+    @ResponseClass(value = Criterio.class)
+    public @ResponseBody
+    ResponseEntity<?> apiModificarCriterio(
+            @PathVariable BigDecimal idContrato, @PathVariable BigDecimal id,
+            @RequestBody Criterio registro) {
+        ResponseEntity<?> resp = apiDetalleCriterio(idContrato, id);
+        if (resp.getStatusCode().is2xxSuccessful()) {
+            Criterio reg = (Criterio) resp.getBody();
+            EntidadBase.combinar(reg, registro);
+            reg.setIdCriterio(id);
+            Set<ConstraintViolation<Object>> errores = daoCriterio.validar(registro);
+            if (!errores.isEmpty()) {
+                return Funciones.generarMensajeError(errores);
+            } else {
+                daoCriterio.save(reg);
+            }
+            return ResponseEntity.ok(reg);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    (Mensaje) resp.getBody());
+        }
+    }
+
+    @RequestMapping(value = "/{idContrato}/criterio/{id}/remove", method = RequestMethod.DELETE, produces = {
+            MimeTypes.JSON, MimeTypes.XML})
+    @Permisos(Permisos.DEL)
+    @Description("Eliminar registro")
+    @ResponseClass(value = Mensaje.class)
+    public @ResponseBody
+    ResponseEntity<?> apiDeleteCriterio(
+            @PathVariable BigDecimal idContrato, @PathVariable BigDecimal id) {
+        if (daoCriterio.removeById(id)) {
+            return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(),
+                    "Criterio eliminado"));
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    "Criterio no eliminado");
+        }
+    }
+
+    @Permisos(Permisos.NEW)
+    @RequestMapping(value = "/{idContrato}/criterio/save", method = RequestMethod.POST, produces = {
+            MediaType.TEXT_HTML_VALUE, "*/*"})
+    public String crearCriterio(@PathVariable BigDecimal idContrato,
+                            Criterio dato,
+                            BindingResult bindingResult, Model model, RedirectAttributes attr) {
+
+        Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
+        dato.setContrato(contrato);
+        ResponseEntity<?> resultado = apiCrearCriterio(idContrato, dato);
+        if (resultado.getStatusCode().is2xxSuccessful()) {
+            daoCriterio.flush();
+            attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
+                    HttpStatus.OK.value(), "Registro creado correctamente"));
+            attr.addFlashAttribute(ModelAttr.REGISTRO, resultado);
+            attr.addFlashAttribute(ModelAttr.DATO, resultado.getBody());
+            return "redirect:/" + MAPPING + "/" + idContrato + "/edit#criterios";
+        } else {
+            model.addAttribute(ModelAttr.MENSAJE, resultado.getBody());
+            model.addAttribute(ModelAttr.REGISTRO, ResponseEntity.ok(dato));
+            model.addAttribute(ModelAttr.DATO, dato);
+            return MAPPING_CRITERIO_FORM;
+        }
+
+    }
+
+    @Permisos(Permisos.MOD)
+    @RequestMapping(value = "/{idContrato}/criterio/{id}/save", method = RequestMethod.POST, produces = {
+            MediaType.TEXT_HTML_VALUE, "*/*"})
+    public String modificarCriterio(@PathVariable BigDecimal idContrato,
+                                @PathVariable BigDecimal id, Criterio dato,
+                                BindingResult bindingResult, Model model, RedirectAttributes attr) {
+        Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
+        dato.setContrato(contrato);
+        ResponseEntity<?> resultado = apiModificarCriterio(idContrato, id, dato);
+        if (resultado.getStatusCode().is2xxSuccessful()) {
+            attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
+                    HttpStatus.OK.value(), "Registro modificado correctamente"));
+            return "redirect:/" + MAPPING + "/" + idContrato + "/edit#criterios";
+        } else {
+            model.addAttribute(ModelAttr.MENSAJE, resultado.getBody());
+            model.addAttribute(ModelAttr.REGISTRO, ResponseEntity.ok(dato));
+            model.addAttribute(ModelAttr.DATO, dato);
+            return MAPPING_CRITERIO_FORM;
+        }
+    }
+
+    @Permisos(Permisos.DEL)
+    @RequestMapping(value = "/{idContrato}/criterio/{id}/delete", method = RequestMethod.POST, produces = {
+            MediaType.TEXT_HTML_VALUE, "*/*"})
+    public String eliminarCriterio(@PathVariable BigDecimal idContrato,
+                               @PathVariable BigDecimal id, Model model, RedirectAttributes attr) {
+        ResponseEntity<?> resultado = apiDeleteLote(idContrato, id);
+        if (resultado.getStatusCode().is2xxSuccessful()) {
+            attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
+                    HttpStatus.OK.value(), "Criterio eliminado correctamente"));
+        } else {
+            attr.addFlashAttribute(ModelAttr.MENSAJE, resultado.getBody());
+        }
+        return "redirect:/" + MAPPING + "/" + idContrato + "/edit#criterios";
+    }
+    //endregion
 
 }

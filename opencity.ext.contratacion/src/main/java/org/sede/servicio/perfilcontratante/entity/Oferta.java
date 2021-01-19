@@ -1,5 +1,6 @@
 package org.sede.servicio.perfilcontratante.entity;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.NotFoundAction;
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.BooleanConverter;
 import org.sede.core.dao.EntidadBase;
+import org.sede.core.rest.Peticion;
 import org.sede.core.utils.ConvertDate;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
@@ -19,6 +21,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Set;
 
 @XmlRootElement(name = "oferta")
@@ -264,4 +267,18 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
                 +", ganador=" +ganador+", importeConIVA=" + importeConIVA + ", IVA=" + iva+  ", AhorroVisible=" + ahorroVisible +"]";
     }
     //endregion
+    //region Constructs
+    public Oferta(){}
+
+    //endregion
+    public static boolean anoniCierto(String a){
+        char c = a.trim().charAt(0);
+        if ((Character.isDigit(c)) || c == 'X' || c == 'Y' || c == 'Z') {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
 }
