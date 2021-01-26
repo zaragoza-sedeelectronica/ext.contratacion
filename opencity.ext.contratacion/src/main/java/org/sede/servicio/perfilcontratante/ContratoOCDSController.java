@@ -75,7 +75,7 @@ public class ContratoOCDSController {
 		fields.add(new Field("creationDate"));
 			busqueda.setFields(fields);
 		if(after==null) {
-			busqueda.addFilterGreaterThan("fechaContratoTill", ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT));
+			busqueda.addFilterGreaterThan("fechaContrato", ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT));
 		}else{
 			Date limite= ConvertDate.string2Date("01-01-2017",ConvertDate.DATE_FORMAT);
 			if(after.compareTo(limite)<0){

@@ -1,31 +1,24 @@
 package org.sede.servicio.perfilcontratante;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.googlecode.genericdao.search.Search;
 import com.googlecode.genericdao.search.SearchResult;
+import org.apache.commons.codec.binary.Base64;
 import org.sede.core.anotaciones.Description;
 import org.sede.core.anotaciones.Grafo;
-import org.sede.core.anotaciones.Interno;
 import org.sede.core.dao.VirtuosoDataManagement;
 import org.sede.core.rest.MimeTypes;
 import org.sede.core.rest.Peticion;
 import org.sede.core.utils.Anonimizar;
 import org.sede.core.utils.ConvertDate;
-import org.sede.servicio.organigrama.dao.OrganigramaGenericDAO;
-import org.sede.servicio.perfilcontratante.dao.AnuncioGenericDAO;
 import org.sede.servicio.perfilcontratante.dao.EmpresaGenericDAO;
-import org.sede.servicio.perfilcontratante.dao.TipoContratoGenericDAO;
-import org.sede.servicio.perfilcontratante.entity.*;
-
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.multipart.MultipartFile;
+import org.sede.servicio.perfilcontratante.entity.Anuncio;
+import org.sede.servicio.perfilcontratante.entity.Contrato;
+import org.sede.servicio.perfilcontratante.entity.Empresa;
+import org.sede.servicio.perfilcontratante.entity.Oferta;
 import sun.text.Normalizer;
 
-import org.apache.commons.codec.binary.Base64;
-import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.regex.Pattern;

@@ -9,6 +9,7 @@ import com.googlecode.genericdao.search.Search;
 import com.googlecode.genericdao.search.SearchResult;
 import com.googlecode.genericdao.search.Sort;
 import org.apache.cxf.jaxrs.ext.search.SearchParseException;
+import org.jsoup.helper.HttpConnection;
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.EntidadBase;
 import org.sede.core.dao.SearchFiql;
@@ -19,10 +20,15 @@ import org.sede.core.rest.MimeTypes;
 import org.sede.core.rest.Peticion;
 import org.sede.core.utils.ConvertDate;
 import org.sede.core.utils.Funciones;
+import org.sede.core.utils.Propiedades;
 import org.sede.servicio.ModelAttr;
+import org.sede.servicio.acceso.entity.Credenciales;
+import org.sede.servicio.acceso.entity.Usuario;
 import org.sede.servicio.organigrama.dao.OrganigramaGenericDAO;
 
 import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
+import org.sede.servicio.perfilcontratante.IntegracionPlataformaEstado.CodiceConverter;
+import org.sede.servicio.perfilcontratante.IntegracionPlataformaEstado.CodiceConverterMenor;
 import org.sede.servicio.perfilcontratante.dao.*;
 import org.sede.servicio.perfilcontratante.entity.*;
 import org.slf4j.Logger;
@@ -48,6 +54,8 @@ import javax.ws.rs.POST;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.time.Period;
 import java.util.*;
@@ -55,7 +63,7 @@ import java.util.*;
 import static org.apache.solr.client.solrj.impl.XMLResponseParser.log;
 
 
-@Gcz(servicio = "ADMIN", seccion = "ADMIN")
+@Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
 @Controller
 @Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + ApiTramitaController.MAPPING, method = RequestMethod.GET)
@@ -69,7 +77,9 @@ public class ApiTramitaController {
     private static final String MAPPING_OFERTA_FORM = MAPPING + "/oferta";
     private static final String MAPPING_LOTE_FORM = MAPPING + "/lote";
     private static final String MAPPING_FUNCIONALIDADES = MAPPING + "/funciones/";
-
+    private static String URIWS = Propiedades.getString("contratacion.estado.ws");
+    private static String USER  = "restapi";
+    private static String PASS  = "aytointegr0!#";
     @Autowired
     private MessageSource messageSource;
     @Autowired
@@ -660,6 +670,7 @@ public class ApiTramitaController {
 
     }*/
 	@OpenData
+
     @RequestMapping(value = "/crear",consumes =MimeTypes.JSON ,method = RequestMethod.POST,  produces = {MimeTypes.JSON})
     @ResponseClass(value = Contrato.class)
     public @ResponseBody  ResponseEntity<?> apiCrear(HttpServletRequest httpRequest) throws Exception {
@@ -706,14 +717,46 @@ public class ApiTramitaController {
     @RequestMapping(value = "/guardar",consumes =MimeTypes.JSON ,method = RequestMethod.PUT,  produces = {MimeTypes.JSON})
     @ResponseClass(value = Contrato.class)
     public @ResponseBody  ResponseEntity<?> apiModificar(HttpServletRequest httpRequest) throws Exception {
-        Contrato contrato= rellenarContratoAdjudicacion(Funciones.getPeticion().getCuerpoPeticion(),Funciones.getPeticion());
+
+	    Contrato contrato= rellenarContratoAdjudicacion(Funciones.getPeticion().getCuerpoPeticion(),Funciones.getPeticion());
         Set<ConstraintViolation<Object>> errores = dao.validar(contrato);
         if (!errores.isEmpty()) {
-            //Funciones.sendMail("Error al cargar contrato", errores + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
+            Funciones.sendMail("Error al cargar contrato", errores + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
             return Funciones.generarMensajeError(errores);
+        }else {
+            Funciones.sendMail("Exito carga del contrato",contrato.toString() + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
+            return ResponseEntity.ok(contrato);
+        }
+
+
+    }
+
+    @Permisos(Permisos.DET)
+    @RequestMapping(value = "/integracion-estado",method = RequestMethod.GET,  produces = {MimeTypes.XML})
+    @ResponseClass(value = Contrato.class)
+    public @ResponseBody  ResponseEntity<?> apiIntegracionPlataforma(@RequestParam(name="expediente")String expediente)  throws Exception {
+        try {
+            Search busqueda =new Search();
+            busqueda.addFilterEqual("expediente",expediente);
+            Contrato contrato=dao.searchUnique(busqueda);
+
+        if(contrato!=null) {
+            Set<ConstraintViolation<Object>> errores = dao.validar(contrato);
+            if (!errores.isEmpty()) {
+                //Funciones.sendMail("Error al cargar contrato", errores + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
+                return Funciones.generarMensajeError(errores);
+            }
+            String menor=CodiceConverterMenor.conversor(contrato);
+            CodiceConverterMenor.validarXsd(menor);
+
+           return  ResponseEntity.ok(menor);
+
         }
 
         return ResponseEntity.ok(contrato);
+        }catch (Exception e){
+             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(( e.getMessage()));
+        }
     }
 
 
@@ -1224,7 +1267,6 @@ public class ApiTramitaController {
           return null;
         }
     }
-
     public Oferta rellenarOferta(JsonNode objc, Peticion peticion, boolean ganador, String idLote)throws Exception {
        Oferta ofer=new Oferta();
         try {

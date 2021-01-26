@@ -172,7 +172,7 @@ public class ContratoAdminTbfyController {
         if (!"".equals(cpv)) {
             return ResponseEntity.ok(dao.jsonTbfy(cpv));
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Mensaje(HttpStatus.BAD_REQUEST.value(), "Error en la api:"));
         }
     }
 

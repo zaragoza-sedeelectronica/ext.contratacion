@@ -1952,6 +1952,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
         SearchResult<ContratoTbfy> resultado = new SearchResult<ContratoTbfy>();
         List<ContratoTbfy> intermedio = new ArrayList<ContratoTbfy>(0);
         try {
+
             StringBuilder jsonStringBuilder = peticionesTbfy(URLCONTRACTINPROCESS, id);
             List<String> ids = new ArrayList<String>(0);
             List<String> idsTender = new ArrayList<String>(0);
