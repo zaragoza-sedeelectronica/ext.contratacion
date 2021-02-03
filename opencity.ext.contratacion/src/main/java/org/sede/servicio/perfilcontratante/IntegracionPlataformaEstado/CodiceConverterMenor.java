@@ -4,25 +4,21 @@ import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
+
 import org.apache.commons.lang3.StringUtils;
 import org.sede.core.utils.ConvertDate;
+import org.sede.servicio.perfilcontratante.entity.*;
 import org.slf4j.Logger;
 import org.sede.servicio.perfilcontratante.dao.ContratoGenericDAO;
-import org.sede.servicio.perfilcontratante.entity.Anuncio;
-import org.sede.servicio.perfilcontratante.entity.Contrato;
-import org.sede.servicio.perfilcontratante.entity.Cpv;
-import org.sede.servicio.perfilcontratante.entity.Oferta;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -43,12 +39,12 @@ public class CodiceConverterMenor {
     private static final Logger LOG = LoggerFactory.getLogger(CodiceConverterMenor.class);
     //	private static String endPoint = "http://rysvirtuosotest.red.zaragoza.es/sparql";
     private static String endPoint = "http://datos.zaragoza.es/sparql";
-   // private static final String PATH_RESULTADOS_PRUEBAS = "/home/documentacionweb/Escritorio/IntegracionContratacionEstado/resultadosPruebas/";
-    private static final String PATH_RESULTADOS_PRUEBAS = "C:\\Users\\piglesias\\Desktop\\Contratos\\";
-	private static final String PATH_XSD = "C:\\Users\\piglesias\\Desktop\\xsd\\";
+   private static final String PATH_RESULTADOS_PRUEBAS = "/home/documentacionweb/Escritorio/IntegracionContratacionEstado/resultadosPruebas/";
+//   private static final String PATH_RESULTADOS_PRUEBAS = "C:\\Users\\piglesias\\Desktop\\Contratos\\";
+	//private static final String PATH_XSD = "C:\\Users\\piglesias\\Desktop\\xsd\\";
 
     //private static final String PATH_RESULTADOS_PRUEBAS = "/RedAyto/F/seccionweb/Errores_contratos/resultadosPruebas/";
-   // private static final String PATH_XSD = "/RedAyto/F/seccionweb/Errores_contratos/xsd/";
+    private static final String PATH_XSD = "/RedAyto/F/seccionweb/Errores_contratos/xsd/";
     @Autowired
     private static ContratoGenericDAO dao;
 
@@ -92,8 +88,7 @@ public class CodiceConverterMenor {
     private static void escribirEnFichero(String expediente, Document document, int fase) throws TransformerException {
         // Write XML
         Source source = new DOMSource(document);
-        Result result = new StreamResult(new java.io.File(PATH_RESULTADOS_PRUEBAS + remove(expediente.replace("/", "-")) + ".xml"));
-
+        Result result = new StreamResult(new java.io.File(PATH_RESULTADOS_PRUEBAS + expediente + ".xml"));
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.transform(source, result);
 
@@ -119,9 +114,8 @@ public class CodiceConverterMenor {
 
 
     private static String processContract(ContratoCodice cont, Contrato con) throws Exception {
-        System.out.println("processContrat-->" + cont.toString());
-        DocumentBuilderFactory factory = DocumentBuilderFactory
-                .newInstance();
+        System.out.println("processContrat-->" + con.getExpediente());
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         DOMImplementation implementation = builder.getDOMImplementation();
         Document document = implementation.createDocument("http://www.w3.org/2005/Atom", "entry", null);
@@ -132,6 +126,7 @@ public class CodiceConverterMenor {
         // Main Node
         Element raiz = document.getDocumentElement();
         raiz.setAttribute("xmlns:app", "http://www.w3.org/2007/app");
+        raiz.setAttribute("xmlns:dcterms", "http://purl.org/dc/terms/");
 
         // Metadata
 
@@ -178,17 +173,12 @@ public class CodiceConverterMenor {
         updatedNode.appendChild(updatedValue);
         raiz.appendChild(updatedNode);
 
-        //ContractFolderStatus
         Element contractFolderStatusNode = document.createElement("cac-place-ext:ContractFolderStatus");
         contractFolderStatusNode.setAttribute("xmlns:cac", "urn:dgpe:names:draft:codice:schema:xsd:CommonAggregateComponents-2");
         contractFolderStatusNode.setAttribute("xmlns:cbc", "urn:dgpe:names:draft:codice:schema:xsd:CommonBasicComponents-2");
         contractFolderStatusNode.setAttribute("xmlns:cbc-place-ext", "urn:dgpe:names:draft:codice-place-ext:schema:xsd:CommonBasicComponents-2");
         contractFolderStatusNode.setAttribute("xmlns:cac-place-ext", "urn:dgpe:names:draft:codice-place-ext:schema:xsd:CommonAggregateComponents-2");
         raiz.appendChild(contractFolderStatusNode);
-
-        raiz.setAttribute("xmlns:dcterms", "http://purl.org/dc/terms/");
-
-        //dcterms:id
         Element idNode = document.createElement("cbc:ContractFolderID");
         Text nodeKeyValue = document.createTextNode(con.getExpediente());
         idNode.appendChild(nodeKeyValue);
@@ -218,32 +208,42 @@ public class CodiceConverterMenor {
         // DIR3 - PartyIdentification
         Element partyNameNode = document.createElement("cac:PartyName");
         partyNode.appendChild(partyNameNode);
+        Element idNameNode = document.createElement("cbc:Name");
+        //idNameNode.setAttribute("schemeName", "DIR3");
+        Text idDIRValue = document.createTextNode(con.getOrganoContratante().getTitle());
+        idNameNode.appendChild(idDIRValue);
+        partyNameNode.appendChild(idNameNode);
 
-        //ObjetoContrato
-        if (!"".equals(con.getObjeto())) {
-            Element nodeObject = document.createElement("cbc:Name");
-            Text textObjecContract = document.createTextNode(con.getObjeto());
-            nodeObject.appendChild(textObjecContract);
-            partyNameNode.appendChild(nodeObject);
 
-        }
+
+        //ObjetoContrato--
         Element procurementProject = document.createElement("cac:ProcurementProject");
         contractFolderStatusNode.appendChild(procurementProject);
-        //dcterms:title
-        Element titleNode = document.createElement("cbc:Name");
-        //Nombre del contrato en minisculas
-        Text titleValue = document.createTextNode(cont.getTitle());
-        titleNode.appendChild(titleValue);
-        procurementProject.appendChild(titleNode);
 
+        if (!"".equals(con.getObjeto())) {
+            //dcterms:title
+            Element titleNode = document.createElement("cbc:Name");
+            //Nombre del contrato en minisculas
+            Text titleValue = document.createTextNode(con.getObjeto().toLowerCase());
+            titleNode.appendChild(titleValue);
+            procurementProject.appendChild(titleNode);
+        }else {
+            //dcterms:title
+            Element titleNode = document.createElement("cbc:Name");
+            //Nombre del contrato en minisculas
+            Text titleValue = document.createTextNode(con.getTitle().toLowerCase());
+            titleNode.appendChild(titleValue);
+            procurementProject.appendChild(titleNode);
+        }
         //TyeCode rdf:type contrato
         Element typeCodeNode = document.createElement("cbc:TypeCode");
-        typeCodeNode.setAttribute("listURI", " http://contrataciondelestado.es/codice/cl/2.08/ContractCode2.08.gc");
+        typeCodeNode.setAttribute("listURI", "https://contrataciondelestado.es/codice/cl/2.08/ContractCode-2.08.gc");
         typeCodeNode.setAttribute("listVersionID", "2.08");
-        Text typeCodeValue = document.createTextNode(StringUtils.capitalize(con.getType().getTitle()));
+        typeCodeNode.setAttribute("languageID", "es");
+        typeCodeNode.setAttribute("name", StringUtils.capitalize(con.getType().getTitle()));
+        Text typeCodeValue = document.createTextNode(calcularTipoContrato(Integer.valueOf(con.getType().getId().toString())));
         typeCodeNode.appendChild(typeCodeValue);
         procurementProject.appendChild(typeCodeNode);
-
         //pproc:contractEconomicConditions
 
 
@@ -272,11 +272,6 @@ public class CodiceConverterMenor {
         budgetNode.appendChild(taxExclusiveAmountNode);
         procurementProject.appendChild(budgetNode);
         //CPV
-        /*String mainObject = getMainObject(cont.getUriContrato());
-        if (!mainObject.equals("")) {
-            System.out.println("MAINOBJECT::" + mainObject + "||" + cont.getUriContrato());
-        }*/
-
         for (Cpv cpv : con.getCpv()) {
             Element reCoClaNode = document.createElement("cac:RequiredCommodityClassification");
             procurementProject.appendChild(reCoClaNode);
@@ -289,7 +284,6 @@ public class CodiceConverterMenor {
             reCoClaNode.appendChild(typeNode);
             procurementProject.appendChild(reCoClaNode);
         }
-        //NUTS
         Element nutsNode = document.createElement("cac:RealizedLocation");
         Element nombreCiudad = document.createElement("cbc:CountrySubentity");
         Text ciudad = document.createTextNode("Zaragoza");
@@ -322,8 +316,8 @@ public class CodiceConverterMenor {
         procurementProject.appendChild(nutsNode);
         //pproc:estimatedDuration
         Element durationNode = document.createElement("cbc:DurationMeasure");
-        String unidad;
-        String duracion;
+        java.lang.String unidad;
+        java.lang.String duracion;
         if (con.getDuracion() != null) {
             duracion = con.getDuracion().toString();
             unidad = "DAY";
@@ -336,767 +330,133 @@ public class CodiceConverterMenor {
             procurementProject.appendChild(plannedPeriodNode);
         }
         if(con.getLotes().size()==0) {
-            Element resultadoNode = document.createElement("cac:TenderResult");
-            Integer status=con.getStatus().getId();
-            // Estados que devuelve:
-            // 0: error, no hay fechas asociadas
-            // 1: anuncio de licitaci�n
-            // 2: pendiente de adjudicar
-            // 3: adjudicacion
-            // 4: formalizacion
-            // 5: desierta
-            // 6: renuncia
-            // 7: desistimiento
-            if (status== 3 || status == 5 || status == 6 || status == 7 || status == 8 || status==11) {
-                Element resultCodeNode = document.createElement("cbc:ResultCode");
-                resultCodeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.02/TenderResultCode-2.02.gc");
-                Text resultCodeValue = document.createTextNode(calcularResultCode(con));
-                resultCodeNode.appendChild(resultCodeValue);
-                resultadoNode.appendChild(resultCodeNode);
+            if (con.getStatus().getId() == 0) {
+                Element tenderingTerms = document.createElement("cac:TenderingTerms");
+                contractFolderStatusNode.appendChild(tenderingTerms);
+                Element awardingMethodTypeCode = document.createElement("cbc:AwardingMethodTypeCode");
+                awardingMethodTypeCode.setAttribute("listURI", "https://contrataciondelestado.es/codice/cl/1.04/AwardingTypeCode-1.04.gc");
+                awardingMethodTypeCode.setAttribute("listVersionID", "2006");
+                Text typeValue = document.createTextNode("1");
+                awardingMethodTypeCode.appendChild(typeValue);
+                tenderingTerms.appendChild(awardingMethodTypeCode);
 
-                Element numLicitadoresNode = document.createElement("cbc:ReceivedTenderQuantity");
-                Text numLicitadoresValue = document.createTextNode(con.getNumLicitadores().toString());
-                numLicitadoresNode.appendChild(numLicitadoresValue);
-                resultadoNode.appendChild(numLicitadoresNode);
-                if(status==3 || status==5 ||  status==6){
-                    for(Oferta offer:con.getOfertas()){
-                        if(offer.getGanador()){
-                            Element winningPartyNode = document
-                                    .createElement("cac:WinningParty");
-                            Element partyIdentificationAdNode = document
-                                    .createElement("cac:PartyIdentification");
+                Element tenderingProcess = document.createElement("cac:TenderingProcess");
+                tenderingTerms.appendChild(tenderingProcess);
+                Element procedureNode = document.createElement("cbc:ProcedureCode");
+                procedureNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.08/TenderingProcessCode-2.08.g");
+                procedureNode.setAttribute("languageID", "es");
+                procedureNode.setAttribute("listVersionID", "2.08");
+                procedureNode.setAttribute("name", con.getType().getTitle());
+                int tipoProcedimiento = 0;
+                tipoProcedimiento = calcularTipoProcedimiento(con);
+                Text procedureValue = document.createTextNode(Integer.toString(tipoProcedimiento));
+                procedureNode.appendChild(procedureValue);
+                tenderingProcess.appendChild(procedureNode);
+                //TenderSubmissionDeadlinePeriod
+                Element deadlinePeriodNode = document.createElement("cac:TenderSubmissionDeadlinePeriod");
+                tenderingProcess.appendChild(deadlinePeriodNode);
+                Element endDateNode = document.createElement("cbc:EndDate");
+                String fechaFin = ConvertDate.date2String(con.getFechaPresentacion(), ConvertDate.ISO8601_FORMAT);
+                Text endDateValue = document.createTextNode(fechaFin.substring(0, fechaFin.indexOf("T")));
+                endDateNode.appendChild(endDateValue);
+                deadlinePeriodNode.appendChild(endDateNode);
 
-                            Element idAdNode = document.createElement("cbc:ID");
-                            idAdNode.setAttribute("schemeName", "NIF");
-                            Text idAdValue = document.createTextNode(offer.getEmpresa().getNif());
-                            idAdNode.appendChild(idAdValue);
-                            partyIdentificationAdNode.appendChild(idAdNode);
-                            Element partyNameAdNode = document
-                                    .createElement("cac:PartyName");
-
-                            Element nameAdNode = document.createElement("cbc:Name");
-                            Text nameAdValue = document.createTextNode(offer.getEmpresa().getNombre()) ;
-                            nameAdNode.appendChild(nameAdValue);
-                            partyNameAdNode.appendChild(nameAdNode);
-
-                            winningPartyNode.appendChild(partyIdentificationAdNode);
-                            winningPartyNode.appendChild(partyNameAdNode);
-                            resultadoNode.appendChild(winningPartyNode);
-
-                            Element AwardedTenderedNode = document
-                                    .createElement("cac:AwardedTenderedProject");
-                            Element LegalMonetaryNode = document
-                                    .createElement("cac:LegalMonetaryTotal");
-                            Element taxAdjAmountNode = document
-                                    .createElement("cbc:TaxExclusiveAmount");
-                            taxAdjAmountNode.setAttribute("currencyID", "EUR");
-                            Text taxExclusiveAmountOfferValue = document.createTextNode(offer.getImporteSinIVA().toString());
-                            taxAdjAmountNode.appendChild(taxExclusiveAmountOfferValue);
-                            AwardedTenderedNode.appendChild(LegalMonetaryNode);
-                            LegalMonetaryNode.appendChild(taxAdjAmountNode);
-                            resultadoNode.appendChild(AwardedTenderedNode);
-                        }
-                    }
-
-
-                }else{
-
+                Element endTimeNode = document.createElement("cbc:EndTime");
+                Text endTimeValue = document.createTextNode("13:00:00");
+                endTimeNode.appendChild(endTimeValue);
+                deadlinePeriodNode.appendChild(endTimeNode);
+                //pproc:urgencyType
+                String urgencyType = parseoUrgencia(con.getUrgente());
+                if (!urgencyType.equals("")) {
+                    Element urgencyNode = document.createElement("cbc:UrgencyCode");
+                    urgencyNode.setAttribute("languageID", "es");
+                    urgencyNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/1.04/DiligenceTypeCode-1.04.gc");
+                    urgencyNode.setAttribute("listVersionID", "2006");
+                    urgencyNode.setAttribute("name", urgencyType);
+                    Text urgencyValue = document.createTextNode(parseoUrgenciaTitle(urgencyType));
+                    urgencyNode.appendChild(urgencyValue);
+                    tenderingProcess.appendChild(urgencyNode);
                 }
-            } else {
-
-                if ((con.getStatus().getId() != 5) && (con.getStatus().getId() != 6) && (con.getStatus().getId() != 7)) {
-                    for (Oferta ofer : con.getOfertas()) {
-                        if (ofer.getGanador()) {
-                            Element winningPartyNode = document
-                                    .createElement("cac:WinningParty");
-                            Element partyIdentificationAdNode = document
-                                    .createElement("cac:PartyIdentification");
-
-                            Element idAdNode = document.createElement("cbc:ID");
-                            idAdNode.setAttribute("schemeName", "NIF");
-                            Text idAdValue = document.createTextNode(ofer.getEmpresa().getNif());
-                            idAdNode.appendChild(idAdValue);
-                            partyIdentificationAdNode.appendChild(idAdNode);
-                            Element partyNameAdNode = document
-                                    .createElement("cac:PartyName");
-
-                            Element nameAdNode = document.createElement("cbc:Name");
-                            Text nameAdValue = document.createTextNode(ofer.getEmpresa().getNombre());
-                            nameAdNode.appendChild(nameAdValue);
-                            partyNameAdNode.appendChild(nameAdNode);
-                            winningPartyNode.appendChild(partyIdentificationAdNode);
-                            winningPartyNode.appendChild(partyNameAdNode);
-                            resultadoNode.appendChild(winningPartyNode);
-                            Element AwardedTenderedNode = document
-                                    .createElement("cac:AwardedTenderedProject");
-                            Element LegalMonetaryNode = document
-                                    .createElement("cac:LegalMonetaryTotal");
-                            Element taxAdjAmountNode = document
-                                    .createElement("cbc:TaxExclusiveAmount");
-                            taxAdjAmountNode.setAttribute("currencyID", "EUR");
-                            Text taxExclusiveAmountValue1 = document.createTextNode(ofer.getImporteSinIVA().toString());
-                            taxAdjAmountNode.appendChild(taxExclusiveAmountValue1);
-                            AwardedTenderedNode.appendChild(LegalMonetaryNode);
-                            LegalMonetaryNode.appendChild(taxAdjAmountNode);
-                            resultadoNode.appendChild(AwardedTenderedNode);
-                        }
-                    }
-                }
-            }
-            contractFolderStatusNode.appendChild(resultadoNode);
-
-        }else {/*
-            if (con.getStatus().getId() == 3 || con.getStatus().getId() == 4 || con.getStatus().getId() == 5 || con.getStatus().getId() == 6 || con.getStatus().getId() == 7 || con.getStatus().getId() == 8) {
-                ArrayList<ArrayList<ArrayList<String>>> adjudicatario = getAdjudicatarioInfoLotes(cont.getUriContrato());
-                for (int i=1;i<=adjudicatario.size();i++){
-                    //(adjudicatario[i][j].get(0) importe sin iva
-                    //(adjudicatario[i][j].get(1) nombre
-                    //(adjudicatario[i][j].get(2) cif
-                    //(adjudicatario[i][j].get(3) clasificaci�n
-                    //(adjudicatario[i][j].get(4) id
-                    int faseLote = calcularFaseLote(adjudicatario.get(i-1).get(0).get(4).toString(),infoFinLote);
-                    Element resultadoNode = document
-                            .createElement("cac:TenderResult");
-
-                    Element resultCodeNode = document
-                            .createElement("cbc:ResultCode");
-                    resultCodeNode
-                            .setAttribute("listURI",
-                                    "http://contrataciondelestado.es/codice/cl/2.02/TenderResultCode-2.02.gc");
-                    Text resultCodeValue = document
-                            .createTextNode(calcularResultCode(faseLote));
-                    resultCodeNode.appendChild(resultCodeValue);
-                    resultadoNode.appendChild(resultCodeNode);
-
-                    Element numLicitadoresNode = document
-                            .createElement("cbc:ReceivedTenderQuantity");
-                    Text numLicitadoresValue = document
-                            .createTextNode(String.valueOf(adjudicatario.get(i-1).size()));
-                    numLicitadoresNode.appendChild(numLicitadoresValue);
-                    resultadoNode.appendChild(numLicitadoresNode);
-                    if ((faseLote != 5) && (faseLote != 6) && (faseLote != 7)) {
-                        Element winningPartyNode = document
-                                .createElement("cac:WinningParty");
-                        Element partyIdentificationAdNode = document
-                                .createElement("cac:PartyIdentification");
-
-                        Element idAdNode = document.createElement("cbc:ID");
-                        idAdNode.setAttribute("schemeName", (adjudicatario.get(i-1).get(0).get(3).toString()).substring(7));
-                        Text idAdValue = document.createTextNode(adjudicatario.get(i-1).get(0).get(2).toString());
-                        idAdNode.appendChild(idAdValue);
-                        partyIdentificationAdNode.appendChild(idAdNode);
-                        Element partyNameAdNode = document
-                                .createElement("cac:PartyName");
-
-                        Element nameAdNode = document.createElement("cbc:Name");
-                        Text nameAdValue = document.createTextNode(adjudicatario.get(i-1).get(0).get(1).toString());
-                        nameAdNode.appendChild(nameAdValue);
-                        partyNameAdNode.appendChild(nameAdNode);
-
-                        winningPartyNode.appendChild(partyIdentificationAdNode);
-                        winningPartyNode.appendChild(partyNameAdNode);
-                        resultadoNode.appendChild(winningPartyNode);
-
-                        Element AwardedTenderedNode = document
-                                .createElement("cac:AwardedTenderedProject");
-                        Element ProcurementProjectLotIDNode = document
-                                .createElement("cbc:ProcurementProjectLotID");
-                        Text ProcurementProjectLotIDValue = document.createTextNode((adjudicatario.get(i-1).get(0).get(4).toString()).substring((adjudicatario.get(i-1).get(0).get(4).toString()).indexOf("_L")+2));
-                        ProcurementProjectLotIDNode.appendChild(ProcurementProjectLotIDValue);
-                        Element LegalMonetaryNode = document
-                                .createElement("cac:LegalMonetaryTotal");
-                        Element taxAdjAmountNode = document
-                                .createElement("cbc:TaxExclusiveAmount");
-                        taxAdjAmountNode.setAttribute("currencyID", "EUR");
-                        Text taxExclusiveAmountValue = document
-                                .createTextNode(adjudicatario.get(i-1).get(0).get(0).toString());
-                        taxAdjAmountNode.appendChild(taxExclusiveAmountValue);
-                        AwardedTenderedNode.appendChild(ProcurementProjectLotIDNode);
-                        AwardedTenderedNode.appendChild(LegalMonetaryNode);
-                        LegalMonetaryNode.appendChild(taxAdjAmountNode);
-
-                        resultadoNode.appendChild(AwardedTenderedNode);
-                    }else{
-                        Element AwardedTenderedNode = document
-                                .createElement("cac:AwardedTenderedProject");
-                        Element ProcurementProjectLotIDNode = document
-                                .createElement("cbc:ProcurementProjectLotID");
-                        Text ProcurementProjectLotIDValue = document.createTextNode((adjudicatario.get(i-1).get(0).get(4).toString()).substring((adjudicatario.get(i-1).get(0).get(4).toString()).indexOf("_L")+2));
-                        ProcurementProjectLotIDNode.appendChild(ProcurementProjectLotIDValue);
-                        AwardedTenderedNode.appendChild(ProcurementProjectLotIDNode);
-                        resultadoNode.appendChild(AwardedTenderedNode);
-                    }
-                    contractFolderStatusNode.appendChild(resultadoNode);
-                }
-                if(((adjudicatario.size()==0)||((fase==3)&&(adjudicatario.size()<calcularNumLotes(cont.getUriContrato()))))||fase==8){
-                    if(fase==5||fase==6||fase==7){
-                        Element resultadoNode=null;
-                        for(int i=0;i<calcularNumLotes(cont.getUriContrato());i++){
-                            resultadoNode = document
-                                    .createElement("cac:TenderResult");
-
-                            Element resultCodeNode = document
-                                    .createElement("cbc:ResultCode");
-                            resultCodeNode
-                                    .setAttribute("listURI",
-                                            "http://contrataciondelestado.es/codice/cl/2.02/TenderResultCode-2.02.gc");
-                            Text resultCodeValue = document
-                                    .createTextNode(calcularResultCode(fase));
-                            resultCodeNode.appendChild(resultCodeValue);
-                            resultadoNode.appendChild(resultCodeNode);
-
-                            Element numLicitadoresNode = document
-                                    .createElement("cbc:ReceivedTenderQuantity");
-                            Text numLicitadoresValue = document
-                                    .createTextNode("0");
-                            numLicitadoresNode.appendChild(numLicitadoresValue);
-                            resultadoNode.appendChild(numLicitadoresNode);
-                            Element AwardedTenderedNode = document
-                                    .createElement("cac:AwardedTenderedProject");
-                            Element ProcurementProjectLotIDNode = document
-                                    .createElement("cbc:ProcurementProjectLotID");
-                            Text ProcurementProjectLotIDValue = document.createTextNode(String.valueOf(i+1));
-                            ProcurementProjectLotIDNode.appendChild(ProcurementProjectLotIDValue);
-                            AwardedTenderedNode.appendChild(ProcurementProjectLotIDNode);
-                            resultadoNode.appendChild(AwardedTenderedNode);
-                            contractFolderStatusNode.appendChild(resultadoNode);
-                        }
-                    }
-                    if (fase==8){
-                        Element resultadoNode=null;
-                        for(int i=0;i<calcularNumLotes(cont.getUriContrato());i++){
-                            int faseLote = calcularFaseLote(cont.getId()+"_L"+Integer.toString(i+1),infoFinLote);
-                            if (faseLote==5||faseLote==6||faseLote==7){
-                                resultadoNode = document
-                                        .createElement("cac:TenderResult");
-
-                                Element resultCodeNode = document
-                                        .createElement("cbc:ResultCode");
-                                resultCodeNode
-                                        .setAttribute("listURI",
-                                                "http://contrataciondelestado.es/codice/cl/2.02/TenderResultCode-2.02.gc");
-                                Text resultCodeValue = document
-                                        .createTextNode(calcularResultCode(faseLote));
-                                resultCodeNode.appendChild(resultCodeValue);
-                                resultadoNode.appendChild(resultCodeNode);
-
-                                Element numLicitadoresNode = document
-                                        .createElement("cbc:ReceivedTenderQuantity");
-                                Text numLicitadoresValue = document
-                                        .createTextNode("0");
-                                numLicitadoresNode.appendChild(numLicitadoresValue);
-                                resultadoNode.appendChild(numLicitadoresNode);
-                                Element AwardedTenderedNode = document
-                                        .createElement("cac:AwardedTenderedProject");
-                                Element ProcurementProjectLotIDNode = document
-                                        .createElement("cbc:ProcurementProjectLotID");
-                                Text ProcurementProjectLotIDValue = document.createTextNode(String.valueOf(i+1));
-                                ProcurementProjectLotIDNode.appendChild(ProcurementProjectLotIDValue);
-                                AwardedTenderedNode.appendChild(ProcurementProjectLotIDNode);
-                                resultadoNode.appendChild(AwardedTenderedNode);
-                                contractFolderStatusNode.appendChild(resultadoNode);
-                            }
-                        }
-                    }
-                    if(fase==3){
-                        Element resultadoNode=null;
-                        for(int i=0;i<infoFinLote.size();i++){
-                            for (int j=1;j<infoFinLote.get(i).size();j++){
-                                if((!(infoFinLote.get(i).get(j).toString()).equals("0"))&&((j!=4)&&(j!=5))){
-                                    resultadoNode = document
-                                            .createElement("cac:TenderResult");
-
-                                    Element resultCodeNode = document
-                                            .createElement("cbc:ResultCode");
-                                    resultCodeNode
-                                            .setAttribute("listURI",
-                                                    "http://contrataciondelestado.es/codice/cl/2.02/TenderResultCode-2.02.gc");
-                                    Text resultCodeValue = document
-                                            .createTextNode(calcularResultCode(calcularFaseLote("contzar:"+((infoFinLote.get(i).get(0).toString()).substring(infoFinLote.get(i).get(0).toString().indexOf("contrato/")+9)),infoFinLote)));
-                                    resultCodeNode.appendChild(resultCodeValue);
-                                    resultadoNode.appendChild(resultCodeNode);
-
-                                    Element numLicitadoresNode = document
-                                            .createElement("cbc:ReceivedTenderQuantity");
-                                    Text numLicitadoresValue = document
-                                            .createTextNode("0");
-                                    numLicitadoresNode.appendChild(numLicitadoresValue);
-                                    resultadoNode.appendChild(numLicitadoresNode);
-                                    Element AwardedTenderedNode = document
-                                            .createElement("cac:AwardedTenderedProject");
-                                    Element ProcurementProjectLotIDNode = document
-                                            .createElement("cbc:ProcurementProjectLotID");
-                                    Text ProcurementProjectLotIDValue = document.createTextNode((infoFinLote.get(i).get(0).toString()).substring((infoFinLote.get(i).get(0).toString()).indexOf("_L")+2));
-                                    ProcurementProjectLotIDNode.appendChild(ProcurementProjectLotIDValue);
-                                    AwardedTenderedNode.appendChild(ProcurementProjectLotIDNode);
-                                    resultadoNode.appendChild(AwardedTenderedNode);
-                                    contractFolderStatusNode.appendChild(resultadoNode);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
-        }
-            Element tenderingProcess = document
-                    .createElement("cac:TenderingProcess");
-            contractFolderStatusNode.appendChild(tenderingProcess);
-
-            //pproc:urgencyType
-            //		String urgencyType = getUrgencyType(cont.getUriContrato());
-            //		if (!urgencyType.equals("")){
-            //			Element urgencyNode = document.createElement("cbc:UrgencyCode");
-            //			urgencyNode.setAttribute("languageID", "es");
-            //			urgencyNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/1.04/DiligenceTypeCode-1.04.gc");
-            //			urgencyNode.setAttribute("listVersionID", "2006");
-            //			urgencyNode.setAttribute("name", urgencyType.substring(urgencyType.indexOf("#")+1));
-            //			Text urgencyValue = document.createTextNode(urgencyType.substring(urgencyType.indexOf("#")+1));
-            //			urgencyNode.appendChild(urgencyValue);
-            //			tenderingProcess.appendChild(urgencyNode);
-            //		}
-
-            //pproc:procedureType
-            Element procedureNode = document.createElement("cbc:ProcedureCode");
-            procedureNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.08/TenderingProcessCode-2.08.g");
-            procedureNode.setAttribute("languageID", "es");
-            procedureNode.setAttribute("listVersionID", "2.08");
-            procedureNode.setAttribute("name", con.getType().getTitle());
-            int tipoProcedimiento = 0;
-            tipoProcedimiento = calcularTipoProcedimiento(con);
-            Text procedureValue = document.createTextNode(Integer.toString(tipoProcedimiento));
-            procedureNode.appendChild(procedureValue);
-            tenderingProcess.appendChild(procedureNode);
-            //TenderSubmissionDeadlinePeriod
-            Element deadlinePeriodNode = document.createElement("cac:TenderSubmissionDeadlinePeriod");
-            tenderingProcess.appendChild(deadlinePeriodNode);
-
-            Element endDateNode = document.createElement("cbc:EndDate");
-            String fechaFin = ConvertDate.date2String(con.getFechaPresentacion(), ConvertDate.ISO8601_FORMAT);
-            Text endDateValue = document.createTextNode(fechaFin.substring(0, fechaFin.indexOf("T")));
-            endDateNode.appendChild(endDateValue);
-            deadlinePeriodNode.appendChild(endDateNode);
-
-            Element endTimeNode = document.createElement("cbc:EndTime");
-            Text endTimeValue = document.createTextNode("13:00:00");
-            endTimeNode.appendChild(endTimeValue);
-            deadlinePeriodNode.appendChild(endTimeNode);
-            //notice
-
-            //mirar si quitar if ((noticeInfo.size() > 0) && (fase != 2) && (tieneLotes==0)||((fase != 2) && (tieneLotes==1))) {// a�adido para evitar
-            Element noticeInfoNode = null;
-
-            if (calcularTipoProcedimiento(con) != 3 && (con.getStatus().getId() == 3 || con.getStatus().getId() == 5 || con.getStatus().getId() == 6)){
-                noticeInfoNode = document.createElement("cac-place-ext:ValidNoticeInfo");
-                Element noticeIsusueNode = document.createElement("cbc-place-ext:NoticeIssueDate");
-                Text noticeIsusueValue = document.createTextNode(ConvertDate.date2String(con.getFechaPresentacion(), ConvertDate.DATEEN_FORMAT));
-                noticeIsusueNode.appendChild(noticeIsusueValue);
-                noticeInfoNode.appendChild(noticeIsusueNode);
-                Element noticeTypeNode = document.createElement("cbc-place-ext:NoticeTypeCode");
-                noticeTypeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.04/TenderingNoticeTypeCode-2.04.gc");
-                noticeTypeNode.setAttribute("languageID", "es");
-                noticeTypeNode.setAttribute("listVersionID", "2.04");
-                noticeTypeNode.setAttribute("name", "Anuncio de Adjudicacion");
-                Text noticeTypeValue = document.createTextNode(tipoAnuncio(3));
-                noticeTypeNode.appendChild(noticeTypeValue);
-                noticeInfoNode.appendChild(noticeTypeNode);
+                Element validNoticeInfo = document.createElement("cac-place-ext:ValidNoticeInfo");
                 for (Anuncio anun : con.getAnuncios()) {
-                    if (anun.getType().getId().equals(new BigDecimal(6))) {
-                        Element noticeTimestamp = document.createElement("cbc-place-ext:NoticeTimestampBinaryObject");
-                        noticeTimestamp.setAttribute("mimeCode", "application/octet-stream");
-                        Text octetSello = document.createTextNode(anun.getSelladoTiempo());
-                        noticeTimestamp.appendChild(octetSello);
-                        Element noticeExternalReference = document.createElement("cac-place-ext:NoticeExternalReference");
-                        Element noticeExternalReferenceUri = document.createElement("cbc:URI");
-                        Text noticeExternalReferenceUriText = document.createTextNode(anun.getSello().getPermalink());
-                        noticeExternalReferenceUri.appendChild(noticeExternalReferenceUriText);
-                        noticeExternalReference.appendChild(noticeExternalReferenceUri);
-                        noticeInfoNode.appendChild(noticeTimestamp);
-                        noticeInfoNode.appendChild(noticeExternalReference);
+                    if (anun.getType().getId().equals(new BigDecimal(2.0))) {
+                        Element noticeTypeCode = document.createElement("cbc-place-ext:NoticeTypeCode");
+                        noticeTypeCode.setAttribute("languageID", "es");
+                        noticeTypeCode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.04/TenderingNoticeTypeCode-2.04.gc");
+                        noticeTypeCode.setAttribute("listVersionID", "2.04");
+                        noticeTypeCode.setAttribute("name", anun.getType().getTitle());
+                        Text textNoticeTypeCode = document.createTextNode(tipoAnuncio(1));
+                        noticeTypeCode.appendChild(textNoticeTypeCode);
+                        Element noticeStatusCode = document.createElement("cbc-place-ext:NoticeStatusCode");
+                        Text textNoticeStatusCode = document.createTextNode("DOC_PUB");
+                        noticeStatusCode.appendChild(textNoticeStatusCode);
+
                     }
                 }
-                contractFolderStatusNode.appendChild(noticeInfoNode);
-            } else
+                if (con.getCriterios().size() > 0) {
+                    for (Criterio cri : con.getCriterios()) {
+                        if (cri.getTipo().getId().equals(new BigDecimal(1.0))) {
 
-            {
-                if ((con.getStatus().getId() == 3) || (con.getStatus().getId() == 4)) {
-                    for (Oferta ofer : con.getOfertas()) {
-                        if (ofer.getGanador()) {
-                            fecha =ConvertDate.date2String( ofer.getFechaAdjudicacion(),ConvertDate.ISO8601_FORMAT);
-                            noticeInfoNode = document.createElement("cac-place-ext:ValidNoticeInfo");
-                            Element noticeIsusueNode = document.createElement("cbc-place-ext:NoticeIssueDate");
-                            Text noticeIsusueValue = document.createTextNode(fecha);
-                            noticeIsusueNode.appendChild(noticeIsusueValue);
-                            noticeInfoNode.appendChild(noticeIsusueNode);
-                            Element noticeTypeNode = document.createElement("cbc-place-ext:NoticeTypeCode");
-                            noticeTypeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.03/TenderingNoticeTypeCode-2.03.gc");
+                            Element awardingTerms = document.createElement("cac:AwardingTerms");
+                            Element awardingCriteria = document.createElement("cac:AwardingCriteria");
+                            Element awardingCriteriaID = document.createElement("cbc:ID");
+                            Text awardingCriteriaIDText = document.createTextNode(cri.getTipo().getId().toString());
+                            awardingCriteriaID.appendChild(awardingCriteriaIDText);
+                            awardingCriteria.appendChild(awardingCriteriaID);
+                            Element awardingCriteriaTypeCode = document.createElement("cbc:AwardingCriteriaTypeCode");
+                            awardingCriteriaTypeCode.setAttribute("listUri", "https://contrataciondelestado.es/codice/cl/2.0/AwardingCriteriaCode-2.0.gc");
+                            awardingCriteriaTypeCode.setAttribute("listVersionID", "2.0");
+                            Text awardingCriteriaTypeCodeText = document.createTextNode("OBJ");
+                            awardingCriteriaTypeCode.appendChild(awardingCriteriaTypeCodeText);
+                            awardingCriteria.appendChild(awardingCriteriaTypeCode);
+                            Element awardingCriteriaDescription = document.createElement("cbc:Description");
+                            Text awardingCriteriaDescriptionText = document.createTextNode(cri.getTitle());
+                            awardingCriteriaDescription.appendChild(awardingCriteriaDescriptionText);
+                            awardingCriteria.appendChild(awardingCriteriaDescription);
+                            Element awardingCriteriaWight = document.createElement("cbc:WeightNumeric");
+                            Text awardingCriteriaWightText = document.createTextNode(cri.getPeso().toString());
+                            awardingCriteriaWight.appendChild(awardingCriteriaWightText);
+                            awardingCriteria.appendChild(awardingCriteriaWight);
+                            awardingTerms.appendChild(awardingCriteria);
 
-                            Text noticeTypeValue = document.createTextNode(tipoAnuncio(3));
-                            noticeTypeNode.appendChild(noticeTypeValue);
-                            noticeInfoNode.appendChild(noticeTypeNode);
+                            tenderingProcess.appendChild(awardingTerms);
 
-                            Element addPublicationsNode = document.createElement("cac-place-ext:AdditionalPublicationStatus");
-                            noticeInfoNode.appendChild(addPublicationsNode);
-                            Element publicationMediaNode = document.createElement("cbc-place-ext:PublicationMediaName");
-                            Text publicationMediaValue = document.createTextNode("Perfil de contratante");
-                            publicationMediaNode.appendChild(publicationMediaValue);
-                            addPublicationsNode.appendChild(publicationMediaNode);
-
-                            Element addPubDocNode = document.createElement("cac-place-ext:AdditionalPublicationDocumentReference");
-                            addPublicationsNode.appendChild(addPubDocNode);
-
-                            Element issueDateNode = document.createElement("cbc:IssueDate");
-                            Text issueDateValue = document.createTextNode(fecha);
-                            issueDateNode.appendChild(issueDateValue);
-                            addPubDocNode.appendChild(issueDateNode);
                         }
+
                     }
                 }
             }
-
-
-              /*  contractFolderStatusNode.appendChild(noticeInfoNode);///MIRAR DONDE UBICARLO
-                if (fase == 4) {
-                    fecha = calcularFechaFormalizacion(cont.getUriContrato());
-                    noticeInfoNode = document
-                            .createElement("cac-place-ext:ValidNoticeInfo");
-
-                    noticeIsusueNode = document.createElement("cbc-place-ext:NoticeIssueDate");
-                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    noticeIsusueValue = document.createTextNode(fecha);
-                    noticeIsusueNode.appendChild(noticeIsusueValue);
-                    noticeInfoNode.appendChild(noticeIsusueNode);
-
-                    noticeTypeNode = document.createElement("cbc-place-ext:NoticeTypeCode");
-                    noticeTypeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.03/TenderingNoticeTypeCode-2.03.gc");
-
-                    noticeTypeValue = document.createTextNode(tipoAnuncio(4));
-                    noticeTypeNode.appendChild(noticeTypeValue);
-                    noticeInfoNode.appendChild(noticeTypeNode);
-
-                    addPublicationsNode = document.createElement("cac-place-ext:AdditionalPublicationStatus");
-                    noticeInfoNode.appendChild(addPublicationsNode);
-                    publicationMediaNode = document.createElement("cbc-place-ext:PublicationMediaName");
-                    publicationMediaValue = document.createTextNode("Perfil de contratante");
-                    publicationMediaNode.appendChild(publicationMediaValue);
-                    addPublicationsNode.appendChild(publicationMediaNode);
-
-                    addPubDocNode = document.createElement("cac-place-ext:AdditionalPublicationDocumentReference");
-                    addPublicationsNode.appendChild(addPubDocNode);
-
-                    issueDateNode = document.createElement("cbc:IssueDate");
-                    issueDateValue = document.createTextNode(fecha);
-                    issueDateNode.appendChild(issueDateValue);
-                    addPubDocNode.appendChild(issueDateNode);
-
-                    contractFolderStatusNode.appendChild(noticeInfoNode);///MIRAR DONDE UBICARLO
-
-                }
-            } else {
-                if ((fase == 5) || (fase == 6) || (fase == 7)) {
-                    noticeInfoNode = document.createElement("cac-place-ext:ValidNoticeInfo");
-
-                    Element noticeIsusueNode = document.createElement("cbc-place-ext:NoticeIssueDate");
-                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    Text noticeIsusueValue = document.createTextNode(dateFormat
-                            .format(Calendar.getInstance().getTime()));
-                    noticeIsusueNode.appendChild(noticeIsusueValue);
-                    noticeInfoNode.appendChild(noticeIsusueNode);
-
-                    Element noticeTypeNode = document.createElement("cbc-place-ext:NoticeTypeCode");
-                    noticeTypeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.03/TenderingNoticeTypeCode-2.03.gc");
-
-                    Text noticeTypeValue = document.createTextNode(tipoAnuncio(fase));
-                    noticeTypeNode.appendChild(noticeTypeValue);
-                    noticeInfoNode.appendChild(noticeTypeNode);
-
-                    Element addPublicationsNode = document.createElement("cac-place-ext:AdditionalPublicationStatus");
-                    noticeInfoNode.appendChild(addPublicationsNode);
-                    Element publicationMediaNode = document.createElement("cbc-place-ext:PublicationMediaName");
-                    Text publicationMediaValue = document.createTextNode("Perfil de contratante");
-                    publicationMediaNode.appendChild(publicationMediaValue);
-                    addPublicationsNode.appendChild(publicationMediaNode);
-
-                    Element addPubDocNode = document.createElement("cac-place-ext:AdditionalPublicationDocumentReference");
-                    addPublicationsNode.appendChild(addPubDocNode);
-
-                    Element issueDateNode = document.createElement("cbc:IssueDate");
-                    Text issueDateValue = document.createTextNode(dateFormat.format(Calendar.getInstance().getTime()));
-                    issueDateNode.appendChild(issueDateValue);
-                    addPubDocNode.appendChild(issueDateNode);
-                    contractFolderStatusNode.appendChild(noticeInfoNode);///MIRAR DONDE UBICARLO
-
-                }
-            }
-
-        } /*else {
-            noticeInfoNode = document.createElement("cac-place-ext:ValidNoticeInfo");
-
-            Element noticeIsusueNode = document.createElement("cbc-place-ext:NoticeIssueDate");
-            Text noticeIsusueValue = document.createTextNode(cont.getFechaInicio());
-            noticeIsusueNode.appendChild(noticeIsusueValue);
-            noticeInfoNode.appendChild(noticeIsusueNode);
-
-            Element noticeTypeNode = document.createElement("cbc-place-ext:NoticeTypeCode");
-            noticeTypeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.03/TenderingNoticeTypeCode-2.03.gc");
-
-            Text noticeTypeValue = document.createTextNode(tipoAnuncio(1));
-            noticeTypeNode.appendChild(noticeTypeValue);
-            noticeInfoNode.appendChild(noticeTypeNode);
-            for (int i = 0; i < noticeInfo.size(); i = i + 2) {
-                Element addPublicationsNode = document.createElement("cac-place-ext:AdditionalPublicationStatus");
-                noticeInfoNode.appendChild(addPublicationsNode);
-                Element publicationMediaNode = document.createElement("cbc-place-ext:PublicationMediaName");
-                Text publicationMediaValue = document.createTextNode(noticeInfo.get(i));
-                publicationMediaNode.appendChild(publicationMediaValue);
-                addPublicationsNode.appendChild(publicationMediaNode);
-
-                Element addPubDocNode = document.createElement("cac-place-ext:AdditionalPublicationDocumentReference");
-                addPublicationsNode.appendChild(addPubDocNode);
-
-                Element issueDateNode = document.createElement("cbc:IssueDate");
-                Text issueDateValue = document.createTextNode(noticeInfo.get(i + 1));
-                issueDateNode.appendChild(issueDateValue);
-                addPubDocNode.appendChild(issueDateNode);
-            }
-            if (noticeInfo.size() == 0) {
-                Element addPublicationsNode = document.createElement("cac-place-ext:AdditionalPublicationStatus");
-                noticeInfoNode.appendChild(addPublicationsNode);
-                Element publicationMediaNode = document.createElement("cbc-place-ext:PublicationMediaName");
-                Text publicationMediaValue = document.createTextNode("Perfil de contratante");
-                publicationMediaNode.appendChild(publicationMediaValue);
-                addPublicationsNode.appendChild(publicationMediaNode);
-
-                Element addPubDocNode = document.createElement("cac-place-ext:AdditionalPublicationDocumentReference");
-                addPublicationsNode.appendChild(addPubDocNode);
-
-                Element issueDateNode = document.createElement("cbc:IssueDate");
-                Text issueDateValue = document.createTextNode(cont.getFechaInicio());
-                issueDateNode.appendChild(issueDateValue);
-                addPubDocNode.appendChild(issueDateNode);
-            }
-            contractFolderStatusNode.appendChild(noticeInfoNode);///MIRAR DONDE UBICARLO
-            for (int i = 0; i < infoFinLote.size(); i++) {
-                int faseLote = calcularFaseLote((infoFinLote.get(i).get(0).toString()).substring(infoFinLote.get(i).get(0).toString().indexOf("trato/") + 6), infoFinLote);
-                if (!(faseLote == 0)) {
-                    noticeInfoNode = document.createElement("cac-place-ext:ValidNoticeInfo");
-
-                    noticeIsusueNode = document.createElement("cbc-place-ext:NoticeIssueDate");
-                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    for (int j = 1; j < infoFinLote.get(i).size(); j++) {
-                        if (!(infoFinLote.get(i).get(j).toString()).equals("0"))
-                            fecha = infoFinLote.get(i).get(j).toString();
-                    }
-                    noticeIsusueValue = document.createTextNode(fecha);
-                    noticeIsusueNode.appendChild(noticeIsusueValue);
-                    noticeInfoNode.appendChild(noticeIsusueNode);
-
-                    noticeTypeNode = document.createElement("cbc-place-ext:NoticeTypeCode");
-                    noticeTypeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.03/TenderingNoticeTypeCode-2.03.gc");
-
-                    noticeTypeValue = document.createTextNode(tipoAnuncio(faseLote));
-                    noticeTypeNode.appendChild(noticeTypeValue);
-                    noticeInfoNode.appendChild(noticeTypeNode);
-
-                    Element addPublicationsNode = document.createElement("cac-place-ext:AdditionalPublicationStatus");
-                    noticeInfoNode.appendChild(addPublicationsNode);
-                    Element publicationMediaNode = document.createElement("cbc-place-ext:PublicationMediaName");
-                    Text publicationMediaValue = document.createTextNode("Perfil de contratante");
-                    publicationMediaNode.appendChild(publicationMediaValue);
-                    addPublicationsNode.appendChild(publicationMediaNode);
-
-                    Element addPubDocNode = document.createElement("cac-place-ext:AdditionalPublicationDocumentReference");
-                    addPublicationsNode.appendChild(addPubDocNode);
-
-                    Element issueDateNode = document.createElement("cbc:IssueDate");
-                    Text issueDateValue = document.createTextNode(fecha);
-                    issueDateNode.appendChild(issueDateValue);
-                    addPubDocNode.appendChild(issueDateNode);
-
-                    contractFolderStatusNode.appendChild(noticeInfoNode);
-
-                    if (faseLote == 4) {
-                        noticeInfoNode = document.createElement("cac-place-ext:ValidNoticeInfo");
-
-                        noticeIsusueNode = document.createElement("cbc-place-ext:NoticeIssueDate");
-                        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-                        fecha = infoFinLote.get(i).get(4).toString();
-                        LOG.error("fecha;;" + fecha);
-                        noticeIsusueValue = document.createTextNode(fecha);
-                        noticeIsusueNode.appendChild(noticeIsusueValue);
-                        noticeInfoNode.appendChild(noticeIsusueNode);
-
-                        noticeTypeNode = document.createElement("cbc-place-ext:NoticeTypeCode");
-                        noticeTypeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.03/TenderingNoticeTypeCode-2.03.gc");
-
-                        noticeTypeValue = document.createTextNode(tipoAnuncio(3));
-                        noticeTypeNode.appendChild(noticeTypeValue);
-                        noticeInfoNode.appendChild(noticeTypeNode);
-
-                        addPublicationsNode = document.createElement("cac-place-ext:AdditionalPublicationStatus");
-                        noticeInfoNode.appendChild(addPublicationsNode);
-                        publicationMediaNode = document.createElement("cbc-place-ext:PublicationMediaName");
-                        publicationMediaValue = document.createTextNode("Perfil de contratante");
-                        publicationMediaNode.appendChild(publicationMediaValue);
-                        addPublicationsNode.appendChild(publicationMediaNode);
-
-                        addPubDocNode = document.createElement("cac-place-ext:AdditionalPublicationDocumentReference");
-                        addPublicationsNode.appendChild(addPubDocNode);
-
-                        issueDateNode = document.createElement("cbc:IssueDate");
-                        issueDateValue = document.createTextNode(fecha);
-                        issueDateNode.appendChild(issueDateValue);
-                        addPubDocNode.appendChild(issueDateNode);
-
-                        contractFolderStatusNode.appendChild(noticeInfoNode);
-                    }
-                }
-            }
-        }*/
-
-//		//rdf:type contrato
-//		for (String type:cont.getTypes()){
-//			Element typeNode = document.createElement("cbc:ContractingSystemCode");
-//			typeNode.setAttribute("languageID", "es");
-//			typeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.02/ContractCode-2.02.gc");
-//			typeNode.setAttribute("listVersionID", "2.02");
-//			typeNode.setAttribute("name", type.substring(type.indexOf("#")+1));
-//			Text typeValue = document.createTextNode(type.substring(type.indexOf("#")+1));
-//			typeNode.appendChild(typeValue);
-//			tenderingProcess.appendChild(typeNode);
-//		}
-
-//		pproc:provision
- /*     List<String> provision = getProvision(cont.getUriContrato());
-      if (provision.size() > 0) {
-
-            Element reqTenderNode = document.createElement("cac:RequestForTenderLine");
-            procurementProject.appendChild(reqTenderNode);
-            Element typeNode = document.createElement("cbc:ID");
-            Text typeValue = document.createTextNode(provision.get(0));
-            typeNode.appendChild(typeValue);
-            reqTenderNode.appendChild(typeNode);
-            Element itemNode = document.createElement("cac:Item");
-            reqTenderNode.appendChild(itemNode);
-            Text itemValue = document.createTextNode(provision.get(1));
-            Element cbcNameNode = document.createElement("cbc:Name");
-            cbcNameNode.appendChild(itemValue);
-            itemNode.appendChild(cbcNameNode);
         }
 
-	//pproc:requiredClassification
-        List<String> reqClassification = getRequiredClassification(cont.getUriContrato());
-        if (reqClassification.size() > 0) {
 
-            Element tenderQuaReqNode = document.createElement("cac:TendererQualificationRequest");
-            tenderingTerms.appendChild(tenderQuaReqNode);
-            Element reqBusClaNode = document.createElement("cac:RequiredBusinessClassificationScheme");
-            tenderQuaReqNode.appendChild(reqBusClaNode);
-            for (int i = 0; i < reqClassification.size(); i++) {
-                Element codeValueNode = document.createElement("cbc:CodeValue");
-                Text typeValue = document.createTextNode(reqClassification.get(i));
-                codeValueNode.appendChild(typeValue);
-                reqBusClaNode.appendChild(codeValueNode);
-            }
-        }
 
-//		pc:awardCriteriaCombination
-        AwardCriterion aw = getAwardCriterion(cont.getUriContrato());
-        if (aw != null) {
-            Element awardMethodTypeCode = document.createElement("cbc:AwardingMethodTypeCode");
-            awardMethodTypeCode.setAttribute("listURI", "https://contrataciondelestado.es/codice/cl/1.04/AwardingTypeCode-1.04.gc");
-            awardMethodTypeCode.setAttribute("listVersionID", "2006");
-            Element priceEvaluationTypeCode = document.createElement("cbc:PriceEvaluationTypeCode");
-            priceEvaluationTypeCode.setAttribute("listURI", "https://contrataciondelestado.es/codice/cl/1.04/ValorationTypeCode-1.04.gc");
-            priceEvaluationTypeCode.setAttribute("listVersionID", "2006");
-            tenderingTerms.appendChild(awardMethodTypeCode);
-            tenderingTerms.appendChild(priceEvaluationTypeCode);
-            Element awardingTerms = document.createElement("cac:AwardingTerms");
-            Element awardingCriteria = document.createElement("cac:AwardingCriteria");
-            awardingCriteria.setAttribute("laguageID", "es");
-            awardingCriteria.setAttribute("listURI", "https://contrataciondelestado.es/codice/cl/2.0/AwardingCriteriaCode-2.0.gc");
-            awardingCriteria.setAttribute("listVersionID", "2.0");
-            tenderingTerms.appendChild(awardingTerms);
-            awardingTerms.appendChild(awardingCriteria);
-
-            Element weightingAlgorithmCodeNode = document.createElement("cbc:WeightingAlgorithmCode");
-            Text weightingAlgoritihmCodeValue = document.createTextNode(aw.getCriterionEvaluationMode());
-            weightingAlgorithmCodeNode.appendChild(weightingAlgoritihmCodeValue);
-            awardingTerms.appendChild(weightingAlgorithmCodeNode);
-            Element descriptionNode = document.createElement("cbc:Description");
-            Text descValue = document.createTextNode(aw.getCriterionName());
-            descriptionNode.appendChild(descValue);
-            awardingCriteria.appendChild(descriptionNode);
-            Element weightNode = document.createElement("cbc:WeightNumeric");
-            Text weightValue = document.createTextNode(aw.getCriterionWeight());
-            weightNode.appendChild(weightValue);
-            awardingCriteria.appendChild(weightNode);
-            Element calcExpressionNode = document.createElement("cbc:CalculationExpression");
-            Text calcExpressionValue = document.createTextNode(aw.getCriterionEvaluationMode());
-            calcExpressionNode.appendChild(calcExpressionValue);
-            awardingCriteria.appendChild(calcExpressionNode);
-        }
-
-        GuaranteeInformation
-        FinancialGuarantee finGu = getGuaranteeInformation(cont.getUriContrato());
-        if (finGu != null) {
-            if (!finGu.getFinalFinancialGuarantee().equals("") || !finGu.getProvisionalFinancialGuarantee().equals("")) {
-
-                Element requiredFinancialGuarantee = document.createElement("cac:RequiredFinancialGuarantee");
-                Element guaranteeTypeCode = document.createElement("cbc:GuaranteeTypeCode");
-                guaranteeTypeCode.setAttribute("languageID", "es");
-                guaranteeTypeCode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/1.04/GuaranteeTypeCode-1.04.gc");
-                guaranteeTypeCode.setAttribute("listVersionID", "2006");
-                requiredFinancialGuarantee.appendChild(guaranteeTypeCode);
-                tenderingTerms.appendChild(requiredFinancialGuarantee);
-                Element maxAdvAmo = document.createElement("cbc:MaximumAdvertisementAmount");
-                maxAdvAmo.setAttribute("currencyID", "EUR");
-                Text maxAdvAmoValue = document.createTextNode(finGu.getAdvertisementAmount());
-                maxAdvAmo.appendChild(maxAdvAmoValue);
-
-                Element financialGuarantee = document.createElement("cac:FinancialGuarantee");
-                tenderingTerms.appendChild(financialGuarantee);
-                if (!finGu.getProvisionalFinancialGuarantee().equals("")) {
-                    LOG.error("FINGU PROV------->" + cont.getUriContrato());
-                    guaranteeTypeCode.setAttribute("name", "Provisional");
-                    Text value = document.createTextNode("1");
-                    guaranteeTypeCode.appendChild(value);
-                    Element liabilityAmount = document.createElement("cbc:LiabilityAmount");
-                    financialGuarantee.appendChild(liabilityAmount);
-                    liabilityAmount.setAttribute("currencyID", "EUR");
-                    Text liaValue = document.createTextNode(finGu.getProvisionalFinancialGuarantee());
-                    liabilityAmount.appendChild(liaValue);
-                } else {
-                    LOG.error("FINGU DEF------->" + cont.getUriContrato());
-                    guaranteeTypeCode.setAttribute("name", "Definitiva");
-                    Text value = document.createTextNode("2");
-                    guaranteeTypeCode.appendChild(value);
-                    Element amountRate = document.createElement("cbc:AmountRate");
-                    Element constitutionPeriod = document.createElement("cac:ConstitutionPeriod");
-                    financialGuarantee.appendChild(amountRate);
-                    financialGuarantee.appendChild(constitutionPeriod);
-                    Text amRaValue = document.createTextNode(finGu.getFinalFinancialGuarantee());
-                    Text consPeValue = document.createTextNode(finGu.getFinalFinancialGuaranteeDuration());
-                    amountRate.appendChild(amRaValue);
-                    constitutionPeriod.appendChild(consPeValue);
-                }
-            }
-            if (!finGu.getAdvertisementAmount().equals("")) {
-                LOG.error("FINGU ADVER------->" + cont.getUriContrato());
-                Element maximumAdvertisementAmount = document.createElement("cbc:MaximumAdvertisementAmount");
-                tenderingTerms.appendChild(maximumAdvertisementAmount);
-                maximumAdvertisementAmount.setAttribute("currencyID", "EUR");
-                Text value = document.createTextNode(finGu.getAdvertisementAmount());
-                maximumAdvertisementAmount.appendChild(value);
-            }*/
-
-        try {
+                try {
             escribirEnFichero(con.getExpediente(), document, con.getStatus().getId());
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
         } catch (Exception e) {
             LOG.error("Error al guardar fichero: " + e.getMessage());
         }
         return getStringFromDocument(document);
+    }
+
+    private static String parseoUrgencia(String urgente) {
+        if("N".equals(urgente)){
+            return "1";
+        }else if("E".equals(urgente)){
+            return "3";
+        }else{
+            return "2";
+        }
+    }
+    private static String parseoUrgenciaTitle(String urgente) {
+        if("1".equals(urgente)){
+            return "Ordinaria";
+        }else if("E".equals(urgente)){
+            return "Emergencia";
+        }else{
+            return "Urgente";
+        }
     }
 
     private static String calcularResultCode(Contrato con) {
@@ -1128,13 +488,13 @@ public class CodiceConverterMenor {
     }
 
     private static String calcularEstado(Contrato con) {
-        if (con.getStatus().getId() == 1)
+        if (con.getStatus().getId() == 0)
             return "PUB";
         else {
-            if (con.getStatus().getId() == 2)
+            if (con.getStatus().getId() == 1)
                 return "EV";
             else {
-                if (con.getStatus().getId() == 3)
+                if (con.getStatus().getId() == 5)
                     return "ADJ";
                 else {
                     if ((con.getStatus().getId() == 4) || (con.getStatus().getId() == 5) || (con.getStatus().getId() == 6) || (con.getStatus().getId() == 7) || (con.getStatus().getId() == 8))
@@ -1686,25 +1046,17 @@ public class CodiceConverterMenor {
         return output;
     }
 
-    private static int calcularTipoContrato(String tipo) {
-        if (tipo.equals("SuppliesContract")) {
-            return 1;
-        } else if (tipo.equals("ServicesContract")) {
-            return 2;
-        } else if (tipo.equals("WorksContract")) {
-            return 3;
-        } else if (tipo.equals("PublicServicesManagementContract")) {
-            return 21;
-        } else if (tipo.equals("PublicWorksConcessionContract")) {
-            return 31;
-        } else if (tipo.equals("PublicPrivatePartnershipContract")) {
-            return 40;
-        } else if (tipo.equals("SpecialAdministrativeContract")) {
-            return 7;
-        } else if (tipo.equals("PrivateContract")) {
-            return 8;
-        } else {
-            return 999;
+    private static String calcularTipoContrato(Integer tipo) {
+        switch(tipo){
+            case 1:return "3";
+            case 2:return "2";
+            case 3:return "1";
+            case 4:return "999";
+            case 5:return "8";
+            case 6:return "3";
+            case 7:return "31";
+            case 8:return "21";
+            default:return "999";
         }
     }
 
@@ -1734,68 +1086,11 @@ public class CodiceConverterMenor {
     }
 
 
-    private static List<String> getTypes(String uriCont) {
 
-        List<String> output = new ArrayList<String>();
 
-        String query = "SELECT DISTINCT ?type WHERE { <" + uriCont + "> a ?type.}";
 
-        QueryExecution x = QueryExecutionFactory.sparqlService(endPoint, query);
-        ResultSet results = x.execSelect();
 
-        while (results.hasNext()) {
-            QuerySolution iter = results.next();
-            output.add(iter.get("type").toString());
-        }
 
-        return output;
-    }
-
-    private static String getDuration(String uriCont) {
-
-        String output = "";
-
-        String query = "SELECT DISTINCT ?duration WHERE { <" + uriCont + "> pproc:contractTemporalConditions ?z. ?z pproc:estimatedDuration ?duration.} order by asc (?duration)";
-
-        QueryExecution x = QueryExecutionFactory.sparqlService(endPoint, query);
-        ResultSet results = x.execSelect();
-
-        if (results.hasNext()) {
-            QuerySolution iter = results.next();
-            output = iter.get("duration").toString();
-        }
-
-        return output;
-    }
-
-    private static List<String> getAmmounts(String uriCont) {
-
-        List<String> output = new ArrayList<String>();
-        String query = "PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#> "
-                + "PREFIX gr: <http://purl.org/goodrelations/v1#> "
-                + "PREFIX pc: <http://purl.org/procurement/public-contracts#>"
-                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
-                + " SELECT DISTINCT ?impAdjudicacionSinIVA"
-                + " ?impAdjudicacionConIVA WHERE {"
-                + "<" + uriCont + "> pc:tender ?tender."
-                + " ?tender a pproc:FormalizedTender."
-                + " ?tender pc:offeredPrice ?offeredPriceNOVAT;"
-                + " pc:offeredPrice ?offeredPriceVAT."
-                + " ?offeredPriceNOVAT gr:hasCurrencyValue ?impAdjudicacionSinIVA;"
-                + " gr:valueAddedTaxIncluded \"false\"^^xsd:boolean."
-                + " ?offeredPriceVAT gr:hasCurrencyValue ?impAdjudicacionConIVA;"
-                + " gr:valueAddedTaxIncluded \"true\"^^xsd:boolean."
-                + "}";
-        QueryExecution x = QueryExecutionFactory.sparqlService(endPoint, query);
-        ResultSet results = x.execSelect();
-
-        if (results.hasNext()) {
-            QuerySolution iter = results.next();
-            output.add(remove(iter.get("impAdjudicacionSinIVA").toString()));
-            output.add(remove(iter.get("impAdjudicacionConIVA").toString()));
-        }
-        return output;
-    }
 
 
     private static String getFee(String uriCont) {
@@ -1822,76 +1117,15 @@ public class CodiceConverterMenor {
         return output;
     }
 
-    private static String getUrgencyType(String uriCont) {
-
-        String output = "";
-        String query = "PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#> "
-                + "PREFIX gr: <http://purl.org/goodrelations/v1#> "
-                + "PREFIX pc: <http://purl.org/procurement/public-contracts#>"
-                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
-                + "select distinct ?urgencyType where {<" + uriCont + "> pproc:contractProcedureSpecifications ?procedureType. ?procedureType pproc:urgencyType ?urgencyType.}";
-        QueryExecution x = QueryExecutionFactory.sparqlService(endPoint, query);
-        ResultSet results = x.execSelect();
-
-        if (results.hasNext()) {
-            QuerySolution iter = results.next();
-            output = remove(iter.get("urgencyType").toString());
-        }
-        return output;
-    }
-
-    private static String getTenderDeadline(String uriCont) {
-
-        String output = "";
-        String query = "PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#> "
-                + "PREFIX gr: <http://purl.org/goodrelations/v1#> "
-                + "PREFIX pc: <http://purl.org/procurement/public-contracts#>"
-                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
-                + "select distinct ?fecha where {<" + uriCont + "> pproc:contractProcedureSpecifications ?procedureType.?procedureType pproc:tenderDeadline ?fecha.}";
-        QueryExecution x = QueryExecutionFactory.sparqlService(endPoint, query);
-        ResultSet results = x.execSelect();
-
-        if (results.hasNext()) {
-            QuerySolution iter = results.next();
-            output = remove(iter.get("fecha").toString());
-        }
-        return output;
-    }
 
 
-    private static String getMainObject(String uriCont) {
 
-        String output = "";
-        String query = "PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#> "
-                + "select distinct ?mainObject where {<" + uriCont + "> pproc:contractObject ?contractObject. ?contractObject pproc:mainObject ?mainObject}";
-        QueryExecution x = QueryExecutionFactory.sparqlService(endPoint, query);
-        ResultSet results = x.execSelect();
 
-        if (results.hasNext()) {
 
-            QuerySolution iter = results.next();
-            output = remove(iter.get("mainObject").toString());
-        }
-        return output;
-    }
 
-    private static List<String> getProvision(String uriCont) {
 
-        List<String> output = new ArrayList<String>();
-        String query = "PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#> "
-                + "PREFIX dcterms: <http://purl.org/dc/terms/> "
-                + "select distinct ?provision ?title where {<" + uriCont + "> pproc:contractObject ?contractObject. ?contractObject pproc:provision  ?provision . ?provision  dcterms:title ?title}";
-        QueryExecution x = QueryExecutionFactory.sparqlService(endPoint, query);
-        ResultSet results = x.execSelect();
 
-        if (results.hasNext()) {
 
-            QuerySolution iter = results.next();
-            output.add(remove(iter.get("provision").toString()));
-            output.add(remove(iter.get("title").toString()));
-        }
-        return output;
-    }
 
     private static List<String> getRequiredClassification(String uriCont) {
 
