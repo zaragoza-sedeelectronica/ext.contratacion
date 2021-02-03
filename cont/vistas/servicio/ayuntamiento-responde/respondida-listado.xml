@@ -1,9 +1,0 @@
-<div class="well well-sm nomargin fnd-gris-claro">
-    <span class="pull-right">
-        Respondida el <span sede:rdf="${registro.get('selected')}"></span>
-    </span>
-    <h4>
-        <img class="nodeco margin-r1em" alt="Pregunta Ciudadana" title="Pregunta Ciudadana" src="/cont/paginas/gobierno-abierto/img/pregciud-p.png"/>
-        <a th:href="@{{id}(id=${registro.id})}" th:text="${registro.title}"></a>
-    </h4>
-</div>

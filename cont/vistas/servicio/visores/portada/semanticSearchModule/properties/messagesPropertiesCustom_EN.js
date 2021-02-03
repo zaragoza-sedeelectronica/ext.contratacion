@@ -1,1 +1,0 @@
-if(typeof messages=="undefined"){messages={}}messages["search-aditional-info-other-links"]="Other links";messages["search-aditional-info-loading"]="Searching for aditional information...";

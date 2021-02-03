@@ -1,4 +1,0 @@
-<div th:if="${registro} and ${registro.statusCode.value()} != 200" role="alert" class="alert alert-danger" th:text="${registro.body.mensaje}" th:classappend="${clase} != null ? ${clase} : ''">
-</div>
-<div th:if="${mensaje}" th:class="${mensaje.status} == 200 ? 'alert alert-success' : 'alert alert-danger'" th:utext="${mensaje.mensaje}" th:classappend="${clase} != null ? ${clase} : ''">
-</div>
