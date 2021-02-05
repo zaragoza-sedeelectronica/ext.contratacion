@@ -87,7 +87,7 @@ Hay que indicar los valores de los campos `url` y `password`.
 
 # Clonar repositorio:
 
-A continuación debe clonarse en local este repositorio https://bitbucket.org/masilgado/contratacion.git
+A continuación debe clonarse en local este repositorio https://github.com/zaragoza-sedeelectronica/ext.contratacion
 
 
 # Instalación de librerías en repositorio local:
