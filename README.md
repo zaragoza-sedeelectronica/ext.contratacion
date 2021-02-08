@@ -8,6 +8,7 @@
 A continuación se indican las instrucciones necesarias para la descarga y configuración del módulo de "Contratación Pública" del proyecto OpenCity-Ext desarrollado por el Ayuntamiento de Zaragoza.
 
 Los servicios desarrollados en este módulo han sido definidos e implementados durante el proyecto europeo <a href="https://www.zaragoza.es/sede/portal/theybuyforyou/">They Buy For You</a>
+[GITHUB del proyecto](https://github.com/TBFY)
 
 Estos servicios son:
 * Servicio de Visualización
