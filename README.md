@@ -20,11 +20,11 @@ Estos servicios son:
 ## Descripción funcional ##
 Este módulo consta de las siguientes partes:
 
-*Servicio de visualización[ Descripción ] (https://www.zaragoza.es/contenidos/contratos/Servicio_Visualizacion_Procesos_Contratacion.pdf)
-*Sistema de Gestión [ Descripción ](https://www.zaragoza.es/contenidos/contratos/Manual_Uso_administracion_Contratacion_publica.pdf)
-*APIs [ Descripción ](https://www.zaragoza.es/sede/servicio/catalogo/147)
-	*Conforme a OCDS
-	*Servicio de Visualización
+* Servicio de visualización[ Descripción ] (https://www.zaragoza.es/contenidos/contratos/Servicio_Visualizacion_Procesos_Contratacion.pdf)
+* Sistema de Gestión [ Descripción ](https://www.zaragoza.es/contenidos/contratos/Manual_Uso_administracion_Contratacion_publica.pdf)
+* APIs [ Descripción ](https://www.zaragoza.es/sede/servicio/catalogo/147)
+	* Conforme a OCDS
+	* Servicio de Visualización
 ## Manual de instalación ##
 
 Primero, hay que realizar los siguientes pasos del manual general:
