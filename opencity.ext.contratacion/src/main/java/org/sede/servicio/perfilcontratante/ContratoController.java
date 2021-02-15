@@ -107,6 +107,8 @@ public class ContratoController {
     private IndicadorAdjudicadorGenericDAO daoIndicadorAdjudicador;
     @Autowired
     private IndicadorTipoServicioGenericDAO daoIndicadorTipoServicio;
+    @Autowired
+    private IndicadorTipoEmpresaGenericDAO daoIndicadorTipoEmpresa;
 
     //endregion
     //region Redirect
@@ -690,6 +692,8 @@ public class ContratoController {
         indicador.setCuantiaCanon(BigDecimal.valueOf(cuantiaCanon));
         ResponseEntity<?> resultadoIndicadoresAjudicatarios = apiIndicadoreIndicadorAdjudicatario(search, id, year);
         indicador.setIndicadorAdjudicatarios((SearchResult<IndicadorAjudicatario>) resultadoIndicadoresAjudicatarios.getBody());
+        ResponseEntity<?> resultadoIndicadoresTipoEmpresa = apiIndicadoreIndicadorTipoEmpresa(search, id, year);
+        indicador.setIndicadorTipoEmpresa((SearchResult<IndicadorTipoEmpresa>) resultadoIndicadoresTipoEmpresa.getBody());
         return ResponseEntity.ok(indicador);
     }
 
@@ -1209,7 +1213,7 @@ public class ContratoController {
         return ResponseEntity.ok(indicadores);
     }
 
-    @Description("Indicadores Ahorro por Entidad")
+    @Description("Indicadores Adjudicatario por Entidad")
     @OpenData
     @Cache(Cache.DURACION_30MIN)
     @ResponseClass(value = IndicadorAjudicatario.class)
@@ -1333,6 +1337,25 @@ public class ContratoController {
             item.setPorCiento(BigDecimal.valueOf(total.floatValue() / indicador.getTotalContratos().floatValue() * 100));
         }
         indicador.setContratos(listadoContratos);
+        return ResponseEntity.ok(indicadores);
+    }
+    @Description("Indicadores Tipo Empresa por Entidad")
+    @OpenData
+    @Cache(Cache.DURACION_30MIN)
+    @ResponseClass(value = IndicadorTipoEmpresa.class)
+    @RequestMapping(value = "/indicador/indicadorTipoEmpresa", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD})
+    public @ResponseBody
+    ResponseEntity<?> apiIndicadoreIndicadorTipoEmpresa(@Fiql SearchFiql search, @RequestParam(name = "idPortal") BigDecimal idPortal, @RequestParam(name = "anyo") String anyo) throws SearchParseException {
+        search.setRows(-1);
+        if ("".equals(anyo)) {
+            anyo = "" + Calendar.getInstance().get(Calendar.YEAR);
+        }
+        EntidadContratante registro = daoEntidadContratante.find(idPortal);
+        if (registro == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Mensaje(HttpStatus.NOT_FOUND.value(), messageSource.getMessage("generic.notfound", null, LocaleContextHolder.getLocale())));
+        }
+        Search busqueda = search.getConditions(IndicadorTipoEmpresa.class);
+        SearchResult<IndicadorTipoEmpresa> indicadores = daoIndicadorTipoEmpresa.searchAndCount(busqueda);
         return ResponseEntity.ok(indicadores);
     }
 

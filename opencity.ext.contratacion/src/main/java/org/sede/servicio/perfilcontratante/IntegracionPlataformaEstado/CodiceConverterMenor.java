@@ -39,9 +39,9 @@ public class CodiceConverterMenor {
     private static final Logger LOG = LoggerFactory.getLogger(CodiceConverterMenor.class);
     //	private static String endPoint = "http://rysvirtuosotest.red.zaragoza.es/sparql";
     private static String endPoint = "http://datos.zaragoza.es/sparql";
-   private static final String PATH_RESULTADOS_PRUEBAS = "/home/documentacionweb/Escritorio/IntegracionContratacionEstado/resultadosPruebas/";
+    private static final String PATH_RESULTADOS_PRUEBAS = "/home/documentacionweb/Escritorio/IntegracionContratacionEstado/resultadosPruebas/";
 //   private static final String PATH_RESULTADOS_PRUEBAS = "C:\\Users\\piglesias\\Desktop\\Contratos\\";
-	//private static final String PATH_XSD = "C:\\Users\\piglesias\\Desktop\\xsd\\";
+    //private static final String PATH_XSD = "C:\\Users\\piglesias\\Desktop\\xsd\\";
 
     //private static final String PATH_RESULTADOS_PRUEBAS = "/RedAyto/F/seccionweb/Errores_contratos/resultadosPruebas/";
     private static final String PATH_XSD = "/RedAyto/F/seccionweb/Errores_contratos/xsd/";
@@ -418,19 +418,81 @@ public class CodiceConverterMenor {
                             awardingCriteriaWight.appendChild(awardingCriteriaWightText);
                             awardingCriteria.appendChild(awardingCriteriaWight);
                             awardingTerms.appendChild(awardingCriteria);
-
                             tenderingProcess.appendChild(awardingTerms);
-
                         }
-
                     }
                 }
+            }else if(con.getStatus().getId()==5 ||con.getStatus().getId()==3 || con.getStatus().getId()==6) {
+                Element resultadoNode = document.createElement("cac:TenderResult");
+                Integer status = con.getStatus().getId();
+                // Estados que devuelve:
+                // 0: error, no hay fechas asociadas
+                // 1: anuncio de licitaci�n
+                // 2: pendiente de adjudicar
+                // 3: adjudicacion
+                // 4: formalizacion
+                // 5: desierta
+                // 6: renuncia
+                // 7: desistimiento
+
+                Element resultCodeNode = document.createElement("cbc:ResultCode");
+                resultCodeNode.setAttribute("listURI", "http://contrataciondelestado.es/codice/cl/2.02/TenderResultCode-2.02.gc");
+                Text resultCodeValue = document.createTextNode(calcularResultCode(con));
+                resultCodeNode.appendChild(resultCodeValue);
+                resultadoNode.appendChild(resultCodeNode);
+
+                Element numLicitadoresNode = document.createElement("cbc:ReceivedTenderQuantity");
+                Text numLicitadoresValue = document.createTextNode(con.getNumLicitadores().toString());
+                numLicitadoresNode.appendChild(numLicitadoresValue);
+                resultadoNode.appendChild(numLicitadoresNode);
+                if (status == 3 || status == 5 || status == 6) {
+                    for (Oferta offer : con.getOfertas()) {
+                        if (offer.getGanador()) {
+                            Element winningPartyNode = document
+                                    .createElement("cac:WinningParty");
+                            Element partyIdentificationAdNode = document
+                                    .createElement("cac:PartyIdentification");
+
+                            Element idAdNode = document.createElement("cbc:ID");
+                            idAdNode.setAttribute("schemeName", "NIF");
+                            Text idAdValue = document.createTextNode(offer.getEmpresa().getNif());
+                            idAdNode.appendChild(idAdValue);
+                            partyIdentificationAdNode.appendChild(idAdNode);
+                            Element partyNameAdNode = document
+                                    .createElement("cac:PartyName");
+
+                            Element nameAdNode = document.createElement("cbc:Name");
+                            Text nameAdValue = document.createTextNode(offer.getEmpresa().getNombre());
+                            nameAdNode.appendChild(nameAdValue);
+                            partyNameAdNode.appendChild(nameAdNode);
+
+                            winningPartyNode.appendChild(partyIdentificationAdNode);
+                            winningPartyNode.appendChild(partyNameAdNode);
+                            resultadoNode.appendChild(winningPartyNode);
+
+                            Element AwardedTenderedNode = document
+                                    .createElement("cac:AwardedTenderedProject");
+                            Element LegalMonetaryNode = document
+                                    .createElement("cac:LegalMonetaryTotal");
+                            Element taxAdjAmountNode = document
+                                    .createElement("cbc:TaxExclusiveAmount");
+                            taxAdjAmountNode.setAttribute("currencyID", "EUR");
+                            Text taxExclusiveAmountOfferValue = document.createTextNode(offer.getImporteSinIVA().toString());
+                            taxAdjAmountNode.appendChild(taxExclusiveAmountOfferValue);
+                            AwardedTenderedNode.appendChild(LegalMonetaryNode);
+                            LegalMonetaryNode.appendChild(taxAdjAmountNode);
+                            resultadoNode.appendChild(AwardedTenderedNode);
+                        }
+                    }
+                    contractFolderStatusNode.appendChild(resultadoNode);
+                }
+            }else if(con.getStatus().getId()==4){
+
+            }else{
+
             }
         }
-
-
-
-                try {
+        try {
             escribirEnFichero(con.getExpediente(), document, con.getStatus().getId());
         } catch (TransformerException tfe) {
             tfe.printStackTrace();
@@ -497,7 +559,7 @@ public class CodiceConverterMenor {
                 if (con.getStatus().getId() == 5)
                     return "ADJ";
                 else {
-                    if ((con.getStatus().getId() == 4) || (con.getStatus().getId() == 5) || (con.getStatus().getId() == 6) || (con.getStatus().getId() == 7) || (con.getStatus().getId() == 8))
+                    if ((con.getStatus().getId() == 4) ||  (con.getStatus().getId() == 6) || (con.getStatus().getId() == 7) || (con.getStatus().getId() == 8))
                         return "RES";
                     else {
                         return null;
@@ -1048,12 +1110,11 @@ public class CodiceConverterMenor {
 
     private static String calcularTipoContrato(Integer tipo) {
         switch(tipo){
-            case 1:return "3";
+            case 1:
+            case 6:return "3";
             case 2:return "2";
             case 3:return "1";
-            case 4:return "999";
             case 5:return "8";
-            case 6:return "3";
             case 7:return "31";
             case 8:return "21";
             default:return "999";

@@ -78,7 +78,7 @@ import java.util.*;
 public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal> implements ContratoGenericDAO {
     private static final Logger logger = LoggerFactory.getLogger(ContratoGenericDAOImpl.class);
     private static final String URLSPARQLTBFY = "http://data.tbfy.eu/sparql?query=";
-    private static final String URLCONTRACTINPROCESS = "http://tbfy.librairy.linkeddata.es/api/contractingProcess?code=%s";
+    private static final String URLCONTRACTINPROCESS = "http://tbfy.librairy.linkeddata.es/kg-api/contractingProcess?code=%s";
     private static final String URLTENDERDOCUMENT = "http://tbfy.librairy.linkeddata.es/kg-api/tender/%s/document";
     private static final String URLCONTRACTINPROCESSTENDER = "http://tbfy.librairy.linkeddata.es/kg-api/contractingProcess/%s/tender";
     private static final String URLTBFYDOCUMENT = "http://tbfy.librairy.linkeddata.es/search-api/documents/";
@@ -248,7 +248,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
 			//busqueda.addFilter(Filter.greaterOrEqual("expirationDate", new Date()));
 			busqueda.setMaxResults(tag.getAttributeValue("numero") == null ? 10 : Integer.parseInt(tag.getAttributeValue("numero")));
 			List<Sort> sorts = new ArrayList<Sort>();
-			sorts.add(new Sort("fecha_presentacion", true));
+			sorts.add(new Sort("fechaPresentacion", true));
 			busqueda.setSorts(sorts);
 			List<Contrato> resultado = this.search(busqueda);
 			if (resultado.size() > 0) {

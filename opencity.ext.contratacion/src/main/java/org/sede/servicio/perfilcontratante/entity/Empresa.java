@@ -10,12 +10,14 @@
  * Para más información, puede contactar con los autores en: gobiernoabierto@zaragoza.es, sedelectronica@zaragoza.es*/
 package org.sede.servicio.perfilcontratante.entity;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.sede.core.anotaciones.Grafo;
 import org.sede.core.anotaciones.PathId;
 import org.sede.core.anotaciones.Rel;
+import org.sede.core.anotaciones.SoloEnEstaEntidad;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
@@ -57,6 +59,11 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     private  String nif;
     @Column(name="OPENCORPORATE",nullable=false,unique=false)
     private  String openCorporateUrl;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "FORMA")
+    @BatchSize(size = 50)
+    @SoloEnEstaEntidad
+    private  TipoEmpresa tipoEmpresa;
 
     @Transient
     private String nifEntidad;
@@ -79,6 +86,14 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     //endregion
     //region Getter and Setters
 
+
+    public TipoEmpresa getTipoEmpresa() {
+        return tipoEmpresa;
+    }
+
+    public void setTipoEmpresa(TipoEmpresa tipoEmpresa) {
+        this.tipoEmpresa = tipoEmpresa;
+    }
 
     public String getOpenCorporateUrl() {
         return openCorporateUrl;
@@ -185,7 +200,8 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
                 + ute + ", nif="
                 + nif + ", autonomo="
                 + autonomo + ", nacionalidad="
-                +  nacionalidad+ ", Url Opencorporate="
+                +  nacionalidad+ ", tipo empresa="
+                +  tipoEmpresa+ ", Url Opencorporate="
                 +  openCorporateUrl+ "]";
     }
     //endregion

@@ -8,26 +8,18 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones que establece la Licencia.
  *
  * Para más información, puede contactar con los autores en: gobiernoabierto@zaragoza.es, sedelectronica@zaragoza.es*/
-package org.sede.servicio.perfilcontratante;
+package org.sede.servicio.perfilcontratante.dao;
 
-import org.sede.core.PropertyFileInterface;
-import org.sede.core.anotaciones.Esquema;
-import org.springframework.context.annotation.Configuration;
+import com.googlecode.genericdao.dao.jpa.GenericDAO;
+import org.sede.servicio.perfilcontratante.entity.IndicadorAjudicatario;
+import org.sede.servicio.perfilcontratante.entity.IndicadorTipoEmpresa;
 
-@Configuration
-public class ConfigPerfilContratanteOrganigrama implements PropertyFileInterface {
-	public static final String ESQUEMA = Esquema.PERFILCONTRATANTE;
-	public static final String TM = Esquema.TMPERFILCONTRATANTE;
-	
-	public String getSchema() {
-		return ESQUEMA.toLowerCase();
-	}
-	public String getJndi() {
-		return "WebPerfilDS";
-	}
+import javax.validation.ConstraintViolation;
+import java.math.BigDecimal;
+import java.util.Set;
 
-	public String getEntity() {
-		return "org.sede.servicio.organigrama.entity";
-	}
+public interface IndicadorTipoEmpresaGenericDAO extends GenericDAO<IndicadorTipoEmpresa,BigDecimal>{
+    public Set<ConstraintViolation<Object>> validar(Object registro);
+
 
 }
