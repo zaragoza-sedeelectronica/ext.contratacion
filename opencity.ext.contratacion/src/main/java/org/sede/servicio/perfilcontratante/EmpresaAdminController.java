@@ -109,7 +109,11 @@ public class EmpresaAdminController {
 		if (!errores.isEmpty()) {
 			return Funciones.generarMensajeError(errores);
 		}
+		if(registro.getTipoEmpresa().getId()==null){
+			registro.setTipoEmpresa(null);
+		}
 		dao.save(registro);
+		dao.flush();
 		return ResponseEntity.ok(registro);
 	}
 
@@ -123,6 +127,9 @@ public class EmpresaAdminController {
 		ResponseEntity<?> resp = apiDetalle(id);
 		if (resp.getStatusCode().is2xxSuccessful()) {
 			Empresa reg = (Empresa) resp.getBody();
+			if(registro.getTipoEmpresa().getId()==null){
+				registro.setTipoEmpresa(null);
+			}
 			EntidadBase.combinar(reg, registro);
 			reg.setIdEmpresa(id);
 			Set<ConstraintViolation<Object>> errores = dao.validar(registro);

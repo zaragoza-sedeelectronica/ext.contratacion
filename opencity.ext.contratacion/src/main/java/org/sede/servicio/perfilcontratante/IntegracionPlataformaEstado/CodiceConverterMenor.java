@@ -404,7 +404,7 @@ public class CodiceConverterMenor {
                             awardingCriteriaID.appendChild(awardingCriteriaIDText);
                             awardingCriteria.appendChild(awardingCriteriaID);
                             Element awardingCriteriaTypeCode = document.createElement("cbc:AwardingCriteriaTypeCode");
-                            awardingCriteriaTypeCode.setAttribute("listUri", "https://contrataciondelestado.es/codice/cl/2.0/AwardingCriteriaCode-2.0.gc");
+                            awardingCriteriaTypeCode.setAttribute("listUri", "https://contrataciondelestado.es/codice/cl/2.08/AwardingCriteriaCode-2.0.gc");
                             awardingCriteriaTypeCode.setAttribute("listVersionID", "2.0");
                             Text awardingCriteriaTypeCodeText = document.createTextNode("OBJ");
                             awardingCriteriaTypeCode.appendChild(awardingCriteriaTypeCodeText);
