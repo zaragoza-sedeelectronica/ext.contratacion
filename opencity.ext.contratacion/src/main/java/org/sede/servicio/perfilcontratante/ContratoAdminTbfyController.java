@@ -42,7 +42,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.*;
 
-@Gcz(servicio = "ADMIN", seccion = "ADMIN")
+@Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
 @Controller
 //@Description("Ayuntamiento: Perfil de contratante")
 @Transactional(Esquema.TMPERFILCONTRATANTE)
