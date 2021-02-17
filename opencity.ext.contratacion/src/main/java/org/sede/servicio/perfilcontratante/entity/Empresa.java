@@ -59,8 +59,8 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     private  String nif;
     @Column(name="OPENCORPORATE",nullable=false,unique=false)
     private  String openCorporateUrl;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "FORMA")
+    @ManyToOne(optional = true,fetch = FetchType.EAGER)
+    @JoinColumn(name = "FORMA",nullable = true)
     @BatchSize(size = 50)
     @SoloEnEstaEntidad
     private  TipoEmpresa tipoEmpresa;

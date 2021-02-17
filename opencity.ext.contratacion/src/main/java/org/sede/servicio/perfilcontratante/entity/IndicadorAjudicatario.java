@@ -68,6 +68,10 @@ public class IndicadorAjudicatario extends EntidadBase implements java.io.Serial
     private BigDecimal importeLicitacionSinIva;
     @Column(name="IMPORTELICICONIVA",updatable = false,insertable = false)
     private BigDecimal importeLicitacionConIva;
+    @Column(name="IMPORTELOTESINIVA",updatable = false,insertable = false)
+    private BigDecimal importeLicitacionLoteSinIva;
+    @Column(name="IMPORTELOTECONIVA",updatable = false,insertable = false)
+    private BigDecimal importeLicitacionLoteConIva;
     @Column(name="ANYO",updatable = false,insertable = false)
     private String anyo;
     @Column(name="IMPORTEADJUSINIVA")
@@ -86,6 +90,22 @@ public class IndicadorAjudicatario extends EntidadBase implements java.io.Serial
 
     //endregion
     //region Setters & Getters
+
+    public BigDecimal getImporteLicitacionLoteSinIva() {
+        return importeLicitacionLoteSinIva;
+    }
+
+    public void setImporteLicitacionLoteSinIva(BigDecimal importeLicitacionLoteSinIva) {
+        this.importeLicitacionLoteSinIva = importeLicitacionLoteSinIva;
+    }
+
+    public BigDecimal getImporteLicitacionLoteConIva() {
+        return importeLicitacionLoteConIva;
+    }
+
+    public void setImporteLicitacionLoteConIva(BigDecimal importeLicitacionLoteConIva) {
+        this.importeLicitacionLoteConIva = importeLicitacionLoteConIva;
+    }
 
     public String getType() {
         return type;
@@ -249,6 +269,8 @@ public class IndicadorAjudicatario extends EntidadBase implements java.io.Serial
                 ", procedimiento=" + procedimiento +
                 ", importeLicitacionSinIva=" + importeLicitacionSinIva +
                 ", importeLicitacionConIva=" + importeLicitacionConIva +
+                ", importeLicitacionLoteSinIva=" + importeLicitacionLoteSinIva +
+                ", importeLicitacionLoteConIva=" + importeLicitacionLoteConIva +
                 ", anyo='" + anyo + '\'' +
                 ", importeAdjuducacioSinIva=" + importeAdjuducacioSinIva +
                 ", importeAdjuducacioConIva=" + importeAdjuducacioConIva +
