@@ -56,14 +56,14 @@ import java.util.*;
 import static org.apache.solr.client.solrj.impl.XMLResponseParser.log;
 
 
-@Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
+@Gcz(servicio = "ADMIN", seccion = "ADMIN")
 @Controller
 @Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + ContratoApiTramitaController.MAPPING, method = RequestMethod.GET)
 public class ContratoApiTramitaController {
     //region Atributtes
     private static final Logger logger = LoggerFactory.getLogger(ContratoApiTramitaController.class);
-    private static final String RAIZ = "contratacion-publica/admin/";
+    private static final String RAIZ = "contratacion-publica/";
     private static final String SERVICIO = "tramita";
     public static final String MAPPING = "  servicio/" +  RAIZ + SERVICIO;
     private static String URIWS = Propiedades.getString("contratacion.estado.ws");
@@ -97,36 +97,30 @@ public class ContratoApiTramitaController {
     private CriteriosGenericDAO daoCriterios;
     //endregion
 
-    //region Vistas
-    @RequestMapping(method = RequestMethod.GET, produces = {
-            MediaType.TEXT_HTML_VALUE, "*/*"})
-    public String redirect() {
-        return "redirect:/" + SERVICIO + "";
-    }
 
     @Permisos(Permisos.DET)
-    @RequestMapping(path = "/tramita", method = RequestMethod.GET, produces = {
-            MediaType.TEXT_HTML_VALUE, "*/*"})
-    public String tramita(Model model, @RequestParam(name = "carpeta", required = false, defaultValue = "") String carpeta) throws org.apache.cxf.jaxrs.ext.search.SearchParseException, IOException {
+    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {
+            MediaType.TEXT_HTML_VALUE, "*/*" })
+    public String home(Model model,@RequestParam(name = "carpeta", required = false, defaultValue = "") String carpeta) throws IOException, SearchParseException {
         if (!carpeta.isEmpty()) {
 
             model.addAttribute(ModelAttr.RESULTADO, apiTramitaJson(carpeta));
-        } else {
-
-            model.addAttribute(ModelAttr.RESULTADO, "inicio");
         }
-        return MAPPING + "/tramita";
+        return MAPPING + "/formulario";
     }
 
+
+
     @Permisos(Permisos.MOD)
-    private @ResponseBody
-    SearchResult<Contrato> apiTramitaJson(String carpeta) throws SearchParseException, IOException {
+    @ResponseClass(value = Contrato.class, entity = SearchResult.class)
+    @RequestMapping(value="/api-carga-ofertas",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+    public @ResponseBody  ResponseEntity<?> apiTramitaJson(String carpeta) throws SearchParseException, IOException {
         SearchResult<Contrato> resultado = new SearchResult<Contrato>();
         try {
 
             List<Contrato> lista = new ArrayList<Contrato>(0);
             resultado.setResult(lista);
-            String intDir = "/home/documentacionweb/JsonTramita/" + carpeta + "/";
+            String intDir = "C:\\Users\\piglesias\\Desktop\\Contratos\\Jsons CM\\" + carpeta + "/";
             File interfaceDirectory = new File(intDir);
             for (File file : interfaceDirectory.listFiles()) {
                 InputStream stream = new FileInputStream(file);
@@ -149,32 +143,13 @@ public class ContratoApiTramitaController {
             resultado.setRows(0);
             resultado.setTotalCount(lista.size());
             resultado.setResult(lista);
+
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        return resultado;
-    }
-
-
-    @ResponseClass(value = Contrato.class, entity = SearchResult.class)
-    @RequestMapping(method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
-    public @ResponseBody  ResponseEntity<?> apiListar(@Fiql SearchFiql search) throws SearchParseException {
-        Search busqueda = search.getConditions(Contrato.class);
-        SearchResult<Contrato> resultado = null;
-        List<Sort> sorts = new ArrayList<Sort>();
-        BigDecimal portal = Utils.obtenerPortal(Funciones.getPeticion());
-        BigDecimal entidad = Utils.obtenerEntidad(Funciones.getPeticion());
-        if (portal != null) {
-            busqueda.addFilterEqual("entity.id", portal);
-        }
-        if (entidad != null) {
-            busqueda.addFilterEqual("servicio.id", entidad);
-        }
-        sorts.add(new Sort("creationDate", true));
-        busqueda.setSorts(sorts);
-        resultado = dao.searchAndCount(busqueda);
         return ResponseEntity.ok(resultado);
     }
+
   /**  public Contrato parseadorContrato(JsonNode json, String expediente, BigDecimal id)throws Exception {
 
         Contrato contrato = new Contrato();
@@ -301,7 +276,7 @@ public class ContratoApiTramitaController {
 				}
 			}*/
 
-			/*if (actualObj.has("pproc:additionalDocumentReference")) {
+			/**if (actualObj.has("pproc:additionalDocumentReference")) {
 				Iterator<JsonNode> iterator = actualObj.get(
 						"pproc:additionalDocumentReference").elements();
 				while (iterator.hasNext()) {
@@ -694,7 +669,7 @@ public class ContratoApiTramitaController {
 
     }*/
 	@OpenData
-
+    @Permisos(Permisos.NEW)
     @RequestMapping(value = "/crear",consumes =MimeTypes.JSON ,method = RequestMethod.POST,  produces = {MimeTypes.JSON})
     @ResponseClass(value = Contrato.class)
     public @ResponseBody  ResponseEntity<?> apiCrear(HttpServletRequest httpRequest) throws Exception {
@@ -738,6 +713,7 @@ public class ContratoApiTramitaController {
         return ResponseEntity.ok(contrato);
     }
     @OpenData
+    @Permisos(Permisos.MOD)
     @RequestMapping(value = "/guardar",consumes =MimeTypes.JSON ,method = RequestMethod.PUT,  produces = {MimeTypes.JSON})
     @ResponseClass(value = Contrato.class)
     public @ResponseBody  ResponseEntity<?> apiModificar(HttpServletRequest httpRequest) throws Exception {
@@ -751,9 +727,7 @@ public class ContratoApiTramitaController {
             Funciones.sendMail("Exito carga del contrato",contrato.toString() + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
             return ResponseEntity.ok(contrato);
         }
-
-
-    }
+	}
 
     @Permisos(Permisos.DET)
     @RequestMapping(value = "/integracion-estado",method = RequestMethod.GET,  produces = {MimeTypes.XML})
@@ -797,102 +771,98 @@ public class ContratoApiTramitaController {
                 con = rellenarContratoLicitacion(jsonld, peticion);
 
             }
-            boolean ganador = false;
-            for (Oferta ofer : con.getOfertas()) {
-                if (ofer.getGanador())
-                    ganador = true;
-            }
+            // Estamos en la adjudicacion
+            if (actualObj.has("pc:tender")) {
+                if (actualObj.has("tbfy:numberOfTenderers")) {
+                    con.setNumLicitadores(actualObj.get("tbfy:numberOfTenderers").asInt());
+                }
 
-
-
-                if (actualObj.has("pc:tender") == true) {
-                    // Estamos en la adjudicacion
-                    if (actualObj.has("tbfy:numberOfTenderers") == true) {
-                        con.setNumLicitadores(actualObj.get("tbfy:numberOfTenderers").asInt());
+                boolean ganador = false;
+                for (Oferta ofer : con.getOfertas()) {
+                    if (ofer.getGanador())
+                        ganador = true;
+                }
+                JsonNode jsonNode = actualObj.get("pc:tender");
+                if (jsonNode.isArray()) {
+                    Iterator<JsonNode> iterator = jsonNode.elements();
+                    while (iterator.hasNext()) {
+                        JsonNode valor = iterator.next();
+                        if (valor.has("pproc:awardDate")) {
+                            if (!ganador) {
+                                Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, true, "");
+                                con.getOfertas().add(ofertaGanadora);
+                            }
+                        } else {
+                            Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, false, "");
+                            con.getOfertas().add(ofertaGanadora);
+                        }
                     }
-                    if (actualObj.has("pc:tender")) {
-                        JsonNode jsonNode = actualObj.get("pc:tender");
-                        if (jsonNode.isArray()) {
-                            Iterator<JsonNode> iterator = jsonNode.elements();
-                            while (iterator.hasNext()) {
-                                JsonNode valor = iterator.next();
-                                if (valor.has("pproc:awardDate")) {
-                                    if(!ganador) {
-                                        Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, true, "");
+                }
+
+                if (actualObj.has("pc:lot")) {
+                    Iterator<JsonNode> iteratorlote = actualObj.get("pc:lot").elements();
+                    while (iteratorlote.hasNext()) {
+                        JsonNode loteAdjudicacion = iteratorlote.next();
+                        String idLote = loteAdjudicacion.get("dcterms:identifier").asText().replace("contzar:", "");
+                        if (loteAdjudicacion.has("pc:tender")) {
+                            JsonNode jsonNodeLote = loteAdjudicacion.get("pc:tender");
+                            if (jsonNode.isArray()) {
+                                Iterator<JsonNode> iterator = jsonNode.elements();
+                                while (iterator.hasNext()) {
+                                    JsonNode valor = iterator.next();
+                                    if (valor.has("pproc:awardDate")) {
+                                        Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, true, idLote);
+                                        con.getOfertas().add(ofertaGanadora);
+                                        con.setFechaContrato(ofertaGanadora.getFechaAdjudicacion());
+                                    } else {
+                                        Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, false, idLote);
                                         con.getOfertas().add(ofertaGanadora);
                                     }
-                                } else {
-                                    Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, false, "");
-                                    con.getOfertas().add(ofertaGanadora);
                                 }
                             }
-                        }
-                    }
-                    if (actualObj.has("pc:lot")) {
-                        Iterator<JsonNode> iteratorlote = actualObj.get("pc:lot").elements();
-                        while (iteratorlote.hasNext()) {
-                            JsonNode loteAdjudicacion = iteratorlote.next();
-                            String idLote = loteAdjudicacion.get("dcterms:identifier").asText().replace("contzar:", "");
-                            if (loteAdjudicacion.has("pc:tender")) {
-                                JsonNode jsonNode = loteAdjudicacion.get("pc:tender");
-                                if (jsonNode.isArray()) {
-                                    Iterator<JsonNode> iterator = jsonNode.elements();
-                                    while (iterator.hasNext()) {
-                                        JsonNode valor = iterator.next();
-                                        if (valor.has("pproc:awardDate")) {
-                                            Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, true, idLote);
-                                            con.getOfertas().add(ofertaGanadora);
-                                            con.setFechaContrato(ofertaGanadora.getFechaAdjudicacion());
-                                        } else {
-                                            Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, false, idLote);
-                                            con.getOfertas().add(ofertaGanadora);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    Estado estado = new Estado();
-                    estado.setId(5);
-                    con.setStatus(estado);
-                    boolean existeAnuncio = false;
-                    for (Anuncio anun : con.getAnuncios()) {
-                        if (anun.getType().getId().equals(new BigDecimal(6.0))) {
-                            existeAnuncio = true;
-                            break;
-                        }
-                    }
-                    if (!existeAnuncio) {
-                        String anuncioAdjudicacion = UtilsContrato
-                                .obtenerLiTituloContrato(actualObj)
-                                + UtilsContrato.obtenerLiTipoContrato(con.getType())
-                                + UtilsContrato.obtenerLiGestor(actualObj)
-                                + UtilsContrato.obtenerLiOrganoContratacion(actualObj)
-                                + UtilsContrato.obtenerLiExpediente(actualObj)
-                                + UtilsContrato.obtenerLiObjeto(actualObj)
-                                + UtilsContrato.obtenerLiPlazoEjecucion(actualObj)
-                                + UtilsContrato.obtenerLiTipoProcedimiento(actualObj)
-                                + UtilsContrato.obtenerLiAdjudicacion(actualObj);
-                        if (anuncioAdjudicacion.length() > 0) {
-                            Anuncio adjudicacion = new Anuncio();
-                            adjudicacion.setTitle("Adjudicación");
-                            adjudicacion.setDescription("<ol>" + anuncioAdjudicacion
-                                    + "</ol>");
-                            Tipoanuncio tipoAnuncio = new Tipoanuncio();
-                            tipoAnuncio.setId(UtilsContrato.TIPO_ANUNCIO_ADJUDICACION);
-                            adjudicacion.setType(tipoAnuncio);
-                            adjudicacion.setVisible("S");
-                            adjudicacion.setUsuarioAlta(peticion.getClientId());
-                            adjudicacion.setCreationDate(new Date());
-                            adjudicacion.setLastUpdated(new Date());
-                            adjudicacion.setPubDate(new Date());
-                            con.getAnuncios().add(adjudicacion);
                         }
                     }
                 }
 
 
+                Estado estado = new Estado();
+                estado.setId(5);
+                con.setStatus(estado);
+                boolean existeAnuncio = false;
+                for (Anuncio anun : con.getAnuncios()) {
+                    if (anun.getType().getId().equals(new BigDecimal(6.0))) {
+                        existeAnuncio = true;
+                        break;
+                    }
+                }
+                if (!existeAnuncio) {
+                    String anuncioAdjudicacion = UtilsContrato
+                            .obtenerLiTituloContrato(actualObj)
+                            + UtilsContrato.obtenerLiTipoContrato(con.getType())
+                            + UtilsContrato.obtenerLiGestor(actualObj)
+                            + UtilsContrato.obtenerLiOrganoContratacion(actualObj)
+                            + UtilsContrato.obtenerLiExpediente(actualObj)
+                            + UtilsContrato.obtenerLiObjeto(actualObj)
+                            + UtilsContrato.obtenerLiPlazoEjecucion(actualObj)
+                            + UtilsContrato.obtenerLiTipoProcedimiento(actualObj)
+                            + UtilsContrato.obtenerLiAdjudicacion(actualObj);
+                    if (anuncioAdjudicacion.length() > 0) {
+                        Anuncio adjudicacion = new Anuncio();
+                        adjudicacion.setTitle("Adjudicación");
+                        adjudicacion.setDescription("<ol>" + anuncioAdjudicacion
+                                + "</ol>");
+                        Tipoanuncio tipoAnuncio = new Tipoanuncio();
+                        tipoAnuncio.setId(UtilsContrato.TIPO_ANUNCIO_ADJUDICACION);
+                        adjudicacion.setType(tipoAnuncio);
+                        adjudicacion.setVisible("S");
+                        adjudicacion.setUsuarioAlta(peticion.getClientId());
+                        adjudicacion.setCreationDate(new Date());
+                        adjudicacion.setLastUpdated(new Date());
+                        adjudicacion.setPubDate(new Date());
+                        con.getAnuncios().add(adjudicacion);
+                    }
+                }
+            }
             return con;
         }catch (Exception e){
             logger.error(e.getMessage());
@@ -1315,16 +1285,13 @@ public class ContratoApiTramitaController {
     public Oferta rellenarOferta(Contrato con,JsonNode objc, Peticion peticion, boolean ganador, String idLote)throws Exception {
 
 	    Oferta ofer=new Oferta();
+	    System.out.println("oferta------->"+objc);
         try {
-
-
             JsonNode actualObj = objc;
             if (actualObj != null) {
                 if (actualObj.has("pproc:awardDate")) {
                     ofer.setFechaAdjudicacion(ConvertDate.string2Date(actualObj.get("pproc:awardDate").asText(), ConvertDate.ISO8601_FORMAT_SIN_ZONA));
                     ofer.setGanador(true);
-
-
                 } else {
                     ofer.setGanador(false);
                 }
@@ -1336,39 +1303,50 @@ public class ContratoApiTramitaController {
                 ofer.setAhorroVisible(true);
                 if (actualObj.has("pc:supplier")) {
                     if (actualObj.get("pc:supplier").has("org:identifier")) {
-                        Search search = new Search();
-                        search.addFilterEqual("nif", actualObj.get("pc:supplier").get("org:identifier").asText());
-                        Empresa licitador = daoEmpresa.searchUnique(search);
-                        if (licitador != null) {
-                            ofer.setEmpresa(licitador);
-                        } else {
-                            Empresa licitador2=new Empresa();
-                            licitador2.setUte("N");
-                            licitador2.setNacionalidad("es");
-                            if (actualObj.get("pc:supplier").has("s:name")) {
-                                licitador2.setNombre(actualObj.get("pc:supplier").get("s:name").asText());
-                            }
-                            if (actualObj.get("pc:supplier").has("org:identifier")) {
-                                licitador2.setNif(actualObj.get("pc:supplier").get("org:identifier").asText());
-                                String nif=licitador2.getNif();
-                                if (Oferta.anoniCierto(nif)) {
-                                    licitador2.setAutonomo("S");
+                        String nifActual = actualObj.get("pc:supplier").get("org:identifier").asText();
+                        for (Oferta oferta : con.getOfertas()) {
+                            if (!oferta.getEmpresa().getNif().equals(nifActual)) {
+                                Search search = new Search();
+                                search.addFilterEqual("nif", actualObj.get("pc:supplier").get("org:identifier").asText());
+                                System.out.println("------------------->" + actualObj.get("pc:supplier").get("org:identifier").asText());
+                                Empresa licitador;
+                                try {
+                                     licitador = daoEmpresa.searchUnique(search);
+                                }catch (Exception e){
+                                     licitador=null;
+                                }
+                                if (licitador != null) {
+                                    ofer.setEmpresa(licitador);
                                 } else {
-                                    licitador2.setAutonomo("N");
+                                    Empresa licitador2 = new Empresa();
+                                    licitador2.setUte("N");
+                                    licitador2.setNacionalidad("es");
+                                    if (actualObj.get("pc:supplier").has("s:name")) {
+                                        licitador2.setNombre(actualObj.get("pc:supplier").get("s:name").asText());
+                                    }
+                                    if (actualObj.get("pc:supplier").has("org:identifier")) {
+                                        licitador2.setNif(actualObj.get("pc:supplier").get("org:identifier").asText());
+                                        String nif = licitador2.getNif();
+                                        if (Oferta.anoniCierto(nif)) {
+                                            licitador2.setAutonomo("S");
+                                        } else {
+                                            licitador2.setAutonomo("N");
+                                        }
+                                    }
+                                    ofer.setEmpresa(licitador2);
                                 }
                             }
-                            ofer.setEmpresa(licitador2);
                         }
-                    }
-                    if (actualObj.has("pc:offeredPrice")) {
-                        Iterator<JsonNode> iterator = actualObj.get("pc:offeredPrice").elements();
-                        while (iterator.hasNext()) {
-                            JsonNode valor = iterator.next();
-                            String conIva = valor.get("gr:valueAddedTaxIncluded").asText();
-                            if ("true".equals(conIva)) {
-                                ofer.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText())));
-                            } else {
-                                ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText())));
+                        if (actualObj.has("pc:offeredPrice")) {
+                            Iterator<JsonNode> iterator = actualObj.get("pc:offeredPrice").elements();
+                            while (iterator.hasNext()) {
+                                JsonNode valor = iterator.next();
+                                String conIva = valor.get("gr:valueAddedTaxIncluded").asText();
+                                if ("true".equals(conIva)) {
+                                    ofer.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")))));
+                                } else {
+                                    ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")))));
+                                }
                             }
                         }
                     }
