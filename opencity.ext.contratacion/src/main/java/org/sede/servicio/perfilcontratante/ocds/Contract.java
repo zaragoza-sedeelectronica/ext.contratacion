@@ -99,7 +99,7 @@ public class Contract {
                 this.status = "active";
                 break;
             case 6:
-                this.status = "terminated”";
+                this.status = "terminated";
                 break;
             case 4:
             case 7:
@@ -238,8 +238,19 @@ public class Contract {
                 this.items.add(new Item(con, true));
             }
         }
-        for (Anuncio anun : con.getAnuncios()) {
-            documents.add(new Document(anun));
+        for (Anuncio anun:con.getAnuncios()) {
+            switch (Integer.valueOf(anun.getType().getId().toString())) {
+                case 20:
+                case 8:
+                case 21:
+                case 19:
+                case 26:
+                    this.documents.add(new Document(anun));
+                    break;
+                case 33:
+                    this.amendments.add(new Amendment(anun));
+                    break;
+            }
         }
         this.setDocuments(documents);
         this.setRelatedPracesses(relatedProcesses);
@@ -285,10 +296,19 @@ public class Contract {
             }
 
         }
-        for (Anuncio anun : con.getAnuncios()) {
-            this.documents.add(new Document(anun));
-            if (anun.getType().getId().equals(new BigDecimal(31)) || anun.getType().getId().equals(new BigDecimal(32)) || anun.getType().getId().equals(new BigDecimal(33)))
-                this.amendments.add(new Amendment(anun));
+        for (Anuncio anun:con.getAnuncios()) {
+            switch (Integer.valueOf(anun.getType().getId().toString())) {
+                case 20:
+                case 8:
+                case 21:
+                case 19:
+                case 26:
+                    this.documents.add(new Document(anun));
+                    break;
+                case 33:
+                    this.amendments.add(new Amendment(anun));
+                    break;
+            }
         }
         if (con.getPadre() != null) {
             this.relatedProcesses.add(new RelatedProcess(con.getPadre()));

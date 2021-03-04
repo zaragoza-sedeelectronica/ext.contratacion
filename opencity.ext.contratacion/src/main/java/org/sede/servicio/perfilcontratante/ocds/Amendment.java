@@ -16,13 +16,14 @@ import org.sede.servicio.perfilcontratante.entity.Anuncio;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
+import java.util.Date;
 
 @XmlRootElement(name = "AmendmentOcds")
 @ResultsOnly(xmlroot = "AmendmentOcds")
 public class Amendment {
     //region Atributtes
     private String id;
-    private String date;
+    private Date date;
     private String rationale ;
     private String description;
     private String amendsRelaseID;
@@ -40,10 +41,10 @@ public class Amendment {
     }
 
     public String getDate() {
-        return date;
+        return ConvertDate.date2String(date,ConvertDate.ISO8601_FORMAT);
     }
 
-    public void setDate(String dateTime) {
+    public void setDate(Date dateTime) {
         this.date = dateTime;
     }
 
@@ -107,8 +108,8 @@ public class Amendment {
 
     public Amendment() {}
     public Amendment(Anuncio anuncio) {
-        this.setId(anuncio.getId()+"amanment");
-        this.setDate(ConvertDate.date2String(anuncio.getPubDate(),ConvertDate.ISO8601_FORMAT));
+        this.setId(anuncio.getId()+"-amanment");
+        this.setDate(anuncio.getCreationDate());
         this.setRationale(anuncio.getTitle());
         this.setDescription(anuncio.getDescription());
     }

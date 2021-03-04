@@ -16,6 +16,7 @@ import org.sede.servicio.perfilcontratante.entity.Anuncio;
 import org.sede.servicio.perfilcontratante.entity.Lote;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,19 +130,30 @@ public class Document {
 
         }
         this.id=anun.getId()+"";
-        if(anun.getType().equals(31)|| anun.getType().equals(31) || anun.getType().equals(31))
+        if(new BigDecimal(31.0).equals(anun.getType().getId()) || new BigDecimal(32.0).equals(anun. getType().getId()) || new BigDecimal(33.0).equals(anun.getType().getId())){
             this.documentType="enquiryResponses";
-        else
-            this.documentType="notice";
+        }else if(anun.getType().getId().equals(new BigDecimal(2.0))){
+            this.documentType="tenderNotice";
+        }else if(anun.getType().getId().equals(new BigDecimal(6.0)) || anun.getType().getId().equals(new BigDecimal(5.0))) {
+            this.documentType="awardNotice";
+        }else if (anun.getType().getId().equals(new BigDecimal(3.0))){
+            this.documentType="technicalSpecifications";
+        }else if (anun.getType().getId().equals(new BigDecimal(4.0))){
+            this.documentType= "biddingDocuments";
+        }else if(anun.getType().getId().equals(new BigDecimal(9.0))){
+            this.documentType="tenderNotice";
+        }else if(anun.getType().getId().equals(new BigDecimal(1.0))){
+            this.documentType="tenderNotice";
+        }
         this.description=anun.getType().getTitle();
-        this.datePublished=ConvertDate.date2String(anun.getPubDate(),ConvertDate.ISO8601_FORMAT);
+        this.datePublished=ConvertDate.date2String(anun.getCreationDate(),ConvertDate.ISO8601_FORMAT);
 
         this.title=anun.getTitle();
         if(anun.getSello()!=null) {
             this.setUrl("https://www.zaragoza.es"+anun.getSelladoTiempo());
         }else{
             if((anun.getUri()!=null)) {
-                this.setUrl("https://www.zaragoza.es" + anun.getUri());
+                this.setUrl("" + anun.getUri());
             }else{
                 this.setUrl("https://www.zaragoza.es/sede/servicio/contratacion-publica/anuncio/"+anun.getId());
             }

@@ -143,7 +143,7 @@ public class ContratoOCDSController {
 			Records record=new Records();
 			List<ContractingProcess> resultado = new ArrayList<ContractingProcess>();
 			List<Release> releases = new ArrayList<Release>();
-			if(contrato.getStatus().getId().equals(0)|| contrato.getStatus().getId().equals(1) || contrato.getStatus().getId().equals(7) || contrato.getStatus().getId().equals(4) || contrato.getStatus().getId().equals(11) || contrato.getStatus().getId().equals(8)){
+			if(contrato.getStatus().getId().equals(0)|| contrato.getStatus().getId().equals(1) || contrato.getStatus().getId().equals(7) || contrato.getStatus().getId().equals(4) || contrato.getStatus().getId().equals(11) || contrato.getStatus().getId().equals(8)|| contrato.getStatus().getId().equals(10)){
 				releases.add(new Release(contrato,id));
 				resultado.add(new ContractingProcess(contrato,1));
 

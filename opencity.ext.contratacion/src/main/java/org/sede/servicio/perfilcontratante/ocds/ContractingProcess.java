@@ -164,7 +164,8 @@ public class ContractingProcess {
 		switch(con.getStatus().getId()){
 			case 0:  tag.add("tender");this.setTag(tag);break;
 			case 1: tag.add("tender");this.setTag(tag);break;
-			case 5:tag.add("award");this.setTag(tag);break;
+			case 5:
+			case 3:tag.add("award");this.setTag(tag);break;
 			case 6:tag.add("contract");this.setTag(tag);break;
 			case 7:
 			case 11:
@@ -175,7 +176,7 @@ public class ContractingProcess {
 		this.setInitiationType("tender");
 
 		List<Organisation> listaOrganizaciones=new ArrayList<Organisation>();
-		listaOrganizaciones.add(new Organisation(con.getEntity()));
+		listaOrganizaciones.add(new Organisation(con.getEntity(),con));
 		if(con.getEntity().getId().equals(new BigDecimal(1.0))) {
 			if (con.getOrganoContratante() != null)
 				listaOrganizaciones.add(new Organisation(con.getOrganoContratante(), true));
@@ -198,7 +199,7 @@ public class ContractingProcess {
 
 			this.setTender(new Tender(con));
 
-		if(status==2){
+		if(status==2 || status==3){
 			List<Award> awards=new ArrayList<Award>();
 			if(con.getOfertas()!=null) {
 				if (con.getOfertas().size() > 0) {
@@ -211,13 +212,11 @@ public class ContractingProcess {
 					this.setAwards(awards);
 				}
 			}
-		}
-		if(status==3 || (con.getProcedimiento().getId().toString().equals("10") && con.getStatus().getId()==5)){
 			List<Contract> contrat=new ArrayList<Contract>();
 			contrat.add(new Contract(con));
 			this.setContracts(contrat);
-
 		}
+
 		this.setLanguage("es");
 		if(con.getPadre()!=null) {
 			relatedProcess.add(new RelatedProcess(con.getPadre().getId(), con.getPadre().getTitle()));

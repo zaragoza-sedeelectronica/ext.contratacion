@@ -121,6 +121,16 @@ public class Organisation {
             this.setRoles(roles);
         }
     }
+    public Organisation(EntidadContratante item,boolean rol){
+
+        List<String> roles=new ArrayList<String>();
+        this.setId(item.getId()+"-buyer");
+        this.setName(item.getTitle());
+        if(rol) {
+            roles.add("buyer");
+            this.setRoles(roles);
+        }
+    }
     public Organisation(EntidadContratante item){
         List<String> roles=new ArrayList<String>();
         this.setId(item.getId()+"-ES-"+item.getSchema()+"-"+item.getIdSchema());
@@ -134,6 +144,7 @@ public class Organisation {
 
         roles.add("procuringEntity");
         if(!item.getId().equals(new BigDecimal(1.0))) {
+
             roles.add("buyer");
         }
         this.setRoles(roles);
@@ -141,20 +152,19 @@ public class Organisation {
     public Organisation(Empresa item, Boolean ganador,boolean rol,BigDecimal idOferta){
         List<String> roles=new ArrayList<String>();
         if(!ganador) {
-            this.setId( item.getIdEmpresa() + "-"+item.getNombre()+"-"+idOferta);
+            this.setId( item.getIdEmpresa() + "-NIF-"+item.getNif()+"-"+idOferta);
             if(rol) {
                 roles.add("tenderer");
                 this.setRoles(roles);
             }
         }else{
-            this.setId(item.getIdEmpresa() + "-award"+"-"+idOferta);
+            this.setId(item.getIdEmpresa() + "-NIF-"+item.getNif()+"-award"+"-"+idOferta);
             if(rol) {
                 roles.add("supplier");
                 this.setRoles(roles);
             }
         }
         this.setName(item.getNombre());
-        this.setIdentifier(identifier);
 
     }
     public Organisation(Empresa item, Contrato con) {
@@ -225,7 +235,12 @@ public class Organisation {
         List<String> roles=new ArrayList<String>();
         this.setId(item.getId()+"-"+item.getTitle());
         this.setName(item.getTitle());
+
         roles.add("procuringEntity");
+        if(!con.getEntity().getId().equals(new BigDecimal(1.0))&& con.getServicio()==null){
+            roles.add("buyer");
+
+        }
         this.setRoles(roles);
     }
     //endregion

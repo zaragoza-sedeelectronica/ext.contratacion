@@ -7,11 +7,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.googlecode.genericdao.search.Search;
 import com.googlecode.genericdao.search.SearchResult;
-import com.googlecode.genericdao.search.Sort;
 import org.apache.commons.io.IOUtils;
 import org.apache.cxf.jaxrs.ext.search.SearchParseException;
 import org.sede.core.anotaciones.*;
-import org.sede.core.dao.SearchFiql;
 import org.sede.core.dao.VirtuosoDataManagement;
 import org.sede.core.rest.MimeTypes;
 
@@ -55,17 +53,15 @@ import java.util.*;
 
 import static org.apache.solr.client.solrj.impl.XMLResponseParser.log;
 
-
-@Gcz(servicio = "ADMIN", seccion = "ADMIN")
+@Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
 @Controller
 @Transactional(Esquema.TMPERFILCONTRATANTE)
-@RequestMapping(value = "/" + ContratoApiTramitaController.MAPPING, method = RequestMethod.GET)
-public class ContratoApiTramitaController {
+@RequestMapping(value = "/" + ApiTramitaController.MAPPING, method = RequestMethod.GET)
+public class ApiTramitaController {
     //region Atributtes
-    private static final Logger logger = LoggerFactory.getLogger(ContratoApiTramitaController.class);
-    private static final String RAIZ = "contratacion-publica/";
-    private static final String SERVICIO = "tramita";
-    public static final String MAPPING = "  servicio/" +  RAIZ + SERVICIO;
+    private static final Logger logger = LoggerFactory.getLogger(ApiTramitaController.class);
+    private static final String SERVICIO = "apitramita";
+    public static final String MAPPING = "servicio/" +  SERVICIO;
     private static String URIWS = Propiedades.getString("contratacion.estado.ws");
     private static String USER  = "restapi";
     private static String PASS  = "aytointegr0!#";
@@ -88,8 +84,6 @@ public class ContratoApiTramitaController {
     @Autowired
     public OrganigramaGenericDAO daoOrganigrama;
     @Autowired
-    private ContratoController contratoController;
-    @Autowired
     private CpvGenericDAO daoCpv;
     @Autowired
     private EmpresaGenericDAO daoEmpresa;
@@ -97,18 +91,16 @@ public class ContratoApiTramitaController {
     private CriteriosGenericDAO daoCriterios;
     //endregion
 
-
     @Permisos(Permisos.DET)
-    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {
-            MediaType.TEXT_HTML_VALUE, "*/*" })
+    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {MediaType.TEXT_HTML_VALUE, "*/*" })
     public String home(Model model,@RequestParam(name = "carpeta", required = false, defaultValue = "") String carpeta) throws IOException, SearchParseException {
         if (!carpeta.isEmpty()) {
-
             model.addAttribute(ModelAttr.RESULTADO, apiTramitaJson(carpeta));
-        }
-        return MAPPING + "/formulario";
+        }else {
+			model.addAttribute(ModelAttr.RESULTADO, null);
+		}
+        return MAPPING + "/index";
     }
-
 
 
     @Permisos(Permisos.MOD)
@@ -120,7 +112,8 @@ public class ContratoApiTramitaController {
 
             List<Contrato> lista = new ArrayList<Contrato>(0);
             resultado.setResult(lista);
-            String intDir = "C:\\Users\\piglesias\\Desktop\\Contratos\\Jsons CM\\" + carpeta + "/";
+            //String intDir = "C:\\Users\\piglesias\\Desktop\\Contratos\\Jsons CM\\" + carpeta + "/";
+            String intDir = "/home/documentacionweb/Escritorio/Tramita/JsonTramita/" + carpeta + "/";
             File interfaceDirectory = new File(intDir);
             for (File file : interfaceDirectory.listFiles()) {
                 InputStream stream = new FileInputStream(file);
@@ -1341,11 +1334,12 @@ public class ContratoApiTramitaController {
                             Iterator<JsonNode> iterator = actualObj.get("pc:offeredPrice").elements();
                             while (iterator.hasNext()) {
                                 JsonNode valor = iterator.next();
+                                System.out.println("offerprice-----"+valor);
                                 String conIva = valor.get("gr:valueAddedTaxIncluded").asText();
                                 if ("true".equals(conIva)) {
-                                    ofer.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")))));
+                                    ofer.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(!valor.get("gr:hasCurrencyValue").asText().contains(" ")?valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")):valor.get("gr:hasCurrencyValue").asText())));
                                 } else {
-                                    ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")))));
+                                    ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(!valor.get("gr:hasCurrencyValue").asText().contains(" ")?valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")):valor.get("gr:hasCurrencyValue").asText())));
                                 }
                             }
                         }

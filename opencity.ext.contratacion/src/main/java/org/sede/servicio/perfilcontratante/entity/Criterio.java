@@ -57,6 +57,10 @@ public class Criterio implements java.io.Serializable {
 	@JoinColumn(name = "TIPO")
 	@BatchSize(size = 50)
 	private  TipoCriterio tipo;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "SUBTIPO")
+	@BatchSize(size = 50)
+	private  SubTipoCriterio subTipo;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_CONTRATO")
@@ -66,6 +70,15 @@ public class Criterio implements java.io.Serializable {
 
 	//endregion
 	//region Getters & Setters
+
+
+	public SubTipoCriterio getSubTipo() {
+		return subTipo;
+	}
+
+	public void setSubTipo(SubTipoCriterio subTipo) {
+		this.subTipo = subTipo;
+	}
 
 	public BigDecimal getIdCriterio() {
 		return idCriterio;
@@ -174,7 +187,7 @@ public class Criterio implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Criterio [idCriterio=" + idCriterio + ", description="
-				+ description + ", title=" + title + ", tipo=" + tipo
+				+ description + ", title=" + title + ", tipo=" + tipo+ ", subtipo=" + subTipo
 				+ "]";
 	}
 

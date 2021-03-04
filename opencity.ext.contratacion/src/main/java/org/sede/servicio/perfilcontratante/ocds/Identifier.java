@@ -61,7 +61,12 @@ public class Identifier {
 
     //endregion
     //region Contructors
-
-
+    public Identifier(){};
+    public Identifier(Empresa empresa){
+        this.scheme="NIF";
+        this.id=empresa.getNif();
+        this.legalName=empresa.getNombre();
+        this.uri=empresa.getOpenCorporateUrl()!=null?empresa.getOpenCorporateUrl():null;
+    }
     //endregion
 }

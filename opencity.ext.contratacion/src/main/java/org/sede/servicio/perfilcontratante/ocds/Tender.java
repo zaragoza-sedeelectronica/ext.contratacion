@@ -118,7 +118,7 @@ public class Tender {
     }
 
     public void setProcuringEntity(Organisation procuringEntity) {
-        procuringEntity = procuringEntity;
+        this.procuringEntity = procuringEntity;
     }
 
     public List<Item> getItems() {
@@ -362,9 +362,6 @@ public class Tender {
         }
         this.setStatus(con);
         this.setProcuringEntity(new Organisation(con.getEntity()));
-        /*if(con.getServicio()!=null) {
-            this.setProcuringEntity(new Organisation(con.getServicio()));
-        }*/
         if(con.getCpv().size()!=0) {
             if (con.getCpv().size() == 1) {
                 for (Cpv cpv : con.getCpv()) {
@@ -374,7 +371,7 @@ public class Tender {
                 this.items.add(new Item(con, true));
             }
         }
-        this.setValue(new Value(con.getValorEstimado(),"EUR"));
+        this.setValue(new Value(con.getValorEstimado()==null?con.getImporteSinIVA():con.getValorEstimado(),"EUR"));
         if(!con.getCanon())
             this.setMinValue(new Value(con.getImporteSinIVA()==null?new BigDecimal(0):con.getImporteSinIVA(),"EUR"));
         else
@@ -432,26 +429,25 @@ public class Tender {
         }
         this.setNumberOfTenderers((BigDecimal.valueOf(con.getOfertas().size())));
         for (Oferta ofer:con.getOfertas()) {
-            licitadores.add(new Organisation(ofer.getEmpresa(),ofer.getGanador(),false,ofer.getId()));
+            if(ofer.getGanador()) {
+                licitadores.add(new Organisation(ofer.getEmpresa(), ofer.getGanador(), false, ofer.getId()));
+            }else
+                licitadores.add(new Organisation(ofer.getEmpresa(), ofer.getGanador(), true, ofer.getId()));
         }
         this.setTenderers(licitadores);
         for (Anuncio anun:con.getAnuncios()) {
             switch (Integer.valueOf(anun.getType().getId().toString())) {
                 case 1:
                 case 2:
-
                 case 3:
                 case 4:
                 case 5:
-                case 6:
                 case 9:
-                case 21:
+                case 13:
                 case 19:
                     this.documents.add(new Document(anun));
                     break;
-                case 31:
                 case 32:
-                case 33:
                     this.amendments.add(new Amendment(anun));
                     break;
             }
@@ -478,7 +474,10 @@ public class Tender {
                 if (item.getGanador()) {
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(item.getFechaAdjudicacion());
-                    calendar.add(Calendar.DAY_OF_YEAR, con.getDuracion().intValue());
+                    if(con.getDuracion()!=null)
+                        calendar.add(Calendar.DAY_OF_YEAR, Integer.valueOf(con.getDuracion().toString()));
+                    else
+                        calendar.add(Calendar.DAY_OF_YEAR, 0);
                     return calendar.getTime();
                 }
             }
@@ -488,7 +487,10 @@ public class Tender {
                 if (item.getGanador()) {
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(item.getFechaFormalizacion());
-                    calendar.add(Calendar.DAY_OF_YEAR, con.getDuracion().intValue());
+                    if(con.getDuracion()!=null)
+                        calendar.add(Calendar.DAY_OF_YEAR, Integer.valueOf(con.getDuracion().toString()));
+                    else
+                        calendar.add(Calendar.DAY_OF_YEAR, 0);
                     return calendar.getTime();
                 }
             }
