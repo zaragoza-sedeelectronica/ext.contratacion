@@ -1264,7 +1264,7 @@ public class ContratoAdminController {
             MediaType.TEXT_HTML_VALUE, "*/*"})
     public String eliminarCriterio(@PathVariable BigDecimal idContrato,
                                @PathVariable BigDecimal id, Model model, RedirectAttributes attr) {
-        ResponseEntity<?> resultado = apiDeleteLote(idContrato, id);
+        ResponseEntity<?> resultado = apiDeleteCriterio(idContrato, id);
         if (resultado.getStatusCode().is2xxSuccessful()) {
             attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
                     HttpStatus.OK.value(), "Criterio eliminado correctamente"));

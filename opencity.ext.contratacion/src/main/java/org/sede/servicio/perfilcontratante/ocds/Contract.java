@@ -120,8 +120,6 @@ public class Contract {
             }
         }
     }
-
-
     public Period getPeriod() {
         return period;
     }
@@ -177,7 +175,6 @@ public class Contract {
     public void setAmendments(List<Amendment> amendments) {
         this.amendments = amendments;
     }
-
     //endregion
     //region Constructors
     public Contract(BigDecimal id, String title, String objeto) {
@@ -186,29 +183,24 @@ public class Contract {
         this.setTitle(title);
         this.setDescription("Contrato firmado ");
     }
-
     public Contract(BigDecimal id, String title, String empresa, String entidad) {
 
         this.setId(id.toString() + "-contract");
         this.setTitle(title);
         this.setDescription("Contrato firmado entre " + entidad + " y " + empresa);
     }
-
     public Contract(BigDecimal id, String title, String empresa, String entidad, Contrato con) {
-
         this.setId(id.toString() + "-contract");
         this.setTitle(title);
         this.setDescription("Contrato firmado entre " + entidad + " y " + empresa);
         this.setStatus(con);
     }
-
     public Contract(Contrato con) throws ParseException {
         List<Item> items = new ArrayList<Item>();
         List<Document> documents = new ArrayList<Document>();
         List<Amendment> amendments = new ArrayList<Amendment>();
         List<Milestone> milestones = new ArrayList<Milestone>();
         List<RelatedProcess> relatedProcesses = new ArrayList<RelatedProcess>();
-
         this.setId(con.getId().toString() + "-contract");
         for (Oferta ofer : con.getOfertas()) {
             if (ofer.getGanador()) {
@@ -242,12 +234,11 @@ public class Contract {
             switch (Integer.valueOf(anun.getType().getId().toString())) {
                 case 20:
                 case 8:
-                case 21:
                 case 19:
                 case 26:
                     this.documents.add(new Document(anun));
                     break;
-                case 33:
+                case 31:
                     this.amendments.add(new Amendment(anun));
                     break;
             }
@@ -256,17 +247,13 @@ public class Contract {
         this.setRelatedPracesses(relatedProcesses);
         this.setMilestones(milestones);
         this.setAmendments(amendments);
-
-
     }
-
     public Contract(Contrato con, Oferta ofer) throws ParseException {
         List<Item> items = new ArrayList<Item>();
         List<Document> documents = new ArrayList<Document>();
         List<Amendment> amendments = new ArrayList<Amendment>();
         List<Milestone> milestones = new ArrayList<Milestone>();
         List<RelatedProcess> relatedProcesses = new ArrayList<RelatedProcess>();
-
         this.setId(con.getId().toString() + "-contract");
         if (ofer.getGanador()) {
             this.setAwardID(ofer.getId() + "-award");
@@ -280,10 +267,7 @@ public class Contract {
                     this.items.add(new Item(cpv, ofer.getContrato()));
                 }
             } else {
-
                 this.items.add(new Item(ofer.getContrato(), true));
-
-
             }
             if (con.getProcedimiento().getId().equals(new BigDecimal(10.0))) {
                 this.setDateSigned(ConvertDate.date2String(ofer.getFechaAdjudicacion(), ConvertDate.ISO8601_FORMAT));
@@ -294,18 +278,16 @@ public class Contract {
                     this.setDateSigned(ConvertDate.date2String(ofer.getFechaAdjudicacion(), ConvertDate.ISO8601_FORMAT));
                 }
             }
-
         }
         for (Anuncio anun:con.getAnuncios()) {
             switch (Integer.valueOf(anun.getType().getId().toString())) {
                 case 20:
                 case 8:
-                case 21:
                 case 19:
                 case 26:
                     this.documents.add(new Document(anun));
                     break;
-                case 33:
+                case 31:
                     this.amendments.add(new Amendment(anun));
                     break;
             }
@@ -314,8 +296,6 @@ public class Contract {
             this.relatedProcesses.add(new RelatedProcess(con.getPadre()));
         }
         this.setMilestones(milestones);
-
-
     }
     //endregion
 
@@ -324,13 +304,11 @@ public class Contract {
         calendar.setTime(fecha);
         calendar.add(Calendar.DAY_OF_YEAR, dias);
         return calendar.getTime();
-
     }
 
     public String statusLote(Oferta ofer) {
         String status;
         switch (Integer.valueOf(ofer.getLote().getId().toString())) {
-
             case 1:
             case 5:
             case 6:
@@ -353,6 +331,5 @@ public class Contract {
             }
         }
         return status;
-
     }
 }

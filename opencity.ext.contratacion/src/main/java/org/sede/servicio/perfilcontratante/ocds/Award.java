@@ -165,8 +165,6 @@ public class Award {
                 case 19:
                     this.documents.add(new Document(anun));
                     break;
-                case 31:
-                case 32:
                 case 33:
                     this.amendments.add(new Amendment(anun));
                     break;
