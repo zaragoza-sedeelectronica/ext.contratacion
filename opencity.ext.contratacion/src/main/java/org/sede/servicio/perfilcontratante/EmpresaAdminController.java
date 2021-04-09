@@ -290,7 +290,8 @@ public class EmpresaAdminController {
 		if (registro == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Mensaje(HttpStatus.NOT_FOUND.value(), messageSource.getMessage("generic.notfound", null, LocaleContextHolder.getLocale())));
 		} else {
-			registro.setEmpresasEnUte(dao.findEmpresaEnUte(id));
+			registro.setEmpresaUtes(dao.findEmpresasUte(id));
+
 			return ResponseEntity.ok(registro);
 		}
 	}

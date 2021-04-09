@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import org.hibernate.annotations.BatchSize;
 import org.sede.core.anotaciones.Grafo;
+import org.sede.core.anotaciones.HtmlContent;
 import org.sede.core.anotaciones.Interno;
 import org.sede.core.anotaciones.Rel;
 

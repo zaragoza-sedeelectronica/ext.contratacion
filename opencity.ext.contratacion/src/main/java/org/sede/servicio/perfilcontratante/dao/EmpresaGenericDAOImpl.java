@@ -29,6 +29,7 @@ import org.sede.core.dao.JPAIgnoreTraversableResolver;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Empresa;
 import org.sede.servicio.perfilcontratante.entity.EmpresaConParticipacion;
+import org.sede.servicio.perfilcontratante.entity.Ute;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -82,10 +83,25 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
 		resultado.setRows(lista.size());
 		return resultado;
 	}
+	@Override
+	public List<Empresa> findEmpresasUte(BigDecimal id) {
+		Query q = em().createNativeQuery("select ID_EMPRESA,POR_PAR from PERFIL_UTE where ID_UTE =? ").setParameter(1,id);
+		@SuppressWarnings("unchecked")
+		List<Object> res= q.getResultList();
+		List<Empresa> resultado=new ArrayList<Empresa>();
+		for (Iterator<Object> iterador = res.iterator(); iterador.hasNext();) {
+			Object[] row = (Object[])iterador.next();
+			Ute ute=new Ute();
+			Empresa empresa=this.find(new BigDecimal(row[0].toString()));
+
+			resultado.add(empresa);
+		}
+		return resultado;
+	}
 
 	@Override
 	public List<Empresa> findEmpresaUte(BigDecimal id) {
-		Query q = em().createQuery("from Empresa where id_empresa in (select empresa.idEmpresa from Ute where ofertaUte.empresa.id=?) ", Empresa.class).setParameter(1,id);
+		Query q = em().createQuery("from Empresa where id_empresa in (select empresa.idEmpresa from Ute where empresaUte.empresa.id=?) ", Empresa.class).setParameter(1,id);
 		@SuppressWarnings("unchecked")
 		List<Empresa> lista = q.getResultList();
 		return lista;

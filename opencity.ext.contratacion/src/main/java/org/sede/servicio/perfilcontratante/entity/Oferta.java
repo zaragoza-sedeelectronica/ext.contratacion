@@ -83,9 +83,7 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
     @Convert(converter = BooleanConverter.class)
     private Boolean ganador;
 
-    @Column(name = "UTE")
-    @Convert(converter = BooleanConverter.class)
-    private Boolean  tieneUte;
+
 
 
     @Column(name = "IMPORTE_CONIVA")
@@ -98,12 +96,7 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
 
     private Empresa empresa;
     
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "ofertaUte")
-    @NotFound(action= NotFoundAction.IGNORE)
-    @BatchSize(size = 50)
-    @SoloEnEstaEntidad
-    @Access(AccessType.FIELD)
-    private Set<Ute> ute ;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "PERFIL_LOTE_TIENE_OFERTA",
@@ -158,12 +151,6 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
         this.iva = iva;
     }
 
-    public Boolean getTieneUte() {
-        return tieneUte;
-    }
-    public void setTieneUte(Boolean tieneUte) {
-        this.tieneUte = tieneUte;
-    }
     public Boolean getAhorroVisible() {
         return ahorroVisible;
     }
@@ -259,12 +246,7 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-    public Set<Ute> getUte() {
-		return ute;
-	}
-	public void setUte(Set<Ute> ute) {
-		this.ute = ute;
-	}
+
     //endregion
     //region Overrides
 	@Override

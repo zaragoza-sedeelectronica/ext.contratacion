@@ -901,12 +901,12 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
         cellFecha.setCellStyle(headerStyle);
         cellFecha.setCellValue("NIF/CIF");
         for (Oferta ofer : ((List<Oferta>) resultado.getLicitados().getResult())) {
-            if (ofer.getTieneUte()) {
+            if (ofer.getEmpresa().getEsUte()) {
                 tieneUte=true;
                 cellFecha = headerRow.createCell(++col);
                 cellFecha.setCellStyle(headerStyle);
                 cellFecha.setCellValue("Tiene Ute "+ofer.getId());
-                for (Ute ute : ((Set<Ute>) ofer.getUte())) {
+                for (Ute ute : ((Set<Ute>) ofer.getEmpresa().getUte())) {
                         cellFecha = headerRow.createCell(++col);
                         cellFecha.setCellStyle(headerStyle);
                         cellFecha.setCellValue("empresa Ute");
@@ -966,11 +966,11 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
         cellid.setCellValue("" + resultado.getNif());
         for (Oferta ofer : ((List<Oferta>) resultado.getLicitados().getResult())) {
 
-            if (ofer.getTieneUte()) {
+            if (ofer.getEmpresa().getEsUte()) {
                 tieneUte = true;
                 cellid = dataRow.createCell(++col);
                 cellid.setCellValue("Sí");
-                for (Ute ute : ((Set<Ute>) ofer.getUte())) {
+                for (Ute ute : ((Set<Ute>) ofer.getEmpresa().getUte())) {
                     cellid = dataRow.createCell(++col);
                     cellid.setCellValue("" + ute.getEmpresa().getNombre());
                     cellid = dataRow.createCell(++col);

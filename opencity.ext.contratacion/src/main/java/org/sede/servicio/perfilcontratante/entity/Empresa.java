@@ -18,6 +18,7 @@ import org.sede.core.anotaciones.Grafo;
 import org.sede.core.anotaciones.PathId;
 import org.sede.core.anotaciones.Rel;
 import org.sede.core.anotaciones.SoloEnEstaEntidad;
+import org.sede.core.dao.BooleanConverter;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 import org.sede.servicio.perfilcontratante.ContratoController;
@@ -28,6 +29,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @XmlRootElement(name = "empresa")
 @Entity
@@ -49,9 +51,6 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     @Column(name="LIBREBORME",nullable=true,unique=false)
     private String libreBorme;
 
-    @Column(name="UTE",nullable=false,unique=false)
-    private String ute;
-
     @Column(name="NOMBRE",nullable=false,unique=false)
     private String nombre;
 
@@ -64,6 +63,15 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     @BatchSize(size = 50)
     @SoloEnEstaEntidad
     private  TipoEmpresa tipoEmpresa;
+    @Column(name = "UTE")
+    @Convert(converter = BooleanConverter.class)
+    private Boolean  esUte;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "empresaUte")
+    @NotFound(action= NotFoundAction.IGNORE)
+    @BatchSize(size = 50)
+    @SoloEnEstaEntidad
+    @Access(AccessType.FIELD)
+    private Set<Ute> ute ;
 
     @Transient
     private String nifEntidad;
@@ -86,6 +94,22 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     //endregion
     //region Getter and Setters
 
+
+    public Boolean getEsUte() {
+        return esUte;
+    }
+
+    public void setEsUte(Boolean esUte) {
+        this.esUte = esUte;
+    }
+
+    public void setUte(Set<Ute> ute) {
+        this.ute = ute;
+    }
+
+    public Set<Ute> getUte() {
+        return ute;
+    }
 
     public TipoEmpresa getTipoEmpresa() {
         return tipoEmpresa;
@@ -124,14 +148,6 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
 
     public void setLibreBorme(String libreBorme) {
         this.libreBorme = libreBorme;
-    }
-
-    public String getUte() {
-        return ute;
-    }
-
-    public void setUte(String ute) {
-        this.ute = ute;
     }
 
     public String getNombre() {
@@ -196,7 +212,8 @@ public class Empresa extends EntidadBase implements java.io.Serializable{
     public String toString() {
         return "Empresa [id="
                 + idEmpresa + ", EMPRESA="
-                + nombre + ", ID_UTE="
+                + nombre + ", esUte="
+                + esUte + ", ute="
                 + ute + ", nif="
                 + nif + ", autonomo="
                 + autonomo + ", nacionalidad="

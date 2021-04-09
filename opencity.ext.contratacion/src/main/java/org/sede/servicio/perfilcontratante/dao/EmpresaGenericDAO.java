@@ -16,6 +16,7 @@ import com.googlecode.genericdao.search.SearchResult;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
 import org.sede.servicio.perfilcontratante.entity.Empresa;
 import org.sede.servicio.perfilcontratante.entity.EmpresaConParticipacion;
+import org.sede.servicio.perfilcontratante.entity.Ute;
 
 import javax.validation.ConstraintViolation;
 import java.math.BigDecimal;
@@ -35,4 +36,5 @@ public interface EmpresaGenericDAO extends GenericDAO<Empresa,BigDecimal>{
 	public SearchResult<Empresa> findEmpresaPertneceUte(BigDecimal id);
 
 	public List<EmpresaConParticipacion> findEmpresaEnUte(BigDecimal id);
+	public List<Empresa>  findEmpresasUte(BigDecimal id);
 }

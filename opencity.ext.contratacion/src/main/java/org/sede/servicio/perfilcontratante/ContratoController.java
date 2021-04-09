@@ -397,13 +397,15 @@ public class ContratoController {
                             ganadosPorAnyo.put(k.toString(), ganadosPorAnyo.get(k.toString()).intValue() + 1);
                         }
                     }
-                    if (oferta.getTieneUte()) {
+                    if (!oferta.getEmpresa().getUte().isEmpty()) {
                         tieneUte = true;
                     }
                 }
             }
             if (tieneUte) {
                 licitador.setUtes((SearchResult<Empresa>) apiUteEmpresaList2(id).getBody());
+            }else {
+                licitador.setEmpresaUtes(daoEmpresa.findEmpresaPertneceUte(id).getResult());
             }
             Double totalSinIva = 0.0;
             Double totalConIva = 0.0;
@@ -423,6 +425,7 @@ public class ContratoController {
             licitador.setTotalSinIva(BigDecimal.valueOf(totalSinIva));
             licitador.setTotalConIva(BigDecimal.valueOf(totalConIva));
             licitador.setDatosLicitadorCuantia(resultado);
+
             return ResponseEntity.ok(licitador);
         }
     }

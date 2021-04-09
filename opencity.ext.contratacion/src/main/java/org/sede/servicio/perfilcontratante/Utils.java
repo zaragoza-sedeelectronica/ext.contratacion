@@ -162,7 +162,7 @@ public class Utils {
 				}
 
 				oferta.setCanon(false);
-				oferta.setTieneUte(false);
+
 				oferta.setAhorroVisible(true);
 				if (actualObj.has("pc:supplier")) {
 					if (actualObj.get("pc:supplier").has("org:identifier")) {
@@ -181,7 +181,6 @@ public class Utils {
 						}
 					} else {
 						licitador.setNif(actualObj.get("pc:supplier").get("org:identifier").asText());
-						licitador.setUte("N");
 						licitador.setNacionalidad("es");
 						if (actualObj.get("pc:supplier").has("s:name")) {
 							licitador.setNombre(actualObj.get("pc:supplier").get("s:name").asText());

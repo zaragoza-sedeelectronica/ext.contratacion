@@ -14,6 +14,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.sede.core.anotaciones.Interno;
+import org.sede.core.anotaciones.SoloEnEstaEntidad;
 import org.sede.core.dao.EntidadBase;
 import org.sede.servicio.perfilcontratante.ConfigPerfilContratante;
 
@@ -46,7 +47,9 @@ public class Ute extends EntidadBase implements java.io.Serializable{
     @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name="ID_UTE", referencedColumnName = "ID_EMPRESA",insertable = false,updatable = false)
     @Interno
-    private Oferta ofertaUte;
+    @SoloEnEstaEntidad
+    private Empresa empresaUte;
+
 
     @Column(name="POR_PAR", unique = true, nullable = false)
     private BigDecimal participacion;
@@ -58,13 +61,11 @@ public class Ute extends EntidadBase implements java.io.Serializable{
         this.empresa = empresa;
     }
 
-    public Oferta getOfertaUte() {
-		return ofertaUte;
-	}
-	public void setOfertaUte(Oferta ofertaUte) {
-		this.ofertaUte = ofertaUte;
-	}
-	public BigDecimal getParticipacion() {
+    public Empresa getEmpresaUte() {return empresaUte;}
+
+    public void setEmpresaUte(Empresa empresaUte) {this.empresaUte = empresaUte;}
+
+    public BigDecimal getParticipacion() {
         return participacion;
     }
     public void setParticipacion(BigDecimal participacion) {
@@ -80,7 +81,7 @@ public class Ute extends EntidadBase implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "UTE [id="+id+", ofertaUte"+ofertaUte
+        return "UTE [id="+id
                 +   ", EMPRESA="
                 + empresa +",% participacion="
                 + participacion + "]";

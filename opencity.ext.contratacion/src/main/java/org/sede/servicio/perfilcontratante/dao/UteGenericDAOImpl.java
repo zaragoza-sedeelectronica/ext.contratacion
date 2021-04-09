@@ -63,8 +63,8 @@ public class UteGenericDAOImpl extends GenericDAOImpl<Ute,BigDecimal> implements
 	public ResponseEntity<?> asociarAEmpresa(BigDecimal idEmpresa, BigDecimal incluir, BigDecimal participacion) {
 		try {
 			Query insert = this.em().createNativeQuery("insert into PERFIL_UTE (ID_EMPRESA,ID_UTE,POR_PAR) values (?,?,?)");
-			insert.setParameter(1, idEmpresa);
-			insert.setParameter(2, incluir);
+			insert.setParameter(1, incluir);
+			insert.setParameter(2,idEmpresa );
 			insert.setParameter(3, participacion);
 			if (insert.executeUpdate() > 0) {
 				return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(), "Empresa asociada a la ute correctamente"));
@@ -80,8 +80,8 @@ public class UteGenericDAOImpl extends GenericDAOImpl<Ute,BigDecimal> implements
 	public ResponseEntity<?> eliminarAsociacion(BigDecimal idEmpresa, BigDecimal excluir) {
 		try {
 			Query insert = this.em().createNativeQuery("delete from PERFIL_UTE where ID_EMPRESA=? and ID_UTE=?");
-			insert.setParameter(1, idEmpresa);
-			insert.setParameter(2, excluir);
+			insert.setParameter(1, excluir);
+			insert.setParameter(2, idEmpresa);
 
 			if (insert.executeUpdate() > 0) {
 				return ResponseEntity.ok(new Mensaje(HttpStatus.OK.value(), "Empresa excluida de la ute correctamente"));

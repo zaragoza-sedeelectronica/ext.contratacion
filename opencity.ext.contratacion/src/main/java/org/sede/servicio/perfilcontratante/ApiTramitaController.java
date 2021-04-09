@@ -1292,7 +1292,6 @@ public class ApiTramitaController {
                     ofer.setFechaFormalizacion(ConvertDate.string2Date(actualObj.get("pproc:formalizedDate").asText(), ConvertDate.ISO8601_FORMAT_SIN_ZONA));
                 }
                 ofer.setCanon(false);
-                ofer.setTieneUte(false);
                 ofer.setAhorroVisible(true);
                 if (actualObj.has("pc:supplier")) {
                     if (actualObj.get("pc:supplier").has("org:identifier")) {
@@ -1312,7 +1311,7 @@ public class ApiTramitaController {
                                     ofer.setEmpresa(licitador);
                                 } else {
                                     Empresa licitador2 = new Empresa();
-                                    licitador2.setUte("N");
+                                   licitador.setEsUte(false);
                                     licitador2.setNacionalidad("es");
                                     if (actualObj.get("pc:supplier").has("s:name")) {
                                         licitador2.setNombre(actualObj.get("pc:supplier").get("s:name").asText());
