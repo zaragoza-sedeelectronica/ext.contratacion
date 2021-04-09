@@ -427,7 +427,7 @@ public class CodiceConverterMenor {
                 Integer status = con.getStatus().getId();
                 // Estados que devuelve:
                 // 0: error, no hay fechas asociadas
-                // 1: anuncio de licitaci�n
+                // 1: anuncio de licitacion
                 // 2: pendiente de adjudicar
                 // 3: adjudicacion
                 // 4: formalizacion
@@ -664,14 +664,14 @@ public class CodiceConverterMenor {
             throws java.text.ParseException {
         // Estados que devuelve:
         // 0: error, no hay fechas asociadas
-        // 1: anuncio de licitaci�n
+        // 1: anuncio de licitacipn
         // 2: pendiente de adjudicar
         // 3: adjudicacion
         // 4: formalizacion
         // 5: desierta
         // 6: renuncia
         // 7: desistimiento
-        System.out.println(uriCont);
+//        System.out.println(uriCont);
         if (tieneLotes == 0) {
             String query = "PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>"
                     + "PREFIX pc: <http://purl.org/procurement/public-contracts#>"
@@ -1270,7 +1270,7 @@ public class CodiceConverterMenor {
 
     private static StringBuffer getResumen(ContratoCodice cont, Contrato con) {
 
-        StringBuffer resumen = new StringBuffer("Id licitaci�n: " + cont.getId() + "; " + cont.getContractingBody());
+        StringBuffer resumen = new StringBuffer("Id licitación: " + cont.getId() + "; " + cont.getContractingBody());
         if (con.getImporteSinIVA() != null) {
             resumen.append(" Importe: " + con.getImporteSinIVA() + "EUR; ");
         }

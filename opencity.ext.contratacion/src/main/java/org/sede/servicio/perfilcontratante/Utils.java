@@ -91,7 +91,7 @@ public class Utils {
 
 		String temp = Normalizer.normalize(text, java.text.Normalizer.Form.NFC, 0);
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-		return pattern.matcher(temp).replaceAll("").replaceAll("&", "_").replaceAll(" ", "_").replaceAll("�", "_").replaceAll("�", "_");
+		return pattern.matcher(temp).replaceAll("").replaceAll("&", "_").replaceAll(" ", "_").replaceAll("º", "_").replaceAll("ª", "_").replace("(", "_").replace(")", "_");
 	}
 	public static String getSino(Boolean dat) {
 		if (dat == null) {

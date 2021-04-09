@@ -276,7 +276,7 @@ public class CodiceConverter {
 
         //dcterms:title
         Element titleNode = document.createElement("cbc:Name");
-        //Nombre del contrato en min�sculas
+        //Nombre del contrato en minusculas
         Text titleValue = document.createTextNode(cont.getTitle());
         titleNode.appendChild(titleValue);
         procurementProject.appendChild(titleNode);
@@ -311,7 +311,7 @@ public class CodiceConverter {
             procurementProject.appendChild(budgetNode);
         }
 
-        //pproc:feePrice �Qu� hacemos?
+        //pproc:feePrice ¿Que hacemos?
 //		String feePrice = getFee(cont.getUriContrato());
 //		if (!feePrice.equals("")){
 //			System.out.println("FEEEEE:::"+cont.getId()+"::::"+feePrice);
@@ -449,7 +449,7 @@ public class CodiceConverter {
                     //(adjudicatario[i][j].get(0) importe sin iva
                     //(adjudicatario[i][j].get(1) nombre
                     //(adjudicatario[i][j].get(2) cif
-                    //(adjudicatario[i][j].get(3) clasificaci�n
+                    //(adjudicatario[i][j].get(3) clasificacion
                     //(adjudicatario[i][j].get(4) id
                     int faseLote = calcularFaseLote(adjudicatario.get(i-1).get(0).get(4).toString(),infoFinLote);
                     Element resultadoNode = document
@@ -690,7 +690,7 @@ public class CodiceConverter {
         deadlinePeriodNode.appendChild(endTimeNode);
         //notice
         List<String> noticeInfo = getNoticeInfo(cont.getUriContrato());
-        //mirar si quitar if ((noticeInfo.size() > 0) && (fase != 2) && (tieneLotes==0)||((fase != 2) && (tieneLotes==1))) {// a�adido para evitar
+        //mirar si quitar if ((noticeInfo.size() > 0) && (fase != 2) && (tieneLotes==0)||((fase != 2) && (tieneLotes==1))) {// anyadido para evitar
         Element noticeInfoNode=null;
         if(tieneLotes==0){
             if(calcularTipoProcedimiento(procedureType.substring(procedureType.indexOf("#") + 1))!=3){
@@ -1331,7 +1331,7 @@ public class CodiceConverter {
             throws java.text.ParseException {
         // Estados que devuelve:
         // 0: error, no hay fechas asociadas
-        // 1: anuncio de licitaci�n
+        // 1: anuncio de licitacion
         // 2: pendiente de adjudicar
         // 3: adjudicacion
         // 4: formalizacion
@@ -2107,7 +2107,7 @@ public class CodiceConverter {
 
     private static StringBuffer getResumen(ContratoCodice cont, int fase) {
 
-        StringBuffer resumen= new StringBuffer("Id licitaci�n: "+cont.getId()+"; "+cont.getContractingBody());
+        StringBuffer resumen= new StringBuffer("Id licitación: "+cont.getId()+"; "+cont.getContractingBody());
         if (getPresupuesto(cont.getUriContrato()).size()!=0){
             resumen.append(" Importe: "+getPresupuesto(cont.getUriContrato()).get(0)+"EUR; ");
         }
@@ -2116,7 +2116,7 @@ public class CodiceConverter {
             estado = "En plazo";
         else {
             if (fase == 2)
-                estado = "Pendiente de adjudicaci�n";
+                estado = "Pendiente de adjudicación";
             else {
                 if (fase == 3)
                     estado = "Adjudicada";

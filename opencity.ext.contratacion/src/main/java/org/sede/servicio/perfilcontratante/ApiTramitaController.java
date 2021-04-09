@@ -325,7 +325,7 @@ public class ApiTramitaController {
 
             if (actualObj.has("pc:tender") == false && lotesBolean == false) {
 
-                // Estamos en licitaci�n
+                // Estamos en licitacion
                 if (actualObj.has("pproc:contractObject") && actualObj.get("pproc:contractObject").has("pproc:contractEconomicConditions")
                         && actualObj.get("pproc:contractObject").get("pproc:contractEconomicConditions").has("pproc:budgetPrice")) {
                     Iterator<JsonNode> iterator = actualObj.get("pproc:contractObject").get("pproc:contractEconomicConditions").get("pproc:budgetPrice").elements();
@@ -404,7 +404,7 @@ public class ApiTramitaController {
 
 				if (anuncioLicitacion.length() > 0) {
 					Anuncio licitacion = new Anuncio();
-					licitacion.setTitle("Anuncio de Licitaci�n");
+					licitacion.setTitle("Anuncio de Licitación");
 					licitacion.setDescription("<ol>" + anuncioLicitacion
 							+ "</ol>");
 					Tipoanuncio tipoAnuncio = new Tipoanuncio();
@@ -636,7 +636,7 @@ public class ApiTramitaController {
 						+ UtilsContrato.obtenerLiAdjudicacion(actualObj);
 				if (anuncioAdjudicacion.length() > 0) {
 					Anuncio adjudicacion = new Anuncio();
-					adjudicacion.setTitle("Adjudicaci�n");
+					adjudicacion.setTitle("Adjudicación");
 					adjudicacion.setDescription("<ol>" + anuncioAdjudicacion
 							+ "</ol>");
 					Tipoanuncio tipoAnuncio = new Tipoanuncio();
