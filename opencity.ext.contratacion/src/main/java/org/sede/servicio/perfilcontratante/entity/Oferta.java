@@ -82,10 +82,9 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
     @Column(name = "GANADOR")
     @Convert(converter = BooleanConverter.class)
     private Boolean ganador;
-
-
-
-
+    @Column(name = "EXCLUIDA")
+    @Convert(converter = BooleanConverter.class)
+    private Boolean excluida;
     @Column(name = "IMPORTE_CONIVA")
     private BigDecimal importeConIVA;
 
@@ -93,10 +92,7 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
     @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name = "ID_EMPRESA",nullable = false)
-
     private Empresa empresa;
-    
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "PERFIL_LOTE_TIENE_OFERTA",
@@ -126,6 +122,14 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
     //endregion
     //region Setters & Getters
 
+
+    public Boolean getExcluida() {
+        return excluida;
+    }
+
+    public void setExcluida(Boolean excluida) {
+        this.excluida = excluida;
+    }
 
     public String getTituloContato() {
         return tituloContato;
@@ -252,7 +256,7 @@ public class Oferta extends EntidadBase implements java.io.Serializable{
 	@Override
     public String toString() {
         return "Oferta [id=" + id + ", contrato=" + contrato
-                + ", nif=" + nif + ", adjudicatario=" + adjudicatario + ", lote=" + lote
+                + ", excluida=" + excluida + ", adjudicatario=" + adjudicatario + ", lote=" + lote
                 + ", fechaAdjudicacion=" + fechaAdjudicacion + ", fechaFormalizacion=" + fechaFormalizacion
                 + ", importeSinIVA=" + importeSinIVA + ", ejecucion=" + ejecucion
                 + ", canon=" + canon + ", autonomo=" + autonomo+", Empresa="+empresa

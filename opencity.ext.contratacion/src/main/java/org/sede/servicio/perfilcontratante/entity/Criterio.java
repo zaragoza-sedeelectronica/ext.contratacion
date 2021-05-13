@@ -47,6 +47,7 @@ public class Criterio implements java.io.Serializable {
 	private BigDecimal idCriterio;
 
 	@Column(name="DESCRIPCION",nullable=true,unique=false)
+	@HtmlContent
 	private String description;
 
 	@Column(name="TITULO",nullable=false,unique=false)

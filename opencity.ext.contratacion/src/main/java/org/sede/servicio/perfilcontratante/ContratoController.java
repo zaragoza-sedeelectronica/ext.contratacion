@@ -481,6 +481,7 @@ public class ContratoController {
 
         if (idEmpresa != null) {
             busqueda.addFilterEqual("ofertas.empresa.idEmpresa", idEmpresa);
+            busqueda.addFilterEqual("ofertas.excluida",false);
         }
         if (formalizado) {
             for (Filter filtro : busqueda.getFilters()) {
@@ -1047,6 +1048,9 @@ public class ContratoController {
                         listaServicio.add(resutEs);
                     }
                 }
+            }
+            if(resultadoServicio.isEmpty()){
+                listaServicio.add(daoOrganigrama.find(BigDecimal.valueOf(Double.valueOf(registro.getServicioGestorId()))));
             }
             Search busquedaDatos = new Search(ContratosPorAnyoIdPortal.class);
             busquedaDatos.addFilterEqual("id.idPortal", id);

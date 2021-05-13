@@ -1,28 +1,24 @@
-/** Copyright (C) 2020 Oficina Técnica de Participación, Transparenica y Gobierno Abierto del Ayuntamiento de Zaragoza
- *
+/**
+ * Copyright (C) 2020 Oficina Técnica de Participación, Transparenica y Gobierno Abierto del Ayuntamiento de Zaragoza
+ * <p>
  * Este fichero es parte del "Modulo de Contratación Pública".
- *
+ * <p>
  * "Modulo de Contratación Pública" es un software libre; usted puede utilizar esta obra respetando la licencia GNU General Public License, versión 3 o posterior, publicada por Free Software Foundation
- *
+ * <p>
  * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL», SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones que establece la Licencia.
- *
- * Para más información, puede contactar con los autores en: gobiernoabierto@zaragoza.es, sedelectronica@zaragoza.es*/
+ * <p>
+ * Para más información, puede contactar con los autores en: gobiernoabierto@zaragoza.es, sedelectronica@zaragoza.es
+ */
 package org.sede.servicio.perfilcontratante;
 
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.googlecode.genericdao.search.Filter;
 import com.googlecode.genericdao.search.Search;
 import com.googlecode.genericdao.search.SearchResult;
 import com.googlecode.genericdao.search.Sort;
-import org.apache.commons.io.IOUtils;
 import org.apache.cxf.jaxrs.ext.search.SearchParseException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.EntidadBase;
 import org.sede.core.dao.SearchFiql;
@@ -31,12 +27,10 @@ import org.sede.core.rest.MimeTypes;
 import org.sede.core.utils.ConvertDate;
 import org.sede.core.utils.Funciones;
 import org.sede.servicio.ModelAttr;
-
 import org.sede.servicio.organigrama.dao.OrganigramaGenericDAO;
 import org.sede.servicio.organigrama.entity.EstructuraOrganizativa;
 import org.sede.servicio.perfilcontratante.dao.*;
 import org.sede.servicio.perfilcontratante.entity.*;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,13 +51,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.ConstraintViolation;
-import java.io.*;
+import java.io.IOException;
 import java.math.BigDecimal;
-
 import java.text.ParseException;
-import java.time.Period;
 import java.util.*;
-import java.util.regex.Pattern;
 
 
 @Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
@@ -114,8 +105,7 @@ public class ContratoAdminController {
 
     @ResponseClass(value = Contrato.class, entity = SearchResult.class)
     @RequestMapping(method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
-    public
-    @ResponseBody
+    public @ResponseBody
     ResponseEntity<?> apiListar(@Fiql SearchFiql search) throws org.apache.cxf.jaxrs.ext.search.SearchParseException {
         Search busqueda = search.getConditions(Contrato.class);
         SearchResult<Contrato> resultado = null;
@@ -141,15 +131,13 @@ public class ContratoAdminController {
     }
 
     @Permisos(Permisos.DET)
-    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {
-            MediaType.TEXT_HTML_VALUE, "*/*"})
+    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {MediaType.TEXT_HTML_VALUE, "*/*"})
     public String home(Model model, @Fiql SearchFiql search) throws org.apache.cxf.jaxrs.ext.search.SearchParseException {
         model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
         return MAPPING + "/index";
     }
     @Permisos(Permisos.NEW)
-    @RequestMapping(path = "/oferta/carga", headers = ("content-type=multipart/*"), method = RequestMethod.POST, produces = {
-            MediaType.TEXT_HTML_VALUE, "*/*"})
+    @RequestMapping(path = "/oferta/carga", headers = ("content-type=multipart/*"), method = RequestMethod.POST, produces = {MediaType.TEXT_HTML_VALUE, "*/*"})
     public String cargaOfertas(Model model, @RequestParam("file") MultipartFile file, RedirectAttributes attr) throws SearchParseException {
         if (!file.isEmpty()) {
             try {
@@ -195,16 +183,12 @@ public class ContratoAdminController {
 
     }
 
-
-    @RequestMapping(method = RequestMethod.POST, consumes = {MimeTypes.JSON,
-            MimeTypes.XML}, produces = {MimeTypes.JSON, MimeTypes.XML})
+    @RequestMapping(method = RequestMethod.POST, consumes = {MimeTypes.JSON, MimeTypes.XML}, produces = {MimeTypes.JSON, MimeTypes.XML})
     @Permisos(Permisos.NEW)
     @Description("Crear registro")
     @ResponseClass(value = Contrato.class)
-    public
-    @ResponseBody
-    ResponseEntity<?> apiCrear(
-            @RequestBody Contrato registro) {
+    public @ResponseBody
+    ResponseEntity<?> apiCrear(@RequestBody Contrato registro) {
         Set<ConstraintViolation<Object>> errores = dao.validar(registro);
         if (!errores.isEmpty()) {
             return Funciones.generarMensajeError(errores);
@@ -1143,8 +1127,8 @@ public class ContratoAdminController {
     @RequestMapping(value = "/{idContrato}/criterio/{id}/edit", method = RequestMethod.POST, produces = {
             MediaType.TEXT_HTML_VALUE, "*/*"})
     public String editCriterio(@PathVariable BigDecimal idContrato,
-                           @PathVariable BigDecimal id, Criterio dato,
-                           BindingResult bindingResult, Model model) {
+                               @PathVariable BigDecimal id, Criterio dato,
+                               BindingResult bindingResult, Model model) {
         ResponseEntity<?> registro = apiDetalleCriterio(idContrato, id);
         model.addAttribute(ModelAttr.DATO, registro.getBody());
         model.addAttribute(ModelAttr.REGISTRO, registro);
@@ -1216,8 +1200,8 @@ public class ContratoAdminController {
     @RequestMapping(value = "/{idContrato}/criterio/save", method = RequestMethod.POST, produces = {
             MediaType.TEXT_HTML_VALUE, "*/*"})
     public String crearCriterio(@PathVariable BigDecimal idContrato,
-                            Criterio dato,
-                            BindingResult bindingResult, Model model, RedirectAttributes attr) {
+                                Criterio dato,
+                                BindingResult bindingResult, Model model, RedirectAttributes attr) {
 
         Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
         dato.setContrato(contrato);
@@ -1242,8 +1226,8 @@ public class ContratoAdminController {
     @RequestMapping(value = "/{idContrato}/criterio/{id}/save", method = RequestMethod.POST, produces = {
             MediaType.TEXT_HTML_VALUE, "*/*"})
     public String modificarCriterio(@PathVariable BigDecimal idContrato,
-                                @PathVariable BigDecimal id, Criterio dato,
-                                BindingResult bindingResult, Model model, RedirectAttributes attr) {
+                                    @PathVariable BigDecimal id, Criterio dato,
+                                    BindingResult bindingResult, Model model, RedirectAttributes attr) {
         Contrato contrato = (Contrato) contratoController.apiDetalle(idContrato).getBody();
         dato.setContrato(contrato);
         ResponseEntity<?> resultado = apiModificarCriterio(idContrato, id, dato);
@@ -1263,7 +1247,7 @@ public class ContratoAdminController {
     @RequestMapping(value = "/{idContrato}/criterio/{id}/delete", method = RequestMethod.POST, produces = {
             MediaType.TEXT_HTML_VALUE, "*/*"})
     public String eliminarCriterio(@PathVariable BigDecimal idContrato,
-                               @PathVariable BigDecimal id, Model model, RedirectAttributes attr) {
+                                   @PathVariable BigDecimal id, Model model, RedirectAttributes attr) {
         ResponseEntity<?> resultado = apiDeleteCriterio(idContrato, id);
         if (resultado.getStatusCode().is2xxSuccessful()) {
             attr.addFlashAttribute(ModelAttr.MENSAJE, new Mensaje(
