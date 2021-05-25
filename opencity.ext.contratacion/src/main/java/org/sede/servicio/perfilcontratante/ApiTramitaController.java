@@ -8,6 +8,7 @@ import com.googlecode.genericdao.search.Search;
 import com.googlecode.genericdao.search.SearchResult;
 import org.apache.commons.io.IOUtils;
 import org.apache.cxf.jaxrs.ext.search.SearchParseException;
+import org.ciudadesabiertas.utils.Util;
 import org.sede.core.anotaciones.*;
 import org.sede.core.dao.VirtuosoDataManagement;
 import org.sede.core.rest.MimeTypes;
@@ -48,7 +49,10 @@ import java.time.Period;
 import java.util.*;
 
 import static org.apache.solr.client.solrj.impl.XMLResponseParser.log;
+import static org.sede.core.utils.Propiedades.*;
 
+
+//@Gcz(servicio = "ADMIN", seccion = "ADMIN")
 @Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
 @Controller
 @Transactional(Esquema.TMPERFILCONTRATANTE)
@@ -57,10 +61,10 @@ public class ApiTramitaController {
     //region Atributtes
     private static final Logger logger = LoggerFactory.getLogger(ApiTramitaController.class);
     private static final String SERVICIO = "apitramita";
-    public static final String MAPPING = "servicio/" +  SERVICIO;
-    private static String URIWS = Propiedades.getString("contratacion.estado.ws");
-    private static String USER  = "restapi";
-    private static String PASS  = "aytointegr0!#";
+    public static final String MAPPING = "servicio/" + SERVICIO;
+    private static String URIWS = getString("contratacion.estado.ws");
+    private static String USER = "restapi";
+    private static String PASS = "aytointegr0!#";
     @Autowired
     private MessageSource messageSource;
     @Autowired
@@ -85,48 +89,52 @@ public class ApiTramitaController {
     private EmpresaGenericDAO daoEmpresa;
     @Autowired
     private CriteriosGenericDAO daoCriterios;
+    @Autowired
+    private TipoEmpresaGenericDAO daoTipoEmpresa;
     //endregion
 
     @Permisos(Permisos.DET)
-    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {MediaType.TEXT_HTML_VALUE, "*/*" })
-    public String home(Model model,@RequestParam(name = "carpeta", required = false, defaultValue = "") String carpeta) throws IOException, SearchParseException {
+    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {MediaType.TEXT_HTML_VALUE, "*/*"})
+    public String home(Model model, @RequestParam(name = "carpeta", required = false, defaultValue = "") String carpeta) throws IOException, SearchParseException {
         if (!carpeta.isEmpty()) {
             model.addAttribute(ModelAttr.RESULTADO, apiTramitaJson(carpeta));
-        }else {
-			model.addAttribute(ModelAttr.RESULTADO, null);
-		}
+        } else {
+            model.addAttribute(ModelAttr.RESULTADO, null);
+        }
         return MAPPING + "/index";
     }
-	@Permisos(Permisos.DET)
-	@RequestMapping(path = "/carga-json", method = RequestMethod.POST,produces = {MediaType.TEXT_HTML_VALUE, "*/*" })
-	public String carga(Model model,@RequestParam(name="json",defaultValue = "",required = false) String json ) throws Exception,IOException  {
-        if(!json.isEmpty() ){
-			System.out.println("***************Cargando Json*********");
-			System.out.println(Funciones.getPeticion().getCuerpoPeticion());
-			System.out.println("*************************************");
-			System.out.println("**********Resultado*************");
-			Contrato con=rellenarContratoAdjudicacion(json,Funciones.getPeticion());
-			System.out.println(con.toString()+"");
-			System.out.println("*************************************");
-			SearchResult<Contrato> resultado=new SearchResult<Contrato>();
-			List<Contrato> listado=new ArrayList<Contrato>();
-			listado.add(con);
-			resultado.setResult(listado);
-			resultado.setTotalCount(listado.size());
-			resultado.setStart(0);
-			resultado.setRows(listado.size());
-			model.addAttribute(ModelAttr.RESULTADO,resultado);
-		}else {
-			model.addAttribute(ModelAttr.RESULTADO, null);
-		}
-		return MAPPING + "/index";
-	}
+
+    @Permisos(Permisos.DET)
+    @RequestMapping(path = "/carga-json", method = RequestMethod.POST, produces = {MediaType.TEXT_HTML_VALUE, "*/*"})
+    public String carga(Model model, @RequestParam(name = "json", defaultValue = "", required = false) String json) throws Exception, IOException {
+        if (!json.isEmpty()) {
+            System.out.println("***************Cargando Json*********");
+            System.out.println(Funciones.getPeticion().getCuerpoPeticion());
+            System.out.println("*************************************");
+            System.out.println("**********Resultado*************");
+            Contrato con = rellenarContratoAdjudicacion(json, Funciones.getPeticion());
+            System.out.println(con.toString() + "");
+            System.out.println("*************************************");
+            SearchResult<Contrato> resultado = new SearchResult<Contrato>();
+            List<Contrato> listado = new ArrayList<Contrato>();
+            listado.add(con);
+            resultado.setResult(listado);
+            resultado.setTotalCount(listado.size());
+            resultado.setStart(0);
+            resultado.setRows(listado.size());
+            model.addAttribute(ModelAttr.RESULTADO, resultado);
+        } else {
+            model.addAttribute(ModelAttr.RESULTADO, null);
+        }
+        return MAPPING + "/index";
+    }
 
 
     @Permisos(Permisos.MOD)
     @ResponseClass(value = Contrato.class, entity = SearchResult.class)
-    @RequestMapping(value="/api-carga-ofertas",method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
-    public @ResponseBody  ResponseEntity<?> apiTramitaJson(String carpeta) throws SearchParseException, IOException {
+    @RequestMapping(value = "/api-carga-ofertas", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
+    public @ResponseBody
+    ResponseEntity<?> apiTramitaJson(String carpeta) throws SearchParseException, IOException {
         SearchResult<Contrato> resultado = new SearchResult<Contrato>();
         try {
 
@@ -149,8 +157,8 @@ public class ApiTramitaController {
                 Search search = new Search(Contrato.class);
                 search.addFilterEqual("expediente", expediente);
                 Contrato con = dao.getResultsForExpediente(expediente);
-                Peticion peticion=new Peticion();
-                Contrato conJson = rellenarContratoAdjudicacion(actualObj.toString(),peticion );
+                Peticion peticion = new Peticion();
+                Contrato conJson = rellenarContratoAdjudicacion(actualObj.toString(), peticion);
                 lista.add(conJson);
             }
             resultado.setRows(0);
@@ -162,94 +170,101 @@ public class ApiTramitaController {
         }
         return ResponseEntity.ok(resultado);
     }
-	@OpenData
-    @Permisos(Permisos.NEW)
-    @RequestMapping(value = "/",consumes =MimeTypes.JSON ,method = RequestMethod.POST,  produces = {MimeTypes.JSON})
-    @ResponseClass(value = Contrato.class)
-    public @ResponseBody  ResponseEntity<?> apiCrear(HttpServletRequest httpRequest) throws Exception {
-        Contrato contrato=new Contrato();
-	    try {
-            contrato= rellenarContratoLicitacion(Funciones.getPeticion().getCuerpoPeticion(), Funciones.getPeticion());
-           Set<ConstraintViolation<Object>> errores = dao.validar(contrato);
-           if (!errores.isEmpty()) {
-               return Funciones.generarMensajeError(errores);
-           }
 
-           if ("10".equals(contrato.getProcedimiento().getId().toString())) {
-               contrato.setContratoMenor(true);
-           } else {
-               contrato.setContratoMenor(false);
-           }
-           Set<Criterio> criterios = new HashSet<Criterio>();
-           List<Anuncio> anuncios = new ArrayList<Anuncio>();
-           anuncios = contrato.getAnuncios();
-           criterios = contrato.getCriterios();
-           contrato.setAnuncios(null);
-           contrato.setCriterios(null);
-           dao.save(contrato);
-           for (Anuncio anun : anuncios) {
-               anun.setContrato(contrato);
-               daoAnuncio.almacenar(anun);
-           }
-           for (Criterio criterio : criterios) {
-               criterio.setContrato(contrato);
-               daoCriterios.save(criterio);
-           }
-           dao.flush();
-           daoAnuncio.flush();
-           daoCriterios.flush();
+    @OpenData
+    @Permisos(Permisos.NEW)
+    @RequestMapping(value = "/", consumes = MimeTypes.JSON, method = RequestMethod.POST, produces = {MimeTypes.JSON})
+    @ResponseClass(value = Contrato.class)
+    public @ResponseBody
+    ResponseEntity<?> apiCrear(HttpServletRequest httpRequest) throws Exception {
+        Contrato contrato = new Contrato();
+        try {
+            contrato = rellenarContratoLicitacion(Funciones.getPeticion().getCuerpoPeticion(), Funciones.getPeticion());
+            Set<ConstraintViolation<Object>> errores = dao.validar(contrato);
+            if (!errores.isEmpty()) {
+                return Funciones.generarMensajeError(errores);
+            }
+
+            if ("10".equals(contrato.getProcedimiento().getId().toString())) {
+                contrato.setContratoMenor(true);
+            } else {
+                contrato.setContratoMenor(false);
+            }
+            Set<Criterio> criterios = new HashSet<Criterio>();
+            List<Anuncio> anuncios = new ArrayList<Anuncio>();
+            anuncios = contrato.getAnuncios();
+            criterios = contrato.getCriterios();
+            contrato.setAnuncios(null);
+            contrato.setCriterios(null);
+            dao.save(contrato);
+            for (Anuncio anun : anuncios) {
+                anun.setContrato(contrato);
+                daoAnuncio.almacenar(anun);
+            }
+            for (Criterio criterio : criterios) {
+                criterio.setContrato(contrato);
+                daoCriterios.save(criterio);
+            }
+            dao.flush();
+            daoAnuncio.flush();
+            daoCriterios.flush();
             VirtuosoDataManagement.loadJsonLd(Funciones.getPeticion().getCuerpoPeticion(), Contrato.class.getAnnotation(Grafo.class).value());
-       }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Funciones.sendMail("Error al cargar contrato", e.getMessage() + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
 
-       }
+        }
         return ResponseEntity.ok(contrato);
     }
+
     @OpenData
     @Permisos(Permisos.MOD)
-    @RequestMapping(value = "/",consumes =MimeTypes.JSON ,method = RequestMethod.PUT,  produces = {MimeTypes.JSON})
+    @RequestMapping(value = "/", consumes = MimeTypes.JSON, method = RequestMethod.PUT, produces = {MimeTypes.JSON})
     @ResponseClass(value = Contrato.class)
-    public @ResponseBody  ResponseEntity<?> apiModificar(HttpServletRequest httpRequest) throws Exception {
+    public @ResponseBody
+    ResponseEntity<?> apiModificar(HttpServletRequest httpRequest) throws Exception {
 
-	    Contrato contrato= rellenarContratoAdjudicacion(Funciones.getPeticion().getCuerpoPeticion(),Funciones.getPeticion());
+        Contrato contrato = rellenarContratoAdjudicacion(Funciones.getPeticion().getCuerpoPeticion(), Funciones.getPeticion());
         Set<ConstraintViolation<Object>> errores = dao.validar(contrato);
         if (!errores.isEmpty()) {
             Funciones.sendMail("Error al cargar contrato", errores + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
             return Funciones.generarMensajeError(errores);
-        }else {
-            Funciones.sendMail("Exito carga del contrato",contrato.toString() + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
+        } else {
+            Funciones.sendMail("Exito carga del contrato", contrato.toString() + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
             return ResponseEntity.ok(contrato);
         }
-	}
-    @Permisos(Permisos.DET)
-    @RequestMapping(value = "/integracion-estado",method = RequestMethod.GET,  produces = {MimeTypes.XML})
+    }
+
+    @Permisos(Permisos.MOD)
+    @RequestMapping(value = "/integracion-estado", method = RequestMethod.GET, produces = {MimeTypes.XML})
     @ResponseClass(value = Contrato.class)
-    public @ResponseBody  ResponseEntity<?> apiIntegracionPlataforma(@RequestParam(name="expediente")String expediente)  throws Exception {
+    public @ResponseBody
+    ResponseEntity<?> apiIntegracionPlataforma(@RequestParam(name = "expediente") String expediente) throws Exception {
         try {
-            Search busqueda =new Search();
-            busqueda.addFilterEqual("expediente",expediente);
-            Contrato contrato=dao.searchUnique(busqueda);
+            Search busqueda = new Search();
+            busqueda.addFilterEqual("expediente", expediente);
+            Contrato contrato = dao.searchUnique(busqueda);
 
-        if(contrato!=null) {
-            Set<ConstraintViolation<Object>> errores = dao.validar(contrato);
-            if (!errores.isEmpty()) {
-                //Funciones.sendMail("Error al cargar contrato", errores + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
-                return Funciones.generarMensajeError(errores);
+            if (contrato != null) {
+                Set<ConstraintViolation<Object>> errores = dao.validar(contrato);
+                if (!errores.isEmpty()) {
+                    //Funciones.sendMail("Error al cargar contrato", errores + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
+                    return Funciones.generarMensajeError(errores);
+                }
+                String menor = CodiceConverterMenor.conversor(contrato);
+                CodiceConverterMenor.validarXsd(menor);
+
+                return ResponseEntity.ok(menor);
+
             }
-            String menor=CodiceConverterMenor.conversor(contrato);
-            CodiceConverterMenor.validarXsd(menor);
 
-           return  ResponseEntity.ok(menor);
-
-        }
-
-        return ResponseEntity.ok(contrato);
-        }catch (Exception e){
-             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(( e.getMessage()));
+            return ResponseEntity.ok(contrato);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body((e.getMessage()));
         }
     }
-    public Contrato rellenarContratoAdjudicacion(String jsonld, Peticion peticion)throws Exception{
+
+    public Contrato rellenarContratoAdjudicacion(String jsonld, Peticion peticion) throws Exception {
         try {
             JsonNode actualObjLote;
             boolean lotesBolean = false;
@@ -320,10 +335,12 @@ public class ApiTramitaController {
                 estado.setId(5);
                 con.setStatus(estado);
                 boolean existeAnuncio = false;
-                for (Anuncio anun : con.getAnuncios()) {
-                    if (anun.getType().getId().equals(new BigDecimal(6.0))) {
-                        existeAnuncio = true;
-                        break;
+                if(con.getAnuncios()!=null) {
+                    for (Anuncio anun : con.getAnuncios()) {
+                        if (anun.getType().getId().equals(new BigDecimal(6.0))) {
+                            existeAnuncio = true;
+                            break;
+                        }
                     }
                 }
                 if (!existeAnuncio) {
@@ -350,23 +367,47 @@ public class ApiTramitaController {
                         adjudicacion.setCreationDate(new Date());
                         adjudicacion.setLastUpdated(new Date());
                         adjudicacion.setPubDate(new Date());
-                        con.getAnuncios().add(adjudicacion);
+                        adjudicacion.setContrato(con);
+                        daoAnuncio.almacenar(adjudicacion);
+
+                       if(con.getAnuncios()==null){
+                              List<Anuncio>anun=new ArrayList<Anuncio>(0);
+                              anun.add(adjudicacion);
+                              con.setAnuncios(anun);
+                       }else{
+                           con.getAnuncios().add(adjudicacion);
+                       }
                     }
                 }
             }
+
+
+            List<Oferta> ofertas = new ArrayList<Oferta>();
+            List<Anuncio> anuncios = new ArrayList<Anuncio>();
+
+            ofertas = con.getOfertas();
+            con.setCriterios(null);
             dao.save(con);
             dao.flush();
+            for (Oferta oferta : ofertas) {
+                oferta.setContrato(con);
+                daoOferta.save(oferta);
+                daoOferta.flush();
+            }
+
+
             return con;
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return null;
         }
     }
-    public Contrato rellenarContratoLicitacion (String jsonld, Peticion peticion)throws Exception {
-        Contrato con= new Contrato();
-        try{
+
+    public Contrato rellenarContratoLicitacion(String jsonld, Peticion peticion) throws Exception {
+        Contrato con = new Contrato();
+        try {
             JsonNode actualObjLote;
-            boolean lotesBolean=false;
+            boolean lotesBolean = false;
             ObjectMapper mapper = new ObjectMapper();
             JsonNode actualObj = mapper.readTree(jsonld);
 
@@ -376,7 +417,7 @@ public class ApiTramitaController {
             con.setExpediente(actualObj.get("dcterms:identifier").asText());
             con.setType(daoTipoContrato.obtenerTipo(actualObj));
             if (actualObj.has("pproc:contractTemporalConditions")) {
-                JsonNode temporal=actualObj.get("pproc:contractTemporalConditions");
+                JsonNode temporal = actualObj.get("pproc:contractTemporalConditions");
                 if (temporal.has("pproc:estimatedDuration")) {
                     try {
                         Integer plazoEjecucion = 0;
@@ -411,14 +452,14 @@ public class ApiTramitaController {
             if (actualObj.has("pproc:managingDepartment")) {
                 JsonNode gestor = actualObj.get("pproc:managingDepartment");
                 String idEntidad = gestor.has("@id") ? gestor.get("@id").asText().replace("orgzar:", "") : "";
-                EstructuraOrganizativa servicio=daoOrganigrama.find(BigDecimal.valueOf(Double.valueOf(idEntidad)));
+                EstructuraOrganizativa servicio = daoOrganigrama.find(BigDecimal.valueOf(Double.valueOf(idEntidad)));
 
                 con.setServicio(servicio);
             }
             if (actualObj.has("pproc:contractingBody")) {
                 JsonNode gestor = actualObj.get("pproc:contractingBody");
                 String idOrgano = gestor.has("@id") ? gestor.get("@id").asText().replace("orgzar:", "") : "";
-                EstructuraOrganizativa organo=daoOrganigrama.find(BigDecimal.valueOf(Double.valueOf(idOrgano)));
+                EstructuraOrganizativa organo = daoOrganigrama.find(BigDecimal.valueOf(Double.valueOf(idOrgano)));
                 con.setOrganoContratante(organo);
             }
             if (actualObj.has("pproc:contractProcedureSpecifications")) {
@@ -440,7 +481,7 @@ public class ApiTramitaController {
                         String procedureType = procedure.get("pproc:procedureType").asText();
                         if (procedureType.indexOf("pproc:RegularOpen") >= 0) {
                             procede.setId(new BigDecimal(1.0));
-                            con.setProcedimiento (procede);
+                            con.setProcedimiento(procede);
                         } else if (procedureType.indexOf("pproc:Negotiated") >= 0) {
                             procede.setId(new BigDecimal(7.0));
                             con.setProcedimiento(procede);
@@ -489,7 +530,7 @@ public class ApiTramitaController {
                     } catch (IOException e) {
                         log.info("IOException : " + e);
                     }
-                    daoAnuncio.asociarAnexos(pliego,customMultipartFile);
+                    daoAnuncio.asociarAnexos(pliego, customMultipartFile);
                     Tipoanuncio tipoAnuncio = new Tipoanuncio();
                     tipoAnuncio.setId(Utils.TIPO_ANUNCIO_PLIEGOS_ADMINISTRATIVOS);
                     pliego.setType(tipoAnuncio);
@@ -523,7 +564,7 @@ public class ApiTramitaController {
                     } catch (IOException e) {
                         log.info("IOException : " + e);
                     }
-                    daoAnuncio.asociarAnexos(pliego,customMultipartFile);
+                    daoAnuncio.asociarAnexos(pliego, customMultipartFile);
                     Tipoanuncio tipoAnuncio = new Tipoanuncio();
                     tipoAnuncio.setId(Utils.TIPO_ANUNCIO_OTRAS_INFORMACIONES);
                     pliego.setType(tipoAnuncio);
@@ -545,7 +586,7 @@ public class ApiTramitaController {
                     pliego.setTitle(valor.get("dcterms:title").asText());
                     pliego.setFileName(Utils.normalizar(valor.get("name")
                             .asText()));
-                    String fileName =   pliego.getFileName();
+                    String fileName = pliego.getFileName();
 
                     CustomMultipartFile customMultipartFile = new CustomMultipartFile(Utils.decodeFromString(URLDecoder.decode(
                             valor.get("body").asText(), "UTF-8")), fileName);
@@ -557,7 +598,7 @@ public class ApiTramitaController {
                     } catch (IOException e) {
                         log.info("IOException : " + e);
                     }
-                    daoAnuncio.asociarAnexos(pliego,customMultipartFile);
+                    daoAnuncio.asociarAnexos(pliego, customMultipartFile);
                     Tipoanuncio tipoAnuncio = new Tipoanuncio();
                     tipoAnuncio
                             .setId(Utils.TIPO_ANUNCIO_PLIEGOS_TECNICOS);
@@ -571,30 +612,30 @@ public class ApiTramitaController {
                 }
             }
 
-              // Estamos en licitación
+            // Estamos en licitación
             if (actualObj.has("pproc:contractObject") && actualObj.get("pproc:contractObject").has("pproc:contractEconomicConditions")
-                        && actualObj.get("pproc:contractObject").get("pproc:contractEconomicConditions").has("pproc:budgetPrice")) {
-                    Iterator<JsonNode> iterator = actualObj.get("pproc:contractObject").get("pproc:contractEconomicConditions").get("pproc:budgetPrice").elements();
-                    while (iterator.hasNext()) {
-                        JsonNode valor = iterator.next();
-                        boolean conIva = valor.get("gr:valueAddedTaxIncluded").asBoolean();
-                        if (conIva) {
-                            con.setImporteConIVA(BigDecimal.valueOf(Double.valueOf( valor.get("gr:hasCurrencyValue").asText())));
-                        } else 	{
-                            con.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf( valor.get("gr:hasCurrencyValue").asText())));
-                        }
+                    && actualObj.get("pproc:contractObject").get("pproc:contractEconomicConditions").has("pproc:budgetPrice")) {
+                Iterator<JsonNode> iterator = actualObj.get("pproc:contractObject").get("pproc:contractEconomicConditions").get("pproc:budgetPrice").elements();
+                while (iterator.hasNext()) {
+                    JsonNode valor = iterator.next();
+                    boolean conIva = valor.get("gr:valueAddedTaxIncluded").asBoolean();
+                    if (conIva) {
+                        con.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText())));
+                    } else {
+                        con.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText())));
                     }
+                }
 
+            }
+            if (actualObj.has("pproc:contractObject") && actualObj.get("pproc:contractObject").has("pproc:mainObject")) {
+                if (!actualObj.get("pproc:contractObject").get("pproc:mainObject").asText().contains("null")) {
+                    String[] cpvArray = actualObj.get("pproc:contractObject").get("pproc:mainObject").asText().split("-");
+                    System.out.println(cpvArray[1]);
+                    Cpv cpv = new Cpv(cpvArray[1]);
+                    con.getCpv().add(cpv);
                 }
-                if (actualObj.has("pproc:contractObject") && actualObj.get("pproc:contractObject").has("pproc:mainObject") ) {
-                    if(!actualObj.get("pproc:contractObject").get("pproc:mainObject").asText().contains("null")){
-                        String[] cpvArray = actualObj.get("pproc:contractObject").get("pproc:mainObject").asText().split("-");
-                        System.out.println(cpvArray[1]);
-                        Cpv cpv=new Cpv(cpvArray[1]);
-                        con.getCpv().add(cpv);
-                    }
-                }
-                /*Zona de Lotes*/
+            }
+            /*Zona de Lotes*/
 			/*	if (actualObj.has("pc:lot")){
 					Iterator<JsonNode> iterator = actualObj.get("pc:lot").getElements();
 					this.setTieneLote("S");
@@ -623,145 +664,145 @@ public class ApiTramitaController {
 					}
 				}*/
 
-                con.setVisible("S");
-                con.setCreationDate(new Date());
-                con.setPubDate(new Date());
-                Estado estado=new Estado();
-                estado.setId(0);
-                con.setStatus(estado);
-                con.setEntity(new EntidadContratante(new BigDecimal(1.0)));
-                String anuncioLicitacion = UtilsContrato.obtenerLiTituloContrato(actualObj)
-                        + UtilsContrato.obtenerLiTipoContrato(con.getType())
-                        + UtilsContrato.obtenerLiGestor(actualObj)
-                        + UtilsContrato.obtenerLiOrganoContratacion(actualObj)
-                        + UtilsContrato.obtenerLiExpediente(actualObj)
-                        + UtilsContrato.obtenerLiObjeto(actualObj)
-                        + UtilsContrato.obtenerLiPlazoEjecucion(actualObj)
-                        + UtilsContrato.obtenerLiTipoProcedimiento(actualObj)
-                        +UtilsContrato.obtenerLiUrgencia(con.getUrgente())
-                        + UtilsContrato.obtenerLiPresupuesto(actualObj)
-                        + UtilsContrato
-                        .obtenerLiPlazoPresentacionOfertas(actualObj)
-                        + UtilsContrato
-                        .obtenerLiInformacionAdicional(actualObj);
+            con.setVisible("S");
+            con.setCreationDate(new Date());
+            con.setPubDate(new Date());
+            Estado estado = new Estado();
+            estado.setId(0);
+            con.setStatus(estado);
+            con.setEntity(new EntidadContratante(new BigDecimal(1.0)));
+            String anuncioLicitacion = UtilsContrato.obtenerLiTituloContrato(actualObj)
+                    + UtilsContrato.obtenerLiTipoContrato(con.getType())
+                    + UtilsContrato.obtenerLiGestor(actualObj)
+                    + UtilsContrato.obtenerLiOrganoContratacion(actualObj)
+                    + UtilsContrato.obtenerLiExpediente(actualObj)
+                    + UtilsContrato.obtenerLiObjeto(actualObj)
+                    + UtilsContrato.obtenerLiPlazoEjecucion(actualObj)
+                    + UtilsContrato.obtenerLiTipoProcedimiento(actualObj)
+                    + UtilsContrato.obtenerLiUrgencia(con.getUrgente())
+                    + UtilsContrato.obtenerLiPresupuesto(actualObj)
+                    + UtilsContrato
+                    .obtenerLiPlazoPresentacionOfertas(actualObj)
+                    + UtilsContrato
+                    .obtenerLiInformacionAdicional(actualObj);
 
-                if (anuncioLicitacion.length() > 0) {
-                    Anuncio licitacion = new Anuncio();
-                    licitacion.setTitle("Anuncio de Licitación");
-                    licitacion.setDescription("<ol>" + anuncioLicitacion
-                            + "</ol>");
+            if (anuncioLicitacion.length() > 0) {
+                Anuncio licitacion = new Anuncio();
+                licitacion.setTitle("Anuncio de Licitación");
+                licitacion.setDescription("<ol>" + anuncioLicitacion
+                        + "</ol>");
+                Tipoanuncio tipoAnuncio = new Tipoanuncio();
+                tipoAnuncio.setId(UtilsContrato.TIPO_ANUNCIO_LICITACION);
+                licitacion.setType(tipoAnuncio);
+                licitacion.setVisible("S");
+                licitacion.setUsuarioAlta(peticion.getClientId());
+                licitacion.setCreationDate(new Date());
+                licitacion.setLastUpdated(new Date());
+                licitacion.setPubDate(new Date());
+                con.getAnuncios().add(licitacion);
+            }
+
+            if (actualObj.has("pproc:contractProcedureSpecifications")) {
+                JsonNode especificaciones = actualObj
+                        .get("pproc:contractProcedureSpecifications");
+                if (especificaciones.has("pproc:tenderDeadline")) {
+                    Date fecha = ConvertDate.string2Date(especificaciones
+                                    .get("pproc:tenderDeadline").asText(),
+                            ConvertDate.ISO8601_FORMAT_SIN_ZONA);
+
+                    Anuncio presentacion = new Anuncio();
+                    presentacion.setTitle(ConvertDate.date2String(fecha,
+                            ConvertDate.PERFILCONTRATANTE));
+                    con.setFechaPresentacion(fecha);
+                    con.setFechaContrato(fecha);
                     Tipoanuncio tipoAnuncio = new Tipoanuncio();
-                    tipoAnuncio.setId(UtilsContrato.TIPO_ANUNCIO_LICITACION);
-                    licitacion.setType(tipoAnuncio);
-                    licitacion.setVisible("S");
-                    licitacion.setUsuarioAlta(peticion.getClientId());
-                    licitacion.setCreationDate(new Date());
-                    licitacion.setLastUpdated(new Date());
-                    licitacion.setPubDate(new Date());
-                    con.getAnuncios().add(licitacion);
+                    tipoAnuncio.setId(UtilsContrato.TIPO_ANUNCIO_FECHA_PRESENTACION);
+                    presentacion.setType(tipoAnuncio);
+                    presentacion.setVisible("S");
+                    presentacion.setUsuarioAlta(peticion.getClientId());
+                    presentacion.setCreationDate(new Date());
+                    presentacion.setLastUpdated(new Date());
+                    presentacion.setPubDate(new Date());
+                    con.getAnuncios().add(presentacion);
                 }
-
-                if (actualObj.has("pproc:contractProcedureSpecifications")) {
-                    JsonNode especificaciones = actualObj
-                            .get("pproc:contractProcedureSpecifications");
-                    if (especificaciones.has("pproc:tenderDeadline")) {
-                        Date fecha = ConvertDate.string2Date(especificaciones
-                                        .get("pproc:tenderDeadline").asText(),
-                                ConvertDate.ISO8601_FORMAT_SIN_ZONA);
-
-                        Anuncio presentacion = new Anuncio();
-                        presentacion.setTitle(ConvertDate.date2String(fecha,
-                                ConvertDate.PERFILCONTRATANTE));
-                        con.setFechaPresentacion(fecha);
-                        con.setFechaContrato(fecha);
-                        Tipoanuncio tipoAnuncio = new Tipoanuncio();
-                        tipoAnuncio.setId(UtilsContrato.TIPO_ANUNCIO_FECHA_PRESENTACION);
-                        presentacion.setType(tipoAnuncio);
-                        presentacion.setVisible("S");
-                        presentacion.setUsuarioAlta(peticion.getClientId());
-                        presentacion.setCreationDate(new Date());
-                        presentacion.setLastUpdated(new Date());
-                        presentacion.setPubDate(new Date());
-                        con.getAnuncios().add(presentacion);
-                    }
-                }
-                if (actualObj.has("pc:awardCriteriaCombination")) {
-                    JsonNode criterios = actualObj.get(
-                            "pc:awardCriteriaCombination");
-                    if (criterios.has("pc:awardCriterion")) {
-                        Iterator<JsonNode> iterator = criterios.get(
-                                "pc:awardCriterion").elements();
-                        while (iterator.hasNext()) {
-                            JsonNode valor = iterator.next();
-                            Criterio criterio= new Criterio();
-                            if(valor.has("@type")){
-                                String tipo=valor.get("@type").asText();
-                                if("pproc:ObjectiveAwardCriterion".contains(tipo)){
-                                    TipoCriterio tipoCriterio=new TipoCriterio();
-                                    tipoCriterio.setId(new BigDecimal(1));
-                                    criterio.setTipo(tipoCriterio);
-                                }else if("pproc:SubjectiveAwardCriterion".contains(tipo)){
-                                    TipoCriterio tipoCriterio=new TipoCriterio();
-                                    tipoCriterio.setId(new BigDecimal(2));
-                                    criterio.setTipo(tipoCriterio);
-                                }
-                            }
-                            if (valor.has("pc:criterionName")) {
-                                criterio.setTitle( valor.get("pc:criterionName").asText());
-                            }
-                            if (valor.has("pproc:criterionEvaluationMode")) {
-                                criterio.setDescription(valor
-                                        .get("pproc:criterionEvaluationMode")
-                                        .asText()) ;
-
-                            }
-                            if (valor.has("pc:criterionWeight")) {
-                                criterio.setPeso(new BigDecimal(valor.get("pc:criterionWeight").asText()));
-                            }
-                            con.getCriterios().add(criterio);
-                        }
-                    }
-                }
-                if (actualObj.has("pproc:contractObject")
-                        && actualObj.get("pproc:contractObject").has(
-                        "pproc:contractEconomicConditions")
-                        && actualObj.get("pproc:contractObject")
-                        .get("pproc:contractEconomicConditions")
-                        .has("pproc:budgetPrice")) {
-                    Iterator<JsonNode> iterator = actualObj
-                            .get("pproc:contractObject")
-                            .get("pproc:contractEconomicConditions")
-                            .get("pproc:budgetPrice").elements();
+            }
+            if (actualObj.has("pc:awardCriteriaCombination")) {
+                JsonNode criterios = actualObj.get(
+                        "pc:awardCriteriaCombination");
+                if (criterios.has("pc:awardCriterion")) {
+                    Iterator<JsonNode> iterator = criterios.get(
+                            "pc:awardCriterion").elements();
                     while (iterator.hasNext()) {
                         JsonNode valor = iterator.next();
-                        boolean conIva = valor.get("gr:valueAddedTaxIncluded")
-                                .asBoolean();
-                        if (conIva) {
-                            Anuncio presupuesto = new Anuncio();
-                            presupuesto
-                                    .setTitle((valor.get("gr:hasCurrencyValue")
-                                            .asText()
-                                            + ((valor.has("gr:hasCurrency") && valor
-                                            .get("gr:hasCurrency")
-                                            .asText().indexOf("EUR") >= 0) ? " euros"
-                                            : " "
-                                            + valor.get(
-                                            "gr:hasCurrency")
-                                            .asText()) + " I.V.A. incluido"));
-                            Tipoanuncio tipoAnuncio = new Tipoanuncio();
-                            tipoAnuncio
-                                    .setId(UtilsContrato.TIPO_ANUNCIO_PRESUPUESTO);
-                            presupuesto.setType(tipoAnuncio);
-                            presupuesto.setVisible("S");
-                            presupuesto.setUsuarioAlta(peticion.getClientId());
-                            presupuesto.setCreationDate(new Date());
-                            presupuesto.setLastUpdated(new Date());
-                            presupuesto.setPubDate(new Date());
-                            con.getAnuncios().add(presupuesto);
+                        Criterio criterio = new Criterio();
+                        if (valor.has("@type")) {
+                            String tipo = valor.get("@type").asText();
+                            if ("pproc:ObjectiveAwardCriterion".contains(tipo)) {
+                                TipoCriterio tipoCriterio = new TipoCriterio();
+                                tipoCriterio.setId(new BigDecimal(1));
+                                criterio.setTipo(tipoCriterio);
+                            } else if ("pproc:SubjectiveAwardCriterion".contains(tipo)) {
+                                TipoCriterio tipoCriterio = new TipoCriterio();
+                                tipoCriterio.setId(new BigDecimal(2));
+                                criterio.setTipo(tipoCriterio);
+                            }
                         }
+                        if (valor.has("pc:criterionName")) {
+                            criterio.setTitle(valor.get("pc:criterionName").asText());
+                        }
+                        if (valor.has("pproc:criterionEvaluationMode")) {
+                            criterio.setDescription(valor
+                                    .get("pproc:criterionEvaluationMode")
+                                    .asText());
+
+                        }
+                        if (valor.has("pc:criterionWeight")) {
+                            criterio.setPeso(new BigDecimal(valor.get("pc:criterionWeight").asText()));
+                        }
+                        con.getCriterios().add(criterio);
                     }
                 }
-                con.setCanon(false);
+            }
+            if (actualObj.has("pproc:contractObject")
+                    && actualObj.get("pproc:contractObject").has(
+                    "pproc:contractEconomicConditions")
+                    && actualObj.get("pproc:contractObject")
+                    .get("pproc:contractEconomicConditions")
+                    .has("pproc:budgetPrice")) {
+                Iterator<JsonNode> iterator = actualObj
+                        .get("pproc:contractObject")
+                        .get("pproc:contractEconomicConditions")
+                        .get("pproc:budgetPrice").elements();
+                while (iterator.hasNext()) {
+                    JsonNode valor = iterator.next();
+                    boolean conIva = valor.get("gr:valueAddedTaxIncluded")
+                            .asBoolean();
+                    if (conIva) {
+                        Anuncio presupuesto = new Anuncio();
+                        presupuesto
+                                .setTitle((valor.get("gr:hasCurrencyValue")
+                                        .asText()
+                                        + ((valor.has("gr:hasCurrency") && valor
+                                        .get("gr:hasCurrency")
+                                        .asText().indexOf("EUR") >= 0) ? " euros"
+                                        : " "
+                                        + valor.get(
+                                        "gr:hasCurrency")
+                                        .asText()) + " I.V.A. incluido"));
+                        Tipoanuncio tipoAnuncio = new Tipoanuncio();
+                        tipoAnuncio
+                                .setId(UtilsContrato.TIPO_ANUNCIO_PRESUPUESTO);
+                        presupuesto.setType(tipoAnuncio);
+                        presupuesto.setVisible("S");
+                        presupuesto.setUsuarioAlta(peticion.getClientId());
+                        presupuesto.setCreationDate(new Date());
+                        presupuesto.setLastUpdated(new Date());
+                        presupuesto.setPubDate(new Date());
+                        con.getAnuncios().add(presupuesto);
+                    }
+                }
+            }
+            con.setCanon(false);
             Set<Criterio> criterios = new HashSet<Criterio>();
             List<Anuncio> anuncios = new ArrayList<Anuncio>();
             anuncios = con.getAnuncios();
@@ -769,43 +810,45 @@ public class ApiTramitaController {
             con.setAnuncios(null);
             con.setCriterios(null);
             dao.save(con);
+            dao.flush();
             for (Anuncio anun : anuncios) {
                 anun.setContrato(con);
                 daoAnuncio.almacenar(anun);
+                daoAnuncio.flush();
             }
             for (Criterio criterio : criterios) {
                 criterio.setContrato(con);
                 daoCriterios.save(criterio);
             }
-            dao.flush();
-            daoAnuncio.flush();
             daoCriterios.flush();
 
             return con;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-          return null;
+            return null;
         }
     }
-    public Oferta rellenarOferta(Contrato con,JsonNode objc, Peticion peticion, boolean ganador, String idLote)throws Exception {
 
-	    Oferta ofer=new Oferta();
-	    System.out.println("oferta------->"+objc);
+    public Oferta rellenarOferta(Contrato con, JsonNode objc, Peticion peticion, boolean ganador, String idLote) throws Exception {
+
+        Oferta ofer = new Oferta();
+        System.out.println("oferta------->" + objc);
         try {
             JsonNode actualObj = objc;
             if (actualObj != null) {
-            	if(actualObj.has("@type") && actualObj.get("@type").isArray()){
-					Iterator<JsonNode> iterator = actualObj.get("@type").elements();
-					while (iterator.hasNext()) {
-						String valor = iterator.next().asText();
-						if ("pproc:AcceptedTender".equals(valor)) {
-							ofer.setExcluida(false);
-						}
-						if ("pproc:ExcludedTender".equals(valor)) {
-							ofer.setExcluida(true);
-						}
-					}
-				}
+                if (actualObj.has("@type") && actualObj.get("@type").isArray()) {
+                    Iterator<JsonNode> iterator = actualObj.get("@type").elements();
+                    while (iterator.hasNext()) {
+                        String valor = iterator.next().asText();
+                        ofer.setExcluida(false);
+                        if ("pproc:AcceptedTender".equals(valor)) {
+                            ofer.setExcluida(false);
+                        }
+                        if ("pproc:ExcludedTender".equals(valor)) {
+                            ofer.setExcluida(true);
+                        }
+                    }
+                }
                 if (actualObj.has("pproc:awardDate")) {
                     ofer.setFechaAdjudicacion(ConvertDate.string2Date(actualObj.get("pproc:awardDate").asText(), ConvertDate.ISO8601_FORMAT_SIN_ZONA));
                     ofer.setGanador(true);
@@ -820,59 +863,107 @@ public class ApiTramitaController {
                 if (actualObj.has("pc:supplier")) {
                     if (actualObj.get("pc:supplier").has("org:identifier")) {
                         String nifActual = actualObj.get("pc:supplier").get("org:identifier").asText();
-                        for (Oferta oferta : con.getOfertas()) {
-                            if (!oferta.getEmpresa().getNif().equals(nifActual)) {
-                                Search search = new Search();
-                                search.addFilterEqual("nif", actualObj.get("pc:supplier").get("org:identifier").asText());
-                                System.out.println("------------------->" + actualObj.get("pc:supplier").get("org:identifier").asText());
-                                Empresa licitador;
-                                try {
-                                     licitador = daoEmpresa.searchUnique(search);
-                                }catch (Exception e){
-                                     licitador=null;
-                                }
-                                if (licitador != null) {
-                                    ofer.setEmpresa(licitador);
-                                } else {
-                                    Empresa licitador2 = new Empresa();
-                                   licitador.setEsUte(false);
-                                    licitador2.setNacionalidad("es");
-                                    if (actualObj.get("pc:supplier").has("s:name")) {
-                                        licitador2.setNombre(actualObj.get("pc:supplier").get("s:name").asText());
+                        if (con.getOfertas().size()>0) {
+                            for (Oferta oferta : con.getOfertas()) {
+                                if (!oferta.getEmpresa().getNif().equals(nifActual)) {
+                                    Search search = new Search();
+                                    search.addFilterEqual("nif", actualObj.get("pc:supplier").get("org:identifier").asText());
+                                    System.out.println("------------------->" + actualObj.get("pc:supplier").get("org:identifier").asText());
+                                    Empresa licitador;
+                                    try {
+                                        licitador = daoEmpresa.searchUnique(search);
+                                    } catch (Exception e) {
+                                        licitador = null;
                                     }
-                                    if (actualObj.get("pc:supplier").has("org:identifier")) {
-                                        licitador2.setNif(actualObj.get("pc:supplier").get("org:identifier").asText());
-                                        String nif = licitador2.getNif();
-                                        if (Oferta.anoniCierto(nif)) {
-                                            licitador2.setAutonomo("S");
-                                        } else {
-                                            licitador2.setAutonomo("N");
+                                    if (licitador != null) {
+                                        ofer.setEmpresa(licitador);
+                                    } else {
+                                        Empresa licitador2 = new Empresa();
+                                        licitador2.setEsUte(false);
+                                        licitador2.setNacionalidad("es");
+                                        if (actualObj.get("pc:supplier").has("s:name")) {
+                                            licitador2.setNombre(actualObj.get("pc:supplier").get("s:name").asText());
                                         }
+                                        if (actualObj.get("pc:supplier").has("org:identifier")) {
+                                            licitador2.setNif(actualObj.get("pc:supplier").get("org:identifier").asText());
+                                            String nif = licitador2.getNif();
+                                            if (Oferta.anoniCierto(nif)) {
+                                                licitador2.setAutonomo("S");
+                                            } else {
+                                                licitador2.setAutonomo("N");
+                                            }
+                                        }
+                                        daoEmpresa.save(licitador2);
+                                        daoEmpresa.flush();
+                                        ofer.setEmpresa(licitador2);
                                     }
-                                    ofer.setEmpresa(licitador2);
                                 }
                             }
-                        }
-                        if (actualObj.has("pc:offeredPrice")) {
-                            Iterator<JsonNode> iterator = actualObj.get("pc:offeredPrice").elements();
-                            while (iterator.hasNext()) {
-                                JsonNode valor = iterator.next();
-                                System.out.println("offerprice-----"+valor);
-                                String conIva = valor.get("gr:valueAddedTaxIncluded").asText();
-                                if ("true".equals(conIva)) {
-                                    ofer.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().contains(" ")?valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")):valor.get("gr:hasCurrencyValue").asText())));
-                                } else {
-                                    ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().contains(" ")?valor.get("gr:hasCurrencyValue").asText().substring(0,valor.get("gr:hasCurrencyValue").asText().indexOf(" ")):valor.get("gr:hasCurrencyValue").asText())));
+                        } else {
+                            Search search = new Search();
+                            search.addFilterEqual("nif", actualObj.get("pc:supplier").get("org:identifier").asText());
+                            System.out.println("------------------->" + actualObj.get("pc:supplier").get("org:identifier").asText());
+                            Empresa licitador;
+                            try {
+                                licitador = daoEmpresa.searchUnique(search);
+                            } catch (Exception e) {
+                                licitador = null;
+                            }
+                            if (licitador != null) {
+                                ofer.setEmpresa(licitador);
+                            } else {
+                                Empresa licitador2 = new Empresa();
+                                licitador2.setEsUte(false);
+                                licitador2.setNacionalidad("es");
+                                if (actualObj.get("pc:supplier").has("s:name")) {
+                                    licitador2.setNombre(actualObj.get("pc:supplier").get("s:name").asText());
                                 }
+                                if (actualObj.get("pc:supplier").has("org:identifier")) {
+                                    licitador2.setNif(actualObj.get("pc:supplier").get("org:identifier").asText());
+                                    String nif = licitador2.getNif();
+                                    if (Oferta.anoniCierto(nif)) {
+                                        licitador2.setAutonomo("S");
+                                    } else {
+                                        licitador2.setAutonomo("N");
+                                    }
+                                    Search busqueda=new Search();
+                                    if(Character.isAlphabetic(nif.charAt(0))) {
+                                        busqueda.addFilterEqual("skos", "http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/organizacion/clave-nif-forma-juridica/" + nif.charAt(0));
+                                        TipoEmpresa tipo = daoTipoEmpresa.searchUnique(busqueda);
+                                        licitador2.setTipoEmpresa(tipo);
+                                    }else{
+                                        licitador2.setTipoEmpresa(null);
+                                    }
+                                }
+                                daoEmpresa.save(licitador2);
+                                daoEmpresa.flush();
+                                ofer.setEmpresa(licitador2);
                             }
                         }
                     }
                 }
-            }
-            return ofer;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+
+
+                if (actualObj.has("pc:offeredPrice")) {
+                    Iterator<JsonNode> iterator = actualObj.get("pc:offeredPrice").elements();
+                    while (iterator.hasNext()) {
+                        JsonNode valor = iterator.next();
+                        System.out.println("offerprice-----" + valor);
+                        String conIva = valor.get("gr:valueAddedTaxIncluded").asText();
+                        if ("true".equals(conIva)) {
+                            ofer.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().contains(" ") ? valor.get("gr:hasCurrencyValue").asText().substring(0, valor.get("gr:hasCurrencyValue").asText().indexOf(" ")) : valor.get("gr:hasCurrencyValue").asText())));
+                        } else {
+                            ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().contains(" ") ? valor.get("gr:hasCurrencyValue").asText().substring(0, valor.get("gr:hasCurrencyValue").asText().indexOf(" ")) : valor.get("gr:hasCurrencyValue").asText())));
+                        }
+                    }
+                }
+
         }
-    }
-}
+
+            return ofer;
+} catch(Exception e){
+        e.printStackTrace();
+        return null;
+        }
+        }
+        }

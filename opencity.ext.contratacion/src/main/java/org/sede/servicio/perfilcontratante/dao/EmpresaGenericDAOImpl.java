@@ -141,4 +141,5 @@ public class EmpresaGenericDAOImpl extends GenericDAOImpl<Empresa,BigDecimal> im
 		return list;
 	}
 
+
 }

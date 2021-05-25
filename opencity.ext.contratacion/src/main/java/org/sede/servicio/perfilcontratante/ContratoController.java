@@ -48,7 +48,7 @@ import java.util.*;
 
 @Gcz(servicio = "PERFILCONTRATANTE", seccion = "CONTRATO")
 @Controller
-@Description("Ayuntamiento: Contratación pública")
+@Description("Ayuntamiento: Contratacion publica")
 @Transactional(Esquema.TMPERFILCONTRATANTE)
 @RequestMapping(value = "/" + ContratoController.MAPPING, method = RequestMethod.GET)
 public class ContratoController {

@@ -204,7 +204,6 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 				public Anuncio execute(Connection connection) throws SQLException {
 					PreparedStatement st = null;
 			        try {
-			        	
 			        	st = connection.prepareStatement("insert into perfil_anuncio(ID_ANUNCIO," + 
 			        			"TITULO," + 
 			        			"TEXTO," + 
@@ -333,7 +332,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			            ResultSet rs = null;
 			            try {
 			            	stC = connection.createStatement();
-			            	rs = stC.executeQuery("select SEQ_PERFIL_ANUNCIO.currval from dual");
+			            	rs = stC.executeQuery("select SEQ_PERFIL_ANUNCIO.nextval from dual");
 			            	if (rs.next()) {
 			            		registro.setId(rs.getBigDecimal(1));
 			            	} else {

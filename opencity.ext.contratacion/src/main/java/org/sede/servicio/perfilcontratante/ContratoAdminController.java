@@ -136,6 +136,7 @@ public class ContratoAdminController {
         model.addAttribute(ModelAttr.RESULTADO, apiListar(search));
         return MAPPING + "/index";
     }
+
     @Permisos(Permisos.NEW)
     @RequestMapping(path = "/oferta/carga", headers = ("content-type=multipart/*"), method = RequestMethod.POST, produces = {MediaType.TEXT_HTML_VALUE, "*/*"})
     public String cargaOfertas(Model model, @RequestParam("file") MultipartFile file, RedirectAttributes attr) throws SearchParseException {
