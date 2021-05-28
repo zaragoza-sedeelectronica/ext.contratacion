@@ -10,7 +10,9 @@
  * Para más información, puede contactar con los autores en: gobiernoabierto@zaragoza.es, sedelectronica@zaragoza.es*/
 package org.sede.servicio.perfilcontratante.dao;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -99,14 +101,15 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 						st.setBinaryStream(1, file.getInputStream(), file.getSize());
 						st.setString(2, file.getOriginalFilename());
 						st.setBigDecimal(3, registro.getId());
+
 						return st.executeUpdate();
-						
+
 					} catch (IOException e) {
-						
+
 						e.printStackTrace();
 						return 0;
 					} finally {
-						
+
 						if (st != null) {
 							st.close();
 						}
@@ -116,8 +119,8 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 				}
 			}
 		});
-		
-		
+
+
 	}
 	@Override
 	public byte[] obtenerAnexos(final Anuncio registro) {
@@ -218,7 +221,8 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			        			"GCZ_USUARIOMOD," + 
 			        			"GCZ_USUARIOPUB," + 
 			        			"VISUALIZARPRIMERA," + 
-//			        			"FUENTE_PUBLICACION," + 
+//			        			"FUENTE_PUBLICACION," +
+								"ADJUNTO,"+
 			        			"ID_LENGUAJE) values(SEQ_PERFIL_ANUNCIO.nextval"
 			        			+ ",?/*titulo*/"
 			        			+ ",?/*texto*/"
@@ -233,6 +237,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			        			+ ",?/*gcz_usuariomod*/"
 			        			+ ",?/*gcz_usuariopub*/"
 			        			+ ",?/*visualizarprimera*/"
+			        			+ ",?/*adjunto*/"
 //			        			+ ",?/*fuente_publicacion*/"
 			        			+ ",?/*id_lenguaje*/)");
 			        	int i = 0;
@@ -318,6 +323,11 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 						} else {
 							st.setNull(++i, java.sql.Types.VARCHAR);
 						}
+						if (registro.getAdjunto() != null) {
+							st.setBytes(++i, registro.getAdjunto());
+						} else {
+							st.setNull(++i, java.sql.Types.VARCHAR);
+						}
 						if (registro.getLenguaje() != null && registro.getLenguaje().getId() != null) {
 							st.setLong(++i, registro.getLenguaje().getId().longValue());
 						} else {
@@ -326,8 +336,6 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			        	// execute insert SQL stetement
 			        	st.executeUpdate();
 			        	connection.commit();
-			        	
-			        	
 			        	Statement stC = null;
 			            ResultSet rs = null;
 			            try {
@@ -338,7 +346,6 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			            	} else {
 			            		throw new IOException("Error al obtener el identificador del anuncio");
 			            	}
-			            	
 			            } catch (SQLException e) {
 			    			;
 			    		} finally {
@@ -370,6 +377,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			this.flush();	
 		}
 	}
+
 	
 	
 }
