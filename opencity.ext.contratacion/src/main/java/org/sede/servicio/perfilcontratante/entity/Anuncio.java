@@ -14,7 +14,6 @@ import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.metamodel.source.annotations.attribute.type.LobTypeResolver;
 import org.sede.core.anotaciones.InList;
 import org.sede.core.anotaciones.Interno;
 import org.sede.core.anotaciones.PathId;
@@ -33,7 +32,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Objects;
 
 @XmlRootElement(name = "anuncio")
 @Entity
@@ -324,37 +322,170 @@ public class Anuncio extends EntidadBase {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Anuncio anuncio = (Anuncio) o;
-		return Objects.equals(id, anuncio.id) &&
-				Objects.equals(type, anuncio.type) &&
-				Objects.equals(contrato, anuncio.contrato) &&
-				Objects.equals(title, anuncio.title) &&
-				Objects.equals(uri, anuncio.uri) &&
-				Objects.equals(description, anuncio.description) &&
-				Objects.equals(adjunto, anuncio.adjunto) &&
-				Objects.equals(fileName, anuncio.fileName) &&
-				Objects.equals(expiration, anuncio.expiration) &&
-				Objects.equals(visualizarprimera, anuncio.visualizarprimera) &&
-				Objects.equals(sello, anuncio.sello) &&
-				Objects.equals(selladoTiempo, anuncio.selladoTiempo) &&
-				Objects.equals(visible, anuncio.visible) &&
-				Objects.equals(creationDate, anuncio.creationDate) &&
-				Objects.equals(lastUpdated, anuncio.lastUpdated) &&
-				Objects.equals(pubDate, anuncio.pubDate) &&
-				Objects.equals(usuarioAlta, anuncio.usuarioAlta) &&
-				Objects.equals(usuarioMod, anuncio.usuarioMod) &&
-				Objects.equals(usuarioPub, anuncio.usuarioPub) &&
-				Objects.equals(lenguaje, anuncio.lenguaje);
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((creationDate == null) ? 0 : creationDate.hashCode());
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result
+				+ ((expiration == null) ? 0 : expiration.hashCode());
+		result = prime * result
+				+ ((fileName == null) ? 0 : fileName.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((lastUpdated == null) ? 0 : lastUpdated.hashCode());
+		result = prime * result + ((pubDate == null) ? 0 : pubDate.hashCode());
+		result = prime * result
+				+ ((selladoTiempo == null) ? 0 : selladoTiempo.hashCode());
+		result = prime * result + ((sello == null) ? 0 : sello.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result
+				+ ((usuarioAlta == null) ? 0 : usuarioAlta.hashCode());
+		result = prime * result
+				+ ((usuarioMod == null) ? 0 : usuarioMod.hashCode());
+		result = prime * result
+				+ ((usuarioPub == null) ? 0 : usuarioPub.hashCode());
+		result = prime * result + ((visible == null) ? 0 : visible.hashCode());
+		result = prime
+				* result
+				+ ((visualizarprimera == null) ? 0 : visualizarprimera
+						.hashCode());
+		return result;
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(id, type, contrato, title, uri, description, adjunto, fileName, expiration, visualizarprimera, sello, selladoTiempo, visible, creationDate, lastUpdated, pubDate, usuarioAlta, usuarioMod, usuarioPub, lenguaje);
-	}
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Anuncio other = (Anuncio) obj;
+		if (contrato == null) {
+			if (other.contrato != null)
+				return false;
+		} else if (!contrato.equals(other.contrato)) {
+			return false;
+		}
+		if (creationDate == null) {
+			if (other.creationDate != null) {
+				return false;
+			}
+		} else if (!creationDate.equals(other.creationDate)) {
+			return false;
+		}
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
 
+		if (expiration == null) {
+			if (other.expiration != null) {
+				return false;
+			}
+		} else if (!expiration.equals(other.expiration)) {
+			return false;
+		}
+		if (fileName == null) {
+			if (other.fileName != null) {
+				return false;
+			}
+		} else if (!fileName.equals(other.fileName)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (lastUpdated == null) {
+			if (other.lastUpdated != null) {
+				return false;
+			}
+		} else if (!lastUpdated.equals(other.lastUpdated)) {
+			return false;
+		}
+		if (pubDate == null) {
+			if (other.pubDate != null) {
+				return false;
+			}
+		} else if (!pubDate.equals(other.pubDate)) {
+			return false;
+		}
+		if (selladoTiempo == null) {
+			if (other.selladoTiempo != null) {
+				return false;
+			}
+		} else if (!selladoTiempo.equals(other.selladoTiempo)) {
+			return false;
+		}
+		if (sello == null) {
+			if (other.sello != null) {
+				return false;
+			}
+		} else if (!sello.equals(other.sello)) {
+			return false;
+		}
+		if (title == null) {
+			if (other.title != null) {
+				return false;
+			}
+		} else if (!title.equals(other.title)) {
+			return false;
+		}
+		if (type == null) {
+			if (other.type != null) {
+				return false;
+			}
+		} else if (!type.equals(other.type)) {
+			return false;
+		}
+		if (usuarioAlta == null) {
+			if (other.usuarioAlta != null) {
+				return false;
+			}
+		} else if (!usuarioAlta.equals(other.usuarioAlta)) {
+			return false;
+		}
+		if (usuarioMod == null) {
+			if (other.usuarioMod != null) {
+				return false;
+			}
+		} else if (!usuarioMod.equals(other.usuarioMod)) {
+			return false;
+		}
+		if (usuarioPub == null) {
+			if (other.usuarioPub != null) {
+				return false;
+			}
+		} else if (!usuarioPub.equals(other.usuarioPub)) {
+			return false;
+		}
+		if (visible == null) {
+			if (other.visible != null) {
+				return false;
+			}
+		} else if (!visible.equals(other.visible)) {
+			return false;
+		}
+		if (visualizarprimera == null) {
+			if (other.visualizarprimera != null) {
+				return false;
+			}
+		} else if (!visualizarprimera.equals(other.visualizarprimera)) {
+			return false;
+		}
+		return true;
+	}
 	//endregion
 
 }

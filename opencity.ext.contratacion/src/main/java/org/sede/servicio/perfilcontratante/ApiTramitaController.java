@@ -40,11 +40,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.math.BigInteger;
+import java.nio.file.StandardCopyOption;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import java.io.*;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
+import java.nio.file.*;
 import java.time.Period;
 import java.util.*;
 
@@ -123,7 +127,7 @@ public class ApiTramitaController {
         return MAPPING + "/index";
     }
 
-
+/*FIXME borrar el metodo apitramitaJSON*/
     @Permisos(Permisos.MOD)
     @ResponseClass(value = Contrato.class, entity = SearchResult.class)
     @RequestMapping(value = "/api-carga-ofertas", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
@@ -134,13 +138,13 @@ public class ApiTramitaController {
 
             List<Contrato> lista = new ArrayList<Contrato>(0);
             resultado.setResult(lista);
-            String intDir = "C:\\Users\\piglesias\\Desktop\\Contratos\\Jsons CM\\" + carpeta + "/";
-           // String intDir = "/home/documentacionweb/Escritorio/Tramita/JsonTramita/" + carpeta + "/";
+           // String intDir = "C:\\Users\\piglesias\\Desktop\\Contratos\\Jsons CM\\" + carpeta + "/";
+            String intDir = "/home/documentacionweb/Escritorio/Pablo/Jsons CM/" + carpeta + "/";
             File interfaceDirectory = new File(intDir);
             for (File file : interfaceDirectory.listFiles()) {
                 InputStream stream = new FileInputStream(file);
                 String datos = IOUtils.toString(stream);
-                System.out.println(datos);
+                //System.out.println(datos);
                 stream.close();
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
@@ -151,15 +155,32 @@ public class ApiTramitaController {
                 Search search = new Search(Contrato.class);
                 search.addFilterEqual("expediente", expediente);
                 Contrato con = dao.getResultsForExpediente(expediente);
+                logger.info("Expediente---->:" + con.getExpediente());
                 Peticion peticion = new Peticion();
                 Contrato conJson = rellenarContratoAdjudicacion(actualObj.toString(), peticion);
                 lista.add(conJson);
+                File ficheroDestino = new File("/home/documentacionweb/Escritorio/Pablo/Jsons CM/tramitados" + carpeta,file.getName());
+
+                try {
+                    if (file.exists()) {
+                        Files.copy(Paths.get(file.getAbsolutePath()), Paths.get(ficheroDestino.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+
+                    } else {
+                        System.out.println("El fichero " + file + " no existe en el directorio ");
+                    }
+                    file.delete();
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
             }
+
+
             resultado.setRows(0);
             resultado.setTotalCount(lista.size());
             resultado.setResult(lista);
 
         } catch (Exception e) {
+
             logger.error(e.getMessage());
         }
         return ResponseEntity.ok(resultado);
@@ -269,7 +290,7 @@ public class ApiTramitaController {
                     Iterator<JsonNode> iterator = jsonNode.elements();
                     while (iterator.hasNext()) {
                         JsonNode valor = iterator.next();
-                        if (valor.has("pproc:awardDate")) {
+                        if (valor.has("pproc:awardDate") || valor.has("pproc:formalizedDate") ) {
                             if (!ganador) {
                                 Oferta ofertaGanadora = rellenarOferta(con, valor, peticion, true, "");
                                 con.getOfertas().add(ofertaGanadora);
@@ -346,13 +367,13 @@ public class ApiTramitaController {
                         adjudicacion.setContrato(con);
                         daoAnuncio.almacenar(adjudicacion);
 
-                       if(con.getAnuncios()==null){
-                              List<Anuncio>anun=new ArrayList<Anuncio>(0);
-                              anun.add(adjudicacion);
-                              con.setAnuncios(anun);
-                       }else{
-                           con.getAnuncios().add(adjudicacion);
-                       }
+//                       if(con.getAnuncios()==null){
+//                              List<Anuncio>anun=new ArrayList<Anuncio>(0);
+//                              anun.add(adjudicacion);
+//                              con.setAnuncios(anun);
+//                       }else{
+//                           con.getAnuncios().add(adjudicacion);
+//                       }
                     }
                 }
             }
@@ -375,7 +396,8 @@ public class ApiTramitaController {
 
             return con;
         } catch (Exception e) {
-            logger.error(e.getMessage());
+
+             logger.error(e.getMessage());
             return null;
         }
     }
@@ -781,7 +803,11 @@ public class ApiTramitaController {
                     ofer.setGanador(false);
                 }
                 if (actualObj.has("pproc:formalizedDate")) {
-                    ofer.setFechaFormalizacion(ConvertDate.string2Date(actualObj.get("pproc:formalizedDate").asText(), ConvertDate.ISO8601_FORMAT_SIN_ZONA));
+                    if(ofer.getFechaAdjudicacion()==null) {
+                        ofer.setFechaFormalizacion(ConvertDate.string2Date(actualObj.get("pproc:formalizedDate").asText(), ConvertDate.ISO8601_FORMAT_SIN_ZONA));
+                        ofer.setFechaAdjudicacion(ConvertDate.string2Date(actualObj.get("pproc:formalizedDate").asText(), ConvertDate.ISO8601_FORMAT_SIN_ZONA));
+                        ofer.setGanador(true);
+                    }
                 }
                 ofer.setCanon(false);
                 ofer.setAhorroVisible(true);
@@ -875,13 +901,19 @@ public class ApiTramitaController {
                         if ("true".equals(conIva)) {
                             ofer.setImporteConIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().contains(" ") ? valor.get("gr:hasCurrencyValue").asText().substring(0, valor.get("gr:hasCurrencyValue").asText().indexOf(" ")) : valor.get("gr:hasCurrencyValue").asText())));
                         } else {
-                            ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().contains(" ") ? valor.get("gr:hasCurrencyValue").asText().substring(0, valor.get("gr:hasCurrencyValue").asText().indexOf(" ")) : valor.get("gr:hasCurrencyValue").asText())));
+                            if("0".equals(valor.get("gr:hasCurrencyValue").asText())) {
+                                ofer.setImporteSinIVA(new BigDecimal(1.0));
+                            }else{
+                                ofer.setImporteSinIVA(BigDecimal.valueOf(Double.valueOf(valor.get("gr:hasCurrencyValue").asText().contains(" ") ? valor.get("gr:hasCurrencyValue").asText().substring(0, valor.get("gr:hasCurrencyValue").asText().indexOf(" ")) : valor.get("gr:hasCurrencyValue").asText())));
+                            }
                         }
                     }
                 }
 
         }
-
+                if ( ofer.getGanador()==true && ofer.getImporteSinIVA().equals(new BigDecimal(1.0))){
+                    ofer.setImporteSinIVA(ofer.getImporteConIVA());
+                }
             return ofer;
 } catch(Exception e){
         e.printStackTrace();

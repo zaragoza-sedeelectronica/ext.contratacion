@@ -189,7 +189,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 				method.releaseConnection();
 			}
 			if (respuesta.indexOf("evidencia") < 0) {
-				throw new IOException("Error al generar el sello para el anuncio:" + id);
+				throw new IOException("Error al generar el sello para el anuncio:" + id + ". " + respuesta);
 			} else {
 				
 				ObjectMapper mapper = new ObjectMapper();
@@ -340,7 +340,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			            ResultSet rs = null;
 			            try {
 			            	stC = connection.createStatement();
-			            	rs = stC.executeQuery("select SEQ_PERFIL_ANUNCIO.nextval from dual");
+			            	rs = stC.executeQuery("select SEQ_PERFIL_ANUNCIO.currval from dual");
 			            	if (rs.next()) {
 			            		registro.setId(rs.getBigDecimal(1));
 			            	} else {
