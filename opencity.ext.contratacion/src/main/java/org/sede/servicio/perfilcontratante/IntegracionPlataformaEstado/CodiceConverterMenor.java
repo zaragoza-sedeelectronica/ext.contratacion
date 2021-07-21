@@ -7,6 +7,7 @@ import com.hp.hpl.jena.query.ResultSet;
 
 import org.apache.commons.lang3.StringUtils;
 import org.sede.core.utils.ConvertDate;
+import org.sede.core.utils.Funciones;
 import org.sede.servicio.perfilcontratante.entity.*;
 import org.slf4j.Logger;
 import org.sede.servicio.perfilcontratante.dao.ContratoGenericDAO;
@@ -495,7 +496,7 @@ public class CodiceConverterMenor {
         try {
             escribirEnFichero(con.getExpediente(), document, con.getStatus().getId());
         } catch (TransformerException tfe) {
-            tfe.printStackTrace();
+        	LOG.error(Funciones.getStackTrace(tfe));
         } catch (Exception e) {
             LOG.error("Error al guardar fichero: " + e.getMessage());
         }

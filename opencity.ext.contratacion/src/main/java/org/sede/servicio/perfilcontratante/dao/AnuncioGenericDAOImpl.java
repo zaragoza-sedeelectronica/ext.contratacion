@@ -106,7 +106,6 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 
 					} catch (IOException e) {
 
-						e.printStackTrace();
 						return 0;
 					} finally {
 
@@ -358,7 +357,7 @@ public class AnuncioGenericDAOImpl extends GenericDAOImpl <Anuncio, BigDecimal> 
 			            }
 			        	return registro;
 			        } catch (Exception e) {
-			        	e.printStackTrace();
+
 						return null;
 					} finally {
 			        	if (st != null) {

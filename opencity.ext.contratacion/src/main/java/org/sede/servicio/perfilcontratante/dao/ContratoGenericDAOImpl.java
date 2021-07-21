@@ -1917,7 +1917,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
 
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(Funciones.getStackTrace(e));
                 }
             }
 
@@ -1948,10 +1948,10 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
 
 
         } catch (JsonProcessingException ex) {
-            ex.printStackTrace();
+        	logger.error(Funciones.getStackTrace(ex));
             return null;
         } catch (IOException ex) {
-            ex.printStackTrace();
+        	logger.error(Funciones.getStackTrace(ex));
             return null;
         }
 
@@ -2013,10 +2013,10 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
             resultado.setRows(intermedio.size());
 
         } catch (JsonProcessingException ex) {
-            ex.printStackTrace();
+        	logger.error(Funciones.getStackTrace(ex));
             return null;
         } catch (IOException ex) {
-            ex.printStackTrace();
+        	logger.error(Funciones.getStackTrace(ex));
             return null;
         }
         return resultado;
@@ -2062,9 +2062,9 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
                 return new StringBuilder();
 
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         } catch (IOException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         }
         return resultado;
 
@@ -2098,9 +2098,9 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
                 return new StringBuilder();
 
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         } catch (IOException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         }
         return resultado;
 
@@ -2137,11 +2137,11 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
 
             return resultado;
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         } catch (IOException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         }
         return null;
     }
@@ -2226,11 +2226,11 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
 
             return resultado;
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         } catch (IOException e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
         }
         return null;
     }
@@ -2260,7 +2260,7 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
             }
 
                 } catch (Exception ex) {
-            ex.printStackTrace();
+                	logger.error(Funciones.getStackTrace(ex));
             return null;
         }
 

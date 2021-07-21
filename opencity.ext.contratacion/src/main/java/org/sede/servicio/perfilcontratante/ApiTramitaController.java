@@ -207,7 +207,7 @@ public class ApiTramitaController {
             }
             VirtuosoDataManagement.loadJsonLd(Funciones.getPeticion().getCuerpoPeticion(), Contrato.class.getAnnotation(Grafo.class).value());
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
             Funciones.sendMail("Error al cargar contrato", e.getMessage() + ":" + Funciones.getPeticion().getCuerpoPeticion(), "bweb@zaragoza.es", "", "HTML");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Mensaje(400, "No creado correctamente origen Tramita"));
         }
@@ -772,7 +772,7 @@ public class ApiTramitaController {
 
             return con;
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error(Funciones.getStackTrace(e));
             return null;
         }
     }
@@ -916,7 +916,7 @@ public class ApiTramitaController {
                 }
             return ofer;
 } catch(Exception e){
-        e.printStackTrace();
+	logger.error(Funciones.getStackTrace(e));
         return null;
         }
         }

@@ -22,6 +22,7 @@ import org.sede.core.rest.MimeTypes;
 import org.sede.core.rest.Peticion;
 import org.sede.core.utils.Anonimizar;
 import org.sede.core.utils.ConvertDate;
+import org.sede.core.utils.Funciones;
 import org.sede.servicio.perfilcontratante.dao.EmpresaGenericDAO;
 import org.sede.servicio.perfilcontratante.entity.Anuncio;
 import org.sede.servicio.perfilcontratante.entity.Contrato;
@@ -142,7 +143,7 @@ public class Utils {
 				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			return false;
 		}
 	}
@@ -213,7 +214,7 @@ public class Utils {
 
 			return oferta;
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
