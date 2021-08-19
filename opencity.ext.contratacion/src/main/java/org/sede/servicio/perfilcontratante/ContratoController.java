@@ -273,9 +273,11 @@ public class ContratoController {
     public String detalle(Model model, @PathVariable BigDecimal id) {
         ResponseEntity<?> resultado = apiDetalle(id);
         model.addAttribute(ModelAttr.RESULTADO, resultado);
-        model.addAttribute("servicioGestor", ((Contrato) resultado.getBody()).getServicio());
-        if (!((Contrato) resultado.getBody()).getCpv().isEmpty()) {
-            model.addAttribute("contratosCpv", dao.getContratosCPV(((Contrato) resultado.getBody()).getCpv()));
+        if (resultado.getStatusCode().is2xxSuccessful()) {
+        	model.addAttribute("servicioGestor", ((Contrato) resultado.getBody()).getServicio());
+        	if (!((Contrato) resultado.getBody()).getCpv().isEmpty()) {
+            	model.addAttribute("contratosCpv", dao.getContratosCPV(((Contrato) resultado.getBody()).getCpv()));
+        	}
         }
         return MAPPING + "/detalle-contrato2";
     }
