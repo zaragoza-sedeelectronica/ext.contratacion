@@ -54,4 +54,11 @@
 
 		</plugins>
 	</build>
+	<distributionManagement>
+	    <repository>
+	        <id>central</id>
+	        <name>rysasartifact.red.zaragoza.es-releases</name>
+	        <url>http://172.16.17.43:8081/artifactory/libs-release</url>
+	    </repository>
+	</distributionManagement>
 </project>
