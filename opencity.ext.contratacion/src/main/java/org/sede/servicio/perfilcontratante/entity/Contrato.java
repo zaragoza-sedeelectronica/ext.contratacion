@@ -74,6 +74,10 @@ public class Contrato extends EntidadBase implements Serializable {
 
 	@Column(name = "EXPEDIENTE") @Size(max = 600)
 	private String expediente;
+	
+	@Column(name = "NUMERO_SEA") @Size(max = 30)
+	private String numeroSEA;
+	
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrato", cascade = CascadeType.MERGE)
 	@Fetch(FetchMode.JOIN)
@@ -362,6 +366,13 @@ public class Contrato extends EntidadBase implements Serializable {
 	public void setExpediente(String expediente) {
 		this.expediente = expediente;
 	}
+	public String getNumeroSEA() {
+		return numeroSEA;
+	}
+
+	public void setNumeroSEA(String numeroSEA) {
+		this.numeroSEA = numeroSEA;
+	}
 	public List<Lote> getLotes() {
 		return this.lotes;
 	}
@@ -596,7 +607,9 @@ public class Contrato extends EntidadBase implements Serializable {
 	//region Override
 	@Override
 	public String toString() {
-		return "Contrato [id=" + id + ", title=" + title + ", expediente=" + expediente
+		return "Contrato [id=" + id + ", title=" + title 
+				+ ", expediente=" + expediente
+				+ ", numeroSEA=" + numeroSEA
 				+ ", contratoMenor=" + contratoMenor
 				+ ", type="	+ type
 				+ ", fechaAdjudicacion=" + fechaAdjudicacion

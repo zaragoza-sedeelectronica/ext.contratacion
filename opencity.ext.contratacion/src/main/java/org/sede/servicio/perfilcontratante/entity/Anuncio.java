@@ -197,7 +197,7 @@ public class Anuncio extends EntidadBase {
 	
 	public String getUri() {
 		if (this.getFileName() != null) {
-			return Funciones.getPathSecureWithoutContext() + "/sede/servicio/contratacion-publica/anuncio/" + this.getId() + "/document";
+			return Funciones.getPathSecureWithoutContext() + "/sede/servicio/contratacion-publica/anuncio/" + this.getId() + "/document.pdf";
 		} else {
 			return null;
 		}

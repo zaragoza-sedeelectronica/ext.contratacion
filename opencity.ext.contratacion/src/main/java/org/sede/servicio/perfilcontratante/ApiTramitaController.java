@@ -413,6 +413,10 @@ public class ApiTramitaController {
             if (actualObj.has("dcterms:title")) {
                 con.setTitle(actualObj.get("dcterms:title").asText());
             }
+            if (actualObj.has("contzar:numeroSEA")) {
+                con.setNumeroSEA(actualObj.get("contzar:numeroSEA").asText());
+            }
+            
             con.setExpediente(actualObj.get("dcterms:identifier").asText());
             con.setType(daoTipoContrato.obtenerTipo(actualObj));
             if (actualObj.has("pproc:contractTemporalConditions")) {

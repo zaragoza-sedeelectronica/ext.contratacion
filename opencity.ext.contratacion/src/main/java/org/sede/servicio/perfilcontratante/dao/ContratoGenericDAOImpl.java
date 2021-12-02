@@ -648,9 +648,12 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
             StringBuilder contratista = new StringBuilder();
             StringBuilder txtLotes = new StringBuilder();
             String importeAdjudicacionSinIVA = "";
+            Date fecAdj=null;
+            Date fecForm=null;
             for (Oferta of : r.getOfertas()) {
                 if (of.getGanador().equals(Boolean.TRUE)) {
-
+                    fecAdj=of.getFechaAdjudicacion();
+                    fecForm=of.getFechaFormalizacion();
                     if (of.getLote() == null) {
                         importeAdjudicacionSinIVA = "" + of.getImporteSinIVA();
                         contratista.append(of.getEmpresa().getNif() + " - " + of.getEmpresa().getNombre() + " ");
@@ -675,16 +678,16 @@ public class ContratoGenericDAOImpl extends GenericDAOImpl<Contrato, BigDecimal>
 
 
             cellid = dataRow.createCell(++col);
-            cellid.setCellValue("" + (r.getFechaAdjudicacion() == null ? "No" : "Si"));
+            cellid.setCellValue("" + (fecAdj == null ? "No" : "Si"));
 
             cellid = dataRow.createCell(++col);
-            cellid.setCellValue(r.getFechaAdjudicacion() == null ? "" : ConvertDate.date2String(r.getFechaAdjudicacion(), ConvertDate.DATETIME_FORMAT));
+            cellid.setCellValue(fecAdj == null ? "" : ConvertDate.date2String(fecAdj, ConvertDate.DATETIME_FORMAT));
 
             cellid = dataRow.createCell(++col);
-            cellid.setCellValue("" + (r.getFechaFormalizacion() == null ? "No" : "Si"));
+            cellid.setCellValue("" + (fecForm == null ? "No" : "Si"));
 
             cellid = dataRow.createCell(++col);
-            cellid.setCellValue(r.getFechaFormalizacion() == null ? "" : ConvertDate.date2String(r.getFechaFormalizacion(), ConvertDate.DATETIME_FORMAT));
+            cellid.setCellValue(fecForm == null ? "" : ConvertDate.date2String(fecForm, ConvertDate.DATETIME_FORMAT));
 
             cellid = dataRow.createCell(++col);
             cellid.setCellValue("" + (r.getDuracion() == null ? "" : r.getDuracion()));
