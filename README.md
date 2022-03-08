@@ -1,9 +1,30 @@
+<p align="right"><img width=50% src="https://github.com/TBFY/general/blob/master/figures/tbfy-logo.png"></p>
+<p align="right"><img width=40% src="https://github.com/TBFY/edp-economic-data-portal/blob/master/logo.png"></p>
+
 ### OpenCity-Ext - Contratación Pública ###
 
 # Introducción
 
 A continuación se indican las instrucciones necesarias para la descarga y configuración del módulo de "Contratación Pública" del proyecto OpenCity-Ext desarrollado por el Ayuntamiento de Zaragoza.
 
+Los servicios desarrollados en este módulo han sido definidos e implementados durante el proyecto europeo <a href="https://www.zaragoza.es/sede/portal/theybuyforyou/">They Buy For You</a>
+[GITHUB del proyecto](https://github.com/TBFY)
+
+Estos servicios son:
+* Servicio de Visualización
+* Sistema de gestión
+* APIs
+	* Conforme al estandar OCDS
+	* API de Zaragoza 
+
+## Descripción funcional ##
+Este módulo consta de las siguientes partes:
+
+* Servicio de visualización[ Descripción ](https://www.zaragoza.es/contenidos/contratos/Servicio_Visualizacion_Procesos_Contratacion.pdf)
+* Sistema de Gestión [ Descripción ](https://www.zaragoza.es/contenidos/contratos/Manual_Uso_administracion_Contratacion_publica.pdf)
+* APIs [ Descripción ](https://www.zaragoza.es/sede/servicio/catalogo/147)
+	* Conforme a OCDS
+	* Servicio de Visualización
 ## Manual de instalación ##
 
 Primero, hay que realizar los siguientes pasos del manual general:
@@ -87,7 +108,7 @@ Hay que indicar los valores de los campos `url` y `password`.
 
 # Clonar repositorio:
 
-A continuación debe clonarse en local este repositorio https://bitbucket.org/masilgado/contratacion.git
+A continuación debe clonarse en local este repositorio https://github.com/zaragoza-sedeelectronica/ext.contratacion
 
 
 # Instalación de librerías en repositorio local:
